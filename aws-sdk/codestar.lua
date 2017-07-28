@@ -18,51 +18,54 @@ M.metadata = {
 	uid = "codestar-2017-04-19",
 }
 
-local CreateUserProfileRequest_keys = { "emailAddress" = true, "sshPublicKey" = true, "displayName" = true, "userArn" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertCreateUserProfileRequest(struct)
+keys.CreateUserProfileRequest = { ["emailAddress"] = true, ["sshPublicKey"] = true, ["displayName"] = true, ["userArn"] = true, nil }
+
+function asserts.AssertCreateUserProfileRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserProfileRequest to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
 	assert(struct["displayName"], "Expected key displayName to exist in table")
 	assert(struct["emailAddress"], "Expected key emailAddress to exist in table")
-	if struct["emailAddress"] then M.AssertEmail(struct["emailAddress"]) end
-	if struct["sshPublicKey"] then M.AssertSshPublicKey(struct["sshPublicKey"]) end
-	if struct["displayName"] then M.AssertUserProfileDisplayName(struct["displayName"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["emailAddress"] then asserts.AssertEmail(struct["emailAddress"]) end
+	if struct["sshPublicKey"] then asserts.AssertSshPublicKey(struct["sshPublicKey"]) end
+	if struct["displayName"] then asserts.AssertUserProfileDisplayName(struct["displayName"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserProfileRequest_keys[k], "CreateUserProfileRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateUserProfileRequest[k], "CreateUserProfileRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserProfileRequest
 --  
--- @param emailAddress [Email] <p>The email address that will be displayed as part of the user's profile in AWS CodeStar.</p>
--- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
--- @param displayName [UserProfileDisplayName] <p>The name that will be displayed as the friendly name for the user in AWS CodeStar. </p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
+-- @param _emailAddress [Email] <p>The email address that will be displayed as part of the user's profile in AWS CodeStar.</p>
+-- @param _sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
+-- @param _displayName [UserProfileDisplayName] <p>The name that will be displayed as the friendly name for the user in AWS CodeStar. </p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
 -- Required parameter: userArn
 -- Required parameter: displayName
 -- Required parameter: emailAddress
-function M.CreateUserProfileRequest(emailAddress, sshPublicKey, displayName, userArn, ...)
+function M.CreateUserProfileRequest(_emailAddress, _sshPublicKey, _displayName, _userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserProfileRequest")
 	local t = { 
-		["emailAddress"] = emailAddress,
-		["sshPublicKey"] = sshPublicKey,
-		["displayName"] = displayName,
-		["userArn"] = userArn,
+		["emailAddress"] = _emailAddress,
+		["sshPublicKey"] = _sshPublicKey,
+		["displayName"] = _displayName,
+		["userArn"] = _userArn,
 	}
-	M.AssertCreateUserProfileRequest(t)
+	asserts.AssertCreateUserProfileRequest(t)
 	return t
 end
 
-local UserProfileNotFoundException_keys = { nil }
+keys.UserProfileNotFoundException = { nil }
 
-function M.AssertUserProfileNotFoundException(struct)
+function asserts.AssertUserProfileNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserProfileNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UserProfileNotFoundException_keys[k], "UserProfileNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.UserProfileNotFoundException[k], "UserProfileNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -72,48 +75,48 @@ function M.UserProfileNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserProfileNotFoundException")
 	local t = { 
 	}
-	M.AssertUserProfileNotFoundException(t)
+	asserts.AssertUserProfileNotFoundException(t)
 	return t
 end
 
-local DeleteProjectRequest_keys = { "deleteStack" = true, "id" = true, "clientRequestToken" = true, nil }
+keys.DeleteProjectRequest = { ["deleteStack"] = true, ["id"] = true, ["clientRequestToken"] = true, nil }
 
-function M.AssertDeleteProjectRequest(struct)
+function asserts.AssertDeleteProjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteProjectRequest to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
-	if struct["deleteStack"] then M.AssertDeleteStack(struct["deleteStack"]) end
-	if struct["id"] then M.AssertProjectId(struct["id"]) end
-	if struct["clientRequestToken"] then M.AssertClientRequestToken(struct["clientRequestToken"]) end
+	if struct["deleteStack"] then asserts.AssertDeleteStack(struct["deleteStack"]) end
+	if struct["id"] then asserts.AssertProjectId(struct["id"]) end
+	if struct["clientRequestToken"] then asserts.AssertClientRequestToken(struct["clientRequestToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteProjectRequest_keys[k], "DeleteProjectRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteProjectRequest[k], "DeleteProjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteProjectRequest
 --  
--- @param deleteStack [DeleteStack] <p>Whether to send a delete request for the primary stack in AWS CloudFormation originally used to generate the project and its resources. This option will delete all AWS resources for the project (except for any buckets in Amazon S3) as well as deleting the project itself. Recommended for most use cases.</p>
--- @param id [ProjectId] <p>The ID of the project to be deleted in AWS CodeStar.</p>
--- @param clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request. </p>
+-- @param _deleteStack [DeleteStack] <p>Whether to send a delete request for the primary stack in AWS CloudFormation originally used to generate the project and its resources. This option will delete all AWS resources for the project (except for any buckets in Amazon S3) as well as deleting the project itself. Recommended for most use cases.</p>
+-- @param _id [ProjectId] <p>The ID of the project to be deleted in AWS CodeStar.</p>
+-- @param _clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request. </p>
 -- Required parameter: id
-function M.DeleteProjectRequest(deleteStack, id, clientRequestToken, ...)
+function M.DeleteProjectRequest(_deleteStack, _id, _clientRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProjectRequest")
 	local t = { 
-		["deleteStack"] = deleteStack,
-		["id"] = id,
-		["clientRequestToken"] = clientRequestToken,
+		["deleteStack"] = _deleteStack,
+		["id"] = _id,
+		["clientRequestToken"] = _clientRequestToken,
 	}
-	M.AssertDeleteProjectRequest(t)
+	asserts.AssertDeleteProjectRequest(t)
 	return t
 end
 
-local ConcurrentModificationException_keys = { nil }
+keys.ConcurrentModificationException = { nil }
 
-function M.AssertConcurrentModificationException(struct)
+function asserts.AssertConcurrentModificationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConcurrentModificationException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ConcurrentModificationException_keys[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
+		assert(keys.ConcurrentModificationException[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -123,17 +126,17 @@ function M.ConcurrentModificationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
 	}
-	M.AssertConcurrentModificationException(t)
+	asserts.AssertConcurrentModificationException(t)
 	return t
 end
 
-local ValidationException_keys = { nil }
+keys.ValidationException = { nil }
 
-function M.AssertValidationException(struct)
+function asserts.AssertValidationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ValidationException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ValidationException_keys[k], "ValidationException contains unknown key " .. tostring(k))
+		assert(keys.ValidationException[k], "ValidationException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -143,17 +146,17 @@ function M.ValidationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
 	local t = { 
 	}
-	M.AssertValidationException(t)
+	asserts.AssertValidationException(t)
 	return t
 end
 
-local ProjectNotFoundException_keys = { nil }
+keys.ProjectNotFoundException = { nil }
 
-function M.AssertProjectNotFoundException(struct)
+function asserts.AssertProjectNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProjectNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ProjectNotFoundException_keys[k], "ProjectNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ProjectNotFoundException[k], "ProjectNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -163,53 +166,53 @@ function M.ProjectNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectNotFoundException")
 	local t = { 
 	}
-	M.AssertProjectNotFoundException(t)
+	asserts.AssertProjectNotFoundException(t)
 	return t
 end
 
-local UpdateTeamMemberRequest_keys = { "projectRole" = true, "projectId" = true, "remoteAccessAllowed" = true, "userArn" = true, nil }
+keys.UpdateTeamMemberRequest = { ["projectRole"] = true, ["projectId"] = true, ["remoteAccessAllowed"] = true, ["userArn"] = true, nil }
 
-function M.AssertUpdateTeamMemberRequest(struct)
+function asserts.AssertUpdateTeamMemberRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateTeamMemberRequest to be of type 'table'")
 	assert(struct["projectId"], "Expected key projectId to exist in table")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
-	if struct["projectRole"] then M.AssertRole(struct["projectRole"]) end
-	if struct["projectId"] then M.AssertProjectId(struct["projectId"]) end
-	if struct["remoteAccessAllowed"] then M.AssertRemoteAccessAllowed(struct["remoteAccessAllowed"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["projectRole"] then asserts.AssertRole(struct["projectRole"]) end
+	if struct["projectId"] then asserts.AssertProjectId(struct["projectId"]) end
+	if struct["remoteAccessAllowed"] then asserts.AssertRemoteAccessAllowed(struct["remoteAccessAllowed"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateTeamMemberRequest_keys[k], "UpdateTeamMemberRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateTeamMemberRequest[k], "UpdateTeamMemberRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateTeamMemberRequest
 --  
--- @param projectRole [Role] <p>The role assigned to the user in the project. Project roles have different levels of access. For more information, see <a href="http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html">Working with Teams</a> in the AWS CodeStar User Guide.</p>
--- @param projectId [ProjectId] <p>The ID of the project.</p>
--- @param remoteAccessAllowed [RemoteAccessAllowed] <p>Whether a team member is allowed to remotely access project resources using the SSH public key associated with the user's profile. Even if this is set to True, the user must associate a public key with their profile before the user can access resources.</p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user for whom you want to change team membership attributes.</p>
+-- @param _projectRole [Role] <p>The role assigned to the user in the project. Project roles have different levels of access. For more information, see <a href="http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html">Working with Teams</a> in the AWS CodeStar User Guide.</p>
+-- @param _projectId [ProjectId] <p>The ID of the project.</p>
+-- @param _remoteAccessAllowed [RemoteAccessAllowed] <p>Whether a team member is allowed to remotely access project resources using the SSH public key associated with the user's profile. Even if this is set to True, the user must associate a public key with their profile before the user can access resources.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user for whom you want to change team membership attributes.</p>
 -- Required parameter: projectId
 -- Required parameter: userArn
-function M.UpdateTeamMemberRequest(projectRole, projectId, remoteAccessAllowed, userArn, ...)
+function M.UpdateTeamMemberRequest(_projectRole, _projectId, _remoteAccessAllowed, _userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTeamMemberRequest")
 	local t = { 
-		["projectRole"] = projectRole,
-		["projectId"] = projectId,
-		["remoteAccessAllowed"] = remoteAccessAllowed,
-		["userArn"] = userArn,
+		["projectRole"] = _projectRole,
+		["projectId"] = _projectId,
+		["remoteAccessAllowed"] = _remoteAccessAllowed,
+		["userArn"] = _userArn,
 	}
-	M.AssertUpdateTeamMemberRequest(t)
+	asserts.AssertUpdateTeamMemberRequest(t)
 	return t
 end
 
-local LimitExceededException_keys = { nil }
+keys.LimitExceededException = { nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -219,79 +222,79 @@ function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local UpdateProjectRequest_keys = { "description" = true, "id" = true, "name" = true, nil }
+keys.UpdateProjectRequest = { ["description"] = true, ["id"] = true, ["name"] = true, nil }
 
-function M.AssertUpdateProjectRequest(struct)
+function asserts.AssertUpdateProjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateProjectRequest to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
-	if struct["description"] then M.AssertProjectDescription(struct["description"]) end
-	if struct["id"] then M.AssertProjectId(struct["id"]) end
-	if struct["name"] then M.AssertProjectName(struct["name"]) end
+	if struct["description"] then asserts.AssertProjectDescription(struct["description"]) end
+	if struct["id"] then asserts.AssertProjectId(struct["id"]) end
+	if struct["name"] then asserts.AssertProjectName(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateProjectRequest_keys[k], "UpdateProjectRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateProjectRequest[k], "UpdateProjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateProjectRequest
 --  
--- @param description [ProjectDescription] <p>The description of the project, if any.</p>
--- @param id [ProjectId] <p>The ID of the project you want to update.</p>
--- @param name [ProjectName] <p>The name of the project you want to update.</p>
+-- @param _description [ProjectDescription] <p>The description of the project, if any.</p>
+-- @param _id [ProjectId] <p>The ID of the project you want to update.</p>
+-- @param _name [ProjectName] <p>The name of the project you want to update.</p>
 -- Required parameter: id
-function M.UpdateProjectRequest(description, id, name, ...)
+function M.UpdateProjectRequest(_description, _id, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProjectRequest")
 	local t = { 
-		["description"] = description,
-		["id"] = id,
-		["name"] = name,
+		["description"] = _description,
+		["id"] = _id,
+		["name"] = _name,
 	}
-	M.AssertUpdateProjectRequest(t)
+	asserts.AssertUpdateProjectRequest(t)
 	return t
 end
 
-local ListTeamMembersRequest_keys = { "projectId" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.ListTeamMembersRequest = { ["projectId"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListTeamMembersRequest(struct)
+function asserts.AssertListTeamMembersRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTeamMembersRequest to be of type 'table'")
 	assert(struct["projectId"], "Expected key projectId to exist in table")
-	if struct["projectId"] then M.AssertProjectId(struct["projectId"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertMaxResults(struct["maxResults"]) end
+	if struct["projectId"] then asserts.AssertProjectId(struct["projectId"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTeamMembersRequest_keys[k], "ListTeamMembersRequest contains unknown key " .. tostring(k))
+		assert(keys.ListTeamMembersRequest[k], "ListTeamMembersRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTeamMembersRequest
 --  
--- @param projectId [ProjectId] <p>The ID of the project for which you want to list team members.</p>
--- @param nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
--- @param maxResults [MaxResults] <p>The maximum number of team members you want returned in a response.</p>
+-- @param _projectId [ProjectId] <p>The ID of the project for which you want to list team members.</p>
+-- @param _nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
+-- @param _maxResults [MaxResults] <p>The maximum number of team members you want returned in a response.</p>
 -- Required parameter: projectId
-function M.ListTeamMembersRequest(projectId, nextToken, maxResults, ...)
+function M.ListTeamMembersRequest(_projectId, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTeamMembersRequest")
 	local t = { 
-		["projectId"] = projectId,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["projectId"] = _projectId,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListTeamMembersRequest(t)
+	asserts.AssertListTeamMembersRequest(t)
 	return t
 end
 
-local InvalidNextTokenException_keys = { nil }
+keys.InvalidNextTokenException = { nil }
 
-function M.AssertInvalidNextTokenException(struct)
+function asserts.AssertInvalidNextTokenException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidNextTokenException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidNextTokenException_keys[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
+		assert(keys.InvalidNextTokenException[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -301,74 +304,74 @@ function M.InvalidNextTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
 	}
-	M.AssertInvalidNextTokenException(t)
+	asserts.AssertInvalidNextTokenException(t)
 	return t
 end
 
-local ListTeamMembersResult_keys = { "nextToken" = true, "teamMembers" = true, nil }
+keys.ListTeamMembersResult = { ["nextToken"] = true, ["teamMembers"] = true, nil }
 
-function M.AssertListTeamMembersResult(struct)
+function asserts.AssertListTeamMembersResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTeamMembersResult to be of type 'table'")
 	assert(struct["teamMembers"], "Expected key teamMembers to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["teamMembers"] then M.AssertTeamMemberResult(struct["teamMembers"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["teamMembers"] then asserts.AssertTeamMemberResult(struct["teamMembers"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTeamMembersResult_keys[k], "ListTeamMembersResult contains unknown key " .. tostring(k))
+		assert(keys.ListTeamMembersResult[k], "ListTeamMembersResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTeamMembersResult
 --  
--- @param nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
--- @param teamMembers [TeamMemberResult] <p>A list of team member objects for the project.</p>
+-- @param _nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
+-- @param _teamMembers [TeamMemberResult] <p>A list of team member objects for the project.</p>
 -- Required parameter: teamMembers
-function M.ListTeamMembersResult(nextToken, teamMembers, ...)
+function M.ListTeamMembersResult(_nextToken, _teamMembers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTeamMembersResult")
 	local t = { 
-		["nextToken"] = nextToken,
-		["teamMembers"] = teamMembers,
+		["nextToken"] = _nextToken,
+		["teamMembers"] = _teamMembers,
 	}
-	M.AssertListTeamMembersResult(t)
+	asserts.AssertListTeamMembersResult(t)
 	return t
 end
 
-local UpdateTeamMemberResult_keys = { "projectRole" = true, "remoteAccessAllowed" = true, "userArn" = true, nil }
+keys.UpdateTeamMemberResult = { ["projectRole"] = true, ["remoteAccessAllowed"] = true, ["userArn"] = true, nil }
 
-function M.AssertUpdateTeamMemberResult(struct)
+function asserts.AssertUpdateTeamMemberResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateTeamMemberResult to be of type 'table'")
-	if struct["projectRole"] then M.AssertRole(struct["projectRole"]) end
-	if struct["remoteAccessAllowed"] then M.AssertRemoteAccessAllowed(struct["remoteAccessAllowed"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["projectRole"] then asserts.AssertRole(struct["projectRole"]) end
+	if struct["remoteAccessAllowed"] then asserts.AssertRemoteAccessAllowed(struct["remoteAccessAllowed"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateTeamMemberResult_keys[k], "UpdateTeamMemberResult contains unknown key " .. tostring(k))
+		assert(keys.UpdateTeamMemberResult[k], "UpdateTeamMemberResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateTeamMemberResult
 --  
--- @param projectRole [Role] <p>The project role granted to the user.</p>
--- @param remoteAccessAllowed [RemoteAccessAllowed] <p>Whether a team member is allowed to remotely access project resources using the SSH public key associated with the user's profile.</p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user whose team membership attributes were updated.</p>
-function M.UpdateTeamMemberResult(projectRole, remoteAccessAllowed, userArn, ...)
+-- @param _projectRole [Role] <p>The project role granted to the user.</p>
+-- @param _remoteAccessAllowed [RemoteAccessAllowed] <p>Whether a team member is allowed to remotely access project resources using the SSH public key associated with the user's profile.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user whose team membership attributes were updated.</p>
+function M.UpdateTeamMemberResult(_projectRole, _remoteAccessAllowed, _userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTeamMemberResult")
 	local t = { 
-		["projectRole"] = projectRole,
-		["remoteAccessAllowed"] = remoteAccessAllowed,
-		["userArn"] = userArn,
+		["projectRole"] = _projectRole,
+		["remoteAccessAllowed"] = _remoteAccessAllowed,
+		["userArn"] = _userArn,
 	}
-	M.AssertUpdateTeamMemberResult(t)
+	asserts.AssertUpdateTeamMemberResult(t)
 	return t
 end
 
-local ProjectConfigurationException_keys = { nil }
+keys.ProjectConfigurationException = { nil }
 
-function M.AssertProjectConfigurationException(struct)
+function asserts.AssertProjectConfigurationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProjectConfigurationException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ProjectConfigurationException_keys[k], "ProjectConfigurationException contains unknown key " .. tostring(k))
+		assert(keys.ProjectConfigurationException[k], "ProjectConfigurationException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -378,141 +381,141 @@ function M.ProjectConfigurationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectConfigurationException")
 	local t = { 
 	}
-	M.AssertProjectConfigurationException(t)
+	asserts.AssertProjectConfigurationException(t)
 	return t
 end
 
-local DeleteUserProfileRequest_keys = { "userArn" = true, nil }
+keys.DeleteUserProfileRequest = { ["userArn"] = true, nil }
 
-function M.AssertDeleteUserProfileRequest(struct)
+function asserts.AssertDeleteUserProfileRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserProfileRequest to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUserProfileRequest_keys[k], "DeleteUserProfileRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserProfileRequest[k], "DeleteUserProfileRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUserProfileRequest
 --  
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.</p>
 -- Required parameter: userArn
-function M.DeleteUserProfileRequest(userArn, ...)
+function M.DeleteUserProfileRequest(_userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserProfileRequest")
 	local t = { 
-		["userArn"] = userArn,
+		["userArn"] = _userArn,
 	}
-	M.AssertDeleteUserProfileRequest(t)
+	asserts.AssertDeleteUserProfileRequest(t)
 	return t
 end
 
-local TeamMember_keys = { "projectRole" = true, "remoteAccessAllowed" = true, "userArn" = true, nil }
+keys.TeamMember = { ["projectRole"] = true, ["remoteAccessAllowed"] = true, ["userArn"] = true, nil }
 
-function M.AssertTeamMember(struct)
+function asserts.AssertTeamMember(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TeamMember to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
 	assert(struct["projectRole"], "Expected key projectRole to exist in table")
-	if struct["projectRole"] then M.AssertRole(struct["projectRole"]) end
-	if struct["remoteAccessAllowed"] then M.AssertRemoteAccessAllowed(struct["remoteAccessAllowed"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["projectRole"] then asserts.AssertRole(struct["projectRole"]) end
+	if struct["remoteAccessAllowed"] then asserts.AssertRemoteAccessAllowed(struct["remoteAccessAllowed"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(TeamMember_keys[k], "TeamMember contains unknown key " .. tostring(k))
+		assert(keys.TeamMember[k], "TeamMember contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TeamMember
 -- <p>Information about a team member in a project.</p>
--- @param projectRole [Role] <p>The role assigned to the user in the project. Project roles have different levels of access. For more information, see <a href="http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html">Working with Teams</a> in the AWS CodeStar User Guide. </p>
--- @param remoteAccessAllowed [RemoteAccessAllowed] <p>Whether the user is allowed to remotely access project resources using an SSH public/private key pair.</p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
+-- @param _projectRole [Role] <p>The role assigned to the user in the project. Project roles have different levels of access. For more information, see <a href="http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html">Working with Teams</a> in the AWS CodeStar User Guide. </p>
+-- @param _remoteAccessAllowed [RemoteAccessAllowed] <p>Whether the user is allowed to remotely access project resources using an SSH public/private key pair.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
 -- Required parameter: userArn
 -- Required parameter: projectRole
-function M.TeamMember(projectRole, remoteAccessAllowed, userArn, ...)
+function M.TeamMember(_projectRole, _remoteAccessAllowed, _userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TeamMember")
 	local t = { 
-		["projectRole"] = projectRole,
-		["remoteAccessAllowed"] = remoteAccessAllowed,
-		["userArn"] = userArn,
+		["projectRole"] = _projectRole,
+		["remoteAccessAllowed"] = _remoteAccessAllowed,
+		["userArn"] = _userArn,
 	}
-	M.AssertTeamMember(t)
+	asserts.AssertTeamMember(t)
 	return t
 end
 
-local CreateUserProfileResult_keys = { "displayName" = true, "userArn" = true, "sshPublicKey" = true, "createdTimestamp" = true, "emailAddress" = true, "lastModifiedTimestamp" = true, nil }
+keys.CreateUserProfileResult = { ["displayName"] = true, ["userArn"] = true, ["sshPublicKey"] = true, ["createdTimestamp"] = true, ["emailAddress"] = true, ["lastModifiedTimestamp"] = true, nil }
 
-function M.AssertCreateUserProfileResult(struct)
+function asserts.AssertCreateUserProfileResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserProfileResult to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
-	if struct["displayName"] then M.AssertUserProfileDisplayName(struct["displayName"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
-	if struct["sshPublicKey"] then M.AssertSshPublicKey(struct["sshPublicKey"]) end
-	if struct["createdTimestamp"] then M.AssertCreatedTimestamp(struct["createdTimestamp"]) end
-	if struct["emailAddress"] then M.AssertEmail(struct["emailAddress"]) end
-	if struct["lastModifiedTimestamp"] then M.AssertLastModifiedTimestamp(struct["lastModifiedTimestamp"]) end
+	if struct["displayName"] then asserts.AssertUserProfileDisplayName(struct["displayName"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
+	if struct["sshPublicKey"] then asserts.AssertSshPublicKey(struct["sshPublicKey"]) end
+	if struct["createdTimestamp"] then asserts.AssertCreatedTimestamp(struct["createdTimestamp"]) end
+	if struct["emailAddress"] then asserts.AssertEmail(struct["emailAddress"]) end
+	if struct["lastModifiedTimestamp"] then asserts.AssertLastModifiedTimestamp(struct["lastModifiedTimestamp"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserProfileResult_keys[k], "CreateUserProfileResult contains unknown key " .. tostring(k))
+		assert(keys.CreateUserProfileResult[k], "CreateUserProfileResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserProfileResult
 --  
--- @param displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
--- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. This is the public portion of the public/private keypair the user can use to access project resources if a project owner allows the user remote access to those resources.</p>
--- @param createdTimestamp [CreatedTimestamp] <p>The date the user profile was created, in timestamp format.</p>
--- @param emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
--- @param lastModifiedTimestamp [LastModifiedTimestamp] <p>The date the user profile was last modified, in timestamp format.</p>
+-- @param _displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
+-- @param _sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. This is the public portion of the public/private keypair the user can use to access project resources if a project owner allows the user remote access to those resources.</p>
+-- @param _createdTimestamp [CreatedTimestamp] <p>The date the user profile was created, in timestamp format.</p>
+-- @param _emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
+-- @param _lastModifiedTimestamp [LastModifiedTimestamp] <p>The date the user profile was last modified, in timestamp format.</p>
 -- Required parameter: userArn
-function M.CreateUserProfileResult(displayName, userArn, sshPublicKey, createdTimestamp, emailAddress, lastModifiedTimestamp, ...)
+function M.CreateUserProfileResult(_displayName, _userArn, _sshPublicKey, _createdTimestamp, _emailAddress, _lastModifiedTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserProfileResult")
 	local t = { 
-		["displayName"] = displayName,
-		["userArn"] = userArn,
-		["sshPublicKey"] = sshPublicKey,
-		["createdTimestamp"] = createdTimestamp,
-		["emailAddress"] = emailAddress,
-		["lastModifiedTimestamp"] = lastModifiedTimestamp,
+		["displayName"] = _displayName,
+		["userArn"] = _userArn,
+		["sshPublicKey"] = _sshPublicKey,
+		["createdTimestamp"] = _createdTimestamp,
+		["emailAddress"] = _emailAddress,
+		["lastModifiedTimestamp"] = _lastModifiedTimestamp,
 	}
-	M.AssertCreateUserProfileResult(t)
+	asserts.AssertCreateUserProfileResult(t)
 	return t
 end
 
-local ListProjectsRequest_keys = { "nextToken" = true, "maxResults" = true, nil }
+keys.ListProjectsRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListProjectsRequest(struct)
+function asserts.AssertListProjectsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListProjectsRequest to be of type 'table'")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertMaxResults(struct["maxResults"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListProjectsRequest_keys[k], "ListProjectsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListProjectsRequest[k], "ListProjectsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListProjectsRequest
 --  
--- @param nextToken [PaginationToken] <p>The continuation token to be used to return the next set of results, if the results cannot be returned in one response.</p>
--- @param maxResults [MaxResults] <p>The maximum amount of data that can be contained in a single set of results.</p>
-function M.ListProjectsRequest(nextToken, maxResults, ...)
+-- @param _nextToken [PaginationToken] <p>The continuation token to be used to return the next set of results, if the results cannot be returned in one response.</p>
+-- @param _maxResults [MaxResults] <p>The maximum amount of data that can be contained in a single set of results.</p>
+function M.ListProjectsRequest(_nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProjectsRequest")
 	local t = { 
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListProjectsRequest(t)
+	asserts.AssertListProjectsRequest(t)
 	return t
 end
 
-local DisassociateTeamMemberResult_keys = { nil }
+keys.DisassociateTeamMemberResult = { nil }
 
-function M.AssertDisassociateTeamMemberResult(struct)
+function asserts.AssertDisassociateTeamMemberResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateTeamMemberResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DisassociateTeamMemberResult_keys[k], "DisassociateTeamMemberResult contains unknown key " .. tostring(k))
+		assert(keys.DisassociateTeamMemberResult[k], "DisassociateTeamMemberResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -522,273 +525,273 @@ function M.DisassociateTeamMemberResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateTeamMemberResult")
 	local t = { 
 	}
-	M.AssertDisassociateTeamMemberResult(t)
+	asserts.AssertDisassociateTeamMemberResult(t)
 	return t
 end
 
-local ListProjectsResult_keys = { "nextToken" = true, "projects" = true, nil }
+keys.ListProjectsResult = { ["nextToken"] = true, ["projects"] = true, nil }
 
-function M.AssertListProjectsResult(struct)
+function asserts.AssertListProjectsResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListProjectsResult to be of type 'table'")
 	assert(struct["projects"], "Expected key projects to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["projects"] then M.AssertProjectsList(struct["projects"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["projects"] then asserts.AssertProjectsList(struct["projects"]) end
 	for k,_ in pairs(struct) do
-		assert(ListProjectsResult_keys[k], "ListProjectsResult contains unknown key " .. tostring(k))
+		assert(keys.ListProjectsResult[k], "ListProjectsResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListProjectsResult
 --  
--- @param nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
--- @param projects [ProjectsList] <p>A list of projects.</p>
+-- @param _nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
+-- @param _projects [ProjectsList] <p>A list of projects.</p>
 -- Required parameter: projects
-function M.ListProjectsResult(nextToken, projects, ...)
+function M.ListProjectsResult(_nextToken, _projects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProjectsResult")
 	local t = { 
-		["nextToken"] = nextToken,
-		["projects"] = projects,
+		["nextToken"] = _nextToken,
+		["projects"] = _projects,
 	}
-	M.AssertListProjectsResult(t)
+	asserts.AssertListProjectsResult(t)
 	return t
 end
 
-local ListResourcesResult_keys = { "nextToken" = true, "resources" = true, nil }
+keys.ListResourcesResult = { ["nextToken"] = true, ["resources"] = true, nil }
 
-function M.AssertListResourcesResult(struct)
+function asserts.AssertListResourcesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListResourcesResult to be of type 'table'")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["resources"] then M.AssertResourcesResult(struct["resources"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["resources"] then asserts.AssertResourcesResult(struct["resources"]) end
 	for k,_ in pairs(struct) do
-		assert(ListResourcesResult_keys[k], "ListResourcesResult contains unknown key " .. tostring(k))
+		assert(keys.ListResourcesResult[k], "ListResourcesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListResourcesResult
 --  
--- @param nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
--- @param resources [ResourcesResult] <p>An array of resources associated with the project. </p>
-function M.ListResourcesResult(nextToken, resources, ...)
+-- @param _nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
+-- @param _resources [ResourcesResult] <p>An array of resources associated with the project. </p>
+function M.ListResourcesResult(_nextToken, _resources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesResult")
 	local t = { 
-		["nextToken"] = nextToken,
-		["resources"] = resources,
+		["nextToken"] = _nextToken,
+		["resources"] = _resources,
 	}
-	M.AssertListResourcesResult(t)
+	asserts.AssertListResourcesResult(t)
 	return t
 end
 
-local ListResourcesRequest_keys = { "projectId" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.ListResourcesRequest = { ["projectId"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListResourcesRequest(struct)
+function asserts.AssertListResourcesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListResourcesRequest to be of type 'table'")
 	assert(struct["projectId"], "Expected key projectId to exist in table")
-	if struct["projectId"] then M.AssertProjectId(struct["projectId"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertMaxResults(struct["maxResults"]) end
+	if struct["projectId"] then asserts.AssertProjectId(struct["projectId"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListResourcesRequest_keys[k], "ListResourcesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListResourcesRequest[k], "ListResourcesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListResourcesRequest
 --  
--- @param projectId [ProjectId] <p>The ID of the project.</p>
--- @param nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
--- @param maxResults [MaxResults] <p>he maximum amount of data that can be contained in a single set of results.</p>
+-- @param _projectId [ProjectId] <p>The ID of the project.</p>
+-- @param _nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
+-- @param _maxResults [MaxResults] <p>he maximum amount of data that can be contained in a single set of results.</p>
 -- Required parameter: projectId
-function M.ListResourcesRequest(projectId, nextToken, maxResults, ...)
+function M.ListResourcesRequest(_projectId, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesRequest")
 	local t = { 
-		["projectId"] = projectId,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["projectId"] = _projectId,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListResourcesRequest(t)
+	asserts.AssertListResourcesRequest(t)
 	return t
 end
 
-local DeleteUserProfileResult_keys = { "userArn" = true, nil }
+keys.DeleteUserProfileResult = { ["userArn"] = true, nil }
 
-function M.AssertDeleteUserProfileResult(struct)
+function asserts.AssertDeleteUserProfileResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserProfileResult to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUserProfileResult_keys[k], "DeleteUserProfileResult contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserProfileResult[k], "DeleteUserProfileResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUserProfileResult
 --  
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user deleted from AWS CodeStar.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user deleted from AWS CodeStar.</p>
 -- Required parameter: userArn
-function M.DeleteUserProfileResult(userArn, ...)
+function M.DeleteUserProfileResult(_userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserProfileResult")
 	local t = { 
-		["userArn"] = userArn,
+		["userArn"] = _userArn,
 	}
-	M.AssertDeleteUserProfileResult(t)
+	asserts.AssertDeleteUserProfileResult(t)
 	return t
 end
 
-local Resource_keys = { "id" = true, nil }
+keys.Resource = { ["id"] = true, nil }
 
-function M.AssertResource(struct)
+function asserts.AssertResource(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Resource to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
-	if struct["id"] then M.AssertResourceId(struct["id"]) end
+	if struct["id"] then asserts.AssertResourceId(struct["id"]) end
 	for k,_ in pairs(struct) do
-		assert(Resource_keys[k], "Resource contains unknown key " .. tostring(k))
+		assert(keys.Resource[k], "Resource contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Resource
 -- <p>Information about a resource for a project.</p>
--- @param id [ResourceId] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- @param _id [ResourceId] <p>The Amazon Resource Name (ARN) of the resource.</p>
 -- Required parameter: id
-function M.Resource(id, ...)
+function M.Resource(_id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Resource")
 	local t = { 
-		["id"] = id,
+		["id"] = _id,
 	}
-	M.AssertResource(t)
+	asserts.AssertResource(t)
 	return t
 end
 
-local DescribeUserProfileRequest_keys = { "userArn" = true, nil }
+keys.DescribeUserProfileRequest = { ["userArn"] = true, nil }
 
-function M.AssertDescribeUserProfileRequest(struct)
+function asserts.AssertDescribeUserProfileRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserProfileRequest to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserProfileRequest_keys[k], "DescribeUserProfileRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserProfileRequest[k], "DescribeUserProfileRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserProfileRequest
 --  
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user.</p>
 -- Required parameter: userArn
-function M.DescribeUserProfileRequest(userArn, ...)
+function M.DescribeUserProfileRequest(_userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserProfileRequest")
 	local t = { 
-		["userArn"] = userArn,
+		["userArn"] = _userArn,
 	}
-	M.AssertDescribeUserProfileRequest(t)
+	asserts.AssertDescribeUserProfileRequest(t)
 	return t
 end
 
-local DeleteProjectResult_keys = { "stackId" = true, "projectArn" = true, nil }
+keys.DeleteProjectResult = { ["stackId"] = true, ["projectArn"] = true, nil }
 
-function M.AssertDeleteProjectResult(struct)
+function asserts.AssertDeleteProjectResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteProjectResult to be of type 'table'")
-	if struct["stackId"] then M.AssertStackId(struct["stackId"]) end
-	if struct["projectArn"] then M.AssertProjectArn(struct["projectArn"]) end
+	if struct["stackId"] then asserts.AssertStackId(struct["stackId"]) end
+	if struct["projectArn"] then asserts.AssertProjectArn(struct["projectArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteProjectResult_keys[k], "DeleteProjectResult contains unknown key " .. tostring(k))
+		assert(keys.DeleteProjectResult[k], "DeleteProjectResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteProjectResult
 --  
--- @param stackId [StackId] <p>The ID of the primary stack in AWS CloudFormation that will be deleted as part of deleting the project and its resources.</p>
--- @param projectArn [ProjectArn] <p>The Amazon Resource Name (ARN) of the deleted project.</p>
-function M.DeleteProjectResult(stackId, projectArn, ...)
+-- @param _stackId [StackId] <p>The ID of the primary stack in AWS CloudFormation that will be deleted as part of deleting the project and its resources.</p>
+-- @param _projectArn [ProjectArn] <p>The Amazon Resource Name (ARN) of the deleted project.</p>
+function M.DeleteProjectResult(_stackId, _projectArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProjectResult")
 	local t = { 
-		["stackId"] = stackId,
-		["projectArn"] = projectArn,
+		["stackId"] = _stackId,
+		["projectArn"] = _projectArn,
 	}
-	M.AssertDeleteProjectResult(t)
+	asserts.AssertDeleteProjectResult(t)
 	return t
 end
 
-local CreateProjectResult_keys = { "projectTemplateId" = true, "id" = true, "arn" = true, "clientRequestToken" = true, nil }
+keys.CreateProjectResult = { ["projectTemplateId"] = true, ["id"] = true, ["arn"] = true, ["clientRequestToken"] = true, nil }
 
-function M.AssertCreateProjectResult(struct)
+function asserts.AssertCreateProjectResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateProjectResult to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
 	assert(struct["arn"], "Expected key arn to exist in table")
-	if struct["projectTemplateId"] then M.AssertProjectTemplateId(struct["projectTemplateId"]) end
-	if struct["id"] then M.AssertProjectId(struct["id"]) end
-	if struct["arn"] then M.AssertProjectArn(struct["arn"]) end
-	if struct["clientRequestToken"] then M.AssertClientRequestToken(struct["clientRequestToken"]) end
+	if struct["projectTemplateId"] then asserts.AssertProjectTemplateId(struct["projectTemplateId"]) end
+	if struct["id"] then asserts.AssertProjectId(struct["id"]) end
+	if struct["arn"] then asserts.AssertProjectArn(struct["arn"]) end
+	if struct["clientRequestToken"] then asserts.AssertClientRequestToken(struct["clientRequestToken"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateProjectResult_keys[k], "CreateProjectResult contains unknown key " .. tostring(k))
+		assert(keys.CreateProjectResult[k], "CreateProjectResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateProjectResult
 --  
--- @param projectTemplateId [ProjectTemplateId] <p>Reserved for future use.</p>
--- @param id [ProjectId] <p>Reserved for future use.</p>
--- @param arn [ProjectArn] <p>Reserved for future use.</p>
--- @param clientRequestToken [ClientRequestToken] <p>Reserved for future use.</p>
+-- @param _projectTemplateId [ProjectTemplateId] <p>Reserved for future use.</p>
+-- @param _id [ProjectId] <p>Reserved for future use.</p>
+-- @param _arn [ProjectArn] <p>Reserved for future use.</p>
+-- @param _clientRequestToken [ClientRequestToken] <p>Reserved for future use.</p>
 -- Required parameter: id
 -- Required parameter: arn
-function M.CreateProjectResult(projectTemplateId, id, arn, clientRequestToken, ...)
+function M.CreateProjectResult(_projectTemplateId, _id, _arn, _clientRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateProjectResult")
 	local t = { 
-		["projectTemplateId"] = projectTemplateId,
-		["id"] = id,
-		["arn"] = arn,
-		["clientRequestToken"] = clientRequestToken,
+		["projectTemplateId"] = _projectTemplateId,
+		["id"] = _id,
+		["arn"] = _arn,
+		["clientRequestToken"] = _clientRequestToken,
 	}
-	M.AssertCreateProjectResult(t)
+	asserts.AssertCreateProjectResult(t)
 	return t
 end
 
-local UpdateUserProfileRequest_keys = { "emailAddress" = true, "sshPublicKey" = true, "displayName" = true, "userArn" = true, nil }
+keys.UpdateUserProfileRequest = { ["emailAddress"] = true, ["sshPublicKey"] = true, ["displayName"] = true, ["userArn"] = true, nil }
 
-function M.AssertUpdateUserProfileRequest(struct)
+function asserts.AssertUpdateUserProfileRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserProfileRequest to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
-	if struct["emailAddress"] then M.AssertEmail(struct["emailAddress"]) end
-	if struct["sshPublicKey"] then M.AssertSshPublicKey(struct["sshPublicKey"]) end
-	if struct["displayName"] then M.AssertUserProfileDisplayName(struct["displayName"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["emailAddress"] then asserts.AssertEmail(struct["emailAddress"]) end
+	if struct["sshPublicKey"] then asserts.AssertSshPublicKey(struct["sshPublicKey"]) end
+	if struct["displayName"] then asserts.AssertUserProfileDisplayName(struct["displayName"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserProfileRequest_keys[k], "UpdateUserProfileRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserProfileRequest[k], "UpdateUserProfileRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserProfileRequest
 --  
--- @param emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
--- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
--- @param displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
--- @param userArn [UserArn] <p>The name that will be displayed as the friendly name for the user in AWS CodeStar.</p>
+-- @param _emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
+-- @param _sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
+-- @param _displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
+-- @param _userArn [UserArn] <p>The name that will be displayed as the friendly name for the user in AWS CodeStar.</p>
 -- Required parameter: userArn
-function M.UpdateUserProfileRequest(emailAddress, sshPublicKey, displayName, userArn, ...)
+function M.UpdateUserProfileRequest(_emailAddress, _sshPublicKey, _displayName, _userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserProfileRequest")
 	local t = { 
-		["emailAddress"] = emailAddress,
-		["sshPublicKey"] = sshPublicKey,
-		["displayName"] = displayName,
-		["userArn"] = userArn,
+		["emailAddress"] = _emailAddress,
+		["sshPublicKey"] = _sshPublicKey,
+		["displayName"] = _displayName,
+		["userArn"] = _userArn,
 	}
-	M.AssertUpdateUserProfileRequest(t)
+	asserts.AssertUpdateUserProfileRequest(t)
 	return t
 end
 
-local ProjectAlreadyExistsException_keys = { nil }
+keys.ProjectAlreadyExistsException = { nil }
 
-function M.AssertProjectAlreadyExistsException(struct)
+function asserts.AssertProjectAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProjectAlreadyExistsException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ProjectAlreadyExistsException_keys[k], "ProjectAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.ProjectAlreadyExistsException[k], "ProjectAlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -798,17 +801,17 @@ function M.ProjectAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectAlreadyExistsException")
 	local t = { 
 	}
-	M.AssertProjectAlreadyExistsException(t)
+	asserts.AssertProjectAlreadyExistsException(t)
 	return t
 end
 
-local InvalidServiceRoleException_keys = { nil }
+keys.InvalidServiceRoleException = { nil }
 
-function M.AssertInvalidServiceRoleException(struct)
+function asserts.AssertInvalidServiceRoleException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidServiceRoleException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidServiceRoleException_keys[k], "InvalidServiceRoleException contains unknown key " .. tostring(k))
+		assert(keys.InvalidServiceRoleException[k], "InvalidServiceRoleException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -818,87 +821,87 @@ function M.InvalidServiceRoleException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidServiceRoleException")
 	local t = { 
 	}
-	M.AssertInvalidServiceRoleException(t)
+	asserts.AssertInvalidServiceRoleException(t)
 	return t
 end
 
-local DescribeProjectResult_keys = { "stackId" = true, "projectTemplateId" = true, "description" = true, "createdTimeStamp" = true, "clientRequestToken" = true, "id" = true, "arn" = true, "name" = true, nil }
+keys.DescribeProjectResult = { ["stackId"] = true, ["projectTemplateId"] = true, ["description"] = true, ["createdTimeStamp"] = true, ["clientRequestToken"] = true, ["id"] = true, ["arn"] = true, ["name"] = true, nil }
 
-function M.AssertDescribeProjectResult(struct)
+function asserts.AssertDescribeProjectResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeProjectResult to be of type 'table'")
-	if struct["stackId"] then M.AssertStackId(struct["stackId"]) end
-	if struct["projectTemplateId"] then M.AssertProjectTemplateId(struct["projectTemplateId"]) end
-	if struct["description"] then M.AssertProjectDescription(struct["description"]) end
-	if struct["createdTimeStamp"] then M.AssertCreatedTimestamp(struct["createdTimeStamp"]) end
-	if struct["clientRequestToken"] then M.AssertClientRequestToken(struct["clientRequestToken"]) end
-	if struct["id"] then M.AssertProjectId(struct["id"]) end
-	if struct["arn"] then M.AssertProjectArn(struct["arn"]) end
-	if struct["name"] then M.AssertProjectName(struct["name"]) end
+	if struct["stackId"] then asserts.AssertStackId(struct["stackId"]) end
+	if struct["projectTemplateId"] then asserts.AssertProjectTemplateId(struct["projectTemplateId"]) end
+	if struct["description"] then asserts.AssertProjectDescription(struct["description"]) end
+	if struct["createdTimeStamp"] then asserts.AssertCreatedTimestamp(struct["createdTimeStamp"]) end
+	if struct["clientRequestToken"] then asserts.AssertClientRequestToken(struct["clientRequestToken"]) end
+	if struct["id"] then asserts.AssertProjectId(struct["id"]) end
+	if struct["arn"] then asserts.AssertProjectArn(struct["arn"]) end
+	if struct["name"] then asserts.AssertProjectName(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeProjectResult_keys[k], "DescribeProjectResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeProjectResult[k], "DescribeProjectResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeProjectResult
 --  
--- @param stackId [StackId] <p>The ID of the primary stack in AWS CloudFormation used to generate resources for the project.</p>
--- @param projectTemplateId [ProjectTemplateId] <p>The ID for the AWS CodeStar project template used to create the project.</p>
--- @param description [ProjectDescription] <p>The description of the project, if any.</p>
--- @param createdTimeStamp [CreatedTimestamp] <p>The date and time the project was created, in timestamp format.</p>
--- @param clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested project creation. </p>
--- @param id [ProjectId] <p>The ID of the project.</p>
--- @param arn [ProjectArn] <p>The Amazon Resource Name (ARN) for the project.</p>
--- @param name [ProjectName] <p>The display name for the project.</p>
-function M.DescribeProjectResult(stackId, projectTemplateId, description, createdTimeStamp, clientRequestToken, id, arn, name, ...)
+-- @param _stackId [StackId] <p>The ID of the primary stack in AWS CloudFormation used to generate resources for the project.</p>
+-- @param _projectTemplateId [ProjectTemplateId] <p>The ID for the AWS CodeStar project template used to create the project.</p>
+-- @param _description [ProjectDescription] <p>The description of the project, if any.</p>
+-- @param _createdTimeStamp [CreatedTimestamp] <p>The date and time the project was created, in timestamp format.</p>
+-- @param _clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested project creation. </p>
+-- @param _id [ProjectId] <p>The ID of the project.</p>
+-- @param _arn [ProjectArn] <p>The Amazon Resource Name (ARN) for the project.</p>
+-- @param _name [ProjectName] <p>The display name for the project.</p>
+function M.DescribeProjectResult(_stackId, _projectTemplateId, _description, _createdTimeStamp, _clientRequestToken, _id, _arn, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProjectResult")
 	local t = { 
-		["stackId"] = stackId,
-		["projectTemplateId"] = projectTemplateId,
-		["description"] = description,
-		["createdTimeStamp"] = createdTimeStamp,
-		["clientRequestToken"] = clientRequestToken,
-		["id"] = id,
-		["arn"] = arn,
-		["name"] = name,
+		["stackId"] = _stackId,
+		["projectTemplateId"] = _projectTemplateId,
+		["description"] = _description,
+		["createdTimeStamp"] = _createdTimeStamp,
+		["clientRequestToken"] = _clientRequestToken,
+		["id"] = _id,
+		["arn"] = _arn,
+		["name"] = _name,
 	}
-	M.AssertDescribeProjectResult(t)
+	asserts.AssertDescribeProjectResult(t)
 	return t
 end
 
-local ListUserProfilesRequest_keys = { "nextToken" = true, "maxResults" = true, nil }
+keys.ListUserProfilesRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListUserProfilesRequest(struct)
+function asserts.AssertListUserProfilesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUserProfilesRequest to be of type 'table'")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertMaxResults(struct["maxResults"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUserProfilesRequest_keys[k], "ListUserProfilesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListUserProfilesRequest[k], "ListUserProfilesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUserProfilesRequest
 --  
--- @param nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
--- @param maxResults [MaxResults] <p>The maximum number of results to return in a response.</p>
-function M.ListUserProfilesRequest(nextToken, maxResults, ...)
+-- @param _nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
+-- @param _maxResults [MaxResults] <p>The maximum number of results to return in a response.</p>
+function M.ListUserProfilesRequest(_nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserProfilesRequest")
 	local t = { 
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListUserProfilesRequest(t)
+	asserts.AssertListUserProfilesRequest(t)
 	return t
 end
 
-local UpdateProjectResult_keys = { nil }
+keys.UpdateProjectResult = { nil }
 
-function M.AssertUpdateProjectResult(struct)
+function asserts.AssertUpdateProjectResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateProjectResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateProjectResult_keys[k], "UpdateProjectResult contains unknown key " .. tostring(k))
+		assert(keys.UpdateProjectResult[k], "UpdateProjectResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -908,134 +911,134 @@ function M.UpdateProjectResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProjectResult")
 	local t = { 
 	}
-	M.AssertUpdateProjectResult(t)
+	asserts.AssertUpdateProjectResult(t)
 	return t
 end
 
-local UserProfileSummary_keys = { "emailAddress" = true, "sshPublicKey" = true, "displayName" = true, "userArn" = true, nil }
+keys.UserProfileSummary = { ["emailAddress"] = true, ["sshPublicKey"] = true, ["displayName"] = true, ["userArn"] = true, nil }
 
-function M.AssertUserProfileSummary(struct)
+function asserts.AssertUserProfileSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserProfileSummary to be of type 'table'")
-	if struct["emailAddress"] then M.AssertEmail(struct["emailAddress"]) end
-	if struct["sshPublicKey"] then M.AssertSshPublicKey(struct["sshPublicKey"]) end
-	if struct["displayName"] then M.AssertUserProfileDisplayName(struct["displayName"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["emailAddress"] then asserts.AssertEmail(struct["emailAddress"]) end
+	if struct["sshPublicKey"] then asserts.AssertSshPublicKey(struct["sshPublicKey"]) end
+	if struct["displayName"] then asserts.AssertUserProfileDisplayName(struct["displayName"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UserProfileSummary_keys[k], "UserProfileSummary contains unknown key " .. tostring(k))
+		assert(keys.UserProfileSummary[k], "UserProfileSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserProfileSummary
 -- <p>Information about a user's profile in AWS CodeStar.</p>
--- @param emailAddress [Email] <p>The email address associated with the user.</p>
--- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
--- @param displayName [UserProfileDisplayName] <p>The display name of a user in AWS CodeStar. For example, this could be set to both first and last name ("Mary Major") or a single name ("Mary"). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example "Mary Jane Major") would generate an initial icon using the first character and the first character after the space ("MJ", not "MM").</p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
-function M.UserProfileSummary(emailAddress, sshPublicKey, displayName, userArn, ...)
+-- @param _emailAddress [Email] <p>The email address associated with the user.</p>
+-- @param _sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
+-- @param _displayName [UserProfileDisplayName] <p>The display name of a user in AWS CodeStar. For example, this could be set to both first and last name ("Mary Major") or a single name ("Mary"). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example "Mary Jane Major") would generate an initial icon using the first character and the first character after the space ("MJ", not "MM").</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
+function M.UserProfileSummary(_emailAddress, _sshPublicKey, _displayName, _userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserProfileSummary")
 	local t = { 
-		["emailAddress"] = emailAddress,
-		["sshPublicKey"] = sshPublicKey,
-		["displayName"] = displayName,
-		["userArn"] = userArn,
+		["emailAddress"] = _emailAddress,
+		["sshPublicKey"] = _sshPublicKey,
+		["displayName"] = _displayName,
+		["userArn"] = _userArn,
 	}
-	M.AssertUserProfileSummary(t)
+	asserts.AssertUserProfileSummary(t)
 	return t
 end
 
-local DescribeUserProfileResult_keys = { "displayName" = true, "userArn" = true, "sshPublicKey" = true, "createdTimestamp" = true, "emailAddress" = true, "lastModifiedTimestamp" = true, nil }
+keys.DescribeUserProfileResult = { ["displayName"] = true, ["userArn"] = true, ["sshPublicKey"] = true, ["createdTimestamp"] = true, ["emailAddress"] = true, ["lastModifiedTimestamp"] = true, nil }
 
-function M.AssertDescribeUserProfileResult(struct)
+function asserts.AssertDescribeUserProfileResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserProfileResult to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
 	assert(struct["createdTimestamp"], "Expected key createdTimestamp to exist in table")
 	assert(struct["lastModifiedTimestamp"], "Expected key lastModifiedTimestamp to exist in table")
-	if struct["displayName"] then M.AssertUserProfileDisplayName(struct["displayName"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
-	if struct["sshPublicKey"] then M.AssertSshPublicKey(struct["sshPublicKey"]) end
-	if struct["createdTimestamp"] then M.AssertCreatedTimestamp(struct["createdTimestamp"]) end
-	if struct["emailAddress"] then M.AssertEmail(struct["emailAddress"]) end
-	if struct["lastModifiedTimestamp"] then M.AssertLastModifiedTimestamp(struct["lastModifiedTimestamp"]) end
+	if struct["displayName"] then asserts.AssertUserProfileDisplayName(struct["displayName"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
+	if struct["sshPublicKey"] then asserts.AssertSshPublicKey(struct["sshPublicKey"]) end
+	if struct["createdTimestamp"] then asserts.AssertCreatedTimestamp(struct["createdTimestamp"]) end
+	if struct["emailAddress"] then asserts.AssertEmail(struct["emailAddress"]) end
+	if struct["lastModifiedTimestamp"] then asserts.AssertLastModifiedTimestamp(struct["lastModifiedTimestamp"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserProfileResult_keys[k], "DescribeUserProfileResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserProfileResult[k], "DescribeUserProfileResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserProfileResult
 --  
--- @param displayName [UserProfileDisplayName] <p>The display name shown for the user in AWS CodeStar projects. For example, this could be set to both first and last name ("Mary Major") or a single name ("Mary"). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example "Mary Jane Major") would generate an initial icon using the first character and the first character after the space ("MJ", not "MM").</p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user.</p>
--- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user. This SSH public key is associated with the user profile, and can be used in conjunction with the associated private key for access to project resources, such as Amazon EC2 instances, if a project owner grants remote access to those resources.</p>
--- @param createdTimestamp [CreatedTimestamp] <p>The date and time when the user profile was created in AWS CodeStar, in timestamp format.</p>
--- @param emailAddress [Email] <p>The email address for the user. Optional.</p>
--- @param lastModifiedTimestamp [LastModifiedTimestamp] <p>The date and time when the user profile was last modified, in timestamp format.</p>
+-- @param _displayName [UserProfileDisplayName] <p>The display name shown for the user in AWS CodeStar projects. For example, this could be set to both first and last name ("Mary Major") or a single name ("Mary"). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example "Mary Jane Major") would generate an initial icon using the first character and the first character after the space ("MJ", not "MM").</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user.</p>
+-- @param _sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user. This SSH public key is associated with the user profile, and can be used in conjunction with the associated private key for access to project resources, such as Amazon EC2 instances, if a project owner grants remote access to those resources.</p>
+-- @param _createdTimestamp [CreatedTimestamp] <p>The date and time when the user profile was created in AWS CodeStar, in timestamp format.</p>
+-- @param _emailAddress [Email] <p>The email address for the user. Optional.</p>
+-- @param _lastModifiedTimestamp [LastModifiedTimestamp] <p>The date and time when the user profile was last modified, in timestamp format.</p>
 -- Required parameter: userArn
 -- Required parameter: createdTimestamp
 -- Required parameter: lastModifiedTimestamp
-function M.DescribeUserProfileResult(displayName, userArn, sshPublicKey, createdTimestamp, emailAddress, lastModifiedTimestamp, ...)
+function M.DescribeUserProfileResult(_displayName, _userArn, _sshPublicKey, _createdTimestamp, _emailAddress, _lastModifiedTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserProfileResult")
 	local t = { 
-		["displayName"] = displayName,
-		["userArn"] = userArn,
-		["sshPublicKey"] = sshPublicKey,
-		["createdTimestamp"] = createdTimestamp,
-		["emailAddress"] = emailAddress,
-		["lastModifiedTimestamp"] = lastModifiedTimestamp,
+		["displayName"] = _displayName,
+		["userArn"] = _userArn,
+		["sshPublicKey"] = _sshPublicKey,
+		["createdTimestamp"] = _createdTimestamp,
+		["emailAddress"] = _emailAddress,
+		["lastModifiedTimestamp"] = _lastModifiedTimestamp,
 	}
-	M.AssertDescribeUserProfileResult(t)
+	asserts.AssertDescribeUserProfileResult(t)
 	return t
 end
 
-local AssociateTeamMemberRequest_keys = { "projectRole" = true, "projectId" = true, "remoteAccessAllowed" = true, "clientRequestToken" = true, "userArn" = true, nil }
+keys.AssociateTeamMemberRequest = { ["projectRole"] = true, ["projectId"] = true, ["remoteAccessAllowed"] = true, ["clientRequestToken"] = true, ["userArn"] = true, nil }
 
-function M.AssertAssociateTeamMemberRequest(struct)
+function asserts.AssertAssociateTeamMemberRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateTeamMemberRequest to be of type 'table'")
 	assert(struct["projectId"], "Expected key projectId to exist in table")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
 	assert(struct["projectRole"], "Expected key projectRole to exist in table")
-	if struct["projectRole"] then M.AssertRole(struct["projectRole"]) end
-	if struct["projectId"] then M.AssertProjectId(struct["projectId"]) end
-	if struct["remoteAccessAllowed"] then M.AssertRemoteAccessAllowed(struct["remoteAccessAllowed"]) end
-	if struct["clientRequestToken"] then M.AssertClientRequestToken(struct["clientRequestToken"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["projectRole"] then asserts.AssertRole(struct["projectRole"]) end
+	if struct["projectId"] then asserts.AssertProjectId(struct["projectId"]) end
+	if struct["remoteAccessAllowed"] then asserts.AssertRemoteAccessAllowed(struct["remoteAccessAllowed"]) end
+	if struct["clientRequestToken"] then asserts.AssertClientRequestToken(struct["clientRequestToken"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(AssociateTeamMemberRequest_keys[k], "AssociateTeamMemberRequest contains unknown key " .. tostring(k))
+		assert(keys.AssociateTeamMemberRequest[k], "AssociateTeamMemberRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssociateTeamMemberRequest
 --  
--- @param projectRole [Role] <p>The AWS CodeStar project role that will apply to this user. This role determines what actions a user can take in an AWS CodeStar project.</p>
--- @param projectId [ProjectId] <p>The ID of the project to which you will add the IAM user.</p>
--- @param remoteAccessAllowed [RemoteAccessAllowed] <p>Whether the team member is allowed to use an SSH public/private key pair to remotely access project resources, for example Amazon EC2 instances.</p>
--- @param clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested the team member association to the project. This token can be used to repeat the request. </p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) for the IAM user you want to add to the DevHub project.</p>
+-- @param _projectRole [Role] <p>The AWS CodeStar project role that will apply to this user. This role determines what actions a user can take in an AWS CodeStar project.</p>
+-- @param _projectId [ProjectId] <p>The ID of the project to which you will add the IAM user.</p>
+-- @param _remoteAccessAllowed [RemoteAccessAllowed] <p>Whether the team member is allowed to use an SSH public/private key pair to remotely access project resources, for example Amazon EC2 instances.</p>
+-- @param _clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested the team member association to the project. This token can be used to repeat the request. </p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) for the IAM user you want to add to the DevHub project.</p>
 -- Required parameter: projectId
 -- Required parameter: userArn
 -- Required parameter: projectRole
-function M.AssociateTeamMemberRequest(projectRole, projectId, remoteAccessAllowed, clientRequestToken, userArn, ...)
+function M.AssociateTeamMemberRequest(_projectRole, _projectId, _remoteAccessAllowed, _clientRequestToken, _userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateTeamMemberRequest")
 	local t = { 
-		["projectRole"] = projectRole,
-		["projectId"] = projectId,
-		["remoteAccessAllowed"] = remoteAccessAllowed,
-		["clientRequestToken"] = clientRequestToken,
-		["userArn"] = userArn,
+		["projectRole"] = _projectRole,
+		["projectId"] = _projectId,
+		["remoteAccessAllowed"] = _remoteAccessAllowed,
+		["clientRequestToken"] = _clientRequestToken,
+		["userArn"] = _userArn,
 	}
-	M.AssertAssociateTeamMemberRequest(t)
+	asserts.AssertAssociateTeamMemberRequest(t)
 	return t
 end
 
-local ProjectCreationFailedException_keys = { nil }
+keys.ProjectCreationFailedException = { nil }
 
-function M.AssertProjectCreationFailedException(struct)
+function asserts.AssertProjectCreationFailedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProjectCreationFailedException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ProjectCreationFailedException_keys[k], "ProjectCreationFailedException contains unknown key " .. tostring(k))
+		assert(keys.ProjectCreationFailedException[k], "ProjectCreationFailedException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1045,42 +1048,42 @@ function M.ProjectCreationFailedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectCreationFailedException")
 	local t = { 
 	}
-	M.AssertProjectCreationFailedException(t)
+	asserts.AssertProjectCreationFailedException(t)
 	return t
 end
 
-local DescribeProjectRequest_keys = { "id" = true, nil }
+keys.DescribeProjectRequest = { ["id"] = true, nil }
 
-function M.AssertDescribeProjectRequest(struct)
+function asserts.AssertDescribeProjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeProjectRequest to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
-	if struct["id"] then M.AssertProjectId(struct["id"]) end
+	if struct["id"] then asserts.AssertProjectId(struct["id"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeProjectRequest_keys[k], "DescribeProjectRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeProjectRequest[k], "DescribeProjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeProjectRequest
 --  
--- @param id [ProjectId] <p>The ID of the project.</p>
+-- @param _id [ProjectId] <p>The ID of the project.</p>
 -- Required parameter: id
-function M.DescribeProjectRequest(id, ...)
+function M.DescribeProjectRequest(_id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProjectRequest")
 	local t = { 
-		["id"] = id,
+		["id"] = _id,
 	}
-	M.AssertDescribeProjectRequest(t)
+	asserts.AssertDescribeProjectRequest(t)
 	return t
 end
 
-local TeamMemberNotFoundException_keys = { nil }
+keys.TeamMemberNotFoundException = { nil }
 
-function M.AssertTeamMemberNotFoundException(struct)
+function asserts.AssertTeamMemberNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TeamMemberNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TeamMemberNotFoundException_keys[k], "TeamMemberNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.TeamMemberNotFoundException[k], "TeamMemberNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1090,75 +1093,75 @@ function M.TeamMemberNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TeamMemberNotFoundException")
 	local t = { 
 	}
-	M.AssertTeamMemberNotFoundException(t)
+	asserts.AssertTeamMemberNotFoundException(t)
 	return t
 end
 
-local ListUserProfilesResult_keys = { "nextToken" = true, "userProfiles" = true, nil }
+keys.ListUserProfilesResult = { ["nextToken"] = true, ["userProfiles"] = true, nil }
 
-function M.AssertListUserProfilesResult(struct)
+function asserts.AssertListUserProfilesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUserProfilesResult to be of type 'table'")
 	assert(struct["userProfiles"], "Expected key userProfiles to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["userProfiles"] then M.AssertUserProfilesList(struct["userProfiles"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["userProfiles"] then asserts.AssertUserProfilesList(struct["userProfiles"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUserProfilesResult_keys[k], "ListUserProfilesResult contains unknown key " .. tostring(k))
+		assert(keys.ListUserProfilesResult[k], "ListUserProfilesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUserProfilesResult
 --  
--- @param nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
--- @param userProfiles [UserProfilesList] <p>All the user profiles configured in AWS CodeStar for an AWS account.</p>
+-- @param _nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
+-- @param _userProfiles [UserProfilesList] <p>All the user profiles configured in AWS CodeStar for an AWS account.</p>
 -- Required parameter: userProfiles
-function M.ListUserProfilesResult(nextToken, userProfiles, ...)
+function M.ListUserProfilesResult(_nextToken, _userProfiles, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserProfilesResult")
 	local t = { 
-		["nextToken"] = nextToken,
-		["userProfiles"] = userProfiles,
+		["nextToken"] = _nextToken,
+		["userProfiles"] = _userProfiles,
 	}
-	M.AssertListUserProfilesResult(t)
+	asserts.AssertListUserProfilesResult(t)
 	return t
 end
 
-local DisassociateTeamMemberRequest_keys = { "projectId" = true, "userArn" = true, nil }
+keys.DisassociateTeamMemberRequest = { ["projectId"] = true, ["userArn"] = true, nil }
 
-function M.AssertDisassociateTeamMemberRequest(struct)
+function asserts.AssertDisassociateTeamMemberRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateTeamMemberRequest to be of type 'table'")
 	assert(struct["projectId"], "Expected key projectId to exist in table")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
-	if struct["projectId"] then M.AssertProjectId(struct["projectId"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
+	if struct["projectId"] then asserts.AssertProjectId(struct["projectId"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DisassociateTeamMemberRequest_keys[k], "DisassociateTeamMemberRequest contains unknown key " .. tostring(k))
+		assert(keys.DisassociateTeamMemberRequest[k], "DisassociateTeamMemberRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisassociateTeamMemberRequest
 --  
--- @param projectId [ProjectId] <p>The ID of the AWS CodeStar project from which you want to remove a team member.</p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the IAM user or group whom you want to remove from the project.</p>
+-- @param _projectId [ProjectId] <p>The ID of the AWS CodeStar project from which you want to remove a team member.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the IAM user or group whom you want to remove from the project.</p>
 -- Required parameter: projectId
 -- Required parameter: userArn
-function M.DisassociateTeamMemberRequest(projectId, userArn, ...)
+function M.DisassociateTeamMemberRequest(_projectId, _userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateTeamMemberRequest")
 	local t = { 
-		["projectId"] = projectId,
-		["userArn"] = userArn,
+		["projectId"] = _projectId,
+		["userArn"] = _userArn,
 	}
-	M.AssertDisassociateTeamMemberRequest(t)
+	asserts.AssertDisassociateTeamMemberRequest(t)
 	return t
 end
 
-local UserProfileAlreadyExistsException_keys = { nil }
+keys.UserProfileAlreadyExistsException = { nil }
 
-function M.AssertUserProfileAlreadyExistsException(struct)
+function asserts.AssertUserProfileAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserProfileAlreadyExistsException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UserProfileAlreadyExistsException_keys[k], "UserProfileAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.UserProfileAlreadyExistsException[k], "UserProfileAlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1168,106 +1171,106 @@ function M.UserProfileAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserProfileAlreadyExistsException")
 	local t = { 
 	}
-	M.AssertUserProfileAlreadyExistsException(t)
+	asserts.AssertUserProfileAlreadyExistsException(t)
 	return t
 end
 
-local ProjectSummary_keys = { "projectId" = true, "projectArn" = true, nil }
+keys.ProjectSummary = { ["projectId"] = true, ["projectArn"] = true, nil }
 
-function M.AssertProjectSummary(struct)
+function asserts.AssertProjectSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProjectSummary to be of type 'table'")
-	if struct["projectId"] then M.AssertProjectId(struct["projectId"]) end
-	if struct["projectArn"] then M.AssertProjectArn(struct["projectArn"]) end
+	if struct["projectId"] then asserts.AssertProjectId(struct["projectId"]) end
+	if struct["projectArn"] then asserts.AssertProjectArn(struct["projectArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ProjectSummary_keys[k], "ProjectSummary contains unknown key " .. tostring(k))
+		assert(keys.ProjectSummary[k], "ProjectSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ProjectSummary
 -- <p>Information about the metadata for a project.</p>
--- @param projectId [ProjectId] <p>The ID of the project.</p>
--- @param projectArn [ProjectArn] <p>The Amazon Resource Name (ARN) of the project.</p>
-function M.ProjectSummary(projectId, projectArn, ...)
+-- @param _projectId [ProjectId] <p>The ID of the project.</p>
+-- @param _projectArn [ProjectArn] <p>The Amazon Resource Name (ARN) of the project.</p>
+function M.ProjectSummary(_projectId, _projectArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectSummary")
 	local t = { 
-		["projectId"] = projectId,
-		["projectArn"] = projectArn,
+		["projectId"] = _projectId,
+		["projectArn"] = _projectArn,
 	}
-	M.AssertProjectSummary(t)
+	asserts.AssertProjectSummary(t)
 	return t
 end
 
-local AssociateTeamMemberResult_keys = { "clientRequestToken" = true, nil }
+keys.AssociateTeamMemberResult = { ["clientRequestToken"] = true, nil }
 
-function M.AssertAssociateTeamMemberResult(struct)
+function asserts.AssertAssociateTeamMemberResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateTeamMemberResult to be of type 'table'")
-	if struct["clientRequestToken"] then M.AssertClientRequestToken(struct["clientRequestToken"]) end
+	if struct["clientRequestToken"] then asserts.AssertClientRequestToken(struct["clientRequestToken"]) end
 	for k,_ in pairs(struct) do
-		assert(AssociateTeamMemberResult_keys[k], "AssociateTeamMemberResult contains unknown key " .. tostring(k))
+		assert(keys.AssociateTeamMemberResult[k], "AssociateTeamMemberResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssociateTeamMemberResult
 --  
--- @param clientRequestToken [ClientRequestToken] <p>The user- or system-generated token from the initial request that can be used to repeat the request. </p>
-function M.AssociateTeamMemberResult(clientRequestToken, ...)
+-- @param _clientRequestToken [ClientRequestToken] <p>The user- or system-generated token from the initial request that can be used to repeat the request. </p>
+function M.AssociateTeamMemberResult(_clientRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateTeamMemberResult")
 	local t = { 
-		["clientRequestToken"] = clientRequestToken,
+		["clientRequestToken"] = _clientRequestToken,
 	}
-	M.AssertAssociateTeamMemberResult(t)
+	asserts.AssertAssociateTeamMemberResult(t)
 	return t
 end
 
-local UpdateUserProfileResult_keys = { "displayName" = true, "userArn" = true, "sshPublicKey" = true, "createdTimestamp" = true, "emailAddress" = true, "lastModifiedTimestamp" = true, nil }
+keys.UpdateUserProfileResult = { ["displayName"] = true, ["userArn"] = true, ["sshPublicKey"] = true, ["createdTimestamp"] = true, ["emailAddress"] = true, ["lastModifiedTimestamp"] = true, nil }
 
-function M.AssertUpdateUserProfileResult(struct)
+function asserts.AssertUpdateUserProfileResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserProfileResult to be of type 'table'")
 	assert(struct["userArn"], "Expected key userArn to exist in table")
-	if struct["displayName"] then M.AssertUserProfileDisplayName(struct["displayName"]) end
-	if struct["userArn"] then M.AssertUserArn(struct["userArn"]) end
-	if struct["sshPublicKey"] then M.AssertSshPublicKey(struct["sshPublicKey"]) end
-	if struct["createdTimestamp"] then M.AssertCreatedTimestamp(struct["createdTimestamp"]) end
-	if struct["emailAddress"] then M.AssertEmail(struct["emailAddress"]) end
-	if struct["lastModifiedTimestamp"] then M.AssertLastModifiedTimestamp(struct["lastModifiedTimestamp"]) end
+	if struct["displayName"] then asserts.AssertUserProfileDisplayName(struct["displayName"]) end
+	if struct["userArn"] then asserts.AssertUserArn(struct["userArn"]) end
+	if struct["sshPublicKey"] then asserts.AssertSshPublicKey(struct["sshPublicKey"]) end
+	if struct["createdTimestamp"] then asserts.AssertCreatedTimestamp(struct["createdTimestamp"]) end
+	if struct["emailAddress"] then asserts.AssertEmail(struct["emailAddress"]) end
+	if struct["lastModifiedTimestamp"] then asserts.AssertLastModifiedTimestamp(struct["lastModifiedTimestamp"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserProfileResult_keys[k], "UpdateUserProfileResult contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserProfileResult[k], "UpdateUserProfileResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserProfileResult
 --  
--- @param displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
--- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
--- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. This is the public portion of the public/private keypair the user can use to access project resources if a project owner allows the user remote access to those resources.</p>
--- @param createdTimestamp [CreatedTimestamp] <p>The date the user profile was created, in timestamp format.</p>
--- @param emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
--- @param lastModifiedTimestamp [LastModifiedTimestamp] <p>The date the user profile was last modified, in timestamp format.</p>
+-- @param _displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
+-- @param _userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
+-- @param _sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. This is the public portion of the public/private keypair the user can use to access project resources if a project owner allows the user remote access to those resources.</p>
+-- @param _createdTimestamp [CreatedTimestamp] <p>The date the user profile was created, in timestamp format.</p>
+-- @param _emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
+-- @param _lastModifiedTimestamp [LastModifiedTimestamp] <p>The date the user profile was last modified, in timestamp format.</p>
 -- Required parameter: userArn
-function M.UpdateUserProfileResult(displayName, userArn, sshPublicKey, createdTimestamp, emailAddress, lastModifiedTimestamp, ...)
+function M.UpdateUserProfileResult(_displayName, _userArn, _sshPublicKey, _createdTimestamp, _emailAddress, _lastModifiedTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserProfileResult")
 	local t = { 
-		["displayName"] = displayName,
-		["userArn"] = userArn,
-		["sshPublicKey"] = sshPublicKey,
-		["createdTimestamp"] = createdTimestamp,
-		["emailAddress"] = emailAddress,
-		["lastModifiedTimestamp"] = lastModifiedTimestamp,
+		["displayName"] = _displayName,
+		["userArn"] = _userArn,
+		["sshPublicKey"] = _sshPublicKey,
+		["createdTimestamp"] = _createdTimestamp,
+		["emailAddress"] = _emailAddress,
+		["lastModifiedTimestamp"] = _lastModifiedTimestamp,
 	}
-	M.AssertUpdateUserProfileResult(t)
+	asserts.AssertUpdateUserProfileResult(t)
 	return t
 end
 
-local TeamMemberAlreadyAssociatedException_keys = { nil }
+keys.TeamMemberAlreadyAssociatedException = { nil }
 
-function M.AssertTeamMemberAlreadyAssociatedException(struct)
+function asserts.AssertTeamMemberAlreadyAssociatedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TeamMemberAlreadyAssociatedException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TeamMemberAlreadyAssociatedException_keys[k], "TeamMemberAlreadyAssociatedException contains unknown key " .. tostring(k))
+		assert(keys.TeamMemberAlreadyAssociatedException[k], "TeamMemberAlreadyAssociatedException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1277,233 +1280,219 @@ function M.TeamMemberAlreadyAssociatedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TeamMemberAlreadyAssociatedException")
 	local t = { 
 	}
-	M.AssertTeamMemberAlreadyAssociatedException(t)
+	asserts.AssertTeamMemberAlreadyAssociatedException(t)
 	return t
 end
 
-local CreateProjectRequest_keys = { "clientRequestToken" = true, "description" = true, "name" = true, "id" = true, nil }
+keys.CreateProjectRequest = { ["clientRequestToken"] = true, ["description"] = true, ["name"] = true, ["id"] = true, nil }
 
-function M.AssertCreateProjectRequest(struct)
+function asserts.AssertCreateProjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateProjectRequest to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["id"], "Expected key id to exist in table")
-	if struct["clientRequestToken"] then M.AssertClientRequestToken(struct["clientRequestToken"]) end
-	if struct["description"] then M.AssertProjectDescription(struct["description"]) end
-	if struct["name"] then M.AssertProjectName(struct["name"]) end
-	if struct["id"] then M.AssertProjectId(struct["id"]) end
+	if struct["clientRequestToken"] then asserts.AssertClientRequestToken(struct["clientRequestToken"]) end
+	if struct["description"] then asserts.AssertProjectDescription(struct["description"]) end
+	if struct["name"] then asserts.AssertProjectName(struct["name"]) end
+	if struct["id"] then asserts.AssertProjectId(struct["id"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateProjectRequest_keys[k], "CreateProjectRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateProjectRequest[k], "CreateProjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateProjectRequest
 --  
--- @param clientRequestToken [ClientRequestToken] <p>Reserved for future use.</p>
--- @param description [ProjectDescription] <p>Reserved for future use.</p>
--- @param name [ProjectName] <p>Reserved for future use.</p>
--- @param id [ProjectId] <p>Reserved for future use.</p>
+-- @param _clientRequestToken [ClientRequestToken] <p>Reserved for future use.</p>
+-- @param _description [ProjectDescription] <p>Reserved for future use.</p>
+-- @param _name [ProjectName] <p>Reserved for future use.</p>
+-- @param _id [ProjectId] <p>Reserved for future use.</p>
 -- Required parameter: name
 -- Required parameter: id
-function M.CreateProjectRequest(clientRequestToken, description, name, id, ...)
+function M.CreateProjectRequest(_clientRequestToken, _description, _name, _id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateProjectRequest")
 	local t = { 
-		["clientRequestToken"] = clientRequestToken,
-		["description"] = description,
-		["name"] = name,
-		["id"] = id,
+		["clientRequestToken"] = _clientRequestToken,
+		["description"] = _description,
+		["name"] = _name,
+		["id"] = _id,
 	}
-	M.AssertCreateProjectRequest(t)
+	asserts.AssertCreateProjectRequest(t)
 	return t
 end
 
-function M.AssertStackId(str)
+function asserts.AssertStackId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StackId to be of type 'string'")
-	assert(str:match("^arn:aws[^:%s]*:cloudformation:[^:%s]+:[0-9]{12}:stack%/[^:%s]+%/[^:%s]+$"), "Expected string to match pattern '^arn:aws[^:%s]*:cloudformation:[^:%s]+:[0-9]{12}:stack%/[^:%s]+%/[^:%s]+$'")
 end
 
 --  
 function M.StackId(str)
-	M.AssertStackId(str)
+	asserts.AssertStackId(str)
 	return str
 end
 
-function M.AssertUserArn(str)
+function asserts.AssertUserArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserArn to be of type 'string'")
 	assert(#str <= 95, "Expected string to be max 95 characters")
 	assert(#str >= 32, "Expected string to be min 32 characters")
-	assert(str:match("arn:aws:iam::%d{12}:user%/[%w-]+"), "Expected string to match pattern 'arn:aws:iam::%d{12}:user%/[%w-]+'")
 end
 
 --  
 function M.UserArn(str)
-	M.AssertUserArn(str)
+	asserts.AssertUserArn(str)
 	return str
 end
 
-function M.AssertPaginationToken(str)
+function asserts.AssertPaginationToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationToken to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[%w/+=]+$"), "Expected string to match pattern '^[%w/+=]+$'")
 end
 
 --  
 function M.PaginationToken(str)
-	M.AssertPaginationToken(str)
+	asserts.AssertPaginationToken(str)
 	return str
 end
 
-function M.AssertRole(str)
+function asserts.AssertRole(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Role to be of type 'string'")
-	assert(str:match("^(Owner|Viewer|Contributor)$"), "Expected string to match pattern '^(Owner|Viewer|Contributor)$'")
 end
 
 --  
 function M.Role(str)
-	M.AssertRole(str)
+	asserts.AssertRole(str)
 	return str
 end
 
-function M.AssertEmail(str)
+function asserts.AssertEmail(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Email to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 3, "Expected string to be min 3 characters")
-	assert(str:match("^[%w-.+]+@[%w-.+]+$"), "Expected string to match pattern '^[%w-.+]+@[%w-.+]+$'")
 end
 
 --  
 function M.Email(str)
-	M.AssertEmail(str)
+	asserts.AssertEmail(str)
 	return str
 end
 
-function M.AssertProjectArn(str)
+function asserts.AssertProjectArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProjectArn to be of type 'string'")
-	assert(str:match("^arn:aws[^:%s]*:codestar:[^:%s]+:[0-9]{12}:project%/[a-z]([a-z0-9|-])+$"), "Expected string to match pattern '^arn:aws[^:%s]*:codestar:[^:%s]+:[0-9]{12}:project%/[a-z]([a-z0-9|-])+$'")
 end
 
 --  
 function M.ProjectArn(str)
-	M.AssertProjectArn(str)
+	asserts.AssertProjectArn(str)
 	return str
 end
 
-function M.AssertResourceId(str)
+function asserts.AssertResourceId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceId to be of type 'string'")
 	assert(#str >= 11, "Expected string to be min 11 characters")
-	assert(str:match("^arn%:aws%:%S.*%:.*"), "Expected string to match pattern '^arn%:aws%:%S.*%:.*'")
 end
 
 --  
 function M.ResourceId(str)
-	M.AssertResourceId(str)
+	asserts.AssertResourceId(str)
 	return str
 end
 
-function M.AssertProjectTemplateId(str)
+function asserts.AssertProjectTemplateId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProjectTemplateId to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^arn:aws[^:%s]{0,5}:codestar:[^:%s]+::project-template%/[a-z0-9-]+$"), "Expected string to match pattern '^arn:aws[^:%s]{0,5}:codestar:[^:%s]+::project-template%/[a-z0-9-]+$'")
 end
 
 --  
 function M.ProjectTemplateId(str)
-	M.AssertProjectTemplateId(str)
+	asserts.AssertProjectTemplateId(str)
 	return str
 end
 
-function M.AssertUserProfileDisplayName(str)
+function asserts.AssertUserProfileDisplayName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserProfileDisplayName to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^%S(.*%S)?$"), "Expected string to match pattern '^%S(.*%S)?$'")
 end
 
 --  
 function M.UserProfileDisplayName(str)
-	M.AssertUserProfileDisplayName(str)
+	asserts.AssertUserProfileDisplayName(str)
 	return str
 end
 
-function M.AssertSshPublicKey(str)
+function asserts.AssertSshPublicKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SshPublicKey to be of type 'string'")
 	assert(#str <= 16384, "Expected string to be max 16384 characters")
-	assert(str:match("^[%t%r%n%u0020-%u00FF]*$"), "Expected string to match pattern '^[%t%r%n%u0020-%u00FF]*$'")
 end
 
 --  
 function M.SshPublicKey(str)
-	M.AssertSshPublicKey(str)
+	asserts.AssertSshPublicKey(str)
 	return str
 end
 
-function M.AssertProjectDescription(str)
+function asserts.AssertProjectDescription(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProjectDescription to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
-	assert(str:match("^$|^%S(.*%S)?$"), "Expected string to match pattern '^$|^%S(.*%S)?$'")
 end
 
 --  
 function M.ProjectDescription(str)
-	M.AssertProjectDescription(str)
+	asserts.AssertProjectDescription(str)
 	return str
 end
 
-function M.AssertProjectId(str)
+function asserts.AssertProjectId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProjectId to be of type 'string'")
 	assert(#str <= 15, "Expected string to be max 15 characters")
 	assert(#str >= 2, "Expected string to be min 2 characters")
-	assert(str:match("^[a-z][a-z0-9-]+$"), "Expected string to match pattern '^[a-z][a-z0-9-]+$'")
 end
 
 --  
 function M.ProjectId(str)
-	M.AssertProjectId(str)
+	asserts.AssertProjectId(str)
 	return str
 end
 
-function M.AssertClientRequestToken(str)
+function asserts.AssertClientRequestToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientRequestToken to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[%w:/-]+$"), "Expected string to match pattern '^[%w:/-]+$'")
 end
 
 --  
 function M.ClientRequestToken(str)
-	M.AssertClientRequestToken(str)
+	asserts.AssertClientRequestToken(str)
 	return str
 end
 
-function M.AssertProjectName(str)
+function asserts.AssertProjectName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProjectName to be of type 'string'")
 	assert(#str <= 100, "Expected string to be max 100 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^%S(.*%S)?$"), "Expected string to match pattern '^%S(.*%S)?$'")
 end
 
 --  
 function M.ProjectName(str)
-	M.AssertProjectName(str)
+	asserts.AssertProjectName(str)
 	return str
 end
 
-function M.AssertMaxResults(integer)
+function asserts.AssertMaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1512,107 +1501,107 @@ function M.AssertMaxResults(integer)
 end
 
 function M.MaxResults(integer)
-	M.AssertMaxResults(integer)
+	asserts.AssertMaxResults(integer)
 	return integer
 end
 
-function M.AssertRemoteAccessAllowed(boolean)
+function asserts.AssertRemoteAccessAllowed(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected RemoteAccessAllowed to be of type 'boolean'")
 end
 
 function M.RemoteAccessAllowed(boolean)
-	M.AssertRemoteAccessAllowed(boolean)
+	asserts.AssertRemoteAccessAllowed(boolean)
 	return boolean
 end
 
-function M.AssertDeleteStack(boolean)
+function asserts.AssertDeleteStack(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected DeleteStack to be of type 'boolean'")
 end
 
 function M.DeleteStack(boolean)
-	M.AssertDeleteStack(boolean)
+	asserts.AssertDeleteStack(boolean)
 	return boolean
 end
 
-function M.AssertLastModifiedTimestamp(timestamp)
+function asserts.AssertLastModifiedTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected LastModifiedTimestamp to be of type 'string'")
 end
 
 function M.LastModifiedTimestamp(timestamp)
-	M.AssertLastModifiedTimestamp(timestamp)
+	asserts.AssertLastModifiedTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertCreatedTimestamp(timestamp)
+function asserts.AssertCreatedTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected CreatedTimestamp to be of type 'string'")
 end
 
 function M.CreatedTimestamp(timestamp)
-	M.AssertCreatedTimestamp(timestamp)
+	asserts.AssertCreatedTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertResourcesResult(list)
+function asserts.AssertResourcesResult(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourcesResult to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResource(v)
+		asserts.AssertResource(v)
 	end
 end
 
 --  
 -- List of Resource objects
 function M.ResourcesResult(list)
-	M.AssertResourcesResult(list)
+	asserts.AssertResourcesResult(list)
 	return list
 end
 
-function M.AssertTeamMemberResult(list)
+function asserts.AssertTeamMemberResult(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TeamMemberResult to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTeamMember(v)
+		asserts.AssertTeamMember(v)
 	end
 end
 
 --  
 -- List of TeamMember objects
 function M.TeamMemberResult(list)
-	M.AssertTeamMemberResult(list)
+	asserts.AssertTeamMemberResult(list)
 	return list
 end
 
-function M.AssertUserProfilesList(list)
+function asserts.AssertUserProfilesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UserProfilesList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUserProfileSummary(v)
+		asserts.AssertUserProfileSummary(v)
 	end
 end
 
 --  
 -- List of UserProfileSummary objects
 function M.UserProfilesList(list)
-	M.AssertUserProfilesList(list)
+	asserts.AssertUserProfilesList(list)
 	return list
 end
 
-function M.AssertProjectsList(list)
+function asserts.AssertProjectsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ProjectsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertProjectSummary(v)
+		asserts.AssertProjectSummary(v)
 	end
 end
 
 --  
 -- List of ProjectSummary objects
 function M.ProjectsList(list)
-	M.AssertProjectsList(list)
+	asserts.AssertProjectsList(list)
 	return list
 end
 

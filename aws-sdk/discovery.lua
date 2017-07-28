@@ -18,13 +18,16 @@ M.metadata = {
 	uid = "discovery-2015-11-01",
 }
 
-local DisassociateConfigurationItemsFromApplicationResponse_keys = { nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertDisassociateConfigurationItemsFromApplicationResponse(struct)
+keys.DisassociateConfigurationItemsFromApplicationResponse = { nil }
+
+function asserts.AssertDisassociateConfigurationItemsFromApplicationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateConfigurationItemsFromApplicationResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DisassociateConfigurationItemsFromApplicationResponse_keys[k], "DisassociateConfigurationItemsFromApplicationResponse contains unknown key " .. tostring(k))
+		assert(keys.DisassociateConfigurationItemsFromApplicationResponse[k], "DisassociateConfigurationItemsFromApplicationResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -34,476 +37,476 @@ function M.DisassociateConfigurationItemsFromApplicationResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateConfigurationItemsFromApplicationResponse")
 	local t = { 
 	}
-	M.AssertDisassociateConfigurationItemsFromApplicationResponse(t)
+	asserts.AssertDisassociateConfigurationItemsFromApplicationResponse(t)
 	return t
 end
 
-local DescribeConfigurationsResponse_keys = { "configurations" = true, nil }
+keys.DescribeConfigurationsResponse = { ["configurations"] = true, nil }
 
-function M.AssertDescribeConfigurationsResponse(struct)
+function asserts.AssertDescribeConfigurationsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeConfigurationsResponse to be of type 'table'")
-	if struct["configurations"] then M.AssertDescribeConfigurationsAttributes(struct["configurations"]) end
+	if struct["configurations"] then asserts.AssertDescribeConfigurationsAttributes(struct["configurations"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeConfigurationsResponse_keys[k], "DescribeConfigurationsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeConfigurationsResponse[k], "DescribeConfigurationsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeConfigurationsResponse
 --  
--- @param configurations [DescribeConfigurationsAttributes] <p>A key in the response map. The value is an array of data.</p>
-function M.DescribeConfigurationsResponse(configurations, ...)
+-- @param _configurations [DescribeConfigurationsAttributes] <p>A key in the response map. The value is an array of data.</p>
+function M.DescribeConfigurationsResponse(_configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationsResponse")
 	local t = { 
-		["configurations"] = configurations,
+		["configurations"] = _configurations,
 	}
-	M.AssertDescribeConfigurationsResponse(t)
+	asserts.AssertDescribeConfigurationsResponse(t)
 	return t
 end
 
-local AgentInfo_keys = { "version" = true, "connectorId" = true, "agentType" = true, "hostName" = true, "collectionStatus" = true, "agentNetworkInfoList" = true, "health" = true, "agentId" = true, "registeredTime" = true, "lastHealthPingTime" = true, nil }
+keys.AgentInfo = { ["version"] = true, ["connectorId"] = true, ["agentType"] = true, ["hostName"] = true, ["collectionStatus"] = true, ["agentNetworkInfoList"] = true, ["health"] = true, ["agentId"] = true, ["registeredTime"] = true, ["lastHealthPingTime"] = true, nil }
 
-function M.AssertAgentInfo(struct)
+function asserts.AssertAgentInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AgentInfo to be of type 'table'")
-	if struct["version"] then M.AssertString(struct["version"]) end
-	if struct["connectorId"] then M.AssertString(struct["connectorId"]) end
-	if struct["agentType"] then M.AssertString(struct["agentType"]) end
-	if struct["hostName"] then M.AssertString(struct["hostName"]) end
-	if struct["collectionStatus"] then M.AssertString(struct["collectionStatus"]) end
-	if struct["agentNetworkInfoList"] then M.AssertAgentNetworkInfoList(struct["agentNetworkInfoList"]) end
-	if struct["health"] then M.AssertAgentStatus(struct["health"]) end
-	if struct["agentId"] then M.AssertAgentId(struct["agentId"]) end
-	if struct["registeredTime"] then M.AssertString(struct["registeredTime"]) end
-	if struct["lastHealthPingTime"] then M.AssertString(struct["lastHealthPingTime"]) end
+	if struct["version"] then asserts.AssertString(struct["version"]) end
+	if struct["connectorId"] then asserts.AssertString(struct["connectorId"]) end
+	if struct["agentType"] then asserts.AssertString(struct["agentType"]) end
+	if struct["hostName"] then asserts.AssertString(struct["hostName"]) end
+	if struct["collectionStatus"] then asserts.AssertString(struct["collectionStatus"]) end
+	if struct["agentNetworkInfoList"] then asserts.AssertAgentNetworkInfoList(struct["agentNetworkInfoList"]) end
+	if struct["health"] then asserts.AssertAgentStatus(struct["health"]) end
+	if struct["agentId"] then asserts.AssertAgentId(struct["agentId"]) end
+	if struct["registeredTime"] then asserts.AssertString(struct["registeredTime"]) end
+	if struct["lastHealthPingTime"] then asserts.AssertString(struct["lastHealthPingTime"]) end
 	for k,_ in pairs(struct) do
-		assert(AgentInfo_keys[k], "AgentInfo contains unknown key " .. tostring(k))
+		assert(keys.AgentInfo[k], "AgentInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AgentInfo
 -- <p>Information about agents or connectors associated with the user’s AWS account. Information includes agent or connector IDs, IP addresses, media access control (MAC) addresses, agent or connector health, hostname where the agent or connector resides, and agent version for each agent.</p>
--- @param version [String] <p>The agent or connector version.</p>
--- @param connectorId [String] <p>The ID of the connector.</p>
--- @param agentType [String] <p>Type of agent.</p>
--- @param hostName [String] <p>The name of the host where the agent or connector resides. The host can be a server or virtual machine.</p>
--- @param collectionStatus [String] <p>Status of the collection process for an agent or connector.</p>
--- @param agentNetworkInfoList [AgentNetworkInfoList] <p>Network details about the host where the agent or connector resides.</p>
--- @param health [AgentStatus] <p>The health of the agent or connector.</p>
--- @param agentId [AgentId] <p>The agent or connector ID.</p>
--- @param registeredTime [String] <p>Agent's first registration timestamp in UTC.</p>
--- @param lastHealthPingTime [String] <p>Time since agent or connector health was reported.</p>
-function M.AgentInfo(version, connectorId, agentType, hostName, collectionStatus, agentNetworkInfoList, health, agentId, registeredTime, lastHealthPingTime, ...)
+-- @param _version [String] <p>The agent or connector version.</p>
+-- @param _connectorId [String] <p>The ID of the connector.</p>
+-- @param _agentType [String] <p>Type of agent.</p>
+-- @param _hostName [String] <p>The name of the host where the agent or connector resides. The host can be a server or virtual machine.</p>
+-- @param _collectionStatus [String] <p>Status of the collection process for an agent or connector.</p>
+-- @param _agentNetworkInfoList [AgentNetworkInfoList] <p>Network details about the host where the agent or connector resides.</p>
+-- @param _health [AgentStatus] <p>The health of the agent or connector.</p>
+-- @param _agentId [AgentId] <p>The agent or connector ID.</p>
+-- @param _registeredTime [String] <p>Agent's first registration timestamp in UTC.</p>
+-- @param _lastHealthPingTime [String] <p>Time since agent or connector health was reported.</p>
+function M.AgentInfo(_version, _connectorId, _agentType, _hostName, _collectionStatus, _agentNetworkInfoList, _health, _agentId, _registeredTime, _lastHealthPingTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentInfo")
 	local t = { 
-		["version"] = version,
-		["connectorId"] = connectorId,
-		["agentType"] = agentType,
-		["hostName"] = hostName,
-		["collectionStatus"] = collectionStatus,
-		["agentNetworkInfoList"] = agentNetworkInfoList,
-		["health"] = health,
-		["agentId"] = agentId,
-		["registeredTime"] = registeredTime,
-		["lastHealthPingTime"] = lastHealthPingTime,
+		["version"] = _version,
+		["connectorId"] = _connectorId,
+		["agentType"] = _agentType,
+		["hostName"] = _hostName,
+		["collectionStatus"] = _collectionStatus,
+		["agentNetworkInfoList"] = _agentNetworkInfoList,
+		["health"] = _health,
+		["agentId"] = _agentId,
+		["registeredTime"] = _registeredTime,
+		["lastHealthPingTime"] = _lastHealthPingTime,
 	}
-	M.AssertAgentInfo(t)
+	asserts.AssertAgentInfo(t)
 	return t
 end
 
-local DescribeTagsRequest_keys = { "nextToken" = true, "maxResults" = true, "filters" = true, nil }
+keys.DescribeTagsRequest = { ["nextToken"] = true, ["maxResults"] = true, ["filters"] = true, nil }
 
-function M.AssertDescribeTagsRequest(struct)
+function asserts.AssertDescribeTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTagsRequest to be of type 'table'")
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertInteger(struct["maxResults"]) end
-	if struct["filters"] then M.AssertTagFilters(struct["filters"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
+	if struct["filters"] then asserts.AssertTagFilters(struct["filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTagsRequest_keys[k], "DescribeTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeTagsRequest[k], "DescribeTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTagsRequest
 --  
--- @param nextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results.</p>
--- @param maxResults [Integer] <p>The total number of items to return in a single page of output. The maximum value is 100.</p>
--- @param filters [TagFilters] <p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p>
-function M.DescribeTagsRequest(nextToken, maxResults, filters, ...)
+-- @param _nextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results.</p>
+-- @param _maxResults [Integer] <p>The total number of items to return in a single page of output. The maximum value is 100.</p>
+-- @param _filters [TagFilters] <p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p>
+function M.DescribeTagsRequest(_nextToken, _maxResults, _filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
 	local t = { 
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
-		["filters"] = filters,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
+		["filters"] = _filters,
 	}
-	M.AssertDescribeTagsRequest(t)
+	asserts.AssertDescribeTagsRequest(t)
 	return t
 end
 
-local OperationNotPermittedException_keys = { "message" = true, nil }
+keys.OperationNotPermittedException = { ["message"] = true, nil }
 
-function M.AssertOperationNotPermittedException(struct)
+function asserts.AssertOperationNotPermittedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OperationNotPermittedException to be of type 'table'")
-	if struct["message"] then M.AssertMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(OperationNotPermittedException_keys[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
+		assert(keys.OperationNotPermittedException[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type OperationNotPermittedException
 -- <p>This operation is not permitted.</p>
--- @param message [Message] <p>This operation is not permitted.</p>
-function M.OperationNotPermittedException(message, ...)
+-- @param _message [Message] 
+function M.OperationNotPermittedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertOperationNotPermittedException(t)
+	asserts.AssertOperationNotPermittedException(t)
 	return t
 end
 
-local UpdateApplicationRequest_keys = { "configurationId" = true, "name" = true, "description" = true, nil }
+keys.UpdateApplicationRequest = { ["configurationId"] = true, ["name"] = true, ["description"] = true, nil }
 
-function M.AssertUpdateApplicationRequest(struct)
+function asserts.AssertUpdateApplicationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateApplicationRequest to be of type 'table'")
 	assert(struct["configurationId"], "Expected key configurationId to exist in table")
-	if struct["configurationId"] then M.AssertApplicationId(struct["configurationId"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["configurationId"] then asserts.AssertApplicationId(struct["configurationId"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateApplicationRequest_keys[k], "UpdateApplicationRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateApplicationRequest[k], "UpdateApplicationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateApplicationRequest
 --  
--- @param configurationId [ApplicationId] <p>Configuration ID of the application to be updated.</p>
--- @param name [String] <p>New name of the application to be updated.</p>
--- @param description [String] <p>New description of the application to be updated.</p>
+-- @param _configurationId [ApplicationId] <p>Configuration ID of the application to be updated.</p>
+-- @param _name [String] <p>New name of the application to be updated.</p>
+-- @param _description [String] <p>New description of the application to be updated.</p>
 -- Required parameter: configurationId
-function M.UpdateApplicationRequest(configurationId, name, description, ...)
+function M.UpdateApplicationRequest(_configurationId, _name, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationRequest")
 	local t = { 
-		["configurationId"] = configurationId,
-		["name"] = name,
-		["description"] = description,
+		["configurationId"] = _configurationId,
+		["name"] = _name,
+		["description"] = _description,
 	}
-	M.AssertUpdateApplicationRequest(t)
+	asserts.AssertUpdateApplicationRequest(t)
 	return t
 end
 
-local AgentNetworkInfo_keys = { "macAddress" = true, "ipAddress" = true, nil }
+keys.AgentNetworkInfo = { ["macAddress"] = true, ["ipAddress"] = true, nil }
 
-function M.AssertAgentNetworkInfo(struct)
+function asserts.AssertAgentNetworkInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AgentNetworkInfo to be of type 'table'")
-	if struct["macAddress"] then M.AssertString(struct["macAddress"]) end
-	if struct["ipAddress"] then M.AssertString(struct["ipAddress"]) end
+	if struct["macAddress"] then asserts.AssertString(struct["macAddress"]) end
+	if struct["ipAddress"] then asserts.AssertString(struct["ipAddress"]) end
 	for k,_ in pairs(struct) do
-		assert(AgentNetworkInfo_keys[k], "AgentNetworkInfo contains unknown key " .. tostring(k))
+		assert(keys.AgentNetworkInfo[k], "AgentNetworkInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AgentNetworkInfo
 -- <p>Network details about the host where the agent/connector resides.</p>
--- @param macAddress [String] <p>The MAC address for the host where the agent/connector resides.</p>
--- @param ipAddress [String] <p>The IP address for the host where the agent/connector resides.</p>
-function M.AgentNetworkInfo(macAddress, ipAddress, ...)
+-- @param _macAddress [String] <p>The MAC address for the host where the agent/connector resides.</p>
+-- @param _ipAddress [String] <p>The IP address for the host where the agent/connector resides.</p>
+function M.AgentNetworkInfo(_macAddress, _ipAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentNetworkInfo")
 	local t = { 
-		["macAddress"] = macAddress,
-		["ipAddress"] = ipAddress,
+		["macAddress"] = _macAddress,
+		["ipAddress"] = _ipAddress,
 	}
-	M.AssertAgentNetworkInfo(t)
+	asserts.AssertAgentNetworkInfo(t)
 	return t
 end
 
-local DeleteApplicationsRequest_keys = { "configurationIds" = true, nil }
+keys.DeleteApplicationsRequest = { ["configurationIds"] = true, nil }
 
-function M.AssertDeleteApplicationsRequest(struct)
+function asserts.AssertDeleteApplicationsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteApplicationsRequest to be of type 'table'")
 	assert(struct["configurationIds"], "Expected key configurationIds to exist in table")
-	if struct["configurationIds"] then M.AssertApplicationIdsList(struct["configurationIds"]) end
+	if struct["configurationIds"] then asserts.AssertApplicationIdsList(struct["configurationIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteApplicationsRequest_keys[k], "DeleteApplicationsRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteApplicationsRequest[k], "DeleteApplicationsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteApplicationsRequest
 --  
--- @param configurationIds [ApplicationIdsList] <p>Configuration ID of an application to be deleted.</p>
+-- @param _configurationIds [ApplicationIdsList] <p>Configuration ID of an application to be deleted.</p>
 -- Required parameter: configurationIds
-function M.DeleteApplicationsRequest(configurationIds, ...)
+function M.DeleteApplicationsRequest(_configurationIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationsRequest")
 	local t = { 
-		["configurationIds"] = configurationIds,
+		["configurationIds"] = _configurationIds,
 	}
-	M.AssertDeleteApplicationsRequest(t)
+	asserts.AssertDeleteApplicationsRequest(t)
 	return t
 end
 
-local CreateTagsRequest_keys = { "configurationIds" = true, "tags" = true, nil }
+keys.CreateTagsRequest = { ["configurationIds"] = true, ["tags"] = true, nil }
 
-function M.AssertCreateTagsRequest(struct)
+function asserts.AssertCreateTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTagsRequest to be of type 'table'")
 	assert(struct["configurationIds"], "Expected key configurationIds to exist in table")
 	assert(struct["tags"], "Expected key tags to exist in table")
-	if struct["configurationIds"] then M.AssertConfigurationIdList(struct["configurationIds"]) end
-	if struct["tags"] then M.AssertTagSet(struct["tags"]) end
+	if struct["configurationIds"] then asserts.AssertConfigurationIdList(struct["configurationIds"]) end
+	if struct["tags"] then asserts.AssertTagSet(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateTagsRequest_keys[k], "CreateTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateTagsRequest[k], "CreateTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateTagsRequest
 --  
--- @param configurationIds [ConfigurationIdList] <p>A list of configuration items that you want to tag.</p>
--- @param tags [TagSet] <p>Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
+-- @param _configurationIds [ConfigurationIdList] <p>A list of configuration items that you want to tag.</p>
+-- @param _tags [TagSet] <p>Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
 -- Required parameter: configurationIds
 -- Required parameter: tags
-function M.CreateTagsRequest(configurationIds, tags, ...)
+function M.CreateTagsRequest(_configurationIds, _tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsRequest")
 	local t = { 
-		["configurationIds"] = configurationIds,
-		["tags"] = tags,
+		["configurationIds"] = _configurationIds,
+		["tags"] = _tags,
 	}
-	M.AssertCreateTagsRequest(t)
+	asserts.AssertCreateTagsRequest(t)
 	return t
 end
 
-local ListConfigurationsResponse_keys = { "nextToken" = true, "configurations" = true, nil }
+keys.ListConfigurationsResponse = { ["nextToken"] = true, ["configurations"] = true, nil }
 
-function M.AssertListConfigurationsResponse(struct)
+function asserts.AssertListConfigurationsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListConfigurationsResponse to be of type 'table'")
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["configurations"] then M.AssertConfigurations(struct["configurations"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["configurations"] then asserts.AssertConfigurations(struct["configurations"]) end
 	for k,_ in pairs(struct) do
-		assert(ListConfigurationsResponse_keys[k], "ListConfigurationsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListConfigurationsResponse[k], "ListConfigurationsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListConfigurationsResponse
 --  
--- @param nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
--- @param configurations [Configurations] <p>Returns configuration details, including the configuration ID, attribute names, and attribute values.</p>
-function M.ListConfigurationsResponse(nextToken, configurations, ...)
+-- @param _nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
+-- @param _configurations [Configurations] <p>Returns configuration details, including the configuration ID, attribute names, and attribute values.</p>
+function M.ListConfigurationsResponse(_nextToken, _configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationsResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["configurations"] = configurations,
+		["nextToken"] = _nextToken,
+		["configurations"] = _configurations,
 	}
-	M.AssertListConfigurationsResponse(t)
+	asserts.AssertListConfigurationsResponse(t)
 	return t
 end
 
-local Tag_keys = { "value" = true, "key" = true, nil }
+keys.Tag = { ["value"] = true, ["key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["key"], "Expected key key to exist in table")
 	assert(struct["value"], "Expected key value to exist in table")
-	if struct["value"] then M.AssertTagValue(struct["value"]) end
-	if struct["key"] then M.AssertTagKey(struct["key"]) end
+	if struct["value"] then asserts.AssertTagValue(struct["value"]) end
+	if struct["key"] then asserts.AssertTagKey(struct["key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>Metadata that help you categorize IT assets.</p>
--- @param value [TagValue] <p>A value for a tag key on which to filter.</p>
--- @param key [TagKey] <p>The type of tag on which to filter.</p>
+-- @param _value [TagValue] <p>A value for a tag key on which to filter.</p>
+-- @param _key [TagKey] <p>The type of tag on which to filter.</p>
 -- Required parameter: key
 -- Required parameter: value
-function M.Tag(value, key, ...)
+function M.Tag(_value, _key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["value"] = value,
-		["key"] = key,
+		["value"] = _value,
+		["key"] = _key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local DescribeAgentsRequest_keys = { "nextToken" = true, "maxResults" = true, "filters" = true, "agentIds" = true, nil }
+keys.DescribeAgentsRequest = { ["nextToken"] = true, ["maxResults"] = true, ["filters"] = true, ["agentIds"] = true, nil }
 
-function M.AssertDescribeAgentsRequest(struct)
+function asserts.AssertDescribeAgentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAgentsRequest to be of type 'table'")
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertInteger(struct["maxResults"]) end
-	if struct["filters"] then M.AssertFilters(struct["filters"]) end
-	if struct["agentIds"] then M.AssertAgentIds(struct["agentIds"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
+	if struct["filters"] then asserts.AssertFilters(struct["filters"]) end
+	if struct["agentIds"] then asserts.AssertAgentIds(struct["agentIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAgentsRequest_keys[k], "DescribeAgentsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeAgentsRequest[k], "DescribeAgentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAgentsRequest
 --  
--- @param nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
--- @param maxResults [Integer] <p>The total number of agents/Connectors to return in a single page of output. The maximum value is 100.</p>
--- @param filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "collectionStatus", "value": "STARTED"}</code> </p>
--- @param agentIds [AgentIds] <p>The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.</p>
-function M.DescribeAgentsRequest(nextToken, maxResults, filters, agentIds, ...)
+-- @param _nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- @param _maxResults [Integer] <p>The total number of agents/Connectors to return in a single page of output. The maximum value is 100.</p>
+-- @param _filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "collectionStatus", "value": "STARTED"}</code> </p>
+-- @param _agentIds [AgentIds] <p>The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.</p>
+function M.DescribeAgentsRequest(_nextToken, _maxResults, _filters, _agentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentsRequest")
 	local t = { 
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
-		["filters"] = filters,
-		["agentIds"] = agentIds,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
+		["filters"] = _filters,
+		["agentIds"] = _agentIds,
 	}
-	M.AssertDescribeAgentsRequest(t)
+	asserts.AssertDescribeAgentsRequest(t)
 	return t
 end
 
-local ListConfigurationsRequest_keys = { "orderBy" = true, "nextToken" = true, "maxResults" = true, "filters" = true, "configurationType" = true, nil }
+keys.ListConfigurationsRequest = { ["orderBy"] = true, ["nextToken"] = true, ["maxResults"] = true, ["filters"] = true, ["configurationType"] = true, nil }
 
-function M.AssertListConfigurationsRequest(struct)
+function asserts.AssertListConfigurationsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListConfigurationsRequest to be of type 'table'")
 	assert(struct["configurationType"], "Expected key configurationType to exist in table")
-	if struct["orderBy"] then M.AssertOrderByList(struct["orderBy"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertInteger(struct["maxResults"]) end
-	if struct["filters"] then M.AssertFilters(struct["filters"]) end
-	if struct["configurationType"] then M.AssertConfigurationItemType(struct["configurationType"]) end
+	if struct["orderBy"] then asserts.AssertOrderByList(struct["orderBy"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
+	if struct["filters"] then asserts.AssertFilters(struct["filters"]) end
+	if struct["configurationType"] then asserts.AssertConfigurationItemType(struct["configurationType"]) end
 	for k,_ in pairs(struct) do
-		assert(ListConfigurationsRequest_keys[k], "ListConfigurationsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListConfigurationsRequest[k], "ListConfigurationsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListConfigurationsRequest
 --  
--- @param orderBy [OrderByList] <p>Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Using the ListConfigurations Action</a>.</p>
--- @param nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
--- @param maxResults [Integer] <p>The total number of items to return. The maximum value is 100.</p>
--- @param filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Querying Discovered Configuration Items</a>. </p>
--- @param configurationType [ConfigurationItemType] <p>A valid configuration identified by Application Discovery Service. </p>
+-- @param _orderBy [OrderByList] <p>Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Using the ListConfigurations Action</a>.</p>
+-- @param _nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- @param _maxResults [Integer] <p>The total number of items to return. The maximum value is 100.</p>
+-- @param _filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Querying Discovered Configuration Items</a>. </p>
+-- @param _configurationType [ConfigurationItemType] <p>A valid configuration identified by Application Discovery Service. </p>
 -- Required parameter: configurationType
-function M.ListConfigurationsRequest(orderBy, nextToken, maxResults, filters, configurationType, ...)
+function M.ListConfigurationsRequest(_orderBy, _nextToken, _maxResults, _filters, _configurationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationsRequest")
 	local t = { 
-		["orderBy"] = orderBy,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
-		["filters"] = filters,
-		["configurationType"] = configurationType,
+		["orderBy"] = _orderBy,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
+		["filters"] = _filters,
+		["configurationType"] = _configurationType,
 	}
-	M.AssertListConfigurationsRequest(t)
+	asserts.AssertListConfigurationsRequest(t)
 	return t
 end
 
-local DescribeAgentsResponse_keys = { "agentsInfo" = true, "nextToken" = true, nil }
+keys.DescribeAgentsResponse = { ["agentsInfo"] = true, ["nextToken"] = true, nil }
 
-function M.AssertDescribeAgentsResponse(struct)
+function asserts.AssertDescribeAgentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAgentsResponse to be of type 'table'")
-	if struct["agentsInfo"] then M.AssertAgentsInfo(struct["agentsInfo"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
+	if struct["agentsInfo"] then asserts.AssertAgentsInfo(struct["agentsInfo"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAgentsResponse_keys[k], "DescribeAgentsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeAgentsResponse[k], "DescribeAgentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAgentsResponse
 --  
--- @param agentsInfo [AgentsInfo] <p>Lists agents or the Connector by ID or lists all agents/Connectors associated with your user account if you did not specify an agent/Connector ID. The output includes agent/Connector IDs, IP addresses, media access control (MAC) addresses, agent/Connector health, host name where the agent/Connector resides, and the version number of each agent/Connector.</p>
--- @param nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
-function M.DescribeAgentsResponse(agentsInfo, nextToken, ...)
+-- @param _agentsInfo [AgentsInfo] <p>Lists agents or the Connector by ID or lists all agents/Connectors associated with your user account if you did not specify an agent/Connector ID. The output includes agent/Connector IDs, IP addresses, media access control (MAC) addresses, agent/Connector health, host name where the agent/Connector resides, and the version number of each agent/Connector.</p>
+-- @param _nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
+function M.DescribeAgentsResponse(_agentsInfo, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentsResponse")
 	local t = { 
-		["agentsInfo"] = agentsInfo,
-		["nextToken"] = nextToken,
+		["agentsInfo"] = _agentsInfo,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertDescribeAgentsResponse(t)
+	asserts.AssertDescribeAgentsResponse(t)
 	return t
 end
 
-local ExportConfigurationsResponse_keys = { "exportId" = true, nil }
+keys.ExportConfigurationsResponse = { ["exportId"] = true, nil }
 
-function M.AssertExportConfigurationsResponse(struct)
+function asserts.AssertExportConfigurationsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExportConfigurationsResponse to be of type 'table'")
-	if struct["exportId"] then M.AssertConfigurationsExportId(struct["exportId"]) end
+	if struct["exportId"] then asserts.AssertConfigurationsExportId(struct["exportId"]) end
 	for k,_ in pairs(struct) do
-		assert(ExportConfigurationsResponse_keys[k], "ExportConfigurationsResponse contains unknown key " .. tostring(k))
+		assert(keys.ExportConfigurationsResponse[k], "ExportConfigurationsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExportConfigurationsResponse
 --  
--- @param exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export status.</p>
-function M.ExportConfigurationsResponse(exportId, ...)
+-- @param _exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export status.</p>
+function M.ExportConfigurationsResponse(_exportId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExportConfigurationsResponse")
 	local t = { 
-		["exportId"] = exportId,
+		["exportId"] = _exportId,
 	}
-	M.AssertExportConfigurationsResponse(t)
+	asserts.AssertExportConfigurationsResponse(t)
 	return t
 end
 
-local ServerInternalErrorException_keys = { "message" = true, nil }
+keys.ServerInternalErrorException = { ["message"] = true, nil }
 
-function M.AssertServerInternalErrorException(struct)
+function asserts.AssertServerInternalErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ServerInternalErrorException to be of type 'table'")
-	if struct["message"] then M.AssertMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ServerInternalErrorException_keys[k], "ServerInternalErrorException contains unknown key " .. tostring(k))
+		assert(keys.ServerInternalErrorException[k], "ServerInternalErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ServerInternalErrorException
 -- <p>The server experienced an internal error. Try again.</p>
--- @param message [Message] <p>The server experienced an internal error. Try again.</p>
-function M.ServerInternalErrorException(message, ...)
+-- @param _message [Message] 
+function M.ServerInternalErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServerInternalErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertServerInternalErrorException(t)
+	asserts.AssertServerInternalErrorException(t)
 	return t
 end
 
-local StartDataCollectionByAgentIdsRequest_keys = { "agentIds" = true, nil }
+keys.StartDataCollectionByAgentIdsRequest = { ["agentIds"] = true, nil }
 
-function M.AssertStartDataCollectionByAgentIdsRequest(struct)
+function asserts.AssertStartDataCollectionByAgentIdsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartDataCollectionByAgentIdsRequest to be of type 'table'")
 	assert(struct["agentIds"], "Expected key agentIds to exist in table")
-	if struct["agentIds"] then M.AssertAgentIds(struct["agentIds"]) end
+	if struct["agentIds"] then asserts.AssertAgentIds(struct["agentIds"]) end
 	for k,_ in pairs(struct) do
-		assert(StartDataCollectionByAgentIdsRequest_keys[k], "StartDataCollectionByAgentIdsRequest contains unknown key " .. tostring(k))
+		assert(keys.StartDataCollectionByAgentIdsRequest[k], "StartDataCollectionByAgentIdsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartDataCollectionByAgentIdsRequest
 --  
--- @param agentIds [AgentIds] <p>The IDs of the agents or connectors from which to start collecting data. If you send a request to an agent/connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the <i>Description</i> field. If you send a request to multiple agents/connectors and you do not have permission to contact some of those agents/connectors, the system does not throw an exception. Instead, the system shows <code>Failed</code> in the <i>Description</i> field.</p>
+-- @param _agentIds [AgentIds] <p>The IDs of the agents or connectors from which to start collecting data. If you send a request to an agent/connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the <i>Description</i> field. If you send a request to multiple agents/connectors and you do not have permission to contact some of those agents/connectors, the system does not throw an exception. Instead, the system shows <code>Failed</code> in the <i>Description</i> field.</p>
 -- Required parameter: agentIds
-function M.StartDataCollectionByAgentIdsRequest(agentIds, ...)
+function M.StartDataCollectionByAgentIdsRequest(_agentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartDataCollectionByAgentIdsRequest")
 	local t = { 
-		["agentIds"] = agentIds,
+		["agentIds"] = _agentIds,
 	}
-	M.AssertStartDataCollectionByAgentIdsRequest(t)
+	asserts.AssertStartDataCollectionByAgentIdsRequest(t)
 	return t
 end
 
-local DeleteApplicationsResponse_keys = { nil }
+keys.DeleteApplicationsResponse = { nil }
 
-function M.AssertDeleteApplicationsResponse(struct)
+function asserts.AssertDeleteApplicationsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteApplicationsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteApplicationsResponse_keys[k], "DeleteApplicationsResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteApplicationsResponse[k], "DeleteApplicationsResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -513,165 +516,165 @@ function M.DeleteApplicationsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationsResponse")
 	local t = { 
 	}
-	M.AssertDeleteApplicationsResponse(t)
+	asserts.AssertDeleteApplicationsResponse(t)
 	return t
 end
 
-local AssociateConfigurationItemsToApplicationRequest_keys = { "applicationConfigurationId" = true, "configurationIds" = true, nil }
+keys.AssociateConfigurationItemsToApplicationRequest = { ["applicationConfigurationId"] = true, ["configurationIds"] = true, nil }
 
-function M.AssertAssociateConfigurationItemsToApplicationRequest(struct)
+function asserts.AssertAssociateConfigurationItemsToApplicationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateConfigurationItemsToApplicationRequest to be of type 'table'")
 	assert(struct["applicationConfigurationId"], "Expected key applicationConfigurationId to exist in table")
 	assert(struct["configurationIds"], "Expected key configurationIds to exist in table")
-	if struct["applicationConfigurationId"] then M.AssertApplicationId(struct["applicationConfigurationId"]) end
-	if struct["configurationIds"] then M.AssertConfigurationIdList(struct["configurationIds"]) end
+	if struct["applicationConfigurationId"] then asserts.AssertApplicationId(struct["applicationConfigurationId"]) end
+	if struct["configurationIds"] then asserts.AssertConfigurationIdList(struct["configurationIds"]) end
 	for k,_ in pairs(struct) do
-		assert(AssociateConfigurationItemsToApplicationRequest_keys[k], "AssociateConfigurationItemsToApplicationRequest contains unknown key " .. tostring(k))
+		assert(keys.AssociateConfigurationItemsToApplicationRequest[k], "AssociateConfigurationItemsToApplicationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssociateConfigurationItemsToApplicationRequest
 --  
--- @param applicationConfigurationId [ApplicationId] <p>The configuration ID of an application with which items are to be associated.</p>
--- @param configurationIds [ConfigurationIdList] <p>The ID of each configuration item to be associated with an application.</p>
+-- @param _applicationConfigurationId [ApplicationId] <p>The configuration ID of an application with which items are to be associated.</p>
+-- @param _configurationIds [ConfigurationIdList] <p>The ID of each configuration item to be associated with an application.</p>
 -- Required parameter: applicationConfigurationId
 -- Required parameter: configurationIds
-function M.AssociateConfigurationItemsToApplicationRequest(applicationConfigurationId, configurationIds, ...)
+function M.AssociateConfigurationItemsToApplicationRequest(_applicationConfigurationId, _configurationIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateConfigurationItemsToApplicationRequest")
 	local t = { 
-		["applicationConfigurationId"] = applicationConfigurationId,
-		["configurationIds"] = configurationIds,
+		["applicationConfigurationId"] = _applicationConfigurationId,
+		["configurationIds"] = _configurationIds,
 	}
-	M.AssertAssociateConfigurationItemsToApplicationRequest(t)
+	asserts.AssertAssociateConfigurationItemsToApplicationRequest(t)
 	return t
 end
 
-local ListServerNeighborsResponse_keys = { "neighbors" = true, "nextToken" = true, "knownDependencyCount" = true, nil }
+keys.ListServerNeighborsResponse = { ["neighbors"] = true, ["nextToken"] = true, ["knownDependencyCount"] = true, nil }
 
-function M.AssertListServerNeighborsResponse(struct)
+function asserts.AssertListServerNeighborsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListServerNeighborsResponse to be of type 'table'")
 	assert(struct["neighbors"], "Expected key neighbors to exist in table")
-	if struct["neighbors"] then M.AssertNeighborDetailsList(struct["neighbors"]) end
-	if struct["nextToken"] then M.AssertString(struct["nextToken"]) end
-	if struct["knownDependencyCount"] then M.AssertLong(struct["knownDependencyCount"]) end
+	if struct["neighbors"] then asserts.AssertNeighborDetailsList(struct["neighbors"]) end
+	if struct["nextToken"] then asserts.AssertString(struct["nextToken"]) end
+	if struct["knownDependencyCount"] then asserts.AssertLong(struct["knownDependencyCount"]) end
 	for k,_ in pairs(struct) do
-		assert(ListServerNeighborsResponse_keys[k], "ListServerNeighborsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListServerNeighborsResponse[k], "ListServerNeighborsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListServerNeighborsResponse
 --  
--- @param neighbors [NeighborDetailsList] <p>List of distinct servers that are one hop away from the given server.</p>
--- @param nextToken [String] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
--- @param knownDependencyCount [Long] <p>Count of distinct servers that are one hop away from the given server.</p>
+-- @param _neighbors [NeighborDetailsList] <p>List of distinct servers that are one hop away from the given server.</p>
+-- @param _nextToken [String] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
+-- @param _knownDependencyCount [Long] <p>Count of distinct servers that are one hop away from the given server.</p>
 -- Required parameter: neighbors
-function M.ListServerNeighborsResponse(neighbors, nextToken, knownDependencyCount, ...)
+function M.ListServerNeighborsResponse(_neighbors, _nextToken, _knownDependencyCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListServerNeighborsResponse")
 	local t = { 
-		["neighbors"] = neighbors,
-		["nextToken"] = nextToken,
-		["knownDependencyCount"] = knownDependencyCount,
+		["neighbors"] = _neighbors,
+		["nextToken"] = _nextToken,
+		["knownDependencyCount"] = _knownDependencyCount,
 	}
-	M.AssertListServerNeighborsResponse(t)
+	asserts.AssertListServerNeighborsResponse(t)
 	return t
 end
 
-local StopDataCollectionByAgentIdsResponse_keys = { "agentsConfigurationStatus" = true, nil }
+keys.StopDataCollectionByAgentIdsResponse = { ["agentsConfigurationStatus"] = true, nil }
 
-function M.AssertStopDataCollectionByAgentIdsResponse(struct)
+function asserts.AssertStopDataCollectionByAgentIdsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopDataCollectionByAgentIdsResponse to be of type 'table'")
-	if struct["agentsConfigurationStatus"] then M.AssertAgentConfigurationStatusList(struct["agentsConfigurationStatus"]) end
+	if struct["agentsConfigurationStatus"] then asserts.AssertAgentConfigurationStatusList(struct["agentsConfigurationStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(StopDataCollectionByAgentIdsResponse_keys[k], "StopDataCollectionByAgentIdsResponse contains unknown key " .. tostring(k))
+		assert(keys.StopDataCollectionByAgentIdsResponse[k], "StopDataCollectionByAgentIdsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopDataCollectionByAgentIdsResponse
 --  
--- @param agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
-function M.StopDataCollectionByAgentIdsResponse(agentsConfigurationStatus, ...)
+-- @param _agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
+function M.StopDataCollectionByAgentIdsResponse(_agentsConfigurationStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopDataCollectionByAgentIdsResponse")
 	local t = { 
-		["agentsConfigurationStatus"] = agentsConfigurationStatus,
+		["agentsConfigurationStatus"] = _agentsConfigurationStatus,
 	}
-	M.AssertStopDataCollectionByAgentIdsResponse(t)
+	asserts.AssertStopDataCollectionByAgentIdsResponse(t)
 	return t
 end
 
-local NeighborConnectionDetail_keys = { "connectionsCount" = true, "destinationServerId" = true, "sourceServerId" = true, "transportProtocol" = true, "destinationPort" = true, nil }
+keys.NeighborConnectionDetail = { ["connectionsCount"] = true, ["destinationServerId"] = true, ["sourceServerId"] = true, ["transportProtocol"] = true, ["destinationPort"] = true, nil }
 
-function M.AssertNeighborConnectionDetail(struct)
+function asserts.AssertNeighborConnectionDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NeighborConnectionDetail to be of type 'table'")
 	assert(struct["sourceServerId"], "Expected key sourceServerId to exist in table")
 	assert(struct["destinationServerId"], "Expected key destinationServerId to exist in table")
 	assert(struct["connectionsCount"], "Expected key connectionsCount to exist in table")
-	if struct["connectionsCount"] then M.AssertLong(struct["connectionsCount"]) end
-	if struct["destinationServerId"] then M.AssertConfigurationId(struct["destinationServerId"]) end
-	if struct["sourceServerId"] then M.AssertConfigurationId(struct["sourceServerId"]) end
-	if struct["transportProtocol"] then M.AssertString(struct["transportProtocol"]) end
-	if struct["destinationPort"] then M.AssertBoxedInteger(struct["destinationPort"]) end
+	if struct["connectionsCount"] then asserts.AssertLong(struct["connectionsCount"]) end
+	if struct["destinationServerId"] then asserts.AssertConfigurationId(struct["destinationServerId"]) end
+	if struct["sourceServerId"] then asserts.AssertConfigurationId(struct["sourceServerId"]) end
+	if struct["transportProtocol"] then asserts.AssertString(struct["transportProtocol"]) end
+	if struct["destinationPort"] then asserts.AssertBoxedInteger(struct["destinationPort"]) end
 	for k,_ in pairs(struct) do
-		assert(NeighborConnectionDetail_keys[k], "NeighborConnectionDetail contains unknown key " .. tostring(k))
+		assert(keys.NeighborConnectionDetail[k], "NeighborConnectionDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NeighborConnectionDetail
 -- <p>Details about neighboring servers.</p>
--- @param connectionsCount [Long] <p>The number of open network connections with the neighboring server.</p>
--- @param destinationServerId [ConfigurationId] <p>The ID of the server that accepted the network connection.</p>
--- @param sourceServerId [ConfigurationId] <p>The ID of the server that opened the network connection.</p>
--- @param transportProtocol [String] <p>The network protocol used for the connection.</p>
--- @param destinationPort [BoxedInteger] <p>The destination network port for the connection.</p>
+-- @param _connectionsCount [Long] <p>The number of open network connections with the neighboring server.</p>
+-- @param _destinationServerId [ConfigurationId] <p>The ID of the server that accepted the network connection.</p>
+-- @param _sourceServerId [ConfigurationId] <p>The ID of the server that opened the network connection.</p>
+-- @param _transportProtocol [String] <p>The network protocol used for the connection.</p>
+-- @param _destinationPort [BoxedInteger] <p>The destination network port for the connection.</p>
 -- Required parameter: sourceServerId
 -- Required parameter: destinationServerId
 -- Required parameter: connectionsCount
-function M.NeighborConnectionDetail(connectionsCount, destinationServerId, sourceServerId, transportProtocol, destinationPort, ...)
+function M.NeighborConnectionDetail(_connectionsCount, _destinationServerId, _sourceServerId, _transportProtocol, _destinationPort, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NeighborConnectionDetail")
 	local t = { 
-		["connectionsCount"] = connectionsCount,
-		["destinationServerId"] = destinationServerId,
-		["sourceServerId"] = sourceServerId,
-		["transportProtocol"] = transportProtocol,
-		["destinationPort"] = destinationPort,
+		["connectionsCount"] = _connectionsCount,
+		["destinationServerId"] = _destinationServerId,
+		["sourceServerId"] = _sourceServerId,
+		["transportProtocol"] = _transportProtocol,
+		["destinationPort"] = _destinationPort,
 	}
-	M.AssertNeighborConnectionDetail(t)
+	asserts.AssertNeighborConnectionDetail(t)
 	return t
 end
 
-local StartDataCollectionByAgentIdsResponse_keys = { "agentsConfigurationStatus" = true, nil }
+keys.StartDataCollectionByAgentIdsResponse = { ["agentsConfigurationStatus"] = true, nil }
 
-function M.AssertStartDataCollectionByAgentIdsResponse(struct)
+function asserts.AssertStartDataCollectionByAgentIdsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartDataCollectionByAgentIdsResponse to be of type 'table'")
-	if struct["agentsConfigurationStatus"] then M.AssertAgentConfigurationStatusList(struct["agentsConfigurationStatus"]) end
+	if struct["agentsConfigurationStatus"] then asserts.AssertAgentConfigurationStatusList(struct["agentsConfigurationStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(StartDataCollectionByAgentIdsResponse_keys[k], "StartDataCollectionByAgentIdsResponse contains unknown key " .. tostring(k))
+		assert(keys.StartDataCollectionByAgentIdsResponse[k], "StartDataCollectionByAgentIdsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartDataCollectionByAgentIdsResponse
 --  
--- @param agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about agents or the connector that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
-function M.StartDataCollectionByAgentIdsResponse(agentsConfigurationStatus, ...)
+-- @param _agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about agents or the connector that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
+function M.StartDataCollectionByAgentIdsResponse(_agentsConfigurationStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartDataCollectionByAgentIdsResponse")
 	local t = { 
-		["agentsConfigurationStatus"] = agentsConfigurationStatus,
+		["agentsConfigurationStatus"] = _agentsConfigurationStatus,
 	}
-	M.AssertStartDataCollectionByAgentIdsResponse(t)
+	asserts.AssertStartDataCollectionByAgentIdsResponse(t)
 	return t
 end
 
-local DeleteTagsResponse_keys = { nil }
+keys.DeleteTagsResponse = { nil }
 
-function M.AssertDeleteTagsResponse(struct)
+function asserts.AssertDeleteTagsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTagsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteTagsResponse_keys[k], "DeleteTagsResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteTagsResponse[k], "DeleteTagsResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -681,123 +684,123 @@ function M.DeleteTagsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsResponse")
 	local t = { 
 	}
-	M.AssertDeleteTagsResponse(t)
+	asserts.AssertDeleteTagsResponse(t)
 	return t
 end
 
-local StartExportTaskRequest_keys = { "exportDataFormat" = true, nil }
+keys.StartExportTaskRequest = { ["exportDataFormat"] = true, nil }
 
-function M.AssertStartExportTaskRequest(struct)
+function asserts.AssertStartExportTaskRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartExportTaskRequest to be of type 'table'")
-	if struct["exportDataFormat"] then M.AssertExportDataFormats(struct["exportDataFormat"]) end
+	if struct["exportDataFormat"] then asserts.AssertExportDataFormats(struct["exportDataFormat"]) end
 	for k,_ in pairs(struct) do
-		assert(StartExportTaskRequest_keys[k], "StartExportTaskRequest contains unknown key " .. tostring(k))
+		assert(keys.StartExportTaskRequest[k], "StartExportTaskRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartExportTaskRequest
 --  
--- @param exportDataFormat [ExportDataFormats] <p>The file format for the returned export data. Default value is <code>CSV</code>.</p>
-function M.StartExportTaskRequest(exportDataFormat, ...)
+-- @param _exportDataFormat [ExportDataFormats] <p>The file format for the returned export data. Default value is <code>CSV</code>.</p>
+function M.StartExportTaskRequest(_exportDataFormat, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartExportTaskRequest")
 	local t = { 
-		["exportDataFormat"] = exportDataFormat,
+		["exportDataFormat"] = _exportDataFormat,
 	}
-	M.AssertStartExportTaskRequest(t)
+	asserts.AssertStartExportTaskRequest(t)
 	return t
 end
 
-local DescribeExportTasksResponse_keys = { "exportsInfo" = true, "nextToken" = true, nil }
+keys.DescribeExportTasksResponse = { ["exportsInfo"] = true, ["nextToken"] = true, nil }
 
-function M.AssertDescribeExportTasksResponse(struct)
+function asserts.AssertDescribeExportTasksResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeExportTasksResponse to be of type 'table'")
-	if struct["exportsInfo"] then M.AssertExportsInfo(struct["exportsInfo"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
+	if struct["exportsInfo"] then asserts.AssertExportsInfo(struct["exportsInfo"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeExportTasksResponse_keys[k], "DescribeExportTasksResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeExportTasksResponse[k], "DescribeExportTasksResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeExportTasksResponse
 --  
--- @param exportsInfo [ExportsInfo] <p>Contains one or more sets of export request details. When the status of a request is <code>SUCCEEDED</code>, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
--- @param nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeExportTasks</code> request. When the results of a <code>DescribeExportTasks</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</p>
-function M.DescribeExportTasksResponse(exportsInfo, nextToken, ...)
+-- @param _exportsInfo [ExportsInfo] <p>Contains one or more sets of export request details. When the status of a request is <code>SUCCEEDED</code>, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
+-- @param _nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeExportTasks</code> request. When the results of a <code>DescribeExportTasks</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</p>
+function M.DescribeExportTasksResponse(_exportsInfo, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksResponse")
 	local t = { 
-		["exportsInfo"] = exportsInfo,
-		["nextToken"] = nextToken,
+		["exportsInfo"] = _exportsInfo,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertDescribeExportTasksResponse(t)
+	asserts.AssertDescribeExportTasksResponse(t)
 	return t
 end
 
-local DeleteTagsRequest_keys = { "configurationIds" = true, "tags" = true, nil }
+keys.DeleteTagsRequest = { ["configurationIds"] = true, ["tags"] = true, nil }
 
-function M.AssertDeleteTagsRequest(struct)
+function asserts.AssertDeleteTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTagsRequest to be of type 'table'")
 	assert(struct["configurationIds"], "Expected key configurationIds to exist in table")
-	if struct["configurationIds"] then M.AssertConfigurationIdList(struct["configurationIds"]) end
-	if struct["tags"] then M.AssertTagSet(struct["tags"]) end
+	if struct["configurationIds"] then asserts.AssertConfigurationIdList(struct["configurationIds"]) end
+	if struct["tags"] then asserts.AssertTagSet(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteTagsRequest_keys[k], "DeleteTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteTagsRequest[k], "DeleteTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteTagsRequest
 --  
--- @param configurationIds [ConfigurationIdList] <p>A list of configuration items with tags that you want to delete.</p>
--- @param tags [TagSet] <p>Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
+-- @param _configurationIds [ConfigurationIdList] <p>A list of configuration items with tags that you want to delete.</p>
+-- @param _tags [TagSet] <p>Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
 -- Required parameter: configurationIds
-function M.DeleteTagsRequest(configurationIds, tags, ...)
+function M.DeleteTagsRequest(_configurationIds, _tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsRequest")
 	local t = { 
-		["configurationIds"] = configurationIds,
-		["tags"] = tags,
+		["configurationIds"] = _configurationIds,
+		["tags"] = _tags,
 	}
-	M.AssertDeleteTagsRequest(t)
+	asserts.AssertDeleteTagsRequest(t)
 	return t
 end
 
-local AgentConfigurationStatus_keys = { "operationSucceeded" = true, "agentId" = true, "description" = true, nil }
+keys.AgentConfigurationStatus = { ["operationSucceeded"] = true, ["agentId"] = true, ["description"] = true, nil }
 
-function M.AssertAgentConfigurationStatus(struct)
+function asserts.AssertAgentConfigurationStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AgentConfigurationStatus to be of type 'table'")
-	if struct["operationSucceeded"] then M.AssertBoolean(struct["operationSucceeded"]) end
-	if struct["agentId"] then M.AssertString(struct["agentId"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["operationSucceeded"] then asserts.AssertBoolean(struct["operationSucceeded"]) end
+	if struct["agentId"] then asserts.AssertString(struct["agentId"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(AgentConfigurationStatus_keys[k], "AgentConfigurationStatus contains unknown key " .. tostring(k))
+		assert(keys.AgentConfigurationStatus[k], "AgentConfigurationStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AgentConfigurationStatus
 -- <p>Information about agents or connectors that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation, and whether the agent/connector configuration was updated.</p>
--- @param operationSucceeded [Boolean] <p>Information about the status of the <code>StartDataCollection</code> and <code>StopDataCollection</code> operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command. </p>
--- @param agentId [String] <p>The agent/connector ID.</p>
--- @param description [String] <p>A description of the operation performed.</p>
-function M.AgentConfigurationStatus(operationSucceeded, agentId, description, ...)
+-- @param _operationSucceeded [Boolean] <p>Information about the status of the <code>StartDataCollection</code> and <code>StopDataCollection</code> operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command. </p>
+-- @param _agentId [String] <p>The agent/connector ID.</p>
+-- @param _description [String] <p>A description of the operation performed.</p>
+function M.AgentConfigurationStatus(_operationSucceeded, _agentId, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentConfigurationStatus")
 	local t = { 
-		["operationSucceeded"] = operationSucceeded,
-		["agentId"] = agentId,
-		["description"] = description,
+		["operationSucceeded"] = _operationSucceeded,
+		["agentId"] = _agentId,
+		["description"] = _description,
 	}
-	M.AssertAgentConfigurationStatus(t)
+	asserts.AssertAgentConfigurationStatus(t)
 	return t
 end
 
-local UpdateApplicationResponse_keys = { nil }
+keys.UpdateApplicationResponse = { nil }
 
-function M.AssertUpdateApplicationResponse(struct)
+function asserts.AssertUpdateApplicationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateApplicationResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateApplicationResponse_keys[k], "UpdateApplicationResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateApplicationResponse[k], "UpdateApplicationResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -807,254 +810,254 @@ function M.UpdateApplicationResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationResponse")
 	local t = { 
 	}
-	M.AssertUpdateApplicationResponse(t)
+	asserts.AssertUpdateApplicationResponse(t)
 	return t
 end
 
-local AuthorizationErrorException_keys = { "message" = true, nil }
+keys.AuthorizationErrorException = { ["message"] = true, nil }
 
-function M.AssertAuthorizationErrorException(struct)
+function asserts.AssertAuthorizationErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AuthorizationErrorException to be of type 'table'")
-	if struct["message"] then M.AssertMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AuthorizationErrorException_keys[k], "AuthorizationErrorException contains unknown key " .. tostring(k))
+		assert(keys.AuthorizationErrorException[k], "AuthorizationErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AuthorizationErrorException
 -- <p>The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.</p>
--- @param message [Message] <p>The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.</p>
-function M.AuthorizationErrorException(message, ...)
+-- @param _message [Message] 
+function M.AuthorizationErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAuthorizationErrorException(t)
+	asserts.AssertAuthorizationErrorException(t)
 	return t
 end
 
-local OrderByElement_keys = { "fieldName" = true, "sortOrder" = true, nil }
+keys.OrderByElement = { ["fieldName"] = true, ["sortOrder"] = true, nil }
 
-function M.AssertOrderByElement(struct)
+function asserts.AssertOrderByElement(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OrderByElement to be of type 'table'")
 	assert(struct["fieldName"], "Expected key fieldName to exist in table")
-	if struct["fieldName"] then M.AssertString(struct["fieldName"]) end
-	if struct["sortOrder"] then M.AssertorderString(struct["sortOrder"]) end
+	if struct["fieldName"] then asserts.AssertString(struct["fieldName"]) end
+	if struct["sortOrder"] then asserts.AssertorderString(struct["sortOrder"]) end
 	for k,_ in pairs(struct) do
-		assert(OrderByElement_keys[k], "OrderByElement contains unknown key " .. tostring(k))
+		assert(keys.OrderByElement[k], "OrderByElement contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type OrderByElement
 -- <p>A field and direction for ordered output.</p>
--- @param fieldName [String] <p>The field on which to order.</p>
--- @param sortOrder [orderString] <p>Ordering direction.</p>
+-- @param _fieldName [String] <p>The field on which to order.</p>
+-- @param _sortOrder [orderString] <p>Ordering direction.</p>
 -- Required parameter: fieldName
-function M.OrderByElement(fieldName, sortOrder, ...)
+function M.OrderByElement(_fieldName, _sortOrder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrderByElement")
 	local t = { 
-		["fieldName"] = fieldName,
-		["sortOrder"] = sortOrder,
+		["fieldName"] = _fieldName,
+		["sortOrder"] = _sortOrder,
 	}
-	M.AssertOrderByElement(t)
+	asserts.AssertOrderByElement(t)
 	return t
 end
 
-local ListServerNeighborsRequest_keys = { "nextToken" = true, "configurationId" = true, "portInformationNeeded" = true, "maxResults" = true, "neighborConfigurationIds" = true, nil }
+keys.ListServerNeighborsRequest = { ["nextToken"] = true, ["configurationId"] = true, ["portInformationNeeded"] = true, ["maxResults"] = true, ["neighborConfigurationIds"] = true, nil }
 
-function M.AssertListServerNeighborsRequest(struct)
+function asserts.AssertListServerNeighborsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListServerNeighborsRequest to be of type 'table'")
 	assert(struct["configurationId"], "Expected key configurationId to exist in table")
-	if struct["nextToken"] then M.AssertString(struct["nextToken"]) end
-	if struct["configurationId"] then M.AssertConfigurationId(struct["configurationId"]) end
-	if struct["portInformationNeeded"] then M.AssertBoolean(struct["portInformationNeeded"]) end
-	if struct["maxResults"] then M.AssertInteger(struct["maxResults"]) end
-	if struct["neighborConfigurationIds"] then M.AssertConfigurationIdList(struct["neighborConfigurationIds"]) end
+	if struct["nextToken"] then asserts.AssertString(struct["nextToken"]) end
+	if struct["configurationId"] then asserts.AssertConfigurationId(struct["configurationId"]) end
+	if struct["portInformationNeeded"] then asserts.AssertBoolean(struct["portInformationNeeded"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
+	if struct["neighborConfigurationIds"] then asserts.AssertConfigurationIdList(struct["neighborConfigurationIds"]) end
 	for k,_ in pairs(struct) do
-		assert(ListServerNeighborsRequest_keys[k], "ListServerNeighborsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListServerNeighborsRequest[k], "ListServerNeighborsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListServerNeighborsRequest
 --  
--- @param nextToken [String] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
--- @param configurationId [ConfigurationId] <p>Configuration ID of the server for which neighbors are being listed.</p>
--- @param portInformationNeeded [Boolean] <p>Flag to indicate if port and protocol information is needed as part of the response.</p>
--- @param maxResults [Integer] <p>Maximum number of results to return in a single page of output.</p>
--- @param neighborConfigurationIds [ConfigurationIdList] <p>List of configuration IDs to test for one-hop-away.</p>
+-- @param _nextToken [String] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- @param _configurationId [ConfigurationId] <p>Configuration ID of the server for which neighbors are being listed.</p>
+-- @param _portInformationNeeded [Boolean] <p>Flag to indicate if port and protocol information is needed as part of the response.</p>
+-- @param _maxResults [Integer] <p>Maximum number of results to return in a single page of output.</p>
+-- @param _neighborConfigurationIds [ConfigurationIdList] <p>List of configuration IDs to test for one-hop-away.</p>
 -- Required parameter: configurationId
-function M.ListServerNeighborsRequest(nextToken, configurationId, portInformationNeeded, maxResults, neighborConfigurationIds, ...)
+function M.ListServerNeighborsRequest(_nextToken, _configurationId, _portInformationNeeded, _maxResults, _neighborConfigurationIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListServerNeighborsRequest")
 	local t = { 
-		["nextToken"] = nextToken,
-		["configurationId"] = configurationId,
-		["portInformationNeeded"] = portInformationNeeded,
-		["maxResults"] = maxResults,
-		["neighborConfigurationIds"] = neighborConfigurationIds,
+		["nextToken"] = _nextToken,
+		["configurationId"] = _configurationId,
+		["portInformationNeeded"] = _portInformationNeeded,
+		["maxResults"] = _maxResults,
+		["neighborConfigurationIds"] = _neighborConfigurationIds,
 	}
-	M.AssertListServerNeighborsRequest(t)
+	asserts.AssertListServerNeighborsRequest(t)
 	return t
 end
 
-local StopDataCollectionByAgentIdsRequest_keys = { "agentIds" = true, nil }
+keys.StopDataCollectionByAgentIdsRequest = { ["agentIds"] = true, nil }
 
-function M.AssertStopDataCollectionByAgentIdsRequest(struct)
+function asserts.AssertStopDataCollectionByAgentIdsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopDataCollectionByAgentIdsRequest to be of type 'table'")
 	assert(struct["agentIds"], "Expected key agentIds to exist in table")
-	if struct["agentIds"] then M.AssertAgentIds(struct["agentIds"]) end
+	if struct["agentIds"] then asserts.AssertAgentIds(struct["agentIds"]) end
 	for k,_ in pairs(struct) do
-		assert(StopDataCollectionByAgentIdsRequest_keys[k], "StopDataCollectionByAgentIdsRequest contains unknown key " .. tostring(k))
+		assert(keys.StopDataCollectionByAgentIdsRequest[k], "StopDataCollectionByAgentIdsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopDataCollectionByAgentIdsRequest
 --  
--- @param agentIds [AgentIds] <p>The IDs of the agents or connectors from which to stop collecting data.</p>
+-- @param _agentIds [AgentIds] <p>The IDs of the agents or connectors from which to stop collecting data.</p>
 -- Required parameter: agentIds
-function M.StopDataCollectionByAgentIdsRequest(agentIds, ...)
+function M.StopDataCollectionByAgentIdsRequest(_agentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopDataCollectionByAgentIdsRequest")
 	local t = { 
-		["agentIds"] = agentIds,
+		["agentIds"] = _agentIds,
 	}
-	M.AssertStopDataCollectionByAgentIdsRequest(t)
+	asserts.AssertStopDataCollectionByAgentIdsRequest(t)
 	return t
 end
 
-local Filter_keys = { "values" = true, "name" = true, "condition" = true, nil }
+keys.Filter = { ["values"] = true, ["name"] = true, ["condition"] = true, nil }
 
-function M.AssertFilter(struct)
+function asserts.AssertFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Filter to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["values"], "Expected key values to exist in table")
 	assert(struct["condition"], "Expected key condition to exist in table")
-	if struct["values"] then M.AssertFilterValues(struct["values"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["condition"] then M.AssertCondition(struct["condition"]) end
+	if struct["values"] then asserts.AssertFilterValues(struct["values"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["condition"] then asserts.AssertCondition(struct["condition"]) end
 	for k,_ in pairs(struct) do
-		assert(Filter_keys[k], "Filter contains unknown key " .. tostring(k))
+		assert(keys.Filter[k], "Filter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Filter
 -- <p>A filter that can use conditional operators.</p> <p>For more information about filters, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html">Querying Discovered Configuration Items</a>. </p>
--- @param values [FilterValues] <p>A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.</p>
--- @param name [String] <p>The name of the filter.</p>
--- @param condition [Condition] <p>A conditional operator. The following operators are valid: EQUALS, NOT_EQUALS, CONTAINS, NOT_CONTAINS. If you specify multiple filters, the system utilizes all filters as though concatenated by <i>AND</i>. If you specify multiple values for a particular filter, the system differentiates the values using <i>OR</i>. Calling either <i>DescribeConfigurations</i> or <i>ListConfigurations</i> returns attributes of matching configuration items.</p>
+-- @param _values [FilterValues] <p>A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.</p>
+-- @param _name [String] <p>The name of the filter.</p>
+-- @param _condition [Condition] <p>A conditional operator. The following operators are valid: EQUALS, NOT_EQUALS, CONTAINS, NOT_CONTAINS. If you specify multiple filters, the system utilizes all filters as though concatenated by <i>AND</i>. If you specify multiple values for a particular filter, the system differentiates the values using <i>OR</i>. Calling either <i>DescribeConfigurations</i> or <i>ListConfigurations</i> returns attributes of matching configuration items.</p>
 -- Required parameter: name
 -- Required parameter: values
 -- Required parameter: condition
-function M.Filter(values, name, condition, ...)
+function M.Filter(_values, _name, _condition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Filter")
 	local t = { 
-		["values"] = values,
-		["name"] = name,
-		["condition"] = condition,
+		["values"] = _values,
+		["name"] = _name,
+		["condition"] = _condition,
 	}
-	M.AssertFilter(t)
+	asserts.AssertFilter(t)
 	return t
 end
 
-local InvalidParameterValueException_keys = { "message" = true, nil }
+keys.InvalidParameterValueException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterValueException(struct)
+function asserts.AssertInvalidParameterValueException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterValueException to be of type 'table'")
-	if struct["message"] then M.AssertMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterValueException_keys[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterValueException[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.</p>
--- @param message [Message] <p>The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.</p>
-function M.InvalidParameterValueException(message, ...)
+-- @param _message [Message] 
+function M.InvalidParameterValueException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterValueException(t)
+	asserts.AssertInvalidParameterValueException(t)
 	return t
 end
 
-local ExportInfo_keys = { "exportId" = true, "exportRequestTime" = true, "exportStatus" = true, "statusMessage" = true, "configurationsDownloadUrl" = true, nil }
+keys.ExportInfo = { ["exportId"] = true, ["exportRequestTime"] = true, ["exportStatus"] = true, ["statusMessage"] = true, ["configurationsDownloadUrl"] = true, nil }
 
-function M.AssertExportInfo(struct)
+function asserts.AssertExportInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExportInfo to be of type 'table'")
 	assert(struct["exportId"], "Expected key exportId to exist in table")
 	assert(struct["exportStatus"], "Expected key exportStatus to exist in table")
 	assert(struct["statusMessage"], "Expected key statusMessage to exist in table")
 	assert(struct["exportRequestTime"], "Expected key exportRequestTime to exist in table")
-	if struct["exportId"] then M.AssertConfigurationsExportId(struct["exportId"]) end
-	if struct["exportRequestTime"] then M.AssertExportRequestTime(struct["exportRequestTime"]) end
-	if struct["exportStatus"] then M.AssertExportStatus(struct["exportStatus"]) end
-	if struct["statusMessage"] then M.AssertExportStatusMessage(struct["statusMessage"]) end
-	if struct["configurationsDownloadUrl"] then M.AssertConfigurationsDownloadUrl(struct["configurationsDownloadUrl"]) end
+	if struct["exportId"] then asserts.AssertConfigurationsExportId(struct["exportId"]) end
+	if struct["exportRequestTime"] then asserts.AssertExportRequestTime(struct["exportRequestTime"]) end
+	if struct["exportStatus"] then asserts.AssertExportStatus(struct["exportStatus"]) end
+	if struct["statusMessage"] then asserts.AssertExportStatusMessage(struct["statusMessage"]) end
+	if struct["configurationsDownloadUrl"] then asserts.AssertConfigurationsDownloadUrl(struct["configurationsDownloadUrl"]) end
 	for k,_ in pairs(struct) do
-		assert(ExportInfo_keys[k], "ExportInfo contains unknown key " .. tostring(k))
+		assert(keys.ExportInfo[k], "ExportInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExportInfo
 -- <p>Information regarding the export status of the discovered data. The value is an array of objects.</p>
--- @param exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export.</p>
--- @param exportRequestTime [ExportRequestTime] <p>The time that the configuration data export was initiated.</p>
--- @param exportStatus [ExportStatus] <p>The status of the configuration data export. The status can succeed, fail, or be in-progress.</p>
--- @param statusMessage [ExportStatusMessage] <p>Helpful status messages for API callers. For example: Too many exports in the last 6 hours. Export in progress. Export was successful.</p>
--- @param configurationsDownloadUrl [ConfigurationsDownloadUrl] <p>A URL for an Amazon S3 bucket where you can review the configuration data. The URL is displayed only if the export succeeded.</p>
+-- @param _exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export.</p>
+-- @param _exportRequestTime [ExportRequestTime] <p>The time that the configuration data export was initiated.</p>
+-- @param _exportStatus [ExportStatus] <p>The status of the configuration data export. The status can succeed, fail, or be in-progress.</p>
+-- @param _statusMessage [ExportStatusMessage] <p>Helpful status messages for API callers. For example: Too many exports in the last 6 hours. Export in progress. Export was successful.</p>
+-- @param _configurationsDownloadUrl [ConfigurationsDownloadUrl] <p>A URL for an Amazon S3 bucket where you can review the configuration data. The URL is displayed only if the export succeeded.</p>
 -- Required parameter: exportId
 -- Required parameter: exportStatus
 -- Required parameter: statusMessage
 -- Required parameter: exportRequestTime
-function M.ExportInfo(exportId, exportRequestTime, exportStatus, statusMessage, configurationsDownloadUrl, ...)
+function M.ExportInfo(_exportId, _exportRequestTime, _exportStatus, _statusMessage, _configurationsDownloadUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExportInfo")
 	local t = { 
-		["exportId"] = exportId,
-		["exportRequestTime"] = exportRequestTime,
-		["exportStatus"] = exportStatus,
-		["statusMessage"] = statusMessage,
-		["configurationsDownloadUrl"] = configurationsDownloadUrl,
+		["exportId"] = _exportId,
+		["exportRequestTime"] = _exportRequestTime,
+		["exportStatus"] = _exportStatus,
+		["statusMessage"] = _statusMessage,
+		["configurationsDownloadUrl"] = _configurationsDownloadUrl,
 	}
-	M.AssertExportInfo(t)
+	asserts.AssertExportInfo(t)
 	return t
 end
 
-local StartExportTaskResponse_keys = { "exportId" = true, nil }
+keys.StartExportTaskResponse = { ["exportId"] = true, nil }
 
-function M.AssertStartExportTaskResponse(struct)
+function asserts.AssertStartExportTaskResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartExportTaskResponse to be of type 'table'")
-	if struct["exportId"] then M.AssertConfigurationsExportId(struct["exportId"]) end
+	if struct["exportId"] then asserts.AssertConfigurationsExportId(struct["exportId"]) end
 	for k,_ in pairs(struct) do
-		assert(StartExportTaskResponse_keys[k], "StartExportTaskResponse contains unknown key " .. tostring(k))
+		assert(keys.StartExportTaskResponse[k], "StartExportTaskResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartExportTaskResponse
 --  
--- @param exportId [ConfigurationsExportId] <p> A unique identifier used to query the status of an export request.</p>
-function M.StartExportTaskResponse(exportId, ...)
+-- @param _exportId [ConfigurationsExportId] <p> A unique identifier used to query the status of an export request.</p>
+function M.StartExportTaskResponse(_exportId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartExportTaskResponse")
 	local t = { 
-		["exportId"] = exportId,
+		["exportId"] = _exportId,
 	}
-	M.AssertStartExportTaskResponse(t)
+	asserts.AssertStartExportTaskResponse(t)
 	return t
 end
 
-local AssociateConfigurationItemsToApplicationResponse_keys = { nil }
+keys.AssociateConfigurationItemsToApplicationResponse = { nil }
 
-function M.AssertAssociateConfigurationItemsToApplicationResponse(struct)
+function asserts.AssertAssociateConfigurationItemsToApplicationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateConfigurationItemsToApplicationResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AssociateConfigurationItemsToApplicationResponse_keys[k], "AssociateConfigurationItemsToApplicationResponse contains unknown key " .. tostring(k))
+		assert(keys.AssociateConfigurationItemsToApplicationResponse[k], "AssociateConfigurationItemsToApplicationResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1064,17 +1067,17 @@ function M.AssociateConfigurationItemsToApplicationResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateConfigurationItemsToApplicationResponse")
 	local t = { 
 	}
-	M.AssertAssociateConfigurationItemsToApplicationResponse(t)
+	asserts.AssertAssociateConfigurationItemsToApplicationResponse(t)
 	return t
 end
 
-local CreateTagsResponse_keys = { nil }
+keys.CreateTagsResponse = { nil }
 
-function M.AssertCreateTagsResponse(struct)
+function asserts.AssertCreateTagsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTagsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CreateTagsResponse_keys[k], "CreateTagsResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateTagsResponse[k], "CreateTagsResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1084,155 +1087,155 @@ function M.CreateTagsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsResponse")
 	local t = { 
 	}
-	M.AssertCreateTagsResponse(t)
+	asserts.AssertCreateTagsResponse(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "message" = true, nil }
+keys.ResourceNotFoundException = { ["message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified configuration ID was not located. Verify the configuration ID and try again.</p>
--- @param message [Message] <p>The specified configuration ID was not located. Verify the configuration ID and try again.</p>
-function M.ResourceNotFoundException(message, ...)
+-- @param _message [Message] 
+function M.ResourceNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local GetDiscoverySummaryResponse_keys = { "serversMappedtoTags" = true, "agentSummary" = true, "servers" = true, "applications" = true, "serversMappedToApplications" = true, "connectorSummary" = true, nil }
+keys.GetDiscoverySummaryResponse = { ["serversMappedtoTags"] = true, ["agentSummary"] = true, ["servers"] = true, ["applications"] = true, ["serversMappedToApplications"] = true, ["connectorSummary"] = true, nil }
 
-function M.AssertGetDiscoverySummaryResponse(struct)
+function asserts.AssertGetDiscoverySummaryResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDiscoverySummaryResponse to be of type 'table'")
-	if struct["serversMappedtoTags"] then M.AssertLong(struct["serversMappedtoTags"]) end
-	if struct["agentSummary"] then M.AssertCustomerAgentInfo(struct["agentSummary"]) end
-	if struct["servers"] then M.AssertLong(struct["servers"]) end
-	if struct["applications"] then M.AssertLong(struct["applications"]) end
-	if struct["serversMappedToApplications"] then M.AssertLong(struct["serversMappedToApplications"]) end
-	if struct["connectorSummary"] then M.AssertCustomerConnectorInfo(struct["connectorSummary"]) end
+	if struct["serversMappedtoTags"] then asserts.AssertLong(struct["serversMappedtoTags"]) end
+	if struct["agentSummary"] then asserts.AssertCustomerAgentInfo(struct["agentSummary"]) end
+	if struct["servers"] then asserts.AssertLong(struct["servers"]) end
+	if struct["applications"] then asserts.AssertLong(struct["applications"]) end
+	if struct["serversMappedToApplications"] then asserts.AssertLong(struct["serversMappedToApplications"]) end
+	if struct["connectorSummary"] then asserts.AssertCustomerConnectorInfo(struct["connectorSummary"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDiscoverySummaryResponse_keys[k], "GetDiscoverySummaryResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDiscoverySummaryResponse[k], "GetDiscoverySummaryResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDiscoverySummaryResponse
 --  
--- @param serversMappedtoTags [Long] <p>The number of servers mapped to tags.</p>
--- @param agentSummary [CustomerAgentInfo] <p>Details about discovered agents, including agent status and health.</p>
--- @param servers [Long] <p>The number of servers discovered.</p>
--- @param applications [Long] <p>The number of applications discovered.</p>
--- @param serversMappedToApplications [Long] <p>The number of servers mapped to applications.</p>
--- @param connectorSummary [CustomerConnectorInfo] <p>Details about discovered connectors, including connector status and health.</p>
-function M.GetDiscoverySummaryResponse(serversMappedtoTags, agentSummary, servers, applications, serversMappedToApplications, connectorSummary, ...)
+-- @param _serversMappedtoTags [Long] <p>The number of servers mapped to tags.</p>
+-- @param _agentSummary [CustomerAgentInfo] <p>Details about discovered agents, including agent status and health.</p>
+-- @param _servers [Long] <p>The number of servers discovered.</p>
+-- @param _applications [Long] <p>The number of applications discovered.</p>
+-- @param _serversMappedToApplications [Long] <p>The number of servers mapped to applications.</p>
+-- @param _connectorSummary [CustomerConnectorInfo] <p>Details about discovered connectors, including connector status and health.</p>
+function M.GetDiscoverySummaryResponse(_serversMappedtoTags, _agentSummary, _servers, _applications, _serversMappedToApplications, _connectorSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDiscoverySummaryResponse")
 	local t = { 
-		["serversMappedtoTags"] = serversMappedtoTags,
-		["agentSummary"] = agentSummary,
-		["servers"] = servers,
-		["applications"] = applications,
-		["serversMappedToApplications"] = serversMappedToApplications,
-		["connectorSummary"] = connectorSummary,
+		["serversMappedtoTags"] = _serversMappedtoTags,
+		["agentSummary"] = _agentSummary,
+		["servers"] = _servers,
+		["applications"] = _applications,
+		["serversMappedToApplications"] = _serversMappedToApplications,
+		["connectorSummary"] = _connectorSummary,
 	}
-	M.AssertGetDiscoverySummaryResponse(t)
+	asserts.AssertGetDiscoverySummaryResponse(t)
 	return t
 end
 
-local DescribeExportConfigurationsResponse_keys = { "exportsInfo" = true, "nextToken" = true, nil }
+keys.DescribeExportConfigurationsResponse = { ["exportsInfo"] = true, ["nextToken"] = true, nil }
 
-function M.AssertDescribeExportConfigurationsResponse(struct)
+function asserts.AssertDescribeExportConfigurationsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeExportConfigurationsResponse to be of type 'table'")
-	if struct["exportsInfo"] then M.AssertExportsInfo(struct["exportsInfo"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
+	if struct["exportsInfo"] then asserts.AssertExportsInfo(struct["exportsInfo"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeExportConfigurationsResponse_keys[k], "DescribeExportConfigurationsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeExportConfigurationsResponse[k], "DescribeExportConfigurationsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeExportConfigurationsResponse
 --  
--- @param exportsInfo [ExportsInfo] <p>Returns export details. When the status is complete, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
--- @param nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
-function M.DescribeExportConfigurationsResponse(exportsInfo, nextToken, ...)
+-- @param _exportsInfo [ExportsInfo] <p>Returns export details. When the status is complete, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
+-- @param _nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+function M.DescribeExportConfigurationsResponse(_exportsInfo, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportConfigurationsResponse")
 	local t = { 
-		["exportsInfo"] = exportsInfo,
-		["nextToken"] = nextToken,
+		["exportsInfo"] = _exportsInfo,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertDescribeExportConfigurationsResponse(t)
+	asserts.AssertDescribeExportConfigurationsResponse(t)
 	return t
 end
 
-local DescribeTagsResponse_keys = { "nextToken" = true, "tags" = true, nil }
+keys.DescribeTagsResponse = { ["nextToken"] = true, ["tags"] = true, nil }
 
-function M.AssertDescribeTagsResponse(struct)
+function asserts.AssertDescribeTagsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTagsResponse to be of type 'table'")
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["tags"] then M.AssertConfigurationTagSet(struct["tags"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["tags"] then asserts.AssertConfigurationTagSet(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTagsResponse_keys[k], "DescribeTagsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeTagsResponse[k], "DescribeTagsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTagsResponse
 --  
--- @param nextToken [NextToken] <p>The call returns a token. Use this token to get the next set of results.</p>
--- @param tags [ConfigurationTagSet] <p>Depending on the input, this is a list of configuration items tagged with a specific tag, or a list of tags for a specific configuration item.</p>
-function M.DescribeTagsResponse(nextToken, tags, ...)
+-- @param _nextToken [NextToken] <p>The call returns a token. Use this token to get the next set of results.</p>
+-- @param _tags [ConfigurationTagSet] <p>Depending on the input, this is a list of configuration items tagged with a specific tag, or a list of tags for a specific configuration item.</p>
+function M.DescribeTagsResponse(_nextToken, _tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["tags"] = tags,
+		["nextToken"] = _nextToken,
+		["tags"] = _tags,
 	}
-	M.AssertDescribeTagsResponse(t)
+	asserts.AssertDescribeTagsResponse(t)
 	return t
 end
 
-local DescribeConfigurationsRequest_keys = { "configurationIds" = true, nil }
+keys.DescribeConfigurationsRequest = { ["configurationIds"] = true, nil }
 
-function M.AssertDescribeConfigurationsRequest(struct)
+function asserts.AssertDescribeConfigurationsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeConfigurationsRequest to be of type 'table'")
 	assert(struct["configurationIds"], "Expected key configurationIds to exist in table")
-	if struct["configurationIds"] then M.AssertConfigurationIdList(struct["configurationIds"]) end
+	if struct["configurationIds"] then asserts.AssertConfigurationIdList(struct["configurationIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeConfigurationsRequest_keys[k], "DescribeConfigurationsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeConfigurationsRequest[k], "DescribeConfigurationsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeConfigurationsRequest
 --  
--- @param configurationIds [ConfigurationIdList] <p>One or more configuration IDs.</p>
+-- @param _configurationIds [ConfigurationIdList] <p>One or more configuration IDs.</p>
 -- Required parameter: configurationIds
-function M.DescribeConfigurationsRequest(configurationIds, ...)
+function M.DescribeConfigurationsRequest(_configurationIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationsRequest")
 	local t = { 
-		["configurationIds"] = configurationIds,
+		["configurationIds"] = _configurationIds,
 	}
-	M.AssertDescribeConfigurationsRequest(t)
+	asserts.AssertDescribeConfigurationsRequest(t)
 	return t
 end
 
-local GetDiscoverySummaryRequest_keys = { nil }
+keys.GetDiscoverySummaryRequest = { nil }
 
-function M.AssertGetDiscoverySummaryRequest(struct)
+function asserts.AssertGetDiscoverySummaryRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDiscoverySummaryRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(GetDiscoverySummaryRequest_keys[k], "GetDiscoverySummaryRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDiscoverySummaryRequest[k], "GetDiscoverySummaryRequest contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1242,13 +1245,13 @@ function M.GetDiscoverySummaryRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDiscoverySummaryRequest")
 	local t = { 
 	}
-	M.AssertGetDiscoverySummaryRequest(t)
+	asserts.AssertGetDiscoverySummaryRequest(t)
 	return t
 end
 
-local CustomerConnectorInfo_keys = { "shutdownConnectors" = true, "activeConnectors" = true, "unhealthyConnectors" = true, "blackListedConnectors" = true, "unknownConnectors" = true, "totalConnectors" = true, "healthyConnectors" = true, nil }
+keys.CustomerConnectorInfo = { ["shutdownConnectors"] = true, ["activeConnectors"] = true, ["unhealthyConnectors"] = true, ["blackListedConnectors"] = true, ["unknownConnectors"] = true, ["totalConnectors"] = true, ["healthyConnectors"] = true, nil }
 
-function M.AssertCustomerConnectorInfo(struct)
+function asserts.AssertCustomerConnectorInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CustomerConnectorInfo to be of type 'table'")
 	assert(struct["activeConnectors"], "Expected key activeConnectors to exist in table")
@@ -1258,27 +1261,27 @@ function M.AssertCustomerConnectorInfo(struct)
 	assert(struct["unhealthyConnectors"], "Expected key unhealthyConnectors to exist in table")
 	assert(struct["totalConnectors"], "Expected key totalConnectors to exist in table")
 	assert(struct["unknownConnectors"], "Expected key unknownConnectors to exist in table")
-	if struct["shutdownConnectors"] then M.AssertInteger(struct["shutdownConnectors"]) end
-	if struct["activeConnectors"] then M.AssertInteger(struct["activeConnectors"]) end
-	if struct["unhealthyConnectors"] then M.AssertInteger(struct["unhealthyConnectors"]) end
-	if struct["blackListedConnectors"] then M.AssertInteger(struct["blackListedConnectors"]) end
-	if struct["unknownConnectors"] then M.AssertInteger(struct["unknownConnectors"]) end
-	if struct["totalConnectors"] then M.AssertInteger(struct["totalConnectors"]) end
-	if struct["healthyConnectors"] then M.AssertInteger(struct["healthyConnectors"]) end
+	if struct["shutdownConnectors"] then asserts.AssertInteger(struct["shutdownConnectors"]) end
+	if struct["activeConnectors"] then asserts.AssertInteger(struct["activeConnectors"]) end
+	if struct["unhealthyConnectors"] then asserts.AssertInteger(struct["unhealthyConnectors"]) end
+	if struct["blackListedConnectors"] then asserts.AssertInteger(struct["blackListedConnectors"]) end
+	if struct["unknownConnectors"] then asserts.AssertInteger(struct["unknownConnectors"]) end
+	if struct["totalConnectors"] then asserts.AssertInteger(struct["totalConnectors"]) end
+	if struct["healthyConnectors"] then asserts.AssertInteger(struct["healthyConnectors"]) end
 	for k,_ in pairs(struct) do
-		assert(CustomerConnectorInfo_keys[k], "CustomerConnectorInfo contains unknown key " .. tostring(k))
+		assert(keys.CustomerConnectorInfo[k], "CustomerConnectorInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CustomerConnectorInfo
 -- <p>Inventory data for installed discovery connectors.</p>
--- @param shutdownConnectors [Integer] <p>Number of discovery connectors with status SHUTDOWN,</p>
--- @param activeConnectors [Integer] <p>Number of active discovery connectors.</p>
--- @param unhealthyConnectors [Integer] <p>Number of unhealthy discovery connectors.</p>
--- @param blackListedConnectors [Integer] <p>Number of blacklisted discovery connectors.</p>
--- @param unknownConnectors [Integer] <p>Number of unknown discovery connectors.</p>
--- @param totalConnectors [Integer] <p>Total number of discovery connectors.</p>
--- @param healthyConnectors [Integer] <p>Number of healthy discovery connectors.</p>
+-- @param _shutdownConnectors [Integer] <p>Number of discovery connectors with status SHUTDOWN,</p>
+-- @param _activeConnectors [Integer] <p>Number of active discovery connectors.</p>
+-- @param _unhealthyConnectors [Integer] <p>Number of unhealthy discovery connectors.</p>
+-- @param _blackListedConnectors [Integer] <p>Number of blacklisted discovery connectors.</p>
+-- @param _unknownConnectors [Integer] <p>Number of unknown discovery connectors.</p>
+-- @param _totalConnectors [Integer] <p>Total number of discovery connectors.</p>
+-- @param _healthyConnectors [Integer] <p>Number of healthy discovery connectors.</p>
 -- Required parameter: activeConnectors
 -- Required parameter: healthyConnectors
 -- Required parameter: blackListedConnectors
@@ -1286,192 +1289,192 @@ end
 -- Required parameter: unhealthyConnectors
 -- Required parameter: totalConnectors
 -- Required parameter: unknownConnectors
-function M.CustomerConnectorInfo(shutdownConnectors, activeConnectors, unhealthyConnectors, blackListedConnectors, unknownConnectors, totalConnectors, healthyConnectors, ...)
+function M.CustomerConnectorInfo(_shutdownConnectors, _activeConnectors, _unhealthyConnectors, _blackListedConnectors, _unknownConnectors, _totalConnectors, _healthyConnectors, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomerConnectorInfo")
 	local t = { 
-		["shutdownConnectors"] = shutdownConnectors,
-		["activeConnectors"] = activeConnectors,
-		["unhealthyConnectors"] = unhealthyConnectors,
-		["blackListedConnectors"] = blackListedConnectors,
-		["unknownConnectors"] = unknownConnectors,
-		["totalConnectors"] = totalConnectors,
-		["healthyConnectors"] = healthyConnectors,
+		["shutdownConnectors"] = _shutdownConnectors,
+		["activeConnectors"] = _activeConnectors,
+		["unhealthyConnectors"] = _unhealthyConnectors,
+		["blackListedConnectors"] = _blackListedConnectors,
+		["unknownConnectors"] = _unknownConnectors,
+		["totalConnectors"] = _totalConnectors,
+		["healthyConnectors"] = _healthyConnectors,
 	}
-	M.AssertCustomerConnectorInfo(t)
+	asserts.AssertCustomerConnectorInfo(t)
 	return t
 end
 
-local DescribeExportTasksRequest_keys = { "exportIds" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.DescribeExportTasksRequest = { ["exportIds"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertDescribeExportTasksRequest(struct)
+function asserts.AssertDescribeExportTasksRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeExportTasksRequest to be of type 'table'")
-	if struct["exportIds"] then M.AssertExportIds(struct["exportIds"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertInteger(struct["maxResults"]) end
+	if struct["exportIds"] then asserts.AssertExportIds(struct["exportIds"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeExportTasksRequest_keys[k], "DescribeExportTasksRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeExportTasksRequest[k], "DescribeExportTasksRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeExportTasksRequest
 --  
--- @param exportIds [ExportIds] <p>One or more unique identifiers used to query the status of an export request.</p>
--- @param nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is null when there are no more results to return.</p>
--- @param maxResults [Integer] <p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
-function M.DescribeExportTasksRequest(exportIds, nextToken, maxResults, ...)
+-- @param _exportIds [ExportIds] <p>One or more unique identifiers used to query the status of an export request.</p>
+-- @param _nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is null when there are no more results to return.</p>
+-- @param _maxResults [Integer] <p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
+function M.DescribeExportTasksRequest(_exportIds, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksRequest")
 	local t = { 
-		["exportIds"] = exportIds,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["exportIds"] = _exportIds,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertDescribeExportTasksRequest(t)
+	asserts.AssertDescribeExportTasksRequest(t)
 	return t
 end
 
-local InvalidParameterException_keys = { "message" = true, nil }
+keys.InvalidParameterException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterException(struct)
+function asserts.AssertInvalidParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["message"] then M.AssertMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterException_keys[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterException
 -- <p>One or more parameters are not valid. Verify the parameters and try again.</p>
--- @param message [Message] <p>One or more parameters are not valid. Verify the parameters and try again.</p>
-function M.InvalidParameterException(message, ...)
+-- @param _message [Message] 
+function M.InvalidParameterException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterException(t)
+	asserts.AssertInvalidParameterException(t)
 	return t
 end
 
-local CreateApplicationRequest_keys = { "name" = true, "description" = true, nil }
+keys.CreateApplicationRequest = { ["name"] = true, ["description"] = true, nil }
 
-function M.AssertCreateApplicationRequest(struct)
+function asserts.AssertCreateApplicationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateApplicationRequest to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateApplicationRequest_keys[k], "CreateApplicationRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateApplicationRequest[k], "CreateApplicationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateApplicationRequest
 --  
--- @param name [String] <p>Name of the application to be created.</p>
--- @param description [String] <p>Description of the application to be created.</p>
+-- @param _name [String] <p>Name of the application to be created.</p>
+-- @param _description [String] <p>Description of the application to be created.</p>
 -- Required parameter: name
-function M.CreateApplicationRequest(name, description, ...)
+function M.CreateApplicationRequest(_name, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationRequest")
 	local t = { 
-		["name"] = name,
-		["description"] = description,
+		["name"] = _name,
+		["description"] = _description,
 	}
-	M.AssertCreateApplicationRequest(t)
+	asserts.AssertCreateApplicationRequest(t)
 	return t
 end
 
-local ConfigurationTag_keys = { "timeOfCreation" = true, "configurationId" = true, "value" = true, "key" = true, "configurationType" = true, nil }
+keys.ConfigurationTag = { ["timeOfCreation"] = true, ["configurationId"] = true, ["value"] = true, ["key"] = true, ["configurationType"] = true, nil }
 
-function M.AssertConfigurationTag(struct)
+function asserts.AssertConfigurationTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfigurationTag to be of type 'table'")
-	if struct["timeOfCreation"] then M.AssertTimeStamp(struct["timeOfCreation"]) end
-	if struct["configurationId"] then M.AssertConfigurationId(struct["configurationId"]) end
-	if struct["value"] then M.AssertTagValue(struct["value"]) end
-	if struct["key"] then M.AssertTagKey(struct["key"]) end
-	if struct["configurationType"] then M.AssertConfigurationItemType(struct["configurationType"]) end
+	if struct["timeOfCreation"] then asserts.AssertTimeStamp(struct["timeOfCreation"]) end
+	if struct["configurationId"] then asserts.AssertConfigurationId(struct["configurationId"]) end
+	if struct["value"] then asserts.AssertTagValue(struct["value"]) end
+	if struct["key"] then asserts.AssertTagKey(struct["key"]) end
+	if struct["configurationType"] then asserts.AssertConfigurationItemType(struct["configurationType"]) end
 	for k,_ in pairs(struct) do
-		assert(ConfigurationTag_keys[k], "ConfigurationTag contains unknown key " .. tostring(k))
+		assert(keys.ConfigurationTag[k], "ConfigurationTag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConfigurationTag
 -- <p>Tags for a configuration item. Tags are metadata that help you categorize IT assets.</p>
--- @param timeOfCreation [TimeStamp] <p>The time the configuration tag was created in Coordinated Universal Time (UTC).</p>
--- @param configurationId [ConfigurationId] <p>The configuration ID for the item to tag. You can specify a list of keys and values.</p>
--- @param value [TagValue] <p>A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.</p>
--- @param key [TagKey] <p>A type of tag on which to filter. For example, <i>serverType</i>.</p>
--- @param configurationType [ConfigurationItemType] <p>A type of IT asset to tag.</p>
-function M.ConfigurationTag(timeOfCreation, configurationId, value, key, configurationType, ...)
+-- @param _timeOfCreation [TimeStamp] <p>The time the configuration tag was created in Coordinated Universal Time (UTC).</p>
+-- @param _configurationId [ConfigurationId] <p>The configuration ID for the item to tag. You can specify a list of keys and values.</p>
+-- @param _value [TagValue] <p>A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.</p>
+-- @param _key [TagKey] <p>A type of tag on which to filter. For example, <i>serverType</i>.</p>
+-- @param _configurationType [ConfigurationItemType] <p>A type of IT asset to tag.</p>
+function M.ConfigurationTag(_timeOfCreation, _configurationId, _value, _key, _configurationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationTag")
 	local t = { 
-		["timeOfCreation"] = timeOfCreation,
-		["configurationId"] = configurationId,
-		["value"] = value,
-		["key"] = key,
-		["configurationType"] = configurationType,
+		["timeOfCreation"] = _timeOfCreation,
+		["configurationId"] = _configurationId,
+		["value"] = _value,
+		["key"] = _key,
+		["configurationType"] = _configurationType,
 	}
-	M.AssertConfigurationTag(t)
+	asserts.AssertConfigurationTag(t)
 	return t
 end
 
-local TagFilter_keys = { "values" = true, "name" = true, nil }
+keys.TagFilter = { ["values"] = true, ["name"] = true, nil }
 
-function M.AssertTagFilter(struct)
+function asserts.AssertTagFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagFilter to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["values"], "Expected key values to exist in table")
-	if struct["values"] then M.AssertFilterValues(struct["values"]) end
-	if struct["name"] then M.AssertFilterName(struct["name"]) end
+	if struct["values"] then asserts.AssertFilterValues(struct["values"]) end
+	if struct["name"] then asserts.AssertFilterName(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(TagFilter_keys[k], "TagFilter contains unknown key " .. tostring(k))
+		assert(keys.TagFilter[k], "TagFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagFilter
 -- <p>The tag filter. Valid names are: <code>tagKey</code>, <code>tagValue</code>, <code>configurationId</code>.</p>
--- @param values [FilterValues] <p>Values for the tag filter.</p>
--- @param name [FilterName] <p>A name of the tag filter.</p>
+-- @param _values [FilterValues] <p>Values for the tag filter.</p>
+-- @param _name [FilterName] <p>A name of the tag filter.</p>
 -- Required parameter: name
 -- Required parameter: values
-function M.TagFilter(values, name, ...)
+function M.TagFilter(_values, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagFilter")
 	local t = { 
-		["values"] = values,
-		["name"] = name,
+		["values"] = _values,
+		["name"] = _name,
 	}
-	M.AssertTagFilter(t)
+	asserts.AssertTagFilter(t)
 	return t
 end
 
-local CreateApplicationResponse_keys = { "configurationId" = true, nil }
+keys.CreateApplicationResponse = { ["configurationId"] = true, nil }
 
-function M.AssertCreateApplicationResponse(struct)
+function asserts.AssertCreateApplicationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateApplicationResponse to be of type 'table'")
-	if struct["configurationId"] then M.AssertString(struct["configurationId"]) end
+	if struct["configurationId"] then asserts.AssertString(struct["configurationId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateApplicationResponse_keys[k], "CreateApplicationResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateApplicationResponse[k], "CreateApplicationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateApplicationResponse
 --  
--- @param configurationId [String] <p>Configuration ID of an application to be created.</p>
-function M.CreateApplicationResponse(configurationId, ...)
+-- @param _configurationId [String] <p>Configuration ID of an application to be created.</p>
+function M.CreateApplicationResponse(_configurationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationResponse")
 	local t = { 
-		["configurationId"] = configurationId,
+		["configurationId"] = _configurationId,
 	}
-	M.AssertCreateApplicationResponse(t)
+	asserts.AssertCreateApplicationResponse(t)
 	return t
 end
 
-local CustomerAgentInfo_keys = { "healthyAgents" = true, "unhealthyAgents" = true, "unknownAgents" = true, "activeAgents" = true, "shutdownAgents" = true, "totalAgents" = true, "blackListedAgents" = true, nil }
+keys.CustomerAgentInfo = { ["healthyAgents"] = true, ["unhealthyAgents"] = true, ["unknownAgents"] = true, ["activeAgents"] = true, ["shutdownAgents"] = true, ["totalAgents"] = true, ["blackListedAgents"] = true, nil }
 
-function M.AssertCustomerAgentInfo(struct)
+function asserts.AssertCustomerAgentInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CustomerAgentInfo to be of type 'table'")
 	assert(struct["activeAgents"], "Expected key activeAgents to exist in table")
@@ -1481,27 +1484,27 @@ function M.AssertCustomerAgentInfo(struct)
 	assert(struct["unhealthyAgents"], "Expected key unhealthyAgents to exist in table")
 	assert(struct["totalAgents"], "Expected key totalAgents to exist in table")
 	assert(struct["unknownAgents"], "Expected key unknownAgents to exist in table")
-	if struct["healthyAgents"] then M.AssertInteger(struct["healthyAgents"]) end
-	if struct["unhealthyAgents"] then M.AssertInteger(struct["unhealthyAgents"]) end
-	if struct["unknownAgents"] then M.AssertInteger(struct["unknownAgents"]) end
-	if struct["activeAgents"] then M.AssertInteger(struct["activeAgents"]) end
-	if struct["shutdownAgents"] then M.AssertInteger(struct["shutdownAgents"]) end
-	if struct["totalAgents"] then M.AssertInteger(struct["totalAgents"]) end
-	if struct["blackListedAgents"] then M.AssertInteger(struct["blackListedAgents"]) end
+	if struct["healthyAgents"] then asserts.AssertInteger(struct["healthyAgents"]) end
+	if struct["unhealthyAgents"] then asserts.AssertInteger(struct["unhealthyAgents"]) end
+	if struct["unknownAgents"] then asserts.AssertInteger(struct["unknownAgents"]) end
+	if struct["activeAgents"] then asserts.AssertInteger(struct["activeAgents"]) end
+	if struct["shutdownAgents"] then asserts.AssertInteger(struct["shutdownAgents"]) end
+	if struct["totalAgents"] then asserts.AssertInteger(struct["totalAgents"]) end
+	if struct["blackListedAgents"] then asserts.AssertInteger(struct["blackListedAgents"]) end
 	for k,_ in pairs(struct) do
-		assert(CustomerAgentInfo_keys[k], "CustomerAgentInfo contains unknown key " .. tostring(k))
+		assert(keys.CustomerAgentInfo[k], "CustomerAgentInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CustomerAgentInfo
 -- <p>Inventory data for installed discovery agents.</p>
--- @param healthyAgents [Integer] <p>Number of healthy discovery agents</p>
--- @param unhealthyAgents [Integer] <p>Number of unhealthy discovery agents.</p>
--- @param unknownAgents [Integer] <p>Number of unknown discovery agents.</p>
--- @param activeAgents [Integer] <p>Number of active discovery agents.</p>
--- @param shutdownAgents [Integer] <p>Number of discovery agents with status SHUTDOWN.</p>
--- @param totalAgents [Integer] <p>Total number of discovery agents.</p>
--- @param blackListedAgents [Integer] <p>Number of blacklisted discovery agents.</p>
+-- @param _healthyAgents [Integer] <p>Number of healthy discovery agents</p>
+-- @param _unhealthyAgents [Integer] <p>Number of unhealthy discovery agents.</p>
+-- @param _unknownAgents [Integer] <p>Number of unknown discovery agents.</p>
+-- @param _activeAgents [Integer] <p>Number of active discovery agents.</p>
+-- @param _shutdownAgents [Integer] <p>Number of discovery agents with status SHUTDOWN.</p>
+-- @param _totalAgents [Integer] <p>Total number of discovery agents.</p>
+-- @param _blackListedAgents [Integer] <p>Number of blacklisted discovery agents.</p>
 -- Required parameter: activeAgents
 -- Required parameter: healthyAgents
 -- Required parameter: blackListedAgents
@@ -1509,647 +1512,647 @@ end
 -- Required parameter: unhealthyAgents
 -- Required parameter: totalAgents
 -- Required parameter: unknownAgents
-function M.CustomerAgentInfo(healthyAgents, unhealthyAgents, unknownAgents, activeAgents, shutdownAgents, totalAgents, blackListedAgents, ...)
+function M.CustomerAgentInfo(_healthyAgents, _unhealthyAgents, _unknownAgents, _activeAgents, _shutdownAgents, _totalAgents, _blackListedAgents, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomerAgentInfo")
 	local t = { 
-		["healthyAgents"] = healthyAgents,
-		["unhealthyAgents"] = unhealthyAgents,
-		["unknownAgents"] = unknownAgents,
-		["activeAgents"] = activeAgents,
-		["shutdownAgents"] = shutdownAgents,
-		["totalAgents"] = totalAgents,
-		["blackListedAgents"] = blackListedAgents,
+		["healthyAgents"] = _healthyAgents,
+		["unhealthyAgents"] = _unhealthyAgents,
+		["unknownAgents"] = _unknownAgents,
+		["activeAgents"] = _activeAgents,
+		["shutdownAgents"] = _shutdownAgents,
+		["totalAgents"] = _totalAgents,
+		["blackListedAgents"] = _blackListedAgents,
 	}
-	M.AssertCustomerAgentInfo(t)
+	asserts.AssertCustomerAgentInfo(t)
 	return t
 end
 
-local DescribeExportConfigurationsRequest_keys = { "exportIds" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.DescribeExportConfigurationsRequest = { ["exportIds"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertDescribeExportConfigurationsRequest(struct)
+function asserts.AssertDescribeExportConfigurationsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeExportConfigurationsRequest to be of type 'table'")
-	if struct["exportIds"] then M.AssertExportIds(struct["exportIds"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertInteger(struct["maxResults"]) end
+	if struct["exportIds"] then asserts.AssertExportIds(struct["exportIds"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertInteger(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeExportConfigurationsRequest_keys[k], "DescribeExportConfigurationsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeExportConfigurationsRequest[k], "DescribeExportConfigurationsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeExportConfigurationsRequest
 --  
--- @param exportIds [ExportIds] <p>A unique identifier that you can use to query the export status.</p>
--- @param nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
--- @param maxResults [Integer] <p>The maximum number of results that you want to display as a part of the query.</p>
-function M.DescribeExportConfigurationsRequest(exportIds, nextToken, maxResults, ...)
+-- @param _exportIds [ExportIds] <p>A unique identifier that you can use to query the export status.</p>
+-- @param _nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+-- @param _maxResults [Integer] <p>The maximum number of results that you want to display as a part of the query.</p>
+function M.DescribeExportConfigurationsRequest(_exportIds, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportConfigurationsRequest")
 	local t = { 
-		["exportIds"] = exportIds,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["exportIds"] = _exportIds,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertDescribeExportConfigurationsRequest(t)
+	asserts.AssertDescribeExportConfigurationsRequest(t)
 	return t
 end
 
-local DisassociateConfigurationItemsFromApplicationRequest_keys = { "applicationConfigurationId" = true, "configurationIds" = true, nil }
+keys.DisassociateConfigurationItemsFromApplicationRequest = { ["applicationConfigurationId"] = true, ["configurationIds"] = true, nil }
 
-function M.AssertDisassociateConfigurationItemsFromApplicationRequest(struct)
+function asserts.AssertDisassociateConfigurationItemsFromApplicationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateConfigurationItemsFromApplicationRequest to be of type 'table'")
 	assert(struct["applicationConfigurationId"], "Expected key applicationConfigurationId to exist in table")
 	assert(struct["configurationIds"], "Expected key configurationIds to exist in table")
-	if struct["applicationConfigurationId"] then M.AssertApplicationId(struct["applicationConfigurationId"]) end
-	if struct["configurationIds"] then M.AssertConfigurationIdList(struct["configurationIds"]) end
+	if struct["applicationConfigurationId"] then asserts.AssertApplicationId(struct["applicationConfigurationId"]) end
+	if struct["configurationIds"] then asserts.AssertConfigurationIdList(struct["configurationIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DisassociateConfigurationItemsFromApplicationRequest_keys[k], "DisassociateConfigurationItemsFromApplicationRequest contains unknown key " .. tostring(k))
+		assert(keys.DisassociateConfigurationItemsFromApplicationRequest[k], "DisassociateConfigurationItemsFromApplicationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisassociateConfigurationItemsFromApplicationRequest
 --  
--- @param applicationConfigurationId [ApplicationId] <p>Configuration ID of an application from which each item is disassociated.</p>
--- @param configurationIds [ConfigurationIdList] <p>Configuration ID of each item to be disassociated from an application.</p>
+-- @param _applicationConfigurationId [ApplicationId] <p>Configuration ID of an application from which each item is disassociated.</p>
+-- @param _configurationIds [ConfigurationIdList] <p>Configuration ID of each item to be disassociated from an application.</p>
 -- Required parameter: applicationConfigurationId
 -- Required parameter: configurationIds
-function M.DisassociateConfigurationItemsFromApplicationRequest(applicationConfigurationId, configurationIds, ...)
+function M.DisassociateConfigurationItemsFromApplicationRequest(_applicationConfigurationId, _configurationIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateConfigurationItemsFromApplicationRequest")
 	local t = { 
-		["applicationConfigurationId"] = applicationConfigurationId,
-		["configurationIds"] = configurationIds,
+		["applicationConfigurationId"] = _applicationConfigurationId,
+		["configurationIds"] = _configurationIds,
 	}
-	M.AssertDisassociateConfigurationItemsFromApplicationRequest(t)
+	asserts.AssertDisassociateConfigurationItemsFromApplicationRequest(t)
 	return t
 end
 
-function M.AssertConfigurationsExportId(str)
+function asserts.AssertConfigurationsExportId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfigurationsExportId to be of type 'string'")
 end
 
 --  
 function M.ConfigurationsExportId(str)
-	M.AssertConfigurationsExportId(str)
+	asserts.AssertConfigurationsExportId(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertAgentId(str)
+function asserts.AssertAgentId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AgentId to be of type 'string'")
 end
 
 --  
 function M.AgentId(str)
-	M.AssertAgentId(str)
+	asserts.AssertAgentId(str)
 	return str
 end
 
-function M.AssertorderString(str)
+function asserts.AssertorderString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected orderString to be of type 'string'")
 end
 
 --  
 function M.orderString(str)
-	M.AssertorderString(str)
+	asserts.AssertorderString(str)
 	return str
 end
 
-function M.AssertNextToken(str)
+function asserts.AssertNextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
 end
 
 --  
 function M.NextToken(str)
-	M.AssertNextToken(str)
+	asserts.AssertNextToken(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertConfigurationsDownloadUrl(str)
+function asserts.AssertConfigurationsDownloadUrl(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfigurationsDownloadUrl to be of type 'string'")
 end
 
 --  
 function M.ConfigurationsDownloadUrl(str)
-	M.AssertConfigurationsDownloadUrl(str)
+	asserts.AssertConfigurationsDownloadUrl(str)
 	return str
 end
 
-function M.AssertConfigurationId(str)
+function asserts.AssertConfigurationId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfigurationId to be of type 'string'")
 end
 
 --  
 function M.ConfigurationId(str)
-	M.AssertConfigurationId(str)
+	asserts.AssertConfigurationId(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertMessage(str)
+function asserts.AssertMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Message to be of type 'string'")
 end
 
 --  
 function M.Message(str)
-	M.AssertMessage(str)
+	asserts.AssertMessage(str)
 	return str
 end
 
-function M.AssertExportStatus(str)
+function asserts.AssertExportStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExportStatus to be of type 'string'")
 end
 
 --  
 function M.ExportStatus(str)
-	M.AssertExportStatus(str)
+	asserts.AssertExportStatus(str)
 	return str
 end
 
-function M.AssertFilterValue(str)
+function asserts.AssertFilterValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FilterValue to be of type 'string'")
 end
 
 --  
 function M.FilterValue(str)
-	M.AssertFilterValue(str)
+	asserts.AssertFilterValue(str)
 	return str
 end
 
-function M.AssertCondition(str)
+function asserts.AssertCondition(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Condition to be of type 'string'")
 end
 
 --  
 function M.Condition(str)
-	M.AssertCondition(str)
+	asserts.AssertCondition(str)
 	return str
 end
 
-function M.AssertAgentStatus(str)
+function asserts.AssertAgentStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AgentStatus to be of type 'string'")
 end
 
 --  
 function M.AgentStatus(str)
-	M.AssertAgentStatus(str)
+	asserts.AssertAgentStatus(str)
 	return str
 end
 
-function M.AssertConfigurationItemType(str)
+function asserts.AssertConfigurationItemType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfigurationItemType to be of type 'string'")
 end
 
 --  
 function M.ConfigurationItemType(str)
-	M.AssertConfigurationItemType(str)
+	asserts.AssertConfigurationItemType(str)
 	return str
 end
 
-function M.AssertExportStatusMessage(str)
+function asserts.AssertExportStatusMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExportStatusMessage to be of type 'string'")
 end
 
 --  
 function M.ExportStatusMessage(str)
-	M.AssertExportStatusMessage(str)
+	asserts.AssertExportStatusMessage(str)
 	return str
 end
 
-function M.AssertExportDataFormat(str)
+function asserts.AssertExportDataFormat(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExportDataFormat to be of type 'string'")
 end
 
 --  
 function M.ExportDataFormat(str)
-	M.AssertExportDataFormat(str)
+	asserts.AssertExportDataFormat(str)
 	return str
 end
 
-function M.AssertFilterName(str)
+function asserts.AssertFilterName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FilterName to be of type 'string'")
 end
 
 --  
 function M.FilterName(str)
-	M.AssertFilterName(str)
+	asserts.AssertFilterName(str)
 	return str
 end
 
-function M.AssertApplicationId(str)
+function asserts.AssertApplicationId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ApplicationId to be of type 'string'")
 end
 
 --  
 function M.ApplicationId(str)
-	M.AssertApplicationId(str)
+	asserts.AssertApplicationId(str)
 	return str
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertBoxedInteger(integer)
+function asserts.AssertBoxedInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected BoxedInteger to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.BoxedInteger(integer)
-	M.AssertBoxedInteger(integer)
+	asserts.AssertBoxedInteger(integer)
 	return integer
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertConfiguration(map)
+function asserts.AssertConfiguration(map)
 	assert(map)
 	assert(type(map) == "table", "Expected Configuration to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertString(v)
+		asserts.AssertString(k)
+		asserts.AssertString(v)
 	end
 end
 
 function M.Configuration(map)
-	M.AssertConfiguration(map)
+	asserts.AssertConfiguration(map)
 	return map
 end
 
-function M.AssertDescribeConfigurationsAttribute(map)
+function asserts.AssertDescribeConfigurationsAttribute(map)
 	assert(map)
 	assert(type(map) == "table", "Expected DescribeConfigurationsAttribute to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertString(v)
+		asserts.AssertString(k)
+		asserts.AssertString(v)
 	end
 end
 
 function M.DescribeConfigurationsAttribute(map)
-	M.AssertDescribeConfigurationsAttribute(map)
+	asserts.AssertDescribeConfigurationsAttribute(map)
 	return map
 end
 
-function M.AssertTimeStamp(timestamp)
+function asserts.AssertTimeStamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected TimeStamp to be of type 'string'")
 end
 
 function M.TimeStamp(timestamp)
-	M.AssertTimeStamp(timestamp)
+	asserts.AssertTimeStamp(timestamp)
 	return timestamp
 end
 
-function M.AssertExportRequestTime(timestamp)
+function asserts.AssertExportRequestTime(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected ExportRequestTime to be of type 'string'")
 end
 
 function M.ExportRequestTime(timestamp)
-	M.AssertExportRequestTime(timestamp)
+	asserts.AssertExportRequestTime(timestamp)
 	return timestamp
 end
 
-function M.AssertApplicationIdsList(list)
+function asserts.AssertApplicationIdsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ApplicationIdsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertApplicationId(v)
+		asserts.AssertApplicationId(v)
 	end
 end
 
 --  
 -- List of ApplicationId objects
 function M.ApplicationIdsList(list)
-	M.AssertApplicationIdsList(list)
+	asserts.AssertApplicationIdsList(list)
 	return list
 end
 
-function M.AssertConfigurationIdList(list)
+function asserts.AssertConfigurationIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ConfigurationIdList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertConfigurationId(v)
+		asserts.AssertConfigurationId(v)
 	end
 end
 
 --  
 -- List of ConfigurationId objects
 function M.ConfigurationIdList(list)
-	M.AssertConfigurationIdList(list)
+	asserts.AssertConfigurationIdList(list)
 	return list
 end
 
-function M.AssertExportDataFormats(list)
+function asserts.AssertExportDataFormats(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ExportDataFormats to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertExportDataFormat(v)
+		asserts.AssertExportDataFormat(v)
 	end
 end
 
 --  
 -- List of ExportDataFormat objects
 function M.ExportDataFormats(list)
-	M.AssertExportDataFormats(list)
+	asserts.AssertExportDataFormats(list)
 	return list
 end
 
-function M.AssertTagSet(list)
+function asserts.AssertTagSet(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagSet to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagSet(list)
-	M.AssertTagSet(list)
+	asserts.AssertTagSet(list)
 	return list
 end
 
-function M.AssertAgentNetworkInfoList(list)
+function asserts.AssertAgentNetworkInfoList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentNetworkInfoList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAgentNetworkInfo(v)
+		asserts.AssertAgentNetworkInfo(v)
 	end
 end
 
 --  
 -- List of AgentNetworkInfo objects
 function M.AgentNetworkInfoList(list)
-	M.AssertAgentNetworkInfoList(list)
+	asserts.AssertAgentNetworkInfoList(list)
 	return list
 end
 
-function M.AssertTagFilters(list)
+function asserts.AssertTagFilters(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagFilters to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagFilter(v)
+		asserts.AssertTagFilter(v)
 	end
 end
 
 --  
 -- List of TagFilter objects
 function M.TagFilters(list)
-	M.AssertTagFilters(list)
+	asserts.AssertTagFilters(list)
 	return list
 end
 
-function M.AssertExportsInfo(list)
+function asserts.AssertExportsInfo(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ExportsInfo to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertExportInfo(v)
+		asserts.AssertExportInfo(v)
 	end
 end
 
 --  
 -- List of ExportInfo objects
 function M.ExportsInfo(list)
-	M.AssertExportsInfo(list)
+	asserts.AssertExportsInfo(list)
 	return list
 end
 
-function M.AssertDescribeConfigurationsAttributes(list)
+function asserts.AssertDescribeConfigurationsAttributes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DescribeConfigurationsAttributes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDescribeConfigurationsAttribute(v)
+		asserts.AssertDescribeConfigurationsAttribute(v)
 	end
 end
 
 --  
 -- List of DescribeConfigurationsAttribute objects
 function M.DescribeConfigurationsAttributes(list)
-	M.AssertDescribeConfigurationsAttributes(list)
+	asserts.AssertDescribeConfigurationsAttributes(list)
 	return list
 end
 
-function M.AssertAgentIds(list)
+function asserts.AssertAgentIds(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentIds to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAgentId(v)
+		asserts.AssertAgentId(v)
 	end
 end
 
 --  
 -- List of AgentId objects
 function M.AgentIds(list)
-	M.AssertAgentIds(list)
+	asserts.AssertAgentIds(list)
 	return list
 end
 
-function M.AssertAgentConfigurationStatusList(list)
+function asserts.AssertAgentConfigurationStatusList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentConfigurationStatusList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAgentConfigurationStatus(v)
+		asserts.AssertAgentConfigurationStatus(v)
 	end
 end
 
 --  
 -- List of AgentConfigurationStatus objects
 function M.AgentConfigurationStatusList(list)
-	M.AssertAgentConfigurationStatusList(list)
+	asserts.AssertAgentConfigurationStatusList(list)
 	return list
 end
 
-function M.AssertOrderByList(list)
+function asserts.AssertOrderByList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected OrderByList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertOrderByElement(v)
+		asserts.AssertOrderByElement(v)
 	end
 end
 
 --  
 -- List of OrderByElement objects
 function M.OrderByList(list)
-	M.AssertOrderByList(list)
+	asserts.AssertOrderByList(list)
 	return list
 end
 
-function M.AssertNeighborDetailsList(list)
+function asserts.AssertNeighborDetailsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected NeighborDetailsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertNeighborConnectionDetail(v)
+		asserts.AssertNeighborConnectionDetail(v)
 	end
 end
 
 --  
 -- List of NeighborConnectionDetail objects
 function M.NeighborDetailsList(list)
-	M.AssertNeighborDetailsList(list)
+	asserts.AssertNeighborDetailsList(list)
 	return list
 end
 
-function M.AssertFilterValues(list)
+function asserts.AssertFilterValues(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FilterValues to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFilterValue(v)
+		asserts.AssertFilterValue(v)
 	end
 end
 
 --  
 -- List of FilterValue objects
 function M.FilterValues(list)
-	M.AssertFilterValues(list)
+	asserts.AssertFilterValues(list)
 	return list
 end
 
-function M.AssertExportIds(list)
+function asserts.AssertExportIds(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ExportIds to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertConfigurationsExportId(v)
+		asserts.AssertConfigurationsExportId(v)
 	end
 end
 
 --  
 -- List of ConfigurationsExportId objects
 function M.ExportIds(list)
-	M.AssertExportIds(list)
+	asserts.AssertExportIds(list)
 	return list
 end
 
-function M.AssertAgentsInfo(list)
+function asserts.AssertAgentsInfo(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentsInfo to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAgentInfo(v)
+		asserts.AssertAgentInfo(v)
 	end
 end
 
 --  
 -- List of AgentInfo objects
 function M.AgentsInfo(list)
-	M.AssertAgentsInfo(list)
+	asserts.AssertAgentsInfo(list)
 	return list
 end
 
-function M.AssertConfigurations(list)
+function asserts.AssertConfigurations(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Configurations to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertConfiguration(v)
+		asserts.AssertConfiguration(v)
 	end
 end
 
 --  
 -- List of Configuration objects
 function M.Configurations(list)
-	M.AssertConfigurations(list)
+	asserts.AssertConfigurations(list)
 	return list
 end
 
-function M.AssertConfigurationTagSet(list)
+function asserts.AssertConfigurationTagSet(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ConfigurationTagSet to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertConfigurationTag(v)
+		asserts.AssertConfigurationTag(v)
 	end
 end
 
 --  
 -- List of ConfigurationTag objects
 function M.ConfigurationTagSet(list)
-	M.AssertConfigurationTagSet(list)
+	asserts.AssertConfigurationTagSet(list)
 	return list
 end
 
-function M.AssertFilters(list)
+function asserts.AssertFilters(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Filters to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFilter(v)
+		asserts.AssertFilter(v)
 	end
 end
 
 --  
 -- List of Filter objects
 function M.Filters(list)
-	M.AssertFilters(list)
+	asserts.AssertFilters(list)
 	return list
 end
 
@@ -2204,24 +2207,6 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
 		request_handler(uri .. "/", DeleteTagsRequest, headers, M.metadata, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- DescribeExportConfigurations
--- @param DescribeExportConfigurationsRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.DescribeExportConfigurationsAsync(DescribeExportConfigurationsRequest, cb)
-	assert(DescribeExportConfigurationsRequest, "You must provide a DescribeExportConfigurationsRequest")
-	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DescribeExportConfigurations",
-	}
-
-	local request_handler, err = request_handlers.from_http_method("POST")
-	if request_handler then
-		request_handler(uri .. "/", DescribeExportConfigurationsRequest, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end
@@ -2330,24 +2315,6 @@ function M.StartDataCollectionByAgentIdsAsync(StartDataCollectionByAgentIdsReque
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
 		request_handler(uri .. "/", StartDataCollectionByAgentIdsRequest, headers, M.metadata, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- ExportConfigurations
--- @param 
--- @param cb Callback function accepting two args: response, error_message
-function M.ExportConfigurationsAsync(, cb)
-	assert(, "You must provide a ")
-	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.ExportConfigurations",
-	}
-
-	local request_handler, err = request_handlers.from_http_method("POST")
-	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end

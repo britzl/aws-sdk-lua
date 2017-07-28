@@ -18,113 +18,116 @@ M.metadata = {
 	uid = "polly-2016-06-10",
 }
 
-local LexiconSizeExceededException_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertLexiconSizeExceededException(struct)
+keys.LexiconSizeExceededException = { ["message"] = true, nil }
+
+function asserts.AssertLexiconSizeExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LexiconSizeExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LexiconSizeExceededException_keys[k], "LexiconSizeExceededException contains unknown key " .. tostring(k))
+		assert(keys.LexiconSizeExceededException[k], "LexiconSizeExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LexiconSizeExceededException
 -- <p>The maximum size of the specified lexicon would be exceeded by this operation.</p>
--- @param message [ErrorMessage] <p>The maximum size of the specified lexicon would be exceeded by this operation.</p>
-function M.LexiconSizeExceededException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.LexiconSizeExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LexiconSizeExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLexiconSizeExceededException(t)
+	asserts.AssertLexiconSizeExceededException(t)
 	return t
 end
 
-local DeleteLexiconInput_keys = { "Name" = true, nil }
+keys.DeleteLexiconInput = { ["Name"] = true, nil }
 
-function M.AssertDeleteLexiconInput(struct)
+function asserts.AssertDeleteLexiconInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLexiconInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertLexiconName(struct["Name"]) end
+	if struct["Name"] then asserts.AssertLexiconName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteLexiconInput_keys[k], "DeleteLexiconInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteLexiconInput[k], "DeleteLexiconInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteLexiconInput
 --  
--- @param Name [LexiconName] <p>The name of the lexicon to delete. Must be an existing lexicon in the region.</p>
+-- @param _Name [LexiconName] <p>The name of the lexicon to delete. Must be an existing lexicon in the region.</p>
 -- Required parameter: Name
-function M.DeleteLexiconInput(Name, ...)
+function M.DeleteLexiconInput(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLexiconInput")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteLexiconInput(t)
+	asserts.AssertDeleteLexiconInput(t)
 	return t
 end
 
-local SynthesizeSpeechOutput_keys = { "ContentType" = true, "AudioStream" = true, "RequestCharacters" = true, nil }
+keys.SynthesizeSpeechOutput = { ["ContentType"] = true, ["AudioStream"] = true, ["RequestCharacters"] = true, nil }
 
-function M.AssertSynthesizeSpeechOutput(struct)
+function asserts.AssertSynthesizeSpeechOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SynthesizeSpeechOutput to be of type 'table'")
-	if struct["ContentType"] then M.AssertContentType(struct["ContentType"]) end
-	if struct["AudioStream"] then M.AssertAudioStream(struct["AudioStream"]) end
-	if struct["RequestCharacters"] then M.AssertRequestCharacters(struct["RequestCharacters"]) end
+	if struct["ContentType"] then asserts.AssertContentType(struct["ContentType"]) end
+	if struct["AudioStream"] then asserts.AssertAudioStream(struct["AudioStream"]) end
+	if struct["RequestCharacters"] then asserts.AssertRequestCharacters(struct["RequestCharacters"]) end
 	for k,_ in pairs(struct) do
-		assert(SynthesizeSpeechOutput_keys[k], "SynthesizeSpeechOutput contains unknown key " .. tostring(k))
+		assert(keys.SynthesizeSpeechOutput[k], "SynthesizeSpeechOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SynthesizeSpeechOutput
 --  
--- @param ContentType [ContentType] <p> Specifies the type audio stream. This should reflect the <code>OutputFormat</code> parameter in your request. </p> <ul> <li> <p> If you request <code>mp3</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/mpeg. </p> </li> <li> <p> If you request <code>ogg_vorbis</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/ogg. </p> </li> <li> <p> If you request <code>pcm</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format. </p> </li> <li> <p>If you request <code>json</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/json.</p> </li> </ul> <p> </p>
--- @param AudioStream [AudioStream] <p> Stream containing the synthesized speech. </p>
--- @param RequestCharacters [RequestCharacters] <p>Number of characters synthesized.</p>
-function M.SynthesizeSpeechOutput(ContentType, AudioStream, RequestCharacters, ...)
+-- @param _ContentType [ContentType] <p> Specifies the type audio stream. This should reflect the <code>OutputFormat</code> parameter in your request. </p> <ul> <li> <p> If you request <code>mp3</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/mpeg. </p> </li> <li> <p> If you request <code>ogg_vorbis</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/ogg. </p> </li> <li> <p> If you request <code>pcm</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format. </p> </li> <li> <p>If you request <code>json</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/json.</p> </li> </ul> <p> </p>
+-- @param _AudioStream [AudioStream] <p> Stream containing the synthesized speech. </p>
+-- @param _RequestCharacters [RequestCharacters] <p>Number of characters synthesized.</p>
+function M.SynthesizeSpeechOutput(_ContentType, _AudioStream, _RequestCharacters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SynthesizeSpeechOutput")
 	local t = { 
-		["ContentType"] = ContentType,
-		["AudioStream"] = AudioStream,
-		["RequestCharacters"] = RequestCharacters,
+		["ContentType"] = _ContentType,
+		["AudioStream"] = _AudioStream,
+		["RequestCharacters"] = _RequestCharacters,
 	}
-	M.AssertSynthesizeSpeechOutput(t)
+	asserts.AssertSynthesizeSpeechOutput(t)
 	return t
 end
 
-local InvalidSampleRateException_keys = { "message" = true, nil }
+keys.InvalidSampleRateException = { ["message"] = true, nil }
 
-function M.AssertInvalidSampleRateException(struct)
+function asserts.AssertInvalidSampleRateException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSampleRateException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidSampleRateException_keys[k], "InvalidSampleRateException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSampleRateException[k], "InvalidSampleRateException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidSampleRateException
 -- <p>The specified sample rate is not valid.</p>
--- @param message [ErrorMessage] <p>The specified sample rate is not valid.</p>
-function M.InvalidSampleRateException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidSampleRateException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSampleRateException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidSampleRateException(t)
+	asserts.AssertInvalidSampleRateException(t)
 	return t
 end
 
-local DeleteLexiconOutput_keys = { nil }
+keys.DeleteLexiconOutput = { nil }
 
-function M.AssertDeleteLexiconOutput(struct)
+function asserts.AssertDeleteLexiconOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLexiconOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteLexiconOutput_keys[k], "DeleteLexiconOutput contains unknown key " .. tostring(k))
+		assert(keys.DeleteLexiconOutput[k], "DeleteLexiconOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -134,647 +137,647 @@ function M.DeleteLexiconOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLexiconOutput")
 	local t = { 
 	}
-	M.AssertDeleteLexiconOutput(t)
+	asserts.AssertDeleteLexiconOutput(t)
 	return t
 end
 
-local InvalidNextTokenException_keys = { "message" = true, nil }
+keys.InvalidNextTokenException = { ["message"] = true, nil }
 
-function M.AssertInvalidNextTokenException(struct)
+function asserts.AssertInvalidNextTokenException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidNextTokenException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidNextTokenException_keys[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
+		assert(keys.InvalidNextTokenException[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>The NextToken is invalid. Verify that it's spelled correctly, and then try again.</p>
--- @param message [ErrorMessage] <p>The NextToken is invalid. Verify that it's spelled correctly, and then try again.</p>
-function M.InvalidNextTokenException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidNextTokenException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidNextTokenException(t)
+	asserts.AssertInvalidNextTokenException(t)
 	return t
 end
 
-local LexiconNotFoundException_keys = { "message" = true, nil }
+keys.LexiconNotFoundException = { ["message"] = true, nil }
 
-function M.AssertLexiconNotFoundException(struct)
+function asserts.AssertLexiconNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LexiconNotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LexiconNotFoundException_keys[k], "LexiconNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.LexiconNotFoundException[k], "LexiconNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LexiconNotFoundException
 -- <p>Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its name is misspelled or specifying a lexicon that is in a different region.</p> <p>Verify that the lexicon exists, is in the region (see <a>ListLexicons</a>) and that you spelled its name is spelled correctly. Then try again.</p>
--- @param message [ErrorMessage] <p>Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its name is misspelled or specifying a lexicon that is in a different region.</p> <p>Verify that the lexicon exists, is in the region (see <a>ListLexicons</a>) and that you spelled its name is spelled correctly. Then try again.</p>
-function M.LexiconNotFoundException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.LexiconNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LexiconNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLexiconNotFoundException(t)
+	asserts.AssertLexiconNotFoundException(t)
 	return t
 end
 
-local UnsupportedPlsAlphabetException_keys = { "message" = true, nil }
+keys.UnsupportedPlsAlphabetException = { ["message"] = true, nil }
 
-function M.AssertUnsupportedPlsAlphabetException(struct)
+function asserts.AssertUnsupportedPlsAlphabetException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedPlsAlphabetException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedPlsAlphabetException_keys[k], "UnsupportedPlsAlphabetException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedPlsAlphabetException[k], "UnsupportedPlsAlphabetException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedPlsAlphabetException
 -- <p>The alphabet specified by the lexicon is not a supported alphabet. Valid values are <code>x-sampa</code> and <code>ipa</code>.</p>
--- @param message [ErrorMessage] <p>The alphabet specified by the lexicon is not a supported alphabet. Valid values are <code>x-sampa</code> and <code>ipa</code>.</p>
-function M.UnsupportedPlsAlphabetException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.UnsupportedPlsAlphabetException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedPlsAlphabetException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedPlsAlphabetException(t)
+	asserts.AssertUnsupportedPlsAlphabetException(t)
 	return t
 end
 
-local ServiceFailureException_keys = { "message" = true, nil }
+keys.ServiceFailureException = { ["message"] = true, nil }
 
-function M.AssertServiceFailureException(struct)
+function asserts.AssertServiceFailureException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ServiceFailureException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ServiceFailureException_keys[k], "ServiceFailureException contains unknown key " .. tostring(k))
+		assert(keys.ServiceFailureException[k], "ServiceFailureException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ServiceFailureException
 -- <p>An unknown condition has caused a service failure.</p>
--- @param message [ErrorMessage] <p>An unknown condition has caused a service failure.</p>
-function M.ServiceFailureException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.ServiceFailureException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceFailureException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertServiceFailureException(t)
+	asserts.AssertServiceFailureException(t)
 	return t
 end
 
-local DescribeVoicesInput_keys = { "LanguageCode" = true, "NextToken" = true, nil }
+keys.DescribeVoicesInput = { ["LanguageCode"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeVoicesInput(struct)
+function asserts.AssertDescribeVoicesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeVoicesInput to be of type 'table'")
-	if struct["LanguageCode"] then M.AssertLanguageCode(struct["LanguageCode"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["LanguageCode"] then asserts.AssertLanguageCode(struct["LanguageCode"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeVoicesInput_keys[k], "DescribeVoicesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeVoicesInput[k], "DescribeVoicesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeVoicesInput
 --  
--- @param LanguageCode [LanguageCode] <p> The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned. </p>
--- @param NextToken [NextToken] <p>An opaque pagination token returned from the previous <code>DescribeVoices</code> operation. If present, this indicates where to continue the listing.</p>
-function M.DescribeVoicesInput(LanguageCode, NextToken, ...)
+-- @param _LanguageCode [LanguageCode] <p> The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned. </p>
+-- @param _NextToken [NextToken] <p>An opaque pagination token returned from the previous <code>DescribeVoices</code> operation. If present, this indicates where to continue the listing.</p>
+function M.DescribeVoicesInput(_LanguageCode, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVoicesInput")
 	local t = { 
-		["LanguageCode"] = LanguageCode,
-		["NextToken"] = NextToken,
+		["LanguageCode"] = _LanguageCode,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeVoicesInput(t)
+	asserts.AssertDescribeVoicesInput(t)
 	return t
 end
 
-local MarksNotSupportedForFormatException_keys = { "message" = true, nil }
+keys.MarksNotSupportedForFormatException = { ["message"] = true, nil }
 
-function M.AssertMarksNotSupportedForFormatException(struct)
+function asserts.AssertMarksNotSupportedForFormatException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MarksNotSupportedForFormatException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MarksNotSupportedForFormatException_keys[k], "MarksNotSupportedForFormatException contains unknown key " .. tostring(k))
+		assert(keys.MarksNotSupportedForFormatException[k], "MarksNotSupportedForFormatException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MarksNotSupportedForFormatException
 -- <p>Speech marks are not supported for the <code>OutputFormat</code> selected. Speech marks are only available for content in <code>json</code> format.</p>
--- @param message [ErrorMessage] <p>Speech marks are not supported for the <code>OutputFormat</code> selected. Speech marks are only available for content in <code>json</code> format.</p>
-function M.MarksNotSupportedForFormatException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.MarksNotSupportedForFormatException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MarksNotSupportedForFormatException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMarksNotSupportedForFormatException(t)
+	asserts.AssertMarksNotSupportedForFormatException(t)
 	return t
 end
 
-local InvalidSsmlException_keys = { "message" = true, nil }
+keys.InvalidSsmlException = { ["message"] = true, nil }
 
-function M.AssertInvalidSsmlException(struct)
+function asserts.AssertInvalidSsmlException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSsmlException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidSsmlException_keys[k], "InvalidSsmlException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSsmlException[k], "InvalidSsmlException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidSsmlException
 -- <p>The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try again.</p>
--- @param message [ErrorMessage] <p>The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try again.</p>
-function M.InvalidSsmlException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidSsmlException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSsmlException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidSsmlException(t)
+	asserts.AssertInvalidSsmlException(t)
 	return t
 end
 
-local DescribeVoicesOutput_keys = { "NextToken" = true, "Voices" = true, nil }
+keys.DescribeVoicesOutput = { ["NextToken"] = true, ["Voices"] = true, nil }
 
-function M.AssertDescribeVoicesOutput(struct)
+function asserts.AssertDescribeVoicesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeVoicesOutput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["Voices"] then M.AssertVoiceList(struct["Voices"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Voices"] then asserts.AssertVoiceList(struct["Voices"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeVoicesOutput_keys[k], "DescribeVoicesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeVoicesOutput[k], "DescribeVoicesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeVoicesOutput
 --  
--- @param NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of voices. <code>NextToken</code> is returned only if the response is truncated.</p>
--- @param Voices [VoiceList] <p>A list of voices with their properties.</p>
-function M.DescribeVoicesOutput(NextToken, Voices, ...)
+-- @param _NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of voices. <code>NextToken</code> is returned only if the response is truncated.</p>
+-- @param _Voices [VoiceList] <p>A list of voices with their properties.</p>
+function M.DescribeVoicesOutput(_NextToken, _Voices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVoicesOutput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Voices"] = Voices,
+		["NextToken"] = _NextToken,
+		["Voices"] = _Voices,
 	}
-	M.AssertDescribeVoicesOutput(t)
+	asserts.AssertDescribeVoicesOutput(t)
 	return t
 end
 
-local LexiconAttributes_keys = { "LanguageCode" = true, "LastModified" = true, "Alphabet" = true, "LexemesCount" = true, "LexiconArn" = true, "Size" = true, nil }
+keys.LexiconAttributes = { ["LanguageCode"] = true, ["LastModified"] = true, ["Alphabet"] = true, ["LexemesCount"] = true, ["LexiconArn"] = true, ["Size"] = true, nil }
 
-function M.AssertLexiconAttributes(struct)
+function asserts.AssertLexiconAttributes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LexiconAttributes to be of type 'table'")
-	if struct["LanguageCode"] then M.AssertLanguageCode(struct["LanguageCode"]) end
-	if struct["LastModified"] then M.AssertLastModified(struct["LastModified"]) end
-	if struct["Alphabet"] then M.AssertAlphabet(struct["Alphabet"]) end
-	if struct["LexemesCount"] then M.AssertLexemesCount(struct["LexemesCount"]) end
-	if struct["LexiconArn"] then M.AssertLexiconArn(struct["LexiconArn"]) end
-	if struct["Size"] then M.AssertSize(struct["Size"]) end
+	if struct["LanguageCode"] then asserts.AssertLanguageCode(struct["LanguageCode"]) end
+	if struct["LastModified"] then asserts.AssertLastModified(struct["LastModified"]) end
+	if struct["Alphabet"] then asserts.AssertAlphabet(struct["Alphabet"]) end
+	if struct["LexemesCount"] then asserts.AssertLexemesCount(struct["LexemesCount"]) end
+	if struct["LexiconArn"] then asserts.AssertLexiconArn(struct["LexiconArn"]) end
+	if struct["Size"] then asserts.AssertSize(struct["Size"]) end
 	for k,_ in pairs(struct) do
-		assert(LexiconAttributes_keys[k], "LexiconAttributes contains unknown key " .. tostring(k))
+		assert(keys.LexiconAttributes[k], "LexiconAttributes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LexiconAttributes
 -- <p>Contains metadata describing the lexicon such as the number of lexemes, language code, and so on. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing Lexicons</a>.</p>
--- @param LanguageCode [LanguageCode] <p>Language code that the lexicon applies to. A lexicon with a language code such as "en" would be applied to all English languages (en-GB, en-US, en-AUS, en-WLS, and so on.</p>
--- @param LastModified [LastModified] <p>Date lexicon was last modified (a timestamp value).</p>
--- @param Alphabet [Alphabet] <p>Phonetic alphabet used in the lexicon. Valid values are <code>ipa</code> and <code>x-sampa</code>.</p>
--- @param LexemesCount [LexemesCount] <p>Number of lexemes in the lexicon.</p>
--- @param LexiconArn [LexiconArn] <p>Amazon Resource Name (ARN) of the lexicon.</p>
--- @param Size [Size] <p>Total size of the lexicon, in characters.</p>
-function M.LexiconAttributes(LanguageCode, LastModified, Alphabet, LexemesCount, LexiconArn, Size, ...)
+-- @param _LanguageCode [LanguageCode] <p>Language code that the lexicon applies to. A lexicon with a language code such as "en" would be applied to all English languages (en-GB, en-US, en-AUS, en-WLS, and so on.</p>
+-- @param _LastModified [LastModified] <p>Date lexicon was last modified (a timestamp value).</p>
+-- @param _Alphabet [Alphabet] <p>Phonetic alphabet used in the lexicon. Valid values are <code>ipa</code> and <code>x-sampa</code>.</p>
+-- @param _LexemesCount [LexemesCount] <p>Number of lexemes in the lexicon.</p>
+-- @param _LexiconArn [LexiconArn] <p>Amazon Resource Name (ARN) of the lexicon.</p>
+-- @param _Size [Size] <p>Total size of the lexicon, in characters.</p>
+function M.LexiconAttributes(_LanguageCode, _LastModified, _Alphabet, _LexemesCount, _LexiconArn, _Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LexiconAttributes")
 	local t = { 
-		["LanguageCode"] = LanguageCode,
-		["LastModified"] = LastModified,
-		["Alphabet"] = Alphabet,
-		["LexemesCount"] = LexemesCount,
-		["LexiconArn"] = LexiconArn,
-		["Size"] = Size,
+		["LanguageCode"] = _LanguageCode,
+		["LastModified"] = _LastModified,
+		["Alphabet"] = _Alphabet,
+		["LexemesCount"] = _LexemesCount,
+		["LexiconArn"] = _LexiconArn,
+		["Size"] = _Size,
 	}
-	M.AssertLexiconAttributes(t)
+	asserts.AssertLexiconAttributes(t)
 	return t
 end
 
-local GetLexiconOutput_keys = { "Lexicon" = true, "LexiconAttributes" = true, nil }
+keys.GetLexiconOutput = { ["Lexicon"] = true, ["LexiconAttributes"] = true, nil }
 
-function M.AssertGetLexiconOutput(struct)
+function asserts.AssertGetLexiconOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetLexiconOutput to be of type 'table'")
-	if struct["Lexicon"] then M.AssertLexicon(struct["Lexicon"]) end
-	if struct["LexiconAttributes"] then M.AssertLexiconAttributes(struct["LexiconAttributes"]) end
+	if struct["Lexicon"] then asserts.AssertLexicon(struct["Lexicon"]) end
+	if struct["LexiconAttributes"] then asserts.AssertLexiconAttributes(struct["LexiconAttributes"]) end
 	for k,_ in pairs(struct) do
-		assert(GetLexiconOutput_keys[k], "GetLexiconOutput contains unknown key " .. tostring(k))
+		assert(keys.GetLexiconOutput[k], "GetLexiconOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetLexiconOutput
 --  
--- @param Lexicon [Lexicon] <p>Lexicon object that provides name and the string content of the lexicon. </p>
--- @param LexiconAttributes [LexiconAttributes] <p>Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.</p>
-function M.GetLexiconOutput(Lexicon, LexiconAttributes, ...)
+-- @param _Lexicon [Lexicon] <p>Lexicon object that provides name and the string content of the lexicon. </p>
+-- @param _LexiconAttributes [LexiconAttributes] <p>Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.</p>
+function M.GetLexiconOutput(_Lexicon, _LexiconAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLexiconOutput")
 	local t = { 
-		["Lexicon"] = Lexicon,
-		["LexiconAttributes"] = LexiconAttributes,
+		["Lexicon"] = _Lexicon,
+		["LexiconAttributes"] = _LexiconAttributes,
 	}
-	M.AssertGetLexiconOutput(t)
+	asserts.AssertGetLexiconOutput(t)
 	return t
 end
 
-local MaxLexiconsNumberExceededException_keys = { "message" = true, nil }
+keys.MaxLexiconsNumberExceededException = { ["message"] = true, nil }
 
-function M.AssertMaxLexiconsNumberExceededException(struct)
+function asserts.AssertMaxLexiconsNumberExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MaxLexiconsNumberExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MaxLexiconsNumberExceededException_keys[k], "MaxLexiconsNumberExceededException contains unknown key " .. tostring(k))
+		assert(keys.MaxLexiconsNumberExceededException[k], "MaxLexiconsNumberExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MaxLexiconsNumberExceededException
 -- <p>The maximum number of lexicons would be exceeded by this operation.</p>
--- @param message [ErrorMessage] <p>The maximum number of lexicons would be exceeded by this operation.</p>
-function M.MaxLexiconsNumberExceededException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.MaxLexiconsNumberExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxLexiconsNumberExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMaxLexiconsNumberExceededException(t)
+	asserts.AssertMaxLexiconsNumberExceededException(t)
 	return t
 end
 
-local ListLexiconsOutput_keys = { "NextToken" = true, "Lexicons" = true, nil }
+keys.ListLexiconsOutput = { ["NextToken"] = true, ["Lexicons"] = true, nil }
 
-function M.AssertListLexiconsOutput(struct)
+function asserts.AssertListLexiconsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLexiconsOutput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["Lexicons"] then M.AssertLexiconDescriptionList(struct["Lexicons"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Lexicons"] then asserts.AssertLexiconDescriptionList(struct["Lexicons"]) end
 	for k,_ in pairs(struct) do
-		assert(ListLexiconsOutput_keys[k], "ListLexiconsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListLexiconsOutput[k], "ListLexiconsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListLexiconsOutput
 --  
--- @param NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of lexicons. <code>NextToken</code> is returned only if the response is truncated.</p>
--- @param Lexicons [LexiconDescriptionList] <p>A list of lexicon names and attributes.</p>
-function M.ListLexiconsOutput(NextToken, Lexicons, ...)
+-- @param _NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of lexicons. <code>NextToken</code> is returned only if the response is truncated.</p>
+-- @param _Lexicons [LexiconDescriptionList] <p>A list of lexicon names and attributes.</p>
+function M.ListLexiconsOutput(_NextToken, _Lexicons, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLexiconsOutput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Lexicons"] = Lexicons,
+		["NextToken"] = _NextToken,
+		["Lexicons"] = _Lexicons,
 	}
-	M.AssertListLexiconsOutput(t)
+	asserts.AssertListLexiconsOutput(t)
 	return t
 end
 
-local ListLexiconsInput_keys = { "NextToken" = true, nil }
+keys.ListLexiconsInput = { ["NextToken"] = true, nil }
 
-function M.AssertListLexiconsInput(struct)
+function asserts.AssertListLexiconsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLexiconsInput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListLexiconsInput_keys[k], "ListLexiconsInput contains unknown key " .. tostring(k))
+		assert(keys.ListLexiconsInput[k], "ListLexiconsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListLexiconsInput
 --  
--- @param NextToken [NextToken] <p>An opaque pagination token returned from previous <code>ListLexicons</code> operation. If present, indicates where to continue the list of lexicons.</p>
-function M.ListLexiconsInput(NextToken, ...)
+-- @param _NextToken [NextToken] <p>An opaque pagination token returned from previous <code>ListLexicons</code> operation. If present, indicates where to continue the list of lexicons.</p>
+function M.ListLexiconsInput(_NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLexiconsInput")
 	local t = { 
-		["NextToken"] = NextToken,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListLexiconsInput(t)
+	asserts.AssertListLexiconsInput(t)
 	return t
 end
 
-local TextLengthExceededException_keys = { "message" = true, nil }
+keys.TextLengthExceededException = { ["message"] = true, nil }
 
-function M.AssertTextLengthExceededException(struct)
+function asserts.AssertTextLengthExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TextLengthExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TextLengthExceededException_keys[k], "TextLengthExceededException contains unknown key " .. tostring(k))
+		assert(keys.TextLengthExceededException[k], "TextLengthExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TextLengthExceededException
 -- <p>The value of the "Text" parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.</p>
--- @param message [ErrorMessage] <p>The value of the "Text" parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.</p>
-function M.TextLengthExceededException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.TextLengthExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TextLengthExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTextLengthExceededException(t)
+	asserts.AssertTextLengthExceededException(t)
 	return t
 end
 
-local Voice_keys = { "Gender" = true, "Name" = true, "LanguageName" = true, "Id" = true, "LanguageCode" = true, nil }
+keys.Voice = { ["Gender"] = true, ["Name"] = true, ["LanguageName"] = true, ["Id"] = true, ["LanguageCode"] = true, nil }
 
-function M.AssertVoice(struct)
+function asserts.AssertVoice(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Voice to be of type 'table'")
-	if struct["Gender"] then M.AssertGender(struct["Gender"]) end
-	if struct["Name"] then M.AssertVoiceName(struct["Name"]) end
-	if struct["LanguageName"] then M.AssertLanguageName(struct["LanguageName"]) end
-	if struct["Id"] then M.AssertVoiceId(struct["Id"]) end
-	if struct["LanguageCode"] then M.AssertLanguageCode(struct["LanguageCode"]) end
+	if struct["Gender"] then asserts.AssertGender(struct["Gender"]) end
+	if struct["Name"] then asserts.AssertVoiceName(struct["Name"]) end
+	if struct["LanguageName"] then asserts.AssertLanguageName(struct["LanguageName"]) end
+	if struct["Id"] then asserts.AssertVoiceId(struct["Id"]) end
+	if struct["LanguageCode"] then asserts.AssertLanguageCode(struct["LanguageCode"]) end
 	for k,_ in pairs(struct) do
-		assert(Voice_keys[k], "Voice contains unknown key " .. tostring(k))
+		assert(keys.Voice[k], "Voice contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Voice
 -- <p>Description of the voice.</p>
--- @param Gender [Gender] <p>Gender of the voice.</p>
--- @param Name [VoiceName] <p>Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.</p>
--- @param LanguageName [LanguageName] <p>Human readable name of the language in English.</p>
--- @param Id [VoiceId] <p>Amazon Polly assigned voice ID. This is the ID that you specify when calling the <code>SynthesizeSpeech</code> operation.</p>
--- @param LanguageCode [LanguageCode] <p>Language code of the voice.</p>
-function M.Voice(Gender, Name, LanguageName, Id, LanguageCode, ...)
+-- @param _Gender [Gender] <p>Gender of the voice.</p>
+-- @param _Name [VoiceName] <p>Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.</p>
+-- @param _LanguageName [LanguageName] <p>Human readable name of the language in English.</p>
+-- @param _Id [VoiceId] <p>Amazon Polly assigned voice ID. This is the ID that you specify when calling the <code>SynthesizeSpeech</code> operation.</p>
+-- @param _LanguageCode [LanguageCode] <p>Language code of the voice.</p>
+function M.Voice(_Gender, _Name, _LanguageName, _Id, _LanguageCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Voice")
 	local t = { 
-		["Gender"] = Gender,
-		["Name"] = Name,
-		["LanguageName"] = LanguageName,
-		["Id"] = Id,
-		["LanguageCode"] = LanguageCode,
+		["Gender"] = _Gender,
+		["Name"] = _Name,
+		["LanguageName"] = _LanguageName,
+		["Id"] = _Id,
+		["LanguageCode"] = _LanguageCode,
 	}
-	M.AssertVoice(t)
+	asserts.AssertVoice(t)
 	return t
 end
 
-local SsmlMarksNotSupportedForTextTypeException_keys = { "message" = true, nil }
+keys.SsmlMarksNotSupportedForTextTypeException = { ["message"] = true, nil }
 
-function M.AssertSsmlMarksNotSupportedForTextTypeException(struct)
+function asserts.AssertSsmlMarksNotSupportedForTextTypeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SsmlMarksNotSupportedForTextTypeException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(SsmlMarksNotSupportedForTextTypeException_keys[k], "SsmlMarksNotSupportedForTextTypeException contains unknown key " .. tostring(k))
+		assert(keys.SsmlMarksNotSupportedForTextTypeException[k], "SsmlMarksNotSupportedForTextTypeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SsmlMarksNotSupportedForTextTypeException
 -- <p>SSML speech marks are not supported for plain text-type input.</p>
--- @param message [ErrorMessage] <p>SSML speech marks are not supported for plain text-type input.</p>
-function M.SsmlMarksNotSupportedForTextTypeException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.SsmlMarksNotSupportedForTextTypeException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SsmlMarksNotSupportedForTextTypeException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertSsmlMarksNotSupportedForTextTypeException(t)
+	asserts.AssertSsmlMarksNotSupportedForTextTypeException(t)
 	return t
 end
 
-local Lexicon_keys = { "Content" = true, "Name" = true, nil }
+keys.Lexicon = { ["Content"] = true, ["Name"] = true, nil }
 
-function M.AssertLexicon(struct)
+function asserts.AssertLexicon(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Lexicon to be of type 'table'")
-	if struct["Content"] then M.AssertLexiconContent(struct["Content"]) end
-	if struct["Name"] then M.AssertLexiconName(struct["Name"]) end
+	if struct["Content"] then asserts.AssertLexiconContent(struct["Content"]) end
+	if struct["Name"] then asserts.AssertLexiconName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(Lexicon_keys[k], "Lexicon contains unknown key " .. tostring(k))
+		assert(keys.Lexicon[k], "Lexicon contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Lexicon
 -- <p>Provides lexicon name and lexicon content in string format. For more information, see <a href="https://www.w3.org/TR/pronunciation-lexicon/">Pronunciation Lexicon Specification (PLS) Version 1.0</a>.</p>
--- @param Content [LexiconContent] <p>Lexicon content in string format. The content of a lexicon must be in PLS format.</p>
--- @param Name [LexiconName] <p>Name of the lexicon.</p>
-function M.Lexicon(Content, Name, ...)
+-- @param _Content [LexiconContent] <p>Lexicon content in string format. The content of a lexicon must be in PLS format.</p>
+-- @param _Name [LexiconName] <p>Name of the lexicon.</p>
+function M.Lexicon(_Content, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Lexicon")
 	local t = { 
-		["Content"] = Content,
-		["Name"] = Name,
+		["Content"] = _Content,
+		["Name"] = _Name,
 	}
-	M.AssertLexicon(t)
+	asserts.AssertLexicon(t)
 	return t
 end
 
-local MaxLexemeLengthExceededException_keys = { "message" = true, nil }
+keys.MaxLexemeLengthExceededException = { ["message"] = true, nil }
 
-function M.AssertMaxLexemeLengthExceededException(struct)
+function asserts.AssertMaxLexemeLengthExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MaxLexemeLengthExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MaxLexemeLengthExceededException_keys[k], "MaxLexemeLengthExceededException contains unknown key " .. tostring(k))
+		assert(keys.MaxLexemeLengthExceededException[k], "MaxLexemeLengthExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MaxLexemeLengthExceededException
 -- <p>The maximum size of the lexeme would be exceeded by this operation.</p>
--- @param message [ErrorMessage] <p>The maximum size of the lexeme would be exceeded by this operation.</p>
-function M.MaxLexemeLengthExceededException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.MaxLexemeLengthExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxLexemeLengthExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMaxLexemeLengthExceededException(t)
+	asserts.AssertMaxLexemeLengthExceededException(t)
 	return t
 end
 
-local PutLexiconInput_keys = { "Content" = true, "Name" = true, nil }
+keys.PutLexiconInput = { ["Content"] = true, ["Name"] = true, nil }
 
-function M.AssertPutLexiconInput(struct)
+function asserts.AssertPutLexiconInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutLexiconInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Content"], "Expected key Content to exist in table")
-	if struct["Content"] then M.AssertLexiconContent(struct["Content"]) end
-	if struct["Name"] then M.AssertLexiconName(struct["Name"]) end
+	if struct["Content"] then asserts.AssertLexiconContent(struct["Content"]) end
+	if struct["Name"] then asserts.AssertLexiconName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(PutLexiconInput_keys[k], "PutLexiconInput contains unknown key " .. tostring(k))
+		assert(keys.PutLexiconInput[k], "PutLexiconInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutLexiconInput
 --  
--- @param Content [LexiconContent] <p>Content of the PLS lexicon as string data.</p>
--- @param Name [LexiconName] <p>Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long. </p>
+-- @param _Content [LexiconContent] <p>Content of the PLS lexicon as string data.</p>
+-- @param _Name [LexiconName] <p>Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long. </p>
 -- Required parameter: Name
 -- Required parameter: Content
-function M.PutLexiconInput(Content, Name, ...)
+function M.PutLexiconInput(_Content, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutLexiconInput")
 	local t = { 
-		["Content"] = Content,
-		["Name"] = Name,
+		["Content"] = _Content,
+		["Name"] = _Name,
 	}
-	M.AssertPutLexiconInput(t)
+	asserts.AssertPutLexiconInput(t)
 	return t
 end
 
-local UnsupportedPlsLanguageException_keys = { "message" = true, nil }
+keys.UnsupportedPlsLanguageException = { ["message"] = true, nil }
 
-function M.AssertUnsupportedPlsLanguageException(struct)
+function asserts.AssertUnsupportedPlsLanguageException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedPlsLanguageException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedPlsLanguageException_keys[k], "UnsupportedPlsLanguageException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedPlsLanguageException[k], "UnsupportedPlsLanguageException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedPlsLanguageException
 -- <p>The language specified in the lexicon is unsupported. For a list of supported languages, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html">Lexicon Attributes</a>.</p>
--- @param message [ErrorMessage] <p>The language specified in the lexicon is unsupported. For a list of supported languages, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html">Lexicon Attributes</a>.</p>
-function M.UnsupportedPlsLanguageException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.UnsupportedPlsLanguageException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedPlsLanguageException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedPlsLanguageException(t)
+	asserts.AssertUnsupportedPlsLanguageException(t)
 	return t
 end
 
-local LexiconDescription_keys = { "Attributes" = true, "Name" = true, nil }
+keys.LexiconDescription = { ["Attributes"] = true, ["Name"] = true, nil }
 
-function M.AssertLexiconDescription(struct)
+function asserts.AssertLexiconDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LexiconDescription to be of type 'table'")
-	if struct["Attributes"] then M.AssertLexiconAttributes(struct["Attributes"]) end
-	if struct["Name"] then M.AssertLexiconName(struct["Name"]) end
+	if struct["Attributes"] then asserts.AssertLexiconAttributes(struct["Attributes"]) end
+	if struct["Name"] then asserts.AssertLexiconName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(LexiconDescription_keys[k], "LexiconDescription contains unknown key " .. tostring(k))
+		assert(keys.LexiconDescription[k], "LexiconDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LexiconDescription
 -- <p>Describes the content of the lexicon.</p>
--- @param Attributes [LexiconAttributes] <p>Provides lexicon metadata.</p>
--- @param Name [LexiconName] <p>Name of the lexicon.</p>
-function M.LexiconDescription(Attributes, Name, ...)
+-- @param _Attributes [LexiconAttributes] <p>Provides lexicon metadata.</p>
+-- @param _Name [LexiconName] <p>Name of the lexicon.</p>
+function M.LexiconDescription(_Attributes, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LexiconDescription")
 	local t = { 
-		["Attributes"] = Attributes,
-		["Name"] = Name,
+		["Attributes"] = _Attributes,
+		["Name"] = _Name,
 	}
-	M.AssertLexiconDescription(t)
+	asserts.AssertLexiconDescription(t)
 	return t
 end
 
-local GetLexiconInput_keys = { "Name" = true, nil }
+keys.GetLexiconInput = { ["Name"] = true, nil }
 
-function M.AssertGetLexiconInput(struct)
+function asserts.AssertGetLexiconInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetLexiconInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertLexiconName(struct["Name"]) end
+	if struct["Name"] then asserts.AssertLexiconName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(GetLexiconInput_keys[k], "GetLexiconInput contains unknown key " .. tostring(k))
+		assert(keys.GetLexiconInput[k], "GetLexiconInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetLexiconInput
 --  
--- @param Name [LexiconName] <p>Name of the lexicon.</p>
+-- @param _Name [LexiconName] <p>Name of the lexicon.</p>
 -- Required parameter: Name
-function M.GetLexiconInput(Name, ...)
+function M.GetLexiconInput(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLexiconInput")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertGetLexiconInput(t)
+	asserts.AssertGetLexiconInput(t)
 	return t
 end
 
-local SynthesizeSpeechInput_keys = { "OutputFormat" = true, "SpeechMarkTypes" = true, "VoiceId" = true, "Text" = true, "LexiconNames" = true, "SampleRate" = true, "TextType" = true, nil }
+keys.SynthesizeSpeechInput = { ["OutputFormat"] = true, ["SpeechMarkTypes"] = true, ["VoiceId"] = true, ["Text"] = true, ["LexiconNames"] = true, ["SampleRate"] = true, ["TextType"] = true, nil }
 
-function M.AssertSynthesizeSpeechInput(struct)
+function asserts.AssertSynthesizeSpeechInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SynthesizeSpeechInput to be of type 'table'")
 	assert(struct["OutputFormat"], "Expected key OutputFormat to exist in table")
 	assert(struct["Text"], "Expected key Text to exist in table")
 	assert(struct["VoiceId"], "Expected key VoiceId to exist in table")
-	if struct["OutputFormat"] then M.AssertOutputFormat(struct["OutputFormat"]) end
-	if struct["SpeechMarkTypes"] then M.AssertSpeechMarkTypeList(struct["SpeechMarkTypes"]) end
-	if struct["VoiceId"] then M.AssertVoiceId(struct["VoiceId"]) end
-	if struct["Text"] then M.AssertText(struct["Text"]) end
-	if struct["LexiconNames"] then M.AssertLexiconNameList(struct["LexiconNames"]) end
-	if struct["SampleRate"] then M.AssertSampleRate(struct["SampleRate"]) end
-	if struct["TextType"] then M.AssertTextType(struct["TextType"]) end
+	if struct["OutputFormat"] then asserts.AssertOutputFormat(struct["OutputFormat"]) end
+	if struct["SpeechMarkTypes"] then asserts.AssertSpeechMarkTypeList(struct["SpeechMarkTypes"]) end
+	if struct["VoiceId"] then asserts.AssertVoiceId(struct["VoiceId"]) end
+	if struct["Text"] then asserts.AssertText(struct["Text"]) end
+	if struct["LexiconNames"] then asserts.AssertLexiconNameList(struct["LexiconNames"]) end
+	if struct["SampleRate"] then asserts.AssertSampleRate(struct["SampleRate"]) end
+	if struct["TextType"] then asserts.AssertTextType(struct["TextType"]) end
 	for k,_ in pairs(struct) do
-		assert(SynthesizeSpeechInput_keys[k], "SynthesizeSpeechInput contains unknown key " .. tostring(k))
+		assert(keys.SynthesizeSpeechInput[k], "SynthesizeSpeechInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SynthesizeSpeechInput
 --  
--- @param OutputFormat [OutputFormat] <p> The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. </p>
--- @param SpeechMarkTypes [SpeechMarkTypeList] <p>The type of speech marks returned for the input text.</p>
--- @param VoiceId [VoiceId] <p> Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <a href="http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html">DescribeVoices</a> operation. </p>
--- @param Text [Text] <p> Input text to synthesize. If you specify <code>ssml</code> as the <code>TextType</code>, follow the SSML format for the input text. </p>
--- @param LexiconNames [LexiconNameList] <p>List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html">PutLexicon</a>.</p>
--- @param SampleRate [SampleRate] <p> The audio frequency specified in Hz. </p> <p>The valid values for <code>mp3</code> and <code>ogg_vorbis</code> are "8000", "16000", and "22050". The default value is "22050". </p> <p> Valid values for <code>pcm</code> are "8000" and "16000" The default value is "16000". </p>
--- @param TextType [TextType] <p> Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/ssml.html">Using SSML</a>.</p>
+-- @param _OutputFormat [OutputFormat] <p> The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. </p>
+-- @param _SpeechMarkTypes [SpeechMarkTypeList] <p>The type of speech marks returned for the input text.</p>
+-- @param _VoiceId [VoiceId] <p> Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <a href="http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html">DescribeVoices</a> operation. </p>
+-- @param _Text [Text] <p> Input text to synthesize. If you specify <code>ssml</code> as the <code>TextType</code>, follow the SSML format for the input text. </p>
+-- @param _LexiconNames [LexiconNameList] <p>List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html">PutLexicon</a>.</p>
+-- @param _SampleRate [SampleRate] <p> The audio frequency specified in Hz. </p> <p>The valid values for <code>mp3</code> and <code>ogg_vorbis</code> are "8000", "16000", and "22050". The default value is "22050". </p> <p> Valid values for <code>pcm</code> are "8000" and "16000" The default value is "16000". </p>
+-- @param _TextType [TextType] <p> Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/ssml.html">Using SSML</a>.</p>
 -- Required parameter: OutputFormat
 -- Required parameter: Text
 -- Required parameter: VoiceId
-function M.SynthesizeSpeechInput(OutputFormat, SpeechMarkTypes, VoiceId, Text, LexiconNames, SampleRate, TextType, ...)
+function M.SynthesizeSpeechInput(_OutputFormat, _SpeechMarkTypes, _VoiceId, _Text, _LexiconNames, _SampleRate, _TextType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SynthesizeSpeechInput")
 	local t = { 
-		["OutputFormat"] = OutputFormat,
-		["SpeechMarkTypes"] = SpeechMarkTypes,
-		["VoiceId"] = VoiceId,
-		["Text"] = Text,
-		["LexiconNames"] = LexiconNames,
-		["SampleRate"] = SampleRate,
-		["TextType"] = TextType,
+		["OutputFormat"] = _OutputFormat,
+		["SpeechMarkTypes"] = _SpeechMarkTypes,
+		["VoiceId"] = _VoiceId,
+		["Text"] = _Text,
+		["LexiconNames"] = _LexiconNames,
+		["SampleRate"] = _SampleRate,
+		["TextType"] = _TextType,
 	}
-	M.AssertSynthesizeSpeechInput(t)
+	asserts.AssertSynthesizeSpeechInput(t)
 	return t
 end
 
-local InvalidLexiconException_keys = { "message" = true, nil }
+keys.InvalidLexiconException = { ["message"] = true, nil }
 
-function M.AssertInvalidLexiconException(struct)
+function asserts.AssertInvalidLexiconException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidLexiconException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidLexiconException_keys[k], "InvalidLexiconException contains unknown key " .. tostring(k))
+		assert(keys.InvalidLexiconException[k], "InvalidLexiconException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidLexiconException
 -- <p>Amazon Polly can't find the specified lexicon. Verify that the lexicon's name is spelled correctly, and then try again.</p>
--- @param message [ErrorMessage] <p>Amazon Polly can't find the specified lexicon. Verify that the lexicon's name is spelled correctly, and then try again.</p>
-function M.InvalidLexiconException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidLexiconException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLexiconException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidLexiconException(t)
+	asserts.AssertInvalidLexiconException(t)
 	return t
 end
 
-local PutLexiconOutput_keys = { nil }
+keys.PutLexiconOutput = { nil }
 
-function M.AssertPutLexiconOutput(struct)
+function asserts.AssertPutLexiconOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutLexiconOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(PutLexiconOutput_keys[k], "PutLexiconOutput contains unknown key " .. tostring(k))
+		assert(keys.PutLexiconOutput[k], "PutLexiconOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -784,310 +787,309 @@ function M.PutLexiconOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutLexiconOutput")
 	local t = { 
 	}
-	M.AssertPutLexiconOutput(t)
+	asserts.AssertPutLexiconOutput(t)
 	return t
 end
 
-function M.AssertOutputFormat(str)
+function asserts.AssertOutputFormat(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OutputFormat to be of type 'string'")
 end
 
 --  
 function M.OutputFormat(str)
-	M.AssertOutputFormat(str)
+	asserts.AssertOutputFormat(str)
 	return str
 end
 
-function M.AssertLexiconName(str)
+function asserts.AssertLexiconName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LexiconName to be of type 'string'")
-	assert(str:match("[0-9A-Za-z]{1,20}"), "Expected string to match pattern '[0-9A-Za-z]{1,20}'")
 end
 
 --  
 function M.LexiconName(str)
-	M.AssertLexiconName(str)
+	asserts.AssertLexiconName(str)
 	return str
 end
 
-function M.AssertVoiceName(str)
+function asserts.AssertVoiceName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VoiceName to be of type 'string'")
 end
 
 --  
 function M.VoiceName(str)
-	M.AssertVoiceName(str)
+	asserts.AssertVoiceName(str)
 	return str
 end
 
-function M.AssertNextToken(str)
+function asserts.AssertNextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
 end
 
 --  
 function M.NextToken(str)
-	M.AssertNextToken(str)
+	asserts.AssertNextToken(str)
 	return str
 end
 
-function M.AssertLanguageCode(str)
+function asserts.AssertLanguageCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LanguageCode to be of type 'string'")
 end
 
 --  
 function M.LanguageCode(str)
-	M.AssertLanguageCode(str)
+	asserts.AssertLanguageCode(str)
 	return str
 end
 
-function M.AssertLexiconContent(str)
+function asserts.AssertLexiconContent(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LexiconContent to be of type 'string'")
 end
 
 --  
 function M.LexiconContent(str)
-	M.AssertLexiconContent(str)
+	asserts.AssertLexiconContent(str)
 	return str
 end
 
-function M.AssertSpeechMarkType(str)
+function asserts.AssertSpeechMarkType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SpeechMarkType to be of type 'string'")
 end
 
 --  
 function M.SpeechMarkType(str)
-	M.AssertSpeechMarkType(str)
+	asserts.AssertSpeechMarkType(str)
 	return str
 end
 
-function M.AssertAlphabet(str)
+function asserts.AssertAlphabet(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Alphabet to be of type 'string'")
 end
 
 --  
 function M.Alphabet(str)
-	M.AssertAlphabet(str)
+	asserts.AssertAlphabet(str)
 	return str
 end
 
-function M.AssertVoiceId(str)
+function asserts.AssertVoiceId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VoiceId to be of type 'string'")
 end
 
 --  
 function M.VoiceId(str)
-	M.AssertVoiceId(str)
+	asserts.AssertVoiceId(str)
 	return str
 end
 
-function M.AssertGender(str)
+function asserts.AssertGender(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Gender to be of type 'string'")
 end
 
 --  
 function M.Gender(str)
-	M.AssertGender(str)
+	asserts.AssertGender(str)
 	return str
 end
 
-function M.AssertContentType(str)
+function asserts.AssertContentType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ContentType to be of type 'string'")
 end
 
 --  
 function M.ContentType(str)
-	M.AssertContentType(str)
+	asserts.AssertContentType(str)
 	return str
 end
 
-function M.AssertText(str)
+function asserts.AssertText(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Text to be of type 'string'")
 end
 
 --  
 function M.Text(str)
-	M.AssertText(str)
+	asserts.AssertText(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertLanguageName(str)
+function asserts.AssertLanguageName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LanguageName to be of type 'string'")
 end
 
 --  
 function M.LanguageName(str)
-	M.AssertLanguageName(str)
+	asserts.AssertLanguageName(str)
 	return str
 end
 
-function M.AssertSampleRate(str)
+function asserts.AssertSampleRate(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SampleRate to be of type 'string'")
 end
 
 --  
 function M.SampleRate(str)
-	M.AssertSampleRate(str)
+	asserts.AssertSampleRate(str)
 	return str
 end
 
-function M.AssertLexiconArn(str)
+function asserts.AssertLexiconArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LexiconArn to be of type 'string'")
 end
 
 --  
 function M.LexiconArn(str)
-	M.AssertLexiconArn(str)
+	asserts.AssertLexiconArn(str)
 	return str
 end
 
-function M.AssertTextType(str)
+function asserts.AssertTextType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TextType to be of type 'string'")
 end
 
 --  
 function M.TextType(str)
-	M.AssertTextType(str)
+	asserts.AssertTextType(str)
 	return str
 end
 
-function M.AssertRequestCharacters(integer)
+function asserts.AssertRequestCharacters(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected RequestCharacters to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.RequestCharacters(integer)
-	M.AssertRequestCharacters(integer)
+	asserts.AssertRequestCharacters(integer)
 	return integer
 end
 
-function M.AssertLexemesCount(integer)
+function asserts.AssertLexemesCount(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected LexemesCount to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.LexemesCount(integer)
-	M.AssertLexemesCount(integer)
+	asserts.AssertLexemesCount(integer)
 	return integer
 end
 
-function M.AssertSize(integer)
+function asserts.AssertSize(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Size to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Size(integer)
-	M.AssertSize(integer)
+	asserts.AssertSize(integer)
 	return integer
 end
 
-function M.AssertLastModified(timestamp)
+function asserts.AssertLastModified(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected LastModified to be of type 'string'")
 end
 
 function M.LastModified(timestamp)
-	M.AssertLastModified(timestamp)
+	asserts.AssertLastModified(timestamp)
 	return timestamp
 end
 
-function M.AssertAudioStream(blob)
+function asserts.AssertAudioStream(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected AudioStream to be of type 'string'")
 end
 
 function M.AudioStream(blob)
-	M.AssertAudioStream(blob)
+	asserts.AssertAudioStream(blob)
 	return blob
 end
 
-function M.AssertLexiconNameList(list)
+function asserts.AssertLexiconNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LexiconNameList to be of type ''table")
 	assert(#list <= 5, "Expected list to be contain 5 elements")
 	for _,v in ipairs(list) do
-		M.AssertLexiconName(v)
+		asserts.AssertLexiconName(v)
 	end
 end
 
 --  
 -- List of LexiconName objects
 function M.LexiconNameList(list)
-	M.AssertLexiconNameList(list)
+	asserts.AssertLexiconNameList(list)
 	return list
 end
 
-function M.AssertLexiconDescriptionList(list)
+function asserts.AssertLexiconDescriptionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LexiconDescriptionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLexiconDescription(v)
+		asserts.AssertLexiconDescription(v)
 	end
 end
 
 --  
 -- List of LexiconDescription objects
 function M.LexiconDescriptionList(list)
-	M.AssertLexiconDescriptionList(list)
+	asserts.AssertLexiconDescriptionList(list)
 	return list
 end
 
-function M.AssertSpeechMarkTypeList(list)
+function asserts.AssertSpeechMarkTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SpeechMarkTypeList to be of type ''table")
 	assert(#list <= 4, "Expected list to be contain 4 elements")
 	for _,v in ipairs(list) do
-		M.AssertSpeechMarkType(v)
+		asserts.AssertSpeechMarkType(v)
 	end
 end
 
 --  
 -- List of SpeechMarkType objects
 function M.SpeechMarkTypeList(list)
-	M.AssertSpeechMarkTypeList(list)
+	asserts.AssertSpeechMarkTypeList(list)
 	return list
 end
 
-function M.AssertVoiceList(list)
+function asserts.AssertVoiceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected VoiceList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertVoice(v)
+		asserts.AssertVoice(v)
 	end
 end
 
 --  
 -- List of Voice objects
 function M.VoiceList(list)
-	M.AssertVoiceList(list)
+	asserts.AssertVoiceList(list)
 	return list
 end
 

@@ -18,466 +18,468 @@ M.metadata = {
 	uid = "iot-data-2015-05-28",
 }
 
-local InvalidRequestException_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertInvalidRequestException(struct)
+keys.InvalidRequestException = { ["message"] = true, nil }
+
+function asserts.AssertInvalidRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRequestException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidRequestException_keys[k], "InvalidRequestException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRequestException[k], "InvalidRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidRequestException
 -- <p>The request is not valid.</p>
--- @param message [errorMessage] <p>The message for the exception.</p>
-function M.InvalidRequestException(message, ...)
+-- @param _message [errorMessage] <p>The message for the exception.</p>
+function M.InvalidRequestException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidRequestException(t)
+	asserts.AssertInvalidRequestException(t)
 	return t
 end
 
-local ServiceUnavailableException_keys = { "message" = true, nil }
+keys.ServiceUnavailableException = { ["message"] = true, nil }
 
-function M.AssertServiceUnavailableException(struct)
+function asserts.AssertServiceUnavailableException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ServiceUnavailableException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ServiceUnavailableException_keys[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
+		assert(keys.ServiceUnavailableException[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ServiceUnavailableException
 -- <p>The service is temporarily unavailable.</p>
--- @param message [errorMessage] <p>The message for the exception.</p>
-function M.ServiceUnavailableException(message, ...)
+-- @param _message [errorMessage] <p>The message for the exception.</p>
+function M.ServiceUnavailableException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertServiceUnavailableException(t)
+	asserts.AssertServiceUnavailableException(t)
 	return t
 end
 
-local RequestEntityTooLargeException_keys = { "message" = true, nil }
+keys.RequestEntityTooLargeException = { ["message"] = true, nil }
 
-function M.AssertRequestEntityTooLargeException(struct)
+function asserts.AssertRequestEntityTooLargeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RequestEntityTooLargeException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(RequestEntityTooLargeException_keys[k], "RequestEntityTooLargeException contains unknown key " .. tostring(k))
+		assert(keys.RequestEntityTooLargeException[k], "RequestEntityTooLargeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RequestEntityTooLargeException
 -- <p>The payload exceeds the maximum size allowed.</p>
--- @param message [ErrorMessage] <p>The message for the exception.</p>
-function M.RequestEntityTooLargeException(message, ...)
+-- @param _message [ErrorMessage] <p>The message for the exception.</p>
+function M.RequestEntityTooLargeException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestEntityTooLargeException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertRequestEntityTooLargeException(t)
+	asserts.AssertRequestEntityTooLargeException(t)
 	return t
 end
 
-local UnauthorizedException_keys = { "message" = true, nil }
+keys.UnauthorizedException = { ["message"] = true, nil }
 
-function M.AssertUnauthorizedException(struct)
+function asserts.AssertUnauthorizedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnauthorizedException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnauthorizedException_keys[k], "UnauthorizedException contains unknown key " .. tostring(k))
+		assert(keys.UnauthorizedException[k], "UnauthorizedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnauthorizedException
 -- <p>You are not authorized to perform this operation.</p>
--- @param message [errorMessage] <p>The message for the exception.</p>
-function M.UnauthorizedException(message, ...)
+-- @param _message [errorMessage] <p>The message for the exception.</p>
+function M.UnauthorizedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnauthorizedException(t)
+	asserts.AssertUnauthorizedException(t)
 	return t
 end
 
-local PublishRequest_keys = { "topic" = true, "qos" = true, "payload" = true, nil }
+keys.PublishRequest = { ["topic"] = true, ["qos"] = true, ["payload"] = true, nil }
 
-function M.AssertPublishRequest(struct)
+function asserts.AssertPublishRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PublishRequest to be of type 'table'")
 	assert(struct["topic"], "Expected key topic to exist in table")
-	if struct["topic"] then M.AssertTopic(struct["topic"]) end
-	if struct["qos"] then M.AssertQos(struct["qos"]) end
-	if struct["payload"] then M.AssertPayload(struct["payload"]) end
+	if struct["topic"] then asserts.AssertTopic(struct["topic"]) end
+	if struct["qos"] then asserts.AssertQos(struct["qos"]) end
+	if struct["payload"] then asserts.AssertPayload(struct["payload"]) end
 	for k,_ in pairs(struct) do
-		assert(PublishRequest_keys[k], "PublishRequest contains unknown key " .. tostring(k))
+		assert(keys.PublishRequest[k], "PublishRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PublishRequest
 -- <p>The input for the Publish operation.</p>
--- @param topic [Topic] <p>The name of the MQTT topic.</p>
--- @param qos [Qos] <p>The Quality of Service (QoS) level.</p>
--- @param payload [Payload] <p>The state information, in JSON format.</p>
+-- @param _topic [Topic] <p>The name of the MQTT topic.</p>
+-- @param _qos [Qos] <p>The Quality of Service (QoS) level.</p>
+-- @param _payload [Payload] <p>The state information, in JSON format.</p>
 -- Required parameter: topic
-function M.PublishRequest(topic, qos, payload, ...)
+function M.PublishRequest(_topic, _qos, _payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishRequest")
 	local t = { 
-		["topic"] = topic,
-		["qos"] = qos,
-		["payload"] = payload,
+		["topic"] = _topic,
+		["qos"] = _qos,
+		["payload"] = _payload,
 	}
-	M.AssertPublishRequest(t)
+	asserts.AssertPublishRequest(t)
 	return t
 end
 
-local UpdateThingShadowRequest_keys = { "thingName" = true, "payload" = true, nil }
+keys.UpdateThingShadowRequest = { ["thingName"] = true, ["payload"] = true, nil }
 
-function M.AssertUpdateThingShadowRequest(struct)
+function asserts.AssertUpdateThingShadowRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateThingShadowRequest to be of type 'table'")
 	assert(struct["thingName"], "Expected key thingName to exist in table")
 	assert(struct["payload"], "Expected key payload to exist in table")
-	if struct["thingName"] then M.AssertThingName(struct["thingName"]) end
-	if struct["payload"] then M.AssertJsonDocument(struct["payload"]) end
+	if struct["thingName"] then asserts.AssertThingName(struct["thingName"]) end
+	if struct["payload"] then asserts.AssertJsonDocument(struct["payload"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateThingShadowRequest_keys[k], "UpdateThingShadowRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateThingShadowRequest[k], "UpdateThingShadowRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateThingShadowRequest
 -- <p>The input for the UpdateThingShadow operation.</p>
--- @param thingName [ThingName] <p>The name of the thing.</p>
--- @param payload [JsonDocument] <p>The state information, in JSON format.</p>
+-- @param _thingName [ThingName] <p>The name of the thing.</p>
+-- @param _payload [JsonDocument] <p>The state information, in JSON format.</p>
 -- Required parameter: thingName
 -- Required parameter: payload
-function M.UpdateThingShadowRequest(thingName, payload, ...)
+function M.UpdateThingShadowRequest(_thingName, _payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingShadowRequest")
 	local t = { 
-		["thingName"] = thingName,
-		["payload"] = payload,
+		["thingName"] = _thingName,
+		["payload"] = _payload,
 	}
-	M.AssertUpdateThingShadowRequest(t)
+	asserts.AssertUpdateThingShadowRequest(t)
 	return t
 end
 
-local UnsupportedDocumentEncodingException_keys = { "message" = true, nil }
+keys.UnsupportedDocumentEncodingException = { ["message"] = true, nil }
 
-function M.AssertUnsupportedDocumentEncodingException(struct)
+function asserts.AssertUnsupportedDocumentEncodingException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedDocumentEncodingException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedDocumentEncodingException_keys[k], "UnsupportedDocumentEncodingException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedDocumentEncodingException[k], "UnsupportedDocumentEncodingException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedDocumentEncodingException
 -- <p>The document encoding is not supported.</p>
--- @param message [errorMessage] <p>The message for the exception.</p>
-function M.UnsupportedDocumentEncodingException(message, ...)
+-- @param _message [errorMessage] <p>The message for the exception.</p>
+function M.UnsupportedDocumentEncodingException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedDocumentEncodingException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedDocumentEncodingException(t)
+	asserts.AssertUnsupportedDocumentEncodingException(t)
 	return t
 end
 
-local UpdateThingShadowResponse_keys = { "payload" = true, nil }
+keys.UpdateThingShadowResponse = { ["payload"] = true, nil }
 
-function M.AssertUpdateThingShadowResponse(struct)
+function asserts.AssertUpdateThingShadowResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateThingShadowResponse to be of type 'table'")
-	if struct["payload"] then M.AssertJsonDocument(struct["payload"]) end
+	if struct["payload"] then asserts.AssertJsonDocument(struct["payload"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateThingShadowResponse_keys[k], "UpdateThingShadowResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateThingShadowResponse[k], "UpdateThingShadowResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateThingShadowResponse
 -- <p>The output from the UpdateThingShadow operation.</p>
--- @param payload [JsonDocument] <p>The state information, in JSON format.</p>
-function M.UpdateThingShadowResponse(payload, ...)
+-- @param _payload [JsonDocument] <p>The state information, in JSON format.</p>
+function M.UpdateThingShadowResponse(_payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingShadowResponse")
 	local t = { 
-		["payload"] = payload,
+		["payload"] = _payload,
 	}
-	M.AssertUpdateThingShadowResponse(t)
+	asserts.AssertUpdateThingShadowResponse(t)
 	return t
 end
 
-local GetThingShadowRequest_keys = { "thingName" = true, nil }
+keys.GetThingShadowRequest = { ["thingName"] = true, nil }
 
-function M.AssertGetThingShadowRequest(struct)
+function asserts.AssertGetThingShadowRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetThingShadowRequest to be of type 'table'")
 	assert(struct["thingName"], "Expected key thingName to exist in table")
-	if struct["thingName"] then M.AssertThingName(struct["thingName"]) end
+	if struct["thingName"] then asserts.AssertThingName(struct["thingName"]) end
 	for k,_ in pairs(struct) do
-		assert(GetThingShadowRequest_keys[k], "GetThingShadowRequest contains unknown key " .. tostring(k))
+		assert(keys.GetThingShadowRequest[k], "GetThingShadowRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetThingShadowRequest
 -- <p>The input for the GetThingShadow operation.</p>
--- @param thingName [ThingName] <p>The name of the thing.</p>
+-- @param _thingName [ThingName] <p>The name of the thing.</p>
 -- Required parameter: thingName
-function M.GetThingShadowRequest(thingName, ...)
+function M.GetThingShadowRequest(_thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetThingShadowRequest")
 	local t = { 
-		["thingName"] = thingName,
+		["thingName"] = _thingName,
 	}
-	M.AssertGetThingShadowRequest(t)
+	asserts.AssertGetThingShadowRequest(t)
 	return t
 end
 
-local DeleteThingShadowResponse_keys = { "payload" = true, nil }
+keys.DeleteThingShadowResponse = { ["payload"] = true, nil }
 
-function M.AssertDeleteThingShadowResponse(struct)
+function asserts.AssertDeleteThingShadowResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteThingShadowResponse to be of type 'table'")
 	assert(struct["payload"], "Expected key payload to exist in table")
-	if struct["payload"] then M.AssertJsonDocument(struct["payload"]) end
+	if struct["payload"] then asserts.AssertJsonDocument(struct["payload"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteThingShadowResponse_keys[k], "DeleteThingShadowResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteThingShadowResponse[k], "DeleteThingShadowResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteThingShadowResponse
 -- <p>The output from the DeleteThingShadow operation.</p>
--- @param payload [JsonDocument] <p>The state information, in JSON format.</p>
+-- @param _payload [JsonDocument] <p>The state information, in JSON format.</p>
 -- Required parameter: payload
-function M.DeleteThingShadowResponse(payload, ...)
+function M.DeleteThingShadowResponse(_payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingShadowResponse")
 	local t = { 
-		["payload"] = payload,
+		["payload"] = _payload,
 	}
-	M.AssertDeleteThingShadowResponse(t)
+	asserts.AssertDeleteThingShadowResponse(t)
 	return t
 end
 
-local InternalFailureException_keys = { "message" = true, nil }
+keys.InternalFailureException = { ["message"] = true, nil }
 
-function M.AssertInternalFailureException(struct)
+function asserts.AssertInternalFailureException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalFailureException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalFailureException_keys[k], "InternalFailureException contains unknown key " .. tostring(k))
+		assert(keys.InternalFailureException[k], "InternalFailureException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalFailureException
 -- <p>An unexpected error has occurred.</p>
--- @param message [errorMessage] <p>The message for the exception.</p>
-function M.InternalFailureException(message, ...)
+-- @param _message [errorMessage] <p>The message for the exception.</p>
+function M.InternalFailureException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalFailureException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalFailureException(t)
+	asserts.AssertInternalFailureException(t)
 	return t
 end
 
-local ConflictException_keys = { "message" = true, nil }
+keys.ConflictException = { ["message"] = true, nil }
 
-function M.AssertConflictException(struct)
+function asserts.AssertConflictException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConflictException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ConflictException_keys[k], "ConflictException contains unknown key " .. tostring(k))
+		assert(keys.ConflictException[k], "ConflictException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConflictException
 -- <p>The specified version does not match the version of the document.</p>
--- @param message [ErrorMessage] <p>The message for the exception.</p>
-function M.ConflictException(message, ...)
+-- @param _message [ErrorMessage] <p>The message for the exception.</p>
+function M.ConflictException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConflictException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertConflictException(t)
+	asserts.AssertConflictException(t)
 	return t
 end
 
-local GetThingShadowResponse_keys = { "payload" = true, nil }
+keys.GetThingShadowResponse = { ["payload"] = true, nil }
 
-function M.AssertGetThingShadowResponse(struct)
+function asserts.AssertGetThingShadowResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetThingShadowResponse to be of type 'table'")
-	if struct["payload"] then M.AssertJsonDocument(struct["payload"]) end
+	if struct["payload"] then asserts.AssertJsonDocument(struct["payload"]) end
 	for k,_ in pairs(struct) do
-		assert(GetThingShadowResponse_keys[k], "GetThingShadowResponse contains unknown key " .. tostring(k))
+		assert(keys.GetThingShadowResponse[k], "GetThingShadowResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetThingShadowResponse
 -- <p>The output from the GetThingShadow operation.</p>
--- @param payload [JsonDocument] <p>The state information, in JSON format.</p>
-function M.GetThingShadowResponse(payload, ...)
+-- @param _payload [JsonDocument] <p>The state information, in JSON format.</p>
+function M.GetThingShadowResponse(_payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetThingShadowResponse")
 	local t = { 
-		["payload"] = payload,
+		["payload"] = _payload,
 	}
-	M.AssertGetThingShadowResponse(t)
+	asserts.AssertGetThingShadowResponse(t)
 	return t
 end
 
-local MethodNotAllowedException_keys = { "message" = true, nil }
+keys.MethodNotAllowedException = { ["message"] = true, nil }
 
-function M.AssertMethodNotAllowedException(struct)
+function asserts.AssertMethodNotAllowedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MethodNotAllowedException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MethodNotAllowedException_keys[k], "MethodNotAllowedException contains unknown key " .. tostring(k))
+		assert(keys.MethodNotAllowedException[k], "MethodNotAllowedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MethodNotAllowedException
 -- <p>The specified combination of HTTP verb and URI is not supported.</p>
--- @param message [ErrorMessage] <p>The message for the exception.</p>
-function M.MethodNotAllowedException(message, ...)
+-- @param _message [ErrorMessage] <p>The message for the exception.</p>
+function M.MethodNotAllowedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MethodNotAllowedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMethodNotAllowedException(t)
+	asserts.AssertMethodNotAllowedException(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "message" = true, nil }
+keys.ResourceNotFoundException = { ["message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource does not exist.</p>
--- @param message [errorMessage] <p>The message for the exception.</p>
-function M.ResourceNotFoundException(message, ...)
+-- @param _message [errorMessage] <p>The message for the exception.</p>
+function M.ResourceNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local ThrottlingException_keys = { "message" = true, nil }
+keys.ThrottlingException = { ["message"] = true, nil }
 
-function M.AssertThrottlingException(struct)
+function asserts.AssertThrottlingException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ThrottlingException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ThrottlingException_keys[k], "ThrottlingException contains unknown key " .. tostring(k))
+		assert(keys.ThrottlingException[k], "ThrottlingException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ThrottlingException
 -- <p>The rate exceeds the limit.</p>
--- @param message [errorMessage] <p>The message for the exception.</p>
-function M.ThrottlingException(message, ...)
+-- @param _message [errorMessage] <p>The message for the exception.</p>
+function M.ThrottlingException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertThrottlingException(t)
+	asserts.AssertThrottlingException(t)
 	return t
 end
 
-local DeleteThingShadowRequest_keys = { "thingName" = true, nil }
+keys.DeleteThingShadowRequest = { ["thingName"] = true, nil }
 
-function M.AssertDeleteThingShadowRequest(struct)
+function asserts.AssertDeleteThingShadowRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteThingShadowRequest to be of type 'table'")
 	assert(struct["thingName"], "Expected key thingName to exist in table")
-	if struct["thingName"] then M.AssertThingName(struct["thingName"]) end
+	if struct["thingName"] then asserts.AssertThingName(struct["thingName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteThingShadowRequest_keys[k], "DeleteThingShadowRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteThingShadowRequest[k], "DeleteThingShadowRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteThingShadowRequest
 -- <p>The input for the DeleteThingShadow operation.</p>
--- @param thingName [ThingName] <p>The name of the thing.</p>
+-- @param _thingName [ThingName] <p>The name of the thing.</p>
 -- Required parameter: thingName
-function M.DeleteThingShadowRequest(thingName, ...)
+function M.DeleteThingShadowRequest(_thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingShadowRequest")
 	local t = { 
-		["thingName"] = thingName,
+		["thingName"] = _thingName,
 	}
-	M.AssertDeleteThingShadowRequest(t)
+	asserts.AssertDeleteThingShadowRequest(t)
 	return t
 end
 
-function M.AssertThingName(str)
+function asserts.AssertThingName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ThingName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9_-]+"), "Expected string to match pattern '[a-zA-Z0-9_-]+'")
 end
 
 --  
 function M.ThingName(str)
-	M.AssertThingName(str)
+	asserts.AssertThingName(str)
 	return str
 end
 
-function M.AsserterrorMessage(str)
+function asserts.AsserterrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected errorMessage to be of type 'string'")
 end
 
 --  
 function M.errorMessage(str)
-	M.AsserterrorMessage(str)
+	asserts.AsserterrorMessage(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertTopic(str)
+function asserts.AssertTopic(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Topic to be of type 'string'")
 end
 
 --  
 function M.Topic(str)
-	M.AssertTopic(str)
+	asserts.AssertTopic(str)
 	return str
 end
 
-function M.AssertQos(integer)
+function asserts.AssertQos(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Qos to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -485,27 +487,27 @@ function M.AssertQos(integer)
 end
 
 function M.Qos(integer)
-	M.AssertQos(integer)
+	asserts.AssertQos(integer)
 	return integer
 end
 
-function M.AssertJsonDocument(blob)
+function asserts.AssertJsonDocument(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected JsonDocument to be of type 'string'")
 end
 
 function M.JsonDocument(blob)
-	M.AssertJsonDocument(blob)
+	asserts.AssertJsonDocument(blob)
 	return blob
 end
 
-function M.AssertPayload(blob)
+function asserts.AssertPayload(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected Payload to be of type 'string'")
 end
 
 function M.Payload(blob)
-	M.AssertPayload(blob)
+	asserts.AssertPayload(blob)
 	return blob
 end
 

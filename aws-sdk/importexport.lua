@@ -18,1427 +18,1430 @@ M.metadata = {
 	uid = "importexport-2010-06-01",
 }
 
-local NoSuchBucketException_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertNoSuchBucketException(struct)
+keys.NoSuchBucketException = { ["message"] = true, nil }
+
+function asserts.AssertNoSuchBucketException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NoSuchBucketException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(NoSuchBucketException_keys[k], "NoSuchBucketException contains unknown key " .. tostring(k))
+		assert(keys.NoSuchBucketException[k], "NoSuchBucketException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NoSuchBucketException
 -- The specified bucket does not exist. Create the specified bucket or change the manifest's bucket, exportBucket, or logBucket field to a bucket that the account, as specified by the manifest's Access Key ID, has write permissions to.
--- @param message [ErrorMessage] The specified bucket does not exist. Create the specified bucket or change the manifest's bucket, exportBucket, or logBucket field to a bucket that the account, as specified by the manifest's Access Key ID, has write permissions to.
-function M.NoSuchBucketException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.NoSuchBucketException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchBucketException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertNoSuchBucketException(t)
+	asserts.AssertNoSuchBucketException(t)
 	return t
 end
 
-local InvalidCustomsException_keys = { "message" = true, nil }
+keys.InvalidCustomsException = { ["message"] = true, nil }
 
-function M.AssertInvalidCustomsException(struct)
+function asserts.AssertInvalidCustomsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidCustomsException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidCustomsException_keys[k], "InvalidCustomsException contains unknown key " .. tostring(k))
+		assert(keys.InvalidCustomsException[k], "InvalidCustomsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidCustomsException
 -- One or more customs parameters was invalid. Please correct and resubmit.
--- @param message [ErrorMessage] One or more customs parameters was invalid. Please correct and resubmit.
-function M.InvalidCustomsException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidCustomsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCustomsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidCustomsException(t)
+	asserts.AssertInvalidCustomsException(t)
 	return t
 end
 
-local MissingParameterException_keys = { "message" = true, nil }
+keys.MissingParameterException = { ["message"] = true, nil }
 
-function M.AssertMissingParameterException(struct)
+function asserts.AssertMissingParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MissingParameterException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MissingParameterException_keys[k], "MissingParameterException contains unknown key " .. tostring(k))
+		assert(keys.MissingParameterException[k], "MissingParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MissingParameterException
 -- One or more required parameters was missing from the request.
--- @param message [ErrorMessage] One or more required parameters was missing from the request.
-function M.MissingParameterException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.MissingParameterException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MissingParameterException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMissingParameterException(t)
+	asserts.AssertMissingParameterException(t)
 	return t
 end
 
-local UnableToUpdateJobIdException_keys = { "message" = true, nil }
+keys.UnableToUpdateJobIdException = { ["message"] = true, nil }
 
-function M.AssertUnableToUpdateJobIdException(struct)
+function asserts.AssertUnableToUpdateJobIdException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnableToUpdateJobIdException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnableToUpdateJobIdException_keys[k], "UnableToUpdateJobIdException contains unknown key " .. tostring(k))
+		assert(keys.UnableToUpdateJobIdException[k], "UnableToUpdateJobIdException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnableToUpdateJobIdException
 -- AWS Import/Export cannot update the job
--- @param message [ErrorMessage] AWS Import/Export cannot update the job
-function M.UnableToUpdateJobIdException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.UnableToUpdateJobIdException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnableToUpdateJobIdException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnableToUpdateJobIdException(t)
+	asserts.AssertUnableToUpdateJobIdException(t)
 	return t
 end
 
-local CancelJobInput_keys = { "APIVersion" = true, "JobId" = true, nil }
+keys.CancelJobInput = { ["APIVersion"] = true, ["JobId"] = true, nil }
 
-function M.AssertCancelJobInput(struct)
+function asserts.AssertCancelJobInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CancelJobInput to be of type 'table'")
 	assert(struct["JobId"], "Expected key JobId to exist in table")
-	if struct["APIVersion"] then M.AssertAPIVersion(struct["APIVersion"]) end
-	if struct["JobId"] then M.AssertJobId(struct["JobId"]) end
+	if struct["APIVersion"] then asserts.AssertAPIVersion(struct["APIVersion"]) end
+	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
 	for k,_ in pairs(struct) do
-		assert(CancelJobInput_keys[k], "CancelJobInput contains unknown key " .. tostring(k))
+		assert(keys.CancelJobInput[k], "CancelJobInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CancelJobInput
 -- Input structure for the CancelJob operation.
--- @param APIVersion [APIVersion] Input structure for the CancelJob operation.
--- @param JobId [JobId] Input structure for the CancelJob operation.
+-- @param _APIVersion [APIVersion] 
+-- @param _JobId [JobId] 
 -- Required parameter: JobId
-function M.CancelJobInput(APIVersion, JobId, ...)
+function M.CancelJobInput(_APIVersion, _JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobInput")
 	local t = { 
-		["APIVersion"] = APIVersion,
-		["JobId"] = JobId,
+		["APIVersion"] = _APIVersion,
+		["JobId"] = _JobId,
 	}
-	M.AssertCancelJobInput(t)
+	asserts.AssertCancelJobInput(t)
 	return t
 end
 
-local InvalidFileSystemException_keys = { "message" = true, nil }
+keys.InvalidFileSystemException = { ["message"] = true, nil }
 
-function M.AssertInvalidFileSystemException(struct)
+function asserts.AssertInvalidFileSystemException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidFileSystemException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidFileSystemException_keys[k], "InvalidFileSystemException contains unknown key " .. tostring(k))
+		assert(keys.InvalidFileSystemException[k], "InvalidFileSystemException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidFileSystemException
 -- File system specified in export manifest is invalid.
--- @param message [ErrorMessage] File system specified in export manifest is invalid.
-function M.InvalidFileSystemException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidFileSystemException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFileSystemException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidFileSystemException(t)
+	asserts.AssertInvalidFileSystemException(t)
 	return t
 end
 
-local ExpiredJobIdException_keys = { "message" = true, nil }
+keys.ExpiredJobIdException = { ["message"] = true, nil }
 
-function M.AssertExpiredJobIdException(struct)
+function asserts.AssertExpiredJobIdException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExpiredJobIdException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ExpiredJobIdException_keys[k], "ExpiredJobIdException contains unknown key " .. tostring(k))
+		assert(keys.ExpiredJobIdException[k], "ExpiredJobIdException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExpiredJobIdException
 -- Indicates that the specified job has expired out of the system.
--- @param message [ErrorMessage] Indicates that the specified job has expired out of the system.
-function M.ExpiredJobIdException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.ExpiredJobIdException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredJobIdException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertExpiredJobIdException(t)
+	asserts.AssertExpiredJobIdException(t)
 	return t
 end
 
-local UnableToCancelJobIdException_keys = { "message" = true, nil }
+keys.UnableToCancelJobIdException = { ["message"] = true, nil }
 
-function M.AssertUnableToCancelJobIdException(struct)
+function asserts.AssertUnableToCancelJobIdException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnableToCancelJobIdException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnableToCancelJobIdException_keys[k], "UnableToCancelJobIdException contains unknown key " .. tostring(k))
+		assert(keys.UnableToCancelJobIdException[k], "UnableToCancelJobIdException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnableToCancelJobIdException
 -- AWS Import/Export cannot cancel the job
--- @param message [ErrorMessage] AWS Import/Export cannot cancel the job
-function M.UnableToCancelJobIdException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.UnableToCancelJobIdException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnableToCancelJobIdException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnableToCancelJobIdException(t)
+	asserts.AssertUnableToCancelJobIdException(t)
 	return t
 end
 
-local GetShippingLabelInput_keys = { "city" = true, "street3" = true, "name" = true, "country" = true, "company" = true, "jobIds" = true, "APIVersion" = true, "phoneNumber" = true, "street1" = true, "postalCode" = true, "stateOrProvince" = true, "street2" = true, nil }
+keys.GetShippingLabelInput = { ["city"] = true, ["street3"] = true, ["name"] = true, ["country"] = true, ["company"] = true, ["jobIds"] = true, ["APIVersion"] = true, ["phoneNumber"] = true, ["street1"] = true, ["postalCode"] = true, ["stateOrProvince"] = true, ["street2"] = true, nil }
 
-function M.AssertGetShippingLabelInput(struct)
+function asserts.AssertGetShippingLabelInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetShippingLabelInput to be of type 'table'")
 	assert(struct["jobIds"], "Expected key jobIds to exist in table")
-	if struct["city"] then M.Assertcity(struct["city"]) end
-	if struct["street3"] then M.Assertstreet3(struct["street3"]) end
-	if struct["name"] then M.Assertname(struct["name"]) end
-	if struct["country"] then M.Assertcountry(struct["country"]) end
-	if struct["company"] then M.Assertcompany(struct["company"]) end
-	if struct["jobIds"] then M.AssertJobIdList(struct["jobIds"]) end
-	if struct["APIVersion"] then M.AssertAPIVersion(struct["APIVersion"]) end
-	if struct["phoneNumber"] then M.AssertphoneNumber(struct["phoneNumber"]) end
-	if struct["street1"] then M.Assertstreet1(struct["street1"]) end
-	if struct["postalCode"] then M.AssertpostalCode(struct["postalCode"]) end
-	if struct["stateOrProvince"] then M.AssertstateOrProvince(struct["stateOrProvince"]) end
-	if struct["street2"] then M.Assertstreet2(struct["street2"]) end
+	if struct["city"] then asserts.Assertcity(struct["city"]) end
+	if struct["street3"] then asserts.Assertstreet3(struct["street3"]) end
+	if struct["name"] then asserts.Assertname(struct["name"]) end
+	if struct["country"] then asserts.Assertcountry(struct["country"]) end
+	if struct["company"] then asserts.Assertcompany(struct["company"]) end
+	if struct["jobIds"] then asserts.AssertJobIdList(struct["jobIds"]) end
+	if struct["APIVersion"] then asserts.AssertAPIVersion(struct["APIVersion"]) end
+	if struct["phoneNumber"] then asserts.AssertphoneNumber(struct["phoneNumber"]) end
+	if struct["street1"] then asserts.Assertstreet1(struct["street1"]) end
+	if struct["postalCode"] then asserts.AssertpostalCode(struct["postalCode"]) end
+	if struct["stateOrProvince"] then asserts.AssertstateOrProvince(struct["stateOrProvince"]) end
+	if struct["street2"] then asserts.Assertstreet2(struct["street2"]) end
 	for k,_ in pairs(struct) do
-		assert(GetShippingLabelInput_keys[k], "GetShippingLabelInput contains unknown key " .. tostring(k))
+		assert(keys.GetShippingLabelInput[k], "GetShippingLabelInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetShippingLabelInput
 --  
--- @param city [city]  
--- @param street3 [street3]  
--- @param name [name]  
--- @param country [country]  
--- @param company [company]  
--- @param jobIds [JobIdList]  
--- @param APIVersion [APIVersion]  
--- @param phoneNumber [phoneNumber]  
--- @param street1 [street1]  
--- @param postalCode [postalCode]  
--- @param stateOrProvince [stateOrProvince]  
--- @param street2 [street2]  
+-- @param _city [city] 
+-- @param _street3 [street3] 
+-- @param _name [name] 
+-- @param _country [country] 
+-- @param _company [company] 
+-- @param _jobIds [JobIdList] 
+-- @param _APIVersion [APIVersion] 
+-- @param _phoneNumber [phoneNumber] 
+-- @param _street1 [street1] 
+-- @param _postalCode [postalCode] 
+-- @param _stateOrProvince [stateOrProvince] 
+-- @param _street2 [street2] 
 -- Required parameter: jobIds
-function M.GetShippingLabelInput(city, street3, name, country, company, jobIds, APIVersion, phoneNumber, street1, postalCode, stateOrProvince, street2, ...)
+function M.GetShippingLabelInput(_city, _street3, _name, _country, _company, _jobIds, _APIVersion, _phoneNumber, _street1, _postalCode, _stateOrProvince, _street2, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetShippingLabelInput")
 	local t = { 
-		["city"] = city,
-		["street3"] = street3,
-		["name"] = name,
-		["country"] = country,
-		["company"] = company,
-		["jobIds"] = jobIds,
-		["APIVersion"] = APIVersion,
-		["phoneNumber"] = phoneNumber,
-		["street1"] = street1,
-		["postalCode"] = postalCode,
-		["stateOrProvince"] = stateOrProvince,
-		["street2"] = street2,
+		["city"] = _city,
+		["street3"] = _street3,
+		["name"] = _name,
+		["country"] = _country,
+		["company"] = _company,
+		["jobIds"] = _jobIds,
+		["APIVersion"] = _APIVersion,
+		["phoneNumber"] = _phoneNumber,
+		["street1"] = _street1,
+		["postalCode"] = _postalCode,
+		["stateOrProvince"] = _stateOrProvince,
+		["street2"] = _street2,
 	}
-	M.AssertGetShippingLabelInput(t)
+	asserts.AssertGetShippingLabelInput(t)
 	return t
 end
 
-local GetStatusInput_keys = { "APIVersion" = true, "JobId" = true, nil }
+keys.GetStatusInput = { ["APIVersion"] = true, ["JobId"] = true, nil }
 
-function M.AssertGetStatusInput(struct)
+function asserts.AssertGetStatusInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetStatusInput to be of type 'table'")
 	assert(struct["JobId"], "Expected key JobId to exist in table")
-	if struct["APIVersion"] then M.AssertAPIVersion(struct["APIVersion"]) end
-	if struct["JobId"] then M.AssertJobId(struct["JobId"]) end
+	if struct["APIVersion"] then asserts.AssertAPIVersion(struct["APIVersion"]) end
+	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetStatusInput_keys[k], "GetStatusInput contains unknown key " .. tostring(k))
+		assert(keys.GetStatusInput[k], "GetStatusInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetStatusInput
 -- Input structure for the GetStatus operation.
--- @param APIVersion [APIVersion] Input structure for the GetStatus operation.
--- @param JobId [JobId] Input structure for the GetStatus operation.
+-- @param _APIVersion [APIVersion] 
+-- @param _JobId [JobId] 
 -- Required parameter: JobId
-function M.GetStatusInput(APIVersion, JobId, ...)
+function M.GetStatusInput(_APIVersion, _JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStatusInput")
 	local t = { 
-		["APIVersion"] = APIVersion,
-		["JobId"] = JobId,
+		["APIVersion"] = _APIVersion,
+		["JobId"] = _JobId,
 	}
-	M.AssertGetStatusInput(t)
+	asserts.AssertGetStatusInput(t)
 	return t
 end
 
-local InvalidParameterException_keys = { "message" = true, nil }
+keys.InvalidParameterException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterException(struct)
+function asserts.AssertInvalidParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterException_keys[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterException
 -- One or more parameters had an invalid value.
--- @param message [ErrorMessage] One or more parameters had an invalid value.
-function M.InvalidParameterException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidParameterException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterException(t)
+	asserts.AssertInvalidParameterException(t)
 	return t
 end
 
-local InvalidAccessKeyIdException_keys = { "message" = true, nil }
+keys.InvalidAccessKeyIdException = { ["message"] = true, nil }
 
-function M.AssertInvalidAccessKeyIdException(struct)
+function asserts.AssertInvalidAccessKeyIdException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidAccessKeyIdException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidAccessKeyIdException_keys[k], "InvalidAccessKeyIdException contains unknown key " .. tostring(k))
+		assert(keys.InvalidAccessKeyIdException[k], "InvalidAccessKeyIdException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidAccessKeyIdException
 -- The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.
--- @param message [ErrorMessage] The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.
-function M.InvalidAccessKeyIdException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidAccessKeyIdException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAccessKeyIdException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidAccessKeyIdException(t)
+	asserts.AssertInvalidAccessKeyIdException(t)
 	return t
 end
 
-local Artifact_keys = { "URL" = true, "Description" = true, nil }
+keys.Artifact = { ["URL"] = true, ["Description"] = true, nil }
 
-function M.AssertArtifact(struct)
+function asserts.AssertArtifact(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Artifact to be of type 'table'")
-	if struct["URL"] then M.AssertURL(struct["URL"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
+	if struct["URL"] then asserts.AssertURL(struct["URL"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(Artifact_keys[k], "Artifact contains unknown key " .. tostring(k))
+		assert(keys.Artifact[k], "Artifact contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Artifact
 -- A discrete item that contains the description and URL of an artifact (such as a PDF).
--- @param URL [URL] A discrete item that contains the description and URL of an artifact (such as a PDF).
--- @param Description [Description] A discrete item that contains the description and URL of an artifact (such as a PDF).
-function M.Artifact(URL, Description, ...)
+-- @param _URL [URL] 
+-- @param _Description [Description] 
+function M.Artifact(_URL, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Artifact")
 	local t = { 
-		["URL"] = URL,
-		["Description"] = Description,
+		["URL"] = _URL,
+		["Description"] = _Description,
 	}
-	M.AssertArtifact(t)
+	asserts.AssertArtifact(t)
 	return t
 end
 
-local InvalidJobIdException_keys = { "message" = true, nil }
+keys.InvalidJobIdException = { ["message"] = true, nil }
 
-function M.AssertInvalidJobIdException(struct)
+function asserts.AssertInvalidJobIdException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidJobIdException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidJobIdException_keys[k], "InvalidJobIdException contains unknown key " .. tostring(k))
+		assert(keys.InvalidJobIdException[k], "InvalidJobIdException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidJobIdException
 -- The JOBID was missing, not found, or not associated with the AWS account.
--- @param message [ErrorMessage] The JOBID was missing, not found, or not associated with the AWS account.
-function M.InvalidJobIdException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidJobIdException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidJobIdException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidJobIdException(t)
+	asserts.AssertInvalidJobIdException(t)
 	return t
 end
 
-local CreateJobQuotaExceededException_keys = { "message" = true, nil }
+keys.CreateJobQuotaExceededException = { ["message"] = true, nil }
 
-function M.AssertCreateJobQuotaExceededException(struct)
+function asserts.AssertCreateJobQuotaExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateJobQuotaExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateJobQuotaExceededException_keys[k], "CreateJobQuotaExceededException contains unknown key " .. tostring(k))
+		assert(keys.CreateJobQuotaExceededException[k], "CreateJobQuotaExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateJobQuotaExceededException
 -- Each account can create only a certain number of jobs per day. If you need to create more than this, please contact awsimportexport@amazon.com to explain your particular use case.
--- @param message [ErrorMessage] Each account can create only a certain number of jobs per day. If you need to create more than this, please contact awsimportexport@amazon.com to explain your particular use case.
-function M.CreateJobQuotaExceededException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.CreateJobQuotaExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobQuotaExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertCreateJobQuotaExceededException(t)
+	asserts.AssertCreateJobQuotaExceededException(t)
 	return t
 end
 
-local CreateJobOutput_keys = { "ArtifactList" = true, "WarningMessage" = true, "SignatureFileContents" = true, "Signature" = true, "JobId" = true, "JobType" = true, nil }
+keys.CreateJobOutput = { ["ArtifactList"] = true, ["WarningMessage"] = true, ["SignatureFileContents"] = true, ["Signature"] = true, ["JobId"] = true, ["JobType"] = true, nil }
 
-function M.AssertCreateJobOutput(struct)
+function asserts.AssertCreateJobOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateJobOutput to be of type 'table'")
-	if struct["ArtifactList"] then M.AssertArtifactList(struct["ArtifactList"]) end
-	if struct["WarningMessage"] then M.AssertWarningMessage(struct["WarningMessage"]) end
-	if struct["SignatureFileContents"] then M.AssertSignatureFileContents(struct["SignatureFileContents"]) end
-	if struct["Signature"] then M.AssertSignature(struct["Signature"]) end
-	if struct["JobId"] then M.AssertJobId(struct["JobId"]) end
-	if struct["JobType"] then M.AssertJobType(struct["JobType"]) end
+	if struct["ArtifactList"] then asserts.AssertArtifactList(struct["ArtifactList"]) end
+	if struct["WarningMessage"] then asserts.AssertWarningMessage(struct["WarningMessage"]) end
+	if struct["SignatureFileContents"] then asserts.AssertSignatureFileContents(struct["SignatureFileContents"]) end
+	if struct["Signature"] then asserts.AssertSignature(struct["Signature"]) end
+	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
+	if struct["JobType"] then asserts.AssertJobType(struct["JobType"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateJobOutput_keys[k], "CreateJobOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateJobOutput[k], "CreateJobOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateJobOutput
 -- Output structure for the CreateJob operation.
--- @param ArtifactList [ArtifactList] Output structure for the CreateJob operation.
--- @param WarningMessage [WarningMessage] Output structure for the CreateJob operation.
--- @param SignatureFileContents [SignatureFileContents] Output structure for the CreateJob operation.
--- @param Signature [Signature] Output structure for the CreateJob operation.
--- @param JobId [JobId] Output structure for the CreateJob operation.
--- @param JobType [JobType] Output structure for the CreateJob operation.
-function M.CreateJobOutput(ArtifactList, WarningMessage, SignatureFileContents, Signature, JobId, JobType, ...)
+-- @param _ArtifactList [ArtifactList] 
+-- @param _WarningMessage [WarningMessage] 
+-- @param _SignatureFileContents [SignatureFileContents] 
+-- @param _Signature [Signature] 
+-- @param _JobId [JobId] 
+-- @param _JobType [JobType] 
+function M.CreateJobOutput(_ArtifactList, _WarningMessage, _SignatureFileContents, _Signature, _JobId, _JobType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobOutput")
 	local t = { 
-		["ArtifactList"] = ArtifactList,
-		["WarningMessage"] = WarningMessage,
-		["SignatureFileContents"] = SignatureFileContents,
-		["Signature"] = Signature,
-		["JobId"] = JobId,
-		["JobType"] = JobType,
+		["ArtifactList"] = _ArtifactList,
+		["WarningMessage"] = _WarningMessage,
+		["SignatureFileContents"] = _SignatureFileContents,
+		["Signature"] = _Signature,
+		["JobId"] = _JobId,
+		["JobType"] = _JobType,
 	}
-	M.AssertCreateJobOutput(t)
+	asserts.AssertCreateJobOutput(t)
 	return t
 end
 
-local Job_keys = { "CreationDate" = true, "IsCanceled" = true, "JobType" = true, "JobId" = true, nil }
+keys.Job = { ["CreationDate"] = true, ["IsCanceled"] = true, ["JobType"] = true, ["JobId"] = true, nil }
 
-function M.AssertJob(struct)
+function asserts.AssertJob(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Job to be of type 'table'")
-	if struct["CreationDate"] then M.AssertCreationDate(struct["CreationDate"]) end
-	if struct["IsCanceled"] then M.AssertIsCanceled(struct["IsCanceled"]) end
-	if struct["JobType"] then M.AssertJobType(struct["JobType"]) end
-	if struct["JobId"] then M.AssertJobId(struct["JobId"]) end
+	if struct["CreationDate"] then asserts.AssertCreationDate(struct["CreationDate"]) end
+	if struct["IsCanceled"] then asserts.AssertIsCanceled(struct["IsCanceled"]) end
+	if struct["JobType"] then asserts.AssertJobType(struct["JobType"]) end
+	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
 	for k,_ in pairs(struct) do
-		assert(Job_keys[k], "Job contains unknown key " .. tostring(k))
+		assert(keys.Job[k], "Job contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Job
 -- Representation of a job returned by the ListJobs operation.
--- @param CreationDate [CreationDate] Representation of a job returned by the ListJobs operation.
--- @param IsCanceled [IsCanceled] Representation of a job returned by the ListJobs operation.
--- @param JobType [JobType] Representation of a job returned by the ListJobs operation.
--- @param JobId [JobId] Representation of a job returned by the ListJobs operation.
-function M.Job(CreationDate, IsCanceled, JobType, JobId, ...)
+-- @param _CreationDate [CreationDate] 
+-- @param _IsCanceled [IsCanceled] 
+-- @param _JobType [JobType] 
+-- @param _JobId [JobId] 
+function M.Job(_CreationDate, _IsCanceled, _JobType, _JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Job")
 	local t = { 
-		["CreationDate"] = CreationDate,
-		["IsCanceled"] = IsCanceled,
-		["JobType"] = JobType,
-		["JobId"] = JobId,
+		["CreationDate"] = _CreationDate,
+		["IsCanceled"] = _IsCanceled,
+		["JobType"] = _JobType,
+		["JobId"] = _JobId,
 	}
-	M.AssertJob(t)
+	asserts.AssertJob(t)
 	return t
 end
 
-local CanceledJobIdException_keys = { "message" = true, nil }
+keys.CanceledJobIdException = { ["message"] = true, nil }
 
-function M.AssertCanceledJobIdException(struct)
+function asserts.AssertCanceledJobIdException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CanceledJobIdException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(CanceledJobIdException_keys[k], "CanceledJobIdException contains unknown key " .. tostring(k))
+		assert(keys.CanceledJobIdException[k], "CanceledJobIdException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CanceledJobIdException
 -- The specified job ID has been canceled and is no longer valid.
--- @param message [ErrorMessage] The specified job ID has been canceled and is no longer valid.
-function M.CanceledJobIdException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.CanceledJobIdException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CanceledJobIdException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertCanceledJobIdException(t)
+	asserts.AssertCanceledJobIdException(t)
 	return t
 end
 
-local BucketPermissionException_keys = { "message" = true, nil }
+keys.BucketPermissionException = { ["message"] = true, nil }
 
-function M.AssertBucketPermissionException(struct)
+function asserts.AssertBucketPermissionException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BucketPermissionException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(BucketPermissionException_keys[k], "BucketPermissionException contains unknown key " .. tostring(k))
+		assert(keys.BucketPermissionException[k], "BucketPermissionException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BucketPermissionException
 -- The account specified does not have the appropriate bucket permissions.
--- @param message [ErrorMessage] The account specified does not have the appropriate bucket permissions.
-function M.BucketPermissionException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.BucketPermissionException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BucketPermissionException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertBucketPermissionException(t)
+	asserts.AssertBucketPermissionException(t)
 	return t
 end
 
-local MissingCustomsException_keys = { "message" = true, nil }
+keys.MissingCustomsException = { ["message"] = true, nil }
 
-function M.AssertMissingCustomsException(struct)
+function asserts.AssertMissingCustomsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MissingCustomsException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MissingCustomsException_keys[k], "MissingCustomsException contains unknown key " .. tostring(k))
+		assert(keys.MissingCustomsException[k], "MissingCustomsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MissingCustomsException
 -- One or more required customs parameters was missing from the manifest.
--- @param message [ErrorMessage] One or more required customs parameters was missing from the manifest.
-function M.MissingCustomsException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.MissingCustomsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MissingCustomsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMissingCustomsException(t)
+	asserts.AssertMissingCustomsException(t)
 	return t
 end
 
-local MultipleRegionsException_keys = { "message" = true, nil }
+keys.MultipleRegionsException = { ["message"] = true, nil }
 
-function M.AssertMultipleRegionsException(struct)
+function asserts.AssertMultipleRegionsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MultipleRegionsException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MultipleRegionsException_keys[k], "MultipleRegionsException contains unknown key " .. tostring(k))
+		assert(keys.MultipleRegionsException[k], "MultipleRegionsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MultipleRegionsException
 -- Your manifest file contained buckets from multiple regions. A job is restricted to buckets from one region. Please correct and resubmit.
--- @param message [ErrorMessage] Your manifest file contained buckets from multiple regions. A job is restricted to buckets from one region. Please correct and resubmit.
-function M.MultipleRegionsException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.MultipleRegionsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MultipleRegionsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMultipleRegionsException(t)
+	asserts.AssertMultipleRegionsException(t)
 	return t
 end
 
-local ListJobsOutput_keys = { "Jobs" = true, "IsTruncated" = true, nil }
+keys.ListJobsOutput = { ["Jobs"] = true, ["IsTruncated"] = true, nil }
 
-function M.AssertListJobsOutput(struct)
+function asserts.AssertListJobsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListJobsOutput to be of type 'table'")
-	if struct["Jobs"] then M.AssertJobsList(struct["Jobs"]) end
-	if struct["IsTruncated"] then M.AssertIsTruncated(struct["IsTruncated"]) end
+	if struct["Jobs"] then asserts.AssertJobsList(struct["Jobs"]) end
+	if struct["IsTruncated"] then asserts.AssertIsTruncated(struct["IsTruncated"]) end
 	for k,_ in pairs(struct) do
-		assert(ListJobsOutput_keys[k], "ListJobsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListJobsOutput[k], "ListJobsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListJobsOutput
 -- Output structure for the ListJobs operation.
--- @param Jobs [JobsList] Output structure for the ListJobs operation.
--- @param IsTruncated [IsTruncated] Output structure for the ListJobs operation.
-function M.ListJobsOutput(Jobs, IsTruncated, ...)
+-- @param _Jobs [JobsList] 
+-- @param _IsTruncated [IsTruncated] 
+function M.ListJobsOutput(_Jobs, _IsTruncated, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsOutput")
 	local t = { 
-		["Jobs"] = Jobs,
-		["IsTruncated"] = IsTruncated,
+		["Jobs"] = _Jobs,
+		["IsTruncated"] = _IsTruncated,
 	}
-	M.AssertListJobsOutput(t)
+	asserts.AssertListJobsOutput(t)
 	return t
 end
 
-local UpdateJobOutput_keys = { "ArtifactList" = true, "Success" = true, "WarningMessage" = true, nil }
+keys.UpdateJobOutput = { ["ArtifactList"] = true, ["Success"] = true, ["WarningMessage"] = true, nil }
 
-function M.AssertUpdateJobOutput(struct)
+function asserts.AssertUpdateJobOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateJobOutput to be of type 'table'")
-	if struct["ArtifactList"] then M.AssertArtifactList(struct["ArtifactList"]) end
-	if struct["Success"] then M.AssertSuccess(struct["Success"]) end
-	if struct["WarningMessage"] then M.AssertWarningMessage(struct["WarningMessage"]) end
+	if struct["ArtifactList"] then asserts.AssertArtifactList(struct["ArtifactList"]) end
+	if struct["Success"] then asserts.AssertSuccess(struct["Success"]) end
+	if struct["WarningMessage"] then asserts.AssertWarningMessage(struct["WarningMessage"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateJobOutput_keys[k], "UpdateJobOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateJobOutput[k], "UpdateJobOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateJobOutput
 -- Output structure for the UpateJob operation.
--- @param ArtifactList [ArtifactList] Output structure for the UpateJob operation.
--- @param Success [Success] Output structure for the UpateJob operation.
--- @param WarningMessage [WarningMessage] Output structure for the UpateJob operation.
-function M.UpdateJobOutput(ArtifactList, Success, WarningMessage, ...)
+-- @param _ArtifactList [ArtifactList] 
+-- @param _Success [Success] 
+-- @param _WarningMessage [WarningMessage] 
+function M.UpdateJobOutput(_ArtifactList, _Success, _WarningMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobOutput")
 	local t = { 
-		["ArtifactList"] = ArtifactList,
-		["Success"] = Success,
-		["WarningMessage"] = WarningMessage,
+		["ArtifactList"] = _ArtifactList,
+		["Success"] = _Success,
+		["WarningMessage"] = _WarningMessage,
 	}
-	M.AssertUpdateJobOutput(t)
+	asserts.AssertUpdateJobOutput(t)
 	return t
 end
 
-local CreateJobInput_keys = { "ManifestAddendum" = true, "ValidateOnly" = true, "APIVersion" = true, "JobType" = true, "Manifest" = true, nil }
+keys.CreateJobInput = { ["ManifestAddendum"] = true, ["ValidateOnly"] = true, ["APIVersion"] = true, ["JobType"] = true, ["Manifest"] = true, nil }
 
-function M.AssertCreateJobInput(struct)
+function asserts.AssertCreateJobInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateJobInput to be of type 'table'")
 	assert(struct["JobType"], "Expected key JobType to exist in table")
 	assert(struct["Manifest"], "Expected key Manifest to exist in table")
 	assert(struct["ValidateOnly"], "Expected key ValidateOnly to exist in table")
-	if struct["ManifestAddendum"] then M.AssertManifestAddendum(struct["ManifestAddendum"]) end
-	if struct["ValidateOnly"] then M.AssertValidateOnly(struct["ValidateOnly"]) end
-	if struct["APIVersion"] then M.AssertAPIVersion(struct["APIVersion"]) end
-	if struct["JobType"] then M.AssertJobType(struct["JobType"]) end
-	if struct["Manifest"] then M.AssertManifest(struct["Manifest"]) end
+	if struct["ManifestAddendum"] then asserts.AssertManifestAddendum(struct["ManifestAddendum"]) end
+	if struct["ValidateOnly"] then asserts.AssertValidateOnly(struct["ValidateOnly"]) end
+	if struct["APIVersion"] then asserts.AssertAPIVersion(struct["APIVersion"]) end
+	if struct["JobType"] then asserts.AssertJobType(struct["JobType"]) end
+	if struct["Manifest"] then asserts.AssertManifest(struct["Manifest"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateJobInput_keys[k], "CreateJobInput contains unknown key " .. tostring(k))
+		assert(keys.CreateJobInput[k], "CreateJobInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateJobInput
 -- Input structure for the CreateJob operation.
--- @param ManifestAddendum [ManifestAddendum] Input structure for the CreateJob operation.
--- @param ValidateOnly [ValidateOnly] Input structure for the CreateJob operation.
--- @param APIVersion [APIVersion] Input structure for the CreateJob operation.
--- @param JobType [JobType] Input structure for the CreateJob operation.
--- @param Manifest [Manifest] Input structure for the CreateJob operation.
+-- @param _ManifestAddendum [ManifestAddendum] 
+-- @param _ValidateOnly [ValidateOnly] 
+-- @param _APIVersion [APIVersion] 
+-- @param _JobType [JobType] 
+-- @param _Manifest [Manifest] 
 -- Required parameter: JobType
 -- Required parameter: Manifest
 -- Required parameter: ValidateOnly
-function M.CreateJobInput(ManifestAddendum, ValidateOnly, APIVersion, JobType, Manifest, ...)
+function M.CreateJobInput(_ManifestAddendum, _ValidateOnly, _APIVersion, _JobType, _Manifest, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobInput")
 	local t = { 
-		["ManifestAddendum"] = ManifestAddendum,
-		["ValidateOnly"] = ValidateOnly,
-		["APIVersion"] = APIVersion,
-		["JobType"] = JobType,
-		["Manifest"] = Manifest,
+		["ManifestAddendum"] = _ManifestAddendum,
+		["ValidateOnly"] = _ValidateOnly,
+		["APIVersion"] = _APIVersion,
+		["JobType"] = _JobType,
+		["Manifest"] = _Manifest,
 	}
-	M.AssertCreateJobInput(t)
+	asserts.AssertCreateJobInput(t)
 	return t
 end
 
-local CancelJobOutput_keys = { "Success" = true, nil }
+keys.CancelJobOutput = { ["Success"] = true, nil }
 
-function M.AssertCancelJobOutput(struct)
+function asserts.AssertCancelJobOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CancelJobOutput to be of type 'table'")
-	if struct["Success"] then M.AssertSuccess(struct["Success"]) end
+	if struct["Success"] then asserts.AssertSuccess(struct["Success"]) end
 	for k,_ in pairs(struct) do
-		assert(CancelJobOutput_keys[k], "CancelJobOutput contains unknown key " .. tostring(k))
+		assert(keys.CancelJobOutput[k], "CancelJobOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CancelJobOutput
 -- Output structure for the CancelJob operation.
--- @param Success [Success] Output structure for the CancelJob operation.
-function M.CancelJobOutput(Success, ...)
+-- @param _Success [Success] 
+function M.CancelJobOutput(_Success, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobOutput")
 	local t = { 
-		["Success"] = Success,
+		["Success"] = _Success,
 	}
-	M.AssertCancelJobOutput(t)
+	asserts.AssertCancelJobOutput(t)
 	return t
 end
 
-local GetShippingLabelOutput_keys = { "ShippingLabelURL" = true, "Warning" = true, nil }
+keys.GetShippingLabelOutput = { ["ShippingLabelURL"] = true, ["Warning"] = true, nil }
 
-function M.AssertGetShippingLabelOutput(struct)
+function asserts.AssertGetShippingLabelOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetShippingLabelOutput to be of type 'table'")
-	if struct["ShippingLabelURL"] then M.AssertGenericString(struct["ShippingLabelURL"]) end
-	if struct["Warning"] then M.AssertGenericString(struct["Warning"]) end
+	if struct["ShippingLabelURL"] then asserts.AssertGenericString(struct["ShippingLabelURL"]) end
+	if struct["Warning"] then asserts.AssertGenericString(struct["Warning"]) end
 	for k,_ in pairs(struct) do
-		assert(GetShippingLabelOutput_keys[k], "GetShippingLabelOutput contains unknown key " .. tostring(k))
+		assert(keys.GetShippingLabelOutput[k], "GetShippingLabelOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetShippingLabelOutput
 --  
--- @param ShippingLabelURL [GenericString]  
--- @param Warning [GenericString]  
-function M.GetShippingLabelOutput(ShippingLabelURL, Warning, ...)
+-- @param _ShippingLabelURL [GenericString] 
+-- @param _Warning [GenericString] 
+function M.GetShippingLabelOutput(_ShippingLabelURL, _Warning, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetShippingLabelOutput")
 	local t = { 
-		["ShippingLabelURL"] = ShippingLabelURL,
-		["Warning"] = Warning,
+		["ShippingLabelURL"] = _ShippingLabelURL,
+		["Warning"] = _Warning,
 	}
-	M.AssertGetShippingLabelOutput(t)
+	asserts.AssertGetShippingLabelOutput(t)
 	return t
 end
 
-local MalformedManifestException_keys = { "message" = true, nil }
+keys.MalformedManifestException = { ["message"] = true, nil }
 
-function M.AssertMalformedManifestException(struct)
+function asserts.AssertMalformedManifestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MalformedManifestException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MalformedManifestException_keys[k], "MalformedManifestException contains unknown key " .. tostring(k))
+		assert(keys.MalformedManifestException[k], "MalformedManifestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MalformedManifestException
 -- Your manifest is not well-formed.
--- @param message [ErrorMessage] Your manifest is not well-formed.
-function M.MalformedManifestException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.MalformedManifestException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MalformedManifestException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMalformedManifestException(t)
+	asserts.AssertMalformedManifestException(t)
 	return t
 end
 
-local MissingManifestFieldException_keys = { "message" = true, nil }
+keys.MissingManifestFieldException = { ["message"] = true, nil }
 
-function M.AssertMissingManifestFieldException(struct)
+function asserts.AssertMissingManifestFieldException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MissingManifestFieldException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MissingManifestFieldException_keys[k], "MissingManifestFieldException contains unknown key " .. tostring(k))
+		assert(keys.MissingManifestFieldException[k], "MissingManifestFieldException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MissingManifestFieldException
 -- One or more required fields were missing from the manifest file. Please correct and resubmit.
--- @param message [ErrorMessage] One or more required fields were missing from the manifest file. Please correct and resubmit.
-function M.MissingManifestFieldException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.MissingManifestFieldException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MissingManifestFieldException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMissingManifestFieldException(t)
+	asserts.AssertMissingManifestFieldException(t)
 	return t
 end
 
-local InvalidVersionException_keys = { "message" = true, nil }
+keys.InvalidVersionException = { ["message"] = true, nil }
 
-function M.AssertInvalidVersionException(struct)
+function asserts.AssertInvalidVersionException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidVersionException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidVersionException_keys[k], "InvalidVersionException contains unknown key " .. tostring(k))
+		assert(keys.InvalidVersionException[k], "InvalidVersionException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidVersionException
 -- The client tool version is invalid.
--- @param message [ErrorMessage] The client tool version is invalid.
-function M.InvalidVersionException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidVersionException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidVersionException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidVersionException(t)
+	asserts.AssertInvalidVersionException(t)
 	return t
 end
 
-local InvalidAddressException_keys = { "message" = true, nil }
+keys.InvalidAddressException = { ["message"] = true, nil }
 
-function M.AssertInvalidAddressException(struct)
+function asserts.AssertInvalidAddressException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidAddressException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidAddressException_keys[k], "InvalidAddressException contains unknown key " .. tostring(k))
+		assert(keys.InvalidAddressException[k], "InvalidAddressException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidAddressException
 -- The address specified in the manifest is invalid.
--- @param message [ErrorMessage] The address specified in the manifest is invalid.
-function M.InvalidAddressException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidAddressException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAddressException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidAddressException(t)
+	asserts.AssertInvalidAddressException(t)
 	return t
 end
 
-local ListJobsInput_keys = { "Marker" = true, "MaxJobs" = true, "APIVersion" = true, nil }
+keys.ListJobsInput = { ["Marker"] = true, ["MaxJobs"] = true, ["APIVersion"] = true, nil }
 
-function M.AssertListJobsInput(struct)
+function asserts.AssertListJobsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListJobsInput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["MaxJobs"] then M.AssertMaxJobs(struct["MaxJobs"]) end
-	if struct["APIVersion"] then M.AssertAPIVersion(struct["APIVersion"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["MaxJobs"] then asserts.AssertMaxJobs(struct["MaxJobs"]) end
+	if struct["APIVersion"] then asserts.AssertAPIVersion(struct["APIVersion"]) end
 	for k,_ in pairs(struct) do
-		assert(ListJobsInput_keys[k], "ListJobsInput contains unknown key " .. tostring(k))
+		assert(keys.ListJobsInput[k], "ListJobsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListJobsInput
 -- Input structure for the ListJobs operation.
--- @param Marker [Marker] Input structure for the ListJobs operation.
--- @param MaxJobs [MaxJobs] Input structure for the ListJobs operation.
--- @param APIVersion [APIVersion] Input structure for the ListJobs operation.
-function M.ListJobsInput(Marker, MaxJobs, APIVersion, ...)
+-- @param _Marker [Marker] 
+-- @param _MaxJobs [MaxJobs] 
+-- @param _APIVersion [APIVersion] 
+function M.ListJobsInput(_Marker, _MaxJobs, _APIVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsInput")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxJobs"] = MaxJobs,
-		["APIVersion"] = APIVersion,
+		["Marker"] = _Marker,
+		["MaxJobs"] = _MaxJobs,
+		["APIVersion"] = _APIVersion,
 	}
-	M.AssertListJobsInput(t)
+	asserts.AssertListJobsInput(t)
 	return t
 end
 
-local GetStatusOutput_keys = { "ProgressMessage" = true, "ProgressCode" = true, "CreationDate" = true, "LogBucket" = true, "ArtifactList" = true, "LocationMessage" = true, "CurrentManifest" = true, "JobId" = true, "Carrier" = true, "JobType" = true, "Signature" = true, "TrackingNumber" = true, "SignatureFileContents" = true, "ErrorCount" = true, "LocationCode" = true, "LogKey" = true, nil }
+keys.GetStatusOutput = { ["ProgressMessage"] = true, ["ProgressCode"] = true, ["CreationDate"] = true, ["LogBucket"] = true, ["ArtifactList"] = true, ["LocationMessage"] = true, ["CurrentManifest"] = true, ["JobId"] = true, ["Carrier"] = true, ["JobType"] = true, ["Signature"] = true, ["TrackingNumber"] = true, ["SignatureFileContents"] = true, ["ErrorCount"] = true, ["LocationCode"] = true, ["LogKey"] = true, nil }
 
-function M.AssertGetStatusOutput(struct)
+function asserts.AssertGetStatusOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetStatusOutput to be of type 'table'")
-	if struct["ProgressMessage"] then M.AssertProgressMessage(struct["ProgressMessage"]) end
-	if struct["ProgressCode"] then M.AssertProgressCode(struct["ProgressCode"]) end
-	if struct["CreationDate"] then M.AssertCreationDate(struct["CreationDate"]) end
-	if struct["LogBucket"] then M.AssertLogBucket(struct["LogBucket"]) end
-	if struct["ArtifactList"] then M.AssertArtifactList(struct["ArtifactList"]) end
-	if struct["LocationMessage"] then M.AssertLocationMessage(struct["LocationMessage"]) end
-	if struct["CurrentManifest"] then M.AssertCurrentManifest(struct["CurrentManifest"]) end
-	if struct["JobId"] then M.AssertJobId(struct["JobId"]) end
-	if struct["Carrier"] then M.AssertCarrier(struct["Carrier"]) end
-	if struct["JobType"] then M.AssertJobType(struct["JobType"]) end
-	if struct["Signature"] then M.AssertSignature(struct["Signature"]) end
-	if struct["TrackingNumber"] then M.AssertTrackingNumber(struct["TrackingNumber"]) end
-	if struct["SignatureFileContents"] then M.AssertSignature(struct["SignatureFileContents"]) end
-	if struct["ErrorCount"] then M.AssertErrorCount(struct["ErrorCount"]) end
-	if struct["LocationCode"] then M.AssertLocationCode(struct["LocationCode"]) end
-	if struct["LogKey"] then M.AssertLogKey(struct["LogKey"]) end
+	if struct["ProgressMessage"] then asserts.AssertProgressMessage(struct["ProgressMessage"]) end
+	if struct["ProgressCode"] then asserts.AssertProgressCode(struct["ProgressCode"]) end
+	if struct["CreationDate"] then asserts.AssertCreationDate(struct["CreationDate"]) end
+	if struct["LogBucket"] then asserts.AssertLogBucket(struct["LogBucket"]) end
+	if struct["ArtifactList"] then asserts.AssertArtifactList(struct["ArtifactList"]) end
+	if struct["LocationMessage"] then asserts.AssertLocationMessage(struct["LocationMessage"]) end
+	if struct["CurrentManifest"] then asserts.AssertCurrentManifest(struct["CurrentManifest"]) end
+	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
+	if struct["Carrier"] then asserts.AssertCarrier(struct["Carrier"]) end
+	if struct["JobType"] then asserts.AssertJobType(struct["JobType"]) end
+	if struct["Signature"] then asserts.AssertSignature(struct["Signature"]) end
+	if struct["TrackingNumber"] then asserts.AssertTrackingNumber(struct["TrackingNumber"]) end
+	if struct["SignatureFileContents"] then asserts.AssertSignature(struct["SignatureFileContents"]) end
+	if struct["ErrorCount"] then asserts.AssertErrorCount(struct["ErrorCount"]) end
+	if struct["LocationCode"] then asserts.AssertLocationCode(struct["LocationCode"]) end
+	if struct["LogKey"] then asserts.AssertLogKey(struct["LogKey"]) end
 	for k,_ in pairs(struct) do
-		assert(GetStatusOutput_keys[k], "GetStatusOutput contains unknown key " .. tostring(k))
+		assert(keys.GetStatusOutput[k], "GetStatusOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetStatusOutput
 -- Output structure for the GetStatus operation.
--- @param ProgressMessage [ProgressMessage] Output structure for the GetStatus operation.
--- @param ProgressCode [ProgressCode] Output structure for the GetStatus operation.
--- @param CreationDate [CreationDate] Output structure for the GetStatus operation.
--- @param LogBucket [LogBucket] Output structure for the GetStatus operation.
--- @param ArtifactList [ArtifactList] Output structure for the GetStatus operation.
--- @param LocationMessage [LocationMessage] Output structure for the GetStatus operation.
--- @param CurrentManifest [CurrentManifest] Output structure for the GetStatus operation.
--- @param JobId [JobId] Output structure for the GetStatus operation.
--- @param Carrier [Carrier] Output structure for the GetStatus operation.
--- @param JobType [JobType] Output structure for the GetStatus operation.
--- @param Signature [Signature] Output structure for the GetStatus operation.
--- @param TrackingNumber [TrackingNumber] Output structure for the GetStatus operation.
--- @param SignatureFileContents [Signature] Output structure for the GetStatus operation.
--- @param ErrorCount [ErrorCount] Output structure for the GetStatus operation.
--- @param LocationCode [LocationCode] Output structure for the GetStatus operation.
--- @param LogKey [LogKey] Output structure for the GetStatus operation.
-function M.GetStatusOutput(ProgressMessage, ProgressCode, CreationDate, LogBucket, ArtifactList, LocationMessage, CurrentManifest, JobId, Carrier, JobType, Signature, TrackingNumber, SignatureFileContents, ErrorCount, LocationCode, LogKey, ...)
+-- @param _ProgressMessage [ProgressMessage] 
+-- @param _ProgressCode [ProgressCode] 
+-- @param _CreationDate [CreationDate] 
+-- @param _LogBucket [LogBucket] 
+-- @param _ArtifactList [ArtifactList] 
+-- @param _LocationMessage [LocationMessage] 
+-- @param _CurrentManifest [CurrentManifest] 
+-- @param _JobId [JobId] 
+-- @param _Carrier [Carrier] 
+-- @param _JobType [JobType] 
+-- @param _Signature [Signature] 
+-- @param _TrackingNumber [TrackingNumber] 
+-- @param _SignatureFileContents [Signature] 
+-- @param _ErrorCount [ErrorCount] 
+-- @param _LocationCode [LocationCode] 
+-- @param _LogKey [LogKey] 
+function M.GetStatusOutput(_ProgressMessage, _ProgressCode, _CreationDate, _LogBucket, _ArtifactList, _LocationMessage, _CurrentManifest, _JobId, _Carrier, _JobType, _Signature, _TrackingNumber, _SignatureFileContents, _ErrorCount, _LocationCode, _LogKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStatusOutput")
 	local t = { 
-		["ProgressMessage"] = ProgressMessage,
-		["ProgressCode"] = ProgressCode,
-		["CreationDate"] = CreationDate,
-		["LogBucket"] = LogBucket,
-		["ArtifactList"] = ArtifactList,
-		["LocationMessage"] = LocationMessage,
-		["CurrentManifest"] = CurrentManifest,
-		["JobId"] = JobId,
-		["Carrier"] = Carrier,
-		["JobType"] = JobType,
-		["Signature"] = Signature,
-		["TrackingNumber"] = TrackingNumber,
-		["SignatureFileContents"] = SignatureFileContents,
-		["ErrorCount"] = ErrorCount,
-		["LocationCode"] = LocationCode,
-		["LogKey"] = LogKey,
+		["ProgressMessage"] = _ProgressMessage,
+		["ProgressCode"] = _ProgressCode,
+		["CreationDate"] = _CreationDate,
+		["LogBucket"] = _LogBucket,
+		["ArtifactList"] = _ArtifactList,
+		["LocationMessage"] = _LocationMessage,
+		["CurrentManifest"] = _CurrentManifest,
+		["JobId"] = _JobId,
+		["Carrier"] = _Carrier,
+		["JobType"] = _JobType,
+		["Signature"] = _Signature,
+		["TrackingNumber"] = _TrackingNumber,
+		["SignatureFileContents"] = _SignatureFileContents,
+		["ErrorCount"] = _ErrorCount,
+		["LocationCode"] = _LocationCode,
+		["LogKey"] = _LogKey,
 	}
-	M.AssertGetStatusOutput(t)
+	asserts.AssertGetStatusOutput(t)
 	return t
 end
 
-local InvalidManifestFieldException_keys = { "message" = true, nil }
+keys.InvalidManifestFieldException = { ["message"] = true, nil }
 
-function M.AssertInvalidManifestFieldException(struct)
+function asserts.AssertInvalidManifestFieldException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidManifestFieldException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidManifestFieldException_keys[k], "InvalidManifestFieldException contains unknown key " .. tostring(k))
+		assert(keys.InvalidManifestFieldException[k], "InvalidManifestFieldException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidManifestFieldException
 -- One or more manifest fields was invalid. Please correct and resubmit.
--- @param message [ErrorMessage] One or more manifest fields was invalid. Please correct and resubmit.
-function M.InvalidManifestFieldException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidManifestFieldException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidManifestFieldException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidManifestFieldException(t)
+	asserts.AssertInvalidManifestFieldException(t)
 	return t
 end
 
-local UpdateJobInput_keys = { "Manifest" = true, "ValidateOnly" = true, "APIVersion" = true, "JobType" = true, "JobId" = true, nil }
+keys.UpdateJobInput = { ["Manifest"] = true, ["ValidateOnly"] = true, ["APIVersion"] = true, ["JobType"] = true, ["JobId"] = true, nil }
 
-function M.AssertUpdateJobInput(struct)
+function asserts.AssertUpdateJobInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateJobInput to be of type 'table'")
 	assert(struct["JobId"], "Expected key JobId to exist in table")
 	assert(struct["Manifest"], "Expected key Manifest to exist in table")
 	assert(struct["JobType"], "Expected key JobType to exist in table")
 	assert(struct["ValidateOnly"], "Expected key ValidateOnly to exist in table")
-	if struct["Manifest"] then M.AssertManifest(struct["Manifest"]) end
-	if struct["ValidateOnly"] then M.AssertValidateOnly(struct["ValidateOnly"]) end
-	if struct["APIVersion"] then M.AssertAPIVersion(struct["APIVersion"]) end
-	if struct["JobType"] then M.AssertJobType(struct["JobType"]) end
-	if struct["JobId"] then M.AssertJobId(struct["JobId"]) end
+	if struct["Manifest"] then asserts.AssertManifest(struct["Manifest"]) end
+	if struct["ValidateOnly"] then asserts.AssertValidateOnly(struct["ValidateOnly"]) end
+	if struct["APIVersion"] then asserts.AssertAPIVersion(struct["APIVersion"]) end
+	if struct["JobType"] then asserts.AssertJobType(struct["JobType"]) end
+	if struct["JobId"] then asserts.AssertJobId(struct["JobId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateJobInput_keys[k], "UpdateJobInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateJobInput[k], "UpdateJobInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateJobInput
 -- Input structure for the UpateJob operation.
--- @param Manifest [Manifest] Input structure for the UpateJob operation.
--- @param ValidateOnly [ValidateOnly] Input structure for the UpateJob operation.
--- @param APIVersion [APIVersion] Input structure for the UpateJob operation.
--- @param JobType [JobType] Input structure for the UpateJob operation.
--- @param JobId [JobId] Input structure for the UpateJob operation.
+-- @param _Manifest [Manifest] 
+-- @param _ValidateOnly [ValidateOnly] 
+-- @param _APIVersion [APIVersion] 
+-- @param _JobType [JobType] 
+-- @param _JobId [JobId] 
 -- Required parameter: JobId
 -- Required parameter: Manifest
 -- Required parameter: JobType
 -- Required parameter: ValidateOnly
-function M.UpdateJobInput(Manifest, ValidateOnly, APIVersion, JobType, JobId, ...)
+function M.UpdateJobInput(_Manifest, _ValidateOnly, _APIVersion, _JobType, _JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobInput")
 	local t = { 
-		["Manifest"] = Manifest,
-		["ValidateOnly"] = ValidateOnly,
-		["APIVersion"] = APIVersion,
-		["JobType"] = JobType,
-		["JobId"] = JobId,
+		["Manifest"] = _Manifest,
+		["ValidateOnly"] = _ValidateOnly,
+		["APIVersion"] = _APIVersion,
+		["JobType"] = _JobType,
+		["JobId"] = _JobId,
 	}
-	M.AssertUpdateJobInput(t)
+	asserts.AssertUpdateJobInput(t)
 	return t
 end
 
-function M.Assertstreet2(str)
+function asserts.Assertstreet2(str)
 	assert(str)
 	assert(type(str) == "string", "Expected street2 to be of type 'string'")
 end
 
 -- Specifies the optional second part of the street address for the return address, for example Suite 100.
 function M.street2(str)
-	M.Assertstreet2(str)
+	asserts.Assertstreet2(str)
 	return str
 end
 
-function M.AssertLocationMessage(str)
+function asserts.AssertLocationMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LocationMessage to be of type 'string'")
 end
 
 -- A more human readable form of the physical location of the storage device.
 function M.LocationMessage(str)
-	M.AssertLocationMessage(str)
+	asserts.AssertLocationMessage(str)
 	return str
 end
 
-function M.AssertAPIVersion(str)
+function asserts.AssertAPIVersion(str)
 	assert(str)
 	assert(type(str) == "string", "Expected APIVersion to be of type 'string'")
 end
 
 -- Specifies the version of the client tool.
 function M.APIVersion(str)
-	M.AssertAPIVersion(str)
+	asserts.AssertAPIVersion(str)
 	return str
 end
 
-function M.Assertcountry(str)
+function asserts.Assertcountry(str)
 	assert(str)
 	assert(type(str) == "string", "Expected country to be of type 'string'")
 end
 
 -- Specifies the name of your country for the return address.
 function M.country(str)
-	M.Assertcountry(str)
+	asserts.Assertcountry(str)
 	return str
 end
 
-function M.AssertTrackingNumber(str)
+function asserts.AssertTrackingNumber(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TrackingNumber to be of type 'string'")
 end
 
 -- The shipping tracking number assigned by AWS Import/Export to the storage device when it's returned to you. We return this value when the LocationCode is "Returned".
 function M.TrackingNumber(str)
-	M.AssertTrackingNumber(str)
+	asserts.AssertTrackingNumber(str)
 	return str
 end
 
-function M.AssertJobId(str)
+function asserts.AssertJobId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected JobId to be of type 'string'")
 end
 
 -- A unique identifier which refers to a particular job.
 function M.JobId(str)
-	M.AssertJobId(str)
+	asserts.AssertJobId(str)
 	return str
 end
 
-function M.AssertProgressCode(str)
+function asserts.AssertProgressCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProgressCode to be of type 'string'")
 end
 
 -- A token representing the state of the job, such as "Started".
 function M.ProgressCode(str)
-	M.AssertProgressCode(str)
+	asserts.AssertProgressCode(str)
 	return str
 end
 
-function M.AssertProgressMessage(str)
+function asserts.AssertProgressMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProgressMessage to be of type 'string'")
 end
 
 -- A more human readable form of the job status.
 function M.ProgressMessage(str)
-	M.AssertProgressMessage(str)
+	asserts.AssertProgressMessage(str)
 	return str
 end
 
-function M.AssertDescription(str)
+function asserts.AssertDescription(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Description to be of type 'string'")
 end
 
 -- The associated description for this object.
 function M.Description(str)
-	M.AssertDescription(str)
+	asserts.AssertDescription(str)
 	return str
 end
 
-function M.AssertWarningMessage(str)
+function asserts.AssertWarningMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected WarningMessage to be of type 'string'")
 end
 
 -- An optional message notifying you of non-fatal issues with the job, such as use of an incompatible Amazon S3 bucket name.
 function M.WarningMessage(str)
-	M.AssertWarningMessage(str)
+	asserts.AssertWarningMessage(str)
 	return str
 end
 
-function M.AssertphoneNumber(str)
+function asserts.AssertphoneNumber(str)
 	assert(str)
 	assert(type(str) == "string", "Expected phoneNumber to be of type 'string'")
 end
 
 -- Specifies the phone number of the person responsible for shipping this package.
 function M.phoneNumber(str)
-	M.AssertphoneNumber(str)
+	asserts.AssertphoneNumber(str)
 	return str
 end
 
-function M.Assertstreet1(str)
+function asserts.Assertstreet1(str)
 	assert(str)
 	assert(type(str) == "string", "Expected street1 to be of type 'string'")
 end
 
 -- Specifies the first part of the street address for the return address, for example 1234 Main Street.
 function M.street1(str)
-	M.Assertstreet1(str)
+	asserts.Assertstreet1(str)
 	return str
 end
 
-function M.AssertpostalCode(str)
+function asserts.AssertpostalCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected postalCode to be of type 'string'")
 end
 
 -- Specifies the postal code for the return address.
 function M.postalCode(str)
-	M.AssertpostalCode(str)
+	asserts.AssertpostalCode(str)
 	return str
 end
 
-function M.AssertJobType(str)
+function asserts.AssertJobType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected JobType to be of type 'string'")
 end
 
 -- Specifies whether the job to initiate is an import or export job.
 function M.JobType(str)
-	M.AssertJobType(str)
+	asserts.AssertJobType(str)
 	return str
 end
 
-function M.AssertLogKey(str)
+function asserts.AssertLogKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LogKey to be of type 'string'")
 end
 
 -- The key where the user logs were stored.
 function M.LogKey(str)
-	M.AssertLogKey(str)
+	asserts.AssertLogKey(str)
 	return str
 end
 
-function M.AssertSignatureFileContents(str)
+function asserts.AssertSignatureFileContents(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SignatureFileContents to be of type 'string'")
 end
 
 -- The actual text of the SIGNATURE file to be written to disk.
 function M.SignatureFileContents(str)
-	M.AssertSignatureFileContents(str)
+	asserts.AssertSignatureFileContents(str)
 	return str
 end
 
-function M.AssertLogBucket(str)
+function asserts.AssertLogBucket(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LogBucket to be of type 'string'")
 end
 
 -- Amazon S3 bucket for user logs.
 function M.LogBucket(str)
-	M.AssertLogBucket(str)
+	asserts.AssertLogBucket(str)
 	return str
 end
 
-function M.Assertcity(str)
+function asserts.Assertcity(str)
 	assert(str)
 	assert(type(str) == "string", "Expected city to be of type 'string'")
 end
 
 -- Specifies the name of your city for the return address.
 function M.city(str)
-	M.Assertcity(str)
+	asserts.Assertcity(str)
 	return str
 end
 
-function M.AssertURL(str)
+function asserts.AssertURL(str)
 	assert(str)
 	assert(type(str) == "string", "Expected URL to be of type 'string'")
 end
 
 -- The URL for a given Artifact.
 function M.URL(str)
-	M.AssertURL(str)
+	asserts.AssertURL(str)
 	return str
 end
 
-function M.AssertManifestAddendum(str)
+function asserts.AssertManifestAddendum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ManifestAddendum to be of type 'string'")
 end
 
 -- For internal use only.
 function M.ManifestAddendum(str)
-	M.AssertManifestAddendum(str)
+	asserts.AssertManifestAddendum(str)
 	return str
 end
 
-function M.Assertcompany(str)
+function asserts.Assertcompany(str)
 	assert(str)
 	assert(type(str) == "string", "Expected company to be of type 'string'")
 end
 
 -- Specifies the name of the company that will ship this package.
 function M.company(str)
-	M.Assertcompany(str)
+	asserts.Assertcompany(str)
 	return str
 end
 
-function M.Assertstreet3(str)
+function asserts.Assertstreet3(str)
 	assert(str)
 	assert(type(str) == "string", "Expected street3 to be of type 'string'")
 end
 
 -- Specifies the optional third part of the street address for the return address, for example c/o Jane Doe.
 function M.street3(str)
-	M.Assertstreet3(str)
+	asserts.Assertstreet3(str)
 	return str
 end
 
-function M.AssertGenericString(str)
+function asserts.AssertGenericString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GenericString to be of type 'string'")
 end
 
 --  
 function M.GenericString(str)
-	M.AssertGenericString(str)
+	asserts.AssertGenericString(str)
 	return str
 end
 
-function M.AssertCurrentManifest(str)
+function asserts.AssertCurrentManifest(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CurrentManifest to be of type 'string'")
 end
 
 -- The last manifest submitted, which will be used to process the job.
 function M.CurrentManifest(str)
-	M.AssertCurrentManifest(str)
+	asserts.AssertCurrentManifest(str)
 	return str
 end
 
-function M.AssertSignature(str)
+function asserts.AssertSignature(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Signature to be of type 'string'")
 end
 
 -- An encrypted code used to authenticate the request and response, for example, "DV+TpDfx1/TdSE9ktyK9k/bDTVI=". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.
 function M.Signature(str)
-	M.AssertSignature(str)
+	asserts.AssertSignature(str)
 	return str
 end
 
-function M.Assertname(str)
+function asserts.Assertname(str)
 	assert(str)
 	assert(type(str) == "string", "Expected name to be of type 'string'")
 end
 
 -- Specifies the name of the person responsible for shipping this package.
 function M.name(str)
-	M.Assertname(str)
+	asserts.Assertname(str)
 	return str
 end
 
-function M.AssertManifest(str)
+function asserts.AssertManifest(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Manifest to be of type 'string'")
 end
 
 -- The UTF-8 encoded text of the manifest file.
 function M.Manifest(str)
-	M.AssertManifest(str)
+	asserts.AssertManifest(str)
 	return str
 end
 
-function M.AssertstateOrProvince(str)
+function asserts.AssertstateOrProvince(str)
 	assert(str)
 	assert(type(str) == "string", "Expected stateOrProvince to be of type 'string'")
 end
 
 -- Specifies the name of your state or your province for the return address.
 function M.stateOrProvince(str)
-	M.AssertstateOrProvince(str)
+	asserts.AssertstateOrProvince(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 -- The human-readable description of a particular error.
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertCarrier(str)
+function asserts.AssertCarrier(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Carrier to be of type 'string'")
 end
 
 -- Name of the shipping company. This value is included when the LocationCode is "Returned".
 function M.Carrier(str)
-	M.AssertCarrier(str)
+	asserts.AssertCarrier(str)
 	return str
 end
 
-function M.AssertMarker(str)
+function asserts.AssertMarker(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Marker to be of type 'string'")
 end
 
 -- Specifies the JOBID to start after when listing the jobs created with your account. AWS Import/Export lists your jobs in reverse chronological order. See MaxJobs.
 function M.Marker(str)
-	M.AssertMarker(str)
+	asserts.AssertMarker(str)
 	return str
 end
 
-function M.AssertLocationCode(str)
+function asserts.AssertLocationCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LocationCode to be of type 'string'")
 end
 
 -- A token representing the location of the storage device, such as "AtAWS".
 function M.LocationCode(str)
-	M.AssertLocationCode(str)
+	asserts.AssertLocationCode(str)
 	return str
 end
 
-function M.AssertMaxJobs(integer)
+function asserts.AssertMaxJobs(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxJobs to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.MaxJobs(integer)
-	M.AssertMaxJobs(integer)
+	asserts.AssertMaxJobs(integer)
 	return integer
 end
 
-function M.AssertErrorCount(integer)
+function asserts.AssertErrorCount(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected ErrorCount to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.ErrorCount(integer)
-	M.AssertErrorCount(integer)
+	asserts.AssertErrorCount(integer)
 	return integer
 end
 
-function M.AssertIsCanceled(boolean)
+function asserts.AssertIsCanceled(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected IsCanceled to be of type 'boolean'")
 end
 
 function M.IsCanceled(boolean)
-	M.AssertIsCanceled(boolean)
+	asserts.AssertIsCanceled(boolean)
 	return boolean
 end
 
-function M.AssertSuccess(boolean)
+function asserts.AssertSuccess(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Success to be of type 'boolean'")
 end
 
 function M.Success(boolean)
-	M.AssertSuccess(boolean)
+	asserts.AssertSuccess(boolean)
 	return boolean
 end
 
-function M.AssertValidateOnly(boolean)
+function asserts.AssertValidateOnly(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected ValidateOnly to be of type 'boolean'")
 end
 
 function M.ValidateOnly(boolean)
-	M.AssertValidateOnly(boolean)
+	asserts.AssertValidateOnly(boolean)
 	return boolean
 end
 
-function M.AssertIsTruncated(boolean)
+function asserts.AssertIsTruncated(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected IsTruncated to be of type 'boolean'")
 end
 
 function M.IsTruncated(boolean)
-	M.AssertIsTruncated(boolean)
+	asserts.AssertIsTruncated(boolean)
 	return boolean
 end
 
-function M.AssertCreationDate(timestamp)
+function asserts.AssertCreationDate(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected CreationDate to be of type 'string'")
 end
 
 function M.CreationDate(timestamp)
-	M.AssertCreationDate(timestamp)
+	asserts.AssertCreationDate(timestamp)
 	return timestamp
 end
 
-function M.AssertJobIdList(list)
+function asserts.AssertJobIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected JobIdList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGenericString(v)
+		asserts.AssertGenericString(v)
 	end
 end
 
 --  
 -- List of GenericString objects
 function M.JobIdList(list)
-	M.AssertJobIdList(list)
+	asserts.AssertJobIdList(list)
 	return list
 end
 
-function M.AssertArtifactList(list)
+function asserts.AssertArtifactList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ArtifactList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertArtifact(v)
+		asserts.AssertArtifact(v)
 	end
 end
 
 -- A collection of artifacts.
 -- List of Artifact objects
 function M.ArtifactList(list)
-	M.AssertArtifactList(list)
+	asserts.AssertArtifactList(list)
 	return list
 end
 
-function M.AssertJobsList(list)
+function asserts.AssertJobsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected JobsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertJob(v)
+		asserts.AssertJob(v)
 	end
 end
 
 -- A list container for Jobs returned by the ListJobs operation.
 -- List of Job objects
 function M.JobsList(list)
-	M.AssertJobsList(list)
+	asserts.AssertJobsList(list)
 	return list
 end
 

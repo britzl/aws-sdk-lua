@@ -18,38 +18,41 @@ M.metadata = {
 	uid = "elasticloadbalancingv2-2015-12-01",
 }
 
-local DescribeTargetGroupAttributesInput_keys = { "TargetGroupArn" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertDescribeTargetGroupAttributesInput(struct)
+keys.DescribeTargetGroupAttributesInput = { ["TargetGroupArn"] = true, nil }
+
+function asserts.AssertDescribeTargetGroupAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTargetGroupAttributesInput to be of type 'table'")
 	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTargetGroupAttributesInput_keys[k], "DescribeTargetGroupAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeTargetGroupAttributesInput[k], "DescribeTargetGroupAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTargetGroupAttributesInput
 --  
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
 -- Required parameter: TargetGroupArn
-function M.DescribeTargetGroupAttributesInput(TargetGroupArn, ...)
+function M.DescribeTargetGroupAttributesInput(_TargetGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupAttributesInput")
 	local t = { 
-		["TargetGroupArn"] = TargetGroupArn,
+		["TargetGroupArn"] = _TargetGroupArn,
 	}
-	M.AssertDescribeTargetGroupAttributesInput(t)
+	asserts.AssertDescribeTargetGroupAttributesInput(t)
 	return t
 end
 
-local TooManyCertificatesException_keys = { nil }
+keys.TooManyCertificatesException = { nil }
 
-function M.AssertTooManyCertificatesException(struct)
+function asserts.AssertTooManyCertificatesException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyCertificatesException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TooManyCertificatesException_keys[k], "TooManyCertificatesException contains unknown key " .. tostring(k))
+		assert(keys.TooManyCertificatesException[k], "TooManyCertificatesException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -59,71 +62,71 @@ function M.TooManyCertificatesException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyCertificatesException")
 	local t = { 
 	}
-	M.AssertTooManyCertificatesException(t)
+	asserts.AssertTooManyCertificatesException(t)
 	return t
 end
 
-local DeleteRuleInput_keys = { "RuleArn" = true, nil }
+keys.DeleteRuleInput = { ["RuleArn"] = true, nil }
 
-function M.AssertDeleteRuleInput(struct)
+function asserts.AssertDeleteRuleInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteRuleInput to be of type 'table'")
 	assert(struct["RuleArn"], "Expected key RuleArn to exist in table")
-	if struct["RuleArn"] then M.AssertRuleArn(struct["RuleArn"]) end
+	if struct["RuleArn"] then asserts.AssertRuleArn(struct["RuleArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteRuleInput_keys[k], "DeleteRuleInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteRuleInput[k], "DeleteRuleInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteRuleInput
 --  
--- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
 -- Required parameter: RuleArn
-function M.DeleteRuleInput(RuleArn, ...)
+function M.DeleteRuleInput(_RuleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleInput")
 	local t = { 
-		["RuleArn"] = RuleArn,
+		["RuleArn"] = _RuleArn,
 	}
-	M.AssertDeleteRuleInput(t)
+	asserts.AssertDeleteRuleInput(t)
 	return t
 end
 
-local SslPolicy_keys = { "SslProtocols" = true, "Ciphers" = true, "Name" = true, nil }
+keys.SslPolicy = { ["SslProtocols"] = true, ["Ciphers"] = true, ["Name"] = true, nil }
 
-function M.AssertSslPolicy(struct)
+function asserts.AssertSslPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SslPolicy to be of type 'table'")
-	if struct["SslProtocols"] then M.AssertSslProtocols(struct["SslProtocols"]) end
-	if struct["Ciphers"] then M.AssertCiphers(struct["Ciphers"]) end
-	if struct["Name"] then M.AssertSslPolicyName(struct["Name"]) end
+	if struct["SslProtocols"] then asserts.AssertSslProtocols(struct["SslProtocols"]) end
+	if struct["Ciphers"] then asserts.AssertCiphers(struct["Ciphers"]) end
+	if struct["Name"] then asserts.AssertSslPolicyName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(SslPolicy_keys[k], "SslPolicy contains unknown key " .. tostring(k))
+		assert(keys.SslPolicy[k], "SslPolicy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SslPolicy
 -- <p>Information about a policy used for SSL negotiation.</p>
--- @param SslProtocols [SslProtocols] <p>The protocols.</p>
--- @param Ciphers [Ciphers] <p>The ciphers.</p>
--- @param Name [SslPolicyName] <p>The name of the policy.</p>
-function M.SslPolicy(SslProtocols, Ciphers, Name, ...)
+-- @param _SslProtocols [SslProtocols] <p>The protocols.</p>
+-- @param _Ciphers [Ciphers] <p>The ciphers.</p>
+-- @param _Name [SslPolicyName] <p>The name of the policy.</p>
+function M.SslPolicy(_SslProtocols, _Ciphers, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SslPolicy")
 	local t = { 
-		["SslProtocols"] = SslProtocols,
-		["Ciphers"] = Ciphers,
-		["Name"] = Name,
+		["SslProtocols"] = _SslProtocols,
+		["Ciphers"] = _Ciphers,
+		["Name"] = _Name,
 	}
-	M.AssertSslPolicy(t)
+	asserts.AssertSslPolicy(t)
 	return t
 end
 
-local DuplicateTagKeysException_keys = { nil }
+keys.DuplicateTagKeysException = { nil }
 
-function M.AssertDuplicateTagKeysException(struct)
+function asserts.AssertDuplicateTagKeysException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DuplicateTagKeysException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DuplicateTagKeysException_keys[k], "DuplicateTagKeysException contains unknown key " .. tostring(k))
+		assert(keys.DuplicateTagKeysException[k], "DuplicateTagKeysException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -133,17 +136,17 @@ function M.DuplicateTagKeysException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateTagKeysException")
 	local t = { 
 	}
-	M.AssertDuplicateTagKeysException(t)
+	asserts.AssertDuplicateTagKeysException(t)
 	return t
 end
 
-local ListenerNotFoundException_keys = { nil }
+keys.ListenerNotFoundException = { nil }
 
-function M.AssertListenerNotFoundException(struct)
+function asserts.AssertListenerNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListenerNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ListenerNotFoundException_keys[k], "ListenerNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ListenerNotFoundException[k], "ListenerNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -153,49 +156,49 @@ function M.ListenerNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListenerNotFoundException")
 	local t = { 
 	}
-	M.AssertListenerNotFoundException(t)
+	asserts.AssertListenerNotFoundException(t)
 	return t
 end
 
-local DescribeLoadBalancersInput_keys = { "Marker" = true, "LoadBalancerArns" = true, "Names" = true, "PageSize" = true, nil }
+keys.DescribeLoadBalancersInput = { ["Marker"] = true, ["LoadBalancerArns"] = true, ["Names"] = true, ["PageSize"] = true, nil }
 
-function M.AssertDescribeLoadBalancersInput(struct)
+function asserts.AssertDescribeLoadBalancersInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancersInput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["LoadBalancerArns"] then M.AssertLoadBalancerArns(struct["LoadBalancerArns"]) end
-	if struct["Names"] then M.AssertLoadBalancerNames(struct["Names"]) end
-	if struct["PageSize"] then M.AssertPageSize(struct["PageSize"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["LoadBalancerArns"] then asserts.AssertLoadBalancerArns(struct["LoadBalancerArns"]) end
+	if struct["Names"] then asserts.AssertLoadBalancerNames(struct["Names"]) end
+	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLoadBalancersInput_keys[k], "DescribeLoadBalancersInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancersInput[k], "DescribeLoadBalancersInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancersInput
 --  
--- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.</p>
--- @param Names [LoadBalancerNames] <p>The names of the load balancers.</p>
--- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeLoadBalancersInput(Marker, LoadBalancerArns, Names, PageSize, ...)
+-- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.</p>
+-- @param _Names [LoadBalancerNames] <p>The names of the load balancers.</p>
+-- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+function M.DescribeLoadBalancersInput(_Marker, _LoadBalancerArns, _Names, _PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersInput")
 	local t = { 
-		["Marker"] = Marker,
-		["LoadBalancerArns"] = LoadBalancerArns,
-		["Names"] = Names,
-		["PageSize"] = PageSize,
+		["Marker"] = _Marker,
+		["LoadBalancerArns"] = _LoadBalancerArns,
+		["Names"] = _Names,
+		["PageSize"] = _PageSize,
 	}
-	M.AssertDescribeLoadBalancersInput(t)
+	asserts.AssertDescribeLoadBalancersInput(t)
 	return t
 end
 
-local AddTagsOutput_keys = { nil }
+keys.AddTagsOutput = { nil }
 
-function M.AssertAddTagsOutput(struct)
+function asserts.AssertAddTagsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AddTagsOutput_keys[k], "AddTagsOutput contains unknown key " .. tostring(k))
+		assert(keys.AddTagsOutput[k], "AddTagsOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -205,17 +208,17 @@ function M.AddTagsOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsOutput")
 	local t = { 
 	}
-	M.AssertAddTagsOutput(t)
+	asserts.AssertAddTagsOutput(t)
 	return t
 end
 
-local SubnetNotFoundException_keys = { nil }
+keys.SubnetNotFoundException = { nil }
 
-function M.AssertSubnetNotFoundException(struct)
+function asserts.AssertSubnetNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubnetNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(SubnetNotFoundException_keys[k], "SubnetNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.SubnetNotFoundException[k], "SubnetNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -225,43 +228,43 @@ function M.SubnetNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetNotFoundException")
 	local t = { 
 	}
-	M.AssertSubnetNotFoundException(t)
+	asserts.AssertSubnetNotFoundException(t)
 	return t
 end
 
-local RulePriorityPair_keys = { "Priority" = true, "RuleArn" = true, nil }
+keys.RulePriorityPair = { ["Priority"] = true, ["RuleArn"] = true, nil }
 
-function M.AssertRulePriorityPair(struct)
+function asserts.AssertRulePriorityPair(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RulePriorityPair to be of type 'table'")
-	if struct["Priority"] then M.AssertRulePriority(struct["Priority"]) end
-	if struct["RuleArn"] then M.AssertRuleArn(struct["RuleArn"]) end
+	if struct["Priority"] then asserts.AssertRulePriority(struct["Priority"]) end
+	if struct["RuleArn"] then asserts.AssertRuleArn(struct["RuleArn"]) end
 	for k,_ in pairs(struct) do
-		assert(RulePriorityPair_keys[k], "RulePriorityPair contains unknown key " .. tostring(k))
+		assert(keys.RulePriorityPair[k], "RulePriorityPair contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RulePriorityPair
 -- <p>Information about the priorities for the rules for a listener.</p>
--- @param Priority [RulePriority] <p>The rule priority.</p>
--- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
-function M.RulePriorityPair(Priority, RuleArn, ...)
+-- @param _Priority [RulePriority] <p>The rule priority.</p>
+-- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+function M.RulePriorityPair(_Priority, _RuleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RulePriorityPair")
 	local t = { 
-		["Priority"] = Priority,
-		["RuleArn"] = RuleArn,
+		["Priority"] = _Priority,
+		["RuleArn"] = _RuleArn,
 	}
-	M.AssertRulePriorityPair(t)
+	asserts.AssertRulePriorityPair(t)
 	return t
 end
 
-local DeleteTargetGroupOutput_keys = { nil }
+keys.DeleteTargetGroupOutput = { nil }
 
-function M.AssertDeleteTargetGroupOutput(struct)
+function asserts.AssertDeleteTargetGroupOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTargetGroupOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteTargetGroupOutput_keys[k], "DeleteTargetGroupOutput contains unknown key " .. tostring(k))
+		assert(keys.DeleteTargetGroupOutput[k], "DeleteTargetGroupOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -271,17 +274,17 @@ function M.DeleteTargetGroupOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTargetGroupOutput")
 	local t = { 
 	}
-	M.AssertDeleteTargetGroupOutput(t)
+	asserts.AssertDeleteTargetGroupOutput(t)
 	return t
 end
 
-local DuplicateLoadBalancerNameException_keys = { nil }
+keys.DuplicateLoadBalancerNameException = { nil }
 
-function M.AssertDuplicateLoadBalancerNameException(struct)
+function asserts.AssertDuplicateLoadBalancerNameException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DuplicateLoadBalancerNameException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DuplicateLoadBalancerNameException_keys[k], "DuplicateLoadBalancerNameException contains unknown key " .. tostring(k))
+		assert(keys.DuplicateLoadBalancerNameException[k], "DuplicateLoadBalancerNameException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -291,17 +294,17 @@ function M.DuplicateLoadBalancerNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateLoadBalancerNameException")
 	local t = { 
 	}
-	M.AssertDuplicateLoadBalancerNameException(t)
+	asserts.AssertDuplicateLoadBalancerNameException(t)
 	return t
 end
 
-local InvalidConfigurationRequestException_keys = { nil }
+keys.InvalidConfigurationRequestException = { nil }
 
-function M.AssertInvalidConfigurationRequestException(struct)
+function asserts.AssertInvalidConfigurationRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidConfigurationRequestException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidConfigurationRequestException_keys[k], "InvalidConfigurationRequestException contains unknown key " .. tostring(k))
+		assert(keys.InvalidConfigurationRequestException[k], "InvalidConfigurationRequestException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -311,99 +314,99 @@ function M.InvalidConfigurationRequestException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationRequestException")
 	local t = { 
 	}
-	M.AssertInvalidConfigurationRequestException(t)
+	asserts.AssertInvalidConfigurationRequestException(t)
 	return t
 end
 
-local ModifyTargetGroupAttributesInput_keys = { "Attributes" = true, "TargetGroupArn" = true, nil }
+keys.ModifyTargetGroupAttributesInput = { ["Attributes"] = true, ["TargetGroupArn"] = true, nil }
 
-function M.AssertModifyTargetGroupAttributesInput(struct)
+function asserts.AssertModifyTargetGroupAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyTargetGroupAttributesInput to be of type 'table'")
 	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
 	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["Attributes"] then M.AssertTargetGroupAttributes(struct["Attributes"]) end
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["Attributes"] then asserts.AssertTargetGroupAttributes(struct["Attributes"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyTargetGroupAttributesInput_keys[k], "ModifyTargetGroupAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.ModifyTargetGroupAttributesInput[k], "ModifyTargetGroupAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyTargetGroupAttributesInput
 --  
--- @param Attributes [TargetGroupAttributes] <p>The attributes.</p>
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _Attributes [TargetGroupAttributes] <p>The attributes.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
 -- Required parameter: TargetGroupArn
 -- Required parameter: Attributes
-function M.ModifyTargetGroupAttributesInput(Attributes, TargetGroupArn, ...)
+function M.ModifyTargetGroupAttributesInput(_Attributes, _TargetGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupAttributesInput")
 	local t = { 
-		["Attributes"] = Attributes,
-		["TargetGroupArn"] = TargetGroupArn,
+		["Attributes"] = _Attributes,
+		["TargetGroupArn"] = _TargetGroupArn,
 	}
-	M.AssertModifyTargetGroupAttributesInput(t)
+	asserts.AssertModifyTargetGroupAttributesInput(t)
 	return t
 end
 
-local Cipher_keys = { "Priority" = true, "Name" = true, nil }
+keys.Cipher = { ["Priority"] = true, ["Name"] = true, nil }
 
-function M.AssertCipher(struct)
+function asserts.AssertCipher(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Cipher to be of type 'table'")
-	if struct["Priority"] then M.AssertCipherPriority(struct["Priority"]) end
-	if struct["Name"] then M.AssertCipherName(struct["Name"]) end
+	if struct["Priority"] then asserts.AssertCipherPriority(struct["Priority"]) end
+	if struct["Name"] then asserts.AssertCipherName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(Cipher_keys[k], "Cipher contains unknown key " .. tostring(k))
+		assert(keys.Cipher[k], "Cipher contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Cipher
 -- <p>Information about a cipher used in a policy.</p>
--- @param Priority [CipherPriority] <p>The priority of the cipher.</p>
--- @param Name [CipherName] <p>The name of the cipher.</p>
-function M.Cipher(Priority, Name, ...)
+-- @param _Priority [CipherPriority] <p>The priority of the cipher.</p>
+-- @param _Name [CipherName] <p>The name of the cipher.</p>
+function M.Cipher(_Priority, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Cipher")
 	local t = { 
-		["Priority"] = Priority,
-		["Name"] = Name,
+		["Priority"] = _Priority,
+		["Name"] = _Name,
 	}
-	M.AssertCipher(t)
+	asserts.AssertCipher(t)
 	return t
 end
 
-local DescribeSSLPoliciesOutput_keys = { "NextMarker" = true, "SslPolicies" = true, nil }
+keys.DescribeSSLPoliciesOutput = { ["NextMarker"] = true, ["SslPolicies"] = true, nil }
 
-function M.AssertDescribeSSLPoliciesOutput(struct)
+function asserts.AssertDescribeSSLPoliciesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSSLPoliciesOutput to be of type 'table'")
-	if struct["NextMarker"] then M.AssertMarker(struct["NextMarker"]) end
-	if struct["SslPolicies"] then M.AssertSslPolicies(struct["SslPolicies"]) end
+	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
+	if struct["SslPolicies"] then asserts.AssertSslPolicies(struct["SslPolicies"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSSLPoliciesOutput_keys[k], "DescribeSSLPoliciesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeSSLPoliciesOutput[k], "DescribeSSLPoliciesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSSLPoliciesOutput
 --  
--- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param SslPolicies [SslPolicies] <p>Information about the policies.</p>
-function M.DescribeSSLPoliciesOutput(NextMarker, SslPolicies, ...)
+-- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param _SslPolicies [SslPolicies] <p>Information about the policies.</p>
+function M.DescribeSSLPoliciesOutput(_NextMarker, _SslPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSSLPoliciesOutput")
 	local t = { 
-		["NextMarker"] = NextMarker,
-		["SslPolicies"] = SslPolicies,
+		["NextMarker"] = _NextMarker,
+		["SslPolicies"] = _SslPolicies,
 	}
-	M.AssertDescribeSSLPoliciesOutput(t)
+	asserts.AssertDescribeSSLPoliciesOutput(t)
 	return t
 end
 
-local OperationNotPermittedException_keys = { nil }
+keys.OperationNotPermittedException = { nil }
 
-function M.AssertOperationNotPermittedException(struct)
+function asserts.AssertOperationNotPermittedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OperationNotPermittedException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(OperationNotPermittedException_keys[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
+		assert(keys.OperationNotPermittedException[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -413,147 +416,147 @@ function M.OperationNotPermittedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
 	local t = { 
 	}
-	M.AssertOperationNotPermittedException(t)
+	asserts.AssertOperationNotPermittedException(t)
 	return t
 end
 
-local DescribeTagsInput_keys = { "ResourceArns" = true, nil }
+keys.DescribeTagsInput = { ["ResourceArns"] = true, nil }
 
-function M.AssertDescribeTagsInput(struct)
+function asserts.AssertDescribeTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTagsInput to be of type 'table'")
 	assert(struct["ResourceArns"], "Expected key ResourceArns to exist in table")
-	if struct["ResourceArns"] then M.AssertResourceArns(struct["ResourceArns"]) end
+	if struct["ResourceArns"] then asserts.AssertResourceArns(struct["ResourceArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTagsInput_keys[k], "DescribeTagsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeTagsInput[k], "DescribeTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTagsInput
 --  
--- @param ResourceArns [ResourceArns] <p>The Amazon Resource Names (ARN) of the resources.</p>
+-- @param _ResourceArns [ResourceArns] <p>The Amazon Resource Names (ARN) of the resources.</p>
 -- Required parameter: ResourceArns
-function M.DescribeTagsInput(ResourceArns, ...)
+function M.DescribeTagsInput(_ResourceArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsInput")
 	local t = { 
-		["ResourceArns"] = ResourceArns,
+		["ResourceArns"] = _ResourceArns,
 	}
-	M.AssertDescribeTagsInput(t)
+	asserts.AssertDescribeTagsInput(t)
 	return t
 end
 
-local SetSecurityGroupsOutput_keys = { "SecurityGroupIds" = true, nil }
+keys.SetSecurityGroupsOutput = { ["SecurityGroupIds"] = true, nil }
 
-function M.AssertSetSecurityGroupsOutput(struct)
+function asserts.AssertSetSecurityGroupsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetSecurityGroupsOutput to be of type 'table'")
-	if struct["SecurityGroupIds"] then M.AssertSecurityGroups(struct["SecurityGroupIds"]) end
+	if struct["SecurityGroupIds"] then asserts.AssertSecurityGroups(struct["SecurityGroupIds"]) end
 	for k,_ in pairs(struct) do
-		assert(SetSecurityGroupsOutput_keys[k], "SetSecurityGroupsOutput contains unknown key " .. tostring(k))
+		assert(keys.SetSecurityGroupsOutput[k], "SetSecurityGroupsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetSecurityGroupsOutput
 --  
--- @param SecurityGroupIds [SecurityGroups] <p>The IDs of the security groups associated with the load balancer.</p>
-function M.SetSecurityGroupsOutput(SecurityGroupIds, ...)
+-- @param _SecurityGroupIds [SecurityGroups] <p>The IDs of the security groups associated with the load balancer.</p>
+function M.SetSecurityGroupsOutput(_SecurityGroupIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSecurityGroupsOutput")
 	local t = { 
-		["SecurityGroupIds"] = SecurityGroupIds,
+		["SecurityGroupIds"] = _SecurityGroupIds,
 	}
-	M.AssertSetSecurityGroupsOutput(t)
+	asserts.AssertSetSecurityGroupsOutput(t)
 	return t
 end
 
-local DescribeAccountLimitsInput_keys = { "Marker" = true, "PageSize" = true, nil }
+keys.DescribeAccountLimitsInput = { ["Marker"] = true, ["PageSize"] = true, nil }
 
-function M.AssertDescribeAccountLimitsInput(struct)
+function asserts.AssertDescribeAccountLimitsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAccountLimitsInput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["PageSize"] then M.AssertPageSize(struct["PageSize"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAccountLimitsInput_keys[k], "DescribeAccountLimitsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeAccountLimitsInput[k], "DescribeAccountLimitsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAccountLimitsInput
 --  
--- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeAccountLimitsInput(Marker, PageSize, ...)
+-- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+function M.DescribeAccountLimitsInput(_Marker, _PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsInput")
 	local t = { 
-		["Marker"] = Marker,
-		["PageSize"] = PageSize,
+		["Marker"] = _Marker,
+		["PageSize"] = _PageSize,
 	}
-	M.AssertDescribeAccountLimitsInput(t)
+	asserts.AssertDescribeAccountLimitsInput(t)
 	return t
 end
 
-local SetSubnetsInput_keys = { "Subnets" = true, "LoadBalancerArn" = true, nil }
+keys.SetSubnetsInput = { ["Subnets"] = true, ["LoadBalancerArn"] = true, nil }
 
-function M.AssertSetSubnetsInput(struct)
+function asserts.AssertSetSubnetsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetSubnetsInput to be of type 'table'")
 	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
 	assert(struct["Subnets"], "Expected key Subnets to exist in table")
-	if struct["Subnets"] then M.AssertSubnets(struct["Subnets"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SetSubnetsInput_keys[k], "SetSubnetsInput contains unknown key " .. tostring(k))
+		assert(keys.SetSubnetsInput[k], "SetSubnetsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetSubnetsInput
 --  
--- @param Subnets [Subnets] <p>The IDs of the subnets. You must specify at least two subnets. You can add only one subnet per Availability Zone.</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _Subnets [Subnets] <p>The IDs of the subnets. You must specify at least two subnets. You can add only one subnet per Availability Zone.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: Subnets
-function M.SetSubnetsInput(Subnets, LoadBalancerArn, ...)
+function M.SetSubnetsInput(_Subnets, _LoadBalancerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSubnetsInput")
 	local t = { 
-		["Subnets"] = Subnets,
-		["LoadBalancerArn"] = LoadBalancerArn,
+		["Subnets"] = _Subnets,
+		["LoadBalancerArn"] = _LoadBalancerArn,
 	}
-	M.AssertSetSubnetsInput(t)
+	asserts.AssertSetSubnetsInput(t)
 	return t
 end
 
-local Limit_keys = { "Max" = true, "Name" = true, nil }
+keys.Limit = { ["Max"] = true, ["Name"] = true, nil }
 
-function M.AssertLimit(struct)
+function asserts.AssertLimit(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Limit to be of type 'table'")
-	if struct["Max"] then M.AssertMax(struct["Max"]) end
-	if struct["Name"] then M.AssertName(struct["Name"]) end
+	if struct["Max"] then asserts.AssertMax(struct["Max"]) end
+	if struct["Name"] then asserts.AssertName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(Limit_keys[k], "Limit contains unknown key " .. tostring(k))
+		assert(keys.Limit[k], "Limit contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Limit
 -- <p>Information about an Elastic Load Balancing resource limit for your AWS account.</p>
--- @param Max [Max] <p>The maximum value of the limit.</p>
--- @param Name [Name] <p>The name of the limit. The possible values are:</p> <ul> <li> <p>application-load-balancers</p> </li> <li> <p>listeners-per-application-load-balancer</p> </li> <li> <p>rules-per-application-load-balancer</p> </li> <li> <p>target-groups</p> </li> <li> <p>targets-per-application-load-balancer</p> </li> </ul>
-function M.Limit(Max, Name, ...)
+-- @param _Max [Max] <p>The maximum value of the limit.</p>
+-- @param _Name [Name] <p>The name of the limit. The possible values are:</p> <ul> <li> <p>application-load-balancers</p> </li> <li> <p>listeners-per-application-load-balancer</p> </li> <li> <p>rules-per-application-load-balancer</p> </li> <li> <p>target-groups</p> </li> <li> <p>targets-per-application-load-balancer</p> </li> </ul>
+function M.Limit(_Max, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Limit")
 	local t = { 
-		["Max"] = Max,
-		["Name"] = Name,
+		["Max"] = _Max,
+		["Name"] = _Name,
 	}
-	M.AssertLimit(t)
+	asserts.AssertLimit(t)
 	return t
 end
 
-local DuplicateTargetGroupNameException_keys = { nil }
+keys.DuplicateTargetGroupNameException = { nil }
 
-function M.AssertDuplicateTargetGroupNameException(struct)
+function asserts.AssertDuplicateTargetGroupNameException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DuplicateTargetGroupNameException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DuplicateTargetGroupNameException_keys[k], "DuplicateTargetGroupNameException contains unknown key " .. tostring(k))
+		assert(keys.DuplicateTargetGroupNameException[k], "DuplicateTargetGroupNameException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -563,102 +566,102 @@ function M.DuplicateTargetGroupNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateTargetGroupNameException")
 	local t = { 
 	}
-	M.AssertDuplicateTargetGroupNameException(t)
+	asserts.AssertDuplicateTargetGroupNameException(t)
 	return t
 end
 
-local TargetGroup_keys = { "HealthCheckPath" = true, "HealthCheckIntervalSeconds" = true, "VpcId" = true, "Protocol" = true, "HealthCheckTimeoutSeconds" = true, "HealthCheckProtocol" = true, "LoadBalancerArns" = true, "UnhealthyThresholdCount" = true, "HealthyThresholdCount" = true, "TargetGroupArn" = true, "Matcher" = true, "HealthCheckPort" = true, "Port" = true, "TargetGroupName" = true, nil }
+keys.TargetGroup = { ["HealthCheckPath"] = true, ["HealthCheckIntervalSeconds"] = true, ["VpcId"] = true, ["Protocol"] = true, ["HealthCheckTimeoutSeconds"] = true, ["HealthCheckProtocol"] = true, ["LoadBalancerArns"] = true, ["UnhealthyThresholdCount"] = true, ["HealthyThresholdCount"] = true, ["TargetGroupArn"] = true, ["Matcher"] = true, ["HealthCheckPort"] = true, ["Port"] = true, ["TargetGroupName"] = true, nil }
 
-function M.AssertTargetGroup(struct)
+function asserts.AssertTargetGroup(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TargetGroup to be of type 'table'")
-	if struct["HealthCheckPath"] then M.AssertPath(struct["HealthCheckPath"]) end
-	if struct["HealthCheckIntervalSeconds"] then M.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
-	if struct["VpcId"] then M.AssertVpcId(struct["VpcId"]) end
-	if struct["Protocol"] then M.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["HealthCheckTimeoutSeconds"] then M.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
-	if struct["HealthCheckProtocol"] then M.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
-	if struct["LoadBalancerArns"] then M.AssertLoadBalancerArns(struct["LoadBalancerArns"]) end
-	if struct["UnhealthyThresholdCount"] then M.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
-	if struct["HealthyThresholdCount"] then M.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Matcher"] then M.AssertMatcher(struct["Matcher"]) end
-	if struct["HealthCheckPort"] then M.AssertHealthCheckPort(struct["HealthCheckPort"]) end
-	if struct["Port"] then M.AssertPort(struct["Port"]) end
-	if struct["TargetGroupName"] then M.AssertTargetGroupName(struct["TargetGroupName"]) end
+	if struct["HealthCheckPath"] then asserts.AssertPath(struct["HealthCheckPath"]) end
+	if struct["HealthCheckIntervalSeconds"] then asserts.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
+	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
+	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
+	if struct["HealthCheckTimeoutSeconds"] then asserts.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
+	if struct["HealthCheckProtocol"] then asserts.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
+	if struct["LoadBalancerArns"] then asserts.AssertLoadBalancerArns(struct["LoadBalancerArns"]) end
+	if struct["UnhealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
+	if struct["HealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["Matcher"] then asserts.AssertMatcher(struct["Matcher"]) end
+	if struct["HealthCheckPort"] then asserts.AssertHealthCheckPort(struct["HealthCheckPort"]) end
+	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
+	if struct["TargetGroupName"] then asserts.AssertTargetGroupName(struct["TargetGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(TargetGroup_keys[k], "TargetGroup contains unknown key " .. tostring(k))
+		assert(keys.TargetGroup[k], "TargetGroup contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TargetGroup
 -- <p>Information about a target group.</p>
--- @param HealthCheckPath [Path] <p>The destination for the health check request.</p>
--- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
--- @param VpcId [VpcId] <p>The ID of the VPC for the targets.</p>
--- @param Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
--- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
--- @param HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
--- @param LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group.</p>
--- @param UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
--- @param HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
--- @param HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
--- @param Port [Port] <p>The port on which the targets are listening.</p>
--- @param TargetGroupName [TargetGroupName] <p>The name of the target group.</p>
-function M.TargetGroup(HealthCheckPath, HealthCheckIntervalSeconds, VpcId, Protocol, HealthCheckTimeoutSeconds, HealthCheckProtocol, LoadBalancerArns, UnhealthyThresholdCount, HealthyThresholdCount, TargetGroupArn, Matcher, HealthCheckPort, Port, TargetGroupName, ...)
+-- @param _HealthCheckPath [Path] <p>The destination for the health check request.</p>
+-- @param _HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
+-- @param _VpcId [VpcId] <p>The ID of the VPC for the targets.</p>
+-- @param _Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
+-- @param _HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
+-- @param _HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
+-- @param _LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group.</p>
+-- @param _UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
+-- @param _HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
+-- @param _HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- @param _Port [Port] <p>The port on which the targets are listening.</p>
+-- @param _TargetGroupName [TargetGroupName] <p>The name of the target group.</p>
+function M.TargetGroup(_HealthCheckPath, _HealthCheckIntervalSeconds, _VpcId, _Protocol, _HealthCheckTimeoutSeconds, _HealthCheckProtocol, _LoadBalancerArns, _UnhealthyThresholdCount, _HealthyThresholdCount, _TargetGroupArn, _Matcher, _HealthCheckPort, _Port, _TargetGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroup")
 	local t = { 
-		["HealthCheckPath"] = HealthCheckPath,
-		["HealthCheckIntervalSeconds"] = HealthCheckIntervalSeconds,
-		["VpcId"] = VpcId,
-		["Protocol"] = Protocol,
-		["HealthCheckTimeoutSeconds"] = HealthCheckTimeoutSeconds,
-		["HealthCheckProtocol"] = HealthCheckProtocol,
-		["LoadBalancerArns"] = LoadBalancerArns,
-		["UnhealthyThresholdCount"] = UnhealthyThresholdCount,
-		["HealthyThresholdCount"] = HealthyThresholdCount,
-		["TargetGroupArn"] = TargetGroupArn,
-		["Matcher"] = Matcher,
-		["HealthCheckPort"] = HealthCheckPort,
-		["Port"] = Port,
-		["TargetGroupName"] = TargetGroupName,
+		["HealthCheckPath"] = _HealthCheckPath,
+		["HealthCheckIntervalSeconds"] = _HealthCheckIntervalSeconds,
+		["VpcId"] = _VpcId,
+		["Protocol"] = _Protocol,
+		["HealthCheckTimeoutSeconds"] = _HealthCheckTimeoutSeconds,
+		["HealthCheckProtocol"] = _HealthCheckProtocol,
+		["LoadBalancerArns"] = _LoadBalancerArns,
+		["UnhealthyThresholdCount"] = _UnhealthyThresholdCount,
+		["HealthyThresholdCount"] = _HealthyThresholdCount,
+		["TargetGroupArn"] = _TargetGroupArn,
+		["Matcher"] = _Matcher,
+		["HealthCheckPort"] = _HealthCheckPort,
+		["Port"] = _Port,
+		["TargetGroupName"] = _TargetGroupName,
 	}
-	M.AssertTargetGroup(t)
+	asserts.AssertTargetGroup(t)
 	return t
 end
 
-local DescribeLoadBalancerAttributesOutput_keys = { "Attributes" = true, nil }
+keys.DescribeLoadBalancerAttributesOutput = { ["Attributes"] = true, nil }
 
-function M.AssertDescribeLoadBalancerAttributesOutput(struct)
+function asserts.AssertDescribeLoadBalancerAttributesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancerAttributesOutput to be of type 'table'")
-	if struct["Attributes"] then M.AssertLoadBalancerAttributes(struct["Attributes"]) end
+	if struct["Attributes"] then asserts.AssertLoadBalancerAttributes(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLoadBalancerAttributesOutput_keys[k], "DescribeLoadBalancerAttributesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancerAttributesOutput[k], "DescribeLoadBalancerAttributesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancerAttributesOutput
 --  
--- @param Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
-function M.DescribeLoadBalancerAttributesOutput(Attributes, ...)
+-- @param _Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
+function M.DescribeLoadBalancerAttributesOutput(_Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerAttributesOutput")
 	local t = { 
-		["Attributes"] = Attributes,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertDescribeLoadBalancerAttributesOutput(t)
+	asserts.AssertDescribeLoadBalancerAttributesOutput(t)
 	return t
 end
 
-local InvalidSubnetException_keys = { nil }
+keys.InvalidSubnetException = { nil }
 
-function M.AssertInvalidSubnetException(struct)
+function asserts.AssertInvalidSubnetException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSubnetException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidSubnetException_keys[k], "InvalidSubnetException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSubnetException[k], "InvalidSubnetException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -668,94 +671,94 @@ function M.InvalidSubnetException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnetException")
 	local t = { 
 	}
-	M.AssertInvalidSubnetException(t)
+	asserts.AssertInvalidSubnetException(t)
 	return t
 end
 
-local TagDescription_keys = { "ResourceArn" = true, "Tags" = true, nil }
+keys.TagDescription = { ["ResourceArn"] = true, ["Tags"] = true, nil }
 
-function M.AssertTagDescription(struct)
+function asserts.AssertTagDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagDescription to be of type 'table'")
-	if struct["ResourceArn"] then M.AssertResourceArn(struct["ResourceArn"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["ResourceArn"] then asserts.AssertResourceArn(struct["ResourceArn"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(TagDescription_keys[k], "TagDescription contains unknown key " .. tostring(k))
+		assert(keys.TagDescription[k], "TagDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagDescription
 -- <p>The tags associated with a resource.</p>
--- @param ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- @param Tags [TagList] <p>Information about the tags.</p>
-function M.TagDescription(ResourceArn, Tags, ...)
+-- @param _ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- @param _Tags [TagList] <p>Information about the tags.</p>
+function M.TagDescription(_ResourceArn, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagDescription")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
-		["Tags"] = Tags,
+		["ResourceArn"] = _ResourceArn,
+		["Tags"] = _Tags,
 	}
-	M.AssertTagDescription(t)
+	asserts.AssertTagDescription(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>Information about a tag.</p>
--- @param Value [TagValue] <p>The value of the tag.</p>
--- @param Key [TagKey] <p>The key of the tag.</p>
+-- @param _Value [TagValue] <p>The value of the tag.</p>
+-- @param _Key [TagKey] <p>The key of the tag.</p>
 -- Required parameter: Key
-function M.Tag(Value, Key, ...)
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local DescribeTargetGroupAttributesOutput_keys = { "Attributes" = true, nil }
+keys.DescribeTargetGroupAttributesOutput = { ["Attributes"] = true, nil }
 
-function M.AssertDescribeTargetGroupAttributesOutput(struct)
+function asserts.AssertDescribeTargetGroupAttributesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTargetGroupAttributesOutput to be of type 'table'")
-	if struct["Attributes"] then M.AssertTargetGroupAttributes(struct["Attributes"]) end
+	if struct["Attributes"] then asserts.AssertTargetGroupAttributes(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTargetGroupAttributesOutput_keys[k], "DescribeTargetGroupAttributesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeTargetGroupAttributesOutput[k], "DescribeTargetGroupAttributesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTargetGroupAttributesOutput
 --  
--- @param Attributes [TargetGroupAttributes] <p>Information about the target group attributes</p>
-function M.DescribeTargetGroupAttributesOutput(Attributes, ...)
+-- @param _Attributes [TargetGroupAttributes] <p>Information about the target group attributes</p>
+function M.DescribeTargetGroupAttributesOutput(_Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupAttributesOutput")
 	local t = { 
-		["Attributes"] = Attributes,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertDescribeTargetGroupAttributesOutput(t)
+	asserts.AssertDescribeTargetGroupAttributesOutput(t)
 	return t
 end
 
-local CertificateNotFoundException_keys = { nil }
+keys.CertificateNotFoundException = { nil }
 
-function M.AssertCertificateNotFoundException(struct)
+function asserts.AssertCertificateNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CertificateNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CertificateNotFoundException_keys[k], "CertificateNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.CertificateNotFoundException[k], "CertificateNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -765,59 +768,59 @@ function M.CertificateNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateNotFoundException")
 	local t = { 
 	}
-	M.AssertCertificateNotFoundException(t)
+	asserts.AssertCertificateNotFoundException(t)
 	return t
 end
 
-local CreateLoadBalancerInput_keys = { "IpAddressType" = true, "Subnets" = true, "Name" = true, "Tags" = true, "SecurityGroups" = true, "Scheme" = true, nil }
+keys.CreateLoadBalancerInput = { ["IpAddressType"] = true, ["Subnets"] = true, ["Name"] = true, ["Tags"] = true, ["SecurityGroups"] = true, ["Scheme"] = true, nil }
 
-function M.AssertCreateLoadBalancerInput(struct)
+function asserts.AssertCreateLoadBalancerInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLoadBalancerInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Subnets"], "Expected key Subnets to exist in table")
-	if struct["IpAddressType"] then M.AssertIpAddressType(struct["IpAddressType"]) end
-	if struct["Subnets"] then M.AssertSubnets(struct["Subnets"]) end
-	if struct["Name"] then M.AssertLoadBalancerName(struct["Name"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["SecurityGroups"] then M.AssertSecurityGroups(struct["SecurityGroups"]) end
-	if struct["Scheme"] then M.AssertLoadBalancerSchemeEnum(struct["Scheme"]) end
+	if struct["IpAddressType"] then asserts.AssertIpAddressType(struct["IpAddressType"]) end
+	if struct["Subnets"] then asserts.AssertSubnets(struct["Subnets"]) end
+	if struct["Name"] then asserts.AssertLoadBalancerName(struct["Name"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
+	if struct["Scheme"] then asserts.AssertLoadBalancerSchemeEnum(struct["Scheme"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLoadBalancerInput_keys[k], "CreateLoadBalancerInput contains unknown key " .. tostring(k))
+		assert(keys.CreateLoadBalancerInput[k], "CreateLoadBalancerInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLoadBalancerInput
 --  
--- @param IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
--- @param Subnets [Subnets] <p>The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify subnets from at least two Availability Zones.</p>
--- @param Name [LoadBalancerName] <p>The name of the load balancer.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
--- @param Tags [TagList] <p>One or more tags to assign to the load balancer.</p>
--- @param SecurityGroups [SecurityGroups] <p>The IDs of the security groups to assign to the load balancer.</p>
--- @param Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p> <p>The default is an Internet-facing load balancer.</p>
+-- @param _IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
+-- @param _Subnets [Subnets] <p>The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify subnets from at least two Availability Zones.</p>
+-- @param _Name [LoadBalancerName] <p>The name of the load balancer.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
+-- @param _Tags [TagList] <p>One or more tags to assign to the load balancer.</p>
+-- @param _SecurityGroups [SecurityGroups] <p>The IDs of the security groups to assign to the load balancer.</p>
+-- @param _Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p> <p>The default is an Internet-facing load balancer.</p>
 -- Required parameter: Name
 -- Required parameter: Subnets
-function M.CreateLoadBalancerInput(IpAddressType, Subnets, Name, Tags, SecurityGroups, Scheme, ...)
+function M.CreateLoadBalancerInput(_IpAddressType, _Subnets, _Name, _Tags, _SecurityGroups, _Scheme, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoadBalancerInput")
 	local t = { 
-		["IpAddressType"] = IpAddressType,
-		["Subnets"] = Subnets,
-		["Name"] = Name,
-		["Tags"] = Tags,
-		["SecurityGroups"] = SecurityGroups,
-		["Scheme"] = Scheme,
+		["IpAddressType"] = _IpAddressType,
+		["Subnets"] = _Subnets,
+		["Name"] = _Name,
+		["Tags"] = _Tags,
+		["SecurityGroups"] = _SecurityGroups,
+		["Scheme"] = _Scheme,
 	}
-	M.AssertCreateLoadBalancerInput(t)
+	asserts.AssertCreateLoadBalancerInput(t)
 	return t
 end
 
-local DeregisterTargetsOutput_keys = { nil }
+keys.DeregisterTargetsOutput = { nil }
 
-function M.AssertDeregisterTargetsOutput(struct)
+function asserts.AssertDeregisterTargetsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeregisterTargetsOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeregisterTargetsOutput_keys[k], "DeregisterTargetsOutput contains unknown key " .. tostring(k))
+		assert(keys.DeregisterTargetsOutput[k], "DeregisterTargetsOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -827,17 +830,17 @@ function M.DeregisterTargetsOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTargetsOutput")
 	local t = { 
 	}
-	M.AssertDeregisterTargetsOutput(t)
+	asserts.AssertDeregisterTargetsOutput(t)
 	return t
 end
 
-local TargetGroupAssociationLimitException_keys = { nil }
+keys.TargetGroupAssociationLimitException = { nil }
 
-function M.AssertTargetGroupAssociationLimitException(struct)
+function asserts.AssertTargetGroupAssociationLimitException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TargetGroupAssociationLimitException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TargetGroupAssociationLimitException_keys[k], "TargetGroupAssociationLimitException contains unknown key " .. tostring(k))
+		assert(keys.TargetGroupAssociationLimitException[k], "TargetGroupAssociationLimitException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -847,142 +850,142 @@ function M.TargetGroupAssociationLimitException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupAssociationLimitException")
 	local t = { 
 	}
-	M.AssertTargetGroupAssociationLimitException(t)
+	asserts.AssertTargetGroupAssociationLimitException(t)
 	return t
 end
 
-local DeregisterTargetsInput_keys = { "TargetGroupArn" = true, "Targets" = true, nil }
+keys.DeregisterTargetsInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
 
-function M.AssertDeregisterTargetsInput(struct)
+function asserts.AssertDeregisterTargetsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeregisterTargetsInput to be of type 'table'")
 	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
 	assert(struct["Targets"], "Expected key Targets to exist in table")
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Targets"] then M.AssertTargetDescriptions(struct["Targets"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["Targets"] then asserts.AssertTargetDescriptions(struct["Targets"]) end
 	for k,_ in pairs(struct) do
-		assert(DeregisterTargetsInput_keys[k], "DeregisterTargetsInput contains unknown key " .. tostring(k))
+		assert(keys.DeregisterTargetsInput[k], "DeregisterTargetsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeregisterTargetsInput
 --  
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param Targets [TargetDescriptions] <p>The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _Targets [TargetDescriptions] <p>The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.</p>
 -- Required parameter: TargetGroupArn
 -- Required parameter: Targets
-function M.DeregisterTargetsInput(TargetGroupArn, Targets, ...)
+function M.DeregisterTargetsInput(_TargetGroupArn, _Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTargetsInput")
 	local t = { 
-		["TargetGroupArn"] = TargetGroupArn,
-		["Targets"] = Targets,
+		["TargetGroupArn"] = _TargetGroupArn,
+		["Targets"] = _Targets,
 	}
-	M.AssertDeregisterTargetsInput(t)
+	asserts.AssertDeregisterTargetsInput(t)
 	return t
 end
 
-local Listener_keys = { "Protocol" = true, "DefaultActions" = true, "SslPolicy" = true, "Certificates" = true, "LoadBalancerArn" = true, "Port" = true, "ListenerArn" = true, nil }
+keys.Listener = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["LoadBalancerArn"] = true, ["Port"] = true, ["ListenerArn"] = true, nil }
 
-function M.AssertListener(struct)
+function asserts.AssertListener(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Listener to be of type 'table'")
-	if struct["Protocol"] then M.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["DefaultActions"] then M.AssertActions(struct["DefaultActions"]) end
-	if struct["SslPolicy"] then M.AssertSslPolicyName(struct["SslPolicy"]) end
-	if struct["Certificates"] then M.AssertCertificateList(struct["Certificates"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["Port"] then M.AssertPort(struct["Port"]) end
-	if struct["ListenerArn"] then M.AssertListenerArn(struct["ListenerArn"]) end
+	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
+	if struct["DefaultActions"] then asserts.AssertActions(struct["DefaultActions"]) end
+	if struct["SslPolicy"] then asserts.AssertSslPolicyName(struct["SslPolicy"]) end
+	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
+	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(Listener_keys[k], "Listener contains unknown key " .. tostring(k))
+		assert(keys.Listener[k], "Listener contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Listener
 -- <p>Information about a listener.</p>
--- @param Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
--- @param DefaultActions [Actions] <p>The default actions for the listener.</p>
--- @param SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
--- @param Certificates [CertificateList] <p>The SSL server certificate. You must provide a certificate if the protocol is HTTPS.</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param Port [Port] <p>The port on which the load balancer is listening.</p>
--- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
-function M.Listener(Protocol, DefaultActions, SslPolicy, Certificates, LoadBalancerArn, Port, ListenerArn, ...)
+-- @param _Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- @param _DefaultActions [Actions] <p>The default actions for the listener.</p>
+-- @param _SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
+-- @param _Certificates [CertificateList] <p>The SSL server certificate. You must provide a certificate if the protocol is HTTPS.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _Port [Port] <p>The port on which the load balancer is listening.</p>
+-- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+function M.Listener(_Protocol, _DefaultActions, _SslPolicy, _Certificates, _LoadBalancerArn, _Port, _ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Listener")
 	local t = { 
-		["Protocol"] = Protocol,
-		["DefaultActions"] = DefaultActions,
-		["SslPolicy"] = SslPolicy,
-		["Certificates"] = Certificates,
-		["LoadBalancerArn"] = LoadBalancerArn,
-		["Port"] = Port,
-		["ListenerArn"] = ListenerArn,
+		["Protocol"] = _Protocol,
+		["DefaultActions"] = _DefaultActions,
+		["SslPolicy"] = _SslPolicy,
+		["Certificates"] = _Certificates,
+		["LoadBalancerArn"] = _LoadBalancerArn,
+		["Port"] = _Port,
+		["ListenerArn"] = _ListenerArn,
 	}
-	M.AssertListener(t)
+	asserts.AssertListener(t)
 	return t
 end
 
-local TargetHealth_keys = { "State" = true, "Reason" = true, "Description" = true, nil }
+keys.TargetHealth = { ["State"] = true, ["Reason"] = true, ["Description"] = true, nil }
 
-function M.AssertTargetHealth(struct)
+function asserts.AssertTargetHealth(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TargetHealth to be of type 'table'")
-	if struct["State"] then M.AssertTargetHealthStateEnum(struct["State"]) end
-	if struct["Reason"] then M.AssertTargetHealthReasonEnum(struct["Reason"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
+	if struct["State"] then asserts.AssertTargetHealthStateEnum(struct["State"]) end
+	if struct["Reason"] then asserts.AssertTargetHealthReasonEnum(struct["Reason"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(TargetHealth_keys[k], "TargetHealth contains unknown key " .. tostring(k))
+		assert(keys.TargetHealth[k], "TargetHealth contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TargetHealth
 -- <p>Information about the current health of a target.</p>
--- @param State [TargetHealthStateEnum] <p>The state of the target.</p>
--- @param Reason [TargetHealthReasonEnum] <p>The reason code. If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out, the target response was malformed, or the target failed the health check for an unknown reason.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul>
--- @param Description [Description] <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
-function M.TargetHealth(State, Reason, Description, ...)
+-- @param _State [TargetHealthStateEnum] <p>The state of the target.</p>
+-- @param _Reason [TargetHealthReasonEnum] <p>The reason code. If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out, the target response was malformed, or the target failed the health check for an unknown reason.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul>
+-- @param _Description [Description] <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
+function M.TargetHealth(_State, _Reason, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetHealth")
 	local t = { 
-		["State"] = State,
-		["Reason"] = Reason,
-		["Description"] = Description,
+		["State"] = _State,
+		["Reason"] = _Reason,
+		["Description"] = _Description,
 	}
-	M.AssertTargetHealth(t)
+	asserts.AssertTargetHealth(t)
 	return t
 end
 
-local DescribeLoadBalancerAttributesInput_keys = { "LoadBalancerArn" = true, nil }
+keys.DescribeLoadBalancerAttributesInput = { ["LoadBalancerArn"] = true, nil }
 
-function M.AssertDescribeLoadBalancerAttributesInput(struct)
+function asserts.AssertDescribeLoadBalancerAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancerAttributesInput to be of type 'table'")
 	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLoadBalancerAttributesInput_keys[k], "DescribeLoadBalancerAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancerAttributesInput[k], "DescribeLoadBalancerAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancerAttributesInput
 --  
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
-function M.DescribeLoadBalancerAttributesInput(LoadBalancerArn, ...)
+function M.DescribeLoadBalancerAttributesInput(_LoadBalancerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerAttributesInput")
 	local t = { 
-		["LoadBalancerArn"] = LoadBalancerArn,
+		["LoadBalancerArn"] = _LoadBalancerArn,
 	}
-	M.AssertDescribeLoadBalancerAttributesInput(t)
+	asserts.AssertDescribeLoadBalancerAttributesInput(t)
 	return t
 end
 
-local UnsupportedProtocolException_keys = { nil }
+keys.UnsupportedProtocolException = { nil }
 
-function M.AssertUnsupportedProtocolException(struct)
+function asserts.AssertUnsupportedProtocolException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedProtocolException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UnsupportedProtocolException_keys[k], "UnsupportedProtocolException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedProtocolException[k], "UnsupportedProtocolException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -992,66 +995,66 @@ function M.UnsupportedProtocolException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedProtocolException")
 	local t = { 
 	}
-	M.AssertUnsupportedProtocolException(t)
+	asserts.AssertUnsupportedProtocolException(t)
 	return t
 end
 
-local ModifyRuleOutput_keys = { "Rules" = true, nil }
+keys.ModifyRuleOutput = { ["Rules"] = true, nil }
 
-function M.AssertModifyRuleOutput(struct)
+function asserts.AssertModifyRuleOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyRuleOutput to be of type 'table'")
-	if struct["Rules"] then M.AssertRules(struct["Rules"]) end
+	if struct["Rules"] then asserts.AssertRules(struct["Rules"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyRuleOutput_keys[k], "ModifyRuleOutput contains unknown key " .. tostring(k))
+		assert(keys.ModifyRuleOutput[k], "ModifyRuleOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyRuleOutput
 --  
--- @param Rules [Rules] <p>Information about the rule.</p>
-function M.ModifyRuleOutput(Rules, ...)
+-- @param _Rules [Rules] <p>Information about the rule.</p>
+function M.ModifyRuleOutput(_Rules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyRuleOutput")
 	local t = { 
-		["Rules"] = Rules,
+		["Rules"] = _Rules,
 	}
-	M.AssertModifyRuleOutput(t)
+	asserts.AssertModifyRuleOutput(t)
 	return t
 end
 
-local RuleCondition_keys = { "Field" = true, "Values" = true, nil }
+keys.RuleCondition = { ["Field"] = true, ["Values"] = true, nil }
 
-function M.AssertRuleCondition(struct)
+function asserts.AssertRuleCondition(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RuleCondition to be of type 'table'")
-	if struct["Field"] then M.AssertConditionFieldName(struct["Field"]) end
-	if struct["Values"] then M.AssertListOfString(struct["Values"]) end
+	if struct["Field"] then asserts.AssertConditionFieldName(struct["Field"]) end
+	if struct["Values"] then asserts.AssertListOfString(struct["Values"]) end
 	for k,_ in pairs(struct) do
-		assert(RuleCondition_keys[k], "RuleCondition contains unknown key " .. tostring(k))
+		assert(keys.RuleCondition[k], "RuleCondition contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RuleCondition
 -- <p>Information about a condition for a rule.</p>
--- @param Field [ConditionFieldName] <p>The name of the field. The possible values are <code>host-header</code> and <code>path-pattern</code>.</p>
--- @param Values [ListOfString] <p>The condition value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern (for example, /img/*). A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
-function M.RuleCondition(Field, Values, ...)
+-- @param _Field [ConditionFieldName] <p>The name of the field. The possible values are <code>host-header</code> and <code>path-pattern</code>.</p>
+-- @param _Values [ListOfString] <p>The condition value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern (for example, /img/*). A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
+function M.RuleCondition(_Field, _Values, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RuleCondition")
 	local t = { 
-		["Field"] = Field,
-		["Values"] = Values,
+		["Field"] = _Field,
+		["Values"] = _Values,
 	}
-	M.AssertRuleCondition(t)
+	asserts.AssertRuleCondition(t)
 	return t
 end
 
-local DeleteRuleOutput_keys = { nil }
+keys.DeleteRuleOutput = { nil }
 
-function M.AssertDeleteRuleOutput(struct)
+function asserts.AssertDeleteRuleOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteRuleOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteRuleOutput_keys[k], "DeleteRuleOutput contains unknown key " .. tostring(k))
+		assert(keys.DeleteRuleOutput[k], "DeleteRuleOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1061,17 +1064,17 @@ function M.DeleteRuleOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleOutput")
 	local t = { 
 	}
-	M.AssertDeleteRuleOutput(t)
+	asserts.AssertDeleteRuleOutput(t)
 	return t
 end
 
-local DeleteLoadBalancerOutput_keys = { nil }
+keys.DeleteLoadBalancerOutput = { nil }
 
-function M.AssertDeleteLoadBalancerOutput(struct)
+function asserts.AssertDeleteLoadBalancerOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLoadBalancerOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteLoadBalancerOutput_keys[k], "DeleteLoadBalancerOutput contains unknown key " .. tostring(k))
+		assert(keys.DeleteLoadBalancerOutput[k], "DeleteLoadBalancerOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1081,43 +1084,43 @@ function M.DeleteLoadBalancerOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoadBalancerOutput")
 	local t = { 
 	}
-	M.AssertDeleteLoadBalancerOutput(t)
+	asserts.AssertDeleteLoadBalancerOutput(t)
 	return t
 end
 
-local AvailabilityZone_keys = { "SubnetId" = true, "ZoneName" = true, nil }
+keys.AvailabilityZone = { ["SubnetId"] = true, ["ZoneName"] = true, nil }
 
-function M.AssertAvailabilityZone(struct)
+function asserts.AssertAvailabilityZone(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AvailabilityZone to be of type 'table'")
-	if struct["SubnetId"] then M.AssertSubnetId(struct["SubnetId"]) end
-	if struct["ZoneName"] then M.AssertZoneName(struct["ZoneName"]) end
+	if struct["SubnetId"] then asserts.AssertSubnetId(struct["SubnetId"]) end
+	if struct["ZoneName"] then asserts.AssertZoneName(struct["ZoneName"]) end
 	for k,_ in pairs(struct) do
-		assert(AvailabilityZone_keys[k], "AvailabilityZone contains unknown key " .. tostring(k))
+		assert(keys.AvailabilityZone[k], "AvailabilityZone contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AvailabilityZone
 -- <p>Information about an Availability Zone.</p>
--- @param SubnetId [SubnetId] <p>The ID of the subnet.</p>
--- @param ZoneName [ZoneName] <p>The name of the Availability Zone.</p>
-function M.AvailabilityZone(SubnetId, ZoneName, ...)
+-- @param _SubnetId [SubnetId] <p>The ID of the subnet.</p>
+-- @param _ZoneName [ZoneName] <p>The name of the Availability Zone.</p>
+function M.AvailabilityZone(_SubnetId, _ZoneName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
 	local t = { 
-		["SubnetId"] = SubnetId,
-		["ZoneName"] = ZoneName,
+		["SubnetId"] = _SubnetId,
+		["ZoneName"] = _ZoneName,
 	}
-	M.AssertAvailabilityZone(t)
+	asserts.AssertAvailabilityZone(t)
 	return t
 end
 
-local TooManyRegistrationsForTargetIdException_keys = { nil }
+keys.TooManyRegistrationsForTargetIdException = { nil }
 
-function M.AssertTooManyRegistrationsForTargetIdException(struct)
+function asserts.AssertTooManyRegistrationsForTargetIdException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyRegistrationsForTargetIdException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TooManyRegistrationsForTargetIdException_keys[k], "TooManyRegistrationsForTargetIdException contains unknown key " .. tostring(k))
+		assert(keys.TooManyRegistrationsForTargetIdException[k], "TooManyRegistrationsForTargetIdException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1127,17 +1130,17 @@ function M.TooManyRegistrationsForTargetIdException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRegistrationsForTargetIdException")
 	local t = { 
 	}
-	M.AssertTooManyRegistrationsForTargetIdException(t)
+	asserts.AssertTooManyRegistrationsForTargetIdException(t)
 	return t
 end
 
-local ResourceInUseException_keys = { nil }
+keys.ResourceInUseException = { nil }
 
-function M.AssertResourceInUseException(struct)
+function asserts.AssertResourceInUseException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ResourceInUseException_keys[k], "ResourceInUseException contains unknown key " .. tostring(k))
+		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1147,43 +1150,43 @@ function M.ResourceInUseException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
 	}
-	M.AssertResourceInUseException(t)
+	asserts.AssertResourceInUseException(t)
 	return t
 end
 
-local DescribeLoadBalancersOutput_keys = { "LoadBalancers" = true, "NextMarker" = true, nil }
+keys.DescribeLoadBalancersOutput = { ["LoadBalancers"] = true, ["NextMarker"] = true, nil }
 
-function M.AssertDescribeLoadBalancersOutput(struct)
+function asserts.AssertDescribeLoadBalancersOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancersOutput to be of type 'table'")
-	if struct["LoadBalancers"] then M.AssertLoadBalancers(struct["LoadBalancers"]) end
-	if struct["NextMarker"] then M.AssertMarker(struct["NextMarker"]) end
+	if struct["LoadBalancers"] then asserts.AssertLoadBalancers(struct["LoadBalancers"]) end
+	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLoadBalancersOutput_keys[k], "DescribeLoadBalancersOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancersOutput[k], "DescribeLoadBalancersOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancersOutput
 --  
--- @param LoadBalancers [LoadBalancers] <p>Information about the load balancers.</p>
--- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
-function M.DescribeLoadBalancersOutput(LoadBalancers, NextMarker, ...)
+-- @param _LoadBalancers [LoadBalancers] <p>Information about the load balancers.</p>
+-- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+function M.DescribeLoadBalancersOutput(_LoadBalancers, _NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersOutput")
 	local t = { 
-		["LoadBalancers"] = LoadBalancers,
-		["NextMarker"] = NextMarker,
+		["LoadBalancers"] = _LoadBalancers,
+		["NextMarker"] = _NextMarker,
 	}
-	M.AssertDescribeLoadBalancersOutput(t)
+	asserts.AssertDescribeLoadBalancersOutput(t)
 	return t
 end
 
-local IncompatibleProtocolsException_keys = { nil }
+keys.IncompatibleProtocolsException = { nil }
 
-function M.AssertIncompatibleProtocolsException(struct)
+function asserts.AssertIncompatibleProtocolsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IncompatibleProtocolsException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(IncompatibleProtocolsException_keys[k], "IncompatibleProtocolsException contains unknown key " .. tostring(k))
+		assert(keys.IncompatibleProtocolsException[k], "IncompatibleProtocolsException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1193,17 +1196,17 @@ function M.IncompatibleProtocolsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncompatibleProtocolsException")
 	local t = { 
 	}
-	M.AssertIncompatibleProtocolsException(t)
+	asserts.AssertIncompatibleProtocolsException(t)
 	return t
 end
 
-local RemoveTagsOutput_keys = { nil }
+keys.RemoveTagsOutput = { nil }
 
-function M.AssertRemoveTagsOutput(struct)
+function asserts.AssertRemoveTagsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsOutput_keys[k], "RemoveTagsOutput contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsOutput[k], "RemoveTagsOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1213,17 +1216,17 @@ function M.RemoveTagsOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsOutput")
 	local t = { 
 	}
-	M.AssertRemoveTagsOutput(t)
+	asserts.AssertRemoveTagsOutput(t)
 	return t
 end
 
-local TooManyTargetGroupsException_keys = { nil }
+keys.TooManyTargetGroupsException = { nil }
 
-function M.AssertTooManyTargetGroupsException(struct)
+function asserts.AssertTooManyTargetGroupsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyTargetGroupsException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TooManyTargetGroupsException_keys[k], "TooManyTargetGroupsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyTargetGroupsException[k], "TooManyTargetGroupsException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1233,17 +1236,17 @@ function M.TooManyTargetGroupsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTargetGroupsException")
 	local t = { 
 	}
-	M.AssertTooManyTargetGroupsException(t)
+	asserts.AssertTooManyTargetGroupsException(t)
 	return t
 end
 
-local TargetGroupNotFoundException_keys = { nil }
+keys.TargetGroupNotFoundException = { nil }
 
-function M.AssertTargetGroupNotFoundException(struct)
+function asserts.AssertTargetGroupNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TargetGroupNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TargetGroupNotFoundException_keys[k], "TargetGroupNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.TargetGroupNotFoundException[k], "TargetGroupNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1253,121 +1256,121 @@ function M.TargetGroupNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupNotFoundException")
 	local t = { 
 	}
-	M.AssertTargetGroupNotFoundException(t)
+	asserts.AssertTargetGroupNotFoundException(t)
 	return t
 end
 
-local CreateLoadBalancerOutput_keys = { "LoadBalancers" = true, nil }
+keys.CreateLoadBalancerOutput = { ["LoadBalancers"] = true, nil }
 
-function M.AssertCreateLoadBalancerOutput(struct)
+function asserts.AssertCreateLoadBalancerOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLoadBalancerOutput to be of type 'table'")
-	if struct["LoadBalancers"] then M.AssertLoadBalancers(struct["LoadBalancers"]) end
+	if struct["LoadBalancers"] then asserts.AssertLoadBalancers(struct["LoadBalancers"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLoadBalancerOutput_keys[k], "CreateLoadBalancerOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateLoadBalancerOutput[k], "CreateLoadBalancerOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLoadBalancerOutput
 --  
--- @param LoadBalancers [LoadBalancers] <p>Information about the load balancer.</p>
-function M.CreateLoadBalancerOutput(LoadBalancers, ...)
+-- @param _LoadBalancers [LoadBalancers] <p>Information about the load balancer.</p>
+function M.CreateLoadBalancerOutput(_LoadBalancers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoadBalancerOutput")
 	local t = { 
-		["LoadBalancers"] = LoadBalancers,
+		["LoadBalancers"] = _LoadBalancers,
 	}
-	M.AssertCreateLoadBalancerOutput(t)
+	asserts.AssertCreateLoadBalancerOutput(t)
 	return t
 end
 
-local SetIpAddressTypeInput_keys = { "IpAddressType" = true, "LoadBalancerArn" = true, nil }
+keys.SetIpAddressTypeInput = { ["IpAddressType"] = true, ["LoadBalancerArn"] = true, nil }
 
-function M.AssertSetIpAddressTypeInput(struct)
+function asserts.AssertSetIpAddressTypeInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetIpAddressTypeInput to be of type 'table'")
 	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
 	assert(struct["IpAddressType"], "Expected key IpAddressType to exist in table")
-	if struct["IpAddressType"] then M.AssertIpAddressType(struct["IpAddressType"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["IpAddressType"] then asserts.AssertIpAddressType(struct["IpAddressType"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SetIpAddressTypeInput_keys[k], "SetIpAddressTypeInput contains unknown key " .. tostring(k))
+		assert(keys.SetIpAddressTypeInput[k], "SetIpAddressTypeInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetIpAddressTypeInput
 --  
--- @param IpAddressType [IpAddressType] <p>The IP address type. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _IpAddressType [IpAddressType] <p>The IP address type. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: IpAddressType
-function M.SetIpAddressTypeInput(IpAddressType, LoadBalancerArn, ...)
+function M.SetIpAddressTypeInput(_IpAddressType, _LoadBalancerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIpAddressTypeInput")
 	local t = { 
-		["IpAddressType"] = IpAddressType,
-		["LoadBalancerArn"] = LoadBalancerArn,
+		["IpAddressType"] = _IpAddressType,
+		["LoadBalancerArn"] = _LoadBalancerArn,
 	}
-	M.AssertSetIpAddressTypeInput(t)
+	asserts.AssertSetIpAddressTypeInput(t)
 	return t
 end
 
-local DescribeTargetHealthInput_keys = { "TargetGroupArn" = true, "Targets" = true, nil }
+keys.DescribeTargetHealthInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
 
-function M.AssertDescribeTargetHealthInput(struct)
+function asserts.AssertDescribeTargetHealthInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTargetHealthInput to be of type 'table'")
 	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Targets"] then M.AssertTargetDescriptions(struct["Targets"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["Targets"] then asserts.AssertTargetDescriptions(struct["Targets"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTargetHealthInput_keys[k], "DescribeTargetHealthInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeTargetHealthInput[k], "DescribeTargetHealthInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTargetHealthInput
 --  
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param Targets [TargetDescriptions] <p>The targets.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _Targets [TargetDescriptions] <p>The targets.</p>
 -- Required parameter: TargetGroupArn
-function M.DescribeTargetHealthInput(TargetGroupArn, Targets, ...)
+function M.DescribeTargetHealthInput(_TargetGroupArn, _Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetHealthInput")
 	local t = { 
-		["TargetGroupArn"] = TargetGroupArn,
-		["Targets"] = Targets,
+		["TargetGroupArn"] = _TargetGroupArn,
+		["Targets"] = _Targets,
 	}
-	M.AssertDescribeTargetHealthInput(t)
+	asserts.AssertDescribeTargetHealthInput(t)
 	return t
 end
 
-local Certificate_keys = { "CertificateArn" = true, nil }
+keys.Certificate = { ["CertificateArn"] = true, nil }
 
-function M.AssertCertificate(struct)
+function asserts.AssertCertificate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Certificate to be of type 'table'")
-	if struct["CertificateArn"] then M.AssertCertificateArn(struct["CertificateArn"]) end
+	if struct["CertificateArn"] then asserts.AssertCertificateArn(struct["CertificateArn"]) end
 	for k,_ in pairs(struct) do
-		assert(Certificate_keys[k], "Certificate contains unknown key " .. tostring(k))
+		assert(keys.Certificate[k], "Certificate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Certificate
 -- <p>Information about an SSL server certificate deployed on a load balancer.</p>
--- @param CertificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate.</p>
-function M.Certificate(CertificateArn, ...)
+-- @param _CertificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate.</p>
+function M.Certificate(_CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
 	local t = { 
-		["CertificateArn"] = CertificateArn,
+		["CertificateArn"] = _CertificateArn,
 	}
-	M.AssertCertificate(t)
+	asserts.AssertCertificate(t)
 	return t
 end
 
-local TooManyListenersException_keys = { nil }
+keys.TooManyListenersException = { nil }
 
-function M.AssertTooManyListenersException(struct)
+function asserts.AssertTooManyListenersException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyListenersException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TooManyListenersException_keys[k], "TooManyListenersException contains unknown key " .. tostring(k))
+		assert(keys.TooManyListenersException[k], "TooManyListenersException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1377,17 +1380,17 @@ function M.TooManyListenersException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyListenersException")
 	local t = { 
 	}
-	M.AssertTooManyListenersException(t)
+	asserts.AssertTooManyListenersException(t)
 	return t
 end
 
-local InvalidSchemeException_keys = { nil }
+keys.InvalidSchemeException = { nil }
 
-function M.AssertInvalidSchemeException(struct)
+function asserts.AssertInvalidSchemeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSchemeException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidSchemeException_keys[k], "InvalidSchemeException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSchemeException[k], "InvalidSchemeException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1397,250 +1400,250 @@ function M.InvalidSchemeException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSchemeException")
 	local t = { 
 	}
-	M.AssertInvalidSchemeException(t)
+	asserts.AssertInvalidSchemeException(t)
 	return t
 end
 
-local SetSubnetsOutput_keys = { "AvailabilityZones" = true, nil }
+keys.SetSubnetsOutput = { ["AvailabilityZones"] = true, nil }
 
-function M.AssertSetSubnetsOutput(struct)
+function asserts.AssertSetSubnetsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetSubnetsOutput to be of type 'table'")
-	if struct["AvailabilityZones"] then M.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
 	for k,_ in pairs(struct) do
-		assert(SetSubnetsOutput_keys[k], "SetSubnetsOutput contains unknown key " .. tostring(k))
+		assert(keys.SetSubnetsOutput[k], "SetSubnetsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetSubnetsOutput
 --  
--- @param AvailabilityZones [AvailabilityZones] <p>Information about the subnet and Availability Zone.</p>
-function M.SetSubnetsOutput(AvailabilityZones, ...)
+-- @param _AvailabilityZones [AvailabilityZones] <p>Information about the subnet and Availability Zone.</p>
+function M.SetSubnetsOutput(_AvailabilityZones, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSubnetsOutput")
 	local t = { 
-		["AvailabilityZones"] = AvailabilityZones,
+		["AvailabilityZones"] = _AvailabilityZones,
 	}
-	M.AssertSetSubnetsOutput(t)
+	asserts.AssertSetSubnetsOutput(t)
 	return t
 end
 
-local TargetHealthDescription_keys = { "HealthCheckPort" = true, "Target" = true, "TargetHealth" = true, nil }
+keys.TargetHealthDescription = { ["HealthCheckPort"] = true, ["Target"] = true, ["TargetHealth"] = true, nil }
 
-function M.AssertTargetHealthDescription(struct)
+function asserts.AssertTargetHealthDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TargetHealthDescription to be of type 'table'")
-	if struct["HealthCheckPort"] then M.AssertHealthCheckPort(struct["HealthCheckPort"]) end
-	if struct["Target"] then M.AssertTargetDescription(struct["Target"]) end
-	if struct["TargetHealth"] then M.AssertTargetHealth(struct["TargetHealth"]) end
+	if struct["HealthCheckPort"] then asserts.AssertHealthCheckPort(struct["HealthCheckPort"]) end
+	if struct["Target"] then asserts.AssertTargetDescription(struct["Target"]) end
+	if struct["TargetHealth"] then asserts.AssertTargetHealth(struct["TargetHealth"]) end
 	for k,_ in pairs(struct) do
-		assert(TargetHealthDescription_keys[k], "TargetHealthDescription contains unknown key " .. tostring(k))
+		assert(keys.TargetHealthDescription[k], "TargetHealthDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TargetHealthDescription
 -- <p>Information about the health of a target.</p>
--- @param HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
--- @param Target [TargetDescription] <p>The description of the target.</p>
--- @param TargetHealth [TargetHealth] <p>The health information for the target.</p>
-function M.TargetHealthDescription(HealthCheckPort, Target, TargetHealth, ...)
+-- @param _HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- @param _Target [TargetDescription] <p>The description of the target.</p>
+-- @param _TargetHealth [TargetHealth] <p>The health information for the target.</p>
+function M.TargetHealthDescription(_HealthCheckPort, _Target, _TargetHealth, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetHealthDescription")
 	local t = { 
-		["HealthCheckPort"] = HealthCheckPort,
-		["Target"] = Target,
-		["TargetHealth"] = TargetHealth,
+		["HealthCheckPort"] = _HealthCheckPort,
+		["Target"] = _Target,
+		["TargetHealth"] = _TargetHealth,
 	}
-	M.AssertTargetHealthDescription(t)
+	asserts.AssertTargetHealthDescription(t)
 	return t
 end
 
-local DescribeTargetHealthOutput_keys = { "TargetHealthDescriptions" = true, nil }
+keys.DescribeTargetHealthOutput = { ["TargetHealthDescriptions"] = true, nil }
 
-function M.AssertDescribeTargetHealthOutput(struct)
+function asserts.AssertDescribeTargetHealthOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTargetHealthOutput to be of type 'table'")
-	if struct["TargetHealthDescriptions"] then M.AssertTargetHealthDescriptions(struct["TargetHealthDescriptions"]) end
+	if struct["TargetHealthDescriptions"] then asserts.AssertTargetHealthDescriptions(struct["TargetHealthDescriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTargetHealthOutput_keys[k], "DescribeTargetHealthOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeTargetHealthOutput[k], "DescribeTargetHealthOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTargetHealthOutput
 --  
--- @param TargetHealthDescriptions [TargetHealthDescriptions] <p>Information about the health of the targets.</p>
-function M.DescribeTargetHealthOutput(TargetHealthDescriptions, ...)
+-- @param _TargetHealthDescriptions [TargetHealthDescriptions] <p>Information about the health of the targets.</p>
+function M.DescribeTargetHealthOutput(_TargetHealthDescriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetHealthOutput")
 	local t = { 
-		["TargetHealthDescriptions"] = TargetHealthDescriptions,
+		["TargetHealthDescriptions"] = _TargetHealthDescriptions,
 	}
-	M.AssertDescribeTargetHealthOutput(t)
+	asserts.AssertDescribeTargetHealthOutput(t)
 	return t
 end
 
-local DeleteListenerInput_keys = { "ListenerArn" = true, nil }
+keys.DeleteListenerInput = { ["ListenerArn"] = true, nil }
 
-function M.AssertDeleteListenerInput(struct)
+function asserts.AssertDeleteListenerInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteListenerInput to be of type 'table'")
 	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
-	if struct["ListenerArn"] then M.AssertListenerArn(struct["ListenerArn"]) end
+	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteListenerInput_keys[k], "DeleteListenerInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteListenerInput[k], "DeleteListenerInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteListenerInput
 --  
--- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 -- Required parameter: ListenerArn
-function M.DeleteListenerInput(ListenerArn, ...)
+function M.DeleteListenerInput(_ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteListenerInput")
 	local t = { 
-		["ListenerArn"] = ListenerArn,
+		["ListenerArn"] = _ListenerArn,
 	}
-	M.AssertDeleteListenerInput(t)
+	asserts.AssertDeleteListenerInput(t)
 	return t
 end
 
-local CreateListenerInput_keys = { "Protocol" = true, "DefaultActions" = true, "SslPolicy" = true, "Certificates" = true, "LoadBalancerArn" = true, "Port" = true, nil }
+keys.CreateListenerInput = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["LoadBalancerArn"] = true, ["Port"] = true, nil }
 
-function M.AssertCreateListenerInput(struct)
+function asserts.AssertCreateListenerInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateListenerInput to be of type 'table'")
 	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
 	assert(struct["Protocol"], "Expected key Protocol to exist in table")
 	assert(struct["Port"], "Expected key Port to exist in table")
 	assert(struct["DefaultActions"], "Expected key DefaultActions to exist in table")
-	if struct["Protocol"] then M.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["DefaultActions"] then M.AssertActions(struct["DefaultActions"]) end
-	if struct["SslPolicy"] then M.AssertSslPolicyName(struct["SslPolicy"]) end
-	if struct["Certificates"] then M.AssertCertificateList(struct["Certificates"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["Port"] then M.AssertPort(struct["Port"]) end
+	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
+	if struct["DefaultActions"] then asserts.AssertActions(struct["DefaultActions"]) end
+	if struct["SslPolicy"] then asserts.AssertSslPolicyName(struct["SslPolicy"]) end
+	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateListenerInput_keys[k], "CreateListenerInput contains unknown key " .. tostring(k))
+		assert(keys.CreateListenerInput[k], "CreateListenerInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateListenerInput
 --  
--- @param Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
--- @param DefaultActions [Actions] <p>The default action for the listener.</p>
--- @param SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
--- @param Certificates [CertificateList] <p>The SSL server certificate. You must provide exactly one certificate if the protocol is HTTPS.</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param Port [Port] <p>The port on which the load balancer is listening.</p>
+-- @param _Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- @param _DefaultActions [Actions] <p>The default action for the listener.</p>
+-- @param _SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
+-- @param _Certificates [CertificateList] <p>The SSL server certificate. You must provide exactly one certificate if the protocol is HTTPS.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _Port [Port] <p>The port on which the load balancer is listening.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: Protocol
 -- Required parameter: Port
 -- Required parameter: DefaultActions
-function M.CreateListenerInput(Protocol, DefaultActions, SslPolicy, Certificates, LoadBalancerArn, Port, ...)
+function M.CreateListenerInput(_Protocol, _DefaultActions, _SslPolicy, _Certificates, _LoadBalancerArn, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateListenerInput")
 	local t = { 
-		["Protocol"] = Protocol,
-		["DefaultActions"] = DefaultActions,
-		["SslPolicy"] = SslPolicy,
-		["Certificates"] = Certificates,
-		["LoadBalancerArn"] = LoadBalancerArn,
-		["Port"] = Port,
+		["Protocol"] = _Protocol,
+		["DefaultActions"] = _DefaultActions,
+		["SslPolicy"] = _SslPolicy,
+		["Certificates"] = _Certificates,
+		["LoadBalancerArn"] = _LoadBalancerArn,
+		["Port"] = _Port,
 	}
-	M.AssertCreateListenerInput(t)
+	asserts.AssertCreateListenerInput(t)
 	return t
 end
 
-local CreateTargetGroupInput_keys = { "HealthyThresholdCount" = true, "HealthCheckIntervalSeconds" = true, "VpcId" = true, "Protocol" = true, "Name" = true, "HealthCheckProtocol" = true, "UnhealthyThresholdCount" = true, "HealthCheckPath" = true, "HealthCheckTimeoutSeconds" = true, "Matcher" = true, "HealthCheckPort" = true, "Port" = true, nil }
+keys.CreateTargetGroupInput = { ["HealthyThresholdCount"] = true, ["HealthCheckIntervalSeconds"] = true, ["VpcId"] = true, ["Protocol"] = true, ["Name"] = true, ["HealthCheckProtocol"] = true, ["UnhealthyThresholdCount"] = true, ["HealthCheckPath"] = true, ["HealthCheckTimeoutSeconds"] = true, ["Matcher"] = true, ["HealthCheckPort"] = true, ["Port"] = true, nil }
 
-function M.AssertCreateTargetGroupInput(struct)
+function asserts.AssertCreateTargetGroupInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTargetGroupInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Protocol"], "Expected key Protocol to exist in table")
 	assert(struct["Port"], "Expected key Port to exist in table")
 	assert(struct["VpcId"], "Expected key VpcId to exist in table")
-	if struct["HealthyThresholdCount"] then M.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
-	if struct["HealthCheckIntervalSeconds"] then M.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
-	if struct["VpcId"] then M.AssertVpcId(struct["VpcId"]) end
-	if struct["Protocol"] then M.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["Name"] then M.AssertTargetGroupName(struct["Name"]) end
-	if struct["HealthCheckProtocol"] then M.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
-	if struct["UnhealthyThresholdCount"] then M.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
-	if struct["HealthCheckPath"] then M.AssertPath(struct["HealthCheckPath"]) end
-	if struct["HealthCheckTimeoutSeconds"] then M.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
-	if struct["Matcher"] then M.AssertMatcher(struct["Matcher"]) end
-	if struct["HealthCheckPort"] then M.AssertHealthCheckPort(struct["HealthCheckPort"]) end
-	if struct["Port"] then M.AssertPort(struct["Port"]) end
+	if struct["HealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
+	if struct["HealthCheckIntervalSeconds"] then asserts.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
+	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
+	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
+	if struct["Name"] then asserts.AssertTargetGroupName(struct["Name"]) end
+	if struct["HealthCheckProtocol"] then asserts.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
+	if struct["UnhealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
+	if struct["HealthCheckPath"] then asserts.AssertPath(struct["HealthCheckPath"]) end
+	if struct["HealthCheckTimeoutSeconds"] then asserts.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
+	if struct["Matcher"] then asserts.AssertMatcher(struct["Matcher"]) end
+	if struct["HealthCheckPort"] then asserts.AssertHealthCheckPort(struct["HealthCheckPort"]) end
+	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateTargetGroupInput_keys[k], "CreateTargetGroupInput contains unknown key " .. tostring(k))
+		assert(keys.CreateTargetGroupInput[k], "CreateTargetGroupInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateTargetGroupInput
 --  
--- @param HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy. The default is 5.</p>
--- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target. The default is 30 seconds.</p>
--- @param VpcId [VpcId] <p>The identifier of the virtual private cloud (VPC).</p>
--- @param Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
--- @param Name [TargetGroupName] <p>The name of the target group.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
--- @param HealthCheckProtocol [ProtocolEnum] <p>The protocol the load balancer uses when performing health checks on targets. The default is the HTTP protocol.</p>
--- @param UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering a target unhealthy. The default is 2.</p>
--- @param HealthCheckPath [Path] <p>The ping path that is the destination on the targets for health checks. The default is /.</p>
--- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response from a target means a failed health check. The default is 5 seconds.</p>
--- @param Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target. The default is 200.</p>
--- @param HealthCheckPort [HealthCheckPort] <p>The port the load balancer uses when performing health checks on targets. The default is <code>traffic-port</code>, which indicates the port on which each target receives traffic from the load balancer.</p>
--- @param Port [Port] <p>The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.</p>
+-- @param _HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy. The default is 5.</p>
+-- @param _HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target. The default is 30 seconds.</p>
+-- @param _VpcId [VpcId] <p>The identifier of the virtual private cloud (VPC).</p>
+-- @param _Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
+-- @param _Name [TargetGroupName] <p>The name of the target group.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
+-- @param _HealthCheckProtocol [ProtocolEnum] <p>The protocol the load balancer uses when performing health checks on targets. The default is the HTTP protocol.</p>
+-- @param _UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering a target unhealthy. The default is 2.</p>
+-- @param _HealthCheckPath [Path] <p>The ping path that is the destination on the targets for health checks. The default is /.</p>
+-- @param _HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response from a target means a failed health check. The default is 5 seconds.</p>
+-- @param _Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target. The default is 200.</p>
+-- @param _HealthCheckPort [HealthCheckPort] <p>The port the load balancer uses when performing health checks on targets. The default is <code>traffic-port</code>, which indicates the port on which each target receives traffic from the load balancer.</p>
+-- @param _Port [Port] <p>The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.</p>
 -- Required parameter: Name
 -- Required parameter: Protocol
 -- Required parameter: Port
 -- Required parameter: VpcId
-function M.CreateTargetGroupInput(HealthyThresholdCount, HealthCheckIntervalSeconds, VpcId, Protocol, Name, HealthCheckProtocol, UnhealthyThresholdCount, HealthCheckPath, HealthCheckTimeoutSeconds, Matcher, HealthCheckPort, Port, ...)
+function M.CreateTargetGroupInput(_HealthyThresholdCount, _HealthCheckIntervalSeconds, _VpcId, _Protocol, _Name, _HealthCheckProtocol, _UnhealthyThresholdCount, _HealthCheckPath, _HealthCheckTimeoutSeconds, _Matcher, _HealthCheckPort, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTargetGroupInput")
 	local t = { 
-		["HealthyThresholdCount"] = HealthyThresholdCount,
-		["HealthCheckIntervalSeconds"] = HealthCheckIntervalSeconds,
-		["VpcId"] = VpcId,
-		["Protocol"] = Protocol,
-		["Name"] = Name,
-		["HealthCheckProtocol"] = HealthCheckProtocol,
-		["UnhealthyThresholdCount"] = UnhealthyThresholdCount,
-		["HealthCheckPath"] = HealthCheckPath,
-		["HealthCheckTimeoutSeconds"] = HealthCheckTimeoutSeconds,
-		["Matcher"] = Matcher,
-		["HealthCheckPort"] = HealthCheckPort,
-		["Port"] = Port,
+		["HealthyThresholdCount"] = _HealthyThresholdCount,
+		["HealthCheckIntervalSeconds"] = _HealthCheckIntervalSeconds,
+		["VpcId"] = _VpcId,
+		["Protocol"] = _Protocol,
+		["Name"] = _Name,
+		["HealthCheckProtocol"] = _HealthCheckProtocol,
+		["UnhealthyThresholdCount"] = _UnhealthyThresholdCount,
+		["HealthCheckPath"] = _HealthCheckPath,
+		["HealthCheckTimeoutSeconds"] = _HealthCheckTimeoutSeconds,
+		["Matcher"] = _Matcher,
+		["HealthCheckPort"] = _HealthCheckPort,
+		["Port"] = _Port,
 	}
-	M.AssertCreateTargetGroupInput(t)
+	asserts.AssertCreateTargetGroupInput(t)
 	return t
 end
 
-local ModifyLoadBalancerAttributesOutput_keys = { "Attributes" = true, nil }
+keys.ModifyLoadBalancerAttributesOutput = { ["Attributes"] = true, nil }
 
-function M.AssertModifyLoadBalancerAttributesOutput(struct)
+function asserts.AssertModifyLoadBalancerAttributesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyLoadBalancerAttributesOutput to be of type 'table'")
-	if struct["Attributes"] then M.AssertLoadBalancerAttributes(struct["Attributes"]) end
+	if struct["Attributes"] then asserts.AssertLoadBalancerAttributes(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyLoadBalancerAttributesOutput_keys[k], "ModifyLoadBalancerAttributesOutput contains unknown key " .. tostring(k))
+		assert(keys.ModifyLoadBalancerAttributesOutput[k], "ModifyLoadBalancerAttributesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyLoadBalancerAttributesOutput
 --  
--- @param Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
-function M.ModifyLoadBalancerAttributesOutput(Attributes, ...)
+-- @param _Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
+function M.ModifyLoadBalancerAttributesOutput(_Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLoadBalancerAttributesOutput")
 	local t = { 
-		["Attributes"] = Attributes,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertModifyLoadBalancerAttributesOutput(t)
+	asserts.AssertModifyLoadBalancerAttributesOutput(t)
 	return t
 end
 
-local RegisterTargetsOutput_keys = { nil }
+keys.RegisterTargetsOutput = { nil }
 
-function M.AssertRegisterTargetsOutput(struct)
+function asserts.AssertRegisterTargetsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RegisterTargetsOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RegisterTargetsOutput_keys[k], "RegisterTargetsOutput contains unknown key " .. tostring(k))
+		assert(keys.RegisterTargetsOutput[k], "RegisterTargetsOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1650,42 +1653,42 @@ function M.RegisterTargetsOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTargetsOutput")
 	local t = { 
 	}
-	M.AssertRegisterTargetsOutput(t)
+	asserts.AssertRegisterTargetsOutput(t)
 	return t
 end
 
-local Matcher_keys = { "HttpCode" = true, nil }
+keys.Matcher = { ["HttpCode"] = true, nil }
 
-function M.AssertMatcher(struct)
+function asserts.AssertMatcher(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Matcher to be of type 'table'")
 	assert(struct["HttpCode"], "Expected key HttpCode to exist in table")
-	if struct["HttpCode"] then M.AssertHttpCode(struct["HttpCode"]) end
+	if struct["HttpCode"] then asserts.AssertHttpCode(struct["HttpCode"]) end
 	for k,_ in pairs(struct) do
-		assert(Matcher_keys[k], "Matcher contains unknown key " .. tostring(k))
+		assert(keys.Matcher[k], "Matcher contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Matcher
 -- <p>Information to use when checking for a successful response from a target.</p>
--- @param HttpCode [HttpCode] <p>The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").</p>
+-- @param _HttpCode [HttpCode] <p>The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").</p>
 -- Required parameter: HttpCode
-function M.Matcher(HttpCode, ...)
+function M.Matcher(_HttpCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Matcher")
 	local t = { 
-		["HttpCode"] = HttpCode,
+		["HttpCode"] = _HttpCode,
 	}
-	M.AssertMatcher(t)
+	asserts.AssertMatcher(t)
 	return t
 end
 
-local InvalidSecurityGroupException_keys = { nil }
+keys.InvalidSecurityGroupException = { nil }
 
-function M.AssertInvalidSecurityGroupException(struct)
+function asserts.AssertInvalidSecurityGroupException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSecurityGroupException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidSecurityGroupException_keys[k], "InvalidSecurityGroupException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSecurityGroupException[k], "InvalidSecurityGroupException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1695,347 +1698,347 @@ function M.InvalidSecurityGroupException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSecurityGroupException")
 	local t = { 
 	}
-	M.AssertInvalidSecurityGroupException(t)
+	asserts.AssertInvalidSecurityGroupException(t)
 	return t
 end
 
-local DescribeAccountLimitsOutput_keys = { "NextMarker" = true, "Limits" = true, nil }
+keys.DescribeAccountLimitsOutput = { ["NextMarker"] = true, ["Limits"] = true, nil }
 
-function M.AssertDescribeAccountLimitsOutput(struct)
+function asserts.AssertDescribeAccountLimitsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAccountLimitsOutput to be of type 'table'")
-	if struct["NextMarker"] then M.AssertMarker(struct["NextMarker"]) end
-	if struct["Limits"] then M.AssertLimits(struct["Limits"]) end
+	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
+	if struct["Limits"] then asserts.AssertLimits(struct["Limits"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAccountLimitsOutput_keys[k], "DescribeAccountLimitsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeAccountLimitsOutput[k], "DescribeAccountLimitsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAccountLimitsOutput
 --  
--- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param Limits [Limits] <p>Information about the limits.</p>
-function M.DescribeAccountLimitsOutput(NextMarker, Limits, ...)
+-- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param _Limits [Limits] <p>Information about the limits.</p>
+function M.DescribeAccountLimitsOutput(_NextMarker, _Limits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsOutput")
 	local t = { 
-		["NextMarker"] = NextMarker,
-		["Limits"] = Limits,
+		["NextMarker"] = _NextMarker,
+		["Limits"] = _Limits,
 	}
-	M.AssertDescribeAccountLimitsOutput(t)
+	asserts.AssertDescribeAccountLimitsOutput(t)
 	return t
 end
 
-local ModifyListenerInput_keys = { "Protocol" = true, "DefaultActions" = true, "SslPolicy" = true, "Certificates" = true, "Port" = true, "ListenerArn" = true, nil }
+keys.ModifyListenerInput = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["Port"] = true, ["ListenerArn"] = true, nil }
 
-function M.AssertModifyListenerInput(struct)
+function asserts.AssertModifyListenerInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyListenerInput to be of type 'table'")
 	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
-	if struct["Protocol"] then M.AssertProtocolEnum(struct["Protocol"]) end
-	if struct["DefaultActions"] then M.AssertActions(struct["DefaultActions"]) end
-	if struct["SslPolicy"] then M.AssertSslPolicyName(struct["SslPolicy"]) end
-	if struct["Certificates"] then M.AssertCertificateList(struct["Certificates"]) end
-	if struct["Port"] then M.AssertPort(struct["Port"]) end
-	if struct["ListenerArn"] then M.AssertListenerArn(struct["ListenerArn"]) end
+	if struct["Protocol"] then asserts.AssertProtocolEnum(struct["Protocol"]) end
+	if struct["DefaultActions"] then asserts.AssertActions(struct["DefaultActions"]) end
+	if struct["SslPolicy"] then asserts.AssertSslPolicyName(struct["SslPolicy"]) end
+	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
+	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
+	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyListenerInput_keys[k], "ModifyListenerInput contains unknown key " .. tostring(k))
+		assert(keys.ModifyListenerInput[k], "ModifyListenerInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyListenerInput
 --  
--- @param Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
--- @param DefaultActions [Actions] <p>The default actions.</p>
--- @param SslPolicy [SslPolicyName] <p>The security policy that defines which protocols and ciphers are supported. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security Policies</a> in the <i>Application Load Balancers Guide</i>.</p>
--- @param Certificates [CertificateList] <p>The SSL server certificate.</p>
--- @param Port [Port] <p>The port for connections from clients to the load balancer.</p>
--- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- @param _Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- @param _DefaultActions [Actions] <p>The default actions.</p>
+-- @param _SslPolicy [SslPolicyName] <p>The security policy that defines which protocols and ciphers are supported. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security Policies</a> in the <i>Application Load Balancers Guide</i>.</p>
+-- @param _Certificates [CertificateList] <p>The SSL server certificate.</p>
+-- @param _Port [Port] <p>The port for connections from clients to the load balancer.</p>
+-- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 -- Required parameter: ListenerArn
-function M.ModifyListenerInput(Protocol, DefaultActions, SslPolicy, Certificates, Port, ListenerArn, ...)
+function M.ModifyListenerInput(_Protocol, _DefaultActions, _SslPolicy, _Certificates, _Port, _ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyListenerInput")
 	local t = { 
-		["Protocol"] = Protocol,
-		["DefaultActions"] = DefaultActions,
-		["SslPolicy"] = SslPolicy,
-		["Certificates"] = Certificates,
-		["Port"] = Port,
-		["ListenerArn"] = ListenerArn,
+		["Protocol"] = _Protocol,
+		["DefaultActions"] = _DefaultActions,
+		["SslPolicy"] = _SslPolicy,
+		["Certificates"] = _Certificates,
+		["Port"] = _Port,
+		["ListenerArn"] = _ListenerArn,
 	}
-	M.AssertModifyListenerInput(t)
+	asserts.AssertModifyListenerInput(t)
 	return t
 end
 
-local ModifyLoadBalancerAttributesInput_keys = { "Attributes" = true, "LoadBalancerArn" = true, nil }
+keys.ModifyLoadBalancerAttributesInput = { ["Attributes"] = true, ["LoadBalancerArn"] = true, nil }
 
-function M.AssertModifyLoadBalancerAttributesInput(struct)
+function asserts.AssertModifyLoadBalancerAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyLoadBalancerAttributesInput to be of type 'table'")
 	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
 	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["Attributes"] then M.AssertLoadBalancerAttributes(struct["Attributes"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["Attributes"] then asserts.AssertLoadBalancerAttributes(struct["Attributes"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyLoadBalancerAttributesInput_keys[k], "ModifyLoadBalancerAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.ModifyLoadBalancerAttributesInput[k], "ModifyLoadBalancerAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyLoadBalancerAttributesInput
 --  
--- @param Attributes [LoadBalancerAttributes] <p>The load balancer attributes.</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _Attributes [LoadBalancerAttributes] <p>The load balancer attributes.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: Attributes
-function M.ModifyLoadBalancerAttributesInput(Attributes, LoadBalancerArn, ...)
+function M.ModifyLoadBalancerAttributesInput(_Attributes, _LoadBalancerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLoadBalancerAttributesInput")
 	local t = { 
-		["Attributes"] = Attributes,
-		["LoadBalancerArn"] = LoadBalancerArn,
+		["Attributes"] = _Attributes,
+		["LoadBalancerArn"] = _LoadBalancerArn,
 	}
-	M.AssertModifyLoadBalancerAttributesInput(t)
+	asserts.AssertModifyLoadBalancerAttributesInput(t)
 	return t
 end
 
-local ModifyTargetGroupInput_keys = { "HealthyThresholdCount" = true, "HealthCheckIntervalSeconds" = true, "TargetGroupArn" = true, "HealthCheckPort" = true, "HealthCheckProtocol" = true, "HealthCheckPath" = true, "HealthCheckTimeoutSeconds" = true, "Matcher" = true, "UnhealthyThresholdCount" = true, nil }
+keys.ModifyTargetGroupInput = { ["HealthyThresholdCount"] = true, ["HealthCheckIntervalSeconds"] = true, ["TargetGroupArn"] = true, ["HealthCheckPort"] = true, ["HealthCheckProtocol"] = true, ["HealthCheckPath"] = true, ["HealthCheckTimeoutSeconds"] = true, ["Matcher"] = true, ["UnhealthyThresholdCount"] = true, nil }
 
-function M.AssertModifyTargetGroupInput(struct)
+function asserts.AssertModifyTargetGroupInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyTargetGroupInput to be of type 'table'")
 	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["HealthyThresholdCount"] then M.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
-	if struct["HealthCheckIntervalSeconds"] then M.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["HealthCheckPort"] then M.AssertHealthCheckPort(struct["HealthCheckPort"]) end
-	if struct["HealthCheckProtocol"] then M.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
-	if struct["HealthCheckPath"] then M.AssertPath(struct["HealthCheckPath"]) end
-	if struct["HealthCheckTimeoutSeconds"] then M.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
-	if struct["Matcher"] then M.AssertMatcher(struct["Matcher"]) end
-	if struct["UnhealthyThresholdCount"] then M.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
+	if struct["HealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["HealthyThresholdCount"]) end
+	if struct["HealthCheckIntervalSeconds"] then asserts.AssertHealthCheckIntervalSeconds(struct["HealthCheckIntervalSeconds"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["HealthCheckPort"] then asserts.AssertHealthCheckPort(struct["HealthCheckPort"]) end
+	if struct["HealthCheckProtocol"] then asserts.AssertProtocolEnum(struct["HealthCheckProtocol"]) end
+	if struct["HealthCheckPath"] then asserts.AssertPath(struct["HealthCheckPath"]) end
+	if struct["HealthCheckTimeoutSeconds"] then asserts.AssertHealthCheckTimeoutSeconds(struct["HealthCheckTimeoutSeconds"]) end
+	if struct["Matcher"] then asserts.AssertMatcher(struct["Matcher"]) end
+	if struct["UnhealthyThresholdCount"] then asserts.AssertHealthCheckThresholdCount(struct["UnhealthyThresholdCount"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyTargetGroupInput_keys[k], "ModifyTargetGroupInput contains unknown key " .. tostring(k))
+		assert(keys.ModifyTargetGroupInput[k], "ModifyTargetGroupInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyTargetGroupInput
 --  
--- @param HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
--- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
--- @param HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
--- @param HealthCheckPath [Path] <p>The ping path that is the destination for the health check request.</p>
--- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
--- @param Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
--- @param UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
+-- @param _HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
+-- @param _HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- @param _HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
+-- @param _HealthCheckPath [Path] <p>The ping path that is the destination for the health check request.</p>
+-- @param _HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
+-- @param _Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
+-- @param _UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
 -- Required parameter: TargetGroupArn
-function M.ModifyTargetGroupInput(HealthyThresholdCount, HealthCheckIntervalSeconds, TargetGroupArn, HealthCheckPort, HealthCheckProtocol, HealthCheckPath, HealthCheckTimeoutSeconds, Matcher, UnhealthyThresholdCount, ...)
+function M.ModifyTargetGroupInput(_HealthyThresholdCount, _HealthCheckIntervalSeconds, _TargetGroupArn, _HealthCheckPort, _HealthCheckProtocol, _HealthCheckPath, _HealthCheckTimeoutSeconds, _Matcher, _UnhealthyThresholdCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupInput")
 	local t = { 
-		["HealthyThresholdCount"] = HealthyThresholdCount,
-		["HealthCheckIntervalSeconds"] = HealthCheckIntervalSeconds,
-		["TargetGroupArn"] = TargetGroupArn,
-		["HealthCheckPort"] = HealthCheckPort,
-		["HealthCheckProtocol"] = HealthCheckProtocol,
-		["HealthCheckPath"] = HealthCheckPath,
-		["HealthCheckTimeoutSeconds"] = HealthCheckTimeoutSeconds,
-		["Matcher"] = Matcher,
-		["UnhealthyThresholdCount"] = UnhealthyThresholdCount,
+		["HealthyThresholdCount"] = _HealthyThresholdCount,
+		["HealthCheckIntervalSeconds"] = _HealthCheckIntervalSeconds,
+		["TargetGroupArn"] = _TargetGroupArn,
+		["HealthCheckPort"] = _HealthCheckPort,
+		["HealthCheckProtocol"] = _HealthCheckProtocol,
+		["HealthCheckPath"] = _HealthCheckPath,
+		["HealthCheckTimeoutSeconds"] = _HealthCheckTimeoutSeconds,
+		["Matcher"] = _Matcher,
+		["UnhealthyThresholdCount"] = _UnhealthyThresholdCount,
 	}
-	M.AssertModifyTargetGroupInput(t)
+	asserts.AssertModifyTargetGroupInput(t)
 	return t
 end
 
-local CreateRuleInput_keys = { "Priority" = true, "Conditions" = true, "Actions" = true, "ListenerArn" = true, nil }
+keys.CreateRuleInput = { ["Priority"] = true, ["Conditions"] = true, ["Actions"] = true, ["ListenerArn"] = true, nil }
 
-function M.AssertCreateRuleInput(struct)
+function asserts.AssertCreateRuleInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateRuleInput to be of type 'table'")
 	assert(struct["ListenerArn"], "Expected key ListenerArn to exist in table")
 	assert(struct["Conditions"], "Expected key Conditions to exist in table")
 	assert(struct["Priority"], "Expected key Priority to exist in table")
 	assert(struct["Actions"], "Expected key Actions to exist in table")
-	if struct["Priority"] then M.AssertRulePriority(struct["Priority"]) end
-	if struct["Conditions"] then M.AssertRuleConditionList(struct["Conditions"]) end
-	if struct["Actions"] then M.AssertActions(struct["Actions"]) end
-	if struct["ListenerArn"] then M.AssertListenerArn(struct["ListenerArn"]) end
+	if struct["Priority"] then asserts.AssertRulePriority(struct["Priority"]) end
+	if struct["Conditions"] then asserts.AssertRuleConditionList(struct["Conditions"]) end
+	if struct["Actions"] then asserts.AssertActions(struct["Actions"]) end
+	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateRuleInput_keys[k], "CreateRuleInput contains unknown key " .. tostring(k))
+		assert(keys.CreateRuleInput[k], "CreateRuleInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateRuleInput
 --  
--- @param Priority [RulePriority] <p>The priority for the rule. A listener can't have multiple rules with the same priority.</p>
--- @param Conditions [RuleConditionList] <p>A condition. Each condition specifies a field name and a single value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
--- @param Actions [Actions] <p>An action. Each action has the type <code>forward</code> and specifies a target group.</p>
--- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- @param _Priority [RulePriority] <p>The priority for the rule. A listener can't have multiple rules with the same priority.</p>
+-- @param _Conditions [RuleConditionList] <p>A condition. Each condition specifies a field name and a single value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
+-- @param _Actions [Actions] <p>An action. Each action has the type <code>forward</code> and specifies a target group.</p>
+-- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 -- Required parameter: ListenerArn
 -- Required parameter: Conditions
 -- Required parameter: Priority
 -- Required parameter: Actions
-function M.CreateRuleInput(Priority, Conditions, Actions, ListenerArn, ...)
+function M.CreateRuleInput(_Priority, _Conditions, _Actions, _ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRuleInput")
 	local t = { 
-		["Priority"] = Priority,
-		["Conditions"] = Conditions,
-		["Actions"] = Actions,
-		["ListenerArn"] = ListenerArn,
+		["Priority"] = _Priority,
+		["Conditions"] = _Conditions,
+		["Actions"] = _Actions,
+		["ListenerArn"] = _ListenerArn,
 	}
-	M.AssertCreateRuleInput(t)
+	asserts.AssertCreateRuleInput(t)
 	return t
 end
 
-local DescribeListenersInput_keys = { "ListenerArns" = true, "Marker" = true, "LoadBalancerArn" = true, "PageSize" = true, nil }
+keys.DescribeListenersInput = { ["ListenerArns"] = true, ["Marker"] = true, ["LoadBalancerArn"] = true, ["PageSize"] = true, nil }
 
-function M.AssertDescribeListenersInput(struct)
+function asserts.AssertDescribeListenersInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeListenersInput to be of type 'table'")
-	if struct["ListenerArns"] then M.AssertListenerArns(struct["ListenerArns"]) end
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["PageSize"] then M.AssertPageSize(struct["PageSize"]) end
+	if struct["ListenerArns"] then asserts.AssertListenerArns(struct["ListenerArns"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeListenersInput_keys[k], "DescribeListenersInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeListenersInput[k], "DescribeListenersInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeListenersInput
 --  
--- @param ListenerArns [ListenerArns] <p>The Amazon Resource Names (ARN) of the listeners.</p>
--- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeListenersInput(ListenerArns, Marker, LoadBalancerArn, PageSize, ...)
+-- @param _ListenerArns [ListenerArns] <p>The Amazon Resource Names (ARN) of the listeners.</p>
+-- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+function M.DescribeListenersInput(_ListenerArns, _Marker, _LoadBalancerArn, _PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeListenersInput")
 	local t = { 
-		["ListenerArns"] = ListenerArns,
-		["Marker"] = Marker,
-		["LoadBalancerArn"] = LoadBalancerArn,
-		["PageSize"] = PageSize,
+		["ListenerArns"] = _ListenerArns,
+		["Marker"] = _Marker,
+		["LoadBalancerArn"] = _LoadBalancerArn,
+		["PageSize"] = _PageSize,
 	}
-	M.AssertDescribeListenersInput(t)
+	asserts.AssertDescribeListenersInput(t)
 	return t
 end
 
-local Rule_keys = { "Priority" = true, "Conditions" = true, "RuleArn" = true, "IsDefault" = true, "Actions" = true, nil }
+keys.Rule = { ["Priority"] = true, ["Conditions"] = true, ["RuleArn"] = true, ["IsDefault"] = true, ["Actions"] = true, nil }
 
-function M.AssertRule(struct)
+function asserts.AssertRule(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Rule to be of type 'table'")
-	if struct["Priority"] then M.AssertString(struct["Priority"]) end
-	if struct["Conditions"] then M.AssertRuleConditionList(struct["Conditions"]) end
-	if struct["RuleArn"] then M.AssertRuleArn(struct["RuleArn"]) end
-	if struct["IsDefault"] then M.AssertIsDefault(struct["IsDefault"]) end
-	if struct["Actions"] then M.AssertActions(struct["Actions"]) end
+	if struct["Priority"] then asserts.AssertString(struct["Priority"]) end
+	if struct["Conditions"] then asserts.AssertRuleConditionList(struct["Conditions"]) end
+	if struct["RuleArn"] then asserts.AssertRuleArn(struct["RuleArn"]) end
+	if struct["IsDefault"] then asserts.AssertIsDefault(struct["IsDefault"]) end
+	if struct["Actions"] then asserts.AssertActions(struct["Actions"]) end
 	for k,_ in pairs(struct) do
-		assert(Rule_keys[k], "Rule contains unknown key " .. tostring(k))
+		assert(keys.Rule[k], "Rule contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Rule
 -- <p>Information about a rule.</p>
--- @param Priority [String] <p>The priority.</p>
--- @param Conditions [RuleConditionList] <p>The conditions.</p>
--- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- @param IsDefault [IsDefault] <p>Indicates whether this is the default rule.</p>
--- @param Actions [Actions] <p>The actions.</p>
-function M.Rule(Priority, Conditions, RuleArn, IsDefault, Actions, ...)
+-- @param _Priority [String] <p>The priority.</p>
+-- @param _Conditions [RuleConditionList] <p>The conditions.</p>
+-- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @param _IsDefault [IsDefault] <p>Indicates whether this is the default rule.</p>
+-- @param _Actions [Actions] <p>The actions.</p>
+function M.Rule(_Priority, _Conditions, _RuleArn, _IsDefault, _Actions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
 	local t = { 
-		["Priority"] = Priority,
-		["Conditions"] = Conditions,
-		["RuleArn"] = RuleArn,
-		["IsDefault"] = IsDefault,
-		["Actions"] = Actions,
+		["Priority"] = _Priority,
+		["Conditions"] = _Conditions,
+		["RuleArn"] = _RuleArn,
+		["IsDefault"] = _IsDefault,
+		["Actions"] = _Actions,
 	}
-	M.AssertRule(t)
+	asserts.AssertRule(t)
 	return t
 end
 
-local SetRulePrioritiesInput_keys = { "RulePriorities" = true, nil }
+keys.SetRulePrioritiesInput = { ["RulePriorities"] = true, nil }
 
-function M.AssertSetRulePrioritiesInput(struct)
+function asserts.AssertSetRulePrioritiesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetRulePrioritiesInput to be of type 'table'")
 	assert(struct["RulePriorities"], "Expected key RulePriorities to exist in table")
-	if struct["RulePriorities"] then M.AssertRulePriorityList(struct["RulePriorities"]) end
+	if struct["RulePriorities"] then asserts.AssertRulePriorityList(struct["RulePriorities"]) end
 	for k,_ in pairs(struct) do
-		assert(SetRulePrioritiesInput_keys[k], "SetRulePrioritiesInput contains unknown key " .. tostring(k))
+		assert(keys.SetRulePrioritiesInput[k], "SetRulePrioritiesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetRulePrioritiesInput
 --  
--- @param RulePriorities [RulePriorityList] <p>The rule priorities.</p>
+-- @param _RulePriorities [RulePriorityList] <p>The rule priorities.</p>
 -- Required parameter: RulePriorities
-function M.SetRulePrioritiesInput(RulePriorities, ...)
+function M.SetRulePrioritiesInput(_RulePriorities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetRulePrioritiesInput")
 	local t = { 
-		["RulePriorities"] = RulePriorities,
+		["RulePriorities"] = _RulePriorities,
 	}
-	M.AssertSetRulePrioritiesInput(t)
+	asserts.AssertSetRulePrioritiesInput(t)
 	return t
 end
 
-local SetRulePrioritiesOutput_keys = { "Rules" = true, nil }
+keys.SetRulePrioritiesOutput = { ["Rules"] = true, nil }
 
-function M.AssertSetRulePrioritiesOutput(struct)
+function asserts.AssertSetRulePrioritiesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetRulePrioritiesOutput to be of type 'table'")
-	if struct["Rules"] then M.AssertRules(struct["Rules"]) end
+	if struct["Rules"] then asserts.AssertRules(struct["Rules"]) end
 	for k,_ in pairs(struct) do
-		assert(SetRulePrioritiesOutput_keys[k], "SetRulePrioritiesOutput contains unknown key " .. tostring(k))
+		assert(keys.SetRulePrioritiesOutput[k], "SetRulePrioritiesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetRulePrioritiesOutput
 --  
--- @param Rules [Rules] <p>Information about the rules.</p>
-function M.SetRulePrioritiesOutput(Rules, ...)
+-- @param _Rules [Rules] <p>Information about the rules.</p>
+function M.SetRulePrioritiesOutput(_Rules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetRulePrioritiesOutput")
 	local t = { 
-		["Rules"] = Rules,
+		["Rules"] = _Rules,
 	}
-	M.AssertSetRulePrioritiesOutput(t)
+	asserts.AssertSetRulePrioritiesOutput(t)
 	return t
 end
 
-local Action_keys = { "TargetGroupArn" = true, "Type" = true, nil }
+keys.Action = { ["TargetGroupArn"] = true, ["Type"] = true, nil }
 
-function M.AssertAction(struct)
+function asserts.AssertAction(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Action to be of type 'table'")
 	assert(struct["Type"], "Expected key Type to exist in table")
 	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Type"] then M.AssertActionTypeEnum(struct["Type"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["Type"] then asserts.AssertActionTypeEnum(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(Action_keys[k], "Action contains unknown key " .. tostring(k))
+		assert(keys.Action[k], "Action contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Action
 -- <p>Information about an action.</p>
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param Type [ActionTypeEnum] <p>The type of action.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _Type [ActionTypeEnum] <p>The type of action.</p>
 -- Required parameter: Type
 -- Required parameter: TargetGroupArn
-function M.Action(TargetGroupArn, Type, ...)
+function M.Action(_TargetGroupArn, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Action")
 	local t = { 
-		["TargetGroupArn"] = TargetGroupArn,
-		["Type"] = Type,
+		["TargetGroupArn"] = _TargetGroupArn,
+		["Type"] = _Type,
 	}
-	M.AssertAction(t)
+	asserts.AssertAction(t)
 	return t
 end
 
-local PriorityInUseException_keys = { nil }
+keys.PriorityInUseException = { nil }
 
-function M.AssertPriorityInUseException(struct)
+function asserts.AssertPriorityInUseException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PriorityInUseException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(PriorityInUseException_keys[k], "PriorityInUseException contains unknown key " .. tostring(k))
+		assert(keys.PriorityInUseException[k], "PriorityInUseException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2045,72 +2048,72 @@ function M.PriorityInUseException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PriorityInUseException")
 	local t = { 
 	}
-	M.AssertPriorityInUseException(t)
+	asserts.AssertPriorityInUseException(t)
 	return t
 end
 
-local RegisterTargetsInput_keys = { "TargetGroupArn" = true, "Targets" = true, nil }
+keys.RegisterTargetsInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
 
-function M.AssertRegisterTargetsInput(struct)
+function asserts.AssertRegisterTargetsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RegisterTargetsInput to be of type 'table'")
 	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
 	assert(struct["Targets"], "Expected key Targets to exist in table")
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
-	if struct["Targets"] then M.AssertTargetDescriptions(struct["Targets"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["Targets"] then asserts.AssertTargetDescriptions(struct["Targets"]) end
 	for k,_ in pairs(struct) do
-		assert(RegisterTargetsInput_keys[k], "RegisterTargetsInput contains unknown key " .. tostring(k))
+		assert(keys.RegisterTargetsInput[k], "RegisterTargetsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RegisterTargetsInput
 --  
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param Targets [TargetDescriptions] <p>The targets. The default port for a target is the port for the target group. You can specify a port override. If a target is already registered, you can register it again using a different port.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _Targets [TargetDescriptions] <p>The targets. The default port for a target is the port for the target group. You can specify a port override. If a target is already registered, you can register it again using a different port.</p>
 -- Required parameter: TargetGroupArn
 -- Required parameter: Targets
-function M.RegisterTargetsInput(TargetGroupArn, Targets, ...)
+function M.RegisterTargetsInput(_TargetGroupArn, _Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTargetsInput")
 	local t = { 
-		["TargetGroupArn"] = TargetGroupArn,
-		["Targets"] = Targets,
+		["TargetGroupArn"] = _TargetGroupArn,
+		["Targets"] = _Targets,
 	}
-	M.AssertRegisterTargetsInput(t)
+	asserts.AssertRegisterTargetsInput(t)
 	return t
 end
 
-local DeleteTargetGroupInput_keys = { "TargetGroupArn" = true, nil }
+keys.DeleteTargetGroupInput = { ["TargetGroupArn"] = true, nil }
 
-function M.AssertDeleteTargetGroupInput(struct)
+function asserts.AssertDeleteTargetGroupInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTargetGroupInput to be of type 'table'")
 	assert(struct["TargetGroupArn"], "Expected key TargetGroupArn to exist in table")
-	if struct["TargetGroupArn"] then M.AssertTargetGroupArn(struct["TargetGroupArn"]) end
+	if struct["TargetGroupArn"] then asserts.AssertTargetGroupArn(struct["TargetGroupArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteTargetGroupInput_keys[k], "DeleteTargetGroupInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteTargetGroupInput[k], "DeleteTargetGroupInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteTargetGroupInput
 --  
--- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
 -- Required parameter: TargetGroupArn
-function M.DeleteTargetGroupInput(TargetGroupArn, ...)
+function M.DeleteTargetGroupInput(_TargetGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTargetGroupInput")
 	local t = { 
-		["TargetGroupArn"] = TargetGroupArn,
+		["TargetGroupArn"] = _TargetGroupArn,
 	}
-	M.AssertDeleteTargetGroupInput(t)
+	asserts.AssertDeleteTargetGroupInput(t)
 	return t
 end
 
-local RuleNotFoundException_keys = { nil }
+keys.RuleNotFoundException = { nil }
 
-function M.AssertRuleNotFoundException(struct)
+function asserts.AssertRuleNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RuleNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RuleNotFoundException_keys[k], "RuleNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.RuleNotFoundException[k], "RuleNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2120,17 +2123,17 @@ function M.RuleNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RuleNotFoundException")
 	local t = { 
 	}
-	M.AssertRuleNotFoundException(t)
+	asserts.AssertRuleNotFoundException(t)
 	return t
 end
 
-local TooManyTargetsException_keys = { nil }
+keys.TooManyTargetsException = { nil }
 
-function M.AssertTooManyTargetsException(struct)
+function asserts.AssertTooManyTargetsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyTargetsException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TooManyTargetsException_keys[k], "TooManyTargetsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyTargetsException[k], "TooManyTargetsException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2140,17 +2143,17 @@ function M.TooManyTargetsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTargetsException")
 	local t = { 
 	}
-	M.AssertTooManyTargetsException(t)
+	asserts.AssertTooManyTargetsException(t)
 	return t
 end
 
-local TooManyLoadBalancersException_keys = { nil }
+keys.TooManyLoadBalancersException = { nil }
 
-function M.AssertTooManyLoadBalancersException(struct)
+function asserts.AssertTooManyLoadBalancersException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyLoadBalancersException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TooManyLoadBalancersException_keys[k], "TooManyLoadBalancersException contains unknown key " .. tostring(k))
+		assert(keys.TooManyLoadBalancersException[k], "TooManyLoadBalancersException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2160,73 +2163,73 @@ function M.TooManyLoadBalancersException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyLoadBalancersException")
 	local t = { 
 	}
-	M.AssertTooManyLoadBalancersException(t)
+	asserts.AssertTooManyLoadBalancersException(t)
 	return t
 end
 
-local AddTagsInput_keys = { "ResourceArns" = true, "Tags" = true, nil }
+keys.AddTagsInput = { ["ResourceArns"] = true, ["Tags"] = true, nil }
 
-function M.AssertAddTagsInput(struct)
+function asserts.AssertAddTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsInput to be of type 'table'")
 	assert(struct["ResourceArns"], "Expected key ResourceArns to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceArns"] then M.AssertResourceArns(struct["ResourceArns"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["ResourceArns"] then asserts.AssertResourceArns(struct["ResourceArns"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(AddTagsInput_keys[k], "AddTagsInput contains unknown key " .. tostring(k))
+		assert(keys.AddTagsInput[k], "AddTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddTagsInput
 --  
--- @param ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- @param Tags [TagList] <p>The tags. Each resource can have a maximum of 10 tags.</p>
+-- @param _ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- @param _Tags [TagList] <p>The tags. Each resource can have a maximum of 10 tags.</p>
 -- Required parameter: ResourceArns
 -- Required parameter: Tags
-function M.AddTagsInput(ResourceArns, Tags, ...)
+function M.AddTagsInput(_ResourceArns, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsInput")
 	local t = { 
-		["ResourceArns"] = ResourceArns,
-		["Tags"] = Tags,
+		["ResourceArns"] = _ResourceArns,
+		["Tags"] = _Tags,
 	}
-	M.AssertAddTagsInput(t)
+	asserts.AssertAddTagsInput(t)
 	return t
 end
 
-local TargetGroupAttribute_keys = { "Value" = true, "Key" = true, nil }
+keys.TargetGroupAttribute = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTargetGroupAttribute(struct)
+function asserts.AssertTargetGroupAttribute(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TargetGroupAttribute to be of type 'table'")
-	if struct["Value"] then M.AssertTargetGroupAttributeValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTargetGroupAttributeKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTargetGroupAttributeValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTargetGroupAttributeKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(TargetGroupAttribute_keys[k], "TargetGroupAttribute contains unknown key " .. tostring(k))
+		assert(keys.TargetGroupAttribute[k], "TargetGroupAttribute contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TargetGroupAttribute
 -- <p>Information about a target group attribute.</p>
--- @param Value [TargetGroupAttributeValue] <p>The value of the attribute.</p>
--- @param Key [TargetGroupAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>deregistration_delay.timeout_seconds</code> - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from <code>draining</code> to <code>unused</code>. The range is 0-3600 seconds. The default value is 300 seconds.</p> </li> <li> <p> <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.</p> </li> <li> <p> <code>stickiness.lb_cookie.duration_seconds</code> - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).</p> </li> </ul>
-function M.TargetGroupAttribute(Value, Key, ...)
+-- @param _Value [TargetGroupAttributeValue] <p>The value of the attribute.</p>
+-- @param _Key [TargetGroupAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>deregistration_delay.timeout_seconds</code> - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from <code>draining</code> to <code>unused</code>. The range is 0-3600 seconds. The default value is 300 seconds.</p> </li> <li> <p> <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.</p> </li> <li> <p> <code>stickiness.lb_cookie.duration_seconds</code> - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).</p> </li> </ul>
+function M.TargetGroupAttribute(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupAttribute")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTargetGroupAttribute(t)
+	asserts.AssertTargetGroupAttribute(t)
 	return t
 end
 
-local HealthUnavailableException_keys = { nil }
+keys.HealthUnavailableException = { nil }
 
-function M.AssertHealthUnavailableException(struct)
+function asserts.AssertHealthUnavailableException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected HealthUnavailableException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(HealthUnavailableException_keys[k], "HealthUnavailableException contains unknown key " .. tostring(k))
+		assert(keys.HealthUnavailableException[k], "HealthUnavailableException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2236,48 +2239,48 @@ function M.HealthUnavailableException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HealthUnavailableException")
 	local t = { 
 	}
-	M.AssertHealthUnavailableException(t)
+	asserts.AssertHealthUnavailableException(t)
 	return t
 end
 
-local ModifyRuleInput_keys = { "Conditions" = true, "RuleArn" = true, "Actions" = true, nil }
+keys.ModifyRuleInput = { ["Conditions"] = true, ["RuleArn"] = true, ["Actions"] = true, nil }
 
-function M.AssertModifyRuleInput(struct)
+function asserts.AssertModifyRuleInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyRuleInput to be of type 'table'")
 	assert(struct["RuleArn"], "Expected key RuleArn to exist in table")
-	if struct["Conditions"] then M.AssertRuleConditionList(struct["Conditions"]) end
-	if struct["RuleArn"] then M.AssertRuleArn(struct["RuleArn"]) end
-	if struct["Actions"] then M.AssertActions(struct["Actions"]) end
+	if struct["Conditions"] then asserts.AssertRuleConditionList(struct["Conditions"]) end
+	if struct["RuleArn"] then asserts.AssertRuleArn(struct["RuleArn"]) end
+	if struct["Actions"] then asserts.AssertActions(struct["Actions"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyRuleInput_keys[k], "ModifyRuleInput contains unknown key " .. tostring(k))
+		assert(keys.ModifyRuleInput[k], "ModifyRuleInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyRuleInput
 --  
--- @param Conditions [RuleConditionList] <p>The conditions.</p>
--- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- @param Actions [Actions] <p>The actions.</p>
+-- @param _Conditions [RuleConditionList] <p>The conditions.</p>
+-- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @param _Actions [Actions] <p>The actions.</p>
 -- Required parameter: RuleArn
-function M.ModifyRuleInput(Conditions, RuleArn, Actions, ...)
+function M.ModifyRuleInput(_Conditions, _RuleArn, _Actions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyRuleInput")
 	local t = { 
-		["Conditions"] = Conditions,
-		["RuleArn"] = RuleArn,
-		["Actions"] = Actions,
+		["Conditions"] = _Conditions,
+		["RuleArn"] = _RuleArn,
+		["Actions"] = _Actions,
 	}
-	M.AssertModifyRuleInput(t)
+	asserts.AssertModifyRuleInput(t)
 	return t
 end
 
-local TooManyTagsException_keys = { nil }
+keys.TooManyTagsException = { nil }
 
-function M.AssertTooManyTagsException(struct)
+function asserts.AssertTooManyTagsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyTagsException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TooManyTagsException_keys[k], "TooManyTagsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyTagsException[k], "TooManyTagsException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2287,43 +2290,43 @@ function M.TooManyTagsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTagsException")
 	local t = { 
 	}
-	M.AssertTooManyTagsException(t)
+	asserts.AssertTooManyTagsException(t)
 	return t
 end
 
-local DescribeRulesOutput_keys = { "Rules" = true, "NextMarker" = true, nil }
+keys.DescribeRulesOutput = { ["Rules"] = true, ["NextMarker"] = true, nil }
 
-function M.AssertDescribeRulesOutput(struct)
+function asserts.AssertDescribeRulesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRulesOutput to be of type 'table'")
-	if struct["Rules"] then M.AssertRules(struct["Rules"]) end
-	if struct["NextMarker"] then M.AssertMarker(struct["NextMarker"]) end
+	if struct["Rules"] then asserts.AssertRules(struct["Rules"]) end
+	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRulesOutput_keys[k], "DescribeRulesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeRulesOutput[k], "DescribeRulesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRulesOutput
 --  
--- @param Rules [Rules] <p>Information about the rules.</p>
--- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
-function M.DescribeRulesOutput(Rules, NextMarker, ...)
+-- @param _Rules [Rules] <p>Information about the rules.</p>
+-- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+function M.DescribeRulesOutput(_Rules, _NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesOutput")
 	local t = { 
-		["Rules"] = Rules,
-		["NextMarker"] = NextMarker,
+		["Rules"] = _Rules,
+		["NextMarker"] = _NextMarker,
 	}
-	M.AssertDescribeRulesOutput(t)
+	asserts.AssertDescribeRulesOutput(t)
 	return t
 end
 
-local SSLPolicyNotFoundException_keys = { nil }
+keys.SSLPolicyNotFoundException = { nil }
 
-function M.AssertSSLPolicyNotFoundException(struct)
+function asserts.AssertSSLPolicyNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SSLPolicyNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(SSLPolicyNotFoundException_keys[k], "SSLPolicyNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.SSLPolicyNotFoundException[k], "SSLPolicyNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2333,17 +2336,17 @@ function M.SSLPolicyNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SSLPolicyNotFoundException")
 	local t = { 
 	}
-	M.AssertSSLPolicyNotFoundException(t)
+	asserts.AssertSSLPolicyNotFoundException(t)
 	return t
 end
 
-local DuplicateListenerException_keys = { nil }
+keys.DuplicateListenerException = { nil }
 
-function M.AssertDuplicateListenerException(struct)
+function asserts.AssertDuplicateListenerException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DuplicateListenerException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DuplicateListenerException_keys[k], "DuplicateListenerException contains unknown key " .. tostring(k))
+		assert(keys.DuplicateListenerException[k], "DuplicateListenerException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2353,227 +2356,227 @@ function M.DuplicateListenerException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateListenerException")
 	local t = { 
 	}
-	M.AssertDuplicateListenerException(t)
+	asserts.AssertDuplicateListenerException(t)
 	return t
 end
 
-local DescribeTargetGroupsOutput_keys = { "NextMarker" = true, "TargetGroups" = true, nil }
+keys.DescribeTargetGroupsOutput = { ["NextMarker"] = true, ["TargetGroups"] = true, nil }
 
-function M.AssertDescribeTargetGroupsOutput(struct)
+function asserts.AssertDescribeTargetGroupsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTargetGroupsOutput to be of type 'table'")
-	if struct["NextMarker"] then M.AssertMarker(struct["NextMarker"]) end
-	if struct["TargetGroups"] then M.AssertTargetGroups(struct["TargetGroups"]) end
+	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
+	if struct["TargetGroups"] then asserts.AssertTargetGroups(struct["TargetGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTargetGroupsOutput_keys[k], "DescribeTargetGroupsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeTargetGroupsOutput[k], "DescribeTargetGroupsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTargetGroupsOutput
 --  
--- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param TargetGroups [TargetGroups] <p>Information about the target groups.</p>
-function M.DescribeTargetGroupsOutput(NextMarker, TargetGroups, ...)
+-- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param _TargetGroups [TargetGroups] <p>Information about the target groups.</p>
+function M.DescribeTargetGroupsOutput(_NextMarker, _TargetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupsOutput")
 	local t = { 
-		["NextMarker"] = NextMarker,
-		["TargetGroups"] = TargetGroups,
+		["NextMarker"] = _NextMarker,
+		["TargetGroups"] = _TargetGroups,
 	}
-	M.AssertDescribeTargetGroupsOutput(t)
+	asserts.AssertDescribeTargetGroupsOutput(t)
 	return t
 end
 
-local DeleteLoadBalancerInput_keys = { "LoadBalancerArn" = true, nil }
+keys.DeleteLoadBalancerInput = { ["LoadBalancerArn"] = true, nil }
 
-function M.AssertDeleteLoadBalancerInput(struct)
+function asserts.AssertDeleteLoadBalancerInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLoadBalancerInput to be of type 'table'")
 	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteLoadBalancerInput_keys[k], "DeleteLoadBalancerInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteLoadBalancerInput[k], "DeleteLoadBalancerInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteLoadBalancerInput
 --  
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
-function M.DeleteLoadBalancerInput(LoadBalancerArn, ...)
+function M.DeleteLoadBalancerInput(_LoadBalancerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoadBalancerInput")
 	local t = { 
-		["LoadBalancerArn"] = LoadBalancerArn,
+		["LoadBalancerArn"] = _LoadBalancerArn,
 	}
-	M.AssertDeleteLoadBalancerInput(t)
+	asserts.AssertDeleteLoadBalancerInput(t)
 	return t
 end
 
-local DescribeTargetGroupsInput_keys = { "Marker" = true, "TargetGroupArns" = true, "LoadBalancerArn" = true, "Names" = true, "PageSize" = true, nil }
+keys.DescribeTargetGroupsInput = { ["Marker"] = true, ["TargetGroupArns"] = true, ["LoadBalancerArn"] = true, ["Names"] = true, ["PageSize"] = true, nil }
 
-function M.AssertDescribeTargetGroupsInput(struct)
+function asserts.AssertDescribeTargetGroupsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTargetGroupsInput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["TargetGroupArns"] then M.AssertTargetGroupArns(struct["TargetGroupArns"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["Names"] then M.AssertTargetGroupNames(struct["Names"]) end
-	if struct["PageSize"] then M.AssertPageSize(struct["PageSize"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["TargetGroupArns"] then asserts.AssertTargetGroupArns(struct["TargetGroupArns"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["Names"] then asserts.AssertTargetGroupNames(struct["Names"]) end
+	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTargetGroupsInput_keys[k], "DescribeTargetGroupsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeTargetGroupsInput[k], "DescribeTargetGroupsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTargetGroupsInput
 --  
--- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param TargetGroupArns [TargetGroupArns] <p>The Amazon Resource Names (ARN) of the target groups.</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param Names [TargetGroupNames] <p>The names of the target groups.</p>
--- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeTargetGroupsInput(Marker, TargetGroupArns, LoadBalancerArn, Names, PageSize, ...)
+-- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _TargetGroupArns [TargetGroupArns] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _Names [TargetGroupNames] <p>The names of the target groups.</p>
+-- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+function M.DescribeTargetGroupsInput(_Marker, _TargetGroupArns, _LoadBalancerArn, _Names, _PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupsInput")
 	local t = { 
-		["Marker"] = Marker,
-		["TargetGroupArns"] = TargetGroupArns,
-		["LoadBalancerArn"] = LoadBalancerArn,
-		["Names"] = Names,
-		["PageSize"] = PageSize,
+		["Marker"] = _Marker,
+		["TargetGroupArns"] = _TargetGroupArns,
+		["LoadBalancerArn"] = _LoadBalancerArn,
+		["Names"] = _Names,
+		["PageSize"] = _PageSize,
 	}
-	M.AssertDescribeTargetGroupsInput(t)
+	asserts.AssertDescribeTargetGroupsInput(t)
 	return t
 end
 
-local ModifyTargetGroupOutput_keys = { "TargetGroups" = true, nil }
+keys.ModifyTargetGroupOutput = { ["TargetGroups"] = true, nil }
 
-function M.AssertModifyTargetGroupOutput(struct)
+function asserts.AssertModifyTargetGroupOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyTargetGroupOutput to be of type 'table'")
-	if struct["TargetGroups"] then M.AssertTargetGroups(struct["TargetGroups"]) end
+	if struct["TargetGroups"] then asserts.AssertTargetGroups(struct["TargetGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyTargetGroupOutput_keys[k], "ModifyTargetGroupOutput contains unknown key " .. tostring(k))
+		assert(keys.ModifyTargetGroupOutput[k], "ModifyTargetGroupOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyTargetGroupOutput
 --  
--- @param TargetGroups [TargetGroups] <p>Information about the target group.</p>
-function M.ModifyTargetGroupOutput(TargetGroups, ...)
+-- @param _TargetGroups [TargetGroups] <p>Information about the target group.</p>
+function M.ModifyTargetGroupOutput(_TargetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupOutput")
 	local t = { 
-		["TargetGroups"] = TargetGroups,
+		["TargetGroups"] = _TargetGroups,
 	}
-	M.AssertModifyTargetGroupOutput(t)
+	asserts.AssertModifyTargetGroupOutput(t)
 	return t
 end
 
-local ModifyTargetGroupAttributesOutput_keys = { "Attributes" = true, nil }
+keys.ModifyTargetGroupAttributesOutput = { ["Attributes"] = true, nil }
 
-function M.AssertModifyTargetGroupAttributesOutput(struct)
+function asserts.AssertModifyTargetGroupAttributesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyTargetGroupAttributesOutput to be of type 'table'")
-	if struct["Attributes"] then M.AssertTargetGroupAttributes(struct["Attributes"]) end
+	if struct["Attributes"] then asserts.AssertTargetGroupAttributes(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyTargetGroupAttributesOutput_keys[k], "ModifyTargetGroupAttributesOutput contains unknown key " .. tostring(k))
+		assert(keys.ModifyTargetGroupAttributesOutput[k], "ModifyTargetGroupAttributesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyTargetGroupAttributesOutput
 --  
--- @param Attributes [TargetGroupAttributes] <p>Information about the attributes.</p>
-function M.ModifyTargetGroupAttributesOutput(Attributes, ...)
+-- @param _Attributes [TargetGroupAttributes] <p>Information about the attributes.</p>
+function M.ModifyTargetGroupAttributesOutput(_Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupAttributesOutput")
 	local t = { 
-		["Attributes"] = Attributes,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertModifyTargetGroupAttributesOutput(t)
+	asserts.AssertModifyTargetGroupAttributesOutput(t)
 	return t
 end
 
-local CreateTargetGroupOutput_keys = { "TargetGroups" = true, nil }
+keys.CreateTargetGroupOutput = { ["TargetGroups"] = true, nil }
 
-function M.AssertCreateTargetGroupOutput(struct)
+function asserts.AssertCreateTargetGroupOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTargetGroupOutput to be of type 'table'")
-	if struct["TargetGroups"] then M.AssertTargetGroups(struct["TargetGroups"]) end
+	if struct["TargetGroups"] then asserts.AssertTargetGroups(struct["TargetGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateTargetGroupOutput_keys[k], "CreateTargetGroupOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateTargetGroupOutput[k], "CreateTargetGroupOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateTargetGroupOutput
 --  
--- @param TargetGroups [TargetGroups] <p>Information about the target group.</p>
-function M.CreateTargetGroupOutput(TargetGroups, ...)
+-- @param _TargetGroups [TargetGroups] <p>Information about the target group.</p>
+function M.CreateTargetGroupOutput(_TargetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTargetGroupOutput")
 	local t = { 
-		["TargetGroups"] = TargetGroups,
+		["TargetGroups"] = _TargetGroups,
 	}
-	M.AssertCreateTargetGroupOutput(t)
+	asserts.AssertCreateTargetGroupOutput(t)
 	return t
 end
 
-local CreateListenerOutput_keys = { "Listeners" = true, nil }
+keys.CreateListenerOutput = { ["Listeners"] = true, nil }
 
-function M.AssertCreateListenerOutput(struct)
+function asserts.AssertCreateListenerOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateListenerOutput to be of type 'table'")
-	if struct["Listeners"] then M.AssertListeners(struct["Listeners"]) end
+	if struct["Listeners"] then asserts.AssertListeners(struct["Listeners"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateListenerOutput_keys[k], "CreateListenerOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateListenerOutput[k], "CreateListenerOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateListenerOutput
 --  
--- @param Listeners [Listeners] <p>Information about the listener.</p>
-function M.CreateListenerOutput(Listeners, ...)
+-- @param _Listeners [Listeners] <p>Information about the listener.</p>
+function M.CreateListenerOutput(_Listeners, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateListenerOutput")
 	local t = { 
-		["Listeners"] = Listeners,
+		["Listeners"] = _Listeners,
 	}
-	M.AssertCreateListenerOutput(t)
+	asserts.AssertCreateListenerOutput(t)
 	return t
 end
 
-local DescribeRulesInput_keys = { "Marker" = true, "RuleArns" = true, "PageSize" = true, "ListenerArn" = true, nil }
+keys.DescribeRulesInput = { ["Marker"] = true, ["RuleArns"] = true, ["PageSize"] = true, ["ListenerArn"] = true, nil }
 
-function M.AssertDescribeRulesInput(struct)
+function asserts.AssertDescribeRulesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRulesInput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["RuleArns"] then M.AssertRuleArns(struct["RuleArns"]) end
-	if struct["PageSize"] then M.AssertPageSize(struct["PageSize"]) end
-	if struct["ListenerArn"] then M.AssertListenerArn(struct["ListenerArn"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["RuleArns"] then asserts.AssertRuleArns(struct["RuleArns"]) end
+	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
+	if struct["ListenerArn"] then asserts.AssertListenerArn(struct["ListenerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRulesInput_keys[k], "DescribeRulesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeRulesInput[k], "DescribeRulesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRulesInput
 --  
--- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param RuleArns [RuleArns] <p>The Amazon Resource Names (ARN) of the rules.</p>
--- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
--- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
-function M.DescribeRulesInput(Marker, RuleArns, PageSize, ListenerArn, ...)
+-- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _RuleArns [RuleArns] <p>The Amazon Resource Names (ARN) of the rules.</p>
+-- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+-- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+function M.DescribeRulesInput(_Marker, _RuleArns, _PageSize, _ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesInput")
 	local t = { 
-		["Marker"] = Marker,
-		["RuleArns"] = RuleArns,
-		["PageSize"] = PageSize,
-		["ListenerArn"] = ListenerArn,
+		["Marker"] = _Marker,
+		["RuleArns"] = _RuleArns,
+		["PageSize"] = _PageSize,
+		["ListenerArn"] = _ListenerArn,
 	}
-	M.AssertDescribeRulesInput(t)
+	asserts.AssertDescribeRulesInput(t)
 	return t
 end
 
-local DeleteListenerOutput_keys = { nil }
+keys.DeleteListenerOutput = { nil }
 
-function M.AssertDeleteListenerOutput(struct)
+function asserts.AssertDeleteListenerOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteListenerOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteListenerOutput_keys[k], "DeleteListenerOutput contains unknown key " .. tostring(k))
+		assert(keys.DeleteListenerOutput[k], "DeleteListenerOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2583,89 +2586,89 @@ function M.DeleteListenerOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteListenerOutput")
 	local t = { 
 	}
-	M.AssertDeleteListenerOutput(t)
+	asserts.AssertDeleteListenerOutput(t)
 	return t
 end
 
-local DescribeTagsOutput_keys = { "TagDescriptions" = true, nil }
+keys.DescribeTagsOutput = { ["TagDescriptions"] = true, nil }
 
-function M.AssertDescribeTagsOutput(struct)
+function asserts.AssertDescribeTagsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTagsOutput to be of type 'table'")
-	if struct["TagDescriptions"] then M.AssertTagDescriptions(struct["TagDescriptions"]) end
+	if struct["TagDescriptions"] then asserts.AssertTagDescriptions(struct["TagDescriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTagsOutput_keys[k], "DescribeTagsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeTagsOutput[k], "DescribeTagsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTagsOutput
 --  
--- @param TagDescriptions [TagDescriptions] <p>Information about the tags.</p>
-function M.DescribeTagsOutput(TagDescriptions, ...)
+-- @param _TagDescriptions [TagDescriptions] <p>Information about the tags.</p>
+function M.DescribeTagsOutput(_TagDescriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsOutput")
 	local t = { 
-		["TagDescriptions"] = TagDescriptions,
+		["TagDescriptions"] = _TagDescriptions,
 	}
-	M.AssertDescribeTagsOutput(t)
+	asserts.AssertDescribeTagsOutput(t)
 	return t
 end
 
-local ModifyListenerOutput_keys = { "Listeners" = true, nil }
+keys.ModifyListenerOutput = { ["Listeners"] = true, nil }
 
-function M.AssertModifyListenerOutput(struct)
+function asserts.AssertModifyListenerOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyListenerOutput to be of type 'table'")
-	if struct["Listeners"] then M.AssertListeners(struct["Listeners"]) end
+	if struct["Listeners"] then asserts.AssertListeners(struct["Listeners"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyListenerOutput_keys[k], "ModifyListenerOutput contains unknown key " .. tostring(k))
+		assert(keys.ModifyListenerOutput[k], "ModifyListenerOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyListenerOutput
 --  
--- @param Listeners [Listeners] <p>Information about the modified listeners.</p>
-function M.ModifyListenerOutput(Listeners, ...)
+-- @param _Listeners [Listeners] <p>Information about the modified listeners.</p>
+function M.ModifyListenerOutput(_Listeners, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyListenerOutput")
 	local t = { 
-		["Listeners"] = Listeners,
+		["Listeners"] = _Listeners,
 	}
-	M.AssertModifyListenerOutput(t)
+	asserts.AssertModifyListenerOutput(t)
 	return t
 end
 
-local LoadBalancerState_keys = { "Reason" = true, "Code" = true, nil }
+keys.LoadBalancerState = { ["Reason"] = true, ["Code"] = true, nil }
 
-function M.AssertLoadBalancerState(struct)
+function asserts.AssertLoadBalancerState(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LoadBalancerState to be of type 'table'")
-	if struct["Reason"] then M.AssertStateReason(struct["Reason"]) end
-	if struct["Code"] then M.AssertLoadBalancerStateEnum(struct["Code"]) end
+	if struct["Reason"] then asserts.AssertStateReason(struct["Reason"]) end
+	if struct["Code"] then asserts.AssertLoadBalancerStateEnum(struct["Code"]) end
 	for k,_ in pairs(struct) do
-		assert(LoadBalancerState_keys[k], "LoadBalancerState contains unknown key " .. tostring(k))
+		assert(keys.LoadBalancerState[k], "LoadBalancerState contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LoadBalancerState
 -- <p>Information about the state of the load balancer.</p>
--- @param Reason [StateReason] <p>A description of the state.</p>
--- @param Code [LoadBalancerStateEnum] <p>The state code. The initial state of the load balancer is <code>provisioning</code>. After the load balancer is fully set up and ready to route traffic, its state is <code>active</code>. If the load balancer could not be set up, its state is <code>failed</code>.</p>
-function M.LoadBalancerState(Reason, Code, ...)
+-- @param _Reason [StateReason] <p>A description of the state.</p>
+-- @param _Code [LoadBalancerStateEnum] <p>The state code. The initial state of the load balancer is <code>provisioning</code>. After the load balancer is fully set up and ready to route traffic, its state is <code>active</code>. If the load balancer could not be set up, its state is <code>failed</code>.</p>
+function M.LoadBalancerState(_Reason, _Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerState")
 	local t = { 
-		["Reason"] = Reason,
-		["Code"] = Code,
+		["Reason"] = _Reason,
+		["Code"] = _Code,
 	}
-	M.AssertLoadBalancerState(t)
+	asserts.AssertLoadBalancerState(t)
 	return t
 end
 
-local InvalidTargetException_keys = { nil }
+keys.InvalidTargetException = { nil }
 
-function M.AssertInvalidTargetException(struct)
+function asserts.AssertInvalidTargetException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidTargetException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidTargetException_keys[k], "InvalidTargetException contains unknown key " .. tostring(k))
+		assert(keys.InvalidTargetException[k], "InvalidTargetException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2675,129 +2678,129 @@ function M.InvalidTargetException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTargetException")
 	local t = { 
 	}
-	M.AssertInvalidTargetException(t)
+	asserts.AssertInvalidTargetException(t)
 	return t
 end
 
-local SetSecurityGroupsInput_keys = { "SecurityGroups" = true, "LoadBalancerArn" = true, nil }
+keys.SetSecurityGroupsInput = { ["SecurityGroups"] = true, ["LoadBalancerArn"] = true, nil }
 
-function M.AssertSetSecurityGroupsInput(struct)
+function asserts.AssertSetSecurityGroupsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetSecurityGroupsInput to be of type 'table'")
 	assert(struct["LoadBalancerArn"], "Expected key LoadBalancerArn to exist in table")
 	assert(struct["SecurityGroups"], "Expected key SecurityGroups to exist in table")
-	if struct["SecurityGroups"] then M.AssertSecurityGroups(struct["SecurityGroups"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SetSecurityGroupsInput_keys[k], "SetSecurityGroupsInput contains unknown key " .. tostring(k))
+		assert(keys.SetSecurityGroupsInput[k], "SetSecurityGroupsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetSecurityGroupsInput
 --  
--- @param SecurityGroups [SecurityGroups] <p>The IDs of the security groups.</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _SecurityGroups [SecurityGroups] <p>The IDs of the security groups.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: SecurityGroups
-function M.SetSecurityGroupsInput(SecurityGroups, LoadBalancerArn, ...)
+function M.SetSecurityGroupsInput(_SecurityGroups, _LoadBalancerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSecurityGroupsInput")
 	local t = { 
-		["SecurityGroups"] = SecurityGroups,
-		["LoadBalancerArn"] = LoadBalancerArn,
+		["SecurityGroups"] = _SecurityGroups,
+		["LoadBalancerArn"] = _LoadBalancerArn,
 	}
-	M.AssertSetSecurityGroupsInput(t)
+	asserts.AssertSetSecurityGroupsInput(t)
 	return t
 end
 
-local LoadBalancerAttribute_keys = { "Value" = true, "Key" = true, nil }
+keys.LoadBalancerAttribute = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertLoadBalancerAttribute(struct)
+function asserts.AssertLoadBalancerAttribute(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LoadBalancerAttribute to be of type 'table'")
-	if struct["Value"] then M.AssertLoadBalancerAttributeValue(struct["Value"]) end
-	if struct["Key"] then M.AssertLoadBalancerAttributeKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertLoadBalancerAttributeValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertLoadBalancerAttributeKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(LoadBalancerAttribute_keys[k], "LoadBalancerAttribute contains unknown key " .. tostring(k))
+		assert(keys.LoadBalancerAttribute[k], "LoadBalancerAttribute contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LoadBalancerAttribute
 -- <p>Information about a load balancer attribute.</p>
--- @param Value [LoadBalancerAttributeValue] <p>The value of the attribute.</p>
--- @param Key [LoadBalancerAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.</p> </li> <li> <p> <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix, the access logs are stored in the root of the bucket.</p> </li> <li> <p> <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The default is 60 seconds.</p> </li> </ul>
-function M.LoadBalancerAttribute(Value, Key, ...)
+-- @param _Value [LoadBalancerAttributeValue] <p>The value of the attribute.</p>
+-- @param _Key [LoadBalancerAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.</p> </li> <li> <p> <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix, the access logs are stored in the root of the bucket.</p> </li> <li> <p> <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The default is 60 seconds.</p> </li> </ul>
+function M.LoadBalancerAttribute(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerAttribute")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertLoadBalancerAttribute(t)
+	asserts.AssertLoadBalancerAttribute(t)
 	return t
 end
 
-local DescribeListenersOutput_keys = { "Listeners" = true, "NextMarker" = true, nil }
+keys.DescribeListenersOutput = { ["Listeners"] = true, ["NextMarker"] = true, nil }
 
-function M.AssertDescribeListenersOutput(struct)
+function asserts.AssertDescribeListenersOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeListenersOutput to be of type 'table'")
-	if struct["Listeners"] then M.AssertListeners(struct["Listeners"]) end
-	if struct["NextMarker"] then M.AssertMarker(struct["NextMarker"]) end
+	if struct["Listeners"] then asserts.AssertListeners(struct["Listeners"]) end
+	if struct["NextMarker"] then asserts.AssertMarker(struct["NextMarker"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeListenersOutput_keys[k], "DescribeListenersOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeListenersOutput[k], "DescribeListenersOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeListenersOutput
 --  
--- @param Listeners [Listeners] <p>Information about the listeners.</p>
--- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
-function M.DescribeListenersOutput(Listeners, NextMarker, ...)
+-- @param _Listeners [Listeners] <p>Information about the listeners.</p>
+-- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+function M.DescribeListenersOutput(_Listeners, _NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeListenersOutput")
 	local t = { 
-		["Listeners"] = Listeners,
-		["NextMarker"] = NextMarker,
+		["Listeners"] = _Listeners,
+		["NextMarker"] = _NextMarker,
 	}
-	M.AssertDescribeListenersOutput(t)
+	asserts.AssertDescribeListenersOutput(t)
 	return t
 end
 
-local RemoveTagsInput_keys = { "TagKeys" = true, "ResourceArns" = true, nil }
+keys.RemoveTagsInput = { ["TagKeys"] = true, ["ResourceArns"] = true, nil }
 
-function M.AssertRemoveTagsInput(struct)
+function asserts.AssertRemoveTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsInput to be of type 'table'")
 	assert(struct["ResourceArns"], "Expected key ResourceArns to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["TagKeys"] then M.AssertTagKeys(struct["TagKeys"]) end
-	if struct["ResourceArns"] then M.AssertResourceArns(struct["ResourceArns"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeys(struct["TagKeys"]) end
+	if struct["ResourceArns"] then asserts.AssertResourceArns(struct["ResourceArns"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsInput_keys[k], "RemoveTagsInput contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsInput[k], "RemoveTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsInput
 --  
--- @param TagKeys [TagKeys] <p>The tag keys for the tags to remove.</p>
--- @param ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- @param _TagKeys [TagKeys] <p>The tag keys for the tags to remove.</p>
+-- @param _ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
 -- Required parameter: ResourceArns
 -- Required parameter: TagKeys
-function M.RemoveTagsInput(TagKeys, ResourceArns, ...)
+function M.RemoveTagsInput(_TagKeys, _ResourceArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsInput")
 	local t = { 
-		["TagKeys"] = TagKeys,
-		["ResourceArns"] = ResourceArns,
+		["TagKeys"] = _TagKeys,
+		["ResourceArns"] = _ResourceArns,
 	}
-	M.AssertRemoveTagsInput(t)
+	asserts.AssertRemoveTagsInput(t)
 	return t
 end
 
-local TooManyRulesException_keys = { nil }
+keys.TooManyRulesException = { nil }
 
-function M.AssertTooManyRulesException(struct)
+function asserts.AssertTooManyRulesException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyRulesException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TooManyRulesException_keys[k], "TooManyRulesException contains unknown key " .. tostring(k))
+		assert(keys.TooManyRulesException[k], "TooManyRulesException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2807,17 +2810,17 @@ function M.TooManyRulesException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRulesException")
 	local t = { 
 	}
-	M.AssertTooManyRulesException(t)
+	asserts.AssertTooManyRulesException(t)
 	return t
 end
 
-local LoadBalancerNotFoundException_keys = { nil }
+keys.LoadBalancerNotFoundException = { nil }
 
-function M.AssertLoadBalancerNotFoundException(struct)
+function asserts.AssertLoadBalancerNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LoadBalancerNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(LoadBalancerNotFoundException_keys[k], "LoadBalancerNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.LoadBalancerNotFoundException[k], "LoadBalancerNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2827,206 +2830,205 @@ function M.LoadBalancerNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerNotFoundException")
 	local t = { 
 	}
-	M.AssertLoadBalancerNotFoundException(t)
+	asserts.AssertLoadBalancerNotFoundException(t)
 	return t
 end
 
-local TargetDescription_keys = { "Id" = true, "Port" = true, nil }
+keys.TargetDescription = { ["Id"] = true, ["Port"] = true, nil }
 
-function M.AssertTargetDescription(struct)
+function asserts.AssertTargetDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TargetDescription to be of type 'table'")
 	assert(struct["Id"], "Expected key Id to exist in table")
-	if struct["Id"] then M.AssertTargetId(struct["Id"]) end
-	if struct["Port"] then M.AssertPort(struct["Port"]) end
+	if struct["Id"] then asserts.AssertTargetId(struct["Id"]) end
+	if struct["Port"] then asserts.AssertPort(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(TargetDescription_keys[k], "TargetDescription contains unknown key " .. tostring(k))
+		assert(keys.TargetDescription[k], "TargetDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TargetDescription
 -- <p>Information about a target.</p>
--- @param Id [TargetId] <p>The ID of the target.</p>
--- @param Port [Port] <p>The port on which the target is listening.</p>
+-- @param _Id [TargetId] <p>The ID of the target.</p>
+-- @param _Port [Port] <p>The port on which the target is listening.</p>
 -- Required parameter: Id
-function M.TargetDescription(Id, Port, ...)
+function M.TargetDescription(_Id, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetDescription")
 	local t = { 
-		["Id"] = Id,
-		["Port"] = Port,
+		["Id"] = _Id,
+		["Port"] = _Port,
 	}
-	M.AssertTargetDescription(t)
+	asserts.AssertTargetDescription(t)
 	return t
 end
 
-local SetIpAddressTypeOutput_keys = { "IpAddressType" = true, nil }
+keys.SetIpAddressTypeOutput = { ["IpAddressType"] = true, nil }
 
-function M.AssertSetIpAddressTypeOutput(struct)
+function asserts.AssertSetIpAddressTypeOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetIpAddressTypeOutput to be of type 'table'")
-	if struct["IpAddressType"] then M.AssertIpAddressType(struct["IpAddressType"]) end
+	if struct["IpAddressType"] then asserts.AssertIpAddressType(struct["IpAddressType"]) end
 	for k,_ in pairs(struct) do
-		assert(SetIpAddressTypeOutput_keys[k], "SetIpAddressTypeOutput contains unknown key " .. tostring(k))
+		assert(keys.SetIpAddressTypeOutput[k], "SetIpAddressTypeOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetIpAddressTypeOutput
 --  
--- @param IpAddressType [IpAddressType] <p>The IP address type.</p>
-function M.SetIpAddressTypeOutput(IpAddressType, ...)
+-- @param _IpAddressType [IpAddressType] <p>The IP address type.</p>
+function M.SetIpAddressTypeOutput(_IpAddressType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIpAddressTypeOutput")
 	local t = { 
-		["IpAddressType"] = IpAddressType,
+		["IpAddressType"] = _IpAddressType,
 	}
-	M.AssertSetIpAddressTypeOutput(t)
+	asserts.AssertSetIpAddressTypeOutput(t)
 	return t
 end
 
-local DescribeSSLPoliciesInput_keys = { "Marker" = true, "Names" = true, "PageSize" = true, nil }
+keys.DescribeSSLPoliciesInput = { ["Marker"] = true, ["Names"] = true, ["PageSize"] = true, nil }
 
-function M.AssertDescribeSSLPoliciesInput(struct)
+function asserts.AssertDescribeSSLPoliciesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSSLPoliciesInput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["Names"] then M.AssertSslPolicyNames(struct["Names"]) end
-	if struct["PageSize"] then M.AssertPageSize(struct["PageSize"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["Names"] then asserts.AssertSslPolicyNames(struct["Names"]) end
+	if struct["PageSize"] then asserts.AssertPageSize(struct["PageSize"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSSLPoliciesInput_keys[k], "DescribeSSLPoliciesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeSSLPoliciesInput[k], "DescribeSSLPoliciesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSSLPoliciesInput
 --  
--- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param Names [SslPolicyNames] <p>The names of the policies.</p>
--- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeSSLPoliciesInput(Marker, Names, PageSize, ...)
+-- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _Names [SslPolicyNames] <p>The names of the policies.</p>
+-- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+function M.DescribeSSLPoliciesInput(_Marker, _Names, _PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSSLPoliciesInput")
 	local t = { 
-		["Marker"] = Marker,
-		["Names"] = Names,
-		["PageSize"] = PageSize,
+		["Marker"] = _Marker,
+		["Names"] = _Names,
+		["PageSize"] = _PageSize,
 	}
-	M.AssertDescribeSSLPoliciesInput(t)
+	asserts.AssertDescribeSSLPoliciesInput(t)
 	return t
 end
 
-local CreateRuleOutput_keys = { "Rules" = true, nil }
+keys.CreateRuleOutput = { ["Rules"] = true, nil }
 
-function M.AssertCreateRuleOutput(struct)
+function asserts.AssertCreateRuleOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateRuleOutput to be of type 'table'")
-	if struct["Rules"] then M.AssertRules(struct["Rules"]) end
+	if struct["Rules"] then asserts.AssertRules(struct["Rules"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateRuleOutput_keys[k], "CreateRuleOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateRuleOutput[k], "CreateRuleOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateRuleOutput
 --  
--- @param Rules [Rules] <p>Information about the rule.</p>
-function M.CreateRuleOutput(Rules, ...)
+-- @param _Rules [Rules] <p>Information about the rule.</p>
+function M.CreateRuleOutput(_Rules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRuleOutput")
 	local t = { 
-		["Rules"] = Rules,
+		["Rules"] = _Rules,
 	}
-	M.AssertCreateRuleOutput(t)
+	asserts.AssertCreateRuleOutput(t)
 	return t
 end
 
-local LoadBalancer_keys = { "IpAddressType" = true, "VpcId" = true, "LoadBalancerArn" = true, "State" = true, "DNSName" = true, "SecurityGroups" = true, "LoadBalancerName" = true, "CreatedTime" = true, "Scheme" = true, "Type" = true, "CanonicalHostedZoneId" = true, "AvailabilityZones" = true, nil }
+keys.LoadBalancer = { ["IpAddressType"] = true, ["VpcId"] = true, ["LoadBalancerArn"] = true, ["State"] = true, ["DNSName"] = true, ["SecurityGroups"] = true, ["LoadBalancerName"] = true, ["CreatedTime"] = true, ["Scheme"] = true, ["Type"] = true, ["CanonicalHostedZoneId"] = true, ["AvailabilityZones"] = true, nil }
 
-function M.AssertLoadBalancer(struct)
+function asserts.AssertLoadBalancer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LoadBalancer to be of type 'table'")
-	if struct["IpAddressType"] then M.AssertIpAddressType(struct["IpAddressType"]) end
-	if struct["VpcId"] then M.AssertVpcId(struct["VpcId"]) end
-	if struct["LoadBalancerArn"] then M.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
-	if struct["State"] then M.AssertLoadBalancerState(struct["State"]) end
-	if struct["DNSName"] then M.AssertDNSName(struct["DNSName"]) end
-	if struct["SecurityGroups"] then M.AssertSecurityGroups(struct["SecurityGroups"]) end
-	if struct["LoadBalancerName"] then M.AssertLoadBalancerName(struct["LoadBalancerName"]) end
-	if struct["CreatedTime"] then M.AssertCreatedTime(struct["CreatedTime"]) end
-	if struct["Scheme"] then M.AssertLoadBalancerSchemeEnum(struct["Scheme"]) end
-	if struct["Type"] then M.AssertLoadBalancerTypeEnum(struct["Type"]) end
-	if struct["CanonicalHostedZoneId"] then M.AssertCanonicalHostedZoneId(struct["CanonicalHostedZoneId"]) end
-	if struct["AvailabilityZones"] then M.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	if struct["IpAddressType"] then asserts.AssertIpAddressType(struct["IpAddressType"]) end
+	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
+	if struct["LoadBalancerArn"] then asserts.AssertLoadBalancerArn(struct["LoadBalancerArn"]) end
+	if struct["State"] then asserts.AssertLoadBalancerState(struct["State"]) end
+	if struct["DNSName"] then asserts.AssertDNSName(struct["DNSName"]) end
+	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
+	if struct["LoadBalancerName"] then asserts.AssertLoadBalancerName(struct["LoadBalancerName"]) end
+	if struct["CreatedTime"] then asserts.AssertCreatedTime(struct["CreatedTime"]) end
+	if struct["Scheme"] then asserts.AssertLoadBalancerSchemeEnum(struct["Scheme"]) end
+	if struct["Type"] then asserts.AssertLoadBalancerTypeEnum(struct["Type"]) end
+	if struct["CanonicalHostedZoneId"] then asserts.AssertCanonicalHostedZoneId(struct["CanonicalHostedZoneId"]) end
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
 	for k,_ in pairs(struct) do
-		assert(LoadBalancer_keys[k], "LoadBalancer contains unknown key " .. tostring(k))
+		assert(keys.LoadBalancer[k], "LoadBalancer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LoadBalancer
 -- <p>Information about a load balancer.</p>
--- @param IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses).</p>
--- @param VpcId [VpcId] <p>The ID of the VPC for the load balancer.</p>
--- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param State [LoadBalancerState] <p>The state of the load balancer.</p>
--- @param DNSName [DNSName] <p>The public DNS name of the load balancer.</p>
--- @param SecurityGroups [SecurityGroups] <p>The IDs of the security groups for the load balancer.</p>
--- @param LoadBalancerName [LoadBalancerName] <p>The name of the load balancer.</p>
--- @param CreatedTime [CreatedTime] <p>The date and time the load balancer was created.</p>
--- @param Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p>
--- @param Type [LoadBalancerTypeEnum] <p>The type of load balancer.</p>
--- @param CanonicalHostedZoneId [CanonicalHostedZoneId] <p>The ID of the Amazon Route 53 hosted zone associated with the load balancer.</p>
--- @param AvailabilityZones [AvailabilityZones] <p>The Availability Zones for the load balancer.</p>
-function M.LoadBalancer(IpAddressType, VpcId, LoadBalancerArn, State, DNSName, SecurityGroups, LoadBalancerName, CreatedTime, Scheme, Type, CanonicalHostedZoneId, AvailabilityZones, ...)
+-- @param _IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses).</p>
+-- @param _VpcId [VpcId] <p>The ID of the VPC for the load balancer.</p>
+-- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param _State [LoadBalancerState] <p>The state of the load balancer.</p>
+-- @param _DNSName [DNSName] <p>The public DNS name of the load balancer.</p>
+-- @param _SecurityGroups [SecurityGroups] <p>The IDs of the security groups for the load balancer.</p>
+-- @param _LoadBalancerName [LoadBalancerName] <p>The name of the load balancer.</p>
+-- @param _CreatedTime [CreatedTime] <p>The date and time the load balancer was created.</p>
+-- @param _Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p>
+-- @param _Type [LoadBalancerTypeEnum] <p>The type of load balancer.</p>
+-- @param _CanonicalHostedZoneId [CanonicalHostedZoneId] <p>The ID of the Amazon Route 53 hosted zone associated with the load balancer.</p>
+-- @param _AvailabilityZones [AvailabilityZones] <p>The Availability Zones for the load balancer.</p>
+function M.LoadBalancer(_IpAddressType, _VpcId, _LoadBalancerArn, _State, _DNSName, _SecurityGroups, _LoadBalancerName, _CreatedTime, _Scheme, _Type, _CanonicalHostedZoneId, _AvailabilityZones, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancer")
 	local t = { 
-		["IpAddressType"] = IpAddressType,
-		["VpcId"] = VpcId,
-		["LoadBalancerArn"] = LoadBalancerArn,
-		["State"] = State,
-		["DNSName"] = DNSName,
-		["SecurityGroups"] = SecurityGroups,
-		["LoadBalancerName"] = LoadBalancerName,
-		["CreatedTime"] = CreatedTime,
-		["Scheme"] = Scheme,
-		["Type"] = Type,
-		["CanonicalHostedZoneId"] = CanonicalHostedZoneId,
-		["AvailabilityZones"] = AvailabilityZones,
+		["IpAddressType"] = _IpAddressType,
+		["VpcId"] = _VpcId,
+		["LoadBalancerArn"] = _LoadBalancerArn,
+		["State"] = _State,
+		["DNSName"] = _DNSName,
+		["SecurityGroups"] = _SecurityGroups,
+		["LoadBalancerName"] = _LoadBalancerName,
+		["CreatedTime"] = _CreatedTime,
+		["Scheme"] = _Scheme,
+		["Type"] = _Type,
+		["CanonicalHostedZoneId"] = _CanonicalHostedZoneId,
+		["AvailabilityZones"] = _AvailabilityZones,
 	}
-	M.AssertLoadBalancer(t)
+	asserts.AssertLoadBalancer(t)
 	return t
 end
 
-function M.AssertDNSName(str)
+function asserts.AssertDNSName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DNSName to be of type 'string'")
 end
 
 --  
 function M.DNSName(str)
-	M.AssertDNSName(str)
+	asserts.AssertDNSName(str)
 	return str
 end
 
-function M.AssertLoadBalancerSchemeEnum(str)
+function asserts.AssertLoadBalancerSchemeEnum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoadBalancerSchemeEnum to be of type 'string'")
 end
 
 --  
 function M.LoadBalancerSchemeEnum(str)
-	M.AssertLoadBalancerSchemeEnum(str)
+	asserts.AssertLoadBalancerSchemeEnum(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^([%p{L}%p{Z}%p{N}_.:/=+%-@]*)$"), "Expected string to match pattern '^([%p{L}%p{Z}%p{N}_.:/=+%-@]*)$'")
 end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertPath(str)
+function asserts.AssertPath(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Path to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -3035,11 +3037,11 @@ end
 
 --  
 function M.Path(str)
-	M.AssertPath(str)
+	asserts.AssertPath(str)
 	return str
 end
 
-function M.AssertConditionFieldName(str)
+function asserts.AssertConditionFieldName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConditionFieldName to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
@@ -3047,114 +3049,112 @@ end
 
 --  
 function M.ConditionFieldName(str)
-	M.AssertConditionFieldName(str)
+	asserts.AssertConditionFieldName(str)
 	return str
 end
 
-function M.AssertTargetGroupArn(str)
+function asserts.AssertTargetGroupArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TargetGroupArn to be of type 'string'")
 end
 
 --  
 function M.TargetGroupArn(str)
-	M.AssertTargetGroupArn(str)
+	asserts.AssertTargetGroupArn(str)
 	return str
 end
 
-function M.AssertIpAddressType(str)
+function asserts.AssertIpAddressType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IpAddressType to be of type 'string'")
 end
 
 --  
 function M.IpAddressType(str)
-	M.AssertIpAddressType(str)
+	asserts.AssertIpAddressType(str)
 	return str
 end
 
-function M.AssertTargetGroupAttributeKey(str)
+function asserts.AssertTargetGroupAttributeKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TargetGroupAttributeKey to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
-	assert(str:match("^[a-zA-Z0-9._]+$"), "Expected string to match pattern '^[a-zA-Z0-9._]+$'")
 end
 
 --  
 function M.TargetGroupAttributeKey(str)
-	M.AssertTargetGroupAttributeKey(str)
+	asserts.AssertTargetGroupAttributeKey(str)
 	return str
 end
 
-function M.AssertLoadBalancerName(str)
+function asserts.AssertLoadBalancerName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoadBalancerName to be of type 'string'")
 end
 
 --  
 function M.LoadBalancerName(str)
-	M.AssertLoadBalancerName(str)
+	asserts.AssertLoadBalancerName(str)
 	return str
 end
 
-function M.AssertStringValue(str)
+function asserts.AssertStringValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StringValue to be of type 'string'")
 end
 
 --  
 function M.StringValue(str)
-	M.AssertStringValue(str)
+	asserts.AssertStringValue(str)
 	return str
 end
 
-function M.AssertLoadBalancerAttributeKey(str)
+function asserts.AssertLoadBalancerAttributeKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoadBalancerAttributeKey to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
-	assert(str:match("^[a-zA-Z0-9._]+$"), "Expected string to match pattern '^[a-zA-Z0-9._]+$'")
 end
 
 --  
 function M.LoadBalancerAttributeKey(str)
-	M.AssertLoadBalancerAttributeKey(str)
+	asserts.AssertLoadBalancerAttributeKey(str)
 	return str
 end
 
-function M.AssertTargetGroupAttributeValue(str)
+function asserts.AssertTargetGroupAttributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TargetGroupAttributeValue to be of type 'string'")
 end
 
 --  
 function M.TargetGroupAttributeValue(str)
-	M.AssertTargetGroupAttributeValue(str)
+	asserts.AssertTargetGroupAttributeValue(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertResourceArn(str)
+function asserts.AssertResourceArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceArn to be of type 'string'")
 end
 
 --  
 function M.ResourceArn(str)
-	M.AssertResourceArn(str)
+	asserts.AssertResourceArn(str)
 	return str
 end
 
-function M.AssertLoadBalancerAttributeValue(str)
+function asserts.AssertLoadBalancerAttributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoadBalancerAttributeValue to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -3162,321 +3162,320 @@ end
 
 --  
 function M.LoadBalancerAttributeValue(str)
-	M.AssertLoadBalancerAttributeValue(str)
+	asserts.AssertLoadBalancerAttributeValue(str)
 	return str
 end
 
-function M.AssertZoneName(str)
+function asserts.AssertZoneName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ZoneName to be of type 'string'")
 end
 
 --  
 function M.ZoneName(str)
-	M.AssertZoneName(str)
+	asserts.AssertZoneName(str)
 	return str
 end
 
-function M.AssertSubnetId(str)
+function asserts.AssertSubnetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubnetId to be of type 'string'")
 end
 
 --  
 function M.SubnetId(str)
-	M.AssertSubnetId(str)
+	asserts.AssertSubnetId(str)
 	return str
 end
 
-function M.AssertTargetHealthReasonEnum(str)
+function asserts.AssertTargetHealthReasonEnum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TargetHealthReasonEnum to be of type 'string'")
 end
 
 --  
 function M.TargetHealthReasonEnum(str)
-	M.AssertTargetHealthReasonEnum(str)
+	asserts.AssertTargetHealthReasonEnum(str)
 	return str
 end
 
-function M.AssertMarker(str)
+function asserts.AssertMarker(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Marker to be of type 'string'")
 end
 
 --  
 function M.Marker(str)
-	M.AssertMarker(str)
+	asserts.AssertMarker(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
-	assert(str:match("^([%p{L}%p{Z}%p{N}_.:/=+%-@]*)$"), "Expected string to match pattern '^([%p{L}%p{Z}%p{N}_.:/=+%-@]*)$'")
 end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertActionTypeEnum(str)
+function asserts.AssertActionTypeEnum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ActionTypeEnum to be of type 'string'")
 end
 
 --  
 function M.ActionTypeEnum(str)
-	M.AssertActionTypeEnum(str)
+	asserts.AssertActionTypeEnum(str)
 	return str
 end
 
-function M.AssertHealthCheckPort(str)
+function asserts.AssertHealthCheckPort(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HealthCheckPort to be of type 'string'")
 end
 
 --  
 function M.HealthCheckPort(str)
-	M.AssertHealthCheckPort(str)
+	asserts.AssertHealthCheckPort(str)
 	return str
 end
 
-function M.AssertListenerArn(str)
+function asserts.AssertListenerArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ListenerArn to be of type 'string'")
 end
 
 --  
 function M.ListenerArn(str)
-	M.AssertListenerArn(str)
+	asserts.AssertListenerArn(str)
 	return str
 end
 
-function M.AssertCertificateArn(str)
+function asserts.AssertCertificateArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CertificateArn to be of type 'string'")
 end
 
 --  
 function M.CertificateArn(str)
-	M.AssertCertificateArn(str)
+	asserts.AssertCertificateArn(str)
 	return str
 end
 
-function M.AssertLoadBalancerArn(str)
+function asserts.AssertLoadBalancerArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoadBalancerArn to be of type 'string'")
 end
 
 --  
 function M.LoadBalancerArn(str)
-	M.AssertLoadBalancerArn(str)
+	asserts.AssertLoadBalancerArn(str)
 	return str
 end
 
-function M.AssertHttpCode(str)
+function asserts.AssertHttpCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HttpCode to be of type 'string'")
 end
 
 --  
 function M.HttpCode(str)
-	M.AssertHttpCode(str)
+	asserts.AssertHttpCode(str)
 	return str
 end
 
-function M.AssertRuleArn(str)
+function asserts.AssertRuleArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RuleArn to be of type 'string'")
 end
 
 --  
 function M.RuleArn(str)
-	M.AssertRuleArn(str)
+	asserts.AssertRuleArn(str)
 	return str
 end
 
-function M.AssertSecurityGroupId(str)
+function asserts.AssertSecurityGroupId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SecurityGroupId to be of type 'string'")
 end
 
 --  
 function M.SecurityGroupId(str)
-	M.AssertSecurityGroupId(str)
+	asserts.AssertSecurityGroupId(str)
 	return str
 end
 
-function M.AssertDescription(str)
+function asserts.AssertDescription(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Description to be of type 'string'")
 end
 
 --  
 function M.Description(str)
-	M.AssertDescription(str)
+	asserts.AssertDescription(str)
 	return str
 end
 
-function M.AssertMax(str)
+function asserts.AssertMax(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Max to be of type 'string'")
 end
 
 --  
 function M.Max(str)
-	M.AssertMax(str)
+	asserts.AssertMax(str)
 	return str
 end
 
-function M.AssertTargetId(str)
+function asserts.AssertTargetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TargetId to be of type 'string'")
 end
 
 --  
 function M.TargetId(str)
-	M.AssertTargetId(str)
+	asserts.AssertTargetId(str)
 	return str
 end
 
-function M.AssertCanonicalHostedZoneId(str)
+function asserts.AssertCanonicalHostedZoneId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CanonicalHostedZoneId to be of type 'string'")
 end
 
 --  
 function M.CanonicalHostedZoneId(str)
-	M.AssertCanonicalHostedZoneId(str)
+	asserts.AssertCanonicalHostedZoneId(str)
 	return str
 end
 
-function M.AssertTargetHealthStateEnum(str)
+function asserts.AssertTargetHealthStateEnum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TargetHealthStateEnum to be of type 'string'")
 end
 
 --  
 function M.TargetHealthStateEnum(str)
-	M.AssertTargetHealthStateEnum(str)
+	asserts.AssertTargetHealthStateEnum(str)
 	return str
 end
 
-function M.AssertLoadBalancerTypeEnum(str)
+function asserts.AssertLoadBalancerTypeEnum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoadBalancerTypeEnum to be of type 'string'")
 end
 
 --  
 function M.LoadBalancerTypeEnum(str)
-	M.AssertLoadBalancerTypeEnum(str)
+	asserts.AssertLoadBalancerTypeEnum(str)
 	return str
 end
 
-function M.AssertCipherName(str)
+function asserts.AssertCipherName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CipherName to be of type 'string'")
 end
 
 --  
 function M.CipherName(str)
-	M.AssertCipherName(str)
+	asserts.AssertCipherName(str)
 	return str
 end
 
-function M.AssertName(str)
+function asserts.AssertName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Name to be of type 'string'")
 end
 
 --  
 function M.Name(str)
-	M.AssertName(str)
+	asserts.AssertName(str)
 	return str
 end
 
-function M.AssertSslProtocol(str)
+function asserts.AssertSslProtocol(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SslProtocol to be of type 'string'")
 end
 
 --  
 function M.SslProtocol(str)
-	M.AssertSslProtocol(str)
+	asserts.AssertSslProtocol(str)
 	return str
 end
 
-function M.AssertSslPolicyName(str)
+function asserts.AssertSslPolicyName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SslPolicyName to be of type 'string'")
 end
 
 --  
 function M.SslPolicyName(str)
-	M.AssertSslPolicyName(str)
+	asserts.AssertSslPolicyName(str)
 	return str
 end
 
-function M.AssertStateReason(str)
+function asserts.AssertStateReason(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StateReason to be of type 'string'")
 end
 
 --  
 function M.StateReason(str)
-	M.AssertStateReason(str)
+	asserts.AssertStateReason(str)
 	return str
 end
 
-function M.AssertLoadBalancerStateEnum(str)
+function asserts.AssertLoadBalancerStateEnum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoadBalancerStateEnum to be of type 'string'")
 end
 
 --  
 function M.LoadBalancerStateEnum(str)
-	M.AssertLoadBalancerStateEnum(str)
+	asserts.AssertLoadBalancerStateEnum(str)
 	return str
 end
 
-function M.AssertVpcId(str)
+function asserts.AssertVpcId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VpcId to be of type 'string'")
 end
 
 --  
 function M.VpcId(str)
-	M.AssertVpcId(str)
+	asserts.AssertVpcId(str)
 	return str
 end
 
-function M.AssertTargetGroupName(str)
+function asserts.AssertTargetGroupName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TargetGroupName to be of type 'string'")
 end
 
 --  
 function M.TargetGroupName(str)
-	M.AssertTargetGroupName(str)
+	asserts.AssertTargetGroupName(str)
 	return str
 end
 
-function M.AssertProtocolEnum(str)
+function asserts.AssertProtocolEnum(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProtocolEnum to be of type 'string'")
 end
 
 --  
 function M.ProtocolEnum(str)
-	M.AssertProtocolEnum(str)
+	asserts.AssertProtocolEnum(str)
 	return str
 end
 
-function M.AssertHealthCheckThresholdCount(integer)
+function asserts.AssertHealthCheckThresholdCount(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected HealthCheckThresholdCount to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3485,11 +3484,11 @@ function M.AssertHealthCheckThresholdCount(integer)
 end
 
 function M.HealthCheckThresholdCount(integer)
-	M.AssertHealthCheckThresholdCount(integer)
+	asserts.AssertHealthCheckThresholdCount(integer)
 	return integer
 end
 
-function M.AssertHealthCheckIntervalSeconds(integer)
+function asserts.AssertHealthCheckIntervalSeconds(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected HealthCheckIntervalSeconds to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3498,11 +3497,11 @@ function M.AssertHealthCheckIntervalSeconds(integer)
 end
 
 function M.HealthCheckIntervalSeconds(integer)
-	M.AssertHealthCheckIntervalSeconds(integer)
+	asserts.AssertHealthCheckIntervalSeconds(integer)
 	return integer
 end
 
-function M.AssertPageSize(integer)
+function asserts.AssertPageSize(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PageSize to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3511,22 +3510,22 @@ function M.AssertPageSize(integer)
 end
 
 function M.PageSize(integer)
-	M.AssertPageSize(integer)
+	asserts.AssertPageSize(integer)
 	return integer
 end
 
-function M.AssertCipherPriority(integer)
+function asserts.AssertCipherPriority(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected CipherPriority to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.CipherPriority(integer)
-	M.AssertCipherPriority(integer)
+	asserts.AssertCipherPriority(integer)
 	return integer
 end
 
-function M.AssertHealthCheckTimeoutSeconds(integer)
+function asserts.AssertHealthCheckTimeoutSeconds(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected HealthCheckTimeoutSeconds to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3535,11 +3534,11 @@ function M.AssertHealthCheckTimeoutSeconds(integer)
 end
 
 function M.HealthCheckTimeoutSeconds(integer)
-	M.AssertHealthCheckTimeoutSeconds(integer)
+	asserts.AssertHealthCheckTimeoutSeconds(integer)
 	return integer
 end
 
-function M.AssertRulePriority(integer)
+function asserts.AssertRulePriority(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected RulePriority to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3548,11 +3547,11 @@ function M.AssertRulePriority(integer)
 end
 
 function M.RulePriority(integer)
-	M.AssertRulePriority(integer)
+	asserts.AssertRulePriority(integer)
 	return integer
 end
 
-function M.AssertPort(integer)
+function asserts.AssertPort(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Port to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3561,494 +3560,494 @@ function M.AssertPort(integer)
 end
 
 function M.Port(integer)
-	M.AssertPort(integer)
+	asserts.AssertPort(integer)
 	return integer
 end
 
-function M.AssertIsDefault(boolean)
+function asserts.AssertIsDefault(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected IsDefault to be of type 'boolean'")
 end
 
 function M.IsDefault(boolean)
-	M.AssertIsDefault(boolean)
+	asserts.AssertIsDefault(boolean)
 	return boolean
 end
 
-function M.AssertCreatedTime(timestamp)
+function asserts.AssertCreatedTime(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected CreatedTime to be of type 'string'")
 end
 
 function M.CreatedTime(timestamp)
-	M.AssertCreatedTime(timestamp)
+	asserts.AssertCreatedTime(timestamp)
 	return timestamp
 end
 
-function M.AssertSslProtocols(list)
+function asserts.AssertSslProtocols(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SslProtocols to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSslProtocol(v)
+		asserts.AssertSslProtocol(v)
 	end
 end
 
 --  
 -- List of SslProtocol objects
 function M.SslProtocols(list)
-	M.AssertSslProtocols(list)
+	asserts.AssertSslProtocols(list)
 	return list
 end
 
-function M.AssertTargetGroups(list)
+function asserts.AssertTargetGroups(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TargetGroups to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTargetGroup(v)
+		asserts.AssertTargetGroup(v)
 	end
 end
 
 --  
 -- List of TargetGroup objects
 function M.TargetGroups(list)
-	M.AssertTargetGroups(list)
+	asserts.AssertTargetGroups(list)
 	return list
 end
 
-function M.AssertResourceArns(list)
+function asserts.AssertResourceArns(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourceArns to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResourceArn(v)
+		asserts.AssertResourceArn(v)
 	end
 end
 
 --  
 -- List of ResourceArn objects
 function M.ResourceArns(list)
-	M.AssertResourceArns(list)
+	asserts.AssertResourceArns(list)
 	return list
 end
 
-function M.AssertTargetHealthDescriptions(list)
+function asserts.AssertTargetHealthDescriptions(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TargetHealthDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTargetHealthDescription(v)
+		asserts.AssertTargetHealthDescription(v)
 	end
 end
 
 --  
 -- List of TargetHealthDescription objects
 function M.TargetHealthDescriptions(list)
-	M.AssertTargetHealthDescriptions(list)
+	asserts.AssertTargetHealthDescriptions(list)
 	return list
 end
 
-function M.AssertLoadBalancers(list)
+function asserts.AssertLoadBalancers(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoadBalancers to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLoadBalancer(v)
+		asserts.AssertLoadBalancer(v)
 	end
 end
 
 --  
 -- List of LoadBalancer objects
 function M.LoadBalancers(list)
-	M.AssertLoadBalancers(list)
+	asserts.AssertLoadBalancers(list)
 	return list
 end
 
-function M.AssertRuleConditionList(list)
+function asserts.AssertRuleConditionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RuleConditionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRuleCondition(v)
+		asserts.AssertRuleCondition(v)
 	end
 end
 
 --  
 -- List of RuleCondition objects
 function M.RuleConditionList(list)
-	M.AssertRuleConditionList(list)
+	asserts.AssertRuleConditionList(list)
 	return list
 end
 
-function M.AssertListeners(list)
+function asserts.AssertListeners(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Listeners to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertListener(v)
+		asserts.AssertListener(v)
 	end
 end
 
 --  
 -- List of Listener objects
 function M.Listeners(list)
-	M.AssertListeners(list)
+	asserts.AssertListeners(list)
 	return list
 end
 
-function M.AssertTagDescriptions(list)
+function asserts.AssertTagDescriptions(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagDescription(v)
+		asserts.AssertTagDescription(v)
 	end
 end
 
 --  
 -- List of TagDescription objects
 function M.TagDescriptions(list)
-	M.AssertTagDescriptions(list)
+	asserts.AssertTagDescriptions(list)
 	return list
 end
 
-function M.AssertTargetGroupArns(list)
+function asserts.AssertTargetGroupArns(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TargetGroupArns to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTargetGroupArn(v)
+		asserts.AssertTargetGroupArn(v)
 	end
 end
 
 --  
 -- List of TargetGroupArn objects
 function M.TargetGroupArns(list)
-	M.AssertTargetGroupArns(list)
+	asserts.AssertTargetGroupArns(list)
 	return list
 end
 
-function M.AssertRuleArns(list)
+function asserts.AssertRuleArns(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RuleArns to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRuleArn(v)
+		asserts.AssertRuleArn(v)
 	end
 end
 
 --  
 -- List of RuleArn objects
 function M.RuleArns(list)
-	M.AssertRuleArns(list)
+	asserts.AssertRuleArns(list)
 	return list
 end
 
-function M.AssertLoadBalancerNames(list)
+function asserts.AssertLoadBalancerNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoadBalancerNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLoadBalancerName(v)
+		asserts.AssertLoadBalancerName(v)
 	end
 end
 
 --  
 -- List of LoadBalancerName objects
 function M.LoadBalancerNames(list)
-	M.AssertLoadBalancerNames(list)
+	asserts.AssertLoadBalancerNames(list)
 	return list
 end
 
-function M.AssertListenerArns(list)
+function asserts.AssertListenerArns(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListenerArns to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertListenerArn(v)
+		asserts.AssertListenerArn(v)
 	end
 end
 
 --  
 -- List of ListenerArn objects
 function M.ListenerArns(list)
-	M.AssertListenerArns(list)
+	asserts.AssertListenerArns(list)
 	return list
 end
 
-function M.AssertSubnets(list)
+function asserts.AssertSubnets(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Subnets to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSubnetId(v)
+		asserts.AssertSubnetId(v)
 	end
 end
 
 --  
 -- List of SubnetId objects
 function M.Subnets(list)
-	M.AssertSubnets(list)
+	asserts.AssertSubnets(list)
 	return list
 end
 
-function M.AssertSslPolicies(list)
+function asserts.AssertSslPolicies(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SslPolicies to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSslPolicy(v)
+		asserts.AssertSslPolicy(v)
 	end
 end
 
 --  
 -- List of SslPolicy objects
 function M.SslPolicies(list)
-	M.AssertSslPolicies(list)
+	asserts.AssertSslPolicies(list)
 	return list
 end
 
-function M.AssertTargetGroupAttributes(list)
+function asserts.AssertTargetGroupAttributes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TargetGroupAttributes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTargetGroupAttribute(v)
+		asserts.AssertTargetGroupAttribute(v)
 	end
 end
 
 --  
 -- List of TargetGroupAttribute objects
 function M.TargetGroupAttributes(list)
-	M.AssertTargetGroupAttributes(list)
+	asserts.AssertTargetGroupAttributes(list)
 	return list
 end
 
-function M.AssertRules(list)
+function asserts.AssertRules(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Rules to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRule(v)
+		asserts.AssertRule(v)
 	end
 end
 
 --  
 -- List of Rule objects
 function M.Rules(list)
-	M.AssertRules(list)
+	asserts.AssertRules(list)
 	return list
 end
 
-function M.AssertSslPolicyNames(list)
+function asserts.AssertSslPolicyNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SslPolicyNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSslPolicyName(v)
+		asserts.AssertSslPolicyName(v)
 	end
 end
 
 --  
 -- List of SslPolicyName objects
 function M.SslPolicyNames(list)
-	M.AssertSslPolicyNames(list)
+	asserts.AssertSslPolicyNames(list)
 	return list
 end
 
-function M.AssertTagKeys(list)
+function asserts.AssertTagKeys(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeys to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagKey(v)
+		asserts.AssertTagKey(v)
 	end
 end
 
 --  
 -- List of TagKey objects
 function M.TagKeys(list)
-	M.AssertTagKeys(list)
+	asserts.AssertTagKeys(list)
 	return list
 end
 
-function M.AssertListOfString(list)
+function asserts.AssertListOfString(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfString to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStringValue(v)
+		asserts.AssertStringValue(v)
 	end
 end
 
 --  
 -- List of StringValue objects
 function M.ListOfString(list)
-	M.AssertListOfString(list)
+	asserts.AssertListOfString(list)
 	return list
 end
 
-function M.AssertLimits(list)
+function asserts.AssertLimits(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Limits to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLimit(v)
+		asserts.AssertLimit(v)
 	end
 end
 
 --  
 -- List of Limit objects
 function M.Limits(list)
-	M.AssertLimits(list)
+	asserts.AssertLimits(list)
 	return list
 end
 
-function M.AssertLoadBalancerAttributes(list)
+function asserts.AssertLoadBalancerAttributes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoadBalancerAttributes to be of type ''table")
 	assert(#list <= 20, "Expected list to be contain 20 elements")
 	for _,v in ipairs(list) do
-		M.AssertLoadBalancerAttribute(v)
+		asserts.AssertLoadBalancerAttribute(v)
 	end
 end
 
 --  
 -- List of LoadBalancerAttribute objects
 function M.LoadBalancerAttributes(list)
-	M.AssertLoadBalancerAttributes(list)
+	asserts.AssertLoadBalancerAttributes(list)
 	return list
 end
 
-function M.AssertLoadBalancerArns(list)
+function asserts.AssertLoadBalancerArns(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoadBalancerArns to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLoadBalancerArn(v)
+		asserts.AssertLoadBalancerArn(v)
 	end
 end
 
 --  
 -- List of LoadBalancerArn objects
 function M.LoadBalancerArns(list)
-	M.AssertLoadBalancerArns(list)
+	asserts.AssertLoadBalancerArns(list)
 	return list
 end
 
-function M.AssertCertificateList(list)
+function asserts.AssertCertificateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CertificateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCertificate(v)
+		asserts.AssertCertificate(v)
 	end
 end
 
 --  
 -- List of Certificate objects
 function M.CertificateList(list)
-	M.AssertCertificateList(list)
+	asserts.AssertCertificateList(list)
 	return list
 end
 
-function M.AssertCiphers(list)
+function asserts.AssertCiphers(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Ciphers to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCipher(v)
+		asserts.AssertCipher(v)
 	end
 end
 
 --  
 -- List of Cipher objects
 function M.Ciphers(list)
-	M.AssertCiphers(list)
+	asserts.AssertCiphers(list)
 	return list
 end
 
-function M.AssertSecurityGroups(list)
+function asserts.AssertSecurityGroups(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SecurityGroups to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSecurityGroupId(v)
+		asserts.AssertSecurityGroupId(v)
 	end
 end
 
 --  
 -- List of SecurityGroupId objects
 function M.SecurityGroups(list)
-	M.AssertSecurityGroups(list)
+	asserts.AssertSecurityGroups(list)
 	return list
 end
 
-function M.AssertTargetGroupNames(list)
+function asserts.AssertTargetGroupNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TargetGroupNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTargetGroupName(v)
+		asserts.AssertTargetGroupName(v)
 	end
 end
 
 --  
 -- List of TargetGroupName objects
 function M.TargetGroupNames(list)
-	M.AssertTargetGroupNames(list)
+	asserts.AssertTargetGroupNames(list)
 	return list
 end
 
-function M.AssertTargetDescriptions(list)
+function asserts.AssertTargetDescriptions(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TargetDescriptions to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTargetDescription(v)
+		asserts.AssertTargetDescription(v)
 	end
 end
 
 --  
 -- List of TargetDescription objects
 function M.TargetDescriptions(list)
-	M.AssertTargetDescriptions(list)
+	asserts.AssertTargetDescriptions(list)
 	return list
 end
 
-function M.AssertActions(list)
+function asserts.AssertActions(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Actions to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAction(v)
+		asserts.AssertAction(v)
 	end
 end
 
 --  
 -- List of Action objects
 function M.Actions(list)
-	M.AssertActions(list)
+	asserts.AssertActions(list)
 	return list
 end
 
-function M.AssertRulePriorityList(list)
+function asserts.AssertRulePriorityList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RulePriorityList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRulePriorityPair(v)
+		asserts.AssertRulePriorityPair(v)
 	end
 end
 
 --  
 -- List of RulePriorityPair objects
 function M.RulePriorityList(list)
-	M.AssertRulePriorityList(list)
+	asserts.AssertRulePriorityList(list)
 	return list
 end
 
-function M.AssertAvailabilityZones(list)
+function asserts.AssertAvailabilityZones(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AvailabilityZones to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAvailabilityZone(v)
+		asserts.AssertAvailabilityZone(v)
 	end
 end
 
 --  
 -- List of AvailabilityZone objects
 function M.AvailabilityZones(list)
-	M.AssertAvailabilityZones(list)
+	asserts.AssertAvailabilityZones(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 

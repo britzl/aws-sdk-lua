@@ -18,230 +18,233 @@ M.metadata = {
 	uid = "cognito-idp-2016-04-18",
 }
 
-local AdminUserGlobalSignOutRequest_keys = { "Username" = true, "UserPoolId" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertAdminUserGlobalSignOutRequest(struct)
+keys.AdminUserGlobalSignOutRequest = { ["Username"] = true, ["UserPoolId"] = true, nil }
+
+function asserts.AssertAdminUserGlobalSignOutRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminUserGlobalSignOutRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminUserGlobalSignOutRequest_keys[k], "AdminUserGlobalSignOutRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminUserGlobalSignOutRequest[k], "AdminUserGlobalSignOutRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminUserGlobalSignOutRequest
 -- <p>The request to sign out of all devices, as an administrator.</p>
--- @param Username [UsernameType] <p>The user name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _Username [UsernameType] <p>The user name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminUserGlobalSignOutRequest(Username, UserPoolId, ...)
+function M.AdminUserGlobalSignOutRequest(_Username, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUserGlobalSignOutRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminUserGlobalSignOutRequest(t)
+	asserts.AssertAdminUserGlobalSignOutRequest(t)
 	return t
 end
 
-local AdminResetUserPasswordRequest_keys = { "Username" = true, "UserPoolId" = true, nil }
+keys.AdminResetUserPasswordRequest = { ["Username"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminResetUserPasswordRequest(struct)
+function asserts.AssertAdminResetUserPasswordRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminResetUserPasswordRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminResetUserPasswordRequest_keys[k], "AdminResetUserPasswordRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminResetUserPasswordRequest[k], "AdminResetUserPasswordRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminResetUserPasswordRequest
 -- <p>Represents the request to reset a user's password as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user whose password you wish to reset.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to reset the user's password.</p>
+-- @param _Username [UsernameType] <p>The user name of the user whose password you wish to reset.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to reset the user's password.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminResetUserPasswordRequest(Username, UserPoolId, ...)
+function M.AdminResetUserPasswordRequest(_Username, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminResetUserPasswordRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminResetUserPasswordRequest(t)
+	asserts.AssertAdminResetUserPasswordRequest(t)
 	return t
 end
 
-local GetUserResponse_keys = { "Username" = true, "MFAOptions" = true, "UserAttributes" = true, nil }
+keys.GetUserResponse = { ["Username"] = true, ["MFAOptions"] = true, ["UserAttributes"] = true, nil }
 
-function M.AssertGetUserResponse(struct)
+function asserts.AssertGetUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUserResponse to be of type 'table'")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["UserAttributes"], "Expected key UserAttributes to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["MFAOptions"] then M.AssertMFAOptionListType(struct["MFAOptions"]) end
-	if struct["UserAttributes"] then M.AssertAttributeListType(struct["UserAttributes"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["MFAOptions"] then asserts.AssertMFAOptionListType(struct["MFAOptions"]) end
+	if struct["UserAttributes"] then asserts.AssertAttributeListType(struct["UserAttributes"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUserResponse_keys[k], "GetUserResponse contains unknown key " .. tostring(k))
+		assert(keys.GetUserResponse[k], "GetUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUserResponse
 -- <p>Represents the response from the server from the request to get information about the user.</p>
--- @param Username [UsernameType] <p>The user name of the user you wish to retrieve from the get user request.</p>
--- @param MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
--- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param _Username [UsernameType] <p>The user name of the user you wish to retrieve from the get user request.</p>
+-- @param _MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
+-- @param _UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
 -- Required parameter: Username
 -- Required parameter: UserAttributes
-function M.GetUserResponse(Username, MFAOptions, UserAttributes, ...)
+function M.GetUserResponse(_Username, _MFAOptions, _UserAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUserResponse")
 	local t = { 
-		["Username"] = Username,
-		["MFAOptions"] = MFAOptions,
-		["UserAttributes"] = UserAttributes,
+		["Username"] = _Username,
+		["MFAOptions"] = _MFAOptions,
+		["UserAttributes"] = _UserAttributes,
 	}
-	M.AssertGetUserResponse(t)
+	asserts.AssertGetUserResponse(t)
 	return t
 end
 
-local ListIdentityProvidersResponse_keys = { "NextToken" = true, "Providers" = true, nil }
+keys.ListIdentityProvidersResponse = { ["NextToken"] = true, ["Providers"] = true, nil }
 
-function M.AssertListIdentityProvidersResponse(struct)
+function asserts.AssertListIdentityProvidersResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIdentityProvidersResponse to be of type 'table'")
 	assert(struct["Providers"], "Expected key Providers to exist in table")
-	if struct["NextToken"] then M.AssertPaginationKeyType(struct["NextToken"]) end
-	if struct["Providers"] then M.AssertProvidersListType(struct["Providers"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKeyType(struct["NextToken"]) end
+	if struct["Providers"] then asserts.AssertProvidersListType(struct["Providers"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIdentityProvidersResponse_keys[k], "ListIdentityProvidersResponse contains unknown key " .. tostring(k))
+		assert(keys.ListIdentityProvidersResponse[k], "ListIdentityProvidersResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIdentityProvidersResponse
 --  
--- @param NextToken [PaginationKeyType] <p>A pagination token.</p>
--- @param Providers [ProvidersListType] <p>A list of identity provider objects.</p>
+-- @param _NextToken [PaginationKeyType] <p>A pagination token.</p>
+-- @param _Providers [ProvidersListType] <p>A list of identity provider objects.</p>
 -- Required parameter: Providers
-function M.ListIdentityProvidersResponse(NextToken, Providers, ...)
+function M.ListIdentityProvidersResponse(_NextToken, _Providers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityProvidersResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Providers"] = Providers,
+		["NextToken"] = _NextToken,
+		["Providers"] = _Providers,
 	}
-	M.AssertListIdentityProvidersResponse(t)
+	asserts.AssertListIdentityProvidersResponse(t)
 	return t
 end
 
-local InitiateAuthRequest_keys = { "ClientMetadata" = true, "AuthParameters" = true, "ClientId" = true, "AuthFlow" = true, nil }
+keys.InitiateAuthRequest = { ["ClientMetadata"] = true, ["AuthParameters"] = true, ["ClientId"] = true, ["AuthFlow"] = true, nil }
 
-function M.AssertInitiateAuthRequest(struct)
+function asserts.AssertInitiateAuthRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InitiateAuthRequest to be of type 'table'")
 	assert(struct["AuthFlow"], "Expected key AuthFlow to exist in table")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
-	if struct["ClientMetadata"] then M.AssertClientMetadataType(struct["ClientMetadata"]) end
-	if struct["AuthParameters"] then M.AssertAuthParametersType(struct["AuthParameters"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["AuthFlow"] then M.AssertAuthFlowType(struct["AuthFlow"]) end
+	if struct["ClientMetadata"] then asserts.AssertClientMetadataType(struct["ClientMetadata"]) end
+	if struct["AuthParameters"] then asserts.AssertAuthParametersType(struct["AuthParameters"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["AuthFlow"] then asserts.AssertAuthFlowType(struct["AuthFlow"]) end
 	for k,_ in pairs(struct) do
-		assert(InitiateAuthRequest_keys[k], "InitiateAuthRequest contains unknown key " .. tostring(k))
+		assert(keys.InitiateAuthRequest[k], "InitiateAuthRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InitiateAuthRequest
 -- <p>Initiates the authentication request.</p>
--- @param ClientMetadata [ClientMetadataType] <p>This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.</p>
--- @param AuthParameters [AuthParametersType] <p>The authentication parameters. These are inputs corresponding to the <code>AuthFlow</code> that you are invoking. The required values depend on the value of <code>AuthFlow</code>:</p> <ul> <li> <p>For <code>USER_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SRPA</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>REFRESH_TOKEN_AUTH/REFRESH_TOKEN</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>REFRESH_TOKEN</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>CUSTOM_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>DEVICE_KEY</code> </p> </li> </ul>
--- @param ClientId [ClientIdType] <p>The app client ID.</p>
--- @param AuthFlow [AuthFlowType] <p>The authentication flow for this call to execute. The API action will depend on this value. For example: </p> <ul> <li> <p> <code>REFRESH_TOKEN_AUTH</code> will take in a valid refresh token and return new tokens.</p> </li> <li> <p> <code>USER_SRP_AUTH</code> will take in USERNAME and SRPA and return the SRP variables to be used for next challenge execution.</p> </li> </ul> <p>Valid values include:</p> <ul> <li> <p> <code>USER_SRP_AUTH</code>: Authentication flow for the Secure Remote Password (SRP) protocol.</p> </li> <li> <p> <code>REFRESH_TOKEN_AUTH</code>/<code>REFRESH_TOKEN</code>: Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.</p> </li> <li> <p> <code>CUSTOM_AUTH</code>: Custom authentication flow.</p> </li> </ul> <p> <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.</p>
+-- @param _ClientMetadata [ClientMetadataType] <p>This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.</p>
+-- @param _AuthParameters [AuthParametersType] <p>The authentication parameters. These are inputs corresponding to the <code>AuthFlow</code> that you are invoking. The required values depend on the value of <code>AuthFlow</code>:</p> <ul> <li> <p>For <code>USER_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SRPA</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>REFRESH_TOKEN_AUTH/REFRESH_TOKEN</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>REFRESH_TOKEN</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>CUSTOM_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>DEVICE_KEY</code> </p> </li> </ul>
+-- @param _ClientId [ClientIdType] <p>The app client ID.</p>
+-- @param _AuthFlow [AuthFlowType] <p>The authentication flow for this call to execute. The API action will depend on this value. For example: </p> <ul> <li> <p> <code>REFRESH_TOKEN_AUTH</code> will take in a valid refresh token and return new tokens.</p> </li> <li> <p> <code>USER_SRP_AUTH</code> will take in USERNAME and SRPA and return the SRP variables to be used for next challenge execution.</p> </li> </ul> <p>Valid values include:</p> <ul> <li> <p> <code>USER_SRP_AUTH</code>: Authentication flow for the Secure Remote Password (SRP) protocol.</p> </li> <li> <p> <code>REFRESH_TOKEN_AUTH</code>/<code>REFRESH_TOKEN</code>: Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.</p> </li> <li> <p> <code>CUSTOM_AUTH</code>: Custom authentication flow.</p> </li> </ul> <p> <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.</p>
 -- Required parameter: AuthFlow
 -- Required parameter: ClientId
-function M.InitiateAuthRequest(ClientMetadata, AuthParameters, ClientId, AuthFlow, ...)
+function M.InitiateAuthRequest(_ClientMetadata, _AuthParameters, _ClientId, _AuthFlow, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateAuthRequest")
 	local t = { 
-		["ClientMetadata"] = ClientMetadata,
-		["AuthParameters"] = AuthParameters,
-		["ClientId"] = ClientId,
-		["AuthFlow"] = AuthFlow,
+		["ClientMetadata"] = _ClientMetadata,
+		["AuthParameters"] = _AuthParameters,
+		["ClientId"] = _ClientId,
+		["AuthFlow"] = _AuthFlow,
 	}
-	M.AssertInitiateAuthRequest(t)
+	asserts.AssertInitiateAuthRequest(t)
 	return t
 end
 
-local DeleteUserPoolDomainRequest_keys = { "Domain" = true, "UserPoolId" = true, nil }
+keys.DeleteUserPoolDomainRequest = { ["Domain"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertDeleteUserPoolDomainRequest(struct)
+function asserts.AssertDeleteUserPoolDomainRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserPoolDomainRequest to be of type 'table'")
 	assert(struct["Domain"], "Expected key Domain to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["Domain"] then M.AssertDomainType(struct["Domain"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Domain"] then asserts.AssertDomainType(struct["Domain"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUserPoolDomainRequest_keys[k], "DeleteUserPoolDomainRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserPoolDomainRequest[k], "DeleteUserPoolDomainRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUserPoolDomainRequest
 --  
--- @param Domain [DomainType] <p>The domain string.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _Domain [DomainType] <p>The domain string.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: Domain
 -- Required parameter: UserPoolId
-function M.DeleteUserPoolDomainRequest(Domain, UserPoolId, ...)
+function M.DeleteUserPoolDomainRequest(_Domain, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserPoolDomainRequest")
 	local t = { 
-		["Domain"] = Domain,
-		["UserPoolId"] = UserPoolId,
+		["Domain"] = _Domain,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertDeleteUserPoolDomainRequest(t)
+	asserts.AssertDeleteUserPoolDomainRequest(t)
 	return t
 end
 
-local GetIdentityProviderByIdentifierRequest_keys = { "IdpIdentifier" = true, "UserPoolId" = true, nil }
+keys.GetIdentityProviderByIdentifierRequest = { ["IdpIdentifier"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertGetIdentityProviderByIdentifierRequest(struct)
+function asserts.AssertGetIdentityProviderByIdentifierRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIdentityProviderByIdentifierRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["IdpIdentifier"], "Expected key IdpIdentifier to exist in table")
-	if struct["IdpIdentifier"] then M.AssertIdpIdentifierType(struct["IdpIdentifier"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["IdpIdentifier"] then asserts.AssertIdpIdentifierType(struct["IdpIdentifier"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIdentityProviderByIdentifierRequest_keys[k], "GetIdentityProviderByIdentifierRequest contains unknown key " .. tostring(k))
+		assert(keys.GetIdentityProviderByIdentifierRequest[k], "GetIdentityProviderByIdentifierRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIdentityProviderByIdentifierRequest
 --  
--- @param IdpIdentifier [IdpIdentifierType] <p>The identity provider ID.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _IdpIdentifier [IdpIdentifierType] <p>The identity provider ID.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: IdpIdentifier
-function M.GetIdentityProviderByIdentifierRequest(IdpIdentifier, UserPoolId, ...)
+function M.GetIdentityProviderByIdentifierRequest(_IdpIdentifier, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityProviderByIdentifierRequest")
 	local t = { 
-		["IdpIdentifier"] = IdpIdentifier,
-		["UserPoolId"] = UserPoolId,
+		["IdpIdentifier"] = _IdpIdentifier,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertGetIdentityProviderByIdentifierRequest(t)
+	asserts.AssertGetIdentityProviderByIdentifierRequest(t)
 	return t
 end
 
-local CreateUserPoolDomainResponse_keys = { nil }
+keys.CreateUserPoolDomainResponse = { nil }
 
-function M.AssertCreateUserPoolDomainResponse(struct)
+function asserts.AssertCreateUserPoolDomainResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserPoolDomainResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CreateUserPoolDomainResponse_keys[k], "CreateUserPoolDomainResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateUserPoolDomainResponse[k], "CreateUserPoolDomainResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -251,536 +254,536 @@ function M.CreateUserPoolDomainResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolDomainResponse")
 	local t = { 
 	}
-	M.AssertCreateUserPoolDomainResponse(t)
+	asserts.AssertCreateUserPoolDomainResponse(t)
 	return t
 end
 
-local CreateUserImportJobResponse_keys = { "UserImportJob" = true, nil }
+keys.CreateUserImportJobResponse = { ["UserImportJob"] = true, nil }
 
-function M.AssertCreateUserImportJobResponse(struct)
+function asserts.AssertCreateUserImportJobResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserImportJobResponse to be of type 'table'")
-	if struct["UserImportJob"] then M.AssertUserImportJobType(struct["UserImportJob"]) end
+	if struct["UserImportJob"] then asserts.AssertUserImportJobType(struct["UserImportJob"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserImportJobResponse_keys[k], "CreateUserImportJobResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateUserImportJobResponse[k], "CreateUserImportJobResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserImportJobResponse
 -- <p>Represents the response from the server to the request to create the user import job.</p>
--- @param UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
-function M.CreateUserImportJobResponse(UserImportJob, ...)
+-- @param _UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
+function M.CreateUserImportJobResponse(_UserImportJob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserImportJobResponse")
 	local t = { 
-		["UserImportJob"] = UserImportJob,
+		["UserImportJob"] = _UserImportJob,
 	}
-	M.AssertCreateUserImportJobResponse(t)
+	asserts.AssertCreateUserImportJobResponse(t)
 	return t
 end
 
-local IdentityProviderType_keys = { "UserPoolId" = true, "ProviderName" = true, "LastModifiedDate" = true, "ProviderType" = true, "ProviderDetails" = true, "IdpIdentifiers" = true, "AttributeMapping" = true, "CreationDate" = true, nil }
+keys.IdentityProviderType = { ["UserPoolId"] = true, ["ProviderName"] = true, ["LastModifiedDate"] = true, ["ProviderType"] = true, ["ProviderDetails"] = true, ["IdpIdentifiers"] = true, ["AttributeMapping"] = true, ["CreationDate"] = true, nil }
 
-function M.AssertIdentityProviderType(struct)
+function asserts.AssertIdentityProviderType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IdentityProviderType to be of type 'table'")
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["ProviderName"] then M.AssertProviderNameType(struct["ProviderName"]) end
-	if struct["LastModifiedDate"] then M.AssertDateType(struct["LastModifiedDate"]) end
-	if struct["ProviderType"] then M.AssertIdentityProviderTypeType(struct["ProviderType"]) end
-	if struct["ProviderDetails"] then M.AssertProviderDetailsType(struct["ProviderDetails"]) end
-	if struct["IdpIdentifiers"] then M.AssertIdpIdentifiersListType(struct["IdpIdentifiers"]) end
-	if struct["AttributeMapping"] then M.AssertAttributeMappingType(struct["AttributeMapping"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ProviderName"] then asserts.AssertProviderNameType(struct["ProviderName"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDateType(struct["LastModifiedDate"]) end
+	if struct["ProviderType"] then asserts.AssertIdentityProviderTypeType(struct["ProviderType"]) end
+	if struct["ProviderDetails"] then asserts.AssertProviderDetailsType(struct["ProviderDetails"]) end
+	if struct["IdpIdentifiers"] then asserts.AssertIdpIdentifiersListType(struct["IdpIdentifiers"]) end
+	if struct["AttributeMapping"] then asserts.AssertAttributeMappingType(struct["AttributeMapping"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
 	for k,_ in pairs(struct) do
-		assert(IdentityProviderType_keys[k], "IdentityProviderType contains unknown key " .. tostring(k))
+		assert(keys.IdentityProviderType[k], "IdentityProviderType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IdentityProviderType
 -- <p>A container for information about an identity provider.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
--- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
--- @param LastModifiedDate [DateType] <p>The date the identity provider was last modified.</p>
--- @param ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
--- @param ProviderDetails [ProviderDetailsType] <p>The identity provider details, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
--- @param IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
--- @param AttributeMapping [AttributeMappingType] <p>A mapping of identity provider attributes to standard and custom user pool attributes.</p>
--- @param CreationDate [DateType] <p>The date the identity provider was created.</p>
-function M.IdentityProviderType(UserPoolId, ProviderName, LastModifiedDate, ProviderType, ProviderDetails, IdpIdentifiers, AttributeMapping, CreationDate, ...)
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param _LastModifiedDate [DateType] <p>The date the identity provider was last modified.</p>
+-- @param _ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
+-- @param _ProviderDetails [ProviderDetailsType] <p>The identity provider details, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
+-- @param _IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
+-- @param _AttributeMapping [AttributeMappingType] <p>A mapping of identity provider attributes to standard and custom user pool attributes.</p>
+-- @param _CreationDate [DateType] <p>The date the identity provider was created.</p>
+function M.IdentityProviderType(_UserPoolId, _ProviderName, _LastModifiedDate, _ProviderType, _ProviderDetails, _IdpIdentifiers, _AttributeMapping, _CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityProviderType")
 	local t = { 
-		["UserPoolId"] = UserPoolId,
-		["ProviderName"] = ProviderName,
-		["LastModifiedDate"] = LastModifiedDate,
-		["ProviderType"] = ProviderType,
-		["ProviderDetails"] = ProviderDetails,
-		["IdpIdentifiers"] = IdpIdentifiers,
-		["AttributeMapping"] = AttributeMapping,
-		["CreationDate"] = CreationDate,
+		["UserPoolId"] = _UserPoolId,
+		["ProviderName"] = _ProviderName,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["ProviderType"] = _ProviderType,
+		["ProviderDetails"] = _ProviderDetails,
+		["IdpIdentifiers"] = _IdpIdentifiers,
+		["AttributeMapping"] = _AttributeMapping,
+		["CreationDate"] = _CreationDate,
 	}
-	M.AssertIdentityProviderType(t)
+	asserts.AssertIdentityProviderType(t)
 	return t
 end
 
-local ResendConfirmationCodeRequest_keys = { "Username" = true, "SecretHash" = true, "ClientId" = true, nil }
+keys.ResendConfirmationCodeRequest = { ["Username"] = true, ["SecretHash"] = true, ["ClientId"] = true, nil }
 
-function M.AssertResendConfirmationCodeRequest(struct)
+function asserts.AssertResendConfirmationCodeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResendConfirmationCodeRequest to be of type 'table'")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["SecretHash"] then M.AssertSecretHashType(struct["SecretHash"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["SecretHash"] then asserts.AssertSecretHashType(struct["SecretHash"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
 	for k,_ in pairs(struct) do
-		assert(ResendConfirmationCodeRequest_keys[k], "ResendConfirmationCodeRequest contains unknown key " .. tostring(k))
+		assert(keys.ResendConfirmationCodeRequest[k], "ResendConfirmationCodeRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResendConfirmationCodeRequest
 -- <p>Represents the request to resend the confirmation code.</p>
--- @param Username [UsernameType] <p>The user name of the user to whom you wish to resend a confirmation code.</p>
--- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _Username [UsernameType] <p>The user name of the user to whom you wish to resend a confirmation code.</p>
+-- @param _SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
-function M.ResendConfirmationCodeRequest(Username, SecretHash, ClientId, ...)
+function M.ResendConfirmationCodeRequest(_Username, _SecretHash, _ClientId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResendConfirmationCodeRequest")
 	local t = { 
-		["Username"] = Username,
-		["SecretHash"] = SecretHash,
-		["ClientId"] = ClientId,
+		["Username"] = _Username,
+		["SecretHash"] = _SecretHash,
+		["ClientId"] = _ClientId,
 	}
-	M.AssertResendConfirmationCodeRequest(t)
+	asserts.AssertResendConfirmationCodeRequest(t)
 	return t
 end
 
-local AdminGetUserRequest_keys = { "Username" = true, "UserPoolId" = true, nil }
+keys.AdminGetUserRequest = { ["Username"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminGetUserRequest(struct)
+function asserts.AssertAdminGetUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminGetUserRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminGetUserRequest_keys[k], "AdminGetUserRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminGetUserRequest[k], "AdminGetUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminGetUserRequest
 -- <p>Represents the request to get the specified user as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user you wish to retrieve.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to get information about the user.</p>
+-- @param _Username [UsernameType] <p>The user name of the user you wish to retrieve.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to get information about the user.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminGetUserRequest(Username, UserPoolId, ...)
+function M.AdminGetUserRequest(_Username, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminGetUserRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminGetUserRequest(t)
+	asserts.AssertAdminGetUserRequest(t)
 	return t
 end
 
-local UpdateUserAttributesResponse_keys = { "CodeDeliveryDetailsList" = true, nil }
+keys.UpdateUserAttributesResponse = { ["CodeDeliveryDetailsList"] = true, nil }
 
-function M.AssertUpdateUserAttributesResponse(struct)
+function asserts.AssertUpdateUserAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserAttributesResponse to be of type 'table'")
-	if struct["CodeDeliveryDetailsList"] then M.AssertCodeDeliveryDetailsListType(struct["CodeDeliveryDetailsList"]) end
+	if struct["CodeDeliveryDetailsList"] then asserts.AssertCodeDeliveryDetailsListType(struct["CodeDeliveryDetailsList"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserAttributesResponse_keys[k], "UpdateUserAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserAttributesResponse[k], "UpdateUserAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserAttributesResponse
 -- <p>Represents the response from the server for the request to update user attributes.</p>
--- @param CodeDeliveryDetailsList [CodeDeliveryDetailsListType] <p>The code delivery details list from the server for the request to update user attributes.</p>
-function M.UpdateUserAttributesResponse(CodeDeliveryDetailsList, ...)
+-- @param _CodeDeliveryDetailsList [CodeDeliveryDetailsListType] <p>The code delivery details list from the server for the request to update user attributes.</p>
+function M.UpdateUserAttributesResponse(_CodeDeliveryDetailsList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserAttributesResponse")
 	local t = { 
-		["CodeDeliveryDetailsList"] = CodeDeliveryDetailsList,
+		["CodeDeliveryDetailsList"] = _CodeDeliveryDetailsList,
 	}
-	M.AssertUpdateUserAttributesResponse(t)
+	asserts.AssertUpdateUserAttributesResponse(t)
 	return t
 end
 
-local ListUserPoolClientsRequest_keys = { "NextToken" = true, "MaxResults" = true, "UserPoolId" = true, nil }
+keys.ListUserPoolClientsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertListUserPoolClientsRequest(struct)
+function asserts.AssertListUserPoolClientsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUserPoolClientsRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertQueryLimit(struct["MaxResults"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertQueryLimit(struct["MaxResults"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUserPoolClientsRequest_keys[k], "ListUserPoolClientsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListUserPoolClientsRequest[k], "ListUserPoolClientsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUserPoolClientsRequest
 -- <p>Represents the request to list the user pool clients.</p>
--- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param MaxResults [QueryLimit] <p>The maximum number of results you want the request to return when listing the user pool clients.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to list user pool clients.</p>
+-- @param _NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _MaxResults [QueryLimit] <p>The maximum number of results you want the request to return when listing the user pool clients.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to list user pool clients.</p>
 -- Required parameter: UserPoolId
-function M.ListUserPoolClientsRequest(NextToken, MaxResults, UserPoolId, ...)
+function M.ListUserPoolClientsRequest(_NextToken, _MaxResults, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoolClientsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["UserPoolId"] = UserPoolId,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertListUserPoolClientsRequest(t)
+	asserts.AssertListUserPoolClientsRequest(t)
 	return t
 end
 
-local UserType_keys = { "Username" = true, "MFAOptions" = true, "Enabled" = true, "UserStatus" = true, "UserCreateDate" = true, "UserLastModifiedDate" = true, "Attributes" = true, nil }
+keys.UserType = { ["Username"] = true, ["MFAOptions"] = true, ["Enabled"] = true, ["UserStatus"] = true, ["UserCreateDate"] = true, ["UserLastModifiedDate"] = true, ["Attributes"] = true, nil }
 
-function M.AssertUserType(struct)
+function asserts.AssertUserType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserType to be of type 'table'")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["MFAOptions"] then M.AssertMFAOptionListType(struct["MFAOptions"]) end
-	if struct["Enabled"] then M.AssertBooleanType(struct["Enabled"]) end
-	if struct["UserStatus"] then M.AssertUserStatusType(struct["UserStatus"]) end
-	if struct["UserCreateDate"] then M.AssertDateType(struct["UserCreateDate"]) end
-	if struct["UserLastModifiedDate"] then M.AssertDateType(struct["UserLastModifiedDate"]) end
-	if struct["Attributes"] then M.AssertAttributeListType(struct["Attributes"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["MFAOptions"] then asserts.AssertMFAOptionListType(struct["MFAOptions"]) end
+	if struct["Enabled"] then asserts.AssertBooleanType(struct["Enabled"]) end
+	if struct["UserStatus"] then asserts.AssertUserStatusType(struct["UserStatus"]) end
+	if struct["UserCreateDate"] then asserts.AssertDateType(struct["UserCreateDate"]) end
+	if struct["UserLastModifiedDate"] then asserts.AssertDateType(struct["UserLastModifiedDate"]) end
+	if struct["Attributes"] then asserts.AssertAttributeListType(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(UserType_keys[k], "UserType contains unknown key " .. tostring(k))
+		assert(keys.UserType[k], "UserType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserType
 -- <p>The user type.</p>
--- @param Username [UsernameType] <p>The user name of the user you wish to describe.</p>
--- @param MFAOptions [MFAOptionListType] <p>The MFA options for the user.</p>
--- @param Enabled [BooleanType] <p>Specifies whether the user is enabled.</p>
--- @param UserStatus [UserStatusType] <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li> <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p> </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
--- @param UserCreateDate [DateType] <p>The creation date of the user.</p>
--- @param UserLastModifiedDate [DateType] <p>The last modified date of the user.</p>
--- @param Attributes [AttributeListType] <p>A container with information about the user type attributes.</p>
-function M.UserType(Username, MFAOptions, Enabled, UserStatus, UserCreateDate, UserLastModifiedDate, Attributes, ...)
+-- @param _Username [UsernameType] <p>The user name of the user you wish to describe.</p>
+-- @param _MFAOptions [MFAOptionListType] <p>The MFA options for the user.</p>
+-- @param _Enabled [BooleanType] <p>Specifies whether the user is enabled.</p>
+-- @param _UserStatus [UserStatusType] <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li> <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p> </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
+-- @param _UserCreateDate [DateType] <p>The creation date of the user.</p>
+-- @param _UserLastModifiedDate [DateType] <p>The last modified date of the user.</p>
+-- @param _Attributes [AttributeListType] <p>A container with information about the user type attributes.</p>
+function M.UserType(_Username, _MFAOptions, _Enabled, _UserStatus, _UserCreateDate, _UserLastModifiedDate, _Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserType")
 	local t = { 
-		["Username"] = Username,
-		["MFAOptions"] = MFAOptions,
-		["Enabled"] = Enabled,
-		["UserStatus"] = UserStatus,
-		["UserCreateDate"] = UserCreateDate,
-		["UserLastModifiedDate"] = UserLastModifiedDate,
-		["Attributes"] = Attributes,
+		["Username"] = _Username,
+		["MFAOptions"] = _MFAOptions,
+		["Enabled"] = _Enabled,
+		["UserStatus"] = _UserStatus,
+		["UserCreateDate"] = _UserCreateDate,
+		["UserLastModifiedDate"] = _UserLastModifiedDate,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertUserType(t)
+	asserts.AssertUserType(t)
 	return t
 end
 
-local ListUserImportJobsRequest_keys = { "PaginationToken" = true, "MaxResults" = true, "UserPoolId" = true, nil }
+keys.ListUserImportJobsRequest = { ["PaginationToken"] = true, ["MaxResults"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertListUserImportJobsRequest(struct)
+function asserts.AssertListUserImportJobsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUserImportJobsRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["MaxResults"], "Expected key MaxResults to exist in table")
-	if struct["PaginationToken"] then M.AssertPaginationKeyType(struct["PaginationToken"]) end
-	if struct["MaxResults"] then M.AssertPoolQueryLimitType(struct["MaxResults"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["PaginationToken"] then asserts.AssertPaginationKeyType(struct["PaginationToken"]) end
+	if struct["MaxResults"] then asserts.AssertPoolQueryLimitType(struct["MaxResults"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUserImportJobsRequest_keys[k], "ListUserImportJobsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListUserImportJobsRequest[k], "ListUserImportJobsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUserImportJobsRequest
 -- <p>Represents the request to list the user import jobs.</p>
--- @param PaginationToken [PaginationKeyType] <p>An identifier that was returned from the previous call to <code>ListUserImportJobs</code>, which can be used to return the next set of import jobs in the list.</p>
--- @param MaxResults [PoolQueryLimitType] <p>The maximum number of import jobs you want the request to return.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param _PaginationToken [PaginationKeyType] <p>An identifier that was returned from the previous call to <code>ListUserImportJobs</code>, which can be used to return the next set of import jobs in the list.</p>
+-- @param _MaxResults [PoolQueryLimitType] <p>The maximum number of import jobs you want the request to return.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: MaxResults
-function M.ListUserImportJobsRequest(PaginationToken, MaxResults, UserPoolId, ...)
+function M.ListUserImportJobsRequest(_PaginationToken, _MaxResults, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserImportJobsRequest")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["MaxResults"] = MaxResults,
-		["UserPoolId"] = UserPoolId,
+		["PaginationToken"] = _PaginationToken,
+		["MaxResults"] = _MaxResults,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertListUserImportJobsRequest(t)
+	asserts.AssertListUserImportJobsRequest(t)
 	return t
 end
 
-local DeleteUserPoolClientRequest_keys = { "ClientId" = true, "UserPoolId" = true, nil }
+keys.DeleteUserPoolClientRequest = { ["ClientId"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertDeleteUserPoolClientRequest(struct)
+function asserts.AssertDeleteUserPoolClientRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserPoolClientRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUserPoolClientRequest_keys[k], "DeleteUserPoolClientRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserPoolClientRequest[k], "DeleteUserPoolClientRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUserPoolClientRequest
 -- <p>Represents the request to delete a user pool client.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete the client.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete the client.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
-function M.DeleteUserPoolClientRequest(ClientId, UserPoolId, ...)
+function M.DeleteUserPoolClientRequest(_ClientId, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserPoolClientRequest")
 	local t = { 
-		["ClientId"] = ClientId,
-		["UserPoolId"] = UserPoolId,
+		["ClientId"] = _ClientId,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertDeleteUserPoolClientRequest(t)
+	asserts.AssertDeleteUserPoolClientRequest(t)
 	return t
 end
 
-local ListDevicesRequest_keys = { "PaginationToken" = true, "Limit" = true, "AccessToken" = true, nil }
+keys.ListDevicesRequest = { ["PaginationToken"] = true, ["Limit"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertListDevicesRequest(struct)
+function asserts.AssertListDevicesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDevicesRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
-	if struct["PaginationToken"] then M.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
-	if struct["Limit"] then M.AssertQueryLimitType(struct["Limit"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["PaginationToken"] then asserts.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
+	if struct["Limit"] then asserts.AssertQueryLimitType(struct["Limit"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDevicesRequest_keys[k], "ListDevicesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDevicesRequest[k], "ListDevicesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDevicesRequest
 -- <p>Represents the request to list the devices.</p>
--- @param PaginationToken [SearchPaginationTokenType] <p>The pagination token for the list request.</p>
--- @param Limit [QueryLimitType] <p>The limit of the device request.</p>
--- @param AccessToken [TokenModelType] <p>The access tokens for the request to list devices.</p>
+-- @param _PaginationToken [SearchPaginationTokenType] <p>The pagination token for the list request.</p>
+-- @param _Limit [QueryLimitType] <p>The limit of the device request.</p>
+-- @param _AccessToken [TokenModelType] <p>The access tokens for the request to list devices.</p>
 -- Required parameter: AccessToken
-function M.ListDevicesRequest(PaginationToken, Limit, AccessToken, ...)
+function M.ListDevicesRequest(_PaginationToken, _Limit, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDevicesRequest")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["Limit"] = Limit,
-		["AccessToken"] = AccessToken,
+		["PaginationToken"] = _PaginationToken,
+		["Limit"] = _Limit,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertListDevicesRequest(t)
+	asserts.AssertListDevicesRequest(t)
 	return t
 end
 
-local UserPoolClientType_keys = { "ClientSecret" = true, "CallbackURLs" = true, "AllowedOAuthScopes" = true, "UserPoolId" = true, "AllowedOAuthFlowsUserPoolClient" = true, "LastModifiedDate" = true, "ClientId" = true, "DefaultRedirectURI" = true, "AllowedOAuthFlows" = true, "ExplicitAuthFlows" = true, "LogoutURLs" = true, "WriteAttributes" = true, "SupportedIdentityProviders" = true, "ReadAttributes" = true, "RefreshTokenValidity" = true, "CreationDate" = true, "ClientName" = true, nil }
+keys.UserPoolClientType = { ["ClientSecret"] = true, ["CallbackURLs"] = true, ["AllowedOAuthScopes"] = true, ["UserPoolId"] = true, ["AllowedOAuthFlowsUserPoolClient"] = true, ["LastModifiedDate"] = true, ["ClientId"] = true, ["DefaultRedirectURI"] = true, ["AllowedOAuthFlows"] = true, ["ExplicitAuthFlows"] = true, ["LogoutURLs"] = true, ["WriteAttributes"] = true, ["SupportedIdentityProviders"] = true, ["ReadAttributes"] = true, ["RefreshTokenValidity"] = true, ["CreationDate"] = true, ["ClientName"] = true, nil }
 
-function M.AssertUserPoolClientType(struct)
+function asserts.AssertUserPoolClientType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserPoolClientType to be of type 'table'")
-	if struct["ClientSecret"] then M.AssertClientSecretType(struct["ClientSecret"]) end
-	if struct["CallbackURLs"] then M.AssertCallbackURLsListType(struct["CallbackURLs"]) end
-	if struct["AllowedOAuthScopes"] then M.AssertScopeListType(struct["AllowedOAuthScopes"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["AllowedOAuthFlowsUserPoolClient"] then M.AssertBooleanType(struct["AllowedOAuthFlowsUserPoolClient"]) end
-	if struct["LastModifiedDate"] then M.AssertDateType(struct["LastModifiedDate"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["DefaultRedirectURI"] then M.AssertRedirectUrlType(struct["DefaultRedirectURI"]) end
-	if struct["AllowedOAuthFlows"] then M.AssertOAuthFlowsType(struct["AllowedOAuthFlows"]) end
-	if struct["ExplicitAuthFlows"] then M.AssertExplicitAuthFlowsListType(struct["ExplicitAuthFlows"]) end
-	if struct["LogoutURLs"] then M.AssertLogoutURLsListType(struct["LogoutURLs"]) end
-	if struct["WriteAttributes"] then M.AssertClientPermissionListType(struct["WriteAttributes"]) end
-	if struct["SupportedIdentityProviders"] then M.AssertSupportedIdentityProvidersListType(struct["SupportedIdentityProviders"]) end
-	if struct["ReadAttributes"] then M.AssertClientPermissionListType(struct["ReadAttributes"]) end
-	if struct["RefreshTokenValidity"] then M.AssertRefreshTokenValidityType(struct["RefreshTokenValidity"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
-	if struct["ClientName"] then M.AssertClientNameType(struct["ClientName"]) end
+	if struct["ClientSecret"] then asserts.AssertClientSecretType(struct["ClientSecret"]) end
+	if struct["CallbackURLs"] then asserts.AssertCallbackURLsListType(struct["CallbackURLs"]) end
+	if struct["AllowedOAuthScopes"] then asserts.AssertScopeListType(struct["AllowedOAuthScopes"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["AllowedOAuthFlowsUserPoolClient"] then asserts.AssertBooleanType(struct["AllowedOAuthFlowsUserPoolClient"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDateType(struct["LastModifiedDate"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["DefaultRedirectURI"] then asserts.AssertRedirectUrlType(struct["DefaultRedirectURI"]) end
+	if struct["AllowedOAuthFlows"] then asserts.AssertOAuthFlowsType(struct["AllowedOAuthFlows"]) end
+	if struct["ExplicitAuthFlows"] then asserts.AssertExplicitAuthFlowsListType(struct["ExplicitAuthFlows"]) end
+	if struct["LogoutURLs"] then asserts.AssertLogoutURLsListType(struct["LogoutURLs"]) end
+	if struct["WriteAttributes"] then asserts.AssertClientPermissionListType(struct["WriteAttributes"]) end
+	if struct["SupportedIdentityProviders"] then asserts.AssertSupportedIdentityProvidersListType(struct["SupportedIdentityProviders"]) end
+	if struct["ReadAttributes"] then asserts.AssertClientPermissionListType(struct["ReadAttributes"]) end
+	if struct["RefreshTokenValidity"] then asserts.AssertRefreshTokenValidityType(struct["RefreshTokenValidity"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
+	if struct["ClientName"] then asserts.AssertClientNameType(struct["ClientName"]) end
 	for k,_ in pairs(struct) do
-		assert(UserPoolClientType_keys[k], "UserPoolClientType contains unknown key " .. tostring(k))
+		assert(keys.UserPoolClientType[k], "UserPoolClientType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserPoolClientType
 -- <p>A user pool of the client type.</p>
--- @param ClientSecret [ClientSecretType] <p>The client secret from the user pool request of the client type.</p>
--- @param CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
--- @param AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool client.</p>
--- @param AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
--- @param LastModifiedDate [DateType] <p>The date the user pool client was last modified.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
--- @param DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
--- @param AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
--- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>The explicit authentication flows.</p>
--- @param LogoutURLs [LogoutURLsListType] <p>A list ofallowed logout URLs for the identity providers.</p>
--- @param WriteAttributes [ClientPermissionListType] <p>The writeable attributes.</p>
--- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
--- @param ReadAttributes [ClientPermissionListType] <p>The Read-only attributes.</p>
--- @param RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
--- @param CreationDate [DateType] <p>The date the user pool client was created.</p>
--- @param ClientName [ClientNameType] <p>The client name from the user pool request of the client type.</p>
-function M.UserPoolClientType(ClientSecret, CallbackURLs, AllowedOAuthScopes, UserPoolId, AllowedOAuthFlowsUserPoolClient, LastModifiedDate, ClientId, DefaultRedirectURI, AllowedOAuthFlows, ExplicitAuthFlows, LogoutURLs, WriteAttributes, SupportedIdentityProviders, ReadAttributes, RefreshTokenValidity, CreationDate, ClientName, ...)
+-- @param _ClientSecret [ClientSecretType] <p>The client secret from the user pool request of the client type.</p>
+-- @param _CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
+-- @param _AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool client.</p>
+-- @param _AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
+-- @param _LastModifiedDate [DateType] <p>The date the user pool client was last modified.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+-- @param _AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
+-- @param _ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>The explicit authentication flows.</p>
+-- @param _LogoutURLs [LogoutURLsListType] <p>A list ofallowed logout URLs for the identity providers.</p>
+-- @param _WriteAttributes [ClientPermissionListType] <p>The writeable attributes.</p>
+-- @param _SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
+-- @param _ReadAttributes [ClientPermissionListType] <p>The Read-only attributes.</p>
+-- @param _RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
+-- @param _CreationDate [DateType] <p>The date the user pool client was created.</p>
+-- @param _ClientName [ClientNameType] <p>The client name from the user pool request of the client type.</p>
+function M.UserPoolClientType(_ClientSecret, _CallbackURLs, _AllowedOAuthScopes, _UserPoolId, _AllowedOAuthFlowsUserPoolClient, _LastModifiedDate, _ClientId, _DefaultRedirectURI, _AllowedOAuthFlows, _ExplicitAuthFlows, _LogoutURLs, _WriteAttributes, _SupportedIdentityProviders, _ReadAttributes, _RefreshTokenValidity, _CreationDate, _ClientName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolClientType")
 	local t = { 
-		["ClientSecret"] = ClientSecret,
-		["CallbackURLs"] = CallbackURLs,
-		["AllowedOAuthScopes"] = AllowedOAuthScopes,
-		["UserPoolId"] = UserPoolId,
-		["AllowedOAuthFlowsUserPoolClient"] = AllowedOAuthFlowsUserPoolClient,
-		["LastModifiedDate"] = LastModifiedDate,
-		["ClientId"] = ClientId,
-		["DefaultRedirectURI"] = DefaultRedirectURI,
-		["AllowedOAuthFlows"] = AllowedOAuthFlows,
-		["ExplicitAuthFlows"] = ExplicitAuthFlows,
-		["LogoutURLs"] = LogoutURLs,
-		["WriteAttributes"] = WriteAttributes,
-		["SupportedIdentityProviders"] = SupportedIdentityProviders,
-		["ReadAttributes"] = ReadAttributes,
-		["RefreshTokenValidity"] = RefreshTokenValidity,
-		["CreationDate"] = CreationDate,
-		["ClientName"] = ClientName,
+		["ClientSecret"] = _ClientSecret,
+		["CallbackURLs"] = _CallbackURLs,
+		["AllowedOAuthScopes"] = _AllowedOAuthScopes,
+		["UserPoolId"] = _UserPoolId,
+		["AllowedOAuthFlowsUserPoolClient"] = _AllowedOAuthFlowsUserPoolClient,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["ClientId"] = _ClientId,
+		["DefaultRedirectURI"] = _DefaultRedirectURI,
+		["AllowedOAuthFlows"] = _AllowedOAuthFlows,
+		["ExplicitAuthFlows"] = _ExplicitAuthFlows,
+		["LogoutURLs"] = _LogoutURLs,
+		["WriteAttributes"] = _WriteAttributes,
+		["SupportedIdentityProviders"] = _SupportedIdentityProviders,
+		["ReadAttributes"] = _ReadAttributes,
+		["RefreshTokenValidity"] = _RefreshTokenValidity,
+		["CreationDate"] = _CreationDate,
+		["ClientName"] = _ClientName,
 	}
-	M.AssertUserPoolClientType(t)
+	asserts.AssertUserPoolClientType(t)
 	return t
 end
 
-local AdminDeleteUserAttributesRequest_keys = { "Username" = true, "UserAttributeNames" = true, "UserPoolId" = true, nil }
+keys.AdminDeleteUserAttributesRequest = { ["Username"] = true, ["UserAttributeNames"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminDeleteUserAttributesRequest(struct)
+function asserts.AssertAdminDeleteUserAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminDeleteUserAttributesRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["UserAttributeNames"], "Expected key UserAttributeNames to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserAttributeNames"] then M.AssertAttributeNameListType(struct["UserAttributeNames"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserAttributeNames"] then asserts.AssertAttributeNameListType(struct["UserAttributeNames"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminDeleteUserAttributesRequest_keys[k], "AdminDeleteUserAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminDeleteUserAttributesRequest[k], "AdminDeleteUserAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminDeleteUserAttributesRequest
 -- <p>Represents the request to delete user attributes as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user from which you would like to delete attributes.</p>
--- @param UserAttributeNames [AttributeNameListType] <p>An array of strings representing the user attribute names you wish to delete.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete user attributes.</p>
+-- @param _Username [UsernameType] <p>The user name of the user from which you would like to delete attributes.</p>
+-- @param _UserAttributeNames [AttributeNameListType] <p>An array of strings representing the user attribute names you wish to delete.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete user attributes.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: UserAttributeNames
-function M.AdminDeleteUserAttributesRequest(Username, UserAttributeNames, UserPoolId, ...)
+function M.AdminDeleteUserAttributesRequest(_Username, _UserAttributeNames, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminDeleteUserAttributesRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserAttributeNames"] = UserAttributeNames,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserAttributeNames"] = _UserAttributeNames,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminDeleteUserAttributesRequest(t)
+	asserts.AssertAdminDeleteUserAttributesRequest(t)
 	return t
 end
 
-local TooManyFailedAttemptsException_keys = { "message" = true, nil }
+keys.TooManyFailedAttemptsException = { ["message"] = true, nil }
 
-function M.AssertTooManyFailedAttemptsException(struct)
+function asserts.AssertTooManyFailedAttemptsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyFailedAttemptsException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TooManyFailedAttemptsException_keys[k], "TooManyFailedAttemptsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyFailedAttemptsException[k], "TooManyFailedAttemptsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TooManyFailedAttemptsException
 -- <p>This exception is thrown when the user has made too many failed attempts for a given action (e.g., sign in).</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a too many failed attempts exception.</p>
-function M.TooManyFailedAttemptsException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service returns a too many failed attempts exception.</p>
+function M.TooManyFailedAttemptsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyFailedAttemptsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTooManyFailedAttemptsException(t)
+	asserts.AssertTooManyFailedAttemptsException(t)
 	return t
 end
 
-local AdminCreateUserRequest_keys = { "Username" = true, "MessageAction" = true, "UserPoolId" = true, "ValidationData" = true, "UserAttributes" = true, "ForceAliasCreation" = true, "TemporaryPassword" = true, "DesiredDeliveryMediums" = true, nil }
+keys.AdminCreateUserRequest = { ["Username"] = true, ["MessageAction"] = true, ["UserPoolId"] = true, ["ValidationData"] = true, ["UserAttributes"] = true, ["ForceAliasCreation"] = true, ["TemporaryPassword"] = true, ["DesiredDeliveryMediums"] = true, nil }
 
-function M.AssertAdminCreateUserRequest(struct)
+function asserts.AssertAdminCreateUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminCreateUserRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["MessageAction"] then M.AssertMessageActionType(struct["MessageAction"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["ValidationData"] then M.AssertAttributeListType(struct["ValidationData"]) end
-	if struct["UserAttributes"] then M.AssertAttributeListType(struct["UserAttributes"]) end
-	if struct["ForceAliasCreation"] then M.AssertForceAliasCreation(struct["ForceAliasCreation"]) end
-	if struct["TemporaryPassword"] then M.AssertPasswordType(struct["TemporaryPassword"]) end
-	if struct["DesiredDeliveryMediums"] then M.AssertDeliveryMediumListType(struct["DesiredDeliveryMediums"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["MessageAction"] then asserts.AssertMessageActionType(struct["MessageAction"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ValidationData"] then asserts.AssertAttributeListType(struct["ValidationData"]) end
+	if struct["UserAttributes"] then asserts.AssertAttributeListType(struct["UserAttributes"]) end
+	if struct["ForceAliasCreation"] then asserts.AssertForceAliasCreation(struct["ForceAliasCreation"]) end
+	if struct["TemporaryPassword"] then asserts.AssertPasswordType(struct["TemporaryPassword"]) end
+	if struct["DesiredDeliveryMediums"] then asserts.AssertDeliveryMediumListType(struct["DesiredDeliveryMediums"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminCreateUserRequest_keys[k], "AdminCreateUserRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminCreateUserRequest[k], "AdminCreateUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminCreateUserRequest
 -- <p>Represents the request to create a user in the specified user pool.</p>
--- @param Username [UsernameType] <p>The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.</p>
--- @param MessageAction [MessageActionType] <p>Set to <code>"RESEND"</code> to resend the invitation message to a user that already exists and reset the expiration limit on the user's account. Set to <code>"SUPPRESS"</code> to suppress sending the message. Only one value can be specified.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where the user will be created.</p>
--- @param ValidationData [AttributeListType] <p>The user's validation data. This is an array of name-value pairs that contain user attributes and attribute values that you can use for custom validation, such as restricting the types of user accounts that can be registered. For example, you might choose to allow or disallow user sign-up based on the user's domain.</p> <p>To configure custom validation, you must create a Pre Sign-up Lambda trigger for the user pool as described in the Amazon Cognito Developer Guide. The Lambda trigger receives the validation data and uses it in the validation process.</p> <p>The user's validation data is not persisted.</p>
--- @param UserAttributes [AttributeListType] <p>An array of name-value pairs that contain user attributes and attribute values to be set for the user to be created. You can create a user without specifying any attributes other than <code>Username</code>. However, any attributes that you specify as required (in <a href="API_CreateUserPool.html">CreateUserPool</a> or in the <b>Attributes</b> tab of the console) must be supplied either by you (in your call to <code>AdminCreateUser</code>) or by the user (when he or she signs up in response to your welcome message).</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p> <p>To send a message inviting the user to sign up, you must specify the user's email address or phone number. This can be done in your call to AdminCreateUser or in the <b>Users</b> tab of the Amazon Cognito console for managing your user pools.</p> <p>In your call to <code>AdminCreateUser</code>, you can set the <code>email_verified</code> attribute to <code>True</code>, and you can set the <code>phone_number_verified</code> attribute to <code>True</code>. (You can also do this by calling <a href="API_AdminUpdateUserAttributes.html">AdminUpdateUserAttributes</a>.)</p> <ul> <li> <p> <b>email</b>: The email address of the user to whom the message that contains the code and username will be sent. Required if the <code>email_verified</code> attribute is set to <code>True</code>, or if <code>"EMAIL"</code> is specified in the <code>DesiredDeliveryMediums</code> parameter.</p> </li> <li> <p> <b>phone_number</b>: The phone number of the user to whom the message that contains the code and username will be sent. Required if the <code>phone_number_verified</code> attribute is set to <code>True</code>, or if <code>"SMS"</code> is specified in the <code>DesiredDeliveryMediums</code> parameter.</p> </li> </ul>
--- @param ForceAliasCreation [ForceAliasCreation] <p>This parameter is only used if the <code>phone_number_verified</code> or <code>email_verified</code> attribute is set to <code>True</code>. Otherwise, it is ignored.</p> <p>If this parameter is set to <code>True</code> and the phone number or email address specified in the UserAttributes parameter already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user. The previous user will no longer be able to log in using that alias.</p> <p>If this parameter is set to <code>False</code>, the API throws an <code>AliasExistsException</code> error if the alias already exists. The default value is <code>False</code>.</p>
--- @param TemporaryPassword [PasswordType] <p>The user's temporary password. This password must conform to the password policy that you specified when you created the user pool.</p> <p>The temporary password is valid only once. To complete the Admin Create User flow, the user must enter the temporary password in the sign-in page along with a new password to be used in all future sign-ins.</p> <p>This parameter is not required. If you do not specify a value, Amazon Cognito generates one for you.</p> <p>The temporary password can only be used until the user account expiration limit that you specified when you created the user pool. To reset the account after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the <code>MessageAction</code> parameter.</p>
--- @param DesiredDeliveryMediums [DeliveryMediumListType] <p>Specify <code>"EMAIL"</code> if email will be used to send the welcome message. Specify <code>"SMS"</code> if the phone number will be used. The default value is <code>"SMS"</code>. More than one value can be specified.</p>
+-- @param _Username [UsernameType] <p>The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.</p>
+-- @param _MessageAction [MessageActionType] <p>Set to <code>"RESEND"</code> to resend the invitation message to a user that already exists and reset the expiration limit on the user's account. Set to <code>"SUPPRESS"</code> to suppress sending the message. Only one value can be specified.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where the user will be created.</p>
+-- @param _ValidationData [AttributeListType] <p>The user's validation data. This is an array of name-value pairs that contain user attributes and attribute values that you can use for custom validation, such as restricting the types of user accounts that can be registered. For example, you might choose to allow or disallow user sign-up based on the user's domain.</p> <p>To configure custom validation, you must create a Pre Sign-up Lambda trigger for the user pool as described in the Amazon Cognito Developer Guide. The Lambda trigger receives the validation data and uses it in the validation process.</p> <p>The user's validation data is not persisted.</p>
+-- @param _UserAttributes [AttributeListType] <p>An array of name-value pairs that contain user attributes and attribute values to be set for the user to be created. You can create a user without specifying any attributes other than <code>Username</code>. However, any attributes that you specify as required (in <a href="API_CreateUserPool.html">CreateUserPool</a> or in the <b>Attributes</b> tab of the console) must be supplied either by you (in your call to <code>AdminCreateUser</code>) or by the user (when he or she signs up in response to your welcome message).</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p> <p>To send a message inviting the user to sign up, you must specify the user's email address or phone number. This can be done in your call to AdminCreateUser or in the <b>Users</b> tab of the Amazon Cognito console for managing your user pools.</p> <p>In your call to <code>AdminCreateUser</code>, you can set the <code>email_verified</code> attribute to <code>True</code>, and you can set the <code>phone_number_verified</code> attribute to <code>True</code>. (You can also do this by calling <a href="API_AdminUpdateUserAttributes.html">AdminUpdateUserAttributes</a>.)</p> <ul> <li> <p> <b>email</b>: The email address of the user to whom the message that contains the code and username will be sent. Required if the <code>email_verified</code> attribute is set to <code>True</code>, or if <code>"EMAIL"</code> is specified in the <code>DesiredDeliveryMediums</code> parameter.</p> </li> <li> <p> <b>phone_number</b>: The phone number of the user to whom the message that contains the code and username will be sent. Required if the <code>phone_number_verified</code> attribute is set to <code>True</code>, or if <code>"SMS"</code> is specified in the <code>DesiredDeliveryMediums</code> parameter.</p> </li> </ul>
+-- @param _ForceAliasCreation [ForceAliasCreation] <p>This parameter is only used if the <code>phone_number_verified</code> or <code>email_verified</code> attribute is set to <code>True</code>. Otherwise, it is ignored.</p> <p>If this parameter is set to <code>True</code> and the phone number or email address specified in the UserAttributes parameter already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user. The previous user will no longer be able to log in using that alias.</p> <p>If this parameter is set to <code>False</code>, the API throws an <code>AliasExistsException</code> error if the alias already exists. The default value is <code>False</code>.</p>
+-- @param _TemporaryPassword [PasswordType] <p>The user's temporary password. This password must conform to the password policy that you specified when you created the user pool.</p> <p>The temporary password is valid only once. To complete the Admin Create User flow, the user must enter the temporary password in the sign-in page along with a new password to be used in all future sign-ins.</p> <p>This parameter is not required. If you do not specify a value, Amazon Cognito generates one for you.</p> <p>The temporary password can only be used until the user account expiration limit that you specified when you created the user pool. To reset the account after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the <code>MessageAction</code> parameter.</p>
+-- @param _DesiredDeliveryMediums [DeliveryMediumListType] <p>Specify <code>"EMAIL"</code> if email will be used to send the welcome message. Specify <code>"SMS"</code> if the phone number will be used. The default value is <code>"SMS"</code>. More than one value can be specified.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminCreateUserRequest(Username, MessageAction, UserPoolId, ValidationData, UserAttributes, ForceAliasCreation, TemporaryPassword, DesiredDeliveryMediums, ...)
+function M.AdminCreateUserRequest(_Username, _MessageAction, _UserPoolId, _ValidationData, _UserAttributes, _ForceAliasCreation, _TemporaryPassword, _DesiredDeliveryMediums, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminCreateUserRequest")
 	local t = { 
-		["Username"] = Username,
-		["MessageAction"] = MessageAction,
-		["UserPoolId"] = UserPoolId,
-		["ValidationData"] = ValidationData,
-		["UserAttributes"] = UserAttributes,
-		["ForceAliasCreation"] = ForceAliasCreation,
-		["TemporaryPassword"] = TemporaryPassword,
-		["DesiredDeliveryMediums"] = DesiredDeliveryMediums,
+		["Username"] = _Username,
+		["MessageAction"] = _MessageAction,
+		["UserPoolId"] = _UserPoolId,
+		["ValidationData"] = _ValidationData,
+		["UserAttributes"] = _UserAttributes,
+		["ForceAliasCreation"] = _ForceAliasCreation,
+		["TemporaryPassword"] = _TemporaryPassword,
+		["DesiredDeliveryMediums"] = _DesiredDeliveryMediums,
 	}
-	M.AssertAdminCreateUserRequest(t)
+	asserts.AssertAdminCreateUserRequest(t)
 	return t
 end
 
-local InvalidPasswordException_keys = { "message" = true, nil }
+keys.InvalidPasswordException = { ["message"] = true, nil }
 
-function M.AssertInvalidPasswordException(struct)
+function asserts.AssertInvalidPasswordException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidPasswordException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidPasswordException_keys[k], "InvalidPasswordException contains unknown key " .. tostring(k))
+		assert(keys.InvalidPasswordException[k], "InvalidPasswordException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidPasswordException
 -- <p>This exception is thrown when the Amazon Cognito service encounters an invalid password.</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid user password exception.</p>
-function M.InvalidPasswordException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid user password exception.</p>
+function M.InvalidPasswordException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPasswordException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidPasswordException(t)
+	asserts.AssertInvalidPasswordException(t)
 	return t
 end
 
-local DeleteUserPoolDomainResponse_keys = { nil }
+keys.DeleteUserPoolDomainResponse = { nil }
 
-function M.AssertDeleteUserPoolDomainResponse(struct)
+function asserts.AssertDeleteUserPoolDomainResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserPoolDomainResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteUserPoolDomainResponse_keys[k], "DeleteUserPoolDomainResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserPoolDomainResponse[k], "DeleteUserPoolDomainResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -790,1391 +793,1391 @@ function M.DeleteUserPoolDomainResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserPoolDomainResponse")
 	local t = { 
 	}
-	M.AssertDeleteUserPoolDomainResponse(t)
+	asserts.AssertDeleteUserPoolDomainResponse(t)
 	return t
 end
 
-local UpdateGroupResponse_keys = { "Group" = true, nil }
+keys.UpdateGroupResponse = { ["Group"] = true, nil }
 
-function M.AssertUpdateGroupResponse(struct)
+function asserts.AssertUpdateGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGroupResponse to be of type 'table'")
-	if struct["Group"] then M.AssertGroupType(struct["Group"]) end
+	if struct["Group"] then asserts.AssertGroupType(struct["Group"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGroupResponse_keys[k], "UpdateGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateGroupResponse[k], "UpdateGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGroupResponse
 --  
--- @param Group [GroupType] <p>The group object for the group.</p>
-function M.UpdateGroupResponse(Group, ...)
+-- @param _Group [GroupType] <p>The group object for the group.</p>
+function M.UpdateGroupResponse(_Group, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupResponse")
 	local t = { 
-		["Group"] = Group,
+		["Group"] = _Group,
 	}
-	M.AssertUpdateGroupResponse(t)
+	asserts.AssertUpdateGroupResponse(t)
 	return t
 end
 
-local CreateGroupRequest_keys = { "GroupName" = true, "RoleArn" = true, "Precedence" = true, "Description" = true, "UserPoolId" = true, nil }
+keys.CreateGroupRequest = { ["GroupName"] = true, ["RoleArn"] = true, ["Precedence"] = true, ["Description"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertCreateGroupRequest(struct)
+function asserts.AssertCreateGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupRequest to be of type 'table'")
 	assert(struct["GroupName"], "Expected key GroupName to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["GroupName"] then M.AssertGroupNameType(struct["GroupName"]) end
-	if struct["RoleArn"] then M.AssertArnType(struct["RoleArn"]) end
-	if struct["Precedence"] then M.AssertPrecedenceType(struct["Precedence"]) end
-	if struct["Description"] then M.AssertDescriptionType(struct["Description"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["GroupName"] then asserts.AssertGroupNameType(struct["GroupName"]) end
+	if struct["RoleArn"] then asserts.AssertArnType(struct["RoleArn"]) end
+	if struct["Precedence"] then asserts.AssertPrecedenceType(struct["Precedence"]) end
+	if struct["Description"] then asserts.AssertDescriptionType(struct["Description"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGroupRequest_keys[k], "CreateGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateGroupRequest[k], "CreateGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGroupRequest
 --  
--- @param GroupName [GroupNameType] <p>The name of the group. Must be unique.</p>
--- @param RoleArn [ArnType] <p>The role ARN for the group.</p>
--- @param Precedence [PrecedenceType] <p>A nonnegative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. Zero is the highest precedence value. Groups with lower <code>Precedence</code> values take precedence over groups with higher or null <code>Precedence</code> values. If a user belongs to two or more groups, it is the group with the lowest precedence value whose role ARN will be used in the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the user's tokens.</p> <p>Two groups can have the same <code>Precedence</code> value. If this happens, neither group takes precedence over the other. If two groups with the same <code>Precedence</code> have the same role ARN, that role is used in the <code>cognito:preferred_role</code> claim in tokens for users in each group. If the two groups have different role ARNs, the <code>cognito:preferred_role</code> claim is not set in users' tokens.</p> <p>The default <code>Precedence</code> value is null.</p>
--- @param Description [DescriptionType] <p>A string containing the description of the group.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _GroupName [GroupNameType] <p>The name of the group. Must be unique.</p>
+-- @param _RoleArn [ArnType] <p>The role ARN for the group.</p>
+-- @param _Precedence [PrecedenceType] <p>A nonnegative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. Zero is the highest precedence value. Groups with lower <code>Precedence</code> values take precedence over groups with higher or null <code>Precedence</code> values. If a user belongs to two or more groups, it is the group with the lowest precedence value whose role ARN will be used in the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the user's tokens.</p> <p>Two groups can have the same <code>Precedence</code> value. If this happens, neither group takes precedence over the other. If two groups with the same <code>Precedence</code> have the same role ARN, that role is used in the <code>cognito:preferred_role</code> claim in tokens for users in each group. If the two groups have different role ARNs, the <code>cognito:preferred_role</code> claim is not set in users' tokens.</p> <p>The default <code>Precedence</code> value is null.</p>
+-- @param _Description [DescriptionType] <p>A string containing the description of the group.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: GroupName
 -- Required parameter: UserPoolId
-function M.CreateGroupRequest(GroupName, RoleArn, Precedence, Description, UserPoolId, ...)
+function M.CreateGroupRequest(_GroupName, _RoleArn, _Precedence, _Description, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupRequest")
 	local t = { 
-		["GroupName"] = GroupName,
-		["RoleArn"] = RoleArn,
-		["Precedence"] = Precedence,
-		["Description"] = Description,
-		["UserPoolId"] = UserPoolId,
+		["GroupName"] = _GroupName,
+		["RoleArn"] = _RoleArn,
+		["Precedence"] = _Precedence,
+		["Description"] = _Description,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertCreateGroupRequest(t)
+	asserts.AssertCreateGroupRequest(t)
 	return t
 end
 
-local GetGroupRequest_keys = { "GroupName" = true, "UserPoolId" = true, nil }
+keys.GetGroupRequest = { ["GroupName"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertGetGroupRequest(struct)
+function asserts.AssertGetGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupRequest to be of type 'table'")
 	assert(struct["GroupName"], "Expected key GroupName to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["GroupName"] then M.AssertGroupNameType(struct["GroupName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["GroupName"] then asserts.AssertGroupNameType(struct["GroupName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupRequest_keys[k], "GetGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.GetGroupRequest[k], "GetGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupRequest
 --  
--- @param GroupName [GroupNameType] <p>The name of the group.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: GroupName
 -- Required parameter: UserPoolId
-function M.GetGroupRequest(GroupName, UserPoolId, ...)
+function M.GetGroupRequest(_GroupName, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupRequest")
 	local t = { 
-		["GroupName"] = GroupName,
-		["UserPoolId"] = UserPoolId,
+		["GroupName"] = _GroupName,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertGetGroupRequest(t)
+	asserts.AssertGetGroupRequest(t)
 	return t
 end
 
-local ListUsersResponse_keys = { "PaginationToken" = true, "Users" = true, nil }
+keys.ListUsersResponse = { ["PaginationToken"] = true, ["Users"] = true, nil }
 
-function M.AssertListUsersResponse(struct)
+function asserts.AssertListUsersResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUsersResponse to be of type 'table'")
-	if struct["PaginationToken"] then M.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
-	if struct["Users"] then M.AssertUsersListType(struct["Users"]) end
+	if struct["PaginationToken"] then asserts.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
+	if struct["Users"] then asserts.AssertUsersListType(struct["Users"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUsersResponse_keys[k], "ListUsersResponse contains unknown key " .. tostring(k))
+		assert(keys.ListUsersResponse[k], "ListUsersResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUsersResponse
 -- <p>The response from the request to list users.</p>
--- @param PaginationToken [SearchPaginationTokenType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param Users [UsersListType] <p>The users returned in the request to list users.</p>
-function M.ListUsersResponse(PaginationToken, Users, ...)
+-- @param _PaginationToken [SearchPaginationTokenType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _Users [UsersListType] <p>The users returned in the request to list users.</p>
+function M.ListUsersResponse(_PaginationToken, _Users, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersResponse")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["Users"] = Users,
+		["PaginationToken"] = _PaginationToken,
+		["Users"] = _Users,
 	}
-	M.AssertListUsersResponse(t)
+	asserts.AssertListUsersResponse(t)
 	return t
 end
 
-local NotAuthorizedException_keys = { "message" = true, nil }
+keys.NotAuthorizedException = { ["message"] = true, nil }
 
-function M.AssertNotAuthorizedException(struct)
+function asserts.AssertNotAuthorizedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotAuthorizedException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotAuthorizedException_keys[k], "NotAuthorizedException contains unknown key " .. tostring(k))
+		assert(keys.NotAuthorizedException[k], "NotAuthorizedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotAuthorizedException
 -- <p>This exception is thrown when a user is not authorized.</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a not authorized exception.</p>
-function M.NotAuthorizedException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service returns a not authorized exception.</p>
+function M.NotAuthorizedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotAuthorizedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertNotAuthorizedException(t)
+	asserts.AssertNotAuthorizedException(t)
 	return t
 end
 
-local UserPoolClientDescription_keys = { "ClientName" = true, "UserPoolId" = true, "ClientId" = true, nil }
+keys.UserPoolClientDescription = { ["ClientName"] = true, ["UserPoolId"] = true, ["ClientId"] = true, nil }
 
-function M.AssertUserPoolClientDescription(struct)
+function asserts.AssertUserPoolClientDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserPoolClientDescription to be of type 'table'")
-	if struct["ClientName"] then M.AssertClientNameType(struct["ClientName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
+	if struct["ClientName"] then asserts.AssertClientNameType(struct["ClientName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
 	for k,_ in pairs(struct) do
-		assert(UserPoolClientDescription_keys[k], "UserPoolClientDescription contains unknown key " .. tostring(k))
+		assert(keys.UserPoolClientDescription[k], "UserPoolClientDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserPoolClientDescription
 -- <p>The description of the user pool client.</p>
--- @param ClientName [ClientNameType] <p>The client name from the user pool client description.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to describe the user pool client.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
-function M.UserPoolClientDescription(ClientName, UserPoolId, ClientId, ...)
+-- @param _ClientName [ClientNameType] <p>The client name from the user pool client description.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to describe the user pool client.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+function M.UserPoolClientDescription(_ClientName, _UserPoolId, _ClientId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolClientDescription")
 	local t = { 
-		["ClientName"] = ClientName,
-		["UserPoolId"] = UserPoolId,
-		["ClientId"] = ClientId,
+		["ClientName"] = _ClientName,
+		["UserPoolId"] = _UserPoolId,
+		["ClientId"] = _ClientId,
 	}
-	M.AssertUserPoolClientDescription(t)
+	asserts.AssertUserPoolClientDescription(t)
 	return t
 end
 
-local StartUserImportJobRequest_keys = { "UserPoolId" = true, "JobId" = true, nil }
+keys.StartUserImportJobRequest = { ["UserPoolId"] = true, ["JobId"] = true, nil }
 
-function M.AssertStartUserImportJobRequest(struct)
+function asserts.AssertStartUserImportJobRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartUserImportJobRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["JobId"], "Expected key JobId to exist in table")
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["JobId"] then M.AssertUserImportJobIdType(struct["JobId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["JobId"] then asserts.AssertUserImportJobIdType(struct["JobId"]) end
 	for k,_ in pairs(struct) do
-		assert(StartUserImportJobRequest_keys[k], "StartUserImportJobRequest contains unknown key " .. tostring(k))
+		assert(keys.StartUserImportJobRequest[k], "StartUserImportJobRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartUserImportJobRequest
 -- <p>Represents the request to start the user import job.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
--- @param JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param _JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: JobId
-function M.StartUserImportJobRequest(UserPoolId, JobId, ...)
+function M.StartUserImportJobRequest(_UserPoolId, _JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartUserImportJobRequest")
 	local t = { 
-		["UserPoolId"] = UserPoolId,
-		["JobId"] = JobId,
+		["UserPoolId"] = _UserPoolId,
+		["JobId"] = _JobId,
 	}
-	M.AssertStartUserImportJobRequest(t)
+	asserts.AssertStartUserImportJobRequest(t)
 	return t
 end
 
-local StringAttributeConstraintsType_keys = { "MinLength" = true, "MaxLength" = true, nil }
+keys.StringAttributeConstraintsType = { ["MinLength"] = true, ["MaxLength"] = true, nil }
 
-function M.AssertStringAttributeConstraintsType(struct)
+function asserts.AssertStringAttributeConstraintsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StringAttributeConstraintsType to be of type 'table'")
-	if struct["MinLength"] then M.AssertStringType(struct["MinLength"]) end
-	if struct["MaxLength"] then M.AssertStringType(struct["MaxLength"]) end
+	if struct["MinLength"] then asserts.AssertStringType(struct["MinLength"]) end
+	if struct["MaxLength"] then asserts.AssertStringType(struct["MaxLength"]) end
 	for k,_ in pairs(struct) do
-		assert(StringAttributeConstraintsType_keys[k], "StringAttributeConstraintsType contains unknown key " .. tostring(k))
+		assert(keys.StringAttributeConstraintsType[k], "StringAttributeConstraintsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StringAttributeConstraintsType
 -- <p>The type of constraints associated with an attribute of the string type.</p>
--- @param MinLength [StringType] <p>The minimum length of an attribute value of the string type.</p>
--- @param MaxLength [StringType] <p>The maximum length of an attribute value of the string type.</p>
-function M.StringAttributeConstraintsType(MinLength, MaxLength, ...)
+-- @param _MinLength [StringType] <p>The minimum length of an attribute value of the string type.</p>
+-- @param _MaxLength [StringType] <p>The maximum length of an attribute value of the string type.</p>
+function M.StringAttributeConstraintsType(_MinLength, _MaxLength, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StringAttributeConstraintsType")
 	local t = { 
-		["MinLength"] = MinLength,
-		["MaxLength"] = MaxLength,
+		["MinLength"] = _MinLength,
+		["MaxLength"] = _MaxLength,
 	}
-	M.AssertStringAttributeConstraintsType(t)
+	asserts.AssertStringAttributeConstraintsType(t)
 	return t
 end
 
-local UnexpectedLambdaException_keys = { "message" = true, nil }
+keys.UnexpectedLambdaException = { ["message"] = true, nil }
 
-function M.AssertUnexpectedLambdaException(struct)
+function asserts.AssertUnexpectedLambdaException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnexpectedLambdaException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnexpectedLambdaException_keys[k], "UnexpectedLambdaException contains unknown key " .. tostring(k))
+		assert(keys.UnexpectedLambdaException[k], "UnexpectedLambdaException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnexpectedLambdaException
 -- <p>This exception is thrown when the Amazon Cognito service encounters an unexpected exception with the AWS Lambda service.</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns an unexpected AWS Lambda exception.</p>
-function M.UnexpectedLambdaException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service returns an unexpected AWS Lambda exception.</p>
+function M.UnexpectedLambdaException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnexpectedLambdaException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnexpectedLambdaException(t)
+	asserts.AssertUnexpectedLambdaException(t)
 	return t
 end
 
-local AdminListGroupsForUserResponse_keys = { "NextToken" = true, "Groups" = true, nil }
+keys.AdminListGroupsForUserResponse = { ["NextToken"] = true, ["Groups"] = true, nil }
 
-function M.AssertAdminListGroupsForUserResponse(struct)
+function asserts.AssertAdminListGroupsForUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminListGroupsForUserResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["Groups"] then M.AssertGroupListType(struct["Groups"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["Groups"] then asserts.AssertGroupListType(struct["Groups"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminListGroupsForUserResponse_keys[k], "AdminListGroupsForUserResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminListGroupsForUserResponse[k], "AdminListGroupsForUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminListGroupsForUserResponse
 --  
--- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param Groups [GroupListType] <p>The groups that the user belongs to.</p>
-function M.AdminListGroupsForUserResponse(NextToken, Groups, ...)
+-- @param _NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _Groups [GroupListType] <p>The groups that the user belongs to.</p>
+function M.AdminListGroupsForUserResponse(_NextToken, _Groups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminListGroupsForUserResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Groups"] = Groups,
+		["NextToken"] = _NextToken,
+		["Groups"] = _Groups,
 	}
-	M.AssertAdminListGroupsForUserResponse(t)
+	asserts.AssertAdminListGroupsForUserResponse(t)
 	return t
 end
 
-local UpdateUserAttributesRequest_keys = { "UserAttributes" = true, "AccessToken" = true, nil }
+keys.UpdateUserAttributesRequest = { ["UserAttributes"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertUpdateUserAttributesRequest(struct)
+function asserts.AssertUpdateUserAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserAttributesRequest to be of type 'table'")
 	assert(struct["UserAttributes"], "Expected key UserAttributes to exist in table")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
-	if struct["UserAttributes"] then M.AssertAttributeListType(struct["UserAttributes"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["UserAttributes"] then asserts.AssertAttributeListType(struct["UserAttributes"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserAttributesRequest_keys[k], "UpdateUserAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserAttributesRequest[k], "UpdateUserAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserAttributesRequest
 -- <p>Represents the request to update user attributes.</p>
--- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
--- @param AccessToken [TokenModelType] <p>The access token for the request to update user attributes.</p>
+-- @param _UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token for the request to update user attributes.</p>
 -- Required parameter: UserAttributes
 -- Required parameter: AccessToken
-function M.UpdateUserAttributesRequest(UserAttributes, AccessToken, ...)
+function M.UpdateUserAttributesRequest(_UserAttributes, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserAttributesRequest")
 	local t = { 
-		["UserAttributes"] = UserAttributes,
-		["AccessToken"] = AccessToken,
+		["UserAttributes"] = _UserAttributes,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertUpdateUserAttributesRequest(t)
+	asserts.AssertUpdateUserAttributesRequest(t)
 	return t
 end
 
-local UpdateUserPoolClientResponse_keys = { "UserPoolClient" = true, nil }
+keys.UpdateUserPoolClientResponse = { ["UserPoolClient"] = true, nil }
 
-function M.AssertUpdateUserPoolClientResponse(struct)
+function asserts.AssertUpdateUserPoolClientResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserPoolClientResponse to be of type 'table'")
-	if struct["UserPoolClient"] then M.AssertUserPoolClientType(struct["UserPoolClient"]) end
+	if struct["UserPoolClient"] then asserts.AssertUserPoolClientType(struct["UserPoolClient"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserPoolClientResponse_keys[k], "UpdateUserPoolClientResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserPoolClientResponse[k], "UpdateUserPoolClientResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserPoolClientResponse
 -- <p>Represents the response from the server to the request to update the user pool client.</p>
--- @param UserPoolClient [UserPoolClientType] <p>The user pool client value from the response from the server when an update user pool client request is made.</p>
-function M.UpdateUserPoolClientResponse(UserPoolClient, ...)
+-- @param _UserPoolClient [UserPoolClientType] <p>The user pool client value from the response from the server when an update user pool client request is made.</p>
+function M.UpdateUserPoolClientResponse(_UserPoolClient, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserPoolClientResponse")
 	local t = { 
-		["UserPoolClient"] = UserPoolClient,
+		["UserPoolClient"] = _UserPoolClient,
 	}
-	M.AssertUpdateUserPoolClientResponse(t)
+	asserts.AssertUpdateUserPoolClientResponse(t)
 	return t
 end
 
-local SignUpResponse_keys = { "UserConfirmed" = true, "UserSub" = true, "CodeDeliveryDetails" = true, nil }
+keys.SignUpResponse = { ["UserConfirmed"] = true, ["UserSub"] = true, ["CodeDeliveryDetails"] = true, nil }
 
-function M.AssertSignUpResponse(struct)
+function asserts.AssertSignUpResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SignUpResponse to be of type 'table'")
 	assert(struct["UserConfirmed"], "Expected key UserConfirmed to exist in table")
 	assert(struct["UserSub"], "Expected key UserSub to exist in table")
-	if struct["UserConfirmed"] then M.AssertBooleanType(struct["UserConfirmed"]) end
-	if struct["UserSub"] then M.AssertStringType(struct["UserSub"]) end
-	if struct["CodeDeliveryDetails"] then M.AssertCodeDeliveryDetailsType(struct["CodeDeliveryDetails"]) end
+	if struct["UserConfirmed"] then asserts.AssertBooleanType(struct["UserConfirmed"]) end
+	if struct["UserSub"] then asserts.AssertStringType(struct["UserSub"]) end
+	if struct["CodeDeliveryDetails"] then asserts.AssertCodeDeliveryDetailsType(struct["CodeDeliveryDetails"]) end
 	for k,_ in pairs(struct) do
-		assert(SignUpResponse_keys[k], "SignUpResponse contains unknown key " .. tostring(k))
+		assert(keys.SignUpResponse[k], "SignUpResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SignUpResponse
 -- <p>The response from the server for a registration request.</p>
--- @param UserConfirmed [BooleanType] <p>A response from the server indicating that a user registration has been confirmed.</p>
--- @param UserSub [StringType] <p>The UUID of the authenticated user. This is not the same as <code>username</code>.</p>
--- @param CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server response to the user registration request.</p>
+-- @param _UserConfirmed [BooleanType] <p>A response from the server indicating that a user registration has been confirmed.</p>
+-- @param _UserSub [StringType] <p>The UUID of the authenticated user. This is not the same as <code>username</code>.</p>
+-- @param _CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server response to the user registration request.</p>
 -- Required parameter: UserConfirmed
 -- Required parameter: UserSub
-function M.SignUpResponse(UserConfirmed, UserSub, CodeDeliveryDetails, ...)
+function M.SignUpResponse(_UserConfirmed, _UserSub, _CodeDeliveryDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SignUpResponse")
 	local t = { 
-		["UserConfirmed"] = UserConfirmed,
-		["UserSub"] = UserSub,
-		["CodeDeliveryDetails"] = CodeDeliveryDetails,
+		["UserConfirmed"] = _UserConfirmed,
+		["UserSub"] = _UserSub,
+		["CodeDeliveryDetails"] = _CodeDeliveryDetails,
 	}
-	M.AssertSignUpResponse(t)
+	asserts.AssertSignUpResponse(t)
 	return t
 end
 
-local UpdateDeviceStatusRequest_keys = { "DeviceKey" = true, "DeviceRememberedStatus" = true, "AccessToken" = true, nil }
+keys.UpdateDeviceStatusRequest = { ["DeviceKey"] = true, ["DeviceRememberedStatus"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertUpdateDeviceStatusRequest(struct)
+function asserts.AssertUpdateDeviceStatusRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDeviceStatusRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
 	assert(struct["DeviceKey"], "Expected key DeviceKey to exist in table")
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["DeviceRememberedStatus"] then M.AssertDeviceRememberedStatusType(struct["DeviceRememberedStatus"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["DeviceRememberedStatus"] then asserts.AssertDeviceRememberedStatusType(struct["DeviceRememberedStatus"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateDeviceStatusRequest_keys[k], "UpdateDeviceStatusRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateDeviceStatusRequest[k], "UpdateDeviceStatusRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateDeviceStatusRequest
 -- <p>Represents the request to update the device status.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param DeviceRememberedStatus [DeviceRememberedStatusType] <p>The status of whether a device is remembered.</p>
--- @param AccessToken [TokenModelType] <p>The access token.</p>
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _DeviceRememberedStatus [DeviceRememberedStatusType] <p>The status of whether a device is remembered.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token.</p>
 -- Required parameter: AccessToken
 -- Required parameter: DeviceKey
-function M.UpdateDeviceStatusRequest(DeviceKey, DeviceRememberedStatus, AccessToken, ...)
+function M.UpdateDeviceStatusRequest(_DeviceKey, _DeviceRememberedStatus, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeviceStatusRequest")
 	local t = { 
-		["DeviceKey"] = DeviceKey,
-		["DeviceRememberedStatus"] = DeviceRememberedStatus,
-		["AccessToken"] = AccessToken,
+		["DeviceKey"] = _DeviceKey,
+		["DeviceRememberedStatus"] = _DeviceRememberedStatus,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertUpdateDeviceStatusRequest(t)
+	asserts.AssertUpdateDeviceStatusRequest(t)
 	return t
 end
 
-local AliasExistsException_keys = { "message" = true, nil }
+keys.AliasExistsException = { ["message"] = true, nil }
 
-function M.AssertAliasExistsException(struct)
+function asserts.AssertAliasExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AliasExistsException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AliasExistsException_keys[k], "AliasExistsException contains unknown key " .. tostring(k))
+		assert(keys.AliasExistsException[k], "AliasExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AliasExistsException
 -- <p>This exception is thrown when a user tries to confirm the account with an email or phone number that has already been supplied as an alias from a different account. This exception tells user that an account with this email or phone already exists.</p>
--- @param message [MessageType] <p>The message sent to the user when an alias exists.</p>
-function M.AliasExistsException(message, ...)
+-- @param _message [MessageType] <p>The message sent to the user when an alias exists.</p>
+function M.AliasExistsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AliasExistsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAliasExistsException(t)
+	asserts.AssertAliasExistsException(t)
 	return t
 end
 
-local AdminListDevicesResponse_keys = { "PaginationToken" = true, "Devices" = true, nil }
+keys.AdminListDevicesResponse = { ["PaginationToken"] = true, ["Devices"] = true, nil }
 
-function M.AssertAdminListDevicesResponse(struct)
+function asserts.AssertAdminListDevicesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminListDevicesResponse to be of type 'table'")
-	if struct["PaginationToken"] then M.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
-	if struct["Devices"] then M.AssertDeviceListType(struct["Devices"]) end
+	if struct["PaginationToken"] then asserts.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
+	if struct["Devices"] then asserts.AssertDeviceListType(struct["Devices"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminListDevicesResponse_keys[k], "AdminListDevicesResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminListDevicesResponse[k], "AdminListDevicesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminListDevicesResponse
 -- <p>Lists the device's response, as an administrator.</p>
--- @param PaginationToken [SearchPaginationTokenType] <p>The pagination token.</p>
--- @param Devices [DeviceListType] <p>The devices in the list of devices response.</p>
-function M.AdminListDevicesResponse(PaginationToken, Devices, ...)
+-- @param _PaginationToken [SearchPaginationTokenType] <p>The pagination token.</p>
+-- @param _Devices [DeviceListType] <p>The devices in the list of devices response.</p>
+function M.AdminListDevicesResponse(_PaginationToken, _Devices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminListDevicesResponse")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["Devices"] = Devices,
+		["PaginationToken"] = _PaginationToken,
+		["Devices"] = _Devices,
 	}
-	M.AssertAdminListDevicesResponse(t)
+	asserts.AssertAdminListDevicesResponse(t)
 	return t
 end
 
-local GroupType_keys = { "Description" = true, "Precedence" = true, "LastModifiedDate" = true, "RoleArn" = true, "GroupName" = true, "UserPoolId" = true, "CreationDate" = true, nil }
+keys.GroupType = { ["Description"] = true, ["Precedence"] = true, ["LastModifiedDate"] = true, ["RoleArn"] = true, ["GroupName"] = true, ["UserPoolId"] = true, ["CreationDate"] = true, nil }
 
-function M.AssertGroupType(struct)
+function asserts.AssertGroupType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GroupType to be of type 'table'")
-	if struct["Description"] then M.AssertDescriptionType(struct["Description"]) end
-	if struct["Precedence"] then M.AssertPrecedenceType(struct["Precedence"]) end
-	if struct["LastModifiedDate"] then M.AssertDateType(struct["LastModifiedDate"]) end
-	if struct["RoleArn"] then M.AssertArnType(struct["RoleArn"]) end
-	if struct["GroupName"] then M.AssertGroupNameType(struct["GroupName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
+	if struct["Description"] then asserts.AssertDescriptionType(struct["Description"]) end
+	if struct["Precedence"] then asserts.AssertPrecedenceType(struct["Precedence"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDateType(struct["LastModifiedDate"]) end
+	if struct["RoleArn"] then asserts.AssertArnType(struct["RoleArn"]) end
+	if struct["GroupName"] then asserts.AssertGroupNameType(struct["GroupName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
 	for k,_ in pairs(struct) do
-		assert(GroupType_keys[k], "GroupType contains unknown key " .. tostring(k))
+		assert(keys.GroupType[k], "GroupType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GroupType
 -- <p>The group type.</p>
--- @param Description [DescriptionType] <p>A string containing the description of the group.</p>
--- @param Precedence [PrecedenceType] <p>A nonnegative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. If a user belongs to two or more groups, it is the group with the highest precedence whose role ARN will be used in the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the user's tokens. Groups with higher <code>Precedence</code> values take precedence over groups with lower <code>Precedence</code> values or with null <code>Precedence</code> values.</p> <p>Two groups can have the same <code>Precedence</code> value. If this happens, neither group takes precedence over the other. If two groups with the same <code>Precedence</code> have the same role ARN, that role is used in the <code>cognito:preferred_role</code> claim in tokens for users in each group. If the two groups have different role ARNs, the <code>cognito:preferred_role</code> claim is not set in users' tokens.</p> <p>The default <code>Precedence</code> value is null.</p>
--- @param LastModifiedDate [DateType] <p>The date the group was last modified.</p>
--- @param RoleArn [ArnType] <p>The role ARN for the group.</p>
--- @param GroupName [GroupNameType] <p>The name of the group.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
--- @param CreationDate [DateType] <p>The date the group was created.</p>
-function M.GroupType(Description, Precedence, LastModifiedDate, RoleArn, GroupName, UserPoolId, CreationDate, ...)
+-- @param _Description [DescriptionType] <p>A string containing the description of the group.</p>
+-- @param _Precedence [PrecedenceType] <p>A nonnegative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. If a user belongs to two or more groups, it is the group with the highest precedence whose role ARN will be used in the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the user's tokens. Groups with higher <code>Precedence</code> values take precedence over groups with lower <code>Precedence</code> values or with null <code>Precedence</code> values.</p> <p>Two groups can have the same <code>Precedence</code> value. If this happens, neither group takes precedence over the other. If two groups with the same <code>Precedence</code> have the same role ARN, that role is used in the <code>cognito:preferred_role</code> claim in tokens for users in each group. If the two groups have different role ARNs, the <code>cognito:preferred_role</code> claim is not set in users' tokens.</p> <p>The default <code>Precedence</code> value is null.</p>
+-- @param _LastModifiedDate [DateType] <p>The date the group was last modified.</p>
+-- @param _RoleArn [ArnType] <p>The role ARN for the group.</p>
+-- @param _GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _CreationDate [DateType] <p>The date the group was created.</p>
+function M.GroupType(_Description, _Precedence, _LastModifiedDate, _RoleArn, _GroupName, _UserPoolId, _CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupType")
 	local t = { 
-		["Description"] = Description,
-		["Precedence"] = Precedence,
-		["LastModifiedDate"] = LastModifiedDate,
-		["RoleArn"] = RoleArn,
-		["GroupName"] = GroupName,
-		["UserPoolId"] = UserPoolId,
-		["CreationDate"] = CreationDate,
+		["Description"] = _Description,
+		["Precedence"] = _Precedence,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["RoleArn"] = _RoleArn,
+		["GroupName"] = _GroupName,
+		["UserPoolId"] = _UserPoolId,
+		["CreationDate"] = _CreationDate,
 	}
-	M.AssertGroupType(t)
+	asserts.AssertGroupType(t)
 	return t
 end
 
-local DeleteIdentityProviderRequest_keys = { "ProviderName" = true, "UserPoolId" = true, nil }
+keys.DeleteIdentityProviderRequest = { ["ProviderName"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertDeleteIdentityProviderRequest(struct)
+function asserts.AssertDeleteIdentityProviderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteIdentityProviderRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ProviderName"], "Expected key ProviderName to exist in table")
-	if struct["ProviderName"] then M.AssertProviderNameType(struct["ProviderName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ProviderName"] then asserts.AssertProviderNameType(struct["ProviderName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteIdentityProviderRequest_keys[k], "DeleteIdentityProviderRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteIdentityProviderRequest[k], "DeleteIdentityProviderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteIdentityProviderRequest
 --  
--- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ProviderName
-function M.DeleteIdentityProviderRequest(ProviderName, UserPoolId, ...)
+function M.DeleteIdentityProviderRequest(_ProviderName, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityProviderRequest")
 	local t = { 
-		["ProviderName"] = ProviderName,
-		["UserPoolId"] = UserPoolId,
+		["ProviderName"] = _ProviderName,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertDeleteIdentityProviderRequest(t)
+	asserts.AssertDeleteIdentityProviderRequest(t)
 	return t
 end
 
-local GetGroupResponse_keys = { "Group" = true, nil }
+keys.GetGroupResponse = { ["Group"] = true, nil }
 
-function M.AssertGetGroupResponse(struct)
+function asserts.AssertGetGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupResponse to be of type 'table'")
-	if struct["Group"] then M.AssertGroupType(struct["Group"]) end
+	if struct["Group"] then asserts.AssertGroupType(struct["Group"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupResponse_keys[k], "GetGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.GetGroupResponse[k], "GetGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupResponse
 --  
--- @param Group [GroupType] <p>The group object for the group.</p>
-function M.GetGroupResponse(Group, ...)
+-- @param _Group [GroupType] <p>The group object for the group.</p>
+function M.GetGroupResponse(_Group, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupResponse")
 	local t = { 
-		["Group"] = Group,
+		["Group"] = _Group,
 	}
-	M.AssertGetGroupResponse(t)
+	asserts.AssertGetGroupResponse(t)
 	return t
 end
 
-local UserPoolPolicyType_keys = { "PasswordPolicy" = true, nil }
+keys.UserPoolPolicyType = { ["PasswordPolicy"] = true, nil }
 
-function M.AssertUserPoolPolicyType(struct)
+function asserts.AssertUserPoolPolicyType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserPoolPolicyType to be of type 'table'")
-	if struct["PasswordPolicy"] then M.AssertPasswordPolicyType(struct["PasswordPolicy"]) end
+	if struct["PasswordPolicy"] then asserts.AssertPasswordPolicyType(struct["PasswordPolicy"]) end
 	for k,_ in pairs(struct) do
-		assert(UserPoolPolicyType_keys[k], "UserPoolPolicyType contains unknown key " .. tostring(k))
+		assert(keys.UserPoolPolicyType[k], "UserPoolPolicyType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserPoolPolicyType
 -- <p>The type of policy in a user pool.</p>
--- @param PasswordPolicy [PasswordPolicyType] <p>A container for information about the user pool password policy.</p>
-function M.UserPoolPolicyType(PasswordPolicy, ...)
+-- @param _PasswordPolicy [PasswordPolicyType] <p>A container for information about the user pool password policy.</p>
+function M.UserPoolPolicyType(_PasswordPolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolPolicyType")
 	local t = { 
-		["PasswordPolicy"] = PasswordPolicy,
+		["PasswordPolicy"] = _PasswordPolicy,
 	}
-	M.AssertUserPoolPolicyType(t)
+	asserts.AssertUserPoolPolicyType(t)
 	return t
 end
 
-local DeleteUserRequest_keys = { "AccessToken" = true, nil }
+keys.DeleteUserRequest = { ["AccessToken"] = true, nil }
 
-function M.AssertDeleteUserRequest(struct)
+function asserts.AssertDeleteUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUserRequest_keys[k], "DeleteUserRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserRequest[k], "DeleteUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUserRequest
 -- <p>Represents the request to delete a user.</p>
--- @param AccessToken [TokenModelType] <p>The access token from a request to delete a user.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token from a request to delete a user.</p>
 -- Required parameter: AccessToken
-function M.DeleteUserRequest(AccessToken, ...)
+function M.DeleteUserRequest(_AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserRequest")
 	local t = { 
-		["AccessToken"] = AccessToken,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertDeleteUserRequest(t)
+	asserts.AssertDeleteUserRequest(t)
 	return t
 end
 
-local ListUserPoolClientsResponse_keys = { "NextToken" = true, "UserPoolClients" = true, nil }
+keys.ListUserPoolClientsResponse = { ["NextToken"] = true, ["UserPoolClients"] = true, nil }
 
-function M.AssertListUserPoolClientsResponse(struct)
+function asserts.AssertListUserPoolClientsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUserPoolClientsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["UserPoolClients"] then M.AssertUserPoolClientListType(struct["UserPoolClients"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["UserPoolClients"] then asserts.AssertUserPoolClientListType(struct["UserPoolClients"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUserPoolClientsResponse_keys[k], "ListUserPoolClientsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListUserPoolClientsResponse[k], "ListUserPoolClientsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUserPoolClientsResponse
 -- <p>Represents the response from the server that lists user pool clients.</p>
--- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param UserPoolClients [UserPoolClientListType] <p>The user pool clients in the response that lists user pool clients.</p>
-function M.ListUserPoolClientsResponse(NextToken, UserPoolClients, ...)
+-- @param _NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _UserPoolClients [UserPoolClientListType] <p>The user pool clients in the response that lists user pool clients.</p>
+function M.ListUserPoolClientsResponse(_NextToken, _UserPoolClients, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoolClientsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["UserPoolClients"] = UserPoolClients,
+		["NextToken"] = _NextToken,
+		["UserPoolClients"] = _UserPoolClients,
 	}
-	M.AssertListUserPoolClientsResponse(t)
+	asserts.AssertListUserPoolClientsResponse(t)
 	return t
 end
 
-local GroupExistsException_keys = { "message" = true, nil }
+keys.GroupExistsException = { ["message"] = true, nil }
 
-function M.AssertGroupExistsException(struct)
+function asserts.AssertGroupExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GroupExistsException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(GroupExistsException_keys[k], "GroupExistsException contains unknown key " .. tostring(k))
+		assert(keys.GroupExistsException[k], "GroupExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GroupExistsException
 -- <p>This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.</p>
--- @param message [MessageType] <p>This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.</p>
-function M.GroupExistsException(message, ...)
+-- @param _message [MessageType] 
+function M.GroupExistsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupExistsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertGroupExistsException(t)
+	asserts.AssertGroupExistsException(t)
 	return t
 end
 
-local UserImportInProgressException_keys = { "message" = true, nil }
+keys.UserImportInProgressException = { ["message"] = true, nil }
 
-function M.AssertUserImportInProgressException(struct)
+function asserts.AssertUserImportInProgressException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserImportInProgressException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UserImportInProgressException_keys[k], "UserImportInProgressException contains unknown key " .. tostring(k))
+		assert(keys.UserImportInProgressException[k], "UserImportInProgressException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserImportInProgressException
 -- <p>This exception is thrown when you are trying to modify a user pool while a user import job is in progress for that pool.</p>
--- @param message [MessageType] <p>The message returned when the user pool has an import job running.</p>
-function M.UserImportInProgressException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the user pool has an import job running.</p>
+function M.UserImportInProgressException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserImportInProgressException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUserImportInProgressException(t)
+	asserts.AssertUserImportInProgressException(t)
 	return t
 end
 
-local UsernameExistsException_keys = { "message" = true, nil }
+keys.UsernameExistsException = { ["message"] = true, nil }
 
-function M.AssertUsernameExistsException(struct)
+function asserts.AssertUsernameExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UsernameExistsException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UsernameExistsException_keys[k], "UsernameExistsException contains unknown key " .. tostring(k))
+		assert(keys.UsernameExistsException[k], "UsernameExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UsernameExistsException
 -- <p>This exception is thrown when Amazon Cognito encounters a user name that already exists in the user pool.</p>
--- @param message [MessageType] <p>The message returned when Amazon Cognito throws a user name exists exception.</p>
-function M.UsernameExistsException(message, ...)
+-- @param _message [MessageType] <p>The message returned when Amazon Cognito throws a user name exists exception.</p>
+function M.UsernameExistsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsernameExistsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUsernameExistsException(t)
+	asserts.AssertUsernameExistsException(t)
 	return t
 end
 
-local UnsupportedIdentityProviderException_keys = { "message" = true, nil }
+keys.UnsupportedIdentityProviderException = { ["message"] = true, nil }
 
-function M.AssertUnsupportedIdentityProviderException(struct)
+function asserts.AssertUnsupportedIdentityProviderException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedIdentityProviderException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedIdentityProviderException_keys[k], "UnsupportedIdentityProviderException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedIdentityProviderException[k], "UnsupportedIdentityProviderException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedIdentityProviderException
 -- <p>This exception is thrown when the specified identifier is not supported.</p>
--- @param message [MessageType] <p>This exception is thrown when the specified identifier is not supported.</p>
-function M.UnsupportedIdentityProviderException(message, ...)
+-- @param _message [MessageType] 
+function M.UnsupportedIdentityProviderException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedIdentityProviderException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedIdentityProviderException(t)
+	asserts.AssertUnsupportedIdentityProviderException(t)
 	return t
 end
 
-local InternalErrorException_keys = { "message" = true, nil }
+keys.InternalErrorException = { ["message"] = true, nil }
 
-function M.AssertInternalErrorException(struct)
+function asserts.AssertInternalErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalErrorException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalErrorException_keys[k], "InternalErrorException contains unknown key " .. tostring(k))
+		assert(keys.InternalErrorException[k], "InternalErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalErrorException
 -- <p>This exception is thrown when Amazon Cognito encounters an internal error.</p>
--- @param message [MessageType] <p>The message returned when Amazon Cognito throws an internal error exception.</p>
-function M.InternalErrorException(message, ...)
+-- @param _message [MessageType] <p>The message returned when Amazon Cognito throws an internal error exception.</p>
+function M.InternalErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalErrorException(t)
+	asserts.AssertInternalErrorException(t)
 	return t
 end
 
-local AdminUpdateUserAttributesRequest_keys = { "Username" = true, "UserAttributes" = true, "UserPoolId" = true, nil }
+keys.AdminUpdateUserAttributesRequest = { ["Username"] = true, ["UserAttributes"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminUpdateUserAttributesRequest(struct)
+function asserts.AssertAdminUpdateUserAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminUpdateUserAttributesRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["UserAttributes"], "Expected key UserAttributes to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserAttributes"] then M.AssertAttributeListType(struct["UserAttributes"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserAttributes"] then asserts.AssertAttributeListType(struct["UserAttributes"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminUpdateUserAttributesRequest_keys[k], "AdminUpdateUserAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminUpdateUserAttributesRequest[k], "AdminUpdateUserAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminUpdateUserAttributesRequest
 -- <p>Represents the request to update the user's attributes as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user for whom you want to update user attributes.</p>
--- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to update user attributes.</p>
+-- @param _Username [UsernameType] <p>The user name of the user for whom you want to update user attributes.</p>
+-- @param _UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to update user attributes.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: UserAttributes
-function M.AdminUpdateUserAttributesRequest(Username, UserAttributes, UserPoolId, ...)
+function M.AdminUpdateUserAttributesRequest(_Username, _UserAttributes, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUpdateUserAttributesRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserAttributes"] = UserAttributes,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserAttributes"] = _UserAttributes,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminUpdateUserAttributesRequest(t)
+	asserts.AssertAdminUpdateUserAttributesRequest(t)
 	return t
 end
 
-local AdminDeleteUserRequest_keys = { "Username" = true, "UserPoolId" = true, nil }
+keys.AdminDeleteUserRequest = { ["Username"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminDeleteUserRequest(struct)
+function asserts.AssertAdminDeleteUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminDeleteUserRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminDeleteUserRequest_keys[k], "AdminDeleteUserRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminDeleteUserRequest[k], "AdminDeleteUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminDeleteUserRequest
 -- <p>Represents the request to delete a user as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user you wish to delete.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete the user.</p>
+-- @param _Username [UsernameType] <p>The user name of the user you wish to delete.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete the user.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminDeleteUserRequest(Username, UserPoolId, ...)
+function M.AdminDeleteUserRequest(_Username, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminDeleteUserRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminDeleteUserRequest(t)
+	asserts.AssertAdminDeleteUserRequest(t)
 	return t
 end
 
-local ScopeDoesNotExistException_keys = { "message" = true, nil }
+keys.ScopeDoesNotExistException = { ["message"] = true, nil }
 
-function M.AssertScopeDoesNotExistException(struct)
+function asserts.AssertScopeDoesNotExistException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScopeDoesNotExistException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ScopeDoesNotExistException_keys[k], "ScopeDoesNotExistException contains unknown key " .. tostring(k))
+		assert(keys.ScopeDoesNotExistException[k], "ScopeDoesNotExistException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScopeDoesNotExistException
 -- <p>This exception is thrown when the specified scope does not exist.</p>
--- @param message [MessageType] <p>This exception is thrown when the specified scope does not exist.</p>
-function M.ScopeDoesNotExistException(message, ...)
+-- @param _message [MessageType] 
+function M.ScopeDoesNotExistException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScopeDoesNotExistException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertScopeDoesNotExistException(t)
+	asserts.AssertScopeDoesNotExistException(t)
 	return t
 end
 
-local LimitExceededException_keys = { "message" = true, nil }
+keys.LimitExceededException = { ["message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>This exception is thrown when a user exceeds the limit for a requested AWS resource.</p>
--- @param message [MessageType] <p>The message returned when Amazon Cognito throws a limit exceeded exception.</p>
-function M.LimitExceededException(message, ...)
+-- @param _message [MessageType] <p>The message returned when Amazon Cognito throws a limit exceeded exception.</p>
+function M.LimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local CreateUserPoolClientResponse_keys = { "UserPoolClient" = true, nil }
+keys.CreateUserPoolClientResponse = { ["UserPoolClient"] = true, nil }
 
-function M.AssertCreateUserPoolClientResponse(struct)
+function asserts.AssertCreateUserPoolClientResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserPoolClientResponse to be of type 'table'")
-	if struct["UserPoolClient"] then M.AssertUserPoolClientType(struct["UserPoolClient"]) end
+	if struct["UserPoolClient"] then asserts.AssertUserPoolClientType(struct["UserPoolClient"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserPoolClientResponse_keys[k], "CreateUserPoolClientResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateUserPoolClientResponse[k], "CreateUserPoolClientResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserPoolClientResponse
 -- <p>Represents the response from the server to create a user pool client.</p>
--- @param UserPoolClient [UserPoolClientType] <p>The user pool client that was just created.</p>
-function M.CreateUserPoolClientResponse(UserPoolClient, ...)
+-- @param _UserPoolClient [UserPoolClientType] <p>The user pool client that was just created.</p>
+function M.CreateUserPoolClientResponse(_UserPoolClient, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolClientResponse")
 	local t = { 
-		["UserPoolClient"] = UserPoolClient,
+		["UserPoolClient"] = _UserPoolClient,
 	}
-	M.AssertCreateUserPoolClientResponse(t)
+	asserts.AssertCreateUserPoolClientResponse(t)
 	return t
 end
 
-local CreateIdentityProviderResponse_keys = { "IdentityProvider" = true, nil }
+keys.CreateIdentityProviderResponse = { ["IdentityProvider"] = true, nil }
 
-function M.AssertCreateIdentityProviderResponse(struct)
+function asserts.AssertCreateIdentityProviderResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateIdentityProviderResponse to be of type 'table'")
 	assert(struct["IdentityProvider"], "Expected key IdentityProvider to exist in table")
-	if struct["IdentityProvider"] then M.AssertIdentityProviderType(struct["IdentityProvider"]) end
+	if struct["IdentityProvider"] then asserts.AssertIdentityProviderType(struct["IdentityProvider"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateIdentityProviderResponse_keys[k], "CreateIdentityProviderResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateIdentityProviderResponse[k], "CreateIdentityProviderResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateIdentityProviderResponse
 --  
--- @param IdentityProvider [IdentityProviderType] <p>The newly created identity provider object.</p>
+-- @param _IdentityProvider [IdentityProviderType] <p>The newly created identity provider object.</p>
 -- Required parameter: IdentityProvider
-function M.CreateIdentityProviderResponse(IdentityProvider, ...)
+function M.CreateIdentityProviderResponse(_IdentityProvider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateIdentityProviderResponse")
 	local t = { 
-		["IdentityProvider"] = IdentityProvider,
+		["IdentityProvider"] = _IdentityProvider,
 	}
-	M.AssertCreateIdentityProviderResponse(t)
+	asserts.AssertCreateIdentityProviderResponse(t)
 	return t
 end
 
-local DomainDescriptionType_keys = { "Status" = true, "Domain" = true, "UserPoolId" = true, "CloudFrontDistribution" = true, "S3Bucket" = true, "Version" = true, "AWSAccountId" = true, nil }
+keys.DomainDescriptionType = { ["Status"] = true, ["Domain"] = true, ["UserPoolId"] = true, ["CloudFrontDistribution"] = true, ["S3Bucket"] = true, ["Version"] = true, ["AWSAccountId"] = true, nil }
 
-function M.AssertDomainDescriptionType(struct)
+function asserts.AssertDomainDescriptionType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DomainDescriptionType to be of type 'table'")
-	if struct["Status"] then M.AssertDomainStatusType(struct["Status"]) end
-	if struct["Domain"] then M.AssertDomainType(struct["Domain"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["CloudFrontDistribution"] then M.AssertArnType(struct["CloudFrontDistribution"]) end
-	if struct["S3Bucket"] then M.AssertS3BucketType(struct["S3Bucket"]) end
-	if struct["Version"] then M.AssertDomainVersionType(struct["Version"]) end
-	if struct["AWSAccountId"] then M.AssertAWSAccountIdType(struct["AWSAccountId"]) end
+	if struct["Status"] then asserts.AssertDomainStatusType(struct["Status"]) end
+	if struct["Domain"] then asserts.AssertDomainType(struct["Domain"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["CloudFrontDistribution"] then asserts.AssertArnType(struct["CloudFrontDistribution"]) end
+	if struct["S3Bucket"] then asserts.AssertS3BucketType(struct["S3Bucket"]) end
+	if struct["Version"] then asserts.AssertDomainVersionType(struct["Version"]) end
+	if struct["AWSAccountId"] then asserts.AssertAWSAccountIdType(struct["AWSAccountId"]) end
 	for k,_ in pairs(struct) do
-		assert(DomainDescriptionType_keys[k], "DomainDescriptionType contains unknown key " .. tostring(k))
+		assert(keys.DomainDescriptionType[k], "DomainDescriptionType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DomainDescriptionType
 -- <p>A container for information about a domain.</p>
--- @param Status [DomainStatusType] <p>The domain status.</p>
--- @param Domain [DomainType] <p>The domain string.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
--- @param CloudFrontDistribution [ArnType] <p>The ARN of the CloudFront distribution.</p>
--- @param S3Bucket [S3BucketType] <p>The S3 bucket where the static files for this domain are stored.</p>
--- @param Version [DomainVersionType] <p>The app version.</p>
--- @param AWSAccountId [AWSAccountIdType] <p>The AWS account ID for the user pool owner.</p>
-function M.DomainDescriptionType(Status, Domain, UserPoolId, CloudFrontDistribution, S3Bucket, Version, AWSAccountId, ...)
+-- @param _Status [DomainStatusType] <p>The domain status.</p>
+-- @param _Domain [DomainType] <p>The domain string.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _CloudFrontDistribution [ArnType] <p>The ARN of the CloudFront distribution.</p>
+-- @param _S3Bucket [S3BucketType] <p>The S3 bucket where the static files for this domain are stored.</p>
+-- @param _Version [DomainVersionType] <p>The app version.</p>
+-- @param _AWSAccountId [AWSAccountIdType] <p>The AWS account ID for the user pool owner.</p>
+function M.DomainDescriptionType(_Status, _Domain, _UserPoolId, _CloudFrontDistribution, _S3Bucket, _Version, _AWSAccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainDescriptionType")
 	local t = { 
-		["Status"] = Status,
-		["Domain"] = Domain,
-		["UserPoolId"] = UserPoolId,
-		["CloudFrontDistribution"] = CloudFrontDistribution,
-		["S3Bucket"] = S3Bucket,
-		["Version"] = Version,
-		["AWSAccountId"] = AWSAccountId,
+		["Status"] = _Status,
+		["Domain"] = _Domain,
+		["UserPoolId"] = _UserPoolId,
+		["CloudFrontDistribution"] = _CloudFrontDistribution,
+		["S3Bucket"] = _S3Bucket,
+		["Version"] = _Version,
+		["AWSAccountId"] = _AWSAccountId,
 	}
-	M.AssertDomainDescriptionType(t)
+	asserts.AssertDomainDescriptionType(t)
 	return t
 end
 
-local ConcurrentModificationException_keys = { "message" = true, nil }
+keys.ConcurrentModificationException = { ["message"] = true, nil }
 
-function M.AssertConcurrentModificationException(struct)
+function asserts.AssertConcurrentModificationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConcurrentModificationException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ConcurrentModificationException_keys[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
+		assert(keys.ConcurrentModificationException[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>This exception is thrown if two or more modifications are happening concurrently.</p>
--- @param message [MessageType] <p>The message provided when the concurrent exception is thrown.</p>
-function M.ConcurrentModificationException(message, ...)
+-- @param _message [MessageType] <p>The message provided when the concurrent exception is thrown.</p>
+function M.ConcurrentModificationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertConcurrentModificationException(t)
+	asserts.AssertConcurrentModificationException(t)
 	return t
 end
 
-local ConfirmSignUpRequest_keys = { "Username" = true, "ForceAliasCreation" = true, "ConfirmationCode" = true, "SecretHash" = true, "ClientId" = true, nil }
+keys.ConfirmSignUpRequest = { ["Username"] = true, ["ForceAliasCreation"] = true, ["ConfirmationCode"] = true, ["SecretHash"] = true, ["ClientId"] = true, nil }
 
-function M.AssertConfirmSignUpRequest(struct)
+function asserts.AssertConfirmSignUpRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmSignUpRequest to be of type 'table'")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["ConfirmationCode"], "Expected key ConfirmationCode to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["ForceAliasCreation"] then M.AssertForceAliasCreation(struct["ForceAliasCreation"]) end
-	if struct["ConfirmationCode"] then M.AssertConfirmationCodeType(struct["ConfirmationCode"]) end
-	if struct["SecretHash"] then M.AssertSecretHashType(struct["SecretHash"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["ForceAliasCreation"] then asserts.AssertForceAliasCreation(struct["ForceAliasCreation"]) end
+	if struct["ConfirmationCode"] then asserts.AssertConfirmationCodeType(struct["ConfirmationCode"]) end
+	if struct["SecretHash"] then asserts.AssertSecretHashType(struct["SecretHash"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
 	for k,_ in pairs(struct) do
-		assert(ConfirmSignUpRequest_keys[k], "ConfirmSignUpRequest contains unknown key " .. tostring(k))
+		assert(keys.ConfirmSignUpRequest[k], "ConfirmSignUpRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConfirmSignUpRequest
 -- <p>Represents the request to confirm registration of a user.</p>
--- @param Username [UsernameType] <p>The user name of the user whose registration you wish to confirm.</p>
--- @param ForceAliasCreation [ForceAliasCreation] <p>Boolean to be specified to force user confirmation irrespective of existing alias. By default set to <code>False</code>. If this parameter is set to <code>True</code> and the phone number/email used for sign up confirmation already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user being confirmed. If set to <code>False</code>, the API will throw an <b>AliasExistsException</b> error.</p>
--- @param ConfirmationCode [ConfirmationCodeType] <p>The confirmation code sent by a user's request to confirm registration.</p>
--- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _Username [UsernameType] <p>The user name of the user whose registration you wish to confirm.</p>
+-- @param _ForceAliasCreation [ForceAliasCreation] <p>Boolean to be specified to force user confirmation irrespective of existing alias. By default set to <code>False</code>. If this parameter is set to <code>True</code> and the phone number/email used for sign up confirmation already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user being confirmed. If set to <code>False</code>, the API will throw an <b>AliasExistsException</b> error.</p>
+-- @param _ConfirmationCode [ConfirmationCodeType] <p>The confirmation code sent by a user's request to confirm registration.</p>
+-- @param _SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
 -- Required parameter: ConfirmationCode
-function M.ConfirmSignUpRequest(Username, ForceAliasCreation, ConfirmationCode, SecretHash, ClientId, ...)
+function M.ConfirmSignUpRequest(_Username, _ForceAliasCreation, _ConfirmationCode, _SecretHash, _ClientId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmSignUpRequest")
 	local t = { 
-		["Username"] = Username,
-		["ForceAliasCreation"] = ForceAliasCreation,
-		["ConfirmationCode"] = ConfirmationCode,
-		["SecretHash"] = SecretHash,
-		["ClientId"] = ClientId,
+		["Username"] = _Username,
+		["ForceAliasCreation"] = _ForceAliasCreation,
+		["ConfirmationCode"] = _ConfirmationCode,
+		["SecretHash"] = _SecretHash,
+		["ClientId"] = _ClientId,
 	}
-	M.AssertConfirmSignUpRequest(t)
+	asserts.AssertConfirmSignUpRequest(t)
 	return t
 end
 
-local UserNotConfirmedException_keys = { "message" = true, nil }
+keys.UserNotConfirmedException = { ["message"] = true, nil }
 
-function M.AssertUserNotConfirmedException(struct)
+function asserts.AssertUserNotConfirmedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserNotConfirmedException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UserNotConfirmedException_keys[k], "UserNotConfirmedException contains unknown key " .. tostring(k))
+		assert(keys.UserNotConfirmedException[k], "UserNotConfirmedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserNotConfirmedException
 -- <p>This exception is thrown when a user is not confirmed successfully.</p>
--- @param message [MessageType] <p>The message returned when a user is not confirmed successfully.</p>
-function M.UserNotConfirmedException(message, ...)
+-- @param _message [MessageType] <p>The message returned when a user is not confirmed successfully.</p>
+function M.UserNotConfirmedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserNotConfirmedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUserNotConfirmedException(t)
+	asserts.AssertUserNotConfirmedException(t)
 	return t
 end
 
-local StartUserImportJobResponse_keys = { "UserImportJob" = true, nil }
+keys.StartUserImportJobResponse = { ["UserImportJob"] = true, nil }
 
-function M.AssertStartUserImportJobResponse(struct)
+function asserts.AssertStartUserImportJobResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartUserImportJobResponse to be of type 'table'")
-	if struct["UserImportJob"] then M.AssertUserImportJobType(struct["UserImportJob"]) end
+	if struct["UserImportJob"] then asserts.AssertUserImportJobType(struct["UserImportJob"]) end
 	for k,_ in pairs(struct) do
-		assert(StartUserImportJobResponse_keys[k], "StartUserImportJobResponse contains unknown key " .. tostring(k))
+		assert(keys.StartUserImportJobResponse[k], "StartUserImportJobResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartUserImportJobResponse
 -- <p>Represents the response from the server to the request to start the user import job.</p>
--- @param UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
-function M.StartUserImportJobResponse(UserImportJob, ...)
+-- @param _UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
+function M.StartUserImportJobResponse(_UserImportJob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartUserImportJobResponse")
 	local t = { 
-		["UserImportJob"] = UserImportJob,
+		["UserImportJob"] = _UserImportJob,
 	}
-	M.AssertStartUserImportJobResponse(t)
+	asserts.AssertStartUserImportJobResponse(t)
 	return t
 end
 
-local PasswordPolicyType_keys = { "RequireLowercase" = true, "RequireSymbols" = true, "RequireNumbers" = true, "MinimumLength" = true, "RequireUppercase" = true, nil }
+keys.PasswordPolicyType = { ["RequireLowercase"] = true, ["RequireSymbols"] = true, ["RequireNumbers"] = true, ["MinimumLength"] = true, ["RequireUppercase"] = true, nil }
 
-function M.AssertPasswordPolicyType(struct)
+function asserts.AssertPasswordPolicyType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PasswordPolicyType to be of type 'table'")
-	if struct["RequireLowercase"] then M.AssertBooleanType(struct["RequireLowercase"]) end
-	if struct["RequireSymbols"] then M.AssertBooleanType(struct["RequireSymbols"]) end
-	if struct["RequireNumbers"] then M.AssertBooleanType(struct["RequireNumbers"]) end
-	if struct["MinimumLength"] then M.AssertPasswordPolicyMinLengthType(struct["MinimumLength"]) end
-	if struct["RequireUppercase"] then M.AssertBooleanType(struct["RequireUppercase"]) end
+	if struct["RequireLowercase"] then asserts.AssertBooleanType(struct["RequireLowercase"]) end
+	if struct["RequireSymbols"] then asserts.AssertBooleanType(struct["RequireSymbols"]) end
+	if struct["RequireNumbers"] then asserts.AssertBooleanType(struct["RequireNumbers"]) end
+	if struct["MinimumLength"] then asserts.AssertPasswordPolicyMinLengthType(struct["MinimumLength"]) end
+	if struct["RequireUppercase"] then asserts.AssertBooleanType(struct["RequireUppercase"]) end
 	for k,_ in pairs(struct) do
-		assert(PasswordPolicyType_keys[k], "PasswordPolicyType contains unknown key " .. tostring(k))
+		assert(keys.PasswordPolicyType[k], "PasswordPolicyType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PasswordPolicyType
 -- <p>The password policy type.</p>
--- @param RequireLowercase [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one lowercase letter in their password.</p>
--- @param RequireSymbols [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one symbol in their password.</p>
--- @param RequireNumbers [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one number in their password.</p>
--- @param MinimumLength [PasswordPolicyMinLengthType] <p>The minimum length of the password policy that you have set. Cannot be less than 6.</p>
--- @param RequireUppercase [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one uppercase letter in their password.</p>
-function M.PasswordPolicyType(RequireLowercase, RequireSymbols, RequireNumbers, MinimumLength, RequireUppercase, ...)
+-- @param _RequireLowercase [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one lowercase letter in their password.</p>
+-- @param _RequireSymbols [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one symbol in their password.</p>
+-- @param _RequireNumbers [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one number in their password.</p>
+-- @param _MinimumLength [PasswordPolicyMinLengthType] <p>The minimum length of the password policy that you have set. Cannot be less than 6.</p>
+-- @param _RequireUppercase [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one uppercase letter in their password.</p>
+function M.PasswordPolicyType(_RequireLowercase, _RequireSymbols, _RequireNumbers, _MinimumLength, _RequireUppercase, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PasswordPolicyType")
 	local t = { 
-		["RequireLowercase"] = RequireLowercase,
-		["RequireSymbols"] = RequireSymbols,
-		["RequireNumbers"] = RequireNumbers,
-		["MinimumLength"] = MinimumLength,
-		["RequireUppercase"] = RequireUppercase,
+		["RequireLowercase"] = _RequireLowercase,
+		["RequireSymbols"] = _RequireSymbols,
+		["RequireNumbers"] = _RequireNumbers,
+		["MinimumLength"] = _MinimumLength,
+		["RequireUppercase"] = _RequireUppercase,
 	}
-	M.AssertPasswordPolicyType(t)
+	asserts.AssertPasswordPolicyType(t)
 	return t
 end
 
-local CreateUserImportJobRequest_keys = { "CloudWatchLogsRoleArn" = true, "UserPoolId" = true, "JobName" = true, nil }
+keys.CreateUserImportJobRequest = { ["CloudWatchLogsRoleArn"] = true, ["UserPoolId"] = true, ["JobName"] = true, nil }
 
-function M.AssertCreateUserImportJobRequest(struct)
+function asserts.AssertCreateUserImportJobRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserImportJobRequest to be of type 'table'")
 	assert(struct["JobName"], "Expected key JobName to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["CloudWatchLogsRoleArn"], "Expected key CloudWatchLogsRoleArn to exist in table")
-	if struct["CloudWatchLogsRoleArn"] then M.AssertArnType(struct["CloudWatchLogsRoleArn"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["JobName"] then M.AssertUserImportJobNameType(struct["JobName"]) end
+	if struct["CloudWatchLogsRoleArn"] then asserts.AssertArnType(struct["CloudWatchLogsRoleArn"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["JobName"] then asserts.AssertUserImportJobNameType(struct["JobName"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserImportJobRequest_keys[k], "CreateUserImportJobRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateUserImportJobRequest[k], "CreateUserImportJobRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserImportJobRequest
 -- <p>Represents the request to create the user import job.</p>
--- @param CloudWatchLogsRoleArn [ArnType] <p>The role ARN for the Amazon CloudWatch Logging role for the user import job.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
--- @param JobName [UserImportJobNameType] <p>The job name for the user import job.</p>
+-- @param _CloudWatchLogsRoleArn [ArnType] <p>The role ARN for the Amazon CloudWatch Logging role for the user import job.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param _JobName [UserImportJobNameType] <p>The job name for the user import job.</p>
 -- Required parameter: JobName
 -- Required parameter: UserPoolId
 -- Required parameter: CloudWatchLogsRoleArn
-function M.CreateUserImportJobRequest(CloudWatchLogsRoleArn, UserPoolId, JobName, ...)
+function M.CreateUserImportJobRequest(_CloudWatchLogsRoleArn, _UserPoolId, _JobName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserImportJobRequest")
 	local t = { 
-		["CloudWatchLogsRoleArn"] = CloudWatchLogsRoleArn,
-		["UserPoolId"] = UserPoolId,
-		["JobName"] = JobName,
+		["CloudWatchLogsRoleArn"] = _CloudWatchLogsRoleArn,
+		["UserPoolId"] = _UserPoolId,
+		["JobName"] = _JobName,
 	}
-	M.AssertCreateUserImportJobRequest(t)
+	asserts.AssertCreateUserImportJobRequest(t)
 	return t
 end
 
-local CreateUserPoolDomainRequest_keys = { "Domain" = true, "UserPoolId" = true, nil }
+keys.CreateUserPoolDomainRequest = { ["Domain"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertCreateUserPoolDomainRequest(struct)
+function asserts.AssertCreateUserPoolDomainRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserPoolDomainRequest to be of type 'table'")
 	assert(struct["Domain"], "Expected key Domain to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["Domain"] then M.AssertDomainType(struct["Domain"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Domain"] then asserts.AssertDomainType(struct["Domain"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserPoolDomainRequest_keys[k], "CreateUserPoolDomainRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateUserPoolDomainRequest[k], "CreateUserPoolDomainRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserPoolDomainRequest
 --  
--- @param Domain [DomainType] <p>The domain string.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _Domain [DomainType] <p>The domain string.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: Domain
 -- Required parameter: UserPoolId
-function M.CreateUserPoolDomainRequest(Domain, UserPoolId, ...)
+function M.CreateUserPoolDomainRequest(_Domain, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolDomainRequest")
 	local t = { 
-		["Domain"] = Domain,
-		["UserPoolId"] = UserPoolId,
+		["Domain"] = _Domain,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertCreateUserPoolDomainRequest(t)
+	asserts.AssertCreateUserPoolDomainRequest(t)
 	return t
 end
 
-local InvalidEmailRoleAccessPolicyException_keys = { "message" = true, nil }
+keys.InvalidEmailRoleAccessPolicyException = { ["message"] = true, nil }
 
-function M.AssertInvalidEmailRoleAccessPolicyException(struct)
+function asserts.AssertInvalidEmailRoleAccessPolicyException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidEmailRoleAccessPolicyException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidEmailRoleAccessPolicyException_keys[k], "InvalidEmailRoleAccessPolicyException contains unknown key " .. tostring(k))
+		assert(keys.InvalidEmailRoleAccessPolicyException[k], "InvalidEmailRoleAccessPolicyException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidEmailRoleAccessPolicyException
 -- <p>This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code: 400.</p>
--- @param message [MessageType] <p>The message returned when you have an unverified email address or the identity policy is not set on an email address that Amazon Cognito can access.</p>
-function M.InvalidEmailRoleAccessPolicyException(message, ...)
+-- @param _message [MessageType] <p>The message returned when you have an unverified email address or the identity policy is not set on an email address that Amazon Cognito can access.</p>
+function M.InvalidEmailRoleAccessPolicyException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEmailRoleAccessPolicyException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidEmailRoleAccessPolicyException(t)
+	asserts.AssertInvalidEmailRoleAccessPolicyException(t)
 	return t
 end
 
-local UpdateUserPoolClientRequest_keys = { "CallbackURLs" = true, "AllowedOAuthScopes" = true, "UserPoolId" = true, "AllowedOAuthFlowsUserPoolClient" = true, "ClientId" = true, "DefaultRedirectURI" = true, "AllowedOAuthFlows" = true, "ExplicitAuthFlows" = true, "LogoutURLs" = true, "WriteAttributes" = true, "SupportedIdentityProviders" = true, "ReadAttributes" = true, "RefreshTokenValidity" = true, "ClientName" = true, nil }
+keys.UpdateUserPoolClientRequest = { ["CallbackURLs"] = true, ["AllowedOAuthScopes"] = true, ["UserPoolId"] = true, ["AllowedOAuthFlowsUserPoolClient"] = true, ["ClientId"] = true, ["DefaultRedirectURI"] = true, ["AllowedOAuthFlows"] = true, ["ExplicitAuthFlows"] = true, ["LogoutURLs"] = true, ["WriteAttributes"] = true, ["SupportedIdentityProviders"] = true, ["ReadAttributes"] = true, ["RefreshTokenValidity"] = true, ["ClientName"] = true, nil }
 
-function M.AssertUpdateUserPoolClientRequest(struct)
+function asserts.AssertUpdateUserPoolClientRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserPoolClientRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
-	if struct["CallbackURLs"] then M.AssertCallbackURLsListType(struct["CallbackURLs"]) end
-	if struct["AllowedOAuthScopes"] then M.AssertScopeListType(struct["AllowedOAuthScopes"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["AllowedOAuthFlowsUserPoolClient"] then M.AssertBooleanType(struct["AllowedOAuthFlowsUserPoolClient"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["DefaultRedirectURI"] then M.AssertRedirectUrlType(struct["DefaultRedirectURI"]) end
-	if struct["AllowedOAuthFlows"] then M.AssertOAuthFlowsType(struct["AllowedOAuthFlows"]) end
-	if struct["ExplicitAuthFlows"] then M.AssertExplicitAuthFlowsListType(struct["ExplicitAuthFlows"]) end
-	if struct["LogoutURLs"] then M.AssertLogoutURLsListType(struct["LogoutURLs"]) end
-	if struct["WriteAttributes"] then M.AssertClientPermissionListType(struct["WriteAttributes"]) end
-	if struct["SupportedIdentityProviders"] then M.AssertSupportedIdentityProvidersListType(struct["SupportedIdentityProviders"]) end
-	if struct["ReadAttributes"] then M.AssertClientPermissionListType(struct["ReadAttributes"]) end
-	if struct["RefreshTokenValidity"] then M.AssertRefreshTokenValidityType(struct["RefreshTokenValidity"]) end
-	if struct["ClientName"] then M.AssertClientNameType(struct["ClientName"]) end
+	if struct["CallbackURLs"] then asserts.AssertCallbackURLsListType(struct["CallbackURLs"]) end
+	if struct["AllowedOAuthScopes"] then asserts.AssertScopeListType(struct["AllowedOAuthScopes"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["AllowedOAuthFlowsUserPoolClient"] then asserts.AssertBooleanType(struct["AllowedOAuthFlowsUserPoolClient"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["DefaultRedirectURI"] then asserts.AssertRedirectUrlType(struct["DefaultRedirectURI"]) end
+	if struct["AllowedOAuthFlows"] then asserts.AssertOAuthFlowsType(struct["AllowedOAuthFlows"]) end
+	if struct["ExplicitAuthFlows"] then asserts.AssertExplicitAuthFlowsListType(struct["ExplicitAuthFlows"]) end
+	if struct["LogoutURLs"] then asserts.AssertLogoutURLsListType(struct["LogoutURLs"]) end
+	if struct["WriteAttributes"] then asserts.AssertClientPermissionListType(struct["WriteAttributes"]) end
+	if struct["SupportedIdentityProviders"] then asserts.AssertSupportedIdentityProvidersListType(struct["SupportedIdentityProviders"]) end
+	if struct["ReadAttributes"] then asserts.AssertClientPermissionListType(struct["ReadAttributes"]) end
+	if struct["RefreshTokenValidity"] then asserts.AssertRefreshTokenValidityType(struct["RefreshTokenValidity"]) end
+	if struct["ClientName"] then asserts.AssertClientNameType(struct["ClientName"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserPoolClientRequest_keys[k], "UpdateUserPoolClientRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserPoolClientRequest[k], "UpdateUserPoolClientRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserPoolClientRequest
 -- <p>Represents the request to update the user pool client.</p>
--- @param CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
--- @param AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to update the user pool client.</p>
--- @param AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
--- @param DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
--- @param AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
--- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>Explicit authentication flows.</p>
--- @param LogoutURLs [LogoutURLsListType] <p>A list ofallowed logout URLs for the identity providers.</p>
--- @param WriteAttributes [ClientPermissionListType] <p>The writeable attributes of the user pool.</p>
--- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
--- @param ReadAttributes [ClientPermissionListType] <p>The read-only attributes of the user pool.</p>
--- @param RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
--- @param ClientName [ClientNameType] <p>The client name from the update user pool client request.</p>
+-- @param _CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
+-- @param _AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to update the user pool client.</p>
+-- @param _AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+-- @param _AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
+-- @param _ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>Explicit authentication flows.</p>
+-- @param _LogoutURLs [LogoutURLsListType] <p>A list ofallowed logout URLs for the identity providers.</p>
+-- @param _WriteAttributes [ClientPermissionListType] <p>The writeable attributes of the user pool.</p>
+-- @param _SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
+-- @param _ReadAttributes [ClientPermissionListType] <p>The read-only attributes of the user pool.</p>
+-- @param _RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
+-- @param _ClientName [ClientNameType] <p>The client name from the update user pool client request.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
-function M.UpdateUserPoolClientRequest(CallbackURLs, AllowedOAuthScopes, UserPoolId, AllowedOAuthFlowsUserPoolClient, ClientId, DefaultRedirectURI, AllowedOAuthFlows, ExplicitAuthFlows, LogoutURLs, WriteAttributes, SupportedIdentityProviders, ReadAttributes, RefreshTokenValidity, ClientName, ...)
+function M.UpdateUserPoolClientRequest(_CallbackURLs, _AllowedOAuthScopes, _UserPoolId, _AllowedOAuthFlowsUserPoolClient, _ClientId, _DefaultRedirectURI, _AllowedOAuthFlows, _ExplicitAuthFlows, _LogoutURLs, _WriteAttributes, _SupportedIdentityProviders, _ReadAttributes, _RefreshTokenValidity, _ClientName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserPoolClientRequest")
 	local t = { 
-		["CallbackURLs"] = CallbackURLs,
-		["AllowedOAuthScopes"] = AllowedOAuthScopes,
-		["UserPoolId"] = UserPoolId,
-		["AllowedOAuthFlowsUserPoolClient"] = AllowedOAuthFlowsUserPoolClient,
-		["ClientId"] = ClientId,
-		["DefaultRedirectURI"] = DefaultRedirectURI,
-		["AllowedOAuthFlows"] = AllowedOAuthFlows,
-		["ExplicitAuthFlows"] = ExplicitAuthFlows,
-		["LogoutURLs"] = LogoutURLs,
-		["WriteAttributes"] = WriteAttributes,
-		["SupportedIdentityProviders"] = SupportedIdentityProviders,
-		["ReadAttributes"] = ReadAttributes,
-		["RefreshTokenValidity"] = RefreshTokenValidity,
-		["ClientName"] = ClientName,
+		["CallbackURLs"] = _CallbackURLs,
+		["AllowedOAuthScopes"] = _AllowedOAuthScopes,
+		["UserPoolId"] = _UserPoolId,
+		["AllowedOAuthFlowsUserPoolClient"] = _AllowedOAuthFlowsUserPoolClient,
+		["ClientId"] = _ClientId,
+		["DefaultRedirectURI"] = _DefaultRedirectURI,
+		["AllowedOAuthFlows"] = _AllowedOAuthFlows,
+		["ExplicitAuthFlows"] = _ExplicitAuthFlows,
+		["LogoutURLs"] = _LogoutURLs,
+		["WriteAttributes"] = _WriteAttributes,
+		["SupportedIdentityProviders"] = _SupportedIdentityProviders,
+		["ReadAttributes"] = _ReadAttributes,
+		["RefreshTokenValidity"] = _RefreshTokenValidity,
+		["ClientName"] = _ClientName,
 	}
-	M.AssertUpdateUserPoolClientRequest(t)
+	asserts.AssertUpdateUserPoolClientRequest(t)
 	return t
 end
 
-local ChangePasswordRequest_keys = { "PreviousPassword" = true, "ProposedPassword" = true, "AccessToken" = true, nil }
+keys.ChangePasswordRequest = { ["PreviousPassword"] = true, ["ProposedPassword"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertChangePasswordRequest(struct)
+function asserts.AssertChangePasswordRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ChangePasswordRequest to be of type 'table'")
 	assert(struct["PreviousPassword"], "Expected key PreviousPassword to exist in table")
 	assert(struct["ProposedPassword"], "Expected key ProposedPassword to exist in table")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
-	if struct["PreviousPassword"] then M.AssertPasswordType(struct["PreviousPassword"]) end
-	if struct["ProposedPassword"] then M.AssertPasswordType(struct["ProposedPassword"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["PreviousPassword"] then asserts.AssertPasswordType(struct["PreviousPassword"]) end
+	if struct["ProposedPassword"] then asserts.AssertPasswordType(struct["ProposedPassword"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ChangePasswordRequest_keys[k], "ChangePasswordRequest contains unknown key " .. tostring(k))
+		assert(keys.ChangePasswordRequest[k], "ChangePasswordRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ChangePasswordRequest
 -- <p>Represents the request to change a user password.</p>
--- @param PreviousPassword [PasswordType] <p>The old password in the change password request.</p>
--- @param ProposedPassword [PasswordType] <p>The new password in the change password request.</p>
--- @param AccessToken [TokenModelType] <p>The access token in the change password request.</p>
+-- @param _PreviousPassword [PasswordType] <p>The old password in the change password request.</p>
+-- @param _ProposedPassword [PasswordType] <p>The new password in the change password request.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token in the change password request.</p>
 -- Required parameter: PreviousPassword
 -- Required parameter: ProposedPassword
 -- Required parameter: AccessToken
-function M.ChangePasswordRequest(PreviousPassword, ProposedPassword, AccessToken, ...)
+function M.ChangePasswordRequest(_PreviousPassword, _ProposedPassword, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ChangePasswordRequest")
 	local t = { 
-		["PreviousPassword"] = PreviousPassword,
-		["ProposedPassword"] = ProposedPassword,
-		["AccessToken"] = AccessToken,
+		["PreviousPassword"] = _PreviousPassword,
+		["ProposedPassword"] = _ProposedPassword,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertChangePasswordRequest(t)
+	asserts.AssertChangePasswordRequest(t)
 	return t
 end
 
-local CodeDeliveryFailureException_keys = { "message" = true, nil }
+keys.CodeDeliveryFailureException = { ["message"] = true, nil }
 
-function M.AssertCodeDeliveryFailureException(struct)
+function asserts.AssertCodeDeliveryFailureException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CodeDeliveryFailureException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(CodeDeliveryFailureException_keys[k], "CodeDeliveryFailureException contains unknown key " .. tostring(k))
+		assert(keys.CodeDeliveryFailureException[k], "CodeDeliveryFailureException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CodeDeliveryFailureException
 -- <p>This exception is thrown when a verification code fails to deliver successfully.</p>
--- @param message [MessageType] <p>The message sent when a verification code fails to deliver successfully.</p>
-function M.CodeDeliveryFailureException(message, ...)
+-- @param _message [MessageType] <p>The message sent when a verification code fails to deliver successfully.</p>
+function M.CodeDeliveryFailureException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CodeDeliveryFailureException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertCodeDeliveryFailureException(t)
+	asserts.AssertCodeDeliveryFailureException(t)
 	return t
 end
 
-local MFAOptionType_keys = { "DeliveryMedium" = true, "AttributeName" = true, nil }
+keys.MFAOptionType = { ["DeliveryMedium"] = true, ["AttributeName"] = true, nil }
 
-function M.AssertMFAOptionType(struct)
+function asserts.AssertMFAOptionType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MFAOptionType to be of type 'table'")
-	if struct["DeliveryMedium"] then M.AssertDeliveryMediumType(struct["DeliveryMedium"]) end
-	if struct["AttributeName"] then M.AssertAttributeNameType(struct["AttributeName"]) end
+	if struct["DeliveryMedium"] then asserts.AssertDeliveryMediumType(struct["DeliveryMedium"]) end
+	if struct["AttributeName"] then asserts.AssertAttributeNameType(struct["AttributeName"]) end
 	for k,_ in pairs(struct) do
-		assert(MFAOptionType_keys[k], "MFAOptionType contains unknown key " .. tostring(k))
+		assert(keys.MFAOptionType[k], "MFAOptionType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MFAOptionType
 -- <p>Specifies the different settings for multi-factor authentication (MFA).</p>
--- @param DeliveryMedium [DeliveryMediumType] <p>The delivery medium (email message or SMS message) to send the MFA code.</p>
--- @param AttributeName [AttributeNameType] <p>The attribute name of the MFA option type.</p>
-function M.MFAOptionType(DeliveryMedium, AttributeName, ...)
+-- @param _DeliveryMedium [DeliveryMediumType] <p>The delivery medium (email message or SMS message) to send the MFA code.</p>
+-- @param _AttributeName [AttributeNameType] <p>The attribute name of the MFA option type.</p>
+function M.MFAOptionType(_DeliveryMedium, _AttributeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MFAOptionType")
 	local t = { 
-		["DeliveryMedium"] = DeliveryMedium,
-		["AttributeName"] = AttributeName,
+		["DeliveryMedium"] = _DeliveryMedium,
+		["AttributeName"] = _AttributeName,
 	}
-	M.AssertMFAOptionType(t)
+	asserts.AssertMFAOptionType(t)
 	return t
 end
 
-local ListGroupsResponse_keys = { "NextToken" = true, "Groups" = true, nil }
+keys.ListGroupsResponse = { ["NextToken"] = true, ["Groups"] = true, nil }
 
-function M.AssertListGroupsResponse(struct)
+function asserts.AssertListGroupsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["Groups"] then M.AssertGroupListType(struct["Groups"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["Groups"] then asserts.AssertGroupListType(struct["Groups"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGroupsResponse_keys[k], "ListGroupsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListGroupsResponse[k], "ListGroupsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGroupsResponse
 --  
--- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param Groups [GroupListType] <p>The group objects for the groups.</p>
-function M.ListGroupsResponse(NextToken, Groups, ...)
+-- @param _NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _Groups [GroupListType] <p>The group objects for the groups.</p>
+function M.ListGroupsResponse(_NextToken, _Groups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Groups"] = Groups,
+		["NextToken"] = _NextToken,
+		["Groups"] = _Groups,
 	}
-	M.AssertListGroupsResponse(t)
+	asserts.AssertListGroupsResponse(t)
 	return t
 end
 
-local UpdateGroupRequest_keys = { "GroupName" = true, "RoleArn" = true, "Precedence" = true, "Description" = true, "UserPoolId" = true, nil }
+keys.UpdateGroupRequest = { ["GroupName"] = true, ["RoleArn"] = true, ["Precedence"] = true, ["Description"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertUpdateGroupRequest(struct)
+function asserts.AssertUpdateGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGroupRequest to be of type 'table'")
 	assert(struct["GroupName"], "Expected key GroupName to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["GroupName"] then M.AssertGroupNameType(struct["GroupName"]) end
-	if struct["RoleArn"] then M.AssertArnType(struct["RoleArn"]) end
-	if struct["Precedence"] then M.AssertPrecedenceType(struct["Precedence"]) end
-	if struct["Description"] then M.AssertDescriptionType(struct["Description"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["GroupName"] then asserts.AssertGroupNameType(struct["GroupName"]) end
+	if struct["RoleArn"] then asserts.AssertArnType(struct["RoleArn"]) end
+	if struct["Precedence"] then asserts.AssertPrecedenceType(struct["Precedence"]) end
+	if struct["Description"] then asserts.AssertDescriptionType(struct["Description"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGroupRequest_keys[k], "UpdateGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateGroupRequest[k], "UpdateGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGroupRequest
 --  
--- @param GroupName [GroupNameType] <p>The name of the group.</p>
--- @param RoleArn [ArnType] <p>The new role ARN for the group. This is used for setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the token.</p>
--- @param Precedence [PrecedenceType] <p>The new precedence value for the group. For more information about this parameter, see <a href="API_CreateGroup.html">CreateGroup</a>.</p>
--- @param Description [DescriptionType] <p>A string containing the new description of the group.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param _RoleArn [ArnType] <p>The new role ARN for the group. This is used for setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the token.</p>
+-- @param _Precedence [PrecedenceType] <p>The new precedence value for the group. For more information about this parameter, see <a href="API_CreateGroup.html">CreateGroup</a>.</p>
+-- @param _Description [DescriptionType] <p>A string containing the new description of the group.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: GroupName
 -- Required parameter: UserPoolId
-function M.UpdateGroupRequest(GroupName, RoleArn, Precedence, Description, UserPoolId, ...)
+function M.UpdateGroupRequest(_GroupName, _RoleArn, _Precedence, _Description, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupRequest")
 	local t = { 
-		["GroupName"] = GroupName,
-		["RoleArn"] = RoleArn,
-		["Precedence"] = Precedence,
-		["Description"] = Description,
-		["UserPoolId"] = UserPoolId,
+		["GroupName"] = _GroupName,
+		["RoleArn"] = _RoleArn,
+		["Precedence"] = _Precedence,
+		["Description"] = _Description,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertUpdateGroupRequest(t)
+	asserts.AssertUpdateGroupRequest(t)
 	return t
 end
 
-local AdminUserGlobalSignOutResponse_keys = { nil }
+keys.AdminUserGlobalSignOutResponse = { nil }
 
-function M.AssertAdminUserGlobalSignOutResponse(struct)
+function asserts.AssertAdminUserGlobalSignOutResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminUserGlobalSignOutResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminUserGlobalSignOutResponse_keys[k], "AdminUserGlobalSignOutResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminUserGlobalSignOutResponse[k], "AdminUserGlobalSignOutResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2184,17 +2187,17 @@ function M.AdminUserGlobalSignOutResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUserGlobalSignOutResponse")
 	local t = { 
 	}
-	M.AssertAdminUserGlobalSignOutResponse(t)
+	asserts.AssertAdminUserGlobalSignOutResponse(t)
 	return t
 end
 
-local DeleteUserAttributesResponse_keys = { nil }
+keys.DeleteUserAttributesResponse = { nil }
 
-function M.AssertDeleteUserAttributesResponse(struct)
+function asserts.AssertDeleteUserAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserAttributesResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteUserAttributesResponse_keys[k], "DeleteUserAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserAttributesResponse[k], "DeleteUserAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2204,539 +2207,539 @@ function M.DeleteUserAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserAttributesResponse")
 	local t = { 
 	}
-	M.AssertDeleteUserAttributesResponse(t)
+	asserts.AssertDeleteUserAttributesResponse(t)
 	return t
 end
 
-local CodeMismatchException_keys = { "message" = true, nil }
+keys.CodeMismatchException = { ["message"] = true, nil }
 
-function M.AssertCodeMismatchException(struct)
+function asserts.AssertCodeMismatchException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CodeMismatchException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(CodeMismatchException_keys[k], "CodeMismatchException contains unknown key " .. tostring(k))
+		assert(keys.CodeMismatchException[k], "CodeMismatchException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CodeMismatchException
 -- <p>This exception is thrown if the provided code does not match what the server was expecting.</p>
--- @param message [MessageType] <p>The message provided when the code mismatch exception is thrown.</p>
-function M.CodeMismatchException(message, ...)
+-- @param _message [MessageType] <p>The message provided when the code mismatch exception is thrown.</p>
+function M.CodeMismatchException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CodeMismatchException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertCodeMismatchException(t)
+	asserts.AssertCodeMismatchException(t)
 	return t
 end
 
-local ForgetDeviceRequest_keys = { "DeviceKey" = true, "AccessToken" = true, nil }
+keys.ForgetDeviceRequest = { ["DeviceKey"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertForgetDeviceRequest(struct)
+function asserts.AssertForgetDeviceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ForgetDeviceRequest to be of type 'table'")
 	assert(struct["DeviceKey"], "Expected key DeviceKey to exist in table")
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ForgetDeviceRequest_keys[k], "ForgetDeviceRequest contains unknown key " .. tostring(k))
+		assert(keys.ForgetDeviceRequest[k], "ForgetDeviceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ForgetDeviceRequest
 -- <p>Represents the request to forget the device.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param AccessToken [TokenModelType] <p>The access token for the forgotten device request.</p>
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token for the forgotten device request.</p>
 -- Required parameter: DeviceKey
-function M.ForgetDeviceRequest(DeviceKey, AccessToken, ...)
+function M.ForgetDeviceRequest(_DeviceKey, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ForgetDeviceRequest")
 	local t = { 
-		["DeviceKey"] = DeviceKey,
-		["AccessToken"] = AccessToken,
+		["DeviceKey"] = _DeviceKey,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertForgetDeviceRequest(t)
+	asserts.AssertForgetDeviceRequest(t)
 	return t
 end
 
-local RespondToAuthChallengeResponse_keys = { "AuthenticationResult" = true, "ChallengeName" = true, "ChallengeParameters" = true, "Session" = true, nil }
+keys.RespondToAuthChallengeResponse = { ["AuthenticationResult"] = true, ["ChallengeName"] = true, ["ChallengeParameters"] = true, ["Session"] = true, nil }
 
-function M.AssertRespondToAuthChallengeResponse(struct)
+function asserts.AssertRespondToAuthChallengeResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RespondToAuthChallengeResponse to be of type 'table'")
-	if struct["AuthenticationResult"] then M.AssertAuthenticationResultType(struct["AuthenticationResult"]) end
-	if struct["ChallengeName"] then M.AssertChallengeNameType(struct["ChallengeName"]) end
-	if struct["ChallengeParameters"] then M.AssertChallengeParametersType(struct["ChallengeParameters"]) end
-	if struct["Session"] then M.AssertSessionType(struct["Session"]) end
+	if struct["AuthenticationResult"] then asserts.AssertAuthenticationResultType(struct["AuthenticationResult"]) end
+	if struct["ChallengeName"] then asserts.AssertChallengeNameType(struct["ChallengeName"]) end
+	if struct["ChallengeParameters"] then asserts.AssertChallengeParametersType(struct["ChallengeParameters"]) end
+	if struct["Session"] then asserts.AssertSessionType(struct["Session"]) end
 	for k,_ in pairs(struct) do
-		assert(RespondToAuthChallengeResponse_keys[k], "RespondToAuthChallengeResponse contains unknown key " .. tostring(k))
+		assert(keys.RespondToAuthChallengeResponse[k], "RespondToAuthChallengeResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RespondToAuthChallengeResponse
 -- <p>The response to respond to the authentication challenge.</p>
--- @param AuthenticationResult [AuthenticationResultType] <p>The result returned by the server in response to the request to respond to the authentication challenge.</p>
--- @param ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
--- @param ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
--- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
-function M.RespondToAuthChallengeResponse(AuthenticationResult, ChallengeName, ChallengeParameters, Session, ...)
+-- @param _AuthenticationResult [AuthenticationResultType] <p>The result returned by the server in response to the request to respond to the authentication challenge.</p>
+-- @param _ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+-- @param _ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+-- @param _Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
+function M.RespondToAuthChallengeResponse(_AuthenticationResult, _ChallengeName, _ChallengeParameters, _Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RespondToAuthChallengeResponse")
 	local t = { 
-		["AuthenticationResult"] = AuthenticationResult,
-		["ChallengeName"] = ChallengeName,
-		["ChallengeParameters"] = ChallengeParameters,
-		["Session"] = Session,
+		["AuthenticationResult"] = _AuthenticationResult,
+		["ChallengeName"] = _ChallengeName,
+		["ChallengeParameters"] = _ChallengeParameters,
+		["Session"] = _Session,
 	}
-	M.AssertRespondToAuthChallengeResponse(t)
+	asserts.AssertRespondToAuthChallengeResponse(t)
 	return t
 end
 
-local UpdateIdentityProviderResponse_keys = { "IdentityProvider" = true, nil }
+keys.UpdateIdentityProviderResponse = { ["IdentityProvider"] = true, nil }
 
-function M.AssertUpdateIdentityProviderResponse(struct)
+function asserts.AssertUpdateIdentityProviderResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateIdentityProviderResponse to be of type 'table'")
 	assert(struct["IdentityProvider"], "Expected key IdentityProvider to exist in table")
-	if struct["IdentityProvider"] then M.AssertIdentityProviderType(struct["IdentityProvider"]) end
+	if struct["IdentityProvider"] then asserts.AssertIdentityProviderType(struct["IdentityProvider"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateIdentityProviderResponse_keys[k], "UpdateIdentityProviderResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateIdentityProviderResponse[k], "UpdateIdentityProviderResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateIdentityProviderResponse
 --  
--- @param IdentityProvider [IdentityProviderType] <p>The identity provider object.</p>
+-- @param _IdentityProvider [IdentityProviderType] <p>The identity provider object.</p>
 -- Required parameter: IdentityProvider
-function M.UpdateIdentityProviderResponse(IdentityProvider, ...)
+function M.UpdateIdentityProviderResponse(_IdentityProvider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateIdentityProviderResponse")
 	local t = { 
-		["IdentityProvider"] = IdentityProvider,
+		["IdentityProvider"] = _IdentityProvider,
 	}
-	M.AssertUpdateIdentityProviderResponse(t)
+	asserts.AssertUpdateIdentityProviderResponse(t)
 	return t
 end
 
-local ForgotPasswordRequest_keys = { "Username" = true, "SecretHash" = true, "ClientId" = true, nil }
+keys.ForgotPasswordRequest = { ["Username"] = true, ["SecretHash"] = true, ["ClientId"] = true, nil }
 
-function M.AssertForgotPasswordRequest(struct)
+function asserts.AssertForgotPasswordRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ForgotPasswordRequest to be of type 'table'")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["SecretHash"] then M.AssertSecretHashType(struct["SecretHash"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["SecretHash"] then asserts.AssertSecretHashType(struct["SecretHash"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
 	for k,_ in pairs(struct) do
-		assert(ForgotPasswordRequest_keys[k], "ForgotPasswordRequest contains unknown key " .. tostring(k))
+		assert(keys.ForgotPasswordRequest[k], "ForgotPasswordRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ForgotPasswordRequest
 -- <p>Represents the request to reset a user's password.</p>
--- @param Username [UsernameType] <p>The user name of the user for whom you want to enter a code to reset a forgotten password.</p>
--- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _Username [UsernameType] <p>The user name of the user for whom you want to enter a code to reset a forgotten password.</p>
+-- @param _SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
-function M.ForgotPasswordRequest(Username, SecretHash, ClientId, ...)
+function M.ForgotPasswordRequest(_Username, _SecretHash, _ClientId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ForgotPasswordRequest")
 	local t = { 
-		["Username"] = Username,
-		["SecretHash"] = SecretHash,
-		["ClientId"] = ClientId,
+		["Username"] = _Username,
+		["SecretHash"] = _SecretHash,
+		["ClientId"] = _ClientId,
 	}
-	M.AssertForgotPasswordRequest(t)
+	asserts.AssertForgotPasswordRequest(t)
 	return t
 end
 
-local DescribeIdentityProviderResponse_keys = { "IdentityProvider" = true, nil }
+keys.DescribeIdentityProviderResponse = { ["IdentityProvider"] = true, nil }
 
-function M.AssertDescribeIdentityProviderResponse(struct)
+function asserts.AssertDescribeIdentityProviderResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeIdentityProviderResponse to be of type 'table'")
 	assert(struct["IdentityProvider"], "Expected key IdentityProvider to exist in table")
-	if struct["IdentityProvider"] then M.AssertIdentityProviderType(struct["IdentityProvider"]) end
+	if struct["IdentityProvider"] then asserts.AssertIdentityProviderType(struct["IdentityProvider"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeIdentityProviderResponse_keys[k], "DescribeIdentityProviderResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeIdentityProviderResponse[k], "DescribeIdentityProviderResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeIdentityProviderResponse
 --  
--- @param IdentityProvider [IdentityProviderType] <p>The identity provider that was deleted.</p>
+-- @param _IdentityProvider [IdentityProviderType] <p>The identity provider that was deleted.</p>
 -- Required parameter: IdentityProvider
-function M.DescribeIdentityProviderResponse(IdentityProvider, ...)
+function M.DescribeIdentityProviderResponse(_IdentityProvider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityProviderResponse")
 	local t = { 
-		["IdentityProvider"] = IdentityProvider,
+		["IdentityProvider"] = _IdentityProvider,
 	}
-	M.AssertDescribeIdentityProviderResponse(t)
+	asserts.AssertDescribeIdentityProviderResponse(t)
 	return t
 end
 
-local SetUserSettingsRequest_keys = { "MFAOptions" = true, "AccessToken" = true, nil }
+keys.SetUserSettingsRequest = { ["MFAOptions"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertSetUserSettingsRequest(struct)
+function asserts.AssertSetUserSettingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetUserSettingsRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
 	assert(struct["MFAOptions"], "Expected key MFAOptions to exist in table")
-	if struct["MFAOptions"] then M.AssertMFAOptionListType(struct["MFAOptions"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["MFAOptions"] then asserts.AssertMFAOptionListType(struct["MFAOptions"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(SetUserSettingsRequest_keys[k], "SetUserSettingsRequest contains unknown key " .. tostring(k))
+		assert(keys.SetUserSettingsRequest[k], "SetUserSettingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetUserSettingsRequest
 -- <p>Represents the request to set user settings.</p>
--- @param MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
--- @param AccessToken [TokenModelType] <p>The access token for the set user settings request.</p>
+-- @param _MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
+-- @param _AccessToken [TokenModelType] <p>The access token for the set user settings request.</p>
 -- Required parameter: AccessToken
 -- Required parameter: MFAOptions
-function M.SetUserSettingsRequest(MFAOptions, AccessToken, ...)
+function M.SetUserSettingsRequest(_MFAOptions, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetUserSettingsRequest")
 	local t = { 
-		["MFAOptions"] = MFAOptions,
-		["AccessToken"] = AccessToken,
+		["MFAOptions"] = _MFAOptions,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertSetUserSettingsRequest(t)
+	asserts.AssertSetUserSettingsRequest(t)
 	return t
 end
 
-local AdminConfirmSignUpRequest_keys = { "Username" = true, "UserPoolId" = true, nil }
+keys.AdminConfirmSignUpRequest = { ["Username"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminConfirmSignUpRequest(struct)
+function asserts.AssertAdminConfirmSignUpRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminConfirmSignUpRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminConfirmSignUpRequest_keys[k], "AdminConfirmSignUpRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminConfirmSignUpRequest[k], "AdminConfirmSignUpRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminConfirmSignUpRequest
 -- <p>Represents the request to confirm user registration.</p>
--- @param Username [UsernameType] <p>The user name for which you want to confirm user registration.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for which you want to confirm user registration.</p>
+-- @param _Username [UsernameType] <p>The user name for which you want to confirm user registration.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for which you want to confirm user registration.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminConfirmSignUpRequest(Username, UserPoolId, ...)
+function M.AdminConfirmSignUpRequest(_Username, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminConfirmSignUpRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminConfirmSignUpRequest(t)
+	asserts.AssertAdminConfirmSignUpRequest(t)
 	return t
 end
 
-local EmailConfigurationType_keys = { "ReplyToEmailAddress" = true, "SourceArn" = true, nil }
+keys.EmailConfigurationType = { ["ReplyToEmailAddress"] = true, ["SourceArn"] = true, nil }
 
-function M.AssertEmailConfigurationType(struct)
+function asserts.AssertEmailConfigurationType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EmailConfigurationType to be of type 'table'")
-	if struct["ReplyToEmailAddress"] then M.AssertEmailAddressType(struct["ReplyToEmailAddress"]) end
-	if struct["SourceArn"] then M.AssertArnType(struct["SourceArn"]) end
+	if struct["ReplyToEmailAddress"] then asserts.AssertEmailAddressType(struct["ReplyToEmailAddress"]) end
+	if struct["SourceArn"] then asserts.AssertArnType(struct["SourceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(EmailConfigurationType_keys[k], "EmailConfigurationType contains unknown key " .. tostring(k))
+		assert(keys.EmailConfigurationType[k], "EmailConfigurationType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EmailConfigurationType
 -- <p>The email configuration type.</p>
--- @param ReplyToEmailAddress [EmailAddressType] <p>The REPLY-TO email address.</p>
--- @param SourceArn [ArnType] <p>The Amazon Resource Name (ARN) of the email source.</p>
-function M.EmailConfigurationType(ReplyToEmailAddress, SourceArn, ...)
+-- @param _ReplyToEmailAddress [EmailAddressType] <p>The REPLY-TO email address.</p>
+-- @param _SourceArn [ArnType] <p>The Amazon Resource Name (ARN) of the email source.</p>
+function M.EmailConfigurationType(_ReplyToEmailAddress, _SourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EmailConfigurationType")
 	local t = { 
-		["ReplyToEmailAddress"] = ReplyToEmailAddress,
-		["SourceArn"] = SourceArn,
+		["ReplyToEmailAddress"] = _ReplyToEmailAddress,
+		["SourceArn"] = _SourceArn,
 	}
-	M.AssertEmailConfigurationType(t)
+	asserts.AssertEmailConfigurationType(t)
 	return t
 end
 
-local AdminRespondToAuthChallengeRequest_keys = { "ChallengeResponses" = true, "ChallengeName" = true, "ClientId" = true, "UserPoolId" = true, "Session" = true, nil }
+keys.AdminRespondToAuthChallengeRequest = { ["ChallengeResponses"] = true, ["ChallengeName"] = true, ["ClientId"] = true, ["UserPoolId"] = true, ["Session"] = true, nil }
 
-function M.AssertAdminRespondToAuthChallengeRequest(struct)
+function asserts.AssertAdminRespondToAuthChallengeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminRespondToAuthChallengeRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
 	assert(struct["ChallengeName"], "Expected key ChallengeName to exist in table")
-	if struct["ChallengeResponses"] then M.AssertChallengeResponsesType(struct["ChallengeResponses"]) end
-	if struct["ChallengeName"] then M.AssertChallengeNameType(struct["ChallengeName"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["Session"] then M.AssertSessionType(struct["Session"]) end
+	if struct["ChallengeResponses"] then asserts.AssertChallengeResponsesType(struct["ChallengeResponses"]) end
+	if struct["ChallengeName"] then asserts.AssertChallengeNameType(struct["ChallengeName"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Session"] then asserts.AssertSessionType(struct["Session"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminRespondToAuthChallengeRequest_keys[k], "AdminRespondToAuthChallengeRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminRespondToAuthChallengeRequest[k], "AdminRespondToAuthChallengeRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminRespondToAuthChallengeRequest
 -- <p>The request to respond to the authentication challenge, as an administrator.</p>
--- @param ChallengeResponses [ChallengeResponsesType] <p>The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:</p> <ul> <li> <p> <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: <code>PASSWORD</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> </ul> <p>The value of the <code>USERNAME</code> attribute must be the user's actual username, not an alias (such as email address or phone number). To make this easier, the <code>AdminInitiateAuth</code> response includes the actual username value in the <code>USERNAMEUSER_ID_FOR_SRP</code> attribute, even if you specified an alias in your call to <code>AdminInitiateAuth</code>.</p>
--- @param ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
--- @param ClientId [ClientIdType] <p>The app client ID.</p>
--- @param UserPoolId [UserPoolIdType] <p>The ID of the Amazon Cognito user pool.</p>
--- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
+-- @param _ChallengeResponses [ChallengeResponsesType] <p>The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:</p> <ul> <li> <p> <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: <code>PASSWORD</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> </ul> <p>The value of the <code>USERNAME</code> attribute must be the user's actual username, not an alias (such as email address or phone number). To make this easier, the <code>AdminInitiateAuth</code> response includes the actual username value in the <code>USERNAMEUSER_ID_FOR_SRP</code> attribute, even if you specified an alias in your call to <code>AdminInitiateAuth</code>.</p>
+-- @param _ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
+-- @param _ClientId [ClientIdType] <p>The app client ID.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The ID of the Amazon Cognito user pool.</p>
+-- @param _Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
 -- Required parameter: ChallengeName
-function M.AdminRespondToAuthChallengeRequest(ChallengeResponses, ChallengeName, ClientId, UserPoolId, Session, ...)
+function M.AdminRespondToAuthChallengeRequest(_ChallengeResponses, _ChallengeName, _ClientId, _UserPoolId, _Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminRespondToAuthChallengeRequest")
 	local t = { 
-		["ChallengeResponses"] = ChallengeResponses,
-		["ChallengeName"] = ChallengeName,
-		["ClientId"] = ClientId,
-		["UserPoolId"] = UserPoolId,
-		["Session"] = Session,
+		["ChallengeResponses"] = _ChallengeResponses,
+		["ChallengeName"] = _ChallengeName,
+		["ClientId"] = _ClientId,
+		["UserPoolId"] = _UserPoolId,
+		["Session"] = _Session,
 	}
-	M.AssertAdminRespondToAuthChallengeRequest(t)
+	asserts.AssertAdminRespondToAuthChallengeRequest(t)
 	return t
 end
 
-local UpdateIdentityProviderRequest_keys = { "ProviderDetails" = true, "IdpIdentifiers" = true, "AttributeMapping" = true, "ProviderName" = true, "UserPoolId" = true, nil }
+keys.UpdateIdentityProviderRequest = { ["ProviderDetails"] = true, ["IdpIdentifiers"] = true, ["AttributeMapping"] = true, ["ProviderName"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertUpdateIdentityProviderRequest(struct)
+function asserts.AssertUpdateIdentityProviderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateIdentityProviderRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ProviderName"], "Expected key ProviderName to exist in table")
-	if struct["ProviderDetails"] then M.AssertProviderDetailsType(struct["ProviderDetails"]) end
-	if struct["IdpIdentifiers"] then M.AssertIdpIdentifiersListType(struct["IdpIdentifiers"]) end
-	if struct["AttributeMapping"] then M.AssertAttributeMappingType(struct["AttributeMapping"]) end
-	if struct["ProviderName"] then M.AssertProviderNameType(struct["ProviderName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ProviderDetails"] then asserts.AssertProviderDetailsType(struct["ProviderDetails"]) end
+	if struct["IdpIdentifiers"] then asserts.AssertIdpIdentifiersListType(struct["IdpIdentifiers"]) end
+	if struct["AttributeMapping"] then asserts.AssertAttributeMappingType(struct["AttributeMapping"]) end
+	if struct["ProviderName"] then asserts.AssertProviderNameType(struct["ProviderName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateIdentityProviderRequest_keys[k], "UpdateIdentityProviderRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateIdentityProviderRequest[k], "UpdateIdentityProviderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateIdentityProviderRequest
 --  
--- @param ProviderDetails [ProviderDetailsType] <p>The identity provider details to be updated, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
--- @param IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
--- @param AttributeMapping [AttributeMappingType] <p>The identity provider attribute mapping to be changed.</p>
--- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _ProviderDetails [ProviderDetailsType] <p>The identity provider details to be updated, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
+-- @param _IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
+-- @param _AttributeMapping [AttributeMappingType] <p>The identity provider attribute mapping to be changed.</p>
+-- @param _ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ProviderName
-function M.UpdateIdentityProviderRequest(ProviderDetails, IdpIdentifiers, AttributeMapping, ProviderName, UserPoolId, ...)
+function M.UpdateIdentityProviderRequest(_ProviderDetails, _IdpIdentifiers, _AttributeMapping, _ProviderName, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateIdentityProviderRequest")
 	local t = { 
-		["ProviderDetails"] = ProviderDetails,
-		["IdpIdentifiers"] = IdpIdentifiers,
-		["AttributeMapping"] = AttributeMapping,
-		["ProviderName"] = ProviderName,
-		["UserPoolId"] = UserPoolId,
+		["ProviderDetails"] = _ProviderDetails,
+		["IdpIdentifiers"] = _IdpIdentifiers,
+		["AttributeMapping"] = _AttributeMapping,
+		["ProviderName"] = _ProviderName,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertUpdateIdentityProviderRequest(t)
+	asserts.AssertUpdateIdentityProviderRequest(t)
 	return t
 end
 
-local AdminGetUserResponse_keys = { "Username" = true, "MFAOptions" = true, "Enabled" = true, "UserStatus" = true, "UserCreateDate" = true, "UserAttributes" = true, "UserLastModifiedDate" = true, nil }
+keys.AdminGetUserResponse = { ["Username"] = true, ["MFAOptions"] = true, ["Enabled"] = true, ["UserStatus"] = true, ["UserCreateDate"] = true, ["UserAttributes"] = true, ["UserLastModifiedDate"] = true, nil }
 
-function M.AssertAdminGetUserResponse(struct)
+function asserts.AssertAdminGetUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminGetUserResponse to be of type 'table'")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["MFAOptions"] then M.AssertMFAOptionListType(struct["MFAOptions"]) end
-	if struct["Enabled"] then M.AssertBooleanType(struct["Enabled"]) end
-	if struct["UserStatus"] then M.AssertUserStatusType(struct["UserStatus"]) end
-	if struct["UserCreateDate"] then M.AssertDateType(struct["UserCreateDate"]) end
-	if struct["UserAttributes"] then M.AssertAttributeListType(struct["UserAttributes"]) end
-	if struct["UserLastModifiedDate"] then M.AssertDateType(struct["UserLastModifiedDate"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["MFAOptions"] then asserts.AssertMFAOptionListType(struct["MFAOptions"]) end
+	if struct["Enabled"] then asserts.AssertBooleanType(struct["Enabled"]) end
+	if struct["UserStatus"] then asserts.AssertUserStatusType(struct["UserStatus"]) end
+	if struct["UserCreateDate"] then asserts.AssertDateType(struct["UserCreateDate"]) end
+	if struct["UserAttributes"] then asserts.AssertAttributeListType(struct["UserAttributes"]) end
+	if struct["UserLastModifiedDate"] then asserts.AssertDateType(struct["UserLastModifiedDate"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminGetUserResponse_keys[k], "AdminGetUserResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminGetUserResponse[k], "AdminGetUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminGetUserResponse
 -- <p>Represents the response from the server from the request to get the specified user as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user about whom you are receiving information.</p>
--- @param MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
--- @param Enabled [BooleanType] <p>Indicates that the status is enabled.</p>
--- @param UserStatus [UserStatusType] <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li> <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p> </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
--- @param UserCreateDate [DateType] <p>The date the user was created.</p>
--- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p>
--- @param UserLastModifiedDate [DateType] <p>The date the user was last modified.</p>
+-- @param _Username [UsernameType] <p>The user name of the user about whom you are receiving information.</p>
+-- @param _MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
+-- @param _Enabled [BooleanType] <p>Indicates that the status is enabled.</p>
+-- @param _UserStatus [UserStatusType] <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li> <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p> </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
+-- @param _UserCreateDate [DateType] <p>The date the user was created.</p>
+-- @param _UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p>
+-- @param _UserLastModifiedDate [DateType] <p>The date the user was last modified.</p>
 -- Required parameter: Username
-function M.AdminGetUserResponse(Username, MFAOptions, Enabled, UserStatus, UserCreateDate, UserAttributes, UserLastModifiedDate, ...)
+function M.AdminGetUserResponse(_Username, _MFAOptions, _Enabled, _UserStatus, _UserCreateDate, _UserAttributes, _UserLastModifiedDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminGetUserResponse")
 	local t = { 
-		["Username"] = Username,
-		["MFAOptions"] = MFAOptions,
-		["Enabled"] = Enabled,
-		["UserStatus"] = UserStatus,
-		["UserCreateDate"] = UserCreateDate,
-		["UserAttributes"] = UserAttributes,
-		["UserLastModifiedDate"] = UserLastModifiedDate,
+		["Username"] = _Username,
+		["MFAOptions"] = _MFAOptions,
+		["Enabled"] = _Enabled,
+		["UserStatus"] = _UserStatus,
+		["UserCreateDate"] = _UserCreateDate,
+		["UserAttributes"] = _UserAttributes,
+		["UserLastModifiedDate"] = _UserLastModifiedDate,
 	}
-	M.AssertAdminGetUserResponse(t)
+	asserts.AssertAdminGetUserResponse(t)
 	return t
 end
 
-local DescribeUserPoolResponse_keys = { "UserPool" = true, nil }
+keys.DescribeUserPoolResponse = { ["UserPool"] = true, nil }
 
-function M.AssertDescribeUserPoolResponse(struct)
+function asserts.AssertDescribeUserPoolResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserPoolResponse to be of type 'table'")
-	if struct["UserPool"] then M.AssertUserPoolType(struct["UserPool"]) end
+	if struct["UserPool"] then asserts.AssertUserPoolType(struct["UserPool"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserPoolResponse_keys[k], "DescribeUserPoolResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserPoolResponse[k], "DescribeUserPoolResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserPoolResponse
 -- <p>Represents the response to describe the user pool.</p>
--- @param UserPool [UserPoolType] <p>The container of metadata returned by the server to describe the pool.</p>
-function M.DescribeUserPoolResponse(UserPool, ...)
+-- @param _UserPool [UserPoolType] <p>The container of metadata returned by the server to describe the pool.</p>
+function M.DescribeUserPoolResponse(_UserPool, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolResponse")
 	local t = { 
-		["UserPool"] = UserPool,
+		["UserPool"] = _UserPool,
 	}
-	M.AssertDescribeUserPoolResponse(t)
+	asserts.AssertDescribeUserPoolResponse(t)
 	return t
 end
 
-local InvalidLambdaResponseException_keys = { "message" = true, nil }
+keys.InvalidLambdaResponseException = { ["message"] = true, nil }
 
-function M.AssertInvalidLambdaResponseException(struct)
+function asserts.AssertInvalidLambdaResponseException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidLambdaResponseException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidLambdaResponseException_keys[k], "InvalidLambdaResponseException contains unknown key " .. tostring(k))
+		assert(keys.InvalidLambdaResponseException[k], "InvalidLambdaResponseException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidLambdaResponseException
 -- <p>This exception is thrown when the Amazon Cognito service encounters an invalid AWS Lambda response.</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid AWS Lambda response exception.</p>
-function M.InvalidLambdaResponseException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid AWS Lambda response exception.</p>
+function M.InvalidLambdaResponseException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLambdaResponseException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidLambdaResponseException(t)
+	asserts.AssertInvalidLambdaResponseException(t)
 	return t
 end
 
-local AdminUpdateDeviceStatusRequest_keys = { "Username" = true, "DeviceKey" = true, "DeviceRememberedStatus" = true, "UserPoolId" = true, nil }
+keys.AdminUpdateDeviceStatusRequest = { ["Username"] = true, ["DeviceKey"] = true, ["DeviceRememberedStatus"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminUpdateDeviceStatusRequest(struct)
+function asserts.AssertAdminUpdateDeviceStatusRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminUpdateDeviceStatusRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["DeviceKey"], "Expected key DeviceKey to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["DeviceRememberedStatus"] then M.AssertDeviceRememberedStatusType(struct["DeviceRememberedStatus"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["DeviceRememberedStatus"] then asserts.AssertDeviceRememberedStatusType(struct["DeviceRememberedStatus"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminUpdateDeviceStatusRequest_keys[k], "AdminUpdateDeviceStatusRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminUpdateDeviceStatusRequest[k], "AdminUpdateDeviceStatusRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminUpdateDeviceStatusRequest
 -- <p>The request to update the device status, as an administrator.</p>
--- @param Username [UsernameType] <p>The user name.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param DeviceRememberedStatus [DeviceRememberedStatusType] <p>The status indicating whether a device has been remembered or not.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _Username [UsernameType] <p>The user name.</p>
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _DeviceRememberedStatus [DeviceRememberedStatusType] <p>The status indicating whether a device has been remembered or not.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: DeviceKey
-function M.AdminUpdateDeviceStatusRequest(Username, DeviceKey, DeviceRememberedStatus, UserPoolId, ...)
+function M.AdminUpdateDeviceStatusRequest(_Username, _DeviceKey, _DeviceRememberedStatus, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUpdateDeviceStatusRequest")
 	local t = { 
-		["Username"] = Username,
-		["DeviceKey"] = DeviceKey,
-		["DeviceRememberedStatus"] = DeviceRememberedStatus,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["DeviceKey"] = _DeviceKey,
+		["DeviceRememberedStatus"] = _DeviceRememberedStatus,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminUpdateDeviceStatusRequest(t)
+	asserts.AssertAdminUpdateDeviceStatusRequest(t)
 	return t
 end
 
-local AdminGetDeviceRequest_keys = { "Username" = true, "DeviceKey" = true, "UserPoolId" = true, nil }
+keys.AdminGetDeviceRequest = { ["Username"] = true, ["DeviceKey"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminGetDeviceRequest(struct)
+function asserts.AssertAdminGetDeviceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminGetDeviceRequest to be of type 'table'")
 	assert(struct["DeviceKey"], "Expected key DeviceKey to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminGetDeviceRequest_keys[k], "AdminGetDeviceRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminGetDeviceRequest[k], "AdminGetDeviceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminGetDeviceRequest
 -- <p>Represents the request to get the device, as an administrator.</p>
--- @param Username [UsernameType] <p>The user name.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _Username [UsernameType] <p>The user name.</p>
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: DeviceKey
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminGetDeviceRequest(Username, DeviceKey, UserPoolId, ...)
+function M.AdminGetDeviceRequest(_Username, _DeviceKey, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminGetDeviceRequest")
 	local t = { 
-		["Username"] = Username,
-		["DeviceKey"] = DeviceKey,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["DeviceKey"] = _DeviceKey,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminGetDeviceRequest(t)
+	asserts.AssertAdminGetDeviceRequest(t)
 	return t
 end
 
-local GetDeviceRequest_keys = { "DeviceKey" = true, "AccessToken" = true, nil }
+keys.GetDeviceRequest = { ["DeviceKey"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertGetDeviceRequest(struct)
+function asserts.AssertGetDeviceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeviceRequest to be of type 'table'")
 	assert(struct["DeviceKey"], "Expected key DeviceKey to exist in table")
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeviceRequest_keys[k], "GetDeviceRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDeviceRequest[k], "GetDeviceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeviceRequest
 -- <p>Represents the request to get the device.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param AccessToken [TokenModelType] <p>The access token.</p>
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token.</p>
 -- Required parameter: DeviceKey
-function M.GetDeviceRequest(DeviceKey, AccessToken, ...)
+function M.GetDeviceRequest(_DeviceKey, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceRequest")
 	local t = { 
-		["DeviceKey"] = DeviceKey,
-		["AccessToken"] = AccessToken,
+		["DeviceKey"] = _DeviceKey,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertGetDeviceRequest(t)
+	asserts.AssertGetDeviceRequest(t)
 	return t
 end
 
-local SetUserSettingsResponse_keys = { nil }
+keys.SetUserSettingsResponse = { nil }
 
-function M.AssertSetUserSettingsResponse(struct)
+function asserts.AssertSetUserSettingsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetUserSettingsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(SetUserSettingsResponse_keys[k], "SetUserSettingsResponse contains unknown key " .. tostring(k))
+		assert(keys.SetUserSettingsResponse[k], "SetUserSettingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2746,42 +2749,42 @@ function M.SetUserSettingsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetUserSettingsResponse")
 	local t = { 
 	}
-	M.AssertSetUserSettingsResponse(t)
+	asserts.AssertSetUserSettingsResponse(t)
 	return t
 end
 
-local GetUserRequest_keys = { "AccessToken" = true, nil }
+keys.GetUserRequest = { ["AccessToken"] = true, nil }
 
-function M.AssertGetUserRequest(struct)
+function asserts.AssertGetUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUserRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUserRequest_keys[k], "GetUserRequest contains unknown key " .. tostring(k))
+		assert(keys.GetUserRequest[k], "GetUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUserRequest
 -- <p>Represents the request to get information about the user.</p>
--- @param AccessToken [TokenModelType] <p>The access token returned by the server response to get information about the user.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token returned by the server response to get information about the user.</p>
 -- Required parameter: AccessToken
-function M.GetUserRequest(AccessToken, ...)
+function M.GetUserRequest(_AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUserRequest")
 	local t = { 
-		["AccessToken"] = AccessToken,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertGetUserRequest(t)
+	asserts.AssertGetUserRequest(t)
 	return t
 end
 
-local GlobalSignOutResponse_keys = { nil }
+keys.GlobalSignOutResponse = { nil }
 
-function M.AssertGlobalSignOutResponse(struct)
+function asserts.AssertGlobalSignOutResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GlobalSignOutResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(GlobalSignOutResponse_keys[k], "GlobalSignOutResponse contains unknown key " .. tostring(k))
+		assert(keys.GlobalSignOutResponse[k], "GlobalSignOutResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2791,17 +2794,17 @@ function M.GlobalSignOutResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GlobalSignOutResponse")
 	local t = { 
 	}
-	M.AssertGlobalSignOutResponse(t)
+	asserts.AssertGlobalSignOutResponse(t)
 	return t
 end
 
-local ConfirmForgotPasswordResponse_keys = { nil }
+keys.ConfirmForgotPasswordResponse = { nil }
 
-function M.AssertConfirmForgotPasswordResponse(struct)
+function asserts.AssertConfirmForgotPasswordResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmForgotPasswordResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ConfirmForgotPasswordResponse_keys[k], "ConfirmForgotPasswordResponse contains unknown key " .. tostring(k))
+		assert(keys.ConfirmForgotPasswordResponse[k], "ConfirmForgotPasswordResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2811,202 +2814,202 @@ function M.ConfirmForgotPasswordResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmForgotPasswordResponse")
 	local t = { 
 	}
-	M.AssertConfirmForgotPasswordResponse(t)
+	asserts.AssertConfirmForgotPasswordResponse(t)
 	return t
 end
 
-local GetCSVHeaderRequest_keys = { "UserPoolId" = true, nil }
+keys.GetCSVHeaderRequest = { ["UserPoolId"] = true, nil }
 
-function M.AssertGetCSVHeaderRequest(struct)
+function asserts.AssertGetCSVHeaderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCSVHeaderRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCSVHeaderRequest_keys[k], "GetCSVHeaderRequest contains unknown key " .. tostring(k))
+		assert(keys.GetCSVHeaderRequest[k], "GetCSVHeaderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCSVHeaderRequest
 -- <p>Represents the request to get the header information for the .csv file for the user import job.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are to be imported into.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are to be imported into.</p>
 -- Required parameter: UserPoolId
-function M.GetCSVHeaderRequest(UserPoolId, ...)
+function M.GetCSVHeaderRequest(_UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCSVHeaderRequest")
 	local t = { 
-		["UserPoolId"] = UserPoolId,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertGetCSVHeaderRequest(t)
+	asserts.AssertGetCSVHeaderRequest(t)
 	return t
 end
 
-local DescribeUserPoolDomainRequest_keys = { "Domain" = true, nil }
+keys.DescribeUserPoolDomainRequest = { ["Domain"] = true, nil }
 
-function M.AssertDescribeUserPoolDomainRequest(struct)
+function asserts.AssertDescribeUserPoolDomainRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserPoolDomainRequest to be of type 'table'")
 	assert(struct["Domain"], "Expected key Domain to exist in table")
-	if struct["Domain"] then M.AssertDomainType(struct["Domain"]) end
+	if struct["Domain"] then asserts.AssertDomainType(struct["Domain"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserPoolDomainRequest_keys[k], "DescribeUserPoolDomainRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserPoolDomainRequest[k], "DescribeUserPoolDomainRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserPoolDomainRequest
 --  
--- @param Domain [DomainType] <p>The domain string.</p>
+-- @param _Domain [DomainType] <p>The domain string.</p>
 -- Required parameter: Domain
-function M.DescribeUserPoolDomainRequest(Domain, ...)
+function M.DescribeUserPoolDomainRequest(_Domain, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolDomainRequest")
 	local t = { 
-		["Domain"] = Domain,
+		["Domain"] = _Domain,
 	}
-	M.AssertDescribeUserPoolDomainRequest(t)
+	asserts.AssertDescribeUserPoolDomainRequest(t)
 	return t
 end
 
-local CodeDeliveryDetailsType_keys = { "AttributeName" = true, "Destination" = true, "DeliveryMedium" = true, nil }
+keys.CodeDeliveryDetailsType = { ["AttributeName"] = true, ["Destination"] = true, ["DeliveryMedium"] = true, nil }
 
-function M.AssertCodeDeliveryDetailsType(struct)
+function asserts.AssertCodeDeliveryDetailsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CodeDeliveryDetailsType to be of type 'table'")
-	if struct["AttributeName"] then M.AssertAttributeNameType(struct["AttributeName"]) end
-	if struct["Destination"] then M.AssertStringType(struct["Destination"]) end
-	if struct["DeliveryMedium"] then M.AssertDeliveryMediumType(struct["DeliveryMedium"]) end
+	if struct["AttributeName"] then asserts.AssertAttributeNameType(struct["AttributeName"]) end
+	if struct["Destination"] then asserts.AssertStringType(struct["Destination"]) end
+	if struct["DeliveryMedium"] then asserts.AssertDeliveryMediumType(struct["DeliveryMedium"]) end
 	for k,_ in pairs(struct) do
-		assert(CodeDeliveryDetailsType_keys[k], "CodeDeliveryDetailsType contains unknown key " .. tostring(k))
+		assert(keys.CodeDeliveryDetailsType[k], "CodeDeliveryDetailsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CodeDeliveryDetailsType
 -- <p>The type of code delivery details being returned from the server.</p>
--- @param AttributeName [AttributeNameType] <p>The name of the attribute in the code delivery details type.</p>
--- @param Destination [StringType] <p>The destination for the code delivery details.</p>
--- @param DeliveryMedium [DeliveryMediumType] <p>The delivery medium (email message or phone number).</p>
-function M.CodeDeliveryDetailsType(AttributeName, Destination, DeliveryMedium, ...)
+-- @param _AttributeName [AttributeNameType] <p>The name of the attribute in the code delivery details type.</p>
+-- @param _Destination [StringType] <p>The destination for the code delivery details.</p>
+-- @param _DeliveryMedium [DeliveryMediumType] <p>The delivery medium (email message or phone number).</p>
+function M.CodeDeliveryDetailsType(_AttributeName, _Destination, _DeliveryMedium, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CodeDeliveryDetailsType")
 	local t = { 
-		["AttributeName"] = AttributeName,
-		["Destination"] = Destination,
-		["DeliveryMedium"] = DeliveryMedium,
+		["AttributeName"] = _AttributeName,
+		["Destination"] = _Destination,
+		["DeliveryMedium"] = _DeliveryMedium,
 	}
-	M.AssertCodeDeliveryDetailsType(t)
+	asserts.AssertCodeDeliveryDetailsType(t)
 	return t
 end
 
-local UserNotFoundException_keys = { "message" = true, nil }
+keys.UserNotFoundException = { ["message"] = true, nil }
 
-function M.AssertUserNotFoundException(struct)
+function asserts.AssertUserNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserNotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UserNotFoundException_keys[k], "UserNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.UserNotFoundException[k], "UserNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserNotFoundException
 -- <p>This exception is thrown when a user is not found.</p>
--- @param message [MessageType] <p>The message returned when a user is not found.</p>
-function M.UserNotFoundException(message, ...)
+-- @param _message [MessageType] <p>The message returned when a user is not found.</p>
+function M.UserNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUserNotFoundException(t)
+	asserts.AssertUserNotFoundException(t)
 	return t
 end
 
-local ListDevicesResponse_keys = { "PaginationToken" = true, "Devices" = true, nil }
+keys.ListDevicesResponse = { ["PaginationToken"] = true, ["Devices"] = true, nil }
 
-function M.AssertListDevicesResponse(struct)
+function asserts.AssertListDevicesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDevicesResponse to be of type 'table'")
-	if struct["PaginationToken"] then M.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
-	if struct["Devices"] then M.AssertDeviceListType(struct["Devices"]) end
+	if struct["PaginationToken"] then asserts.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
+	if struct["Devices"] then asserts.AssertDeviceListType(struct["Devices"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDevicesResponse_keys[k], "ListDevicesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDevicesResponse[k], "ListDevicesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDevicesResponse
 -- <p>Represents the response to list devices.</p>
--- @param PaginationToken [SearchPaginationTokenType] <p>The pagination token for the list device response.</p>
--- @param Devices [DeviceListType] <p>The devices returned in the list devices response.</p>
-function M.ListDevicesResponse(PaginationToken, Devices, ...)
+-- @param _PaginationToken [SearchPaginationTokenType] <p>The pagination token for the list device response.</p>
+-- @param _Devices [DeviceListType] <p>The devices returned in the list devices response.</p>
+function M.ListDevicesResponse(_PaginationToken, _Devices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDevicesResponse")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["Devices"] = Devices,
+		["PaginationToken"] = _PaginationToken,
+		["Devices"] = _Devices,
 	}
-	M.AssertListDevicesResponse(t)
+	asserts.AssertListDevicesResponse(t)
 	return t
 end
 
-local GetIdentityProviderByIdentifierResponse_keys = { "IdentityProvider" = true, nil }
+keys.GetIdentityProviderByIdentifierResponse = { ["IdentityProvider"] = true, nil }
 
-function M.AssertGetIdentityProviderByIdentifierResponse(struct)
+function asserts.AssertGetIdentityProviderByIdentifierResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIdentityProviderByIdentifierResponse to be of type 'table'")
 	assert(struct["IdentityProvider"], "Expected key IdentityProvider to exist in table")
-	if struct["IdentityProvider"] then M.AssertIdentityProviderType(struct["IdentityProvider"]) end
+	if struct["IdentityProvider"] then asserts.AssertIdentityProviderType(struct["IdentityProvider"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIdentityProviderByIdentifierResponse_keys[k], "GetIdentityProviderByIdentifierResponse contains unknown key " .. tostring(k))
+		assert(keys.GetIdentityProviderByIdentifierResponse[k], "GetIdentityProviderByIdentifierResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIdentityProviderByIdentifierResponse
 --  
--- @param IdentityProvider [IdentityProviderType] <p>The identity provider object.</p>
+-- @param _IdentityProvider [IdentityProviderType] <p>The identity provider object.</p>
 -- Required parameter: IdentityProvider
-function M.GetIdentityProviderByIdentifierResponse(IdentityProvider, ...)
+function M.GetIdentityProviderByIdentifierResponse(_IdentityProvider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityProviderByIdentifierResponse")
 	local t = { 
-		["IdentityProvider"] = IdentityProvider,
+		["IdentityProvider"] = _IdentityProvider,
 	}
-	M.AssertGetIdentityProviderByIdentifierResponse(t)
+	asserts.AssertGetIdentityProviderByIdentifierResponse(t)
 	return t
 end
 
-local AdminRespondToAuthChallengeResponse_keys = { "AuthenticationResult" = true, "ChallengeName" = true, "ChallengeParameters" = true, "Session" = true, nil }
+keys.AdminRespondToAuthChallengeResponse = { ["AuthenticationResult"] = true, ["ChallengeName"] = true, ["ChallengeParameters"] = true, ["Session"] = true, nil }
 
-function M.AssertAdminRespondToAuthChallengeResponse(struct)
+function asserts.AssertAdminRespondToAuthChallengeResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminRespondToAuthChallengeResponse to be of type 'table'")
-	if struct["AuthenticationResult"] then M.AssertAuthenticationResultType(struct["AuthenticationResult"]) end
-	if struct["ChallengeName"] then M.AssertChallengeNameType(struct["ChallengeName"]) end
-	if struct["ChallengeParameters"] then M.AssertChallengeParametersType(struct["ChallengeParameters"]) end
-	if struct["Session"] then M.AssertSessionType(struct["Session"]) end
+	if struct["AuthenticationResult"] then asserts.AssertAuthenticationResultType(struct["AuthenticationResult"]) end
+	if struct["ChallengeName"] then asserts.AssertChallengeNameType(struct["ChallengeName"]) end
+	if struct["ChallengeParameters"] then asserts.AssertChallengeParametersType(struct["ChallengeParameters"]) end
+	if struct["Session"] then asserts.AssertSessionType(struct["Session"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminRespondToAuthChallengeResponse_keys[k], "AdminRespondToAuthChallengeResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminRespondToAuthChallengeResponse[k], "AdminRespondToAuthChallengeResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminRespondToAuthChallengeResponse
 -- <p>Responds to the authentication challenge, as an administrator.</p>
--- @param AuthenticationResult [AuthenticationResultType] <p>The result returned by the server in response to the authentication request.</p>
--- @param ChallengeName [ChallengeNameType] <p>The name of the challenge. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
--- @param ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
--- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
-function M.AdminRespondToAuthChallengeResponse(AuthenticationResult, ChallengeName, ChallengeParameters, Session, ...)
+-- @param _AuthenticationResult [AuthenticationResultType] <p>The result returned by the server in response to the authentication request.</p>
+-- @param _ChallengeName [ChallengeNameType] <p>The name of the challenge. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
+-- @param _ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
+-- @param _Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
+function M.AdminRespondToAuthChallengeResponse(_AuthenticationResult, _ChallengeName, _ChallengeParameters, _Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminRespondToAuthChallengeResponse")
 	local t = { 
-		["AuthenticationResult"] = AuthenticationResult,
-		["ChallengeName"] = ChallengeName,
-		["ChallengeParameters"] = ChallengeParameters,
-		["Session"] = Session,
+		["AuthenticationResult"] = _AuthenticationResult,
+		["ChallengeName"] = _ChallengeName,
+		["ChallengeParameters"] = _ChallengeParameters,
+		["Session"] = _Session,
 	}
-	M.AssertAdminRespondToAuthChallengeResponse(t)
+	asserts.AssertAdminRespondToAuthChallengeResponse(t)
 	return t
 end
 
-local UpdateUserPoolResponse_keys = { nil }
+keys.UpdateUserPoolResponse = { nil }
 
-function M.AssertUpdateUserPoolResponse(struct)
+function asserts.AssertUpdateUserPoolResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserPoolResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateUserPoolResponse_keys[k], "UpdateUserPoolResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserPoolResponse[k], "UpdateUserPoolResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3016,322 +3019,322 @@ function M.UpdateUserPoolResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserPoolResponse")
 	local t = { 
 	}
-	M.AssertUpdateUserPoolResponse(t)
+	asserts.AssertUpdateUserPoolResponse(t)
 	return t
 end
 
-local ListUserImportJobsResponse_keys = { "UserImportJobs" = true, "PaginationToken" = true, nil }
+keys.ListUserImportJobsResponse = { ["UserImportJobs"] = true, ["PaginationToken"] = true, nil }
 
-function M.AssertListUserImportJobsResponse(struct)
+function asserts.AssertListUserImportJobsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUserImportJobsResponse to be of type 'table'")
-	if struct["UserImportJobs"] then M.AssertUserImportJobsListType(struct["UserImportJobs"]) end
-	if struct["PaginationToken"] then M.AssertPaginationKeyType(struct["PaginationToken"]) end
+	if struct["UserImportJobs"] then asserts.AssertUserImportJobsListType(struct["UserImportJobs"]) end
+	if struct["PaginationToken"] then asserts.AssertPaginationKeyType(struct["PaginationToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUserImportJobsResponse_keys[k], "ListUserImportJobsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListUserImportJobsResponse[k], "ListUserImportJobsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUserImportJobsResponse
 -- <p>Represents the response from the server to the request to list the user import jobs.</p>
--- @param UserImportJobs [UserImportJobsListType] <p>The user import jobs.</p>
--- @param PaginationToken [PaginationKeyType] <p>An identifier that can be used to return the next set of user import jobs in the list.</p>
-function M.ListUserImportJobsResponse(UserImportJobs, PaginationToken, ...)
+-- @param _UserImportJobs [UserImportJobsListType] <p>The user import jobs.</p>
+-- @param _PaginationToken [PaginationKeyType] <p>An identifier that can be used to return the next set of user import jobs in the list.</p>
+function M.ListUserImportJobsResponse(_UserImportJobs, _PaginationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserImportJobsResponse")
 	local t = { 
-		["UserImportJobs"] = UserImportJobs,
-		["PaginationToken"] = PaginationToken,
+		["UserImportJobs"] = _UserImportJobs,
+		["PaginationToken"] = _PaginationToken,
 	}
-	M.AssertListUserImportJobsResponse(t)
+	asserts.AssertListUserImportJobsResponse(t)
 	return t
 end
 
-local ListUserPoolsResponse_keys = { "UserPools" = true, "NextToken" = true, nil }
+keys.ListUserPoolsResponse = { ["UserPools"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListUserPoolsResponse(struct)
+function asserts.AssertListUserPoolsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUserPoolsResponse to be of type 'table'")
-	if struct["UserPools"] then M.AssertUserPoolListType(struct["UserPools"]) end
-	if struct["NextToken"] then M.AssertPaginationKeyType(struct["NextToken"]) end
+	if struct["UserPools"] then asserts.AssertUserPoolListType(struct["UserPools"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKeyType(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUserPoolsResponse_keys[k], "ListUserPoolsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListUserPoolsResponse[k], "ListUserPoolsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUserPoolsResponse
 -- <p>Represents the response to list user pools.</p>
--- @param UserPools [UserPoolListType] <p>The user pools from the response to list users.</p>
--- @param NextToken [PaginationKeyType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
-function M.ListUserPoolsResponse(UserPools, NextToken, ...)
+-- @param _UserPools [UserPoolListType] <p>The user pools from the response to list users.</p>
+-- @param _NextToken [PaginationKeyType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+function M.ListUserPoolsResponse(_UserPools, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoolsResponse")
 	local t = { 
-		["UserPools"] = UserPools,
-		["NextToken"] = NextToken,
+		["UserPools"] = _UserPools,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListUserPoolsResponse(t)
+	asserts.AssertListUserPoolsResponse(t)
 	return t
 end
 
-local UserPoolType_keys = { "AliasAttributes" = true, "SchemaAttributes" = true, "EmailVerificationSubject" = true, "MfaConfiguration" = true, "SmsAuthenticationMessage" = true, "SmsConfiguration" = true, "AutoVerifiedAttributes" = true, "LambdaConfig" = true, "Status" = true, "LastModifiedDate" = true, "AdminCreateUserConfig" = true, "EmailConfiguration" = true, "SmsConfigurationFailure" = true, "Name" = true, "EmailConfigurationFailure" = true, "Policies" = true, "UserPoolTags" = true, "DeviceConfiguration" = true, "SmsVerificationMessage" = true, "EmailVerificationMessage" = true, "CreationDate" = true, "EstimatedNumberOfUsers" = true, "Id" = true, nil }
+keys.UserPoolType = { ["AliasAttributes"] = true, ["SchemaAttributes"] = true, ["EmailVerificationSubject"] = true, ["MfaConfiguration"] = true, ["SmsAuthenticationMessage"] = true, ["SmsConfiguration"] = true, ["AutoVerifiedAttributes"] = true, ["LambdaConfig"] = true, ["Status"] = true, ["LastModifiedDate"] = true, ["AdminCreateUserConfig"] = true, ["EmailConfiguration"] = true, ["SmsConfigurationFailure"] = true, ["Name"] = true, ["EmailConfigurationFailure"] = true, ["Policies"] = true, ["UserPoolTags"] = true, ["DeviceConfiguration"] = true, ["SmsVerificationMessage"] = true, ["EmailVerificationMessage"] = true, ["CreationDate"] = true, ["EstimatedNumberOfUsers"] = true, ["Id"] = true, nil }
 
-function M.AssertUserPoolType(struct)
+function asserts.AssertUserPoolType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserPoolType to be of type 'table'")
-	if struct["AliasAttributes"] then M.AssertAliasAttributesListType(struct["AliasAttributes"]) end
-	if struct["SchemaAttributes"] then M.AssertSchemaAttributesListType(struct["SchemaAttributes"]) end
-	if struct["EmailVerificationSubject"] then M.AssertEmailVerificationSubjectType(struct["EmailVerificationSubject"]) end
-	if struct["MfaConfiguration"] then M.AssertUserPoolMfaType(struct["MfaConfiguration"]) end
-	if struct["SmsAuthenticationMessage"] then M.AssertSmsVerificationMessageType(struct["SmsAuthenticationMessage"]) end
-	if struct["SmsConfiguration"] then M.AssertSmsConfigurationType(struct["SmsConfiguration"]) end
-	if struct["AutoVerifiedAttributes"] then M.AssertVerifiedAttributesListType(struct["AutoVerifiedAttributes"]) end
-	if struct["LambdaConfig"] then M.AssertLambdaConfigType(struct["LambdaConfig"]) end
-	if struct["Status"] then M.AssertStatusType(struct["Status"]) end
-	if struct["LastModifiedDate"] then M.AssertDateType(struct["LastModifiedDate"]) end
-	if struct["AdminCreateUserConfig"] then M.AssertAdminCreateUserConfigType(struct["AdminCreateUserConfig"]) end
-	if struct["EmailConfiguration"] then M.AssertEmailConfigurationType(struct["EmailConfiguration"]) end
-	if struct["SmsConfigurationFailure"] then M.AssertStringType(struct["SmsConfigurationFailure"]) end
-	if struct["Name"] then M.AssertUserPoolNameType(struct["Name"]) end
-	if struct["EmailConfigurationFailure"] then M.AssertStringType(struct["EmailConfigurationFailure"]) end
-	if struct["Policies"] then M.AssertUserPoolPolicyType(struct["Policies"]) end
-	if struct["UserPoolTags"] then M.AssertUserPoolTagsType(struct["UserPoolTags"]) end
-	if struct["DeviceConfiguration"] then M.AssertDeviceConfigurationType(struct["DeviceConfiguration"]) end
-	if struct["SmsVerificationMessage"] then M.AssertSmsVerificationMessageType(struct["SmsVerificationMessage"]) end
-	if struct["EmailVerificationMessage"] then M.AssertEmailVerificationMessageType(struct["EmailVerificationMessage"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
-	if struct["EstimatedNumberOfUsers"] then M.AssertIntegerType(struct["EstimatedNumberOfUsers"]) end
-	if struct["Id"] then M.AssertUserPoolIdType(struct["Id"]) end
+	if struct["AliasAttributes"] then asserts.AssertAliasAttributesListType(struct["AliasAttributes"]) end
+	if struct["SchemaAttributes"] then asserts.AssertSchemaAttributesListType(struct["SchemaAttributes"]) end
+	if struct["EmailVerificationSubject"] then asserts.AssertEmailVerificationSubjectType(struct["EmailVerificationSubject"]) end
+	if struct["MfaConfiguration"] then asserts.AssertUserPoolMfaType(struct["MfaConfiguration"]) end
+	if struct["SmsAuthenticationMessage"] then asserts.AssertSmsVerificationMessageType(struct["SmsAuthenticationMessage"]) end
+	if struct["SmsConfiguration"] then asserts.AssertSmsConfigurationType(struct["SmsConfiguration"]) end
+	if struct["AutoVerifiedAttributes"] then asserts.AssertVerifiedAttributesListType(struct["AutoVerifiedAttributes"]) end
+	if struct["LambdaConfig"] then asserts.AssertLambdaConfigType(struct["LambdaConfig"]) end
+	if struct["Status"] then asserts.AssertStatusType(struct["Status"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDateType(struct["LastModifiedDate"]) end
+	if struct["AdminCreateUserConfig"] then asserts.AssertAdminCreateUserConfigType(struct["AdminCreateUserConfig"]) end
+	if struct["EmailConfiguration"] then asserts.AssertEmailConfigurationType(struct["EmailConfiguration"]) end
+	if struct["SmsConfigurationFailure"] then asserts.AssertStringType(struct["SmsConfigurationFailure"]) end
+	if struct["Name"] then asserts.AssertUserPoolNameType(struct["Name"]) end
+	if struct["EmailConfigurationFailure"] then asserts.AssertStringType(struct["EmailConfigurationFailure"]) end
+	if struct["Policies"] then asserts.AssertUserPoolPolicyType(struct["Policies"]) end
+	if struct["UserPoolTags"] then asserts.AssertUserPoolTagsType(struct["UserPoolTags"]) end
+	if struct["DeviceConfiguration"] then asserts.AssertDeviceConfigurationType(struct["DeviceConfiguration"]) end
+	if struct["SmsVerificationMessage"] then asserts.AssertSmsVerificationMessageType(struct["SmsVerificationMessage"]) end
+	if struct["EmailVerificationMessage"] then asserts.AssertEmailVerificationMessageType(struct["EmailVerificationMessage"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
+	if struct["EstimatedNumberOfUsers"] then asserts.AssertIntegerType(struct["EstimatedNumberOfUsers"]) end
+	if struct["Id"] then asserts.AssertUserPoolIdType(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(UserPoolType_keys[k], "UserPoolType contains unknown key " .. tostring(k))
+		assert(keys.UserPoolType[k], "UserPoolType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserPoolType
 -- <p>A container for information about the user pool type.</p>
--- @param AliasAttributes [AliasAttributesListType] <p>Specifies the attributes that are aliased in a user pool.</p>
--- @param SchemaAttributes [SchemaAttributesListType] <p>A container with the schema attributes of a user pool.</p>
--- @param EmailVerificationSubject [EmailVerificationSubjectType] <p>The subject of the email verification message.</p>
--- @param MfaConfiguration [UserPoolMfaType] <p>Can be one of the following values:</p> <ul> <li> <p> <code>OFF</code> - MFA tokens are not required and cannot be specified during user registration.</p> </li> <li> <p> <code>ON</code> - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.</p> </li> <li> <p> <code>OPTIONAL</code> - Users have the option when registering to create an MFA token.</p> </li> </ul>
--- @param SmsAuthenticationMessage [SmsVerificationMessageType] <p>The contents of the SMS authentication message.</p>
--- @param SmsConfiguration [SmsConfigurationType] <p>The SMS configuration.</p>
--- @param AutoVerifiedAttributes [VerifiedAttributesListType] <p>Specifies the attributes that are auto-verified in a user pool.</p>
--- @param LambdaConfig [LambdaConfigType] <p>A container for the AWS Lambda triggers associated with a user pool.</p>
--- @param Status [StatusType] <p>The status of a user pool.</p>
--- @param LastModifiedDate [DateType] <p>The date the user pool was last modified.</p>
--- @param AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
--- @param EmailConfiguration [EmailConfigurationType] <p>The email configuration.</p>
--- @param SmsConfigurationFailure [StringType] <p>The reason why the SMS configuration cannot send the messages to your users.</p>
--- @param Name [UserPoolNameType] <p>The name of the user pool.</p>
--- @param EmailConfigurationFailure [StringType] <p>The reason why the email configuration cannot send the messages to your users.</p>
--- @param Policies [UserPoolPolicyType] <p>A container for the policies associated with a user pool.</p>
--- @param UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
--- @param DeviceConfiguration [DeviceConfigurationType] <p>The device configuration.</p>
--- @param SmsVerificationMessage [SmsVerificationMessageType] <p>The contents of the SMS verification message.</p>
--- @param EmailVerificationMessage [EmailVerificationMessageType] <p>The contents of the email verification message.</p>
--- @param CreationDate [DateType] <p>The date the user pool was created.</p>
--- @param EstimatedNumberOfUsers [IntegerType] <p>A number estimating the size of the user pool.</p>
--- @param Id [UserPoolIdType] <p>The ID of the user pool.</p>
-function M.UserPoolType(AliasAttributes, SchemaAttributes, EmailVerificationSubject, MfaConfiguration, SmsAuthenticationMessage, SmsConfiguration, AutoVerifiedAttributes, LambdaConfig, Status, LastModifiedDate, AdminCreateUserConfig, EmailConfiguration, SmsConfigurationFailure, Name, EmailConfigurationFailure, Policies, UserPoolTags, DeviceConfiguration, SmsVerificationMessage, EmailVerificationMessage, CreationDate, EstimatedNumberOfUsers, Id, ...)
+-- @param _AliasAttributes [AliasAttributesListType] <p>Specifies the attributes that are aliased in a user pool.</p>
+-- @param _SchemaAttributes [SchemaAttributesListType] <p>A container with the schema attributes of a user pool.</p>
+-- @param _EmailVerificationSubject [EmailVerificationSubjectType] <p>The subject of the email verification message.</p>
+-- @param _MfaConfiguration [UserPoolMfaType] <p>Can be one of the following values:</p> <ul> <li> <p> <code>OFF</code> - MFA tokens are not required and cannot be specified during user registration.</p> </li> <li> <p> <code>ON</code> - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.</p> </li> <li> <p> <code>OPTIONAL</code> - Users have the option when registering to create an MFA token.</p> </li> </ul>
+-- @param _SmsAuthenticationMessage [SmsVerificationMessageType] <p>The contents of the SMS authentication message.</p>
+-- @param _SmsConfiguration [SmsConfigurationType] <p>The SMS configuration.</p>
+-- @param _AutoVerifiedAttributes [VerifiedAttributesListType] <p>Specifies the attributes that are auto-verified in a user pool.</p>
+-- @param _LambdaConfig [LambdaConfigType] <p>A container for the AWS Lambda triggers associated with a user pool.</p>
+-- @param _Status [StatusType] <p>The status of a user pool.</p>
+-- @param _LastModifiedDate [DateType] <p>The date the user pool was last modified.</p>
+-- @param _AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
+-- @param _EmailConfiguration [EmailConfigurationType] <p>The email configuration.</p>
+-- @param _SmsConfigurationFailure [StringType] <p>The reason why the SMS configuration cannot send the messages to your users.</p>
+-- @param _Name [UserPoolNameType] <p>The name of the user pool.</p>
+-- @param _EmailConfigurationFailure [StringType] <p>The reason why the email configuration cannot send the messages to your users.</p>
+-- @param _Policies [UserPoolPolicyType] <p>A container for the policies associated with a user pool.</p>
+-- @param _UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
+-- @param _DeviceConfiguration [DeviceConfigurationType] <p>The device configuration.</p>
+-- @param _SmsVerificationMessage [SmsVerificationMessageType] <p>The contents of the SMS verification message.</p>
+-- @param _EmailVerificationMessage [EmailVerificationMessageType] <p>The contents of the email verification message.</p>
+-- @param _CreationDate [DateType] <p>The date the user pool was created.</p>
+-- @param _EstimatedNumberOfUsers [IntegerType] <p>A number estimating the size of the user pool.</p>
+-- @param _Id [UserPoolIdType] <p>The ID of the user pool.</p>
+function M.UserPoolType(_AliasAttributes, _SchemaAttributes, _EmailVerificationSubject, _MfaConfiguration, _SmsAuthenticationMessage, _SmsConfiguration, _AutoVerifiedAttributes, _LambdaConfig, _Status, _LastModifiedDate, _AdminCreateUserConfig, _EmailConfiguration, _SmsConfigurationFailure, _Name, _EmailConfigurationFailure, _Policies, _UserPoolTags, _DeviceConfiguration, _SmsVerificationMessage, _EmailVerificationMessage, _CreationDate, _EstimatedNumberOfUsers, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolType")
 	local t = { 
-		["AliasAttributes"] = AliasAttributes,
-		["SchemaAttributes"] = SchemaAttributes,
-		["EmailVerificationSubject"] = EmailVerificationSubject,
-		["MfaConfiguration"] = MfaConfiguration,
-		["SmsAuthenticationMessage"] = SmsAuthenticationMessage,
-		["SmsConfiguration"] = SmsConfiguration,
-		["AutoVerifiedAttributes"] = AutoVerifiedAttributes,
-		["LambdaConfig"] = LambdaConfig,
-		["Status"] = Status,
-		["LastModifiedDate"] = LastModifiedDate,
-		["AdminCreateUserConfig"] = AdminCreateUserConfig,
-		["EmailConfiguration"] = EmailConfiguration,
-		["SmsConfigurationFailure"] = SmsConfigurationFailure,
-		["Name"] = Name,
-		["EmailConfigurationFailure"] = EmailConfigurationFailure,
-		["Policies"] = Policies,
-		["UserPoolTags"] = UserPoolTags,
-		["DeviceConfiguration"] = DeviceConfiguration,
-		["SmsVerificationMessage"] = SmsVerificationMessage,
-		["EmailVerificationMessage"] = EmailVerificationMessage,
-		["CreationDate"] = CreationDate,
-		["EstimatedNumberOfUsers"] = EstimatedNumberOfUsers,
-		["Id"] = Id,
+		["AliasAttributes"] = _AliasAttributes,
+		["SchemaAttributes"] = _SchemaAttributes,
+		["EmailVerificationSubject"] = _EmailVerificationSubject,
+		["MfaConfiguration"] = _MfaConfiguration,
+		["SmsAuthenticationMessage"] = _SmsAuthenticationMessage,
+		["SmsConfiguration"] = _SmsConfiguration,
+		["AutoVerifiedAttributes"] = _AutoVerifiedAttributes,
+		["LambdaConfig"] = _LambdaConfig,
+		["Status"] = _Status,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["AdminCreateUserConfig"] = _AdminCreateUserConfig,
+		["EmailConfiguration"] = _EmailConfiguration,
+		["SmsConfigurationFailure"] = _SmsConfigurationFailure,
+		["Name"] = _Name,
+		["EmailConfigurationFailure"] = _EmailConfigurationFailure,
+		["Policies"] = _Policies,
+		["UserPoolTags"] = _UserPoolTags,
+		["DeviceConfiguration"] = _DeviceConfiguration,
+		["SmsVerificationMessage"] = _SmsVerificationMessage,
+		["EmailVerificationMessage"] = _EmailVerificationMessage,
+		["CreationDate"] = _CreationDate,
+		["EstimatedNumberOfUsers"] = _EstimatedNumberOfUsers,
+		["Id"] = _Id,
 	}
-	M.AssertUserPoolType(t)
+	asserts.AssertUserPoolType(t)
 	return t
 end
 
-local AdminForgetDeviceRequest_keys = { "Username" = true, "DeviceKey" = true, "UserPoolId" = true, nil }
+keys.AdminForgetDeviceRequest = { ["Username"] = true, ["DeviceKey"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminForgetDeviceRequest(struct)
+function asserts.AssertAdminForgetDeviceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminForgetDeviceRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["DeviceKey"], "Expected key DeviceKey to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminForgetDeviceRequest_keys[k], "AdminForgetDeviceRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminForgetDeviceRequest[k], "AdminForgetDeviceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminForgetDeviceRequest
 -- <p>Sends the forgot device request, as an administrator.</p>
--- @param Username [UsernameType] <p>The user name.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _Username [UsernameType] <p>The user name.</p>
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: DeviceKey
-function M.AdminForgetDeviceRequest(Username, DeviceKey, UserPoolId, ...)
+function M.AdminForgetDeviceRequest(_Username, _DeviceKey, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminForgetDeviceRequest")
 	local t = { 
-		["Username"] = Username,
-		["DeviceKey"] = DeviceKey,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["DeviceKey"] = _DeviceKey,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminForgetDeviceRequest(t)
+	asserts.AssertAdminForgetDeviceRequest(t)
 	return t
 end
 
-local DescribeIdentityProviderRequest_keys = { "ProviderName" = true, "UserPoolId" = true, nil }
+keys.DescribeIdentityProviderRequest = { ["ProviderName"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertDescribeIdentityProviderRequest(struct)
+function asserts.AssertDescribeIdentityProviderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeIdentityProviderRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ProviderName"], "Expected key ProviderName to exist in table")
-	if struct["ProviderName"] then M.AssertProviderNameType(struct["ProviderName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ProviderName"] then asserts.AssertProviderNameType(struct["ProviderName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeIdentityProviderRequest_keys[k], "DescribeIdentityProviderRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeIdentityProviderRequest[k], "DescribeIdentityProviderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeIdentityProviderRequest
 --  
--- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ProviderName
-function M.DescribeIdentityProviderRequest(ProviderName, UserPoolId, ...)
+function M.DescribeIdentityProviderRequest(_ProviderName, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityProviderRequest")
 	local t = { 
-		["ProviderName"] = ProviderName,
-		["UserPoolId"] = UserPoolId,
+		["ProviderName"] = _ProviderName,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertDescribeIdentityProviderRequest(t)
+	asserts.AssertDescribeIdentityProviderRequest(t)
 	return t
 end
 
-local SchemaAttributeType_keys = { "Name" = true, "NumberAttributeConstraints" = true, "StringAttributeConstraints" = true, "DeveloperOnlyAttribute" = true, "Required" = true, "AttributeDataType" = true, "Mutable" = true, nil }
+keys.SchemaAttributeType = { ["Name"] = true, ["NumberAttributeConstraints"] = true, ["StringAttributeConstraints"] = true, ["DeveloperOnlyAttribute"] = true, ["Required"] = true, ["AttributeDataType"] = true, ["Mutable"] = true, nil }
 
-function M.AssertSchemaAttributeType(struct)
+function asserts.AssertSchemaAttributeType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SchemaAttributeType to be of type 'table'")
-	if struct["Name"] then M.AssertCustomAttributeNameType(struct["Name"]) end
-	if struct["NumberAttributeConstraints"] then M.AssertNumberAttributeConstraintsType(struct["NumberAttributeConstraints"]) end
-	if struct["StringAttributeConstraints"] then M.AssertStringAttributeConstraintsType(struct["StringAttributeConstraints"]) end
-	if struct["DeveloperOnlyAttribute"] then M.AssertBooleanType(struct["DeveloperOnlyAttribute"]) end
-	if struct["Required"] then M.AssertBooleanType(struct["Required"]) end
-	if struct["AttributeDataType"] then M.AssertAttributeDataType(struct["AttributeDataType"]) end
-	if struct["Mutable"] then M.AssertBooleanType(struct["Mutable"]) end
+	if struct["Name"] then asserts.AssertCustomAttributeNameType(struct["Name"]) end
+	if struct["NumberAttributeConstraints"] then asserts.AssertNumberAttributeConstraintsType(struct["NumberAttributeConstraints"]) end
+	if struct["StringAttributeConstraints"] then asserts.AssertStringAttributeConstraintsType(struct["StringAttributeConstraints"]) end
+	if struct["DeveloperOnlyAttribute"] then asserts.AssertBooleanType(struct["DeveloperOnlyAttribute"]) end
+	if struct["Required"] then asserts.AssertBooleanType(struct["Required"]) end
+	if struct["AttributeDataType"] then asserts.AssertAttributeDataType(struct["AttributeDataType"]) end
+	if struct["Mutable"] then asserts.AssertBooleanType(struct["Mutable"]) end
 	for k,_ in pairs(struct) do
-		assert(SchemaAttributeType_keys[k], "SchemaAttributeType contains unknown key " .. tostring(k))
+		assert(keys.SchemaAttributeType[k], "SchemaAttributeType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SchemaAttributeType
 -- <p>Contains information about the schema attribute.</p>
--- @param Name [CustomAttributeNameType] <p>A schema attribute of the name type.</p>
--- @param NumberAttributeConstraints [NumberAttributeConstraintsType] <p>Specifies the constraints for an attribute of the number type.</p>
--- @param StringAttributeConstraints [StringAttributeConstraintsType] <p>Specifies the constraints for an attribute of the string type.</p>
--- @param DeveloperOnlyAttribute [BooleanType] <p>Specifies whether the attribute type is developer only.</p>
--- @param Required [BooleanType] <p>Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.</p>
--- @param AttributeDataType [AttributeDataType] <p>The attribute data type.</p>
--- @param Mutable [BooleanType] <p>Specifies whether the attribute can be changed once it has been created.</p>
-function M.SchemaAttributeType(Name, NumberAttributeConstraints, StringAttributeConstraints, DeveloperOnlyAttribute, Required, AttributeDataType, Mutable, ...)
+-- @param _Name [CustomAttributeNameType] <p>A schema attribute of the name type.</p>
+-- @param _NumberAttributeConstraints [NumberAttributeConstraintsType] <p>Specifies the constraints for an attribute of the number type.</p>
+-- @param _StringAttributeConstraints [StringAttributeConstraintsType] <p>Specifies the constraints for an attribute of the string type.</p>
+-- @param _DeveloperOnlyAttribute [BooleanType] <p>Specifies whether the attribute type is developer only.</p>
+-- @param _Required [BooleanType] <p>Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.</p>
+-- @param _AttributeDataType [AttributeDataType] <p>The attribute data type.</p>
+-- @param _Mutable [BooleanType] <p>Specifies whether the attribute can be changed once it has been created.</p>
+function M.SchemaAttributeType(_Name, _NumberAttributeConstraints, _StringAttributeConstraints, _DeveloperOnlyAttribute, _Required, _AttributeDataType, _Mutable, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SchemaAttributeType")
 	local t = { 
-		["Name"] = Name,
-		["NumberAttributeConstraints"] = NumberAttributeConstraints,
-		["StringAttributeConstraints"] = StringAttributeConstraints,
-		["DeveloperOnlyAttribute"] = DeveloperOnlyAttribute,
-		["Required"] = Required,
-		["AttributeDataType"] = AttributeDataType,
-		["Mutable"] = Mutable,
+		["Name"] = _Name,
+		["NumberAttributeConstraints"] = _NumberAttributeConstraints,
+		["StringAttributeConstraints"] = _StringAttributeConstraints,
+		["DeveloperOnlyAttribute"] = _DeveloperOnlyAttribute,
+		["Required"] = _Required,
+		["AttributeDataType"] = _AttributeDataType,
+		["Mutable"] = _Mutable,
 	}
-	M.AssertSchemaAttributeType(t)
+	asserts.AssertSchemaAttributeType(t)
 	return t
 end
 
-local AdminSetUserSettingsRequest_keys = { "Username" = true, "MFAOptions" = true, "UserPoolId" = true, nil }
+keys.AdminSetUserSettingsRequest = { ["Username"] = true, ["MFAOptions"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminSetUserSettingsRequest(struct)
+function asserts.AssertAdminSetUserSettingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminSetUserSettingsRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["MFAOptions"], "Expected key MFAOptions to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["MFAOptions"] then M.AssertMFAOptionListType(struct["MFAOptions"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["MFAOptions"] then asserts.AssertMFAOptionListType(struct["MFAOptions"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminSetUserSettingsRequest_keys[k], "AdminSetUserSettingsRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminSetUserSettingsRequest[k], "AdminSetUserSettingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminSetUserSettingsRequest
 -- <p>Represents the request to set user settings as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user for whom you wish to set user settings.</p>
--- @param MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to set the user's settings, such as MFA options.</p>
+-- @param _Username [UsernameType] <p>The user name of the user for whom you wish to set user settings.</p>
+-- @param _MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to set the user's settings, such as MFA options.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: MFAOptions
-function M.AdminSetUserSettingsRequest(Username, MFAOptions, UserPoolId, ...)
+function M.AdminSetUserSettingsRequest(_Username, _MFAOptions, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminSetUserSettingsRequest")
 	local t = { 
-		["Username"] = Username,
-		["MFAOptions"] = MFAOptions,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["MFAOptions"] = _MFAOptions,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminSetUserSettingsRequest(t)
+	asserts.AssertAdminSetUserSettingsRequest(t)
 	return t
 end
 
-local AdminCreateUserResponse_keys = { "User" = true, nil }
+keys.AdminCreateUserResponse = { ["User"] = true, nil }
 
-function M.AssertAdminCreateUserResponse(struct)
+function asserts.AssertAdminCreateUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminCreateUserResponse to be of type 'table'")
-	if struct["User"] then M.AssertUserType(struct["User"]) end
+	if struct["User"] then asserts.AssertUserType(struct["User"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminCreateUserResponse_keys[k], "AdminCreateUserResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminCreateUserResponse[k], "AdminCreateUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminCreateUserResponse
 -- <p>Represents the response from the server to the request to create the user.</p>
--- @param User [UserType] <p>The user returned in the request to create a new user.</p>
-function M.AdminCreateUserResponse(User, ...)
+-- @param _User [UserType] <p>The user returned in the request to create a new user.</p>
+function M.AdminCreateUserResponse(_User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminCreateUserResponse")
 	local t = { 
-		["User"] = User,
+		["User"] = _User,
 	}
-	M.AssertAdminCreateUserResponse(t)
+	asserts.AssertAdminCreateUserResponse(t)
 	return t
 end
 
-local AddCustomAttributesResponse_keys = { nil }
+keys.AddCustomAttributesResponse = { nil }
 
-function M.AssertAddCustomAttributesResponse(struct)
+function asserts.AssertAddCustomAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddCustomAttributesResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AddCustomAttributesResponse_keys[k], "AddCustomAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.AddCustomAttributesResponse[k], "AddCustomAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3341,623 +3344,623 @@ function M.AddCustomAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddCustomAttributesResponse")
 	local t = { 
 	}
-	M.AssertAddCustomAttributesResponse(t)
+	asserts.AssertAddCustomAttributesResponse(t)
 	return t
 end
 
-local CreateUserPoolResponse_keys = { "UserPool" = true, nil }
+keys.CreateUserPoolResponse = { ["UserPool"] = true, nil }
 
-function M.AssertCreateUserPoolResponse(struct)
+function asserts.AssertCreateUserPoolResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserPoolResponse to be of type 'table'")
-	if struct["UserPool"] then M.AssertUserPoolType(struct["UserPool"]) end
+	if struct["UserPool"] then asserts.AssertUserPoolType(struct["UserPool"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserPoolResponse_keys[k], "CreateUserPoolResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateUserPoolResponse[k], "CreateUserPoolResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserPoolResponse
 -- <p>Represents the response from the server for the request to create a user pool.</p>
--- @param UserPool [UserPoolType] <p>A container for the user pool details.</p>
-function M.CreateUserPoolResponse(UserPool, ...)
+-- @param _UserPool [UserPoolType] <p>A container for the user pool details.</p>
+function M.CreateUserPoolResponse(_UserPool, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolResponse")
 	local t = { 
-		["UserPool"] = UserPool,
+		["UserPool"] = _UserPool,
 	}
-	M.AssertCreateUserPoolResponse(t)
+	asserts.AssertCreateUserPoolResponse(t)
 	return t
 end
 
-local InvalidUserPoolConfigurationException_keys = { "message" = true, nil }
+keys.InvalidUserPoolConfigurationException = { ["message"] = true, nil }
 
-function M.AssertInvalidUserPoolConfigurationException(struct)
+function asserts.AssertInvalidUserPoolConfigurationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidUserPoolConfigurationException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidUserPoolConfigurationException_keys[k], "InvalidUserPoolConfigurationException contains unknown key " .. tostring(k))
+		assert(keys.InvalidUserPoolConfigurationException[k], "InvalidUserPoolConfigurationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidUserPoolConfigurationException
 -- <p>This exception is thrown when the user pool configuration is invalid.</p>
--- @param message [MessageType] <p>The message returned when the user pool configuration is invalid.</p>
-function M.InvalidUserPoolConfigurationException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the user pool configuration is invalid.</p>
+function M.InvalidUserPoolConfigurationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidUserPoolConfigurationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidUserPoolConfigurationException(t)
+	asserts.AssertInvalidUserPoolConfigurationException(t)
 	return t
 end
 
-local DeleteUserPoolRequest_keys = { "UserPoolId" = true, nil }
+keys.DeleteUserPoolRequest = { ["UserPoolId"] = true, nil }
 
-function M.AssertDeleteUserPoolRequest(struct)
+function asserts.AssertDeleteUserPoolRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserPoolRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUserPoolRequest_keys[k], "DeleteUserPoolRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserPoolRequest[k], "DeleteUserPoolRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUserPoolRequest
 -- <p>Represents the request to delete a user pool.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to delete.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to delete.</p>
 -- Required parameter: UserPoolId
-function M.DeleteUserPoolRequest(UserPoolId, ...)
+function M.DeleteUserPoolRequest(_UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserPoolRequest")
 	local t = { 
-		["UserPoolId"] = UserPoolId,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertDeleteUserPoolRequest(t)
+	asserts.AssertDeleteUserPoolRequest(t)
 	return t
 end
 
-local NewDeviceMetadataType_keys = { "DeviceKey" = true, "DeviceGroupKey" = true, nil }
+keys.NewDeviceMetadataType = { ["DeviceKey"] = true, ["DeviceGroupKey"] = true, nil }
 
-function M.AssertNewDeviceMetadataType(struct)
+function asserts.AssertNewDeviceMetadataType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NewDeviceMetadataType to be of type 'table'")
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["DeviceGroupKey"] then M.AssertStringType(struct["DeviceGroupKey"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["DeviceGroupKey"] then asserts.AssertStringType(struct["DeviceGroupKey"]) end
 	for k,_ in pairs(struct) do
-		assert(NewDeviceMetadataType_keys[k], "NewDeviceMetadataType contains unknown key " .. tostring(k))
+		assert(keys.NewDeviceMetadataType[k], "NewDeviceMetadataType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NewDeviceMetadataType
 -- <p>The new device metadata type.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param DeviceGroupKey [StringType] <p>The device group key.</p>
-function M.NewDeviceMetadataType(DeviceKey, DeviceGroupKey, ...)
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _DeviceGroupKey [StringType] <p>The device group key.</p>
+function M.NewDeviceMetadataType(_DeviceKey, _DeviceGroupKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NewDeviceMetadataType")
 	local t = { 
-		["DeviceKey"] = DeviceKey,
-		["DeviceGroupKey"] = DeviceGroupKey,
+		["DeviceKey"] = _DeviceKey,
+		["DeviceGroupKey"] = _DeviceGroupKey,
 	}
-	M.AssertNewDeviceMetadataType(t)
+	asserts.AssertNewDeviceMetadataType(t)
 	return t
 end
 
-local ListUserPoolsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListUserPoolsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListUserPoolsRequest(struct)
+function asserts.AssertListUserPoolsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUserPoolsRequest to be of type 'table'")
 	assert(struct["MaxResults"], "Expected key MaxResults to exist in table")
-	if struct["NextToken"] then M.AssertPaginationKeyType(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertPoolQueryLimitType(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKeyType(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertPoolQueryLimitType(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUserPoolsRequest_keys[k], "ListUserPoolsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListUserPoolsRequest[k], "ListUserPoolsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUserPoolsRequest
 -- <p>Represents the request to list user pools.</p>
--- @param NextToken [PaginationKeyType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param MaxResults [PoolQueryLimitType] <p>The maximum number of results you want the request to return when listing the user pools.</p>
+-- @param _NextToken [PaginationKeyType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _MaxResults [PoolQueryLimitType] <p>The maximum number of results you want the request to return when listing the user pools.</p>
 -- Required parameter: MaxResults
-function M.ListUserPoolsRequest(NextToken, MaxResults, ...)
+function M.ListUserPoolsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoolsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListUserPoolsRequest(t)
+	asserts.AssertListUserPoolsRequest(t)
 	return t
 end
 
-local AdminEnableUserRequest_keys = { "Username" = true, "UserPoolId" = true, nil }
+keys.AdminEnableUserRequest = { ["Username"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminEnableUserRequest(struct)
+function asserts.AssertAdminEnableUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminEnableUserRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminEnableUserRequest_keys[k], "AdminEnableUserRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminEnableUserRequest[k], "AdminEnableUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminEnableUserRequest
 -- <p>Represents the request that enables the user as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user you wish to enable.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to enable the user.</p>
+-- @param _Username [UsernameType] <p>The user name of the user you wish to enable.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to enable the user.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminEnableUserRequest(Username, UserPoolId, ...)
+function M.AdminEnableUserRequest(_Username, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminEnableUserRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminEnableUserRequest(t)
+	asserts.AssertAdminEnableUserRequest(t)
 	return t
 end
 
-local GetUserAttributeVerificationCodeResponse_keys = { "CodeDeliveryDetails" = true, nil }
+keys.GetUserAttributeVerificationCodeResponse = { ["CodeDeliveryDetails"] = true, nil }
 
-function M.AssertGetUserAttributeVerificationCodeResponse(struct)
+function asserts.AssertGetUserAttributeVerificationCodeResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUserAttributeVerificationCodeResponse to be of type 'table'")
-	if struct["CodeDeliveryDetails"] then M.AssertCodeDeliveryDetailsType(struct["CodeDeliveryDetails"]) end
+	if struct["CodeDeliveryDetails"] then asserts.AssertCodeDeliveryDetailsType(struct["CodeDeliveryDetails"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUserAttributeVerificationCodeResponse_keys[k], "GetUserAttributeVerificationCodeResponse contains unknown key " .. tostring(k))
+		assert(keys.GetUserAttributeVerificationCodeResponse[k], "GetUserAttributeVerificationCodeResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUserAttributeVerificationCodeResponse
 -- <p>The verification code response returned by the server response to get the user attribute verification code.</p>
--- @param CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to get the user attribute verification code.</p>
-function M.GetUserAttributeVerificationCodeResponse(CodeDeliveryDetails, ...)
+-- @param _CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to get the user attribute verification code.</p>
+function M.GetUserAttributeVerificationCodeResponse(_CodeDeliveryDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUserAttributeVerificationCodeResponse")
 	local t = { 
-		["CodeDeliveryDetails"] = CodeDeliveryDetails,
+		["CodeDeliveryDetails"] = _CodeDeliveryDetails,
 	}
-	M.AssertGetUserAttributeVerificationCodeResponse(t)
+	asserts.AssertGetUserAttributeVerificationCodeResponse(t)
 	return t
 end
 
-local DescribeUserPoolDomainResponse_keys = { "DomainDescription" = true, nil }
+keys.DescribeUserPoolDomainResponse = { ["DomainDescription"] = true, nil }
 
-function M.AssertDescribeUserPoolDomainResponse(struct)
+function asserts.AssertDescribeUserPoolDomainResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserPoolDomainResponse to be of type 'table'")
-	if struct["DomainDescription"] then M.AssertDomainDescriptionType(struct["DomainDescription"]) end
+	if struct["DomainDescription"] then asserts.AssertDomainDescriptionType(struct["DomainDescription"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserPoolDomainResponse_keys[k], "DescribeUserPoolDomainResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserPoolDomainResponse[k], "DescribeUserPoolDomainResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserPoolDomainResponse
 --  
--- @param DomainDescription [DomainDescriptionType] <p>A domain description object containing information about the domain.</p>
-function M.DescribeUserPoolDomainResponse(DomainDescription, ...)
+-- @param _DomainDescription [DomainDescriptionType] <p>A domain description object containing information about the domain.</p>
+function M.DescribeUserPoolDomainResponse(_DomainDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolDomainResponse")
 	local t = { 
-		["DomainDescription"] = DomainDescription,
+		["DomainDescription"] = _DomainDescription,
 	}
-	M.AssertDescribeUserPoolDomainResponse(t)
+	asserts.AssertDescribeUserPoolDomainResponse(t)
 	return t
 end
 
-local DeviceSecretVerifierConfigType_keys = { "Salt" = true, "PasswordVerifier" = true, nil }
+keys.DeviceSecretVerifierConfigType = { ["Salt"] = true, ["PasswordVerifier"] = true, nil }
 
-function M.AssertDeviceSecretVerifierConfigType(struct)
+function asserts.AssertDeviceSecretVerifierConfigType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeviceSecretVerifierConfigType to be of type 'table'")
-	if struct["Salt"] then M.AssertStringType(struct["Salt"]) end
-	if struct["PasswordVerifier"] then M.AssertStringType(struct["PasswordVerifier"]) end
+	if struct["Salt"] then asserts.AssertStringType(struct["Salt"]) end
+	if struct["PasswordVerifier"] then asserts.AssertStringType(struct["PasswordVerifier"]) end
 	for k,_ in pairs(struct) do
-		assert(DeviceSecretVerifierConfigType_keys[k], "DeviceSecretVerifierConfigType contains unknown key " .. tostring(k))
+		assert(keys.DeviceSecretVerifierConfigType[k], "DeviceSecretVerifierConfigType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeviceSecretVerifierConfigType
 -- <p>The device verifier against which it will be authenticated.</p>
--- @param Salt [StringType] <p>The salt.</p>
--- @param PasswordVerifier [StringType] <p>The password verifier.</p>
-function M.DeviceSecretVerifierConfigType(Salt, PasswordVerifier, ...)
+-- @param _Salt [StringType] <p>The salt.</p>
+-- @param _PasswordVerifier [StringType] <p>The password verifier.</p>
+function M.DeviceSecretVerifierConfigType(_Salt, _PasswordVerifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeviceSecretVerifierConfigType")
 	local t = { 
-		["Salt"] = Salt,
-		["PasswordVerifier"] = PasswordVerifier,
+		["Salt"] = _Salt,
+		["PasswordVerifier"] = _PasswordVerifier,
 	}
-	M.AssertDeviceSecretVerifierConfigType(t)
+	asserts.AssertDeviceSecretVerifierConfigType(t)
 	return t
 end
 
-local AttributeType_keys = { "Name" = true, "Value" = true, nil }
+keys.AttributeType = { ["Name"] = true, ["Value"] = true, nil }
 
-function M.AssertAttributeType(struct)
+function asserts.AssertAttributeType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttributeType to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertAttributeNameType(struct["Name"]) end
-	if struct["Value"] then M.AssertAttributeValueType(struct["Value"]) end
+	if struct["Name"] then asserts.AssertAttributeNameType(struct["Name"]) end
+	if struct["Value"] then asserts.AssertAttributeValueType(struct["Value"]) end
 	for k,_ in pairs(struct) do
-		assert(AttributeType_keys[k], "AttributeType contains unknown key " .. tostring(k))
+		assert(keys.AttributeType[k], "AttributeType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttributeType
 -- <p>Specifies whether the attribute is standard or custom.</p>
--- @param Name [AttributeNameType] <p>The name of the attribute.</p>
--- @param Value [AttributeValueType] <p>The value of the attribute.</p>
+-- @param _Name [AttributeNameType] <p>The name of the attribute.</p>
+-- @param _Value [AttributeValueType] <p>The value of the attribute.</p>
 -- Required parameter: Name
-function M.AttributeType(Name, Value, ...)
+function M.AttributeType(_Name, _Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttributeType")
 	local t = { 
-		["Name"] = Name,
-		["Value"] = Value,
+		["Name"] = _Name,
+		["Value"] = _Value,
 	}
-	M.AssertAttributeType(t)
+	asserts.AssertAttributeType(t)
 	return t
 end
 
-local ConfirmDeviceRequest_keys = { "DeviceSecretVerifierConfig" = true, "DeviceName" = true, "DeviceKey" = true, "AccessToken" = true, nil }
+keys.ConfirmDeviceRequest = { ["DeviceSecretVerifierConfig"] = true, ["DeviceName"] = true, ["DeviceKey"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertConfirmDeviceRequest(struct)
+function asserts.AssertConfirmDeviceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmDeviceRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
 	assert(struct["DeviceKey"], "Expected key DeviceKey to exist in table")
-	if struct["DeviceSecretVerifierConfig"] then M.AssertDeviceSecretVerifierConfigType(struct["DeviceSecretVerifierConfig"]) end
-	if struct["DeviceName"] then M.AssertDeviceNameType(struct["DeviceName"]) end
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["DeviceSecretVerifierConfig"] then asserts.AssertDeviceSecretVerifierConfigType(struct["DeviceSecretVerifierConfig"]) end
+	if struct["DeviceName"] then asserts.AssertDeviceNameType(struct["DeviceName"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ConfirmDeviceRequest_keys[k], "ConfirmDeviceRequest contains unknown key " .. tostring(k))
+		assert(keys.ConfirmDeviceRequest[k], "ConfirmDeviceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConfirmDeviceRequest
 -- <p>Confirms the device request.</p>
--- @param DeviceSecretVerifierConfig [DeviceSecretVerifierConfigType] <p>The configuration of the device secret verifier.</p>
--- @param DeviceName [DeviceNameType] <p>The device name.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param AccessToken [TokenModelType] <p>The access token.</p>
+-- @param _DeviceSecretVerifierConfig [DeviceSecretVerifierConfigType] <p>The configuration of the device secret verifier.</p>
+-- @param _DeviceName [DeviceNameType] <p>The device name.</p>
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token.</p>
 -- Required parameter: AccessToken
 -- Required parameter: DeviceKey
-function M.ConfirmDeviceRequest(DeviceSecretVerifierConfig, DeviceName, DeviceKey, AccessToken, ...)
+function M.ConfirmDeviceRequest(_DeviceSecretVerifierConfig, _DeviceName, _DeviceKey, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmDeviceRequest")
 	local t = { 
-		["DeviceSecretVerifierConfig"] = DeviceSecretVerifierConfig,
-		["DeviceName"] = DeviceName,
-		["DeviceKey"] = DeviceKey,
-		["AccessToken"] = AccessToken,
+		["DeviceSecretVerifierConfig"] = _DeviceSecretVerifierConfig,
+		["DeviceName"] = _DeviceName,
+		["DeviceKey"] = _DeviceKey,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertConfirmDeviceRequest(t)
+	asserts.AssertConfirmDeviceRequest(t)
 	return t
 end
 
-local DuplicateProviderException_keys = { "message" = true, nil }
+keys.DuplicateProviderException = { ["message"] = true, nil }
 
-function M.AssertDuplicateProviderException(struct)
+function asserts.AssertDuplicateProviderException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DuplicateProviderException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(DuplicateProviderException_keys[k], "DuplicateProviderException contains unknown key " .. tostring(k))
+		assert(keys.DuplicateProviderException[k], "DuplicateProviderException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DuplicateProviderException
 -- <p>This exception is thrown when the provider is already supported by the user pool.</p>
--- @param message [MessageType] <p>This exception is thrown when the provider is already supported by the user pool.</p>
-function M.DuplicateProviderException(message, ...)
+-- @param _message [MessageType] 
+function M.DuplicateProviderException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateProviderException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertDuplicateProviderException(t)
+	asserts.AssertDuplicateProviderException(t)
 	return t
 end
 
-local ListIdentityProvidersRequest_keys = { "NextToken" = true, "MaxResults" = true, "UserPoolId" = true, nil }
+keys.ListIdentityProvidersRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertListIdentityProvidersRequest(struct)
+function asserts.AssertListIdentityProvidersRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIdentityProvidersRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["NextToken"] then M.AssertPaginationKeyType(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertListProvidersLimitType(struct["MaxResults"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKeyType(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertListProvidersLimitType(struct["MaxResults"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIdentityProvidersRequest_keys[k], "ListIdentityProvidersRequest contains unknown key " .. tostring(k))
+		assert(keys.ListIdentityProvidersRequest[k], "ListIdentityProvidersRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIdentityProvidersRequest
 --  
--- @param NextToken [PaginationKeyType] <p>A pagination token.</p>
--- @param MaxResults [ListProvidersLimitType] <p>The maximum number of identity providers to return.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _NextToken [PaginationKeyType] <p>A pagination token.</p>
+-- @param _MaxResults [ListProvidersLimitType] <p>The maximum number of identity providers to return.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
-function M.ListIdentityProvidersRequest(NextToken, MaxResults, UserPoolId, ...)
+function M.ListIdentityProvidersRequest(_NextToken, _MaxResults, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityProvidersRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["UserPoolId"] = UserPoolId,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertListIdentityProvidersRequest(t)
+	asserts.AssertListIdentityProvidersRequest(t)
 	return t
 end
 
-local GlobalSignOutRequest_keys = { "AccessToken" = true, nil }
+keys.GlobalSignOutRequest = { ["AccessToken"] = true, nil }
 
-function M.AssertGlobalSignOutRequest(struct)
+function asserts.AssertGlobalSignOutRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GlobalSignOutRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(GlobalSignOutRequest_keys[k], "GlobalSignOutRequest contains unknown key " .. tostring(k))
+		assert(keys.GlobalSignOutRequest[k], "GlobalSignOutRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GlobalSignOutRequest
 -- <p>Represents the request to sign out all devices.</p>
--- @param AccessToken [TokenModelType] <p>The access token.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token.</p>
 -- Required parameter: AccessToken
-function M.GlobalSignOutRequest(AccessToken, ...)
+function M.GlobalSignOutRequest(_AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GlobalSignOutRequest")
 	local t = { 
-		["AccessToken"] = AccessToken,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertGlobalSignOutRequest(t)
+	asserts.AssertGlobalSignOutRequest(t)
 	return t
 end
 
-local UserImportJobType_keys = { "CompletionDate" = true, "StartDate" = true, "Status" = true, "UserPoolId" = true, "ImportedUsers" = true, "SkippedUsers" = true, "JobName" = true, "CompletionMessage" = true, "JobId" = true, "PreSignedUrl" = true, "CloudWatchLogsRoleArn" = true, "FailedUsers" = true, "CreationDate" = true, nil }
+keys.UserImportJobType = { ["CompletionDate"] = true, ["StartDate"] = true, ["Status"] = true, ["UserPoolId"] = true, ["ImportedUsers"] = true, ["SkippedUsers"] = true, ["JobName"] = true, ["CompletionMessage"] = true, ["JobId"] = true, ["PreSignedUrl"] = true, ["CloudWatchLogsRoleArn"] = true, ["FailedUsers"] = true, ["CreationDate"] = true, nil }
 
-function M.AssertUserImportJobType(struct)
+function asserts.AssertUserImportJobType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserImportJobType to be of type 'table'")
-	if struct["CompletionDate"] then M.AssertDateType(struct["CompletionDate"]) end
-	if struct["StartDate"] then M.AssertDateType(struct["StartDate"]) end
-	if struct["Status"] then M.AssertUserImportJobStatusType(struct["Status"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["ImportedUsers"] then M.AssertLongType(struct["ImportedUsers"]) end
-	if struct["SkippedUsers"] then M.AssertLongType(struct["SkippedUsers"]) end
-	if struct["JobName"] then M.AssertUserImportJobNameType(struct["JobName"]) end
-	if struct["CompletionMessage"] then M.AssertCompletionMessageType(struct["CompletionMessage"]) end
-	if struct["JobId"] then M.AssertUserImportJobIdType(struct["JobId"]) end
-	if struct["PreSignedUrl"] then M.AssertPreSignedUrlType(struct["PreSignedUrl"]) end
-	if struct["CloudWatchLogsRoleArn"] then M.AssertArnType(struct["CloudWatchLogsRoleArn"]) end
-	if struct["FailedUsers"] then M.AssertLongType(struct["FailedUsers"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
+	if struct["CompletionDate"] then asserts.AssertDateType(struct["CompletionDate"]) end
+	if struct["StartDate"] then asserts.AssertDateType(struct["StartDate"]) end
+	if struct["Status"] then asserts.AssertUserImportJobStatusType(struct["Status"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ImportedUsers"] then asserts.AssertLongType(struct["ImportedUsers"]) end
+	if struct["SkippedUsers"] then asserts.AssertLongType(struct["SkippedUsers"]) end
+	if struct["JobName"] then asserts.AssertUserImportJobNameType(struct["JobName"]) end
+	if struct["CompletionMessage"] then asserts.AssertCompletionMessageType(struct["CompletionMessage"]) end
+	if struct["JobId"] then asserts.AssertUserImportJobIdType(struct["JobId"]) end
+	if struct["PreSignedUrl"] then asserts.AssertPreSignedUrlType(struct["PreSignedUrl"]) end
+	if struct["CloudWatchLogsRoleArn"] then asserts.AssertArnType(struct["CloudWatchLogsRoleArn"]) end
+	if struct["FailedUsers"] then asserts.AssertLongType(struct["FailedUsers"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
 	for k,_ in pairs(struct) do
-		assert(UserImportJobType_keys[k], "UserImportJobType contains unknown key " .. tostring(k))
+		assert(keys.UserImportJobType[k], "UserImportJobType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserImportJobType
 -- <p>The user import job type.</p>
--- @param CompletionDate [DateType] <p>The date when the user import job was completed.</p>
--- @param StartDate [DateType] <p>The date when the user import job was started.</p>
--- @param Status [UserImportJobStatusType] <p>The status of the user import job. One of the following:</p> <ul> <li> <p> <code>Created</code> - The job was created but not started.</p> </li> <li> <p> <code>Pending</code> - A transition state. You have started the job, but it has not begun importing users yet.</p> </li> <li> <p> <code>InProgress</code> - The job has started, and users are being imported.</p> </li> <li> <p> <code>Stopping</code> - You have stopped the job, but the job has not stopped importing users yet.</p> </li> <li> <p> <code>Stopped</code> - You have stopped the job, and the job has stopped importing users.</p> </li> <li> <p> <code>Succeeded</code> - The job has completed successfully.</p> </li> <li> <p> <code>Failed</code> - The job has stopped due to an error.</p> </li> <li> <p> <code>Expired</code> - You created a job, but did not start the job within 24-48 hours. All data associated with the job was deleted, and the job cannot be started.</p> </li> </ul>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
--- @param ImportedUsers [LongType] <p>The number of users that were successfully imported.</p>
--- @param SkippedUsers [LongType] <p>The number of users that were skipped.</p>
--- @param JobName [UserImportJobNameType] <p>The job name for the user import job.</p>
--- @param CompletionMessage [CompletionMessageType] <p>The message returned when the user import job is completed.</p>
--- @param JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
--- @param PreSignedUrl [PreSignedUrlType] <p>The pre-signed URL to be used to upload the <code>.csv</code> file.</p>
--- @param CloudWatchLogsRoleArn [ArnType] <p>The role ARN for the Amazon CloudWatch Logging role for the user import job. For more information, see "Creating the CloudWatch Logs IAM Role" in the Amazon Cognito Developer Guide.</p>
--- @param FailedUsers [LongType] <p>The number of users that could not be imported.</p>
--- @param CreationDate [DateType] <p>The date the user import job was created.</p>
-function M.UserImportJobType(CompletionDate, StartDate, Status, UserPoolId, ImportedUsers, SkippedUsers, JobName, CompletionMessage, JobId, PreSignedUrl, CloudWatchLogsRoleArn, FailedUsers, CreationDate, ...)
+-- @param _CompletionDate [DateType] <p>The date when the user import job was completed.</p>
+-- @param _StartDate [DateType] <p>The date when the user import job was started.</p>
+-- @param _Status [UserImportJobStatusType] <p>The status of the user import job. One of the following:</p> <ul> <li> <p> <code>Created</code> - The job was created but not started.</p> </li> <li> <p> <code>Pending</code> - A transition state. You have started the job, but it has not begun importing users yet.</p> </li> <li> <p> <code>InProgress</code> - The job has started, and users are being imported.</p> </li> <li> <p> <code>Stopping</code> - You have stopped the job, but the job has not stopped importing users yet.</p> </li> <li> <p> <code>Stopped</code> - You have stopped the job, and the job has stopped importing users.</p> </li> <li> <p> <code>Succeeded</code> - The job has completed successfully.</p> </li> <li> <p> <code>Failed</code> - The job has stopped due to an error.</p> </li> <li> <p> <code>Expired</code> - You created a job, but did not start the job within 24-48 hours. All data associated with the job was deleted, and the job cannot be started.</p> </li> </ul>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param _ImportedUsers [LongType] <p>The number of users that were successfully imported.</p>
+-- @param _SkippedUsers [LongType] <p>The number of users that were skipped.</p>
+-- @param _JobName [UserImportJobNameType] <p>The job name for the user import job.</p>
+-- @param _CompletionMessage [CompletionMessageType] <p>The message returned when the user import job is completed.</p>
+-- @param _JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
+-- @param _PreSignedUrl [PreSignedUrlType] <p>The pre-signed URL to be used to upload the <code>.csv</code> file.</p>
+-- @param _CloudWatchLogsRoleArn [ArnType] <p>The role ARN for the Amazon CloudWatch Logging role for the user import job. For more information, see "Creating the CloudWatch Logs IAM Role" in the Amazon Cognito Developer Guide.</p>
+-- @param _FailedUsers [LongType] <p>The number of users that could not be imported.</p>
+-- @param _CreationDate [DateType] <p>The date the user import job was created.</p>
+function M.UserImportJobType(_CompletionDate, _StartDate, _Status, _UserPoolId, _ImportedUsers, _SkippedUsers, _JobName, _CompletionMessage, _JobId, _PreSignedUrl, _CloudWatchLogsRoleArn, _FailedUsers, _CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserImportJobType")
 	local t = { 
-		["CompletionDate"] = CompletionDate,
-		["StartDate"] = StartDate,
-		["Status"] = Status,
-		["UserPoolId"] = UserPoolId,
-		["ImportedUsers"] = ImportedUsers,
-		["SkippedUsers"] = SkippedUsers,
-		["JobName"] = JobName,
-		["CompletionMessage"] = CompletionMessage,
-		["JobId"] = JobId,
-		["PreSignedUrl"] = PreSignedUrl,
-		["CloudWatchLogsRoleArn"] = CloudWatchLogsRoleArn,
-		["FailedUsers"] = FailedUsers,
-		["CreationDate"] = CreationDate,
+		["CompletionDate"] = _CompletionDate,
+		["StartDate"] = _StartDate,
+		["Status"] = _Status,
+		["UserPoolId"] = _UserPoolId,
+		["ImportedUsers"] = _ImportedUsers,
+		["SkippedUsers"] = _SkippedUsers,
+		["JobName"] = _JobName,
+		["CompletionMessage"] = _CompletionMessage,
+		["JobId"] = _JobId,
+		["PreSignedUrl"] = _PreSignedUrl,
+		["CloudWatchLogsRoleArn"] = _CloudWatchLogsRoleArn,
+		["FailedUsers"] = _FailedUsers,
+		["CreationDate"] = _CreationDate,
 	}
-	M.AssertUserImportJobType(t)
+	asserts.AssertUserImportJobType(t)
 	return t
 end
 
-local UnsupportedUserStateException_keys = { "message" = true, nil }
+keys.UnsupportedUserStateException = { ["message"] = true, nil }
 
-function M.AssertUnsupportedUserStateException(struct)
+function asserts.AssertUnsupportedUserStateException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedUserStateException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedUserStateException_keys[k], "UnsupportedUserStateException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedUserStateException[k], "UnsupportedUserStateException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedUserStateException
 -- <p>The request failed because the user is in an unsupported state.</p>
--- @param message [MessageType] <p>The message returned when the user is in an unsupported state.</p>
-function M.UnsupportedUserStateException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the user is in an unsupported state.</p>
+function M.UnsupportedUserStateException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedUserStateException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedUserStateException(t)
+	asserts.AssertUnsupportedUserStateException(t)
 	return t
 end
 
-local AddCustomAttributesRequest_keys = { "CustomAttributes" = true, "UserPoolId" = true, nil }
+keys.AddCustomAttributesRequest = { ["CustomAttributes"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAddCustomAttributesRequest(struct)
+function asserts.AssertAddCustomAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddCustomAttributesRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["CustomAttributes"], "Expected key CustomAttributes to exist in table")
-	if struct["CustomAttributes"] then M.AssertCustomAttributesListType(struct["CustomAttributes"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["CustomAttributes"] then asserts.AssertCustomAttributesListType(struct["CustomAttributes"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AddCustomAttributesRequest_keys[k], "AddCustomAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.AddCustomAttributesRequest[k], "AddCustomAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddCustomAttributesRequest
 -- <p>Represents the request to add custom attributes.</p>
--- @param CustomAttributes [CustomAttributesListType] <p>An array of custom attributes, such as Mutable and Name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to add custom attributes.</p>
+-- @param _CustomAttributes [CustomAttributesListType] <p>An array of custom attributes, such as Mutable and Name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to add custom attributes.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: CustomAttributes
-function M.AddCustomAttributesRequest(CustomAttributes, UserPoolId, ...)
+function M.AddCustomAttributesRequest(_CustomAttributes, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddCustomAttributesRequest")
 	local t = { 
-		["CustomAttributes"] = CustomAttributes,
-		["UserPoolId"] = UserPoolId,
+		["CustomAttributes"] = _CustomAttributes,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAddCustomAttributesRequest(t)
+	asserts.AssertAddCustomAttributesRequest(t)
 	return t
 end
 
-local AdminGetDeviceResponse_keys = { "Device" = true, nil }
+keys.AdminGetDeviceResponse = { ["Device"] = true, nil }
 
-function M.AssertAdminGetDeviceResponse(struct)
+function asserts.AssertAdminGetDeviceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminGetDeviceResponse to be of type 'table'")
 	assert(struct["Device"], "Expected key Device to exist in table")
-	if struct["Device"] then M.AssertDeviceType(struct["Device"]) end
+	if struct["Device"] then asserts.AssertDeviceType(struct["Device"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminGetDeviceResponse_keys[k], "AdminGetDeviceResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminGetDeviceResponse[k], "AdminGetDeviceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminGetDeviceResponse
 -- <p>Gets the device response, as an administrator.</p>
--- @param Device [DeviceType] <p>The device.</p>
+-- @param _Device [DeviceType] <p>The device.</p>
 -- Required parameter: Device
-function M.AdminGetDeviceResponse(Device, ...)
+function M.AdminGetDeviceResponse(_Device, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminGetDeviceResponse")
 	local t = { 
-		["Device"] = Device,
+		["Device"] = _Device,
 	}
-	M.AssertAdminGetDeviceResponse(t)
+	asserts.AssertAdminGetDeviceResponse(t)
 	return t
 end
 
-local CreateUserPoolRequest_keys = { "AliasAttributes" = true, "SmsVerificationMessage" = true, "EmailVerificationSubject" = true, "MfaConfiguration" = true, "Schema" = true, "EmailVerificationMessage" = true, "PoolName" = true, "SmsAuthenticationMessage" = true, "SmsConfiguration" = true, "EmailConfiguration" = true, "AutoVerifiedAttributes" = true, "Policies" = true, "UserPoolTags" = true, "AdminCreateUserConfig" = true, "DeviceConfiguration" = true, "LambdaConfig" = true, nil }
+keys.CreateUserPoolRequest = { ["AliasAttributes"] = true, ["SmsVerificationMessage"] = true, ["EmailVerificationSubject"] = true, ["MfaConfiguration"] = true, ["Schema"] = true, ["EmailVerificationMessage"] = true, ["PoolName"] = true, ["SmsAuthenticationMessage"] = true, ["SmsConfiguration"] = true, ["EmailConfiguration"] = true, ["AutoVerifiedAttributes"] = true, ["Policies"] = true, ["UserPoolTags"] = true, ["AdminCreateUserConfig"] = true, ["DeviceConfiguration"] = true, ["LambdaConfig"] = true, nil }
 
-function M.AssertCreateUserPoolRequest(struct)
+function asserts.AssertCreateUserPoolRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserPoolRequest to be of type 'table'")
 	assert(struct["PoolName"], "Expected key PoolName to exist in table")
-	if struct["AliasAttributes"] then M.AssertAliasAttributesListType(struct["AliasAttributes"]) end
-	if struct["SmsVerificationMessage"] then M.AssertSmsVerificationMessageType(struct["SmsVerificationMessage"]) end
-	if struct["EmailVerificationSubject"] then M.AssertEmailVerificationSubjectType(struct["EmailVerificationSubject"]) end
-	if struct["MfaConfiguration"] then M.AssertUserPoolMfaType(struct["MfaConfiguration"]) end
-	if struct["Schema"] then M.AssertSchemaAttributesListType(struct["Schema"]) end
-	if struct["EmailVerificationMessage"] then M.AssertEmailVerificationMessageType(struct["EmailVerificationMessage"]) end
-	if struct["PoolName"] then M.AssertUserPoolNameType(struct["PoolName"]) end
-	if struct["SmsAuthenticationMessage"] then M.AssertSmsVerificationMessageType(struct["SmsAuthenticationMessage"]) end
-	if struct["SmsConfiguration"] then M.AssertSmsConfigurationType(struct["SmsConfiguration"]) end
-	if struct["EmailConfiguration"] then M.AssertEmailConfigurationType(struct["EmailConfiguration"]) end
-	if struct["AutoVerifiedAttributes"] then M.AssertVerifiedAttributesListType(struct["AutoVerifiedAttributes"]) end
-	if struct["Policies"] then M.AssertUserPoolPolicyType(struct["Policies"]) end
-	if struct["UserPoolTags"] then M.AssertUserPoolTagsType(struct["UserPoolTags"]) end
-	if struct["AdminCreateUserConfig"] then M.AssertAdminCreateUserConfigType(struct["AdminCreateUserConfig"]) end
-	if struct["DeviceConfiguration"] then M.AssertDeviceConfigurationType(struct["DeviceConfiguration"]) end
-	if struct["LambdaConfig"] then M.AssertLambdaConfigType(struct["LambdaConfig"]) end
+	if struct["AliasAttributes"] then asserts.AssertAliasAttributesListType(struct["AliasAttributes"]) end
+	if struct["SmsVerificationMessage"] then asserts.AssertSmsVerificationMessageType(struct["SmsVerificationMessage"]) end
+	if struct["EmailVerificationSubject"] then asserts.AssertEmailVerificationSubjectType(struct["EmailVerificationSubject"]) end
+	if struct["MfaConfiguration"] then asserts.AssertUserPoolMfaType(struct["MfaConfiguration"]) end
+	if struct["Schema"] then asserts.AssertSchemaAttributesListType(struct["Schema"]) end
+	if struct["EmailVerificationMessage"] then asserts.AssertEmailVerificationMessageType(struct["EmailVerificationMessage"]) end
+	if struct["PoolName"] then asserts.AssertUserPoolNameType(struct["PoolName"]) end
+	if struct["SmsAuthenticationMessage"] then asserts.AssertSmsVerificationMessageType(struct["SmsAuthenticationMessage"]) end
+	if struct["SmsConfiguration"] then asserts.AssertSmsConfigurationType(struct["SmsConfiguration"]) end
+	if struct["EmailConfiguration"] then asserts.AssertEmailConfigurationType(struct["EmailConfiguration"]) end
+	if struct["AutoVerifiedAttributes"] then asserts.AssertVerifiedAttributesListType(struct["AutoVerifiedAttributes"]) end
+	if struct["Policies"] then asserts.AssertUserPoolPolicyType(struct["Policies"]) end
+	if struct["UserPoolTags"] then asserts.AssertUserPoolTagsType(struct["UserPoolTags"]) end
+	if struct["AdminCreateUserConfig"] then asserts.AssertAdminCreateUserConfigType(struct["AdminCreateUserConfig"]) end
+	if struct["DeviceConfiguration"] then asserts.AssertDeviceConfigurationType(struct["DeviceConfiguration"]) end
+	if struct["LambdaConfig"] then asserts.AssertLambdaConfigType(struct["LambdaConfig"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserPoolRequest_keys[k], "CreateUserPoolRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateUserPoolRequest[k], "CreateUserPoolRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserPoolRequest
 -- <p>Represents the request to create a user pool.</p>
--- @param AliasAttributes [AliasAttributesListType] <p>Attributes supported as an alias for this user pool. Possible values: <b>phone_number</b>, <b>email</b>, or <b>preferred_username</b>.</p>
--- @param SmsVerificationMessage [SmsVerificationMessageType] <p>A string representing the SMS verification message.</p>
--- @param EmailVerificationSubject [EmailVerificationSubjectType] <p>A string representing the email verification subject.</p>
--- @param MfaConfiguration [UserPoolMfaType] <p>Specifies MFA configuration details.</p>
--- @param Schema [SchemaAttributesListType] <p>An array of schema attributes for the new user pool. These attributes can be standard or custom attributes.</p>
--- @param EmailVerificationMessage [EmailVerificationMessageType] <p>A string representing the email verification message.</p>
--- @param PoolName [UserPoolNameType] <p>A string used to name the user pool.</p>
--- @param SmsAuthenticationMessage [SmsVerificationMessageType] <p>A string representing the SMS authentication message.</p>
--- @param SmsConfiguration [SmsConfigurationType] <p>The SMS configuration.</p>
--- @param EmailConfiguration [EmailConfigurationType] <p>The email configuration.</p>
--- @param AutoVerifiedAttributes [VerifiedAttributesListType] <p>The attributes to be auto-verified. Possible values: <b>email</b>, <b>phone_number</b>.</p>
--- @param Policies [UserPoolPolicyType] <p>The policies associated with the new user pool.</p>
--- @param UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
--- @param AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
--- @param DeviceConfiguration [DeviceConfigurationType] <p>The device configuration.</p>
--- @param LambdaConfig [LambdaConfigType] <p>The Lambda trigger configuration information for the new user pool.</p>
+-- @param _AliasAttributes [AliasAttributesListType] <p>Attributes supported as an alias for this user pool. Possible values: <b>phone_number</b>, <b>email</b>, or <b>preferred_username</b>.</p>
+-- @param _SmsVerificationMessage [SmsVerificationMessageType] <p>A string representing the SMS verification message.</p>
+-- @param _EmailVerificationSubject [EmailVerificationSubjectType] <p>A string representing the email verification subject.</p>
+-- @param _MfaConfiguration [UserPoolMfaType] <p>Specifies MFA configuration details.</p>
+-- @param _Schema [SchemaAttributesListType] <p>An array of schema attributes for the new user pool. These attributes can be standard or custom attributes.</p>
+-- @param _EmailVerificationMessage [EmailVerificationMessageType] <p>A string representing the email verification message.</p>
+-- @param _PoolName [UserPoolNameType] <p>A string used to name the user pool.</p>
+-- @param _SmsAuthenticationMessage [SmsVerificationMessageType] <p>A string representing the SMS authentication message.</p>
+-- @param _SmsConfiguration [SmsConfigurationType] <p>The SMS configuration.</p>
+-- @param _EmailConfiguration [EmailConfigurationType] <p>The email configuration.</p>
+-- @param _AutoVerifiedAttributes [VerifiedAttributesListType] <p>The attributes to be auto-verified. Possible values: <b>email</b>, <b>phone_number</b>.</p>
+-- @param _Policies [UserPoolPolicyType] <p>The policies associated with the new user pool.</p>
+-- @param _UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
+-- @param _AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
+-- @param _DeviceConfiguration [DeviceConfigurationType] <p>The device configuration.</p>
+-- @param _LambdaConfig [LambdaConfigType] <p>The Lambda trigger configuration information for the new user pool.</p>
 -- Required parameter: PoolName
-function M.CreateUserPoolRequest(AliasAttributes, SmsVerificationMessage, EmailVerificationSubject, MfaConfiguration, Schema, EmailVerificationMessage, PoolName, SmsAuthenticationMessage, SmsConfiguration, EmailConfiguration, AutoVerifiedAttributes, Policies, UserPoolTags, AdminCreateUserConfig, DeviceConfiguration, LambdaConfig, ...)
+function M.CreateUserPoolRequest(_AliasAttributes, _SmsVerificationMessage, _EmailVerificationSubject, _MfaConfiguration, _Schema, _EmailVerificationMessage, _PoolName, _SmsAuthenticationMessage, _SmsConfiguration, _EmailConfiguration, _AutoVerifiedAttributes, _Policies, _UserPoolTags, _AdminCreateUserConfig, _DeviceConfiguration, _LambdaConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolRequest")
 	local t = { 
-		["AliasAttributes"] = AliasAttributes,
-		["SmsVerificationMessage"] = SmsVerificationMessage,
-		["EmailVerificationSubject"] = EmailVerificationSubject,
-		["MfaConfiguration"] = MfaConfiguration,
-		["Schema"] = Schema,
-		["EmailVerificationMessage"] = EmailVerificationMessage,
-		["PoolName"] = PoolName,
-		["SmsAuthenticationMessage"] = SmsAuthenticationMessage,
-		["SmsConfiguration"] = SmsConfiguration,
-		["EmailConfiguration"] = EmailConfiguration,
-		["AutoVerifiedAttributes"] = AutoVerifiedAttributes,
-		["Policies"] = Policies,
-		["UserPoolTags"] = UserPoolTags,
-		["AdminCreateUserConfig"] = AdminCreateUserConfig,
-		["DeviceConfiguration"] = DeviceConfiguration,
-		["LambdaConfig"] = LambdaConfig,
+		["AliasAttributes"] = _AliasAttributes,
+		["SmsVerificationMessage"] = _SmsVerificationMessage,
+		["EmailVerificationSubject"] = _EmailVerificationSubject,
+		["MfaConfiguration"] = _MfaConfiguration,
+		["Schema"] = _Schema,
+		["EmailVerificationMessage"] = _EmailVerificationMessage,
+		["PoolName"] = _PoolName,
+		["SmsAuthenticationMessage"] = _SmsAuthenticationMessage,
+		["SmsConfiguration"] = _SmsConfiguration,
+		["EmailConfiguration"] = _EmailConfiguration,
+		["AutoVerifiedAttributes"] = _AutoVerifiedAttributes,
+		["Policies"] = _Policies,
+		["UserPoolTags"] = _UserPoolTags,
+		["AdminCreateUserConfig"] = _AdminCreateUserConfig,
+		["DeviceConfiguration"] = _DeviceConfiguration,
+		["LambdaConfig"] = _LambdaConfig,
 	}
-	M.AssertCreateUserPoolRequest(t)
+	asserts.AssertCreateUserPoolRequest(t)
 	return t
 end
 
-local AdminCreateUserConfigType_keys = { "InviteMessageTemplate" = true, "UnusedAccountValidityDays" = true, "AllowAdminCreateUserOnly" = true, nil }
+keys.AdminCreateUserConfigType = { ["InviteMessageTemplate"] = true, ["UnusedAccountValidityDays"] = true, ["AllowAdminCreateUserOnly"] = true, nil }
 
-function M.AssertAdminCreateUserConfigType(struct)
+function asserts.AssertAdminCreateUserConfigType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminCreateUserConfigType to be of type 'table'")
-	if struct["InviteMessageTemplate"] then M.AssertMessageTemplateType(struct["InviteMessageTemplate"]) end
-	if struct["UnusedAccountValidityDays"] then M.AssertAdminCreateUserUnusedAccountValidityDaysType(struct["UnusedAccountValidityDays"]) end
-	if struct["AllowAdminCreateUserOnly"] then M.AssertBooleanType(struct["AllowAdminCreateUserOnly"]) end
+	if struct["InviteMessageTemplate"] then asserts.AssertMessageTemplateType(struct["InviteMessageTemplate"]) end
+	if struct["UnusedAccountValidityDays"] then asserts.AssertAdminCreateUserUnusedAccountValidityDaysType(struct["UnusedAccountValidityDays"]) end
+	if struct["AllowAdminCreateUserOnly"] then asserts.AssertBooleanType(struct["AllowAdminCreateUserOnly"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminCreateUserConfigType_keys[k], "AdminCreateUserConfigType contains unknown key " .. tostring(k))
+		assert(keys.AdminCreateUserConfigType[k], "AdminCreateUserConfigType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminCreateUserConfigType
 -- <p>The type of configuration for creating a new user profile.</p>
--- @param InviteMessageTemplate [MessageTemplateType] <p>The message template to be used for the welcome message to new users.</p>
--- @param UnusedAccountValidityDays [AdminCreateUserUnusedAccountValidityDaysType] <p>The user account expiration limit, in days, after which the account is no longer usable. To reset the account after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter is 7.</p>
--- @param AllowAdminCreateUserOnly [BooleanType] <p>Set to <code>True</code> if only the administrator is allowed to create user profiles. Set to <code>False</code> if users can sign themselves up via an app.</p>
-function M.AdminCreateUserConfigType(InviteMessageTemplate, UnusedAccountValidityDays, AllowAdminCreateUserOnly, ...)
+-- @param _InviteMessageTemplate [MessageTemplateType] <p>The message template to be used for the welcome message to new users.</p>
+-- @param _UnusedAccountValidityDays [AdminCreateUserUnusedAccountValidityDaysType] <p>The user account expiration limit, in days, after which the account is no longer usable. To reset the account after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter is 7.</p>
+-- @param _AllowAdminCreateUserOnly [BooleanType] <p>Set to <code>True</code> if only the administrator is allowed to create user profiles. Set to <code>False</code> if users can sign themselves up via an app.</p>
+function M.AdminCreateUserConfigType(_InviteMessageTemplate, _UnusedAccountValidityDays, _AllowAdminCreateUserOnly, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminCreateUserConfigType")
 	local t = { 
-		["InviteMessageTemplate"] = InviteMessageTemplate,
-		["UnusedAccountValidityDays"] = UnusedAccountValidityDays,
-		["AllowAdminCreateUserOnly"] = AllowAdminCreateUserOnly,
+		["InviteMessageTemplate"] = _InviteMessageTemplate,
+		["UnusedAccountValidityDays"] = _UnusedAccountValidityDays,
+		["AllowAdminCreateUserOnly"] = _AllowAdminCreateUserOnly,
 	}
-	M.AssertAdminCreateUserConfigType(t)
+	asserts.AssertAdminCreateUserConfigType(t)
 	return t
 end
 
-local VerifyUserAttributeResponse_keys = { nil }
+keys.VerifyUserAttributeResponse = { nil }
 
-function M.AssertVerifyUserAttributeResponse(struct)
+function asserts.AssertVerifyUserAttributeResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VerifyUserAttributeResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(VerifyUserAttributeResponse_keys[k], "VerifyUserAttributeResponse contains unknown key " .. tostring(k))
+		assert(keys.VerifyUserAttributeResponse[k], "VerifyUserAttributeResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3967,97 +3970,97 @@ function M.VerifyUserAttributeResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyUserAttributeResponse")
 	local t = { 
 	}
-	M.AssertVerifyUserAttributeResponse(t)
+	asserts.AssertVerifyUserAttributeResponse(t)
 	return t
 end
 
-local ConfirmForgotPasswordRequest_keys = { "Username" = true, "Password" = true, "ConfirmationCode" = true, "SecretHash" = true, "ClientId" = true, nil }
+keys.ConfirmForgotPasswordRequest = { ["Username"] = true, ["Password"] = true, ["ConfirmationCode"] = true, ["SecretHash"] = true, ["ClientId"] = true, nil }
 
-function M.AssertConfirmForgotPasswordRequest(struct)
+function asserts.AssertConfirmForgotPasswordRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmForgotPasswordRequest to be of type 'table'")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["ConfirmationCode"], "Expected key ConfirmationCode to exist in table")
 	assert(struct["Password"], "Expected key Password to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["Password"] then M.AssertPasswordType(struct["Password"]) end
-	if struct["ConfirmationCode"] then M.AssertConfirmationCodeType(struct["ConfirmationCode"]) end
-	if struct["SecretHash"] then M.AssertSecretHashType(struct["SecretHash"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["Password"] then asserts.AssertPasswordType(struct["Password"]) end
+	if struct["ConfirmationCode"] then asserts.AssertConfirmationCodeType(struct["ConfirmationCode"]) end
+	if struct["SecretHash"] then asserts.AssertSecretHashType(struct["SecretHash"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
 	for k,_ in pairs(struct) do
-		assert(ConfirmForgotPasswordRequest_keys[k], "ConfirmForgotPasswordRequest contains unknown key " .. tostring(k))
+		assert(keys.ConfirmForgotPasswordRequest[k], "ConfirmForgotPasswordRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConfirmForgotPasswordRequest
 -- <p>The request representing the confirmation for a password reset.</p>
--- @param Username [UsernameType] <p>The user name of the user for whom you want to enter a code to retrieve a forgotten password.</p>
--- @param Password [PasswordType] <p>The password sent by a user's request to retrieve a forgotten password.</p>
--- @param ConfirmationCode [ConfirmationCodeType] <p>The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see <a href="API_ForgotPassword.html">ForgotPassword</a> </p>
--- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _Username [UsernameType] <p>The user name of the user for whom you want to enter a code to retrieve a forgotten password.</p>
+-- @param _Password [PasswordType] <p>The password sent by a user's request to retrieve a forgotten password.</p>
+-- @param _ConfirmationCode [ConfirmationCodeType] <p>The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see <a href="API_ForgotPassword.html">ForgotPassword</a> </p>
+-- @param _SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
 -- Required parameter: ConfirmationCode
 -- Required parameter: Password
-function M.ConfirmForgotPasswordRequest(Username, Password, ConfirmationCode, SecretHash, ClientId, ...)
+function M.ConfirmForgotPasswordRequest(_Username, _Password, _ConfirmationCode, _SecretHash, _ClientId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmForgotPasswordRequest")
 	local t = { 
-		["Username"] = Username,
-		["Password"] = Password,
-		["ConfirmationCode"] = ConfirmationCode,
-		["SecretHash"] = SecretHash,
-		["ClientId"] = ClientId,
+		["Username"] = _Username,
+		["Password"] = _Password,
+		["ConfirmationCode"] = _ConfirmationCode,
+		["SecretHash"] = _SecretHash,
+		["ClientId"] = _ClientId,
 	}
-	M.AssertConfirmForgotPasswordRequest(t)
+	asserts.AssertConfirmForgotPasswordRequest(t)
 	return t
 end
 
-local ListUsersRequest_keys = { "PaginationToken" = true, "Filter" = true, "AttributesToGet" = true, "Limit" = true, "UserPoolId" = true, nil }
+keys.ListUsersRequest = { ["PaginationToken"] = true, ["Filter"] = true, ["AttributesToGet"] = true, ["Limit"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertListUsersRequest(struct)
+function asserts.AssertListUsersRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUsersRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["PaginationToken"] then M.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
-	if struct["Filter"] then M.AssertUserFilterType(struct["Filter"]) end
-	if struct["AttributesToGet"] then M.AssertSearchedAttributeNamesListType(struct["AttributesToGet"]) end
-	if struct["Limit"] then M.AssertQueryLimitType(struct["Limit"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["PaginationToken"] then asserts.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
+	if struct["Filter"] then asserts.AssertUserFilterType(struct["Filter"]) end
+	if struct["AttributesToGet"] then asserts.AssertSearchedAttributeNamesListType(struct["AttributesToGet"]) end
+	if struct["Limit"] then asserts.AssertQueryLimitType(struct["Limit"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUsersRequest_keys[k], "ListUsersRequest contains unknown key " .. tostring(k))
+		assert(keys.ListUsersRequest[k], "ListUsersRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUsersRequest
 -- <p>Represents the request to list users.</p>
--- @param PaginationToken [SearchPaginationTokenType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param Filter [UserFilterType] <p>A filter string of the form "<i>AttributeName</i> <i>Filter-Type</i> "<i>AttributeValue</i>"". Quotation marks within the filter string must be escaped using the backslash (\) character. For example, "<code>family_name</code> = \"Reddy\"".</p> <ul> <li> <p> <i>AttributeName</i>: The name of the attribute to search for. You can only search for one attribute at a time.</p> </li> <li> <p> <i>Filter-Type</i>: For an exact match, use =, for example, "<code>given_name</code> = \"Jon\"". For a prefix ("starts with") match, use ^=, for example, "<code>given_name</code> ^= \"Jon\"". </p> </li> <li> <p> <i>AttributeValue</i>: The attribute value that must be matched for each user.</p> </li> </ul> <p>If the filter string is empty, <code>ListUsers</code> returns all users in the user pool.</p> <p>You can only search for the following standard attributes:</p> <ul> <li> <p> <code>username</code> (case-sensitive)</p> </li> <li> <p> <code>email</code> </p> </li> <li> <p> <code>phone_number</code> </p> </li> <li> <p> <code>name</code> </p> </li> <li> <p> <code>given_name</code> </p> </li> <li> <p> <code>family_name</code> </p> </li> <li> <p> <code>preferred_username</code> </p> </li> <li> <p> <code>cognito:user_status</code> (called <b>Enabled</b> in the Console) (case-sensitive)</p> </li> <li> <p> <code>status</code> (case-insensitive)</p> </li> </ul> <p>Custom attributes are not searchable.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api">Searching for Users Using the ListUsers API</a> and <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples">Examples of Using the ListUsers API</a> in the <i>Amazon Cognito Developer Guide</i>.</p>
--- @param AttributesToGet [SearchedAttributeNamesListType] <p>An array of strings, where each string is the name of a user attribute to be returned for each user in the search results. If the array is empty, all attributes are returned.</p>
--- @param Limit [QueryLimitType] <p>Maximum number of users to be returned.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool on which the search should be performed.</p>
+-- @param _PaginationToken [SearchPaginationTokenType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _Filter [UserFilterType] <p>A filter string of the form "<i>AttributeName</i> <i>Filter-Type</i> "<i>AttributeValue</i>"". Quotation marks within the filter string must be escaped using the backslash (\) character. For example, "<code>family_name</code> = \"Reddy\"".</p> <ul> <li> <p> <i>AttributeName</i>: The name of the attribute to search for. You can only search for one attribute at a time.</p> </li> <li> <p> <i>Filter-Type</i>: For an exact match, use =, for example, "<code>given_name</code> = \"Jon\"". For a prefix ("starts with") match, use ^=, for example, "<code>given_name</code> ^= \"Jon\"". </p> </li> <li> <p> <i>AttributeValue</i>: The attribute value that must be matched for each user.</p> </li> </ul> <p>If the filter string is empty, <code>ListUsers</code> returns all users in the user pool.</p> <p>You can only search for the following standard attributes:</p> <ul> <li> <p> <code>username</code> (case-sensitive)</p> </li> <li> <p> <code>email</code> </p> </li> <li> <p> <code>phone_number</code> </p> </li> <li> <p> <code>name</code> </p> </li> <li> <p> <code>given_name</code> </p> </li> <li> <p> <code>family_name</code> </p> </li> <li> <p> <code>preferred_username</code> </p> </li> <li> <p> <code>cognito:user_status</code> (called <b>Enabled</b> in the Console) (case-sensitive)</p> </li> <li> <p> <code>status</code> (case-insensitive)</p> </li> </ul> <p>Custom attributes are not searchable.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api">Searching for Users Using the ListUsers API</a> and <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples">Examples of Using the ListUsers API</a> in the <i>Amazon Cognito Developer Guide</i>.</p>
+-- @param _AttributesToGet [SearchedAttributeNamesListType] <p>An array of strings, where each string is the name of a user attribute to be returned for each user in the search results. If the array is empty, all attributes are returned.</p>
+-- @param _Limit [QueryLimitType] <p>Maximum number of users to be returned.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool on which the search should be performed.</p>
 -- Required parameter: UserPoolId
-function M.ListUsersRequest(PaginationToken, Filter, AttributesToGet, Limit, UserPoolId, ...)
+function M.ListUsersRequest(_PaginationToken, _Filter, _AttributesToGet, _Limit, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersRequest")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["Filter"] = Filter,
-		["AttributesToGet"] = AttributesToGet,
-		["Limit"] = Limit,
-		["UserPoolId"] = UserPoolId,
+		["PaginationToken"] = _PaginationToken,
+		["Filter"] = _Filter,
+		["AttributesToGet"] = _AttributesToGet,
+		["Limit"] = _Limit,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertListUsersRequest(t)
+	asserts.AssertListUsersRequest(t)
 	return t
 end
 
-local ConfirmSignUpResponse_keys = { nil }
+keys.ConfirmSignUpResponse = { nil }
 
-function M.AssertConfirmSignUpResponse(struct)
+function asserts.AssertConfirmSignUpResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmSignUpResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ConfirmSignUpResponse_keys[k], "ConfirmSignUpResponse contains unknown key " .. tostring(k))
+		assert(keys.ConfirmSignUpResponse[k], "ConfirmSignUpResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -4067,40 +4070,40 @@ function M.ConfirmSignUpResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmSignUpResponse")
 	local t = { 
 	}
-	M.AssertConfirmSignUpResponse(t)
+	asserts.AssertConfirmSignUpResponse(t)
 	return t
 end
 
-local DescribeUserPoolClientResponse_keys = { "UserPoolClient" = true, nil }
+keys.DescribeUserPoolClientResponse = { ["UserPoolClient"] = true, nil }
 
-function M.AssertDescribeUserPoolClientResponse(struct)
+function asserts.AssertDescribeUserPoolClientResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserPoolClientResponse to be of type 'table'")
-	if struct["UserPoolClient"] then M.AssertUserPoolClientType(struct["UserPoolClient"]) end
+	if struct["UserPoolClient"] then asserts.AssertUserPoolClientType(struct["UserPoolClient"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserPoolClientResponse_keys[k], "DescribeUserPoolClientResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserPoolClientResponse[k], "DescribeUserPoolClientResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserPoolClientResponse
 -- <p>Represents the response from the server from a request to describe the user pool client.</p>
--- @param UserPoolClient [UserPoolClientType] <p>The user pool client from a server response to describe the user pool client.</p>
-function M.DescribeUserPoolClientResponse(UserPoolClient, ...)
+-- @param _UserPoolClient [UserPoolClientType] <p>The user pool client from a server response to describe the user pool client.</p>
+function M.DescribeUserPoolClientResponse(_UserPoolClient, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolClientResponse")
 	local t = { 
-		["UserPoolClient"] = UserPoolClient,
+		["UserPoolClient"] = _UserPoolClient,
 	}
-	M.AssertDescribeUserPoolClientResponse(t)
+	asserts.AssertDescribeUserPoolClientResponse(t)
 	return t
 end
 
-local AdminConfirmSignUpResponse_keys = { nil }
+keys.AdminConfirmSignUpResponse = { nil }
 
-function M.AssertAdminConfirmSignUpResponse(struct)
+function asserts.AssertAdminConfirmSignUpResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminConfirmSignUpResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminConfirmSignUpResponse_keys[k], "AdminConfirmSignUpResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminConfirmSignUpResponse[k], "AdminConfirmSignUpResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -4110,362 +4113,362 @@ function M.AdminConfirmSignUpResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminConfirmSignUpResponse")
 	local t = { 
 	}
-	M.AssertAdminConfirmSignUpResponse(t)
+	asserts.AssertAdminConfirmSignUpResponse(t)
 	return t
 end
 
-local GetUserAttributeVerificationCodeRequest_keys = { "AttributeName" = true, "AccessToken" = true, nil }
+keys.GetUserAttributeVerificationCodeRequest = { ["AttributeName"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertGetUserAttributeVerificationCodeRequest(struct)
+function asserts.AssertGetUserAttributeVerificationCodeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUserAttributeVerificationCodeRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
 	assert(struct["AttributeName"], "Expected key AttributeName to exist in table")
-	if struct["AttributeName"] then M.AssertAttributeNameType(struct["AttributeName"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["AttributeName"] then asserts.AssertAttributeNameType(struct["AttributeName"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUserAttributeVerificationCodeRequest_keys[k], "GetUserAttributeVerificationCodeRequest contains unknown key " .. tostring(k))
+		assert(keys.GetUserAttributeVerificationCodeRequest[k], "GetUserAttributeVerificationCodeRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUserAttributeVerificationCodeRequest
 -- <p>Represents the request to get user attribute verification.</p>
--- @param AttributeName [AttributeNameType] <p>The attribute name returned by the server response to get the user attribute verification code.</p>
--- @param AccessToken [TokenModelType] <p>The access token returned by the server response to get the user attribute verification code.</p>
+-- @param _AttributeName [AttributeNameType] <p>The attribute name returned by the server response to get the user attribute verification code.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token returned by the server response to get the user attribute verification code.</p>
 -- Required parameter: AccessToken
 -- Required parameter: AttributeName
-function M.GetUserAttributeVerificationCodeRequest(AttributeName, AccessToken, ...)
+function M.GetUserAttributeVerificationCodeRequest(_AttributeName, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUserAttributeVerificationCodeRequest")
 	local t = { 
-		["AttributeName"] = AttributeName,
-		["AccessToken"] = AccessToken,
+		["AttributeName"] = _AttributeName,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertGetUserAttributeVerificationCodeRequest(t)
+	asserts.AssertGetUserAttributeVerificationCodeRequest(t)
 	return t
 end
 
-local MessageTemplateType_keys = { "EmailMessage" = true, "EmailSubject" = true, "SMSMessage" = true, nil }
+keys.MessageTemplateType = { ["EmailMessage"] = true, ["EmailSubject"] = true, ["SMSMessage"] = true, nil }
 
-function M.AssertMessageTemplateType(struct)
+function asserts.AssertMessageTemplateType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MessageTemplateType to be of type 'table'")
-	if struct["EmailMessage"] then M.AssertEmailVerificationMessageType(struct["EmailMessage"]) end
-	if struct["EmailSubject"] then M.AssertEmailVerificationSubjectType(struct["EmailSubject"]) end
-	if struct["SMSMessage"] then M.AssertSmsVerificationMessageType(struct["SMSMessage"]) end
+	if struct["EmailMessage"] then asserts.AssertEmailVerificationMessageType(struct["EmailMessage"]) end
+	if struct["EmailSubject"] then asserts.AssertEmailVerificationSubjectType(struct["EmailSubject"]) end
+	if struct["SMSMessage"] then asserts.AssertSmsVerificationMessageType(struct["SMSMessage"]) end
 	for k,_ in pairs(struct) do
-		assert(MessageTemplateType_keys[k], "MessageTemplateType contains unknown key " .. tostring(k))
+		assert(keys.MessageTemplateType[k], "MessageTemplateType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MessageTemplateType
 -- <p>The message template structure.</p>
--- @param EmailMessage [EmailVerificationMessageType] <p>The message template for email messages.</p>
--- @param EmailSubject [EmailVerificationSubjectType] <p>The subject line for email messages.</p>
--- @param SMSMessage [SmsVerificationMessageType] <p>The message template for SMS messages.</p>
-function M.MessageTemplateType(EmailMessage, EmailSubject, SMSMessage, ...)
+-- @param _EmailMessage [EmailVerificationMessageType] <p>The message template for email messages.</p>
+-- @param _EmailSubject [EmailVerificationSubjectType] <p>The subject line for email messages.</p>
+-- @param _SMSMessage [SmsVerificationMessageType] <p>The message template for SMS messages.</p>
+function M.MessageTemplateType(_EmailMessage, _EmailSubject, _SMSMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MessageTemplateType")
 	local t = { 
-		["EmailMessage"] = EmailMessage,
-		["EmailSubject"] = EmailSubject,
-		["SMSMessage"] = SMSMessage,
+		["EmailMessage"] = _EmailMessage,
+		["EmailSubject"] = _EmailSubject,
+		["SMSMessage"] = _SMSMessage,
 	}
-	M.AssertMessageTemplateType(t)
+	asserts.AssertMessageTemplateType(t)
 	return t
 end
 
-local ConfirmDeviceResponse_keys = { "UserConfirmationNecessary" = true, nil }
+keys.ConfirmDeviceResponse = { ["UserConfirmationNecessary"] = true, nil }
 
-function M.AssertConfirmDeviceResponse(struct)
+function asserts.AssertConfirmDeviceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmDeviceResponse to be of type 'table'")
-	if struct["UserConfirmationNecessary"] then M.AssertBooleanType(struct["UserConfirmationNecessary"]) end
+	if struct["UserConfirmationNecessary"] then asserts.AssertBooleanType(struct["UserConfirmationNecessary"]) end
 	for k,_ in pairs(struct) do
-		assert(ConfirmDeviceResponse_keys[k], "ConfirmDeviceResponse contains unknown key " .. tostring(k))
+		assert(keys.ConfirmDeviceResponse[k], "ConfirmDeviceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConfirmDeviceResponse
 -- <p>Confirms the device response.</p>
--- @param UserConfirmationNecessary [BooleanType] <p>Indicates whether the user confirmation is necessary to confirm the device response.</p>
-function M.ConfirmDeviceResponse(UserConfirmationNecessary, ...)
+-- @param _UserConfirmationNecessary [BooleanType] <p>Indicates whether the user confirmation is necessary to confirm the device response.</p>
+function M.ConfirmDeviceResponse(_UserConfirmationNecessary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmDeviceResponse")
 	local t = { 
-		["UserConfirmationNecessary"] = UserConfirmationNecessary,
+		["UserConfirmationNecessary"] = _UserConfirmationNecessary,
 	}
-	M.AssertConfirmDeviceResponse(t)
+	asserts.AssertConfirmDeviceResponse(t)
 	return t
 end
 
-local AdminInitiateAuthRequest_keys = { "ClientMetadata" = true, "AuthParameters" = true, "AuthFlow" = true, "ClientId" = true, "UserPoolId" = true, nil }
+keys.AdminInitiateAuthRequest = { ["ClientMetadata"] = true, ["AuthParameters"] = true, ["AuthFlow"] = true, ["ClientId"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminInitiateAuthRequest(struct)
+function asserts.AssertAdminInitiateAuthRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminInitiateAuthRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
 	assert(struct["AuthFlow"], "Expected key AuthFlow to exist in table")
-	if struct["ClientMetadata"] then M.AssertClientMetadataType(struct["ClientMetadata"]) end
-	if struct["AuthParameters"] then M.AssertAuthParametersType(struct["AuthParameters"]) end
-	if struct["AuthFlow"] then M.AssertAuthFlowType(struct["AuthFlow"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ClientMetadata"] then asserts.AssertClientMetadataType(struct["ClientMetadata"]) end
+	if struct["AuthParameters"] then asserts.AssertAuthParametersType(struct["AuthParameters"]) end
+	if struct["AuthFlow"] then asserts.AssertAuthFlowType(struct["AuthFlow"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminInitiateAuthRequest_keys[k], "AdminInitiateAuthRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminInitiateAuthRequest[k], "AdminInitiateAuthRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminInitiateAuthRequest
 -- <p>Initiates the authorization request, as an administrator.</p>
--- @param ClientMetadata [ClientMetadataType] <p>This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.</p>
--- @param AuthParameters [AuthParametersType] <p>The authentication parameters. These are inputs corresponding to the <code>AuthFlow</code> that you are invoking. The required values depend on the value of <code>AuthFlow</code>:</p> <ul> <li> <p>For <code>USER_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SRPA</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>REFRESH_TOKEN_AUTH/REFRESH_TOKEN</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>REFRESH_TOKEN</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>ADMIN_NO_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>PASSWORD</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>CUSTOM_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>DEVICE_KEY</code> </p> </li> </ul>
--- @param AuthFlow [AuthFlowType] <p>The authentication flow for this call to execute. The API action will depend on this value. For example:</p> <ul> <li> <p> <code>REFRESH_TOKEN_AUTH</code> will take in a valid refresh token and return new tokens.</p> </li> <li> <p> <code>USER_SRP_AUTH</code> will take in <code>USERNAME</code> and <code>SRPA</code> and return the SRP variables to be used for next challenge execution.</p> </li> </ul> <p>Valid values include:</p> <ul> <li> <p> <code>USER_SRP_AUTH</code>: Authentication flow for the Secure Remote Password (SRP) protocol.</p> </li> <li> <p> <code>REFRESH_TOKEN_AUTH</code>/<code>REFRESH_TOKEN</code>: Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.</p> </li> <li> <p> <code>CUSTOM_AUTH</code>: Custom authentication flow.</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: Non-SRP authentication flow; you can pass in the USERNAME and PASSWORD directly if the flow is enabled for calling the app client.</p> </li> </ul>
--- @param ClientId [ClientIdType] <p>The app client ID.</p>
--- @param UserPoolId [UserPoolIdType] <p>The ID of the Amazon Cognito user pool.</p>
+-- @param _ClientMetadata [ClientMetadataType] <p>This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.</p>
+-- @param _AuthParameters [AuthParametersType] <p>The authentication parameters. These are inputs corresponding to the <code>AuthFlow</code> that you are invoking. The required values depend on the value of <code>AuthFlow</code>:</p> <ul> <li> <p>For <code>USER_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SRPA</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>REFRESH_TOKEN_AUTH/REFRESH_TOKEN</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>REFRESH_TOKEN</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>ADMIN_NO_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>PASSWORD</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>CUSTOM_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>DEVICE_KEY</code> </p> </li> </ul>
+-- @param _AuthFlow [AuthFlowType] <p>The authentication flow for this call to execute. The API action will depend on this value. For example:</p> <ul> <li> <p> <code>REFRESH_TOKEN_AUTH</code> will take in a valid refresh token and return new tokens.</p> </li> <li> <p> <code>USER_SRP_AUTH</code> will take in <code>USERNAME</code> and <code>SRPA</code> and return the SRP variables to be used for next challenge execution.</p> </li> </ul> <p>Valid values include:</p> <ul> <li> <p> <code>USER_SRP_AUTH</code>: Authentication flow for the Secure Remote Password (SRP) protocol.</p> </li> <li> <p> <code>REFRESH_TOKEN_AUTH</code>/<code>REFRESH_TOKEN</code>: Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.</p> </li> <li> <p> <code>CUSTOM_AUTH</code>: Custom authentication flow.</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: Non-SRP authentication flow; you can pass in the USERNAME and PASSWORD directly if the flow is enabled for calling the app client.</p> </li> </ul>
+-- @param _ClientId [ClientIdType] <p>The app client ID.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The ID of the Amazon Cognito user pool.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
 -- Required parameter: AuthFlow
-function M.AdminInitiateAuthRequest(ClientMetadata, AuthParameters, AuthFlow, ClientId, UserPoolId, ...)
+function M.AdminInitiateAuthRequest(_ClientMetadata, _AuthParameters, _AuthFlow, _ClientId, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminInitiateAuthRequest")
 	local t = { 
-		["ClientMetadata"] = ClientMetadata,
-		["AuthParameters"] = AuthParameters,
-		["AuthFlow"] = AuthFlow,
-		["ClientId"] = ClientId,
-		["UserPoolId"] = UserPoolId,
+		["ClientMetadata"] = _ClientMetadata,
+		["AuthParameters"] = _AuthParameters,
+		["AuthFlow"] = _AuthFlow,
+		["ClientId"] = _ClientId,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminInitiateAuthRequest(t)
+	asserts.AssertAdminInitiateAuthRequest(t)
 	return t
 end
 
-local RespondToAuthChallengeRequest_keys = { "ChallengeResponses" = true, "ChallengeName" = true, "ClientId" = true, "Session" = true, nil }
+keys.RespondToAuthChallengeRequest = { ["ChallengeResponses"] = true, ["ChallengeName"] = true, ["ClientId"] = true, ["Session"] = true, nil }
 
-function M.AssertRespondToAuthChallengeRequest(struct)
+function asserts.AssertRespondToAuthChallengeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RespondToAuthChallengeRequest to be of type 'table'")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
 	assert(struct["ChallengeName"], "Expected key ChallengeName to exist in table")
-	if struct["ChallengeResponses"] then M.AssertChallengeResponsesType(struct["ChallengeResponses"]) end
-	if struct["ChallengeName"] then M.AssertChallengeNameType(struct["ChallengeName"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["Session"] then M.AssertSessionType(struct["Session"]) end
+	if struct["ChallengeResponses"] then asserts.AssertChallengeResponsesType(struct["ChallengeResponses"]) end
+	if struct["ChallengeName"] then asserts.AssertChallengeNameType(struct["ChallengeName"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["Session"] then asserts.AssertSessionType(struct["Session"]) end
 	for k,_ in pairs(struct) do
-		assert(RespondToAuthChallengeRequest_keys[k], "RespondToAuthChallengeRequest contains unknown key " .. tostring(k))
+		assert(keys.RespondToAuthChallengeRequest[k], "RespondToAuthChallengeRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RespondToAuthChallengeRequest
 -- <p>The request to respond to an authentication challenge.</p>
--- @param ChallengeResponses [ChallengeResponsesType] <p>The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:</p> <ul> <li> <p> <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> </ul>
--- @param ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p> <p> <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.</p>
--- @param ClientId [ClientIdType] <p>The app client ID.</p>
--- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
+-- @param _ChallengeResponses [ChallengeResponsesType] <p>The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:</p> <ul> <li> <p> <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> </ul>
+-- @param _ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p> <p> <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.</p>
+-- @param _ClientId [ClientIdType] <p>The app client ID.</p>
+-- @param _Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
 -- Required parameter: ClientId
 -- Required parameter: ChallengeName
-function M.RespondToAuthChallengeRequest(ChallengeResponses, ChallengeName, ClientId, Session, ...)
+function M.RespondToAuthChallengeRequest(_ChallengeResponses, _ChallengeName, _ClientId, _Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RespondToAuthChallengeRequest")
 	local t = { 
-		["ChallengeResponses"] = ChallengeResponses,
-		["ChallengeName"] = ChallengeName,
-		["ClientId"] = ClientId,
-		["Session"] = Session,
+		["ChallengeResponses"] = _ChallengeResponses,
+		["ChallengeName"] = _ChallengeName,
+		["ClientId"] = _ClientId,
+		["Session"] = _Session,
 	}
-	M.AssertRespondToAuthChallengeRequest(t)
+	asserts.AssertRespondToAuthChallengeRequest(t)
 	return t
 end
 
-local GetCSVHeaderResponse_keys = { "CSVHeader" = true, "UserPoolId" = true, nil }
+keys.GetCSVHeaderResponse = { ["CSVHeader"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertGetCSVHeaderResponse(struct)
+function asserts.AssertGetCSVHeaderResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCSVHeaderResponse to be of type 'table'")
-	if struct["CSVHeader"] then M.AssertListOfStringTypes(struct["CSVHeader"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["CSVHeader"] then asserts.AssertListOfStringTypes(struct["CSVHeader"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCSVHeaderResponse_keys[k], "GetCSVHeaderResponse contains unknown key " .. tostring(k))
+		assert(keys.GetCSVHeaderResponse[k], "GetCSVHeaderResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCSVHeaderResponse
 -- <p>Represents the response from the server to the request to get the header information for the .csv file for the user import job.</p>
--- @param CSVHeader [ListOfStringTypes] <p>The header information for the .csv file for the user import job.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are to be imported into.</p>
-function M.GetCSVHeaderResponse(CSVHeader, UserPoolId, ...)
+-- @param _CSVHeader [ListOfStringTypes] <p>The header information for the .csv file for the user import job.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are to be imported into.</p>
+function M.GetCSVHeaderResponse(_CSVHeader, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCSVHeaderResponse")
 	local t = { 
-		["CSVHeader"] = CSVHeader,
-		["UserPoolId"] = UserPoolId,
+		["CSVHeader"] = _CSVHeader,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertGetCSVHeaderResponse(t)
+	asserts.AssertGetCSVHeaderResponse(t)
 	return t
 end
 
-local SignUpRequest_keys = { "Username" = true, "ValidationData" = true, "SecretHash" = true, "UserAttributes" = true, "ClientId" = true, "Password" = true, nil }
+keys.SignUpRequest = { ["Username"] = true, ["ValidationData"] = true, ["SecretHash"] = true, ["UserAttributes"] = true, ["ClientId"] = true, ["Password"] = true, nil }
 
-function M.AssertSignUpRequest(struct)
+function asserts.AssertSignUpRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SignUpRequest to be of type 'table'")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["Password"], "Expected key Password to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["ValidationData"] then M.AssertAttributeListType(struct["ValidationData"]) end
-	if struct["SecretHash"] then M.AssertSecretHashType(struct["SecretHash"]) end
-	if struct["UserAttributes"] then M.AssertAttributeListType(struct["UserAttributes"]) end
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["Password"] then M.AssertPasswordType(struct["Password"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["ValidationData"] then asserts.AssertAttributeListType(struct["ValidationData"]) end
+	if struct["SecretHash"] then asserts.AssertSecretHashType(struct["SecretHash"]) end
+	if struct["UserAttributes"] then asserts.AssertAttributeListType(struct["UserAttributes"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["Password"] then asserts.AssertPasswordType(struct["Password"]) end
 	for k,_ in pairs(struct) do
-		assert(SignUpRequest_keys[k], "SignUpRequest contains unknown key " .. tostring(k))
+		assert(keys.SignUpRequest[k], "SignUpRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SignUpRequest
 -- <p>Represents the request to register a user.</p>
--- @param Username [UsernameType] <p>The user name of the user you wish to register.</p>
--- @param ValidationData [AttributeListType] <p>The validation data in the request to register a user.</p>
--- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
--- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
--- @param Password [PasswordType] <p>The password of the user you wish to register.</p>
+-- @param _Username [UsernameType] <p>The user name of the user you wish to register.</p>
+-- @param _ValidationData [AttributeListType] <p>The validation data in the request to register a user.</p>
+-- @param _SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param _UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _Password [PasswordType] <p>The password of the user you wish to register.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
 -- Required parameter: Password
-function M.SignUpRequest(Username, ValidationData, SecretHash, UserAttributes, ClientId, Password, ...)
+function M.SignUpRequest(_Username, _ValidationData, _SecretHash, _UserAttributes, _ClientId, _Password, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SignUpRequest")
 	local t = { 
-		["Username"] = Username,
-		["ValidationData"] = ValidationData,
-		["SecretHash"] = SecretHash,
-		["UserAttributes"] = UserAttributes,
-		["ClientId"] = ClientId,
-		["Password"] = Password,
+		["Username"] = _Username,
+		["ValidationData"] = _ValidationData,
+		["SecretHash"] = _SecretHash,
+		["UserAttributes"] = _UserAttributes,
+		["ClientId"] = _ClientId,
+		["Password"] = _Password,
 	}
-	M.AssertSignUpRequest(t)
+	asserts.AssertSignUpRequest(t)
 	return t
 end
 
-local InvalidSmsRoleAccessPolicyException_keys = { "message" = true, nil }
+keys.InvalidSmsRoleAccessPolicyException = { ["message"] = true, nil }
 
-function M.AssertInvalidSmsRoleAccessPolicyException(struct)
+function asserts.AssertInvalidSmsRoleAccessPolicyException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSmsRoleAccessPolicyException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidSmsRoleAccessPolicyException_keys[k], "InvalidSmsRoleAccessPolicyException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSmsRoleAccessPolicyException[k], "InvalidSmsRoleAccessPolicyException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidSmsRoleAccessPolicyException
 -- <p>This exception is returned when the role provided for SMS configuration does not have permission to publish using Amazon SNS.</p>
--- @param message [MessageType] <p>The message retuned when the invalid SMS role access policy exception is thrown.</p>
-function M.InvalidSmsRoleAccessPolicyException(message, ...)
+-- @param _message [MessageType] <p>The message retuned when the invalid SMS role access policy exception is thrown.</p>
+function M.InvalidSmsRoleAccessPolicyException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSmsRoleAccessPolicyException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidSmsRoleAccessPolicyException(t)
+	asserts.AssertInvalidSmsRoleAccessPolicyException(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "message" = true, nil }
+keys.ResourceNotFoundException = { ["message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>This exception is thrown when the Amazon Cognito service cannot find the requested resource.</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a resource not found exception.</p>
-function M.ResourceNotFoundException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service returns a resource not found exception.</p>
+function M.ResourceNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local AdminRemoveUserFromGroupRequest_keys = { "Username" = true, "GroupName" = true, "UserPoolId" = true, nil }
+keys.AdminRemoveUserFromGroupRequest = { ["Username"] = true, ["GroupName"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminRemoveUserFromGroupRequest(struct)
+function asserts.AssertAdminRemoveUserFromGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminRemoveUserFromGroupRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["GroupName"], "Expected key GroupName to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["GroupName"] then M.AssertGroupNameType(struct["GroupName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["GroupName"] then asserts.AssertGroupNameType(struct["GroupName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminRemoveUserFromGroupRequest_keys[k], "AdminRemoveUserFromGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminRemoveUserFromGroupRequest[k], "AdminRemoveUserFromGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminRemoveUserFromGroupRequest
 --  
--- @param Username [UsernameType] <p>The username for the user.</p>
--- @param GroupName [GroupNameType] <p>The group name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _Username [UsernameType] <p>The username for the user.</p>
+-- @param _GroupName [GroupNameType] <p>The group name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: GroupName
-function M.AdminRemoveUserFromGroupRequest(Username, GroupName, UserPoolId, ...)
+function M.AdminRemoveUserFromGroupRequest(_Username, _GroupName, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminRemoveUserFromGroupRequest")
 	local t = { 
-		["Username"] = Username,
-		["GroupName"] = GroupName,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["GroupName"] = _GroupName,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminRemoveUserFromGroupRequest(t)
+	asserts.AssertAdminRemoveUserFromGroupRequest(t)
 	return t
 end
 
-local VerifyUserAttributeRequest_keys = { "Code" = true, "AttributeName" = true, "AccessToken" = true, nil }
+keys.VerifyUserAttributeRequest = { ["Code"] = true, ["AttributeName"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertVerifyUserAttributeRequest(struct)
+function asserts.AssertVerifyUserAttributeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VerifyUserAttributeRequest to be of type 'table'")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
 	assert(struct["AttributeName"], "Expected key AttributeName to exist in table")
 	assert(struct["Code"], "Expected key Code to exist in table")
-	if struct["Code"] then M.AssertConfirmationCodeType(struct["Code"]) end
-	if struct["AttributeName"] then M.AssertAttributeNameType(struct["AttributeName"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["Code"] then asserts.AssertConfirmationCodeType(struct["Code"]) end
+	if struct["AttributeName"] then asserts.AssertAttributeNameType(struct["AttributeName"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(VerifyUserAttributeRequest_keys[k], "VerifyUserAttributeRequest contains unknown key " .. tostring(k))
+		assert(keys.VerifyUserAttributeRequest[k], "VerifyUserAttributeRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type VerifyUserAttributeRequest
 -- <p>Represents the request to verify user attributes.</p>
--- @param Code [ConfirmationCodeType] <p>The verification code in the request to verify user attributes.</p>
--- @param AttributeName [AttributeNameType] <p>The attribute name in the request to verify user attributes.</p>
--- @param AccessToken [TokenModelType] <p>Represents the access token of the request to verify user attributes.</p>
+-- @param _Code [ConfirmationCodeType] <p>The verification code in the request to verify user attributes.</p>
+-- @param _AttributeName [AttributeNameType] <p>The attribute name in the request to verify user attributes.</p>
+-- @param _AccessToken [TokenModelType] <p>Represents the access token of the request to verify user attributes.</p>
 -- Required parameter: AccessToken
 -- Required parameter: AttributeName
 -- Required parameter: Code
-function M.VerifyUserAttributeRequest(Code, AttributeName, AccessToken, ...)
+function M.VerifyUserAttributeRequest(_Code, _AttributeName, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyUserAttributeRequest")
 	local t = { 
-		["Code"] = Code,
-		["AttributeName"] = AttributeName,
-		["AccessToken"] = AccessToken,
+		["Code"] = _Code,
+		["AttributeName"] = _AttributeName,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertVerifyUserAttributeRequest(t)
+	asserts.AssertVerifyUserAttributeRequest(t)
 	return t
 end
 
-local AdminEnableUserResponse_keys = { nil }
+keys.AdminEnableUserResponse = { nil }
 
-function M.AssertAdminEnableUserResponse(struct)
+function asserts.AssertAdminEnableUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminEnableUserResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminEnableUserResponse_keys[k], "AdminEnableUserResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminEnableUserResponse[k], "AdminEnableUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -4475,102 +4478,102 @@ function M.AdminEnableUserResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminEnableUserResponse")
 	local t = { 
 	}
-	M.AssertAdminEnableUserResponse(t)
+	asserts.AssertAdminEnableUserResponse(t)
 	return t
 end
 
-local DeleteUserAttributesRequest_keys = { "UserAttributeNames" = true, "AccessToken" = true, nil }
+keys.DeleteUserAttributesRequest = { ["UserAttributeNames"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertDeleteUserAttributesRequest(struct)
+function asserts.AssertDeleteUserAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserAttributesRequest to be of type 'table'")
 	assert(struct["UserAttributeNames"], "Expected key UserAttributeNames to exist in table")
 	assert(struct["AccessToken"], "Expected key AccessToken to exist in table")
-	if struct["UserAttributeNames"] then M.AssertAttributeNameListType(struct["UserAttributeNames"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["UserAttributeNames"] then asserts.AssertAttributeNameListType(struct["UserAttributeNames"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUserAttributesRequest_keys[k], "DeleteUserAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserAttributesRequest[k], "DeleteUserAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUserAttributesRequest
 -- <p>Represents the request to delete user attributes.</p>
--- @param UserAttributeNames [AttributeNameListType] <p>An array of strings representing the user attribute names you wish to delete.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
--- @param AccessToken [TokenModelType] <p>The access token used in the request to delete user attributes.</p>
+-- @param _UserAttributeNames [AttributeNameListType] <p>An array of strings representing the user attribute names you wish to delete.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token used in the request to delete user attributes.</p>
 -- Required parameter: UserAttributeNames
 -- Required parameter: AccessToken
-function M.DeleteUserAttributesRequest(UserAttributeNames, AccessToken, ...)
+function M.DeleteUserAttributesRequest(_UserAttributeNames, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserAttributesRequest")
 	local t = { 
-		["UserAttributeNames"] = UserAttributeNames,
-		["AccessToken"] = AccessToken,
+		["UserAttributeNames"] = _UserAttributeNames,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertDeleteUserAttributesRequest(t)
+	asserts.AssertDeleteUserAttributesRequest(t)
 	return t
 end
 
-local DescribeUserImportJobResponse_keys = { "UserImportJob" = true, nil }
+keys.DescribeUserImportJobResponse = { ["UserImportJob"] = true, nil }
 
-function M.AssertDescribeUserImportJobResponse(struct)
+function asserts.AssertDescribeUserImportJobResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserImportJobResponse to be of type 'table'")
-	if struct["UserImportJob"] then M.AssertUserImportJobType(struct["UserImportJob"]) end
+	if struct["UserImportJob"] then asserts.AssertUserImportJobType(struct["UserImportJob"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserImportJobResponse_keys[k], "DescribeUserImportJobResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserImportJobResponse[k], "DescribeUserImportJobResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserImportJobResponse
 -- <p>Represents the response from the server to the request to describe the user import job.</p>
--- @param UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
-function M.DescribeUserImportJobResponse(UserImportJob, ...)
+-- @param _UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
+function M.DescribeUserImportJobResponse(_UserImportJob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserImportJobResponse")
 	local t = { 
-		["UserImportJob"] = UserImportJob,
+		["UserImportJob"] = _UserImportJob,
 	}
-	M.AssertDescribeUserImportJobResponse(t)
+	asserts.AssertDescribeUserImportJobResponse(t)
 	return t
 end
 
-local InitiateAuthResponse_keys = { "AuthenticationResult" = true, "ChallengeName" = true, "ChallengeParameters" = true, "Session" = true, nil }
+keys.InitiateAuthResponse = { ["AuthenticationResult"] = true, ["ChallengeName"] = true, ["ChallengeParameters"] = true, ["Session"] = true, nil }
 
-function M.AssertInitiateAuthResponse(struct)
+function asserts.AssertInitiateAuthResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InitiateAuthResponse to be of type 'table'")
-	if struct["AuthenticationResult"] then M.AssertAuthenticationResultType(struct["AuthenticationResult"]) end
-	if struct["ChallengeName"] then M.AssertChallengeNameType(struct["ChallengeName"]) end
-	if struct["ChallengeParameters"] then M.AssertChallengeParametersType(struct["ChallengeParameters"]) end
-	if struct["Session"] then M.AssertSessionType(struct["Session"]) end
+	if struct["AuthenticationResult"] then asserts.AssertAuthenticationResultType(struct["AuthenticationResult"]) end
+	if struct["ChallengeName"] then asserts.AssertChallengeNameType(struct["ChallengeName"]) end
+	if struct["ChallengeParameters"] then asserts.AssertChallengeParametersType(struct["ChallengeParameters"]) end
+	if struct["Session"] then asserts.AssertSessionType(struct["Session"]) end
 	for k,_ in pairs(struct) do
-		assert(InitiateAuthResponse_keys[k], "InitiateAuthResponse contains unknown key " .. tostring(k))
+		assert(keys.InitiateAuthResponse[k], "InitiateAuthResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InitiateAuthResponse
 -- <p>Initiates the authentication response.</p>
--- @param AuthenticationResult [AuthenticationResultType] <p>The result of the authentication response. This is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.</p>
--- @param ChallengeName [ChallengeNameType] <p>The name of the challenge which you are responding to with this call. This is returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p> <p>Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable) in the parameters.</p> <ul> <li> <p> <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.</p> </li> <li> <p> <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user should pass another challenge before tokens are issued.</p> </li> <li> <p> <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.</p> </li> <li> <p> <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.</p> </li> </ul>
--- @param ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need to pass another challenge. The responses in this parameter should be used to compute inputs to the next call (<code>RespondToAuthChallenge</code>). </p> <p>All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).</p>
--- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
-function M.InitiateAuthResponse(AuthenticationResult, ChallengeName, ChallengeParameters, Session, ...)
+-- @param _AuthenticationResult [AuthenticationResultType] <p>The result of the authentication response. This is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.</p>
+-- @param _ChallengeName [ChallengeNameType] <p>The name of the challenge which you are responding to with this call. This is returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p> <p>Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable) in the parameters.</p> <ul> <li> <p> <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.</p> </li> <li> <p> <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user should pass another challenge before tokens are issued.</p> </li> <li> <p> <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.</p> </li> <li> <p> <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.</p> </li> </ul>
+-- @param _ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need to pass another challenge. The responses in this parameter should be used to compute inputs to the next call (<code>RespondToAuthChallenge</code>). </p> <p>All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).</p>
+-- @param _Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
+function M.InitiateAuthResponse(_AuthenticationResult, _ChallengeName, _ChallengeParameters, _Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateAuthResponse")
 	local t = { 
-		["AuthenticationResult"] = AuthenticationResult,
-		["ChallengeName"] = ChallengeName,
-		["ChallengeParameters"] = ChallengeParameters,
-		["Session"] = Session,
+		["AuthenticationResult"] = _AuthenticationResult,
+		["ChallengeName"] = _ChallengeName,
+		["ChallengeParameters"] = _ChallengeParameters,
+		["Session"] = _Session,
 	}
-	M.AssertInitiateAuthResponse(t)
+	asserts.AssertInitiateAuthResponse(t)
 	return t
 end
 
-local AdminUpdateDeviceStatusResponse_keys = { nil }
+keys.AdminUpdateDeviceStatusResponse = { nil }
 
-function M.AssertAdminUpdateDeviceStatusResponse(struct)
+function asserts.AssertAdminUpdateDeviceStatusResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminUpdateDeviceStatusResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminUpdateDeviceStatusResponse_keys[k], "AdminUpdateDeviceStatusResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminUpdateDeviceStatusResponse[k], "AdminUpdateDeviceStatusResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -4580,312 +4583,312 @@ function M.AdminUpdateDeviceStatusResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUpdateDeviceStatusResponse")
 	local t = { 
 	}
-	M.AssertAdminUpdateDeviceStatusResponse(t)
+	asserts.AssertAdminUpdateDeviceStatusResponse(t)
 	return t
 end
 
-local DescribeUserPoolRequest_keys = { "UserPoolId" = true, nil }
+keys.DescribeUserPoolRequest = { ["UserPoolId"] = true, nil }
 
-function M.AssertDescribeUserPoolRequest(struct)
+function asserts.AssertDescribeUserPoolRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserPoolRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserPoolRequest_keys[k], "DescribeUserPoolRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserPoolRequest[k], "DescribeUserPoolRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserPoolRequest
 -- <p>Represents the request to describe the user pool.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to describe.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to describe.</p>
 -- Required parameter: UserPoolId
-function M.DescribeUserPoolRequest(UserPoolId, ...)
+function M.DescribeUserPoolRequest(_UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolRequest")
 	local t = { 
-		["UserPoolId"] = UserPoolId,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertDescribeUserPoolRequest(t)
+	asserts.AssertDescribeUserPoolRequest(t)
 	return t
 end
 
-local ListUsersInGroupRequest_keys = { "GroupName" = true, "NextToken" = true, "Limit" = true, "UserPoolId" = true, nil }
+keys.ListUsersInGroupRequest = { ["GroupName"] = true, ["NextToken"] = true, ["Limit"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertListUsersInGroupRequest(struct)
+function asserts.AssertListUsersInGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUsersInGroupRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["GroupName"], "Expected key GroupName to exist in table")
-	if struct["GroupName"] then M.AssertGroupNameType(struct["GroupName"]) end
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertQueryLimitType(struct["Limit"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["GroupName"] then asserts.AssertGroupNameType(struct["GroupName"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertQueryLimitType(struct["Limit"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUsersInGroupRequest_keys[k], "ListUsersInGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.ListUsersInGroupRequest[k], "ListUsersInGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUsersInGroupRequest
 --  
--- @param GroupName [GroupNameType] <p>The name of the group.</p>
--- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param Limit [QueryLimitType] <p>The limit of the request to list users.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param _NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _Limit [QueryLimitType] <p>The limit of the request to list users.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: GroupName
-function M.ListUsersInGroupRequest(GroupName, NextToken, Limit, UserPoolId, ...)
+function M.ListUsersInGroupRequest(_GroupName, _NextToken, _Limit, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersInGroupRequest")
 	local t = { 
-		["GroupName"] = GroupName,
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
-		["UserPoolId"] = UserPoolId,
+		["GroupName"] = _GroupName,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertListUsersInGroupRequest(t)
+	asserts.AssertListUsersInGroupRequest(t)
 	return t
 end
 
-local InvalidOAuthFlowException_keys = { "message" = true, nil }
+keys.InvalidOAuthFlowException = { ["message"] = true, nil }
 
-function M.AssertInvalidOAuthFlowException(struct)
+function asserts.AssertInvalidOAuthFlowException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidOAuthFlowException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidOAuthFlowException_keys[k], "InvalidOAuthFlowException contains unknown key " .. tostring(k))
+		assert(keys.InvalidOAuthFlowException[k], "InvalidOAuthFlowException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidOAuthFlowException
 -- <p>This exception is thrown when the specified OAuth flow is invalid.</p>
--- @param message [MessageType] <p>This exception is thrown when the specified OAuth flow is invalid.</p>
-function M.InvalidOAuthFlowException(message, ...)
+-- @param _message [MessageType] 
+function M.InvalidOAuthFlowException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOAuthFlowException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidOAuthFlowException(t)
+	asserts.AssertInvalidOAuthFlowException(t)
 	return t
 end
 
-local PasswordResetRequiredException_keys = { "message" = true, nil }
+keys.PasswordResetRequiredException = { ["message"] = true, nil }
 
-function M.AssertPasswordResetRequiredException(struct)
+function asserts.AssertPasswordResetRequiredException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PasswordResetRequiredException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(PasswordResetRequiredException_keys[k], "PasswordResetRequiredException contains unknown key " .. tostring(k))
+		assert(keys.PasswordResetRequiredException[k], "PasswordResetRequiredException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PasswordResetRequiredException
 -- <p>This exception is thrown when a password reset is required.</p>
--- @param message [MessageType] <p>The message returned when a password reset is required.</p>
-function M.PasswordResetRequiredException(message, ...)
+-- @param _message [MessageType] <p>The message returned when a password reset is required.</p>
+function M.PasswordResetRequiredException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PasswordResetRequiredException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertPasswordResetRequiredException(t)
+	asserts.AssertPasswordResetRequiredException(t)
 	return t
 end
 
-local ListGroupsRequest_keys = { "NextToken" = true, "Limit" = true, "UserPoolId" = true, nil }
+keys.ListGroupsRequest = { ["NextToken"] = true, ["Limit"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertListGroupsRequest(struct)
+function asserts.AssertListGroupsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupsRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertQueryLimitType(struct["Limit"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertQueryLimitType(struct["Limit"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGroupsRequest_keys[k], "ListGroupsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListGroupsRequest[k], "ListGroupsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGroupsRequest
 --  
--- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param Limit [QueryLimitType] <p>The limit of the request to list groups.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _Limit [QueryLimitType] <p>The limit of the request to list groups.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: UserPoolId
-function M.ListGroupsRequest(NextToken, Limit, UserPoolId, ...)
+function M.ListGroupsRequest(_NextToken, _Limit, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
-		["UserPoolId"] = UserPoolId,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertListGroupsRequest(t)
+	asserts.AssertListGroupsRequest(t)
 	return t
 end
 
-local TooManyRequestsException_keys = { "message" = true, nil }
+keys.TooManyRequestsException = { ["message"] = true, nil }
 
-function M.AssertTooManyRequestsException(struct)
+function asserts.AssertTooManyRequestsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyRequestsException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TooManyRequestsException_keys[k], "TooManyRequestsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyRequestsException[k], "TooManyRequestsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TooManyRequestsException
 -- <p>This exception is thrown when the user has made too many requests for a given operation.</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a too many requests exception.</p>
-function M.TooManyRequestsException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service returns a too many requests exception.</p>
+function M.TooManyRequestsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTooManyRequestsException(t)
+	asserts.AssertTooManyRequestsException(t)
 	return t
 end
 
-local ExpiredCodeException_keys = { "message" = true, nil }
+keys.ExpiredCodeException = { ["message"] = true, nil }
 
-function M.AssertExpiredCodeException(struct)
+function asserts.AssertExpiredCodeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExpiredCodeException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ExpiredCodeException_keys[k], "ExpiredCodeException contains unknown key " .. tostring(k))
+		assert(keys.ExpiredCodeException[k], "ExpiredCodeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExpiredCodeException
 -- <p>This exception is thrown if a code has expired.</p>
--- @param message [MessageType] <p>The message returned when the expired code exception is thrown.</p>
-function M.ExpiredCodeException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the expired code exception is thrown.</p>
+function M.ExpiredCodeException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredCodeException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertExpiredCodeException(t)
+	asserts.AssertExpiredCodeException(t)
 	return t
 end
 
-local AdminDisableUserRequest_keys = { "Username" = true, "UserPoolId" = true, nil }
+keys.AdminDisableUserRequest = { ["Username"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminDisableUserRequest(struct)
+function asserts.AssertAdminDisableUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminDisableUserRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminDisableUserRequest_keys[k], "AdminDisableUserRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminDisableUserRequest[k], "AdminDisableUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminDisableUserRequest
 -- <p>Represents the request to disable any user as an administrator.</p>
--- @param Username [UsernameType] <p>The user name of the user you wish to disable.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to disable the user.</p>
+-- @param _Username [UsernameType] <p>The user name of the user you wish to disable.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to disable the user.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminDisableUserRequest(Username, UserPoolId, ...)
+function M.AdminDisableUserRequest(_Username, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminDisableUserRequest")
 	local t = { 
-		["Username"] = Username,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminDisableUserRequest(t)
+	asserts.AssertAdminDisableUserRequest(t)
 	return t
 end
 
-local CreateIdentityProviderRequest_keys = { "UserPoolId" = true, "ProviderName" = true, "ProviderType" = true, "ProviderDetails" = true, "IdpIdentifiers" = true, "AttributeMapping" = true, nil }
+keys.CreateIdentityProviderRequest = { ["UserPoolId"] = true, ["ProviderName"] = true, ["ProviderType"] = true, ["ProviderDetails"] = true, ["IdpIdentifiers"] = true, ["AttributeMapping"] = true, nil }
 
-function M.AssertCreateIdentityProviderRequest(struct)
+function asserts.AssertCreateIdentityProviderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateIdentityProviderRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ProviderName"], "Expected key ProviderName to exist in table")
 	assert(struct["ProviderType"], "Expected key ProviderType to exist in table")
 	assert(struct["ProviderDetails"], "Expected key ProviderDetails to exist in table")
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["ProviderName"] then M.AssertProviderNameType(struct["ProviderName"]) end
-	if struct["ProviderType"] then M.AssertIdentityProviderTypeType(struct["ProviderType"]) end
-	if struct["ProviderDetails"] then M.AssertProviderDetailsType(struct["ProviderDetails"]) end
-	if struct["IdpIdentifiers"] then M.AssertIdpIdentifiersListType(struct["IdpIdentifiers"]) end
-	if struct["AttributeMapping"] then M.AssertAttributeMappingType(struct["AttributeMapping"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ProviderName"] then asserts.AssertProviderNameType(struct["ProviderName"]) end
+	if struct["ProviderType"] then asserts.AssertIdentityProviderTypeType(struct["ProviderType"]) end
+	if struct["ProviderDetails"] then asserts.AssertProviderDetailsType(struct["ProviderDetails"]) end
+	if struct["IdpIdentifiers"] then asserts.AssertIdpIdentifiersListType(struct["IdpIdentifiers"]) end
+	if struct["AttributeMapping"] then asserts.AssertAttributeMappingType(struct["AttributeMapping"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateIdentityProviderRequest_keys[k], "CreateIdentityProviderRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateIdentityProviderRequest[k], "CreateIdentityProviderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateIdentityProviderRequest
 --  
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
--- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
--- @param ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
--- @param ProviderDetails [ProviderDetailsType] <p>The identity provider details, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
--- @param IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
--- @param AttributeMapping [AttributeMappingType] <p>A mapping of identity provider attributes to standard and custom user pool attributes.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param _ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
+-- @param _ProviderDetails [ProviderDetailsType] <p>The identity provider details, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
+-- @param _IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
+-- @param _AttributeMapping [AttributeMappingType] <p>A mapping of identity provider attributes to standard and custom user pool attributes.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ProviderName
 -- Required parameter: ProviderType
 -- Required parameter: ProviderDetails
-function M.CreateIdentityProviderRequest(UserPoolId, ProviderName, ProviderType, ProviderDetails, IdpIdentifiers, AttributeMapping, ...)
+function M.CreateIdentityProviderRequest(_UserPoolId, _ProviderName, _ProviderType, _ProviderDetails, _IdpIdentifiers, _AttributeMapping, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateIdentityProviderRequest")
 	local t = { 
-		["UserPoolId"] = UserPoolId,
-		["ProviderName"] = ProviderName,
-		["ProviderType"] = ProviderType,
-		["ProviderDetails"] = ProviderDetails,
-		["IdpIdentifiers"] = IdpIdentifiers,
-		["AttributeMapping"] = AttributeMapping,
+		["UserPoolId"] = _UserPoolId,
+		["ProviderName"] = _ProviderName,
+		["ProviderType"] = _ProviderType,
+		["ProviderDetails"] = _ProviderDetails,
+		["IdpIdentifiers"] = _IdpIdentifiers,
+		["AttributeMapping"] = _AttributeMapping,
 	}
-	M.AssertCreateIdentityProviderRequest(t)
+	asserts.AssertCreateIdentityProviderRequest(t)
 	return t
 end
 
-local AdminAddUserToGroupRequest_keys = { "Username" = true, "GroupName" = true, "UserPoolId" = true, nil }
+keys.AdminAddUserToGroupRequest = { ["Username"] = true, ["GroupName"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminAddUserToGroupRequest(struct)
+function asserts.AssertAdminAddUserToGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminAddUserToGroupRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["GroupName"], "Expected key GroupName to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["GroupName"] then M.AssertGroupNameType(struct["GroupName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["GroupName"] then asserts.AssertGroupNameType(struct["GroupName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminAddUserToGroupRequest_keys[k], "AdminAddUserToGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminAddUserToGroupRequest[k], "AdminAddUserToGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminAddUserToGroupRequest
 --  
--- @param Username [UsernameType] <p>The username for the user.</p>
--- @param GroupName [GroupNameType] <p>The group name.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _Username [UsernameType] <p>The username for the user.</p>
+-- @param _GroupName [GroupNameType] <p>The group name.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: GroupName
-function M.AdminAddUserToGroupRequest(Username, GroupName, UserPoolId, ...)
+function M.AdminAddUserToGroupRequest(_Username, _GroupName, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminAddUserToGroupRequest")
 	local t = { 
-		["Username"] = Username,
-		["GroupName"] = GroupName,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["GroupName"] = _GroupName,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminAddUserToGroupRequest(t)
+	asserts.AssertAdminAddUserToGroupRequest(t)
 	return t
 end
 
-local AdminUpdateUserAttributesResponse_keys = { nil }
+keys.AdminUpdateUserAttributesResponse = { nil }
 
-function M.AssertAdminUpdateUserAttributesResponse(struct)
+function asserts.AssertAdminUpdateUserAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminUpdateUserAttributesResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminUpdateUserAttributesResponse_keys[k], "AdminUpdateUserAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminUpdateUserAttributesResponse[k], "AdminUpdateUserAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -4895,471 +4898,471 @@ function M.AdminUpdateUserAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUpdateUserAttributesResponse")
 	local t = { 
 	}
-	M.AssertAdminUpdateUserAttributesResponse(t)
+	asserts.AssertAdminUpdateUserAttributesResponse(t)
 	return t
 end
 
-local UpdateUserPoolRequest_keys = { "SmsVerificationMessage" = true, "EmailVerificationSubject" = true, "MfaConfiguration" = true, "UserPoolId" = true, "EmailVerificationMessage" = true, "SmsAuthenticationMessage" = true, "SmsConfiguration" = true, "EmailConfiguration" = true, "AutoVerifiedAttributes" = true, "Policies" = true, "UserPoolTags" = true, "AdminCreateUserConfig" = true, "DeviceConfiguration" = true, "LambdaConfig" = true, nil }
+keys.UpdateUserPoolRequest = { ["SmsVerificationMessage"] = true, ["EmailVerificationSubject"] = true, ["MfaConfiguration"] = true, ["UserPoolId"] = true, ["EmailVerificationMessage"] = true, ["SmsAuthenticationMessage"] = true, ["SmsConfiguration"] = true, ["EmailConfiguration"] = true, ["AutoVerifiedAttributes"] = true, ["Policies"] = true, ["UserPoolTags"] = true, ["AdminCreateUserConfig"] = true, ["DeviceConfiguration"] = true, ["LambdaConfig"] = true, nil }
 
-function M.AssertUpdateUserPoolRequest(struct)
+function asserts.AssertUpdateUserPoolRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserPoolRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["SmsVerificationMessage"] then M.AssertSmsVerificationMessageType(struct["SmsVerificationMessage"]) end
-	if struct["EmailVerificationSubject"] then M.AssertEmailVerificationSubjectType(struct["EmailVerificationSubject"]) end
-	if struct["MfaConfiguration"] then M.AssertUserPoolMfaType(struct["MfaConfiguration"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["EmailVerificationMessage"] then M.AssertEmailVerificationMessageType(struct["EmailVerificationMessage"]) end
-	if struct["SmsAuthenticationMessage"] then M.AssertSmsVerificationMessageType(struct["SmsAuthenticationMessage"]) end
-	if struct["SmsConfiguration"] then M.AssertSmsConfigurationType(struct["SmsConfiguration"]) end
-	if struct["EmailConfiguration"] then M.AssertEmailConfigurationType(struct["EmailConfiguration"]) end
-	if struct["AutoVerifiedAttributes"] then M.AssertVerifiedAttributesListType(struct["AutoVerifiedAttributes"]) end
-	if struct["Policies"] then M.AssertUserPoolPolicyType(struct["Policies"]) end
-	if struct["UserPoolTags"] then M.AssertUserPoolTagsType(struct["UserPoolTags"]) end
-	if struct["AdminCreateUserConfig"] then M.AssertAdminCreateUserConfigType(struct["AdminCreateUserConfig"]) end
-	if struct["DeviceConfiguration"] then M.AssertDeviceConfigurationType(struct["DeviceConfiguration"]) end
-	if struct["LambdaConfig"] then M.AssertLambdaConfigType(struct["LambdaConfig"]) end
+	if struct["SmsVerificationMessage"] then asserts.AssertSmsVerificationMessageType(struct["SmsVerificationMessage"]) end
+	if struct["EmailVerificationSubject"] then asserts.AssertEmailVerificationSubjectType(struct["EmailVerificationSubject"]) end
+	if struct["MfaConfiguration"] then asserts.AssertUserPoolMfaType(struct["MfaConfiguration"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["EmailVerificationMessage"] then asserts.AssertEmailVerificationMessageType(struct["EmailVerificationMessage"]) end
+	if struct["SmsAuthenticationMessage"] then asserts.AssertSmsVerificationMessageType(struct["SmsAuthenticationMessage"]) end
+	if struct["SmsConfiguration"] then asserts.AssertSmsConfigurationType(struct["SmsConfiguration"]) end
+	if struct["EmailConfiguration"] then asserts.AssertEmailConfigurationType(struct["EmailConfiguration"]) end
+	if struct["AutoVerifiedAttributes"] then asserts.AssertVerifiedAttributesListType(struct["AutoVerifiedAttributes"]) end
+	if struct["Policies"] then asserts.AssertUserPoolPolicyType(struct["Policies"]) end
+	if struct["UserPoolTags"] then asserts.AssertUserPoolTagsType(struct["UserPoolTags"]) end
+	if struct["AdminCreateUserConfig"] then asserts.AssertAdminCreateUserConfigType(struct["AdminCreateUserConfig"]) end
+	if struct["DeviceConfiguration"] then asserts.AssertDeviceConfigurationType(struct["DeviceConfiguration"]) end
+	if struct["LambdaConfig"] then asserts.AssertLambdaConfigType(struct["LambdaConfig"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserPoolRequest_keys[k], "UpdateUserPoolRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserPoolRequest[k], "UpdateUserPoolRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserPoolRequest
 -- <p>Represents the request to update the user pool.</p>
--- @param SmsVerificationMessage [SmsVerificationMessageType] <p>A container with information about the SMS verification message.</p>
--- @param EmailVerificationSubject [EmailVerificationSubjectType] <p>The subject of the email verification message.</p>
--- @param MfaConfiguration [UserPoolMfaType] <p>Can be one of the following values:</p> <ul> <li> <p> <code>OFF</code> - MFA tokens are not required and cannot be specified during user registration.</p> </li> <li> <p> <code>ON</code> - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.</p> </li> <li> <p> <code>OPTIONAL</code> - Users have the option when registering to create an MFA token.</p> </li> </ul>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to update.</p>
--- @param EmailVerificationMessage [EmailVerificationMessageType] <p>The contents of the email verification message.</p>
--- @param SmsAuthenticationMessage [SmsVerificationMessageType] <p>The contents of the SMS authentication message.</p>
--- @param SmsConfiguration [SmsConfigurationType] <p>SMS configuration.</p>
--- @param EmailConfiguration [EmailConfigurationType] <p>Email configuration.</p>
--- @param AutoVerifiedAttributes [VerifiedAttributesListType] <p>The attributes that are automatically verified when the Amazon Cognito service makes a request to update user pools.</p>
--- @param Policies [UserPoolPolicyType] <p>A container with the policies you wish to update in a user pool.</p>
--- @param UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
--- @param AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
--- @param DeviceConfiguration [DeviceConfigurationType] <p>Device configuration.</p>
--- @param LambdaConfig [LambdaConfigType] <p>The AWS Lambda configuration information from the request to update the user pool.</p>
+-- @param _SmsVerificationMessage [SmsVerificationMessageType] <p>A container with information about the SMS verification message.</p>
+-- @param _EmailVerificationSubject [EmailVerificationSubjectType] <p>The subject of the email verification message.</p>
+-- @param _MfaConfiguration [UserPoolMfaType] <p>Can be one of the following values:</p> <ul> <li> <p> <code>OFF</code> - MFA tokens are not required and cannot be specified during user registration.</p> </li> <li> <p> <code>ON</code> - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.</p> </li> <li> <p> <code>OPTIONAL</code> - Users have the option when registering to create an MFA token.</p> </li> </ul>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to update.</p>
+-- @param _EmailVerificationMessage [EmailVerificationMessageType] <p>The contents of the email verification message.</p>
+-- @param _SmsAuthenticationMessage [SmsVerificationMessageType] <p>The contents of the SMS authentication message.</p>
+-- @param _SmsConfiguration [SmsConfigurationType] <p>SMS configuration.</p>
+-- @param _EmailConfiguration [EmailConfigurationType] <p>Email configuration.</p>
+-- @param _AutoVerifiedAttributes [VerifiedAttributesListType] <p>The attributes that are automatically verified when the Amazon Cognito service makes a request to update user pools.</p>
+-- @param _Policies [UserPoolPolicyType] <p>A container with the policies you wish to update in a user pool.</p>
+-- @param _UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
+-- @param _AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
+-- @param _DeviceConfiguration [DeviceConfigurationType] <p>Device configuration.</p>
+-- @param _LambdaConfig [LambdaConfigType] <p>The AWS Lambda configuration information from the request to update the user pool.</p>
 -- Required parameter: UserPoolId
-function M.UpdateUserPoolRequest(SmsVerificationMessage, EmailVerificationSubject, MfaConfiguration, UserPoolId, EmailVerificationMessage, SmsAuthenticationMessage, SmsConfiguration, EmailConfiguration, AutoVerifiedAttributes, Policies, UserPoolTags, AdminCreateUserConfig, DeviceConfiguration, LambdaConfig, ...)
+function M.UpdateUserPoolRequest(_SmsVerificationMessage, _EmailVerificationSubject, _MfaConfiguration, _UserPoolId, _EmailVerificationMessage, _SmsAuthenticationMessage, _SmsConfiguration, _EmailConfiguration, _AutoVerifiedAttributes, _Policies, _UserPoolTags, _AdminCreateUserConfig, _DeviceConfiguration, _LambdaConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserPoolRequest")
 	local t = { 
-		["SmsVerificationMessage"] = SmsVerificationMessage,
-		["EmailVerificationSubject"] = EmailVerificationSubject,
-		["MfaConfiguration"] = MfaConfiguration,
-		["UserPoolId"] = UserPoolId,
-		["EmailVerificationMessage"] = EmailVerificationMessage,
-		["SmsAuthenticationMessage"] = SmsAuthenticationMessage,
-		["SmsConfiguration"] = SmsConfiguration,
-		["EmailConfiguration"] = EmailConfiguration,
-		["AutoVerifiedAttributes"] = AutoVerifiedAttributes,
-		["Policies"] = Policies,
-		["UserPoolTags"] = UserPoolTags,
-		["AdminCreateUserConfig"] = AdminCreateUserConfig,
-		["DeviceConfiguration"] = DeviceConfiguration,
-		["LambdaConfig"] = LambdaConfig,
+		["SmsVerificationMessage"] = _SmsVerificationMessage,
+		["EmailVerificationSubject"] = _EmailVerificationSubject,
+		["MfaConfiguration"] = _MfaConfiguration,
+		["UserPoolId"] = _UserPoolId,
+		["EmailVerificationMessage"] = _EmailVerificationMessage,
+		["SmsAuthenticationMessage"] = _SmsAuthenticationMessage,
+		["SmsConfiguration"] = _SmsConfiguration,
+		["EmailConfiguration"] = _EmailConfiguration,
+		["AutoVerifiedAttributes"] = _AutoVerifiedAttributes,
+		["Policies"] = _Policies,
+		["UserPoolTags"] = _UserPoolTags,
+		["AdminCreateUserConfig"] = _AdminCreateUserConfig,
+		["DeviceConfiguration"] = _DeviceConfiguration,
+		["LambdaConfig"] = _LambdaConfig,
 	}
-	M.AssertUpdateUserPoolRequest(t)
+	asserts.AssertUpdateUserPoolRequest(t)
 	return t
 end
 
-local SmsConfigurationType_keys = { "ExternalId" = true, "SnsCallerArn" = true, nil }
+keys.SmsConfigurationType = { ["ExternalId"] = true, ["SnsCallerArn"] = true, nil }
 
-function M.AssertSmsConfigurationType(struct)
+function asserts.AssertSmsConfigurationType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SmsConfigurationType to be of type 'table'")
 	assert(struct["SnsCallerArn"], "Expected key SnsCallerArn to exist in table")
-	if struct["ExternalId"] then M.AssertStringType(struct["ExternalId"]) end
-	if struct["SnsCallerArn"] then M.AssertArnType(struct["SnsCallerArn"]) end
+	if struct["ExternalId"] then asserts.AssertStringType(struct["ExternalId"]) end
+	if struct["SnsCallerArn"] then asserts.AssertArnType(struct["SnsCallerArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SmsConfigurationType_keys[k], "SmsConfigurationType contains unknown key " .. tostring(k))
+		assert(keys.SmsConfigurationType[k], "SmsConfigurationType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SmsConfigurationType
 -- <p>The SMS configuration type.</p>
--- @param ExternalId [StringType] <p>The external ID.</p>
--- @param SnsCallerArn [ArnType] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller.</p>
+-- @param _ExternalId [StringType] <p>The external ID.</p>
+-- @param _SnsCallerArn [ArnType] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller.</p>
 -- Required parameter: SnsCallerArn
-function M.SmsConfigurationType(ExternalId, SnsCallerArn, ...)
+function M.SmsConfigurationType(_ExternalId, _SnsCallerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SmsConfigurationType")
 	local t = { 
-		["ExternalId"] = ExternalId,
-		["SnsCallerArn"] = SnsCallerArn,
+		["ExternalId"] = _ExternalId,
+		["SnsCallerArn"] = _SnsCallerArn,
 	}
-	M.AssertSmsConfigurationType(t)
+	asserts.AssertSmsConfigurationType(t)
 	return t
 end
 
-local UserLambdaValidationException_keys = { "message" = true, nil }
+keys.UserLambdaValidationException = { ["message"] = true, nil }
 
-function M.AssertUserLambdaValidationException(struct)
+function asserts.AssertUserLambdaValidationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserLambdaValidationException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UserLambdaValidationException_keys[k], "UserLambdaValidationException contains unknown key " .. tostring(k))
+		assert(keys.UserLambdaValidationException[k], "UserLambdaValidationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserLambdaValidationException
 -- <p>This exception is thrown when the Amazon Cognito service encounters a user validation exception with the AWS Lambda service.</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a user validation exception with the AWS Lambda service.</p>
-function M.UserLambdaValidationException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service returns a user validation exception with the AWS Lambda service.</p>
+function M.UserLambdaValidationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserLambdaValidationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUserLambdaValidationException(t)
+	asserts.AssertUserLambdaValidationException(t)
 	return t
 end
 
-local InvalidParameterException_keys = { "message" = true, nil }
+keys.InvalidParameterException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterException(struct)
+function asserts.AssertInvalidParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterException_keys[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterException
 -- <p>This exception is thrown when the Amazon Cognito service encounters an invalid parameter.</p>
--- @param message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid parameter exception.</p>
-function M.InvalidParameterException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid parameter exception.</p>
+function M.InvalidParameterException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterException(t)
+	asserts.AssertInvalidParameterException(t)
 	return t
 end
 
-local LambdaConfigType_keys = { "PostConfirmation" = true, "CreateAuthChallenge" = true, "VerifyAuthChallengeResponse" = true, "PreAuthentication" = true, "PostAuthentication" = true, "CustomMessage" = true, "PreSignUp" = true, "DefineAuthChallenge" = true, nil }
+keys.LambdaConfigType = { ["PostConfirmation"] = true, ["CreateAuthChallenge"] = true, ["VerifyAuthChallengeResponse"] = true, ["PreAuthentication"] = true, ["PostAuthentication"] = true, ["CustomMessage"] = true, ["PreSignUp"] = true, ["DefineAuthChallenge"] = true, nil }
 
-function M.AssertLambdaConfigType(struct)
+function asserts.AssertLambdaConfigType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LambdaConfigType to be of type 'table'")
-	if struct["PostConfirmation"] then M.AssertArnType(struct["PostConfirmation"]) end
-	if struct["CreateAuthChallenge"] then M.AssertArnType(struct["CreateAuthChallenge"]) end
-	if struct["VerifyAuthChallengeResponse"] then M.AssertArnType(struct["VerifyAuthChallengeResponse"]) end
-	if struct["PreAuthentication"] then M.AssertArnType(struct["PreAuthentication"]) end
-	if struct["PostAuthentication"] then M.AssertArnType(struct["PostAuthentication"]) end
-	if struct["CustomMessage"] then M.AssertArnType(struct["CustomMessage"]) end
-	if struct["PreSignUp"] then M.AssertArnType(struct["PreSignUp"]) end
-	if struct["DefineAuthChallenge"] then M.AssertArnType(struct["DefineAuthChallenge"]) end
+	if struct["PostConfirmation"] then asserts.AssertArnType(struct["PostConfirmation"]) end
+	if struct["CreateAuthChallenge"] then asserts.AssertArnType(struct["CreateAuthChallenge"]) end
+	if struct["VerifyAuthChallengeResponse"] then asserts.AssertArnType(struct["VerifyAuthChallengeResponse"]) end
+	if struct["PreAuthentication"] then asserts.AssertArnType(struct["PreAuthentication"]) end
+	if struct["PostAuthentication"] then asserts.AssertArnType(struct["PostAuthentication"]) end
+	if struct["CustomMessage"] then asserts.AssertArnType(struct["CustomMessage"]) end
+	if struct["PreSignUp"] then asserts.AssertArnType(struct["PreSignUp"]) end
+	if struct["DefineAuthChallenge"] then asserts.AssertArnType(struct["DefineAuthChallenge"]) end
 	for k,_ in pairs(struct) do
-		assert(LambdaConfigType_keys[k], "LambdaConfigType contains unknown key " .. tostring(k))
+		assert(keys.LambdaConfigType[k], "LambdaConfigType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LambdaConfigType
 -- <p>Specifies the type of configuration for AWS Lambda triggers.</p>
--- @param PostConfirmation [ArnType] <p>A post-confirmation AWS Lambda trigger.</p>
--- @param CreateAuthChallenge [ArnType] <p>Creates an authentication challenge.</p>
--- @param VerifyAuthChallengeResponse [ArnType] <p>Verifies the authentication challenge response.</p>
--- @param PreAuthentication [ArnType] <p>A pre-authentication AWS Lambda trigger.</p>
--- @param PostAuthentication [ArnType] <p>A post-authentication AWS Lambda trigger.</p>
--- @param CustomMessage [ArnType] <p>A custom Message AWS Lambda trigger.</p>
--- @param PreSignUp [ArnType] <p>A pre-registration AWS Lambda trigger.</p>
--- @param DefineAuthChallenge [ArnType] <p>Defines the authentication challenge.</p>
-function M.LambdaConfigType(PostConfirmation, CreateAuthChallenge, VerifyAuthChallengeResponse, PreAuthentication, PostAuthentication, CustomMessage, PreSignUp, DefineAuthChallenge, ...)
+-- @param _PostConfirmation [ArnType] <p>A post-confirmation AWS Lambda trigger.</p>
+-- @param _CreateAuthChallenge [ArnType] <p>Creates an authentication challenge.</p>
+-- @param _VerifyAuthChallengeResponse [ArnType] <p>Verifies the authentication challenge response.</p>
+-- @param _PreAuthentication [ArnType] <p>A pre-authentication AWS Lambda trigger.</p>
+-- @param _PostAuthentication [ArnType] <p>A post-authentication AWS Lambda trigger.</p>
+-- @param _CustomMessage [ArnType] <p>A custom Message AWS Lambda trigger.</p>
+-- @param _PreSignUp [ArnType] <p>A pre-registration AWS Lambda trigger.</p>
+-- @param _DefineAuthChallenge [ArnType] <p>Defines the authentication challenge.</p>
+function M.LambdaConfigType(_PostConfirmation, _CreateAuthChallenge, _VerifyAuthChallengeResponse, _PreAuthentication, _PostAuthentication, _CustomMessage, _PreSignUp, _DefineAuthChallenge, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaConfigType")
 	local t = { 
-		["PostConfirmation"] = PostConfirmation,
-		["CreateAuthChallenge"] = CreateAuthChallenge,
-		["VerifyAuthChallengeResponse"] = VerifyAuthChallengeResponse,
-		["PreAuthentication"] = PreAuthentication,
-		["PostAuthentication"] = PostAuthentication,
-		["CustomMessage"] = CustomMessage,
-		["PreSignUp"] = PreSignUp,
-		["DefineAuthChallenge"] = DefineAuthChallenge,
+		["PostConfirmation"] = _PostConfirmation,
+		["CreateAuthChallenge"] = _CreateAuthChallenge,
+		["VerifyAuthChallengeResponse"] = _VerifyAuthChallengeResponse,
+		["PreAuthentication"] = _PreAuthentication,
+		["PostAuthentication"] = _PostAuthentication,
+		["CustomMessage"] = _CustomMessage,
+		["PreSignUp"] = _PreSignUp,
+		["DefineAuthChallenge"] = _DefineAuthChallenge,
 	}
-	M.AssertLambdaConfigType(t)
+	asserts.AssertLambdaConfigType(t)
 	return t
 end
 
-local StopUserImportJobResponse_keys = { "UserImportJob" = true, nil }
+keys.StopUserImportJobResponse = { ["UserImportJob"] = true, nil }
 
-function M.AssertStopUserImportJobResponse(struct)
+function asserts.AssertStopUserImportJobResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopUserImportJobResponse to be of type 'table'")
-	if struct["UserImportJob"] then M.AssertUserImportJobType(struct["UserImportJob"]) end
+	if struct["UserImportJob"] then asserts.AssertUserImportJobType(struct["UserImportJob"]) end
 	for k,_ in pairs(struct) do
-		assert(StopUserImportJobResponse_keys[k], "StopUserImportJobResponse contains unknown key " .. tostring(k))
+		assert(keys.StopUserImportJobResponse[k], "StopUserImportJobResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopUserImportJobResponse
 -- <p>Represents the response from the server to the request to stop the user import job.</p>
--- @param UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
-function M.StopUserImportJobResponse(UserImportJob, ...)
+-- @param _UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
+function M.StopUserImportJobResponse(_UserImportJob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopUserImportJobResponse")
 	local t = { 
-		["UserImportJob"] = UserImportJob,
+		["UserImportJob"] = _UserImportJob,
 	}
-	M.AssertStopUserImportJobResponse(t)
+	asserts.AssertStopUserImportJobResponse(t)
 	return t
 end
 
-local DescribeUserImportJobRequest_keys = { "UserPoolId" = true, "JobId" = true, nil }
+keys.DescribeUserImportJobRequest = { ["UserPoolId"] = true, ["JobId"] = true, nil }
 
-function M.AssertDescribeUserImportJobRequest(struct)
+function asserts.AssertDescribeUserImportJobRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserImportJobRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["JobId"], "Expected key JobId to exist in table")
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["JobId"] then M.AssertUserImportJobIdType(struct["JobId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["JobId"] then asserts.AssertUserImportJobIdType(struct["JobId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserImportJobRequest_keys[k], "DescribeUserImportJobRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserImportJobRequest[k], "DescribeUserImportJobRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserImportJobRequest
 -- <p>Represents the request to describe the user import job.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
--- @param JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param _JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: JobId
-function M.DescribeUserImportJobRequest(UserPoolId, JobId, ...)
+function M.DescribeUserImportJobRequest(_UserPoolId, _JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserImportJobRequest")
 	local t = { 
-		["UserPoolId"] = UserPoolId,
-		["JobId"] = JobId,
+		["UserPoolId"] = _UserPoolId,
+		["JobId"] = _JobId,
 	}
-	M.AssertDescribeUserImportJobRequest(t)
+	asserts.AssertDescribeUserImportJobRequest(t)
 	return t
 end
 
-local ProviderDescription_keys = { "LastModifiedDate" = true, "ProviderType" = true, "ProviderName" = true, "CreationDate" = true, nil }
+keys.ProviderDescription = { ["LastModifiedDate"] = true, ["ProviderType"] = true, ["ProviderName"] = true, ["CreationDate"] = true, nil }
 
-function M.AssertProviderDescription(struct)
+function asserts.AssertProviderDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProviderDescription to be of type 'table'")
-	if struct["LastModifiedDate"] then M.AssertDateType(struct["LastModifiedDate"]) end
-	if struct["ProviderType"] then M.AssertIdentityProviderTypeType(struct["ProviderType"]) end
-	if struct["ProviderName"] then M.AssertProviderNameType(struct["ProviderName"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDateType(struct["LastModifiedDate"]) end
+	if struct["ProviderType"] then asserts.AssertIdentityProviderTypeType(struct["ProviderType"]) end
+	if struct["ProviderName"] then asserts.AssertProviderNameType(struct["ProviderName"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
 	for k,_ in pairs(struct) do
-		assert(ProviderDescription_keys[k], "ProviderDescription contains unknown key " .. tostring(k))
+		assert(keys.ProviderDescription[k], "ProviderDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ProviderDescription
 -- <p>A container for identity provider details.</p>
--- @param LastModifiedDate [DateType] <p>The date the provider was last modified.</p>
--- @param ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
--- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
--- @param CreationDate [DateType] <p>The date the provider was added to the user pool.</p>
-function M.ProviderDescription(LastModifiedDate, ProviderType, ProviderName, CreationDate, ...)
+-- @param _LastModifiedDate [DateType] <p>The date the provider was last modified.</p>
+-- @param _ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
+-- @param _ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param _CreationDate [DateType] <p>The date the provider was added to the user pool.</p>
+function M.ProviderDescription(_LastModifiedDate, _ProviderType, _ProviderName, _CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProviderDescription")
 	local t = { 
-		["LastModifiedDate"] = LastModifiedDate,
-		["ProviderType"] = ProviderType,
-		["ProviderName"] = ProviderName,
-		["CreationDate"] = CreationDate,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["ProviderType"] = _ProviderType,
+		["ProviderName"] = _ProviderName,
+		["CreationDate"] = _CreationDate,
 	}
-	M.AssertProviderDescription(t)
+	asserts.AssertProviderDescription(t)
 	return t
 end
 
-local NumberAttributeConstraintsType_keys = { "MaxValue" = true, "MinValue" = true, nil }
+keys.NumberAttributeConstraintsType = { ["MaxValue"] = true, ["MinValue"] = true, nil }
 
-function M.AssertNumberAttributeConstraintsType(struct)
+function asserts.AssertNumberAttributeConstraintsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NumberAttributeConstraintsType to be of type 'table'")
-	if struct["MaxValue"] then M.AssertStringType(struct["MaxValue"]) end
-	if struct["MinValue"] then M.AssertStringType(struct["MinValue"]) end
+	if struct["MaxValue"] then asserts.AssertStringType(struct["MaxValue"]) end
+	if struct["MinValue"] then asserts.AssertStringType(struct["MinValue"]) end
 	for k,_ in pairs(struct) do
-		assert(NumberAttributeConstraintsType_keys[k], "NumberAttributeConstraintsType contains unknown key " .. tostring(k))
+		assert(keys.NumberAttributeConstraintsType[k], "NumberAttributeConstraintsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NumberAttributeConstraintsType
 -- <p>The minimum and maximum value of an attribute that is of the number data type.</p>
--- @param MaxValue [StringType] <p>The maximum value of an attribute that is of the number data type.</p>
--- @param MinValue [StringType] <p>The minimum value of an attribute that is of the number data type.</p>
-function M.NumberAttributeConstraintsType(MaxValue, MinValue, ...)
+-- @param _MaxValue [StringType] <p>The maximum value of an attribute that is of the number data type.</p>
+-- @param _MinValue [StringType] <p>The minimum value of an attribute that is of the number data type.</p>
+function M.NumberAttributeConstraintsType(_MaxValue, _MinValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberAttributeConstraintsType")
 	local t = { 
-		["MaxValue"] = MaxValue,
-		["MinValue"] = MinValue,
+		["MaxValue"] = _MaxValue,
+		["MinValue"] = _MinValue,
 	}
-	M.AssertNumberAttributeConstraintsType(t)
+	asserts.AssertNumberAttributeConstraintsType(t)
 	return t
 end
 
-local UserPoolTaggingException_keys = { "message" = true, nil }
+keys.UserPoolTaggingException = { ["message"] = true, nil }
 
-function M.AssertUserPoolTaggingException(struct)
+function asserts.AssertUserPoolTaggingException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserPoolTaggingException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UserPoolTaggingException_keys[k], "UserPoolTaggingException contains unknown key " .. tostring(k))
+		assert(keys.UserPoolTaggingException[k], "UserPoolTaggingException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserPoolTaggingException
 -- <p>This exception is thrown when a user pool tag cannot be set or updated.</p>
--- @param message [MessageType] <p>This exception is thrown when a user pool tag cannot be set or updated.</p>
-function M.UserPoolTaggingException(message, ...)
+-- @param _message [MessageType] 
+function M.UserPoolTaggingException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolTaggingException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUserPoolTaggingException(t)
+	asserts.AssertUserPoolTaggingException(t)
 	return t
 end
 
-local CreateUserPoolClientRequest_keys = { "GenerateSecret" = true, "AllowedOAuthScopes" = true, "UserPoolId" = true, "AllowedOAuthFlowsUserPoolClient" = true, "LogoutURLs" = true, "DefaultRedirectURI" = true, "AllowedOAuthFlows" = true, "CallbackURLs" = true, "ExplicitAuthFlows" = true, "WriteAttributes" = true, "SupportedIdentityProviders" = true, "ReadAttributes" = true, "RefreshTokenValidity" = true, "ClientName" = true, nil }
+keys.CreateUserPoolClientRequest = { ["GenerateSecret"] = true, ["AllowedOAuthScopes"] = true, ["UserPoolId"] = true, ["AllowedOAuthFlowsUserPoolClient"] = true, ["LogoutURLs"] = true, ["DefaultRedirectURI"] = true, ["AllowedOAuthFlows"] = true, ["CallbackURLs"] = true, ["ExplicitAuthFlows"] = true, ["WriteAttributes"] = true, ["SupportedIdentityProviders"] = true, ["ReadAttributes"] = true, ["RefreshTokenValidity"] = true, ["ClientName"] = true, nil }
 
-function M.AssertCreateUserPoolClientRequest(struct)
+function asserts.AssertCreateUserPoolClientRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserPoolClientRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ClientName"], "Expected key ClientName to exist in table")
-	if struct["GenerateSecret"] then M.AssertGenerateSecret(struct["GenerateSecret"]) end
-	if struct["AllowedOAuthScopes"] then M.AssertScopeListType(struct["AllowedOAuthScopes"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["AllowedOAuthFlowsUserPoolClient"] then M.AssertBooleanType(struct["AllowedOAuthFlowsUserPoolClient"]) end
-	if struct["LogoutURLs"] then M.AssertLogoutURLsListType(struct["LogoutURLs"]) end
-	if struct["DefaultRedirectURI"] then M.AssertRedirectUrlType(struct["DefaultRedirectURI"]) end
-	if struct["AllowedOAuthFlows"] then M.AssertOAuthFlowsType(struct["AllowedOAuthFlows"]) end
-	if struct["CallbackURLs"] then M.AssertCallbackURLsListType(struct["CallbackURLs"]) end
-	if struct["ExplicitAuthFlows"] then M.AssertExplicitAuthFlowsListType(struct["ExplicitAuthFlows"]) end
-	if struct["WriteAttributes"] then M.AssertClientPermissionListType(struct["WriteAttributes"]) end
-	if struct["SupportedIdentityProviders"] then M.AssertSupportedIdentityProvidersListType(struct["SupportedIdentityProviders"]) end
-	if struct["ReadAttributes"] then M.AssertClientPermissionListType(struct["ReadAttributes"]) end
-	if struct["RefreshTokenValidity"] then M.AssertRefreshTokenValidityType(struct["RefreshTokenValidity"]) end
-	if struct["ClientName"] then M.AssertClientNameType(struct["ClientName"]) end
+	if struct["GenerateSecret"] then asserts.AssertGenerateSecret(struct["GenerateSecret"]) end
+	if struct["AllowedOAuthScopes"] then asserts.AssertScopeListType(struct["AllowedOAuthScopes"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["AllowedOAuthFlowsUserPoolClient"] then asserts.AssertBooleanType(struct["AllowedOAuthFlowsUserPoolClient"]) end
+	if struct["LogoutURLs"] then asserts.AssertLogoutURLsListType(struct["LogoutURLs"]) end
+	if struct["DefaultRedirectURI"] then asserts.AssertRedirectUrlType(struct["DefaultRedirectURI"]) end
+	if struct["AllowedOAuthFlows"] then asserts.AssertOAuthFlowsType(struct["AllowedOAuthFlows"]) end
+	if struct["CallbackURLs"] then asserts.AssertCallbackURLsListType(struct["CallbackURLs"]) end
+	if struct["ExplicitAuthFlows"] then asserts.AssertExplicitAuthFlowsListType(struct["ExplicitAuthFlows"]) end
+	if struct["WriteAttributes"] then asserts.AssertClientPermissionListType(struct["WriteAttributes"]) end
+	if struct["SupportedIdentityProviders"] then asserts.AssertSupportedIdentityProvidersListType(struct["SupportedIdentityProviders"]) end
+	if struct["ReadAttributes"] then asserts.AssertClientPermissionListType(struct["ReadAttributes"]) end
+	if struct["RefreshTokenValidity"] then asserts.AssertRefreshTokenValidityType(struct["RefreshTokenValidity"]) end
+	if struct["ClientName"] then asserts.AssertClientNameType(struct["ClientName"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserPoolClientRequest_keys[k], "CreateUserPoolClientRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateUserPoolClientRequest[k], "CreateUserPoolClientRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserPoolClientRequest
 -- <p>Represents the request to create a user pool client.</p>
--- @param GenerateSecret [GenerateSecret] <p>Boolean to specify whether you want to generate a secret for the user pool client being created.</p>
--- @param AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to create a user pool client.</p>
--- @param AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to <code>True</code> if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
--- @param LogoutURLs [LogoutURLsListType] <p>A list of allowed logout URLs for the identity providers.</p>
--- @param DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
--- @param AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
--- @param CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
--- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>The explicit authentication flows.</p>
--- @param WriteAttributes [ClientPermissionListType] <p>The write attributes.</p>
--- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
--- @param ReadAttributes [ClientPermissionListType] <p>The read attributes.</p>
--- @param RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
--- @param ClientName [ClientNameType] <p>The client name for the user pool client you would like to create.</p>
+-- @param _GenerateSecret [GenerateSecret] <p>Boolean to specify whether you want to generate a secret for the user pool client being created.</p>
+-- @param _AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to create a user pool client.</p>
+-- @param _AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to <code>True</code> if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
+-- @param _LogoutURLs [LogoutURLsListType] <p>A list of allowed logout URLs for the identity providers.</p>
+-- @param _DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+-- @param _AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
+-- @param _CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
+-- @param _ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>The explicit authentication flows.</p>
+-- @param _WriteAttributes [ClientPermissionListType] <p>The write attributes.</p>
+-- @param _SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
+-- @param _ReadAttributes [ClientPermissionListType] <p>The read attributes.</p>
+-- @param _RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
+-- @param _ClientName [ClientNameType] <p>The client name for the user pool client you would like to create.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientName
-function M.CreateUserPoolClientRequest(GenerateSecret, AllowedOAuthScopes, UserPoolId, AllowedOAuthFlowsUserPoolClient, LogoutURLs, DefaultRedirectURI, AllowedOAuthFlows, CallbackURLs, ExplicitAuthFlows, WriteAttributes, SupportedIdentityProviders, ReadAttributes, RefreshTokenValidity, ClientName, ...)
+function M.CreateUserPoolClientRequest(_GenerateSecret, _AllowedOAuthScopes, _UserPoolId, _AllowedOAuthFlowsUserPoolClient, _LogoutURLs, _DefaultRedirectURI, _AllowedOAuthFlows, _CallbackURLs, _ExplicitAuthFlows, _WriteAttributes, _SupportedIdentityProviders, _ReadAttributes, _RefreshTokenValidity, _ClientName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolClientRequest")
 	local t = { 
-		["GenerateSecret"] = GenerateSecret,
-		["AllowedOAuthScopes"] = AllowedOAuthScopes,
-		["UserPoolId"] = UserPoolId,
-		["AllowedOAuthFlowsUserPoolClient"] = AllowedOAuthFlowsUserPoolClient,
-		["LogoutURLs"] = LogoutURLs,
-		["DefaultRedirectURI"] = DefaultRedirectURI,
-		["AllowedOAuthFlows"] = AllowedOAuthFlows,
-		["CallbackURLs"] = CallbackURLs,
-		["ExplicitAuthFlows"] = ExplicitAuthFlows,
-		["WriteAttributes"] = WriteAttributes,
-		["SupportedIdentityProviders"] = SupportedIdentityProviders,
-		["ReadAttributes"] = ReadAttributes,
-		["RefreshTokenValidity"] = RefreshTokenValidity,
-		["ClientName"] = ClientName,
+		["GenerateSecret"] = _GenerateSecret,
+		["AllowedOAuthScopes"] = _AllowedOAuthScopes,
+		["UserPoolId"] = _UserPoolId,
+		["AllowedOAuthFlowsUserPoolClient"] = _AllowedOAuthFlowsUserPoolClient,
+		["LogoutURLs"] = _LogoutURLs,
+		["DefaultRedirectURI"] = _DefaultRedirectURI,
+		["AllowedOAuthFlows"] = _AllowedOAuthFlows,
+		["CallbackURLs"] = _CallbackURLs,
+		["ExplicitAuthFlows"] = _ExplicitAuthFlows,
+		["WriteAttributes"] = _WriteAttributes,
+		["SupportedIdentityProviders"] = _SupportedIdentityProviders,
+		["ReadAttributes"] = _ReadAttributes,
+		["RefreshTokenValidity"] = _RefreshTokenValidity,
+		["ClientName"] = _ClientName,
 	}
-	M.AssertCreateUserPoolClientRequest(t)
+	asserts.AssertCreateUserPoolClientRequest(t)
 	return t
 end
 
-local PreconditionNotMetException_keys = { "message" = true, nil }
+keys.PreconditionNotMetException = { ["message"] = true, nil }
 
-function M.AssertPreconditionNotMetException(struct)
+function asserts.AssertPreconditionNotMetException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PreconditionNotMetException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(PreconditionNotMetException_keys[k], "PreconditionNotMetException contains unknown key " .. tostring(k))
+		assert(keys.PreconditionNotMetException[k], "PreconditionNotMetException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PreconditionNotMetException
 -- <p>This exception is thrown when a precondition is not met.</p>
--- @param message [MessageType] <p>The message returned when a precondition is not met.</p>
-function M.PreconditionNotMetException(message, ...)
+-- @param _message [MessageType] <p>The message returned when a precondition is not met.</p>
+function M.PreconditionNotMetException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PreconditionNotMetException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertPreconditionNotMetException(t)
+	asserts.AssertPreconditionNotMetException(t)
 	return t
 end
 
-local ResendConfirmationCodeResponse_keys = { "CodeDeliveryDetails" = true, nil }
+keys.ResendConfirmationCodeResponse = { ["CodeDeliveryDetails"] = true, nil }
 
-function M.AssertResendConfirmationCodeResponse(struct)
+function asserts.AssertResendConfirmationCodeResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResendConfirmationCodeResponse to be of type 'table'")
-	if struct["CodeDeliveryDetails"] then M.AssertCodeDeliveryDetailsType(struct["CodeDeliveryDetails"]) end
+	if struct["CodeDeliveryDetails"] then asserts.AssertCodeDeliveryDetailsType(struct["CodeDeliveryDetails"]) end
 	for k,_ in pairs(struct) do
-		assert(ResendConfirmationCodeResponse_keys[k], "ResendConfirmationCodeResponse contains unknown key " .. tostring(k))
+		assert(keys.ResendConfirmationCodeResponse[k], "ResendConfirmationCodeResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResendConfirmationCodeResponse
 -- <p>The response from the server when the Amazon Cognito Your User Pools service makes the request to resend a confirmation code.</p>
--- @param CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to resend the confirmation code.</p>
-function M.ResendConfirmationCodeResponse(CodeDeliveryDetails, ...)
+-- @param _CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to resend the confirmation code.</p>
+function M.ResendConfirmationCodeResponse(_CodeDeliveryDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResendConfirmationCodeResponse")
 	local t = { 
-		["CodeDeliveryDetails"] = CodeDeliveryDetails,
+		["CodeDeliveryDetails"] = _CodeDeliveryDetails,
 	}
-	M.AssertResendConfirmationCodeResponse(t)
+	asserts.AssertResendConfirmationCodeResponse(t)
 	return t
 end
 
-local DeviceConfigurationType_keys = { "ChallengeRequiredOnNewDevice" = true, "DeviceOnlyRememberedOnUserPrompt" = true, nil }
+keys.DeviceConfigurationType = { ["ChallengeRequiredOnNewDevice"] = true, ["DeviceOnlyRememberedOnUserPrompt"] = true, nil }
 
-function M.AssertDeviceConfigurationType(struct)
+function asserts.AssertDeviceConfigurationType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeviceConfigurationType to be of type 'table'")
-	if struct["ChallengeRequiredOnNewDevice"] then M.AssertBooleanType(struct["ChallengeRequiredOnNewDevice"]) end
-	if struct["DeviceOnlyRememberedOnUserPrompt"] then M.AssertBooleanType(struct["DeviceOnlyRememberedOnUserPrompt"]) end
+	if struct["ChallengeRequiredOnNewDevice"] then asserts.AssertBooleanType(struct["ChallengeRequiredOnNewDevice"]) end
+	if struct["DeviceOnlyRememberedOnUserPrompt"] then asserts.AssertBooleanType(struct["DeviceOnlyRememberedOnUserPrompt"]) end
 	for k,_ in pairs(struct) do
-		assert(DeviceConfigurationType_keys[k], "DeviceConfigurationType contains unknown key " .. tostring(k))
+		assert(keys.DeviceConfigurationType[k], "DeviceConfigurationType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeviceConfigurationType
 -- <p>The type of configuration for the user pool's device tracking.</p>
--- @param ChallengeRequiredOnNewDevice [BooleanType] <p>Indicates whether a challenge is required on a new device. Only applicable to a new device.</p>
--- @param DeviceOnlyRememberedOnUserPrompt [BooleanType] <p>If true, a device is only remembered on user prompt.</p>
-function M.DeviceConfigurationType(ChallengeRequiredOnNewDevice, DeviceOnlyRememberedOnUserPrompt, ...)
+-- @param _ChallengeRequiredOnNewDevice [BooleanType] <p>Indicates whether a challenge is required on a new device. Only applicable to a new device.</p>
+-- @param _DeviceOnlyRememberedOnUserPrompt [BooleanType] <p>If true, a device is only remembered on user prompt.</p>
+function M.DeviceConfigurationType(_ChallengeRequiredOnNewDevice, _DeviceOnlyRememberedOnUserPrompt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeviceConfigurationType")
 	local t = { 
-		["ChallengeRequiredOnNewDevice"] = ChallengeRequiredOnNewDevice,
-		["DeviceOnlyRememberedOnUserPrompt"] = DeviceOnlyRememberedOnUserPrompt,
+		["ChallengeRequiredOnNewDevice"] = _ChallengeRequiredOnNewDevice,
+		["DeviceOnlyRememberedOnUserPrompt"] = _DeviceOnlyRememberedOnUserPrompt,
 	}
-	M.AssertDeviceConfigurationType(t)
+	asserts.AssertDeviceConfigurationType(t)
 	return t
 end
 
-local AdminDisableUserResponse_keys = { nil }
+keys.AdminDisableUserResponse = { nil }
 
-function M.AssertAdminDisableUserResponse(struct)
+function asserts.AssertAdminDisableUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminDisableUserResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminDisableUserResponse_keys[k], "AdminDisableUserResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminDisableUserResponse[k], "AdminDisableUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -5369,80 +5372,80 @@ function M.AdminDisableUserResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminDisableUserResponse")
 	local t = { 
 	}
-	M.AssertAdminDisableUserResponse(t)
+	asserts.AssertAdminDisableUserResponse(t)
 	return t
 end
 
-local GetDeviceResponse_keys = { "Device" = true, nil }
+keys.GetDeviceResponse = { ["Device"] = true, nil }
 
-function M.AssertGetDeviceResponse(struct)
+function asserts.AssertGetDeviceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeviceResponse to be of type 'table'")
 	assert(struct["Device"], "Expected key Device to exist in table")
-	if struct["Device"] then M.AssertDeviceType(struct["Device"]) end
+	if struct["Device"] then asserts.AssertDeviceType(struct["Device"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeviceResponse_keys[k], "GetDeviceResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDeviceResponse[k], "GetDeviceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeviceResponse
 -- <p>Gets the device response.</p>
--- @param Device [DeviceType] <p>The device.</p>
+-- @param _Device [DeviceType] <p>The device.</p>
 -- Required parameter: Device
-function M.GetDeviceResponse(Device, ...)
+function M.GetDeviceResponse(_Device, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceResponse")
 	local t = { 
-		["Device"] = Device,
+		["Device"] = _Device,
 	}
-	M.AssertGetDeviceResponse(t)
+	asserts.AssertGetDeviceResponse(t)
 	return t
 end
 
-local AuthenticationResultType_keys = { "ExpiresIn" = true, "RefreshToken" = true, "TokenType" = true, "NewDeviceMetadata" = true, "IdToken" = true, "AccessToken" = true, nil }
+keys.AuthenticationResultType = { ["ExpiresIn"] = true, ["RefreshToken"] = true, ["TokenType"] = true, ["NewDeviceMetadata"] = true, ["IdToken"] = true, ["AccessToken"] = true, nil }
 
-function M.AssertAuthenticationResultType(struct)
+function asserts.AssertAuthenticationResultType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AuthenticationResultType to be of type 'table'")
-	if struct["ExpiresIn"] then M.AssertIntegerType(struct["ExpiresIn"]) end
-	if struct["RefreshToken"] then M.AssertTokenModelType(struct["RefreshToken"]) end
-	if struct["TokenType"] then M.AssertStringType(struct["TokenType"]) end
-	if struct["NewDeviceMetadata"] then M.AssertNewDeviceMetadataType(struct["NewDeviceMetadata"]) end
-	if struct["IdToken"] then M.AssertTokenModelType(struct["IdToken"]) end
-	if struct["AccessToken"] then M.AssertTokenModelType(struct["AccessToken"]) end
+	if struct["ExpiresIn"] then asserts.AssertIntegerType(struct["ExpiresIn"]) end
+	if struct["RefreshToken"] then asserts.AssertTokenModelType(struct["RefreshToken"]) end
+	if struct["TokenType"] then asserts.AssertStringType(struct["TokenType"]) end
+	if struct["NewDeviceMetadata"] then asserts.AssertNewDeviceMetadataType(struct["NewDeviceMetadata"]) end
+	if struct["IdToken"] then asserts.AssertTokenModelType(struct["IdToken"]) end
+	if struct["AccessToken"] then asserts.AssertTokenModelType(struct["AccessToken"]) end
 	for k,_ in pairs(struct) do
-		assert(AuthenticationResultType_keys[k], "AuthenticationResultType contains unknown key " .. tostring(k))
+		assert(keys.AuthenticationResultType[k], "AuthenticationResultType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AuthenticationResultType
 -- <p>The result type of the authentication result.</p>
--- @param ExpiresIn [IntegerType] <p>The expiration period of the authentication result.</p>
--- @param RefreshToken [TokenModelType] <p>The refresh token of the authentication result.</p>
--- @param TokenType [StringType] <p>The token type of the authentication result.</p>
--- @param NewDeviceMetadata [NewDeviceMetadataType] <p>The new device metadata from an authentication result.</p>
--- @param IdToken [TokenModelType] <p>The ID token of the authentication result.</p>
--- @param AccessToken [TokenModelType] <p>The access token of the authentication result.</p>
-function M.AuthenticationResultType(ExpiresIn, RefreshToken, TokenType, NewDeviceMetadata, IdToken, AccessToken, ...)
+-- @param _ExpiresIn [IntegerType] <p>The expiration period of the authentication result.</p>
+-- @param _RefreshToken [TokenModelType] <p>The refresh token of the authentication result.</p>
+-- @param _TokenType [StringType] <p>The token type of the authentication result.</p>
+-- @param _NewDeviceMetadata [NewDeviceMetadataType] <p>The new device metadata from an authentication result.</p>
+-- @param _IdToken [TokenModelType] <p>The ID token of the authentication result.</p>
+-- @param _AccessToken [TokenModelType] <p>The access token of the authentication result.</p>
+function M.AuthenticationResultType(_ExpiresIn, _RefreshToken, _TokenType, _NewDeviceMetadata, _IdToken, _AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthenticationResultType")
 	local t = { 
-		["ExpiresIn"] = ExpiresIn,
-		["RefreshToken"] = RefreshToken,
-		["TokenType"] = TokenType,
-		["NewDeviceMetadata"] = NewDeviceMetadata,
-		["IdToken"] = IdToken,
-		["AccessToken"] = AccessToken,
+		["ExpiresIn"] = _ExpiresIn,
+		["RefreshToken"] = _RefreshToken,
+		["TokenType"] = _TokenType,
+		["NewDeviceMetadata"] = _NewDeviceMetadata,
+		["IdToken"] = _IdToken,
+		["AccessToken"] = _AccessToken,
 	}
-	M.AssertAuthenticationResultType(t)
+	asserts.AssertAuthenticationResultType(t)
 	return t
 end
 
-local AdminSetUserSettingsResponse_keys = { nil }
+keys.AdminSetUserSettingsResponse = { nil }
 
-function M.AssertAdminSetUserSettingsResponse(struct)
+function asserts.AssertAdminSetUserSettingsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminSetUserSettingsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminSetUserSettingsResponse_keys[k], "AdminSetUserSettingsResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminSetUserSettingsResponse[k], "AdminSetUserSettingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -5452,102 +5455,102 @@ function M.AdminSetUserSettingsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminSetUserSettingsResponse")
 	local t = { 
 	}
-	M.AssertAdminSetUserSettingsResponse(t)
+	asserts.AssertAdminSetUserSettingsResponse(t)
 	return t
 end
 
-local StopUserImportJobRequest_keys = { "UserPoolId" = true, "JobId" = true, nil }
+keys.StopUserImportJobRequest = { ["UserPoolId"] = true, ["JobId"] = true, nil }
 
-function M.AssertStopUserImportJobRequest(struct)
+function asserts.AssertStopUserImportJobRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopUserImportJobRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["JobId"], "Expected key JobId to exist in table")
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
-	if struct["JobId"] then M.AssertUserImportJobIdType(struct["JobId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["JobId"] then asserts.AssertUserImportJobIdType(struct["JobId"]) end
 	for k,_ in pairs(struct) do
-		assert(StopUserImportJobRequest_keys[k], "StopUserImportJobRequest contains unknown key " .. tostring(k))
+		assert(keys.StopUserImportJobRequest[k], "StopUserImportJobRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopUserImportJobRequest
 -- <p>Represents the request to stop the user import job.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
--- @param JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param _JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: JobId
-function M.StopUserImportJobRequest(UserPoolId, JobId, ...)
+function M.StopUserImportJobRequest(_UserPoolId, _JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopUserImportJobRequest")
 	local t = { 
-		["UserPoolId"] = UserPoolId,
-		["JobId"] = JobId,
+		["UserPoolId"] = _UserPoolId,
+		["JobId"] = _JobId,
 	}
-	M.AssertStopUserImportJobRequest(t)
+	asserts.AssertStopUserImportJobRequest(t)
 	return t
 end
 
-local InvalidSmsRoleTrustRelationshipException_keys = { "message" = true, nil }
+keys.InvalidSmsRoleTrustRelationshipException = { ["message"] = true, nil }
 
-function M.AssertInvalidSmsRoleTrustRelationshipException(struct)
+function asserts.AssertInvalidSmsRoleTrustRelationshipException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSmsRoleTrustRelationshipException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidSmsRoleTrustRelationshipException_keys[k], "InvalidSmsRoleTrustRelationshipException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSmsRoleTrustRelationshipException[k], "InvalidSmsRoleTrustRelationshipException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidSmsRoleTrustRelationshipException
 -- <p>This exception is thrown when the trust relationship is invalid for the role provided for SMS configuration. This can happen if you do not trust <b>cognito-idp.amazonaws.com</b> or the external ID provided in the role does not match what is provided in the SMS configuration for the user pool.</p>
--- @param message [MessageType] <p>The message returned when the role trust relationship for the SMS message is invalid.</p>
-function M.InvalidSmsRoleTrustRelationshipException(message, ...)
+-- @param _message [MessageType] <p>The message returned when the role trust relationship for the SMS message is invalid.</p>
+function M.InvalidSmsRoleTrustRelationshipException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSmsRoleTrustRelationshipException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidSmsRoleTrustRelationshipException(t)
+	asserts.AssertInvalidSmsRoleTrustRelationshipException(t)
 	return t
 end
 
-local AdminInitiateAuthResponse_keys = { "AuthenticationResult" = true, "ChallengeName" = true, "ChallengeParameters" = true, "Session" = true, nil }
+keys.AdminInitiateAuthResponse = { ["AuthenticationResult"] = true, ["ChallengeName"] = true, ["ChallengeParameters"] = true, ["Session"] = true, nil }
 
-function M.AssertAdminInitiateAuthResponse(struct)
+function asserts.AssertAdminInitiateAuthResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminInitiateAuthResponse to be of type 'table'")
-	if struct["AuthenticationResult"] then M.AssertAuthenticationResultType(struct["AuthenticationResult"]) end
-	if struct["ChallengeName"] then M.AssertChallengeNameType(struct["ChallengeName"]) end
-	if struct["ChallengeParameters"] then M.AssertChallengeParametersType(struct["ChallengeParameters"]) end
-	if struct["Session"] then M.AssertSessionType(struct["Session"]) end
+	if struct["AuthenticationResult"] then asserts.AssertAuthenticationResultType(struct["AuthenticationResult"]) end
+	if struct["ChallengeName"] then asserts.AssertChallengeNameType(struct["ChallengeName"]) end
+	if struct["ChallengeParameters"] then asserts.AssertChallengeParametersType(struct["ChallengeParameters"]) end
+	if struct["Session"] then asserts.AssertSessionType(struct["Session"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminInitiateAuthResponse_keys[k], "AdminInitiateAuthResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminInitiateAuthResponse[k], "AdminInitiateAuthResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminInitiateAuthResponse
 -- <p>Initiates the authentication response, as an administrator.</p>
--- @param AuthenticationResult [AuthenticationResultType] <p>The result of the authentication response. This is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.</p>
--- @param ChallengeName [ChallengeNameType] <p>The name of the challenge which you are responding to with this call. This is returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p> <ul> <li> <p> <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.</p> </li> <li> <p> <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user should pass another challenge before tokens are issued.</p> </li> <li> <p> <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.</p> </li> <li> <p> <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: This is returned if you need to authenticate with <code>USERNAME</code> and <code>PASSWORD</code> directly. An app client must be enabled to use this flow.</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.</p> </li> </ul>
--- @param ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. These are returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge. The responses in this parameter should be used to compute inputs to the next call (<code>AdminRespondToAuthChallenge</code>).</p> <p>All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).</p> <p>The value of the <code>USER_IF_FOR_SRP</code> attribute will be the user's actual username, not an alias (such as email address or phone number), even if you specified an alias in your call to <code>AdminInitiateAuth</code>. This is because, in the <code>AdminRespondToAuthChallenge</code> API <code>ChallengeResponses</code>, the <code>USERNAME</code> attribute cannot be an alias.</p>
--- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>AdminInitiateAuth</code> or <code>AdminRespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>AdminRespondToAuthChallenge</code> API call.</p>
-function M.AdminInitiateAuthResponse(AuthenticationResult, ChallengeName, ChallengeParameters, Session, ...)
+-- @param _AuthenticationResult [AuthenticationResultType] <p>The result of the authentication response. This is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.</p>
+-- @param _ChallengeName [ChallengeNameType] <p>The name of the challenge which you are responding to with this call. This is returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p> <ul> <li> <p> <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.</p> </li> <li> <p> <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user should pass another challenge before tokens are issued.</p> </li> <li> <p> <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.</p> </li> <li> <p> <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: This is returned if you need to authenticate with <code>USERNAME</code> and <code>PASSWORD</code> directly. An app client must be enabled to use this flow.</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.</p> </li> </ul>
+-- @param _ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. These are returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge. The responses in this parameter should be used to compute inputs to the next call (<code>AdminRespondToAuthChallenge</code>).</p> <p>All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).</p> <p>The value of the <code>USER_IF_FOR_SRP</code> attribute will be the user's actual username, not an alias (such as email address or phone number), even if you specified an alias in your call to <code>AdminInitiateAuth</code>. This is because, in the <code>AdminRespondToAuthChallenge</code> API <code>ChallengeResponses</code>, the <code>USERNAME</code> attribute cannot be an alias.</p>
+-- @param _Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>AdminInitiateAuth</code> or <code>AdminRespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>AdminRespondToAuthChallenge</code> API call.</p>
+function M.AdminInitiateAuthResponse(_AuthenticationResult, _ChallengeName, _ChallengeParameters, _Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminInitiateAuthResponse")
 	local t = { 
-		["AuthenticationResult"] = AuthenticationResult,
-		["ChallengeName"] = ChallengeName,
-		["ChallengeParameters"] = ChallengeParameters,
-		["Session"] = Session,
+		["AuthenticationResult"] = _AuthenticationResult,
+		["ChallengeName"] = _ChallengeName,
+		["ChallengeParameters"] = _ChallengeParameters,
+		["Session"] = _Session,
 	}
-	M.AssertAdminInitiateAuthResponse(t)
+	asserts.AssertAdminInitiateAuthResponse(t)
 	return t
 end
 
-local AdminResetUserPasswordResponse_keys = { nil }
+keys.AdminResetUserPasswordResponse = { nil }
 
-function M.AssertAdminResetUserPasswordResponse(struct)
+function asserts.AssertAdminResetUserPasswordResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminResetUserPasswordResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminResetUserPasswordResponse_keys[k], "AdminResetUserPasswordResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminResetUserPasswordResponse[k], "AdminResetUserPasswordResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -5557,17 +5560,17 @@ function M.AdminResetUserPasswordResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminResetUserPasswordResponse")
 	local t = { 
 	}
-	M.AssertAdminResetUserPasswordResponse(t)
+	asserts.AssertAdminResetUserPasswordResponse(t)
 	return t
 end
 
-local ChangePasswordResponse_keys = { nil }
+keys.ChangePasswordResponse = { nil }
 
-function M.AssertChangePasswordResponse(struct)
+function asserts.AssertChangePasswordResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ChangePasswordResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ChangePasswordResponse_keys[k], "ChangePasswordResponse contains unknown key " .. tostring(k))
+		assert(keys.ChangePasswordResponse[k], "ChangePasswordResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -5577,70 +5580,70 @@ function M.ChangePasswordResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ChangePasswordResponse")
 	local t = { 
 	}
-	M.AssertChangePasswordResponse(t)
+	asserts.AssertChangePasswordResponse(t)
 	return t
 end
 
-local ForgotPasswordResponse_keys = { "CodeDeliveryDetails" = true, nil }
+keys.ForgotPasswordResponse = { ["CodeDeliveryDetails"] = true, nil }
 
-function M.AssertForgotPasswordResponse(struct)
+function asserts.AssertForgotPasswordResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ForgotPasswordResponse to be of type 'table'")
-	if struct["CodeDeliveryDetails"] then M.AssertCodeDeliveryDetailsType(struct["CodeDeliveryDetails"]) end
+	if struct["CodeDeliveryDetails"] then asserts.AssertCodeDeliveryDetailsType(struct["CodeDeliveryDetails"]) end
 	for k,_ in pairs(struct) do
-		assert(ForgotPasswordResponse_keys[k], "ForgotPasswordResponse contains unknown key " .. tostring(k))
+		assert(keys.ForgotPasswordResponse[k], "ForgotPasswordResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ForgotPasswordResponse
 -- <p>Respresents the response from the server regarding the request to reset a password.</p>
--- @param CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to reset a password.</p>
-function M.ForgotPasswordResponse(CodeDeliveryDetails, ...)
+-- @param _CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to reset a password.</p>
+function M.ForgotPasswordResponse(_CodeDeliveryDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ForgotPasswordResponse")
 	local t = { 
-		["CodeDeliveryDetails"] = CodeDeliveryDetails,
+		["CodeDeliveryDetails"] = _CodeDeliveryDetails,
 	}
-	M.AssertForgotPasswordResponse(t)
+	asserts.AssertForgotPasswordResponse(t)
 	return t
 end
 
-local DeleteGroupRequest_keys = { "GroupName" = true, "UserPoolId" = true, nil }
+keys.DeleteGroupRequest = { ["GroupName"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertDeleteGroupRequest(struct)
+function asserts.AssertDeleteGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteGroupRequest to be of type 'table'")
 	assert(struct["GroupName"], "Expected key GroupName to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["GroupName"] then M.AssertGroupNameType(struct["GroupName"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["GroupName"] then asserts.AssertGroupNameType(struct["GroupName"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteGroupRequest_keys[k], "DeleteGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteGroupRequest[k], "DeleteGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteGroupRequest
 --  
--- @param GroupName [GroupNameType] <p>The name of the group.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: GroupName
 -- Required parameter: UserPoolId
-function M.DeleteGroupRequest(GroupName, UserPoolId, ...)
+function M.DeleteGroupRequest(_GroupName, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGroupRequest")
 	local t = { 
-		["GroupName"] = GroupName,
-		["UserPoolId"] = UserPoolId,
+		["GroupName"] = _GroupName,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertDeleteGroupRequest(t)
+	asserts.AssertDeleteGroupRequest(t)
 	return t
 end
 
-local UpdateDeviceStatusResponse_keys = { nil }
+keys.UpdateDeviceStatusResponse = { nil }
 
-function M.AssertUpdateDeviceStatusResponse(struct)
+function asserts.AssertUpdateDeviceStatusResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDeviceStatusResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateDeviceStatusResponse_keys[k], "UpdateDeviceStatusResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateDeviceStatusResponse[k], "UpdateDeviceStatusResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -5650,241 +5653,241 @@ function M.UpdateDeviceStatusResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeviceStatusResponse")
 	local t = { 
 	}
-	M.AssertUpdateDeviceStatusResponse(t)
+	asserts.AssertUpdateDeviceStatusResponse(t)
 	return t
 end
 
-local DescribeUserPoolClientRequest_keys = { "ClientId" = true, "UserPoolId" = true, nil }
+keys.DescribeUserPoolClientRequest = { ["ClientId"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertDescribeUserPoolClientRequest(struct)
+function asserts.AssertDescribeUserPoolClientRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUserPoolClientRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["ClientId"], "Expected key ClientId to exist in table")
-	if struct["ClientId"] then M.AssertClientIdType(struct["ClientId"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["ClientId"] then asserts.AssertClientIdType(struct["ClientId"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUserPoolClientRequest_keys[k], "DescribeUserPoolClientRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeUserPoolClientRequest[k], "DescribeUserPoolClientRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUserPoolClientRequest
 -- <p>Represents the request to describe a user pool client.</p>
--- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to describe.</p>
+-- @param _ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to describe.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
-function M.DescribeUserPoolClientRequest(ClientId, UserPoolId, ...)
+function M.DescribeUserPoolClientRequest(_ClientId, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolClientRequest")
 	local t = { 
-		["ClientId"] = ClientId,
-		["UserPoolId"] = UserPoolId,
+		["ClientId"] = _ClientId,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertDescribeUserPoolClientRequest(t)
+	asserts.AssertDescribeUserPoolClientRequest(t)
 	return t
 end
 
-local AdminListDevicesRequest_keys = { "Username" = true, "PaginationToken" = true, "Limit" = true, "UserPoolId" = true, nil }
+keys.AdminListDevicesRequest = { ["Username"] = true, ["PaginationToken"] = true, ["Limit"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminListDevicesRequest(struct)
+function asserts.AssertAdminListDevicesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminListDevicesRequest to be of type 'table'")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
 	assert(struct["Username"], "Expected key Username to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["PaginationToken"] then M.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
-	if struct["Limit"] then M.AssertQueryLimitType(struct["Limit"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["PaginationToken"] then asserts.AssertSearchPaginationTokenType(struct["PaginationToken"]) end
+	if struct["Limit"] then asserts.AssertQueryLimitType(struct["Limit"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminListDevicesRequest_keys[k], "AdminListDevicesRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminListDevicesRequest[k], "AdminListDevicesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminListDevicesRequest
 -- <p>Represents the request to list devices, as an administrator.</p>
--- @param Username [UsernameType] <p>The user name.</p>
--- @param PaginationToken [SearchPaginationTokenType] <p>The pagination token.</p>
--- @param Limit [QueryLimitType] <p>The limit of the devices request.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param _Username [UsernameType] <p>The user name.</p>
+-- @param _PaginationToken [SearchPaginationTokenType] <p>The pagination token.</p>
+-- @param _Limit [QueryLimitType] <p>The limit of the devices request.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
-function M.AdminListDevicesRequest(Username, PaginationToken, Limit, UserPoolId, ...)
+function M.AdminListDevicesRequest(_Username, _PaginationToken, _Limit, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminListDevicesRequest")
 	local t = { 
-		["Username"] = Username,
-		["PaginationToken"] = PaginationToken,
-		["Limit"] = Limit,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["PaginationToken"] = _PaginationToken,
+		["Limit"] = _Limit,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminListDevicesRequest(t)
+	asserts.AssertAdminListDevicesRequest(t)
 	return t
 end
 
-local ListUsersInGroupResponse_keys = { "NextToken" = true, "Users" = true, nil }
+keys.ListUsersInGroupResponse = { ["NextToken"] = true, ["Users"] = true, nil }
 
-function M.AssertListUsersInGroupResponse(struct)
+function asserts.AssertListUsersInGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListUsersInGroupResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["Users"] then M.AssertUsersListType(struct["Users"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["Users"] then asserts.AssertUsersListType(struct["Users"]) end
 	for k,_ in pairs(struct) do
-		assert(ListUsersInGroupResponse_keys[k], "ListUsersInGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.ListUsersInGroupResponse[k], "ListUsersInGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListUsersInGroupResponse
 --  
--- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param Users [UsersListType] <p>The users returned in the request to list users.</p>
-function M.ListUsersInGroupResponse(NextToken, Users, ...)
+-- @param _NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _Users [UsersListType] <p>The users returned in the request to list users.</p>
+function M.ListUsersInGroupResponse(_NextToken, _Users, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersInGroupResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Users"] = Users,
+		["NextToken"] = _NextToken,
+		["Users"] = _Users,
 	}
-	M.AssertListUsersInGroupResponse(t)
+	asserts.AssertListUsersInGroupResponse(t)
 	return t
 end
 
-local UserPoolDescriptionType_keys = { "Status" = true, "Name" = true, "LastModifiedDate" = true, "CreationDate" = true, "Id" = true, "LambdaConfig" = true, nil }
+keys.UserPoolDescriptionType = { ["Status"] = true, ["Name"] = true, ["LastModifiedDate"] = true, ["CreationDate"] = true, ["Id"] = true, ["LambdaConfig"] = true, nil }
 
-function M.AssertUserPoolDescriptionType(struct)
+function asserts.AssertUserPoolDescriptionType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserPoolDescriptionType to be of type 'table'")
-	if struct["Status"] then M.AssertStatusType(struct["Status"]) end
-	if struct["Name"] then M.AssertUserPoolNameType(struct["Name"]) end
-	if struct["LastModifiedDate"] then M.AssertDateType(struct["LastModifiedDate"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
-	if struct["Id"] then M.AssertUserPoolIdType(struct["Id"]) end
-	if struct["LambdaConfig"] then M.AssertLambdaConfigType(struct["LambdaConfig"]) end
+	if struct["Status"] then asserts.AssertStatusType(struct["Status"]) end
+	if struct["Name"] then asserts.AssertUserPoolNameType(struct["Name"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDateType(struct["LastModifiedDate"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
+	if struct["Id"] then asserts.AssertUserPoolIdType(struct["Id"]) end
+	if struct["LambdaConfig"] then asserts.AssertLambdaConfigType(struct["LambdaConfig"]) end
 	for k,_ in pairs(struct) do
-		assert(UserPoolDescriptionType_keys[k], "UserPoolDescriptionType contains unknown key " .. tostring(k))
+		assert(keys.UserPoolDescriptionType[k], "UserPoolDescriptionType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserPoolDescriptionType
 -- <p>A user pool description.</p>
--- @param Status [StatusType] <p>The user pool status in a user pool description.</p>
--- @param Name [UserPoolNameType] <p>The name in a user pool description.</p>
--- @param LastModifiedDate [DateType] <p>The date the user pool description was last modified.</p>
--- @param CreationDate [DateType] <p>The date the user pool description was created.</p>
--- @param Id [UserPoolIdType] <p>The ID in a user pool description.</p>
--- @param LambdaConfig [LambdaConfigType] <p>The AWS Lambda configuration information in a user pool description.</p>
-function M.UserPoolDescriptionType(Status, Name, LastModifiedDate, CreationDate, Id, LambdaConfig, ...)
+-- @param _Status [StatusType] <p>The user pool status in a user pool description.</p>
+-- @param _Name [UserPoolNameType] <p>The name in a user pool description.</p>
+-- @param _LastModifiedDate [DateType] <p>The date the user pool description was last modified.</p>
+-- @param _CreationDate [DateType] <p>The date the user pool description was created.</p>
+-- @param _Id [UserPoolIdType] <p>The ID in a user pool description.</p>
+-- @param _LambdaConfig [LambdaConfigType] <p>The AWS Lambda configuration information in a user pool description.</p>
+function M.UserPoolDescriptionType(_Status, _Name, _LastModifiedDate, _CreationDate, _Id, _LambdaConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolDescriptionType")
 	local t = { 
-		["Status"] = Status,
-		["Name"] = Name,
-		["LastModifiedDate"] = LastModifiedDate,
-		["CreationDate"] = CreationDate,
-		["Id"] = Id,
-		["LambdaConfig"] = LambdaConfig,
+		["Status"] = _Status,
+		["Name"] = _Name,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["CreationDate"] = _CreationDate,
+		["Id"] = _Id,
+		["LambdaConfig"] = _LambdaConfig,
 	}
-	M.AssertUserPoolDescriptionType(t)
+	asserts.AssertUserPoolDescriptionType(t)
 	return t
 end
 
-local DeviceType_keys = { "DeviceLastAuthenticatedDate" = true, "DeviceKey" = true, "DeviceAttributes" = true, "DeviceCreateDate" = true, "DeviceLastModifiedDate" = true, nil }
+keys.DeviceType = { ["DeviceLastAuthenticatedDate"] = true, ["DeviceKey"] = true, ["DeviceAttributes"] = true, ["DeviceCreateDate"] = true, ["DeviceLastModifiedDate"] = true, nil }
 
-function M.AssertDeviceType(struct)
+function asserts.AssertDeviceType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeviceType to be of type 'table'")
-	if struct["DeviceLastAuthenticatedDate"] then M.AssertDateType(struct["DeviceLastAuthenticatedDate"]) end
-	if struct["DeviceKey"] then M.AssertDeviceKeyType(struct["DeviceKey"]) end
-	if struct["DeviceAttributes"] then M.AssertAttributeListType(struct["DeviceAttributes"]) end
-	if struct["DeviceCreateDate"] then M.AssertDateType(struct["DeviceCreateDate"]) end
-	if struct["DeviceLastModifiedDate"] then M.AssertDateType(struct["DeviceLastModifiedDate"]) end
+	if struct["DeviceLastAuthenticatedDate"] then asserts.AssertDateType(struct["DeviceLastAuthenticatedDate"]) end
+	if struct["DeviceKey"] then asserts.AssertDeviceKeyType(struct["DeviceKey"]) end
+	if struct["DeviceAttributes"] then asserts.AssertAttributeListType(struct["DeviceAttributes"]) end
+	if struct["DeviceCreateDate"] then asserts.AssertDateType(struct["DeviceCreateDate"]) end
+	if struct["DeviceLastModifiedDate"] then asserts.AssertDateType(struct["DeviceLastModifiedDate"]) end
 	for k,_ in pairs(struct) do
-		assert(DeviceType_keys[k], "DeviceType contains unknown key " .. tostring(k))
+		assert(keys.DeviceType[k], "DeviceType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeviceType
 -- <p>The device type.</p>
--- @param DeviceLastAuthenticatedDate [DateType] <p>The date in which the device was last authenticated.</p>
--- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
--- @param DeviceAttributes [AttributeListType] <p>The device attributes.</p>
--- @param DeviceCreateDate [DateType] <p>The creation date of the device.</p>
--- @param DeviceLastModifiedDate [DateType] <p>The last modified date of the device.</p>
-function M.DeviceType(DeviceLastAuthenticatedDate, DeviceKey, DeviceAttributes, DeviceCreateDate, DeviceLastModifiedDate, ...)
+-- @param _DeviceLastAuthenticatedDate [DateType] <p>The date in which the device was last authenticated.</p>
+-- @param _DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param _DeviceAttributes [AttributeListType] <p>The device attributes.</p>
+-- @param _DeviceCreateDate [DateType] <p>The creation date of the device.</p>
+-- @param _DeviceLastModifiedDate [DateType] <p>The last modified date of the device.</p>
+function M.DeviceType(_DeviceLastAuthenticatedDate, _DeviceKey, _DeviceAttributes, _DeviceCreateDate, _DeviceLastModifiedDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeviceType")
 	local t = { 
-		["DeviceLastAuthenticatedDate"] = DeviceLastAuthenticatedDate,
-		["DeviceKey"] = DeviceKey,
-		["DeviceAttributes"] = DeviceAttributes,
-		["DeviceCreateDate"] = DeviceCreateDate,
-		["DeviceLastModifiedDate"] = DeviceLastModifiedDate,
+		["DeviceLastAuthenticatedDate"] = _DeviceLastAuthenticatedDate,
+		["DeviceKey"] = _DeviceKey,
+		["DeviceAttributes"] = _DeviceAttributes,
+		["DeviceCreateDate"] = _DeviceCreateDate,
+		["DeviceLastModifiedDate"] = _DeviceLastModifiedDate,
 	}
-	M.AssertDeviceType(t)
+	asserts.AssertDeviceType(t)
 	return t
 end
 
-local AdminListGroupsForUserRequest_keys = { "Username" = true, "NextToken" = true, "Limit" = true, "UserPoolId" = true, nil }
+keys.AdminListGroupsForUserRequest = { ["Username"] = true, ["NextToken"] = true, ["Limit"] = true, ["UserPoolId"] = true, nil }
 
-function M.AssertAdminListGroupsForUserRequest(struct)
+function asserts.AssertAdminListGroupsForUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminListGroupsForUserRequest to be of type 'table'")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["UserPoolId"], "Expected key UserPoolId to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertQueryLimitType(struct["Limit"]) end
-	if struct["UserPoolId"] then M.AssertUserPoolIdType(struct["UserPoolId"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertQueryLimitType(struct["Limit"]) end
+	if struct["UserPoolId"] then asserts.AssertUserPoolIdType(struct["UserPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(AdminListGroupsForUserRequest_keys[k], "AdminListGroupsForUserRequest contains unknown key " .. tostring(k))
+		assert(keys.AdminListGroupsForUserRequest[k], "AdminListGroupsForUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdminListGroupsForUserRequest
 --  
--- @param Username [UsernameType] <p>The username for the user.</p>
--- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param Limit [QueryLimitType] <p>The limit of the request to list groups.</p>
--- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param _Username [UsernameType] <p>The username for the user.</p>
+-- @param _NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param _Limit [QueryLimitType] <p>The limit of the request to list groups.</p>
+-- @param _UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: Username
 -- Required parameter: UserPoolId
-function M.AdminListGroupsForUserRequest(Username, NextToken, Limit, UserPoolId, ...)
+function M.AdminListGroupsForUserRequest(_Username, _NextToken, _Limit, _UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminListGroupsForUserRequest")
 	local t = { 
-		["Username"] = Username,
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
-		["UserPoolId"] = UserPoolId,
+		["Username"] = _Username,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
+		["UserPoolId"] = _UserPoolId,
 	}
-	M.AssertAdminListGroupsForUserRequest(t)
+	asserts.AssertAdminListGroupsForUserRequest(t)
 	return t
 end
 
-local MFAMethodNotFoundException_keys = { "message" = true, nil }
+keys.MFAMethodNotFoundException = { ["message"] = true, nil }
 
-function M.AssertMFAMethodNotFoundException(struct)
+function asserts.AssertMFAMethodNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MFAMethodNotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MFAMethodNotFoundException_keys[k], "MFAMethodNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.MFAMethodNotFoundException[k], "MFAMethodNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MFAMethodNotFoundException
 -- <p>This exception is thrown when Amazon Cognito cannot find a multi-factor authentication (MFA) method.</p>
--- @param message [MessageType] <p>The message returned when Amazon Cognito throws an MFA method not found exception.</p>
-function M.MFAMethodNotFoundException(message, ...)
+-- @param _message [MessageType] <p>The message returned when Amazon Cognito throws an MFA method not found exception.</p>
+function M.MFAMethodNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MFAMethodNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMFAMethodNotFoundException(t)
+	asserts.AssertMFAMethodNotFoundException(t)
 	return t
 end
 
-local AdminDeleteUserAttributesResponse_keys = { nil }
+keys.AdminDeleteUserAttributesResponse = { nil }
 
-function M.AssertAdminDeleteUserAttributesResponse(struct)
+function asserts.AssertAdminDeleteUserAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdminDeleteUserAttributesResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AdminDeleteUserAttributesResponse_keys[k], "AdminDeleteUserAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.AdminDeleteUserAttributesResponse[k], "AdminDeleteUserAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -5894,87 +5897,84 @@ function M.AdminDeleteUserAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminDeleteUserAttributesResponse")
 	local t = { 
 	}
-	M.AssertAdminDeleteUserAttributesResponse(t)
+	asserts.AssertAdminDeleteUserAttributesResponse(t)
 	return t
 end
 
-local CreateGroupResponse_keys = { "Group" = true, nil }
+keys.CreateGroupResponse = { ["Group"] = true, nil }
 
-function M.AssertCreateGroupResponse(struct)
+function asserts.AssertCreateGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupResponse to be of type 'table'")
-	if struct["Group"] then M.AssertGroupType(struct["Group"]) end
+	if struct["Group"] then asserts.AssertGroupType(struct["Group"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGroupResponse_keys[k], "CreateGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateGroupResponse[k], "CreateGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGroupResponse
 --  
--- @param Group [GroupType] <p>The group object for the group.</p>
-function M.CreateGroupResponse(Group, ...)
+-- @param _Group [GroupType] <p>The group object for the group.</p>
+function M.CreateGroupResponse(_Group, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupResponse")
 	local t = { 
-		["Group"] = Group,
+		["Group"] = _Group,
 	}
-	M.AssertCreateGroupResponse(t)
+	asserts.AssertCreateGroupResponse(t)
 	return t
 end
 
-function M.AssertChallengeNameType(str)
+function asserts.AssertChallengeNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ChallengeNameType to be of type 'string'")
 end
 
 --  
 function M.ChallengeNameType(str)
-	M.AssertChallengeNameType(str)
+	asserts.AssertChallengeNameType(str)
 	return str
 end
 
-function M.AssertAttributeNameType(str)
+function asserts.AssertAttributeNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttributeNameType to be of type 'string'")
 	assert(#str <= 32, "Expected string to be max 32 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}]+'")
 end
 
 --  
 function M.AttributeNameType(str)
-	M.AssertAttributeNameType(str)
+	asserts.AssertAttributeNameType(str)
 	return str
 end
 
-function M.AssertSecretHashType(str)
+function asserts.AssertSecretHashType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SecretHashType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w+=/]+"), "Expected string to match pattern '[%w+=/]+'")
 end
 
 --  
 function M.SecretHashType(str)
-	M.AssertSecretHashType(str)
+	asserts.AssertSecretHashType(str)
 	return str
 end
 
-function M.AssertUserImportJobIdType(str)
+function asserts.AssertUserImportJobIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserImportJobIdType to be of type 'string'")
 	assert(#str <= 55, "Expected string to be max 55 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("import-[0-9a-zA-Z-]+"), "Expected string to match pattern 'import-[0-9a-zA-Z-]+'")
 end
 
 --  
 function M.UserImportJobIdType(str)
-	M.AssertUserImportJobIdType(str)
+	asserts.AssertUserImportJobIdType(str)
 	return str
 end
 
-function M.AssertDomainType(str)
+function asserts.AssertDomainType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DomainType to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -5983,22 +5983,22 @@ end
 
 --  
 function M.DomainType(str)
-	M.AssertDomainType(str)
+	asserts.AssertDomainType(str)
 	return str
 end
 
-function M.AssertAWSAccountIdType(str)
+function asserts.AssertAWSAccountIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AWSAccountIdType to be of type 'string'")
 end
 
 --  
 function M.AWSAccountIdType(str)
-	M.AssertAWSAccountIdType(str)
+	asserts.AssertAWSAccountIdType(str)
 	return str
 end
 
-function M.AssertClientPermissionType(str)
+function asserts.AssertClientPermissionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientPermissionType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -6007,34 +6007,33 @@ end
 
 --  
 function M.ClientPermissionType(str)
-	M.AssertClientPermissionType(str)
+	asserts.AssertClientPermissionType(str)
 	return str
 end
 
-function M.AssertMessageType(str)
+function asserts.AssertMessageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MessageType to be of type 'string'")
 end
 
 --  
 function M.MessageType(str)
-	M.AssertMessageType(str)
+	asserts.AssertMessageType(str)
 	return str
 end
 
-function M.AssertEmailAddressType(str)
+function asserts.AssertEmailAddressType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EmailAddressType to be of type 'string'")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}]+@[%p{L}%p{M}%p{S}%p{N}%p{P}]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}]+@[%p{L}%p{M}%p{S}%p{N}%p{P}]+'")
 end
 
 --  
 function M.EmailAddressType(str)
-	M.AssertEmailAddressType(str)
+	asserts.AssertEmailAddressType(str)
 	return str
 end
 
-function M.AssertSessionType(str)
+function asserts.AssertSessionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SessionType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -6043,11 +6042,11 @@ end
 
 --  
 function M.SessionType(str)
-	M.AssertSessionType(str)
+	asserts.AssertSessionType(str)
 	return str
 end
 
-function M.AssertDomainVersionType(str)
+function asserts.AssertDomainVersionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DomainVersionType to be of type 'string'")
 	assert(#str <= 20, "Expected string to be max 20 characters")
@@ -6056,11 +6055,11 @@ end
 
 --  
 function M.DomainVersionType(str)
-	M.AssertDomainVersionType(str)
+	asserts.AssertDomainVersionType(str)
 	return str
 end
 
-function M.AssertDescriptionType(str)
+function asserts.AssertDescriptionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DescriptionType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -6068,11 +6067,11 @@ end
 
 --  
 function M.DescriptionType(str)
-	M.AssertDescriptionType(str)
+	asserts.AssertDescriptionType(str)
 	return str
 end
 
-function M.AssertDeviceNameType(str)
+function asserts.AssertDeviceNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeviceNameType to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -6081,92 +6080,87 @@ end
 
 --  
 function M.DeviceNameType(str)
-	M.AssertDeviceNameType(str)
+	asserts.AssertDeviceNameType(str)
 	return str
 end
 
-function M.AssertMessageActionType(str)
+function asserts.AssertMessageActionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MessageActionType to be of type 'string'")
 end
 
 --  
 function M.MessageActionType(str)
-	M.AssertMessageActionType(str)
+	asserts.AssertMessageActionType(str)
 	return str
 end
 
-function M.AssertCompletionMessageType(str)
+function asserts.AssertCompletionMessageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CompletionMessageType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w]+"), "Expected string to match pattern '[%w]+'")
 end
 
 --  
 function M.CompletionMessageType(str)
-	M.AssertCompletionMessageType(str)
+	asserts.AssertCompletionMessageType(str)
 	return str
 end
 
-function M.AssertEmailVerificationMessageType(str)
+function asserts.AssertEmailVerificationMessageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EmailVerificationMessageType to be of type 'string'")
 	assert(#str <= 20000, "Expected string to be max 20000 characters")
 	assert(#str >= 6, "Expected string to be min 6 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}%s*]*%{####%}[%p{L}%p{M}%p{S}%p{N}%p{P}%s*]*"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}%s*]*%{####%}[%p{L}%p{M}%p{S}%p{N}%p{P}%s*]*'")
 end
 
 --  
 function M.EmailVerificationMessageType(str)
-	M.AssertEmailVerificationMessageType(str)
+	asserts.AssertEmailVerificationMessageType(str)
 	return str
 end
 
-function M.AssertProviderNameType(str)
+function asserts.AssertProviderNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProviderNameType to be of type 'string'")
 	assert(#str <= 32, "Expected string to be max 32 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}]+'")
 end
 
 --  
 function M.ProviderNameType(str)
-	M.AssertProviderNameType(str)
+	asserts.AssertProviderNameType(str)
 	return str
 end
 
-function M.AssertUsernameType(str)
+function asserts.AssertUsernameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UsernameType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}]+'")
 end
 
 --  
 function M.UsernameType(str)
-	M.AssertUsernameType(str)
+	asserts.AssertUsernameType(str)
 	return str
 end
 
-function M.AssertUserImportJobNameType(str)
+function asserts.AssertUserImportJobNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserImportJobNameType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w%s+=,.@-]+"), "Expected string to match pattern '[%w%s+=,.@-]+'")
 end
 
 --  
 function M.UserImportJobNameType(str)
-	M.AssertUserImportJobNameType(str)
+	asserts.AssertUserImportJobNameType(str)
 	return str
 end
 
-function M.AssertAttributeValueType(str)
+function asserts.AssertAttributeValueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttributeValueType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -6174,99 +6168,95 @@ end
 
 --  
 function M.AttributeValueType(str)
-	M.AssertAttributeValueType(str)
+	asserts.AssertAttributeValueType(str)
 	return str
 end
 
-function M.AssertSmsVerificationMessageType(str)
+function asserts.AssertSmsVerificationMessageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SmsVerificationMessageType to be of type 'string'")
 	assert(#str <= 140, "Expected string to be max 140 characters")
 	assert(#str >= 6, "Expected string to be min 6 characters")
-	assert(str:match(".*%{####%}.*"), "Expected string to match pattern '.*%{####%}.*'")
 end
 
 --  
 function M.SmsVerificationMessageType(str)
-	M.AssertSmsVerificationMessageType(str)
+	asserts.AssertSmsVerificationMessageType(str)
 	return str
 end
 
-function M.AssertPasswordType(str)
+function asserts.AssertPasswordType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PasswordType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 6, "Expected string to be min 6 characters")
-	assert(str:match("[%S]+"), "Expected string to match pattern '[%S]+'")
 end
 
 --  
 function M.PasswordType(str)
-	M.AssertPasswordType(str)
+	asserts.AssertPasswordType(str)
 	return str
 end
 
-function M.AssertDeliveryMediumType(str)
+function asserts.AssertDeliveryMediumType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeliveryMediumType to be of type 'string'")
 end
 
 --  
 function M.DeliveryMediumType(str)
-	M.AssertDeliveryMediumType(str)
+	asserts.AssertDeliveryMediumType(str)
 	return str
 end
 
-function M.AssertAliasAttributeType(str)
+function asserts.AssertAliasAttributeType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AliasAttributeType to be of type 'string'")
 end
 
 --  
 function M.AliasAttributeType(str)
-	M.AssertAliasAttributeType(str)
+	asserts.AssertAliasAttributeType(str)
 	return str
 end
 
-function M.AssertConfirmationCodeType(str)
+function asserts.AssertConfirmationCodeType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConfirmationCodeType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%S]+"), "Expected string to match pattern '[%S]+'")
 end
 
 --  
 function M.ConfirmationCodeType(str)
-	M.AssertConfirmationCodeType(str)
+	asserts.AssertConfirmationCodeType(str)
 	return str
 end
 
-function M.AssertSearchPaginationTokenType(str)
+function asserts.AssertSearchPaginationTokenType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SearchPaginationTokenType to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%S]+"), "Expected string to match pattern '[%S]+'")
 end
 
 --  
 function M.SearchPaginationTokenType(str)
-	M.AssertSearchPaginationTokenType(str)
+	asserts.AssertSearchPaginationTokenType(str)
 	return str
 end
 
-function M.AssertUserPoolMfaType(str)
+function asserts.AssertUserPoolMfaType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserPoolMfaType to be of type 'string'")
 end
 
 --  
 function M.UserPoolMfaType(str)
-	M.AssertUserPoolMfaType(str)
+	asserts.AssertUserPoolMfaType(str)
 	return str
 end
 
-function M.AssertPreSignedUrlType(str)
+function asserts.AssertPreSignedUrlType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PreSignedUrlType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -6274,111 +6264,107 @@ end
 
 --  
 function M.PreSignedUrlType(str)
-	M.AssertPreSignedUrlType(str)
+	asserts.AssertPreSignedUrlType(str)
 	return str
 end
 
-function M.AssertVerifiedAttributeType(str)
+function asserts.AssertVerifiedAttributeType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VerifiedAttributeType to be of type 'string'")
 end
 
 --  
 function M.VerifiedAttributeType(str)
-	M.AssertVerifiedAttributeType(str)
+	asserts.AssertVerifiedAttributeType(str)
 	return str
 end
 
-function M.AssertAuthFlowType(str)
+function asserts.AssertAuthFlowType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AuthFlowType to be of type 'string'")
 end
 
 --  
 function M.AuthFlowType(str)
-	M.AssertAuthFlowType(str)
+	asserts.AssertAuthFlowType(str)
 	return str
 end
 
-function M.AssertUserPoolIdType(str)
+function asserts.AssertUserPoolIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserPoolIdType to be of type 'string'")
 	assert(#str <= 55, "Expected string to be max 55 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w-]+_[0-9a-zA-Z]+"), "Expected string to match pattern '[%w-]+_[0-9a-zA-Z]+'")
 end
 
 --  
 function M.UserPoolIdType(str)
-	M.AssertUserPoolIdType(str)
+	asserts.AssertUserPoolIdType(str)
 	return str
 end
 
-function M.AssertS3BucketType(str)
+function asserts.AssertS3BucketType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected S3BucketType to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 	assert(#str >= 3, "Expected string to be min 3 characters")
-	assert(str:match("^[0-9A-Za-z%.%-_]*(?<!%.)$"), "Expected string to match pattern '^[0-9A-Za-z%.%-_]*(?<!%.)$'")
 end
 
 --  
 function M.S3BucketType(str)
-	M.AssertS3BucketType(str)
+	asserts.AssertS3BucketType(str)
 	return str
 end
 
-function M.AssertGroupNameType(str)
+function asserts.AssertGroupNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GroupNameType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}]+'")
 end
 
 --  
 function M.GroupNameType(str)
-	M.AssertGroupNameType(str)
+	asserts.AssertGroupNameType(str)
 	return str
 end
 
-function M.AssertEmailVerificationSubjectType(str)
+function asserts.AssertEmailVerificationSubjectType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EmailVerificationSubjectType to be of type 'string'")
 	assert(#str <= 140, "Expected string to be max 140 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}%s]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}%s]+'")
 end
 
 --  
 function M.EmailVerificationSubjectType(str)
-	M.AssertEmailVerificationSubjectType(str)
+	asserts.AssertEmailVerificationSubjectType(str)
 	return str
 end
 
-function M.AssertAttributeDataType(str)
+function asserts.AssertAttributeDataType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttributeDataType to be of type 'string'")
 end
 
 --  
 function M.AttributeDataType(str)
-	M.AssertAttributeDataType(str)
+	asserts.AssertAttributeDataType(str)
 	return str
 end
 
-function M.AssertStringType(str)
+function asserts.AssertStringType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StringType to be of type 'string'")
 end
 
 --  
 function M.StringType(str)
-	M.AssertStringType(str)
+	asserts.AssertStringType(str)
 	return str
 end
 
-function M.AssertUserFilterType(str)
+function asserts.AssertUserFilterType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserFilterType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -6386,299 +6372,286 @@ end
 
 --  
 function M.UserFilterType(str)
-	M.AssertUserFilterType(str)
+	asserts.AssertUserFilterType(str)
 	return str
 end
 
-function M.AssertDeviceKeyType(str)
+function asserts.AssertDeviceKeyType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeviceKeyType to be of type 'string'")
 	assert(#str <= 55, "Expected string to be max 55 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w-]+_[0-9a-f-]+"), "Expected string to match pattern '[%w-]+_[0-9a-f-]+'")
 end
 
 --  
 function M.DeviceKeyType(str)
-	M.AssertDeviceKeyType(str)
+	asserts.AssertDeviceKeyType(str)
 	return str
 end
 
-function M.AssertDomainStatusType(str)
+function asserts.AssertDomainStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DomainStatusType to be of type 'string'")
 end
 
 --  
 function M.DomainStatusType(str)
-	M.AssertDomainStatusType(str)
+	asserts.AssertDomainStatusType(str)
 	return str
 end
 
-function M.AssertClientSecretType(str)
+function asserts.AssertClientSecretType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientSecretType to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w+]+"), "Expected string to match pattern '[%w+]+'")
 end
 
 --  
 function M.ClientSecretType(str)
-	M.AssertClientSecretType(str)
+	asserts.AssertClientSecretType(str)
 	return str
 end
 
-function M.AssertUserStatusType(str)
+function asserts.AssertUserStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserStatusType to be of type 'string'")
 end
 
 --  
 function M.UserStatusType(str)
-	M.AssertUserStatusType(str)
+	asserts.AssertUserStatusType(str)
 	return str
 end
 
-function M.AssertScopeType(str)
+function asserts.AssertScopeType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ScopeType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%x21%x23-%x5B%x5D-%x7E]+"), "Expected string to match pattern '[%x21%x23-%x5B%x5D-%x7E]+'")
 end
 
 --  
 function M.ScopeType(str)
-	M.AssertScopeType(str)
+	asserts.AssertScopeType(str)
 	return str
 end
 
-function M.AssertClientNameType(str)
+function asserts.AssertClientNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientNameType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w%s+=,.@-]+"), "Expected string to match pattern '[%w%s+=,.@-]+'")
 end
 
 --  
 function M.ClientNameType(str)
-	M.AssertClientNameType(str)
+	asserts.AssertClientNameType(str)
 	return str
 end
 
-function M.AssertTokenModelType(str)
+function asserts.AssertTokenModelType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TokenModelType to be of type 'string'")
-	assert(str:match("[A-Za-z0-9-_=.]+"), "Expected string to match pattern '[A-Za-z0-9-_=.]+'")
 end
 
 --  
 function M.TokenModelType(str)
-	M.AssertTokenModelType(str)
+	asserts.AssertTokenModelType(str)
 	return str
 end
 
-function M.AssertDeviceRememberedStatusType(str)
+function asserts.AssertDeviceRememberedStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeviceRememberedStatusType to be of type 'string'")
 end
 
 --  
 function M.DeviceRememberedStatusType(str)
-	M.AssertDeviceRememberedStatusType(str)
+	asserts.AssertDeviceRememberedStatusType(str)
 	return str
 end
 
-function M.AssertCustomAttributeNameType(str)
+function asserts.AssertCustomAttributeNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CustomAttributeNameType to be of type 'string'")
 	assert(#str <= 20, "Expected string to be max 20 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}]+'")
 end
 
 --  
 function M.CustomAttributeNameType(str)
-	M.AssertCustomAttributeNameType(str)
+	asserts.AssertCustomAttributeNameType(str)
 	return str
 end
 
-function M.AssertIdentityProviderTypeType(str)
+function asserts.AssertIdentityProviderTypeType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityProviderTypeType to be of type 'string'")
 end
 
 --  
 function M.IdentityProviderTypeType(str)
-	M.AssertIdentityProviderTypeType(str)
+	asserts.AssertIdentityProviderTypeType(str)
 	return str
 end
 
-function M.AssertExplicitAuthFlowsType(str)
+function asserts.AssertExplicitAuthFlowsType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExplicitAuthFlowsType to be of type 'string'")
 end
 
 --  
 function M.ExplicitAuthFlowsType(str)
-	M.AssertExplicitAuthFlowsType(str)
+	asserts.AssertExplicitAuthFlowsType(str)
 	return str
 end
 
-function M.AssertStatusType(str)
+function asserts.AssertStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StatusType to be of type 'string'")
 end
 
 --  
 function M.StatusType(str)
-	M.AssertStatusType(str)
+	asserts.AssertStatusType(str)
 	return str
 end
 
-function M.AssertUserImportJobStatusType(str)
+function asserts.AssertUserImportJobStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserImportJobStatusType to be of type 'string'")
 end
 
 --  
 function M.UserImportJobStatusType(str)
-	M.AssertUserImportJobStatusType(str)
+	asserts.AssertUserImportJobStatusType(str)
 	return str
 end
 
-function M.AssertClientIdType(str)
+function asserts.AssertClientIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientIdType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w+]+"), "Expected string to match pattern '[%w+]+'")
 end
 
 --  
 function M.ClientIdType(str)
-	M.AssertClientIdType(str)
+	asserts.AssertClientIdType(str)
 	return str
 end
 
-function M.AssertPaginationKey(str)
+function asserts.AssertPaginationKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationKey to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%S]+"), "Expected string to match pattern '[%S]+'")
 end
 
 --  
 function M.PaginationKey(str)
-	M.AssertPaginationKey(str)
+	asserts.AssertPaginationKey(str)
 	return str
 end
 
-function M.AssertOAuthFlowType(str)
+function asserts.AssertOAuthFlowType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OAuthFlowType to be of type 'string'")
 end
 
 --  
 function M.OAuthFlowType(str)
-	M.AssertOAuthFlowType(str)
+	asserts.AssertOAuthFlowType(str)
 	return str
 end
 
-function M.AssertArnType(str)
+function asserts.AssertArnType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ArnType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
 	assert(#str >= 20, "Expected string to be min 20 characters")
-	assert(str:match("arn:[%w+=/,.@-]+:[%w+=/,.@-]+:([%w+=/,.@-]*)?:[0-9]+:[%w+=/,.@-]+(:[%w+=/,.@-]+)?(:[%w+=/,.@-]+)?"), "Expected string to match pattern 'arn:[%w+=/,.@-]+:[%w+=/,.@-]+:([%w+=/,.@-]*)?:[0-9]+:[%w+=/,.@-]+(:[%w+=/,.@-]+)?(:[%w+=/,.@-]+)?'")
 end
 
 --  
 function M.ArnType(str)
-	M.AssertArnType(str)
+	asserts.AssertArnType(str)
 	return str
 end
 
-function M.AssertPaginationKeyType(str)
+function asserts.AssertPaginationKeyType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationKeyType to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%S]+"), "Expected string to match pattern '[%S]+'")
 end
 
 --  
 function M.PaginationKeyType(str)
-	M.AssertPaginationKeyType(str)
+	asserts.AssertPaginationKeyType(str)
 	return str
 end
 
-function M.AssertIdpIdentifierType(str)
+function asserts.AssertIdpIdentifierType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdpIdentifierType to be of type 'string'")
 	assert(#str <= 40, "Expected string to be max 40 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w%s+=.@-]+"), "Expected string to match pattern '[%w%s+=.@-]+'")
 end
 
 --  
 function M.IdpIdentifierType(str)
-	M.AssertIdpIdentifierType(str)
+	asserts.AssertIdpIdentifierType(str)
 	return str
 end
 
-function M.AssertUserPoolNameType(str)
+function asserts.AssertUserPoolNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserPoolNameType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w%s+=,.@-]+"), "Expected string to match pattern '[%w%s+=,.@-]+'")
 end
 
 --  
 function M.UserPoolNameType(str)
-	M.AssertUserPoolNameType(str)
+	asserts.AssertUserPoolNameType(str)
 	return str
 end
 
-function M.AssertRedirectUrlType(str)
+function asserts.AssertRedirectUrlType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RedirectUrlType to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}]+'")
 end
 
 --  
 function M.RedirectUrlType(str)
-	M.AssertRedirectUrlType(str)
+	asserts.AssertRedirectUrlType(str)
 	return str
 end
 
-function M.AssertLongType(long)
+function asserts.AssertLongType(long)
 	assert(long)
 	assert(type(long) == "number", "Expected LongType to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.LongType(long)
-	M.AssertLongType(long)
+	asserts.AssertLongType(long)
 	return long
 end
 
-function M.AssertPrecedenceType(integer)
+function asserts.AssertPrecedenceType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PrecedenceType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.PrecedenceType(integer)
-	M.AssertPrecedenceType(integer)
+	asserts.AssertPrecedenceType(integer)
 	return integer
 end
 
-function M.AssertListProvidersLimitType(integer)
+function asserts.AssertListProvidersLimitType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected ListProvidersLimitType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6687,11 +6660,11 @@ function M.AssertListProvidersLimitType(integer)
 end
 
 function M.ListProvidersLimitType(integer)
-	M.AssertListProvidersLimitType(integer)
+	asserts.AssertListProvidersLimitType(integer)
 	return integer
 end
 
-function M.AssertQueryLimit(integer)
+function asserts.AssertQueryLimit(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected QueryLimit to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6700,11 +6673,11 @@ function M.AssertQueryLimit(integer)
 end
 
 function M.QueryLimit(integer)
-	M.AssertQueryLimit(integer)
+	asserts.AssertQueryLimit(integer)
 	return integer
 end
 
-function M.AssertPoolQueryLimitType(integer)
+function asserts.AssertPoolQueryLimitType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PoolQueryLimitType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6713,11 +6686,11 @@ function M.AssertPoolQueryLimitType(integer)
 end
 
 function M.PoolQueryLimitType(integer)
-	M.AssertPoolQueryLimitType(integer)
+	asserts.AssertPoolQueryLimitType(integer)
 	return integer
 end
 
-function M.AssertAdminCreateUserUnusedAccountValidityDaysType(integer)
+function asserts.AssertAdminCreateUserUnusedAccountValidityDaysType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected AdminCreateUserUnusedAccountValidityDaysType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6725,11 +6698,11 @@ function M.AssertAdminCreateUserUnusedAccountValidityDaysType(integer)
 end
 
 function M.AdminCreateUserUnusedAccountValidityDaysType(integer)
-	M.AssertAdminCreateUserUnusedAccountValidityDaysType(integer)
+	asserts.AssertAdminCreateUserUnusedAccountValidityDaysType(integer)
 	return integer
 end
 
-function M.AssertQueryLimitType(integer)
+function asserts.AssertQueryLimitType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected QueryLimitType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6737,22 +6710,22 @@ function M.AssertQueryLimitType(integer)
 end
 
 function M.QueryLimitType(integer)
-	M.AssertQueryLimitType(integer)
+	asserts.AssertQueryLimitType(integer)
 	return integer
 end
 
-function M.AssertIntegerType(integer)
+function asserts.AssertIntegerType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected IntegerType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.IntegerType(integer)
-	M.AssertIntegerType(integer)
+	asserts.AssertIntegerType(integer)
 	return integer
 end
 
-function M.AssertPasswordPolicyMinLengthType(integer)
+function asserts.AssertPasswordPolicyMinLengthType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PasswordPolicyMinLengthType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6761,11 +6734,11 @@ function M.AssertPasswordPolicyMinLengthType(integer)
 end
 
 function M.PasswordPolicyMinLengthType(integer)
-	M.AssertPasswordPolicyMinLengthType(integer)
+	asserts.AssertPasswordPolicyMinLengthType(integer)
 	return integer
 end
 
-function M.AssertRefreshTokenValidityType(integer)
+function asserts.AssertRefreshTokenValidityType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected RefreshTokenValidityType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6773,546 +6746,546 @@ function M.AssertRefreshTokenValidityType(integer)
 end
 
 function M.RefreshTokenValidityType(integer)
-	M.AssertRefreshTokenValidityType(integer)
+	asserts.AssertRefreshTokenValidityType(integer)
 	return integer
 end
 
-function M.AssertGenerateSecret(boolean)
+function asserts.AssertGenerateSecret(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected GenerateSecret to be of type 'boolean'")
 end
 
 function M.GenerateSecret(boolean)
-	M.AssertGenerateSecret(boolean)
+	asserts.AssertGenerateSecret(boolean)
 	return boolean
 end
 
-function M.AssertForceAliasCreation(boolean)
+function asserts.AssertForceAliasCreation(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected ForceAliasCreation to be of type 'boolean'")
 end
 
 function M.ForceAliasCreation(boolean)
-	M.AssertForceAliasCreation(boolean)
+	asserts.AssertForceAliasCreation(boolean)
 	return boolean
 end
 
-function M.AssertBooleanType(boolean)
+function asserts.AssertBooleanType(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanType to be of type 'boolean'")
 end
 
 function M.BooleanType(boolean)
-	M.AssertBooleanType(boolean)
+	asserts.AssertBooleanType(boolean)
 	return boolean
 end
 
-function M.AssertAuthParametersType(map)
+function asserts.AssertAuthParametersType(map)
 	assert(map)
 	assert(type(map) == "table", "Expected AuthParametersType to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertStringType(k)
-		M.AssertStringType(v)
+		asserts.AssertStringType(k)
+		asserts.AssertStringType(v)
 	end
 end
 
 function M.AuthParametersType(map)
-	M.AssertAuthParametersType(map)
+	asserts.AssertAuthParametersType(map)
 	return map
 end
 
-function M.AssertAttributeMappingType(map)
+function asserts.AssertAttributeMappingType(map)
 	assert(map)
 	assert(type(map) == "table", "Expected AttributeMappingType to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertCustomAttributeNameType(k)
-		M.AssertStringType(v)
+		asserts.AssertCustomAttributeNameType(k)
+		asserts.AssertStringType(v)
 	end
 end
 
 function M.AttributeMappingType(map)
-	M.AssertAttributeMappingType(map)
+	asserts.AssertAttributeMappingType(map)
 	return map
 end
 
-function M.AssertChallengeParametersType(map)
+function asserts.AssertChallengeParametersType(map)
 	assert(map)
 	assert(type(map) == "table", "Expected ChallengeParametersType to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertStringType(k)
-		M.AssertStringType(v)
+		asserts.AssertStringType(k)
+		asserts.AssertStringType(v)
 	end
 end
 
 function M.ChallengeParametersType(map)
-	M.AssertChallengeParametersType(map)
+	asserts.AssertChallengeParametersType(map)
 	return map
 end
 
-function M.AssertClientMetadataType(map)
+function asserts.AssertClientMetadataType(map)
 	assert(map)
 	assert(type(map) == "table", "Expected ClientMetadataType to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertStringType(k)
-		M.AssertStringType(v)
+		asserts.AssertStringType(k)
+		asserts.AssertStringType(v)
 	end
 end
 
 function M.ClientMetadataType(map)
-	M.AssertClientMetadataType(map)
+	asserts.AssertClientMetadataType(map)
 	return map
 end
 
-function M.AssertUserPoolTagsType(map)
+function asserts.AssertUserPoolTagsType(map)
 	assert(map)
 	assert(type(map) == "table", "Expected UserPoolTagsType to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertStringType(k)
-		M.AssertStringType(v)
+		asserts.AssertStringType(k)
+		asserts.AssertStringType(v)
 	end
 end
 
 function M.UserPoolTagsType(map)
-	M.AssertUserPoolTagsType(map)
+	asserts.AssertUserPoolTagsType(map)
 	return map
 end
 
-function M.AssertProviderDetailsType(map)
+function asserts.AssertProviderDetailsType(map)
 	assert(map)
 	assert(type(map) == "table", "Expected ProviderDetailsType to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertStringType(k)
-		M.AssertStringType(v)
+		asserts.AssertStringType(k)
+		asserts.AssertStringType(v)
 	end
 end
 
 function M.ProviderDetailsType(map)
-	M.AssertProviderDetailsType(map)
+	asserts.AssertProviderDetailsType(map)
 	return map
 end
 
-function M.AssertChallengeResponsesType(map)
+function asserts.AssertChallengeResponsesType(map)
 	assert(map)
 	assert(type(map) == "table", "Expected ChallengeResponsesType to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertStringType(k)
-		M.AssertStringType(v)
+		asserts.AssertStringType(k)
+		asserts.AssertStringType(v)
 	end
 end
 
 function M.ChallengeResponsesType(map)
-	M.AssertChallengeResponsesType(map)
+	asserts.AssertChallengeResponsesType(map)
 	return map
 end
 
-function M.AssertDateType(timestamp)
+function asserts.AssertDateType(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected DateType to be of type 'string'")
 end
 
 function M.DateType(timestamp)
-	M.AssertDateType(timestamp)
+	asserts.AssertDateType(timestamp)
 	return timestamp
 end
 
-function M.AssertScopeListType(list)
+function asserts.AssertScopeListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ScopeListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertScopeType(v)
+		asserts.AssertScopeType(v)
 	end
 end
 
 --  
 -- List of ScopeType objects
 function M.ScopeListType(list)
-	M.AssertScopeListType(list)
+	asserts.AssertScopeListType(list)
 	return list
 end
 
-function M.AssertClientPermissionListType(list)
+function asserts.AssertClientPermissionListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ClientPermissionListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertClientPermissionType(v)
+		asserts.AssertClientPermissionType(v)
 	end
 end
 
 --  
 -- List of ClientPermissionType objects
 function M.ClientPermissionListType(list)
-	M.AssertClientPermissionListType(list)
+	asserts.AssertClientPermissionListType(list)
 	return list
 end
 
-function M.AssertSupportedIdentityProvidersListType(list)
+function asserts.AssertSupportedIdentityProvidersListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SupportedIdentityProvidersListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertProviderNameType(v)
+		asserts.AssertProviderNameType(v)
 	end
 end
 
 --  
 -- List of ProviderNameType objects
 function M.SupportedIdentityProvidersListType(list)
-	M.AssertSupportedIdentityProvidersListType(list)
+	asserts.AssertSupportedIdentityProvidersListType(list)
 	return list
 end
 
-function M.AssertUserPoolListType(list)
+function asserts.AssertUserPoolListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UserPoolListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUserPoolDescriptionType(v)
+		asserts.AssertUserPoolDescriptionType(v)
 	end
 end
 
 --  
 -- List of UserPoolDescriptionType objects
 function M.UserPoolListType(list)
-	M.AssertUserPoolListType(list)
+	asserts.AssertUserPoolListType(list)
 	return list
 end
 
-function M.AssertProvidersListType(list)
+function asserts.AssertProvidersListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ProvidersListType to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertProviderDescription(v)
+		asserts.AssertProviderDescription(v)
 	end
 end
 
 --  
 -- List of ProviderDescription objects
 function M.ProvidersListType(list)
-	M.AssertProvidersListType(list)
+	asserts.AssertProvidersListType(list)
 	return list
 end
 
-function M.AssertUsersListType(list)
+function asserts.AssertUsersListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UsersListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUserType(v)
+		asserts.AssertUserType(v)
 	end
 end
 
 --  
 -- List of UserType objects
 function M.UsersListType(list)
-	M.AssertUsersListType(list)
+	asserts.AssertUsersListType(list)
 	return list
 end
 
-function M.AssertAttributeNameListType(list)
+function asserts.AssertAttributeNameListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeNameListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttributeNameType(v)
+		asserts.AssertAttributeNameType(v)
 	end
 end
 
 --  
 -- List of AttributeNameType objects
 function M.AttributeNameListType(list)
-	M.AssertAttributeNameListType(list)
+	asserts.AssertAttributeNameListType(list)
 	return list
 end
 
-function M.AssertUserPoolClientListType(list)
+function asserts.AssertUserPoolClientListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UserPoolClientListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUserPoolClientDescription(v)
+		asserts.AssertUserPoolClientDescription(v)
 	end
 end
 
 --  
 -- List of UserPoolClientDescription objects
 function M.UserPoolClientListType(list)
-	M.AssertUserPoolClientListType(list)
+	asserts.AssertUserPoolClientListType(list)
 	return list
 end
 
-function M.AssertDeviceListType(list)
+function asserts.AssertDeviceListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DeviceListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDeviceType(v)
+		asserts.AssertDeviceType(v)
 	end
 end
 
 --  
 -- List of DeviceType objects
 function M.DeviceListType(list)
-	M.AssertDeviceListType(list)
+	asserts.AssertDeviceListType(list)
 	return list
 end
 
-function M.AssertIdpIdentifiersListType(list)
+function asserts.AssertIdpIdentifiersListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IdpIdentifiersListType to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertIdpIdentifierType(v)
+		asserts.AssertIdpIdentifierType(v)
 	end
 end
 
 --  
 -- List of IdpIdentifierType objects
 function M.IdpIdentifiersListType(list)
-	M.AssertIdpIdentifiersListType(list)
+	asserts.AssertIdpIdentifiersListType(list)
 	return list
 end
 
-function M.AssertExplicitAuthFlowsListType(list)
+function asserts.AssertExplicitAuthFlowsListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ExplicitAuthFlowsListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertExplicitAuthFlowsType(v)
+		asserts.AssertExplicitAuthFlowsType(v)
 	end
 end
 
 --  
 -- List of ExplicitAuthFlowsType objects
 function M.ExplicitAuthFlowsListType(list)
-	M.AssertExplicitAuthFlowsListType(list)
+	asserts.AssertExplicitAuthFlowsListType(list)
 	return list
 end
 
-function M.AssertVerifiedAttributesListType(list)
+function asserts.AssertVerifiedAttributesListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected VerifiedAttributesListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertVerifiedAttributeType(v)
+		asserts.AssertVerifiedAttributeType(v)
 	end
 end
 
 --  
 -- List of VerifiedAttributeType objects
 function M.VerifiedAttributesListType(list)
-	M.AssertVerifiedAttributesListType(list)
+	asserts.AssertVerifiedAttributesListType(list)
 	return list
 end
 
-function M.AssertUserImportJobsListType(list)
+function asserts.AssertUserImportJobsListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UserImportJobsListType to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertUserImportJobType(v)
+		asserts.AssertUserImportJobType(v)
 	end
 end
 
 --  
 -- List of UserImportJobType objects
 function M.UserImportJobsListType(list)
-	M.AssertUserImportJobsListType(list)
+	asserts.AssertUserImportJobsListType(list)
 	return list
 end
 
-function M.AssertCodeDeliveryDetailsListType(list)
+function asserts.AssertCodeDeliveryDetailsListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CodeDeliveryDetailsListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCodeDeliveryDetailsType(v)
+		asserts.AssertCodeDeliveryDetailsType(v)
 	end
 end
 
 --  
 -- List of CodeDeliveryDetailsType objects
 function M.CodeDeliveryDetailsListType(list)
-	M.AssertCodeDeliveryDetailsListType(list)
+	asserts.AssertCodeDeliveryDetailsListType(list)
 	return list
 end
 
-function M.AssertSchemaAttributesListType(list)
+function asserts.AssertSchemaAttributesListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SchemaAttributesListType to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertSchemaAttributeType(v)
+		asserts.AssertSchemaAttributeType(v)
 	end
 end
 
 --  
 -- List of SchemaAttributeType objects
 function M.SchemaAttributesListType(list)
-	M.AssertSchemaAttributesListType(list)
+	asserts.AssertSchemaAttributesListType(list)
 	return list
 end
 
-function M.AssertAliasAttributesListType(list)
+function asserts.AssertAliasAttributesListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AliasAttributesListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAliasAttributeType(v)
+		asserts.AssertAliasAttributeType(v)
 	end
 end
 
 --  
 -- List of AliasAttributeType objects
 function M.AliasAttributesListType(list)
-	M.AssertAliasAttributesListType(list)
+	asserts.AssertAliasAttributesListType(list)
 	return list
 end
 
-function M.AssertLogoutURLsListType(list)
+function asserts.AssertLogoutURLsListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LogoutURLsListType to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	for _,v in ipairs(list) do
-		M.AssertRedirectUrlType(v)
+		asserts.AssertRedirectUrlType(v)
 	end
 end
 
 --  
 -- List of RedirectUrlType objects
 function M.LogoutURLsListType(list)
-	M.AssertLogoutURLsListType(list)
+	asserts.AssertLogoutURLsListType(list)
 	return list
 end
 
-function M.AssertAttributeListType(list)
+function asserts.AssertAttributeListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttributeType(v)
+		asserts.AssertAttributeType(v)
 	end
 end
 
 --  
 -- List of AttributeType objects
 function M.AttributeListType(list)
-	M.AssertAttributeListType(list)
+	asserts.AssertAttributeListType(list)
 	return list
 end
 
-function M.AssertOAuthFlowsType(list)
+function asserts.AssertOAuthFlowsType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected OAuthFlowsType to be of type ''table")
 	assert(#list <= 3, "Expected list to be contain 3 elements")
 	for _,v in ipairs(list) do
-		M.AssertOAuthFlowType(v)
+		asserts.AssertOAuthFlowType(v)
 	end
 end
 
 --  
 -- List of OAuthFlowType objects
 function M.OAuthFlowsType(list)
-	M.AssertOAuthFlowsType(list)
+	asserts.AssertOAuthFlowsType(list)
 	return list
 end
 
-function M.AssertCallbackURLsListType(list)
+function asserts.AssertCallbackURLsListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CallbackURLsListType to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	for _,v in ipairs(list) do
-		M.AssertRedirectUrlType(v)
+		asserts.AssertRedirectUrlType(v)
 	end
 end
 
 --  
 -- List of RedirectUrlType objects
 function M.CallbackURLsListType(list)
-	M.AssertCallbackURLsListType(list)
+	asserts.AssertCallbackURLsListType(list)
 	return list
 end
 
-function M.AssertMFAOptionListType(list)
+function asserts.AssertMFAOptionListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MFAOptionListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertMFAOptionType(v)
+		asserts.AssertMFAOptionType(v)
 	end
 end
 
 --  
 -- List of MFAOptionType objects
 function M.MFAOptionListType(list)
-	M.AssertMFAOptionListType(list)
+	asserts.AssertMFAOptionListType(list)
 	return list
 end
 
-function M.AssertSearchedAttributeNamesListType(list)
+function asserts.AssertSearchedAttributeNamesListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SearchedAttributeNamesListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttributeNameType(v)
+		asserts.AssertAttributeNameType(v)
 	end
 end
 
 --  
 -- List of AttributeNameType objects
 function M.SearchedAttributeNamesListType(list)
-	M.AssertSearchedAttributeNamesListType(list)
+	asserts.AssertSearchedAttributeNamesListType(list)
 	return list
 end
 
-function M.AssertCustomAttributesListType(list)
+function asserts.AssertCustomAttributesListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CustomAttributesListType to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertSchemaAttributeType(v)
+		asserts.AssertSchemaAttributeType(v)
 	end
 end
 
 --  
 -- List of SchemaAttributeType objects
 function M.CustomAttributesListType(list)
-	M.AssertCustomAttributesListType(list)
+	asserts.AssertCustomAttributesListType(list)
 	return list
 end
 
-function M.AssertGroupListType(list)
+function asserts.AssertGroupListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GroupListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGroupType(v)
+		asserts.AssertGroupType(v)
 	end
 end
 
 --  
 -- List of GroupType objects
 function M.GroupListType(list)
-	M.AssertGroupListType(list)
+	asserts.AssertGroupListType(list)
 	return list
 end
 
-function M.AssertDeliveryMediumListType(list)
+function asserts.AssertDeliveryMediumListType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DeliveryMediumListType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDeliveryMediumType(v)
+		asserts.AssertDeliveryMediumType(v)
 	end
 end
 
 --  
 -- List of DeliveryMediumType objects
 function M.DeliveryMediumListType(list)
-	M.AssertDeliveryMediumListType(list)
+	asserts.AssertDeliveryMediumListType(list)
 	return list
 end
 
-function M.AssertListOfStringTypes(list)
+function asserts.AssertListOfStringTypes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfStringTypes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStringType(v)
+		asserts.AssertStringType(v)
 	end
 end
 
 --  
 -- List of StringType objects
 function M.ListOfStringTypes(list)
-	M.AssertListOfStringTypes(list)
+	asserts.AssertListOfStringTypes(list)
 	return list
 end
 

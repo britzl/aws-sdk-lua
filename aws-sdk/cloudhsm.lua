@@ -18,13 +18,16 @@ M.metadata = {
 	uid = "cloudhsm-2014-05-30",
 }
 
-local InvalidRequestException_keys = { nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertInvalidRequestException(struct)
+keys.InvalidRequestException = { nil }
+
+function asserts.AssertInvalidRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRequestException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidRequestException_keys[k], "InvalidRequestException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRequestException[k], "InvalidRequestException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -34,73 +37,73 @@ function M.InvalidRequestException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
 	}
-	M.AssertInvalidRequestException(t)
+	asserts.AssertInvalidRequestException(t)
 	return t
 end
 
-local RemoveTagsFromResourceRequest_keys = { "ResourceArn" = true, "TagKeyList" = true, nil }
+keys.RemoveTagsFromResourceRequest = { ["ResourceArn"] = true, ["TagKeyList"] = true, nil }
 
-function M.AssertRemoveTagsFromResourceRequest(struct)
+function asserts.AssertRemoveTagsFromResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsFromResourceRequest to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
 	assert(struct["TagKeyList"], "Expected key TagKeyList to exist in table")
-	if struct["ResourceArn"] then M.AssertString(struct["ResourceArn"]) end
-	if struct["TagKeyList"] then M.AssertTagKeyList(struct["TagKeyList"]) end
+	if struct["ResourceArn"] then asserts.AssertString(struct["ResourceArn"]) end
+	if struct["TagKeyList"] then asserts.AssertTagKeyList(struct["TagKeyList"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsFromResourceRequest_keys[k], "RemoveTagsFromResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsFromResourceRequest[k], "RemoveTagsFromResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsFromResourceRequest
 --  
--- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
--- @param TagKeyList [TagKeyList] <p>The tag key or keys to remove.</p> <p>Specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use <a>AddTagsToResource</a>.</p>
+-- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
+-- @param _TagKeyList [TagKeyList] <p>The tag key or keys to remove.</p> <p>Specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use <a>AddTagsToResource</a>.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: TagKeyList
-function M.RemoveTagsFromResourceRequest(ResourceArn, TagKeyList, ...)
+function M.RemoveTagsFromResourceRequest(_ResourceArn, _TagKeyList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceRequest")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
-		["TagKeyList"] = TagKeyList,
+		["ResourceArn"] = _ResourceArn,
+		["TagKeyList"] = _TagKeyList,
 	}
-	M.AssertRemoveTagsFromResourceRequest(t)
+	asserts.AssertRemoveTagsFromResourceRequest(t)
 	return t
 end
 
-local ListHsmsResponse_keys = { "HsmList" = true, "NextToken" = true, nil }
+keys.ListHsmsResponse = { ["HsmList"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListHsmsResponse(struct)
+function asserts.AssertListHsmsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListHsmsResponse to be of type 'table'")
-	if struct["HsmList"] then M.AssertHsmList(struct["HsmList"]) end
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
+	if struct["HsmList"] then asserts.AssertHsmList(struct["HsmList"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListHsmsResponse_keys[k], "ListHsmsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListHsmsResponse[k], "ListHsmsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListHsmsResponse
 -- <p>Contains the output of the <a>ListHsms</a> operation.</p>
--- @param HsmList [HsmList] <p>The list of ARNs that identify the HSMs.</p>
--- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHsms</a> to retrieve the next set of items.</p>
-function M.ListHsmsResponse(HsmList, NextToken, ...)
+-- @param _HsmList [HsmList] <p>The list of ARNs that identify the HSMs.</p>
+-- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHsms</a> to retrieve the next set of items.</p>
+function M.ListHsmsResponse(_HsmList, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHsmsResponse")
 	local t = { 
-		["HsmList"] = HsmList,
-		["NextToken"] = NextToken,
+		["HsmList"] = _HsmList,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListHsmsResponse(t)
+	asserts.AssertListHsmsResponse(t)
 	return t
 end
 
-local ListAvailableZonesRequest_keys = { nil }
+keys.ListAvailableZonesRequest = { nil }
 
-function M.AssertListAvailableZonesRequest(struct)
+function asserts.AssertListAvailableZonesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAvailableZonesRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ListAvailableZonesRequest_keys[k], "ListAvailableZonesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAvailableZonesRequest[k], "ListAvailableZonesRequest contains unknown key " .. tostring(k))
 	end
 end
 
@@ -110,1121 +113,1121 @@ function M.ListAvailableZonesRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAvailableZonesRequest")
 	local t = { 
 	}
-	M.AssertListAvailableZonesRequest(t)
+	asserts.AssertListAvailableZonesRequest(t)
 	return t
 end
 
-local CreateLunaClientResponse_keys = { "ClientArn" = true, nil }
+keys.CreateLunaClientResponse = { ["ClientArn"] = true, nil }
 
-function M.AssertCreateLunaClientResponse(struct)
+function asserts.AssertCreateLunaClientResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLunaClientResponse to be of type 'table'")
-	if struct["ClientArn"] then M.AssertClientArn(struct["ClientArn"]) end
+	if struct["ClientArn"] then asserts.AssertClientArn(struct["ClientArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLunaClientResponse_keys[k], "CreateLunaClientResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateLunaClientResponse[k], "CreateLunaClientResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLunaClientResponse
 -- <p>Contains the output of the <a>CreateLunaClient</a> action.</p>
--- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
-function M.CreateLunaClientResponse(ClientArn, ...)
+-- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
+function M.CreateLunaClientResponse(_ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLunaClientResponse")
 	local t = { 
-		["ClientArn"] = ClientArn,
+		["ClientArn"] = _ClientArn,
 	}
-	M.AssertCreateLunaClientResponse(t)
+	asserts.AssertCreateLunaClientResponse(t)
 	return t
 end
 
-local CreateHsmResponse_keys = { "HsmArn" = true, nil }
+keys.CreateHsmResponse = { ["HsmArn"] = true, nil }
 
-function M.AssertCreateHsmResponse(struct)
+function asserts.AssertCreateHsmResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateHsmResponse to be of type 'table'")
-	if struct["HsmArn"] then M.AssertHsmArn(struct["HsmArn"]) end
+	if struct["HsmArn"] then asserts.AssertHsmArn(struct["HsmArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateHsmResponse_keys[k], "CreateHsmResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateHsmResponse[k], "CreateHsmResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateHsmResponse
 -- <p>Contains the output of the <a>CreateHsm</a> operation.</p>
--- @param HsmArn [HsmArn] <p>The ARN of the HSM.</p>
-function M.CreateHsmResponse(HsmArn, ...)
+-- @param _HsmArn [HsmArn] <p>The ARN of the HSM.</p>
+function M.CreateHsmResponse(_HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHsmResponse")
 	local t = { 
-		["HsmArn"] = HsmArn,
+		["HsmArn"] = _HsmArn,
 	}
-	M.AssertCreateHsmResponse(t)
+	asserts.AssertCreateHsmResponse(t)
 	return t
 end
 
-local AddTagsToResourceRequest_keys = { "ResourceArn" = true, "TagList" = true, nil }
+keys.AddTagsToResourceRequest = { ["ResourceArn"] = true, ["TagList"] = true, nil }
 
-function M.AssertAddTagsToResourceRequest(struct)
+function asserts.AssertAddTagsToResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsToResourceRequest to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
 	assert(struct["TagList"], "Expected key TagList to exist in table")
-	if struct["ResourceArn"] then M.AssertString(struct["ResourceArn"]) end
-	if struct["TagList"] then M.AssertTagList(struct["TagList"]) end
+	if struct["ResourceArn"] then asserts.AssertString(struct["ResourceArn"]) end
+	if struct["TagList"] then asserts.AssertTagList(struct["TagList"]) end
 	for k,_ in pairs(struct) do
-		assert(AddTagsToResourceRequest_keys[k], "AddTagsToResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.AddTagsToResourceRequest[k], "AddTagsToResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddTagsToResourceRequest
 --  
--- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.</p>
--- @param TagList [TagList] <p>One or more tags.</p>
+-- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.</p>
+-- @param _TagList [TagList] <p>One or more tags.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: TagList
-function M.AddTagsToResourceRequest(ResourceArn, TagList, ...)
+function M.AddTagsToResourceRequest(_ResourceArn, _TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceRequest")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
-		["TagList"] = TagList,
+		["ResourceArn"] = _ResourceArn,
+		["TagList"] = _TagList,
 	}
-	M.AssertAddTagsToResourceRequest(t)
+	asserts.AssertAddTagsToResourceRequest(t)
 	return t
 end
 
-local ListLunaClientsRequest_keys = { "NextToken" = true, nil }
+keys.ListLunaClientsRequest = { ["NextToken"] = true, nil }
 
-function M.AssertListLunaClientsRequest(struct)
+function asserts.AssertListLunaClientsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLunaClientsRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListLunaClientsRequest_keys[k], "ListLunaClientsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListLunaClientsRequest[k], "ListLunaClientsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListLunaClientsRequest
 --  
--- @param NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>. Pass null if this is the first call.</p>
-function M.ListLunaClientsRequest(NextToken, ...)
+-- @param _NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>. Pass null if this is the first call.</p>
+function M.ListLunaClientsRequest(_NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLunaClientsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListLunaClientsRequest(t)
+	asserts.AssertListLunaClientsRequest(t)
 	return t
 end
 
-local RemoveTagsFromResourceResponse_keys = { "Status" = true, nil }
+keys.RemoveTagsFromResourceResponse = { ["Status"] = true, nil }
 
-function M.AssertRemoveTagsFromResourceResponse(struct)
+function asserts.AssertRemoveTagsFromResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsFromResourceResponse to be of type 'table'")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertString(struct["Status"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsFromResourceResponse_keys[k], "RemoveTagsFromResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsFromResourceResponse[k], "RemoveTagsFromResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsFromResourceResponse
 --  
--- @param Status [String] <p>The status of the operation.</p>
+-- @param _Status [String] <p>The status of the operation.</p>
 -- Required parameter: Status
-function M.RemoveTagsFromResourceResponse(Status, ...)
+function M.RemoveTagsFromResourceResponse(_Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceResponse")
 	local t = { 
-		["Status"] = Status,
+		["Status"] = _Status,
 	}
-	M.AssertRemoveTagsFromResourceResponse(t)
+	asserts.AssertRemoveTagsFromResourceResponse(t)
 	return t
 end
 
-local ListTagsForResourceRequest_keys = { "ResourceArn" = true, nil }
+keys.ListTagsForResourceRequest = { ["ResourceArn"] = true, nil }
 
-function M.AssertListTagsForResourceRequest(struct)
+function asserts.AssertListTagsForResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForResourceRequest to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
-	if struct["ResourceArn"] then M.AssertString(struct["ResourceArn"]) end
+	if struct["ResourceArn"] then asserts.AssertString(struct["ResourceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForResourceRequest_keys[k], "ListTagsForResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceRequest[k], "ListTagsForResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
+-- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
 -- Required parameter: ResourceArn
-function M.ListTagsForResourceRequest(ResourceArn, ...)
+function M.ListTagsForResourceRequest(_ResourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
+		["ResourceArn"] = _ResourceArn,
 	}
-	M.AssertListTagsForResourceRequest(t)
+	asserts.AssertListTagsForResourceRequest(t)
 	return t
 end
 
-local DeleteHsmRequest_keys = { "HsmArn" = true, nil }
+keys.DeleteHsmRequest = { ["HsmArn"] = true, nil }
 
-function M.AssertDeleteHsmRequest(struct)
+function asserts.AssertDeleteHsmRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteHsmRequest to be of type 'table'")
 	assert(struct["HsmArn"], "Expected key HsmArn to exist in table")
-	if struct["HsmArn"] then M.AssertHsmArn(struct["HsmArn"]) end
+	if struct["HsmArn"] then asserts.AssertHsmArn(struct["HsmArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteHsmRequest_keys[k], "DeleteHsmRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteHsmRequest[k], "DeleteHsmRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteHsmRequest
 -- <p>Contains the inputs for the <a>DeleteHsm</a> operation.</p>
--- @param HsmArn [HsmArn] <p>The ARN of the HSM to delete.</p>
+-- @param _HsmArn [HsmArn] <p>The ARN of the HSM to delete.</p>
 -- Required parameter: HsmArn
-function M.DeleteHsmRequest(HsmArn, ...)
+function M.DeleteHsmRequest(_HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHsmRequest")
 	local t = { 
-		["HsmArn"] = HsmArn,
+		["HsmArn"] = _HsmArn,
 	}
-	M.AssertDeleteHsmRequest(t)
+	asserts.AssertDeleteHsmRequest(t)
 	return t
 end
 
-local ModifyHsmResponse_keys = { "HsmArn" = true, nil }
+keys.ModifyHsmResponse = { ["HsmArn"] = true, nil }
 
-function M.AssertModifyHsmResponse(struct)
+function asserts.AssertModifyHsmResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyHsmResponse to be of type 'table'")
-	if struct["HsmArn"] then M.AssertHsmArn(struct["HsmArn"]) end
+	if struct["HsmArn"] then asserts.AssertHsmArn(struct["HsmArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyHsmResponse_keys[k], "ModifyHsmResponse contains unknown key " .. tostring(k))
+		assert(keys.ModifyHsmResponse[k], "ModifyHsmResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyHsmResponse
 -- <p>Contains the output of the <a>ModifyHsm</a> operation.</p>
--- @param HsmArn [HsmArn] <p>The ARN of the HSM.</p>
-function M.ModifyHsmResponse(HsmArn, ...)
+-- @param _HsmArn [HsmArn] <p>The ARN of the HSM.</p>
+function M.ModifyHsmResponse(_HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHsmResponse")
 	local t = { 
-		["HsmArn"] = HsmArn,
+		["HsmArn"] = _HsmArn,
 	}
-	M.AssertModifyHsmResponse(t)
+	asserts.AssertModifyHsmResponse(t)
 	return t
 end
 
-local DescribeHapgResponse_keys = { "PartitionSerialList" = true, "HsmsPendingRegistration" = true, "HsmsLastActionFailed" = true, "HsmsPendingDeletion" = true, "LastModifiedTimestamp" = true, "Label" = true, "HapgSerial" = true, "State" = true, "HapgArn" = true, nil }
+keys.DescribeHapgResponse = { ["PartitionSerialList"] = true, ["HsmsPendingRegistration"] = true, ["HsmsLastActionFailed"] = true, ["HsmsPendingDeletion"] = true, ["LastModifiedTimestamp"] = true, ["Label"] = true, ["HapgSerial"] = true, ["State"] = true, ["HapgArn"] = true, nil }
 
-function M.AssertDescribeHapgResponse(struct)
+function asserts.AssertDescribeHapgResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeHapgResponse to be of type 'table'")
-	if struct["PartitionSerialList"] then M.AssertPartitionSerialList(struct["PartitionSerialList"]) end
-	if struct["HsmsPendingRegistration"] then M.AssertHsmList(struct["HsmsPendingRegistration"]) end
-	if struct["HsmsLastActionFailed"] then M.AssertHsmList(struct["HsmsLastActionFailed"]) end
-	if struct["HsmsPendingDeletion"] then M.AssertHsmList(struct["HsmsPendingDeletion"]) end
-	if struct["LastModifiedTimestamp"] then M.AssertTimestamp(struct["LastModifiedTimestamp"]) end
-	if struct["Label"] then M.AssertLabel(struct["Label"]) end
-	if struct["HapgSerial"] then M.AssertString(struct["HapgSerial"]) end
-	if struct["State"] then M.AssertCloudHsmObjectState(struct["State"]) end
-	if struct["HapgArn"] then M.AssertHapgArn(struct["HapgArn"]) end
+	if struct["PartitionSerialList"] then asserts.AssertPartitionSerialList(struct["PartitionSerialList"]) end
+	if struct["HsmsPendingRegistration"] then asserts.AssertHsmList(struct["HsmsPendingRegistration"]) end
+	if struct["HsmsLastActionFailed"] then asserts.AssertHsmList(struct["HsmsLastActionFailed"]) end
+	if struct["HsmsPendingDeletion"] then asserts.AssertHsmList(struct["HsmsPendingDeletion"]) end
+	if struct["LastModifiedTimestamp"] then asserts.AssertTimestamp(struct["LastModifiedTimestamp"]) end
+	if struct["Label"] then asserts.AssertLabel(struct["Label"]) end
+	if struct["HapgSerial"] then asserts.AssertString(struct["HapgSerial"]) end
+	if struct["State"] then asserts.AssertCloudHsmObjectState(struct["State"]) end
+	if struct["HapgArn"] then asserts.AssertHapgArn(struct["HapgArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeHapgResponse_keys[k], "DescribeHapgResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeHapgResponse[k], "DescribeHapgResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeHapgResponse
 -- <p>Contains the output of the <a>DescribeHapg</a> action.</p>
--- @param PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers that belong to the high-availability partition group.</p>
--- @param HsmsPendingRegistration [HsmList] <p>Contains the output of the <a>DescribeHapg</a> action.</p>
--- @param HsmsLastActionFailed [HsmList] <p>Contains the output of the <a>DescribeHapg</a> action.</p>
--- @param HsmsPendingDeletion [HsmList] <p>Contains the output of the <a>DescribeHapg</a> action.</p>
--- @param LastModifiedTimestamp [Timestamp] <p>The date and time the high-availability partition group was last modified.</p>
--- @param Label [Label] <p>The label for the high-availability partition group.</p>
--- @param HapgSerial [String] <p>The serial number of the high-availability partition group.</p>
--- @param State [CloudHsmObjectState] <p>The state of the high-availability partition group.</p>
--- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
-function M.DescribeHapgResponse(PartitionSerialList, HsmsPendingRegistration, HsmsLastActionFailed, HsmsPendingDeletion, LastModifiedTimestamp, Label, HapgSerial, State, HapgArn, ...)
+-- @param _PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers that belong to the high-availability partition group.</p>
+-- @param _HsmsPendingRegistration [HsmList] 
+-- @param _HsmsLastActionFailed [HsmList] 
+-- @param _HsmsPendingDeletion [HsmList] 
+-- @param _LastModifiedTimestamp [Timestamp] <p>The date and time the high-availability partition group was last modified.</p>
+-- @param _Label [Label] <p>The label for the high-availability partition group.</p>
+-- @param _HapgSerial [String] <p>The serial number of the high-availability partition group.</p>
+-- @param _State [CloudHsmObjectState] <p>The state of the high-availability partition group.</p>
+-- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
+function M.DescribeHapgResponse(_PartitionSerialList, _HsmsPendingRegistration, _HsmsLastActionFailed, _HsmsPendingDeletion, _LastModifiedTimestamp, _Label, _HapgSerial, _State, _HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHapgResponse")
 	local t = { 
-		["PartitionSerialList"] = PartitionSerialList,
-		["HsmsPendingRegistration"] = HsmsPendingRegistration,
-		["HsmsLastActionFailed"] = HsmsLastActionFailed,
-		["HsmsPendingDeletion"] = HsmsPendingDeletion,
-		["LastModifiedTimestamp"] = LastModifiedTimestamp,
-		["Label"] = Label,
-		["HapgSerial"] = HapgSerial,
-		["State"] = State,
-		["HapgArn"] = HapgArn,
+		["PartitionSerialList"] = _PartitionSerialList,
+		["HsmsPendingRegistration"] = _HsmsPendingRegistration,
+		["HsmsLastActionFailed"] = _HsmsLastActionFailed,
+		["HsmsPendingDeletion"] = _HsmsPendingDeletion,
+		["LastModifiedTimestamp"] = _LastModifiedTimestamp,
+		["Label"] = _Label,
+		["HapgSerial"] = _HapgSerial,
+		["State"] = _State,
+		["HapgArn"] = _HapgArn,
 	}
-	M.AssertDescribeHapgResponse(t)
+	asserts.AssertDescribeHapgResponse(t)
 	return t
 end
 
-local ListTagsForResourceResponse_keys = { "TagList" = true, nil }
+keys.ListTagsForResourceResponse = { ["TagList"] = true, nil }
 
-function M.AssertListTagsForResourceResponse(struct)
+function asserts.AssertListTagsForResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForResourceResponse to be of type 'table'")
 	assert(struct["TagList"], "Expected key TagList to exist in table")
-	if struct["TagList"] then M.AssertTagList(struct["TagList"]) end
+	if struct["TagList"] then asserts.AssertTagList(struct["TagList"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForResourceResponse_keys[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceResponse[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForResourceResponse
 --  
--- @param TagList [TagList] <p>One or more tags.</p>
+-- @param _TagList [TagList] <p>One or more tags.</p>
 -- Required parameter: TagList
-function M.ListTagsForResourceResponse(TagList, ...)
+function M.ListTagsForResourceResponse(_TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
 	local t = { 
-		["TagList"] = TagList,
+		["TagList"] = _TagList,
 	}
-	M.AssertListTagsForResourceResponse(t)
+	asserts.AssertListTagsForResourceResponse(t)
 	return t
 end
 
-local ListHapgsRequest_keys = { "NextToken" = true, nil }
+keys.ListHapgsRequest = { ["NextToken"] = true, nil }
 
-function M.AssertListHapgsRequest(struct)
+function asserts.AssertListHapgsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListHapgsRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListHapgsRequest_keys[k], "ListHapgsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListHapgsRequest[k], "ListHapgsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListHapgsRequest
 --  
--- @param NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHapgs</a>. Pass null if this is the first call.</p>
-function M.ListHapgsRequest(NextToken, ...)
+-- @param _NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHapgs</a>. Pass null if this is the first call.</p>
+function M.ListHapgsRequest(_NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHapgsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListHapgsRequest(t)
+	asserts.AssertListHapgsRequest(t)
 	return t
 end
 
-local GetConfigRequest_keys = { "HapgList" = true, "ClientVersion" = true, "ClientArn" = true, nil }
+keys.GetConfigRequest = { ["HapgList"] = true, ["ClientVersion"] = true, ["ClientArn"] = true, nil }
 
-function M.AssertGetConfigRequest(struct)
+function asserts.AssertGetConfigRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetConfigRequest to be of type 'table'")
 	assert(struct["ClientArn"], "Expected key ClientArn to exist in table")
 	assert(struct["ClientVersion"], "Expected key ClientVersion to exist in table")
 	assert(struct["HapgList"], "Expected key HapgList to exist in table")
-	if struct["HapgList"] then M.AssertHapgList(struct["HapgList"]) end
-	if struct["ClientVersion"] then M.AssertClientVersion(struct["ClientVersion"]) end
-	if struct["ClientArn"] then M.AssertClientArn(struct["ClientArn"]) end
+	if struct["HapgList"] then asserts.AssertHapgList(struct["HapgList"]) end
+	if struct["ClientVersion"] then asserts.AssertClientVersion(struct["ClientVersion"]) end
+	if struct["ClientArn"] then asserts.AssertClientArn(struct["ClientArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetConfigRequest_keys[k], "GetConfigRequest contains unknown key " .. tostring(k))
+		assert(keys.GetConfigRequest[k], "GetConfigRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetConfigRequest
 --  
--- @param HapgList [HapgList] <p>A list of ARNs that identify the high-availability partition groups that are associated with the client.</p>
--- @param ClientVersion [ClientVersion] <p>The client version.</p>
--- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
+-- @param _HapgList [HapgList] <p>A list of ARNs that identify the high-availability partition groups that are associated with the client.</p>
+-- @param _ClientVersion [ClientVersion] <p>The client version.</p>
+-- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
 -- Required parameter: ClientArn
 -- Required parameter: ClientVersion
 -- Required parameter: HapgList
-function M.GetConfigRequest(HapgList, ClientVersion, ClientArn, ...)
+function M.GetConfigRequest(_HapgList, _ClientVersion, _ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetConfigRequest")
 	local t = { 
-		["HapgList"] = HapgList,
-		["ClientVersion"] = ClientVersion,
-		["ClientArn"] = ClientArn,
+		["HapgList"] = _HapgList,
+		["ClientVersion"] = _ClientVersion,
+		["ClientArn"] = _ClientArn,
 	}
-	M.AssertGetConfigRequest(t)
+	asserts.AssertGetConfigRequest(t)
 	return t
 end
 
-local CreateHapgRequest_keys = { "Label" = true, nil }
+keys.CreateHapgRequest = { ["Label"] = true, nil }
 
-function M.AssertCreateHapgRequest(struct)
+function asserts.AssertCreateHapgRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateHapgRequest to be of type 'table'")
 	assert(struct["Label"], "Expected key Label to exist in table")
-	if struct["Label"] then M.AssertLabel(struct["Label"]) end
+	if struct["Label"] then asserts.AssertLabel(struct["Label"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateHapgRequest_keys[k], "CreateHapgRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateHapgRequest[k], "CreateHapgRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateHapgRequest
 -- <p>Contains the inputs for the <a>CreateHapgRequest</a> action.</p>
--- @param Label [Label] <p>The label of the new high-availability partition group.</p>
+-- @param _Label [Label] <p>The label of the new high-availability partition group.</p>
 -- Required parameter: Label
-function M.CreateHapgRequest(Label, ...)
+function M.CreateHapgRequest(_Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHapgRequest")
 	local t = { 
-		["Label"] = Label,
+		["Label"] = _Label,
 	}
-	M.AssertCreateHapgRequest(t)
+	asserts.AssertCreateHapgRequest(t)
 	return t
 end
 
-local DescribeHapgRequest_keys = { "HapgArn" = true, nil }
+keys.DescribeHapgRequest = { ["HapgArn"] = true, nil }
 
-function M.AssertDescribeHapgRequest(struct)
+function asserts.AssertDescribeHapgRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeHapgRequest to be of type 'table'")
 	assert(struct["HapgArn"], "Expected key HapgArn to exist in table")
-	if struct["HapgArn"] then M.AssertHapgArn(struct["HapgArn"]) end
+	if struct["HapgArn"] then asserts.AssertHapgArn(struct["HapgArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeHapgRequest_keys[k], "DescribeHapgRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeHapgRequest[k], "DescribeHapgRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeHapgRequest
 -- <p>Contains the inputs for the <a>DescribeHapg</a> action.</p>
--- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group to describe.</p>
+-- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group to describe.</p>
 -- Required parameter: HapgArn
-function M.DescribeHapgRequest(HapgArn, ...)
+function M.DescribeHapgRequest(_HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHapgRequest")
 	local t = { 
-		["HapgArn"] = HapgArn,
+		["HapgArn"] = _HapgArn,
 	}
-	M.AssertDescribeHapgRequest(t)
+	asserts.AssertDescribeHapgRequest(t)
 	return t
 end
 
-local ListHapgsResponse_keys = { "HapgList" = true, "NextToken" = true, nil }
+keys.ListHapgsResponse = { ["HapgList"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListHapgsResponse(struct)
+function asserts.AssertListHapgsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListHapgsResponse to be of type 'table'")
 	assert(struct["HapgList"], "Expected key HapgList to exist in table")
-	if struct["HapgList"] then M.AssertHapgList(struct["HapgList"]) end
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
+	if struct["HapgList"] then asserts.AssertHapgList(struct["HapgList"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListHapgsResponse_keys[k], "ListHapgsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListHapgsResponse[k], "ListHapgsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListHapgsResponse
 --  
--- @param HapgList [HapgList] <p>The list of high-availability partition groups.</p>
--- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHapgs</a> to retrieve the next set of items.</p>
+-- @param _HapgList [HapgList] <p>The list of high-availability partition groups.</p>
+-- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHapgs</a> to retrieve the next set of items.</p>
 -- Required parameter: HapgList
-function M.ListHapgsResponse(HapgList, NextToken, ...)
+function M.ListHapgsResponse(_HapgList, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHapgsResponse")
 	local t = { 
-		["HapgList"] = HapgList,
-		["NextToken"] = NextToken,
+		["HapgList"] = _HapgList,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListHapgsResponse(t)
+	asserts.AssertListHapgsResponse(t)
 	return t
 end
 
-local DescribeHsmRequest_keys = { "HsmSerialNumber" = true, "HsmArn" = true, nil }
+keys.DescribeHsmRequest = { ["HsmSerialNumber"] = true, ["HsmArn"] = true, nil }
 
-function M.AssertDescribeHsmRequest(struct)
+function asserts.AssertDescribeHsmRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeHsmRequest to be of type 'table'")
-	if struct["HsmSerialNumber"] then M.AssertHsmSerialNumber(struct["HsmSerialNumber"]) end
-	if struct["HsmArn"] then M.AssertHsmArn(struct["HsmArn"]) end
+	if struct["HsmSerialNumber"] then asserts.AssertHsmSerialNumber(struct["HsmSerialNumber"]) end
+	if struct["HsmArn"] then asserts.AssertHsmArn(struct["HsmArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeHsmRequest_keys[k], "DescribeHsmRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeHsmRequest[k], "DescribeHsmRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeHsmRequest
 -- <p>Contains the inputs for the <a>DescribeHsm</a> operation. </p>
--- @param HsmSerialNumber [HsmSerialNumber] <p>The serial number of the HSM. Either the <i>HsmArn</i> or the <i>HsmSerialNumber</i> parameter must be specified.</p>
--- @param HsmArn [HsmArn] <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i> parameter must be specified.</p>
-function M.DescribeHsmRequest(HsmSerialNumber, HsmArn, ...)
+-- @param _HsmSerialNumber [HsmSerialNumber] <p>The serial number of the HSM. Either the <i>HsmArn</i> or the <i>HsmSerialNumber</i> parameter must be specified.</p>
+-- @param _HsmArn [HsmArn] <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i> parameter must be specified.</p>
+function M.DescribeHsmRequest(_HsmSerialNumber, _HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHsmRequest")
 	local t = { 
-		["HsmSerialNumber"] = HsmSerialNumber,
-		["HsmArn"] = HsmArn,
+		["HsmSerialNumber"] = _HsmSerialNumber,
+		["HsmArn"] = _HsmArn,
 	}
-	M.AssertDescribeHsmRequest(t)
+	asserts.AssertDescribeHsmRequest(t)
 	return t
 end
 
-local DescribeLunaClientResponse_keys = { "LastModifiedTimestamp" = true, "Label" = true, "CertificateFingerprint" = true, "Certificate" = true, "ClientArn" = true, nil }
+keys.DescribeLunaClientResponse = { ["LastModifiedTimestamp"] = true, ["Label"] = true, ["CertificateFingerprint"] = true, ["Certificate"] = true, ["ClientArn"] = true, nil }
 
-function M.AssertDescribeLunaClientResponse(struct)
+function asserts.AssertDescribeLunaClientResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLunaClientResponse to be of type 'table'")
-	if struct["LastModifiedTimestamp"] then M.AssertTimestamp(struct["LastModifiedTimestamp"]) end
-	if struct["Label"] then M.AssertLabel(struct["Label"]) end
-	if struct["CertificateFingerprint"] then M.AssertCertificateFingerprint(struct["CertificateFingerprint"]) end
-	if struct["Certificate"] then M.AssertCertificate(struct["Certificate"]) end
-	if struct["ClientArn"] then M.AssertClientArn(struct["ClientArn"]) end
+	if struct["LastModifiedTimestamp"] then asserts.AssertTimestamp(struct["LastModifiedTimestamp"]) end
+	if struct["Label"] then asserts.AssertLabel(struct["Label"]) end
+	if struct["CertificateFingerprint"] then asserts.AssertCertificateFingerprint(struct["CertificateFingerprint"]) end
+	if struct["Certificate"] then asserts.AssertCertificate(struct["Certificate"]) end
+	if struct["ClientArn"] then asserts.AssertClientArn(struct["ClientArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLunaClientResponse_keys[k], "DescribeLunaClientResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeLunaClientResponse[k], "DescribeLunaClientResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLunaClientResponse
 --  
--- @param LastModifiedTimestamp [Timestamp] <p>The date and time the client was last modified.</p>
--- @param Label [Label] <p>The label of the client.</p>
--- @param CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
--- @param Certificate [Certificate] <p>The certificate installed on the HSMs used by this client.</p>
--- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
-function M.DescribeLunaClientResponse(LastModifiedTimestamp, Label, CertificateFingerprint, Certificate, ClientArn, ...)
+-- @param _LastModifiedTimestamp [Timestamp] <p>The date and time the client was last modified.</p>
+-- @param _Label [Label] <p>The label of the client.</p>
+-- @param _CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
+-- @param _Certificate [Certificate] <p>The certificate installed on the HSMs used by this client.</p>
+-- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
+function M.DescribeLunaClientResponse(_LastModifiedTimestamp, _Label, _CertificateFingerprint, _Certificate, _ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLunaClientResponse")
 	local t = { 
-		["LastModifiedTimestamp"] = LastModifiedTimestamp,
-		["Label"] = Label,
-		["CertificateFingerprint"] = CertificateFingerprint,
-		["Certificate"] = Certificate,
-		["ClientArn"] = ClientArn,
+		["LastModifiedTimestamp"] = _LastModifiedTimestamp,
+		["Label"] = _Label,
+		["CertificateFingerprint"] = _CertificateFingerprint,
+		["Certificate"] = _Certificate,
+		["ClientArn"] = _ClientArn,
 	}
-	M.AssertDescribeLunaClientResponse(t)
+	asserts.AssertDescribeLunaClientResponse(t)
 	return t
 end
 
-local DeleteLunaClientRequest_keys = { "ClientArn" = true, nil }
+keys.DeleteLunaClientRequest = { ["ClientArn"] = true, nil }
 
-function M.AssertDeleteLunaClientRequest(struct)
+function asserts.AssertDeleteLunaClientRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLunaClientRequest to be of type 'table'")
 	assert(struct["ClientArn"], "Expected key ClientArn to exist in table")
-	if struct["ClientArn"] then M.AssertClientArn(struct["ClientArn"]) end
+	if struct["ClientArn"] then asserts.AssertClientArn(struct["ClientArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteLunaClientRequest_keys[k], "DeleteLunaClientRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteLunaClientRequest[k], "DeleteLunaClientRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteLunaClientRequest
 --  
--- @param ClientArn [ClientArn] <p>The ARN of the client to delete.</p>
+-- @param _ClientArn [ClientArn] <p>The ARN of the client to delete.</p>
 -- Required parameter: ClientArn
-function M.DeleteLunaClientRequest(ClientArn, ...)
+function M.DeleteLunaClientRequest(_ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLunaClientRequest")
 	local t = { 
-		["ClientArn"] = ClientArn,
+		["ClientArn"] = _ClientArn,
 	}
-	M.AssertDeleteLunaClientRequest(t)
+	asserts.AssertDeleteLunaClientRequest(t)
 	return t
 end
 
-local CloudHsmServiceException_keys = { "message" = true, "retryable" = true, nil }
+keys.CloudHsmServiceException = { ["message"] = true, ["retryable"] = true, nil }
 
-function M.AssertCloudHsmServiceException(struct)
+function asserts.AssertCloudHsmServiceException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CloudHsmServiceException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["retryable"] then M.AssertBoolean(struct["retryable"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["retryable"] then asserts.AssertBoolean(struct["retryable"]) end
 	for k,_ in pairs(struct) do
-		assert(CloudHsmServiceException_keys[k], "CloudHsmServiceException contains unknown key " .. tostring(k))
+		assert(keys.CloudHsmServiceException[k], "CloudHsmServiceException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CloudHsmServiceException
 -- <p>Indicates that an exception occurred in the AWS CloudHSM service.</p>
--- @param message [String] <p>Additional information about the error.</p>
--- @param retryable [Boolean] <p>Indicates if the action can be retried.</p>
-function M.CloudHsmServiceException(message, retryable, ...)
+-- @param _message [String] <p>Additional information about the error.</p>
+-- @param _retryable [Boolean] <p>Indicates if the action can be retried.</p>
+function M.CloudHsmServiceException(_message, _retryable, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudHsmServiceException")
 	local t = { 
-		["message"] = message,
-		["retryable"] = retryable,
+		["message"] = _message,
+		["retryable"] = _retryable,
 	}
-	M.AssertCloudHsmServiceException(t)
+	asserts.AssertCloudHsmServiceException(t)
 	return t
 end
 
-local ModifyHapgResponse_keys = { "HapgArn" = true, nil }
+keys.ModifyHapgResponse = { ["HapgArn"] = true, nil }
 
-function M.AssertModifyHapgResponse(struct)
+function asserts.AssertModifyHapgResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyHapgResponse to be of type 'table'")
-	if struct["HapgArn"] then M.AssertHapgArn(struct["HapgArn"]) end
+	if struct["HapgArn"] then asserts.AssertHapgArn(struct["HapgArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyHapgResponse_keys[k], "ModifyHapgResponse contains unknown key " .. tostring(k))
+		assert(keys.ModifyHapgResponse[k], "ModifyHapgResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyHapgResponse
 --  
--- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
-function M.ModifyHapgResponse(HapgArn, ...)
+-- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
+function M.ModifyHapgResponse(_HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHapgResponse")
 	local t = { 
-		["HapgArn"] = HapgArn,
+		["HapgArn"] = _HapgArn,
 	}
-	M.AssertModifyHapgResponse(t)
+	asserts.AssertModifyHapgResponse(t)
 	return t
 end
 
-local DeleteLunaClientResponse_keys = { "Status" = true, nil }
+keys.DeleteLunaClientResponse = { ["Status"] = true, nil }
 
-function M.AssertDeleteLunaClientResponse(struct)
+function asserts.AssertDeleteLunaClientResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLunaClientResponse to be of type 'table'")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertString(struct["Status"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteLunaClientResponse_keys[k], "DeleteLunaClientResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteLunaClientResponse[k], "DeleteLunaClientResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteLunaClientResponse
 --  
--- @param Status [String] <p>The status of the action.</p>
+-- @param _Status [String] <p>The status of the action.</p>
 -- Required parameter: Status
-function M.DeleteLunaClientResponse(Status, ...)
+function M.DeleteLunaClientResponse(_Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLunaClientResponse")
 	local t = { 
-		["Status"] = Status,
+		["Status"] = _Status,
 	}
-	M.AssertDeleteLunaClientResponse(t)
+	asserts.AssertDeleteLunaClientResponse(t)
 	return t
 end
 
-local ListLunaClientsResponse_keys = { "NextToken" = true, "ClientList" = true, nil }
+keys.ListLunaClientsResponse = { ["NextToken"] = true, ["ClientList"] = true, nil }
 
-function M.AssertListLunaClientsResponse(struct)
+function asserts.AssertListLunaClientsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLunaClientsResponse to be of type 'table'")
 	assert(struct["ClientList"], "Expected key ClientList to exist in table")
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
-	if struct["ClientList"] then M.AssertClientList(struct["ClientList"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
+	if struct["ClientList"] then asserts.AssertClientList(struct["ClientList"]) end
 	for k,_ in pairs(struct) do
-		assert(ListLunaClientsResponse_keys[k], "ListLunaClientsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListLunaClientsResponse[k], "ListLunaClientsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListLunaClientsResponse
 --  
--- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this to <a>ListLunaClients</a> to retrieve the next set of items.</p>
--- @param ClientList [ClientList] <p>The list of clients.</p>
+-- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this to <a>ListLunaClients</a> to retrieve the next set of items.</p>
+-- @param _ClientList [ClientList] <p>The list of clients.</p>
 -- Required parameter: ClientList
-function M.ListLunaClientsResponse(NextToken, ClientList, ...)
+function M.ListLunaClientsResponse(_NextToken, _ClientList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLunaClientsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["ClientList"] = ClientList,
+		["NextToken"] = _NextToken,
+		["ClientList"] = _ClientList,
 	}
-	M.AssertListLunaClientsResponse(t)
+	asserts.AssertListLunaClientsResponse(t)
 	return t
 end
 
-local ModifyHapgRequest_keys = { "HapgArn" = true, "PartitionSerialList" = true, "Label" = true, nil }
+keys.ModifyHapgRequest = { ["HapgArn"] = true, ["PartitionSerialList"] = true, ["Label"] = true, nil }
 
-function M.AssertModifyHapgRequest(struct)
+function asserts.AssertModifyHapgRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyHapgRequest to be of type 'table'")
 	assert(struct["HapgArn"], "Expected key HapgArn to exist in table")
-	if struct["HapgArn"] then M.AssertHapgArn(struct["HapgArn"]) end
-	if struct["PartitionSerialList"] then M.AssertPartitionSerialList(struct["PartitionSerialList"]) end
-	if struct["Label"] then M.AssertLabel(struct["Label"]) end
+	if struct["HapgArn"] then asserts.AssertHapgArn(struct["HapgArn"]) end
+	if struct["PartitionSerialList"] then asserts.AssertPartitionSerialList(struct["PartitionSerialList"]) end
+	if struct["Label"] then asserts.AssertLabel(struct["Label"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyHapgRequest_keys[k], "ModifyHapgRequest contains unknown key " .. tostring(k))
+		assert(keys.ModifyHapgRequest[k], "ModifyHapgRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyHapgRequest
 --  
--- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group to modify.</p>
--- @param PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers to make members of the high-availability partition group.</p>
--- @param Label [Label] <p>The new label for the high-availability partition group.</p>
+-- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group to modify.</p>
+-- @param _PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers to make members of the high-availability partition group.</p>
+-- @param _Label [Label] <p>The new label for the high-availability partition group.</p>
 -- Required parameter: HapgArn
-function M.ModifyHapgRequest(HapgArn, PartitionSerialList, Label, ...)
+function M.ModifyHapgRequest(_HapgArn, _PartitionSerialList, _Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHapgRequest")
 	local t = { 
-		["HapgArn"] = HapgArn,
-		["PartitionSerialList"] = PartitionSerialList,
-		["Label"] = Label,
+		["HapgArn"] = _HapgArn,
+		["PartitionSerialList"] = _PartitionSerialList,
+		["Label"] = _Label,
 	}
-	M.AssertModifyHapgRequest(t)
+	asserts.AssertModifyHapgRequest(t)
 	return t
 end
 
-local ModifyLunaClientResponse_keys = { "ClientArn" = true, nil }
+keys.ModifyLunaClientResponse = { ["ClientArn"] = true, nil }
 
-function M.AssertModifyLunaClientResponse(struct)
+function asserts.AssertModifyLunaClientResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyLunaClientResponse to be of type 'table'")
-	if struct["ClientArn"] then M.AssertClientArn(struct["ClientArn"]) end
+	if struct["ClientArn"] then asserts.AssertClientArn(struct["ClientArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyLunaClientResponse_keys[k], "ModifyLunaClientResponse contains unknown key " .. tostring(k))
+		assert(keys.ModifyLunaClientResponse[k], "ModifyLunaClientResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyLunaClientResponse
 --  
--- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
-function M.ModifyLunaClientResponse(ClientArn, ...)
+-- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
+function M.ModifyLunaClientResponse(_ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLunaClientResponse")
 	local t = { 
-		["ClientArn"] = ClientArn,
+		["ClientArn"] = _ClientArn,
 	}
-	M.AssertModifyLunaClientResponse(t)
+	asserts.AssertModifyLunaClientResponse(t)
 	return t
 end
 
-local AddTagsToResourceResponse_keys = { "Status" = true, nil }
+keys.AddTagsToResourceResponse = { ["Status"] = true, nil }
 
-function M.AssertAddTagsToResourceResponse(struct)
+function asserts.AssertAddTagsToResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsToResourceResponse to be of type 'table'")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertString(struct["Status"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
 	for k,_ in pairs(struct) do
-		assert(AddTagsToResourceResponse_keys[k], "AddTagsToResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.AddTagsToResourceResponse[k], "AddTagsToResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddTagsToResourceResponse
 --  
--- @param Status [String] <p>The status of the operation.</p>
+-- @param _Status [String] <p>The status of the operation.</p>
 -- Required parameter: Status
-function M.AddTagsToResourceResponse(Status, ...)
+function M.AddTagsToResourceResponse(_Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceResponse")
 	local t = { 
-		["Status"] = Status,
+		["Status"] = _Status,
 	}
-	M.AssertAddTagsToResourceResponse(t)
+	asserts.AssertAddTagsToResourceResponse(t)
 	return t
 end
 
-local GetConfigResponse_keys = { "ConfigType" = true, "ConfigCred" = true, "ConfigFile" = true, nil }
+keys.GetConfigResponse = { ["ConfigType"] = true, ["ConfigCred"] = true, ["ConfigFile"] = true, nil }
 
-function M.AssertGetConfigResponse(struct)
+function asserts.AssertGetConfigResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetConfigResponse to be of type 'table'")
-	if struct["ConfigType"] then M.AssertString(struct["ConfigType"]) end
-	if struct["ConfigCred"] then M.AssertString(struct["ConfigCred"]) end
-	if struct["ConfigFile"] then M.AssertString(struct["ConfigFile"]) end
+	if struct["ConfigType"] then asserts.AssertString(struct["ConfigType"]) end
+	if struct["ConfigCred"] then asserts.AssertString(struct["ConfigCred"]) end
+	if struct["ConfigFile"] then asserts.AssertString(struct["ConfigFile"]) end
 	for k,_ in pairs(struct) do
-		assert(GetConfigResponse_keys[k], "GetConfigResponse contains unknown key " .. tostring(k))
+		assert(keys.GetConfigResponse[k], "GetConfigResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetConfigResponse
 --  
--- @param ConfigType [String] <p>The type of credentials.</p>
--- @param ConfigCred [String] <p>The certificate file containing the server.pem files of the HSMs.</p>
--- @param ConfigFile [String] <p>The chrystoki.conf configuration file.</p>
-function M.GetConfigResponse(ConfigType, ConfigCred, ConfigFile, ...)
+-- @param _ConfigType [String] <p>The type of credentials.</p>
+-- @param _ConfigCred [String] <p>The certificate file containing the server.pem files of the HSMs.</p>
+-- @param _ConfigFile [String] <p>The chrystoki.conf configuration file.</p>
+function M.GetConfigResponse(_ConfigType, _ConfigCred, _ConfigFile, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetConfigResponse")
 	local t = { 
-		["ConfigType"] = ConfigType,
-		["ConfigCred"] = ConfigCred,
-		["ConfigFile"] = ConfigFile,
+		["ConfigType"] = _ConfigType,
+		["ConfigCred"] = _ConfigCred,
+		["ConfigFile"] = _ConfigFile,
 	}
-	M.AssertGetConfigResponse(t)
+	asserts.AssertGetConfigResponse(t)
 	return t
 end
 
-local DeleteHapgRequest_keys = { "HapgArn" = true, nil }
+keys.DeleteHapgRequest = { ["HapgArn"] = true, nil }
 
-function M.AssertDeleteHapgRequest(struct)
+function asserts.AssertDeleteHapgRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteHapgRequest to be of type 'table'")
 	assert(struct["HapgArn"], "Expected key HapgArn to exist in table")
-	if struct["HapgArn"] then M.AssertHapgArn(struct["HapgArn"]) end
+	if struct["HapgArn"] then asserts.AssertHapgArn(struct["HapgArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteHapgRequest_keys[k], "DeleteHapgRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteHapgRequest[k], "DeleteHapgRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteHapgRequest
 -- <p>Contains the inputs for the <a>DeleteHapg</a> action.</p>
--- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group to delete.</p>
+-- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group to delete.</p>
 -- Required parameter: HapgArn
-function M.DeleteHapgRequest(HapgArn, ...)
+function M.DeleteHapgRequest(_HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHapgRequest")
 	local t = { 
-		["HapgArn"] = HapgArn,
+		["HapgArn"] = _HapgArn,
 	}
-	M.AssertDeleteHapgRequest(t)
+	asserts.AssertDeleteHapgRequest(t)
 	return t
 end
 
-local DeleteHapgResponse_keys = { "Status" = true, nil }
+keys.DeleteHapgResponse = { ["Status"] = true, nil }
 
-function M.AssertDeleteHapgResponse(struct)
+function asserts.AssertDeleteHapgResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteHapgResponse to be of type 'table'")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertString(struct["Status"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteHapgResponse_keys[k], "DeleteHapgResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteHapgResponse[k], "DeleteHapgResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteHapgResponse
 -- <p>Contains the output of the <a>DeleteHapg</a> action.</p>
--- @param Status [String] <p>The status of the action.</p>
+-- @param _Status [String] <p>The status of the action.</p>
 -- Required parameter: Status
-function M.DeleteHapgResponse(Status, ...)
+function M.DeleteHapgResponse(_Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHapgResponse")
 	local t = { 
-		["Status"] = Status,
+		["Status"] = _Status,
 	}
-	M.AssertDeleteHapgResponse(t)
+	asserts.AssertDeleteHapgResponse(t)
 	return t
 end
 
-local ListHsmsRequest_keys = { "NextToken" = true, nil }
+keys.ListHsmsRequest = { ["NextToken"] = true, nil }
 
-function M.AssertListHsmsRequest(struct)
+function asserts.AssertListHsmsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListHsmsRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListHsmsRequest_keys[k], "ListHsmsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListHsmsRequest[k], "ListHsmsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListHsmsRequest
 --  
--- @param NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHsms</a>. Pass null if this is the first call.</p>
-function M.ListHsmsRequest(NextToken, ...)
+-- @param _NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHsms</a>. Pass null if this is the first call.</p>
+function M.ListHsmsRequest(_NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHsmsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListHsmsRequest(t)
+	asserts.AssertListHsmsRequest(t)
 	return t
 end
 
-local ModifyLunaClientRequest_keys = { "Certificate" = true, "ClientArn" = true, nil }
+keys.ModifyLunaClientRequest = { ["Certificate"] = true, ["ClientArn"] = true, nil }
 
-function M.AssertModifyLunaClientRequest(struct)
+function asserts.AssertModifyLunaClientRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyLunaClientRequest to be of type 'table'")
 	assert(struct["ClientArn"], "Expected key ClientArn to exist in table")
 	assert(struct["Certificate"], "Expected key Certificate to exist in table")
-	if struct["Certificate"] then M.AssertCertificate(struct["Certificate"]) end
-	if struct["ClientArn"] then M.AssertClientArn(struct["ClientArn"]) end
+	if struct["Certificate"] then asserts.AssertCertificate(struct["Certificate"]) end
+	if struct["ClientArn"] then asserts.AssertClientArn(struct["ClientArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyLunaClientRequest_keys[k], "ModifyLunaClientRequest contains unknown key " .. tostring(k))
+		assert(keys.ModifyLunaClientRequest[k], "ModifyLunaClientRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyLunaClientRequest
 --  
--- @param Certificate [Certificate] <p>The new certificate for the client.</p>
--- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
+-- @param _Certificate [Certificate] <p>The new certificate for the client.</p>
+-- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
 -- Required parameter: ClientArn
 -- Required parameter: Certificate
-function M.ModifyLunaClientRequest(Certificate, ClientArn, ...)
+function M.ModifyLunaClientRequest(_Certificate, _ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLunaClientRequest")
 	local t = { 
-		["Certificate"] = Certificate,
-		["ClientArn"] = ClientArn,
+		["Certificate"] = _Certificate,
+		["ClientArn"] = _ClientArn,
 	}
-	M.AssertModifyLunaClientRequest(t)
+	asserts.AssertModifyLunaClientRequest(t)
 	return t
 end
 
-local DescribeLunaClientRequest_keys = { "CertificateFingerprint" = true, "ClientArn" = true, nil }
+keys.DescribeLunaClientRequest = { ["CertificateFingerprint"] = true, ["ClientArn"] = true, nil }
 
-function M.AssertDescribeLunaClientRequest(struct)
+function asserts.AssertDescribeLunaClientRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLunaClientRequest to be of type 'table'")
-	if struct["CertificateFingerprint"] then M.AssertCertificateFingerprint(struct["CertificateFingerprint"]) end
-	if struct["ClientArn"] then M.AssertClientArn(struct["ClientArn"]) end
+	if struct["CertificateFingerprint"] then asserts.AssertCertificateFingerprint(struct["CertificateFingerprint"]) end
+	if struct["ClientArn"] then asserts.AssertClientArn(struct["ClientArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLunaClientRequest_keys[k], "DescribeLunaClientRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeLunaClientRequest[k], "DescribeLunaClientRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLunaClientRequest
 --  
--- @param CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
--- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
-function M.DescribeLunaClientRequest(CertificateFingerprint, ClientArn, ...)
+-- @param _CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
+-- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
+function M.DescribeLunaClientRequest(_CertificateFingerprint, _ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLunaClientRequest")
 	local t = { 
-		["CertificateFingerprint"] = CertificateFingerprint,
-		["ClientArn"] = ClientArn,
+		["CertificateFingerprint"] = _CertificateFingerprint,
+		["ClientArn"] = _ClientArn,
 	}
-	M.AssertDescribeLunaClientRequest(t)
+	asserts.AssertDescribeLunaClientRequest(t)
 	return t
 end
 
-local CreateHapgResponse_keys = { "HapgArn" = true, nil }
+keys.CreateHapgResponse = { ["HapgArn"] = true, nil }
 
-function M.AssertCreateHapgResponse(struct)
+function asserts.AssertCreateHapgResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateHapgResponse to be of type 'table'")
-	if struct["HapgArn"] then M.AssertHapgArn(struct["HapgArn"]) end
+	if struct["HapgArn"] then asserts.AssertHapgArn(struct["HapgArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateHapgResponse_keys[k], "CreateHapgResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateHapgResponse[k], "CreateHapgResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateHapgResponse
 -- <p>Contains the output of the <a>CreateHAPartitionGroup</a> action.</p>
--- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
-function M.CreateHapgResponse(HapgArn, ...)
+-- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
+function M.CreateHapgResponse(_HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHapgResponse")
 	local t = { 
-		["HapgArn"] = HapgArn,
+		["HapgArn"] = _HapgArn,
 	}
-	M.AssertCreateHapgResponse(t)
+	asserts.AssertCreateHapgResponse(t)
 	return t
 end
 
-local ModifyHsmRequest_keys = { "IamRoleArn" = true, "EniIp" = true, "ExternalId" = true, "SubnetId" = true, "SyslogIp" = true, "HsmArn" = true, nil }
+keys.ModifyHsmRequest = { ["IamRoleArn"] = true, ["EniIp"] = true, ["ExternalId"] = true, ["SubnetId"] = true, ["SyslogIp"] = true, ["HsmArn"] = true, nil }
 
-function M.AssertModifyHsmRequest(struct)
+function asserts.AssertModifyHsmRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyHsmRequest to be of type 'table'")
 	assert(struct["HsmArn"], "Expected key HsmArn to exist in table")
-	if struct["IamRoleArn"] then M.AssertIamRoleArn(struct["IamRoleArn"]) end
-	if struct["EniIp"] then M.AssertIpAddress(struct["EniIp"]) end
-	if struct["ExternalId"] then M.AssertExternalId(struct["ExternalId"]) end
-	if struct["SubnetId"] then M.AssertSubnetId(struct["SubnetId"]) end
-	if struct["SyslogIp"] then M.AssertIpAddress(struct["SyslogIp"]) end
-	if struct["HsmArn"] then M.AssertHsmArn(struct["HsmArn"]) end
+	if struct["IamRoleArn"] then asserts.AssertIamRoleArn(struct["IamRoleArn"]) end
+	if struct["EniIp"] then asserts.AssertIpAddress(struct["EniIp"]) end
+	if struct["ExternalId"] then asserts.AssertExternalId(struct["ExternalId"]) end
+	if struct["SubnetId"] then asserts.AssertSubnetId(struct["SubnetId"]) end
+	if struct["SyslogIp"] then asserts.AssertIpAddress(struct["SyslogIp"]) end
+	if struct["HsmArn"] then asserts.AssertHsmArn(struct["HsmArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyHsmRequest_keys[k], "ModifyHsmRequest contains unknown key " .. tostring(k))
+		assert(keys.ModifyHsmRequest[k], "ModifyHsmRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyHsmRequest
 -- <p>Contains the inputs for the <a>ModifyHsm</a> operation.</p>
--- @param IamRoleArn [IamRoleArn] <p>The new IAM role ARN.</p>
--- @param EniIp [IpAddress] <p>The new IP address for the elastic network interface (ENI) attached to the HSM.</p> <p>If the HSM is moved to a different subnet, and an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the new subnet.</p>
--- @param ExternalId [ExternalId] <p>The new external ID.</p>
--- @param SubnetId [SubnetId] <p>The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.</p>
--- @param SyslogIp [IpAddress] <p>The new IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
--- @param HsmArn [HsmArn] <p>The ARN of the HSM to modify.</p>
+-- @param _IamRoleArn [IamRoleArn] <p>The new IAM role ARN.</p>
+-- @param _EniIp [IpAddress] <p>The new IP address for the elastic network interface (ENI) attached to the HSM.</p> <p>If the HSM is moved to a different subnet, and an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the new subnet.</p>
+-- @param _ExternalId [ExternalId] <p>The new external ID.</p>
+-- @param _SubnetId [SubnetId] <p>The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.</p>
+-- @param _SyslogIp [IpAddress] <p>The new IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
+-- @param _HsmArn [HsmArn] <p>The ARN of the HSM to modify.</p>
 -- Required parameter: HsmArn
-function M.ModifyHsmRequest(IamRoleArn, EniIp, ExternalId, SubnetId, SyslogIp, HsmArn, ...)
+function M.ModifyHsmRequest(_IamRoleArn, _EniIp, _ExternalId, _SubnetId, _SyslogIp, _HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHsmRequest")
 	local t = { 
-		["IamRoleArn"] = IamRoleArn,
-		["EniIp"] = EniIp,
-		["ExternalId"] = ExternalId,
-		["SubnetId"] = SubnetId,
-		["SyslogIp"] = SyslogIp,
-		["HsmArn"] = HsmArn,
+		["IamRoleArn"] = _IamRoleArn,
+		["EniIp"] = _EniIp,
+		["ExternalId"] = _ExternalId,
+		["SubnetId"] = _SubnetId,
+		["SyslogIp"] = _SyslogIp,
+		["HsmArn"] = _HsmArn,
 	}
-	M.AssertModifyHsmRequest(t)
+	asserts.AssertModifyHsmRequest(t)
 	return t
 end
 
-local ListAvailableZonesResponse_keys = { "AZList" = true, nil }
+keys.ListAvailableZonesResponse = { ["AZList"] = true, nil }
 
-function M.AssertListAvailableZonesResponse(struct)
+function asserts.AssertListAvailableZonesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAvailableZonesResponse to be of type 'table'")
-	if struct["AZList"] then M.AssertAZList(struct["AZList"]) end
+	if struct["AZList"] then asserts.AssertAZList(struct["AZList"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAvailableZonesResponse_keys[k], "ListAvailableZonesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAvailableZonesResponse[k], "ListAvailableZonesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAvailableZonesResponse
 --  
--- @param AZList [AZList] <p>The list of Availability Zones that have available AWS CloudHSM capacity.</p>
-function M.ListAvailableZonesResponse(AZList, ...)
+-- @param _AZList [AZList] <p>The list of Availability Zones that have available AWS CloudHSM capacity.</p>
+function M.ListAvailableZonesResponse(_AZList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAvailableZonesResponse")
 	local t = { 
-		["AZList"] = AZList,
+		["AZList"] = _AZList,
 	}
-	M.AssertListAvailableZonesResponse(t)
+	asserts.AssertListAvailableZonesResponse(t)
 	return t
 end
 
-local CreateHsmRequest_keys = { "SshKey" = true, "SubscriptionType" = true, "IamRoleArn" = true, "EniIp" = true, "ExternalId" = true, "ClientToken" = true, "SubnetId" = true, "SyslogIp" = true, nil }
+keys.CreateHsmRequest = { ["SshKey"] = true, ["SubscriptionType"] = true, ["IamRoleArn"] = true, ["EniIp"] = true, ["ExternalId"] = true, ["ClientToken"] = true, ["SubnetId"] = true, ["SyslogIp"] = true, nil }
 
-function M.AssertCreateHsmRequest(struct)
+function asserts.AssertCreateHsmRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateHsmRequest to be of type 'table'")
 	assert(struct["SubnetId"], "Expected key SubnetId to exist in table")
 	assert(struct["SshKey"], "Expected key SshKey to exist in table")
 	assert(struct["IamRoleArn"], "Expected key IamRoleArn to exist in table")
 	assert(struct["SubscriptionType"], "Expected key SubscriptionType to exist in table")
-	if struct["SshKey"] then M.AssertSshKey(struct["SshKey"]) end
-	if struct["SubscriptionType"] then M.AssertSubscriptionType(struct["SubscriptionType"]) end
-	if struct["IamRoleArn"] then M.AssertIamRoleArn(struct["IamRoleArn"]) end
-	if struct["EniIp"] then M.AssertIpAddress(struct["EniIp"]) end
-	if struct["ExternalId"] then M.AssertExternalId(struct["ExternalId"]) end
-	if struct["ClientToken"] then M.AssertClientToken(struct["ClientToken"]) end
-	if struct["SubnetId"] then M.AssertSubnetId(struct["SubnetId"]) end
-	if struct["SyslogIp"] then M.AssertIpAddress(struct["SyslogIp"]) end
+	if struct["SshKey"] then asserts.AssertSshKey(struct["SshKey"]) end
+	if struct["SubscriptionType"] then asserts.AssertSubscriptionType(struct["SubscriptionType"]) end
+	if struct["IamRoleArn"] then asserts.AssertIamRoleArn(struct["IamRoleArn"]) end
+	if struct["EniIp"] then asserts.AssertIpAddress(struct["EniIp"]) end
+	if struct["ExternalId"] then asserts.AssertExternalId(struct["ExternalId"]) end
+	if struct["ClientToken"] then asserts.AssertClientToken(struct["ClientToken"]) end
+	if struct["SubnetId"] then asserts.AssertSubnetId(struct["SubnetId"]) end
+	if struct["SyslogIp"] then asserts.AssertIpAddress(struct["SyslogIp"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateHsmRequest_keys[k], "CreateHsmRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateHsmRequest[k], "CreateHsmRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateHsmRequest
 -- <p>Contains the inputs for the <a>CreateHsm</a> operation.</p>
--- @param SshKey [SshKey] <p>The SSH public key to install on the HSM.</p>
--- @param SubscriptionType [SubscriptionType] <p>Contains the inputs for the <a>CreateHsm</a> operation.</p>
--- @param IamRoleArn [IamRoleArn] <p>The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.</p>
--- @param EniIp [IpAddress] <p>The IP address to assign to the HSM's ENI.</p> <p>If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.</p>
--- @param ExternalId [ExternalId] <p>The external ID from <b>IamRoleArn</b>, if present.</p>
--- @param ClientToken [ClientToken] <p>A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.</p>
--- @param SubnetId [SubnetId] <p>The identifier of the subnet in your VPC in which to place the HSM.</p>
--- @param SyslogIp [IpAddress] <p>The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
+-- @param _SshKey [SshKey] <p>The SSH public key to install on the HSM.</p>
+-- @param _SubscriptionType [SubscriptionType] 
+-- @param _IamRoleArn [IamRoleArn] <p>The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.</p>
+-- @param _EniIp [IpAddress] <p>The IP address to assign to the HSM's ENI.</p> <p>If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.</p>
+-- @param _ExternalId [ExternalId] <p>The external ID from <b>IamRoleArn</b>, if present.</p>
+-- @param _ClientToken [ClientToken] <p>A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.</p>
+-- @param _SubnetId [SubnetId] <p>The identifier of the subnet in your VPC in which to place the HSM.</p>
+-- @param _SyslogIp [IpAddress] <p>The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
 -- Required parameter: SubnetId
 -- Required parameter: SshKey
 -- Required parameter: IamRoleArn
 -- Required parameter: SubscriptionType
-function M.CreateHsmRequest(SshKey, SubscriptionType, IamRoleArn, EniIp, ExternalId, ClientToken, SubnetId, SyslogIp, ...)
+function M.CreateHsmRequest(_SshKey, _SubscriptionType, _IamRoleArn, _EniIp, _ExternalId, _ClientToken, _SubnetId, _SyslogIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHsmRequest")
 	local t = { 
-		["SshKey"] = SshKey,
-		["SubscriptionType"] = SubscriptionType,
-		["IamRoleArn"] = IamRoleArn,
-		["EniIp"] = EniIp,
-		["ExternalId"] = ExternalId,
-		["ClientToken"] = ClientToken,
-		["SubnetId"] = SubnetId,
-		["SyslogIp"] = SyslogIp,
+		["SshKey"] = _SshKey,
+		["SubscriptionType"] = _SubscriptionType,
+		["IamRoleArn"] = _IamRoleArn,
+		["EniIp"] = _EniIp,
+		["ExternalId"] = _ExternalId,
+		["ClientToken"] = _ClientToken,
+		["SubnetId"] = _SubnetId,
+		["SyslogIp"] = _SyslogIp,
 	}
-	M.AssertCreateHsmRequest(t)
+	asserts.AssertCreateHsmRequest(t)
 	return t
 end
 
-local DeleteHsmResponse_keys = { "Status" = true, nil }
+keys.DeleteHsmResponse = { ["Status"] = true, nil }
 
-function M.AssertDeleteHsmResponse(struct)
+function asserts.AssertDeleteHsmResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteHsmResponse to be of type 'table'")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertString(struct["Status"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteHsmResponse_keys[k], "DeleteHsmResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteHsmResponse[k], "DeleteHsmResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteHsmResponse
 -- <p>Contains the output of the <a>DeleteHsm</a> operation.</p>
--- @param Status [String] <p>The status of the operation.</p>
+-- @param _Status [String] <p>The status of the operation.</p>
 -- Required parameter: Status
-function M.DeleteHsmResponse(Status, ...)
+function M.DeleteHsmResponse(_Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHsmResponse")
 	local t = { 
-		["Status"] = Status,
+		["Status"] = _Status,
 	}
-	M.AssertDeleteHsmResponse(t)
+	asserts.AssertDeleteHsmResponse(t)
 	return t
 end
 
-local CreateLunaClientRequest_keys = { "Certificate" = true, "Label" = true, nil }
+keys.CreateLunaClientRequest = { ["Certificate"] = true, ["Label"] = true, nil }
 
-function M.AssertCreateLunaClientRequest(struct)
+function asserts.AssertCreateLunaClientRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLunaClientRequest to be of type 'table'")
 	assert(struct["Certificate"], "Expected key Certificate to exist in table")
-	if struct["Certificate"] then M.AssertCertificate(struct["Certificate"]) end
-	if struct["Label"] then M.AssertClientLabel(struct["Label"]) end
+	if struct["Certificate"] then asserts.AssertCertificate(struct["Certificate"]) end
+	if struct["Label"] then asserts.AssertClientLabel(struct["Label"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLunaClientRequest_keys[k], "CreateLunaClientRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateLunaClientRequest[k], "CreateLunaClientRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLunaClientRequest
 -- <p>Contains the inputs for the <a>CreateLunaClient</a> action.</p>
--- @param Certificate [Certificate] <p>The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.</p>
--- @param Label [ClientLabel] <p>The label for the client.</p>
+-- @param _Certificate [Certificate] <p>The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.</p>
+-- @param _Label [ClientLabel] <p>The label for the client.</p>
 -- Required parameter: Certificate
-function M.CreateLunaClientRequest(Certificate, Label, ...)
+function M.CreateLunaClientRequest(_Certificate, _Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLunaClientRequest")
 	local t = { 
-		["Certificate"] = Certificate,
-		["Label"] = Label,
+		["Certificate"] = _Certificate,
+		["Label"] = _Label,
 	}
-	M.AssertCreateLunaClientRequest(t)
+	asserts.AssertCreateLunaClientRequest(t)
 	return t
 end
 
-local DescribeHsmResponse_keys = { "Status" = true, "SubscriptionStartDate" = true, "AvailabilityZone" = true, "EniId" = true, "HsmType" = true, "SshPublicKey" = true, "SubscriptionType" = true, "SerialNumber" = true, "IamRoleArn" = true, "SubscriptionEndDate" = true, "EniIp" = true, "SoftwareVersion" = true, "VpcId" = true, "ServerCertUri" = true, "SubnetId" = true, "SshKeyLastUpdated" = true, "Partitions" = true, "ServerCertLastUpdated" = true, "StatusDetails" = true, "VendorName" = true, "HsmArn" = true, nil }
+keys.DescribeHsmResponse = { ["Status"] = true, ["SubscriptionStartDate"] = true, ["AvailabilityZone"] = true, ["EniId"] = true, ["HsmType"] = true, ["SshPublicKey"] = true, ["SubscriptionType"] = true, ["SerialNumber"] = true, ["IamRoleArn"] = true, ["SubscriptionEndDate"] = true, ["EniIp"] = true, ["SoftwareVersion"] = true, ["VpcId"] = true, ["ServerCertUri"] = true, ["SubnetId"] = true, ["SshKeyLastUpdated"] = true, ["Partitions"] = true, ["ServerCertLastUpdated"] = true, ["StatusDetails"] = true, ["VendorName"] = true, ["HsmArn"] = true, nil }
 
-function M.AssertDescribeHsmResponse(struct)
+function asserts.AssertDescribeHsmResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeHsmResponse to be of type 'table'")
-	if struct["Status"] then M.AssertHsmStatus(struct["Status"]) end
-	if struct["SubscriptionStartDate"] then M.AssertTimestamp(struct["SubscriptionStartDate"]) end
-	if struct["AvailabilityZone"] then M.AssertAZ(struct["AvailabilityZone"]) end
-	if struct["EniId"] then M.AssertEniId(struct["EniId"]) end
-	if struct["HsmType"] then M.AssertString(struct["HsmType"]) end
-	if struct["SshPublicKey"] then M.AssertSshKey(struct["SshPublicKey"]) end
-	if struct["SubscriptionType"] then M.AssertSubscriptionType(struct["SubscriptionType"]) end
-	if struct["SerialNumber"] then M.AssertHsmSerialNumber(struct["SerialNumber"]) end
-	if struct["IamRoleArn"] then M.AssertIamRoleArn(struct["IamRoleArn"]) end
-	if struct["SubscriptionEndDate"] then M.AssertTimestamp(struct["SubscriptionEndDate"]) end
-	if struct["EniIp"] then M.AssertIpAddress(struct["EniIp"]) end
-	if struct["SoftwareVersion"] then M.AssertString(struct["SoftwareVersion"]) end
-	if struct["VpcId"] then M.AssertVpcId(struct["VpcId"]) end
-	if struct["ServerCertUri"] then M.AssertString(struct["ServerCertUri"]) end
-	if struct["SubnetId"] then M.AssertSubnetId(struct["SubnetId"]) end
-	if struct["SshKeyLastUpdated"] then M.AssertTimestamp(struct["SshKeyLastUpdated"]) end
-	if struct["Partitions"] then M.AssertPartitionList(struct["Partitions"]) end
-	if struct["ServerCertLastUpdated"] then M.AssertTimestamp(struct["ServerCertLastUpdated"]) end
-	if struct["StatusDetails"] then M.AssertString(struct["StatusDetails"]) end
-	if struct["VendorName"] then M.AssertString(struct["VendorName"]) end
-	if struct["HsmArn"] then M.AssertHsmArn(struct["HsmArn"]) end
+	if struct["Status"] then asserts.AssertHsmStatus(struct["Status"]) end
+	if struct["SubscriptionStartDate"] then asserts.AssertTimestamp(struct["SubscriptionStartDate"]) end
+	if struct["AvailabilityZone"] then asserts.AssertAZ(struct["AvailabilityZone"]) end
+	if struct["EniId"] then asserts.AssertEniId(struct["EniId"]) end
+	if struct["HsmType"] then asserts.AssertString(struct["HsmType"]) end
+	if struct["SshPublicKey"] then asserts.AssertSshKey(struct["SshPublicKey"]) end
+	if struct["SubscriptionType"] then asserts.AssertSubscriptionType(struct["SubscriptionType"]) end
+	if struct["SerialNumber"] then asserts.AssertHsmSerialNumber(struct["SerialNumber"]) end
+	if struct["IamRoleArn"] then asserts.AssertIamRoleArn(struct["IamRoleArn"]) end
+	if struct["SubscriptionEndDate"] then asserts.AssertTimestamp(struct["SubscriptionEndDate"]) end
+	if struct["EniIp"] then asserts.AssertIpAddress(struct["EniIp"]) end
+	if struct["SoftwareVersion"] then asserts.AssertString(struct["SoftwareVersion"]) end
+	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
+	if struct["ServerCertUri"] then asserts.AssertString(struct["ServerCertUri"]) end
+	if struct["SubnetId"] then asserts.AssertSubnetId(struct["SubnetId"]) end
+	if struct["SshKeyLastUpdated"] then asserts.AssertTimestamp(struct["SshKeyLastUpdated"]) end
+	if struct["Partitions"] then asserts.AssertPartitionList(struct["Partitions"]) end
+	if struct["ServerCertLastUpdated"] then asserts.AssertTimestamp(struct["ServerCertLastUpdated"]) end
+	if struct["StatusDetails"] then asserts.AssertString(struct["StatusDetails"]) end
+	if struct["VendorName"] then asserts.AssertString(struct["VendorName"]) end
+	if struct["HsmArn"] then asserts.AssertHsmArn(struct["HsmArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeHsmResponse_keys[k], "DescribeHsmResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeHsmResponse[k], "DescribeHsmResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeHsmResponse
 -- <p>Contains the output of the <a>DescribeHsm</a> operation.</p>
--- @param Status [HsmStatus] <p>The status of the HSM.</p>
--- @param SubscriptionStartDate [Timestamp] <p>The subscription start date.</p>
--- @param AvailabilityZone [AZ] <p>The Availability Zone that the HSM is in.</p>
--- @param EniId [EniId] <p>The identifier of the elastic network interface (ENI) attached to the HSM.</p>
--- @param HsmType [String] <p>The HSM model type.</p>
--- @param SshPublicKey [SshKey] <p>The public SSH key.</p>
--- @param SubscriptionType [SubscriptionType] <p>Contains the output of the <a>DescribeHsm</a> operation.</p>
--- @param SerialNumber [HsmSerialNumber] <p>The serial number of the HSM.</p>
--- @param IamRoleArn [IamRoleArn] <p>The ARN of the IAM role assigned to the HSM.</p>
--- @param SubscriptionEndDate [Timestamp] <p>The subscription end date.</p>
--- @param EniIp [IpAddress] <p>The IP address assigned to the HSM's ENI.</p>
--- @param SoftwareVersion [String] <p>The HSM software version.</p>
--- @param VpcId [VpcId] <p>The identifier of the VPC that the HSM is in.</p>
--- @param ServerCertUri [String] <p>The URI of the certificate server.</p>
--- @param SubnetId [SubnetId] <p>The identifier of the subnet that the HSM is in.</p>
--- @param SshKeyLastUpdated [Timestamp] <p>The date and time that the SSH key was last updated.</p>
--- @param Partitions [PartitionList] <p>The list of partitions on the HSM.</p>
--- @param ServerCertLastUpdated [Timestamp] <p>The date and time that the server certificate was last updated.</p>
--- @param StatusDetails [String] <p>Contains additional information about the status of the HSM.</p>
--- @param VendorName [String] <p>The name of the HSM vendor.</p>
--- @param HsmArn [HsmArn] <p>The ARN of the HSM.</p>
-function M.DescribeHsmResponse(Status, SubscriptionStartDate, AvailabilityZone, EniId, HsmType, SshPublicKey, SubscriptionType, SerialNumber, IamRoleArn, SubscriptionEndDate, EniIp, SoftwareVersion, VpcId, ServerCertUri, SubnetId, SshKeyLastUpdated, Partitions, ServerCertLastUpdated, StatusDetails, VendorName, HsmArn, ...)
+-- @param _Status [HsmStatus] <p>The status of the HSM.</p>
+-- @param _SubscriptionStartDate [Timestamp] <p>The subscription start date.</p>
+-- @param _AvailabilityZone [AZ] <p>The Availability Zone that the HSM is in.</p>
+-- @param _EniId [EniId] <p>The identifier of the elastic network interface (ENI) attached to the HSM.</p>
+-- @param _HsmType [String] <p>The HSM model type.</p>
+-- @param _SshPublicKey [SshKey] <p>The public SSH key.</p>
+-- @param _SubscriptionType [SubscriptionType] 
+-- @param _SerialNumber [HsmSerialNumber] <p>The serial number of the HSM.</p>
+-- @param _IamRoleArn [IamRoleArn] <p>The ARN of the IAM role assigned to the HSM.</p>
+-- @param _SubscriptionEndDate [Timestamp] <p>The subscription end date.</p>
+-- @param _EniIp [IpAddress] <p>The IP address assigned to the HSM's ENI.</p>
+-- @param _SoftwareVersion [String] <p>The HSM software version.</p>
+-- @param _VpcId [VpcId] <p>The identifier of the VPC that the HSM is in.</p>
+-- @param _ServerCertUri [String] <p>The URI of the certificate server.</p>
+-- @param _SubnetId [SubnetId] <p>The identifier of the subnet that the HSM is in.</p>
+-- @param _SshKeyLastUpdated [Timestamp] <p>The date and time that the SSH key was last updated.</p>
+-- @param _Partitions [PartitionList] <p>The list of partitions on the HSM.</p>
+-- @param _ServerCertLastUpdated [Timestamp] <p>The date and time that the server certificate was last updated.</p>
+-- @param _StatusDetails [String] <p>Contains additional information about the status of the HSM.</p>
+-- @param _VendorName [String] <p>The name of the HSM vendor.</p>
+-- @param _HsmArn [HsmArn] <p>The ARN of the HSM.</p>
+function M.DescribeHsmResponse(_Status, _SubscriptionStartDate, _AvailabilityZone, _EniId, _HsmType, _SshPublicKey, _SubscriptionType, _SerialNumber, _IamRoleArn, _SubscriptionEndDate, _EniIp, _SoftwareVersion, _VpcId, _ServerCertUri, _SubnetId, _SshKeyLastUpdated, _Partitions, _ServerCertLastUpdated, _StatusDetails, _VendorName, _HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHsmResponse")
 	local t = { 
-		["Status"] = Status,
-		["SubscriptionStartDate"] = SubscriptionStartDate,
-		["AvailabilityZone"] = AvailabilityZone,
-		["EniId"] = EniId,
-		["HsmType"] = HsmType,
-		["SshPublicKey"] = SshPublicKey,
-		["SubscriptionType"] = SubscriptionType,
-		["SerialNumber"] = SerialNumber,
-		["IamRoleArn"] = IamRoleArn,
-		["SubscriptionEndDate"] = SubscriptionEndDate,
-		["EniIp"] = EniIp,
-		["SoftwareVersion"] = SoftwareVersion,
-		["VpcId"] = VpcId,
-		["ServerCertUri"] = ServerCertUri,
-		["SubnetId"] = SubnetId,
-		["SshKeyLastUpdated"] = SshKeyLastUpdated,
-		["Partitions"] = Partitions,
-		["ServerCertLastUpdated"] = ServerCertLastUpdated,
-		["StatusDetails"] = StatusDetails,
-		["VendorName"] = VendorName,
-		["HsmArn"] = HsmArn,
+		["Status"] = _Status,
+		["SubscriptionStartDate"] = _SubscriptionStartDate,
+		["AvailabilityZone"] = _AvailabilityZone,
+		["EniId"] = _EniId,
+		["HsmType"] = _HsmType,
+		["SshPublicKey"] = _SshPublicKey,
+		["SubscriptionType"] = _SubscriptionType,
+		["SerialNumber"] = _SerialNumber,
+		["IamRoleArn"] = _IamRoleArn,
+		["SubscriptionEndDate"] = _SubscriptionEndDate,
+		["EniIp"] = _EniIp,
+		["SoftwareVersion"] = _SoftwareVersion,
+		["VpcId"] = _VpcId,
+		["ServerCertUri"] = _ServerCertUri,
+		["SubnetId"] = _SubnetId,
+		["SshKeyLastUpdated"] = _SshKeyLastUpdated,
+		["Partitions"] = _Partitions,
+		["ServerCertLastUpdated"] = _ServerCertLastUpdated,
+		["StatusDetails"] = _StatusDetails,
+		["VendorName"] = _VendorName,
+		["HsmArn"] = _HsmArn,
 	}
-	M.AssertDescribeHsmResponse(t)
+	asserts.AssertDescribeHsmResponse(t)
 	return t
 end
 
-local CloudHsmInternalException_keys = { nil }
+keys.CloudHsmInternalException = { nil }
 
-function M.AssertCloudHsmInternalException(struct)
+function asserts.AssertCloudHsmInternalException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CloudHsmInternalException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CloudHsmInternalException_keys[k], "CloudHsmInternalException contains unknown key " .. tostring(k))
+		assert(keys.CloudHsmInternalException[k], "CloudHsmInternalException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1234,127 +1237,120 @@ function M.CloudHsmInternalException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudHsmInternalException")
 	local t = { 
 	}
-	M.AssertCloudHsmInternalException(t)
+	asserts.AssertCloudHsmInternalException(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
 	assert(struct["Value"], "Expected key Value to exist in table")
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>A key-value pair that identifies or specifies metadata about an AWS CloudHSM resource.</p>
--- @param Value [TagValue] <p>The value of the tag.</p>
--- @param Key [TagKey] <p>The key of the tag.</p>
+-- @param _Value [TagValue] <p>The value of the tag.</p>
+-- @param _Key [TagKey] <p>The key of the tag.</p>
 -- Required parameter: Key
 -- Required parameter: Value
-function M.Tag(Value, Key, ...)
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-function M.AssertCertificate(str)
+function asserts.AssertCertificate(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Certificate to be of type 'string'")
 	assert(#str <= 2400, "Expected string to be max 2400 characters")
 	assert(#str >= 600, "Expected string to be min 600 characters")
-	assert(str:match("[%w :+=./%n-]*"), "Expected string to match pattern '[%w :+=./%n-]*'")
 end
 
 --  
 function M.Certificate(str)
-	M.AssertCertificate(str)
+	asserts.AssertCertificate(str)
 	return str
 end
 
-function M.AssertPartitionSerial(str)
+function asserts.AssertPartitionSerial(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PartitionSerial to be of type 'string'")
-	assert(str:match("%d{6,12}"), "Expected string to match pattern '%d{6,12}'")
 end
 
 --  
 function M.PartitionSerial(str)
-	M.AssertPartitionSerial(str)
+	asserts.AssertPartitionSerial(str)
 	return str
 end
 
-function M.AssertPartitionArn(str)
+function asserts.AssertPartitionArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PartitionArn to be of type 'string'")
-	assert(str:match("arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:hsm-[0-9a-f]{8}/partition-[0-9]{6,12}"), "Expected string to match pattern 'arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:hsm-[0-9a-f]{8}/partition-[0-9]{6,12}'")
 end
 
 --  
 function M.PartitionArn(str)
-	M.AssertPartitionArn(str)
+	asserts.AssertPartitionArn(str)
 	return str
 end
 
-function M.AssertLabel(str)
+function asserts.AssertLabel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Label to be of type 'string'")
-	assert(str:match("[a-zA-Z0-9_.-]{1,64}"), "Expected string to match pattern '[a-zA-Z0-9_.-]{1,64}'")
 end
 
 --  
 function M.Label(str)
-	M.AssertLabel(str)
+	asserts.AssertLabel(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
-	assert(str:match("[%w :+=./%%-]*"), "Expected string to match pattern '[%w :+=./%%-]*'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertHsmArn(str)
+function asserts.AssertHsmArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HsmArn to be of type 'string'")
-	assert(str:match("arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:hsm-[0-9a-f]{8}"), "Expected string to match pattern 'arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:hsm-[0-9a-f]{8}'")
 end
 
 -- <p>An ARN that identifies an HSM.</p>
 function M.HsmArn(str)
-	M.AssertHsmArn(str)
+	asserts.AssertHsmArn(str)
 	return str
 end
 
-function M.AssertIpAddress(str)
+function asserts.AssertIpAddress(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IpAddress to be of type 'string'")
-	assert(str:match("%d{1,3}%.%d{1,3}%.%d{1,3}%.%d{1,3}"), "Expected string to match pattern '%d{1,3}%.%d{1,3}%.%d{1,3}%.%d{1,3}'")
 end
 
 --  
 function M.IpAddress(str)
-	M.AssertIpAddress(str)
+	asserts.AssertIpAddress(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -1363,141 +1359,132 @@ end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertEniId(str)
+function asserts.AssertEniId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EniId to be of type 'string'")
-	assert(str:match("eni-[0-9a-f]{8}"), "Expected string to match pattern 'eni-[0-9a-f]{8}'")
 end
 
 --  
 function M.EniId(str)
-	M.AssertEniId(str)
+	asserts.AssertEniId(str)
 	return str
 end
 
-function M.AssertSshKey(str)
+function asserts.AssertSshKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SshKey to be of type 'string'")
-	assert(str:match("[a-zA-Z0-9+/= ._:%%@-]*"), "Expected string to match pattern '[a-zA-Z0-9+/= ._:%%@-]*'")
 end
 
 --  
 function M.SshKey(str)
-	M.AssertSshKey(str)
+	asserts.AssertSshKey(str)
 	return str
 end
 
-function M.AssertPaginationToken(str)
+function asserts.AssertPaginationToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationToken to be of type 'string'")
-	assert(str:match("[a-zA-Z0-9+/]*"), "Expected string to match pattern '[a-zA-Z0-9+/]*'")
 end
 
 --  
 function M.PaginationToken(str)
-	M.AssertPaginationToken(str)
+	asserts.AssertPaginationToken(str)
 	return str
 end
 
-function M.AssertHsmSerialNumber(str)
+function asserts.AssertHsmSerialNumber(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HsmSerialNumber to be of type 'string'")
-	assert(str:match("%d{1,16}"), "Expected string to match pattern '%d{1,16}'")
 end
 
 --  
 function M.HsmSerialNumber(str)
-	M.AssertHsmSerialNumber(str)
+	asserts.AssertHsmSerialNumber(str)
 	return str
 end
 
-function M.AssertVpcId(str)
+function asserts.AssertVpcId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VpcId to be of type 'string'")
-	assert(str:match("vpc-[0-9a-f]{8}"), "Expected string to match pattern 'vpc-[0-9a-f]{8}'")
 end
 
 --  
 function M.VpcId(str)
-	M.AssertVpcId(str)
+	asserts.AssertVpcId(str)
 	return str
 end
 
-function M.AssertClientToken(str)
+function asserts.AssertClientToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientToken to be of type 'string'")
-	assert(str:match("[a-zA-Z0-9]{1,64}"), "Expected string to match pattern '[a-zA-Z0-9]{1,64}'")
 end
 
 --  
 function M.ClientToken(str)
-	M.AssertClientToken(str)
+	asserts.AssertClientToken(str)
 	return str
 end
 
-function M.AssertHapgArn(str)
+function asserts.AssertHapgArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HapgArn to be of type 'string'")
-	assert(str:match("arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:hapg-[0-9a-f]{8}"), "Expected string to match pattern 'arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:hapg-[0-9a-f]{8}'")
 end
 
 --  
 function M.HapgArn(str)
-	M.AssertHapgArn(str)
+	asserts.AssertHapgArn(str)
 	return str
 end
 
-function M.AssertHsmStatus(str)
+function asserts.AssertHsmStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HsmStatus to be of type 'string'")
 end
 
 --  
 function M.HsmStatus(str)
-	M.AssertHsmStatus(str)
+	asserts.AssertHsmStatus(str)
 	return str
 end
 
-function M.AssertClientVersion(str)
+function asserts.AssertClientVersion(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientVersion to be of type 'string'")
 end
 
 --  
 function M.ClientVersion(str)
-	M.AssertClientVersion(str)
+	asserts.AssertClientVersion(str)
 	return str
 end
 
-function M.AssertTimestamp(str)
+function asserts.AssertTimestamp(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Timestamp to be of type 'string'")
-	assert(str:match("%d*"), "Expected string to match pattern '%d*'")
 end
 
 --  
 function M.Timestamp(str)
-	M.AssertTimestamp(str)
+	asserts.AssertTimestamp(str)
 	return str
 end
 
-function M.AssertSubnetId(str)
+function asserts.AssertSubnetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubnetId to be of type 'string'")
-	assert(str:match("subnet-[0-9a-f]{8}"), "Expected string to match pattern 'subnet-[0-9a-f]{8}'")
 end
 
 --  
 function M.SubnetId(str)
-	M.AssertSubnetId(str)
+	asserts.AssertSubnetId(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -1505,231 +1492,225 @@ end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertExternalId(str)
+function asserts.AssertExternalId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExternalId to be of type 'string'")
-	assert(str:match("[%w :+=./-]*"), "Expected string to match pattern '[%w :+=./-]*'")
 end
 
 --  
 function M.ExternalId(str)
-	M.AssertExternalId(str)
+	asserts.AssertExternalId(str)
 	return str
 end
 
-function M.AssertClientLabel(str)
+function asserts.AssertClientLabel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientLabel to be of type 'string'")
-	assert(str:match("[a-zA-Z0-9_.-]{2,64}"), "Expected string to match pattern '[a-zA-Z0-9_.-]{2,64}'")
 end
 
 --  
 function M.ClientLabel(str)
-	M.AssertClientLabel(str)
+	asserts.AssertClientLabel(str)
 	return str
 end
 
-function M.AssertAZ(str)
+function asserts.AssertAZ(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AZ to be of type 'string'")
-	assert(str:match("[a-zA-Z0-9%-]*"), "Expected string to match pattern '[a-zA-Z0-9%-]*'")
 end
 
 --  
 function M.AZ(str)
-	M.AssertAZ(str)
+	asserts.AssertAZ(str)
 	return str
 end
 
-function M.AssertCertificateFingerprint(str)
+function asserts.AssertCertificateFingerprint(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CertificateFingerprint to be of type 'string'")
-	assert(str:match("([0-9a-fA-F][0-9a-fA-F]:){15}[0-9a-fA-F][0-9a-fA-F]"), "Expected string to match pattern '([0-9a-fA-F][0-9a-fA-F]:){15}[0-9a-fA-F][0-9a-fA-F]'")
 end
 
 --  
 function M.CertificateFingerprint(str)
-	M.AssertCertificateFingerprint(str)
+	asserts.AssertCertificateFingerprint(str)
 	return str
 end
 
-function M.AssertCloudHsmObjectState(str)
+function asserts.AssertCloudHsmObjectState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CloudHsmObjectState to be of type 'string'")
 end
 
 --  
 function M.CloudHsmObjectState(str)
-	M.AssertCloudHsmObjectState(str)
+	asserts.AssertCloudHsmObjectState(str)
 	return str
 end
 
-function M.AssertSubscriptionType(str)
+function asserts.AssertSubscriptionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubscriptionType to be of type 'string'")
 end
 
 -- <p>Specifies the type of subscription for the HSM.</p> <ul> <li><b>PRODUCTION</b> - The HSM is being used in a production environment.</li> <li><b>TRIAL</b> - The HSM is being used in a product trial.</li> </ul>
 function M.SubscriptionType(str)
-	M.AssertSubscriptionType(str)
+	asserts.AssertSubscriptionType(str)
 	return str
 end
 
-function M.AssertIamRoleArn(str)
+function asserts.AssertIamRoleArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IamRoleArn to be of type 'string'")
-	assert(str:match("arn:aws(-iso)?:iam::[0-9]{12}:role/[a-zA-Z0-9_%+=,%.%-@]{1,64}"), "Expected string to match pattern 'arn:aws(-iso)?:iam::[0-9]{12}:role/[a-zA-Z0-9_%+=,%.%-@]{1,64}'")
 end
 
 --  
 function M.IamRoleArn(str)
-	M.AssertIamRoleArn(str)
+	asserts.AssertIamRoleArn(str)
 	return str
 end
 
-function M.AssertClientArn(str)
+function asserts.AssertClientArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientArn to be of type 'string'")
-	assert(str:match("arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:client-[0-9a-f]{8}"), "Expected string to match pattern 'arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:client-[0-9a-f]{8}'")
 end
 
 --  
 function M.ClientArn(str)
-	M.AssertClientArn(str)
+	asserts.AssertClientArn(str)
 	return str
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertHsmList(list)
+function asserts.AssertHsmList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected HsmList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertHsmArn(v)
+		asserts.AssertHsmArn(v)
 	end
 end
 
 -- <p>Contains a list of ARNs that identify the HSMs.</p>
 -- List of HsmArn objects
 function M.HsmList(list)
-	M.AssertHsmList(list)
+	asserts.AssertHsmList(list)
 	return list
 end
 
-function M.AssertHapgList(list)
+function asserts.AssertHapgList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected HapgList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertHapgArn(v)
+		asserts.AssertHapgArn(v)
 	end
 end
 
 --  
 -- List of HapgArn objects
 function M.HapgList(list)
-	M.AssertHapgList(list)
+	asserts.AssertHapgList(list)
 	return list
 end
 
-function M.AssertPartitionSerialList(list)
+function asserts.AssertPartitionSerialList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PartitionSerialList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPartitionSerial(v)
+		asserts.AssertPartitionSerial(v)
 	end
 end
 
 --  
 -- List of PartitionSerial objects
 function M.PartitionSerialList(list)
-	M.AssertPartitionSerialList(list)
+	asserts.AssertPartitionSerialList(list)
 	return list
 end
 
-function M.AssertClientList(list)
+function asserts.AssertClientList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ClientList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertClientArn(v)
+		asserts.AssertClientArn(v)
 	end
 end
 
 --  
 -- List of ClientArn objects
 function M.ClientList(list)
-	M.AssertClientList(list)
+	asserts.AssertClientList(list)
 	return list
 end
 
-function M.AssertPartitionList(list)
+function asserts.AssertPartitionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PartitionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPartitionArn(v)
+		asserts.AssertPartitionArn(v)
 	end
 end
 
 --  
 -- List of PartitionArn objects
 function M.PartitionList(list)
-	M.AssertPartitionList(list)
+	asserts.AssertPartitionList(list)
 	return list
 end
 
-function M.AssertAZList(list)
+function asserts.AssertAZList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AZList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAZ(v)
+		asserts.AssertAZ(v)
 	end
 end
 
 --  
 -- List of AZ objects
 function M.AZList(list)
-	M.AssertAZList(list)
+	asserts.AssertAZList(list)
 	return list
 end
 
-function M.AssertTagKeyList(list)
+function asserts.AssertTagKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagKey(v)
+		asserts.AssertTagKey(v)
 	end
 end
 
 --  
 -- List of TagKey objects
 function M.TagKeyList(list)
-	M.AssertTagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 

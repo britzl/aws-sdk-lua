@@ -18,616 +18,619 @@ M.metadata = {
 	uid = "es-2015-01-01",
 }
 
-local DescribeElasticsearchDomainsResponse_keys = { "DomainStatusList" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertDescribeElasticsearchDomainsResponse(struct)
+keys.DescribeElasticsearchDomainsResponse = { ["DomainStatusList"] = true, nil }
+
+function asserts.AssertDescribeElasticsearchDomainsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeElasticsearchDomainsResponse to be of type 'table'")
 	assert(struct["DomainStatusList"], "Expected key DomainStatusList to exist in table")
-	if struct["DomainStatusList"] then M.AssertElasticsearchDomainStatusList(struct["DomainStatusList"]) end
+	if struct["DomainStatusList"] then asserts.AssertElasticsearchDomainStatusList(struct["DomainStatusList"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeElasticsearchDomainsResponse_keys[k], "DescribeElasticsearchDomainsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeElasticsearchDomainsResponse[k], "DescribeElasticsearchDomainsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeElasticsearchDomainsResponse
 -- <p>The result of a <code>DescribeElasticsearchDomains</code> request. Contains the status of the specified domains or all domains owned by the account.</p>
--- @param DomainStatusList [ElasticsearchDomainStatusList] <p>The status of the domains requested in the <code>DescribeElasticsearchDomains</code> request.</p>
+-- @param _DomainStatusList [ElasticsearchDomainStatusList] <p>The status of the domains requested in the <code>DescribeElasticsearchDomains</code> request.</p>
 -- Required parameter: DomainStatusList
-function M.DescribeElasticsearchDomainsResponse(DomainStatusList, ...)
+function M.DescribeElasticsearchDomainsResponse(_DomainStatusList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainsResponse")
 	local t = { 
-		["DomainStatusList"] = DomainStatusList,
+		["DomainStatusList"] = _DomainStatusList,
 	}
-	M.AssertDescribeElasticsearchDomainsResponse(t)
+	asserts.AssertDescribeElasticsearchDomainsResponse(t)
 	return t
 end
 
-local AdvancedOptionsStatus_keys = { "Status" = true, "Options" = true, nil }
+keys.AdvancedOptionsStatus = { ["Status"] = true, ["Options"] = true, nil }
 
-function M.AssertAdvancedOptionsStatus(struct)
+function asserts.AssertAdvancedOptionsStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdvancedOptionsStatus to be of type 'table'")
 	assert(struct["Options"], "Expected key Options to exist in table")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertOptionStatus(struct["Status"]) end
-	if struct["Options"] then M.AssertAdvancedOptions(struct["Options"]) end
+	if struct["Status"] then asserts.AssertOptionStatus(struct["Status"]) end
+	if struct["Options"] then asserts.AssertAdvancedOptions(struct["Options"]) end
 	for k,_ in pairs(struct) do
-		assert(AdvancedOptionsStatus_keys[k], "AdvancedOptionsStatus contains unknown key " .. tostring(k))
+		assert(keys.AdvancedOptionsStatus[k], "AdvancedOptionsStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdvancedOptionsStatus
 -- <p> Status of the advanced options for the specified Elasticsearch domain. Currently, the following advanced options are available:</p> <ul> <li>Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</li> <li>Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.</li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options">Configuring Advanced Options</a>.</p>
--- @param Status [OptionStatus] <p> Specifies the status of <code>OptionStatus</code> for advanced options for the specified Elasticsearch domain.</p>
--- @param Options [AdvancedOptions] <p> Specifies the status of advanced options for the specified Elasticsearch domain.</p>
+-- @param _Status [OptionStatus] <p> Specifies the status of <code>OptionStatus</code> for advanced options for the specified Elasticsearch domain.</p>
+-- @param _Options [AdvancedOptions] <p> Specifies the status of advanced options for the specified Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
-function M.AdvancedOptionsStatus(Status, Options, ...)
+function M.AdvancedOptionsStatus(_Status, _Options, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdvancedOptionsStatus")
 	local t = { 
-		["Status"] = Status,
-		["Options"] = Options,
+		["Status"] = _Status,
+		["Options"] = _Options,
 	}
-	M.AssertAdvancedOptionsStatus(t)
+	asserts.AssertAdvancedOptionsStatus(t)
 	return t
 end
 
-local ListTagsRequest_keys = { "ARN" = true, nil }
+keys.ListTagsRequest = { ["ARN"] = true, nil }
 
-function M.AssertListTagsRequest(struct)
+function asserts.AssertListTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsRequest to be of type 'table'")
 	assert(struct["ARN"], "Expected key ARN to exist in table")
-	if struct["ARN"] then M.AssertARN(struct["ARN"]) end
+	if struct["ARN"] then asserts.AssertARN(struct["ARN"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsRequest_keys[k], "ListTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListTagsRequest[k], "ListTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsRequest
 -- <p>Container for the parameters to the <code><a>ListTags</a></code> operation. Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view are attached.</p>
--- @param ARN [ARN] <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view.</p>
+-- @param _ARN [ARN] <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view.</p>
 -- Required parameter: ARN
-function M.ListTagsRequest(ARN, ...)
+function M.ListTagsRequest(_ARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
 	local t = { 
-		["ARN"] = ARN,
+		["ARN"] = _ARN,
 	}
-	M.AssertListTagsRequest(t)
+	asserts.AssertListTagsRequest(t)
 	return t
 end
 
-local RemoveTagsRequest_keys = { "TagKeys" = true, "ARN" = true, nil }
+keys.RemoveTagsRequest = { ["TagKeys"] = true, ["ARN"] = true, nil }
 
-function M.AssertRemoveTagsRequest(struct)
+function asserts.AssertRemoveTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsRequest to be of type 'table'")
 	assert(struct["ARN"], "Expected key ARN to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["TagKeys"] then M.AssertStringList(struct["TagKeys"]) end
-	if struct["ARN"] then M.AssertARN(struct["ARN"]) end
+	if struct["TagKeys"] then asserts.AssertStringList(struct["TagKeys"]) end
+	if struct["ARN"] then asserts.AssertARN(struct["ARN"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsRequest_keys[k], "RemoveTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsRequest[k], "RemoveTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsRequest
 -- <p>Container for the parameters to the <code><a>RemoveTags</a></code> operation. Specify the <code>ARN</code> for the Elasticsearch domain from which you want to remove the specified <code>TagKey</code>.</p>
--- @param TagKeys [StringList] <p>Specifies the <code>TagKey</code> list which you want to remove from the Elasticsearch domain.</p>
--- @param ARN [ARN] <p>Specifies the <code>ARN</code> for the Elasticsearch domain from which you want to delete the specified tags.</p>
+-- @param _TagKeys [StringList] <p>Specifies the <code>TagKey</code> list which you want to remove from the Elasticsearch domain.</p>
+-- @param _ARN [ARN] <p>Specifies the <code>ARN</code> for the Elasticsearch domain from which you want to delete the specified tags.</p>
 -- Required parameter: ARN
 -- Required parameter: TagKeys
-function M.RemoveTagsRequest(TagKeys, ARN, ...)
+function M.RemoveTagsRequest(_TagKeys, _ARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsRequest")
 	local t = { 
-		["TagKeys"] = TagKeys,
-		["ARN"] = ARN,
+		["TagKeys"] = _TagKeys,
+		["ARN"] = _ARN,
 	}
-	M.AssertRemoveTagsRequest(t)
+	asserts.AssertRemoveTagsRequest(t)
 	return t
 end
 
-local DeleteElasticsearchDomainResponse_keys = { "DomainStatus" = true, nil }
+keys.DeleteElasticsearchDomainResponse = { ["DomainStatus"] = true, nil }
 
-function M.AssertDeleteElasticsearchDomainResponse(struct)
+function asserts.AssertDeleteElasticsearchDomainResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteElasticsearchDomainResponse to be of type 'table'")
-	if struct["DomainStatus"] then M.AssertElasticsearchDomainStatus(struct["DomainStatus"]) end
+	if struct["DomainStatus"] then asserts.AssertElasticsearchDomainStatus(struct["DomainStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteElasticsearchDomainResponse_keys[k], "DeleteElasticsearchDomainResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteElasticsearchDomainResponse[k], "DeleteElasticsearchDomainResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteElasticsearchDomainResponse
 -- <p>The result of a <code>DeleteElasticsearchDomain</code> request. Contains the status of the pending deletion, or no status if the domain and all of its resources have been deleted.</p>
--- @param DomainStatus [ElasticsearchDomainStatus] <p>The status of the Elasticsearch domain being deleted.</p>
-function M.DeleteElasticsearchDomainResponse(DomainStatus, ...)
+-- @param _DomainStatus [ElasticsearchDomainStatus] <p>The status of the Elasticsearch domain being deleted.</p>
+function M.DeleteElasticsearchDomainResponse(_DomainStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteElasticsearchDomainResponse")
 	local t = { 
-		["DomainStatus"] = DomainStatus,
+		["DomainStatus"] = _DomainStatus,
 	}
-	M.AssertDeleteElasticsearchDomainResponse(t)
+	asserts.AssertDeleteElasticsearchDomainResponse(t)
 	return t
 end
 
-local DescribeElasticsearchDomainsRequest_keys = { "DomainNames" = true, nil }
+keys.DescribeElasticsearchDomainsRequest = { ["DomainNames"] = true, nil }
 
-function M.AssertDescribeElasticsearchDomainsRequest(struct)
+function asserts.AssertDescribeElasticsearchDomainsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeElasticsearchDomainsRequest to be of type 'table'")
 	assert(struct["DomainNames"], "Expected key DomainNames to exist in table")
-	if struct["DomainNames"] then M.AssertDomainNameList(struct["DomainNames"]) end
+	if struct["DomainNames"] then asserts.AssertDomainNameList(struct["DomainNames"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeElasticsearchDomainsRequest_keys[k], "DescribeElasticsearchDomainsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeElasticsearchDomainsRequest[k], "DescribeElasticsearchDomainsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeElasticsearchDomainsRequest
 -- <p>Container for the parameters to the <code><a>DescribeElasticsearchDomains</a></code> operation. By default, the API returns the status of all Elasticsearch domains.</p>
--- @param DomainNames [DomainNameList] <p>The Elasticsearch domains for which you want information.</p>
+-- @param _DomainNames [DomainNameList] <p>The Elasticsearch domains for which you want information.</p>
 -- Required parameter: DomainNames
-function M.DescribeElasticsearchDomainsRequest(DomainNames, ...)
+function M.DescribeElasticsearchDomainsRequest(_DomainNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainsRequest")
 	local t = { 
-		["DomainNames"] = DomainNames,
+		["DomainNames"] = _DomainNames,
 	}
-	M.AssertDescribeElasticsearchDomainsRequest(t)
+	asserts.AssertDescribeElasticsearchDomainsRequest(t)
 	return t
 end
 
-local ListDomainNamesResponse_keys = { "DomainNames" = true, nil }
+keys.ListDomainNamesResponse = { ["DomainNames"] = true, nil }
 
-function M.AssertListDomainNamesResponse(struct)
+function asserts.AssertListDomainNamesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDomainNamesResponse to be of type 'table'")
-	if struct["DomainNames"] then M.AssertDomainInfoList(struct["DomainNames"]) end
+	if struct["DomainNames"] then asserts.AssertDomainInfoList(struct["DomainNames"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDomainNamesResponse_keys[k], "ListDomainNamesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDomainNamesResponse[k], "ListDomainNamesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDomainNamesResponse
 -- <p>The result of a <code>ListDomainNames</code> operation. Contains the names of all Elasticsearch domains owned by this account.</p>
--- @param DomainNames [DomainInfoList] <p>List of Elasticsearch domain names.</p>
-function M.ListDomainNamesResponse(DomainNames, ...)
+-- @param _DomainNames [DomainInfoList] <p>List of Elasticsearch domain names.</p>
+function M.ListDomainNamesResponse(_DomainNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainNamesResponse")
 	local t = { 
-		["DomainNames"] = DomainNames,
+		["DomainNames"] = _DomainNames,
 	}
-	M.AssertListDomainNamesResponse(t)
+	asserts.AssertListDomainNamesResponse(t)
 	return t
 end
 
-local ElasticsearchDomainConfig_keys = { "ElasticsearchClusterConfig" = true, "ElasticsearchVersion" = true, "EBSOptions" = true, "SnapshotOptions" = true, "AdvancedOptions" = true, "AccessPolicies" = true, nil }
+keys.ElasticsearchDomainConfig = { ["ElasticsearchClusterConfig"] = true, ["ElasticsearchVersion"] = true, ["EBSOptions"] = true, ["SnapshotOptions"] = true, ["AdvancedOptions"] = true, ["AccessPolicies"] = true, nil }
 
-function M.AssertElasticsearchDomainConfig(struct)
+function asserts.AssertElasticsearchDomainConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ElasticsearchDomainConfig to be of type 'table'")
-	if struct["ElasticsearchClusterConfig"] then M.AssertElasticsearchClusterConfigStatus(struct["ElasticsearchClusterConfig"]) end
-	if struct["ElasticsearchVersion"] then M.AssertElasticsearchVersionStatus(struct["ElasticsearchVersion"]) end
-	if struct["EBSOptions"] then M.AssertEBSOptionsStatus(struct["EBSOptions"]) end
-	if struct["SnapshotOptions"] then M.AssertSnapshotOptionsStatus(struct["SnapshotOptions"]) end
-	if struct["AdvancedOptions"] then M.AssertAdvancedOptionsStatus(struct["AdvancedOptions"]) end
-	if struct["AccessPolicies"] then M.AssertAccessPoliciesStatus(struct["AccessPolicies"]) end
+	if struct["ElasticsearchClusterConfig"] then asserts.AssertElasticsearchClusterConfigStatus(struct["ElasticsearchClusterConfig"]) end
+	if struct["ElasticsearchVersion"] then asserts.AssertElasticsearchVersionStatus(struct["ElasticsearchVersion"]) end
+	if struct["EBSOptions"] then asserts.AssertEBSOptionsStatus(struct["EBSOptions"]) end
+	if struct["SnapshotOptions"] then asserts.AssertSnapshotOptionsStatus(struct["SnapshotOptions"]) end
+	if struct["AdvancedOptions"] then asserts.AssertAdvancedOptionsStatus(struct["AdvancedOptions"]) end
+	if struct["AccessPolicies"] then asserts.AssertAccessPoliciesStatus(struct["AccessPolicies"]) end
 	for k,_ in pairs(struct) do
-		assert(ElasticsearchDomainConfig_keys[k], "ElasticsearchDomainConfig contains unknown key " .. tostring(k))
+		assert(keys.ElasticsearchDomainConfig[k], "ElasticsearchDomainConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ElasticsearchDomainConfig
 -- <p>The configuration of an Elasticsearch domain.</p>
--- @param ElasticsearchClusterConfig [ElasticsearchClusterConfigStatus] <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch domain.</p>
--- @param ElasticsearchVersion [ElasticsearchVersionStatus] <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
--- @param EBSOptions [EBSOptionsStatus] <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
--- @param SnapshotOptions [SnapshotOptionsStatus] <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
--- @param AdvancedOptions [AdvancedOptionsStatus] <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuring Advanced Options</a> for more information.</p>
--- @param AccessPolicies [AccessPoliciesStatus] <p>IAM access policy as a JSON-formatted string.</p>
-function M.ElasticsearchDomainConfig(ElasticsearchClusterConfig, ElasticsearchVersion, EBSOptions, SnapshotOptions, AdvancedOptions, AccessPolicies, ...)
+-- @param _ElasticsearchClusterConfig [ElasticsearchClusterConfigStatus] <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch domain.</p>
+-- @param _ElasticsearchVersion [ElasticsearchVersionStatus] <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
+-- @param _EBSOptions [EBSOptionsStatus] <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
+-- @param _SnapshotOptions [SnapshotOptionsStatus] <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
+-- @param _AdvancedOptions [AdvancedOptionsStatus] <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuring Advanced Options</a> for more information.</p>
+-- @param _AccessPolicies [AccessPoliciesStatus] <p>IAM access policy as a JSON-formatted string.</p>
+function M.ElasticsearchDomainConfig(_ElasticsearchClusterConfig, _ElasticsearchVersion, _EBSOptions, _SnapshotOptions, _AdvancedOptions, _AccessPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchDomainConfig")
 	local t = { 
-		["ElasticsearchClusterConfig"] = ElasticsearchClusterConfig,
-		["ElasticsearchVersion"] = ElasticsearchVersion,
-		["EBSOptions"] = EBSOptions,
-		["SnapshotOptions"] = SnapshotOptions,
-		["AdvancedOptions"] = AdvancedOptions,
-		["AccessPolicies"] = AccessPolicies,
+		["ElasticsearchClusterConfig"] = _ElasticsearchClusterConfig,
+		["ElasticsearchVersion"] = _ElasticsearchVersion,
+		["EBSOptions"] = _EBSOptions,
+		["SnapshotOptions"] = _SnapshotOptions,
+		["AdvancedOptions"] = _AdvancedOptions,
+		["AccessPolicies"] = _AccessPolicies,
 	}
-	M.AssertElasticsearchDomainConfig(t)
+	asserts.AssertElasticsearchDomainConfig(t)
 	return t
 end
 
-local ElasticsearchDomainStatus_keys = { "ElasticsearchClusterConfig" = true, "Endpoint" = true, "Created" = true, "Deleted" = true, "DomainName" = true, "EBSOptions" = true, "SnapshotOptions" = true, "DomainId" = true, "AccessPolicies" = true, "Processing" = true, "AdvancedOptions" = true, "ElasticsearchVersion" = true, "ARN" = true, nil }
+keys.ElasticsearchDomainStatus = { ["ElasticsearchClusterConfig"] = true, ["Endpoint"] = true, ["Created"] = true, ["Deleted"] = true, ["DomainName"] = true, ["EBSOptions"] = true, ["SnapshotOptions"] = true, ["DomainId"] = true, ["AccessPolicies"] = true, ["Processing"] = true, ["AdvancedOptions"] = true, ["ElasticsearchVersion"] = true, ["ARN"] = true, nil }
 
-function M.AssertElasticsearchDomainStatus(struct)
+function asserts.AssertElasticsearchDomainStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ElasticsearchDomainStatus to be of type 'table'")
 	assert(struct["DomainId"], "Expected key DomainId to exist in table")
 	assert(struct["DomainName"], "Expected key DomainName to exist in table")
 	assert(struct["ARN"], "Expected key ARN to exist in table")
 	assert(struct["ElasticsearchClusterConfig"], "Expected key ElasticsearchClusterConfig to exist in table")
-	if struct["ElasticsearchClusterConfig"] then M.AssertElasticsearchClusterConfig(struct["ElasticsearchClusterConfig"]) end
-	if struct["Endpoint"] then M.AssertServiceUrl(struct["Endpoint"]) end
-	if struct["Created"] then M.AssertBoolean(struct["Created"]) end
-	if struct["Deleted"] then M.AssertBoolean(struct["Deleted"]) end
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
-	if struct["EBSOptions"] then M.AssertEBSOptions(struct["EBSOptions"]) end
-	if struct["SnapshotOptions"] then M.AssertSnapshotOptions(struct["SnapshotOptions"]) end
-	if struct["DomainId"] then M.AssertDomainId(struct["DomainId"]) end
-	if struct["AccessPolicies"] then M.AssertPolicyDocument(struct["AccessPolicies"]) end
-	if struct["Processing"] then M.AssertBoolean(struct["Processing"]) end
-	if struct["AdvancedOptions"] then M.AssertAdvancedOptions(struct["AdvancedOptions"]) end
-	if struct["ElasticsearchVersion"] then M.AssertElasticsearchVersionString(struct["ElasticsearchVersion"]) end
-	if struct["ARN"] then M.AssertARN(struct["ARN"]) end
+	if struct["ElasticsearchClusterConfig"] then asserts.AssertElasticsearchClusterConfig(struct["ElasticsearchClusterConfig"]) end
+	if struct["Endpoint"] then asserts.AssertServiceUrl(struct["Endpoint"]) end
+	if struct["Created"] then asserts.AssertBoolean(struct["Created"]) end
+	if struct["Deleted"] then asserts.AssertBoolean(struct["Deleted"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
+	if struct["EBSOptions"] then asserts.AssertEBSOptions(struct["EBSOptions"]) end
+	if struct["SnapshotOptions"] then asserts.AssertSnapshotOptions(struct["SnapshotOptions"]) end
+	if struct["DomainId"] then asserts.AssertDomainId(struct["DomainId"]) end
+	if struct["AccessPolicies"] then asserts.AssertPolicyDocument(struct["AccessPolicies"]) end
+	if struct["Processing"] then asserts.AssertBoolean(struct["Processing"]) end
+	if struct["AdvancedOptions"] then asserts.AssertAdvancedOptions(struct["AdvancedOptions"]) end
+	if struct["ElasticsearchVersion"] then asserts.AssertElasticsearchVersionString(struct["ElasticsearchVersion"]) end
+	if struct["ARN"] then asserts.AssertARN(struct["ARN"]) end
 	for k,_ in pairs(struct) do
-		assert(ElasticsearchDomainStatus_keys[k], "ElasticsearchDomainStatus contains unknown key " .. tostring(k))
+		assert(keys.ElasticsearchDomainStatus[k], "ElasticsearchDomainStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ElasticsearchDomainStatus
 -- <p>The current status of an Elasticsearch domain.</p>
--- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>The type and number of instances in the domain cluster.</p>
--- @param Endpoint [ServiceUrl] <p>The Elasticsearch domain endpoint that you use to submit index and search requests.</p>
--- @param Created [Boolean] <p>The domain creation status. <code>True</code> if the creation of an Elasticsearch domain is complete. <code>False</code> if domain creation is still in progress.</p>
--- @param Deleted [Boolean] <p>The domain deletion status. <code>True</code> if a delete request has been received for the domain but resource cleanup is still in progress. <code>False</code> if the domain has not been deleted. Once domain deletion is complete, the status of the domain is no longer returned.</p>
--- @param DomainName [DomainName] <p>The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
--- @param EBSOptions [EBSOptions] <p>The <code>EBSOptions</code> for the specified domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a> for more information.</p>
--- @param SnapshotOptions [SnapshotOptions] <p>Specifies the status of the <code>SnapshotOptions</code></p>
--- @param DomainId [DomainId] <p>The unique identifier for the specified Elasticsearch domain.</p>
--- @param AccessPolicies [PolicyDocument] <p> IAM access policy as a JSON-formatted string.</p>
--- @param Processing [Boolean] <p>The status of the Elasticsearch domain configuration. <code>True</code> if Amazon Elasticsearch Service is processing configuration changes. <code>False</code> if the configuration is active.</p>
--- @param AdvancedOptions [AdvancedOptions] <p>Specifies the status of the <code>AdvancedOptions</code></p>
--- @param ElasticsearchVersion [ElasticsearchVersionString] <p>The current status of an Elasticsearch domain.</p>
--- @param ARN [ARN] <p>The Amazon resource name (ARN) of an Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
+-- @param _ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>The type and number of instances in the domain cluster.</p>
+-- @param _Endpoint [ServiceUrl] <p>The Elasticsearch domain endpoint that you use to submit index and search requests.</p>
+-- @param _Created [Boolean] <p>The domain creation status. <code>True</code> if the creation of an Elasticsearch domain is complete. <code>False</code> if domain creation is still in progress.</p>
+-- @param _Deleted [Boolean] <p>The domain deletion status. <code>True</code> if a delete request has been received for the domain but resource cleanup is still in progress. <code>False</code> if the domain has not been deleted. Once domain deletion is complete, the status of the domain is no longer returned.</p>
+-- @param _DomainName [DomainName] <p>The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
+-- @param _EBSOptions [EBSOptions] <p>The <code>EBSOptions</code> for the specified domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a> for more information.</p>
+-- @param _SnapshotOptions [SnapshotOptions] <p>Specifies the status of the <code>SnapshotOptions</code></p>
+-- @param _DomainId [DomainId] <p>The unique identifier for the specified Elasticsearch domain.</p>
+-- @param _AccessPolicies [PolicyDocument] <p> IAM access policy as a JSON-formatted string.</p>
+-- @param _Processing [Boolean] <p>The status of the Elasticsearch domain configuration. <code>True</code> if Amazon Elasticsearch Service is processing configuration changes. <code>False</code> if the configuration is active.</p>
+-- @param _AdvancedOptions [AdvancedOptions] <p>Specifies the status of the <code>AdvancedOptions</code></p>
+-- @param _ElasticsearchVersion [ElasticsearchVersionString] 
+-- @param _ARN [ARN] <p>The Amazon resource name (ARN) of an Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
 -- Required parameter: DomainId
 -- Required parameter: DomainName
 -- Required parameter: ARN
 -- Required parameter: ElasticsearchClusterConfig
-function M.ElasticsearchDomainStatus(ElasticsearchClusterConfig, Endpoint, Created, Deleted, DomainName, EBSOptions, SnapshotOptions, DomainId, AccessPolicies, Processing, AdvancedOptions, ElasticsearchVersion, ARN, ...)
+function M.ElasticsearchDomainStatus(_ElasticsearchClusterConfig, _Endpoint, _Created, _Deleted, _DomainName, _EBSOptions, _SnapshotOptions, _DomainId, _AccessPolicies, _Processing, _AdvancedOptions, _ElasticsearchVersion, _ARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchDomainStatus")
 	local t = { 
-		["ElasticsearchClusterConfig"] = ElasticsearchClusterConfig,
-		["Endpoint"] = Endpoint,
-		["Created"] = Created,
-		["Deleted"] = Deleted,
-		["DomainName"] = DomainName,
-		["EBSOptions"] = EBSOptions,
-		["SnapshotOptions"] = SnapshotOptions,
-		["DomainId"] = DomainId,
-		["AccessPolicies"] = AccessPolicies,
-		["Processing"] = Processing,
-		["AdvancedOptions"] = AdvancedOptions,
-		["ElasticsearchVersion"] = ElasticsearchVersion,
-		["ARN"] = ARN,
+		["ElasticsearchClusterConfig"] = _ElasticsearchClusterConfig,
+		["Endpoint"] = _Endpoint,
+		["Created"] = _Created,
+		["Deleted"] = _Deleted,
+		["DomainName"] = _DomainName,
+		["EBSOptions"] = _EBSOptions,
+		["SnapshotOptions"] = _SnapshotOptions,
+		["DomainId"] = _DomainId,
+		["AccessPolicies"] = _AccessPolicies,
+		["Processing"] = _Processing,
+		["AdvancedOptions"] = _AdvancedOptions,
+		["ElasticsearchVersion"] = _ElasticsearchVersion,
+		["ARN"] = _ARN,
 	}
-	M.AssertElasticsearchDomainStatus(t)
+	asserts.AssertElasticsearchDomainStatus(t)
 	return t
 end
 
-local AccessPoliciesStatus_keys = { "Status" = true, "Options" = true, nil }
+keys.AccessPoliciesStatus = { ["Status"] = true, ["Options"] = true, nil }
 
-function M.AssertAccessPoliciesStatus(struct)
+function asserts.AssertAccessPoliciesStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccessPoliciesStatus to be of type 'table'")
 	assert(struct["Options"], "Expected key Options to exist in table")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertOptionStatus(struct["Status"]) end
-	if struct["Options"] then M.AssertPolicyDocument(struct["Options"]) end
+	if struct["Status"] then asserts.AssertOptionStatus(struct["Status"]) end
+	if struct["Options"] then asserts.AssertPolicyDocument(struct["Options"]) end
 	for k,_ in pairs(struct) do
-		assert(AccessPoliciesStatus_keys[k], "AccessPoliciesStatus contains unknown key " .. tostring(k))
+		assert(keys.AccessPoliciesStatus[k], "AccessPoliciesStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AccessPoliciesStatus
 -- <p>The configured access rules for the domain's document and search endpoints, and the current status of those rules.</p>
--- @param Status [OptionStatus] <p>The status of the access policy for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that's included. </p>
--- @param Options [PolicyDocument] <p>The access policy configured for the Elasticsearch domain. Access policies may be resource-based, IP-based, or IAM-based. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank"> Configuring Access Policies</a>for more information.</p>
+-- @param _Status [OptionStatus] <p>The status of the access policy for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that's included. </p>
+-- @param _Options [PolicyDocument] <p>The access policy configured for the Elasticsearch domain. Access policies may be resource-based, IP-based, or IAM-based. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank"> Configuring Access Policies</a>for more information.</p>
 -- Required parameter: Options
 -- Required parameter: Status
-function M.AccessPoliciesStatus(Status, Options, ...)
+function M.AccessPoliciesStatus(_Status, _Options, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessPoliciesStatus")
 	local t = { 
-		["Status"] = Status,
-		["Options"] = Options,
+		["Status"] = _Status,
+		["Options"] = _Options,
 	}
-	M.AssertAccessPoliciesStatus(t)
+	asserts.AssertAccessPoliciesStatus(t)
 	return t
 end
 
-local AdditionalLimit_keys = { "LimitValues" = true, "LimitName" = true, nil }
+keys.AdditionalLimit = { ["LimitValues"] = true, ["LimitName"] = true, nil }
 
-function M.AssertAdditionalLimit(struct)
+function asserts.AssertAdditionalLimit(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdditionalLimit to be of type 'table'")
-	if struct["LimitValues"] then M.AssertLimitValueList(struct["LimitValues"]) end
-	if struct["LimitName"] then M.AssertLimitName(struct["LimitName"]) end
+	if struct["LimitValues"] then asserts.AssertLimitValueList(struct["LimitValues"]) end
+	if struct["LimitName"] then asserts.AssertLimitName(struct["LimitName"]) end
 	for k,_ in pairs(struct) do
-		assert(AdditionalLimit_keys[k], "AdditionalLimit contains unknown key " .. tostring(k))
+		assert(keys.AdditionalLimit[k], "AdditionalLimit contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdditionalLimit
 -- <p> List of limits that are specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> . </p>
--- @param LimitValues [LimitValueList] <p> Value for given <code> <a>AdditionalLimit$LimitName</a> </code> . </p>
--- @param LimitName [LimitName] <p> Name of Additional Limit is specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> etc. <br/> Attributes and their details: <br/> <ul> <li>MaximumNumberOfDataNodesSupported</li> This attribute will be present in Master node only to specify how much data nodes upto which given <code> <a>ESPartitionInstanceType</a> </code> can support as master node. <li>MaximumNumberOfDataNodesWithoutMasterNode</li> This attribute will be present in Data node only to specify how much data nodes of given <code> <a>ESPartitionInstanceType</a> </code> upto which you don't need any master nodes to govern them. </ul> </p>
-function M.AdditionalLimit(LimitValues, LimitName, ...)
+-- @param _LimitValues [LimitValueList] <p> Value for given <code> <a>AdditionalLimit$LimitName</a> </code> . </p>
+-- @param _LimitName [LimitName] <p> Name of Additional Limit is specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> etc. <br/> Attributes and their details: <br/> <ul> <li>MaximumNumberOfDataNodesSupported</li> This attribute will be present in Master node only to specify how much data nodes upto which given <code> <a>ESPartitionInstanceType</a> </code> can support as master node. <li>MaximumNumberOfDataNodesWithoutMasterNode</li> This attribute will be present in Data node only to specify how much data nodes of given <code> <a>ESPartitionInstanceType</a> </code> upto which you don't need any master nodes to govern them. </ul> </p>
+function M.AdditionalLimit(_LimitValues, _LimitName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdditionalLimit")
 	local t = { 
-		["LimitValues"] = LimitValues,
-		["LimitName"] = LimitName,
+		["LimitValues"] = _LimitValues,
+		["LimitName"] = _LimitName,
 	}
-	M.AssertAdditionalLimit(t)
+	asserts.AssertAdditionalLimit(t)
 	return t
 end
 
-local SnapshotOptions_keys = { "AutomatedSnapshotStartHour" = true, nil }
+keys.SnapshotOptions = { ["AutomatedSnapshotStartHour"] = true, nil }
 
-function M.AssertSnapshotOptions(struct)
+function asserts.AssertSnapshotOptions(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SnapshotOptions to be of type 'table'")
-	if struct["AutomatedSnapshotStartHour"] then M.AssertIntegerClass(struct["AutomatedSnapshotStartHour"]) end
+	if struct["AutomatedSnapshotStartHour"] then asserts.AssertIntegerClass(struct["AutomatedSnapshotStartHour"]) end
 	for k,_ in pairs(struct) do
-		assert(SnapshotOptions_keys[k], "SnapshotOptions contains unknown key " .. tostring(k))
+		assert(keys.SnapshotOptions[k], "SnapshotOptions contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SnapshotOptions
 -- <p>Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.</p>
--- @param AutomatedSnapshotStartHour [IntegerClass] <p>Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.</p>
-function M.SnapshotOptions(AutomatedSnapshotStartHour, ...)
+-- @param _AutomatedSnapshotStartHour [IntegerClass] <p>Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.</p>
+function M.SnapshotOptions(_AutomatedSnapshotStartHour, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotOptions")
 	local t = { 
-		["AutomatedSnapshotStartHour"] = AutomatedSnapshotStartHour,
+		["AutomatedSnapshotStartHour"] = _AutomatedSnapshotStartHour,
 	}
-	M.AssertSnapshotOptions(t)
+	asserts.AssertSnapshotOptions(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
 	assert(struct["Value"], "Expected key Value to exist in table")
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>Specifies a key value pair for a resource tag.</p>
--- @param Value [TagValue] <p>Specifies the <code>TagValue</code>, the value assigned to the corresponding tag key. Tag values can be null and do not have to be unique in a tag set. For example, you can have a key value pair in a tag set of <code>project : Trinity</code> and <code>cost-center : Trinity</code></p>
--- @param Key [TagKey] <p>Specifies the <code>TagKey</code>, the name of the tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.</p>
+-- @param _Value [TagValue] <p>Specifies the <code>TagValue</code>, the value assigned to the corresponding tag key. Tag values can be null and do not have to be unique in a tag set. For example, you can have a key value pair in a tag set of <code>project : Trinity</code> and <code>cost-center : Trinity</code></p>
+-- @param _Key [TagKey] <p>Specifies the <code>TagKey</code>, the name of the tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.</p>
 -- Required parameter: Key
 -- Required parameter: Value
-function M.Tag(Value, Key, ...)
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local EBSOptionsStatus_keys = { "Status" = true, "Options" = true, nil }
+keys.EBSOptionsStatus = { ["Status"] = true, ["Options"] = true, nil }
 
-function M.AssertEBSOptionsStatus(struct)
+function asserts.AssertEBSOptionsStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EBSOptionsStatus to be of type 'table'")
 	assert(struct["Options"], "Expected key Options to exist in table")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertOptionStatus(struct["Status"]) end
-	if struct["Options"] then M.AssertEBSOptions(struct["Options"]) end
+	if struct["Status"] then asserts.AssertOptionStatus(struct["Status"]) end
+	if struct["Options"] then asserts.AssertEBSOptions(struct["Options"]) end
 	for k,_ in pairs(struct) do
-		assert(EBSOptionsStatus_keys[k], "EBSOptionsStatus contains unknown key " .. tostring(k))
+		assert(keys.EBSOptionsStatus[k], "EBSOptionsStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EBSOptionsStatus
 -- <p> Status of the EBS options for the specified Elasticsearch domain.</p>
--- @param Status [OptionStatus] <p> Specifies the status of the EBS options for the specified Elasticsearch domain.</p>
--- @param Options [EBSOptions] <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
+-- @param _Status [OptionStatus] <p> Specifies the status of the EBS options for the specified Elasticsearch domain.</p>
+-- @param _Options [EBSOptions] <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
-function M.EBSOptionsStatus(Status, Options, ...)
+function M.EBSOptionsStatus(_Status, _Options, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EBSOptionsStatus")
 	local t = { 
-		["Status"] = Status,
-		["Options"] = Options,
+		["Status"] = _Status,
+		["Options"] = _Options,
 	}
-	M.AssertEBSOptionsStatus(t)
+	asserts.AssertEBSOptionsStatus(t)
 	return t
 end
 
-local ListElasticsearchVersionsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListElasticsearchVersionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListElasticsearchVersionsRequest(struct)
+function asserts.AssertListElasticsearchVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListElasticsearchVersionsRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertMaxResults(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListElasticsearchVersionsRequest_keys[k], "ListElasticsearchVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListElasticsearchVersionsRequest[k], "ListElasticsearchVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListElasticsearchVersionsRequest
 -- <p> Container for the parameters to the <code> <a>ListElasticsearchVersions</a> </code> operation. <p> Use <code> <a>MaxResults</a> </code> to control the maximum number of results to retrieve in a single call. </p> <p> Use <code> <a>NextToken</a> </code> in response to retrieve more results. If the received response does not contain a NextToken, then there are no more results to retrieve. </p> </p>
--- @param NextToken [NextToken] <p> Container for the parameters to the <code> <a>ListElasticsearchVersions</a> </code> operation. <p> Use <code> <a>MaxResults</a> </code> to control the maximum number of results to retrieve in a single call. </p> <p> Use <code> <a>NextToken</a> </code> in response to retrieve more results. If the received response does not contain a NextToken, then there are no more results to retrieve. </p> </p>
--- @param MaxResults [MaxResults] <p> Set this value to limit the number of results returned. Value provided must be greater than 10 else it wont be honored. </p>
-function M.ListElasticsearchVersionsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [NextToken] 
+-- @param _MaxResults [MaxResults] <p> Set this value to limit the number of results returned. Value provided must be greater than 10 else it wont be honored. </p>
+function M.ListElasticsearchVersionsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListElasticsearchVersionsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListElasticsearchVersionsRequest(t)
+	asserts.AssertListElasticsearchVersionsRequest(t)
 	return t
 end
 
-local UpdateElasticsearchDomainConfigRequest_keys = { "ElasticsearchClusterConfig" = true, "DomainName" = true, "EBSOptions" = true, "SnapshotOptions" = true, "AdvancedOptions" = true, "AccessPolicies" = true, nil }
+keys.UpdateElasticsearchDomainConfigRequest = { ["ElasticsearchClusterConfig"] = true, ["DomainName"] = true, ["EBSOptions"] = true, ["SnapshotOptions"] = true, ["AdvancedOptions"] = true, ["AccessPolicies"] = true, nil }
 
-function M.AssertUpdateElasticsearchDomainConfigRequest(struct)
+function asserts.AssertUpdateElasticsearchDomainConfigRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateElasticsearchDomainConfigRequest to be of type 'table'")
 	assert(struct["DomainName"], "Expected key DomainName to exist in table")
-	if struct["ElasticsearchClusterConfig"] then M.AssertElasticsearchClusterConfig(struct["ElasticsearchClusterConfig"]) end
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
-	if struct["EBSOptions"] then M.AssertEBSOptions(struct["EBSOptions"]) end
-	if struct["SnapshotOptions"] then M.AssertSnapshotOptions(struct["SnapshotOptions"]) end
-	if struct["AdvancedOptions"] then M.AssertAdvancedOptions(struct["AdvancedOptions"]) end
-	if struct["AccessPolicies"] then M.AssertPolicyDocument(struct["AccessPolicies"]) end
+	if struct["ElasticsearchClusterConfig"] then asserts.AssertElasticsearchClusterConfig(struct["ElasticsearchClusterConfig"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
+	if struct["EBSOptions"] then asserts.AssertEBSOptions(struct["EBSOptions"]) end
+	if struct["SnapshotOptions"] then asserts.AssertSnapshotOptions(struct["SnapshotOptions"]) end
+	if struct["AdvancedOptions"] then asserts.AssertAdvancedOptions(struct["AdvancedOptions"]) end
+	if struct["AccessPolicies"] then asserts.AssertPolicyDocument(struct["AccessPolicies"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateElasticsearchDomainConfigRequest_keys[k], "UpdateElasticsearchDomainConfigRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateElasticsearchDomainConfigRequest[k], "UpdateElasticsearchDomainConfigRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateElasticsearchDomainConfigRequest
 -- <p>Container for the parameters to the <code><a>UpdateElasticsearchDomain</a></code> operation. Specifies the type and number of instances in the domain cluster.</p>
--- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>The type and number of instances to instantiate for the domain cluster.</p>
--- @param DomainName [DomainName] <p>The name of the Elasticsearch domain that you are updating. </p>
--- @param EBSOptions [EBSOptions] <p>Specify the type and size of the EBS volume that you want to use. </p>
--- @param SnapshotOptions [SnapshotOptions] <p>Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours. </p>
--- @param AdvancedOptions [AdvancedOptions] <p>Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
--- @param AccessPolicies [PolicyDocument] <p>IAM access policy as a JSON-formatted string.</p>
+-- @param _ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>The type and number of instances to instantiate for the domain cluster.</p>
+-- @param _DomainName [DomainName] <p>The name of the Elasticsearch domain that you are updating. </p>
+-- @param _EBSOptions [EBSOptions] <p>Specify the type and size of the EBS volume that you want to use. </p>
+-- @param _SnapshotOptions [SnapshotOptions] <p>Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours. </p>
+-- @param _AdvancedOptions [AdvancedOptions] <p>Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
+-- @param _AccessPolicies [PolicyDocument] <p>IAM access policy as a JSON-formatted string.</p>
 -- Required parameter: DomainName
-function M.UpdateElasticsearchDomainConfigRequest(ElasticsearchClusterConfig, DomainName, EBSOptions, SnapshotOptions, AdvancedOptions, AccessPolicies, ...)
+function M.UpdateElasticsearchDomainConfigRequest(_ElasticsearchClusterConfig, _DomainName, _EBSOptions, _SnapshotOptions, _AdvancedOptions, _AccessPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateElasticsearchDomainConfigRequest")
 	local t = { 
-		["ElasticsearchClusterConfig"] = ElasticsearchClusterConfig,
-		["DomainName"] = DomainName,
-		["EBSOptions"] = EBSOptions,
-		["SnapshotOptions"] = SnapshotOptions,
-		["AdvancedOptions"] = AdvancedOptions,
-		["AccessPolicies"] = AccessPolicies,
+		["ElasticsearchClusterConfig"] = _ElasticsearchClusterConfig,
+		["DomainName"] = _DomainName,
+		["EBSOptions"] = _EBSOptions,
+		["SnapshotOptions"] = _SnapshotOptions,
+		["AdvancedOptions"] = _AdvancedOptions,
+		["AccessPolicies"] = _AccessPolicies,
 	}
-	M.AssertUpdateElasticsearchDomainConfigRequest(t)
+	asserts.AssertUpdateElasticsearchDomainConfigRequest(t)
 	return t
 end
 
-local DescribeElasticsearchDomainResponse_keys = { "DomainStatus" = true, nil }
+keys.DescribeElasticsearchDomainResponse = { ["DomainStatus"] = true, nil }
 
-function M.AssertDescribeElasticsearchDomainResponse(struct)
+function asserts.AssertDescribeElasticsearchDomainResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeElasticsearchDomainResponse to be of type 'table'")
 	assert(struct["DomainStatus"], "Expected key DomainStatus to exist in table")
-	if struct["DomainStatus"] then M.AssertElasticsearchDomainStatus(struct["DomainStatus"]) end
+	if struct["DomainStatus"] then asserts.AssertElasticsearchDomainStatus(struct["DomainStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeElasticsearchDomainResponse_keys[k], "DescribeElasticsearchDomainResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeElasticsearchDomainResponse[k], "DescribeElasticsearchDomainResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeElasticsearchDomainResponse
 -- <p>The result of a <code>DescribeElasticsearchDomain</code> request. Contains the status of the domain specified in the request.</p>
--- @param DomainStatus [ElasticsearchDomainStatus] <p>The current status of the Elasticsearch domain.</p>
+-- @param _DomainStatus [ElasticsearchDomainStatus] <p>The current status of the Elasticsearch domain.</p>
 -- Required parameter: DomainStatus
-function M.DescribeElasticsearchDomainResponse(DomainStatus, ...)
+function M.DescribeElasticsearchDomainResponse(_DomainStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainResponse")
 	local t = { 
-		["DomainStatus"] = DomainStatus,
+		["DomainStatus"] = _DomainStatus,
 	}
-	M.AssertDescribeElasticsearchDomainResponse(t)
+	asserts.AssertDescribeElasticsearchDomainResponse(t)
 	return t
 end
 
-local DescribeElasticsearchDomainConfigResponse_keys = { "DomainConfig" = true, nil }
+keys.DescribeElasticsearchDomainConfigResponse = { ["DomainConfig"] = true, nil }
 
-function M.AssertDescribeElasticsearchDomainConfigResponse(struct)
+function asserts.AssertDescribeElasticsearchDomainConfigResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeElasticsearchDomainConfigResponse to be of type 'table'")
 	assert(struct["DomainConfig"], "Expected key DomainConfig to exist in table")
-	if struct["DomainConfig"] then M.AssertElasticsearchDomainConfig(struct["DomainConfig"]) end
+	if struct["DomainConfig"] then asserts.AssertElasticsearchDomainConfig(struct["DomainConfig"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeElasticsearchDomainConfigResponse_keys[k], "DescribeElasticsearchDomainConfigResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeElasticsearchDomainConfigResponse[k], "DescribeElasticsearchDomainConfigResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeElasticsearchDomainConfigResponse
 -- <p>The result of a <code>DescribeElasticsearchDomainConfig</code> request. Contains the configuration information of the requested domain.</p>
--- @param DomainConfig [ElasticsearchDomainConfig] <p>The configuration information of the domain requested in the <code>DescribeElasticsearchDomainConfig</code> request.</p>
+-- @param _DomainConfig [ElasticsearchDomainConfig] <p>The configuration information of the domain requested in the <code>DescribeElasticsearchDomainConfig</code> request.</p>
 -- Required parameter: DomainConfig
-function M.DescribeElasticsearchDomainConfigResponse(DomainConfig, ...)
+function M.DescribeElasticsearchDomainConfigResponse(_DomainConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainConfigResponse")
 	local t = { 
-		["DomainConfig"] = DomainConfig,
+		["DomainConfig"] = _DomainConfig,
 	}
-	M.AssertDescribeElasticsearchDomainConfigResponse(t)
+	asserts.AssertDescribeElasticsearchDomainConfigResponse(t)
 	return t
 end
 
-local EBSOptions_keys = { "Iops" = true, "VolumeSize" = true, "VolumeType" = true, "EBSEnabled" = true, nil }
+keys.EBSOptions = { ["Iops"] = true, ["VolumeSize"] = true, ["VolumeType"] = true, ["EBSEnabled"] = true, nil }
 
-function M.AssertEBSOptions(struct)
+function asserts.AssertEBSOptions(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EBSOptions to be of type 'table'")
-	if struct["Iops"] then M.AssertIntegerClass(struct["Iops"]) end
-	if struct["VolumeSize"] then M.AssertIntegerClass(struct["VolumeSize"]) end
-	if struct["VolumeType"] then M.AssertVolumeType(struct["VolumeType"]) end
-	if struct["EBSEnabled"] then M.AssertBoolean(struct["EBSEnabled"]) end
+	if struct["Iops"] then asserts.AssertIntegerClass(struct["Iops"]) end
+	if struct["VolumeSize"] then asserts.AssertIntegerClass(struct["VolumeSize"]) end
+	if struct["VolumeType"] then asserts.AssertVolumeType(struct["VolumeType"]) end
+	if struct["EBSEnabled"] then asserts.AssertBoolean(struct["EBSEnabled"]) end
 	for k,_ in pairs(struct) do
-		assert(EBSOptions_keys[k], "EBSOptions contains unknown key " .. tostring(k))
+		assert(keys.EBSOptions[k], "EBSOptions contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EBSOptions
 -- <p>Options to enable, disable, and specify the properties of EBS storage volumes. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank"> Configuring EBS-based Storage</a>.</p>
--- @param Iops [IntegerClass] <p>Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).</p>
--- @param VolumeSize [IntegerClass] <p> Integer to specify the size of an EBS volume.</p>
--- @param VolumeType [VolumeType] <p> Specifies the volume type for EBS-based storage.</p>
--- @param EBSEnabled [Boolean] <p>Specifies whether EBS-based storage is enabled.</p>
-function M.EBSOptions(Iops, VolumeSize, VolumeType, EBSEnabled, ...)
+-- @param _Iops [IntegerClass] <p>Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).</p>
+-- @param _VolumeSize [IntegerClass] <p> Integer to specify the size of an EBS volume.</p>
+-- @param _VolumeType [VolumeType] <p> Specifies the volume type for EBS-based storage.</p>
+-- @param _EBSEnabled [Boolean] <p>Specifies whether EBS-based storage is enabled.</p>
+function M.EBSOptions(_Iops, _VolumeSize, _VolumeType, _EBSEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EBSOptions")
 	local t = { 
-		["Iops"] = Iops,
-		["VolumeSize"] = VolumeSize,
-		["VolumeType"] = VolumeType,
-		["EBSEnabled"] = EBSEnabled,
+		["Iops"] = _Iops,
+		["VolumeSize"] = _VolumeSize,
+		["VolumeType"] = _VolumeType,
+		["EBSEnabled"] = _EBSEnabled,
 	}
-	M.AssertEBSOptions(t)
+	asserts.AssertEBSOptions(t)
 	return t
 end
 
-local ElasticsearchVersionStatus_keys = { "Status" = true, "Options" = true, nil }
+keys.ElasticsearchVersionStatus = { ["Status"] = true, ["Options"] = true, nil }
 
-function M.AssertElasticsearchVersionStatus(struct)
+function asserts.AssertElasticsearchVersionStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ElasticsearchVersionStatus to be of type 'table'")
 	assert(struct["Options"], "Expected key Options to exist in table")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertOptionStatus(struct["Status"]) end
-	if struct["Options"] then M.AssertElasticsearchVersionString(struct["Options"]) end
+	if struct["Status"] then asserts.AssertOptionStatus(struct["Status"]) end
+	if struct["Options"] then asserts.AssertElasticsearchVersionString(struct["Options"]) end
 	for k,_ in pairs(struct) do
-		assert(ElasticsearchVersionStatus_keys[k], "ElasticsearchVersionStatus contains unknown key " .. tostring(k))
+		assert(keys.ElasticsearchVersionStatus[k], "ElasticsearchVersionStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ElasticsearchVersionStatus
 -- <p> Status of the Elasticsearch version options for the specified Elasticsearch domain.</p>
--- @param Status [OptionStatus] <p> Specifies the status of the Elasticsearch version options for the specified Elasticsearch domain.</p>
--- @param Options [ElasticsearchVersionString] <p> Specifies the Elasticsearch version for the specified Elasticsearch domain.</p>
+-- @param _Status [OptionStatus] <p> Specifies the status of the Elasticsearch version options for the specified Elasticsearch domain.</p>
+-- @param _Options [ElasticsearchVersionString] <p> Specifies the Elasticsearch version for the specified Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
-function M.ElasticsearchVersionStatus(Status, Options, ...)
+function M.ElasticsearchVersionStatus(_Status, _Options, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchVersionStatus")
 	local t = { 
-		["Status"] = Status,
-		["Options"] = Options,
+		["Status"] = _Status,
+		["Options"] = _Options,
 	}
-	M.AssertElasticsearchVersionStatus(t)
+	asserts.AssertElasticsearchVersionStatus(t)
 	return t
 end
 
-local ResourceAlreadyExistsException_keys = { nil }
+keys.ResourceAlreadyExistsException = { nil }
 
-function M.AssertResourceAlreadyExistsException(struct)
+function asserts.AssertResourceAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceAlreadyExistsException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ResourceAlreadyExistsException_keys[k], "ResourceAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.ResourceAlreadyExistsException[k], "ResourceAlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -637,174 +640,174 @@ function M.ResourceAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 
 	}
-	M.AssertResourceAlreadyExistsException(t)
+	asserts.AssertResourceAlreadyExistsException(t)
 	return t
 end
 
-local StorageTypeLimit_keys = { "LimitValues" = true, "LimitName" = true, nil }
+keys.StorageTypeLimit = { ["LimitValues"] = true, ["LimitName"] = true, nil }
 
-function M.AssertStorageTypeLimit(struct)
+function asserts.AssertStorageTypeLimit(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StorageTypeLimit to be of type 'table'")
-	if struct["LimitValues"] then M.AssertLimitValueList(struct["LimitValues"]) end
-	if struct["LimitName"] then M.AssertLimitName(struct["LimitName"]) end
+	if struct["LimitValues"] then asserts.AssertLimitValueList(struct["LimitValues"]) end
+	if struct["LimitName"] then asserts.AssertLimitName(struct["LimitName"]) end
 	for k,_ in pairs(struct) do
-		assert(StorageTypeLimit_keys[k], "StorageTypeLimit contains unknown key " .. tostring(k))
+		assert(keys.StorageTypeLimit[k], "StorageTypeLimit contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StorageTypeLimit
 -- <p>Limits that are applicable for given storage type. </p>
--- @param LimitValues [LimitValueList] <p> Values for the <code> <a>StorageTypeLimit$LimitName</a> </code> . </p>
--- @param LimitName [LimitName] <p> Name of storage limits that are applicable for given storage type. If <code> <a>StorageType</a> </code> is ebs, following storage options are applicable <ol> <li>MinimumVolumeSize</li> Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumVolumeSize</li> Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumIops</li> Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. <li>MinimumIops</li> Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. </ol> </p>
-function M.StorageTypeLimit(LimitValues, LimitName, ...)
+-- @param _LimitValues [LimitValueList] <p> Values for the <code> <a>StorageTypeLimit$LimitName</a> </code> . </p>
+-- @param _LimitName [LimitName] <p> Name of storage limits that are applicable for given storage type. If <code> <a>StorageType</a> </code> is ebs, following storage options are applicable <ol> <li>MinimumVolumeSize</li> Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumVolumeSize</li> Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumIops</li> Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. <li>MinimumIops</li> Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. </ol> </p>
+function M.StorageTypeLimit(_LimitValues, _LimitName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageTypeLimit")
 	local t = { 
-		["LimitValues"] = LimitValues,
-		["LimitName"] = LimitName,
+		["LimitValues"] = _LimitValues,
+		["LimitName"] = _LimitName,
 	}
-	M.AssertStorageTypeLimit(t)
+	asserts.AssertStorageTypeLimit(t)
 	return t
 end
 
-local ListElasticsearchVersionsResponse_keys = { "ElasticsearchVersions" = true, "NextToken" = true, nil }
+keys.ListElasticsearchVersionsResponse = { ["ElasticsearchVersions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListElasticsearchVersionsResponse(struct)
+function asserts.AssertListElasticsearchVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListElasticsearchVersionsResponse to be of type 'table'")
-	if struct["ElasticsearchVersions"] then M.AssertElasticsearchVersionList(struct["ElasticsearchVersions"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["ElasticsearchVersions"] then asserts.AssertElasticsearchVersionList(struct["ElasticsearchVersions"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListElasticsearchVersionsResponse_keys[k], "ListElasticsearchVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListElasticsearchVersionsResponse[k], "ListElasticsearchVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListElasticsearchVersionsResponse
 -- <p> Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. </p>
--- @param ElasticsearchVersions [ElasticsearchVersionList] <p> Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. </p>
--- @param NextToken [NextToken] <p> Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. </p>
-function M.ListElasticsearchVersionsResponse(ElasticsearchVersions, NextToken, ...)
+-- @param _ElasticsearchVersions [ElasticsearchVersionList] 
+-- @param _NextToken [NextToken] 
+function M.ListElasticsearchVersionsResponse(_ElasticsearchVersions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListElasticsearchVersionsResponse")
 	local t = { 
-		["ElasticsearchVersions"] = ElasticsearchVersions,
-		["NextToken"] = NextToken,
+		["ElasticsearchVersions"] = _ElasticsearchVersions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListElasticsearchVersionsResponse(t)
+	asserts.AssertListElasticsearchVersionsResponse(t)
 	return t
 end
 
-local ElasticsearchClusterConfigStatus_keys = { "Status" = true, "Options" = true, nil }
+keys.ElasticsearchClusterConfigStatus = { ["Status"] = true, ["Options"] = true, nil }
 
-function M.AssertElasticsearchClusterConfigStatus(struct)
+function asserts.AssertElasticsearchClusterConfigStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ElasticsearchClusterConfigStatus to be of type 'table'")
 	assert(struct["Options"], "Expected key Options to exist in table")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertOptionStatus(struct["Status"]) end
-	if struct["Options"] then M.AssertElasticsearchClusterConfig(struct["Options"]) end
+	if struct["Status"] then asserts.AssertOptionStatus(struct["Status"]) end
+	if struct["Options"] then asserts.AssertElasticsearchClusterConfig(struct["Options"]) end
 	for k,_ in pairs(struct) do
-		assert(ElasticsearchClusterConfigStatus_keys[k], "ElasticsearchClusterConfigStatus contains unknown key " .. tostring(k))
+		assert(keys.ElasticsearchClusterConfigStatus[k], "ElasticsearchClusterConfigStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ElasticsearchClusterConfigStatus
 -- <p> Specifies the configuration status for the specified Elasticsearch domain.</p>
--- @param Status [OptionStatus] <p> Specifies the status of the configuration for the specified Elasticsearch domain.</p>
--- @param Options [ElasticsearchClusterConfig] <p> Specifies the cluster configuration for the specified Elasticsearch domain.</p>
+-- @param _Status [OptionStatus] <p> Specifies the status of the configuration for the specified Elasticsearch domain.</p>
+-- @param _Options [ElasticsearchClusterConfig] <p> Specifies the cluster configuration for the specified Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
-function M.ElasticsearchClusterConfigStatus(Status, Options, ...)
+function M.ElasticsearchClusterConfigStatus(_Status, _Options, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchClusterConfigStatus")
 	local t = { 
-		["Status"] = Status,
-		["Options"] = Options,
+		["Status"] = _Status,
+		["Options"] = _Options,
 	}
-	M.AssertElasticsearchClusterConfigStatus(t)
+	asserts.AssertElasticsearchClusterConfigStatus(t)
 	return t
 end
 
-local StorageType_keys = { "StorageTypeName" = true, "StorageTypeLimits" = true, "StorageSubTypeName" = true, nil }
+keys.StorageType = { ["StorageTypeName"] = true, ["StorageTypeLimits"] = true, ["StorageSubTypeName"] = true, nil }
 
-function M.AssertStorageType(struct)
+function asserts.AssertStorageType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StorageType to be of type 'table'")
-	if struct["StorageTypeName"] then M.AssertStorageTypeName(struct["StorageTypeName"]) end
-	if struct["StorageTypeLimits"] then M.AssertStorageTypeLimitList(struct["StorageTypeLimits"]) end
-	if struct["StorageSubTypeName"] then M.AssertStorageSubTypeName(struct["StorageSubTypeName"]) end
+	if struct["StorageTypeName"] then asserts.AssertStorageTypeName(struct["StorageTypeName"]) end
+	if struct["StorageTypeLimits"] then asserts.AssertStorageTypeLimitList(struct["StorageTypeLimits"]) end
+	if struct["StorageSubTypeName"] then asserts.AssertStorageSubTypeName(struct["StorageSubTypeName"]) end
 	for k,_ in pairs(struct) do
-		assert(StorageType_keys[k], "StorageType contains unknown key " .. tostring(k))
+		assert(keys.StorageType[k], "StorageType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StorageType
 -- <p>StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. </p>
--- @param StorageTypeName [StorageTypeName] <p>StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. </p>
--- @param StorageTypeLimits [StorageTypeLimitList] <p>List of limits that are applicable for given storage type. </p>
--- @param StorageSubTypeName [StorageSubTypeName] <p>StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. </p>
-function M.StorageType(StorageTypeName, StorageTypeLimits, StorageSubTypeName, ...)
+-- @param _StorageTypeName [StorageTypeName] 
+-- @param _StorageTypeLimits [StorageTypeLimitList] <p>List of limits that are applicable for given storage type. </p>
+-- @param _StorageSubTypeName [StorageSubTypeName] 
+function M.StorageType(_StorageTypeName, _StorageTypeLimits, _StorageSubTypeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageType")
 	local t = { 
-		["StorageTypeName"] = StorageTypeName,
-		["StorageTypeLimits"] = StorageTypeLimits,
-		["StorageSubTypeName"] = StorageSubTypeName,
+		["StorageTypeName"] = _StorageTypeName,
+		["StorageTypeLimits"] = _StorageTypeLimits,
+		["StorageSubTypeName"] = _StorageSubTypeName,
 	}
-	M.AssertStorageType(t)
+	asserts.AssertStorageType(t)
 	return t
 end
 
-local BaseException_keys = { "message" = true, nil }
+keys.BaseException = { ["message"] = true, nil }
 
-function M.AssertBaseException(struct)
+function asserts.AssertBaseException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BaseException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(BaseException_keys[k], "BaseException contains unknown key " .. tostring(k))
+		assert(keys.BaseException[k], "BaseException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BaseException
 -- <p>An error occurred while processing the request.</p>
--- @param message [ErrorMessage] <p>A description of the error.</p>
-function M.BaseException(message, ...)
+-- @param _message [ErrorMessage] <p>A description of the error.</p>
+function M.BaseException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BaseException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertBaseException(t)
+	asserts.AssertBaseException(t)
 	return t
 end
 
-local InstanceLimits_keys = { "InstanceCountLimits" = true, nil }
+keys.InstanceLimits = { ["InstanceCountLimits"] = true, nil }
 
-function M.AssertInstanceLimits(struct)
+function asserts.AssertInstanceLimits(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceLimits to be of type 'table'")
-	if struct["InstanceCountLimits"] then M.AssertInstanceCountLimits(struct["InstanceCountLimits"]) end
+	if struct["InstanceCountLimits"] then asserts.AssertInstanceCountLimits(struct["InstanceCountLimits"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceLimits_keys[k], "InstanceLimits contains unknown key " .. tostring(k))
+		assert(keys.InstanceLimits[k], "InstanceLimits contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceLimits
 -- <p>InstanceLimits represents the list of instance related attributes that are available for given InstanceType. </p>
--- @param InstanceCountLimits [InstanceCountLimits] <p>InstanceLimits represents the list of instance related attributes that are available for given InstanceType. </p>
-function M.InstanceLimits(InstanceCountLimits, ...)
+-- @param _InstanceCountLimits [InstanceCountLimits] 
+function M.InstanceLimits(_InstanceCountLimits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceLimits")
 	local t = { 
-		["InstanceCountLimits"] = InstanceCountLimits,
+		["InstanceCountLimits"] = _InstanceCountLimits,
 	}
-	M.AssertInstanceLimits(t)
+	asserts.AssertInstanceLimits(t)
 	return t
 end
 
-local LimitExceededException_keys = { nil }
+keys.LimitExceededException = { nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -814,50 +817,50 @@ function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local DescribeElasticsearchInstanceTypeLimitsRequest_keys = { "ElasticsearchVersion" = true, "InstanceType" = true, "DomainName" = true, nil }
+keys.DescribeElasticsearchInstanceTypeLimitsRequest = { ["ElasticsearchVersion"] = true, ["InstanceType"] = true, ["DomainName"] = true, nil }
 
-function M.AssertDescribeElasticsearchInstanceTypeLimitsRequest(struct)
+function asserts.AssertDescribeElasticsearchInstanceTypeLimitsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeElasticsearchInstanceTypeLimitsRequest to be of type 'table'")
 	assert(struct["InstanceType"], "Expected key InstanceType to exist in table")
 	assert(struct["ElasticsearchVersion"], "Expected key ElasticsearchVersion to exist in table")
-	if struct["ElasticsearchVersion"] then M.AssertElasticsearchVersionString(struct["ElasticsearchVersion"]) end
-	if struct["InstanceType"] then M.AssertESPartitionInstanceType(struct["InstanceType"]) end
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
+	if struct["ElasticsearchVersion"] then asserts.AssertElasticsearchVersionString(struct["ElasticsearchVersion"]) end
+	if struct["InstanceType"] then asserts.AssertESPartitionInstanceType(struct["InstanceType"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeElasticsearchInstanceTypeLimitsRequest_keys[k], "DescribeElasticsearchInstanceTypeLimitsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeElasticsearchInstanceTypeLimitsRequest[k], "DescribeElasticsearchInstanceTypeLimitsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeElasticsearchInstanceTypeLimitsRequest
 -- <p> Container for the parameters to <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. </p>
--- @param ElasticsearchVersion [ElasticsearchVersionString] <p> Version of Elasticsearch for which <code> <a>Limits</a> </code> are needed. </p>
--- @param InstanceType [ESPartitionInstanceType] <p> The instance type for an Elasticsearch cluster for which Elasticsearch <code> <a>Limits</a> </code> are needed. </p>
--- @param DomainName [DomainName] <p> DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for Elasticsearch <code> <a>Limits</a> </code> for existing domain. </p>
+-- @param _ElasticsearchVersion [ElasticsearchVersionString] <p> Version of Elasticsearch for which <code> <a>Limits</a> </code> are needed. </p>
+-- @param _InstanceType [ESPartitionInstanceType] <p> The instance type for an Elasticsearch cluster for which Elasticsearch <code> <a>Limits</a> </code> are needed. </p>
+-- @param _DomainName [DomainName] <p> DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for Elasticsearch <code> <a>Limits</a> </code> for existing domain. </p>
 -- Required parameter: InstanceType
 -- Required parameter: ElasticsearchVersion
-function M.DescribeElasticsearchInstanceTypeLimitsRequest(ElasticsearchVersion, InstanceType, DomainName, ...)
+function M.DescribeElasticsearchInstanceTypeLimitsRequest(_ElasticsearchVersion, _InstanceType, _DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchInstanceTypeLimitsRequest")
 	local t = { 
-		["ElasticsearchVersion"] = ElasticsearchVersion,
-		["InstanceType"] = InstanceType,
-		["DomainName"] = DomainName,
+		["ElasticsearchVersion"] = _ElasticsearchVersion,
+		["InstanceType"] = _InstanceType,
+		["DomainName"] = _DomainName,
 	}
-	M.AssertDescribeElasticsearchInstanceTypeLimitsRequest(t)
+	asserts.AssertDescribeElasticsearchInstanceTypeLimitsRequest(t)
 	return t
 end
 
-local ValidationException_keys = { nil }
+keys.ValidationException = { nil }
 
-function M.AssertValidationException(struct)
+function asserts.AssertValidationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ValidationException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ValidationException_keys[k], "ValidationException contains unknown key " .. tostring(k))
+		assert(keys.ValidationException[k], "ValidationException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -867,97 +870,97 @@ function M.ValidationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
 	local t = { 
 	}
-	M.AssertValidationException(t)
+	asserts.AssertValidationException(t)
 	return t
 end
 
-local ListElasticsearchInstanceTypesResponse_keys = { "ElasticsearchInstanceTypes" = true, "NextToken" = true, nil }
+keys.ListElasticsearchInstanceTypesResponse = { ["ElasticsearchInstanceTypes"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListElasticsearchInstanceTypesResponse(struct)
+function asserts.AssertListElasticsearchInstanceTypesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListElasticsearchInstanceTypesResponse to be of type 'table'")
-	if struct["ElasticsearchInstanceTypes"] then M.AssertElasticsearchInstanceTypeList(struct["ElasticsearchInstanceTypes"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["ElasticsearchInstanceTypes"] then asserts.AssertElasticsearchInstanceTypeList(struct["ElasticsearchInstanceTypes"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListElasticsearchInstanceTypesResponse_keys[k], "ListElasticsearchInstanceTypesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListElasticsearchInstanceTypesResponse[k], "ListElasticsearchInstanceTypesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListElasticsearchInstanceTypesResponse
 -- <p> Container for the parameters returned by <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. </p>
--- @param ElasticsearchInstanceTypes [ElasticsearchInstanceTypeList] <p> List of instance types supported by Amazon Elasticsearch service for given <code> <a>ElasticsearchVersion</a> </code> </p>
--- @param NextToken [NextToken] <p>In case if there are more results available NextToken would be present, make further request to the same API with received NextToken to paginate remaining results. </p>
-function M.ListElasticsearchInstanceTypesResponse(ElasticsearchInstanceTypes, NextToken, ...)
+-- @param _ElasticsearchInstanceTypes [ElasticsearchInstanceTypeList] <p> List of instance types supported by Amazon Elasticsearch service for given <code> <a>ElasticsearchVersion</a> </code> </p>
+-- @param _NextToken [NextToken] <p>In case if there are more results available NextToken would be present, make further request to the same API with received NextToken to paginate remaining results. </p>
+function M.ListElasticsearchInstanceTypesResponse(_ElasticsearchInstanceTypes, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListElasticsearchInstanceTypesResponse")
 	local t = { 
-		["ElasticsearchInstanceTypes"] = ElasticsearchInstanceTypes,
-		["NextToken"] = NextToken,
+		["ElasticsearchInstanceTypes"] = _ElasticsearchInstanceTypes,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListElasticsearchInstanceTypesResponse(t)
+	asserts.AssertListElasticsearchInstanceTypesResponse(t)
 	return t
 end
 
-local DescribeElasticsearchDomainRequest_keys = { "DomainName" = true, nil }
+keys.DescribeElasticsearchDomainRequest = { ["DomainName"] = true, nil }
 
-function M.AssertDescribeElasticsearchDomainRequest(struct)
+function asserts.AssertDescribeElasticsearchDomainRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeElasticsearchDomainRequest to be of type 'table'")
 	assert(struct["DomainName"], "Expected key DomainName to exist in table")
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeElasticsearchDomainRequest_keys[k], "DescribeElasticsearchDomainRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeElasticsearchDomainRequest[k], "DescribeElasticsearchDomainRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeElasticsearchDomainRequest
 -- <p>Container for the parameters to the <code><a>DescribeElasticsearchDomain</a></code> operation.</p>
--- @param DomainName [DomainName] <p>The name of the Elasticsearch domain for which you want information.</p>
+-- @param _DomainName [DomainName] <p>The name of the Elasticsearch domain for which you want information.</p>
 -- Required parameter: DomainName
-function M.DescribeElasticsearchDomainRequest(DomainName, ...)
+function M.DescribeElasticsearchDomainRequest(_DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainRequest")
 	local t = { 
-		["DomainName"] = DomainName,
+		["DomainName"] = _DomainName,
 	}
-	M.AssertDescribeElasticsearchDomainRequest(t)
+	asserts.AssertDescribeElasticsearchDomainRequest(t)
 	return t
 end
 
-local Limits_keys = { "InstanceLimits" = true, "StorageTypes" = true, "AdditionalLimits" = true, nil }
+keys.Limits = { ["InstanceLimits"] = true, ["StorageTypes"] = true, ["AdditionalLimits"] = true, nil }
 
-function M.AssertLimits(struct)
+function asserts.AssertLimits(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Limits to be of type 'table'")
-	if struct["InstanceLimits"] then M.AssertInstanceLimits(struct["InstanceLimits"]) end
-	if struct["StorageTypes"] then M.AssertStorageTypeList(struct["StorageTypes"]) end
-	if struct["AdditionalLimits"] then M.AssertAdditionalLimitList(struct["AdditionalLimits"]) end
+	if struct["InstanceLimits"] then asserts.AssertInstanceLimits(struct["InstanceLimits"]) end
+	if struct["StorageTypes"] then asserts.AssertStorageTypeList(struct["StorageTypes"]) end
+	if struct["AdditionalLimits"] then asserts.AssertAdditionalLimitList(struct["AdditionalLimits"]) end
 	for k,_ in pairs(struct) do
-		assert(Limits_keys[k], "Limits contains unknown key " .. tostring(k))
+		assert(keys.Limits[k], "Limits contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Limits
 -- <p> Limits for given InstanceType and for each of it's role. <br/> Limits contains following <code> <a>StorageTypes,</a> </code> <code> <a>InstanceLimits</a> </code> and <code> <a>AdditionalLimits</a> </code> </p>
--- @param InstanceLimits [InstanceLimits] <p> Limits for given InstanceType and for each of it's role. <br/> Limits contains following <code> <a>StorageTypes,</a> </code> <code> <a>InstanceLimits</a> </code> and <code> <a>AdditionalLimits</a> </code> </p>
--- @param StorageTypes [StorageTypeList] <p>StorageType represents the list of storage related types and attributes that are available for given InstanceType. </p>
--- @param AdditionalLimits [AdditionalLimitList] <p> List of additional limits that are specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> . </p>
-function M.Limits(InstanceLimits, StorageTypes, AdditionalLimits, ...)
+-- @param _InstanceLimits [InstanceLimits] 
+-- @param _StorageTypes [StorageTypeList] <p>StorageType represents the list of storage related types and attributes that are available for given InstanceType. </p>
+-- @param _AdditionalLimits [AdditionalLimitList] <p> List of additional limits that are specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> . </p>
+function M.Limits(_InstanceLimits, _StorageTypes, _AdditionalLimits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Limits")
 	local t = { 
-		["InstanceLimits"] = InstanceLimits,
-		["StorageTypes"] = StorageTypes,
-		["AdditionalLimits"] = AdditionalLimits,
+		["InstanceLimits"] = _InstanceLimits,
+		["StorageTypes"] = _StorageTypes,
+		["AdditionalLimits"] = _AdditionalLimits,
 	}
-	M.AssertLimits(t)
+	asserts.AssertLimits(t)
 	return t
 end
 
-local InternalException_keys = { nil }
+keys.InternalException = { nil }
 
-function M.AssertInternalException(struct)
+function asserts.AssertInternalException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InternalException_keys[k], "InternalException contains unknown key " .. tostring(k))
+		assert(keys.InternalException[k], "InternalException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -967,119 +970,119 @@ function M.InternalException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
 	local t = { 
 	}
-	M.AssertInternalException(t)
+	asserts.AssertInternalException(t)
 	return t
 end
 
-local ElasticsearchClusterConfig_keys = { "DedicatedMasterEnabled" = true, "InstanceCount" = true, "ZoneAwarenessEnabled" = true, "DedicatedMasterType" = true, "InstanceType" = true, "DedicatedMasterCount" = true, nil }
+keys.ElasticsearchClusterConfig = { ["DedicatedMasterEnabled"] = true, ["InstanceCount"] = true, ["ZoneAwarenessEnabled"] = true, ["DedicatedMasterType"] = true, ["InstanceType"] = true, ["DedicatedMasterCount"] = true, nil }
 
-function M.AssertElasticsearchClusterConfig(struct)
+function asserts.AssertElasticsearchClusterConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ElasticsearchClusterConfig to be of type 'table'")
-	if struct["DedicatedMasterEnabled"] then M.AssertBoolean(struct["DedicatedMasterEnabled"]) end
-	if struct["InstanceCount"] then M.AssertIntegerClass(struct["InstanceCount"]) end
-	if struct["ZoneAwarenessEnabled"] then M.AssertBoolean(struct["ZoneAwarenessEnabled"]) end
-	if struct["DedicatedMasterType"] then M.AssertESPartitionInstanceType(struct["DedicatedMasterType"]) end
-	if struct["InstanceType"] then M.AssertESPartitionInstanceType(struct["InstanceType"]) end
-	if struct["DedicatedMasterCount"] then M.AssertIntegerClass(struct["DedicatedMasterCount"]) end
+	if struct["DedicatedMasterEnabled"] then asserts.AssertBoolean(struct["DedicatedMasterEnabled"]) end
+	if struct["InstanceCount"] then asserts.AssertIntegerClass(struct["InstanceCount"]) end
+	if struct["ZoneAwarenessEnabled"] then asserts.AssertBoolean(struct["ZoneAwarenessEnabled"]) end
+	if struct["DedicatedMasterType"] then asserts.AssertESPartitionInstanceType(struct["DedicatedMasterType"]) end
+	if struct["InstanceType"] then asserts.AssertESPartitionInstanceType(struct["InstanceType"]) end
+	if struct["DedicatedMasterCount"] then asserts.AssertIntegerClass(struct["DedicatedMasterCount"]) end
 	for k,_ in pairs(struct) do
-		assert(ElasticsearchClusterConfig_keys[k], "ElasticsearchClusterConfig contains unknown key " .. tostring(k))
+		assert(keys.ElasticsearchClusterConfig[k], "ElasticsearchClusterConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ElasticsearchClusterConfig
 -- <p>Specifies the configuration for the domain cluster, such as the type and number of instances.</p>
--- @param DedicatedMasterEnabled [Boolean] <p>A boolean value to indicate whether a dedicated master node is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes" target="_blank">About Dedicated Master Nodes</a> for more information.</p>
--- @param InstanceCount [IntegerClass] <p>The number of instances in the specified domain cluster.</p>
--- @param ZoneAwarenessEnabled [Boolean] <p>A boolean value to indicate whether zone awareness is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness" target="_blank">About Zone Awareness</a> for more information.</p>
--- @param DedicatedMasterType [ESPartitionInstanceType] <p>The instance type for a dedicated master node.</p>
--- @param InstanceType [ESPartitionInstanceType] <p>The instance type for an Elasticsearch cluster.</p>
--- @param DedicatedMasterCount [IntegerClass] <p>Total number of dedicated master nodes, active and on standby, for the cluster.</p>
-function M.ElasticsearchClusterConfig(DedicatedMasterEnabled, InstanceCount, ZoneAwarenessEnabled, DedicatedMasterType, InstanceType, DedicatedMasterCount, ...)
+-- @param _DedicatedMasterEnabled [Boolean] <p>A boolean value to indicate whether a dedicated master node is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes" target="_blank">About Dedicated Master Nodes</a> for more information.</p>
+-- @param _InstanceCount [IntegerClass] <p>The number of instances in the specified domain cluster.</p>
+-- @param _ZoneAwarenessEnabled [Boolean] <p>A boolean value to indicate whether zone awareness is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness" target="_blank">About Zone Awareness</a> for more information.</p>
+-- @param _DedicatedMasterType [ESPartitionInstanceType] <p>The instance type for a dedicated master node.</p>
+-- @param _InstanceType [ESPartitionInstanceType] <p>The instance type for an Elasticsearch cluster.</p>
+-- @param _DedicatedMasterCount [IntegerClass] <p>Total number of dedicated master nodes, active and on standby, for the cluster.</p>
+function M.ElasticsearchClusterConfig(_DedicatedMasterEnabled, _InstanceCount, _ZoneAwarenessEnabled, _DedicatedMasterType, _InstanceType, _DedicatedMasterCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchClusterConfig")
 	local t = { 
-		["DedicatedMasterEnabled"] = DedicatedMasterEnabled,
-		["InstanceCount"] = InstanceCount,
-		["ZoneAwarenessEnabled"] = ZoneAwarenessEnabled,
-		["DedicatedMasterType"] = DedicatedMasterType,
-		["InstanceType"] = InstanceType,
-		["DedicatedMasterCount"] = DedicatedMasterCount,
+		["DedicatedMasterEnabled"] = _DedicatedMasterEnabled,
+		["InstanceCount"] = _InstanceCount,
+		["ZoneAwarenessEnabled"] = _ZoneAwarenessEnabled,
+		["DedicatedMasterType"] = _DedicatedMasterType,
+		["InstanceType"] = _InstanceType,
+		["DedicatedMasterCount"] = _DedicatedMasterCount,
 	}
-	M.AssertElasticsearchClusterConfig(t)
+	asserts.AssertElasticsearchClusterConfig(t)
 	return t
 end
 
-local ListElasticsearchInstanceTypesRequest_keys = { "ElasticsearchVersion" = true, "NextToken" = true, "MaxResults" = true, "DomainName" = true, nil }
+keys.ListElasticsearchInstanceTypesRequest = { ["ElasticsearchVersion"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DomainName"] = true, nil }
 
-function M.AssertListElasticsearchInstanceTypesRequest(struct)
+function asserts.AssertListElasticsearchInstanceTypesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListElasticsearchInstanceTypesRequest to be of type 'table'")
 	assert(struct["ElasticsearchVersion"], "Expected key ElasticsearchVersion to exist in table")
-	if struct["ElasticsearchVersion"] then M.AssertElasticsearchVersionString(struct["ElasticsearchVersion"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertMaxResults(struct["MaxResults"]) end
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
+	if struct["ElasticsearchVersion"] then asserts.AssertElasticsearchVersionString(struct["ElasticsearchVersion"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertMaxResults(struct["MaxResults"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
 	for k,_ in pairs(struct) do
-		assert(ListElasticsearchInstanceTypesRequest_keys[k], "ListElasticsearchInstanceTypesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListElasticsearchInstanceTypesRequest[k], "ListElasticsearchInstanceTypesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListElasticsearchInstanceTypesRequest
 -- <p> Container for the parameters to the <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. </p>
--- @param ElasticsearchVersion [ElasticsearchVersionString] <p>Version of Elasticsearch for which list of supported elasticsearch instance types are needed. </p>
--- @param NextToken [NextToken] <p>NextToken should be sent in case if earlier API call produced result containing NextToken. It is used for pagination. </p>
--- @param MaxResults [MaxResults] <p> Set this value to limit the number of results returned. Value provided must be greater than 30 else it wont be honored. </p>
--- @param DomainName [DomainName] <p>DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for list of available Elasticsearch instance types when modifying existing domain. </p>
+-- @param _ElasticsearchVersion [ElasticsearchVersionString] <p>Version of Elasticsearch for which list of supported elasticsearch instance types are needed. </p>
+-- @param _NextToken [NextToken] <p>NextToken should be sent in case if earlier API call produced result containing NextToken. It is used for pagination. </p>
+-- @param _MaxResults [MaxResults] <p> Set this value to limit the number of results returned. Value provided must be greater than 30 else it wont be honored. </p>
+-- @param _DomainName [DomainName] <p>DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for list of available Elasticsearch instance types when modifying existing domain. </p>
 -- Required parameter: ElasticsearchVersion
-function M.ListElasticsearchInstanceTypesRequest(ElasticsearchVersion, NextToken, MaxResults, DomainName, ...)
+function M.ListElasticsearchInstanceTypesRequest(_ElasticsearchVersion, _NextToken, _MaxResults, _DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListElasticsearchInstanceTypesRequest")
 	local t = { 
-		["ElasticsearchVersion"] = ElasticsearchVersion,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["DomainName"] = DomainName,
+		["ElasticsearchVersion"] = _ElasticsearchVersion,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["DomainName"] = _DomainName,
 	}
-	M.AssertListElasticsearchInstanceTypesRequest(t)
+	asserts.AssertListElasticsearchInstanceTypesRequest(t)
 	return t
 end
 
-local SnapshotOptionsStatus_keys = { "Status" = true, "Options" = true, nil }
+keys.SnapshotOptionsStatus = { ["Status"] = true, ["Options"] = true, nil }
 
-function M.AssertSnapshotOptionsStatus(struct)
+function asserts.AssertSnapshotOptionsStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SnapshotOptionsStatus to be of type 'table'")
 	assert(struct["Options"], "Expected key Options to exist in table")
 	assert(struct["Status"], "Expected key Status to exist in table")
-	if struct["Status"] then M.AssertOptionStatus(struct["Status"]) end
-	if struct["Options"] then M.AssertSnapshotOptions(struct["Options"]) end
+	if struct["Status"] then asserts.AssertOptionStatus(struct["Status"]) end
+	if struct["Options"] then asserts.AssertSnapshotOptions(struct["Options"]) end
 	for k,_ in pairs(struct) do
-		assert(SnapshotOptionsStatus_keys[k], "SnapshotOptionsStatus contains unknown key " .. tostring(k))
+		assert(keys.SnapshotOptionsStatus[k], "SnapshotOptionsStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SnapshotOptionsStatus
 -- <p>Status of a daily automated snapshot.</p>
--- @param Status [OptionStatus] <p>Specifies the status of a daily automated snapshot.</p>
--- @param Options [SnapshotOptions] <p>Specifies the daily snapshot options specified for the Elasticsearch domain.</p>
+-- @param _Status [OptionStatus] <p>Specifies the status of a daily automated snapshot.</p>
+-- @param _Options [SnapshotOptions] <p>Specifies the daily snapshot options specified for the Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
-function M.SnapshotOptionsStatus(Status, Options, ...)
+function M.SnapshotOptionsStatus(_Status, _Options, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotOptionsStatus")
 	local t = { 
-		["Status"] = Status,
-		["Options"] = Options,
+		["Status"] = _Status,
+		["Options"] = _Options,
 	}
-	M.AssertSnapshotOptionsStatus(t)
+	asserts.AssertSnapshotOptionsStatus(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { nil }
+keys.ResourceNotFoundException = { nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1089,17 +1092,17 @@ function M.ResourceNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local DisabledOperationException_keys = { nil }
+keys.DisabledOperationException = { nil }
 
-function M.AssertDisabledOperationException(struct)
+function asserts.AssertDisabledOperationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisabledOperationException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DisabledOperationException_keys[k], "DisabledOperationException contains unknown key " .. tostring(k))
+		assert(keys.DisabledOperationException[k], "DisabledOperationException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1109,40 +1112,40 @@ function M.DisabledOperationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisabledOperationException")
 	local t = { 
 	}
-	M.AssertDisabledOperationException(t)
+	asserts.AssertDisabledOperationException(t)
 	return t
 end
 
-local DescribeElasticsearchInstanceTypeLimitsResponse_keys = { "LimitsByRole" = true, nil }
+keys.DescribeElasticsearchInstanceTypeLimitsResponse = { ["LimitsByRole"] = true, nil }
 
-function M.AssertDescribeElasticsearchInstanceTypeLimitsResponse(struct)
+function asserts.AssertDescribeElasticsearchInstanceTypeLimitsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeElasticsearchInstanceTypeLimitsResponse to be of type 'table'")
-	if struct["LimitsByRole"] then M.AssertLimitsByRole(struct["LimitsByRole"]) end
+	if struct["LimitsByRole"] then asserts.AssertLimitsByRole(struct["LimitsByRole"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeElasticsearchInstanceTypeLimitsResponse_keys[k], "DescribeElasticsearchInstanceTypeLimitsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeElasticsearchInstanceTypeLimitsResponse[k], "DescribeElasticsearchInstanceTypeLimitsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeElasticsearchInstanceTypeLimitsResponse
 -- <p> Container for the parameters received from <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. </p>
--- @param LimitsByRole [LimitsByRole] <p> Container for the parameters received from <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. </p>
-function M.DescribeElasticsearchInstanceTypeLimitsResponse(LimitsByRole, ...)
+-- @param _LimitsByRole [LimitsByRole] 
+function M.DescribeElasticsearchInstanceTypeLimitsResponse(_LimitsByRole, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchInstanceTypeLimitsResponse")
 	local t = { 
-		["LimitsByRole"] = LimitsByRole,
+		["LimitsByRole"] = _LimitsByRole,
 	}
-	M.AssertDescribeElasticsearchInstanceTypeLimitsResponse(t)
+	asserts.AssertDescribeElasticsearchInstanceTypeLimitsResponse(t)
 	return t
 end
 
-local InvalidTypeException_keys = { nil }
+keys.InvalidTypeException = { nil }
 
-function M.AssertInvalidTypeException(struct)
+function asserts.AssertInvalidTypeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidTypeException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InvalidTypeException_keys[k], "InvalidTypeException contains unknown key " .. tostring(k))
+		assert(keys.InvalidTypeException[k], "InvalidTypeException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1152,350 +1155,350 @@ function M.InvalidTypeException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTypeException")
 	local t = { 
 	}
-	M.AssertInvalidTypeException(t)
+	asserts.AssertInvalidTypeException(t)
 	return t
 end
 
-local OptionStatus_keys = { "PendingDeletion" = true, "State" = true, "CreationDate" = true, "UpdateVersion" = true, "UpdateDate" = true, nil }
+keys.OptionStatus = { ["PendingDeletion"] = true, ["State"] = true, ["CreationDate"] = true, ["UpdateVersion"] = true, ["UpdateDate"] = true, nil }
 
-function M.AssertOptionStatus(struct)
+function asserts.AssertOptionStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OptionStatus to be of type 'table'")
 	assert(struct["CreationDate"], "Expected key CreationDate to exist in table")
 	assert(struct["UpdateDate"], "Expected key UpdateDate to exist in table")
 	assert(struct["State"], "Expected key State to exist in table")
-	if struct["PendingDeletion"] then M.AssertBoolean(struct["PendingDeletion"]) end
-	if struct["State"] then M.AssertOptionState(struct["State"]) end
-	if struct["CreationDate"] then M.AssertUpdateTimestamp(struct["CreationDate"]) end
-	if struct["UpdateVersion"] then M.AssertUIntValue(struct["UpdateVersion"]) end
-	if struct["UpdateDate"] then M.AssertUpdateTimestamp(struct["UpdateDate"]) end
+	if struct["PendingDeletion"] then asserts.AssertBoolean(struct["PendingDeletion"]) end
+	if struct["State"] then asserts.AssertOptionState(struct["State"]) end
+	if struct["CreationDate"] then asserts.AssertUpdateTimestamp(struct["CreationDate"]) end
+	if struct["UpdateVersion"] then asserts.AssertUIntValue(struct["UpdateVersion"]) end
+	if struct["UpdateDate"] then asserts.AssertUpdateTimestamp(struct["UpdateDate"]) end
 	for k,_ in pairs(struct) do
-		assert(OptionStatus_keys[k], "OptionStatus contains unknown key " .. tostring(k))
+		assert(keys.OptionStatus[k], "OptionStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type OptionStatus
 -- <p>Provides the current status of the entity.</p>
--- @param PendingDeletion [Boolean] <p>Indicates whether the Elasticsearch domain is being deleted.</p>
--- @param State [OptionState] <p>Provides the <code>OptionState</code> for the Elasticsearch domain.</p>
--- @param CreationDate [UpdateTimestamp] <p>Timestamp which tells the creation date for the entity.</p>
--- @param UpdateVersion [UIntValue] <p>Specifies the latest version for the entity.</p>
--- @param UpdateDate [UpdateTimestamp] <p>Timestamp which tells the last updated time for the entity.</p>
+-- @param _PendingDeletion [Boolean] <p>Indicates whether the Elasticsearch domain is being deleted.</p>
+-- @param _State [OptionState] <p>Provides the <code>OptionState</code> for the Elasticsearch domain.</p>
+-- @param _CreationDate [UpdateTimestamp] <p>Timestamp which tells the creation date for the entity.</p>
+-- @param _UpdateVersion [UIntValue] <p>Specifies the latest version for the entity.</p>
+-- @param _UpdateDate [UpdateTimestamp] <p>Timestamp which tells the last updated time for the entity.</p>
 -- Required parameter: CreationDate
 -- Required parameter: UpdateDate
 -- Required parameter: State
-function M.OptionStatus(PendingDeletion, State, CreationDate, UpdateVersion, UpdateDate, ...)
+function M.OptionStatus(_PendingDeletion, _State, _CreationDate, _UpdateVersion, _UpdateDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionStatus")
 	local t = { 
-		["PendingDeletion"] = PendingDeletion,
-		["State"] = State,
-		["CreationDate"] = CreationDate,
-		["UpdateVersion"] = UpdateVersion,
-		["UpdateDate"] = UpdateDate,
+		["PendingDeletion"] = _PendingDeletion,
+		["State"] = _State,
+		["CreationDate"] = _CreationDate,
+		["UpdateVersion"] = _UpdateVersion,
+		["UpdateDate"] = _UpdateDate,
 	}
-	M.AssertOptionStatus(t)
+	asserts.AssertOptionStatus(t)
 	return t
 end
 
-local CreateElasticsearchDomainRequest_keys = { "ElasticsearchClusterConfig" = true, "ElasticsearchVersion" = true, "DomainName" = true, "EBSOptions" = true, "SnapshotOptions" = true, "AdvancedOptions" = true, "AccessPolicies" = true, nil }
+keys.CreateElasticsearchDomainRequest = { ["ElasticsearchClusterConfig"] = true, ["ElasticsearchVersion"] = true, ["DomainName"] = true, ["EBSOptions"] = true, ["SnapshotOptions"] = true, ["AdvancedOptions"] = true, ["AccessPolicies"] = true, nil }
 
-function M.AssertCreateElasticsearchDomainRequest(struct)
+function asserts.AssertCreateElasticsearchDomainRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateElasticsearchDomainRequest to be of type 'table'")
 	assert(struct["DomainName"], "Expected key DomainName to exist in table")
-	if struct["ElasticsearchClusterConfig"] then M.AssertElasticsearchClusterConfig(struct["ElasticsearchClusterConfig"]) end
-	if struct["ElasticsearchVersion"] then M.AssertElasticsearchVersionString(struct["ElasticsearchVersion"]) end
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
-	if struct["EBSOptions"] then M.AssertEBSOptions(struct["EBSOptions"]) end
-	if struct["SnapshotOptions"] then M.AssertSnapshotOptions(struct["SnapshotOptions"]) end
-	if struct["AdvancedOptions"] then M.AssertAdvancedOptions(struct["AdvancedOptions"]) end
-	if struct["AccessPolicies"] then M.AssertPolicyDocument(struct["AccessPolicies"]) end
+	if struct["ElasticsearchClusterConfig"] then asserts.AssertElasticsearchClusterConfig(struct["ElasticsearchClusterConfig"]) end
+	if struct["ElasticsearchVersion"] then asserts.AssertElasticsearchVersionString(struct["ElasticsearchVersion"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
+	if struct["EBSOptions"] then asserts.AssertEBSOptions(struct["EBSOptions"]) end
+	if struct["SnapshotOptions"] then asserts.AssertSnapshotOptions(struct["SnapshotOptions"]) end
+	if struct["AdvancedOptions"] then asserts.AssertAdvancedOptions(struct["AdvancedOptions"]) end
+	if struct["AccessPolicies"] then asserts.AssertPolicyDocument(struct["AccessPolicies"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateElasticsearchDomainRequest_keys[k], "CreateElasticsearchDomainRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateElasticsearchDomainRequest[k], "CreateElasticsearchDomainRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateElasticsearchDomainRequest
 --  
--- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>Configuration options for an Elasticsearch domain. Specifies the instance type and number of instances in the domain cluster. </p>
--- @param ElasticsearchVersion [ElasticsearchVersionString] <p>String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.</p>
--- @param DomainName [DomainName] <p>The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
--- @param EBSOptions [EBSOptions] <p>Options to enable, disable and specify the type and size of EBS storage volumes. </p>
--- @param SnapshotOptions [SnapshotOptions] <p>Option to set time, in UTC format, of the daily automated snapshot. Default value is 0 hours. </p>
--- @param AdvancedOptions [AdvancedOptions] <p> Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
--- @param AccessPolicies [PolicyDocument] <p> IAM access policy as a JSON-formatted string.</p>
+-- @param _ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>Configuration options for an Elasticsearch domain. Specifies the instance type and number of instances in the domain cluster. </p>
+-- @param _ElasticsearchVersion [ElasticsearchVersionString] <p>String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.</p>
+-- @param _DomainName [DomainName] <p>The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
+-- @param _EBSOptions [EBSOptions] <p>Options to enable, disable and specify the type and size of EBS storage volumes. </p>
+-- @param _SnapshotOptions [SnapshotOptions] <p>Option to set time, in UTC format, of the daily automated snapshot. Default value is 0 hours. </p>
+-- @param _AdvancedOptions [AdvancedOptions] <p> Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
+-- @param _AccessPolicies [PolicyDocument] <p> IAM access policy as a JSON-formatted string.</p>
 -- Required parameter: DomainName
-function M.CreateElasticsearchDomainRequest(ElasticsearchClusterConfig, ElasticsearchVersion, DomainName, EBSOptions, SnapshotOptions, AdvancedOptions, AccessPolicies, ...)
+function M.CreateElasticsearchDomainRequest(_ElasticsearchClusterConfig, _ElasticsearchVersion, _DomainName, _EBSOptions, _SnapshotOptions, _AdvancedOptions, _AccessPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateElasticsearchDomainRequest")
 	local t = { 
-		["ElasticsearchClusterConfig"] = ElasticsearchClusterConfig,
-		["ElasticsearchVersion"] = ElasticsearchVersion,
-		["DomainName"] = DomainName,
-		["EBSOptions"] = EBSOptions,
-		["SnapshotOptions"] = SnapshotOptions,
-		["AdvancedOptions"] = AdvancedOptions,
-		["AccessPolicies"] = AccessPolicies,
+		["ElasticsearchClusterConfig"] = _ElasticsearchClusterConfig,
+		["ElasticsearchVersion"] = _ElasticsearchVersion,
+		["DomainName"] = _DomainName,
+		["EBSOptions"] = _EBSOptions,
+		["SnapshotOptions"] = _SnapshotOptions,
+		["AdvancedOptions"] = _AdvancedOptions,
+		["AccessPolicies"] = _AccessPolicies,
 	}
-	M.AssertCreateElasticsearchDomainRequest(t)
+	asserts.AssertCreateElasticsearchDomainRequest(t)
 	return t
 end
 
-local DomainInfo_keys = { "DomainName" = true, nil }
+keys.DomainInfo = { ["DomainName"] = true, nil }
 
-function M.AssertDomainInfo(struct)
+function asserts.AssertDomainInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DomainInfo to be of type 'table'")
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
 	for k,_ in pairs(struct) do
-		assert(DomainInfo_keys[k], "DomainInfo contains unknown key " .. tostring(k))
+		assert(keys.DomainInfo[k], "DomainInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DomainInfo
 --  
--- @param DomainName [DomainName] <p> Specifies the <code>DomainName</code>.</p>
-function M.DomainInfo(DomainName, ...)
+-- @param _DomainName [DomainName] <p> Specifies the <code>DomainName</code>.</p>
+function M.DomainInfo(_DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainInfo")
 	local t = { 
-		["DomainName"] = DomainName,
+		["DomainName"] = _DomainName,
 	}
-	M.AssertDomainInfo(t)
+	asserts.AssertDomainInfo(t)
 	return t
 end
 
-local DeleteElasticsearchDomainRequest_keys = { "DomainName" = true, nil }
+keys.DeleteElasticsearchDomainRequest = { ["DomainName"] = true, nil }
 
-function M.AssertDeleteElasticsearchDomainRequest(struct)
+function asserts.AssertDeleteElasticsearchDomainRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteElasticsearchDomainRequest to be of type 'table'")
 	assert(struct["DomainName"], "Expected key DomainName to exist in table")
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteElasticsearchDomainRequest_keys[k], "DeleteElasticsearchDomainRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteElasticsearchDomainRequest[k], "DeleteElasticsearchDomainRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteElasticsearchDomainRequest
 -- <p>Container for the parameters to the <code><a>DeleteElasticsearchDomain</a></code> operation. Specifies the name of the Elasticsearch domain that you want to delete.</p>
--- @param DomainName [DomainName] <p>The name of the Elasticsearch domain that you want to permanently delete.</p>
+-- @param _DomainName [DomainName] <p>The name of the Elasticsearch domain that you want to permanently delete.</p>
 -- Required parameter: DomainName
-function M.DeleteElasticsearchDomainRequest(DomainName, ...)
+function M.DeleteElasticsearchDomainRequest(_DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteElasticsearchDomainRequest")
 	local t = { 
-		["DomainName"] = DomainName,
+		["DomainName"] = _DomainName,
 	}
-	M.AssertDeleteElasticsearchDomainRequest(t)
+	asserts.AssertDeleteElasticsearchDomainRequest(t)
 	return t
 end
 
-local AddTagsRequest_keys = { "ARN" = true, "TagList" = true, nil }
+keys.AddTagsRequest = { ["ARN"] = true, ["TagList"] = true, nil }
 
-function M.AssertAddTagsRequest(struct)
+function asserts.AssertAddTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsRequest to be of type 'table'")
 	assert(struct["ARN"], "Expected key ARN to exist in table")
 	assert(struct["TagList"], "Expected key TagList to exist in table")
-	if struct["ARN"] then M.AssertARN(struct["ARN"]) end
-	if struct["TagList"] then M.AssertTagList(struct["TagList"]) end
+	if struct["ARN"] then asserts.AssertARN(struct["ARN"]) end
+	if struct["TagList"] then asserts.AssertTagList(struct["TagList"]) end
 	for k,_ in pairs(struct) do
-		assert(AddTagsRequest_keys[k], "AddTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.AddTagsRequest[k], "AddTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddTagsRequest
 -- <p>Container for the parameters to the <code><a>AddTags</a></code> operation. Specify the tags that you want to attach to the Elasticsearch domain.</p>
--- @param ARN [ARN] <p> Specify the <code>ARN</code> for which you want to add the tags.</p>
--- @param TagList [TagList] <p> List of <code>Tag</code> that need to be added for the Elasticsearch domain. </p>
+-- @param _ARN [ARN] <p> Specify the <code>ARN</code> for which you want to add the tags.</p>
+-- @param _TagList [TagList] <p> List of <code>Tag</code> that need to be added for the Elasticsearch domain. </p>
 -- Required parameter: ARN
 -- Required parameter: TagList
-function M.AddTagsRequest(ARN, TagList, ...)
+function M.AddTagsRequest(_ARN, _TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsRequest")
 	local t = { 
-		["ARN"] = ARN,
-		["TagList"] = TagList,
+		["ARN"] = _ARN,
+		["TagList"] = _TagList,
 	}
-	M.AssertAddTagsRequest(t)
+	asserts.AssertAddTagsRequest(t)
 	return t
 end
 
-local CreateElasticsearchDomainResponse_keys = { "DomainStatus" = true, nil }
+keys.CreateElasticsearchDomainResponse = { ["DomainStatus"] = true, nil }
 
-function M.AssertCreateElasticsearchDomainResponse(struct)
+function asserts.AssertCreateElasticsearchDomainResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateElasticsearchDomainResponse to be of type 'table'")
-	if struct["DomainStatus"] then M.AssertElasticsearchDomainStatus(struct["DomainStatus"]) end
+	if struct["DomainStatus"] then asserts.AssertElasticsearchDomainStatus(struct["DomainStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateElasticsearchDomainResponse_keys[k], "CreateElasticsearchDomainResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateElasticsearchDomainResponse[k], "CreateElasticsearchDomainResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateElasticsearchDomainResponse
 -- <p>The result of a <code>CreateElasticsearchDomain</code> operation. Contains the status of the newly created Elasticsearch domain.</p>
--- @param DomainStatus [ElasticsearchDomainStatus] <p>The status of the newly created Elasticsearch domain. </p>
-function M.CreateElasticsearchDomainResponse(DomainStatus, ...)
+-- @param _DomainStatus [ElasticsearchDomainStatus] <p>The status of the newly created Elasticsearch domain. </p>
+function M.CreateElasticsearchDomainResponse(_DomainStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateElasticsearchDomainResponse")
 	local t = { 
-		["DomainStatus"] = DomainStatus,
+		["DomainStatus"] = _DomainStatus,
 	}
-	M.AssertCreateElasticsearchDomainResponse(t)
+	asserts.AssertCreateElasticsearchDomainResponse(t)
 	return t
 end
 
-local ListTagsResponse_keys = { "TagList" = true, nil }
+keys.ListTagsResponse = { ["TagList"] = true, nil }
 
-function M.AssertListTagsResponse(struct)
+function asserts.AssertListTagsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsResponse to be of type 'table'")
-	if struct["TagList"] then M.AssertTagList(struct["TagList"]) end
+	if struct["TagList"] then asserts.AssertTagList(struct["TagList"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsResponse_keys[k], "ListTagsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTagsResponse[k], "ListTagsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsResponse
 -- <p>The result of a <code>ListTags</code> operation. Contains tags for all requested Elasticsearch domains.</p>
--- @param TagList [TagList] <p> List of <code>Tag</code> for the requested Elasticsearch domain.</p>
-function M.ListTagsResponse(TagList, ...)
+-- @param _TagList [TagList] <p> List of <code>Tag</code> for the requested Elasticsearch domain.</p>
+function M.ListTagsResponse(_TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResponse")
 	local t = { 
-		["TagList"] = TagList,
+		["TagList"] = _TagList,
 	}
-	M.AssertListTagsResponse(t)
+	asserts.AssertListTagsResponse(t)
 	return t
 end
 
-local DescribeElasticsearchDomainConfigRequest_keys = { "DomainName" = true, nil }
+keys.DescribeElasticsearchDomainConfigRequest = { ["DomainName"] = true, nil }
 
-function M.AssertDescribeElasticsearchDomainConfigRequest(struct)
+function asserts.AssertDescribeElasticsearchDomainConfigRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeElasticsearchDomainConfigRequest to be of type 'table'")
 	assert(struct["DomainName"], "Expected key DomainName to exist in table")
-	if struct["DomainName"] then M.AssertDomainName(struct["DomainName"]) end
+	if struct["DomainName"] then asserts.AssertDomainName(struct["DomainName"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeElasticsearchDomainConfigRequest_keys[k], "DescribeElasticsearchDomainConfigRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeElasticsearchDomainConfigRequest[k], "DescribeElasticsearchDomainConfigRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeElasticsearchDomainConfigRequest
 -- <p> Container for the parameters to the <code>DescribeElasticsearchDomainConfig</code> operation. Specifies the domain name for which you want configuration information.</p>
--- @param DomainName [DomainName] <p>The Elasticsearch domain that you want to get information about.</p>
+-- @param _DomainName [DomainName] <p>The Elasticsearch domain that you want to get information about.</p>
 -- Required parameter: DomainName
-function M.DescribeElasticsearchDomainConfigRequest(DomainName, ...)
+function M.DescribeElasticsearchDomainConfigRequest(_DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainConfigRequest")
 	local t = { 
-		["DomainName"] = DomainName,
+		["DomainName"] = _DomainName,
 	}
-	M.AssertDescribeElasticsearchDomainConfigRequest(t)
+	asserts.AssertDescribeElasticsearchDomainConfigRequest(t)
 	return t
 end
 
-local InstanceCountLimits_keys = { "MaximumInstanceCount" = true, "MinimumInstanceCount" = true, nil }
+keys.InstanceCountLimits = { ["MaximumInstanceCount"] = true, ["MinimumInstanceCount"] = true, nil }
 
-function M.AssertInstanceCountLimits(struct)
+function asserts.AssertInstanceCountLimits(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceCountLimits to be of type 'table'")
-	if struct["MaximumInstanceCount"] then M.AssertMaximumInstanceCount(struct["MaximumInstanceCount"]) end
-	if struct["MinimumInstanceCount"] then M.AssertMinimumInstanceCount(struct["MinimumInstanceCount"]) end
+	if struct["MaximumInstanceCount"] then asserts.AssertMaximumInstanceCount(struct["MaximumInstanceCount"]) end
+	if struct["MinimumInstanceCount"] then asserts.AssertMinimumInstanceCount(struct["MinimumInstanceCount"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceCountLimits_keys[k], "InstanceCountLimits contains unknown key " .. tostring(k))
+		assert(keys.InstanceCountLimits[k], "InstanceCountLimits contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceCountLimits
 -- <p> InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. </p>
--- @param MaximumInstanceCount [MaximumInstanceCount] <p> InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. </p>
--- @param MinimumInstanceCount [MinimumInstanceCount] <p> InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. </p>
-function M.InstanceCountLimits(MaximumInstanceCount, MinimumInstanceCount, ...)
+-- @param _MaximumInstanceCount [MaximumInstanceCount] 
+-- @param _MinimumInstanceCount [MinimumInstanceCount] 
+function M.InstanceCountLimits(_MaximumInstanceCount, _MinimumInstanceCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceCountLimits")
 	local t = { 
-		["MaximumInstanceCount"] = MaximumInstanceCount,
-		["MinimumInstanceCount"] = MinimumInstanceCount,
+		["MaximumInstanceCount"] = _MaximumInstanceCount,
+		["MinimumInstanceCount"] = _MinimumInstanceCount,
 	}
-	M.AssertInstanceCountLimits(t)
+	asserts.AssertInstanceCountLimits(t)
 	return t
 end
 
-local UpdateElasticsearchDomainConfigResponse_keys = { "DomainConfig" = true, nil }
+keys.UpdateElasticsearchDomainConfigResponse = { ["DomainConfig"] = true, nil }
 
-function M.AssertUpdateElasticsearchDomainConfigResponse(struct)
+function asserts.AssertUpdateElasticsearchDomainConfigResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateElasticsearchDomainConfigResponse to be of type 'table'")
 	assert(struct["DomainConfig"], "Expected key DomainConfig to exist in table")
-	if struct["DomainConfig"] then M.AssertElasticsearchDomainConfig(struct["DomainConfig"]) end
+	if struct["DomainConfig"] then asserts.AssertElasticsearchDomainConfig(struct["DomainConfig"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateElasticsearchDomainConfigResponse_keys[k], "UpdateElasticsearchDomainConfigResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateElasticsearchDomainConfigResponse[k], "UpdateElasticsearchDomainConfigResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateElasticsearchDomainConfigResponse
 -- <p>The result of an <code>UpdateElasticsearchDomain</code> request. Contains the status of the Elasticsearch domain being updated.</p>
--- @param DomainConfig [ElasticsearchDomainConfig] <p>The status of the updated Elasticsearch domain. </p>
+-- @param _DomainConfig [ElasticsearchDomainConfig] <p>The status of the updated Elasticsearch domain. </p>
 -- Required parameter: DomainConfig
-function M.UpdateElasticsearchDomainConfigResponse(DomainConfig, ...)
+function M.UpdateElasticsearchDomainConfigResponse(_DomainConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateElasticsearchDomainConfigResponse")
 	local t = { 
-		["DomainConfig"] = DomainConfig,
+		["DomainConfig"] = _DomainConfig,
 	}
-	M.AssertUpdateElasticsearchDomainConfigResponse(t)
+	asserts.AssertUpdateElasticsearchDomainConfigResponse(t)
 	return t
 end
 
-function M.AssertOptionState(str)
+function asserts.AssertOptionState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OptionState to be of type 'string'")
 end
 
 -- <p>The state of a requested change. One of the following:</p> <ul> <li>Processing: The request change is still in-process.</li> <li>Active: The request change is processed and deployed to the Elasticsearch domain.</li> </ul>
 function M.OptionState(str)
-	M.AssertOptionState(str)
+	asserts.AssertOptionState(str)
 	return str
 end
 
-function M.AssertVolumeType(str)
+function asserts.AssertVolumeType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VolumeType to be of type 'string'")
 end
 
 -- <p> The type of EBS volume, standard, gp2, or io1. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a>for more information.</p>
 function M.VolumeType(str)
-	M.AssertVolumeType(str)
+	asserts.AssertVolumeType(str)
 	return str
 end
 
-function M.AssertESPartitionInstanceType(str)
+function asserts.AssertESPartitionInstanceType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ESPartitionInstanceType to be of type 'string'")
 end
 
 --  
 function M.ESPartitionInstanceType(str)
-	M.AssertESPartitionInstanceType(str)
+	asserts.AssertESPartitionInstanceType(str)
 	return str
 end
 
-function M.AssertPolicyDocument(str)
+function asserts.AssertPolicyDocument(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PolicyDocument to be of type 'string'")
 end
 
 -- <p>Access policy rules for an Elasticsearch domain service endpoints. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank">Configuring Access Policies</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>. The maximum size of a policy document is 100 KB.</p>
 function M.PolicyDocument(str)
-	M.AssertPolicyDocument(str)
+	asserts.AssertPolicyDocument(str)
 	return str
 end
 
-function M.AssertLimitName(str)
+function asserts.AssertLimitName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LimitName to be of type 'string'")
 end
 
 --  
 function M.LimitName(str)
-	M.AssertLimitName(str)
+	asserts.AssertLimitName(str)
 	return str
 end
 
-function M.AssertDomainId(str)
+function asserts.AssertDomainId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DomainId to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
@@ -1504,47 +1507,46 @@ end
 
 -- <p>Unique identifier for an Elasticsearch domain.</p>
 function M.DomainId(str)
-	M.AssertDomainId(str)
+	asserts.AssertDomainId(str)
 	return str
 end
 
-function M.AssertDomainName(str)
+function asserts.AssertDomainName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DomainName to be of type 'string'")
 	assert(#str <= 28, "Expected string to be max 28 characters")
 	assert(#str >= 3, "Expected string to be min 3 characters")
-	assert(str:match("[a-z][a-z0-9%-]+"), "Expected string to match pattern '[a-z][a-z0-9%-]+'")
 end
 
 -- <p>The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
 function M.DomainName(str)
-	M.AssertDomainName(str)
+	asserts.AssertDomainName(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertElasticsearchVersionString(str)
+function asserts.AssertElasticsearchVersionString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ElasticsearchVersionString to be of type 'string'")
 end
 
 --  
 function M.ElasticsearchVersionString(str)
-	M.AssertElasticsearchVersionString(str)
+	asserts.AssertElasticsearchVersionString(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -1552,88 +1554,88 @@ end
 
 -- <p>A string of length from 0 to 256 characters that specifies the value for a Tag. Tag values can be null and do not have to be unique in a tag set.</p>
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertLimitValue(str)
+function asserts.AssertLimitValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LimitValue to be of type 'string'")
 end
 
 --  
 function M.LimitValue(str)
-	M.AssertLimitValue(str)
+	asserts.AssertLimitValue(str)
 	return str
 end
 
-function M.AssertInstanceRole(str)
+function asserts.AssertInstanceRole(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceRole to be of type 'string'")
 end
 
 --  
 function M.InstanceRole(str)
-	M.AssertInstanceRole(str)
+	asserts.AssertInstanceRole(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertServiceUrl(str)
+function asserts.AssertServiceUrl(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ServiceUrl to be of type 'string'")
 end
 
 -- <p>The endpoint to which service requests are submitted. For example, <code>search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code> or <code>doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code>.</p>
 function M.ServiceUrl(str)
-	M.AssertServiceUrl(str)
+	asserts.AssertServiceUrl(str)
 	return str
 end
 
-function M.AssertStorageSubTypeName(str)
+function asserts.AssertStorageSubTypeName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StorageSubTypeName to be of type 'string'")
 end
 
 -- <p> SubType of the given storage type. List of available sub-storage options: For "instance" storageType we wont have any storageSubType, in case of "ebs" storageType we will have following valid storageSubTypes <ol> <li>standard</li> <li>gp2</li> <li>io1</li> </ol> Refer <code><a>VolumeType</a></code> for more information regarding above EBS storage options. </p>
 function M.StorageSubTypeName(str)
-	M.AssertStorageSubTypeName(str)
+	asserts.AssertStorageSubTypeName(str)
 	return str
 end
 
-function M.AssertStorageTypeName(str)
+function asserts.AssertStorageTypeName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StorageTypeName to be of type 'string'")
 end
 
 -- <p> Type of the storage. List of available storage options: <ol> <li>instance</li> Inbuilt storage available for the given Instance <li>ebs</li> Elastic block storage that would be attached to the given Instance </ol> </p>
 function M.StorageTypeName(str)
-	M.AssertStorageTypeName(str)
+	asserts.AssertStorageTypeName(str)
 	return str
 end
 
-function M.AssertNextToken(str)
+function asserts.AssertNextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
 end
 
 -- <p> Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results. </p>
 function M.NextToken(str)
-	M.AssertNextToken(str)
+	asserts.AssertNextToken(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -1642,55 +1644,55 @@ end
 
 -- <p>A string of length from 1 to 128 characters that specifies the key for a Tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.</p>
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertARN(str)
+function asserts.AssertARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ARN to be of type 'string'")
 end
 
 -- <p>The Amazon Resource Name (ARN) of the Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
 function M.ARN(str)
-	M.AssertARN(str)
+	asserts.AssertARN(str)
 	return str
 end
 
-function M.AssertIntegerClass(integer)
+function asserts.AssertIntegerClass(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected IntegerClass to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.IntegerClass(integer)
-	M.AssertIntegerClass(integer)
+	asserts.AssertIntegerClass(integer)
 	return integer
 end
 
-function M.AssertUIntValue(integer)
+function asserts.AssertUIntValue(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected UIntValue to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.UIntValue(integer)
-	M.AssertUIntValue(integer)
+	asserts.AssertUIntValue(integer)
 	return integer
 end
 
-function M.AssertMaximumInstanceCount(integer)
+function asserts.AssertMaximumInstanceCount(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaximumInstanceCount to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.MaximumInstanceCount(integer)
-	M.AssertMaximumInstanceCount(integer)
+	asserts.AssertMaximumInstanceCount(integer)
 	return integer
 end
 
-function M.AssertMaxResults(integer)
+function asserts.AssertMaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1698,231 +1700,231 @@ function M.AssertMaxResults(integer)
 end
 
 function M.MaxResults(integer)
-	M.AssertMaxResults(integer)
+	asserts.AssertMaxResults(integer)
 	return integer
 end
 
-function M.AssertMinimumInstanceCount(integer)
+function asserts.AssertMinimumInstanceCount(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MinimumInstanceCount to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.MinimumInstanceCount(integer)
-	M.AssertMinimumInstanceCount(integer)
+	asserts.AssertMinimumInstanceCount(integer)
 	return integer
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertAdvancedOptions(map)
+function asserts.AssertAdvancedOptions(map)
 	assert(map)
 	assert(type(map) == "table", "Expected AdvancedOptions to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertString(v)
+		asserts.AssertString(k)
+		asserts.AssertString(v)
 	end
 end
 
 function M.AdvancedOptions(map)
-	M.AssertAdvancedOptions(map)
+	asserts.AssertAdvancedOptions(map)
 	return map
 end
 
-function M.AssertLimitsByRole(map)
+function asserts.AssertLimitsByRole(map)
 	assert(map)
 	assert(type(map) == "table", "Expected LimitsByRole to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertInstanceRole(k)
-		M.AssertLimits(v)
+		asserts.AssertInstanceRole(k)
+		asserts.AssertLimits(v)
 	end
 end
 
 function M.LimitsByRole(map)
-	M.AssertLimitsByRole(map)
+	asserts.AssertLimitsByRole(map)
 	return map
 end
 
-function M.AssertUpdateTimestamp(timestamp)
+function asserts.AssertUpdateTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected UpdateTimestamp to be of type 'string'")
 end
 
 function M.UpdateTimestamp(timestamp)
-	M.AssertUpdateTimestamp(timestamp)
+	asserts.AssertUpdateTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertElasticsearchVersionList(list)
+function asserts.AssertElasticsearchVersionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ElasticsearchVersionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertElasticsearchVersionString(v)
+		asserts.AssertElasticsearchVersionString(v)
 	end
 end
 
 -- <p>List of supported elastic search versions. </p>
 -- List of ElasticsearchVersionString objects
 function M.ElasticsearchVersionList(list)
-	M.AssertElasticsearchVersionList(list)
+	asserts.AssertElasticsearchVersionList(list)
 	return list
 end
 
-function M.AssertDomainInfoList(list)
+function asserts.AssertDomainInfoList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DomainInfoList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDomainInfo(v)
+		asserts.AssertDomainInfo(v)
 	end
 end
 
 -- <p> Contains the list of Elasticsearch domain information.</p>
 -- List of DomainInfo objects
 function M.DomainInfoList(list)
-	M.AssertDomainInfoList(list)
+	asserts.AssertDomainInfoList(list)
 	return list
 end
 
-function M.AssertLimitValueList(list)
+function asserts.AssertLimitValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LimitValueList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLimitValue(v)
+		asserts.AssertLimitValue(v)
 	end
 end
 
 --  
 -- List of LimitValue objects
 function M.LimitValueList(list)
-	M.AssertLimitValueList(list)
+	asserts.AssertLimitValueList(list)
 	return list
 end
 
-function M.AssertElasticsearchDomainStatusList(list)
+function asserts.AssertElasticsearchDomainStatusList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ElasticsearchDomainStatusList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertElasticsearchDomainStatus(v)
+		asserts.AssertElasticsearchDomainStatus(v)
 	end
 end
 
 -- <p>A list that contains the status of each requested Elasticsearch domain.</p>
 -- List of ElasticsearchDomainStatus objects
 function M.ElasticsearchDomainStatusList(list)
-	M.AssertElasticsearchDomainStatusList(list)
+	asserts.AssertElasticsearchDomainStatusList(list)
 	return list
 end
 
-function M.AssertStorageTypeLimitList(list)
+function asserts.AssertStorageTypeLimitList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StorageTypeLimitList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStorageTypeLimit(v)
+		asserts.AssertStorageTypeLimit(v)
 	end
 end
 
 --  
 -- List of StorageTypeLimit objects
 function M.StorageTypeLimitList(list)
-	M.AssertStorageTypeLimitList(list)
+	asserts.AssertStorageTypeLimitList(list)
 	return list
 end
 
-function M.AssertDomainNameList(list)
+function asserts.AssertDomainNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DomainNameList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDomainName(v)
+		asserts.AssertDomainName(v)
 	end
 end
 
 -- <p>A list of Elasticsearch domain names.</p>
 -- List of DomainName objects
 function M.DomainNameList(list)
-	M.AssertDomainNameList(list)
+	asserts.AssertDomainNameList(list)
 	return list
 end
 
-function M.AssertStringList(list)
+function asserts.AssertStringList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StringList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.StringList(list)
-	M.AssertStringList(list)
+	asserts.AssertStringList(list)
 	return list
 end
 
-function M.AssertElasticsearchInstanceTypeList(list)
+function asserts.AssertElasticsearchInstanceTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ElasticsearchInstanceTypeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertESPartitionInstanceType(v)
+		asserts.AssertESPartitionInstanceType(v)
 	end
 end
 
 -- <p> List of instance types supported by Amazon Elasticsearch service. </p>
 -- List of ESPartitionInstanceType objects
 function M.ElasticsearchInstanceTypeList(list)
-	M.AssertElasticsearchInstanceTypeList(list)
+	asserts.AssertElasticsearchInstanceTypeList(list)
 	return list
 end
 
-function M.AssertStorageTypeList(list)
+function asserts.AssertStorageTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StorageTypeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStorageType(v)
+		asserts.AssertStorageType(v)
 	end
 end
 
 --  
 -- List of StorageType objects
 function M.StorageTypeList(list)
-	M.AssertStorageTypeList(list)
+	asserts.AssertStorageTypeList(list)
 	return list
 end
 
-function M.AssertAdditionalLimitList(list)
+function asserts.AssertAdditionalLimitList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AdditionalLimitList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAdditionalLimit(v)
+		asserts.AssertAdditionalLimit(v)
 	end
 end
 
 --  
 -- List of AdditionalLimit objects
 function M.AdditionalLimitList(list)
-	M.AssertAdditionalLimitList(list)
+	asserts.AssertAdditionalLimitList(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 -- <p>A list of <code>Tag</code> </p>
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 
@@ -2145,10 +2147,8 @@ function M.ListElasticsearchVersionsAsync(ListElasticsearchVersionsRequest, cb)
 end
 
 --- ListDomainNames
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.ListDomainNamesAsync(, cb)
-	assert(, "You must provide a ")
+function M.ListDomainNamesAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = ".ListDomainNames",
@@ -2156,7 +2156,7 @@ function M.ListDomainNamesAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/domain", , headers, M.metadata, cb)
+		request_handler(uri .. "/2015-01-01/domain", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end

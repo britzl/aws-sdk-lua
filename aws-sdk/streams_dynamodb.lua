@@ -18,679 +18,681 @@ M.metadata = {
 	uid = "streams-dynamodb-2012-08-10",
 }
 
-local LimitExceededException_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertLimitExceededException(struct)
+keys.LimitExceededException = { ["message"] = true, nil }
+
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#APIRetries">Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- @param message [ErrorMessage] <p>Too many operations for a given subscriber.</p>
-function M.LimitExceededException(message, ...)
+-- @param _message [ErrorMessage] <p>Too many operations for a given subscriber.</p>
+function M.LimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local SequenceNumberRange_keys = { "EndingSequenceNumber" = true, "StartingSequenceNumber" = true, nil }
+keys.SequenceNumberRange = { ["EndingSequenceNumber"] = true, ["StartingSequenceNumber"] = true, nil }
 
-function M.AssertSequenceNumberRange(struct)
+function asserts.AssertSequenceNumberRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SequenceNumberRange to be of type 'table'")
-	if struct["EndingSequenceNumber"] then M.AssertSequenceNumber(struct["EndingSequenceNumber"]) end
-	if struct["StartingSequenceNumber"] then M.AssertSequenceNumber(struct["StartingSequenceNumber"]) end
+	if struct["EndingSequenceNumber"] then asserts.AssertSequenceNumber(struct["EndingSequenceNumber"]) end
+	if struct["StartingSequenceNumber"] then asserts.AssertSequenceNumber(struct["StartingSequenceNumber"]) end
 	for k,_ in pairs(struct) do
-		assert(SequenceNumberRange_keys[k], "SequenceNumberRange contains unknown key " .. tostring(k))
+		assert(keys.SequenceNumberRange[k], "SequenceNumberRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SequenceNumberRange
 -- <p>The beginning and ending sequence numbers for the stream records contained within a shard.</p>
--- @param EndingSequenceNumber [SequenceNumber] <p>The last sequence number.</p>
--- @param StartingSequenceNumber [SequenceNumber] <p>The first sequence number.</p>
-function M.SequenceNumberRange(EndingSequenceNumber, StartingSequenceNumber, ...)
+-- @param _EndingSequenceNumber [SequenceNumber] <p>The last sequence number.</p>
+-- @param _StartingSequenceNumber [SequenceNumber] <p>The first sequence number.</p>
+function M.SequenceNumberRange(_EndingSequenceNumber, _StartingSequenceNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SequenceNumberRange")
 	local t = { 
-		["EndingSequenceNumber"] = EndingSequenceNumber,
-		["StartingSequenceNumber"] = StartingSequenceNumber,
+		["EndingSequenceNumber"] = _EndingSequenceNumber,
+		["StartingSequenceNumber"] = _StartingSequenceNumber,
 	}
-	M.AssertSequenceNumberRange(t)
+	asserts.AssertSequenceNumberRange(t)
 	return t
 end
 
-local ListStreamsInput_keys = { "Limit" = true, "TableName" = true, "ExclusiveStartStreamArn" = true, nil }
+keys.ListStreamsInput = { ["Limit"] = true, ["TableName"] = true, ["ExclusiveStartStreamArn"] = true, nil }
 
-function M.AssertListStreamsInput(struct)
+function asserts.AssertListStreamsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListStreamsInput to be of type 'table'")
-	if struct["Limit"] then M.AssertPositiveIntegerObject(struct["Limit"]) end
-	if struct["TableName"] then M.AssertTableName(struct["TableName"]) end
-	if struct["ExclusiveStartStreamArn"] then M.AssertStreamArn(struct["ExclusiveStartStreamArn"]) end
+	if struct["Limit"] then asserts.AssertPositiveIntegerObject(struct["Limit"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["ExclusiveStartStreamArn"] then asserts.AssertStreamArn(struct["ExclusiveStartStreamArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListStreamsInput_keys[k], "ListStreamsInput contains unknown key " .. tostring(k))
+		assert(keys.ListStreamsInput[k], "ListStreamsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListStreamsInput
 -- <p>Represents the input of a <code>ListStreams</code> operation.</p>
--- @param Limit [PositiveIntegerObject] <p>The maximum number of streams to return. The upper limit is 100.</p>
--- @param TableName [TableName] <p>If this parameter is provided, then only the streams associated with this table name are returned.</p>
--- @param ExclusiveStartStreamArn [StreamArn] <p>The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedStreamArn</code> in the previous operation. </p>
-function M.ListStreamsInput(Limit, TableName, ExclusiveStartStreamArn, ...)
+-- @param _Limit [PositiveIntegerObject] <p>The maximum number of streams to return. The upper limit is 100.</p>
+-- @param _TableName [TableName] <p>If this parameter is provided, then only the streams associated with this table name are returned.</p>
+-- @param _ExclusiveStartStreamArn [StreamArn] <p>The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedStreamArn</code> in the previous operation. </p>
+function M.ListStreamsInput(_Limit, _TableName, _ExclusiveStartStreamArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamsInput")
 	local t = { 
-		["Limit"] = Limit,
-		["TableName"] = TableName,
-		["ExclusiveStartStreamArn"] = ExclusiveStartStreamArn,
+		["Limit"] = _Limit,
+		["TableName"] = _TableName,
+		["ExclusiveStartStreamArn"] = _ExclusiveStartStreamArn,
 	}
-	M.AssertListStreamsInput(t)
+	asserts.AssertListStreamsInput(t)
 	return t
 end
 
-local KeySchemaElement_keys = { "KeyType" = true, "AttributeName" = true, nil }
+keys.KeySchemaElement = { ["KeyType"] = true, ["AttributeName"] = true, nil }
 
-function M.AssertKeySchemaElement(struct)
+function asserts.AssertKeySchemaElement(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KeySchemaElement to be of type 'table'")
 	assert(struct["AttributeName"], "Expected key AttributeName to exist in table")
 	assert(struct["KeyType"], "Expected key KeyType to exist in table")
-	if struct["KeyType"] then M.AssertKeyType(struct["KeyType"]) end
-	if struct["AttributeName"] then M.AssertKeySchemaAttributeName(struct["AttributeName"]) end
+	if struct["KeyType"] then asserts.AssertKeyType(struct["KeyType"]) end
+	if struct["AttributeName"] then asserts.AssertKeySchemaAttributeName(struct["AttributeName"]) end
 	for k,_ in pairs(struct) do
-		assert(KeySchemaElement_keys[k], "KeySchemaElement contains unknown key " .. tostring(k))
+		assert(keys.KeySchemaElement[k], "KeySchemaElement contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KeySchemaElement
 -- <p>Represents <i>a single element</i> of a key schema. A key schema specifies the attributes that make up the primary key of a table, or the key attributes of an index.</p> <p>A <code>KeySchemaElement</code> represents exactly one attribute of the primary key. For example, a simple primary key (partition key) would be represented by one <code>KeySchemaElement</code>. A composite primary key (partition key and sort key) would require one <code>KeySchemaElement</code> for the partition key, and another <code>KeySchemaElement</code> for the sort key.</p> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note>
--- @param KeyType [KeyType] <p>The attribute data, consisting of the data type and the attribute value itself.</p>
--- @param AttributeName [KeySchemaAttributeName] <p>The name of a key attribute.</p>
+-- @param _KeyType [KeyType] <p>The attribute data, consisting of the data type and the attribute value itself.</p>
+-- @param _AttributeName [KeySchemaAttributeName] <p>The name of a key attribute.</p>
 -- Required parameter: AttributeName
 -- Required parameter: KeyType
-function M.KeySchemaElement(KeyType, AttributeName, ...)
+function M.KeySchemaElement(_KeyType, _AttributeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeySchemaElement")
 	local t = { 
-		["KeyType"] = KeyType,
-		["AttributeName"] = AttributeName,
+		["KeyType"] = _KeyType,
+		["AttributeName"] = _AttributeName,
 	}
-	M.AssertKeySchemaElement(t)
+	asserts.AssertKeySchemaElement(t)
 	return t
 end
 
-local Identity_keys = { "Type" = true, "PrincipalId" = true, nil }
+keys.Identity = { ["Type"] = true, ["PrincipalId"] = true, nil }
 
-function M.AssertIdentity(struct)
+function asserts.AssertIdentity(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Identity to be of type 'table'")
-	if struct["Type"] then M.AssertString(struct["Type"]) end
-	if struct["PrincipalId"] then M.AssertString(struct["PrincipalId"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
+	if struct["PrincipalId"] then asserts.AssertString(struct["PrincipalId"]) end
 	for k,_ in pairs(struct) do
-		assert(Identity_keys[k], "Identity contains unknown key " .. tostring(k))
+		assert(keys.Identity[k], "Identity contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Identity
 -- <p>Contains details about the type of identity that made the request.</p>
--- @param Type [String] <p>The type of the identity. For Time To Live, the type is "Service".</p>
--- @param PrincipalId [String] <p>A unique identifier for the entity that made the call. For Time To Live, the principalId is "dynamodb.amazonaws.com".</p>
-function M.Identity(Type, PrincipalId, ...)
+-- @param _Type [String] <p>The type of the identity. For Time To Live, the type is "Service".</p>
+-- @param _PrincipalId [String] <p>A unique identifier for the entity that made the call. For Time To Live, the principalId is "dynamodb.amazonaws.com".</p>
+function M.Identity(_Type, _PrincipalId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Identity")
 	local t = { 
-		["Type"] = Type,
-		["PrincipalId"] = PrincipalId,
+		["Type"] = _Type,
+		["PrincipalId"] = _PrincipalId,
 	}
-	M.AssertIdentity(t)
+	asserts.AssertIdentity(t)
 	return t
 end
 
-local Shard_keys = { "ShardId" = true, "ParentShardId" = true, "SequenceNumberRange" = true, nil }
+keys.Shard = { ["ShardId"] = true, ["ParentShardId"] = true, ["SequenceNumberRange"] = true, nil }
 
-function M.AssertShard(struct)
+function asserts.AssertShard(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Shard to be of type 'table'")
-	if struct["ShardId"] then M.AssertShardId(struct["ShardId"]) end
-	if struct["ParentShardId"] then M.AssertShardId(struct["ParentShardId"]) end
-	if struct["SequenceNumberRange"] then M.AssertSequenceNumberRange(struct["SequenceNumberRange"]) end
+	if struct["ShardId"] then asserts.AssertShardId(struct["ShardId"]) end
+	if struct["ParentShardId"] then asserts.AssertShardId(struct["ParentShardId"]) end
+	if struct["SequenceNumberRange"] then asserts.AssertSequenceNumberRange(struct["SequenceNumberRange"]) end
 	for k,_ in pairs(struct) do
-		assert(Shard_keys[k], "Shard contains unknown key " .. tostring(k))
+		assert(keys.Shard[k], "Shard contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Shard
 -- <p>A uniquely identified group of stream records within a stream.</p>
--- @param ShardId [ShardId] <p>The system-generated identifier for this shard.</p>
--- @param ParentShardId [ShardId] <p>The shard ID of the current shard's parent.</p>
--- @param SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
-function M.Shard(ShardId, ParentShardId, SequenceNumberRange, ...)
+-- @param _ShardId [ShardId] <p>The system-generated identifier for this shard.</p>
+-- @param _ParentShardId [ShardId] <p>The shard ID of the current shard's parent.</p>
+-- @param _SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
+function M.Shard(_ShardId, _ParentShardId, _SequenceNumberRange, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Shard")
 	local t = { 
-		["ShardId"] = ShardId,
-		["ParentShardId"] = ParentShardId,
-		["SequenceNumberRange"] = SequenceNumberRange,
+		["ShardId"] = _ShardId,
+		["ParentShardId"] = _ParentShardId,
+		["SequenceNumberRange"] = _SequenceNumberRange,
 	}
-	M.AssertShard(t)
+	asserts.AssertShard(t)
 	return t
 end
 
-local GetShardIteratorInput_keys = { "ShardId" = true, "StreamArn" = true, "SequenceNumber" = true, "ShardIteratorType" = true, nil }
+keys.GetShardIteratorInput = { ["ShardId"] = true, ["StreamArn"] = true, ["SequenceNumber"] = true, ["ShardIteratorType"] = true, nil }
 
-function M.AssertGetShardIteratorInput(struct)
+function asserts.AssertGetShardIteratorInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetShardIteratorInput to be of type 'table'")
 	assert(struct["StreamArn"], "Expected key StreamArn to exist in table")
 	assert(struct["ShardId"], "Expected key ShardId to exist in table")
 	assert(struct["ShardIteratorType"], "Expected key ShardIteratorType to exist in table")
-	if struct["ShardId"] then M.AssertShardId(struct["ShardId"]) end
-	if struct["StreamArn"] then M.AssertStreamArn(struct["StreamArn"]) end
-	if struct["SequenceNumber"] then M.AssertSequenceNumber(struct["SequenceNumber"]) end
-	if struct["ShardIteratorType"] then M.AssertShardIteratorType(struct["ShardIteratorType"]) end
+	if struct["ShardId"] then asserts.AssertShardId(struct["ShardId"]) end
+	if struct["StreamArn"] then asserts.AssertStreamArn(struct["StreamArn"]) end
+	if struct["SequenceNumber"] then asserts.AssertSequenceNumber(struct["SequenceNumber"]) end
+	if struct["ShardIteratorType"] then asserts.AssertShardIteratorType(struct["ShardIteratorType"]) end
 	for k,_ in pairs(struct) do
-		assert(GetShardIteratorInput_keys[k], "GetShardIteratorInput contains unknown key " .. tostring(k))
+		assert(keys.GetShardIteratorInput[k], "GetShardIteratorInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetShardIteratorInput
 -- <p>Represents the input of a <code>GetShardIterator</code> operation.</p>
--- @param ShardId [ShardId] <p>The identifier of the shard. The iterator will be returned for this shard ID.</p>
--- @param StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
--- @param SequenceNumber [SequenceNumber] <p>The sequence number of a stream record in the shard from which to start reading.</p>
--- @param ShardIteratorType [ShardIteratorType] <p>Determines how the shard iterator is used to start reading stream records from the shard:</p> <ul> <li> <p> <code>AT_SEQUENCE_NUMBER</code> - Start reading exactly from the position denoted by a specific sequence number.</p> </li> <li> <p> <code>AFTER_SEQUENCE_NUMBER</code> - Start reading right after the position denoted by a specific sequence number.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last (untrimmed) stream record, which is the oldest record in the shard. In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are subject to removal (trimming) from the stream.</p> </li> <li> <p> <code>LATEST</code> - Start reading just after the most recent stream record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
+-- @param _ShardId [ShardId] <p>The identifier of the shard. The iterator will be returned for this shard ID.</p>
+-- @param _StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
+-- @param _SequenceNumber [SequenceNumber] <p>The sequence number of a stream record in the shard from which to start reading.</p>
+-- @param _ShardIteratorType [ShardIteratorType] <p>Determines how the shard iterator is used to start reading stream records from the shard:</p> <ul> <li> <p> <code>AT_SEQUENCE_NUMBER</code> - Start reading exactly from the position denoted by a specific sequence number.</p> </li> <li> <p> <code>AFTER_SEQUENCE_NUMBER</code> - Start reading right after the position denoted by a specific sequence number.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last (untrimmed) stream record, which is the oldest record in the shard. In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are subject to removal (trimming) from the stream.</p> </li> <li> <p> <code>LATEST</code> - Start reading just after the most recent stream record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
 -- Required parameter: StreamArn
 -- Required parameter: ShardId
 -- Required parameter: ShardIteratorType
-function M.GetShardIteratorInput(ShardId, StreamArn, SequenceNumber, ShardIteratorType, ...)
+function M.GetShardIteratorInput(_ShardId, _StreamArn, _SequenceNumber, _ShardIteratorType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetShardIteratorInput")
 	local t = { 
-		["ShardId"] = ShardId,
-		["StreamArn"] = StreamArn,
-		["SequenceNumber"] = SequenceNumber,
-		["ShardIteratorType"] = ShardIteratorType,
+		["ShardId"] = _ShardId,
+		["StreamArn"] = _StreamArn,
+		["SequenceNumber"] = _SequenceNumber,
+		["ShardIteratorType"] = _ShardIteratorType,
 	}
-	M.AssertGetShardIteratorInput(t)
+	asserts.AssertGetShardIteratorInput(t)
 	return t
 end
 
-local ExpiredIteratorException_keys = { "message" = true, nil }
+keys.ExpiredIteratorException = { ["message"] = true, nil }
 
-function M.AssertExpiredIteratorException(struct)
+function asserts.AssertExpiredIteratorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExpiredIteratorException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ExpiredIteratorException_keys[k], "ExpiredIteratorException contains unknown key " .. tostring(k))
+		assert(keys.ExpiredIteratorException[k], "ExpiredIteratorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExpiredIteratorException
 -- <p>The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator expires 15 minutes after it is retrieved using the <code>GetShardIterator</code> action.</p>
--- @param message [ErrorMessage] <p>The provided iterator exceeds the maximum age allowed.</p>
-function M.ExpiredIteratorException(message, ...)
+-- @param _message [ErrorMessage] <p>The provided iterator exceeds the maximum age allowed.</p>
+function M.ExpiredIteratorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredIteratorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertExpiredIteratorException(t)
+	asserts.AssertExpiredIteratorException(t)
 	return t
 end
 
-local GetShardIteratorOutput_keys = { "ShardIterator" = true, nil }
+keys.GetShardIteratorOutput = { ["ShardIterator"] = true, nil }
 
-function M.AssertGetShardIteratorOutput(struct)
+function asserts.AssertGetShardIteratorOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetShardIteratorOutput to be of type 'table'")
-	if struct["ShardIterator"] then M.AssertShardIterator(struct["ShardIterator"]) end
+	if struct["ShardIterator"] then asserts.AssertShardIterator(struct["ShardIterator"]) end
 	for k,_ in pairs(struct) do
-		assert(GetShardIteratorOutput_keys[k], "GetShardIteratorOutput contains unknown key " .. tostring(k))
+		assert(keys.GetShardIteratorOutput[k], "GetShardIteratorOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetShardIteratorOutput
 -- <p>Represents the output of a <code>GetShardIterator</code> operation.</p>
--- @param ShardIterator [ShardIterator] <p>The position in the shard from which to start reading stream records sequentially. A shard iterator specifies this position using the sequence number of a stream record in a shard.</p>
-function M.GetShardIteratorOutput(ShardIterator, ...)
+-- @param _ShardIterator [ShardIterator] <p>The position in the shard from which to start reading stream records sequentially. A shard iterator specifies this position using the sequence number of a stream record in a shard.</p>
+function M.GetShardIteratorOutput(_ShardIterator, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetShardIteratorOutput")
 	local t = { 
-		["ShardIterator"] = ShardIterator,
+		["ShardIterator"] = _ShardIterator,
 	}
-	M.AssertGetShardIteratorOutput(t)
+	asserts.AssertGetShardIteratorOutput(t)
 	return t
 end
 
-local DescribeStreamOutput_keys = { "StreamDescription" = true, nil }
+keys.DescribeStreamOutput = { ["StreamDescription"] = true, nil }
 
-function M.AssertDescribeStreamOutput(struct)
+function asserts.AssertDescribeStreamOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeStreamOutput to be of type 'table'")
-	if struct["StreamDescription"] then M.AssertStreamDescription(struct["StreamDescription"]) end
+	if struct["StreamDescription"] then asserts.AssertStreamDescription(struct["StreamDescription"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeStreamOutput_keys[k], "DescribeStreamOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeStreamOutput[k], "DescribeStreamOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeStreamOutput
 -- <p>Represents the output of a <code>DescribeStream</code> operation.</p>
--- @param StreamDescription [StreamDescription] <p>A complete description of the stream, including its creation date and time, the DynamoDB table associated with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream records within the shards.</p>
-function M.DescribeStreamOutput(StreamDescription, ...)
+-- @param _StreamDescription [StreamDescription] <p>A complete description of the stream, including its creation date and time, the DynamoDB table associated with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream records within the shards.</p>
+function M.DescribeStreamOutput(_StreamDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStreamOutput")
 	local t = { 
-		["StreamDescription"] = StreamDescription,
+		["StreamDescription"] = _StreamDescription,
 	}
-	M.AssertDescribeStreamOutput(t)
+	asserts.AssertDescribeStreamOutput(t)
 	return t
 end
 
-local Record_keys = { "eventID" = true, "eventVersion" = true, "dynamodb" = true, "awsRegion" = true, "eventName" = true, "userIdentity" = true, "eventSource" = true, nil }
+keys.Record = { ["eventID"] = true, ["eventVersion"] = true, ["dynamodb"] = true, ["awsRegion"] = true, ["eventName"] = true, ["userIdentity"] = true, ["eventSource"] = true, nil }
 
-function M.AssertRecord(struct)
+function asserts.AssertRecord(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Record to be of type 'table'")
-	if struct["eventID"] then M.AssertString(struct["eventID"]) end
-	if struct["eventVersion"] then M.AssertString(struct["eventVersion"]) end
-	if struct["dynamodb"] then M.AssertStreamRecord(struct["dynamodb"]) end
-	if struct["awsRegion"] then M.AssertString(struct["awsRegion"]) end
-	if struct["eventName"] then M.AssertOperationType(struct["eventName"]) end
-	if struct["userIdentity"] then M.AssertIdentity(struct["userIdentity"]) end
-	if struct["eventSource"] then M.AssertString(struct["eventSource"]) end
+	if struct["eventID"] then asserts.AssertString(struct["eventID"]) end
+	if struct["eventVersion"] then asserts.AssertString(struct["eventVersion"]) end
+	if struct["dynamodb"] then asserts.AssertStreamRecord(struct["dynamodb"]) end
+	if struct["awsRegion"] then asserts.AssertString(struct["awsRegion"]) end
+	if struct["eventName"] then asserts.AssertOperationType(struct["eventName"]) end
+	if struct["userIdentity"] then asserts.AssertIdentity(struct["userIdentity"]) end
+	if struct["eventSource"] then asserts.AssertString(struct["eventSource"]) end
 	for k,_ in pairs(struct) do
-		assert(Record_keys[k], "Record contains unknown key " .. tostring(k))
+		assert(keys.Record[k], "Record contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Record
 -- <p>A description of a unique event within a stream.</p>
--- @param eventID [String] <p>A globally unique identifier for the event that was recorded in this stream record.</p>
--- @param eventVersion [String] <p>The version number of the stream record format. This number is updated whenever the structure of <code>Record</code> is modified.</p> <p>Client applications must not assume that <code>eventVersion</code> will remain at a particular value, as this number is subject to change at any time. In general, <code>eventVersion</code> will only increase as the low-level DynamoDB Streams API evolves.</p>
--- @param dynamodb [StreamRecord] <p>The main body of the stream record, containing all of the DynamoDB-specific fields.</p>
--- @param awsRegion [String] <p>The region in which the <code>GetRecords</code> request was received.</p>
--- @param eventName [OperationType] <p>The type of data modification that was performed on the DynamoDB table:</p> <ul> <li> <p> <code>INSERT</code> - a new item was added to the table.</p> </li> <li> <p> <code>MODIFY</code> - one or more of an existing item's attributes were modified.</p> </li> <li> <p> <code>REMOVE</code> - the item was deleted from the table</p> </li> </ul>
--- @param userIdentity [Identity] <p>Items that are deleted by the Time to Live process after expiration have the following fields: </p> <ul> <li> <p>Records[].userIdentity.type</p> <p>"Service"</p> </li> <li> <p>Records[].userIdentity.principalId</p> <p>"dynamodb.amazonaws.com"</p> </li> </ul>
--- @param eventSource [String] <p>The AWS service from which the stream record originated. For DynamoDB Streams, this is <code>aws:dynamodb</code>.</p>
-function M.Record(eventID, eventVersion, dynamodb, awsRegion, eventName, userIdentity, eventSource, ...)
+-- @param _eventID [String] <p>A globally unique identifier for the event that was recorded in this stream record.</p>
+-- @param _eventVersion [String] <p>The version number of the stream record format. This number is updated whenever the structure of <code>Record</code> is modified.</p> <p>Client applications must not assume that <code>eventVersion</code> will remain at a particular value, as this number is subject to change at any time. In general, <code>eventVersion</code> will only increase as the low-level DynamoDB Streams API evolves.</p>
+-- @param _dynamodb [StreamRecord] <p>The main body of the stream record, containing all of the DynamoDB-specific fields.</p>
+-- @param _awsRegion [String] <p>The region in which the <code>GetRecords</code> request was received.</p>
+-- @param _eventName [OperationType] <p>The type of data modification that was performed on the DynamoDB table:</p> <ul> <li> <p> <code>INSERT</code> - a new item was added to the table.</p> </li> <li> <p> <code>MODIFY</code> - one or more of an existing item's attributes were modified.</p> </li> <li> <p> <code>REMOVE</code> - the item was deleted from the table</p> </li> </ul>
+-- @param _userIdentity [Identity] <p>Items that are deleted by the Time to Live process after expiration have the following fields: </p> <ul> <li> <p>Records[].userIdentity.type</p> <p>"Service"</p> </li> <li> <p>Records[].userIdentity.principalId</p> <p>"dynamodb.amazonaws.com"</p> </li> </ul>
+-- @param _eventSource [String] <p>The AWS service from which the stream record originated. For DynamoDB Streams, this is <code>aws:dynamodb</code>.</p>
+function M.Record(_eventID, _eventVersion, _dynamodb, _awsRegion, _eventName, _userIdentity, _eventSource, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Record")
 	local t = { 
-		["eventID"] = eventID,
-		["eventVersion"] = eventVersion,
-		["dynamodb"] = dynamodb,
-		["awsRegion"] = awsRegion,
-		["eventName"] = eventName,
-		["userIdentity"] = userIdentity,
-		["eventSource"] = eventSource,
+		["eventID"] = _eventID,
+		["eventVersion"] = _eventVersion,
+		["dynamodb"] = _dynamodb,
+		["awsRegion"] = _awsRegion,
+		["eventName"] = _eventName,
+		["userIdentity"] = _userIdentity,
+		["eventSource"] = _eventSource,
 	}
-	M.AssertRecord(t)
+	asserts.AssertRecord(t)
 	return t
 end
 
-local InternalServerError_keys = { "message" = true, nil }
+keys.InternalServerError = { ["message"] = true, nil }
 
-function M.AssertInternalServerError(struct)
+function asserts.AssertInternalServerError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServerError to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServerError_keys[k], "InternalServerError contains unknown key " .. tostring(k))
+		assert(keys.InternalServerError[k], "InternalServerError contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServerError
 -- <p>An error occurred on the server side.</p>
--- @param message [ErrorMessage] <p>The server encountered an internal error trying to fulfill the request.</p>
-function M.InternalServerError(message, ...)
+-- @param _message [ErrorMessage] <p>The server encountered an internal error trying to fulfill the request.</p>
+function M.InternalServerError(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalServerError(t)
+	asserts.AssertInternalServerError(t)
 	return t
 end
 
-local GetRecordsInput_keys = { "ShardIterator" = true, "Limit" = true, nil }
+keys.GetRecordsInput = { ["ShardIterator"] = true, ["Limit"] = true, nil }
 
-function M.AssertGetRecordsInput(struct)
+function asserts.AssertGetRecordsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetRecordsInput to be of type 'table'")
 	assert(struct["ShardIterator"], "Expected key ShardIterator to exist in table")
-	if struct["ShardIterator"] then M.AssertShardIterator(struct["ShardIterator"]) end
-	if struct["Limit"] then M.AssertPositiveIntegerObject(struct["Limit"]) end
+	if struct["ShardIterator"] then asserts.AssertShardIterator(struct["ShardIterator"]) end
+	if struct["Limit"] then asserts.AssertPositiveIntegerObject(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetRecordsInput_keys[k], "GetRecordsInput contains unknown key " .. tostring(k))
+		assert(keys.GetRecordsInput[k], "GetRecordsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetRecordsInput
 -- <p>Represents the input of a <code>GetRecords</code> operation.</p>
--- @param ShardIterator [ShardIterator] <p>A shard iterator that was retrieved from a previous GetShardIterator operation. This iterator can be used to access the stream records in this shard.</p>
--- @param Limit [PositiveIntegerObject] <p>The maximum number of records to return from the shard. The upper limit is 1000.</p>
+-- @param _ShardIterator [ShardIterator] <p>A shard iterator that was retrieved from a previous GetShardIterator operation. This iterator can be used to access the stream records in this shard.</p>
+-- @param _Limit [PositiveIntegerObject] <p>The maximum number of records to return from the shard. The upper limit is 1000.</p>
 -- Required parameter: ShardIterator
-function M.GetRecordsInput(ShardIterator, Limit, ...)
+function M.GetRecordsInput(_ShardIterator, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRecordsInput")
 	local t = { 
-		["ShardIterator"] = ShardIterator,
-		["Limit"] = Limit,
+		["ShardIterator"] = _ShardIterator,
+		["Limit"] = _Limit,
 	}
-	M.AssertGetRecordsInput(t)
+	asserts.AssertGetRecordsInput(t)
 	return t
 end
 
-local StreamDescription_keys = { "StreamLabel" = true, "StreamStatus" = true, "TableName" = true, "Shards" = true, "CreationRequestDateTime" = true, "StreamArn" = true, "LastEvaluatedShardId" = true, "KeySchema" = true, "StreamViewType" = true, nil }
+keys.StreamDescription = { ["StreamLabel"] = true, ["StreamStatus"] = true, ["TableName"] = true, ["Shards"] = true, ["CreationRequestDateTime"] = true, ["StreamArn"] = true, ["LastEvaluatedShardId"] = true, ["KeySchema"] = true, ["StreamViewType"] = true, nil }
 
-function M.AssertStreamDescription(struct)
+function asserts.AssertStreamDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StreamDescription to be of type 'table'")
-	if struct["StreamLabel"] then M.AssertString(struct["StreamLabel"]) end
-	if struct["StreamStatus"] then M.AssertStreamStatus(struct["StreamStatus"]) end
-	if struct["TableName"] then M.AssertTableName(struct["TableName"]) end
-	if struct["Shards"] then M.AssertShardDescriptionList(struct["Shards"]) end
-	if struct["CreationRequestDateTime"] then M.AssertDate(struct["CreationRequestDateTime"]) end
-	if struct["StreamArn"] then M.AssertStreamArn(struct["StreamArn"]) end
-	if struct["LastEvaluatedShardId"] then M.AssertShardId(struct["LastEvaluatedShardId"]) end
-	if struct["KeySchema"] then M.AssertKeySchema(struct["KeySchema"]) end
-	if struct["StreamViewType"] then M.AssertStreamViewType(struct["StreamViewType"]) end
+	if struct["StreamLabel"] then asserts.AssertString(struct["StreamLabel"]) end
+	if struct["StreamStatus"] then asserts.AssertStreamStatus(struct["StreamStatus"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["Shards"] then asserts.AssertShardDescriptionList(struct["Shards"]) end
+	if struct["CreationRequestDateTime"] then asserts.AssertDate(struct["CreationRequestDateTime"]) end
+	if struct["StreamArn"] then asserts.AssertStreamArn(struct["StreamArn"]) end
+	if struct["LastEvaluatedShardId"] then asserts.AssertShardId(struct["LastEvaluatedShardId"]) end
+	if struct["KeySchema"] then asserts.AssertKeySchema(struct["KeySchema"]) end
+	if struct["StreamViewType"] then asserts.AssertStreamViewType(struct["StreamViewType"]) end
 	for k,_ in pairs(struct) do
-		assert(StreamDescription_keys[k], "StreamDescription contains unknown key " .. tostring(k))
+		assert(keys.StreamDescription[k], "StreamDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StreamDescription
 -- <p>Represents all of the data describing a particular stream.</p>
--- @param StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
--- @param StreamStatus [StreamStatus] <p>Indicates the current status of the stream:</p> <ul> <li> <p> <code>ENABLING</code> - Streams is currently being enabled on the DynamoDB table.</p> </li> <li> <p> <code>ENABLED</code> - the stream is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Streams is currently being disabled on the DynamoDB table.</p> </li> <li> <p> <code>DISABLED</code> - the stream is disabled.</p> </li> </ul>
--- @param TableName [TableName] <p>The DynamoDB table with which the stream is associated.</p>
--- @param Shards [ShardDescriptionList] <p>The shards that comprise the stream.</p>
--- @param CreationRequestDateTime [Date] <p>The date and time when the request to create this stream was issued.</p>
--- @param StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
--- @param LastEvaluatedShardId [ShardId] <p>The shard ID of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedShardId</code> is empty, then the "last page" of results has been processed and there is currently no more data to be retrieved.</p> <p>If <code>LastEvaluatedShardId</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedShardId</code> is empty.</p>
--- @param KeySchema [KeySchema] <p>The key attribute(s) of the stream's DynamoDB table.</p>
--- @param StreamViewType [StreamViewType] <p>Indicates the format of the records within this stream:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of items that were modified in the DynamoDB table.</p> </li> <li> <p> <code>NEW_IMAGE</code> - entire items from the table, as they appeared after they were modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - entire items from the table, as they appeared before they were modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old images of the items from the table.</p> </li> </ul>
-function M.StreamDescription(StreamLabel, StreamStatus, TableName, Shards, CreationRequestDateTime, StreamArn, LastEvaluatedShardId, KeySchema, StreamViewType, ...)
+-- @param _StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
+-- @param _StreamStatus [StreamStatus] <p>Indicates the current status of the stream:</p> <ul> <li> <p> <code>ENABLING</code> - Streams is currently being enabled on the DynamoDB table.</p> </li> <li> <p> <code>ENABLED</code> - the stream is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Streams is currently being disabled on the DynamoDB table.</p> </li> <li> <p> <code>DISABLED</code> - the stream is disabled.</p> </li> </ul>
+-- @param _TableName [TableName] <p>The DynamoDB table with which the stream is associated.</p>
+-- @param _Shards [ShardDescriptionList] <p>The shards that comprise the stream.</p>
+-- @param _CreationRequestDateTime [Date] <p>The date and time when the request to create this stream was issued.</p>
+-- @param _StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
+-- @param _LastEvaluatedShardId [ShardId] <p>The shard ID of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedShardId</code> is empty, then the "last page" of results has been processed and there is currently no more data to be retrieved.</p> <p>If <code>LastEvaluatedShardId</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedShardId</code> is empty.</p>
+-- @param _KeySchema [KeySchema] <p>The key attribute(s) of the stream's DynamoDB table.</p>
+-- @param _StreamViewType [StreamViewType] <p>Indicates the format of the records within this stream:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of items that were modified in the DynamoDB table.</p> </li> <li> <p> <code>NEW_IMAGE</code> - entire items from the table, as they appeared after they were modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - entire items from the table, as they appeared before they were modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old images of the items from the table.</p> </li> </ul>
+function M.StreamDescription(_StreamLabel, _StreamStatus, _TableName, _Shards, _CreationRequestDateTime, _StreamArn, _LastEvaluatedShardId, _KeySchema, _StreamViewType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StreamDescription")
 	local t = { 
-		["StreamLabel"] = StreamLabel,
-		["StreamStatus"] = StreamStatus,
-		["TableName"] = TableName,
-		["Shards"] = Shards,
-		["CreationRequestDateTime"] = CreationRequestDateTime,
-		["StreamArn"] = StreamArn,
-		["LastEvaluatedShardId"] = LastEvaluatedShardId,
-		["KeySchema"] = KeySchema,
-		["StreamViewType"] = StreamViewType,
+		["StreamLabel"] = _StreamLabel,
+		["StreamStatus"] = _StreamStatus,
+		["TableName"] = _TableName,
+		["Shards"] = _Shards,
+		["CreationRequestDateTime"] = _CreationRequestDateTime,
+		["StreamArn"] = _StreamArn,
+		["LastEvaluatedShardId"] = _LastEvaluatedShardId,
+		["KeySchema"] = _KeySchema,
+		["StreamViewType"] = _StreamViewType,
 	}
-	M.AssertStreamDescription(t)
+	asserts.AssertStreamDescription(t)
 	return t
 end
 
-local AttributeValue_keys = { "B" = true, "NULL" = true, "SS" = true, "M" = true, "L" = true, "N" = true, "S" = true, "BOOL" = true, "BS" = true, "NS" = true, nil }
+keys.AttributeValue = { ["B"] = true, ["NULL"] = true, ["SS"] = true, ["M"] = true, ["L"] = true, ["N"] = true, ["S"] = true, ["BOOL"] = true, ["BS"] = true, ["NS"] = true, nil }
 
-function M.AssertAttributeValue(struct)
+function asserts.AssertAttributeValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttributeValue to be of type 'table'")
-	if struct["B"] then M.AssertBinaryAttributeValue(struct["B"]) end
-	if struct["NULL"] then M.AssertNullAttributeValue(struct["NULL"]) end
-	if struct["SS"] then M.AssertStringSetAttributeValue(struct["SS"]) end
-	if struct["M"] then M.AssertMapAttributeValue(struct["M"]) end
-	if struct["L"] then M.AssertListAttributeValue(struct["L"]) end
-	if struct["N"] then M.AssertNumberAttributeValue(struct["N"]) end
-	if struct["S"] then M.AssertStringAttributeValue(struct["S"]) end
-	if struct["BOOL"] then M.AssertBooleanAttributeValue(struct["BOOL"]) end
-	if struct["BS"] then M.AssertBinarySetAttributeValue(struct["BS"]) end
-	if struct["NS"] then M.AssertNumberSetAttributeValue(struct["NS"]) end
+	if struct["B"] then asserts.AssertBinaryAttributeValue(struct["B"]) end
+	if struct["NULL"] then asserts.AssertNullAttributeValue(struct["NULL"]) end
+	if struct["SS"] then asserts.AssertStringSetAttributeValue(struct["SS"]) end
+	if struct["M"] then asserts.AssertMapAttributeValue(struct["M"]) end
+	if struct["L"] then asserts.AssertListAttributeValue(struct["L"]) end
+	if struct["N"] then asserts.AssertNumberAttributeValue(struct["N"]) end
+	if struct["S"] then asserts.AssertStringAttributeValue(struct["S"]) end
+	if struct["BOOL"] then asserts.AssertBooleanAttributeValue(struct["BOOL"]) end
+	if struct["BS"] then asserts.AssertBinarySetAttributeValue(struct["BS"]) end
+	if struct["NS"] then asserts.AssertNumberSetAttributeValue(struct["NS"]) end
 	for k,_ in pairs(struct) do
-		assert(AttributeValue_keys[k], "AttributeValue contains unknown key " .. tostring(k))
+		assert(keys.AttributeValue[k], "AttributeValue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttributeValue
 -- <p>Represents the data for an attribute. You can set one, and only one, of the elements.</p> <p>Each attribute in an item is a name-value pair. An attribute can be single-valued or multi-valued set. For example, a book item can have title and authors attributes. Each book has one title but can have many authors. The multi-valued attribute is a set; duplicate values are not allowed.</p>
--- @param B [BinaryAttributeValue] <p>A Binary data type.</p>
--- @param NULL [NullAttributeValue] <p>A Null data type.</p>
--- @param SS [StringSetAttributeValue] <p>A String Set data type.</p>
--- @param M [MapAttributeValue] <p>A Map data type.</p>
--- @param L [ListAttributeValue] <p>A List data type.</p>
--- @param N [NumberAttributeValue] <p>A Number data type.</p>
--- @param S [StringAttributeValue] <p>A String data type.</p>
--- @param BOOL [BooleanAttributeValue] <p>A Boolean data type.</p>
--- @param BS [BinarySetAttributeValue] <p>A Binary Set data type.</p>
--- @param NS [NumberSetAttributeValue] <p>A Number Set data type.</p>
-function M.AttributeValue(B, NULL, SS, M, L, N, S, BOOL, BS, NS, ...)
+-- @param _B [BinaryAttributeValue] <p>A Binary data type.</p>
+-- @param _NULL [NullAttributeValue] <p>A Null data type.</p>
+-- @param _SS [StringSetAttributeValue] <p>A String Set data type.</p>
+-- @param _M [MapAttributeValue] <p>A Map data type.</p>
+-- @param _L [ListAttributeValue] <p>A List data type.</p>
+-- @param _N [NumberAttributeValue] <p>A Number data type.</p>
+-- @param _S [StringAttributeValue] <p>A String data type.</p>
+-- @param _BOOL [BooleanAttributeValue] <p>A Boolean data type.</p>
+-- @param _BS [BinarySetAttributeValue] <p>A Binary Set data type.</p>
+-- @param _NS [NumberSetAttributeValue] <p>A Number Set data type.</p>
+function M.AttributeValue(_B, _NULL, _SS, _M, _L, _N, _S, _BOOL, _BS, _NS, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttributeValue")
 	local t = { 
-		["B"] = B,
-		["NULL"] = NULL,
-		["SS"] = SS,
-		["M"] = M,
-		["L"] = L,
-		["N"] = N,
-		["S"] = S,
-		["BOOL"] = BOOL,
-		["BS"] = BS,
-		["NS"] = NS,
+		["B"] = _B,
+		["NULL"] = _NULL,
+		["SS"] = _SS,
+		["M"] = _M,
+		["L"] = _L,
+		["N"] = _N,
+		["S"] = _S,
+		["BOOL"] = _BOOL,
+		["BS"] = _BS,
+		["NS"] = _NS,
 	}
-	M.AssertAttributeValue(t)
+	asserts.AssertAttributeValue(t)
 	return t
 end
 
-local Stream_keys = { "TableName" = true, "StreamArn" = true, "StreamLabel" = true, nil }
+keys.Stream = { ["TableName"] = true, ["StreamArn"] = true, ["StreamLabel"] = true, nil }
 
-function M.AssertStream(struct)
+function asserts.AssertStream(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Stream to be of type 'table'")
-	if struct["TableName"] then M.AssertTableName(struct["TableName"]) end
-	if struct["StreamArn"] then M.AssertStreamArn(struct["StreamArn"]) end
-	if struct["StreamLabel"] then M.AssertString(struct["StreamLabel"]) end
+	if struct["TableName"] then asserts.AssertTableName(struct["TableName"]) end
+	if struct["StreamArn"] then asserts.AssertStreamArn(struct["StreamArn"]) end
+	if struct["StreamLabel"] then asserts.AssertString(struct["StreamLabel"]) end
 	for k,_ in pairs(struct) do
-		assert(Stream_keys[k], "Stream contains unknown key " .. tostring(k))
+		assert(keys.Stream[k], "Stream contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Stream
 -- <p>Represents all of the data describing a particular stream.</p>
--- @param TableName [TableName] <p>The DynamoDB table with which the stream is associated.</p>
--- @param StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
--- @param StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
-function M.Stream(TableName, StreamArn, StreamLabel, ...)
+-- @param _TableName [TableName] <p>The DynamoDB table with which the stream is associated.</p>
+-- @param _StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
+-- @param _StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
+function M.Stream(_TableName, _StreamArn, _StreamLabel, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Stream")
 	local t = { 
-		["TableName"] = TableName,
-		["StreamArn"] = StreamArn,
-		["StreamLabel"] = StreamLabel,
+		["TableName"] = _TableName,
+		["StreamArn"] = _StreamArn,
+		["StreamLabel"] = _StreamLabel,
 	}
-	M.AssertStream(t)
+	asserts.AssertStream(t)
 	return t
 end
 
-local ListStreamsOutput_keys = { "LastEvaluatedStreamArn" = true, "Streams" = true, nil }
+keys.ListStreamsOutput = { ["LastEvaluatedStreamArn"] = true, ["Streams"] = true, nil }
 
-function M.AssertListStreamsOutput(struct)
+function asserts.AssertListStreamsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListStreamsOutput to be of type 'table'")
-	if struct["LastEvaluatedStreamArn"] then M.AssertStreamArn(struct["LastEvaluatedStreamArn"]) end
-	if struct["Streams"] then M.AssertStreamList(struct["Streams"]) end
+	if struct["LastEvaluatedStreamArn"] then asserts.AssertStreamArn(struct["LastEvaluatedStreamArn"]) end
+	if struct["Streams"] then asserts.AssertStreamList(struct["Streams"]) end
 	for k,_ in pairs(struct) do
-		assert(ListStreamsOutput_keys[k], "ListStreamsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListStreamsOutput[k], "ListStreamsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListStreamsOutput
 -- <p>Represents the output of a <code>ListStreams</code> operation.</p>
--- @param LastEvaluatedStreamArn [StreamArn] <p>The stream ARN of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedStreamArn</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p> <p>If <code>LastEvaluatedStreamArn</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedStreamArn</code> is empty.</p>
--- @param Streams [StreamList] <p>A list of stream descriptors associated with the current account and endpoint.</p>
-function M.ListStreamsOutput(LastEvaluatedStreamArn, Streams, ...)
+-- @param _LastEvaluatedStreamArn [StreamArn] <p>The stream ARN of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedStreamArn</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p> <p>If <code>LastEvaluatedStreamArn</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedStreamArn</code> is empty.</p>
+-- @param _Streams [StreamList] <p>A list of stream descriptors associated with the current account and endpoint.</p>
+function M.ListStreamsOutput(_LastEvaluatedStreamArn, _Streams, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamsOutput")
 	local t = { 
-		["LastEvaluatedStreamArn"] = LastEvaluatedStreamArn,
-		["Streams"] = Streams,
+		["LastEvaluatedStreamArn"] = _LastEvaluatedStreamArn,
+		["Streams"] = _Streams,
 	}
-	M.AssertListStreamsOutput(t)
+	asserts.AssertListStreamsOutput(t)
 	return t
 end
 
-local GetRecordsOutput_keys = { "Records" = true, "NextShardIterator" = true, nil }
+keys.GetRecordsOutput = { ["Records"] = true, ["NextShardIterator"] = true, nil }
 
-function M.AssertGetRecordsOutput(struct)
+function asserts.AssertGetRecordsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetRecordsOutput to be of type 'table'")
-	if struct["Records"] then M.AssertRecordList(struct["Records"]) end
-	if struct["NextShardIterator"] then M.AssertShardIterator(struct["NextShardIterator"]) end
+	if struct["Records"] then asserts.AssertRecordList(struct["Records"]) end
+	if struct["NextShardIterator"] then asserts.AssertShardIterator(struct["NextShardIterator"]) end
 	for k,_ in pairs(struct) do
-		assert(GetRecordsOutput_keys[k], "GetRecordsOutput contains unknown key " .. tostring(k))
+		assert(keys.GetRecordsOutput[k], "GetRecordsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetRecordsOutput
 -- <p>Represents the output of a <code>GetRecords</code> operation.</p>
--- @param Records [RecordList] <p>The stream records from the shard, which were retrieved using the shard iterator.</p>
--- @param NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading stream records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data.</p>
-function M.GetRecordsOutput(Records, NextShardIterator, ...)
+-- @param _Records [RecordList] <p>The stream records from the shard, which were retrieved using the shard iterator.</p>
+-- @param _NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading stream records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data.</p>
+function M.GetRecordsOutput(_Records, _NextShardIterator, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRecordsOutput")
 	local t = { 
-		["Records"] = Records,
-		["NextShardIterator"] = NextShardIterator,
+		["Records"] = _Records,
+		["NextShardIterator"] = _NextShardIterator,
 	}
-	M.AssertGetRecordsOutput(t)
+	asserts.AssertGetRecordsOutput(t)
 	return t
 end
 
-local TrimmedDataAccessException_keys = { "message" = true, nil }
+keys.TrimmedDataAccessException = { ["message"] = true, nil }
 
-function M.AssertTrimmedDataAccessException(struct)
+function asserts.AssertTrimmedDataAccessException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrimmedDataAccessException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TrimmedDataAccessException_keys[k], "TrimmedDataAccessException contains unknown key " .. tostring(k))
+		assert(keys.TrimmedDataAccessException[k], "TrimmedDataAccessException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrimmedDataAccessException
 -- <p>The operation attempted to read past the oldest stream record in a shard.</p> <p>In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are subject to removal (trimming) from the stream. You might receive a TrimmedDataAccessException if:</p> <ul> <li><p>You request a shard iterator with a sequence number older than the trim point (24 hours).</p> </li> <li><p>You obtain a shard iterator, but before you use the iterator in a <code>GetRecords</code> request, a stream record in the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a record that no longer exists.</p> </li> </ul>
--- @param message [ErrorMessage] <p>"The data you are trying to access has been trimmed.</p>
-function M.TrimmedDataAccessException(message, ...)
+-- @param _message [ErrorMessage] <p>"The data you are trying to access has been trimmed.</p>
+function M.TrimmedDataAccessException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrimmedDataAccessException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTrimmedDataAccessException(t)
+	asserts.AssertTrimmedDataAccessException(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "message" = true, nil }
+keys.ResourceNotFoundException = { ["message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The operation tried to access a nonexistent stream.</p>
--- @param message [ErrorMessage] <p>The resource which is being requested does not exist.</p>
-function M.ResourceNotFoundException(message, ...)
+-- @param _message [ErrorMessage] <p>The resource which is being requested does not exist.</p>
+function M.ResourceNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local StreamRecord_keys = { "OldImage" = true, "SequenceNumber" = true, "Keys" = true, "SizeBytes" = true, "NewImage" = true, "ApproximateCreationDateTime" = true, "StreamViewType" = true, nil }
+keys.StreamRecord = { ["OldImage"] = true, ["SequenceNumber"] = true, ["Keys"] = true, ["SizeBytes"] = true, ["NewImage"] = true, ["ApproximateCreationDateTime"] = true, ["StreamViewType"] = true, nil }
 
-function M.AssertStreamRecord(struct)
+function asserts.AssertStreamRecord(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StreamRecord to be of type 'table'")
-	if struct["OldImage"] then M.AssertAttributeMap(struct["OldImage"]) end
-	if struct["SequenceNumber"] then M.AssertSequenceNumber(struct["SequenceNumber"]) end
-	if struct["Keys"] then M.AssertAttributeMap(struct["Keys"]) end
-	if struct["SizeBytes"] then M.AssertPositiveLongObject(struct["SizeBytes"]) end
-	if struct["NewImage"] then M.AssertAttributeMap(struct["NewImage"]) end
-	if struct["ApproximateCreationDateTime"] then M.AssertDate(struct["ApproximateCreationDateTime"]) end
-	if struct["StreamViewType"] then M.AssertStreamViewType(struct["StreamViewType"]) end
+	if struct["OldImage"] then asserts.AssertAttributeMap(struct["OldImage"]) end
+	if struct["SequenceNumber"] then asserts.AssertSequenceNumber(struct["SequenceNumber"]) end
+	if struct["Keys"] then asserts.AssertAttributeMap(struct["Keys"]) end
+	if struct["SizeBytes"] then asserts.AssertPositiveLongObject(struct["SizeBytes"]) end
+	if struct["NewImage"] then asserts.AssertAttributeMap(struct["NewImage"]) end
+	if struct["ApproximateCreationDateTime"] then asserts.AssertDate(struct["ApproximateCreationDateTime"]) end
+	if struct["StreamViewType"] then asserts.AssertStreamViewType(struct["StreamViewType"]) end
 	for k,_ in pairs(struct) do
-		assert(StreamRecord_keys[k], "StreamRecord contains unknown key " .. tostring(k))
+		assert(keys.StreamRecord[k], "StreamRecord contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StreamRecord
 -- <p>A description of a single data modification that was performed on an item in a DynamoDB table.</p>
--- @param OldImage [AttributeMap] <p>The item in the DynamoDB table as it appeared before it was modified.</p>
--- @param SequenceNumber [SequenceNumber] <p>The sequence number of the stream record.</p>
--- @param Keys [AttributeMap] <p>The primary key attribute(s) for the DynamoDB item that was modified.</p>
--- @param SizeBytes [PositiveLongObject] <p>The size of the stream record, in bytes.</p>
--- @param NewImage [AttributeMap] <p>The item in the DynamoDB table as it appeared after it was modified.</p>
--- @param ApproximateCreationDateTime [Date] <p>The approximate date and time when the stream record was created, in <a href="http://www.epochconverter.com/">UNIX epoch time</a> format.</p>
--- @param StreamViewType [StreamViewType] <p>The type of data from the modified DynamoDB item that was captured in this stream record:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of the modified item.</p> </li> <li> <p> <code>NEW_IMAGE</code> - the entire item, as it appeared after it was modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - the entire item, as it appeared before it was modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old item images of the item.</p> </li> </ul>
-function M.StreamRecord(OldImage, SequenceNumber, Keys, SizeBytes, NewImage, ApproximateCreationDateTime, StreamViewType, ...)
+-- @param _OldImage [AttributeMap] <p>The item in the DynamoDB table as it appeared before it was modified.</p>
+-- @param _SequenceNumber [SequenceNumber] <p>The sequence number of the stream record.</p>
+-- @param _Keys [AttributeMap] <p>The primary key attribute(s) for the DynamoDB item that was modified.</p>
+-- @param _SizeBytes [PositiveLongObject] <p>The size of the stream record, in bytes.</p>
+-- @param _NewImage [AttributeMap] <p>The item in the DynamoDB table as it appeared after it was modified.</p>
+-- @param _ApproximateCreationDateTime [Date] <p>The approximate date and time when the stream record was created, in <a href="http://www.epochconverter.com/">UNIX epoch time</a> format.</p>
+-- @param _StreamViewType [StreamViewType] <p>The type of data from the modified DynamoDB item that was captured in this stream record:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of the modified item.</p> </li> <li> <p> <code>NEW_IMAGE</code> - the entire item, as it appeared after it was modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - the entire item, as it appeared before it was modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old item images of the item.</p> </li> </ul>
+function M.StreamRecord(_OldImage, _SequenceNumber, _Keys, _SizeBytes, _NewImage, _ApproximateCreationDateTime, _StreamViewType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StreamRecord")
 	local t = { 
-		["OldImage"] = OldImage,
-		["SequenceNumber"] = SequenceNumber,
-		["Keys"] = Keys,
-		["SizeBytes"] = SizeBytes,
-		["NewImage"] = NewImage,
-		["ApproximateCreationDateTime"] = ApproximateCreationDateTime,
-		["StreamViewType"] = StreamViewType,
+		["OldImage"] = _OldImage,
+		["SequenceNumber"] = _SequenceNumber,
+		["Keys"] = _Keys,
+		["SizeBytes"] = _SizeBytes,
+		["NewImage"] = _NewImage,
+		["ApproximateCreationDateTime"] = _ApproximateCreationDateTime,
+		["StreamViewType"] = _StreamViewType,
 	}
-	M.AssertStreamRecord(t)
+	asserts.AssertStreamRecord(t)
 	return t
 end
 
-local DescribeStreamInput_keys = { "Limit" = true, "StreamArn" = true, "ExclusiveStartShardId" = true, nil }
+keys.DescribeStreamInput = { ["Limit"] = true, ["StreamArn"] = true, ["ExclusiveStartShardId"] = true, nil }
 
-function M.AssertDescribeStreamInput(struct)
+function asserts.AssertDescribeStreamInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeStreamInput to be of type 'table'")
 	assert(struct["StreamArn"], "Expected key StreamArn to exist in table")
-	if struct["Limit"] then M.AssertPositiveIntegerObject(struct["Limit"]) end
-	if struct["StreamArn"] then M.AssertStreamArn(struct["StreamArn"]) end
-	if struct["ExclusiveStartShardId"] then M.AssertShardId(struct["ExclusiveStartShardId"]) end
+	if struct["Limit"] then asserts.AssertPositiveIntegerObject(struct["Limit"]) end
+	if struct["StreamArn"] then asserts.AssertStreamArn(struct["StreamArn"]) end
+	if struct["ExclusiveStartShardId"] then asserts.AssertShardId(struct["ExclusiveStartShardId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeStreamInput_keys[k], "DescribeStreamInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeStreamInput[k], "DescribeStreamInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeStreamInput
 -- <p>Represents the input of a <code>DescribeStream</code> operation.</p>
--- @param Limit [PositiveIntegerObject] <p>The maximum number of shard objects to return. The upper limit is 100.</p>
--- @param StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
--- @param ExclusiveStartShardId [ShardId] <p>The shard ID of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedShardId</code> in the previous operation. </p>
+-- @param _Limit [PositiveIntegerObject] <p>The maximum number of shard objects to return. The upper limit is 100.</p>
+-- @param _StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
+-- @param _ExclusiveStartShardId [ShardId] <p>The shard ID of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedShardId</code> in the previous operation. </p>
 -- Required parameter: StreamArn
-function M.DescribeStreamInput(Limit, StreamArn, ExclusiveStartShardId, ...)
+function M.DescribeStreamInput(_Limit, _StreamArn, _ExclusiveStartShardId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStreamInput")
 	local t = { 
-		["Limit"] = Limit,
-		["StreamArn"] = StreamArn,
-		["ExclusiveStartShardId"] = ExclusiveStartShardId,
+		["Limit"] = _Limit,
+		["StreamArn"] = _StreamArn,
+		["ExclusiveStartShardId"] = _ExclusiveStartShardId,
 	}
-	M.AssertDescribeStreamInput(t)
+	asserts.AssertDescribeStreamInput(t)
 	return t
 end
 
-function M.AssertTableName(str)
+function asserts.AssertTableName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TableName to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
 	assert(#str >= 3, "Expected string to be min 3 characters")
-	assert(str:match("[a-zA-Z0-9_.-]+"), "Expected string to match pattern '[a-zA-Z0-9_.-]+'")
 end
 
 --  
 function M.TableName(str)
-	M.AssertTableName(str)
+	asserts.AssertTableName(str)
 	return str
 end
 
-function M.AssertStreamArn(str)
+function asserts.AssertStreamArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StreamArn to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -699,33 +701,33 @@ end
 
 --  
 function M.StreamArn(str)
-	M.AssertStreamArn(str)
+	asserts.AssertStreamArn(str)
 	return str
 end
 
-function M.AssertShardIteratorType(str)
+function asserts.AssertShardIteratorType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ShardIteratorType to be of type 'string'")
 end
 
 --  
 function M.ShardIteratorType(str)
-	M.AssertShardIteratorType(str)
+	asserts.AssertShardIteratorType(str)
 	return str
 end
 
-function M.AssertStringAttributeValue(str)
+function asserts.AssertStringAttributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StringAttributeValue to be of type 'string'")
 end
 
 --  
 function M.StringAttributeValue(str)
-	M.AssertStringAttributeValue(str)
+	asserts.AssertStringAttributeValue(str)
 	return str
 end
 
-function M.AssertSequenceNumber(str)
+function asserts.AssertSequenceNumber(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SequenceNumber to be of type 'string'")
 	assert(#str <= 40, "Expected string to be max 40 characters")
@@ -734,33 +736,33 @@ end
 
 --  
 function M.SequenceNumber(str)
-	M.AssertSequenceNumber(str)
+	asserts.AssertSequenceNumber(str)
 	return str
 end
 
-function M.AssertNumberAttributeValue(str)
+function asserts.AssertNumberAttributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NumberAttributeValue to be of type 'string'")
 end
 
 --  
 function M.NumberAttributeValue(str)
-	M.AssertNumberAttributeValue(str)
+	asserts.AssertNumberAttributeValue(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertShardIterator(str)
+function asserts.AssertShardIterator(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ShardIterator to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -769,22 +771,22 @@ end
 
 --  
 function M.ShardIterator(str)
-	M.AssertShardIterator(str)
+	asserts.AssertShardIterator(str)
 	return str
 end
 
-function M.AssertStreamStatus(str)
+function asserts.AssertStreamStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StreamStatus to be of type 'string'")
 end
 
 --  
 function M.StreamStatus(str)
-	M.AssertStreamStatus(str)
+	asserts.AssertStreamStatus(str)
 	return str
 end
 
-function M.AssertKeySchemaAttributeName(str)
+function asserts.AssertKeySchemaAttributeName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected KeySchemaAttributeName to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -793,44 +795,44 @@ end
 
 --  
 function M.KeySchemaAttributeName(str)
-	M.AssertKeySchemaAttributeName(str)
+	asserts.AssertKeySchemaAttributeName(str)
 	return str
 end
 
-function M.AssertKeyType(str)
+function asserts.AssertKeyType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected KeyType to be of type 'string'")
 end
 
 --  
 function M.KeyType(str)
-	M.AssertKeyType(str)
+	asserts.AssertKeyType(str)
 	return str
 end
 
-function M.AssertOperationType(str)
+function asserts.AssertOperationType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OperationType to be of type 'string'")
 end
 
 --  
 function M.OperationType(str)
-	M.AssertOperationType(str)
+	asserts.AssertOperationType(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertAttributeName(str)
+function asserts.AssertAttributeName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttributeName to be of type 'string'")
 	assert(#str <= 65535, "Expected string to be max 65535 characters")
@@ -838,11 +840,11 @@ end
 
 --  
 function M.AttributeName(str)
-	M.AssertAttributeName(str)
+	asserts.AssertAttributeName(str)
 	return str
 end
 
-function M.AssertShardId(str)
+function asserts.AssertShardId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ShardId to be of type 'string'")
 	assert(#str <= 65, "Expected string to be max 65 characters")
@@ -851,33 +853,33 @@ end
 
 --  
 function M.ShardId(str)
-	M.AssertShardId(str)
+	asserts.AssertShardId(str)
 	return str
 end
 
-function M.AssertStreamViewType(str)
+function asserts.AssertStreamViewType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StreamViewType to be of type 'string'")
 end
 
 --  
 function M.StreamViewType(str)
-	M.AssertStreamViewType(str)
+	asserts.AssertStreamViewType(str)
 	return str
 end
 
-function M.AssertPositiveLongObject(long)
+function asserts.AssertPositiveLongObject(long)
 	assert(long)
 	assert(type(long) == "number", "Expected PositiveLongObject to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.PositiveLongObject(long)
-	M.AssertPositiveLongObject(long)
+	asserts.AssertPositiveLongObject(long)
 	return long
 end
 
-function M.AssertPositiveIntegerObject(integer)
+function asserts.AssertPositiveIntegerObject(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PositiveIntegerObject to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -885,197 +887,197 @@ function M.AssertPositiveIntegerObject(integer)
 end
 
 function M.PositiveIntegerObject(integer)
-	M.AssertPositiveIntegerObject(integer)
+	asserts.AssertPositiveIntegerObject(integer)
 	return integer
 end
 
-function M.AssertNullAttributeValue(boolean)
+function asserts.AssertNullAttributeValue(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected NullAttributeValue to be of type 'boolean'")
 end
 
 function M.NullAttributeValue(boolean)
-	M.AssertNullAttributeValue(boolean)
+	asserts.AssertNullAttributeValue(boolean)
 	return boolean
 end
 
-function M.AssertBooleanAttributeValue(boolean)
+function asserts.AssertBooleanAttributeValue(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanAttributeValue to be of type 'boolean'")
 end
 
 function M.BooleanAttributeValue(boolean)
-	M.AssertBooleanAttributeValue(boolean)
+	asserts.AssertBooleanAttributeValue(boolean)
 	return boolean
 end
 
-function M.AssertAttributeMap(map)
+function asserts.AssertAttributeMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected AttributeMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertAttributeName(k)
-		M.AssertAttributeValue(v)
+		asserts.AssertAttributeName(k)
+		asserts.AssertAttributeValue(v)
 	end
 end
 
 function M.AttributeMap(map)
-	M.AssertAttributeMap(map)
+	asserts.AssertAttributeMap(map)
 	return map
 end
 
-function M.AssertMapAttributeValue(map)
+function asserts.AssertMapAttributeValue(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapAttributeValue to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertAttributeName(k)
-		M.AssertAttributeValue(v)
+		asserts.AssertAttributeName(k)
+		asserts.AssertAttributeValue(v)
 	end
 end
 
 function M.MapAttributeValue(map)
-	M.AssertMapAttributeValue(map)
+	asserts.AssertMapAttributeValue(map)
 	return map
 end
 
-function M.AssertDate(timestamp)
+function asserts.AssertDate(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Date to be of type 'string'")
 end
 
 function M.Date(timestamp)
-	M.AssertDate(timestamp)
+	asserts.AssertDate(timestamp)
 	return timestamp
 end
 
-function M.AssertBinaryAttributeValue(blob)
+function asserts.AssertBinaryAttributeValue(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected BinaryAttributeValue to be of type 'string'")
 end
 
 function M.BinaryAttributeValue(blob)
-	M.AssertBinaryAttributeValue(blob)
+	asserts.AssertBinaryAttributeValue(blob)
 	return blob
 end
 
-function M.AssertNumberSetAttributeValue(list)
+function asserts.AssertNumberSetAttributeValue(list)
 	assert(list)
 	assert(type(list) == "table", "Expected NumberSetAttributeValue to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertNumberAttributeValue(v)
+		asserts.AssertNumberAttributeValue(v)
 	end
 end
 
 --  
 -- List of NumberAttributeValue objects
 function M.NumberSetAttributeValue(list)
-	M.AssertNumberSetAttributeValue(list)
+	asserts.AssertNumberSetAttributeValue(list)
 	return list
 end
 
-function M.AssertShardDescriptionList(list)
+function asserts.AssertShardDescriptionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ShardDescriptionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertShard(v)
+		asserts.AssertShard(v)
 	end
 end
 
 --  
 -- List of Shard objects
 function M.ShardDescriptionList(list)
-	M.AssertShardDescriptionList(list)
+	asserts.AssertShardDescriptionList(list)
 	return list
 end
 
-function M.AssertListAttributeValue(list)
+function asserts.AssertListAttributeValue(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListAttributeValue to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttributeValue(v)
+		asserts.AssertAttributeValue(v)
 	end
 end
 
 --  
 -- List of AttributeValue objects
 function M.ListAttributeValue(list)
-	M.AssertListAttributeValue(list)
+	asserts.AssertListAttributeValue(list)
 	return list
 end
 
-function M.AssertStringSetAttributeValue(list)
+function asserts.AssertStringSetAttributeValue(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StringSetAttributeValue to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStringAttributeValue(v)
+		asserts.AssertStringAttributeValue(v)
 	end
 end
 
 --  
 -- List of StringAttributeValue objects
 function M.StringSetAttributeValue(list)
-	M.AssertStringSetAttributeValue(list)
+	asserts.AssertStringSetAttributeValue(list)
 	return list
 end
 
-function M.AssertBinarySetAttributeValue(list)
+function asserts.AssertBinarySetAttributeValue(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BinarySetAttributeValue to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBinaryAttributeValue(v)
+		asserts.AssertBinaryAttributeValue(v)
 	end
 end
 
 --  
 -- List of BinaryAttributeValue objects
 function M.BinarySetAttributeValue(list)
-	M.AssertBinarySetAttributeValue(list)
+	asserts.AssertBinarySetAttributeValue(list)
 	return list
 end
 
-function M.AssertStreamList(list)
+function asserts.AssertStreamList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StreamList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStream(v)
+		asserts.AssertStream(v)
 	end
 end
 
 --  
 -- List of Stream objects
 function M.StreamList(list)
-	M.AssertStreamList(list)
+	asserts.AssertStreamList(list)
 	return list
 end
 
-function M.AssertRecordList(list)
+function asserts.AssertRecordList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RecordList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRecord(v)
+		asserts.AssertRecord(v)
 	end
 end
 
 --  
 -- List of Record objects
 function M.RecordList(list)
-	M.AssertRecordList(list)
+	asserts.AssertRecordList(list)
 	return list
 end
 
-function M.AssertKeySchema(list)
+function asserts.AssertKeySchema(list)
 	assert(list)
 	assert(type(list) == "table", "Expected KeySchema to be of type ''table")
 	assert(#list <= 2, "Expected list to be contain 2 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertKeySchemaElement(v)
+		asserts.AssertKeySchemaElement(v)
 	end
 end
 
 --  
 -- List of KeySchemaElement objects
 function M.KeySchema(list)
-	M.AssertKeySchema(list)
+	asserts.AssertKeySchema(list)
 	return list
 end
 

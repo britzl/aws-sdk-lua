@@ -18,36 +18,39 @@ M.metadata = {
 	uid = "{{metadata.uid}}",
 }
 
-{{#shapes.structure}}
-local {{name}}_keys = { {{#members}}"{{name}}" = true, {{/members}}nil }
+local keys = {}
+local asserts = {}
 
-function M.Assert{{name}}(struct)
+{{#shapes.structure}}
+keys.{{name}} = { {{#members}}["{{name}}"] = true, {{/members}}nil }
+
+function asserts.Assert{{name}}(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected {{name}} to be of type 'table'"){{#required}}
 	assert(struct["{{name}}"], "Expected key {{name}} to exist in table"){{/required}}{{#members}}
-	if struct["{{name}}"] then M.Assert{{shape}}(struct["{{name}}"]) end{{/members}}
+	if struct["{{name}}"] then asserts.Assert{{shape}}(struct["{{name}}"]) end{{/members}}
 	for k,_ in pairs(struct) do
-		assert({{name}}_keys[k], "{{name}} contains unknown key " .. tostring(k))
+		assert(keys.{{name}}[k], "{{name}} contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type {{name}}
 {{#documentation}}-- {{documentation}}{{/documentation}}
-{{#members}}-- @param {{name}} [{{shape}}] {{documentation}}
+{{#members}}-- @param _{{name}} [{{shape}}] {{documentation}}
 {{/members}}{{#required}}-- Required parameter: {{name}}
 {{/required}}
-function M.{{name}}({{#members}}{{name}}, {{/members}}...)
+function M.{{name}}({{#members}}_{{name}}, {{/members}}...)
 	assert(select("#", ...) == 0, "Too many arguments when creating {{name}}")
 	local t = { {{#members}}
-		["{{name}}"] = {{name}},{{/members}}
+		["{{name}}"] = _{{name}},{{/members}}
 	}
-	M.Assert{{name}}(t)
+	asserts.Assert{{name}}(t)
 	return t
 end
 
 {{/shapes.structure}}
 {{#shapes.string}}
-function M.Assert{{name}}(str)
+function asserts.Assert{{name}}(str)
 	assert(str)
 	assert(type(str) == "string", "Expected {{name}} to be of type 'string'"){{#max}}
 	assert(#str <= {{max}}, "Expected string to be max {{max}} characters"){{/max}}{{#min}}
@@ -57,50 +60,50 @@ end
 
 {{#documentation}}-- {{documentation}}{{/documentation}}
 function M.{{name}}(str)
-	M.Assert{{name}}(str)
+	asserts.Assert{{name}}(str)
 	return str
 end
 
 {{/shapes.string}}
 {{#shapes.float}}
-function M.Assert{{name}}(float)
+function asserts.Assert{{name}}(float)
 	assert(float)
 	assert(type(float) == "number", "Expected {{name}} to be of type 'number'")
 end
 
 function M.{{name}}(float)
-	M.Assert{{name}}(float)
+	asserts.Assert{{name}}(float)
 	return float
 end
 
 {{/shapes.float}}
 {{#shapes.double}}
-function M.Assert{{name}}(double)
+function asserts.Assert{{name}}(double)
 	assert(double)
 	assert(type(double) == "number", "Expected {{name}} to be of type 'number'")
 end
 
 function M.{{name}}(double)
-	M.Assert{{name}}(double)
+	asserts.Assert{{name}}(double)
 	return double
 end
 
 {{/shapes.double}}
 {{#shapes.long}}
-function M.Assert{{name}}(long)
+function asserts.Assert{{name}}(long)
 	assert(long)
 	assert(type(long) == "number", "Expected {{name}} to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.{{name}}(long)
-	M.Assert{{name}}(long)
+	asserts.Assert{{name}}(long)
 	return long
 end
 
 {{/shapes.long}}
 {{#shapes.integer}}
-function M.Assert{{name}}(integer)
+function asserts.Assert{{name}}(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected {{name}} to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number"){{#max}}
@@ -109,53 +112,53 @@ function M.Assert{{name}}(integer)
 end
 
 function M.{{name}}(integer)
-	M.Assert{{name}}(integer)
+	asserts.Assert{{name}}(integer)
 	return integer
 end
 
 {{/shapes.integer}}
 {{#shapes.boolean}}
-function M.Assert{{name}}(boolean)
+function asserts.Assert{{name}}(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected {{name}} to be of type 'boolean'")
 end
 
 function M.{{name}}(boolean)
-	M.Assert{{name}}(boolean)
+	asserts.Assert{{name}}(boolean)
 	return boolean
 end
 
 {{/shapes.boolean}}
 {{#shapes.map}}
-function M.Assert{{name}}(map)
+function asserts.Assert{{name}}(map)
 	assert(map)
 	assert(type(map) == "table", "Expected {{name}} to be of type 'table'")
 	for k,v in pairs(map) do
-		M.Assert{{key.shape}}(k)
-		M.Assert{{value.shape}}(v)
+		asserts.Assert{{key.shape}}(k)
+		asserts.Assert{{value.shape}}(v)
 	end
 end
 
 function M.{{name}}(map)
-	M.Assert{{name}}(map)
+	asserts.Assert{{name}}(map)
 	return map
 end
 
 {{/shapes.map}}
 {{#shapes.timestamp}}
-function M.Assert{{name}}(timestamp)
+function asserts.Assert{{name}}(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected {{name}} to be of type 'string'")
 end
 
 function M.{{name}}(timestamp)
-	M.Assert{{name}}(timestamp)
+	asserts.Assert{{name}}(timestamp)
 	return timestamp
 end
 
 {{/shapes.timestamp}}
 {{#shapes.blob}}
-function M.Assert{{name}}(blob)
+function asserts.Assert{{name}}(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected {{name}} to be of type 'string'"){{#max}}
 	assert(#blob <= {{max}}, "Expected blob to be max {{max}}"){{/max}}{{#min}}
@@ -163,26 +166,26 @@ function M.Assert{{name}}(blob)
 end
 
 function M.{{name}}(blob)
-	M.Assert{{name}}(blob)
+	asserts.Assert{{name}}(blob)
 	return blob
 end
 
 {{/shapes.blob}}
 {{#shapes.list}}
-function M.Assert{{name}}(list)
+function asserts.Assert{{name}}(list)
 	assert(list)
 	assert(type(list) == "table", "Expected {{name}} to be of type ''table"){{#max}}
 	assert(#list <= {{max}}, "Expected list to be contain {{max}} elements"){{/max}}{{#min}}
 	assert(#list >= {{min}}, "Expected list to be contain {{min}} elements"){{/min}}
 	for _,v in ipairs(list) do
-		M.Assert{{member.shape}}(v)
+		asserts.Assert{{member.shape}}(v)
 	end
 end
 
 {{#documentation}}-- {{documentation}}{{/documentation}}
 -- List of {{member.shape}} objects
 function M.{{name}}(list)
-	M.Assert{{name}}(list)
+	asserts.Assert{{name}}(list)
 	return list
 end
 
@@ -226,11 +229,11 @@ end
 -- OPERATIONS
 --
 {{#operations}}
---- {{name}}
--- @param {{input.shape}}
+--- {{name}}{{#input}}
+-- @param {{shape}}{{/input}}
 -- @param cb Callback function accepting two args: response, error_message
-function M.{{name}}Async({{input.shape}}, cb)
-	assert({{input.shape}}, "You must provide a {{input.shape}}")
+function M.{{name}}Async({{#input}}{{shape}}, {{/input}}cb){{#input}}
+	assert({{shape}}, "You must provide a {{shape}}"){{/input}}
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = "{{metadata.targetPrefix}}.{{name}}",
@@ -238,7 +241,7 @@ function M.{{name}}Async({{input.shape}}, cb)
 
 	local request_handler, err = request_handlers.from_http_method("{{http.method}}")
 	if request_handler then
-		request_handler(uri .. "{{http.requestUri}}", {{input.shape}}, headers, M.metadata, cb)
+		request_handler(uri .. "{{http.requestUri}}", {{input_shape_or_empty.shape}}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end

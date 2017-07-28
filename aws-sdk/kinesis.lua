@@ -18,941 +18,944 @@ M.metadata = {
 	uid = "kinesis-2013-12-02",
 }
 
-local EnhancedMonitoringOutput_keys = { "StreamName" = true, "CurrentShardLevelMetrics" = true, "DesiredShardLevelMetrics" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertEnhancedMonitoringOutput(struct)
+keys.EnhancedMonitoringOutput = { ["StreamName"] = true, ["CurrentShardLevelMetrics"] = true, ["DesiredShardLevelMetrics"] = true, nil }
+
+function asserts.AssertEnhancedMonitoringOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnhancedMonitoringOutput to be of type 'table'")
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["CurrentShardLevelMetrics"] then M.AssertMetricsNameList(struct["CurrentShardLevelMetrics"]) end
-	if struct["DesiredShardLevelMetrics"] then M.AssertMetricsNameList(struct["DesiredShardLevelMetrics"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["CurrentShardLevelMetrics"] then asserts.AssertMetricsNameList(struct["CurrentShardLevelMetrics"]) end
+	if struct["DesiredShardLevelMetrics"] then asserts.AssertMetricsNameList(struct["DesiredShardLevelMetrics"]) end
 	for k,_ in pairs(struct) do
-		assert(EnhancedMonitoringOutput_keys[k], "EnhancedMonitoringOutput contains unknown key " .. tostring(k))
+		assert(keys.EnhancedMonitoringOutput[k], "EnhancedMonitoringOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnhancedMonitoringOutput
 -- <p>Represents the output for <a>EnableEnhancedMonitoring</a> and <a>DisableEnhancedMonitoring</a>.</p>
--- @param StreamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
--- @param CurrentShardLevelMetrics [MetricsNameList] <p>Represents the current state of the metrics that are in the enhanced state before the operation.</p>
--- @param DesiredShardLevelMetrics [MetricsNameList] <p>Represents the list of all the metrics that would be in the enhanced state after the operation.</p>
-function M.EnhancedMonitoringOutput(StreamName, CurrentShardLevelMetrics, DesiredShardLevelMetrics, ...)
+-- @param _StreamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
+-- @param _CurrentShardLevelMetrics [MetricsNameList] <p>Represents the current state of the metrics that are in the enhanced state before the operation.</p>
+-- @param _DesiredShardLevelMetrics [MetricsNameList] <p>Represents the list of all the metrics that would be in the enhanced state after the operation.</p>
+function M.EnhancedMonitoringOutput(_StreamName, _CurrentShardLevelMetrics, _DesiredShardLevelMetrics, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnhancedMonitoringOutput")
 	local t = { 
-		["StreamName"] = StreamName,
-		["CurrentShardLevelMetrics"] = CurrentShardLevelMetrics,
-		["DesiredShardLevelMetrics"] = DesiredShardLevelMetrics,
+		["StreamName"] = _StreamName,
+		["CurrentShardLevelMetrics"] = _CurrentShardLevelMetrics,
+		["DesiredShardLevelMetrics"] = _DesiredShardLevelMetrics,
 	}
-	M.AssertEnhancedMonitoringOutput(t)
+	asserts.AssertEnhancedMonitoringOutput(t)
 	return t
 end
 
-local UpdateShardCountInput_keys = { "TargetShardCount" = true, "StreamName" = true, "ScalingType" = true, nil }
+keys.UpdateShardCountInput = { ["TargetShardCount"] = true, ["StreamName"] = true, ["ScalingType"] = true, nil }
 
-function M.AssertUpdateShardCountInput(struct)
+function asserts.AssertUpdateShardCountInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateShardCountInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["TargetShardCount"], "Expected key TargetShardCount to exist in table")
 	assert(struct["ScalingType"], "Expected key ScalingType to exist in table")
-	if struct["TargetShardCount"] then M.AssertPositiveIntegerObject(struct["TargetShardCount"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["ScalingType"] then M.AssertScalingType(struct["ScalingType"]) end
+	if struct["TargetShardCount"] then asserts.AssertPositiveIntegerObject(struct["TargetShardCount"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["ScalingType"] then asserts.AssertScalingType(struct["ScalingType"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateShardCountInput_keys[k], "UpdateShardCountInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateShardCountInput[k], "UpdateShardCountInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateShardCountInput
 --  
--- @param TargetShardCount [PositiveIntegerObject] <p>The new number of shards.</p>
--- @param StreamName [StreamName] <p>The name of the stream.</p>
--- @param ScalingType [ScalingType] <p>The scaling type. Uniform scaling creates shards of equal size.</p>
+-- @param _TargetShardCount [PositiveIntegerObject] <p>The new number of shards.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream.</p>
+-- @param _ScalingType [ScalingType] <p>The scaling type. Uniform scaling creates shards of equal size.</p>
 -- Required parameter: StreamName
 -- Required parameter: TargetShardCount
 -- Required parameter: ScalingType
-function M.UpdateShardCountInput(TargetShardCount, StreamName, ScalingType, ...)
+function M.UpdateShardCountInput(_TargetShardCount, _StreamName, _ScalingType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateShardCountInput")
 	local t = { 
-		["TargetShardCount"] = TargetShardCount,
-		["StreamName"] = StreamName,
-		["ScalingType"] = ScalingType,
+		["TargetShardCount"] = _TargetShardCount,
+		["StreamName"] = _StreamName,
+		["ScalingType"] = _ScalingType,
 	}
-	M.AssertUpdateShardCountInput(t)
+	asserts.AssertUpdateShardCountInput(t)
 	return t
 end
 
-local PutRecordsInput_keys = { "Records" = true, "StreamName" = true, nil }
+keys.PutRecordsInput = { ["Records"] = true, ["StreamName"] = true, nil }
 
-function M.AssertPutRecordsInput(struct)
+function asserts.AssertPutRecordsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutRecordsInput to be of type 'table'")
 	assert(struct["Records"], "Expected key Records to exist in table")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
-	if struct["Records"] then M.AssertPutRecordsRequestEntryList(struct["Records"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
+	if struct["Records"] then asserts.AssertPutRecordsRequestEntryList(struct["Records"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
 	for k,_ in pairs(struct) do
-		assert(PutRecordsInput_keys[k], "PutRecordsInput contains unknown key " .. tostring(k))
+		assert(keys.PutRecordsInput[k], "PutRecordsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutRecordsInput
 -- <p>A <code>PutRecords</code> request.</p>
--- @param Records [PutRecordsRequestEntryList] <p>The records associated with the request.</p>
--- @param StreamName [StreamName] <p>The stream name associated with the request.</p>
+-- @param _Records [PutRecordsRequestEntryList] <p>The records associated with the request.</p>
+-- @param _StreamName [StreamName] <p>The stream name associated with the request.</p>
 -- Required parameter: Records
 -- Required parameter: StreamName
-function M.PutRecordsInput(Records, StreamName, ...)
+function M.PutRecordsInput(_Records, _StreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordsInput")
 	local t = { 
-		["Records"] = Records,
-		["StreamName"] = StreamName,
+		["Records"] = _Records,
+		["StreamName"] = _StreamName,
 	}
-	M.AssertPutRecordsInput(t)
+	asserts.AssertPutRecordsInput(t)
 	return t
 end
 
-local SplitShardInput_keys = { "ShardToSplit" = true, "StreamName" = true, "NewStartingHashKey" = true, nil }
+keys.SplitShardInput = { ["ShardToSplit"] = true, ["StreamName"] = true, ["NewStartingHashKey"] = true, nil }
 
-function M.AssertSplitShardInput(struct)
+function asserts.AssertSplitShardInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SplitShardInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["ShardToSplit"], "Expected key ShardToSplit to exist in table")
 	assert(struct["NewStartingHashKey"], "Expected key NewStartingHashKey to exist in table")
-	if struct["ShardToSplit"] then M.AssertShardId(struct["ShardToSplit"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["NewStartingHashKey"] then M.AssertHashKey(struct["NewStartingHashKey"]) end
+	if struct["ShardToSplit"] then asserts.AssertShardId(struct["ShardToSplit"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["NewStartingHashKey"] then asserts.AssertHashKey(struct["NewStartingHashKey"]) end
 	for k,_ in pairs(struct) do
-		assert(SplitShardInput_keys[k], "SplitShardInput contains unknown key " .. tostring(k))
+		assert(keys.SplitShardInput[k], "SplitShardInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SplitShardInput
 -- <p>Represents the input for <code>SplitShard</code>.</p>
--- @param ShardToSplit [ShardId] <p>The shard ID of the shard to split.</p>
--- @param StreamName [StreamName] <p>The name of the stream for the shard split.</p>
--- @param NewStartingHashKey [HashKey] <p>A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for <code>NewStartingHashKey</code> must be in the range of hash keys being mapped into the shard. The <code>NewStartingHashKey</code> hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.</p>
+-- @param _ShardToSplit [ShardId] <p>The shard ID of the shard to split.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream for the shard split.</p>
+-- @param _NewStartingHashKey [HashKey] <p>A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for <code>NewStartingHashKey</code> must be in the range of hash keys being mapped into the shard. The <code>NewStartingHashKey</code> hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.</p>
 -- Required parameter: StreamName
 -- Required parameter: ShardToSplit
 -- Required parameter: NewStartingHashKey
-function M.SplitShardInput(ShardToSplit, StreamName, NewStartingHashKey, ...)
+function M.SplitShardInput(_ShardToSplit, _StreamName, _NewStartingHashKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SplitShardInput")
 	local t = { 
-		["ShardToSplit"] = ShardToSplit,
-		["StreamName"] = StreamName,
-		["NewStartingHashKey"] = NewStartingHashKey,
+		["ShardToSplit"] = _ShardToSplit,
+		["StreamName"] = _StreamName,
+		["NewStartingHashKey"] = _NewStartingHashKey,
 	}
-	M.AssertSplitShardInput(t)
+	asserts.AssertSplitShardInput(t)
 	return t
 end
 
-local LimitExceededException_keys = { "message" = true, nil }
+keys.LimitExceededException = { ["message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests exceeds the maximum number allowed (5).</p>
--- @param message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.LimitExceededException(message, ...)
+-- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
+function M.LimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local DecreaseStreamRetentionPeriodInput_keys = { "RetentionPeriodHours" = true, "StreamName" = true, nil }
+keys.DecreaseStreamRetentionPeriodInput = { ["RetentionPeriodHours"] = true, ["StreamName"] = true, nil }
 
-function M.AssertDecreaseStreamRetentionPeriodInput(struct)
+function asserts.AssertDecreaseStreamRetentionPeriodInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DecreaseStreamRetentionPeriodInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["RetentionPeriodHours"], "Expected key RetentionPeriodHours to exist in table")
-	if struct["RetentionPeriodHours"] then M.AssertPositiveIntegerObject(struct["RetentionPeriodHours"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
+	if struct["RetentionPeriodHours"] then asserts.AssertPositiveIntegerObject(struct["RetentionPeriodHours"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
 	for k,_ in pairs(struct) do
-		assert(DecreaseStreamRetentionPeriodInput_keys[k], "DecreaseStreamRetentionPeriodInput contains unknown key " .. tostring(k))
+		assert(keys.DecreaseStreamRetentionPeriodInput[k], "DecreaseStreamRetentionPeriodInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DecreaseStreamRetentionPeriodInput
 -- <p>Represents the input for <a>DecreaseStreamRetentionPeriod</a>.</p>
--- @param RetentionPeriodHours [PositiveIntegerObject] <p>The new retention period of the stream, in hours. Must be less than the current retention period.</p>
--- @param StreamName [StreamName] <p>The name of the stream to modify.</p>
+-- @param _RetentionPeriodHours [PositiveIntegerObject] <p>The new retention period of the stream, in hours. Must be less than the current retention period.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream to modify.</p>
 -- Required parameter: StreamName
 -- Required parameter: RetentionPeriodHours
-function M.DecreaseStreamRetentionPeriodInput(RetentionPeriodHours, StreamName, ...)
+function M.DecreaseStreamRetentionPeriodInput(_RetentionPeriodHours, _StreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DecreaseStreamRetentionPeriodInput")
 	local t = { 
-		["RetentionPeriodHours"] = RetentionPeriodHours,
-		["StreamName"] = StreamName,
+		["RetentionPeriodHours"] = _RetentionPeriodHours,
+		["StreamName"] = _StreamName,
 	}
-	M.AssertDecreaseStreamRetentionPeriodInput(t)
+	asserts.AssertDecreaseStreamRetentionPeriodInput(t)
 	return t
 end
 
-local DescribeLimitsOutput_keys = { "OpenShardCount" = true, "ShardLimit" = true, nil }
+keys.DescribeLimitsOutput = { ["OpenShardCount"] = true, ["ShardLimit"] = true, nil }
 
-function M.AssertDescribeLimitsOutput(struct)
+function asserts.AssertDescribeLimitsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLimitsOutput to be of type 'table'")
 	assert(struct["ShardLimit"], "Expected key ShardLimit to exist in table")
 	assert(struct["OpenShardCount"], "Expected key OpenShardCount to exist in table")
-	if struct["OpenShardCount"] then M.AssertShardCountObject(struct["OpenShardCount"]) end
-	if struct["ShardLimit"] then M.AssertShardCountObject(struct["ShardLimit"]) end
+	if struct["OpenShardCount"] then asserts.AssertShardCountObject(struct["OpenShardCount"]) end
+	if struct["ShardLimit"] then asserts.AssertShardCountObject(struct["ShardLimit"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLimitsOutput_keys[k], "DescribeLimitsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeLimitsOutput[k], "DescribeLimitsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLimitsOutput
 --  
--- @param OpenShardCount [ShardCountObject] <p>The number of open shards.</p>
--- @param ShardLimit [ShardCountObject] <p>The maximum number of shards.</p>
+-- @param _OpenShardCount [ShardCountObject] <p>The number of open shards.</p>
+-- @param _ShardLimit [ShardCountObject] <p>The maximum number of shards.</p>
 -- Required parameter: ShardLimit
 -- Required parameter: OpenShardCount
-function M.DescribeLimitsOutput(OpenShardCount, ShardLimit, ...)
+function M.DescribeLimitsOutput(_OpenShardCount, _ShardLimit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLimitsOutput")
 	local t = { 
-		["OpenShardCount"] = OpenShardCount,
-		["ShardLimit"] = ShardLimit,
+		["OpenShardCount"] = _OpenShardCount,
+		["ShardLimit"] = _ShardLimit,
 	}
-	M.AssertDescribeLimitsOutput(t)
+	asserts.AssertDescribeLimitsOutput(t)
 	return t
 end
 
-local ListStreamsInput_keys = { "Limit" = true, "ExclusiveStartStreamName" = true, nil }
+keys.ListStreamsInput = { ["Limit"] = true, ["ExclusiveStartStreamName"] = true, nil }
 
-function M.AssertListStreamsInput(struct)
+function asserts.AssertListStreamsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListStreamsInput to be of type 'table'")
-	if struct["Limit"] then M.AssertListStreamsInputLimit(struct["Limit"]) end
-	if struct["ExclusiveStartStreamName"] then M.AssertStreamName(struct["ExclusiveStartStreamName"]) end
+	if struct["Limit"] then asserts.AssertListStreamsInputLimit(struct["Limit"]) end
+	if struct["ExclusiveStartStreamName"] then asserts.AssertStreamName(struct["ExclusiveStartStreamName"]) end
 	for k,_ in pairs(struct) do
-		assert(ListStreamsInput_keys[k], "ListStreamsInput contains unknown key " .. tostring(k))
+		assert(keys.ListStreamsInput[k], "ListStreamsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListStreamsInput
 -- <p>Represents the input for <code>ListStreams</code>.</p>
--- @param Limit [ListStreamsInputLimit] <p>The maximum number of streams to list.</p>
--- @param ExclusiveStartStreamName [StreamName] <p>The name of the stream to start the list with.</p>
-function M.ListStreamsInput(Limit, ExclusiveStartStreamName, ...)
+-- @param _Limit [ListStreamsInputLimit] <p>The maximum number of streams to list.</p>
+-- @param _ExclusiveStartStreamName [StreamName] <p>The name of the stream to start the list with.</p>
+function M.ListStreamsInput(_Limit, _ExclusiveStartStreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamsInput")
 	local t = { 
-		["Limit"] = Limit,
-		["ExclusiveStartStreamName"] = ExclusiveStartStreamName,
+		["Limit"] = _Limit,
+		["ExclusiveStartStreamName"] = _ExclusiveStartStreamName,
 	}
-	M.AssertListStreamsInput(t)
+	asserts.AssertListStreamsInput(t)
 	return t
 end
 
-local AddTagsToStreamInput_keys = { "StreamName" = true, "Tags" = true, nil }
+keys.AddTagsToStreamInput = { ["StreamName"] = true, ["Tags"] = true, nil }
 
-function M.AssertAddTagsToStreamInput(struct)
+function asserts.AssertAddTagsToStreamInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsToStreamInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["Tags"] then M.AssertTagMap(struct["Tags"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["Tags"] then asserts.AssertTagMap(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(AddTagsToStreamInput_keys[k], "AddTagsToStreamInput contains unknown key " .. tostring(k))
+		assert(keys.AddTagsToStreamInput[k], "AddTagsToStreamInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddTagsToStreamInput
 -- <p>Represents the input for <code>AddTagsToStream</code>.</p>
--- @param StreamName [StreamName] <p>The name of the stream.</p>
--- @param Tags [TagMap] <p>The set of key-value pairs to use to create the tags.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream.</p>
+-- @param _Tags [TagMap] <p>The set of key-value pairs to use to create the tags.</p>
 -- Required parameter: StreamName
 -- Required parameter: Tags
-function M.AddTagsToStreamInput(StreamName, Tags, ...)
+function M.AddTagsToStreamInput(_StreamName, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToStreamInput")
 	local t = { 
-		["StreamName"] = StreamName,
-		["Tags"] = Tags,
+		["StreamName"] = _StreamName,
+		["Tags"] = _Tags,
 	}
-	M.AssertAddTagsToStreamInput(t)
+	asserts.AssertAddTagsToStreamInput(t)
 	return t
 end
 
-local HashKeyRange_keys = { "EndingHashKey" = true, "StartingHashKey" = true, nil }
+keys.HashKeyRange = { ["EndingHashKey"] = true, ["StartingHashKey"] = true, nil }
 
-function M.AssertHashKeyRange(struct)
+function asserts.AssertHashKeyRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected HashKeyRange to be of type 'table'")
 	assert(struct["StartingHashKey"], "Expected key StartingHashKey to exist in table")
 	assert(struct["EndingHashKey"], "Expected key EndingHashKey to exist in table")
-	if struct["EndingHashKey"] then M.AssertHashKey(struct["EndingHashKey"]) end
-	if struct["StartingHashKey"] then M.AssertHashKey(struct["StartingHashKey"]) end
+	if struct["EndingHashKey"] then asserts.AssertHashKey(struct["EndingHashKey"]) end
+	if struct["StartingHashKey"] then asserts.AssertHashKey(struct["StartingHashKey"]) end
 	for k,_ in pairs(struct) do
-		assert(HashKeyRange_keys[k], "HashKeyRange contains unknown key " .. tostring(k))
+		assert(keys.HashKeyRange[k], "HashKeyRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type HashKeyRange
 -- <p>The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.</p>
--- @param EndingHashKey [HashKey] <p>The ending hash key of the hash key range.</p>
--- @param StartingHashKey [HashKey] <p>The starting hash key of the hash key range.</p>
+-- @param _EndingHashKey [HashKey] <p>The ending hash key of the hash key range.</p>
+-- @param _StartingHashKey [HashKey] <p>The starting hash key of the hash key range.</p>
 -- Required parameter: StartingHashKey
 -- Required parameter: EndingHashKey
-function M.HashKeyRange(EndingHashKey, StartingHashKey, ...)
+function M.HashKeyRange(_EndingHashKey, _StartingHashKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HashKeyRange")
 	local t = { 
-		["EndingHashKey"] = EndingHashKey,
-		["StartingHashKey"] = StartingHashKey,
+		["EndingHashKey"] = _EndingHashKey,
+		["StartingHashKey"] = _StartingHashKey,
 	}
-	M.AssertHashKeyRange(t)
+	asserts.AssertHashKeyRange(t)
 	return t
 end
 
-local ResourceInUseException_keys = { "message" = true, nil }
+keys.ResourceInUseException = { ["message"] = true, nil }
 
-function M.AssertResourceInUseException(struct)
+function asserts.AssertResourceInUseException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceInUseException_keys[k], "ResourceInUseException contains unknown key " .. tostring(k))
+		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceInUseException
 -- <p>The resource is not available for this operation. For successful operation, the resource needs to be in the <code>ACTIVE</code> state.</p>
--- @param message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ResourceInUseException(message, ...)
+-- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
+function M.ResourceInUseException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceInUseException(t)
+	asserts.AssertResourceInUseException(t)
 	return t
 end
 
-local DisableEnhancedMonitoringInput_keys = { "ShardLevelMetrics" = true, "StreamName" = true, nil }
+keys.DisableEnhancedMonitoringInput = { ["ShardLevelMetrics"] = true, ["StreamName"] = true, nil }
 
-function M.AssertDisableEnhancedMonitoringInput(struct)
+function asserts.AssertDisableEnhancedMonitoringInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisableEnhancedMonitoringInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["ShardLevelMetrics"], "Expected key ShardLevelMetrics to exist in table")
-	if struct["ShardLevelMetrics"] then M.AssertMetricsNameList(struct["ShardLevelMetrics"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
+	if struct["ShardLevelMetrics"] then asserts.AssertMetricsNameList(struct["ShardLevelMetrics"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
 	for k,_ in pairs(struct) do
-		assert(DisableEnhancedMonitoringInput_keys[k], "DisableEnhancedMonitoringInput contains unknown key " .. tostring(k))
+		assert(keys.DisableEnhancedMonitoringInput[k], "DisableEnhancedMonitoringInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisableEnhancedMonitoringInput
 -- <p>Represents the input for <a>DisableEnhancedMonitoring</a>.</p>
--- @param ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics to disable.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" disables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
--- @param StreamName [StreamName] <p>The name of the Amazon Kinesis stream for which to disable enhanced monitoring.</p>
+-- @param _ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics to disable.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" disables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
+-- @param _StreamName [StreamName] <p>The name of the Amazon Kinesis stream for which to disable enhanced monitoring.</p>
 -- Required parameter: StreamName
 -- Required parameter: ShardLevelMetrics
-function M.DisableEnhancedMonitoringInput(ShardLevelMetrics, StreamName, ...)
+function M.DisableEnhancedMonitoringInput(_ShardLevelMetrics, _StreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableEnhancedMonitoringInput")
 	local t = { 
-		["ShardLevelMetrics"] = ShardLevelMetrics,
-		["StreamName"] = StreamName,
+		["ShardLevelMetrics"] = _ShardLevelMetrics,
+		["StreamName"] = _StreamName,
 	}
-	M.AssertDisableEnhancedMonitoringInput(t)
+	asserts.AssertDisableEnhancedMonitoringInput(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>Metadata assigned to the stream, consisting of a key-value pair.</p>
--- @param Value [TagValue] <p>An optional string, typically used to describe or define the tag. Maximum length: 256 characters. Valid characters: Unicode letters, digits, white space, _ . / = + - % @</p>
--- @param Key [TagKey] <p>A unique identifier for the tag. Maximum length: 128 characters. Valid characters: Unicode letters, digits, white space, _ . / = + - % @</p>
+-- @param _Value [TagValue] <p>An optional string, typically used to describe or define the tag. Maximum length: 256 characters. Valid characters: Unicode letters, digits, white space, _ . / = + - % @</p>
+-- @param _Key [TagKey] <p>A unique identifier for the tag. Maximum length: 128 characters. Valid characters: Unicode letters, digits, white space, _ . / = + - % @</p>
 -- Required parameter: Key
-function M.Tag(Value, Key, ...)
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local PutRecordsRequestEntry_keys = { "PartitionKey" = true, "Data" = true, "ExplicitHashKey" = true, nil }
+keys.PutRecordsRequestEntry = { ["PartitionKey"] = true, ["Data"] = true, ["ExplicitHashKey"] = true, nil }
 
-function M.AssertPutRecordsRequestEntry(struct)
+function asserts.AssertPutRecordsRequestEntry(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutRecordsRequestEntry to be of type 'table'")
 	assert(struct["Data"], "Expected key Data to exist in table")
 	assert(struct["PartitionKey"], "Expected key PartitionKey to exist in table")
-	if struct["PartitionKey"] then M.AssertPartitionKey(struct["PartitionKey"]) end
-	if struct["Data"] then M.AssertData(struct["Data"]) end
-	if struct["ExplicitHashKey"] then M.AssertHashKey(struct["ExplicitHashKey"]) end
+	if struct["PartitionKey"] then asserts.AssertPartitionKey(struct["PartitionKey"]) end
+	if struct["Data"] then asserts.AssertData(struct["Data"]) end
+	if struct["ExplicitHashKey"] then asserts.AssertHashKey(struct["ExplicitHashKey"]) end
 	for k,_ in pairs(struct) do
-		assert(PutRecordsRequestEntry_keys[k], "PutRecordsRequestEntry contains unknown key " .. tostring(k))
+		assert(keys.PutRecordsRequestEntry[k], "PutRecordsRequestEntry contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutRecordsRequestEntry
 -- <p>Represents the output for <code>PutRecords</code>.</p>
--- @param PartitionKey [PartitionKey] <p>Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.</p>
--- @param Data [Data] <p>The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
--- @param ExplicitHashKey [HashKey] <p>The hash value used to determine explicitly the shard that the data record is assigned to by overriding the partition key hash.</p>
+-- @param _PartitionKey [PartitionKey] <p>Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.</p>
+-- @param _Data [Data] <p>The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
+-- @param _ExplicitHashKey [HashKey] <p>The hash value used to determine explicitly the shard that the data record is assigned to by overriding the partition key hash.</p>
 -- Required parameter: Data
 -- Required parameter: PartitionKey
-function M.PutRecordsRequestEntry(PartitionKey, Data, ExplicitHashKey, ...)
+function M.PutRecordsRequestEntry(_PartitionKey, _Data, _ExplicitHashKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordsRequestEntry")
 	local t = { 
-		["PartitionKey"] = PartitionKey,
-		["Data"] = Data,
-		["ExplicitHashKey"] = ExplicitHashKey,
+		["PartitionKey"] = _PartitionKey,
+		["Data"] = _Data,
+		["ExplicitHashKey"] = _ExplicitHashKey,
 	}
-	M.AssertPutRecordsRequestEntry(t)
+	asserts.AssertPutRecordsRequestEntry(t)
 	return t
 end
 
-local MergeShardsInput_keys = { "StreamName" = true, "ShardToMerge" = true, "AdjacentShardToMerge" = true, nil }
+keys.MergeShardsInput = { ["StreamName"] = true, ["ShardToMerge"] = true, ["AdjacentShardToMerge"] = true, nil }
 
-function M.AssertMergeShardsInput(struct)
+function asserts.AssertMergeShardsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MergeShardsInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["ShardToMerge"], "Expected key ShardToMerge to exist in table")
 	assert(struct["AdjacentShardToMerge"], "Expected key AdjacentShardToMerge to exist in table")
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["ShardToMerge"] then M.AssertShardId(struct["ShardToMerge"]) end
-	if struct["AdjacentShardToMerge"] then M.AssertShardId(struct["AdjacentShardToMerge"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["ShardToMerge"] then asserts.AssertShardId(struct["ShardToMerge"]) end
+	if struct["AdjacentShardToMerge"] then asserts.AssertShardId(struct["AdjacentShardToMerge"]) end
 	for k,_ in pairs(struct) do
-		assert(MergeShardsInput_keys[k], "MergeShardsInput contains unknown key " .. tostring(k))
+		assert(keys.MergeShardsInput[k], "MergeShardsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MergeShardsInput
 -- <p>Represents the input for <code>MergeShards</code>.</p>
--- @param StreamName [StreamName] <p>The name of the stream for the merge.</p>
--- @param ShardToMerge [ShardId] <p>The shard ID of the shard to combine with the adjacent shard for the merge.</p>
--- @param AdjacentShardToMerge [ShardId] <p>The shard ID of the adjacent shard for the merge.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream for the merge.</p>
+-- @param _ShardToMerge [ShardId] <p>The shard ID of the shard to combine with the adjacent shard for the merge.</p>
+-- @param _AdjacentShardToMerge [ShardId] <p>The shard ID of the adjacent shard for the merge.</p>
 -- Required parameter: StreamName
 -- Required parameter: ShardToMerge
 -- Required parameter: AdjacentShardToMerge
-function M.MergeShardsInput(StreamName, ShardToMerge, AdjacentShardToMerge, ...)
+function M.MergeShardsInput(_StreamName, _ShardToMerge, _AdjacentShardToMerge, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MergeShardsInput")
 	local t = { 
-		["StreamName"] = StreamName,
-		["ShardToMerge"] = ShardToMerge,
-		["AdjacentShardToMerge"] = AdjacentShardToMerge,
+		["StreamName"] = _StreamName,
+		["ShardToMerge"] = _ShardToMerge,
+		["AdjacentShardToMerge"] = _AdjacentShardToMerge,
 	}
-	M.AssertMergeShardsInput(t)
+	asserts.AssertMergeShardsInput(t)
 	return t
 end
 
-local DeleteStreamInput_keys = { "StreamName" = true, nil }
+keys.DeleteStreamInput = { ["StreamName"] = true, nil }
 
-function M.AssertDeleteStreamInput(struct)
+function asserts.AssertDeleteStreamInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteStreamInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteStreamInput_keys[k], "DeleteStreamInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteStreamInput[k], "DeleteStreamInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteStreamInput
 -- <p>Represents the input for <a>DeleteStream</a>.</p>
--- @param StreamName [StreamName] <p>The name of the stream to delete.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream to delete.</p>
 -- Required parameter: StreamName
-function M.DeleteStreamInput(StreamName, ...)
+function M.DeleteStreamInput(_StreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStreamInput")
 	local t = { 
-		["StreamName"] = StreamName,
+		["StreamName"] = _StreamName,
 	}
-	M.AssertDeleteStreamInput(t)
+	asserts.AssertDeleteStreamInput(t)
 	return t
 end
 
-local Shard_keys = { "ShardId" = true, "HashKeyRange" = true, "ParentShardId" = true, "AdjacentParentShardId" = true, "SequenceNumberRange" = true, nil }
+keys.Shard = { ["ShardId"] = true, ["HashKeyRange"] = true, ["ParentShardId"] = true, ["AdjacentParentShardId"] = true, ["SequenceNumberRange"] = true, nil }
 
-function M.AssertShard(struct)
+function asserts.AssertShard(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Shard to be of type 'table'")
 	assert(struct["ShardId"], "Expected key ShardId to exist in table")
 	assert(struct["HashKeyRange"], "Expected key HashKeyRange to exist in table")
 	assert(struct["SequenceNumberRange"], "Expected key SequenceNumberRange to exist in table")
-	if struct["ShardId"] then M.AssertShardId(struct["ShardId"]) end
-	if struct["HashKeyRange"] then M.AssertHashKeyRange(struct["HashKeyRange"]) end
-	if struct["ParentShardId"] then M.AssertShardId(struct["ParentShardId"]) end
-	if struct["AdjacentParentShardId"] then M.AssertShardId(struct["AdjacentParentShardId"]) end
-	if struct["SequenceNumberRange"] then M.AssertSequenceNumberRange(struct["SequenceNumberRange"]) end
+	if struct["ShardId"] then asserts.AssertShardId(struct["ShardId"]) end
+	if struct["HashKeyRange"] then asserts.AssertHashKeyRange(struct["HashKeyRange"]) end
+	if struct["ParentShardId"] then asserts.AssertShardId(struct["ParentShardId"]) end
+	if struct["AdjacentParentShardId"] then asserts.AssertShardId(struct["AdjacentParentShardId"]) end
+	if struct["SequenceNumberRange"] then asserts.AssertSequenceNumberRange(struct["SequenceNumberRange"]) end
 	for k,_ in pairs(struct) do
-		assert(Shard_keys[k], "Shard contains unknown key " .. tostring(k))
+		assert(keys.Shard[k], "Shard contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Shard
 -- <p>A uniquely identified group of data records in an Amazon Kinesis stream.</p>
--- @param ShardId [ShardId] <p>The unique identifier of the shard within the stream.</p>
--- @param HashKeyRange [HashKeyRange] <p>The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.</p>
--- @param ParentShardId [ShardId] <p>The shard ID of the shard's parent.</p>
--- @param AdjacentParentShardId [ShardId] <p>The shard ID of the shard adjacent to the shard's parent.</p>
--- @param SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
+-- @param _ShardId [ShardId] <p>The unique identifier of the shard within the stream.</p>
+-- @param _HashKeyRange [HashKeyRange] <p>The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.</p>
+-- @param _ParentShardId [ShardId] <p>The shard ID of the shard's parent.</p>
+-- @param _AdjacentParentShardId [ShardId] <p>The shard ID of the shard adjacent to the shard's parent.</p>
+-- @param _SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
 -- Required parameter: ShardId
 -- Required parameter: HashKeyRange
 -- Required parameter: SequenceNumberRange
-function M.Shard(ShardId, HashKeyRange, ParentShardId, AdjacentParentShardId, SequenceNumberRange, ...)
+function M.Shard(_ShardId, _HashKeyRange, _ParentShardId, _AdjacentParentShardId, _SequenceNumberRange, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Shard")
 	local t = { 
-		["ShardId"] = ShardId,
-		["HashKeyRange"] = HashKeyRange,
-		["ParentShardId"] = ParentShardId,
-		["AdjacentParentShardId"] = AdjacentParentShardId,
-		["SequenceNumberRange"] = SequenceNumberRange,
+		["ShardId"] = _ShardId,
+		["HashKeyRange"] = _HashKeyRange,
+		["ParentShardId"] = _ParentShardId,
+		["AdjacentParentShardId"] = _AdjacentParentShardId,
+		["SequenceNumberRange"] = _SequenceNumberRange,
 	}
-	M.AssertShard(t)
+	asserts.AssertShard(t)
 	return t
 end
 
-local PutRecordsOutput_keys = { "FailedRecordCount" = true, "Records" = true, nil }
+keys.PutRecordsOutput = { ["FailedRecordCount"] = true, ["Records"] = true, nil }
 
-function M.AssertPutRecordsOutput(struct)
+function asserts.AssertPutRecordsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutRecordsOutput to be of type 'table'")
 	assert(struct["Records"], "Expected key Records to exist in table")
-	if struct["FailedRecordCount"] then M.AssertPositiveIntegerObject(struct["FailedRecordCount"]) end
-	if struct["Records"] then M.AssertPutRecordsResultEntryList(struct["Records"]) end
+	if struct["FailedRecordCount"] then asserts.AssertPositiveIntegerObject(struct["FailedRecordCount"]) end
+	if struct["Records"] then asserts.AssertPutRecordsResultEntryList(struct["Records"]) end
 	for k,_ in pairs(struct) do
-		assert(PutRecordsOutput_keys[k], "PutRecordsOutput contains unknown key " .. tostring(k))
+		assert(keys.PutRecordsOutput[k], "PutRecordsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutRecordsOutput
 -- <p> <code>PutRecords</code> results.</p>
--- @param FailedRecordCount [PositiveIntegerObject] <p>The number of unsuccessfully processed records in a <code>PutRecords</code> request.</p>
--- @param Records [PutRecordsResultEntryList] <p>An array of successfully and unsuccessfully processed record results, correlated with the request by natural ordering. A record that is successfully added to a stream includes <code>SequenceNumber</code> and <code>ShardId</code> in the result. A record that fails to be added to a stream includes <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
+-- @param _FailedRecordCount [PositiveIntegerObject] <p>The number of unsuccessfully processed records in a <code>PutRecords</code> request.</p>
+-- @param _Records [PutRecordsResultEntryList] <p>An array of successfully and unsuccessfully processed record results, correlated with the request by natural ordering. A record that is successfully added to a stream includes <code>SequenceNumber</code> and <code>ShardId</code> in the result. A record that fails to be added to a stream includes <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
 -- Required parameter: Records
-function M.PutRecordsOutput(FailedRecordCount, Records, ...)
+function M.PutRecordsOutput(_FailedRecordCount, _Records, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordsOutput")
 	local t = { 
-		["FailedRecordCount"] = FailedRecordCount,
-		["Records"] = Records,
+		["FailedRecordCount"] = _FailedRecordCount,
+		["Records"] = _Records,
 	}
-	M.AssertPutRecordsOutput(t)
+	asserts.AssertPutRecordsOutput(t)
 	return t
 end
 
-local PutRecordOutput_keys = { "ShardId" = true, "SequenceNumber" = true, nil }
+keys.PutRecordOutput = { ["ShardId"] = true, ["SequenceNumber"] = true, nil }
 
-function M.AssertPutRecordOutput(struct)
+function asserts.AssertPutRecordOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutRecordOutput to be of type 'table'")
 	assert(struct["ShardId"], "Expected key ShardId to exist in table")
 	assert(struct["SequenceNumber"], "Expected key SequenceNumber to exist in table")
-	if struct["ShardId"] then M.AssertShardId(struct["ShardId"]) end
-	if struct["SequenceNumber"] then M.AssertSequenceNumber(struct["SequenceNumber"]) end
+	if struct["ShardId"] then asserts.AssertShardId(struct["ShardId"]) end
+	if struct["SequenceNumber"] then asserts.AssertSequenceNumber(struct["SequenceNumber"]) end
 	for k,_ in pairs(struct) do
-		assert(PutRecordOutput_keys[k], "PutRecordOutput contains unknown key " .. tostring(k))
+		assert(keys.PutRecordOutput[k], "PutRecordOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutRecordOutput
 -- <p>Represents the output for <code>PutRecord</code>.</p>
--- @param ShardId [ShardId] <p>The shard ID of the shard where the data record was placed.</p>
--- @param SequenceNumber [SequenceNumber] <p>The sequence number identifier that was assigned to the put data record. The sequence number for the record is unique across all records in the stream. A sequence number is the identifier associated with every record put into the stream.</p>
+-- @param _ShardId [ShardId] <p>The shard ID of the shard where the data record was placed.</p>
+-- @param _SequenceNumber [SequenceNumber] <p>The sequence number identifier that was assigned to the put data record. The sequence number for the record is unique across all records in the stream. A sequence number is the identifier associated with every record put into the stream.</p>
 -- Required parameter: ShardId
 -- Required parameter: SequenceNumber
-function M.PutRecordOutput(ShardId, SequenceNumber, ...)
+function M.PutRecordOutput(_ShardId, _SequenceNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordOutput")
 	local t = { 
-		["ShardId"] = ShardId,
-		["SequenceNumber"] = SequenceNumber,
+		["ShardId"] = _ShardId,
+		["SequenceNumber"] = _SequenceNumber,
 	}
-	M.AssertPutRecordOutput(t)
+	asserts.AssertPutRecordOutput(t)
 	return t
 end
 
-local PutRecordInput_keys = { "PartitionKey" = true, "SequenceNumberForOrdering" = true, "StreamName" = true, "Data" = true, "ExplicitHashKey" = true, nil }
+keys.PutRecordInput = { ["PartitionKey"] = true, ["SequenceNumberForOrdering"] = true, ["StreamName"] = true, ["Data"] = true, ["ExplicitHashKey"] = true, nil }
 
-function M.AssertPutRecordInput(struct)
+function asserts.AssertPutRecordInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutRecordInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["Data"], "Expected key Data to exist in table")
 	assert(struct["PartitionKey"], "Expected key PartitionKey to exist in table")
-	if struct["PartitionKey"] then M.AssertPartitionKey(struct["PartitionKey"]) end
-	if struct["SequenceNumberForOrdering"] then M.AssertSequenceNumber(struct["SequenceNumberForOrdering"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["Data"] then M.AssertData(struct["Data"]) end
-	if struct["ExplicitHashKey"] then M.AssertHashKey(struct["ExplicitHashKey"]) end
+	if struct["PartitionKey"] then asserts.AssertPartitionKey(struct["PartitionKey"]) end
+	if struct["SequenceNumberForOrdering"] then asserts.AssertSequenceNumber(struct["SequenceNumberForOrdering"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["Data"] then asserts.AssertData(struct["Data"]) end
+	if struct["ExplicitHashKey"] then asserts.AssertHashKey(struct["ExplicitHashKey"]) end
 	for k,_ in pairs(struct) do
-		assert(PutRecordInput_keys[k], "PutRecordInput contains unknown key " .. tostring(k))
+		assert(keys.PutRecordInput[k], "PutRecordInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutRecordInput
 -- <p>Represents the input for <code>PutRecord</code>.</p>
--- @param PartitionKey [PartitionKey] <p>Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.</p>
--- @param SequenceNumberForOrdering [SequenceNumber] <p>Guarantees strictly increasing sequence numbers, for puts from the same client and to the same partition key. Usage: set the <code>SequenceNumberForOrdering</code> of record <i>n</i> to the sequence number of record <i>n-1</i> (as returned in the result when putting record <i>n-1</i>). If this parameter is not set, records will be coarsely ordered based on arrival time.</p>
--- @param StreamName [StreamName] <p>The name of the stream to put the data record into.</p>
--- @param Data [Data] <p>The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
--- @param ExplicitHashKey [HashKey] <p>The hash value used to explicitly determine the shard the data record is assigned to by overriding the partition key hash.</p>
+-- @param _PartitionKey [PartitionKey] <p>Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.</p>
+-- @param _SequenceNumberForOrdering [SequenceNumber] <p>Guarantees strictly increasing sequence numbers, for puts from the same client and to the same partition key. Usage: set the <code>SequenceNumberForOrdering</code> of record <i>n</i> to the sequence number of record <i>n-1</i> (as returned in the result when putting record <i>n-1</i>). If this parameter is not set, records will be coarsely ordered based on arrival time.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream to put the data record into.</p>
+-- @param _Data [Data] <p>The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
+-- @param _ExplicitHashKey [HashKey] <p>The hash value used to explicitly determine the shard the data record is assigned to by overriding the partition key hash.</p>
 -- Required parameter: StreamName
 -- Required parameter: Data
 -- Required parameter: PartitionKey
-function M.PutRecordInput(PartitionKey, SequenceNumberForOrdering, StreamName, Data, ExplicitHashKey, ...)
+function M.PutRecordInput(_PartitionKey, _SequenceNumberForOrdering, _StreamName, _Data, _ExplicitHashKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordInput")
 	local t = { 
-		["PartitionKey"] = PartitionKey,
-		["SequenceNumberForOrdering"] = SequenceNumberForOrdering,
-		["StreamName"] = StreamName,
-		["Data"] = Data,
-		["ExplicitHashKey"] = ExplicitHashKey,
+		["PartitionKey"] = _PartitionKey,
+		["SequenceNumberForOrdering"] = _SequenceNumberForOrdering,
+		["StreamName"] = _StreamName,
+		["Data"] = _Data,
+		["ExplicitHashKey"] = _ExplicitHashKey,
 	}
-	M.AssertPutRecordInput(t)
+	asserts.AssertPutRecordInput(t)
 	return t
 end
 
-local GetShardIteratorInput_keys = { "ShardId" = true, "Timestamp" = true, "StartingSequenceNumber" = true, "StreamName" = true, "ShardIteratorType" = true, nil }
+keys.GetShardIteratorInput = { ["ShardId"] = true, ["Timestamp"] = true, ["StartingSequenceNumber"] = true, ["StreamName"] = true, ["ShardIteratorType"] = true, nil }
 
-function M.AssertGetShardIteratorInput(struct)
+function asserts.AssertGetShardIteratorInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetShardIteratorInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["ShardId"], "Expected key ShardId to exist in table")
 	assert(struct["ShardIteratorType"], "Expected key ShardIteratorType to exist in table")
-	if struct["ShardId"] then M.AssertShardId(struct["ShardId"]) end
-	if struct["Timestamp"] then M.AssertTimestamp(struct["Timestamp"]) end
-	if struct["StartingSequenceNumber"] then M.AssertSequenceNumber(struct["StartingSequenceNumber"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["ShardIteratorType"] then M.AssertShardIteratorType(struct["ShardIteratorType"]) end
+	if struct["ShardId"] then asserts.AssertShardId(struct["ShardId"]) end
+	if struct["Timestamp"] then asserts.AssertTimestamp(struct["Timestamp"]) end
+	if struct["StartingSequenceNumber"] then asserts.AssertSequenceNumber(struct["StartingSequenceNumber"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["ShardIteratorType"] then asserts.AssertShardIteratorType(struct["ShardIteratorType"]) end
 	for k,_ in pairs(struct) do
-		assert(GetShardIteratorInput_keys[k], "GetShardIteratorInput contains unknown key " .. tostring(k))
+		assert(keys.GetShardIteratorInput[k], "GetShardIteratorInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetShardIteratorInput
 -- <p>Represents the input for <code>GetShardIterator</code>.</p>
--- @param ShardId [ShardId] <p>The shard ID of the Amazon Kinesis shard to get the iterator for.</p>
--- @param Timestamp [Timestamp] <p>The timestamp of the data record from which to start reading. Used with shard iterator type AT_TIMESTAMP. A timestamp is the Unix epoch date with precision in milliseconds. For example, <code>2016-04-04T19:58:46.480-00:00</code> or <code>1459799926.480</code>. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON).</p>
--- @param StartingSequenceNumber [SequenceNumber] <p>The sequence number of the data record in the shard from which to start reading. Used with shard iterator type AT_SEQUENCE_NUMBER and AFTER_SEQUENCE_NUMBER.</p>
--- @param StreamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
--- @param ShardIteratorType [ShardIteratorType] <p>Determines how the shard iterator is used to start reading data records from the shard.</p> <p>The following are the valid Amazon Kinesis shard iterator types:</p> <ul> <li> <p>AT_SEQUENCE_NUMBER - Start reading from the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AFTER_SEQUENCE_NUMBER - Start reading right after the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AT_TIMESTAMP - Start reading from the position denoted by a specific timestamp, provided in the value <code>Timestamp</code>.</p> </li> <li> <p>TRIM_HORIZON - Start reading at the last untrimmed record in the shard in the system, which is the oldest data record in the shard.</p> </li> <li> <p>LATEST - Start reading just after the most recent record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
+-- @param _ShardId [ShardId] <p>The shard ID of the Amazon Kinesis shard to get the iterator for.</p>
+-- @param _Timestamp [Timestamp] <p>The timestamp of the data record from which to start reading. Used with shard iterator type AT_TIMESTAMP. A timestamp is the Unix epoch date with precision in milliseconds. For example, <code>2016-04-04T19:58:46.480-00:00</code> or <code>1459799926.480</code>. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON).</p>
+-- @param _StartingSequenceNumber [SequenceNumber] <p>The sequence number of the data record in the shard from which to start reading. Used with shard iterator type AT_SEQUENCE_NUMBER and AFTER_SEQUENCE_NUMBER.</p>
+-- @param _StreamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
+-- @param _ShardIteratorType [ShardIteratorType] <p>Determines how the shard iterator is used to start reading data records from the shard.</p> <p>The following are the valid Amazon Kinesis shard iterator types:</p> <ul> <li> <p>AT_SEQUENCE_NUMBER - Start reading from the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AFTER_SEQUENCE_NUMBER - Start reading right after the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AT_TIMESTAMP - Start reading from the position denoted by a specific timestamp, provided in the value <code>Timestamp</code>.</p> </li> <li> <p>TRIM_HORIZON - Start reading at the last untrimmed record in the shard in the system, which is the oldest data record in the shard.</p> </li> <li> <p>LATEST - Start reading just after the most recent record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
 -- Required parameter: StreamName
 -- Required parameter: ShardId
 -- Required parameter: ShardIteratorType
-function M.GetShardIteratorInput(ShardId, Timestamp, StartingSequenceNumber, StreamName, ShardIteratorType, ...)
+function M.GetShardIteratorInput(_ShardId, _Timestamp, _StartingSequenceNumber, _StreamName, _ShardIteratorType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetShardIteratorInput")
 	local t = { 
-		["ShardId"] = ShardId,
-		["Timestamp"] = Timestamp,
-		["StartingSequenceNumber"] = StartingSequenceNumber,
-		["StreamName"] = StreamName,
-		["ShardIteratorType"] = ShardIteratorType,
+		["ShardId"] = _ShardId,
+		["Timestamp"] = _Timestamp,
+		["StartingSequenceNumber"] = _StartingSequenceNumber,
+		["StreamName"] = _StreamName,
+		["ShardIteratorType"] = _ShardIteratorType,
 	}
-	M.AssertGetShardIteratorInput(t)
+	asserts.AssertGetShardIteratorInput(t)
 	return t
 end
 
-local ExpiredIteratorException_keys = { "message" = true, nil }
+keys.ExpiredIteratorException = { ["message"] = true, nil }
 
-function M.AssertExpiredIteratorException(struct)
+function asserts.AssertExpiredIteratorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExpiredIteratorException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ExpiredIteratorException_keys[k], "ExpiredIteratorException contains unknown key " .. tostring(k))
+		assert(keys.ExpiredIteratorException[k], "ExpiredIteratorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExpiredIteratorException
 -- <p>The provided iterator exceeds the maximum age allowed.</p>
--- @param message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ExpiredIteratorException(message, ...)
+-- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
+function M.ExpiredIteratorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredIteratorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertExpiredIteratorException(t)
+	asserts.AssertExpiredIteratorException(t)
 	return t
 end
 
-local SequenceNumberRange_keys = { "EndingSequenceNumber" = true, "StartingSequenceNumber" = true, nil }
+keys.SequenceNumberRange = { ["EndingSequenceNumber"] = true, ["StartingSequenceNumber"] = true, nil }
 
-function M.AssertSequenceNumberRange(struct)
+function asserts.AssertSequenceNumberRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SequenceNumberRange to be of type 'table'")
 	assert(struct["StartingSequenceNumber"], "Expected key StartingSequenceNumber to exist in table")
-	if struct["EndingSequenceNumber"] then M.AssertSequenceNumber(struct["EndingSequenceNumber"]) end
-	if struct["StartingSequenceNumber"] then M.AssertSequenceNumber(struct["StartingSequenceNumber"]) end
+	if struct["EndingSequenceNumber"] then asserts.AssertSequenceNumber(struct["EndingSequenceNumber"]) end
+	if struct["StartingSequenceNumber"] then asserts.AssertSequenceNumber(struct["StartingSequenceNumber"]) end
 	for k,_ in pairs(struct) do
-		assert(SequenceNumberRange_keys[k], "SequenceNumberRange contains unknown key " .. tostring(k))
+		assert(keys.SequenceNumberRange[k], "SequenceNumberRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SequenceNumberRange
 -- <p>The range of possible sequence numbers for the shard.</p>
--- @param EndingSequenceNumber [SequenceNumber] <p>The ending sequence number for the range. Shards that are in the OPEN state have an ending sequence number of <code>null</code>.</p>
--- @param StartingSequenceNumber [SequenceNumber] <p>The starting sequence number for the range.</p>
+-- @param _EndingSequenceNumber [SequenceNumber] <p>The ending sequence number for the range. Shards that are in the OPEN state have an ending sequence number of <code>null</code>.</p>
+-- @param _StartingSequenceNumber [SequenceNumber] <p>The starting sequence number for the range.</p>
 -- Required parameter: StartingSequenceNumber
-function M.SequenceNumberRange(EndingSequenceNumber, StartingSequenceNumber, ...)
+function M.SequenceNumberRange(_EndingSequenceNumber, _StartingSequenceNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SequenceNumberRange")
 	local t = { 
-		["EndingSequenceNumber"] = EndingSequenceNumber,
-		["StartingSequenceNumber"] = StartingSequenceNumber,
+		["EndingSequenceNumber"] = _EndingSequenceNumber,
+		["StartingSequenceNumber"] = _StartingSequenceNumber,
 	}
-	M.AssertSequenceNumberRange(t)
+	asserts.AssertSequenceNumberRange(t)
 	return t
 end
 
-local GetShardIteratorOutput_keys = { "ShardIterator" = true, nil }
+keys.GetShardIteratorOutput = { ["ShardIterator"] = true, nil }
 
-function M.AssertGetShardIteratorOutput(struct)
+function asserts.AssertGetShardIteratorOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetShardIteratorOutput to be of type 'table'")
-	if struct["ShardIterator"] then M.AssertShardIterator(struct["ShardIterator"]) end
+	if struct["ShardIterator"] then asserts.AssertShardIterator(struct["ShardIterator"]) end
 	for k,_ in pairs(struct) do
-		assert(GetShardIteratorOutput_keys[k], "GetShardIteratorOutput contains unknown key " .. tostring(k))
+		assert(keys.GetShardIteratorOutput[k], "GetShardIteratorOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetShardIteratorOutput
 -- <p>Represents the output for <code>GetShardIterator</code>.</p>
--- @param ShardIterator [ShardIterator] <p>The position in the shard from which to start reading data records sequentially. A shard iterator specifies this position using the sequence number of a data record in a shard.</p>
-function M.GetShardIteratorOutput(ShardIterator, ...)
+-- @param _ShardIterator [ShardIterator] <p>The position in the shard from which to start reading data records sequentially. A shard iterator specifies this position using the sequence number of a data record in a shard.</p>
+function M.GetShardIteratorOutput(_ShardIterator, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetShardIteratorOutput")
 	local t = { 
-		["ShardIterator"] = ShardIterator,
+		["ShardIterator"] = _ShardIterator,
 	}
-	M.AssertGetShardIteratorOutput(t)
+	asserts.AssertGetShardIteratorOutput(t)
 	return t
 end
 
-local DescribeStreamOutput_keys = { "StreamDescription" = true, nil }
+keys.DescribeStreamOutput = { ["StreamDescription"] = true, nil }
 
-function M.AssertDescribeStreamOutput(struct)
+function asserts.AssertDescribeStreamOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeStreamOutput to be of type 'table'")
 	assert(struct["StreamDescription"], "Expected key StreamDescription to exist in table")
-	if struct["StreamDescription"] then M.AssertStreamDescription(struct["StreamDescription"]) end
+	if struct["StreamDescription"] then asserts.AssertStreamDescription(struct["StreamDescription"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeStreamOutput_keys[k], "DescribeStreamOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeStreamOutput[k], "DescribeStreamOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeStreamOutput
 -- <p>Represents the output for <code>DescribeStream</code>.</p>
--- @param StreamDescription [StreamDescription] <p>The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and whether there are more shards available.</p>
+-- @param _StreamDescription [StreamDescription] <p>The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and whether there are more shards available.</p>
 -- Required parameter: StreamDescription
-function M.DescribeStreamOutput(StreamDescription, ...)
+function M.DescribeStreamOutput(_StreamDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStreamOutput")
 	local t = { 
-		["StreamDescription"] = StreamDescription,
+		["StreamDescription"] = _StreamDescription,
 	}
-	M.AssertDescribeStreamOutput(t)
+	asserts.AssertDescribeStreamOutput(t)
 	return t
 end
 
-local Record_keys = { "Data" = true, "PartitionKey" = true, "ApproximateArrivalTimestamp" = true, "SequenceNumber" = true, nil }
+keys.Record = { ["Data"] = true, ["PartitionKey"] = true, ["ApproximateArrivalTimestamp"] = true, ["SequenceNumber"] = true, nil }
 
-function M.AssertRecord(struct)
+function asserts.AssertRecord(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Record to be of type 'table'")
 	assert(struct["SequenceNumber"], "Expected key SequenceNumber to exist in table")
 	assert(struct["Data"], "Expected key Data to exist in table")
 	assert(struct["PartitionKey"], "Expected key PartitionKey to exist in table")
-	if struct["Data"] then M.AssertData(struct["Data"]) end
-	if struct["PartitionKey"] then M.AssertPartitionKey(struct["PartitionKey"]) end
-	if struct["ApproximateArrivalTimestamp"] then M.AssertTimestamp(struct["ApproximateArrivalTimestamp"]) end
-	if struct["SequenceNumber"] then M.AssertSequenceNumber(struct["SequenceNumber"]) end
+	if struct["Data"] then asserts.AssertData(struct["Data"]) end
+	if struct["PartitionKey"] then asserts.AssertPartitionKey(struct["PartitionKey"]) end
+	if struct["ApproximateArrivalTimestamp"] then asserts.AssertTimestamp(struct["ApproximateArrivalTimestamp"]) end
+	if struct["SequenceNumber"] then asserts.AssertSequenceNumber(struct["SequenceNumber"]) end
 	for k,_ in pairs(struct) do
-		assert(Record_keys[k], "Record contains unknown key " .. tostring(k))
+		assert(keys.Record[k], "Record contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Record
 -- <p>The unit of data of the Amazon Kinesis stream, which is composed of a sequence number, a partition key, and a data blob.</p>
--- @param Data [Data] <p>The data blob. The data in the blob is both opaque and immutable to the Amazon Kinesis service, which does not inspect, interpret, or change the data in the blob in any way. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
--- @param PartitionKey [PartitionKey] <p>Identifies which shard in the stream the data record is assigned to.</p>
--- @param ApproximateArrivalTimestamp [Timestamp] <p>The approximate time that the record was inserted into the stream.</p>
--- @param SequenceNumber [SequenceNumber] <p>The unique identifier of the record in the stream.</p>
+-- @param _Data [Data] <p>The data blob. The data in the blob is both opaque and immutable to the Amazon Kinesis service, which does not inspect, interpret, or change the data in the blob in any way. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
+-- @param _PartitionKey [PartitionKey] <p>Identifies which shard in the stream the data record is assigned to.</p>
+-- @param _ApproximateArrivalTimestamp [Timestamp] <p>The approximate time that the record was inserted into the stream.</p>
+-- @param _SequenceNumber [SequenceNumber] <p>The unique identifier of the record in the stream.</p>
 -- Required parameter: SequenceNumber
 -- Required parameter: Data
 -- Required parameter: PartitionKey
-function M.Record(Data, PartitionKey, ApproximateArrivalTimestamp, SequenceNumber, ...)
+function M.Record(_Data, _PartitionKey, _ApproximateArrivalTimestamp, _SequenceNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Record")
 	local t = { 
-		["Data"] = Data,
-		["PartitionKey"] = PartitionKey,
-		["ApproximateArrivalTimestamp"] = ApproximateArrivalTimestamp,
-		["SequenceNumber"] = SequenceNumber,
+		["Data"] = _Data,
+		["PartitionKey"] = _PartitionKey,
+		["ApproximateArrivalTimestamp"] = _ApproximateArrivalTimestamp,
+		["SequenceNumber"] = _SequenceNumber,
 	}
-	M.AssertRecord(t)
+	asserts.AssertRecord(t)
 	return t
 end
 
-local IncreaseStreamRetentionPeriodInput_keys = { "RetentionPeriodHours" = true, "StreamName" = true, nil }
+keys.IncreaseStreamRetentionPeriodInput = { ["RetentionPeriodHours"] = true, ["StreamName"] = true, nil }
 
-function M.AssertIncreaseStreamRetentionPeriodInput(struct)
+function asserts.AssertIncreaseStreamRetentionPeriodInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IncreaseStreamRetentionPeriodInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["RetentionPeriodHours"], "Expected key RetentionPeriodHours to exist in table")
-	if struct["RetentionPeriodHours"] then M.AssertPositiveIntegerObject(struct["RetentionPeriodHours"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
+	if struct["RetentionPeriodHours"] then asserts.AssertPositiveIntegerObject(struct["RetentionPeriodHours"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
 	for k,_ in pairs(struct) do
-		assert(IncreaseStreamRetentionPeriodInput_keys[k], "IncreaseStreamRetentionPeriodInput contains unknown key " .. tostring(k))
+		assert(keys.IncreaseStreamRetentionPeriodInput[k], "IncreaseStreamRetentionPeriodInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IncreaseStreamRetentionPeriodInput
 -- <p>Represents the input for <a>IncreaseStreamRetentionPeriod</a>.</p>
--- @param RetentionPeriodHours [PositiveIntegerObject] <p>The new retention period of the stream, in hours. Must be more than the current retention period.</p>
--- @param StreamName [StreamName] <p>The name of the stream to modify.</p>
+-- @param _RetentionPeriodHours [PositiveIntegerObject] <p>The new retention period of the stream, in hours. Must be more than the current retention period.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream to modify.</p>
 -- Required parameter: StreamName
 -- Required parameter: RetentionPeriodHours
-function M.IncreaseStreamRetentionPeriodInput(RetentionPeriodHours, StreamName, ...)
+function M.IncreaseStreamRetentionPeriodInput(_RetentionPeriodHours, _StreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncreaseStreamRetentionPeriodInput")
 	local t = { 
-		["RetentionPeriodHours"] = RetentionPeriodHours,
-		["StreamName"] = StreamName,
+		["RetentionPeriodHours"] = _RetentionPeriodHours,
+		["StreamName"] = _StreamName,
 	}
-	M.AssertIncreaseStreamRetentionPeriodInput(t)
+	asserts.AssertIncreaseStreamRetentionPeriodInput(t)
 	return t
 end
 
-local RemoveTagsFromStreamInput_keys = { "StreamName" = true, "TagKeys" = true, nil }
+keys.RemoveTagsFromStreamInput = { ["StreamName"] = true, ["TagKeys"] = true, nil }
 
-function M.AssertRemoveTagsFromStreamInput(struct)
+function asserts.AssertRemoveTagsFromStreamInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsFromStreamInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["TagKeys"] then M.AssertTagKeyList(struct["TagKeys"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsFromStreamInput_keys[k], "RemoveTagsFromStreamInput contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsFromStreamInput[k], "RemoveTagsFromStreamInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsFromStreamInput
 -- <p>Represents the input for <code>RemoveTagsFromStream</code>.</p>
--- @param StreamName [StreamName] <p>The name of the stream.</p>
--- @param TagKeys [TagKeyList] <p>A list of tag keys. Each corresponding tag is removed from the stream.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream.</p>
+-- @param _TagKeys [TagKeyList] <p>A list of tag keys. Each corresponding tag is removed from the stream.</p>
 -- Required parameter: StreamName
 -- Required parameter: TagKeys
-function M.RemoveTagsFromStreamInput(StreamName, TagKeys, ...)
+function M.RemoveTagsFromStreamInput(_StreamName, _TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromStreamInput")
 	local t = { 
-		["StreamName"] = StreamName,
-		["TagKeys"] = TagKeys,
+		["StreamName"] = _StreamName,
+		["TagKeys"] = _TagKeys,
 	}
-	M.AssertRemoveTagsFromStreamInput(t)
+	asserts.AssertRemoveTagsFromStreamInput(t)
 	return t
 end
 
-local UpdateShardCountOutput_keys = { "TargetShardCount" = true, "StreamName" = true, "CurrentShardCount" = true, nil }
+keys.UpdateShardCountOutput = { ["TargetShardCount"] = true, ["StreamName"] = true, ["CurrentShardCount"] = true, nil }
 
-function M.AssertUpdateShardCountOutput(struct)
+function asserts.AssertUpdateShardCountOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateShardCountOutput to be of type 'table'")
-	if struct["TargetShardCount"] then M.AssertPositiveIntegerObject(struct["TargetShardCount"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["CurrentShardCount"] then M.AssertPositiveIntegerObject(struct["CurrentShardCount"]) end
+	if struct["TargetShardCount"] then asserts.AssertPositiveIntegerObject(struct["TargetShardCount"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["CurrentShardCount"] then asserts.AssertPositiveIntegerObject(struct["CurrentShardCount"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateShardCountOutput_keys[k], "UpdateShardCountOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateShardCountOutput[k], "UpdateShardCountOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateShardCountOutput
 --  
--- @param TargetShardCount [PositiveIntegerObject] <p>The updated number of shards.</p>
--- @param StreamName [StreamName] <p>The name of the stream.</p>
--- @param CurrentShardCount [PositiveIntegerObject] <p>The current number of shards.</p>
-function M.UpdateShardCountOutput(TargetShardCount, StreamName, CurrentShardCount, ...)
+-- @param _TargetShardCount [PositiveIntegerObject] <p>The updated number of shards.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream.</p>
+-- @param _CurrentShardCount [PositiveIntegerObject] <p>The current number of shards.</p>
+function M.UpdateShardCountOutput(_TargetShardCount, _StreamName, _CurrentShardCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateShardCountOutput")
 	local t = { 
-		["TargetShardCount"] = TargetShardCount,
-		["StreamName"] = StreamName,
-		["CurrentShardCount"] = CurrentShardCount,
+		["TargetShardCount"] = _TargetShardCount,
+		["StreamName"] = _StreamName,
+		["CurrentShardCount"] = _CurrentShardCount,
 	}
-	M.AssertUpdateShardCountOutput(t)
+	asserts.AssertUpdateShardCountOutput(t)
 	return t
 end
 
-local EnableEnhancedMonitoringInput_keys = { "ShardLevelMetrics" = true, "StreamName" = true, nil }
+keys.EnableEnhancedMonitoringInput = { ["ShardLevelMetrics"] = true, ["StreamName"] = true, nil }
 
-function M.AssertEnableEnhancedMonitoringInput(struct)
+function asserts.AssertEnableEnhancedMonitoringInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnableEnhancedMonitoringInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["ShardLevelMetrics"], "Expected key ShardLevelMetrics to exist in table")
-	if struct["ShardLevelMetrics"] then M.AssertMetricsNameList(struct["ShardLevelMetrics"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
+	if struct["ShardLevelMetrics"] then asserts.AssertMetricsNameList(struct["ShardLevelMetrics"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
 	for k,_ in pairs(struct) do
-		assert(EnableEnhancedMonitoringInput_keys[k], "EnableEnhancedMonitoringInput contains unknown key " .. tostring(k))
+		assert(keys.EnableEnhancedMonitoringInput[k], "EnableEnhancedMonitoringInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnableEnhancedMonitoringInput
 -- <p>Represents the input for <a>EnableEnhancedMonitoring</a>.</p>
--- @param ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics to enable.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
--- @param StreamName [StreamName] <p>The name of the stream for which to enable enhanced monitoring.</p>
+-- @param _ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics to enable.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream for which to enable enhanced monitoring.</p>
 -- Required parameter: StreamName
 -- Required parameter: ShardLevelMetrics
-function M.EnableEnhancedMonitoringInput(ShardLevelMetrics, StreamName, ...)
+function M.EnableEnhancedMonitoringInput(_ShardLevelMetrics, _StreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableEnhancedMonitoringInput")
 	local t = { 
-		["ShardLevelMetrics"] = ShardLevelMetrics,
-		["StreamName"] = StreamName,
+		["ShardLevelMetrics"] = _ShardLevelMetrics,
+		["StreamName"] = _StreamName,
 	}
-	M.AssertEnableEnhancedMonitoringInput(t)
+	asserts.AssertEnableEnhancedMonitoringInput(t)
 	return t
 end
 
-local InvalidArgumentException_keys = { "message" = true, nil }
+keys.InvalidArgumentException = { ["message"] = true, nil }
 
-function M.AssertInvalidArgumentException(struct)
+function asserts.AssertInvalidArgumentException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidArgumentException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidArgumentException_keys[k], "InvalidArgumentException contains unknown key " .. tostring(k))
+		assert(keys.InvalidArgumentException[k], "InvalidArgumentException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidArgumentException
 -- <p>A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information, see the returned message.</p>
--- @param message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.InvalidArgumentException(message, ...)
+-- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
+function M.InvalidArgumentException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArgumentException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidArgumentException(t)
+	asserts.AssertInvalidArgumentException(t)
 	return t
 end
 
-local StreamDescription_keys = { "HasMoreShards" = true, "RetentionPeriodHours" = true, "StreamName" = true, "Shards" = true, "StreamARN" = true, "EnhancedMonitoring" = true, "StreamCreationTimestamp" = true, "StreamStatus" = true, nil }
+keys.StreamDescription = { ["HasMoreShards"] = true, ["RetentionPeriodHours"] = true, ["StreamName"] = true, ["Shards"] = true, ["StreamARN"] = true, ["EnhancedMonitoring"] = true, ["StreamCreationTimestamp"] = true, ["StreamStatus"] = true, nil }
 
-function M.AssertStreamDescription(struct)
+function asserts.AssertStreamDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StreamDescription to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
@@ -963,29 +966,29 @@ function M.AssertStreamDescription(struct)
 	assert(struct["RetentionPeriodHours"], "Expected key RetentionPeriodHours to exist in table")
 	assert(struct["StreamCreationTimestamp"], "Expected key StreamCreationTimestamp to exist in table")
 	assert(struct["EnhancedMonitoring"], "Expected key EnhancedMonitoring to exist in table")
-	if struct["HasMoreShards"] then M.AssertBooleanObject(struct["HasMoreShards"]) end
-	if struct["RetentionPeriodHours"] then M.AssertPositiveIntegerObject(struct["RetentionPeriodHours"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["Shards"] then M.AssertShardList(struct["Shards"]) end
-	if struct["StreamARN"] then M.AssertStreamARN(struct["StreamARN"]) end
-	if struct["EnhancedMonitoring"] then M.AssertEnhancedMonitoringList(struct["EnhancedMonitoring"]) end
-	if struct["StreamCreationTimestamp"] then M.AssertTimestamp(struct["StreamCreationTimestamp"]) end
-	if struct["StreamStatus"] then M.AssertStreamStatus(struct["StreamStatus"]) end
+	if struct["HasMoreShards"] then asserts.AssertBooleanObject(struct["HasMoreShards"]) end
+	if struct["RetentionPeriodHours"] then asserts.AssertPositiveIntegerObject(struct["RetentionPeriodHours"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["Shards"] then asserts.AssertShardList(struct["Shards"]) end
+	if struct["StreamARN"] then asserts.AssertStreamARN(struct["StreamARN"]) end
+	if struct["EnhancedMonitoring"] then asserts.AssertEnhancedMonitoringList(struct["EnhancedMonitoring"]) end
+	if struct["StreamCreationTimestamp"] then asserts.AssertTimestamp(struct["StreamCreationTimestamp"]) end
+	if struct["StreamStatus"] then asserts.AssertStreamStatus(struct["StreamStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(StreamDescription_keys[k], "StreamDescription contains unknown key " .. tostring(k))
+		assert(keys.StreamDescription[k], "StreamDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StreamDescription
 -- <p>Represents the output for <a>DescribeStream</a>.</p>
--- @param HasMoreShards [BooleanObject] <p>If set to <code>true</code>, more shards in the stream are available to describe.</p>
--- @param RetentionPeriodHours [PositiveIntegerObject] <p>The current retention period, in hours.</p>
--- @param StreamName [StreamName] <p>The name of the stream being described.</p>
--- @param Shards [ShardList] <p>The shards that comprise the stream.</p>
--- @param StreamARN [StreamARN] <p>The Amazon Resource Name (ARN) for the stream being described.</p>
--- @param EnhancedMonitoring [EnhancedMonitoringList] <p>Represents the current enhanced monitoring settings of the stream.</p>
--- @param StreamCreationTimestamp [Timestamp] <p>The approximate time that the stream was created.</p>
--- @param StreamStatus [StreamStatus] <p>The current status of the stream being described. The stream status is one of the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is being created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p> <code>DELETING</code> - The stream is being deleted. The specified stream is in the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p> </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and write operations or deletion. You should perform read and write operations only on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> - Shards in the stream are being merged or split. Read and write operations continue to work while the stream is in the <code>UPDATING</code> state.</p> </li> </ul>
+-- @param _HasMoreShards [BooleanObject] <p>If set to <code>true</code>, more shards in the stream are available to describe.</p>
+-- @param _RetentionPeriodHours [PositiveIntegerObject] <p>The current retention period, in hours.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream being described.</p>
+-- @param _Shards [ShardList] <p>The shards that comprise the stream.</p>
+-- @param _StreamARN [StreamARN] <p>The Amazon Resource Name (ARN) for the stream being described.</p>
+-- @param _EnhancedMonitoring [EnhancedMonitoringList] <p>Represents the current enhanced monitoring settings of the stream.</p>
+-- @param _StreamCreationTimestamp [Timestamp] <p>The approximate time that the stream was created.</p>
+-- @param _StreamStatus [StreamStatus] <p>The current status of the stream being described. The stream status is one of the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is being created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p> <code>DELETING</code> - The stream is being deleted. The specified stream is in the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p> </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and write operations or deletion. You should perform read and write operations only on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> - Shards in the stream are being merged or split. Read and write operations continue to work while the stream is in the <code>UPDATING</code> state.</p> </li> </ul>
 -- Required parameter: StreamName
 -- Required parameter: StreamARN
 -- Required parameter: StreamStatus
@@ -994,229 +997,229 @@ end
 -- Required parameter: RetentionPeriodHours
 -- Required parameter: StreamCreationTimestamp
 -- Required parameter: EnhancedMonitoring
-function M.StreamDescription(HasMoreShards, RetentionPeriodHours, StreamName, Shards, StreamARN, EnhancedMonitoring, StreamCreationTimestamp, StreamStatus, ...)
+function M.StreamDescription(_HasMoreShards, _RetentionPeriodHours, _StreamName, _Shards, _StreamARN, _EnhancedMonitoring, _StreamCreationTimestamp, _StreamStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StreamDescription")
 	local t = { 
-		["HasMoreShards"] = HasMoreShards,
-		["RetentionPeriodHours"] = RetentionPeriodHours,
-		["StreamName"] = StreamName,
-		["Shards"] = Shards,
-		["StreamARN"] = StreamARN,
-		["EnhancedMonitoring"] = EnhancedMonitoring,
-		["StreamCreationTimestamp"] = StreamCreationTimestamp,
-		["StreamStatus"] = StreamStatus,
+		["HasMoreShards"] = _HasMoreShards,
+		["RetentionPeriodHours"] = _RetentionPeriodHours,
+		["StreamName"] = _StreamName,
+		["Shards"] = _Shards,
+		["StreamARN"] = _StreamARN,
+		["EnhancedMonitoring"] = _EnhancedMonitoring,
+		["StreamCreationTimestamp"] = _StreamCreationTimestamp,
+		["StreamStatus"] = _StreamStatus,
 	}
-	M.AssertStreamDescription(t)
+	asserts.AssertStreamDescription(t)
 	return t
 end
 
-local ProvisionedThroughputExceededException_keys = { "message" = true, nil }
+keys.ProvisionedThroughputExceededException = { ["message"] = true, nil }
 
-function M.AssertProvisionedThroughputExceededException(struct)
+function asserts.AssertProvisionedThroughputExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProvisionedThroughputExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ProvisionedThroughputExceededException_keys[k], "ProvisionedThroughputExceededException contains unknown key " .. tostring(k))
+		assert(keys.ProvisionedThroughputExceededException[k], "ProvisionedThroughputExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ProvisionedThroughputExceededException
 -- <p>The request rate for the stream is too high, or the requested data is too large for the available throughput. Reduce the frequency or size of your requests. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Streams Limits</a> in the <i>Amazon Kinesis Streams Developer Guide</i>, and <a href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">Error Retries and Exponential Backoff in AWS</a> in the <i>AWS General Reference</i>.</p>
--- @param message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ProvisionedThroughputExceededException(message, ...)
+-- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
+function M.ProvisionedThroughputExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionedThroughputExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertProvisionedThroughputExceededException(t)
+	asserts.AssertProvisionedThroughputExceededException(t)
 	return t
 end
 
-local EnhancedMetrics_keys = { "ShardLevelMetrics" = true, nil }
+keys.EnhancedMetrics = { ["ShardLevelMetrics"] = true, nil }
 
-function M.AssertEnhancedMetrics(struct)
+function asserts.AssertEnhancedMetrics(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnhancedMetrics to be of type 'table'")
-	if struct["ShardLevelMetrics"] then M.AssertMetricsNameList(struct["ShardLevelMetrics"]) end
+	if struct["ShardLevelMetrics"] then asserts.AssertMetricsNameList(struct["ShardLevelMetrics"]) end
 	for k,_ in pairs(struct) do
-		assert(EnhancedMetrics_keys[k], "EnhancedMetrics contains unknown key " .. tostring(k))
+		assert(keys.EnhancedMetrics[k], "EnhancedMetrics contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnhancedMetrics
 -- <p>Represents enhanced metrics types.</p>
--- @param ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
-function M.EnhancedMetrics(ShardLevelMetrics, ...)
+-- @param _ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
+function M.EnhancedMetrics(_ShardLevelMetrics, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnhancedMetrics")
 	local t = { 
-		["ShardLevelMetrics"] = ShardLevelMetrics,
+		["ShardLevelMetrics"] = _ShardLevelMetrics,
 	}
-	M.AssertEnhancedMetrics(t)
+	asserts.AssertEnhancedMetrics(t)
 	return t
 end
 
-local ListTagsForStreamInput_keys = { "StreamName" = true, "Limit" = true, "ExclusiveStartTagKey" = true, nil }
+keys.ListTagsForStreamInput = { ["StreamName"] = true, ["Limit"] = true, ["ExclusiveStartTagKey"] = true, nil }
 
-function M.AssertListTagsForStreamInput(struct)
+function asserts.AssertListTagsForStreamInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForStreamInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["Limit"] then M.AssertListTagsForStreamInputLimit(struct["Limit"]) end
-	if struct["ExclusiveStartTagKey"] then M.AssertTagKey(struct["ExclusiveStartTagKey"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["Limit"] then asserts.AssertListTagsForStreamInputLimit(struct["Limit"]) end
+	if struct["ExclusiveStartTagKey"] then asserts.AssertTagKey(struct["ExclusiveStartTagKey"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForStreamInput_keys[k], "ListTagsForStreamInput contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForStreamInput[k], "ListTagsForStreamInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForStreamInput
 -- <p>Represents the input for <code>ListTagsForStream</code>.</p>
--- @param StreamName [StreamName] <p>The name of the stream.</p>
--- @param Limit [ListTagsForStreamInputLimit] <p>The number of tags to return. If this number is less than the total number of tags associated with the stream, <code>HasMoreTags</code> is set to <code>true</code>. To list additional tags, set <code>ExclusiveStartTagKey</code> to the last key in the response.</p>
--- @param ExclusiveStartTagKey [TagKey] <p>The key to use as the starting point for the list of tags. If this parameter is set, <code>ListTagsForStream</code> gets all tags that occur after <code>ExclusiveStartTagKey</code>. </p>
+-- @param _StreamName [StreamName] <p>The name of the stream.</p>
+-- @param _Limit [ListTagsForStreamInputLimit] <p>The number of tags to return. If this number is less than the total number of tags associated with the stream, <code>HasMoreTags</code> is set to <code>true</code>. To list additional tags, set <code>ExclusiveStartTagKey</code> to the last key in the response.</p>
+-- @param _ExclusiveStartTagKey [TagKey] <p>The key to use as the starting point for the list of tags. If this parameter is set, <code>ListTagsForStream</code> gets all tags that occur after <code>ExclusiveStartTagKey</code>. </p>
 -- Required parameter: StreamName
-function M.ListTagsForStreamInput(StreamName, Limit, ExclusiveStartTagKey, ...)
+function M.ListTagsForStreamInput(_StreamName, _Limit, _ExclusiveStartTagKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForStreamInput")
 	local t = { 
-		["StreamName"] = StreamName,
-		["Limit"] = Limit,
-		["ExclusiveStartTagKey"] = ExclusiveStartTagKey,
+		["StreamName"] = _StreamName,
+		["Limit"] = _Limit,
+		["ExclusiveStartTagKey"] = _ExclusiveStartTagKey,
 	}
-	M.AssertListTagsForStreamInput(t)
+	asserts.AssertListTagsForStreamInput(t)
 	return t
 end
 
-local PutRecordsResultEntry_keys = { "ShardId" = true, "ErrorCode" = true, "ErrorMessage" = true, "SequenceNumber" = true, nil }
+keys.PutRecordsResultEntry = { ["ShardId"] = true, ["ErrorCode"] = true, ["ErrorMessage"] = true, ["SequenceNumber"] = true, nil }
 
-function M.AssertPutRecordsResultEntry(struct)
+function asserts.AssertPutRecordsResultEntry(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutRecordsResultEntry to be of type 'table'")
-	if struct["ShardId"] then M.AssertShardId(struct["ShardId"]) end
-	if struct["ErrorCode"] then M.AssertErrorCode(struct["ErrorCode"]) end
-	if struct["ErrorMessage"] then M.AssertErrorMessage(struct["ErrorMessage"]) end
-	if struct["SequenceNumber"] then M.AssertSequenceNumber(struct["SequenceNumber"]) end
+	if struct["ShardId"] then asserts.AssertShardId(struct["ShardId"]) end
+	if struct["ErrorCode"] then asserts.AssertErrorCode(struct["ErrorCode"]) end
+	if struct["ErrorMessage"] then asserts.AssertErrorMessage(struct["ErrorMessage"]) end
+	if struct["SequenceNumber"] then asserts.AssertSequenceNumber(struct["SequenceNumber"]) end
 	for k,_ in pairs(struct) do
-		assert(PutRecordsResultEntry_keys[k], "PutRecordsResultEntry contains unknown key " .. tostring(k))
+		assert(keys.PutRecordsResultEntry[k], "PutRecordsResultEntry contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutRecordsResultEntry
 -- <p>Represents the result of an individual record from a <code>PutRecords</code> request. A record that is successfully added to a stream includes <code>SequenceNumber</code> and <code>ShardId</code> in the result. A record that fails to be added to the stream includes <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
--- @param ShardId [ShardId] <p>The shard ID for an individual record result.</p>
--- @param ErrorCode [ErrorCode] <p>The error code for an individual record result. <code>ErrorCodes</code> can be either <code>ProvisionedThroughputExceededException</code> or <code>InternalFailure</code>.</p>
--- @param ErrorMessage [ErrorMessage] <p>The error message for an individual record result. An <code>ErrorCode</code> value of <code>ProvisionedThroughputExceededException</code> has an error message that includes the account ID, stream name, and shard ID. An <code>ErrorCode</code> value of <code>InternalFailure</code> has the error message <code>"Internal Service Failure"</code>.</p>
--- @param SequenceNumber [SequenceNumber] <p>The sequence number for an individual record result.</p>
-function M.PutRecordsResultEntry(ShardId, ErrorCode, ErrorMessage, SequenceNumber, ...)
+-- @param _ShardId [ShardId] <p>The shard ID for an individual record result.</p>
+-- @param _ErrorCode [ErrorCode] <p>The error code for an individual record result. <code>ErrorCodes</code> can be either <code>ProvisionedThroughputExceededException</code> or <code>InternalFailure</code>.</p>
+-- @param _ErrorMessage [ErrorMessage] <p>The error message for an individual record result. An <code>ErrorCode</code> value of <code>ProvisionedThroughputExceededException</code> has an error message that includes the account ID, stream name, and shard ID. An <code>ErrorCode</code> value of <code>InternalFailure</code> has the error message <code>"Internal Service Failure"</code>.</p>
+-- @param _SequenceNumber [SequenceNumber] <p>The sequence number for an individual record result.</p>
+function M.PutRecordsResultEntry(_ShardId, _ErrorCode, _ErrorMessage, _SequenceNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordsResultEntry")
 	local t = { 
-		["ShardId"] = ShardId,
-		["ErrorCode"] = ErrorCode,
-		["ErrorMessage"] = ErrorMessage,
-		["SequenceNumber"] = SequenceNumber,
+		["ShardId"] = _ShardId,
+		["ErrorCode"] = _ErrorCode,
+		["ErrorMessage"] = _ErrorMessage,
+		["SequenceNumber"] = _SequenceNumber,
 	}
-	M.AssertPutRecordsResultEntry(t)
+	asserts.AssertPutRecordsResultEntry(t)
 	return t
 end
 
-local ListStreamsOutput_keys = { "StreamNames" = true, "HasMoreStreams" = true, nil }
+keys.ListStreamsOutput = { ["StreamNames"] = true, ["HasMoreStreams"] = true, nil }
 
-function M.AssertListStreamsOutput(struct)
+function asserts.AssertListStreamsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListStreamsOutput to be of type 'table'")
 	assert(struct["StreamNames"], "Expected key StreamNames to exist in table")
 	assert(struct["HasMoreStreams"], "Expected key HasMoreStreams to exist in table")
-	if struct["StreamNames"] then M.AssertStreamNameList(struct["StreamNames"]) end
-	if struct["HasMoreStreams"] then M.AssertBooleanObject(struct["HasMoreStreams"]) end
+	if struct["StreamNames"] then asserts.AssertStreamNameList(struct["StreamNames"]) end
+	if struct["HasMoreStreams"] then asserts.AssertBooleanObject(struct["HasMoreStreams"]) end
 	for k,_ in pairs(struct) do
-		assert(ListStreamsOutput_keys[k], "ListStreamsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListStreamsOutput[k], "ListStreamsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListStreamsOutput
 -- <p>Represents the output for <code>ListStreams</code>.</p>
--- @param StreamNames [StreamNameList] <p>The names of the streams that are associated with the AWS account making the <code>ListStreams</code> request.</p>
--- @param HasMoreStreams [BooleanObject] <p>If set to <code>true</code>, there are more streams available to list.</p>
+-- @param _StreamNames [StreamNameList] <p>The names of the streams that are associated with the AWS account making the <code>ListStreams</code> request.</p>
+-- @param _HasMoreStreams [BooleanObject] <p>If set to <code>true</code>, there are more streams available to list.</p>
 -- Required parameter: StreamNames
 -- Required parameter: HasMoreStreams
-function M.ListStreamsOutput(StreamNames, HasMoreStreams, ...)
+function M.ListStreamsOutput(_StreamNames, _HasMoreStreams, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamsOutput")
 	local t = { 
-		["StreamNames"] = StreamNames,
-		["HasMoreStreams"] = HasMoreStreams,
+		["StreamNames"] = _StreamNames,
+		["HasMoreStreams"] = _HasMoreStreams,
 	}
-	M.AssertListStreamsOutput(t)
+	asserts.AssertListStreamsOutput(t)
 	return t
 end
 
-local ListTagsForStreamOutput_keys = { "HasMoreTags" = true, "Tags" = true, nil }
+keys.ListTagsForStreamOutput = { ["HasMoreTags"] = true, ["Tags"] = true, nil }
 
-function M.AssertListTagsForStreamOutput(struct)
+function asserts.AssertListTagsForStreamOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForStreamOutput to be of type 'table'")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
 	assert(struct["HasMoreTags"], "Expected key HasMoreTags to exist in table")
-	if struct["HasMoreTags"] then M.AssertBooleanObject(struct["HasMoreTags"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["HasMoreTags"] then asserts.AssertBooleanObject(struct["HasMoreTags"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForStreamOutput_keys[k], "ListTagsForStreamOutput contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForStreamOutput[k], "ListTagsForStreamOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForStreamOutput
 -- <p>Represents the output for <code>ListTagsForStream</code>.</p>
--- @param HasMoreTags [BooleanObject] <p>If set to <code>true</code>, more tags are available. To request additional tags, set <code>ExclusiveStartTagKey</code> to the key of the last tag returned.</p>
--- @param Tags [TagList] <p>A list of tags associated with <code>StreamName</code>, starting with the first tag after <code>ExclusiveStartTagKey</code> and up to the specified <code>Limit</code>. </p>
+-- @param _HasMoreTags [BooleanObject] <p>If set to <code>true</code>, more tags are available. To request additional tags, set <code>ExclusiveStartTagKey</code> to the key of the last tag returned.</p>
+-- @param _Tags [TagList] <p>A list of tags associated with <code>StreamName</code>, starting with the first tag after <code>ExclusiveStartTagKey</code> and up to the specified <code>Limit</code>. </p>
 -- Required parameter: Tags
 -- Required parameter: HasMoreTags
-function M.ListTagsForStreamOutput(HasMoreTags, Tags, ...)
+function M.ListTagsForStreamOutput(_HasMoreTags, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForStreamOutput")
 	local t = { 
-		["HasMoreTags"] = HasMoreTags,
-		["Tags"] = Tags,
+		["HasMoreTags"] = _HasMoreTags,
+		["Tags"] = _Tags,
 	}
-	M.AssertListTagsForStreamOutput(t)
+	asserts.AssertListTagsForStreamOutput(t)
 	return t
 end
 
-local GetRecordsOutput_keys = { "Records" = true, "NextShardIterator" = true, "MillisBehindLatest" = true, nil }
+keys.GetRecordsOutput = { ["Records"] = true, ["NextShardIterator"] = true, ["MillisBehindLatest"] = true, nil }
 
-function M.AssertGetRecordsOutput(struct)
+function asserts.AssertGetRecordsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetRecordsOutput to be of type 'table'")
 	assert(struct["Records"], "Expected key Records to exist in table")
-	if struct["Records"] then M.AssertRecordList(struct["Records"]) end
-	if struct["NextShardIterator"] then M.AssertShardIterator(struct["NextShardIterator"]) end
-	if struct["MillisBehindLatest"] then M.AssertMillisBehindLatest(struct["MillisBehindLatest"]) end
+	if struct["Records"] then asserts.AssertRecordList(struct["Records"]) end
+	if struct["NextShardIterator"] then asserts.AssertShardIterator(struct["NextShardIterator"]) end
+	if struct["MillisBehindLatest"] then asserts.AssertMillisBehindLatest(struct["MillisBehindLatest"]) end
 	for k,_ in pairs(struct) do
-		assert(GetRecordsOutput_keys[k], "GetRecordsOutput contains unknown key " .. tostring(k))
+		assert(keys.GetRecordsOutput[k], "GetRecordsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetRecordsOutput
 -- <p>Represents the output for <a>GetRecords</a>.</p>
--- @param Records [RecordList] <p>The data records retrieved from the shard.</p>
--- @param NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading data records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data. </p>
--- @param MillisBehindLatest [MillisBehindLatest] <p>The number of milliseconds the <a>GetRecords</a> response is from the tip of the stream, indicating how far behind current time the consumer is. A value of zero indicates record processing is caught up, and there are no new records to process at this moment.</p>
+-- @param _Records [RecordList] <p>The data records retrieved from the shard.</p>
+-- @param _NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading data records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data. </p>
+-- @param _MillisBehindLatest [MillisBehindLatest] <p>The number of milliseconds the <a>GetRecords</a> response is from the tip of the stream, indicating how far behind current time the consumer is. A value of zero indicates record processing is caught up, and there are no new records to process at this moment.</p>
 -- Required parameter: Records
-function M.GetRecordsOutput(Records, NextShardIterator, MillisBehindLatest, ...)
+function M.GetRecordsOutput(_Records, _NextShardIterator, _MillisBehindLatest, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRecordsOutput")
 	local t = { 
-		["Records"] = Records,
-		["NextShardIterator"] = NextShardIterator,
-		["MillisBehindLatest"] = MillisBehindLatest,
+		["Records"] = _Records,
+		["NextShardIterator"] = _NextShardIterator,
+		["MillisBehindLatest"] = _MillisBehindLatest,
 	}
-	M.AssertGetRecordsOutput(t)
+	asserts.AssertGetRecordsOutput(t)
 	return t
 end
 
-local DescribeLimitsInput_keys = { nil }
+keys.DescribeLimitsInput = { nil }
 
-function M.AssertDescribeLimitsInput(struct)
+function asserts.AssertDescribeLimitsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLimitsInput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DescribeLimitsInput_keys[k], "DescribeLimitsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeLimitsInput[k], "DescribeLimitsInput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1226,202 +1229,200 @@ function M.DescribeLimitsInput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLimitsInput")
 	local t = { 
 	}
-	M.AssertDescribeLimitsInput(t)
+	asserts.AssertDescribeLimitsInput(t)
 	return t
 end
 
-local CreateStreamInput_keys = { "StreamName" = true, "ShardCount" = true, nil }
+keys.CreateStreamInput = { ["StreamName"] = true, ["ShardCount"] = true, nil }
 
-function M.AssertCreateStreamInput(struct)
+function asserts.AssertCreateStreamInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateStreamInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
 	assert(struct["ShardCount"], "Expected key ShardCount to exist in table")
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["ShardCount"] then M.AssertPositiveIntegerObject(struct["ShardCount"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["ShardCount"] then asserts.AssertPositiveIntegerObject(struct["ShardCount"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateStreamInput_keys[k], "CreateStreamInput contains unknown key " .. tostring(k))
+		assert(keys.CreateStreamInput[k], "CreateStreamInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateStreamInput
 -- <p>Represents the input for <code>CreateStream</code>.</p>
--- @param StreamName [StreamName] <p>A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates the stream. It is also scoped by region. That is, two streams in two different AWS accounts can have the same name, and two streams in the same AWS account but in two different regions can have the same name.</p>
--- @param ShardCount [PositiveIntegerObject] <p>The number of shards that the stream will use. The throughput of the stream is a function of the number of shards; more shards are required for greater provisioned throughput.</p> <p>DefaultShardLimit;</p>
+-- @param _StreamName [StreamName] <p>A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates the stream. It is also scoped by region. That is, two streams in two different AWS accounts can have the same name, and two streams in the same AWS account but in two different regions can have the same name.</p>
+-- @param _ShardCount [PositiveIntegerObject] <p>The number of shards that the stream will use. The throughput of the stream is a function of the number of shards; more shards are required for greater provisioned throughput.</p> <p>DefaultShardLimit;</p>
 -- Required parameter: StreamName
 -- Required parameter: ShardCount
-function M.CreateStreamInput(StreamName, ShardCount, ...)
+function M.CreateStreamInput(_StreamName, _ShardCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamInput")
 	local t = { 
-		["StreamName"] = StreamName,
-		["ShardCount"] = ShardCount,
+		["StreamName"] = _StreamName,
+		["ShardCount"] = _ShardCount,
 	}
-	M.AssertCreateStreamInput(t)
+	asserts.AssertCreateStreamInput(t)
 	return t
 end
 
-local GetRecordsInput_keys = { "ShardIterator" = true, "Limit" = true, nil }
+keys.GetRecordsInput = { ["ShardIterator"] = true, ["Limit"] = true, nil }
 
-function M.AssertGetRecordsInput(struct)
+function asserts.AssertGetRecordsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetRecordsInput to be of type 'table'")
 	assert(struct["ShardIterator"], "Expected key ShardIterator to exist in table")
-	if struct["ShardIterator"] then M.AssertShardIterator(struct["ShardIterator"]) end
-	if struct["Limit"] then M.AssertGetRecordsInputLimit(struct["Limit"]) end
+	if struct["ShardIterator"] then asserts.AssertShardIterator(struct["ShardIterator"]) end
+	if struct["Limit"] then asserts.AssertGetRecordsInputLimit(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetRecordsInput_keys[k], "GetRecordsInput contains unknown key " .. tostring(k))
+		assert(keys.GetRecordsInput[k], "GetRecordsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetRecordsInput
 -- <p>Represents the input for <a>GetRecords</a>.</p>
--- @param ShardIterator [ShardIterator] <p>The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.</p>
--- @param Limit [GetRecordsInputLimit] <p>The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, <a>GetRecords</a> throws <code>InvalidArgumentException</code>.</p>
+-- @param _ShardIterator [ShardIterator] <p>The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.</p>
+-- @param _Limit [GetRecordsInputLimit] <p>The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, <a>GetRecords</a> throws <code>InvalidArgumentException</code>.</p>
 -- Required parameter: ShardIterator
-function M.GetRecordsInput(ShardIterator, Limit, ...)
+function M.GetRecordsInput(_ShardIterator, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRecordsInput")
 	local t = { 
-		["ShardIterator"] = ShardIterator,
-		["Limit"] = Limit,
+		["ShardIterator"] = _ShardIterator,
+		["Limit"] = _Limit,
 	}
-	M.AssertGetRecordsInput(t)
+	asserts.AssertGetRecordsInput(t)
 	return t
 end
 
-local DescribeStreamInput_keys = { "StreamName" = true, "Limit" = true, "ExclusiveStartShardId" = true, nil }
+keys.DescribeStreamInput = { ["StreamName"] = true, ["Limit"] = true, ["ExclusiveStartShardId"] = true, nil }
 
-function M.AssertDescribeStreamInput(struct)
+function asserts.AssertDescribeStreamInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeStreamInput to be of type 'table'")
 	assert(struct["StreamName"], "Expected key StreamName to exist in table")
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
-	if struct["Limit"] then M.AssertDescribeStreamInputLimit(struct["Limit"]) end
-	if struct["ExclusiveStartShardId"] then M.AssertShardId(struct["ExclusiveStartShardId"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
+	if struct["Limit"] then asserts.AssertDescribeStreamInputLimit(struct["Limit"]) end
+	if struct["ExclusiveStartShardId"] then asserts.AssertShardId(struct["ExclusiveStartShardId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeStreamInput_keys[k], "DescribeStreamInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeStreamInput[k], "DescribeStreamInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeStreamInput
 -- <p>Represents the input for <code>DescribeStream</code>.</p>
--- @param StreamName [StreamName] <p>The name of the stream to describe.</p>
--- @param Limit [DescribeStreamInputLimit] <p>The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 shards are returned.</p>
--- @param ExclusiveStartShardId [ShardId] <p>The shard ID of the shard to start with.</p>
+-- @param _StreamName [StreamName] <p>The name of the stream to describe.</p>
+-- @param _Limit [DescribeStreamInputLimit] <p>The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 shards are returned.</p>
+-- @param _ExclusiveStartShardId [ShardId] <p>The shard ID of the shard to start with.</p>
 -- Required parameter: StreamName
-function M.DescribeStreamInput(StreamName, Limit, ExclusiveStartShardId, ...)
+function M.DescribeStreamInput(_StreamName, _Limit, _ExclusiveStartShardId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStreamInput")
 	local t = { 
-		["StreamName"] = StreamName,
-		["Limit"] = Limit,
-		["ExclusiveStartShardId"] = ExclusiveStartShardId,
+		["StreamName"] = _StreamName,
+		["Limit"] = _Limit,
+		["ExclusiveStartShardId"] = _ExclusiveStartShardId,
 	}
-	M.AssertDescribeStreamInput(t)
+	asserts.AssertDescribeStreamInput(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "message" = true, nil }
+keys.ResourceNotFoundException = { ["message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The requested resource could not be found. The stream might not be specified correctly.</p>
--- @param message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ResourceNotFoundException(message, ...)
+-- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
+function M.ResourceNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-function M.AssertMetricsName(str)
+function asserts.AssertMetricsName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MetricsName to be of type 'string'")
 end
 
 --  
 function M.MetricsName(str)
-	M.AssertMetricsName(str)
+	asserts.AssertMetricsName(str)
 	return str
 end
 
-function M.AssertStreamARN(str)
+function asserts.AssertStreamARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StreamARN to be of type 'string'")
 end
 
 --  
 function M.StreamARN(str)
-	M.AssertStreamARN(str)
+	asserts.AssertStreamARN(str)
 	return str
 end
 
-function M.AssertHashKey(str)
+function asserts.AssertHashKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HashKey to be of type 'string'")
-	assert(str:match("0|([1-9]%d{0,38})"), "Expected string to match pattern '0|([1-9]%d{0,38})'")
 end
 
 --  
 function M.HashKey(str)
-	M.AssertHashKey(str)
+	asserts.AssertHashKey(str)
 	return str
 end
 
-function M.AssertShardIteratorType(str)
+function asserts.AssertShardIteratorType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ShardIteratorType to be of type 'string'")
 end
 
 --  
 function M.ShardIteratorType(str)
-	M.AssertShardIteratorType(str)
+	asserts.AssertShardIteratorType(str)
 	return str
 end
 
-function M.AssertScalingType(str)
+function asserts.AssertScalingType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ScalingType to be of type 'string'")
 end
 
 --  
 function M.ScalingType(str)
-	M.AssertScalingType(str)
+	asserts.AssertScalingType(str)
 	return str
 end
 
-function M.AssertSequenceNumber(str)
+function asserts.AssertSequenceNumber(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SequenceNumber to be of type 'string'")
-	assert(str:match("0|([1-9]%d{0,128})"), "Expected string to match pattern '0|([1-9]%d{0,128})'")
 end
 
 --  
 function M.SequenceNumber(str)
-	M.AssertSequenceNumber(str)
+	asserts.AssertSequenceNumber(str)
 	return str
 end
 
-function M.AssertErrorCode(str)
+function asserts.AssertErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorCode to be of type 'string'")
 end
 
 --  
 function M.ErrorCode(str)
-	M.AssertErrorCode(str)
+	asserts.AssertErrorCode(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -1429,11 +1430,11 @@ end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertShardIterator(str)
+function asserts.AssertShardIterator(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ShardIterator to be of type 'string'")
 	assert(#str <= 512, "Expected string to be max 512 characters")
@@ -1442,36 +1443,35 @@ end
 
 --  
 function M.ShardIterator(str)
-	M.AssertShardIterator(str)
+	asserts.AssertShardIterator(str)
 	return str
 end
 
-function M.AssertStreamName(str)
+function asserts.AssertStreamName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StreamName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9_.-]+"), "Expected string to match pattern '[a-zA-Z0-9_.-]+'")
 end
 
 --  
 function M.StreamName(str)
-	M.AssertStreamName(str)
+	asserts.AssertStreamName(str)
 	return str
 end
 
-function M.AssertStreamStatus(str)
+function asserts.AssertStreamStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StreamStatus to be of type 'string'")
 end
 
 --  
 function M.StreamStatus(str)
-	M.AssertStreamStatus(str)
+	asserts.AssertStreamStatus(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -1480,36 +1480,35 @@ end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertShardId(str)
+function asserts.AssertShardId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ShardId to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9_.-]+"), "Expected string to match pattern '[a-zA-Z0-9_.-]+'")
 end
 
 --  
 function M.ShardId(str)
-	M.AssertShardId(str)
+	asserts.AssertShardId(str)
 	return str
 end
 
-function M.AssertPartitionKey(str)
+function asserts.AssertPartitionKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PartitionKey to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -1518,22 +1517,22 @@ end
 
 --  
 function M.PartitionKey(str)
-	M.AssertPartitionKey(str)
+	asserts.AssertPartitionKey(str)
 	return str
 end
 
-function M.AssertMillisBehindLatest(long)
+function asserts.AssertMillisBehindLatest(long)
 	assert(long)
 	assert(type(long) == "number", "Expected MillisBehindLatest to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.MillisBehindLatest(long)
-	M.AssertMillisBehindLatest(long)
+	asserts.AssertMillisBehindLatest(long)
 	return long
 end
 
-function M.AssertGetRecordsInputLimit(integer)
+function asserts.AssertGetRecordsInputLimit(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected GetRecordsInputLimit to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1542,11 +1541,11 @@ function M.AssertGetRecordsInputLimit(integer)
 end
 
 function M.GetRecordsInputLimit(integer)
-	M.AssertGetRecordsInputLimit(integer)
+	asserts.AssertGetRecordsInputLimit(integer)
 	return integer
 end
 
-function M.AssertListTagsForStreamInputLimit(integer)
+function asserts.AssertListTagsForStreamInputLimit(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected ListTagsForStreamInputLimit to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1555,11 +1554,11 @@ function M.AssertListTagsForStreamInputLimit(integer)
 end
 
 function M.ListTagsForStreamInputLimit(integer)
-	M.AssertListTagsForStreamInputLimit(integer)
+	asserts.AssertListTagsForStreamInputLimit(integer)
 	return integer
 end
 
-function M.AssertListStreamsInputLimit(integer)
+function asserts.AssertListStreamsInputLimit(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected ListStreamsInputLimit to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1568,11 +1567,11 @@ function M.AssertListStreamsInputLimit(integer)
 end
 
 function M.ListStreamsInputLimit(integer)
-	M.AssertListStreamsInputLimit(integer)
+	asserts.AssertListStreamsInputLimit(integer)
 	return integer
 end
 
-function M.AssertPositiveIntegerObject(integer)
+function asserts.AssertPositiveIntegerObject(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PositiveIntegerObject to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1581,11 +1580,11 @@ function M.AssertPositiveIntegerObject(integer)
 end
 
 function M.PositiveIntegerObject(integer)
-	M.AssertPositiveIntegerObject(integer)
+	asserts.AssertPositiveIntegerObject(integer)
 	return integer
 end
 
-function M.AssertDescribeStreamInputLimit(integer)
+function asserts.AssertDescribeStreamInputLimit(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected DescribeStreamInputLimit to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1594,11 +1593,11 @@ function M.AssertDescribeStreamInputLimit(integer)
 end
 
 function M.DescribeStreamInputLimit(integer)
-	M.AssertDescribeStreamInputLimit(integer)
+	asserts.AssertDescribeStreamInputLimit(integer)
 	return integer
 end
 
-function M.AssertShardCountObject(integer)
+function asserts.AssertShardCountObject(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected ShardCountObject to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1606,195 +1605,195 @@ function M.AssertShardCountObject(integer)
 end
 
 function M.ShardCountObject(integer)
-	M.AssertShardCountObject(integer)
+	asserts.AssertShardCountObject(integer)
 	return integer
 end
 
-function M.AssertBooleanObject(boolean)
+function asserts.AssertBooleanObject(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanObject to be of type 'boolean'")
 end
 
 function M.BooleanObject(boolean)
-	M.AssertBooleanObject(boolean)
+	asserts.AssertBooleanObject(boolean)
 	return boolean
 end
 
-function M.AssertTagMap(map)
+function asserts.AssertTagMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected TagMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertTagKey(k)
-		M.AssertTagValue(v)
+		asserts.AssertTagKey(k)
+		asserts.AssertTagValue(v)
 	end
 end
 
 function M.TagMap(map)
-	M.AssertTagMap(map)
+	asserts.AssertTagMap(map)
 	return map
 end
 
-function M.AssertTimestamp(timestamp)
+function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 function M.Timestamp(timestamp)
-	M.AssertTimestamp(timestamp)
+	asserts.AssertTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertData(blob)
+function asserts.AssertData(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected Data to be of type 'string'")
 	assert(#blob <= 1048576, "Expected blob to be max 1048576")
 end
 
 function M.Data(blob)
-	M.AssertData(blob)
+	asserts.AssertData(blob)
 	return blob
 end
 
-function M.AssertPutRecordsRequestEntryList(list)
+function asserts.AssertPutRecordsRequestEntryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PutRecordsRequestEntryList to be of type ''table")
 	assert(#list <= 500, "Expected list to be contain 500 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertPutRecordsRequestEntry(v)
+		asserts.AssertPutRecordsRequestEntry(v)
 	end
 end
 
 --  
 -- List of PutRecordsRequestEntry objects
 function M.PutRecordsRequestEntryList(list)
-	M.AssertPutRecordsRequestEntryList(list)
+	asserts.AssertPutRecordsRequestEntryList(list)
 	return list
 end
 
-function M.AssertStreamNameList(list)
+function asserts.AssertStreamNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StreamNameList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStreamName(v)
+		asserts.AssertStreamName(v)
 	end
 end
 
 --  
 -- List of StreamName objects
 function M.StreamNameList(list)
-	M.AssertStreamNameList(list)
+	asserts.AssertStreamNameList(list)
 	return list
 end
 
-function M.AssertTagKeyList(list)
+function asserts.AssertTagKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertTagKey(v)
+		asserts.AssertTagKey(v)
 	end
 end
 
 --  
 -- List of TagKey objects
 function M.TagKeyList(list)
-	M.AssertTagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
-function M.AssertPutRecordsResultEntryList(list)
+function asserts.AssertPutRecordsResultEntryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PutRecordsResultEntryList to be of type ''table")
 	assert(#list <= 500, "Expected list to be contain 500 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertPutRecordsResultEntry(v)
+		asserts.AssertPutRecordsResultEntry(v)
 	end
 end
 
 --  
 -- List of PutRecordsResultEntry objects
 function M.PutRecordsResultEntryList(list)
-	M.AssertPutRecordsResultEntryList(list)
+	asserts.AssertPutRecordsResultEntryList(list)
 	return list
 end
 
-function M.AssertMetricsNameList(list)
+function asserts.AssertMetricsNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MetricsNameList to be of type ''table")
 	assert(#list <= 7, "Expected list to be contain 7 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertMetricsName(v)
+		asserts.AssertMetricsName(v)
 	end
 end
 
 --  
 -- List of MetricsName objects
 function M.MetricsNameList(list)
-	M.AssertMetricsNameList(list)
+	asserts.AssertMetricsNameList(list)
 	return list
 end
 
-function M.AssertShardList(list)
+function asserts.AssertShardList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ShardList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertShard(v)
+		asserts.AssertShard(v)
 	end
 end
 
 --  
 -- List of Shard objects
 function M.ShardList(list)
-	M.AssertShardList(list)
+	asserts.AssertShardList(list)
 	return list
 end
 
-function M.AssertRecordList(list)
+function asserts.AssertRecordList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RecordList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRecord(v)
+		asserts.AssertRecord(v)
 	end
 end
 
 --  
 -- List of Record objects
 function M.RecordList(list)
-	M.AssertRecordList(list)
+	asserts.AssertRecordList(list)
 	return list
 end
 
-function M.AssertEnhancedMonitoringList(list)
+function asserts.AssertEnhancedMonitoringList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EnhancedMonitoringList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEnhancedMetrics(v)
+		asserts.AssertEnhancedMetrics(v)
 	end
 end
 
 --  
 -- List of EnhancedMetrics objects
 function M.EnhancedMonitoringList(list)
-	M.AssertEnhancedMonitoringList(list)
+	asserts.AssertEnhancedMonitoringList(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 

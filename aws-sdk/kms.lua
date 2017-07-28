@@ -18,347 +18,350 @@ M.metadata = {
 	uid = "kms-2014-11-01",
 }
 
-local ListRetirableGrantsRequest_keys = { "Marker" = true, "Limit" = true, "RetiringPrincipal" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertListRetirableGrantsRequest(struct)
+keys.ListRetirableGrantsRequest = { ["Marker"] = true, ["Limit"] = true, ["RetiringPrincipal"] = true, nil }
+
+function asserts.AssertListRetirableGrantsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListRetirableGrantsRequest to be of type 'table'")
 	assert(struct["RetiringPrincipal"], "Expected key RetiringPrincipal to exist in table")
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
-	if struct["RetiringPrincipal"] then M.AssertPrincipalIdType(struct["RetiringPrincipal"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["RetiringPrincipal"] then asserts.AssertPrincipalIdType(struct["RetiringPrincipal"]) end
 	for k,_ in pairs(struct) do
-		assert(ListRetirableGrantsRequest_keys[k], "ListRetirableGrantsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListRetirableGrantsRequest[k], "ListRetirableGrantsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListRetirableGrantsRequest
 --  
--- @param Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- @param Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
--- @param RetiringPrincipal [PrincipalIdType] <p>The retiring principal for which to list grants.</p> <p>To specify the retiring principal, use the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax for specifying a principal, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services General Reference</i>.</p>
+-- @param _Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
+-- @param _Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
+-- @param _RetiringPrincipal [PrincipalIdType] <p>The retiring principal for which to list grants.</p> <p>To specify the retiring principal, use the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax for specifying a principal, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services General Reference</i>.</p>
 -- Required parameter: RetiringPrincipal
-function M.ListRetirableGrantsRequest(Marker, Limit, RetiringPrincipal, ...)
+function M.ListRetirableGrantsRequest(_Marker, _Limit, _RetiringPrincipal, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRetirableGrantsRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["Limit"] = Limit,
-		["RetiringPrincipal"] = RetiringPrincipal,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
+		["RetiringPrincipal"] = _RetiringPrincipal,
 	}
-	M.AssertListRetirableGrantsRequest(t)
+	asserts.AssertListRetirableGrantsRequest(t)
 	return t
 end
 
-local DependencyTimeoutException_keys = { "message" = true, nil }
+keys.DependencyTimeoutException = { ["message"] = true, nil }
 
-function M.AssertDependencyTimeoutException(struct)
+function asserts.AssertDependencyTimeoutException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DependencyTimeoutException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(DependencyTimeoutException_keys[k], "DependencyTimeoutException contains unknown key " .. tostring(k))
+		assert(keys.DependencyTimeoutException[k], "DependencyTimeoutException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DependencyTimeoutException
 -- <p>The system timed out while trying to fulfill the request. The request can be retried.</p>
--- @param message [ErrorMessageType] <p>The system timed out while trying to fulfill the request. The request can be retried.</p>
-function M.DependencyTimeoutException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.DependencyTimeoutException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DependencyTimeoutException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertDependencyTimeoutException(t)
+	asserts.AssertDependencyTimeoutException(t)
 	return t
 end
 
-local UnsupportedOperationException_keys = { "message" = true, nil }
+keys.UnsupportedOperationException = { ["message"] = true, nil }
 
-function M.AssertUnsupportedOperationException(struct)
+function asserts.AssertUnsupportedOperationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedOperationException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedOperationException_keys[k], "UnsupportedOperationException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedOperationException[k], "UnsupportedOperationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedOperationException
 -- <p>The request was rejected because a specified parameter is not supported or a specified resource is not valid for this operation.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because a specified parameter is not supported or a specified resource is not valid for this operation.</p>
-function M.UnsupportedOperationException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.UnsupportedOperationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedOperationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedOperationException(t)
+	asserts.AssertUnsupportedOperationException(t)
 	return t
 end
 
-local InvalidArnException_keys = { "message" = true, nil }
+keys.InvalidArnException = { ["message"] = true, nil }
 
-function M.AssertInvalidArnException(struct)
+function asserts.AssertInvalidArnException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidArnException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidArnException_keys[k], "InvalidArnException contains unknown key " .. tostring(k))
+		assert(keys.InvalidArnException[k], "InvalidArnException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidArnException
 -- <p>The request was rejected because a specified ARN was not valid.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because a specified ARN was not valid.</p>
-function M.InvalidArnException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.InvalidArnException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArnException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidArnException(t)
+	asserts.AssertInvalidArnException(t)
 	return t
 end
 
-local EnableKeyRotationRequest_keys = { "KeyId" = true, nil }
+keys.EnableKeyRotationRequest = { ["KeyId"] = true, nil }
 
-function M.AssertEnableKeyRotationRequest(struct)
+function asserts.AssertEnableKeyRotationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnableKeyRotationRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(EnableKeyRotationRequest_keys[k], "EnableKeyRotationRequest contains unknown key " .. tostring(k))
+		assert(keys.EnableKeyRotationRequest[k], "EnableKeyRotationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnableKeyRotationRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
 -- Required parameter: KeyId
-function M.EnableKeyRotationRequest(KeyId, ...)
+function M.EnableKeyRotationRequest(_KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableKeyRotationRequest")
 	local t = { 
-		["KeyId"] = KeyId,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertEnableKeyRotationRequest(t)
+	asserts.AssertEnableKeyRotationRequest(t)
 	return t
 end
 
-local InvalidKeyUsageException_keys = { "message" = true, nil }
+keys.InvalidKeyUsageException = { ["message"] = true, nil }
 
-function M.AssertInvalidKeyUsageException(struct)
+function asserts.AssertInvalidKeyUsageException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidKeyUsageException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidKeyUsageException_keys[k], "InvalidKeyUsageException contains unknown key " .. tostring(k))
+		assert(keys.InvalidKeyUsageException[k], "InvalidKeyUsageException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidKeyUsageException
 -- <p>The request was rejected because the specified <code>KeySpec</code> value is not valid.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified <code>KeySpec</code> value is not valid.</p>
-function M.InvalidKeyUsageException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.InvalidKeyUsageException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidKeyUsageException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidKeyUsageException(t)
+	asserts.AssertInvalidKeyUsageException(t)
 	return t
 end
 
-local CreateKeyRequest_keys = { "Origin" = true, "Description" = true, "Tags" = true, "BypassPolicyLockoutSafetyCheck" = true, "KeyUsage" = true, "Policy" = true, nil }
+keys.CreateKeyRequest = { ["Origin"] = true, ["Description"] = true, ["Tags"] = true, ["BypassPolicyLockoutSafetyCheck"] = true, ["KeyUsage"] = true, ["Policy"] = true, nil }
 
-function M.AssertCreateKeyRequest(struct)
+function asserts.AssertCreateKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateKeyRequest to be of type 'table'")
-	if struct["Origin"] then M.AssertOriginType(struct["Origin"]) end
-	if struct["Description"] then M.AssertDescriptionType(struct["Description"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["BypassPolicyLockoutSafetyCheck"] then M.AssertBooleanType(struct["BypassPolicyLockoutSafetyCheck"]) end
-	if struct["KeyUsage"] then M.AssertKeyUsageType(struct["KeyUsage"]) end
-	if struct["Policy"] then M.AssertPolicyType(struct["Policy"]) end
+	if struct["Origin"] then asserts.AssertOriginType(struct["Origin"]) end
+	if struct["Description"] then asserts.AssertDescriptionType(struct["Description"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["BypassPolicyLockoutSafetyCheck"] then asserts.AssertBooleanType(struct["BypassPolicyLockoutSafetyCheck"]) end
+	if struct["KeyUsage"] then asserts.AssertKeyUsageType(struct["KeyUsage"]) end
+	if struct["Policy"] then asserts.AssertPolicyType(struct["Policy"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateKeyRequest_keys[k], "CreateKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateKeyRequest[k], "CreateKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateKeyRequest
 --  
--- @param Origin [OriginType] <p>The source of the CMK's key material.</p> <p>The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material. When this parameter is set to <code>EXTERNAL</code>, the request creates a CMK without key material so that you can import key material from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>The CMK's <code>Origin</code> is immutable and is set when the CMK is created.</p>
--- @param Description [DescriptionType] <p>A description of the CMK.</p> <p>Use a description that helps you decide whether the CMK is appropriate for a task.</p>
--- @param Tags [TagList] <p>One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.</p> <p>Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag the CMK after it is created using <a>TagResource</a>.</p>
--- @param BypassPolicyLockoutSafetyCheck [BooleanType] <p>A flag to indicate whether to bypass the key policy lockout safety check.</p> <important> <p>Setting this value to true increases the likelihood that the CMK becomes unmanageable. Do not set this value to true indiscriminately.</p> <p>For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </important> <p>Use this parameter only when you include a policy in the request and you intend to prevent the principal that is making the request from making a subsequent <a>PutKeyPolicy</a> request on the CMK.</p> <p>The default value is false.</p>
--- @param KeyUsage [KeyUsageType] <p>The intended use of the CMK.</p> <p>You can use CMKs only for symmetric encryption and decryption.</p>
--- @param Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>If you specify a policy and do not set <code>BypassPolicyLockoutSafetyCheck</code> to true, the policy must meet the following criteria:</p> <ul> <li> <p>It must allow the principal that is making the <code>CreateKey</code> request to make a subsequent <a>PutKeyPolicy</a> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.</p> </li> </ul> <p>If you do not specify a policy, AWS KMS attaches a default key policy to the CMK. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default">Default Key Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>The policy size limit is 32 KiB (32768 bytes).</p>
-function M.CreateKeyRequest(Origin, Description, Tags, BypassPolicyLockoutSafetyCheck, KeyUsage, Policy, ...)
+-- @param _Origin [OriginType] <p>The source of the CMK's key material.</p> <p>The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material. When this parameter is set to <code>EXTERNAL</code>, the request creates a CMK without key material so that you can import key material from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>The CMK's <code>Origin</code> is immutable and is set when the CMK is created.</p>
+-- @param _Description [DescriptionType] <p>A description of the CMK.</p> <p>Use a description that helps you decide whether the CMK is appropriate for a task.</p>
+-- @param _Tags [TagList] <p>One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.</p> <p>Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag the CMK after it is created using <a>TagResource</a>.</p>
+-- @param _BypassPolicyLockoutSafetyCheck [BooleanType] <p>A flag to indicate whether to bypass the key policy lockout safety check.</p> <important> <p>Setting this value to true increases the likelihood that the CMK becomes unmanageable. Do not set this value to true indiscriminately.</p> <p>For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </important> <p>Use this parameter only when you include a policy in the request and you intend to prevent the principal that is making the request from making a subsequent <a>PutKeyPolicy</a> request on the CMK.</p> <p>The default value is false.</p>
+-- @param _KeyUsage [KeyUsageType] <p>The intended use of the CMK.</p> <p>You can use CMKs only for symmetric encryption and decryption.</p>
+-- @param _Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>If you specify a policy and do not set <code>BypassPolicyLockoutSafetyCheck</code> to true, the policy must meet the following criteria:</p> <ul> <li> <p>It must allow the principal that is making the <code>CreateKey</code> request to make a subsequent <a>PutKeyPolicy</a> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.</p> </li> </ul> <p>If you do not specify a policy, AWS KMS attaches a default key policy to the CMK. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default">Default Key Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>The policy size limit is 32 KiB (32768 bytes).</p>
+function M.CreateKeyRequest(_Origin, _Description, _Tags, _BypassPolicyLockoutSafetyCheck, _KeyUsage, _Policy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeyRequest")
 	local t = { 
-		["Origin"] = Origin,
-		["Description"] = Description,
-		["Tags"] = Tags,
-		["BypassPolicyLockoutSafetyCheck"] = BypassPolicyLockoutSafetyCheck,
-		["KeyUsage"] = KeyUsage,
-		["Policy"] = Policy,
+		["Origin"] = _Origin,
+		["Description"] = _Description,
+		["Tags"] = _Tags,
+		["BypassPolicyLockoutSafetyCheck"] = _BypassPolicyLockoutSafetyCheck,
+		["KeyUsage"] = _KeyUsage,
+		["Policy"] = _Policy,
 	}
-	M.AssertCreateKeyRequest(t)
+	asserts.AssertCreateKeyRequest(t)
 	return t
 end
 
-local GetKeyPolicyResponse_keys = { "Policy" = true, nil }
+keys.GetKeyPolicyResponse = { ["Policy"] = true, nil }
 
-function M.AssertGetKeyPolicyResponse(struct)
+function asserts.AssertGetKeyPolicyResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetKeyPolicyResponse to be of type 'table'")
-	if struct["Policy"] then M.AssertPolicyType(struct["Policy"]) end
+	if struct["Policy"] then asserts.AssertPolicyType(struct["Policy"]) end
 	for k,_ in pairs(struct) do
-		assert(GetKeyPolicyResponse_keys[k], "GetKeyPolicyResponse contains unknown key " .. tostring(k))
+		assert(keys.GetKeyPolicyResponse[k], "GetKeyPolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetKeyPolicyResponse
 --  
--- @param Policy [PolicyType] <p>A policy document in JSON format.</p>
-function M.GetKeyPolicyResponse(Policy, ...)
+-- @param _Policy [PolicyType] <p>A policy document in JSON format.</p>
+function M.GetKeyPolicyResponse(_Policy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPolicyResponse")
 	local t = { 
-		["Policy"] = Policy,
+		["Policy"] = _Policy,
 	}
-	M.AssertGetKeyPolicyResponse(t)
+	asserts.AssertGetKeyPolicyResponse(t)
 	return t
 end
 
-local DisabledException_keys = { "message" = true, nil }
+keys.DisabledException = { ["message"] = true, nil }
 
-function M.AssertDisabledException(struct)
+function asserts.AssertDisabledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisabledException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(DisabledException_keys[k], "DisabledException contains unknown key " .. tostring(k))
+		assert(keys.DisabledException[k], "DisabledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisabledException
 -- <p>The request was rejected because the specified CMK is not enabled.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified CMK is not enabled.</p>
-function M.DisabledException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.DisabledException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisabledException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertDisabledException(t)
+	asserts.AssertDisabledException(t)
 	return t
 end
 
-local GenerateDataKeyWithoutPlaintextResponse_keys = { "KeyId" = true, "CiphertextBlob" = true, nil }
+keys.GenerateDataKeyWithoutPlaintextResponse = { ["KeyId"] = true, ["CiphertextBlob"] = true, nil }
 
-function M.AssertGenerateDataKeyWithoutPlaintextResponse(struct)
+function asserts.AssertGenerateDataKeyWithoutPlaintextResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GenerateDataKeyWithoutPlaintextResponse to be of type 'table'")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["CiphertextBlob"] then M.AssertCiphertextType(struct["CiphertextBlob"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["CiphertextBlob"] then asserts.AssertCiphertextType(struct["CiphertextBlob"]) end
 	for k,_ in pairs(struct) do
-		assert(GenerateDataKeyWithoutPlaintextResponse_keys[k], "GenerateDataKeyWithoutPlaintextResponse contains unknown key " .. tostring(k))
+		assert(keys.GenerateDataKeyWithoutPlaintextResponse[k], "GenerateDataKeyWithoutPlaintextResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GenerateDataKeyWithoutPlaintextResponse
 --  
--- @param KeyId [KeyIdType] <p>The identifier of the CMK under which the data encryption key was generated and encrypted.</p>
--- @param CiphertextBlob [CiphertextType] <p>The encrypted data encryption key.</p>
-function M.GenerateDataKeyWithoutPlaintextResponse(KeyId, CiphertextBlob, ...)
+-- @param _KeyId [KeyIdType] <p>The identifier of the CMK under which the data encryption key was generated and encrypted.</p>
+-- @param _CiphertextBlob [CiphertextType] <p>The encrypted data encryption key.</p>
+function M.GenerateDataKeyWithoutPlaintextResponse(_KeyId, _CiphertextBlob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GenerateDataKeyWithoutPlaintextResponse")
 	local t = { 
-		["KeyId"] = KeyId,
-		["CiphertextBlob"] = CiphertextBlob,
+		["KeyId"] = _KeyId,
+		["CiphertextBlob"] = _CiphertextBlob,
 	}
-	M.AssertGenerateDataKeyWithoutPlaintextResponse(t)
+	asserts.AssertGenerateDataKeyWithoutPlaintextResponse(t)
 	return t
 end
 
-local DescribeKeyRequest_keys = { "KeyId" = true, "GrantTokens" = true, nil }
+keys.DescribeKeyRequest = { ["KeyId"] = true, ["GrantTokens"] = true, nil }
 
-function M.AssertDescribeKeyRequest(struct)
+function asserts.AssertDescribeKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeKeyRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["GrantTokens"] then M.AssertGrantTokenList(struct["GrantTokens"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["GrantTokens"] then asserts.AssertGrantTokenList(struct["GrantTokens"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeKeyRequest_keys[k], "DescribeKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeKeyRequest[k], "DescribeKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeKeyRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
--- @param GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
+-- @param _GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- Required parameter: KeyId
-function M.DescribeKeyRequest(KeyId, GrantTokens, ...)
+function M.DescribeKeyRequest(_KeyId, _GrantTokens, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeKeyRequest")
 	local t = { 
-		["KeyId"] = KeyId,
-		["GrantTokens"] = GrantTokens,
+		["KeyId"] = _KeyId,
+		["GrantTokens"] = _GrantTokens,
 	}
-	M.AssertDescribeKeyRequest(t)
+	asserts.AssertDescribeKeyRequest(t)
 	return t
 end
 
-local InvalidGrantIdException_keys = { "message" = true, nil }
+keys.InvalidGrantIdException = { ["message"] = true, nil }
 
-function M.AssertInvalidGrantIdException(struct)
+function asserts.AssertInvalidGrantIdException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidGrantIdException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidGrantIdException_keys[k], "InvalidGrantIdException contains unknown key " .. tostring(k))
+		assert(keys.InvalidGrantIdException[k], "InvalidGrantIdException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidGrantIdException
 -- <p>The request was rejected because the specified <code>GrantId</code> is not valid.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified <code>GrantId</code> is not valid.</p>
-function M.InvalidGrantIdException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.InvalidGrantIdException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidGrantIdException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidGrantIdException(t)
+	asserts.AssertInvalidGrantIdException(t)
 	return t
 end
 
-local EnableKeyRequest_keys = { "KeyId" = true, nil }
+keys.EnableKeyRequest = { ["KeyId"] = true, nil }
 
-function M.AssertEnableKeyRequest(struct)
+function asserts.AssertEnableKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnableKeyRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(EnableKeyRequest_keys[k], "EnableKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.EnableKeyRequest[k], "EnableKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnableKeyRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
 -- Required parameter: KeyId
-function M.EnableKeyRequest(KeyId, ...)
+function M.EnableKeyRequest(_KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableKeyRequest")
 	local t = { 
-		["KeyId"] = KeyId,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertEnableKeyRequest(t)
+	asserts.AssertEnableKeyRequest(t)
 	return t
 end
 
-local ImportKeyMaterialResponse_keys = { nil }
+keys.ImportKeyMaterialResponse = { nil }
 
-function M.AssertImportKeyMaterialResponse(struct)
+function asserts.AssertImportKeyMaterialResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ImportKeyMaterialResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ImportKeyMaterialResponse_keys[k], "ImportKeyMaterialResponse contains unknown key " .. tostring(k))
+		assert(keys.ImportKeyMaterialResponse[k], "ImportKeyMaterialResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -368,1950 +371,1950 @@ function M.ImportKeyMaterialResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportKeyMaterialResponse")
 	local t = { 
 	}
-	M.AssertImportKeyMaterialResponse(t)
+	asserts.AssertImportKeyMaterialResponse(t)
 	return t
 end
 
-local UpdateAliasRequest_keys = { "TargetKeyId" = true, "AliasName" = true, nil }
+keys.UpdateAliasRequest = { ["TargetKeyId"] = true, ["AliasName"] = true, nil }
 
-function M.AssertUpdateAliasRequest(struct)
+function asserts.AssertUpdateAliasRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateAliasRequest to be of type 'table'")
 	assert(struct["AliasName"], "Expected key AliasName to exist in table")
 	assert(struct["TargetKeyId"], "Expected key TargetKeyId to exist in table")
-	if struct["TargetKeyId"] then M.AssertKeyIdType(struct["TargetKeyId"]) end
-	if struct["AliasName"] then M.AssertAliasNameType(struct["AliasName"]) end
+	if struct["TargetKeyId"] then asserts.AssertKeyIdType(struct["TargetKeyId"]) end
+	if struct["AliasName"] then asserts.AssertAliasNameType(struct["AliasName"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateAliasRequest_keys[k], "UpdateAliasRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateAliasRequest[k], "UpdateAliasRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateAliasRequest
 --  
--- @param TargetKeyId [KeyIdType] <p>Unique identifier of the customer master key to be mapped to the alias. This value can be a globally unique identifier or the fully specified ARN of a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul> <p>You can call <a>ListAliases</a> to verify that the alias is mapped to the correct <code>TargetKeyId</code>.</p>
--- @param AliasName [AliasNameType] <p>String that contains the name of the alias to be modified. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.</p>
+-- @param _TargetKeyId [KeyIdType] <p>Unique identifier of the customer master key to be mapped to the alias. This value can be a globally unique identifier or the fully specified ARN of a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul> <p>You can call <a>ListAliases</a> to verify that the alias is mapped to the correct <code>TargetKeyId</code>.</p>
+-- @param _AliasName [AliasNameType] <p>String that contains the name of the alias to be modified. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.</p>
 -- Required parameter: AliasName
 -- Required parameter: TargetKeyId
-function M.UpdateAliasRequest(TargetKeyId, AliasName, ...)
+function M.UpdateAliasRequest(_TargetKeyId, _AliasName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAliasRequest")
 	local t = { 
-		["TargetKeyId"] = TargetKeyId,
-		["AliasName"] = AliasName,
+		["TargetKeyId"] = _TargetKeyId,
+		["AliasName"] = _AliasName,
 	}
-	M.AssertUpdateAliasRequest(t)
+	asserts.AssertUpdateAliasRequest(t)
 	return t
 end
 
-local GenerateDataKeyRequest_keys = { "NumberOfBytes" = true, "EncryptionContext" = true, "KeyId" = true, "GrantTokens" = true, "KeySpec" = true, nil }
+keys.GenerateDataKeyRequest = { ["NumberOfBytes"] = true, ["EncryptionContext"] = true, ["KeyId"] = true, ["GrantTokens"] = true, ["KeySpec"] = true, nil }
 
-function M.AssertGenerateDataKeyRequest(struct)
+function asserts.AssertGenerateDataKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GenerateDataKeyRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["NumberOfBytes"] then M.AssertNumberOfBytesType(struct["NumberOfBytes"]) end
-	if struct["EncryptionContext"] then M.AssertEncryptionContextType(struct["EncryptionContext"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["GrantTokens"] then M.AssertGrantTokenList(struct["GrantTokens"]) end
-	if struct["KeySpec"] then M.AssertDataKeySpec(struct["KeySpec"]) end
+	if struct["NumberOfBytes"] then asserts.AssertNumberOfBytesType(struct["NumberOfBytes"]) end
+	if struct["EncryptionContext"] then asserts.AssertEncryptionContextType(struct["EncryptionContext"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["GrantTokens"] then asserts.AssertGrantTokenList(struct["GrantTokens"]) end
+	if struct["KeySpec"] then asserts.AssertDataKeySpec(struct["KeySpec"]) end
 	for k,_ in pairs(struct) do
-		assert(GenerateDataKeyRequest_keys[k], "GenerateDataKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.GenerateDataKeyRequest[k], "GenerateDataKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GenerateDataKeyRequest
 --  
--- @param NumberOfBytes [NumberOfBytesType] <p>The length of the data encryption key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the <code>KeySpec</code> field instead of this one.</p>
--- @param EncryptionContext [EncryptionContextType] <p>A set of key-value pairs that represents additional authenticated data.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param KeyId [KeyIdType] <p>The identifier of the CMK under which to generate and encrypt the data encryption key.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of an alias that refers to the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul>
--- @param GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param KeySpec [DataKeySpec] <p>The length of the data encryption key. Use <code>AES_128</code> to generate a 128-bit symmetric key, or <code>AES_256</code> to generate a 256-bit symmetric key.</p>
+-- @param _NumberOfBytes [NumberOfBytesType] <p>The length of the data encryption key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the <code>KeySpec</code> field instead of this one.</p>
+-- @param _EncryptionContext [EncryptionContextType] <p>A set of key-value pairs that represents additional authenticated data.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _KeyId [KeyIdType] <p>The identifier of the CMK under which to generate and encrypt the data encryption key.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of an alias that refers to the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul>
+-- @param _GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _KeySpec [DataKeySpec] <p>The length of the data encryption key. Use <code>AES_128</code> to generate a 128-bit symmetric key, or <code>AES_256</code> to generate a 256-bit symmetric key.</p>
 -- Required parameter: KeyId
-function M.GenerateDataKeyRequest(NumberOfBytes, EncryptionContext, KeyId, GrantTokens, KeySpec, ...)
+function M.GenerateDataKeyRequest(_NumberOfBytes, _EncryptionContext, _KeyId, _GrantTokens, _KeySpec, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GenerateDataKeyRequest")
 	local t = { 
-		["NumberOfBytes"] = NumberOfBytes,
-		["EncryptionContext"] = EncryptionContext,
-		["KeyId"] = KeyId,
-		["GrantTokens"] = GrantTokens,
-		["KeySpec"] = KeySpec,
+		["NumberOfBytes"] = _NumberOfBytes,
+		["EncryptionContext"] = _EncryptionContext,
+		["KeyId"] = _KeyId,
+		["GrantTokens"] = _GrantTokens,
+		["KeySpec"] = _KeySpec,
 	}
-	M.AssertGenerateDataKeyRequest(t)
+	asserts.AssertGenerateDataKeyRequest(t)
 	return t
 end
 
-local KMSInvalidStateException_keys = { "message" = true, nil }
+keys.KMSInvalidStateException = { ["message"] = true, nil }
 
-function M.AssertKMSInvalidStateException(struct)
+function asserts.AssertKMSInvalidStateException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KMSInvalidStateException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(KMSInvalidStateException_keys[k], "KMSInvalidStateException contains unknown key " .. tostring(k))
+		assert(keys.KMSInvalidStateException[k], "KMSInvalidStateException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KMSInvalidStateException
 -- <p>The request was rejected because the state of the specified resource is not valid for this request.</p> <p>For more information about how key state affects the use of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the state of the specified resource is not valid for this request.</p> <p>For more information about how key state affects the use of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
-function M.KMSInvalidStateException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.KMSInvalidStateException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSInvalidStateException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertKMSInvalidStateException(t)
+	asserts.AssertKMSInvalidStateException(t)
 	return t
 end
 
-local GenerateDataKeyWithoutPlaintextRequest_keys = { "NumberOfBytes" = true, "EncryptionContext" = true, "KeyId" = true, "GrantTokens" = true, "KeySpec" = true, nil }
+keys.GenerateDataKeyWithoutPlaintextRequest = { ["NumberOfBytes"] = true, ["EncryptionContext"] = true, ["KeyId"] = true, ["GrantTokens"] = true, ["KeySpec"] = true, nil }
 
-function M.AssertGenerateDataKeyWithoutPlaintextRequest(struct)
+function asserts.AssertGenerateDataKeyWithoutPlaintextRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GenerateDataKeyWithoutPlaintextRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["NumberOfBytes"] then M.AssertNumberOfBytesType(struct["NumberOfBytes"]) end
-	if struct["EncryptionContext"] then M.AssertEncryptionContextType(struct["EncryptionContext"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["GrantTokens"] then M.AssertGrantTokenList(struct["GrantTokens"]) end
-	if struct["KeySpec"] then M.AssertDataKeySpec(struct["KeySpec"]) end
+	if struct["NumberOfBytes"] then asserts.AssertNumberOfBytesType(struct["NumberOfBytes"]) end
+	if struct["EncryptionContext"] then asserts.AssertEncryptionContextType(struct["EncryptionContext"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["GrantTokens"] then asserts.AssertGrantTokenList(struct["GrantTokens"]) end
+	if struct["KeySpec"] then asserts.AssertDataKeySpec(struct["KeySpec"]) end
 	for k,_ in pairs(struct) do
-		assert(GenerateDataKeyWithoutPlaintextRequest_keys[k], "GenerateDataKeyWithoutPlaintextRequest contains unknown key " .. tostring(k))
+		assert(keys.GenerateDataKeyWithoutPlaintextRequest[k], "GenerateDataKeyWithoutPlaintextRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GenerateDataKeyWithoutPlaintextRequest
 --  
--- @param NumberOfBytes [NumberOfBytesType] <p>The length of the data encryption key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the <code>KeySpec</code> field instead of this one.</p>
--- @param EncryptionContext [EncryptionContextType] <p>A set of key-value pairs that represents additional authenticated data.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param KeyId [KeyIdType] <p>The identifier of the CMK under which to generate and encrypt the data encryption key.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of an alias that refers to the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul>
--- @param GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param KeySpec [DataKeySpec] <p>The length of the data encryption key. Use <code>AES_128</code> to generate a 128-bit symmetric key, or <code>AES_256</code> to generate a 256-bit symmetric key.</p>
+-- @param _NumberOfBytes [NumberOfBytesType] <p>The length of the data encryption key in bytes. For example, use the value 64 to generate a 512-bit data key (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use the <code>KeySpec</code> field instead of this one.</p>
+-- @param _EncryptionContext [EncryptionContextType] <p>A set of key-value pairs that represents additional authenticated data.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _KeyId [KeyIdType] <p>The identifier of the CMK under which to generate and encrypt the data encryption key.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK, or the alias name or ARN of an alias that refers to the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>CMK ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul>
+-- @param _GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _KeySpec [DataKeySpec] <p>The length of the data encryption key. Use <code>AES_128</code> to generate a 128-bit symmetric key, or <code>AES_256</code> to generate a 256-bit symmetric key.</p>
 -- Required parameter: KeyId
-function M.GenerateDataKeyWithoutPlaintextRequest(NumberOfBytes, EncryptionContext, KeyId, GrantTokens, KeySpec, ...)
+function M.GenerateDataKeyWithoutPlaintextRequest(_NumberOfBytes, _EncryptionContext, _KeyId, _GrantTokens, _KeySpec, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GenerateDataKeyWithoutPlaintextRequest")
 	local t = { 
-		["NumberOfBytes"] = NumberOfBytes,
-		["EncryptionContext"] = EncryptionContext,
-		["KeyId"] = KeyId,
-		["GrantTokens"] = GrantTokens,
-		["KeySpec"] = KeySpec,
+		["NumberOfBytes"] = _NumberOfBytes,
+		["EncryptionContext"] = _EncryptionContext,
+		["KeyId"] = _KeyId,
+		["GrantTokens"] = _GrantTokens,
+		["KeySpec"] = _KeySpec,
 	}
-	M.AssertGenerateDataKeyWithoutPlaintextRequest(t)
+	asserts.AssertGenerateDataKeyWithoutPlaintextRequest(t)
 	return t
 end
 
-local ScheduleKeyDeletionResponse_keys = { "KeyId" = true, "DeletionDate" = true, nil }
+keys.ScheduleKeyDeletionResponse = { ["KeyId"] = true, ["DeletionDate"] = true, nil }
 
-function M.AssertScheduleKeyDeletionResponse(struct)
+function asserts.AssertScheduleKeyDeletionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScheduleKeyDeletionResponse to be of type 'table'")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["DeletionDate"] then M.AssertDateType(struct["DeletionDate"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["DeletionDate"] then asserts.AssertDateType(struct["DeletionDate"]) end
 	for k,_ in pairs(struct) do
-		assert(ScheduleKeyDeletionResponse_keys[k], "ScheduleKeyDeletionResponse contains unknown key " .. tostring(k))
+		assert(keys.ScheduleKeyDeletionResponse[k], "ScheduleKeyDeletionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScheduleKeyDeletionResponse
 --  
--- @param KeyId [KeyIdType] <p>The unique identifier of the customer master key (CMK) for which deletion is scheduled.</p>
--- @param DeletionDate [DateType] <p>The date and time after which AWS KMS deletes the customer master key (CMK).</p>
-function M.ScheduleKeyDeletionResponse(KeyId, DeletionDate, ...)
+-- @param _KeyId [KeyIdType] <p>The unique identifier of the customer master key (CMK) for which deletion is scheduled.</p>
+-- @param _DeletionDate [DateType] <p>The date and time after which AWS KMS deletes the customer master key (CMK).</p>
+function M.ScheduleKeyDeletionResponse(_KeyId, _DeletionDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScheduleKeyDeletionResponse")
 	local t = { 
-		["KeyId"] = KeyId,
-		["DeletionDate"] = DeletionDate,
+		["KeyId"] = _KeyId,
+		["DeletionDate"] = _DeletionDate,
 	}
-	M.AssertScheduleKeyDeletionResponse(t)
+	asserts.AssertScheduleKeyDeletionResponse(t)
 	return t
 end
 
-local NotFoundException_keys = { "message" = true, nil }
+keys.NotFoundException = { ["message"] = true, nil }
 
-function M.AssertNotFoundException(struct)
+function asserts.AssertNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotFoundException_keys[k], "NotFoundException contains unknown key " .. tostring(k))
+		assert(keys.NotFoundException[k], "NotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotFoundException
 -- <p>The request was rejected because the specified entity or resource could not be found.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified entity or resource could not be found.</p>
-function M.NotFoundException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.NotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertNotFoundException(t)
+	asserts.AssertNotFoundException(t)
 	return t
 end
 
-local GenerateRandomResponse_keys = { "Plaintext" = true, nil }
+keys.GenerateRandomResponse = { ["Plaintext"] = true, nil }
 
-function M.AssertGenerateRandomResponse(struct)
+function asserts.AssertGenerateRandomResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GenerateRandomResponse to be of type 'table'")
-	if struct["Plaintext"] then M.AssertPlaintextType(struct["Plaintext"]) end
+	if struct["Plaintext"] then asserts.AssertPlaintextType(struct["Plaintext"]) end
 	for k,_ in pairs(struct) do
-		assert(GenerateRandomResponse_keys[k], "GenerateRandomResponse contains unknown key " .. tostring(k))
+		assert(keys.GenerateRandomResponse[k], "GenerateRandomResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GenerateRandomResponse
 --  
--- @param Plaintext [PlaintextType] <p>The random byte string.</p>
-function M.GenerateRandomResponse(Plaintext, ...)
+-- @param _Plaintext [PlaintextType] <p>The random byte string.</p>
+function M.GenerateRandomResponse(_Plaintext, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GenerateRandomResponse")
 	local t = { 
-		["Plaintext"] = Plaintext,
+		["Plaintext"] = _Plaintext,
 	}
-	M.AssertGenerateRandomResponse(t)
+	asserts.AssertGenerateRandomResponse(t)
 	return t
 end
 
-local ReEncryptRequest_keys = { "SourceEncryptionContext" = true, "GrantTokens" = true, "DestinationEncryptionContext" = true, "DestinationKeyId" = true, "CiphertextBlob" = true, nil }
+keys.ReEncryptRequest = { ["SourceEncryptionContext"] = true, ["GrantTokens"] = true, ["DestinationEncryptionContext"] = true, ["DestinationKeyId"] = true, ["CiphertextBlob"] = true, nil }
 
-function M.AssertReEncryptRequest(struct)
+function asserts.AssertReEncryptRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReEncryptRequest to be of type 'table'")
 	assert(struct["CiphertextBlob"], "Expected key CiphertextBlob to exist in table")
 	assert(struct["DestinationKeyId"], "Expected key DestinationKeyId to exist in table")
-	if struct["SourceEncryptionContext"] then M.AssertEncryptionContextType(struct["SourceEncryptionContext"]) end
-	if struct["GrantTokens"] then M.AssertGrantTokenList(struct["GrantTokens"]) end
-	if struct["DestinationEncryptionContext"] then M.AssertEncryptionContextType(struct["DestinationEncryptionContext"]) end
-	if struct["DestinationKeyId"] then M.AssertKeyIdType(struct["DestinationKeyId"]) end
-	if struct["CiphertextBlob"] then M.AssertCiphertextType(struct["CiphertextBlob"]) end
+	if struct["SourceEncryptionContext"] then asserts.AssertEncryptionContextType(struct["SourceEncryptionContext"]) end
+	if struct["GrantTokens"] then asserts.AssertGrantTokenList(struct["GrantTokens"]) end
+	if struct["DestinationEncryptionContext"] then asserts.AssertEncryptionContextType(struct["DestinationEncryptionContext"]) end
+	if struct["DestinationKeyId"] then asserts.AssertKeyIdType(struct["DestinationKeyId"]) end
+	if struct["CiphertextBlob"] then asserts.AssertCiphertextType(struct["CiphertextBlob"]) end
 	for k,_ in pairs(struct) do
-		assert(ReEncryptRequest_keys[k], "ReEncryptRequest contains unknown key " .. tostring(k))
+		assert(keys.ReEncryptRequest[k], "ReEncryptRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReEncryptRequest
 --  
--- @param SourceEncryptionContext [EncryptionContextType] <p>Encryption context used to encrypt and decrypt the data specified in the <code>CiphertextBlob</code> parameter.</p>
--- @param GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param DestinationEncryptionContext [EncryptionContextType] <p>Encryption context to use when the data is reencrypted.</p>
--- @param DestinationKeyId [KeyIdType] <p>A unique identifier for the CMK to use to reencrypt the data. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
--- @param CiphertextBlob [CiphertextType] <p>Ciphertext of the data to reencrypt.</p>
+-- @param _SourceEncryptionContext [EncryptionContextType] <p>Encryption context used to encrypt and decrypt the data specified in the <code>CiphertextBlob</code> parameter.</p>
+-- @param _GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _DestinationEncryptionContext [EncryptionContextType] <p>Encryption context to use when the data is reencrypted.</p>
+-- @param _DestinationKeyId [KeyIdType] <p>A unique identifier for the CMK to use to reencrypt the data. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
+-- @param _CiphertextBlob [CiphertextType] <p>Ciphertext of the data to reencrypt.</p>
 -- Required parameter: CiphertextBlob
 -- Required parameter: DestinationKeyId
-function M.ReEncryptRequest(SourceEncryptionContext, GrantTokens, DestinationEncryptionContext, DestinationKeyId, CiphertextBlob, ...)
+function M.ReEncryptRequest(_SourceEncryptionContext, _GrantTokens, _DestinationEncryptionContext, _DestinationKeyId, _CiphertextBlob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReEncryptRequest")
 	local t = { 
-		["SourceEncryptionContext"] = SourceEncryptionContext,
-		["GrantTokens"] = GrantTokens,
-		["DestinationEncryptionContext"] = DestinationEncryptionContext,
-		["DestinationKeyId"] = DestinationKeyId,
-		["CiphertextBlob"] = CiphertextBlob,
+		["SourceEncryptionContext"] = _SourceEncryptionContext,
+		["GrantTokens"] = _GrantTokens,
+		["DestinationEncryptionContext"] = _DestinationEncryptionContext,
+		["DestinationKeyId"] = _DestinationKeyId,
+		["CiphertextBlob"] = _CiphertextBlob,
 	}
-	M.AssertReEncryptRequest(t)
+	asserts.AssertReEncryptRequest(t)
 	return t
 end
 
-local InvalidGrantTokenException_keys = { "message" = true, nil }
+keys.InvalidGrantTokenException = { ["message"] = true, nil }
 
-function M.AssertInvalidGrantTokenException(struct)
+function asserts.AssertInvalidGrantTokenException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidGrantTokenException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidGrantTokenException_keys[k], "InvalidGrantTokenException contains unknown key " .. tostring(k))
+		assert(keys.InvalidGrantTokenException[k], "InvalidGrantTokenException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidGrantTokenException
 -- <p>The request was rejected because the specified grant token is not valid.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified grant token is not valid.</p>
-function M.InvalidGrantTokenException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.InvalidGrantTokenException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidGrantTokenException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidGrantTokenException(t)
+	asserts.AssertInvalidGrantTokenException(t)
 	return t
 end
 
-local LimitExceededException_keys = { "message" = true, nil }
+keys.LimitExceededException = { ["message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>The request was rejected because a limit was exceeded. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/limits.html">Limits</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because a limit was exceeded. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/limits.html">Limits</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
-function M.LimitExceededException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.LimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local ListAliasesResponse_keys = { "Truncated" = true, "NextMarker" = true, "Aliases" = true, nil }
+keys.ListAliasesResponse = { ["Truncated"] = true, ["NextMarker"] = true, ["Aliases"] = true, nil }
 
-function M.AssertListAliasesResponse(struct)
+function asserts.AssertListAliasesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAliasesResponse to be of type 'table'")
-	if struct["Truncated"] then M.AssertBooleanType(struct["Truncated"]) end
-	if struct["NextMarker"] then M.AssertMarkerType(struct["NextMarker"]) end
-	if struct["Aliases"] then M.AssertAliasList(struct["Aliases"]) end
+	if struct["Truncated"] then asserts.AssertBooleanType(struct["Truncated"]) end
+	if struct["NextMarker"] then asserts.AssertMarkerType(struct["NextMarker"]) end
+	if struct["Aliases"] then asserts.AssertAliasList(struct["Aliases"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAliasesResponse_keys[k], "ListAliasesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAliasesResponse[k], "ListAliasesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAliasesResponse
 --  
--- @param Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
--- @param NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
--- @param Aliases [AliasList] <p>A list of key aliases in the user's account.</p>
-function M.ListAliasesResponse(Truncated, NextMarker, Aliases, ...)
+-- @param _Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+-- @param _NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
+-- @param _Aliases [AliasList] <p>A list of key aliases in the user's account.</p>
+function M.ListAliasesResponse(_Truncated, _NextMarker, _Aliases, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesResponse")
 	local t = { 
-		["Truncated"] = Truncated,
-		["NextMarker"] = NextMarker,
-		["Aliases"] = Aliases,
+		["Truncated"] = _Truncated,
+		["NextMarker"] = _NextMarker,
+		["Aliases"] = _Aliases,
 	}
-	M.AssertListAliasesResponse(t)
+	asserts.AssertListAliasesResponse(t)
 	return t
 end
 
-local InvalidMarkerException_keys = { "message" = true, nil }
+keys.InvalidMarkerException = { ["message"] = true, nil }
 
-function M.AssertInvalidMarkerException(struct)
+function asserts.AssertInvalidMarkerException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidMarkerException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidMarkerException_keys[k], "InvalidMarkerException contains unknown key " .. tostring(k))
+		assert(keys.InvalidMarkerException[k], "InvalidMarkerException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidMarkerException
 -- <p>The request was rejected because the marker that specifies where pagination should next begin is not valid.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the marker that specifies where pagination should next begin is not valid.</p>
-function M.InvalidMarkerException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.InvalidMarkerException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidMarkerException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidMarkerException(t)
+	asserts.AssertInvalidMarkerException(t)
 	return t
 end
 
-local ListKeyPoliciesRequest_keys = { "Marker" = true, "KeyId" = true, "Limit" = true, nil }
+keys.ListKeyPoliciesRequest = { ["Marker"] = true, ["KeyId"] = true, ["Limit"] = true, nil }
 
-function M.AssertListKeyPoliciesRequest(struct)
+function asserts.AssertListKeyPoliciesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListKeyPoliciesRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(ListKeyPoliciesRequest_keys[k], "ListKeyPoliciesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListKeyPoliciesRequest[k], "ListKeyPoliciesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListKeyPoliciesRequest
 --  
--- @param Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK). You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
--- @param Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.</p> <p>Currently only 1 policy can be attached to a key.</p>
+-- @param _Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key (CMK). You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- @param _Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.</p> <p>Currently only 1 policy can be attached to a key.</p>
 -- Required parameter: KeyId
-function M.ListKeyPoliciesRequest(Marker, KeyId, Limit, ...)
+function M.ListKeyPoliciesRequest(_Marker, _KeyId, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListKeyPoliciesRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["KeyId"] = KeyId,
-		["Limit"] = Limit,
+		["Marker"] = _Marker,
+		["KeyId"] = _KeyId,
+		["Limit"] = _Limit,
 	}
-	M.AssertListKeyPoliciesRequest(t)
+	asserts.AssertListKeyPoliciesRequest(t)
 	return t
 end
 
-local DeleteAliasRequest_keys = { "AliasName" = true, nil }
+keys.DeleteAliasRequest = { ["AliasName"] = true, nil }
 
-function M.AssertDeleteAliasRequest(struct)
+function asserts.AssertDeleteAliasRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteAliasRequest to be of type 'table'")
 	assert(struct["AliasName"], "Expected key AliasName to exist in table")
-	if struct["AliasName"] then M.AssertAliasNameType(struct["AliasName"]) end
+	if struct["AliasName"] then asserts.AssertAliasNameType(struct["AliasName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteAliasRequest_keys[k], "DeleteAliasRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteAliasRequest[k], "DeleteAliasRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteAliasRequest
 --  
--- @param AliasName [AliasNameType] <p>The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.</p>
+-- @param _AliasName [AliasNameType] <p>The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.</p>
 -- Required parameter: AliasName
-function M.DeleteAliasRequest(AliasName, ...)
+function M.DeleteAliasRequest(_AliasName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAliasRequest")
 	local t = { 
-		["AliasName"] = AliasName,
+		["AliasName"] = _AliasName,
 	}
-	M.AssertDeleteAliasRequest(t)
+	asserts.AssertDeleteAliasRequest(t)
 	return t
 end
 
-local MalformedPolicyDocumentException_keys = { "message" = true, nil }
+keys.MalformedPolicyDocumentException = { ["message"] = true, nil }
 
-function M.AssertMalformedPolicyDocumentException(struct)
+function asserts.AssertMalformedPolicyDocumentException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MalformedPolicyDocumentException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(MalformedPolicyDocumentException_keys[k], "MalformedPolicyDocumentException contains unknown key " .. tostring(k))
+		assert(keys.MalformedPolicyDocumentException[k], "MalformedPolicyDocumentException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MalformedPolicyDocumentException
 -- <p>The request was rejected because the specified policy is not syntactically or semantically correct.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified policy is not syntactically or semantically correct.</p>
-function M.MalformedPolicyDocumentException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.MalformedPolicyDocumentException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MalformedPolicyDocumentException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertMalformedPolicyDocumentException(t)
+	asserts.AssertMalformedPolicyDocumentException(t)
 	return t
 end
 
-local DecryptResponse_keys = { "Plaintext" = true, "KeyId" = true, nil }
+keys.DecryptResponse = { ["Plaintext"] = true, ["KeyId"] = true, nil }
 
-function M.AssertDecryptResponse(struct)
+function asserts.AssertDecryptResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DecryptResponse to be of type 'table'")
-	if struct["Plaintext"] then M.AssertPlaintextType(struct["Plaintext"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Plaintext"] then asserts.AssertPlaintextType(struct["Plaintext"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(DecryptResponse_keys[k], "DecryptResponse contains unknown key " .. tostring(k))
+		assert(keys.DecryptResponse[k], "DecryptResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DecryptResponse
 --  
--- @param Plaintext [PlaintextType] <p>Decrypted plaintext data. This value may not be returned if the customer master key is not available or if you didn't have permission to use it.</p>
--- @param KeyId [KeyIdType] <p>ARN of the key used to perform the decryption. This value is returned if no errors are encountered during the operation.</p>
-function M.DecryptResponse(Plaintext, KeyId, ...)
+-- @param _Plaintext [PlaintextType] <p>Decrypted plaintext data. This value may not be returned if the customer master key is not available or if you didn't have permission to use it.</p>
+-- @param _KeyId [KeyIdType] <p>ARN of the key used to perform the decryption. This value is returned if no errors are encountered during the operation.</p>
+function M.DecryptResponse(_Plaintext, _KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DecryptResponse")
 	local t = { 
-		["Plaintext"] = Plaintext,
-		["KeyId"] = KeyId,
+		["Plaintext"] = _Plaintext,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertDecryptResponse(t)
+	asserts.AssertDecryptResponse(t)
 	return t
 end
 
-local ListResourceTagsResponse_keys = { "Truncated" = true, "NextMarker" = true, "Tags" = true, nil }
+keys.ListResourceTagsResponse = { ["Truncated"] = true, ["NextMarker"] = true, ["Tags"] = true, nil }
 
-function M.AssertListResourceTagsResponse(struct)
+function asserts.AssertListResourceTagsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListResourceTagsResponse to be of type 'table'")
-	if struct["Truncated"] then M.AssertBooleanType(struct["Truncated"]) end
-	if struct["NextMarker"] then M.AssertMarkerType(struct["NextMarker"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["Truncated"] then asserts.AssertBooleanType(struct["Truncated"]) end
+	if struct["NextMarker"] then asserts.AssertMarkerType(struct["NextMarker"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(ListResourceTagsResponse_keys[k], "ListResourceTagsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListResourceTagsResponse[k], "ListResourceTagsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListResourceTagsResponse
 --  
--- @param Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
--- @param NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p> <p>Do not assume or infer any information from this value.</p>
--- @param Tags [TagList] <p>A list of tags. Each tag consists of a tag key and a tag value.</p>
-function M.ListResourceTagsResponse(Truncated, NextMarker, Tags, ...)
+-- @param _Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+-- @param _NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p> <p>Do not assume or infer any information from this value.</p>
+-- @param _Tags [TagList] <p>A list of tags. Each tag consists of a tag key and a tag value.</p>
+function M.ListResourceTagsResponse(_Truncated, _NextMarker, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourceTagsResponse")
 	local t = { 
-		["Truncated"] = Truncated,
-		["NextMarker"] = NextMarker,
-		["Tags"] = Tags,
+		["Truncated"] = _Truncated,
+		["NextMarker"] = _NextMarker,
+		["Tags"] = _Tags,
 	}
-	M.AssertListResourceTagsResponse(t)
+	asserts.AssertListResourceTagsResponse(t)
 	return t
 end
 
-local GrantConstraints_keys = { "EncryptionContextSubset" = true, "EncryptionContextEquals" = true, nil }
+keys.GrantConstraints = { ["EncryptionContextSubset"] = true, ["EncryptionContextEquals"] = true, nil }
 
-function M.AssertGrantConstraints(struct)
+function asserts.AssertGrantConstraints(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GrantConstraints to be of type 'table'")
-	if struct["EncryptionContextSubset"] then M.AssertEncryptionContextType(struct["EncryptionContextSubset"]) end
-	if struct["EncryptionContextEquals"] then M.AssertEncryptionContextType(struct["EncryptionContextEquals"]) end
+	if struct["EncryptionContextSubset"] then asserts.AssertEncryptionContextType(struct["EncryptionContextSubset"]) end
+	if struct["EncryptionContextEquals"] then asserts.AssertEncryptionContextType(struct["EncryptionContextEquals"]) end
 	for k,_ in pairs(struct) do
-		assert(GrantConstraints_keys[k], "GrantConstraints contains unknown key " .. tostring(k))
+		assert(keys.GrantConstraints[k], "GrantConstraints contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GrantConstraints
 -- <p>A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>Grant constraints apply only to operations that accept encryption context as input. For example, the <code> <a>DescribeKey</a> </code> operation does not accept encryption context as input. A grant that allows the <code>DescribeKey</code> operation does so regardless of the grant constraints. In constrast, the <code> <a>Encrypt</a> </code> operation accepts encryption context as input. A grant that allows the <code>Encrypt</code> operation does so only when the encryption context of the <code>Encrypt</code> operation satisfies the grant constraints.</p>
--- @param EncryptionContextSubset [EncryptionContextType] <p>A list of key-value pairs, all of which must be present in the encryption context of certain subsequent operations that the grant allows. When certain subsequent operations allowed by the grant include encryption context that matches this list or is a superset of this list, the grant allows the operation. Otherwise, the grant does not allow the operation.</p>
--- @param EncryptionContextEquals [EncryptionContextType] <p>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows. When certain subsequent operations allowed by the grant include encryption context that matches this list, the grant allows the operation. Otherwise, the grant does not allow the operation.</p>
-function M.GrantConstraints(EncryptionContextSubset, EncryptionContextEquals, ...)
+-- @param _EncryptionContextSubset [EncryptionContextType] <p>A list of key-value pairs, all of which must be present in the encryption context of certain subsequent operations that the grant allows. When certain subsequent operations allowed by the grant include encryption context that matches this list or is a superset of this list, the grant allows the operation. Otherwise, the grant does not allow the operation.</p>
+-- @param _EncryptionContextEquals [EncryptionContextType] <p>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows. When certain subsequent operations allowed by the grant include encryption context that matches this list, the grant allows the operation. Otherwise, the grant does not allow the operation.</p>
+function M.GrantConstraints(_EncryptionContextSubset, _EncryptionContextEquals, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GrantConstraints")
 	local t = { 
-		["EncryptionContextSubset"] = EncryptionContextSubset,
-		["EncryptionContextEquals"] = EncryptionContextEquals,
+		["EncryptionContextSubset"] = _EncryptionContextSubset,
+		["EncryptionContextEquals"] = _EncryptionContextEquals,
 	}
-	M.AssertGrantConstraints(t)
+	asserts.AssertGrantConstraints(t)
 	return t
 end
 
-local Tag_keys = { "TagKey" = true, "TagValue" = true, nil }
+keys.Tag = { ["TagKey"] = true, ["TagValue"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["TagKey"], "Expected key TagKey to exist in table")
 	assert(struct["TagValue"], "Expected key TagValue to exist in table")
-	if struct["TagKey"] then M.AssertTagKeyType(struct["TagKey"]) end
-	if struct["TagValue"] then M.AssertTagValueType(struct["TagValue"]) end
+	if struct["TagKey"] then asserts.AssertTagKeyType(struct["TagKey"]) end
+	if struct["TagValue"] then asserts.AssertTagValueType(struct["TagValue"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>A key-value pair. A tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.</p>
--- @param TagKey [TagKeyType] <p>The key of the tag.</p>
--- @param TagValue [TagValueType] <p>The value of the tag.</p>
+-- @param _TagKey [TagKeyType] <p>The key of the tag.</p>
+-- @param _TagValue [TagValueType] <p>The value of the tag.</p>
 -- Required parameter: TagKey
 -- Required parameter: TagValue
-function M.Tag(TagKey, TagValue, ...)
+function M.Tag(_TagKey, _TagValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["TagKey"] = TagKey,
-		["TagValue"] = TagValue,
+		["TagKey"] = _TagKey,
+		["TagValue"] = _TagValue,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local ImportKeyMaterialRequest_keys = { "ExpirationModel" = true, "ValidTo" = true, "KeyId" = true, "ImportToken" = true, "EncryptedKeyMaterial" = true, nil }
+keys.ImportKeyMaterialRequest = { ["ExpirationModel"] = true, ["ValidTo"] = true, ["KeyId"] = true, ["ImportToken"] = true, ["EncryptedKeyMaterial"] = true, nil }
 
-function M.AssertImportKeyMaterialRequest(struct)
+function asserts.AssertImportKeyMaterialRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ImportKeyMaterialRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["ImportToken"], "Expected key ImportToken to exist in table")
 	assert(struct["EncryptedKeyMaterial"], "Expected key EncryptedKeyMaterial to exist in table")
-	if struct["ExpirationModel"] then M.AssertExpirationModelType(struct["ExpirationModel"]) end
-	if struct["ValidTo"] then M.AssertDateType(struct["ValidTo"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["ImportToken"] then M.AssertCiphertextType(struct["ImportToken"]) end
-	if struct["EncryptedKeyMaterial"] then M.AssertCiphertextType(struct["EncryptedKeyMaterial"]) end
+	if struct["ExpirationModel"] then asserts.AssertExpirationModelType(struct["ExpirationModel"]) end
+	if struct["ValidTo"] then asserts.AssertDateType(struct["ValidTo"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["ImportToken"] then asserts.AssertCiphertextType(struct["ImportToken"]) end
+	if struct["EncryptedKeyMaterial"] then asserts.AssertCiphertextType(struct["EncryptedKeyMaterial"]) end
 	for k,_ in pairs(struct) do
-		assert(ImportKeyMaterialRequest_keys[k], "ImportKeyMaterialRequest contains unknown key " .. tostring(k))
+		assert(keys.ImportKeyMaterialRequest[k], "ImportKeyMaterialRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ImportKeyMaterialRequest
 --  
--- @param ExpirationModel [ExpirationModelType] <p>Specifies whether the key material expires. The default is <code>KEY_MATERIAL_EXPIRES</code>, in which case you must include the <code>ValidTo</code> parameter. When this parameter is set to <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>, you must omit the <code>ValidTo</code> parameter.</p>
--- @param ValidTo [DateType] <p>The time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. You must omit this parameter when the <code>ExpirationModel</code> parameter is set to <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>. Otherwise it is required.</p>
--- @param KeyId [KeyIdType] <p>The identifier of the CMK to import the key material into. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
--- @param ImportToken [CiphertextType] <p>The import token that you received in the response to a previous <a>GetParametersForImport</a> request. It must be from the same response that contained the public key that you used to encrypt the key material.</p>
--- @param EncryptedKeyMaterial [CiphertextType] <p>The encrypted key material to import. It must be encrypted with the public key that you received in the response to a previous <a>GetParametersForImport</a> request, using the wrapping algorithm that you specified in that request.</p>
+-- @param _ExpirationModel [ExpirationModelType] <p>Specifies whether the key material expires. The default is <code>KEY_MATERIAL_EXPIRES</code>, in which case you must include the <code>ValidTo</code> parameter. When this parameter is set to <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>, you must omit the <code>ValidTo</code> parameter.</p>
+-- @param _ValidTo [DateType] <p>The time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. You must omit this parameter when the <code>ExpirationModel</code> parameter is set to <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>. Otherwise it is required.</p>
+-- @param _KeyId [KeyIdType] <p>The identifier of the CMK to import the key material into. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- @param _ImportToken [CiphertextType] <p>The import token that you received in the response to a previous <a>GetParametersForImport</a> request. It must be from the same response that contained the public key that you used to encrypt the key material.</p>
+-- @param _EncryptedKeyMaterial [CiphertextType] <p>The encrypted key material to import. It must be encrypted with the public key that you received in the response to a previous <a>GetParametersForImport</a> request, using the wrapping algorithm that you specified in that request.</p>
 -- Required parameter: KeyId
 -- Required parameter: ImportToken
 -- Required parameter: EncryptedKeyMaterial
-function M.ImportKeyMaterialRequest(ExpirationModel, ValidTo, KeyId, ImportToken, EncryptedKeyMaterial, ...)
+function M.ImportKeyMaterialRequest(_ExpirationModel, _ValidTo, _KeyId, _ImportToken, _EncryptedKeyMaterial, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportKeyMaterialRequest")
 	local t = { 
-		["ExpirationModel"] = ExpirationModel,
-		["ValidTo"] = ValidTo,
-		["KeyId"] = KeyId,
-		["ImportToken"] = ImportToken,
-		["EncryptedKeyMaterial"] = EncryptedKeyMaterial,
+		["ExpirationModel"] = _ExpirationModel,
+		["ValidTo"] = _ValidTo,
+		["KeyId"] = _KeyId,
+		["ImportToken"] = _ImportToken,
+		["EncryptedKeyMaterial"] = _EncryptedKeyMaterial,
 	}
-	M.AssertImportKeyMaterialRequest(t)
+	asserts.AssertImportKeyMaterialRequest(t)
 	return t
 end
 
-local RetireGrantRequest_keys = { "GrantToken" = true, "KeyId" = true, "GrantId" = true, nil }
+keys.RetireGrantRequest = { ["GrantToken"] = true, ["KeyId"] = true, ["GrantId"] = true, nil }
 
-function M.AssertRetireGrantRequest(struct)
+function asserts.AssertRetireGrantRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RetireGrantRequest to be of type 'table'")
-	if struct["GrantToken"] then M.AssertGrantTokenType(struct["GrantToken"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["GrantId"] then M.AssertGrantIdType(struct["GrantId"]) end
+	if struct["GrantToken"] then asserts.AssertGrantTokenType(struct["GrantToken"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["GrantId"] then asserts.AssertGrantIdType(struct["GrantId"]) end
 	for k,_ in pairs(struct) do
-		assert(RetireGrantRequest_keys[k], "RetireGrantRequest contains unknown key " .. tostring(k))
+		assert(keys.RetireGrantRequest[k], "RetireGrantRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RetireGrantRequest
 --  
--- @param GrantToken [GrantTokenType] <p>Token that identifies the grant to be retired.</p>
--- @param KeyId [KeyIdType] <p>The Amazon Resource Name of the CMK associated with the grant. Example:</p> <ul> <li> <p>arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
--- @param GrantId [GrantIdType] <p>Unique identifier of the grant to retire. The grant ID is returned in the response to a <code>CreateGrant</code> operation.</p> <ul> <li> <p>Grant ID Example - 0123456789012345678901234567890123456789012345678901234567890123</p> </li> </ul>
-function M.RetireGrantRequest(GrantToken, KeyId, GrantId, ...)
+-- @param _GrantToken [GrantTokenType] <p>Token that identifies the grant to be retired.</p>
+-- @param _KeyId [KeyIdType] <p>The Amazon Resource Name of the CMK associated with the grant. Example:</p> <ul> <li> <p>arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
+-- @param _GrantId [GrantIdType] <p>Unique identifier of the grant to retire. The grant ID is returned in the response to a <code>CreateGrant</code> operation.</p> <ul> <li> <p>Grant ID Example - 0123456789012345678901234567890123456789012345678901234567890123</p> </li> </ul>
+function M.RetireGrantRequest(_GrantToken, _KeyId, _GrantId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetireGrantRequest")
 	local t = { 
-		["GrantToken"] = GrantToken,
-		["KeyId"] = KeyId,
-		["GrantId"] = GrantId,
+		["GrantToken"] = _GrantToken,
+		["KeyId"] = _KeyId,
+		["GrantId"] = _GrantId,
 	}
-	M.AssertRetireGrantRequest(t)
+	asserts.AssertRetireGrantRequest(t)
 	return t
 end
 
-local ListKeysResponse_keys = { "Keys" = true, "NextMarker" = true, "Truncated" = true, nil }
+keys.ListKeysResponse = { ["Keys"] = true, ["NextMarker"] = true, ["Truncated"] = true, nil }
 
-function M.AssertListKeysResponse(struct)
+function asserts.AssertListKeysResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListKeysResponse to be of type 'table'")
-	if struct["Keys"] then M.AssertKeyList(struct["Keys"]) end
-	if struct["NextMarker"] then M.AssertMarkerType(struct["NextMarker"]) end
-	if struct["Truncated"] then M.AssertBooleanType(struct["Truncated"]) end
+	if struct["Keys"] then asserts.AssertKeyList(struct["Keys"]) end
+	if struct["NextMarker"] then asserts.AssertMarkerType(struct["NextMarker"]) end
+	if struct["Truncated"] then asserts.AssertBooleanType(struct["Truncated"]) end
 	for k,_ in pairs(struct) do
-		assert(ListKeysResponse_keys[k], "ListKeysResponse contains unknown key " .. tostring(k))
+		assert(keys.ListKeysResponse[k], "ListKeysResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListKeysResponse
 --  
--- @param Keys [KeyList] <p>A list of keys.</p>
--- @param NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
--- @param Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
-function M.ListKeysResponse(Keys, NextMarker, Truncated, ...)
+-- @param _Keys [KeyList] <p>A list of keys.</p>
+-- @param _NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
+-- @param _Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+function M.ListKeysResponse(_Keys, _NextMarker, _Truncated, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListKeysResponse")
 	local t = { 
-		["Keys"] = Keys,
-		["NextMarker"] = NextMarker,
-		["Truncated"] = Truncated,
+		["Keys"] = _Keys,
+		["NextMarker"] = _NextMarker,
+		["Truncated"] = _Truncated,
 	}
-	M.AssertListKeysResponse(t)
+	asserts.AssertListKeysResponse(t)
 	return t
 end
 
-local UntagResourceRequest_keys = { "KeyId" = true, "TagKeys" = true, nil }
+keys.UntagResourceRequest = { ["KeyId"] = true, ["TagKeys"] = true, nil }
 
-function M.AssertUntagResourceRequest(struct)
+function asserts.AssertUntagResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UntagResourceRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["TagKeys"] then M.AssertTagKeyList(struct["TagKeys"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
 	for k,_ in pairs(struct) do
-		assert(UntagResourceRequest_keys[k], "UntagResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.UntagResourceRequest[k], "UntagResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the CMK from which you are removing tags. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
--- @param TagKeys [TagKeyList] <p>One or more tag keys. Specify only the tag keys, not the tag values.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the CMK from which you are removing tags. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- @param _TagKeys [TagKeyList] <p>One or more tag keys. Specify only the tag keys, not the tag values.</p>
 -- Required parameter: KeyId
 -- Required parameter: TagKeys
-function M.UntagResourceRequest(KeyId, TagKeys, ...)
+function M.UntagResourceRequest(_KeyId, _TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceRequest")
 	local t = { 
-		["KeyId"] = KeyId,
-		["TagKeys"] = TagKeys,
+		["KeyId"] = _KeyId,
+		["TagKeys"] = _TagKeys,
 	}
-	M.AssertUntagResourceRequest(t)
+	asserts.AssertUntagResourceRequest(t)
 	return t
 end
 
-local EncryptResponse_keys = { "KeyId" = true, "CiphertextBlob" = true, nil }
+keys.EncryptResponse = { ["KeyId"] = true, ["CiphertextBlob"] = true, nil }
 
-function M.AssertEncryptResponse(struct)
+function asserts.AssertEncryptResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EncryptResponse to be of type 'table'")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["CiphertextBlob"] then M.AssertCiphertextType(struct["CiphertextBlob"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["CiphertextBlob"] then asserts.AssertCiphertextType(struct["CiphertextBlob"]) end
 	for k,_ in pairs(struct) do
-		assert(EncryptResponse_keys[k], "EncryptResponse contains unknown key " .. tostring(k))
+		assert(keys.EncryptResponse[k], "EncryptResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EncryptResponse
 --  
--- @param KeyId [KeyIdType] <p>The ID of the key used during encryption.</p>
--- @param CiphertextBlob [CiphertextType] <p>The encrypted plaintext. If you are using the CLI, the value is Base64 encoded. Otherwise, it is not encoded.</p>
-function M.EncryptResponse(KeyId, CiphertextBlob, ...)
+-- @param _KeyId [KeyIdType] <p>The ID of the key used during encryption.</p>
+-- @param _CiphertextBlob [CiphertextType] <p>The encrypted plaintext. If you are using the CLI, the value is Base64 encoded. Otherwise, it is not encoded.</p>
+function M.EncryptResponse(_KeyId, _CiphertextBlob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EncryptResponse")
 	local t = { 
-		["KeyId"] = KeyId,
-		["CiphertextBlob"] = CiphertextBlob,
+		["KeyId"] = _KeyId,
+		["CiphertextBlob"] = _CiphertextBlob,
 	}
-	M.AssertEncryptResponse(t)
+	asserts.AssertEncryptResponse(t)
 	return t
 end
 
-local AlreadyExistsException_keys = { "message" = true, nil }
+keys.AlreadyExistsException = { ["message"] = true, nil }
 
-function M.AssertAlreadyExistsException(struct)
+function asserts.AssertAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AlreadyExistsException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AlreadyExistsException_keys[k], "AlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.AlreadyExistsException[k], "AlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AlreadyExistsException
 -- <p>The request was rejected because it attempted to create a resource that already exists.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because it attempted to create a resource that already exists.</p>
-function M.AlreadyExistsException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.AlreadyExistsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyExistsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAlreadyExistsException(t)
+	asserts.AssertAlreadyExistsException(t)
 	return t
 end
 
-local GenerateDataKeyResponse_keys = { "Plaintext" = true, "KeyId" = true, "CiphertextBlob" = true, nil }
+keys.GenerateDataKeyResponse = { ["Plaintext"] = true, ["KeyId"] = true, ["CiphertextBlob"] = true, nil }
 
-function M.AssertGenerateDataKeyResponse(struct)
+function asserts.AssertGenerateDataKeyResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GenerateDataKeyResponse to be of type 'table'")
-	if struct["Plaintext"] then M.AssertPlaintextType(struct["Plaintext"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["CiphertextBlob"] then M.AssertCiphertextType(struct["CiphertextBlob"]) end
+	if struct["Plaintext"] then asserts.AssertPlaintextType(struct["Plaintext"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["CiphertextBlob"] then asserts.AssertCiphertextType(struct["CiphertextBlob"]) end
 	for k,_ in pairs(struct) do
-		assert(GenerateDataKeyResponse_keys[k], "GenerateDataKeyResponse contains unknown key " .. tostring(k))
+		assert(keys.GenerateDataKeyResponse[k], "GenerateDataKeyResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GenerateDataKeyResponse
 --  
--- @param Plaintext [PlaintextType] <p>The data encryption key. Use this data key for local encryption and decryption, then remove it from memory as soon as possible.</p>
--- @param KeyId [KeyIdType] <p>The identifier of the CMK under which the data encryption key was generated and encrypted.</p>
--- @param CiphertextBlob [CiphertextType] <p>The encrypted data encryption key.</p>
-function M.GenerateDataKeyResponse(Plaintext, KeyId, CiphertextBlob, ...)
+-- @param _Plaintext [PlaintextType] <p>The data encryption key. Use this data key for local encryption and decryption, then remove it from memory as soon as possible.</p>
+-- @param _KeyId [KeyIdType] <p>The identifier of the CMK under which the data encryption key was generated and encrypted.</p>
+-- @param _CiphertextBlob [CiphertextType] <p>The encrypted data encryption key.</p>
+function M.GenerateDataKeyResponse(_Plaintext, _KeyId, _CiphertextBlob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GenerateDataKeyResponse")
 	local t = { 
-		["Plaintext"] = Plaintext,
-		["KeyId"] = KeyId,
-		["CiphertextBlob"] = CiphertextBlob,
+		["Plaintext"] = _Plaintext,
+		["KeyId"] = _KeyId,
+		["CiphertextBlob"] = _CiphertextBlob,
 	}
-	M.AssertGenerateDataKeyResponse(t)
+	asserts.AssertGenerateDataKeyResponse(t)
 	return t
 end
 
-local ListKeyPoliciesResponse_keys = { "PolicyNames" = true, "NextMarker" = true, "Truncated" = true, nil }
+keys.ListKeyPoliciesResponse = { ["PolicyNames"] = true, ["NextMarker"] = true, ["Truncated"] = true, nil }
 
-function M.AssertListKeyPoliciesResponse(struct)
+function asserts.AssertListKeyPoliciesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListKeyPoliciesResponse to be of type 'table'")
-	if struct["PolicyNames"] then M.AssertPolicyNameList(struct["PolicyNames"]) end
-	if struct["NextMarker"] then M.AssertMarkerType(struct["NextMarker"]) end
-	if struct["Truncated"] then M.AssertBooleanType(struct["Truncated"]) end
+	if struct["PolicyNames"] then asserts.AssertPolicyNameList(struct["PolicyNames"]) end
+	if struct["NextMarker"] then asserts.AssertMarkerType(struct["NextMarker"]) end
+	if struct["Truncated"] then asserts.AssertBooleanType(struct["Truncated"]) end
 	for k,_ in pairs(struct) do
-		assert(ListKeyPoliciesResponse_keys[k], "ListKeyPoliciesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListKeyPoliciesResponse[k], "ListKeyPoliciesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListKeyPoliciesResponse
 --  
--- @param PolicyNames [PolicyNameList] <p>A list of policy names. Currently, there is only one policy and it is named "Default".</p>
--- @param NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
--- @param Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
-function M.ListKeyPoliciesResponse(PolicyNames, NextMarker, Truncated, ...)
+-- @param _PolicyNames [PolicyNameList] <p>A list of policy names. Currently, there is only one policy and it is named "Default".</p>
+-- @param _NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
+-- @param _Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+function M.ListKeyPoliciesResponse(_PolicyNames, _NextMarker, _Truncated, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListKeyPoliciesResponse")
 	local t = { 
-		["PolicyNames"] = PolicyNames,
-		["NextMarker"] = NextMarker,
-		["Truncated"] = Truncated,
+		["PolicyNames"] = _PolicyNames,
+		["NextMarker"] = _NextMarker,
+		["Truncated"] = _Truncated,
 	}
-	M.AssertListKeyPoliciesResponse(t)
+	asserts.AssertListKeyPoliciesResponse(t)
 	return t
 end
 
-local GetParametersForImportRequest_keys = { "WrappingAlgorithm" = true, "KeyId" = true, "WrappingKeySpec" = true, nil }
+keys.GetParametersForImportRequest = { ["WrappingAlgorithm"] = true, ["KeyId"] = true, ["WrappingKeySpec"] = true, nil }
 
-function M.AssertGetParametersForImportRequest(struct)
+function asserts.AssertGetParametersForImportRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetParametersForImportRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["WrappingAlgorithm"], "Expected key WrappingAlgorithm to exist in table")
 	assert(struct["WrappingKeySpec"], "Expected key WrappingKeySpec to exist in table")
-	if struct["WrappingAlgorithm"] then M.AssertAlgorithmSpec(struct["WrappingAlgorithm"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["WrappingKeySpec"] then M.AssertWrappingKeySpec(struct["WrappingKeySpec"]) end
+	if struct["WrappingAlgorithm"] then asserts.AssertAlgorithmSpec(struct["WrappingAlgorithm"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["WrappingKeySpec"] then asserts.AssertWrappingKeySpec(struct["WrappingKeySpec"]) end
 	for k,_ in pairs(struct) do
-		assert(GetParametersForImportRequest_keys[k], "GetParametersForImportRequest contains unknown key " .. tostring(k))
+		assert(keys.GetParametersForImportRequest[k], "GetParametersForImportRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetParametersForImportRequest
 --  
--- @param WrappingAlgorithm [AlgorithmSpec] <p>The algorithm you will use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html">Encrypt the Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param KeyId [KeyIdType] <p>The identifier of the CMK into which you will import key material. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
--- @param WrappingKeySpec [WrappingKeySpec] <p>The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.</p>
+-- @param _WrappingAlgorithm [AlgorithmSpec] <p>The algorithm you will use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html">Encrypt the Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _KeyId [KeyIdType] <p>The identifier of the CMK into which you will import key material. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- @param _WrappingKeySpec [WrappingKeySpec] <p>The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public keys are supported.</p>
 -- Required parameter: KeyId
 -- Required parameter: WrappingAlgorithm
 -- Required parameter: WrappingKeySpec
-function M.GetParametersForImportRequest(WrappingAlgorithm, KeyId, WrappingKeySpec, ...)
+function M.GetParametersForImportRequest(_WrappingAlgorithm, _KeyId, _WrappingKeySpec, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersForImportRequest")
 	local t = { 
-		["WrappingAlgorithm"] = WrappingAlgorithm,
-		["KeyId"] = KeyId,
-		["WrappingKeySpec"] = WrappingKeySpec,
+		["WrappingAlgorithm"] = _WrappingAlgorithm,
+		["KeyId"] = _KeyId,
+		["WrappingKeySpec"] = _WrappingKeySpec,
 	}
-	M.AssertGetParametersForImportRequest(t)
+	asserts.AssertGetParametersForImportRequest(t)
 	return t
 end
 
-local CreateKeyResponse_keys = { "KeyMetadata" = true, nil }
+keys.CreateKeyResponse = { ["KeyMetadata"] = true, nil }
 
-function M.AssertCreateKeyResponse(struct)
+function asserts.AssertCreateKeyResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateKeyResponse to be of type 'table'")
-	if struct["KeyMetadata"] then M.AssertKeyMetadata(struct["KeyMetadata"]) end
+	if struct["KeyMetadata"] then asserts.AssertKeyMetadata(struct["KeyMetadata"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateKeyResponse_keys[k], "CreateKeyResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateKeyResponse[k], "CreateKeyResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateKeyResponse
 --  
--- @param KeyMetadata [KeyMetadata] <p>Metadata associated with the CMK.</p>
-function M.CreateKeyResponse(KeyMetadata, ...)
+-- @param _KeyMetadata [KeyMetadata] <p>Metadata associated with the CMK.</p>
+function M.CreateKeyResponse(_KeyMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeyResponse")
 	local t = { 
-		["KeyMetadata"] = KeyMetadata,
+		["KeyMetadata"] = _KeyMetadata,
 	}
-	M.AssertCreateKeyResponse(t)
+	asserts.AssertCreateKeyResponse(t)
 	return t
 end
 
-local ReEncryptResponse_keys = { "SourceKeyId" = true, "KeyId" = true, "CiphertextBlob" = true, nil }
+keys.ReEncryptResponse = { ["SourceKeyId"] = true, ["KeyId"] = true, ["CiphertextBlob"] = true, nil }
 
-function M.AssertReEncryptResponse(struct)
+function asserts.AssertReEncryptResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReEncryptResponse to be of type 'table'")
-	if struct["SourceKeyId"] then M.AssertKeyIdType(struct["SourceKeyId"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["CiphertextBlob"] then M.AssertCiphertextType(struct["CiphertextBlob"]) end
+	if struct["SourceKeyId"] then asserts.AssertKeyIdType(struct["SourceKeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["CiphertextBlob"] then asserts.AssertCiphertextType(struct["CiphertextBlob"]) end
 	for k,_ in pairs(struct) do
-		assert(ReEncryptResponse_keys[k], "ReEncryptResponse contains unknown key " .. tostring(k))
+		assert(keys.ReEncryptResponse[k], "ReEncryptResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReEncryptResponse
 --  
--- @param SourceKeyId [KeyIdType] <p>Unique identifier of the CMK used to originally encrypt the data.</p>
--- @param KeyId [KeyIdType] <p>Unique identifier of the CMK used to reencrypt the data.</p>
--- @param CiphertextBlob [CiphertextType] <p>The reencrypted data.</p>
-function M.ReEncryptResponse(SourceKeyId, KeyId, CiphertextBlob, ...)
+-- @param _SourceKeyId [KeyIdType] <p>Unique identifier of the CMK used to originally encrypt the data.</p>
+-- @param _KeyId [KeyIdType] <p>Unique identifier of the CMK used to reencrypt the data.</p>
+-- @param _CiphertextBlob [CiphertextType] <p>The reencrypted data.</p>
+function M.ReEncryptResponse(_SourceKeyId, _KeyId, _CiphertextBlob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReEncryptResponse")
 	local t = { 
-		["SourceKeyId"] = SourceKeyId,
-		["KeyId"] = KeyId,
-		["CiphertextBlob"] = CiphertextBlob,
+		["SourceKeyId"] = _SourceKeyId,
+		["KeyId"] = _KeyId,
+		["CiphertextBlob"] = _CiphertextBlob,
 	}
-	M.AssertReEncryptResponse(t)
+	asserts.AssertReEncryptResponse(t)
 	return t
 end
 
-local CreateAliasRequest_keys = { "TargetKeyId" = true, "AliasName" = true, nil }
+keys.CreateAliasRequest = { ["TargetKeyId"] = true, ["AliasName"] = true, nil }
 
-function M.AssertCreateAliasRequest(struct)
+function asserts.AssertCreateAliasRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAliasRequest to be of type 'table'")
 	assert(struct["AliasName"], "Expected key AliasName to exist in table")
 	assert(struct["TargetKeyId"], "Expected key TargetKeyId to exist in table")
-	if struct["TargetKeyId"] then M.AssertKeyIdType(struct["TargetKeyId"]) end
-	if struct["AliasName"] then M.AssertAliasNameType(struct["AliasName"]) end
+	if struct["TargetKeyId"] then asserts.AssertKeyIdType(struct["TargetKeyId"]) end
+	if struct["AliasName"] then asserts.AssertAliasNameType(struct["AliasName"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAliasRequest_keys[k], "CreateAliasRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateAliasRequest[k], "CreateAliasRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAliasRequest
 --  
--- @param TargetKeyId [KeyIdType] <p>An identifier of the key for which you are creating the alias. This value cannot be another alias but can be a globally unique identifier or a fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- @param AliasName [AliasNameType] <p>String that contains the display name. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.</p>
+-- @param _TargetKeyId [KeyIdType] <p>An identifier of the key for which you are creating the alias. This value cannot be another alias but can be a globally unique identifier or a fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _AliasName [AliasNameType] <p>String that contains the display name. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.</p>
 -- Required parameter: AliasName
 -- Required parameter: TargetKeyId
-function M.CreateAliasRequest(TargetKeyId, AliasName, ...)
+function M.CreateAliasRequest(_TargetKeyId, _AliasName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasRequest")
 	local t = { 
-		["TargetKeyId"] = TargetKeyId,
-		["AliasName"] = AliasName,
+		["TargetKeyId"] = _TargetKeyId,
+		["AliasName"] = _AliasName,
 	}
-	M.AssertCreateAliasRequest(t)
+	asserts.AssertCreateAliasRequest(t)
 	return t
 end
 
-local KeyUnavailableException_keys = { "message" = true, nil }
+keys.KeyUnavailableException = { ["message"] = true, nil }
 
-function M.AssertKeyUnavailableException(struct)
+function asserts.AssertKeyUnavailableException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KeyUnavailableException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(KeyUnavailableException_keys[k], "KeyUnavailableException contains unknown key " .. tostring(k))
+		assert(keys.KeyUnavailableException[k], "KeyUnavailableException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KeyUnavailableException
 -- <p>The request was rejected because the specified CMK was not available. The request can be retried.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified CMK was not available. The request can be retried.</p>
-function M.KeyUnavailableException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.KeyUnavailableException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyUnavailableException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertKeyUnavailableException(t)
+	asserts.AssertKeyUnavailableException(t)
 	return t
 end
 
-local CancelKeyDeletionRequest_keys = { "KeyId" = true, nil }
+keys.CancelKeyDeletionRequest = { ["KeyId"] = true, nil }
 
-function M.AssertCancelKeyDeletionRequest(struct)
+function asserts.AssertCancelKeyDeletionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CancelKeyDeletionRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(CancelKeyDeletionRequest_keys[k], "CancelKeyDeletionRequest contains unknown key " .. tostring(k))
+		assert(keys.CancelKeyDeletionRequest[k], "CancelKeyDeletionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CancelKeyDeletionRequest
 --  
--- @param KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) for which to cancel deletion.</p> <p>To specify this value, use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>Key ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul> <p>To obtain the unique key ID and key ARN for a given CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
+-- @param _KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) for which to cancel deletion.</p> <p>To specify this value, use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>Key ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul> <p>To obtain the unique key ID and key ARN for a given CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required parameter: KeyId
-function M.CancelKeyDeletionRequest(KeyId, ...)
+function M.CancelKeyDeletionRequest(_KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelKeyDeletionRequest")
 	local t = { 
-		["KeyId"] = KeyId,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertCancelKeyDeletionRequest(t)
+	asserts.AssertCancelKeyDeletionRequest(t)
 	return t
 end
 
-local IncorrectKeyMaterialException_keys = { "message" = true, nil }
+keys.IncorrectKeyMaterialException = { ["message"] = true, nil }
 
-function M.AssertIncorrectKeyMaterialException(struct)
+function asserts.AssertIncorrectKeyMaterialException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IncorrectKeyMaterialException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(IncorrectKeyMaterialException_keys[k], "IncorrectKeyMaterialException contains unknown key " .. tostring(k))
+		assert(keys.IncorrectKeyMaterialException[k], "IncorrectKeyMaterialException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IncorrectKeyMaterialException
 -- <p>The request was rejected because the provided key material is invalid or is not the same key material that was previously imported into this customer master key (CMK).</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the provided key material is invalid or is not the same key material that was previously imported into this customer master key (CMK).</p>
-function M.IncorrectKeyMaterialException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.IncorrectKeyMaterialException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncorrectKeyMaterialException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertIncorrectKeyMaterialException(t)
+	asserts.AssertIncorrectKeyMaterialException(t)
 	return t
 end
 
-local DeleteImportedKeyMaterialRequest_keys = { "KeyId" = true, nil }
+keys.DeleteImportedKeyMaterialRequest = { ["KeyId"] = true, nil }
 
-function M.AssertDeleteImportedKeyMaterialRequest(struct)
+function asserts.AssertDeleteImportedKeyMaterialRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteImportedKeyMaterialRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteImportedKeyMaterialRequest_keys[k], "DeleteImportedKeyMaterialRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteImportedKeyMaterialRequest[k], "DeleteImportedKeyMaterialRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteImportedKeyMaterialRequest
 --  
--- @param KeyId [KeyIdType] <p>The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- @param _KeyId [KeyIdType] <p>The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
 -- Required parameter: KeyId
-function M.DeleteImportedKeyMaterialRequest(KeyId, ...)
+function M.DeleteImportedKeyMaterialRequest(_KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteImportedKeyMaterialRequest")
 	local t = { 
-		["KeyId"] = KeyId,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertDeleteImportedKeyMaterialRequest(t)
+	asserts.AssertDeleteImportedKeyMaterialRequest(t)
 	return t
 end
 
-local GetKeyRotationStatusResponse_keys = { "KeyRotationEnabled" = true, nil }
+keys.GetKeyRotationStatusResponse = { ["KeyRotationEnabled"] = true, nil }
 
-function M.AssertGetKeyRotationStatusResponse(struct)
+function asserts.AssertGetKeyRotationStatusResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetKeyRotationStatusResponse to be of type 'table'")
-	if struct["KeyRotationEnabled"] then M.AssertBooleanType(struct["KeyRotationEnabled"]) end
+	if struct["KeyRotationEnabled"] then asserts.AssertBooleanType(struct["KeyRotationEnabled"]) end
 	for k,_ in pairs(struct) do
-		assert(GetKeyRotationStatusResponse_keys[k], "GetKeyRotationStatusResponse contains unknown key " .. tostring(k))
+		assert(keys.GetKeyRotationStatusResponse[k], "GetKeyRotationStatusResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetKeyRotationStatusResponse
 --  
--- @param KeyRotationEnabled [BooleanType] <p>A Boolean value that specifies whether key rotation is enabled.</p>
-function M.GetKeyRotationStatusResponse(KeyRotationEnabled, ...)
+-- @param _KeyRotationEnabled [BooleanType] <p>A Boolean value that specifies whether key rotation is enabled.</p>
+function M.GetKeyRotationStatusResponse(_KeyRotationEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyRotationStatusResponse")
 	local t = { 
-		["KeyRotationEnabled"] = KeyRotationEnabled,
+		["KeyRotationEnabled"] = _KeyRotationEnabled,
 	}
-	M.AssertGetKeyRotationStatusResponse(t)
+	asserts.AssertGetKeyRotationStatusResponse(t)
 	return t
 end
 
-local EncryptRequest_keys = { "Plaintext" = true, "EncryptionContext" = true, "KeyId" = true, "GrantTokens" = true, nil }
+keys.EncryptRequest = { ["Plaintext"] = true, ["EncryptionContext"] = true, ["KeyId"] = true, ["GrantTokens"] = true, nil }
 
-function M.AssertEncryptRequest(struct)
+function asserts.AssertEncryptRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EncryptRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["Plaintext"], "Expected key Plaintext to exist in table")
-	if struct["Plaintext"] then M.AssertPlaintextType(struct["Plaintext"]) end
-	if struct["EncryptionContext"] then M.AssertEncryptionContextType(struct["EncryptionContext"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["GrantTokens"] then M.AssertGrantTokenList(struct["GrantTokens"]) end
+	if struct["Plaintext"] then asserts.AssertPlaintextType(struct["Plaintext"]) end
+	if struct["EncryptionContext"] then asserts.AssertEncryptionContextType(struct["EncryptionContext"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["GrantTokens"] then asserts.AssertGrantTokenList(struct["GrantTokens"]) end
 	for k,_ in pairs(struct) do
-		assert(EncryptRequest_keys[k], "EncryptRequest contains unknown key " .. tostring(k))
+		assert(keys.EncryptRequest[k], "EncryptRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EncryptRequest
 --  
--- @param Plaintext [PlaintextType] <p>Data to be encrypted.</p>
--- @param EncryptionContext [EncryptionContextType] <p>Name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the <code>Decrypt</code> API or decryption will fail. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a>.</p>
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
--- @param GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _Plaintext [PlaintextType] <p>Data to be encrypted.</p>
+-- @param _EncryptionContext [EncryptionContextType] <p>Name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the <code>Decrypt</code> API or decryption will fail. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a>.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias ARN Example - arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
+-- @param _GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- Required parameter: KeyId
 -- Required parameter: Plaintext
-function M.EncryptRequest(Plaintext, EncryptionContext, KeyId, GrantTokens, ...)
+function M.EncryptRequest(_Plaintext, _EncryptionContext, _KeyId, _GrantTokens, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EncryptRequest")
 	local t = { 
-		["Plaintext"] = Plaintext,
-		["EncryptionContext"] = EncryptionContext,
-		["KeyId"] = KeyId,
-		["GrantTokens"] = GrantTokens,
+		["Plaintext"] = _Plaintext,
+		["EncryptionContext"] = _EncryptionContext,
+		["KeyId"] = _KeyId,
+		["GrantTokens"] = _GrantTokens,
 	}
-	M.AssertEncryptRequest(t)
+	asserts.AssertEncryptRequest(t)
 	return t
 end
 
-local KeyListEntry_keys = { "KeyArn" = true, "KeyId" = true, nil }
+keys.KeyListEntry = { ["KeyArn"] = true, ["KeyId"] = true, nil }
 
-function M.AssertKeyListEntry(struct)
+function asserts.AssertKeyListEntry(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KeyListEntry to be of type 'table'")
-	if struct["KeyArn"] then M.AssertArnType(struct["KeyArn"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyArn"] then asserts.AssertArnType(struct["KeyArn"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(KeyListEntry_keys[k], "KeyListEntry contains unknown key " .. tostring(k))
+		assert(keys.KeyListEntry[k], "KeyListEntry contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KeyListEntry
 -- <p>Contains information about each entry in the key list.</p>
--- @param KeyArn [ArnType] <p>ARN of the key.</p>
--- @param KeyId [KeyIdType] <p>Unique identifier of the key.</p>
-function M.KeyListEntry(KeyArn, KeyId, ...)
+-- @param _KeyArn [ArnType] <p>ARN of the key.</p>
+-- @param _KeyId [KeyIdType] <p>Unique identifier of the key.</p>
+function M.KeyListEntry(_KeyArn, _KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyListEntry")
 	local t = { 
-		["KeyArn"] = KeyArn,
-		["KeyId"] = KeyId,
+		["KeyArn"] = _KeyArn,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertKeyListEntry(t)
+	asserts.AssertKeyListEntry(t)
 	return t
 end
 
-local ListKeysRequest_keys = { "Marker" = true, "Limit" = true, nil }
+keys.ListKeysRequest = { ["Marker"] = true, ["Limit"] = true, nil }
 
-function M.AssertListKeysRequest(struct)
+function asserts.AssertListKeysRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListKeysRequest to be of type 'table'")
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(ListKeysRequest_keys[k], "ListKeysRequest contains unknown key " .. tostring(k))
+		assert(keys.ListKeysRequest[k], "ListKeysRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListKeysRequest
 --  
--- @param Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- @param Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.</p>
-function M.ListKeysRequest(Marker, Limit, ...)
+-- @param _Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
+-- @param _Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.</p>
+function M.ListKeysRequest(_Marker, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListKeysRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["Limit"] = Limit,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
 	}
-	M.AssertListKeysRequest(t)
+	asserts.AssertListKeysRequest(t)
 	return t
 end
 
-local KeyMetadata_keys = { "Origin" = true, "KeyId" = true, "Description" = true, "DeletionDate" = true, "ExpirationModel" = true, "ValidTo" = true, "Enabled" = true, "KeyUsage" = true, "KeyState" = true, "CreationDate" = true, "Arn" = true, "AWSAccountId" = true, nil }
+keys.KeyMetadata = { ["Origin"] = true, ["KeyId"] = true, ["Description"] = true, ["DeletionDate"] = true, ["ExpirationModel"] = true, ["ValidTo"] = true, ["Enabled"] = true, ["KeyUsage"] = true, ["KeyState"] = true, ["CreationDate"] = true, ["Arn"] = true, ["AWSAccountId"] = true, nil }
 
-function M.AssertKeyMetadata(struct)
+function asserts.AssertKeyMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KeyMetadata to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["Origin"] then M.AssertOriginType(struct["Origin"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["Description"] then M.AssertDescriptionType(struct["Description"]) end
-	if struct["DeletionDate"] then M.AssertDateType(struct["DeletionDate"]) end
-	if struct["ExpirationModel"] then M.AssertExpirationModelType(struct["ExpirationModel"]) end
-	if struct["ValidTo"] then M.AssertDateType(struct["ValidTo"]) end
-	if struct["Enabled"] then M.AssertBooleanType(struct["Enabled"]) end
-	if struct["KeyUsage"] then M.AssertKeyUsageType(struct["KeyUsage"]) end
-	if struct["KeyState"] then M.AssertKeyState(struct["KeyState"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
-	if struct["Arn"] then M.AssertArnType(struct["Arn"]) end
-	if struct["AWSAccountId"] then M.AssertAWSAccountIdType(struct["AWSAccountId"]) end
+	if struct["Origin"] then asserts.AssertOriginType(struct["Origin"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Description"] then asserts.AssertDescriptionType(struct["Description"]) end
+	if struct["DeletionDate"] then asserts.AssertDateType(struct["DeletionDate"]) end
+	if struct["ExpirationModel"] then asserts.AssertExpirationModelType(struct["ExpirationModel"]) end
+	if struct["ValidTo"] then asserts.AssertDateType(struct["ValidTo"]) end
+	if struct["Enabled"] then asserts.AssertBooleanType(struct["Enabled"]) end
+	if struct["KeyUsage"] then asserts.AssertKeyUsageType(struct["KeyUsage"]) end
+	if struct["KeyState"] then asserts.AssertKeyState(struct["KeyState"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
+	if struct["Arn"] then asserts.AssertArnType(struct["Arn"]) end
+	if struct["AWSAccountId"] then asserts.AssertAWSAccountIdType(struct["AWSAccountId"]) end
 	for k,_ in pairs(struct) do
-		assert(KeyMetadata_keys[k], "KeyMetadata contains unknown key " .. tostring(k))
+		assert(keys.KeyMetadata[k], "KeyMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KeyMetadata
 -- <p>Contains metadata about a customer master key (CMK).</p> <p>This data type is used as a response element for the <a>CreateKey</a> and <a>DescribeKey</a> operations.</p>
--- @param Origin [OriginType] <p>The source of the CMK's key material. When this value is <code>AWS_KMS</code>, AWS KMS created the key material. When this value is <code>EXTERNAL</code>, the key material was imported from your existing key management infrastructure or the CMK lacks key material.</p>
--- @param KeyId [KeyIdType] <p>The globally unique identifier for the CMK.</p>
--- @param Description [DescriptionType] <p>The description of the CMK.</p>
--- @param DeletionDate [DateType] <p>The date and time after which AWS KMS deletes the CMK. This value is present only when <code>KeyState</code> is <code>PendingDeletion</code>, otherwise this value is omitted.</p>
--- @param ExpirationModel [ExpirationModelType] <p>Specifies whether the CMK's key material expires. This value is present only when <code>Origin</code> is <code>EXTERNAL</code>, otherwise this value is omitted.</p>
--- @param ValidTo [DateType] <p>The time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. This value is present only for CMKs whose <code>Origin</code> is <code>EXTERNAL</code> and whose <code>ExpirationModel</code> is <code>KEY_MATERIAL_EXPIRES</code>, otherwise this value is omitted.</p>
--- @param Enabled [BooleanType] <p>Specifies whether the CMK is enabled. When <code>KeyState</code> is <code>Enabled</code> this value is true, otherwise it is false.</p>
--- @param KeyUsage [KeyUsageType] <p>The cryptographic operations for which you can use the CMK. Currently the only allowed value is <code>ENCRYPT_DECRYPT</code>, which means you can use the CMK for the <a>Encrypt</a> and <a>Decrypt</a> operations.</p>
--- @param KeyState [KeyState] <p>The state of the CMK.</p> <p>For more information about how key state affects the use of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param CreationDate [DateType] <p>The date and time when the CMK was created.</p>
--- @param Arn [ArnType] <p>The Amazon Resource Name (ARN) of the CMK. For examples, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms">AWS Key Management Service (AWS KMS)</a> in the Example ARNs section of the <i>AWS General Reference</i>.</p>
--- @param AWSAccountId [AWSAccountIdType] <p>The twelve-digit account ID of the AWS account that owns the CMK.</p>
+-- @param _Origin [OriginType] <p>The source of the CMK's key material. When this value is <code>AWS_KMS</code>, AWS KMS created the key material. When this value is <code>EXTERNAL</code>, the key material was imported from your existing key management infrastructure or the CMK lacks key material.</p>
+-- @param _KeyId [KeyIdType] <p>The globally unique identifier for the CMK.</p>
+-- @param _Description [DescriptionType] <p>The description of the CMK.</p>
+-- @param _DeletionDate [DateType] <p>The date and time after which AWS KMS deletes the CMK. This value is present only when <code>KeyState</code> is <code>PendingDeletion</code>, otherwise this value is omitted.</p>
+-- @param _ExpirationModel [ExpirationModelType] <p>Specifies whether the CMK's key material expires. This value is present only when <code>Origin</code> is <code>EXTERNAL</code>, otherwise this value is omitted.</p>
+-- @param _ValidTo [DateType] <p>The time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. This value is present only for CMKs whose <code>Origin</code> is <code>EXTERNAL</code> and whose <code>ExpirationModel</code> is <code>KEY_MATERIAL_EXPIRES</code>, otherwise this value is omitted.</p>
+-- @param _Enabled [BooleanType] <p>Specifies whether the CMK is enabled. When <code>KeyState</code> is <code>Enabled</code> this value is true, otherwise it is false.</p>
+-- @param _KeyUsage [KeyUsageType] <p>The cryptographic operations for which you can use the CMK. Currently the only allowed value is <code>ENCRYPT_DECRYPT</code>, which means you can use the CMK for the <a>Encrypt</a> and <a>Decrypt</a> operations.</p>
+-- @param _KeyState [KeyState] <p>The state of the CMK.</p> <p>For more information about how key state affects the use of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _CreationDate [DateType] <p>The date and time when the CMK was created.</p>
+-- @param _Arn [ArnType] <p>The Amazon Resource Name (ARN) of the CMK. For examples, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms">AWS Key Management Service (AWS KMS)</a> in the Example ARNs section of the <i>AWS General Reference</i>.</p>
+-- @param _AWSAccountId [AWSAccountIdType] <p>The twelve-digit account ID of the AWS account that owns the CMK.</p>
 -- Required parameter: KeyId
-function M.KeyMetadata(Origin, KeyId, Description, DeletionDate, ExpirationModel, ValidTo, Enabled, KeyUsage, KeyState, CreationDate, Arn, AWSAccountId, ...)
+function M.KeyMetadata(_Origin, _KeyId, _Description, _DeletionDate, _ExpirationModel, _ValidTo, _Enabled, _KeyUsage, _KeyState, _CreationDate, _Arn, _AWSAccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyMetadata")
 	local t = { 
-		["Origin"] = Origin,
-		["KeyId"] = KeyId,
-		["Description"] = Description,
-		["DeletionDate"] = DeletionDate,
-		["ExpirationModel"] = ExpirationModel,
-		["ValidTo"] = ValidTo,
-		["Enabled"] = Enabled,
-		["KeyUsage"] = KeyUsage,
-		["KeyState"] = KeyState,
-		["CreationDate"] = CreationDate,
-		["Arn"] = Arn,
-		["AWSAccountId"] = AWSAccountId,
+		["Origin"] = _Origin,
+		["KeyId"] = _KeyId,
+		["Description"] = _Description,
+		["DeletionDate"] = _DeletionDate,
+		["ExpirationModel"] = _ExpirationModel,
+		["ValidTo"] = _ValidTo,
+		["Enabled"] = _Enabled,
+		["KeyUsage"] = _KeyUsage,
+		["KeyState"] = _KeyState,
+		["CreationDate"] = _CreationDate,
+		["Arn"] = _Arn,
+		["AWSAccountId"] = _AWSAccountId,
 	}
-	M.AssertKeyMetadata(t)
+	asserts.AssertKeyMetadata(t)
 	return t
 end
 
-local ListGrantsRequest_keys = { "Marker" = true, "KeyId" = true, "Limit" = true, nil }
+keys.ListGrantsRequest = { ["Marker"] = true, ["KeyId"] = true, ["Limit"] = true, nil }
 
-function M.AssertListGrantsRequest(struct)
+function asserts.AssertListGrantsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGrantsRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGrantsRequest_keys[k], "ListGrantsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListGrantsRequest[k], "ListGrantsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGrantsRequest
 --  
--- @param Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- @param Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
+-- @param _Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
 -- Required parameter: KeyId
-function M.ListGrantsRequest(Marker, KeyId, Limit, ...)
+function M.ListGrantsRequest(_Marker, _KeyId, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGrantsRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["KeyId"] = KeyId,
-		["Limit"] = Limit,
+		["Marker"] = _Marker,
+		["KeyId"] = _KeyId,
+		["Limit"] = _Limit,
 	}
-	M.AssertListGrantsRequest(t)
+	asserts.AssertListGrantsRequest(t)
 	return t
 end
 
-local DecryptRequest_keys = { "EncryptionContext" = true, "GrantTokens" = true, "CiphertextBlob" = true, nil }
+keys.DecryptRequest = { ["EncryptionContext"] = true, ["GrantTokens"] = true, ["CiphertextBlob"] = true, nil }
 
-function M.AssertDecryptRequest(struct)
+function asserts.AssertDecryptRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DecryptRequest to be of type 'table'")
 	assert(struct["CiphertextBlob"], "Expected key CiphertextBlob to exist in table")
-	if struct["EncryptionContext"] then M.AssertEncryptionContextType(struct["EncryptionContext"]) end
-	if struct["GrantTokens"] then M.AssertGrantTokenList(struct["GrantTokens"]) end
-	if struct["CiphertextBlob"] then M.AssertCiphertextType(struct["CiphertextBlob"]) end
+	if struct["EncryptionContext"] then asserts.AssertEncryptionContextType(struct["EncryptionContext"]) end
+	if struct["GrantTokens"] then asserts.AssertGrantTokenList(struct["GrantTokens"]) end
+	if struct["CiphertextBlob"] then asserts.AssertCiphertextType(struct["CiphertextBlob"]) end
 	for k,_ in pairs(struct) do
-		assert(DecryptRequest_keys[k], "DecryptRequest contains unknown key " .. tostring(k))
+		assert(keys.DecryptRequest[k], "DecryptRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DecryptRequest
 --  
--- @param EncryptionContext [EncryptionContextType] <p>The encryption context. If this was specified in the <a>Encrypt</a> function, it must be specified here or the decryption operation will fail. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a>.</p>
--- @param GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param CiphertextBlob [CiphertextType] <p>Ciphertext to be decrypted. The blob includes metadata.</p>
+-- @param _EncryptionContext [EncryptionContextType] <p>The encryption context. If this was specified in the <a>Encrypt</a> function, it must be specified here or the decryption operation will fail. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a>.</p>
+-- @param _GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _CiphertextBlob [CiphertextType] <p>Ciphertext to be decrypted. The blob includes metadata.</p>
 -- Required parameter: CiphertextBlob
-function M.DecryptRequest(EncryptionContext, GrantTokens, CiphertextBlob, ...)
+function M.DecryptRequest(_EncryptionContext, _GrantTokens, _CiphertextBlob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DecryptRequest")
 	local t = { 
-		["EncryptionContext"] = EncryptionContext,
-		["GrantTokens"] = GrantTokens,
-		["CiphertextBlob"] = CiphertextBlob,
+		["EncryptionContext"] = _EncryptionContext,
+		["GrantTokens"] = _GrantTokens,
+		["CiphertextBlob"] = _CiphertextBlob,
 	}
-	M.AssertDecryptRequest(t)
+	asserts.AssertDecryptRequest(t)
 	return t
 end
 
-local CancelKeyDeletionResponse_keys = { "KeyId" = true, nil }
+keys.CancelKeyDeletionResponse = { ["KeyId"] = true, nil }
 
-function M.AssertCancelKeyDeletionResponse(struct)
+function asserts.AssertCancelKeyDeletionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CancelKeyDeletionResponse to be of type 'table'")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(CancelKeyDeletionResponse_keys[k], "CancelKeyDeletionResponse contains unknown key " .. tostring(k))
+		assert(keys.CancelKeyDeletionResponse[k], "CancelKeyDeletionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CancelKeyDeletionResponse
 --  
--- @param KeyId [KeyIdType] <p>The unique identifier of the master key for which deletion is canceled.</p>
-function M.CancelKeyDeletionResponse(KeyId, ...)
+-- @param _KeyId [KeyIdType] <p>The unique identifier of the master key for which deletion is canceled.</p>
+function M.CancelKeyDeletionResponse(_KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelKeyDeletionResponse")
 	local t = { 
-		["KeyId"] = KeyId,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertCancelKeyDeletionResponse(t)
+	asserts.AssertCancelKeyDeletionResponse(t)
 	return t
 end
 
-local AliasListEntry_keys = { "AliasArn" = true, "AliasName" = true, "TargetKeyId" = true, nil }
+keys.AliasListEntry = { ["AliasArn"] = true, ["AliasName"] = true, ["TargetKeyId"] = true, nil }
 
-function M.AssertAliasListEntry(struct)
+function asserts.AssertAliasListEntry(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AliasListEntry to be of type 'table'")
-	if struct["AliasArn"] then M.AssertArnType(struct["AliasArn"]) end
-	if struct["AliasName"] then M.AssertAliasNameType(struct["AliasName"]) end
-	if struct["TargetKeyId"] then M.AssertKeyIdType(struct["TargetKeyId"]) end
+	if struct["AliasArn"] then asserts.AssertArnType(struct["AliasArn"]) end
+	if struct["AliasName"] then asserts.AssertAliasNameType(struct["AliasName"]) end
+	if struct["TargetKeyId"] then asserts.AssertKeyIdType(struct["TargetKeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(AliasListEntry_keys[k], "AliasListEntry contains unknown key " .. tostring(k))
+		assert(keys.AliasListEntry[k], "AliasListEntry contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AliasListEntry
 -- <p>Contains information about an alias.</p>
--- @param AliasArn [ArnType] <p>String that contains the key ARN.</p>
--- @param AliasName [AliasNameType] <p>String that contains the alias.</p>
--- @param TargetKeyId [KeyIdType] <p>String that contains the key identifier referred to by the alias.</p>
-function M.AliasListEntry(AliasArn, AliasName, TargetKeyId, ...)
+-- @param _AliasArn [ArnType] <p>String that contains the key ARN.</p>
+-- @param _AliasName [AliasNameType] <p>String that contains the alias.</p>
+-- @param _TargetKeyId [KeyIdType] <p>String that contains the key identifier referred to by the alias.</p>
+function M.AliasListEntry(_AliasArn, _AliasName, _TargetKeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AliasListEntry")
 	local t = { 
-		["AliasArn"] = AliasArn,
-		["AliasName"] = AliasName,
-		["TargetKeyId"] = TargetKeyId,
+		["AliasArn"] = _AliasArn,
+		["AliasName"] = _AliasName,
+		["TargetKeyId"] = _TargetKeyId,
 	}
-	M.AssertAliasListEntry(t)
+	asserts.AssertAliasListEntry(t)
 	return t
 end
 
-local GetKeyPolicyRequest_keys = { "PolicyName" = true, "KeyId" = true, nil }
+keys.GetKeyPolicyRequest = { ["PolicyName"] = true, ["KeyId"] = true, nil }
 
-function M.AssertGetKeyPolicyRequest(struct)
+function asserts.AssertGetKeyPolicyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetKeyPolicyRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
-	if struct["PolicyName"] then M.AssertPolicyNameType(struct["PolicyName"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["PolicyName"] then asserts.AssertPolicyNameType(struct["PolicyName"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetKeyPolicyRequest_keys[k], "GetKeyPolicyRequest contains unknown key " .. tostring(k))
+		assert(keys.GetKeyPolicyRequest[k], "GetKeyPolicyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetKeyPolicyRequest
 --  
--- @param PolicyName [PolicyNameType] <p>String that contains the name of the policy. Currently, this must be "default". Policy names can be discovered by calling <a>ListKeyPolicies</a>.</p>
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _PolicyName [PolicyNameType] <p>String that contains the name of the policy. Currently, this must be "default". Policy names can be discovered by calling <a>ListKeyPolicies</a>.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
 -- Required parameter: KeyId
 -- Required parameter: PolicyName
-function M.GetKeyPolicyRequest(PolicyName, KeyId, ...)
+function M.GetKeyPolicyRequest(_PolicyName, _KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPolicyRequest")
 	local t = { 
-		["PolicyName"] = PolicyName,
-		["KeyId"] = KeyId,
+		["PolicyName"] = _PolicyName,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertGetKeyPolicyRequest(t)
+	asserts.AssertGetKeyPolicyRequest(t)
 	return t
 end
 
-local UpdateKeyDescriptionRequest_keys = { "KeyId" = true, "Description" = true, nil }
+keys.UpdateKeyDescriptionRequest = { ["KeyId"] = true, ["Description"] = true, nil }
 
-function M.AssertUpdateKeyDescriptionRequest(struct)
+function asserts.AssertUpdateKeyDescriptionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateKeyDescriptionRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["Description"], "Expected key Description to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["Description"] then M.AssertDescriptionType(struct["Description"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Description"] then asserts.AssertDescriptionType(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateKeyDescriptionRequest_keys[k], "UpdateKeyDescriptionRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateKeyDescriptionRequest[k], "UpdateKeyDescriptionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateKeyDescriptionRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the CMK. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- @param Description [DescriptionType] <p>New description for the CMK.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the CMK. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _Description [DescriptionType] <p>New description for the CMK.</p>
 -- Required parameter: KeyId
 -- Required parameter: Description
-function M.UpdateKeyDescriptionRequest(KeyId, Description, ...)
+function M.UpdateKeyDescriptionRequest(_KeyId, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateKeyDescriptionRequest")
 	local t = { 
-		["KeyId"] = KeyId,
-		["Description"] = Description,
+		["KeyId"] = _KeyId,
+		["Description"] = _Description,
 	}
-	M.AssertUpdateKeyDescriptionRequest(t)
+	asserts.AssertUpdateKeyDescriptionRequest(t)
 	return t
 end
 
-local PutKeyPolicyRequest_keys = { "Policy" = true, "PolicyName" = true, "KeyId" = true, "BypassPolicyLockoutSafetyCheck" = true, nil }
+keys.PutKeyPolicyRequest = { ["Policy"] = true, ["PolicyName"] = true, ["KeyId"] = true, ["BypassPolicyLockoutSafetyCheck"] = true, nil }
 
-function M.AssertPutKeyPolicyRequest(struct)
+function asserts.AssertPutKeyPolicyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutKeyPolicyRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
 	assert(struct["Policy"], "Expected key Policy to exist in table")
-	if struct["Policy"] then M.AssertPolicyType(struct["Policy"]) end
-	if struct["PolicyName"] then M.AssertPolicyNameType(struct["PolicyName"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["BypassPolicyLockoutSafetyCheck"] then M.AssertBooleanType(struct["BypassPolicyLockoutSafetyCheck"]) end
+	if struct["Policy"] then asserts.AssertPolicyType(struct["Policy"]) end
+	if struct["PolicyName"] then asserts.AssertPolicyNameType(struct["PolicyName"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["BypassPolicyLockoutSafetyCheck"] then asserts.AssertBooleanType(struct["BypassPolicyLockoutSafetyCheck"]) end
 	for k,_ in pairs(struct) do
-		assert(PutKeyPolicyRequest_keys[k], "PutKeyPolicyRequest contains unknown key " .. tostring(k))
+		assert(keys.PutKeyPolicyRequest[k], "PutKeyPolicyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutKeyPolicyRequest
 --  
--- @param Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>If you do not set <code>BypassPolicyLockoutSafetyCheck</code> to true, the policy must meet the following criteria:</p> <ul> <li> <p>It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.</p> </li> </ul> <p>The policy size limit is 32 KiB (32768 bytes).</p>
--- @param PolicyName [PolicyNameType] <p>The name of the key policy.</p> <p>This value must be <code>default</code>.</p>
--- @param KeyId [KeyIdType] <p>A unique identifier for the CMK.</p> <p>Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:</p> <ul> <li> <p>Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
--- @param BypassPolicyLockoutSafetyCheck [BooleanType] <p>A flag to indicate whether to bypass the key policy lockout safety check.</p> <important> <p>Setting this value to true increases the likelihood that the CMK becomes unmanageable. Do not set this value to true indiscriminately.</p> <p>For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </important> <p>Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent <code>PutKeyPolicy</code> request on the CMK.</p> <p>The default value is false.</p>
+-- @param _Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>If you do not set <code>BypassPolicyLockoutSafetyCheck</code> to true, the policy must meet the following criteria:</p> <ul> <li> <p>It must allow the principal that is making the <code>PutKeyPolicy</code> request to make a subsequent <code>PutKeyPolicy</code> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.</p> </li> </ul> <p>The policy size limit is 32 KiB (32768 bytes).</p>
+-- @param _PolicyName [PolicyNameType] <p>The name of the key policy.</p> <p>This value must be <code>default</code>.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the CMK.</p> <p>Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:</p> <ul> <li> <p>Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
+-- @param _BypassPolicyLockoutSafetyCheck [BooleanType] <p>A flag to indicate whether to bypass the key policy lockout safety check.</p> <important> <p>Setting this value to true increases the likelihood that the CMK becomes unmanageable. Do not set this value to true indiscriminately.</p> <p>For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </important> <p>Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent <code>PutKeyPolicy</code> request on the CMK.</p> <p>The default value is false.</p>
 -- Required parameter: KeyId
 -- Required parameter: PolicyName
 -- Required parameter: Policy
-function M.PutKeyPolicyRequest(Policy, PolicyName, KeyId, BypassPolicyLockoutSafetyCheck, ...)
+function M.PutKeyPolicyRequest(_Policy, _PolicyName, _KeyId, _BypassPolicyLockoutSafetyCheck, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutKeyPolicyRequest")
 	local t = { 
-		["Policy"] = Policy,
-		["PolicyName"] = PolicyName,
-		["KeyId"] = KeyId,
-		["BypassPolicyLockoutSafetyCheck"] = BypassPolicyLockoutSafetyCheck,
+		["Policy"] = _Policy,
+		["PolicyName"] = _PolicyName,
+		["KeyId"] = _KeyId,
+		["BypassPolicyLockoutSafetyCheck"] = _BypassPolicyLockoutSafetyCheck,
 	}
-	M.AssertPutKeyPolicyRequest(t)
+	asserts.AssertPutKeyPolicyRequest(t)
 	return t
 end
 
-local RevokeGrantRequest_keys = { "KeyId" = true, "GrantId" = true, nil }
+keys.RevokeGrantRequest = { ["KeyId"] = true, ["GrantId"] = true, nil }
 
-function M.AssertRevokeGrantRequest(struct)
+function asserts.AssertRevokeGrantRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RevokeGrantRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["GrantId"], "Expected key GrantId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["GrantId"] then M.AssertGrantIdType(struct["GrantId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["GrantId"] then asserts.AssertGrantIdType(struct["GrantId"]) end
 	for k,_ in pairs(struct) do
-		assert(RevokeGrantRequest_keys[k], "RevokeGrantRequest contains unknown key " .. tostring(k))
+		assert(keys.RevokeGrantRequest[k], "RevokeGrantRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RevokeGrantRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key associated with the grant. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- @param GrantId [GrantIdType] <p>Identifier of the grant to be revoked.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key associated with the grant. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _GrantId [GrantIdType] <p>Identifier of the grant to be revoked.</p>
 -- Required parameter: KeyId
 -- Required parameter: GrantId
-function M.RevokeGrantRequest(KeyId, GrantId, ...)
+function M.RevokeGrantRequest(_KeyId, _GrantId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RevokeGrantRequest")
 	local t = { 
-		["KeyId"] = KeyId,
-		["GrantId"] = GrantId,
+		["KeyId"] = _KeyId,
+		["GrantId"] = _GrantId,
 	}
-	M.AssertRevokeGrantRequest(t)
+	asserts.AssertRevokeGrantRequest(t)
 	return t
 end
 
-local InvalidAliasNameException_keys = { "message" = true, nil }
+keys.InvalidAliasNameException = { ["message"] = true, nil }
 
-function M.AssertInvalidAliasNameException(struct)
+function asserts.AssertInvalidAliasNameException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidAliasNameException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidAliasNameException_keys[k], "InvalidAliasNameException contains unknown key " .. tostring(k))
+		assert(keys.InvalidAliasNameException[k], "InvalidAliasNameException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidAliasNameException
 -- <p>The request was rejected because the specified alias name is not valid.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified alias name is not valid.</p>
-function M.InvalidAliasNameException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.InvalidAliasNameException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAliasNameException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidAliasNameException(t)
+	asserts.AssertInvalidAliasNameException(t)
 	return t
 end
 
-local GenerateRandomRequest_keys = { "NumberOfBytes" = true, nil }
+keys.GenerateRandomRequest = { ["NumberOfBytes"] = true, nil }
 
-function M.AssertGenerateRandomRequest(struct)
+function asserts.AssertGenerateRandomRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GenerateRandomRequest to be of type 'table'")
-	if struct["NumberOfBytes"] then M.AssertNumberOfBytesType(struct["NumberOfBytes"]) end
+	if struct["NumberOfBytes"] then asserts.AssertNumberOfBytesType(struct["NumberOfBytes"]) end
 	for k,_ in pairs(struct) do
-		assert(GenerateRandomRequest_keys[k], "GenerateRandomRequest contains unknown key " .. tostring(k))
+		assert(keys.GenerateRandomRequest[k], "GenerateRandomRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GenerateRandomRequest
 --  
--- @param NumberOfBytes [NumberOfBytesType] <p>The length of the byte string.</p>
-function M.GenerateRandomRequest(NumberOfBytes, ...)
+-- @param _NumberOfBytes [NumberOfBytesType] <p>The length of the byte string.</p>
+function M.GenerateRandomRequest(_NumberOfBytes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GenerateRandomRequest")
 	local t = { 
-		["NumberOfBytes"] = NumberOfBytes,
+		["NumberOfBytes"] = _NumberOfBytes,
 	}
-	M.AssertGenerateRandomRequest(t)
+	asserts.AssertGenerateRandomRequest(t)
 	return t
 end
 
-local ListResourceTagsRequest_keys = { "Marker" = true, "KeyId" = true, "Limit" = true, nil }
+keys.ListResourceTagsRequest = { ["Marker"] = true, ["KeyId"] = true, ["Limit"] = true, nil }
 
-function M.AssertListResourceTagsRequest(struct)
+function asserts.AssertListResourceTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListResourceTagsRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(ListResourceTagsRequest_keys[k], "ListResourceTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListResourceTagsRequest[k], "ListResourceTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListResourceTagsRequest
 --  
--- @param Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p> <p>Do not attempt to construct this value. Use only the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- @param KeyId [KeyIdType] <p>A unique identifier for the CMK whose tags you are listing. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
--- @param Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 50, inclusive. If you do not include a value, it defaults to 50.</p>
+-- @param _Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p> <p>Do not attempt to construct this value. Use only the value of <code>NextMarker</code> from the truncated response you just received.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the CMK whose tags you are listing. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- @param _Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 50, inclusive. If you do not include a value, it defaults to 50.</p>
 -- Required parameter: KeyId
-function M.ListResourceTagsRequest(Marker, KeyId, Limit, ...)
+function M.ListResourceTagsRequest(_Marker, _KeyId, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourceTagsRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["KeyId"] = KeyId,
-		["Limit"] = Limit,
+		["Marker"] = _Marker,
+		["KeyId"] = _KeyId,
+		["Limit"] = _Limit,
 	}
-	M.AssertListResourceTagsRequest(t)
+	asserts.AssertListResourceTagsRequest(t)
 	return t
 end
 
-local ScheduleKeyDeletionRequest_keys = { "PendingWindowInDays" = true, "KeyId" = true, nil }
+keys.ScheduleKeyDeletionRequest = { ["PendingWindowInDays"] = true, ["KeyId"] = true, nil }
 
-function M.AssertScheduleKeyDeletionRequest(struct)
+function asserts.AssertScheduleKeyDeletionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScheduleKeyDeletionRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["PendingWindowInDays"] then M.AssertPendingWindowInDaysType(struct["PendingWindowInDays"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["PendingWindowInDays"] then asserts.AssertPendingWindowInDaysType(struct["PendingWindowInDays"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(ScheduleKeyDeletionRequest_keys[k], "ScheduleKeyDeletionRequest contains unknown key " .. tostring(k))
+		assert(keys.ScheduleKeyDeletionRequest[k], "ScheduleKeyDeletionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScheduleKeyDeletionRequest
 --  
--- @param PendingWindowInDays [PendingWindowInDaysType] <p>The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the customer master key (CMK).</p> <p>This value is optional. If you include a value, it must be between 7 and 30, inclusive. If you do not include a value, it defaults to 30.</p>
--- @param KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) to delete.</p> <p>To specify this value, use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>Key ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul> <p>To obtain the unique key ID and key ARN for a given CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
+-- @param _PendingWindowInDays [PendingWindowInDaysType] <p>The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the customer master key (CMK).</p> <p>This value is optional. If you include a value, it must be between 7 and 30, inclusive. If you do not include a value, it defaults to 30.</p>
+-- @param _KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) to delete.</p> <p>To specify this value, use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>Key ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul> <p>To obtain the unique key ID and key ARN for a given CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
 -- Required parameter: KeyId
-function M.ScheduleKeyDeletionRequest(PendingWindowInDays, KeyId, ...)
+function M.ScheduleKeyDeletionRequest(_PendingWindowInDays, _KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScheduleKeyDeletionRequest")
 	local t = { 
-		["PendingWindowInDays"] = PendingWindowInDays,
-		["KeyId"] = KeyId,
+		["PendingWindowInDays"] = _PendingWindowInDays,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertScheduleKeyDeletionRequest(t)
+	asserts.AssertScheduleKeyDeletionRequest(t)
 	return t
 end
 
-local TagException_keys = { "message" = true, nil }
+keys.TagException = { ["message"] = true, nil }
 
-function M.AssertTagException(struct)
+function asserts.AssertTagException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TagException_keys[k], "TagException contains unknown key " .. tostring(k))
+		assert(keys.TagException[k], "TagException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagException
 -- <p>The request was rejected because one or more tags are not valid.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because one or more tags are not valid.</p>
-function M.TagException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.TagException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTagException(t)
+	asserts.AssertTagException(t)
 	return t
 end
 
-local DisableKeyRequest_keys = { "KeyId" = true, nil }
+keys.DisableKeyRequest = { ["KeyId"] = true, nil }
 
-function M.AssertDisableKeyRequest(struct)
+function asserts.AssertDisableKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisableKeyRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(DisableKeyRequest_keys[k], "DisableKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.DisableKeyRequest[k], "DisableKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisableKeyRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the CMK.</p> <p>Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:</p> <ul> <li> <p>Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the CMK.</p> <p>Use the CMK's unique identifier or its Amazon Resource Name (ARN). For example:</p> <ul> <li> <p>Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> <li> <p>ARN: arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</p> </li> </ul>
 -- Required parameter: KeyId
-function M.DisableKeyRequest(KeyId, ...)
+function M.DisableKeyRequest(_KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableKeyRequest")
 	local t = { 
-		["KeyId"] = KeyId,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertDisableKeyRequest(t)
+	asserts.AssertDisableKeyRequest(t)
 	return t
 end
 
-local CreateGrantRequest_keys = { "Operations" = true, "KeyId" = true, "Name" = true, "RetiringPrincipal" = true, "GranteePrincipal" = true, "GrantTokens" = true, "Constraints" = true, nil }
+keys.CreateGrantRequest = { ["Operations"] = true, ["KeyId"] = true, ["Name"] = true, ["RetiringPrincipal"] = true, ["GranteePrincipal"] = true, ["GrantTokens"] = true, ["Constraints"] = true, nil }
 
-function M.AssertCreateGrantRequest(struct)
+function asserts.AssertCreateGrantRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGrantRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["GranteePrincipal"], "Expected key GranteePrincipal to exist in table")
-	if struct["Operations"] then M.AssertGrantOperationList(struct["Operations"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["Name"] then M.AssertGrantNameType(struct["Name"]) end
-	if struct["RetiringPrincipal"] then M.AssertPrincipalIdType(struct["RetiringPrincipal"]) end
-	if struct["GranteePrincipal"] then M.AssertPrincipalIdType(struct["GranteePrincipal"]) end
-	if struct["GrantTokens"] then M.AssertGrantTokenList(struct["GrantTokens"]) end
-	if struct["Constraints"] then M.AssertGrantConstraints(struct["Constraints"]) end
+	if struct["Operations"] then asserts.AssertGrantOperationList(struct["Operations"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Name"] then asserts.AssertGrantNameType(struct["Name"]) end
+	if struct["RetiringPrincipal"] then asserts.AssertPrincipalIdType(struct["RetiringPrincipal"]) end
+	if struct["GranteePrincipal"] then asserts.AssertPrincipalIdType(struct["GranteePrincipal"]) end
+	if struct["GrantTokens"] then asserts.AssertGrantTokenList(struct["GrantTokens"]) end
+	if struct["Constraints"] then asserts.AssertGrantConstraints(struct["Constraints"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGrantRequest_keys[k], "CreateGrantRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateGrantRequest[k], "CreateGrantRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGrantRequest
 --  
--- @param Operations [GrantOperationList] <p>A list of operations that the grant permits.</p>
--- @param KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) that the grant applies to.</p> <p>To specify this value, use the globally unique key ID or the Amazon Resource Name (ARN) of the key. Examples:</p> <ul> <li> <p>Globally unique key ID: 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Key ARN: arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- @param Name [GrantNameType] <p>A friendly name for identifying the grant. Use this value to prevent unintended creation of duplicate grants when retrying this request.</p> <p>When this value is absent, all <code>CreateGrant</code> requests result in a new grant with a unique <code>GrantId</code> even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the <code>CreateGrant</code> request.</p> <p>When this value is present, you can retry a <code>CreateGrant</code> request with identical parameters; if the grant already exists, the original <code>GrantId</code> is returned without creating a new grant. Note that the returned grant token is unique with every <code>CreateGrant</code> request, even when a duplicate <code>GrantId</code> is returned. All grant tokens obtained in this way can be used interchangeably.</p>
--- @param RetiringPrincipal [PrincipalIdType] <p>The principal that is given permission to retire the grant by using <a>RetireGrant</a> operation.</p> <p>To specify the principal, use the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>AWS General Reference</i>.</p>
--- @param GranteePrincipal [PrincipalIdType] <p>The principal that is given permission to perform the operations that the grant permits.</p> <p>To specify the principal, use the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, IAM roles, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>AWS General Reference</i>.</p>
--- @param GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param Constraints [GrantConstraints] <p>A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _Operations [GrantOperationList] <p>A list of operations that the grant permits.</p>
+-- @param _KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) that the grant applies to.</p> <p>To specify this value, use the globally unique key ID or the Amazon Resource Name (ARN) of the key. Examples:</p> <ul> <li> <p>Globally unique key ID: 12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Key ARN: arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _Name [GrantNameType] <p>A friendly name for identifying the grant. Use this value to prevent unintended creation of duplicate grants when retrying this request.</p> <p>When this value is absent, all <code>CreateGrant</code> requests result in a new grant with a unique <code>GrantId</code> even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the <code>CreateGrant</code> request.</p> <p>When this value is present, you can retry a <code>CreateGrant</code> request with identical parameters; if the grant already exists, the original <code>GrantId</code> is returned without creating a new grant. Note that the returned grant token is unique with every <code>CreateGrant</code> request, even when a duplicate <code>GrantId</code> is returned. All grant tokens obtained in this way can be used interchangeably.</p>
+-- @param _RetiringPrincipal [PrincipalIdType] <p>The principal that is given permission to retire the grant by using <a>RetireGrant</a> operation.</p> <p>To specify the principal, use the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>AWS General Reference</i>.</p>
+-- @param _GranteePrincipal [PrincipalIdType] <p>The principal that is given permission to perform the operations that the grant permits.</p> <p>To specify the principal, use the <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, IAM roles, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>AWS General Reference</i>.</p>
+-- @param _GrantTokens [GrantTokenList] <p>A list of grant tokens.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _Constraints [GrantConstraints] <p>A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 -- Required parameter: KeyId
 -- Required parameter: GranteePrincipal
-function M.CreateGrantRequest(Operations, KeyId, Name, RetiringPrincipal, GranteePrincipal, GrantTokens, Constraints, ...)
+function M.CreateGrantRequest(_Operations, _KeyId, _Name, _RetiringPrincipal, _GranteePrincipal, _GrantTokens, _Constraints, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGrantRequest")
 	local t = { 
-		["Operations"] = Operations,
-		["KeyId"] = KeyId,
-		["Name"] = Name,
-		["RetiringPrincipal"] = RetiringPrincipal,
-		["GranteePrincipal"] = GranteePrincipal,
-		["GrantTokens"] = GrantTokens,
-		["Constraints"] = Constraints,
+		["Operations"] = _Operations,
+		["KeyId"] = _KeyId,
+		["Name"] = _Name,
+		["RetiringPrincipal"] = _RetiringPrincipal,
+		["GranteePrincipal"] = _GranteePrincipal,
+		["GrantTokens"] = _GrantTokens,
+		["Constraints"] = _Constraints,
 	}
-	M.AssertCreateGrantRequest(t)
+	asserts.AssertCreateGrantRequest(t)
 	return t
 end
 
-local ExpiredImportTokenException_keys = { "message" = true, nil }
+keys.ExpiredImportTokenException = { ["message"] = true, nil }
 
-function M.AssertExpiredImportTokenException(struct)
+function asserts.AssertExpiredImportTokenException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExpiredImportTokenException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ExpiredImportTokenException_keys[k], "ExpiredImportTokenException contains unknown key " .. tostring(k))
+		assert(keys.ExpiredImportTokenException[k], "ExpiredImportTokenException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExpiredImportTokenException
 -- <p>The request was rejected because the provided import token is expired. Use <a>GetParametersForImport</a> to retrieve a new import token and public key, use the new public key to encrypt the key material, and then try the request again.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the provided import token is expired. Use <a>GetParametersForImport</a> to retrieve a new import token and public key, use the new public key to encrypt the key material, and then try the request again.</p>
-function M.ExpiredImportTokenException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.ExpiredImportTokenException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredImportTokenException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertExpiredImportTokenException(t)
+	asserts.AssertExpiredImportTokenException(t)
 	return t
 end
 
-local GetKeyRotationStatusRequest_keys = { "KeyId" = true, nil }
+keys.GetKeyRotationStatusRequest = { ["KeyId"] = true, nil }
 
-function M.AssertGetKeyRotationStatusRequest(struct)
+function asserts.AssertGetKeyRotationStatusRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetKeyRotationStatusRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetKeyRotationStatusRequest_keys[k], "GetKeyRotationStatusRequest contains unknown key " .. tostring(k))
+		assert(keys.GetKeyRotationStatusRequest[k], "GetKeyRotationStatusRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetKeyRotationStatusRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
 -- Required parameter: KeyId
-function M.GetKeyRotationStatusRequest(KeyId, ...)
+function M.GetKeyRotationStatusRequest(_KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyRotationStatusRequest")
 	local t = { 
-		["KeyId"] = KeyId,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertGetKeyRotationStatusRequest(t)
+	asserts.AssertGetKeyRotationStatusRequest(t)
 	return t
 end
 
-local GetParametersForImportResponse_keys = { "ParametersValidTo" = true, "PublicKey" = true, "KeyId" = true, "ImportToken" = true, nil }
+keys.GetParametersForImportResponse = { ["ParametersValidTo"] = true, ["PublicKey"] = true, ["KeyId"] = true, ["ImportToken"] = true, nil }
 
-function M.AssertGetParametersForImportResponse(struct)
+function asserts.AssertGetParametersForImportResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetParametersForImportResponse to be of type 'table'")
-	if struct["ParametersValidTo"] then M.AssertDateType(struct["ParametersValidTo"]) end
-	if struct["PublicKey"] then M.AssertPlaintextType(struct["PublicKey"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["ImportToken"] then M.AssertCiphertextType(struct["ImportToken"]) end
+	if struct["ParametersValidTo"] then asserts.AssertDateType(struct["ParametersValidTo"]) end
+	if struct["PublicKey"] then asserts.AssertPlaintextType(struct["PublicKey"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["ImportToken"] then asserts.AssertCiphertextType(struct["ImportToken"]) end
 	for k,_ in pairs(struct) do
-		assert(GetParametersForImportResponse_keys[k], "GetParametersForImportResponse contains unknown key " .. tostring(k))
+		assert(keys.GetParametersForImportResponse[k], "GetParametersForImportResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetParametersForImportResponse
 --  
--- @param ParametersValidTo [DateType] <p>The time at which the import token and public key are no longer valid. After this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and you must send another <code>GetParametersForImport</code> request to retrieve new ones.</p>
--- @param PublicKey [PlaintextType] <p>The public key to use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>.</p>
--- @param KeyId [KeyIdType] <p>The identifier of the CMK to use in a subsequent <a>ImportKeyMaterial</a> request. This is the same CMK specified in the <code>GetParametersForImport</code> request.</p>
--- @param ImportToken [CiphertextType] <p>The import token to send in a subsequent <a>ImportKeyMaterial</a> request.</p>
-function M.GetParametersForImportResponse(ParametersValidTo, PublicKey, KeyId, ImportToken, ...)
+-- @param _ParametersValidTo [DateType] <p>The time at which the import token and public key are no longer valid. After this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and you must send another <code>GetParametersForImport</code> request to retrieve new ones.</p>
+-- @param _PublicKey [PlaintextType] <p>The public key to use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>.</p>
+-- @param _KeyId [KeyIdType] <p>The identifier of the CMK to use in a subsequent <a>ImportKeyMaterial</a> request. This is the same CMK specified in the <code>GetParametersForImport</code> request.</p>
+-- @param _ImportToken [CiphertextType] <p>The import token to send in a subsequent <a>ImportKeyMaterial</a> request.</p>
+function M.GetParametersForImportResponse(_ParametersValidTo, _PublicKey, _KeyId, _ImportToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersForImportResponse")
 	local t = { 
-		["ParametersValidTo"] = ParametersValidTo,
-		["PublicKey"] = PublicKey,
-		["KeyId"] = KeyId,
-		["ImportToken"] = ImportToken,
+		["ParametersValidTo"] = _ParametersValidTo,
+		["PublicKey"] = _PublicKey,
+		["KeyId"] = _KeyId,
+		["ImportToken"] = _ImportToken,
 	}
-	M.AssertGetParametersForImportResponse(t)
+	asserts.AssertGetParametersForImportResponse(t)
 	return t
 end
 
-local ListAliasesRequest_keys = { "Marker" = true, "Limit" = true, nil }
+keys.ListAliasesRequest = { ["Marker"] = true, ["Limit"] = true, nil }
 
-function M.AssertListAliasesRequest(struct)
+function asserts.AssertListAliasesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAliasesRequest to be of type 'table'")
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAliasesRequest_keys[k], "ListAliasesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAliasesRequest[k], "ListAliasesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAliasesRequest
 --  
--- @param Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
--- @param Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
-function M.ListAliasesRequest(Marker, Limit, ...)
+-- @param _Marker [MarkerType] <p>Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextMarker</code> from the truncated response you just received.</p>
+-- @param _Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
+function M.ListAliasesRequest(_Marker, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["Limit"] = Limit,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
 	}
-	M.AssertListAliasesRequest(t)
+	asserts.AssertListAliasesRequest(t)
 	return t
 end
 
-local InvalidCiphertextException_keys = { "message" = true, nil }
+keys.InvalidCiphertextException = { ["message"] = true, nil }
 
-function M.AssertInvalidCiphertextException(struct)
+function asserts.AssertInvalidCiphertextException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidCiphertextException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidCiphertextException_keys[k], "InvalidCiphertextException contains unknown key " .. tostring(k))
+		assert(keys.InvalidCiphertextException[k], "InvalidCiphertextException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidCiphertextException
 -- <p>The request was rejected because the specified ciphertext has been corrupted or is otherwise invalid.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the specified ciphertext has been corrupted or is otherwise invalid.</p>
-function M.InvalidCiphertextException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.InvalidCiphertextException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCiphertextException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidCiphertextException(t)
+	asserts.AssertInvalidCiphertextException(t)
 	return t
 end
 
-local TagResourceRequest_keys = { "KeyId" = true, "Tags" = true, nil }
+keys.TagResourceRequest = { ["KeyId"] = true, ["Tags"] = true, nil }
 
-function M.AssertTagResourceRequest(struct)
+function asserts.AssertTagResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagResourceRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(TagResourceRequest_keys[k], "TagResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.TagResourceRequest[k], "TagResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the CMK you are tagging. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
--- @param Tags [TagList] <p>One or more tags. Each tag consists of a tag key and a tag value.</p>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the CMK you are tagging. You can use the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p> <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> </ul>
+-- @param _Tags [TagList] <p>One or more tags. Each tag consists of a tag key and a tag value.</p>
 -- Required parameter: KeyId
 -- Required parameter: Tags
-function M.TagResourceRequest(KeyId, Tags, ...)
+function M.TagResourceRequest(_KeyId, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceRequest")
 	local t = { 
-		["KeyId"] = KeyId,
-		["Tags"] = Tags,
+		["KeyId"] = _KeyId,
+		["Tags"] = _Tags,
 	}
-	M.AssertTagResourceRequest(t)
+	asserts.AssertTagResourceRequest(t)
 	return t
 end
 
-local GrantListEntry_keys = { "Operations" = true, "KeyId" = true, "Name" = true, "RetiringPrincipal" = true, "GranteePrincipal" = true, "GrantId" = true, "IssuingAccount" = true, "CreationDate" = true, "Constraints" = true, nil }
+keys.GrantListEntry = { ["Operations"] = true, ["KeyId"] = true, ["Name"] = true, ["RetiringPrincipal"] = true, ["GranteePrincipal"] = true, ["GrantId"] = true, ["IssuingAccount"] = true, ["CreationDate"] = true, ["Constraints"] = true, nil }
 
-function M.AssertGrantListEntry(struct)
+function asserts.AssertGrantListEntry(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GrantListEntry to be of type 'table'")
-	if struct["Operations"] then M.AssertGrantOperationList(struct["Operations"]) end
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
-	if struct["Name"] then M.AssertGrantNameType(struct["Name"]) end
-	if struct["RetiringPrincipal"] then M.AssertPrincipalIdType(struct["RetiringPrincipal"]) end
-	if struct["GranteePrincipal"] then M.AssertPrincipalIdType(struct["GranteePrincipal"]) end
-	if struct["GrantId"] then M.AssertGrantIdType(struct["GrantId"]) end
-	if struct["IssuingAccount"] then M.AssertPrincipalIdType(struct["IssuingAccount"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
-	if struct["Constraints"] then M.AssertGrantConstraints(struct["Constraints"]) end
+	if struct["Operations"] then asserts.AssertGrantOperationList(struct["Operations"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
+	if struct["Name"] then asserts.AssertGrantNameType(struct["Name"]) end
+	if struct["RetiringPrincipal"] then asserts.AssertPrincipalIdType(struct["RetiringPrincipal"]) end
+	if struct["GranteePrincipal"] then asserts.AssertPrincipalIdType(struct["GranteePrincipal"]) end
+	if struct["GrantId"] then asserts.AssertGrantIdType(struct["GrantId"]) end
+	if struct["IssuingAccount"] then asserts.AssertPrincipalIdType(struct["IssuingAccount"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
+	if struct["Constraints"] then asserts.AssertGrantConstraints(struct["Constraints"]) end
 	for k,_ in pairs(struct) do
-		assert(GrantListEntry_keys[k], "GrantListEntry contains unknown key " .. tostring(k))
+		assert(keys.GrantListEntry[k], "GrantListEntry contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GrantListEntry
 -- <p>Contains information about an entry in a list of grants.</p>
--- @param Operations [GrantOperationList] <p>The list of operations permitted by the grant.</p>
--- @param KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) to which the grant applies.</p>
--- @param Name [GrantNameType] <p>The friendly name that identifies the grant. If a name was provided in the <a>CreateGrant</a> request, that name is returned. Otherwise this value is null.</p>
--- @param RetiringPrincipal [PrincipalIdType] <p>The principal that can retire the grant.</p>
--- @param GranteePrincipal [PrincipalIdType] <p>The principal that receives the grant's permissions.</p>
--- @param GrantId [GrantIdType] <p>The unique identifier for the grant.</p>
--- @param IssuingAccount [PrincipalIdType] <p>The AWS account under which the grant was issued.</p>
--- @param CreationDate [DateType] <p>The date and time when the grant was created.</p>
--- @param Constraints [GrantConstraints] <p>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows.</p>
-function M.GrantListEntry(Operations, KeyId, Name, RetiringPrincipal, GranteePrincipal, GrantId, IssuingAccount, CreationDate, Constraints, ...)
+-- @param _Operations [GrantOperationList] <p>The list of operations permitted by the grant.</p>
+-- @param _KeyId [KeyIdType] <p>The unique identifier for the customer master key (CMK) to which the grant applies.</p>
+-- @param _Name [GrantNameType] <p>The friendly name that identifies the grant. If a name was provided in the <a>CreateGrant</a> request, that name is returned. Otherwise this value is null.</p>
+-- @param _RetiringPrincipal [PrincipalIdType] <p>The principal that can retire the grant.</p>
+-- @param _GranteePrincipal [PrincipalIdType] <p>The principal that receives the grant's permissions.</p>
+-- @param _GrantId [GrantIdType] <p>The unique identifier for the grant.</p>
+-- @param _IssuingAccount [PrincipalIdType] <p>The AWS account under which the grant was issued.</p>
+-- @param _CreationDate [DateType] <p>The date and time when the grant was created.</p>
+-- @param _Constraints [GrantConstraints] <p>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows.</p>
+function M.GrantListEntry(_Operations, _KeyId, _Name, _RetiringPrincipal, _GranteePrincipal, _GrantId, _IssuingAccount, _CreationDate, _Constraints, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GrantListEntry")
 	local t = { 
-		["Operations"] = Operations,
-		["KeyId"] = KeyId,
-		["Name"] = Name,
-		["RetiringPrincipal"] = RetiringPrincipal,
-		["GranteePrincipal"] = GranteePrincipal,
-		["GrantId"] = GrantId,
-		["IssuingAccount"] = IssuingAccount,
-		["CreationDate"] = CreationDate,
-		["Constraints"] = Constraints,
+		["Operations"] = _Operations,
+		["KeyId"] = _KeyId,
+		["Name"] = _Name,
+		["RetiringPrincipal"] = _RetiringPrincipal,
+		["GranteePrincipal"] = _GranteePrincipal,
+		["GrantId"] = _GrantId,
+		["IssuingAccount"] = _IssuingAccount,
+		["CreationDate"] = _CreationDate,
+		["Constraints"] = _Constraints,
 	}
-	M.AssertGrantListEntry(t)
+	asserts.AssertGrantListEntry(t)
 	return t
 end
 
-local CreateGrantResponse_keys = { "GrantToken" = true, "GrantId" = true, nil }
+keys.CreateGrantResponse = { ["GrantToken"] = true, ["GrantId"] = true, nil }
 
-function M.AssertCreateGrantResponse(struct)
+function asserts.AssertCreateGrantResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGrantResponse to be of type 'table'")
-	if struct["GrantToken"] then M.AssertGrantTokenType(struct["GrantToken"]) end
-	if struct["GrantId"] then M.AssertGrantIdType(struct["GrantId"]) end
+	if struct["GrantToken"] then asserts.AssertGrantTokenType(struct["GrantToken"]) end
+	if struct["GrantId"] then asserts.AssertGrantIdType(struct["GrantId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGrantResponse_keys[k], "CreateGrantResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateGrantResponse[k], "CreateGrantResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGrantResponse
 --  
--- @param GrantToken [GrantTokenType] <p>The grant token.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
--- @param GrantId [GrantIdType] <p>The unique identifier for the grant.</p> <p>You can use the <code>GrantId</code> in a subsequent <a>RetireGrant</a> or <a>RevokeGrant</a> operation.</p>
-function M.CreateGrantResponse(GrantToken, GrantId, ...)
+-- @param _GrantToken [GrantTokenType] <p>The grant token.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+-- @param _GrantId [GrantIdType] <p>The unique identifier for the grant.</p> <p>You can use the <code>GrantId</code> in a subsequent <a>RetireGrant</a> or <a>RevokeGrant</a> operation.</p>
+function M.CreateGrantResponse(_GrantToken, _GrantId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGrantResponse")
 	local t = { 
-		["GrantToken"] = GrantToken,
-		["GrantId"] = GrantId,
+		["GrantToken"] = _GrantToken,
+		["GrantId"] = _GrantId,
 	}
-	M.AssertCreateGrantResponse(t)
+	asserts.AssertCreateGrantResponse(t)
 	return t
 end
 
-local ListGrantsResponse_keys = { "NextMarker" = true, "Grants" = true, "Truncated" = true, nil }
+keys.ListGrantsResponse = { ["NextMarker"] = true, ["Grants"] = true, ["Truncated"] = true, nil }
 
-function M.AssertListGrantsResponse(struct)
+function asserts.AssertListGrantsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGrantsResponse to be of type 'table'")
-	if struct["NextMarker"] then M.AssertMarkerType(struct["NextMarker"]) end
-	if struct["Grants"] then M.AssertGrantList(struct["Grants"]) end
-	if struct["Truncated"] then M.AssertBooleanType(struct["Truncated"]) end
+	if struct["NextMarker"] then asserts.AssertMarkerType(struct["NextMarker"]) end
+	if struct["Grants"] then asserts.AssertGrantList(struct["Grants"]) end
+	if struct["Truncated"] then asserts.AssertBooleanType(struct["Truncated"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGrantsResponse_keys[k], "ListGrantsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListGrantsResponse[k], "ListGrantsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGrantsResponse
 --  
--- @param NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
--- @param Grants [GrantList] <p>A list of grants.</p>
--- @param Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
-function M.ListGrantsResponse(NextMarker, Grants, Truncated, ...)
+-- @param _NextMarker [MarkerType] <p>When <code>Truncated</code> is true, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent request.</p>
+-- @param _Grants [GrantList] <p>A list of grants.</p>
+-- @param _Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
+function M.ListGrantsResponse(_NextMarker, _Grants, _Truncated, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGrantsResponse")
 	local t = { 
-		["NextMarker"] = NextMarker,
-		["Grants"] = Grants,
-		["Truncated"] = Truncated,
+		["NextMarker"] = _NextMarker,
+		["Grants"] = _Grants,
+		["Truncated"] = _Truncated,
 	}
-	M.AssertListGrantsResponse(t)
+	asserts.AssertListGrantsResponse(t)
 	return t
 end
 
-local KMSInternalException_keys = { "message" = true, nil }
+keys.KMSInternalException = { ["message"] = true, nil }
 
-function M.AssertKMSInternalException(struct)
+function asserts.AssertKMSInternalException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KMSInternalException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(KMSInternalException_keys[k], "KMSInternalException contains unknown key " .. tostring(k))
+		assert(keys.KMSInternalException[k], "KMSInternalException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KMSInternalException
 -- <p>The request was rejected because an internal exception occurred. The request can be retried.</p>
--- @param message [ErrorMessageType] <p>The request was rejected because an internal exception occurred. The request can be retried.</p>
-function M.KMSInternalException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.KMSInternalException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSInternalException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertKMSInternalException(t)
+	asserts.AssertKMSInternalException(t)
 	return t
 end
 
-local DescribeKeyResponse_keys = { "KeyMetadata" = true, nil }
+keys.DescribeKeyResponse = { ["KeyMetadata"] = true, nil }
 
-function M.AssertDescribeKeyResponse(struct)
+function asserts.AssertDescribeKeyResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeKeyResponse to be of type 'table'")
-	if struct["KeyMetadata"] then M.AssertKeyMetadata(struct["KeyMetadata"]) end
+	if struct["KeyMetadata"] then asserts.AssertKeyMetadata(struct["KeyMetadata"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeKeyResponse_keys[k], "DescribeKeyResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeKeyResponse[k], "DescribeKeyResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeKeyResponse
 --  
--- @param KeyMetadata [KeyMetadata] <p>Metadata associated with the key.</p>
-function M.DescribeKeyResponse(KeyMetadata, ...)
+-- @param _KeyMetadata [KeyMetadata] <p>Metadata associated with the key.</p>
+function M.DescribeKeyResponse(_KeyMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeKeyResponse")
 	local t = { 
-		["KeyMetadata"] = KeyMetadata,
+		["KeyMetadata"] = _KeyMetadata,
 	}
-	M.AssertDescribeKeyResponse(t)
+	asserts.AssertDescribeKeyResponse(t)
 	return t
 end
 
-local InvalidImportTokenException_keys = { "message" = true, nil }
+keys.InvalidImportTokenException = { ["message"] = true, nil }
 
-function M.AssertInvalidImportTokenException(struct)
+function asserts.AssertInvalidImportTokenException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidImportTokenException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessageType(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessageType(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidImportTokenException_keys[k], "InvalidImportTokenException contains unknown key " .. tostring(k))
+		assert(keys.InvalidImportTokenException[k], "InvalidImportTokenException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidImportTokenException
 -- <p>The request was rejected because the provided import token is invalid or is associated with a different customer master key (CMK).</p>
--- @param message [ErrorMessageType] <p>The request was rejected because the provided import token is invalid or is associated with a different customer master key (CMK).</p>
-function M.InvalidImportTokenException(message, ...)
+-- @param _message [ErrorMessageType] 
+function M.InvalidImportTokenException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidImportTokenException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidImportTokenException(t)
+	asserts.AssertInvalidImportTokenException(t)
 	return t
 end
 
-local DisableKeyRotationRequest_keys = { "KeyId" = true, nil }
+keys.DisableKeyRotationRequest = { ["KeyId"] = true, nil }
 
-function M.AssertDisableKeyRotationRequest(struct)
+function asserts.AssertDisableKeyRotationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisableKeyRotationRequest to be of type 'table'")
 	assert(struct["KeyId"], "Expected key KeyId to exist in table")
-	if struct["KeyId"] then M.AssertKeyIdType(struct["KeyId"]) end
+	if struct["KeyId"] then asserts.AssertKeyIdType(struct["KeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(DisableKeyRotationRequest_keys[k], "DisableKeyRotationRequest contains unknown key " .. tostring(k))
+		assert(keys.DisableKeyRotationRequest[k], "DisableKeyRotationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisableKeyRotationRequest
 --  
--- @param KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- @param _KeyId [KeyIdType] <p>A unique identifier for the customer master key. This value can be a globally unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN Example - arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> </ul>
 -- Required parameter: KeyId
-function M.DisableKeyRotationRequest(KeyId, ...)
+function M.DisableKeyRotationRequest(_KeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableKeyRotationRequest")
 	local t = { 
-		["KeyId"] = KeyId,
+		["KeyId"] = _KeyId,
 	}
-	M.AssertDisableKeyRotationRequest(t)
+	asserts.AssertDisableKeyRotationRequest(t)
 	return t
 end
 
-function M.AssertTagKeyType(str)
+function asserts.AssertTagKeyType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKeyType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -2320,33 +2323,33 @@ end
 
 --  
 function M.TagKeyType(str)
-	M.AssertTagKeyType(str)
+	asserts.AssertTagKeyType(str)
 	return str
 end
 
-function M.AssertDataKeySpec(str)
+function asserts.AssertDataKeySpec(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DataKeySpec to be of type 'string'")
 end
 
 --  
 function M.DataKeySpec(str)
-	M.AssertDataKeySpec(str)
+	asserts.AssertDataKeySpec(str)
 	return str
 end
 
-function M.AssertEncryptionContextValue(str)
+function asserts.AssertEncryptionContextValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EncryptionContextValue to be of type 'string'")
 end
 
 --  
 function M.EncryptionContextValue(str)
-	M.AssertEncryptionContextValue(str)
+	asserts.AssertEncryptionContextValue(str)
 	return str
 end
 
-function M.AssertKeyIdType(str)
+function asserts.AssertKeyIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected KeyIdType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -2355,44 +2358,44 @@ end
 
 --  
 function M.KeyIdType(str)
-	M.AssertKeyIdType(str)
+	asserts.AssertKeyIdType(str)
 	return str
 end
 
-function M.AssertAWSAccountIdType(str)
+function asserts.AssertAWSAccountIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AWSAccountIdType to be of type 'string'")
 end
 
 --  
 function M.AWSAccountIdType(str)
-	M.AssertAWSAccountIdType(str)
+	asserts.AssertAWSAccountIdType(str)
 	return str
 end
 
-function M.AssertKeyState(str)
+function asserts.AssertKeyState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected KeyState to be of type 'string'")
 end
 
 --  
 function M.KeyState(str)
-	M.AssertKeyState(str)
+	asserts.AssertKeyState(str)
 	return str
 end
 
-function M.AssertAlgorithmSpec(str)
+function asserts.AssertAlgorithmSpec(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AlgorithmSpec to be of type 'string'")
 end
 
 --  
 function M.AlgorithmSpec(str)
-	M.AssertAlgorithmSpec(str)
+	asserts.AssertAlgorithmSpec(str)
 	return str
 end
 
-function M.AssertPrincipalIdType(str)
+function asserts.AssertPrincipalIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PrincipalIdType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -2401,36 +2404,35 @@ end
 
 --  
 function M.PrincipalIdType(str)
-	M.AssertPrincipalIdType(str)
+	asserts.AssertPrincipalIdType(str)
 	return str
 end
 
-function M.AssertGrantNameType(str)
+function asserts.AssertGrantNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GrantNameType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[a-zA-Z0-9:/_-]+$"), "Expected string to match pattern '^[a-zA-Z0-9:/_-]+$'")
 end
 
 --  
 function M.GrantNameType(str)
-	M.AssertGrantNameType(str)
+	asserts.AssertGrantNameType(str)
 	return str
 end
 
-function M.AssertWrappingKeySpec(str)
+function asserts.AssertWrappingKeySpec(str)
 	assert(str)
 	assert(type(str) == "string", "Expected WrappingKeySpec to be of type 'string'")
 end
 
 --  
 function M.WrappingKeySpec(str)
-	M.AssertWrappingKeySpec(str)
+	asserts.AssertWrappingKeySpec(str)
 	return str
 end
 
-function M.AssertGrantIdType(str)
+function asserts.AssertGrantIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GrantIdType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -2439,11 +2441,11 @@ end
 
 --  
 function M.GrantIdType(str)
-	M.AssertGrantIdType(str)
+	asserts.AssertGrantIdType(str)
 	return str
 end
 
-function M.AssertTagValueType(str)
+function asserts.AssertTagValueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValueType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -2451,22 +2453,22 @@ end
 
 --  
 function M.TagValueType(str)
-	M.AssertTagValueType(str)
+	asserts.AssertTagValueType(str)
 	return str
 end
 
-function M.AssertGrantOperation(str)
+function asserts.AssertGrantOperation(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GrantOperation to be of type 'string'")
 end
 
 --  
 function M.GrantOperation(str)
-	M.AssertGrantOperation(str)
+	asserts.AssertGrantOperation(str)
 	return str
 end
 
-function M.AssertDescriptionType(str)
+function asserts.AssertDescriptionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DescriptionType to be of type 'string'")
 	assert(#str <= 8192, "Expected string to be max 8192 characters")
@@ -2474,25 +2476,24 @@ end
 
 --  
 function M.DescriptionType(str)
-	M.AssertDescriptionType(str)
+	asserts.AssertDescriptionType(str)
 	return str
 end
 
-function M.AssertPolicyType(str)
+function asserts.AssertPolicyType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PolicyType to be of type 'string'")
 	assert(#str <= 131072, "Expected string to be max 131072 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0009%u000A%u000D%u0020-%u00FF]+"), "Expected string to match pattern '[%u0009%u000A%u000D%u0020-%u00FF]+'")
 end
 
 --  
 function M.PolicyType(str)
-	M.AssertPolicyType(str)
+	asserts.AssertPolicyType(str)
 	return str
 end
 
-function M.AssertGrantTokenType(str)
+function asserts.AssertGrantTokenType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GrantTokenType to be of type 'string'")
 	assert(#str <= 8192, "Expected string to be max 8192 characters")
@@ -2501,36 +2502,35 @@ end
 
 --  
 function M.GrantTokenType(str)
-	M.AssertGrantTokenType(str)
+	asserts.AssertGrantTokenType(str)
 	return str
 end
 
-function M.AssertErrorMessageType(str)
+function asserts.AssertErrorMessageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessageType to be of type 'string'")
 end
 
 --  
 function M.ErrorMessageType(str)
-	M.AssertErrorMessageType(str)
+	asserts.AssertErrorMessageType(str)
 	return str
 end
 
-function M.AssertMarkerType(str)
+function asserts.AssertMarkerType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MarkerType to be of type 'string'")
 	assert(#str <= 320, "Expected string to be max 320 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%u00FF]*"), "Expected string to match pattern '[%u0020-%u00FF]*'")
 end
 
 --  
 function M.MarkerType(str)
-	M.AssertMarkerType(str)
+	asserts.AssertMarkerType(str)
 	return str
 end
 
-function M.AssertArnType(str)
+function asserts.AssertArnType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ArnType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -2539,83 +2539,81 @@ end
 
 --  
 function M.ArnType(str)
-	M.AssertArnType(str)
+	asserts.AssertArnType(str)
 	return str
 end
 
-function M.AssertPolicyNameType(str)
+function asserts.AssertPolicyNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PolicyNameType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w]+"), "Expected string to match pattern '[%w]+'")
 end
 
 --  
 function M.PolicyNameType(str)
-	M.AssertPolicyNameType(str)
+	asserts.AssertPolicyNameType(str)
 	return str
 end
 
-function M.AssertKeyUsageType(str)
+function asserts.AssertKeyUsageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected KeyUsageType to be of type 'string'")
 end
 
 --  
 function M.KeyUsageType(str)
-	M.AssertKeyUsageType(str)
+	asserts.AssertKeyUsageType(str)
 	return str
 end
 
-function M.AssertOriginType(str)
+function asserts.AssertOriginType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OriginType to be of type 'string'")
 end
 
 --  
 function M.OriginType(str)
-	M.AssertOriginType(str)
+	asserts.AssertOriginType(str)
 	return str
 end
 
-function M.AssertEncryptionContextKey(str)
+function asserts.AssertEncryptionContextKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EncryptionContextKey to be of type 'string'")
 end
 
 --  
 function M.EncryptionContextKey(str)
-	M.AssertEncryptionContextKey(str)
+	asserts.AssertEncryptionContextKey(str)
 	return str
 end
 
-function M.AssertExpirationModelType(str)
+function asserts.AssertExpirationModelType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExpirationModelType to be of type 'string'")
 end
 
 --  
 function M.ExpirationModelType(str)
-	M.AssertExpirationModelType(str)
+	asserts.AssertExpirationModelType(str)
 	return str
 end
 
-function M.AssertAliasNameType(str)
+function asserts.AssertAliasNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AliasNameType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[a-zA-Z0-9:/_-]+$"), "Expected string to match pattern '^[a-zA-Z0-9:/_-]+$'")
 end
 
 --  
 function M.AliasNameType(str)
-	M.AssertAliasNameType(str)
+	asserts.AssertAliasNameType(str)
 	return str
 end
 
-function M.AssertLimitType(integer)
+function asserts.AssertLimitType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected LimitType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -2624,11 +2622,11 @@ function M.AssertLimitType(integer)
 end
 
 function M.LimitType(integer)
-	M.AssertLimitType(integer)
+	asserts.AssertLimitType(integer)
 	return integer
 end
 
-function M.AssertNumberOfBytesType(integer)
+function asserts.AssertNumberOfBytesType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected NumberOfBytesType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -2637,11 +2635,11 @@ function M.AssertNumberOfBytesType(integer)
 end
 
 function M.NumberOfBytesType(integer)
-	M.AssertNumberOfBytesType(integer)
+	asserts.AssertNumberOfBytesType(integer)
 	return integer
 end
 
-function M.AssertPendingWindowInDaysType(integer)
+function asserts.AssertPendingWindowInDaysType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PendingWindowInDaysType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -2650,45 +2648,45 @@ function M.AssertPendingWindowInDaysType(integer)
 end
 
 function M.PendingWindowInDaysType(integer)
-	M.AssertPendingWindowInDaysType(integer)
+	asserts.AssertPendingWindowInDaysType(integer)
 	return integer
 end
 
-function M.AssertBooleanType(boolean)
+function asserts.AssertBooleanType(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanType to be of type 'boolean'")
 end
 
 function M.BooleanType(boolean)
-	M.AssertBooleanType(boolean)
+	asserts.AssertBooleanType(boolean)
 	return boolean
 end
 
-function M.AssertEncryptionContextType(map)
+function asserts.AssertEncryptionContextType(map)
 	assert(map)
 	assert(type(map) == "table", "Expected EncryptionContextType to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertEncryptionContextKey(k)
-		M.AssertEncryptionContextValue(v)
+		asserts.AssertEncryptionContextKey(k)
+		asserts.AssertEncryptionContextValue(v)
 	end
 end
 
 function M.EncryptionContextType(map)
-	M.AssertEncryptionContextType(map)
+	asserts.AssertEncryptionContextType(map)
 	return map
 end
 
-function M.AssertDateType(timestamp)
+function asserts.AssertDateType(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected DateType to be of type 'string'")
 end
 
 function M.DateType(timestamp)
-	M.AssertDateType(timestamp)
+	asserts.AssertDateType(timestamp)
 	return timestamp
 end
 
-function M.AssertCiphertextType(blob)
+function asserts.AssertCiphertextType(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected CiphertextType to be of type 'string'")
 	assert(#blob <= 6144, "Expected blob to be max 6144")
@@ -2696,11 +2694,11 @@ function M.AssertCiphertextType(blob)
 end
 
 function M.CiphertextType(blob)
-	M.AssertCiphertextType(blob)
+	asserts.AssertCiphertextType(blob)
 	return blob
 end
 
-function M.AssertPlaintextType(blob)
+function asserts.AssertPlaintextType(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected PlaintextType to be of type 'string'")
 	assert(#blob <= 4096, "Expected blob to be max 4096")
@@ -2708,128 +2706,128 @@ function M.AssertPlaintextType(blob)
 end
 
 function M.PlaintextType(blob)
-	M.AssertPlaintextType(blob)
+	asserts.AssertPlaintextType(blob)
 	return blob
 end
 
-function M.AssertTagKeyList(list)
+function asserts.AssertTagKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagKeyType(v)
+		asserts.AssertTagKeyType(v)
 	end
 end
 
 --  
 -- List of TagKeyType objects
 function M.TagKeyList(list)
-	M.AssertTagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
-function M.AssertAliasList(list)
+function asserts.AssertAliasList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AliasList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAliasListEntry(v)
+		asserts.AssertAliasListEntry(v)
 	end
 end
 
 --  
 -- List of AliasListEntry objects
 function M.AliasList(list)
-	M.AssertAliasList(list)
+	asserts.AssertAliasList(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 
-function M.AssertGrantList(list)
+function asserts.AssertGrantList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GrantList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGrantListEntry(v)
+		asserts.AssertGrantListEntry(v)
 	end
 end
 
 --  
 -- List of GrantListEntry objects
 function M.GrantList(list)
-	M.AssertGrantList(list)
+	asserts.AssertGrantList(list)
 	return list
 end
 
-function M.AssertGrantTokenList(list)
+function asserts.AssertGrantTokenList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GrantTokenList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertGrantTokenType(v)
+		asserts.AssertGrantTokenType(v)
 	end
 end
 
 --  
 -- List of GrantTokenType objects
 function M.GrantTokenList(list)
-	M.AssertGrantTokenList(list)
+	asserts.AssertGrantTokenList(list)
 	return list
 end
 
-function M.AssertPolicyNameList(list)
+function asserts.AssertPolicyNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PolicyNameList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPolicyNameType(v)
+		asserts.AssertPolicyNameType(v)
 	end
 end
 
 --  
 -- List of PolicyNameType objects
 function M.PolicyNameList(list)
-	M.AssertPolicyNameList(list)
+	asserts.AssertPolicyNameList(list)
 	return list
 end
 
-function M.AssertGrantOperationList(list)
+function asserts.AssertGrantOperationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GrantOperationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGrantOperation(v)
+		asserts.AssertGrantOperation(v)
 	end
 end
 
 --  
 -- List of GrantOperation objects
 function M.GrantOperationList(list)
-	M.AssertGrantOperationList(list)
+	asserts.AssertGrantOperationList(list)
 	return list
 end
 
-function M.AssertKeyList(list)
+function asserts.AssertKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected KeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertKeyListEntry(v)
+		asserts.AssertKeyListEntry(v)
 	end
 end
 
 --  
 -- List of KeyListEntry objects
 function M.KeyList(list)
-	M.AssertKeyList(list)
+	asserts.AssertKeyList(list)
 	return list
 end
 

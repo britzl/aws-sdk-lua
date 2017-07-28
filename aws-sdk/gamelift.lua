@@ -18,2542 +18,2545 @@ M.metadata = {
 	uid = "gamelift-2015-10-01",
 }
 
-local FleetAttributes_keys = { "Status" = true, "FleetArn" = true, "Description" = true, "NewGameSessionProtectionPolicy" = true, "BuildId" = true, "TerminationTime" = true, "CreationTime" = true, "MetricGroups" = true, "ServerLaunchPath" = true, "FleetId" = true, "ResourceCreationLimitPolicy" = true, "LogPaths" = true, "OperatingSystem" = true, "ServerLaunchParameters" = true, "Name" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertFleetAttributes(struct)
+keys.FleetAttributes = { ["Status"] = true, ["FleetArn"] = true, ["Description"] = true, ["NewGameSessionProtectionPolicy"] = true, ["BuildId"] = true, ["TerminationTime"] = true, ["CreationTime"] = true, ["MetricGroups"] = true, ["ServerLaunchPath"] = true, ["FleetId"] = true, ["ResourceCreationLimitPolicy"] = true, ["LogPaths"] = true, ["OperatingSystem"] = true, ["ServerLaunchParameters"] = true, ["Name"] = true, nil }
+
+function asserts.AssertFleetAttributes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FleetAttributes to be of type 'table'")
-	if struct["Status"] then M.AssertFleetStatus(struct["Status"]) end
-	if struct["FleetArn"] then M.AssertArnStringModel(struct["FleetArn"]) end
-	if struct["Description"] then M.AssertNonZeroAndMaxString(struct["Description"]) end
-	if struct["NewGameSessionProtectionPolicy"] then M.AssertProtectionPolicy(struct["NewGameSessionProtectionPolicy"]) end
-	if struct["BuildId"] then M.AssertBuildId(struct["BuildId"]) end
-	if struct["TerminationTime"] then M.AssertTimestamp(struct["TerminationTime"]) end
-	if struct["CreationTime"] then M.AssertTimestamp(struct["CreationTime"]) end
-	if struct["MetricGroups"] then M.AssertMetricGroupList(struct["MetricGroups"]) end
-	if struct["ServerLaunchPath"] then M.AssertNonZeroAndMaxString(struct["ServerLaunchPath"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["ResourceCreationLimitPolicy"] then M.AssertResourceCreationLimitPolicy(struct["ResourceCreationLimitPolicy"]) end
-	if struct["LogPaths"] then M.AssertStringList(struct["LogPaths"]) end
-	if struct["OperatingSystem"] then M.AssertOperatingSystem(struct["OperatingSystem"]) end
-	if struct["ServerLaunchParameters"] then M.AssertNonZeroAndMaxString(struct["ServerLaunchParameters"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["Status"] then asserts.AssertFleetStatus(struct["Status"]) end
+	if struct["FleetArn"] then asserts.AssertArnStringModel(struct["FleetArn"]) end
+	if struct["Description"] then asserts.AssertNonZeroAndMaxString(struct["Description"]) end
+	if struct["NewGameSessionProtectionPolicy"] then asserts.AssertProtectionPolicy(struct["NewGameSessionProtectionPolicy"]) end
+	if struct["BuildId"] then asserts.AssertBuildId(struct["BuildId"]) end
+	if struct["TerminationTime"] then asserts.AssertTimestamp(struct["TerminationTime"]) end
+	if struct["CreationTime"] then asserts.AssertTimestamp(struct["CreationTime"]) end
+	if struct["MetricGroups"] then asserts.AssertMetricGroupList(struct["MetricGroups"]) end
+	if struct["ServerLaunchPath"] then asserts.AssertNonZeroAndMaxString(struct["ServerLaunchPath"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["ResourceCreationLimitPolicy"] then asserts.AssertResourceCreationLimitPolicy(struct["ResourceCreationLimitPolicy"]) end
+	if struct["LogPaths"] then asserts.AssertStringList(struct["LogPaths"]) end
+	if struct["OperatingSystem"] then asserts.AssertOperatingSystem(struct["OperatingSystem"]) end
+	if struct["ServerLaunchParameters"] then asserts.AssertNonZeroAndMaxString(struct["ServerLaunchParameters"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(FleetAttributes_keys[k], "FleetAttributes contains unknown key " .. tostring(k))
+		assert(keys.FleetAttributes[k], "FleetAttributes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FleetAttributes
 -- <p>General properties describing a fleet.</p>
--- @param Status [FleetStatus] <p>Current status of the fleet.</p> <p>Possible fleet statuses include the following:</p> <ul> <li> <p> <b>NEW</b> – A new fleet has been defined and desired instances is set to 1. </p> </li> <li> <p> <b>DOWNLOADING/VALIDATING/BUILDING/ACTIVATING</b> – Amazon GameLift is setting up the new fleet, creating new instances with the game build and starting server processes.</p> </li> <li> <p> <b>ACTIVE</b> – Hosts can now accept game sessions.</p> </li> <li> <p> <b>ERROR</b> – An error occurred when downloading, validating, building, or activating the fleet.</p> </li> <li> <p> <b>DELETING</b> – Hosts are responding to a delete fleet request.</p> </li> <li> <p> <b>TERMINATED</b> – The fleet no longer exists.</p> </li> </ul>
--- @param FleetArn [ArnStringModel] <p>Identifier for a fleet that is unique across all regions.</p>
--- @param Description [NonZeroAndMaxString] <p>Human-readable description of the fleet.</p>
--- @param NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Type of game session protection to set for all new instances started in the fleet.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
--- @param BuildId [BuildId] <p>Unique identifier for a build.</p>
--- @param TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param MetricGroups [MetricGroupList] <p>Names of metric groups that this fleet is included in. In Amazon CloudWatch, you can view metrics for an individual fleet or aggregated metrics for a fleets that are in a fleet metric group. Currently, a fleet can be included in only one metric group at a time.</p>
--- @param ServerLaunchPath [NonZeroAndMaxString] <p>Path to a game server executable in the fleet's build, specified for fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server launch paths for fleets created after this date are specified in the fleet's <a>RuntimeConfiguration</a>.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet.</p>
--- @param ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Fleet policy to limit the number of game sessions an individual player can create over a span of time.</p>
--- @param LogPaths [StringList] <p>Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log files in this location. These logs are in addition to game session logs; see more on game session logs in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code">Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, Amazon GameLift will automatically upload logs that are stored on each instance at <code>C:\game\logs</code> (for Windows) or <code>/local/game/logs</code> (for Linux). Use the Amazon GameLift console to access stored logs. </p>
--- @param OperatingSystem [OperatingSystem] <p>Operating system of the fleet's computing resources. A fleet's operating system depends on the OS specified for the build that is deployed on this fleet.</p>
--- @param ServerLaunchParameters [NonZeroAndMaxString] <p>Game server launch parameters specified for fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets created after this date are specified in the fleet's <a>RuntimeConfiguration</a>.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
-function M.FleetAttributes(Status, FleetArn, Description, NewGameSessionProtectionPolicy, BuildId, TerminationTime, CreationTime, MetricGroups, ServerLaunchPath, FleetId, ResourceCreationLimitPolicy, LogPaths, OperatingSystem, ServerLaunchParameters, Name, ...)
+-- @param _Status [FleetStatus] <p>Current status of the fleet.</p> <p>Possible fleet statuses include the following:</p> <ul> <li> <p> <b>NEW</b> – A new fleet has been defined and desired instances is set to 1. </p> </li> <li> <p> <b>DOWNLOADING/VALIDATING/BUILDING/ACTIVATING</b> – Amazon GameLift is setting up the new fleet, creating new instances with the game build and starting server processes.</p> </li> <li> <p> <b>ACTIVE</b> – Hosts can now accept game sessions.</p> </li> <li> <p> <b>ERROR</b> – An error occurred when downloading, validating, building, or activating the fleet.</p> </li> <li> <p> <b>DELETING</b> – Hosts are responding to a delete fleet request.</p> </li> <li> <p> <b>TERMINATED</b> – The fleet no longer exists.</p> </li> </ul>
+-- @param _FleetArn [ArnStringModel] <p>Identifier for a fleet that is unique across all regions.</p>
+-- @param _Description [NonZeroAndMaxString] <p>Human-readable description of the fleet.</p>
+-- @param _NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Type of game session protection to set for all new instances started in the fleet.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- @param _BuildId [BuildId] <p>Unique identifier for a build.</p>
+-- @param _TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _MetricGroups [MetricGroupList] <p>Names of metric groups that this fleet is included in. In Amazon CloudWatch, you can view metrics for an individual fleet or aggregated metrics for a fleets that are in a fleet metric group. Currently, a fleet can be included in only one metric group at a time.</p>
+-- @param _ServerLaunchPath [NonZeroAndMaxString] <p>Path to a game server executable in the fleet's build, specified for fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server launch paths for fleets created after this date are specified in the fleet's <a>RuntimeConfiguration</a>.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet.</p>
+-- @param _ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Fleet policy to limit the number of game sessions an individual player can create over a span of time.</p>
+-- @param _LogPaths [StringList] <p>Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log files in this location. These logs are in addition to game session logs; see more on game session logs in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code">Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, Amazon GameLift will automatically upload logs that are stored on each instance at <code>C:\game\logs</code> (for Windows) or <code>/local/game/logs</code> (for Linux). Use the Amazon GameLift console to access stored logs. </p>
+-- @param _OperatingSystem [OperatingSystem] <p>Operating system of the fleet's computing resources. A fleet's operating system depends on the OS specified for the build that is deployed on this fleet.</p>
+-- @param _ServerLaunchParameters [NonZeroAndMaxString] <p>Game server launch parameters specified for fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets created after this date are specified in the fleet's <a>RuntimeConfiguration</a>.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
+function M.FleetAttributes(_Status, _FleetArn, _Description, _NewGameSessionProtectionPolicy, _BuildId, _TerminationTime, _CreationTime, _MetricGroups, _ServerLaunchPath, _FleetId, _ResourceCreationLimitPolicy, _LogPaths, _OperatingSystem, _ServerLaunchParameters, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FleetAttributes")
 	local t = { 
-		["Status"] = Status,
-		["FleetArn"] = FleetArn,
-		["Description"] = Description,
-		["NewGameSessionProtectionPolicy"] = NewGameSessionProtectionPolicy,
-		["BuildId"] = BuildId,
-		["TerminationTime"] = TerminationTime,
-		["CreationTime"] = CreationTime,
-		["MetricGroups"] = MetricGroups,
-		["ServerLaunchPath"] = ServerLaunchPath,
-		["FleetId"] = FleetId,
-		["ResourceCreationLimitPolicy"] = ResourceCreationLimitPolicy,
-		["LogPaths"] = LogPaths,
-		["OperatingSystem"] = OperatingSystem,
-		["ServerLaunchParameters"] = ServerLaunchParameters,
-		["Name"] = Name,
+		["Status"] = _Status,
+		["FleetArn"] = _FleetArn,
+		["Description"] = _Description,
+		["NewGameSessionProtectionPolicy"] = _NewGameSessionProtectionPolicy,
+		["BuildId"] = _BuildId,
+		["TerminationTime"] = _TerminationTime,
+		["CreationTime"] = _CreationTime,
+		["MetricGroups"] = _MetricGroups,
+		["ServerLaunchPath"] = _ServerLaunchPath,
+		["FleetId"] = _FleetId,
+		["ResourceCreationLimitPolicy"] = _ResourceCreationLimitPolicy,
+		["LogPaths"] = _LogPaths,
+		["OperatingSystem"] = _OperatingSystem,
+		["ServerLaunchParameters"] = _ServerLaunchParameters,
+		["Name"] = _Name,
 	}
-	M.AssertFleetAttributes(t)
+	asserts.AssertFleetAttributes(t)
 	return t
 end
 
-local DescribeFleetUtilizationInput_keys = { "FleetIds" = true, "NextToken" = true, "Limit" = true, nil }
+keys.DescribeFleetUtilizationInput = { ["FleetIds"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
 
-function M.AssertDescribeFleetUtilizationInput(struct)
+function asserts.AssertDescribeFleetUtilizationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetUtilizationInput to be of type 'table'")
-	if struct["FleetIds"] then M.AssertFleetIdList(struct["FleetIds"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
+	if struct["FleetIds"] then asserts.AssertFleetIdList(struct["FleetIds"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetUtilizationInput_keys[k], "DescribeFleetUtilizationInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetUtilizationInput[k], "DescribeFleetUtilizationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetUtilizationInput
 -- <p>Represents the input for a request action.</p>
--- @param FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-function M.DescribeFleetUtilizationInput(FleetIds, NextToken, Limit, ...)
+-- @param _FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+function M.DescribeFleetUtilizationInput(_FleetIds, _NextToken, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetUtilizationInput")
 	local t = { 
-		["FleetIds"] = FleetIds,
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
+		["FleetIds"] = _FleetIds,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
 	}
-	M.AssertDescribeFleetUtilizationInput(t)
+	asserts.AssertDescribeFleetUtilizationInput(t)
 	return t
 end
 
-local DescribeFleetCapacityInput_keys = { "FleetIds" = true, "NextToken" = true, "Limit" = true, nil }
+keys.DescribeFleetCapacityInput = { ["FleetIds"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
 
-function M.AssertDescribeFleetCapacityInput(struct)
+function asserts.AssertDescribeFleetCapacityInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetCapacityInput to be of type 'table'")
-	if struct["FleetIds"] then M.AssertFleetIdList(struct["FleetIds"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
+	if struct["FleetIds"] then asserts.AssertFleetIdList(struct["FleetIds"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetCapacityInput_keys[k], "DescribeFleetCapacityInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetCapacityInput[k], "DescribeFleetCapacityInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetCapacityInput
 -- <p>Represents the input for a request action.</p>
--- @param FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-function M.DescribeFleetCapacityInput(FleetIds, NextToken, Limit, ...)
+-- @param _FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+function M.DescribeFleetCapacityInput(_FleetIds, _NextToken, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetCapacityInput")
 	local t = { 
-		["FleetIds"] = FleetIds,
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
+		["FleetIds"] = _FleetIds,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
 	}
-	M.AssertDescribeFleetCapacityInput(t)
+	asserts.AssertDescribeFleetCapacityInput(t)
 	return t
 end
 
-local ListBuildsOutput_keys = { "NextToken" = true, "Builds" = true, nil }
+keys.ListBuildsOutput = { ["NextToken"] = true, ["Builds"] = true, nil }
 
-function M.AssertListBuildsOutput(struct)
+function asserts.AssertListBuildsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListBuildsOutput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNonEmptyString(struct["NextToken"]) end
-	if struct["Builds"] then M.AssertBuildList(struct["Builds"]) end
+	if struct["NextToken"] then asserts.AssertNonEmptyString(struct["NextToken"]) end
+	if struct["Builds"] then asserts.AssertBuildList(struct["Builds"]) end
 	for k,_ in pairs(struct) do
-		assert(ListBuildsOutput_keys[k], "ListBuildsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListBuildsOutput[k], "ListBuildsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListBuildsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param NextToken [NonEmptyString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param Builds [BuildList] <p>Collection of build records that match the request.</p>
-function M.ListBuildsOutput(NextToken, Builds, ...)
+-- @param _NextToken [NonEmptyString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @param _Builds [BuildList] <p>Collection of build records that match the request.</p>
+function M.ListBuildsOutput(_NextToken, _Builds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsOutput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Builds"] = Builds,
+		["NextToken"] = _NextToken,
+		["Builds"] = _Builds,
 	}
-	M.AssertListBuildsOutput(t)
+	asserts.AssertListBuildsOutput(t)
 	return t
 end
 
-local EC2InstanceLimit_keys = { "EC2InstanceType" = true, "CurrentInstances" = true, "InstanceLimit" = true, nil }
+keys.EC2InstanceLimit = { ["EC2InstanceType"] = true, ["CurrentInstances"] = true, ["InstanceLimit"] = true, nil }
 
-function M.AssertEC2InstanceLimit(struct)
+function asserts.AssertEC2InstanceLimit(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EC2InstanceLimit to be of type 'table'")
-	if struct["EC2InstanceType"] then M.AssertEC2InstanceType(struct["EC2InstanceType"]) end
-	if struct["CurrentInstances"] then M.AssertWholeNumber(struct["CurrentInstances"]) end
-	if struct["InstanceLimit"] then M.AssertWholeNumber(struct["InstanceLimit"]) end
+	if struct["EC2InstanceType"] then asserts.AssertEC2InstanceType(struct["EC2InstanceType"]) end
+	if struct["CurrentInstances"] then asserts.AssertWholeNumber(struct["CurrentInstances"]) end
+	if struct["InstanceLimit"] then asserts.AssertWholeNumber(struct["InstanceLimit"]) end
 	for k,_ in pairs(struct) do
-		assert(EC2InstanceLimit_keys[k], "EC2InstanceLimit contains unknown key " .. tostring(k))
+		assert(keys.EC2InstanceLimit[k], "EC2InstanceLimit contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EC2InstanceLimit
 -- <p>Maximum number of instances allowed based on the Amazon Elastic Compute Cloud (Amazon EC2) instance type. Instance limits can be retrieved by calling <a>DescribeEC2InstanceLimits</a>.</p>
--- @param EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
--- @param CurrentInstances [WholeNumber] <p>Number of instances of the specified type that are currently in use by this AWS account.</p>
--- @param InstanceLimit [WholeNumber] <p>Number of instances allowed.</p>
-function M.EC2InstanceLimit(EC2InstanceType, CurrentInstances, InstanceLimit, ...)
+-- @param _EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
+-- @param _CurrentInstances [WholeNumber] <p>Number of instances of the specified type that are currently in use by this AWS account.</p>
+-- @param _InstanceLimit [WholeNumber] <p>Number of instances allowed.</p>
+function M.EC2InstanceLimit(_EC2InstanceType, _CurrentInstances, _InstanceLimit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EC2InstanceLimit")
 	local t = { 
-		["EC2InstanceType"] = EC2InstanceType,
-		["CurrentInstances"] = CurrentInstances,
-		["InstanceLimit"] = InstanceLimit,
+		["EC2InstanceType"] = _EC2InstanceType,
+		["CurrentInstances"] = _CurrentInstances,
+		["InstanceLimit"] = _InstanceLimit,
 	}
-	M.AssertEC2InstanceLimit(t)
+	asserts.AssertEC2InstanceLimit(t)
 	return t
 end
 
-local DescribeScalingPoliciesInput_keys = { "StatusFilter" = true, "Limit" = true, "NextToken" = true, "FleetId" = true, nil }
+keys.DescribeScalingPoliciesInput = { ["StatusFilter"] = true, ["Limit"] = true, ["NextToken"] = true, ["FleetId"] = true, nil }
 
-function M.AssertDescribeScalingPoliciesInput(struct)
+function asserts.AssertDescribeScalingPoliciesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeScalingPoliciesInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["StatusFilter"] then M.AssertScalingStatusType(struct["StatusFilter"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["StatusFilter"] then asserts.AssertScalingStatusType(struct["StatusFilter"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeScalingPoliciesInput_keys[k], "DescribeScalingPoliciesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeScalingPoliciesInput[k], "DescribeScalingPoliciesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeScalingPoliciesInput
 -- <p>Represents the input for a request action.</p>
--- @param StatusFilter [ScalingStatusType] <p>Scaling policy status to filter results on. A scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATEREQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETEREQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to retrieve scaling policies for.</p>
+-- @param _StatusFilter [ScalingStatusType] <p>Scaling policy status to filter results on. A scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATEREQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETEREQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve scaling policies for.</p>
 -- Required parameter: FleetId
-function M.DescribeScalingPoliciesInput(StatusFilter, Limit, NextToken, FleetId, ...)
+function M.DescribeScalingPoliciesInput(_StatusFilter, _Limit, _NextToken, _FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingPoliciesInput")
 	local t = { 
-		["StatusFilter"] = StatusFilter,
-		["Limit"] = Limit,
-		["NextToken"] = NextToken,
-		["FleetId"] = FleetId,
+		["StatusFilter"] = _StatusFilter,
+		["Limit"] = _Limit,
+		["NextToken"] = _NextToken,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertDescribeScalingPoliciesInput(t)
+	asserts.AssertDescribeScalingPoliciesInput(t)
 	return t
 end
 
-local UpdateFleetCapacityOutput_keys = { "FleetId" = true, nil }
+keys.UpdateFleetCapacityOutput = { ["FleetId"] = true, nil }
 
-function M.AssertUpdateFleetCapacityOutput(struct)
+function asserts.AssertUpdateFleetCapacityOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFleetCapacityOutput to be of type 'table'")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFleetCapacityOutput_keys[k], "UpdateFleetCapacityOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateFleetCapacityOutput[k], "UpdateFleetCapacityOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFleetCapacityOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
-function M.UpdateFleetCapacityOutput(FleetId, ...)
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
+function M.UpdateFleetCapacityOutput(_FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetCapacityOutput")
 	local t = { 
-		["FleetId"] = FleetId,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertUpdateFleetCapacityOutput(t)
+	asserts.AssertUpdateFleetCapacityOutput(t)
 	return t
 end
 
-local FleetCapacityExceededException_keys = { "Message" = true, nil }
+keys.FleetCapacityExceededException = { ["Message"] = true, nil }
 
-function M.AssertFleetCapacityExceededException(struct)
+function asserts.AssertFleetCapacityExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FleetCapacityExceededException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(FleetCapacityExceededException_keys[k], "FleetCapacityExceededException contains unknown key " .. tostring(k))
+		assert(keys.FleetCapacityExceededException[k], "FleetCapacityExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FleetCapacityExceededException
 -- <p>The specified fleet has no available instances to fulfill a <code>CreateGameSession</code> request. Clients can retry such requests immediately or after a waiting period.</p>
--- @param Message [NonEmptyString] <p>The specified fleet has no available instances to fulfill a <code>CreateGameSession</code> request. Clients can retry such requests immediately or after a waiting period.</p>
-function M.FleetCapacityExceededException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.FleetCapacityExceededException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FleetCapacityExceededException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertFleetCapacityExceededException(t)
+	asserts.AssertFleetCapacityExceededException(t)
 	return t
 end
 
-local UpdateBuildOutput_keys = { "Build" = true, nil }
+keys.UpdateBuildOutput = { ["Build"] = true, nil }
 
-function M.AssertUpdateBuildOutput(struct)
+function asserts.AssertUpdateBuildOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateBuildOutput to be of type 'table'")
-	if struct["Build"] then M.AssertBuild(struct["Build"]) end
+	if struct["Build"] then asserts.AssertBuild(struct["Build"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateBuildOutput_keys[k], "UpdateBuildOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateBuildOutput[k], "UpdateBuildOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateBuildOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param Build [Build] <p>Object that contains the updated build record.</p>
-function M.UpdateBuildOutput(Build, ...)
+-- @param _Build [Build] <p>Object that contains the updated build record.</p>
+function M.UpdateBuildOutput(_Build, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBuildOutput")
 	local t = { 
-		["Build"] = Build,
+		["Build"] = _Build,
 	}
-	M.AssertUpdateBuildOutput(t)
+	asserts.AssertUpdateBuildOutput(t)
 	return t
 end
 
-local StartGameSessionPlacementOutput_keys = { "GameSessionPlacement" = true, nil }
+keys.StartGameSessionPlacementOutput = { ["GameSessionPlacement"] = true, nil }
 
-function M.AssertStartGameSessionPlacementOutput(struct)
+function asserts.AssertStartGameSessionPlacementOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartGameSessionPlacementOutput to be of type 'table'")
-	if struct["GameSessionPlacement"] then M.AssertGameSessionPlacement(struct["GameSessionPlacement"]) end
+	if struct["GameSessionPlacement"] then asserts.AssertGameSessionPlacement(struct["GameSessionPlacement"]) end
 	for k,_ in pairs(struct) do
-		assert(StartGameSessionPlacementOutput_keys[k], "StartGameSessionPlacementOutput contains unknown key " .. tostring(k))
+		assert(keys.StartGameSessionPlacementOutput[k], "StartGameSessionPlacementOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartGameSessionPlacementOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSessionPlacement [GameSessionPlacement] <p>Object that describes the newly created game session placement. This object includes all the information provided in the request, as well as start/end time stamps and placement status. </p>
-function M.StartGameSessionPlacementOutput(GameSessionPlacement, ...)
+-- @param _GameSessionPlacement [GameSessionPlacement] <p>Object that describes the newly created game session placement. This object includes all the information provided in the request, as well as start/end time stamps and placement status. </p>
+function M.StartGameSessionPlacementOutput(_GameSessionPlacement, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartGameSessionPlacementOutput")
 	local t = { 
-		["GameSessionPlacement"] = GameSessionPlacement,
+		["GameSessionPlacement"] = _GameSessionPlacement,
 	}
-	M.AssertStartGameSessionPlacementOutput(t)
+	asserts.AssertStartGameSessionPlacementOutput(t)
 	return t
 end
 
-local ListBuildsInput_keys = { "Status" = true, "NextToken" = true, "Limit" = true, nil }
+keys.ListBuildsInput = { ["Status"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
 
-function M.AssertListBuildsInput(struct)
+function asserts.AssertListBuildsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListBuildsInput to be of type 'table'")
-	if struct["Status"] then M.AssertBuildStatus(struct["Status"]) end
-	if struct["NextToken"] then M.AssertNonEmptyString(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
+	if struct["Status"] then asserts.AssertBuildStatus(struct["Status"]) end
+	if struct["NextToken"] then asserts.AssertNonEmptyString(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(ListBuildsInput_keys[k], "ListBuildsInput contains unknown key " .. tostring(k))
+		assert(keys.ListBuildsInput[k], "ListBuildsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListBuildsInput
 -- <p>Represents the input for a request action.</p>
--- @param Status [BuildStatus] <p>Build status to filter results by. To retrieve all builds, leave this parameter empty.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul>
--- @param NextToken [NonEmptyString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-function M.ListBuildsInput(Status, NextToken, Limit, ...)
+-- @param _Status [BuildStatus] <p>Build status to filter results by. To retrieve all builds, leave this parameter empty.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul>
+-- @param _NextToken [NonEmptyString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+function M.ListBuildsInput(_Status, _NextToken, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsInput")
 	local t = { 
-		["Status"] = Status,
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
+		["Status"] = _Status,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
 	}
-	M.AssertListBuildsInput(t)
+	asserts.AssertListBuildsInput(t)
 	return t
 end
 
-local UpdateRuntimeConfigurationOutput_keys = { "RuntimeConfiguration" = true, nil }
+keys.UpdateRuntimeConfigurationOutput = { ["RuntimeConfiguration"] = true, nil }
 
-function M.AssertUpdateRuntimeConfigurationOutput(struct)
+function asserts.AssertUpdateRuntimeConfigurationOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateRuntimeConfigurationOutput to be of type 'table'")
-	if struct["RuntimeConfiguration"] then M.AssertRuntimeConfiguration(struct["RuntimeConfiguration"]) end
+	if struct["RuntimeConfiguration"] then asserts.AssertRuntimeConfiguration(struct["RuntimeConfiguration"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateRuntimeConfigurationOutput_keys[k], "UpdateRuntimeConfigurationOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateRuntimeConfigurationOutput[k], "UpdateRuntimeConfigurationOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateRuntimeConfigurationOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param RuntimeConfiguration [RuntimeConfiguration] <p>The runtime configuration currently in force. If the update was successful, this object matches the one in the request.</p>
-function M.UpdateRuntimeConfigurationOutput(RuntimeConfiguration, ...)
+-- @param _RuntimeConfiguration [RuntimeConfiguration] <p>The runtime configuration currently in force. If the update was successful, this object matches the one in the request.</p>
+function M.UpdateRuntimeConfigurationOutput(_RuntimeConfiguration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRuntimeConfigurationOutput")
 	local t = { 
-		["RuntimeConfiguration"] = RuntimeConfiguration,
+		["RuntimeConfiguration"] = _RuntimeConfiguration,
 	}
-	M.AssertUpdateRuntimeConfigurationOutput(t)
+	asserts.AssertUpdateRuntimeConfigurationOutput(t)
 	return t
 end
 
-local DeleteGameSessionQueueInput_keys = { "Name" = true, nil }
+keys.DeleteGameSessionQueueInput = { ["Name"] = true, nil }
 
-function M.AssertDeleteGameSessionQueueInput(struct)
+function asserts.AssertDeleteGameSessionQueueInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteGameSessionQueueInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertGameSessionQueueName(struct["Name"]) end
+	if struct["Name"] then asserts.AssertGameSessionQueueName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteGameSessionQueueInput_keys[k], "DeleteGameSessionQueueInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteGameSessionQueueInput[k], "DeleteGameSessionQueueInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteGameSessionQueueInput
 -- <p>Represents the input for a request action.</p>
--- @param Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- @param _Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
 -- Required parameter: Name
-function M.DeleteGameSessionQueueInput(Name, ...)
+function M.DeleteGameSessionQueueInput(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGameSessionQueueInput")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteGameSessionQueueInput(t)
+	asserts.AssertDeleteGameSessionQueueInput(t)
 	return t
 end
 
-local CreateBuildInput_keys = { "StorageLocation" = true, "Version" = true, "Name" = true, "OperatingSystem" = true, nil }
+keys.CreateBuildInput = { ["StorageLocation"] = true, ["Version"] = true, ["Name"] = true, ["OperatingSystem"] = true, nil }
 
-function M.AssertCreateBuildInput(struct)
+function asserts.AssertCreateBuildInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateBuildInput to be of type 'table'")
-	if struct["StorageLocation"] then M.AssertS3Location(struct["StorageLocation"]) end
-	if struct["Version"] then M.AssertNonZeroAndMaxString(struct["Version"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
-	if struct["OperatingSystem"] then M.AssertOperatingSystem(struct["OperatingSystem"]) end
+	if struct["StorageLocation"] then asserts.AssertS3Location(struct["StorageLocation"]) end
+	if struct["Version"] then asserts.AssertNonZeroAndMaxString(struct["Version"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["OperatingSystem"] then asserts.AssertOperatingSystem(struct["OperatingSystem"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateBuildInput_keys[k], "CreateBuildInput contains unknown key " .. tostring(k))
+		assert(keys.CreateBuildInput[k], "CreateBuildInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateBuildInput
 -- <p>Represents the input for a request action.</p>
--- @param StorageLocation [S3Location] <p>Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your Amazon S3 bucket (see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build">Create a Build with Files in Amazon S3</a>).</p>
--- @param Version [NonZeroAndMaxString] <p>Version that is associated with this build. Version strings do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a build. Build names do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
--- @param OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system.</p>
-function M.CreateBuildInput(StorageLocation, Version, Name, OperatingSystem, ...)
+-- @param _StorageLocation [S3Location] <p>Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your Amazon S3 bucket (see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build">Create a Build with Files in Amazon S3</a>).</p>
+-- @param _Version [NonZeroAndMaxString] <p>Version that is associated with this build. Version strings do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a build. Build names do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
+-- @param _OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system.</p>
+function M.CreateBuildInput(_StorageLocation, _Version, _Name, _OperatingSystem, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateBuildInput")
 	local t = { 
-		["StorageLocation"] = StorageLocation,
-		["Version"] = Version,
-		["Name"] = Name,
-		["OperatingSystem"] = OperatingSystem,
+		["StorageLocation"] = _StorageLocation,
+		["Version"] = _Version,
+		["Name"] = _Name,
+		["OperatingSystem"] = _OperatingSystem,
 	}
-	M.AssertCreateBuildInput(t)
+	asserts.AssertCreateBuildInput(t)
 	return t
 end
 
-local SearchGameSessionsOutput_keys = { "GameSessions" = true, "NextToken" = true, nil }
+keys.SearchGameSessionsOutput = { ["GameSessions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertSearchGameSessionsOutput(struct)
+function asserts.AssertSearchGameSessionsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SearchGameSessionsOutput to be of type 'table'")
-	if struct["GameSessions"] then M.AssertGameSessionList(struct["GameSessions"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["GameSessions"] then asserts.AssertGameSessionList(struct["GameSessions"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(SearchGameSessionsOutput_keys[k], "SearchGameSessionsOutput contains unknown key " .. tostring(k))
+		assert(keys.SearchGameSessionsOutput[k], "SearchGameSessionsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SearchGameSessionsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSessions [GameSessionList] <p>Collection of objects containing game session properties for each session matching the request.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.SearchGameSessionsOutput(GameSessions, NextToken, ...)
+-- @param _GameSessions [GameSessionList] <p>Collection of objects containing game session properties for each session matching the request.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.SearchGameSessionsOutput(_GameSessions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchGameSessionsOutput")
 	local t = { 
-		["GameSessions"] = GameSessions,
-		["NextToken"] = NextToken,
+		["GameSessions"] = _GameSessions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertSearchGameSessionsOutput(t)
+	asserts.AssertSearchGameSessionsOutput(t)
 	return t
 end
 
-local AwsCredentials_keys = { "SecretAccessKey" = true, "SessionToken" = true, "AccessKeyId" = true, nil }
+keys.AwsCredentials = { ["SecretAccessKey"] = true, ["SessionToken"] = true, ["AccessKeyId"] = true, nil }
 
-function M.AssertAwsCredentials(struct)
+function asserts.AssertAwsCredentials(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AwsCredentials to be of type 'table'")
-	if struct["SecretAccessKey"] then M.AssertNonEmptyString(struct["SecretAccessKey"]) end
-	if struct["SessionToken"] then M.AssertNonEmptyString(struct["SessionToken"]) end
-	if struct["AccessKeyId"] then M.AssertNonEmptyString(struct["AccessKeyId"]) end
+	if struct["SecretAccessKey"] then asserts.AssertNonEmptyString(struct["SecretAccessKey"]) end
+	if struct["SessionToken"] then asserts.AssertNonEmptyString(struct["SessionToken"]) end
+	if struct["AccessKeyId"] then asserts.AssertNonEmptyString(struct["AccessKeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(AwsCredentials_keys[k], "AwsCredentials contains unknown key " .. tostring(k))
+		assert(keys.AwsCredentials[k], "AwsCredentials contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AwsCredentials
 -- <p>AWS access credentials sometimes used for uploading game build files to Amazon GameLift. They are valid for a limited time. If they expire before you upload your game build, get a new set by calling <a>RequestUploadCredentials</a>.</p>
--- @param SecretAccessKey [NonEmptyString] <p>Secret key for an AWS account.</p>
--- @param SessionToken [NonEmptyString] <p>Token specific to a build ID.</p>
--- @param AccessKeyId [NonEmptyString] <p>Access key for an AWS account.</p>
-function M.AwsCredentials(SecretAccessKey, SessionToken, AccessKeyId, ...)
+-- @param _SecretAccessKey [NonEmptyString] <p>Secret key for an AWS account.</p>
+-- @param _SessionToken [NonEmptyString] <p>Token specific to a build ID.</p>
+-- @param _AccessKeyId [NonEmptyString] <p>Access key for an AWS account.</p>
+function M.AwsCredentials(_SecretAccessKey, _SessionToken, _AccessKeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AwsCredentials")
 	local t = { 
-		["SecretAccessKey"] = SecretAccessKey,
-		["SessionToken"] = SessionToken,
-		["AccessKeyId"] = AccessKeyId,
+		["SecretAccessKey"] = _SecretAccessKey,
+		["SessionToken"] = _SessionToken,
+		["AccessKeyId"] = _AccessKeyId,
 	}
-	M.AssertAwsCredentials(t)
+	asserts.AssertAwsCredentials(t)
 	return t
 end
 
-local DescribeEC2InstanceLimitsInput_keys = { "EC2InstanceType" = true, nil }
+keys.DescribeEC2InstanceLimitsInput = { ["EC2InstanceType"] = true, nil }
 
-function M.AssertDescribeEC2InstanceLimitsInput(struct)
+function asserts.AssertDescribeEC2InstanceLimitsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEC2InstanceLimitsInput to be of type 'table'")
-	if struct["EC2InstanceType"] then M.AssertEC2InstanceType(struct["EC2InstanceType"]) end
+	if struct["EC2InstanceType"] then asserts.AssertEC2InstanceType(struct["EC2InstanceType"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEC2InstanceLimitsInput_keys[k], "DescribeEC2InstanceLimitsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeEC2InstanceLimitsInput[k], "DescribeEC2InstanceLimitsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEC2InstanceLimitsInput
 -- <p>Represents the input for a request action.</p>
--- @param EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.</p>
-function M.DescribeEC2InstanceLimitsInput(EC2InstanceType, ...)
+-- @param _EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.</p>
+function M.DescribeEC2InstanceLimitsInput(_EC2InstanceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEC2InstanceLimitsInput")
 	local t = { 
-		["EC2InstanceType"] = EC2InstanceType,
+		["EC2InstanceType"] = _EC2InstanceType,
 	}
-	M.AssertDescribeEC2InstanceLimitsInput(t)
+	asserts.AssertDescribeEC2InstanceLimitsInput(t)
 	return t
 end
 
-local CreateBuildOutput_keys = { "StorageLocation" = true, "Build" = true, "UploadCredentials" = true, nil }
+keys.CreateBuildOutput = { ["StorageLocation"] = true, ["Build"] = true, ["UploadCredentials"] = true, nil }
 
-function M.AssertCreateBuildOutput(struct)
+function asserts.AssertCreateBuildOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateBuildOutput to be of type 'table'")
-	if struct["StorageLocation"] then M.AssertS3Location(struct["StorageLocation"]) end
-	if struct["Build"] then M.AssertBuild(struct["Build"]) end
-	if struct["UploadCredentials"] then M.AssertAwsCredentials(struct["UploadCredentials"]) end
+	if struct["StorageLocation"] then asserts.AssertS3Location(struct["StorageLocation"]) end
+	if struct["Build"] then asserts.AssertBuild(struct["Build"]) end
+	if struct["UploadCredentials"] then asserts.AssertAwsCredentials(struct["UploadCredentials"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateBuildOutput_keys[k], "CreateBuildOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateBuildOutput[k], "CreateBuildOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateBuildOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param StorageLocation [S3Location] <p>Amazon S3 location specified in the request.</p>
--- @param Build [Build] <p>The newly created build record, including a unique build ID and status. </p>
--- @param UploadCredentials [AwsCredentials] <p>This element is not currently in use.</p>
-function M.CreateBuildOutput(StorageLocation, Build, UploadCredentials, ...)
+-- @param _StorageLocation [S3Location] <p>Amazon S3 location specified in the request.</p>
+-- @param _Build [Build] <p>The newly created build record, including a unique build ID and status. </p>
+-- @param _UploadCredentials [AwsCredentials] <p>This element is not currently in use.</p>
+function M.CreateBuildOutput(_StorageLocation, _Build, _UploadCredentials, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateBuildOutput")
 	local t = { 
-		["StorageLocation"] = StorageLocation,
-		["Build"] = Build,
-		["UploadCredentials"] = UploadCredentials,
+		["StorageLocation"] = _StorageLocation,
+		["Build"] = _Build,
+		["UploadCredentials"] = _UploadCredentials,
 	}
-	M.AssertCreateBuildOutput(t)
+	asserts.AssertCreateBuildOutput(t)
 	return t
 end
 
-local RequestUploadCredentialsOutput_keys = { "StorageLocation" = true, "UploadCredentials" = true, nil }
+keys.RequestUploadCredentialsOutput = { ["StorageLocation"] = true, ["UploadCredentials"] = true, nil }
 
-function M.AssertRequestUploadCredentialsOutput(struct)
+function asserts.AssertRequestUploadCredentialsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RequestUploadCredentialsOutput to be of type 'table'")
-	if struct["StorageLocation"] then M.AssertS3Location(struct["StorageLocation"]) end
-	if struct["UploadCredentials"] then M.AssertAwsCredentials(struct["UploadCredentials"]) end
+	if struct["StorageLocation"] then asserts.AssertS3Location(struct["StorageLocation"]) end
+	if struct["UploadCredentials"] then asserts.AssertAwsCredentials(struct["UploadCredentials"]) end
 	for k,_ in pairs(struct) do
-		assert(RequestUploadCredentialsOutput_keys[k], "RequestUploadCredentialsOutput contains unknown key " .. tostring(k))
+		assert(keys.RequestUploadCredentialsOutput[k], "RequestUploadCredentialsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RequestUploadCredentialsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param StorageLocation [S3Location] <p>Amazon S3 path and key, identifying where the game build files are stored.</p>
--- @param UploadCredentials [AwsCredentials] <p>AWS credentials required when uploading a game build to the storage location. These credentials have a limited lifespan and are valid only for the build they were issued for.</p>
-function M.RequestUploadCredentialsOutput(StorageLocation, UploadCredentials, ...)
+-- @param _StorageLocation [S3Location] <p>Amazon S3 path and key, identifying where the game build files are stored.</p>
+-- @param _UploadCredentials [AwsCredentials] <p>AWS credentials required when uploading a game build to the storage location. These credentials have a limited lifespan and are valid only for the build they were issued for.</p>
+function M.RequestUploadCredentialsOutput(_StorageLocation, _UploadCredentials, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestUploadCredentialsOutput")
 	local t = { 
-		["StorageLocation"] = StorageLocation,
-		["UploadCredentials"] = UploadCredentials,
+		["StorageLocation"] = _StorageLocation,
+		["UploadCredentials"] = _UploadCredentials,
 	}
-	M.AssertRequestUploadCredentialsOutput(t)
+	asserts.AssertRequestUploadCredentialsOutput(t)
 	return t
 end
 
-local ListFleetsInput_keys = { "BuildId" = true, "NextToken" = true, "Limit" = true, nil }
+keys.ListFleetsInput = { ["BuildId"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
 
-function M.AssertListFleetsInput(struct)
+function asserts.AssertListFleetsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFleetsInput to be of type 'table'")
-	if struct["BuildId"] then M.AssertBuildId(struct["BuildId"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
+	if struct["BuildId"] then asserts.AssertBuildId(struct["BuildId"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFleetsInput_keys[k], "ListFleetsInput contains unknown key " .. tostring(k))
+		assert(keys.ListFleetsInput[k], "ListFleetsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFleetsInput
 -- <p>Represents the input for a request action.</p>
--- @param BuildId [BuildId] <p>Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified build. To retrieve all fleets, leave this parameter empty.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-function M.ListFleetsInput(BuildId, NextToken, Limit, ...)
+-- @param _BuildId [BuildId] <p>Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified build. To retrieve all fleets, leave this parameter empty.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+function M.ListFleetsInput(_BuildId, _NextToken, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFleetsInput")
 	local t = { 
-		["BuildId"] = BuildId,
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
+		["BuildId"] = _BuildId,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
 	}
-	M.AssertListFleetsInput(t)
+	asserts.AssertListFleetsInput(t)
 	return t
 end
 
-local DescribeGameSessionQueuesOutput_keys = { "GameSessionQueues" = true, "NextToken" = true, nil }
+keys.DescribeGameSessionQueuesOutput = { ["GameSessionQueues"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeGameSessionQueuesOutput(struct)
+function asserts.AssertDescribeGameSessionQueuesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeGameSessionQueuesOutput to be of type 'table'")
-	if struct["GameSessionQueues"] then M.AssertGameSessionQueueList(struct["GameSessionQueues"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["GameSessionQueues"] then asserts.AssertGameSessionQueueList(struct["GameSessionQueues"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeGameSessionQueuesOutput_keys[k], "DescribeGameSessionQueuesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGameSessionQueuesOutput[k], "DescribeGameSessionQueuesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeGameSessionQueuesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSessionQueues [GameSessionQueueList] <p>Collection of objects that describes the requested game session queues.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeGameSessionQueuesOutput(GameSessionQueues, NextToken, ...)
+-- @param _GameSessionQueues [GameSessionQueueList] <p>Collection of objects that describes the requested game session queues.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.DescribeGameSessionQueuesOutput(_GameSessionQueues, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionQueuesOutput")
 	local t = { 
-		["GameSessionQueues"] = GameSessionQueues,
-		["NextToken"] = NextToken,
+		["GameSessionQueues"] = _GameSessionQueues,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeGameSessionQueuesOutput(t)
+	asserts.AssertDescribeGameSessionQueuesOutput(t)
 	return t
 end
 
-local IdempotentParameterMismatchException_keys = { "Message" = true, nil }
+keys.IdempotentParameterMismatchException = { ["Message"] = true, nil }
 
-function M.AssertIdempotentParameterMismatchException(struct)
+function asserts.AssertIdempotentParameterMismatchException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IdempotentParameterMismatchException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(IdempotentParameterMismatchException_keys[k], "IdempotentParameterMismatchException contains unknown key " .. tostring(k))
+		assert(keys.IdempotentParameterMismatchException[k], "IdempotentParameterMismatchException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IdempotentParameterMismatchException
 -- <p>A game session with this custom ID string already exists in this fleet. Resolve this conflict before retrying this request.</p>
--- @param Message [NonEmptyString] <p>A game session with this custom ID string already exists in this fleet. Resolve this conflict before retrying this request.</p>
-function M.IdempotentParameterMismatchException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.IdempotentParameterMismatchException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdempotentParameterMismatchException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertIdempotentParameterMismatchException(t)
+	asserts.AssertIdempotentParameterMismatchException(t)
 	return t
 end
 
-local DescribeGameSessionsInput_keys = { "Limit" = true, "GameSessionId" = true, "StatusFilter" = true, "FleetId" = true, "NextToken" = true, "AliasId" = true, nil }
+keys.DescribeGameSessionsInput = { ["Limit"] = true, ["GameSessionId"] = true, ["StatusFilter"] = true, ["FleetId"] = true, ["NextToken"] = true, ["AliasId"] = true, nil }
 
-function M.AssertDescribeGameSessionsInput(struct)
+function asserts.AssertDescribeGameSessionsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeGameSessionsInput to be of type 'table'")
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["GameSessionId"] then M.AssertArnStringModel(struct["GameSessionId"]) end
-	if struct["StatusFilter"] then M.AssertNonZeroAndMaxString(struct["StatusFilter"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["GameSessionId"] then asserts.AssertArnStringModel(struct["GameSessionId"]) end
+	if struct["StatusFilter"] then asserts.AssertNonZeroAndMaxString(struct["StatusFilter"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeGameSessionsInput_keys[k], "DescribeGameSessionsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGameSessionsInput[k], "DescribeGameSessionsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeGameSessionsInput
 -- <p>Represents the input for a request action.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve. You can use either a <code>GameSessionId</code> or <code>GameSessionArn</code> value. </p>
--- @param StatusFilter [NonZeroAndMaxString] <p>Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>, <code>TERMINATED</code>, <code>ACTIVATING</code>, and <code>TERMINATING</code> (the last two are transitory). </p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to retrieve all game sessions for.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for. </p>
-function M.DescribeGameSessionsInput(Limit, GameSessionId, StatusFilter, FleetId, NextToken, AliasId, ...)
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve. You can use either a <code>GameSessionId</code> or <code>GameSessionArn</code> value. </p>
+-- @param _StatusFilter [NonZeroAndMaxString] <p>Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>, <code>TERMINATED</code>, <code>ACTIVATING</code>, and <code>TERMINATING</code> (the last two are transitory). </p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve all game sessions for.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for. </p>
+function M.DescribeGameSessionsInput(_Limit, _GameSessionId, _StatusFilter, _FleetId, _NextToken, _AliasId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionsInput")
 	local t = { 
-		["Limit"] = Limit,
-		["GameSessionId"] = GameSessionId,
-		["StatusFilter"] = StatusFilter,
-		["FleetId"] = FleetId,
-		["NextToken"] = NextToken,
-		["AliasId"] = AliasId,
+		["Limit"] = _Limit,
+		["GameSessionId"] = _GameSessionId,
+		["StatusFilter"] = _StatusFilter,
+		["FleetId"] = _FleetId,
+		["NextToken"] = _NextToken,
+		["AliasId"] = _AliasId,
 	}
-	M.AssertDescribeGameSessionsInput(t)
+	asserts.AssertDescribeGameSessionsInput(t)
 	return t
 end
 
-local IpPermission_keys = { "ToPort" = true, "FromPort" = true, "Protocol" = true, "IpRange" = true, nil }
+keys.IpPermission = { ["ToPort"] = true, ["FromPort"] = true, ["Protocol"] = true, ["IpRange"] = true, nil }
 
-function M.AssertIpPermission(struct)
+function asserts.AssertIpPermission(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IpPermission to be of type 'table'")
 	assert(struct["FromPort"], "Expected key FromPort to exist in table")
 	assert(struct["ToPort"], "Expected key ToPort to exist in table")
 	assert(struct["IpRange"], "Expected key IpRange to exist in table")
 	assert(struct["Protocol"], "Expected key Protocol to exist in table")
-	if struct["ToPort"] then M.AssertPortNumber(struct["ToPort"]) end
-	if struct["FromPort"] then M.AssertPortNumber(struct["FromPort"]) end
-	if struct["Protocol"] then M.AssertIpProtocol(struct["Protocol"]) end
-	if struct["IpRange"] then M.AssertNonBlankString(struct["IpRange"]) end
+	if struct["ToPort"] then asserts.AssertPortNumber(struct["ToPort"]) end
+	if struct["FromPort"] then asserts.AssertPortNumber(struct["FromPort"]) end
+	if struct["Protocol"] then asserts.AssertIpProtocol(struct["Protocol"]) end
+	if struct["IpRange"] then asserts.AssertNonBlankString(struct["IpRange"]) end
 	for k,_ in pairs(struct) do
-		assert(IpPermission_keys[k], "IpPermission contains unknown key " .. tostring(k))
+		assert(keys.IpPermission[k], "IpPermission contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IpPermission
 -- <p>A range of IP addresses and port settings that allow inbound traffic to connect to server processes on Amazon GameLift. Each game session hosted on a fleet is assigned a unique combination of IP address and port number, which must fall into the fleet's allowed ranges. This combination is included in the <a>GameSession</a> object. </p>
--- @param ToPort [PortNumber] <p>Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than <code>FromPort</code>.</p>
--- @param FromPort [PortNumber] <p>Starting value for a range of allowed port numbers.</p>
--- @param Protocol [IpProtocol] <p>Network communication protocol used by the fleet.</p>
--- @param IpRange [NonBlankString] <p>Range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "<code>000.000.000.000/[subnet mask]</code>" or optionally the shortened version "<code>0.0.0.0/[subnet mask]</code>".</p>
+-- @param _ToPort [PortNumber] <p>Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than <code>FromPort</code>.</p>
+-- @param _FromPort [PortNumber] <p>Starting value for a range of allowed port numbers.</p>
+-- @param _Protocol [IpProtocol] <p>Network communication protocol used by the fleet.</p>
+-- @param _IpRange [NonBlankString] <p>Range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "<code>000.000.000.000/[subnet mask]</code>" or optionally the shortened version "<code>0.0.0.0/[subnet mask]</code>".</p>
 -- Required parameter: FromPort
 -- Required parameter: ToPort
 -- Required parameter: IpRange
 -- Required parameter: Protocol
-function M.IpPermission(ToPort, FromPort, Protocol, IpRange, ...)
+function M.IpPermission(_ToPort, _FromPort, _Protocol, _IpRange, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IpPermission")
 	local t = { 
-		["ToPort"] = ToPort,
-		["FromPort"] = FromPort,
-		["Protocol"] = Protocol,
-		["IpRange"] = IpRange,
+		["ToPort"] = _ToPort,
+		["FromPort"] = _FromPort,
+		["Protocol"] = _Protocol,
+		["IpRange"] = _IpRange,
 	}
-	M.AssertIpPermission(t)
+	asserts.AssertIpPermission(t)
 	return t
 end
 
-local Instance_keys = { "Status" = true, "InstanceId" = true, "Type" = true, "CreationTime" = true, "FleetId" = true, "IpAddress" = true, "OperatingSystem" = true, nil }
+keys.Instance = { ["Status"] = true, ["InstanceId"] = true, ["Type"] = true, ["CreationTime"] = true, ["FleetId"] = true, ["IpAddress"] = true, ["OperatingSystem"] = true, nil }
 
-function M.AssertInstance(struct)
+function asserts.AssertInstance(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Instance to be of type 'table'")
-	if struct["Status"] then M.AssertInstanceStatus(struct["Status"]) end
-	if struct["InstanceId"] then M.AssertInstanceId(struct["InstanceId"]) end
-	if struct["Type"] then M.AssertEC2InstanceType(struct["Type"]) end
-	if struct["CreationTime"] then M.AssertTimestamp(struct["CreationTime"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["IpAddress"] then M.AssertIpAddress(struct["IpAddress"]) end
-	if struct["OperatingSystem"] then M.AssertOperatingSystem(struct["OperatingSystem"]) end
+	if struct["Status"] then asserts.AssertInstanceStatus(struct["Status"]) end
+	if struct["InstanceId"] then asserts.AssertInstanceId(struct["InstanceId"]) end
+	if struct["Type"] then asserts.AssertEC2InstanceType(struct["Type"]) end
+	if struct["CreationTime"] then asserts.AssertTimestamp(struct["CreationTime"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["IpAddress"] then asserts.AssertIpAddress(struct["IpAddress"]) end
+	if struct["OperatingSystem"] then asserts.AssertOperatingSystem(struct["OperatingSystem"]) end
 	for k,_ in pairs(struct) do
-		assert(Instance_keys[k], "Instance contains unknown key " .. tostring(k))
+		assert(keys.Instance[k], "Instance contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Instance
 -- <p>Properties that describe an instance of a virtual computing resource that hosts one or more game servers. A fleet contains zero or more instances.</p>
--- @param Status [InstanceStatus] <p>Current status of the instance. Possible statuses include the following:</p> <ul> <li> <p> <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the fleet's runtime configuration. </p> </li> <li> <p> <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now considered ready to host game sessions. </p> </li> <li> <p> <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a scaling down event or to recycle resources in the event of a problem.</p> </li> </ul>
--- @param InstanceId [InstanceId] <p>Unique identifier for an instance.</p>
--- @param Type [EC2InstanceType] <p>EC2 instance type that defines the computing resources of this instance. </p>
--- @param CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet that the instance is in.</p>
--- @param IpAddress [IpAddress] <p>IP address assigned to the instance.</p>
--- @param OperatingSystem [OperatingSystem] <p>Operating system that is running on this instance. </p>
-function M.Instance(Status, InstanceId, Type, CreationTime, FleetId, IpAddress, OperatingSystem, ...)
+-- @param _Status [InstanceStatus] <p>Current status of the instance. Possible statuses include the following:</p> <ul> <li> <p> <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the fleet's runtime configuration. </p> </li> <li> <p> <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now considered ready to host game sessions. </p> </li> <li> <p> <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a scaling down event or to recycle resources in the event of a problem.</p> </li> </ul>
+-- @param _InstanceId [InstanceId] <p>Unique identifier for an instance.</p>
+-- @param _Type [EC2InstanceType] <p>EC2 instance type that defines the computing resources of this instance. </p>
+-- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet that the instance is in.</p>
+-- @param _IpAddress [IpAddress] <p>IP address assigned to the instance.</p>
+-- @param _OperatingSystem [OperatingSystem] <p>Operating system that is running on this instance. </p>
+function M.Instance(_Status, _InstanceId, _Type, _CreationTime, _FleetId, _IpAddress, _OperatingSystem, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
 	local t = { 
-		["Status"] = Status,
-		["InstanceId"] = InstanceId,
-		["Type"] = Type,
-		["CreationTime"] = CreationTime,
-		["FleetId"] = FleetId,
-		["IpAddress"] = IpAddress,
-		["OperatingSystem"] = OperatingSystem,
+		["Status"] = _Status,
+		["InstanceId"] = _InstanceId,
+		["Type"] = _Type,
+		["CreationTime"] = _CreationTime,
+		["FleetId"] = _FleetId,
+		["IpAddress"] = _IpAddress,
+		["OperatingSystem"] = _OperatingSystem,
 	}
-	M.AssertInstance(t)
+	asserts.AssertInstance(t)
 	return t
 end
 
-local StopGameSessionPlacementInput_keys = { "PlacementId" = true, nil }
+keys.StopGameSessionPlacementInput = { ["PlacementId"] = true, nil }
 
-function M.AssertStopGameSessionPlacementInput(struct)
+function asserts.AssertStopGameSessionPlacementInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopGameSessionPlacementInput to be of type 'table'")
 	assert(struct["PlacementId"], "Expected key PlacementId to exist in table")
-	if struct["PlacementId"] then M.AssertIdStringModel(struct["PlacementId"]) end
+	if struct["PlacementId"] then asserts.AssertIdStringModel(struct["PlacementId"]) end
 	for k,_ in pairs(struct) do
-		assert(StopGameSessionPlacementInput_keys[k], "StopGameSessionPlacementInput contains unknown key " .. tostring(k))
+		assert(keys.StopGameSessionPlacementInput[k], "StopGameSessionPlacementInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopGameSessionPlacementInput
 -- <p>Represents the input for a request action.</p>
--- @param PlacementId [IdStringModel] <p>Unique identifier for a game session placement to cancel.</p>
+-- @param _PlacementId [IdStringModel] <p>Unique identifier for a game session placement to cancel.</p>
 -- Required parameter: PlacementId
-function M.StopGameSessionPlacementInput(PlacementId, ...)
+function M.StopGameSessionPlacementInput(_PlacementId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopGameSessionPlacementInput")
 	local t = { 
-		["PlacementId"] = PlacementId,
+		["PlacementId"] = _PlacementId,
 	}
-	M.AssertStopGameSessionPlacementInput(t)
+	asserts.AssertStopGameSessionPlacementInput(t)
 	return t
 end
 
-local Event_keys = { "EventId" = true, "ResourceId" = true, "Message" = true, "EventTime" = true, "EventCode" = true, nil }
+keys.Event = { ["EventId"] = true, ["ResourceId"] = true, ["Message"] = true, ["EventTime"] = true, ["EventCode"] = true, nil }
 
-function M.AssertEvent(struct)
+function asserts.AssertEvent(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Event to be of type 'table'")
-	if struct["EventId"] then M.AssertNonZeroAndMaxString(struct["EventId"]) end
-	if struct["ResourceId"] then M.AssertNonZeroAndMaxString(struct["ResourceId"]) end
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
-	if struct["EventTime"] then M.AssertTimestamp(struct["EventTime"]) end
-	if struct["EventCode"] then M.AssertEventCode(struct["EventCode"]) end
+	if struct["EventId"] then asserts.AssertNonZeroAndMaxString(struct["EventId"]) end
+	if struct["ResourceId"] then asserts.AssertNonZeroAndMaxString(struct["ResourceId"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
+	if struct["EventTime"] then asserts.AssertTimestamp(struct["EventTime"]) end
+	if struct["EventCode"] then asserts.AssertEventCode(struct["EventCode"]) end
 	for k,_ in pairs(struct) do
-		assert(Event_keys[k], "Event contains unknown key " .. tostring(k))
+		assert(keys.Event[k], "Event contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Event
 -- <p>Log entry describing an event involving Amazon GameLift resources (such as a fleet). In addition to tracking activity, event codes and messages can provide additional information for troubleshooting and debugging problems.</p>
--- @param EventId [NonZeroAndMaxString] <p>Unique identifier for a fleet event.</p>
--- @param ResourceId [NonZeroAndMaxString] <p>Unique identifier for an event resource, such as a fleet ID.</p>
--- @param Message [NonEmptyString] <p>Additional information related to the event.</p>
--- @param EventTime [Timestamp] <p>Time stamp indicating when this event occurred. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param EventCode [EventCode] <p>Type of event being logged. </p>
-function M.Event(EventId, ResourceId, Message, EventTime, EventCode, ...)
+-- @param _EventId [NonZeroAndMaxString] <p>Unique identifier for a fleet event.</p>
+-- @param _ResourceId [NonZeroAndMaxString] <p>Unique identifier for an event resource, such as a fleet ID.</p>
+-- @param _Message [NonEmptyString] <p>Additional information related to the event.</p>
+-- @param _EventTime [Timestamp] <p>Time stamp indicating when this event occurred. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _EventCode [EventCode] <p>Type of event being logged. </p>
+function M.Event(_EventId, _ResourceId, _Message, _EventTime, _EventCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 
-		["EventId"] = EventId,
-		["ResourceId"] = ResourceId,
-		["Message"] = Message,
-		["EventTime"] = EventTime,
-		["EventCode"] = EventCode,
+		["EventId"] = _EventId,
+		["ResourceId"] = _ResourceId,
+		["Message"] = _Message,
+		["EventTime"] = _EventTime,
+		["EventCode"] = _EventCode,
 	}
-	M.AssertEvent(t)
+	asserts.AssertEvent(t)
 	return t
 end
 
-local StartGameSessionPlacementInput_keys = { "MaximumPlayerSessionCount" = true, "PlacementId" = true, "GameSessionName" = true, "GameSessionQueueName" = true, "GameProperties" = true, "DesiredPlayerSessions" = true, "PlayerLatencies" = true, nil }
+keys.StartGameSessionPlacementInput = { ["MaximumPlayerSessionCount"] = true, ["PlacementId"] = true, ["GameSessionName"] = true, ["GameSessionQueueName"] = true, ["GameProperties"] = true, ["DesiredPlayerSessions"] = true, ["PlayerLatencies"] = true, nil }
 
-function M.AssertStartGameSessionPlacementInput(struct)
+function asserts.AssertStartGameSessionPlacementInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartGameSessionPlacementInput to be of type 'table'")
 	assert(struct["PlacementId"], "Expected key PlacementId to exist in table")
 	assert(struct["GameSessionQueueName"], "Expected key GameSessionQueueName to exist in table")
 	assert(struct["MaximumPlayerSessionCount"], "Expected key MaximumPlayerSessionCount to exist in table")
-	if struct["MaximumPlayerSessionCount"] then M.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
-	if struct["PlacementId"] then M.AssertIdStringModel(struct["PlacementId"]) end
-	if struct["GameSessionName"] then M.AssertNonZeroAndMaxString(struct["GameSessionName"]) end
-	if struct["GameSessionQueueName"] then M.AssertGameSessionQueueName(struct["GameSessionQueueName"]) end
-	if struct["GameProperties"] then M.AssertGamePropertyList(struct["GameProperties"]) end
-	if struct["DesiredPlayerSessions"] then M.AssertDesiredPlayerSessionList(struct["DesiredPlayerSessions"]) end
-	if struct["PlayerLatencies"] then M.AssertPlayerLatencyList(struct["PlayerLatencies"]) end
+	if struct["MaximumPlayerSessionCount"] then asserts.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
+	if struct["PlacementId"] then asserts.AssertIdStringModel(struct["PlacementId"]) end
+	if struct["GameSessionName"] then asserts.AssertNonZeroAndMaxString(struct["GameSessionName"]) end
+	if struct["GameSessionQueueName"] then asserts.AssertGameSessionQueueName(struct["GameSessionQueueName"]) end
+	if struct["GameProperties"] then asserts.AssertGamePropertyList(struct["GameProperties"]) end
+	if struct["DesiredPlayerSessions"] then asserts.AssertDesiredPlayerSessionList(struct["DesiredPlayerSessions"]) end
+	if struct["PlayerLatencies"] then asserts.AssertPlayerLatencyList(struct["PlayerLatencies"]) end
 	for k,_ in pairs(struct) do
-		assert(StartGameSessionPlacementInput_keys[k], "StartGameSessionPlacementInput contains unknown key " .. tostring(k))
+		assert(keys.StartGameSessionPlacementInput[k], "StartGameSessionPlacementInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartGameSessionPlacementInput
 -- <p>Represents the input for a request action.</p>
--- @param MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param PlacementId [IdStringModel] <p>Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a canceled or timed-out placement request.</p>
--- @param GameSessionName [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param GameSessionQueueName [GameSessionQueueName] <p>Name of the queue to use to place the new game session.</p>
--- @param GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
--- @param DesiredPlayerSessions [DesiredPlayerSessionList] <p>Set of information on each player to create a player session for.</p>
--- @param PlayerLatencies [PlayerLatencyList] <p>Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions. This information is used to try to place the new game session where it can offer the best possible gameplay experience for the players. </p>
+-- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- @param _PlacementId [IdStringModel] <p>Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a canceled or timed-out placement request.</p>
+-- @param _GameSessionName [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- @param _GameSessionQueueName [GameSessionQueueName] <p>Name of the queue to use to place the new game session.</p>
+-- @param _GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
+-- @param _DesiredPlayerSessions [DesiredPlayerSessionList] <p>Set of information on each player to create a player session for.</p>
+-- @param _PlayerLatencies [PlayerLatencyList] <p>Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions. This information is used to try to place the new game session where it can offer the best possible gameplay experience for the players. </p>
 -- Required parameter: PlacementId
 -- Required parameter: GameSessionQueueName
 -- Required parameter: MaximumPlayerSessionCount
-function M.StartGameSessionPlacementInput(MaximumPlayerSessionCount, PlacementId, GameSessionName, GameSessionQueueName, GameProperties, DesiredPlayerSessions, PlayerLatencies, ...)
+function M.StartGameSessionPlacementInput(_MaximumPlayerSessionCount, _PlacementId, _GameSessionName, _GameSessionQueueName, _GameProperties, _DesiredPlayerSessions, _PlayerLatencies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartGameSessionPlacementInput")
 	local t = { 
-		["MaximumPlayerSessionCount"] = MaximumPlayerSessionCount,
-		["PlacementId"] = PlacementId,
-		["GameSessionName"] = GameSessionName,
-		["GameSessionQueueName"] = GameSessionQueueName,
-		["GameProperties"] = GameProperties,
-		["DesiredPlayerSessions"] = DesiredPlayerSessions,
-		["PlayerLatencies"] = PlayerLatencies,
+		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
+		["PlacementId"] = _PlacementId,
+		["GameSessionName"] = _GameSessionName,
+		["GameSessionQueueName"] = _GameSessionQueueName,
+		["GameProperties"] = _GameProperties,
+		["DesiredPlayerSessions"] = _DesiredPlayerSessions,
+		["PlayerLatencies"] = _PlayerLatencies,
 	}
-	M.AssertStartGameSessionPlacementInput(t)
+	asserts.AssertStartGameSessionPlacementInput(t)
 	return t
 end
 
-local DescribeFleetAttributesOutput_keys = { "FleetAttributes" = true, "NextToken" = true, nil }
+keys.DescribeFleetAttributesOutput = { ["FleetAttributes"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeFleetAttributesOutput(struct)
+function asserts.AssertDescribeFleetAttributesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetAttributesOutput to be of type 'table'")
-	if struct["FleetAttributes"] then M.AssertFleetAttributesList(struct["FleetAttributes"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["FleetAttributes"] then asserts.AssertFleetAttributesList(struct["FleetAttributes"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetAttributesOutput_keys[k], "DescribeFleetAttributesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetAttributesOutput[k], "DescribeFleetAttributesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetAttributesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param FleetAttributes [FleetAttributesList] <p>Collection of objects containing attribute metadata for each requested fleet ID.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeFleetAttributesOutput(FleetAttributes, NextToken, ...)
+-- @param _FleetAttributes [FleetAttributesList] <p>Collection of objects containing attribute metadata for each requested fleet ID.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.DescribeFleetAttributesOutput(_FleetAttributes, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetAttributesOutput")
 	local t = { 
-		["FleetAttributes"] = FleetAttributes,
-		["NextToken"] = NextToken,
+		["FleetAttributes"] = _FleetAttributes,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeFleetAttributesOutput(t)
+	asserts.AssertDescribeFleetAttributesOutput(t)
 	return t
 end
 
-local LimitExceededException_keys = { "Message" = true, nil }
+keys.LimitExceededException = { ["Message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>The requested operation would cause the resource to exceed the allowed service limit. Resolve the issue before retrying.</p>
--- @param Message [NonEmptyString] <p>The requested operation would cause the resource to exceed the allowed service limit. Resolve the issue before retrying.</p>
-function M.LimitExceededException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.LimitExceededException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local GetInstanceAccessOutput_keys = { "InstanceAccess" = true, nil }
+keys.GetInstanceAccessOutput = { ["InstanceAccess"] = true, nil }
 
-function M.AssertGetInstanceAccessOutput(struct)
+function asserts.AssertGetInstanceAccessOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetInstanceAccessOutput to be of type 'table'")
-	if struct["InstanceAccess"] then M.AssertInstanceAccess(struct["InstanceAccess"]) end
+	if struct["InstanceAccess"] then asserts.AssertInstanceAccess(struct["InstanceAccess"]) end
 	for k,_ in pairs(struct) do
-		assert(GetInstanceAccessOutput_keys[k], "GetInstanceAccessOutput contains unknown key " .. tostring(k))
+		assert(keys.GetInstanceAccessOutput[k], "GetInstanceAccessOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetInstanceAccessOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param InstanceAccess [InstanceAccess] <p>Object that contains connection information for a fleet instance, including IP address and access credentials.</p>
-function M.GetInstanceAccessOutput(InstanceAccess, ...)
+-- @param _InstanceAccess [InstanceAccess] <p>Object that contains connection information for a fleet instance, including IP address and access credentials.</p>
+function M.GetInstanceAccessOutput(_InstanceAccess, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceAccessOutput")
 	local t = { 
-		["InstanceAccess"] = InstanceAccess,
+		["InstanceAccess"] = _InstanceAccess,
 	}
-	M.AssertGetInstanceAccessOutput(t)
+	asserts.AssertGetInstanceAccessOutput(t)
 	return t
 end
 
-local FleetUtilization_keys = { "CurrentPlayerSessionCount" = true, "MaximumPlayerSessionCount" = true, "ActiveServerProcessCount" = true, "FleetId" = true, "ActiveGameSessionCount" = true, nil }
+keys.FleetUtilization = { ["CurrentPlayerSessionCount"] = true, ["MaximumPlayerSessionCount"] = true, ["ActiveServerProcessCount"] = true, ["FleetId"] = true, ["ActiveGameSessionCount"] = true, nil }
 
-function M.AssertFleetUtilization(struct)
+function asserts.AssertFleetUtilization(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FleetUtilization to be of type 'table'")
-	if struct["CurrentPlayerSessionCount"] then M.AssertWholeNumber(struct["CurrentPlayerSessionCount"]) end
-	if struct["MaximumPlayerSessionCount"] then M.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
-	if struct["ActiveServerProcessCount"] then M.AssertWholeNumber(struct["ActiveServerProcessCount"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["ActiveGameSessionCount"] then M.AssertWholeNumber(struct["ActiveGameSessionCount"]) end
+	if struct["CurrentPlayerSessionCount"] then asserts.AssertWholeNumber(struct["CurrentPlayerSessionCount"]) end
+	if struct["MaximumPlayerSessionCount"] then asserts.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
+	if struct["ActiveServerProcessCount"] then asserts.AssertWholeNumber(struct["ActiveServerProcessCount"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["ActiveGameSessionCount"] then asserts.AssertWholeNumber(struct["ActiveGameSessionCount"]) end
 	for k,_ in pairs(struct) do
-		assert(FleetUtilization_keys[k], "FleetUtilization contains unknown key " .. tostring(k))
+		assert(keys.FleetUtilization[k], "FleetUtilization contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FleetUtilization
 -- <p>Current status of fleet utilization, including the number of game and player sessions being hosted.</p>
--- @param CurrentPlayerSessionCount [WholeNumber] <p>Number of active player sessions currently being hosted on all instances in the fleet.</p>
--- @param MaximumPlayerSessionCount [WholeNumber] <p>Maximum players allowed across all game sessions currently being hosted on all instances in the fleet.</p>
--- @param ActiveServerProcessCount [WholeNumber] <p>Number of server processes in an <code>ACTIVE</code> status currently running across all instances in the fleet</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet.</p>
--- @param ActiveGameSessionCount [WholeNumber] <p>Number of active game sessions currently being hosted on all instances in the fleet.</p>
-function M.FleetUtilization(CurrentPlayerSessionCount, MaximumPlayerSessionCount, ActiveServerProcessCount, FleetId, ActiveGameSessionCount, ...)
+-- @param _CurrentPlayerSessionCount [WholeNumber] <p>Number of active player sessions currently being hosted on all instances in the fleet.</p>
+-- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum players allowed across all game sessions currently being hosted on all instances in the fleet.</p>
+-- @param _ActiveServerProcessCount [WholeNumber] <p>Number of server processes in an <code>ACTIVE</code> status currently running across all instances in the fleet</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet.</p>
+-- @param _ActiveGameSessionCount [WholeNumber] <p>Number of active game sessions currently being hosted on all instances in the fleet.</p>
+function M.FleetUtilization(_CurrentPlayerSessionCount, _MaximumPlayerSessionCount, _ActiveServerProcessCount, _FleetId, _ActiveGameSessionCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FleetUtilization")
 	local t = { 
-		["CurrentPlayerSessionCount"] = CurrentPlayerSessionCount,
-		["MaximumPlayerSessionCount"] = MaximumPlayerSessionCount,
-		["ActiveServerProcessCount"] = ActiveServerProcessCount,
-		["FleetId"] = FleetId,
-		["ActiveGameSessionCount"] = ActiveGameSessionCount,
+		["CurrentPlayerSessionCount"] = _CurrentPlayerSessionCount,
+		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
+		["ActiveServerProcessCount"] = _ActiveServerProcessCount,
+		["FleetId"] = _FleetId,
+		["ActiveGameSessionCount"] = _ActiveGameSessionCount,
 	}
-	M.AssertFleetUtilization(t)
+	asserts.AssertFleetUtilization(t)
 	return t
 end
 
-local PlayerLatencyPolicy_keys = { "MaximumIndividualPlayerLatencyMilliseconds" = true, "PolicyDurationSeconds" = true, nil }
+keys.PlayerLatencyPolicy = { ["MaximumIndividualPlayerLatencyMilliseconds"] = true, ["PolicyDurationSeconds"] = true, nil }
 
-function M.AssertPlayerLatencyPolicy(struct)
+function asserts.AssertPlayerLatencyPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PlayerLatencyPolicy to be of type 'table'")
-	if struct["MaximumIndividualPlayerLatencyMilliseconds"] then M.AssertWholeNumber(struct["MaximumIndividualPlayerLatencyMilliseconds"]) end
-	if struct["PolicyDurationSeconds"] then M.AssertWholeNumber(struct["PolicyDurationSeconds"]) end
+	if struct["MaximumIndividualPlayerLatencyMilliseconds"] then asserts.AssertWholeNumber(struct["MaximumIndividualPlayerLatencyMilliseconds"]) end
+	if struct["PolicyDurationSeconds"] then asserts.AssertWholeNumber(struct["PolicyDurationSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(PlayerLatencyPolicy_keys[k], "PlayerLatencyPolicy contains unknown key " .. tostring(k))
+		assert(keys.PlayerLatencyPolicy[k], "PlayerLatencyPolicy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PlayerLatencyPolicy
 -- <p>Queue setting that determines the highest latency allowed for individual players when placing a game session. When a latency policy is in force, a game session cannot be placed at any destination in a region where a player is reporting latency higher than the cap. Latency policies are only enforced when the placement request contains player latency information.</p> <p>Latency policy-related operations include:</p> <ul> <li> <p> <a>CreateGameSessionQueue</a> </p> </li> <li> <p> <a>UpdateGameSessionQueue</a> </p> </li> <li> <p> <a>StartGameSessionPlacement</a> </p> </li> </ul>
--- @param MaximumIndividualPlayerLatencyMilliseconds [WholeNumber] <p>The maximum latency value that is allowed for any player, in milliseconds. All policies must have a value set for this property.</p>
--- @param PolicyDurationSeconds [WholeNumber] <p>The length of time, in seconds, that the policy is enforced while placing a new game session. A null value for this property means that the policy is enforced until the queue times out.</p>
-function M.PlayerLatencyPolicy(MaximumIndividualPlayerLatencyMilliseconds, PolicyDurationSeconds, ...)
+-- @param _MaximumIndividualPlayerLatencyMilliseconds [WholeNumber] <p>The maximum latency value that is allowed for any player, in milliseconds. All policies must have a value set for this property.</p>
+-- @param _PolicyDurationSeconds [WholeNumber] <p>The length of time, in seconds, that the policy is enforced while placing a new game session. A null value for this property means that the policy is enforced until the queue times out.</p>
+function M.PlayerLatencyPolicy(_MaximumIndividualPlayerLatencyMilliseconds, _PolicyDurationSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlayerLatencyPolicy")
 	local t = { 
-		["MaximumIndividualPlayerLatencyMilliseconds"] = MaximumIndividualPlayerLatencyMilliseconds,
-		["PolicyDurationSeconds"] = PolicyDurationSeconds,
+		["MaximumIndividualPlayerLatencyMilliseconds"] = _MaximumIndividualPlayerLatencyMilliseconds,
+		["PolicyDurationSeconds"] = _PolicyDurationSeconds,
 	}
-	M.AssertPlayerLatencyPolicy(t)
+	asserts.AssertPlayerLatencyPolicy(t)
 	return t
 end
 
-local InternalServiceException_keys = { "Message" = true, nil }
+keys.InternalServiceException = { ["Message"] = true, nil }
 
-function M.AssertInternalServiceException(struct)
+function asserts.AssertInternalServiceException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServiceException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServiceException_keys[k], "InternalServiceException contains unknown key " .. tostring(k))
+		assert(keys.InternalServiceException[k], "InternalServiceException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServiceException
 -- <p>The service encountered an unrecoverable internal failure while processing the request. Clients can retry such requests immediately or after a waiting period.</p>
--- @param Message [NonEmptyString] <p>The service encountered an unrecoverable internal failure while processing the request. Clients can retry such requests immediately or after a waiting period.</p>
-function M.InternalServiceException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.InternalServiceException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInternalServiceException(t)
+	asserts.AssertInternalServiceException(t)
 	return t
 end
 
-local DescribeRuntimeConfigurationOutput_keys = { "RuntimeConfiguration" = true, nil }
+keys.DescribeRuntimeConfigurationOutput = { ["RuntimeConfiguration"] = true, nil }
 
-function M.AssertDescribeRuntimeConfigurationOutput(struct)
+function asserts.AssertDescribeRuntimeConfigurationOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRuntimeConfigurationOutput to be of type 'table'")
-	if struct["RuntimeConfiguration"] then M.AssertRuntimeConfiguration(struct["RuntimeConfiguration"]) end
+	if struct["RuntimeConfiguration"] then asserts.AssertRuntimeConfiguration(struct["RuntimeConfiguration"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRuntimeConfigurationOutput_keys[k], "DescribeRuntimeConfigurationOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeRuntimeConfigurationOutput[k], "DescribeRuntimeConfigurationOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRuntimeConfigurationOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param RuntimeConfiguration [RuntimeConfiguration] <p>Instructions describing how server processes should be launched and maintained on each instance in the fleet.</p>
-function M.DescribeRuntimeConfigurationOutput(RuntimeConfiguration, ...)
+-- @param _RuntimeConfiguration [RuntimeConfiguration] <p>Instructions describing how server processes should be launched and maintained on each instance in the fleet.</p>
+function M.DescribeRuntimeConfigurationOutput(_RuntimeConfiguration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRuntimeConfigurationOutput")
 	local t = { 
-		["RuntimeConfiguration"] = RuntimeConfiguration,
+		["RuntimeConfiguration"] = _RuntimeConfiguration,
 	}
-	M.AssertDescribeRuntimeConfigurationOutput(t)
+	asserts.AssertDescribeRuntimeConfigurationOutput(t)
 	return t
 end
 
-local Build_keys = { "Status" = true, "Name" = true, "BuildId" = true, "CreationTime" = true, "SizeOnDisk" = true, "Version" = true, "OperatingSystem" = true, nil }
+keys.Build = { ["Status"] = true, ["Name"] = true, ["BuildId"] = true, ["CreationTime"] = true, ["SizeOnDisk"] = true, ["Version"] = true, ["OperatingSystem"] = true, nil }
 
-function M.AssertBuild(struct)
+function asserts.AssertBuild(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Build to be of type 'table'")
-	if struct["Status"] then M.AssertBuildStatus(struct["Status"]) end
-	if struct["Name"] then M.AssertFreeText(struct["Name"]) end
-	if struct["BuildId"] then M.AssertBuildId(struct["BuildId"]) end
-	if struct["CreationTime"] then M.AssertTimestamp(struct["CreationTime"]) end
-	if struct["SizeOnDisk"] then M.AssertPositiveLong(struct["SizeOnDisk"]) end
-	if struct["Version"] then M.AssertFreeText(struct["Version"]) end
-	if struct["OperatingSystem"] then M.AssertOperatingSystem(struct["OperatingSystem"]) end
+	if struct["Status"] then asserts.AssertBuildStatus(struct["Status"]) end
+	if struct["Name"] then asserts.AssertFreeText(struct["Name"]) end
+	if struct["BuildId"] then asserts.AssertBuildId(struct["BuildId"]) end
+	if struct["CreationTime"] then asserts.AssertTimestamp(struct["CreationTime"]) end
+	if struct["SizeOnDisk"] then asserts.AssertPositiveLong(struct["SizeOnDisk"]) end
+	if struct["Version"] then asserts.AssertFreeText(struct["Version"]) end
+	if struct["OperatingSystem"] then asserts.AssertOperatingSystem(struct["OperatingSystem"]) end
 	for k,_ in pairs(struct) do
-		assert(Build_keys[k], "Build contains unknown key " .. tostring(k))
+		assert(keys.Build[k], "Build contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Build
 -- <p>Properties describing a game build.</p> <p>Build-related operations include:</p> <ul> <li> <p> <a>CreateBuild</a> </p> </li> <li> <p> <a>ListBuilds</a> </p> </li> <li> <p> <a>DescribeBuild</a> </p> </li> <li> <p> <a>UpdateBuild</a> </p> </li> <li> <p> <a>DeleteBuild</a> </p> </li> </ul>
--- @param Status [BuildStatus] <p>Current status of the build.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul>
--- @param Name [FreeText] <p>Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.</p>
--- @param BuildId [BuildId] <p>Unique identifier for a build.</p>
--- @param CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param SizeOnDisk [PositiveLong] <p>File size of the uploaded game build, expressed in bytes. When the build status is <code>INITIALIZED</code>, this value is 0.</p>
--- @param Version [FreeText] <p>Version that is associated with this build. Version strings do not need to be unique. This value can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.</p>
--- @param OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build.</p>
-function M.Build(Status, Name, BuildId, CreationTime, SizeOnDisk, Version, OperatingSystem, ...)
+-- @param _Status [BuildStatus] <p>Current status of the build.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul>
+-- @param _Name [FreeText] <p>Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.</p>
+-- @param _BuildId [BuildId] <p>Unique identifier for a build.</p>
+-- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _SizeOnDisk [PositiveLong] <p>File size of the uploaded game build, expressed in bytes. When the build status is <code>INITIALIZED</code>, this value is 0.</p>
+-- @param _Version [FreeText] <p>Version that is associated with this build. Version strings do not need to be unique. This value can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.</p>
+-- @param _OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build.</p>
+function M.Build(_Status, _Name, _BuildId, _CreationTime, _SizeOnDisk, _Version, _OperatingSystem, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Build")
 	local t = { 
-		["Status"] = Status,
-		["Name"] = Name,
-		["BuildId"] = BuildId,
-		["CreationTime"] = CreationTime,
-		["SizeOnDisk"] = SizeOnDisk,
-		["Version"] = Version,
-		["OperatingSystem"] = OperatingSystem,
+		["Status"] = _Status,
+		["Name"] = _Name,
+		["BuildId"] = _BuildId,
+		["CreationTime"] = _CreationTime,
+		["SizeOnDisk"] = _SizeOnDisk,
+		["Version"] = _Version,
+		["OperatingSystem"] = _OperatingSystem,
 	}
-	M.AssertBuild(t)
+	asserts.AssertBuild(t)
 	return t
 end
 
-local DescribeFleetPortSettingsOutput_keys = { "InboundPermissions" = true, nil }
+keys.DescribeFleetPortSettingsOutput = { ["InboundPermissions"] = true, nil }
 
-function M.AssertDescribeFleetPortSettingsOutput(struct)
+function asserts.AssertDescribeFleetPortSettingsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetPortSettingsOutput to be of type 'table'")
-	if struct["InboundPermissions"] then M.AssertIpPermissionsList(struct["InboundPermissions"]) end
+	if struct["InboundPermissions"] then asserts.AssertIpPermissionsList(struct["InboundPermissions"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetPortSettingsOutput_keys[k], "DescribeFleetPortSettingsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetPortSettingsOutput[k], "DescribeFleetPortSettingsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetPortSettingsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param InboundPermissions [IpPermissionsList] <p>Object that contains port settings for the requested fleet ID.</p>
-function M.DescribeFleetPortSettingsOutput(InboundPermissions, ...)
+-- @param _InboundPermissions [IpPermissionsList] <p>Object that contains port settings for the requested fleet ID.</p>
+function M.DescribeFleetPortSettingsOutput(_InboundPermissions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetPortSettingsOutput")
 	local t = { 
-		["InboundPermissions"] = InboundPermissions,
+		["InboundPermissions"] = _InboundPermissions,
 	}
-	M.AssertDescribeFleetPortSettingsOutput(t)
+	asserts.AssertDescribeFleetPortSettingsOutput(t)
 	return t
 end
 
-local CreatePlayerSessionOutput_keys = { "PlayerSession" = true, nil }
+keys.CreatePlayerSessionOutput = { ["PlayerSession"] = true, nil }
 
-function M.AssertCreatePlayerSessionOutput(struct)
+function asserts.AssertCreatePlayerSessionOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePlayerSessionOutput to be of type 'table'")
-	if struct["PlayerSession"] then M.AssertPlayerSession(struct["PlayerSession"]) end
+	if struct["PlayerSession"] then asserts.AssertPlayerSession(struct["PlayerSession"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePlayerSessionOutput_keys[k], "CreatePlayerSessionOutput contains unknown key " .. tostring(k))
+		assert(keys.CreatePlayerSessionOutput[k], "CreatePlayerSessionOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePlayerSessionOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param PlayerSession [PlayerSession] <p>Object that describes the newly created player session record.</p>
-function M.CreatePlayerSessionOutput(PlayerSession, ...)
+-- @param _PlayerSession [PlayerSession] <p>Object that describes the newly created player session record.</p>
+function M.CreatePlayerSessionOutput(_PlayerSession, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlayerSessionOutput")
 	local t = { 
-		["PlayerSession"] = PlayerSession,
+		["PlayerSession"] = _PlayerSession,
 	}
-	M.AssertCreatePlayerSessionOutput(t)
+	asserts.AssertCreatePlayerSessionOutput(t)
 	return t
 end
 
-local DescribeBuildOutput_keys = { "Build" = true, nil }
+keys.DescribeBuildOutput = { ["Build"] = true, nil }
 
-function M.AssertDescribeBuildOutput(struct)
+function asserts.AssertDescribeBuildOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeBuildOutput to be of type 'table'")
-	if struct["Build"] then M.AssertBuild(struct["Build"]) end
+	if struct["Build"] then asserts.AssertBuild(struct["Build"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeBuildOutput_keys[k], "DescribeBuildOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeBuildOutput[k], "DescribeBuildOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeBuildOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param Build [Build] <p>Set of properties describing the requested build.</p>
-function M.DescribeBuildOutput(Build, ...)
+-- @param _Build [Build] <p>Set of properties describing the requested build.</p>
+function M.DescribeBuildOutput(_Build, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBuildOutput")
 	local t = { 
-		["Build"] = Build,
+		["Build"] = _Build,
 	}
-	M.AssertDescribeBuildOutput(t)
+	asserts.AssertDescribeBuildOutput(t)
 	return t
 end
 
-local ScalingPolicy_keys = { "Status" = true, "EvaluationPeriods" = true, "Name" = true, "ComparisonOperator" = true, "FleetId" = true, "Threshold" = true, "ScalingAdjustment" = true, "MetricName" = true, "ScalingAdjustmentType" = true, nil }
+keys.ScalingPolicy = { ["Status"] = true, ["EvaluationPeriods"] = true, ["Name"] = true, ["ComparisonOperator"] = true, ["FleetId"] = true, ["Threshold"] = true, ["ScalingAdjustment"] = true, ["MetricName"] = true, ["ScalingAdjustmentType"] = true, nil }
 
-function M.AssertScalingPolicy(struct)
+function asserts.AssertScalingPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScalingPolicy to be of type 'table'")
-	if struct["Status"] then M.AssertScalingStatusType(struct["Status"]) end
-	if struct["EvaluationPeriods"] then M.AssertPositiveInteger(struct["EvaluationPeriods"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
-	if struct["ComparisonOperator"] then M.AssertComparisonOperatorType(struct["ComparisonOperator"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["Threshold"] then M.AssertDouble(struct["Threshold"]) end
-	if struct["ScalingAdjustment"] then M.AssertInteger(struct["ScalingAdjustment"]) end
-	if struct["MetricName"] then M.AssertMetricName(struct["MetricName"]) end
-	if struct["ScalingAdjustmentType"] then M.AssertScalingAdjustmentType(struct["ScalingAdjustmentType"]) end
+	if struct["Status"] then asserts.AssertScalingStatusType(struct["Status"]) end
+	if struct["EvaluationPeriods"] then asserts.AssertPositiveInteger(struct["EvaluationPeriods"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["ComparisonOperator"] then asserts.AssertComparisonOperatorType(struct["ComparisonOperator"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["Threshold"] then asserts.AssertDouble(struct["Threshold"]) end
+	if struct["ScalingAdjustment"] then asserts.AssertInteger(struct["ScalingAdjustment"]) end
+	if struct["MetricName"] then asserts.AssertMetricName(struct["MetricName"]) end
+	if struct["ScalingAdjustmentType"] then asserts.AssertScalingAdjustmentType(struct["ScalingAdjustmentType"]) end
 	for k,_ in pairs(struct) do
-		assert(ScalingPolicy_keys[k], "ScalingPolicy contains unknown key " .. tostring(k))
+		assert(keys.ScalingPolicy[k], "ScalingPolicy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScalingPolicy
 -- <p>Rule that controls how a fleet is scaled. Scaling policies are uniquely identified by the combination of name and fleet ID.</p>
--- @param Status [ScalingStatusType] <p>Current status of the scaling policy. The scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATE_REQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETE_REQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul>
--- @param EvaluationPeriods [PositiveInteger] <p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
--- @param ComparisonOperator [ComparisonOperatorType] <p>Comparison operator to use when measuring a metric against the threshold value.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet that is associated with this scaling policy.</p>
--- @param Threshold [Double] <p>Metric value used to trigger a scaling event.</p>
--- @param ScalingAdjustment [Integer] <p>Amount of adjustment to make, based on the scaling adjustment type.</p>
--- @param MetricName [MetricName] <p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number does include game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul>
--- @param ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down.</p> </li> </ul>
-function M.ScalingPolicy(Status, EvaluationPeriods, Name, ComparisonOperator, FleetId, Threshold, ScalingAdjustment, MetricName, ScalingAdjustmentType, ...)
+-- @param _Status [ScalingStatusType] <p>Current status of the scaling policy. The scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATE_REQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETE_REQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul>
+-- @param _EvaluationPeriods [PositiveInteger] <p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
+-- @param _ComparisonOperator [ComparisonOperatorType] <p>Comparison operator to use when measuring a metric against the threshold value.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet that is associated with this scaling policy.</p>
+-- @param _Threshold [Double] <p>Metric value used to trigger a scaling event.</p>
+-- @param _ScalingAdjustment [Integer] <p>Amount of adjustment to make, based on the scaling adjustment type.</p>
+-- @param _MetricName [MetricName] <p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number does include game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul>
+-- @param _ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down.</p> </li> </ul>
+function M.ScalingPolicy(_Status, _EvaluationPeriods, _Name, _ComparisonOperator, _FleetId, _Threshold, _ScalingAdjustment, _MetricName, _ScalingAdjustmentType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingPolicy")
 	local t = { 
-		["Status"] = Status,
-		["EvaluationPeriods"] = EvaluationPeriods,
-		["Name"] = Name,
-		["ComparisonOperator"] = ComparisonOperator,
-		["FleetId"] = FleetId,
-		["Threshold"] = Threshold,
-		["ScalingAdjustment"] = ScalingAdjustment,
-		["MetricName"] = MetricName,
-		["ScalingAdjustmentType"] = ScalingAdjustmentType,
+		["Status"] = _Status,
+		["EvaluationPeriods"] = _EvaluationPeriods,
+		["Name"] = _Name,
+		["ComparisonOperator"] = _ComparisonOperator,
+		["FleetId"] = _FleetId,
+		["Threshold"] = _Threshold,
+		["ScalingAdjustment"] = _ScalingAdjustment,
+		["MetricName"] = _MetricName,
+		["ScalingAdjustmentType"] = _ScalingAdjustmentType,
 	}
-	M.AssertScalingPolicy(t)
+	asserts.AssertScalingPolicy(t)
 	return t
 end
 
-local InvalidFleetStatusException_keys = { "Message" = true, nil }
+keys.InvalidFleetStatusException = { ["Message"] = true, nil }
 
-function M.AssertInvalidFleetStatusException(struct)
+function asserts.AssertInvalidFleetStatusException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidFleetStatusException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidFleetStatusException_keys[k], "InvalidFleetStatusException contains unknown key " .. tostring(k))
+		assert(keys.InvalidFleetStatusException[k], "InvalidFleetStatusException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidFleetStatusException
 -- <p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the fleet. Resolve the conflict before retrying.</p>
--- @param Message [NonEmptyString] <p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the fleet. Resolve the conflict before retrying.</p>
-function M.InvalidFleetStatusException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.InvalidFleetStatusException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFleetStatusException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidFleetStatusException(t)
+	asserts.AssertInvalidFleetStatusException(t)
 	return t
 end
 
-local DescribeGameSessionDetailsInput_keys = { "Limit" = true, "GameSessionId" = true, "StatusFilter" = true, "FleetId" = true, "NextToken" = true, "AliasId" = true, nil }
+keys.DescribeGameSessionDetailsInput = { ["Limit"] = true, ["GameSessionId"] = true, ["StatusFilter"] = true, ["FleetId"] = true, ["NextToken"] = true, ["AliasId"] = true, nil }
 
-function M.AssertDescribeGameSessionDetailsInput(struct)
+function asserts.AssertDescribeGameSessionDetailsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeGameSessionDetailsInput to be of type 'table'")
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["GameSessionId"] then M.AssertArnStringModel(struct["GameSessionId"]) end
-	if struct["StatusFilter"] then M.AssertNonZeroAndMaxString(struct["StatusFilter"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["GameSessionId"] then asserts.AssertArnStringModel(struct["GameSessionId"]) end
+	if struct["StatusFilter"] then asserts.AssertNonZeroAndMaxString(struct["StatusFilter"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeGameSessionDetailsInput_keys[k], "DescribeGameSessionDetailsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGameSessionDetailsInput[k], "DescribeGameSessionDetailsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeGameSessionDetailsInput
 -- <p>Represents the input for a request action.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve.</p>
--- @param StatusFilter [NonZeroAndMaxString] <p>Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory). </p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to retrieve all game sessions active on the fleet.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for.</p>
-function M.DescribeGameSessionDetailsInput(Limit, GameSessionId, StatusFilter, FleetId, NextToken, AliasId, ...)
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve.</p>
+-- @param _StatusFilter [NonZeroAndMaxString] <p>Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory). </p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve all game sessions active on the fleet.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for.</p>
+function M.DescribeGameSessionDetailsInput(_Limit, _GameSessionId, _StatusFilter, _FleetId, _NextToken, _AliasId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionDetailsInput")
 	local t = { 
-		["Limit"] = Limit,
-		["GameSessionId"] = GameSessionId,
-		["StatusFilter"] = StatusFilter,
-		["FleetId"] = FleetId,
-		["NextToken"] = NextToken,
-		["AliasId"] = AliasId,
+		["Limit"] = _Limit,
+		["GameSessionId"] = _GameSessionId,
+		["StatusFilter"] = _StatusFilter,
+		["FleetId"] = _FleetId,
+		["NextToken"] = _NextToken,
+		["AliasId"] = _AliasId,
 	}
-	M.AssertDescribeGameSessionDetailsInput(t)
+	asserts.AssertDescribeGameSessionDetailsInput(t)
 	return t
 end
 
-local TerminalRoutingStrategyException_keys = { "Message" = true, nil }
+keys.TerminalRoutingStrategyException = { ["Message"] = true, nil }
 
-function M.AssertTerminalRoutingStrategyException(struct)
+function asserts.AssertTerminalRoutingStrategyException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TerminalRoutingStrategyException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(TerminalRoutingStrategyException_keys[k], "TerminalRoutingStrategyException contains unknown key " .. tostring(k))
+		assert(keys.TerminalRoutingStrategyException[k], "TerminalRoutingStrategyException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TerminalRoutingStrategyException
 -- <p>The service is unable to resolve the routing for a particular alias because it has a terminal <a>RoutingStrategy</a> associated with it. The message returned in this exception is the message defined in the routing strategy itself. Such requests should only be retried if the routing strategy for the specified alias is modified. </p>
--- @param Message [NonEmptyString] <p>The service is unable to resolve the routing for a particular alias because it has a terminal <a>RoutingStrategy</a> associated with it. The message returned in this exception is the message defined in the routing strategy itself. Such requests should only be retried if the routing strategy for the specified alias is modified. </p>
-function M.TerminalRoutingStrategyException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.TerminalRoutingStrategyException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminalRoutingStrategyException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertTerminalRoutingStrategyException(t)
+	asserts.AssertTerminalRoutingStrategyException(t)
 	return t
 end
 
-local DescribeScalingPoliciesOutput_keys = { "ScalingPolicies" = true, "NextToken" = true, nil }
+keys.DescribeScalingPoliciesOutput = { ["ScalingPolicies"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeScalingPoliciesOutput(struct)
+function asserts.AssertDescribeScalingPoliciesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeScalingPoliciesOutput to be of type 'table'")
-	if struct["ScalingPolicies"] then M.AssertScalingPolicyList(struct["ScalingPolicies"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["ScalingPolicies"] then asserts.AssertScalingPolicyList(struct["ScalingPolicies"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeScalingPoliciesOutput_keys[k], "DescribeScalingPoliciesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeScalingPoliciesOutput[k], "DescribeScalingPoliciesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeScalingPoliciesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param ScalingPolicies [ScalingPolicyList] <p>Collection of objects containing the scaling policies matching the request.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeScalingPoliciesOutput(ScalingPolicies, NextToken, ...)
+-- @param _ScalingPolicies [ScalingPolicyList] <p>Collection of objects containing the scaling policies matching the request.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.DescribeScalingPoliciesOutput(_ScalingPolicies, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingPoliciesOutput")
 	local t = { 
-		["ScalingPolicies"] = ScalingPolicies,
-		["NextToken"] = NextToken,
+		["ScalingPolicies"] = _ScalingPolicies,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeScalingPoliciesOutput(t)
+	asserts.AssertDescribeScalingPoliciesOutput(t)
 	return t
 end
 
-local DeleteAliasInput_keys = { "AliasId" = true, nil }
+keys.DeleteAliasInput = { ["AliasId"] = true, nil }
 
-function M.AssertDeleteAliasInput(struct)
+function asserts.AssertDeleteAliasInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteAliasInput to be of type 'table'")
 	assert(struct["AliasId"], "Expected key AliasId to exist in table")
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteAliasInput_keys[k], "DeleteAliasInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteAliasInput[k], "DeleteAliasInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to delete.</p>
+-- @param _AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to delete.</p>
 -- Required parameter: AliasId
-function M.DeleteAliasInput(AliasId, ...)
+function M.DeleteAliasInput(_AliasId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAliasInput")
 	local t = { 
-		["AliasId"] = AliasId,
+		["AliasId"] = _AliasId,
 	}
-	M.AssertDeleteAliasInput(t)
+	asserts.AssertDeleteAliasInput(t)
 	return t
 end
 
-local UpdateGameSessionQueueOutput_keys = { "GameSessionQueue" = true, nil }
+keys.UpdateGameSessionQueueOutput = { ["GameSessionQueue"] = true, nil }
 
-function M.AssertUpdateGameSessionQueueOutput(struct)
+function asserts.AssertUpdateGameSessionQueueOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGameSessionQueueOutput to be of type 'table'")
-	if struct["GameSessionQueue"] then M.AssertGameSessionQueue(struct["GameSessionQueue"]) end
+	if struct["GameSessionQueue"] then asserts.AssertGameSessionQueue(struct["GameSessionQueue"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGameSessionQueueOutput_keys[k], "UpdateGameSessionQueueOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateGameSessionQueueOutput[k], "UpdateGameSessionQueueOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGameSessionQueueOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSessionQueue [GameSessionQueue] <p>Object that describes the newly updated game session queue.</p>
-function M.UpdateGameSessionQueueOutput(GameSessionQueue, ...)
+-- @param _GameSessionQueue [GameSessionQueue] <p>Object that describes the newly updated game session queue.</p>
+function M.UpdateGameSessionQueueOutput(_GameSessionQueue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGameSessionQueueOutput")
 	local t = { 
-		["GameSessionQueue"] = GameSessionQueue,
+		["GameSessionQueue"] = _GameSessionQueue,
 	}
-	M.AssertUpdateGameSessionQueueOutput(t)
+	asserts.AssertUpdateGameSessionQueueOutput(t)
 	return t
 end
 
-local NotFoundException_keys = { "Message" = true, nil }
+keys.NotFoundException = { ["Message"] = true, nil }
 
-function M.AssertNotFoundException(struct)
+function asserts.AssertNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotFoundException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotFoundException_keys[k], "NotFoundException contains unknown key " .. tostring(k))
+		assert(keys.NotFoundException[k], "NotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotFoundException
 -- <p>A service resource associated with the request could not be found. Clients should not retry such requests.</p>
--- @param Message [NonEmptyString] <p>A service resource associated with the request could not be found. Clients should not retry such requests.</p>
-function M.NotFoundException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.NotFoundException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertNotFoundException(t)
+	asserts.AssertNotFoundException(t)
 	return t
 end
 
-local CreateAliasOutput_keys = { "Alias" = true, nil }
+keys.CreateAliasOutput = { ["Alias"] = true, nil }
 
-function M.AssertCreateAliasOutput(struct)
+function asserts.AssertCreateAliasOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAliasOutput to be of type 'table'")
-	if struct["Alias"] then M.AssertAlias(struct["Alias"]) end
+	if struct["Alias"] then asserts.AssertAlias(struct["Alias"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAliasOutput_keys[k], "CreateAliasOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateAliasOutput[k], "CreateAliasOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAliasOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param Alias [Alias] <p>Object that describes the newly created alias record.</p>
-function M.CreateAliasOutput(Alias, ...)
+-- @param _Alias [Alias] <p>Object that describes the newly created alias record.</p>
+function M.CreateAliasOutput(_Alias, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasOutput")
 	local t = { 
-		["Alias"] = Alias,
+		["Alias"] = _Alias,
 	}
-	M.AssertCreateAliasOutput(t)
+	asserts.AssertCreateAliasOutput(t)
 	return t
 end
 
-local DescribeAliasOutput_keys = { "Alias" = true, nil }
+keys.DescribeAliasOutput = { ["Alias"] = true, nil }
 
-function M.AssertDescribeAliasOutput(struct)
+function asserts.AssertDescribeAliasOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAliasOutput to be of type 'table'")
-	if struct["Alias"] then M.AssertAlias(struct["Alias"]) end
+	if struct["Alias"] then asserts.AssertAlias(struct["Alias"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAliasOutput_keys[k], "DescribeAliasOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeAliasOutput[k], "DescribeAliasOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAliasOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param Alias [Alias] <p>Object that contains the requested alias.</p>
-function M.DescribeAliasOutput(Alias, ...)
+-- @param _Alias [Alias] <p>Object that contains the requested alias.</p>
+function M.DescribeAliasOutput(_Alias, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAliasOutput")
 	local t = { 
-		["Alias"] = Alias,
+		["Alias"] = _Alias,
 	}
-	M.AssertDescribeAliasOutput(t)
+	asserts.AssertDescribeAliasOutput(t)
 	return t
 end
 
-local CreatePlayerSessionInput_keys = { "PlayerId" = true, "GameSessionId" = true, "PlayerData" = true, nil }
+keys.CreatePlayerSessionInput = { ["PlayerId"] = true, ["GameSessionId"] = true, ["PlayerData"] = true, nil }
 
-function M.AssertCreatePlayerSessionInput(struct)
+function asserts.AssertCreatePlayerSessionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePlayerSessionInput to be of type 'table'")
 	assert(struct["GameSessionId"], "Expected key GameSessionId to exist in table")
 	assert(struct["PlayerId"], "Expected key PlayerId to exist in table")
-	if struct["PlayerId"] then M.AssertNonZeroAndMaxString(struct["PlayerId"]) end
-	if struct["GameSessionId"] then M.AssertArnStringModel(struct["GameSessionId"]) end
-	if struct["PlayerData"] then M.AssertPlayerData(struct["PlayerData"]) end
+	if struct["PlayerId"] then asserts.AssertNonZeroAndMaxString(struct["PlayerId"]) end
+	if struct["GameSessionId"] then asserts.AssertArnStringModel(struct["GameSessionId"]) end
+	if struct["PlayerData"] then asserts.AssertPlayerData(struct["PlayerData"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePlayerSessionInput_keys[k], "CreatePlayerSessionInput contains unknown key " .. tostring(k))
+		assert(keys.CreatePlayerSessionInput[k], "CreatePlayerSessionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePlayerSessionInput
 -- <p>Represents the input for a request action.</p>
--- @param PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player. Player IDs are developer-defined.</p>
--- @param GameSessionId [ArnStringModel] <p>Unique identifier for the game session to add a player to.</p>
--- @param PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
+-- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player. Player IDs are developer-defined.</p>
+-- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to add a player to.</p>
+-- @param _PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
 -- Required parameter: GameSessionId
 -- Required parameter: PlayerId
-function M.CreatePlayerSessionInput(PlayerId, GameSessionId, PlayerData, ...)
+function M.CreatePlayerSessionInput(_PlayerId, _GameSessionId, _PlayerData, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlayerSessionInput")
 	local t = { 
-		["PlayerId"] = PlayerId,
-		["GameSessionId"] = GameSessionId,
-		["PlayerData"] = PlayerData,
+		["PlayerId"] = _PlayerId,
+		["GameSessionId"] = _GameSessionId,
+		["PlayerData"] = _PlayerData,
 	}
-	M.AssertCreatePlayerSessionInput(t)
+	asserts.AssertCreatePlayerSessionInput(t)
 	return t
 end
 
-local GetGameSessionLogUrlInput_keys = { "GameSessionId" = true, nil }
+keys.GetGameSessionLogUrlInput = { ["GameSessionId"] = true, nil }
 
-function M.AssertGetGameSessionLogUrlInput(struct)
+function asserts.AssertGetGameSessionLogUrlInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGameSessionLogUrlInput to be of type 'table'")
 	assert(struct["GameSessionId"], "Expected key GameSessionId to exist in table")
-	if struct["GameSessionId"] then M.AssertArnStringModel(struct["GameSessionId"]) end
+	if struct["GameSessionId"] then asserts.AssertArnStringModel(struct["GameSessionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGameSessionLogUrlInput_keys[k], "GetGameSessionLogUrlInput contains unknown key " .. tostring(k))
+		assert(keys.GetGameSessionLogUrlInput[k], "GetGameSessionLogUrlInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGameSessionLogUrlInput
 -- <p>Represents the input for a request action.</p>
--- @param GameSessionId [ArnStringModel] <p>Unique identifier for the game session to get logs for.</p>
+-- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to get logs for.</p>
 -- Required parameter: GameSessionId
-function M.GetGameSessionLogUrlInput(GameSessionId, ...)
+function M.GetGameSessionLogUrlInput(_GameSessionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGameSessionLogUrlInput")
 	local t = { 
-		["GameSessionId"] = GameSessionId,
+		["GameSessionId"] = _GameSessionId,
 	}
-	M.AssertGetGameSessionLogUrlInput(t)
+	asserts.AssertGetGameSessionLogUrlInput(t)
 	return t
 end
 
-local InstanceAccess_keys = { "InstanceId" = true, "IpAddress" = true, "FleetId" = true, "OperatingSystem" = true, "Credentials" = true, nil }
+keys.InstanceAccess = { ["InstanceId"] = true, ["IpAddress"] = true, ["FleetId"] = true, ["OperatingSystem"] = true, ["Credentials"] = true, nil }
 
-function M.AssertInstanceAccess(struct)
+function asserts.AssertInstanceAccess(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceAccess to be of type 'table'")
-	if struct["InstanceId"] then M.AssertInstanceId(struct["InstanceId"]) end
-	if struct["IpAddress"] then M.AssertIpAddress(struct["IpAddress"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["OperatingSystem"] then M.AssertOperatingSystem(struct["OperatingSystem"]) end
-	if struct["Credentials"] then M.AssertInstanceCredentials(struct["Credentials"]) end
+	if struct["InstanceId"] then asserts.AssertInstanceId(struct["InstanceId"]) end
+	if struct["IpAddress"] then asserts.AssertIpAddress(struct["IpAddress"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["OperatingSystem"] then asserts.AssertOperatingSystem(struct["OperatingSystem"]) end
+	if struct["Credentials"] then asserts.AssertInstanceCredentials(struct["Credentials"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceAccess_keys[k], "InstanceAccess contains unknown key " .. tostring(k))
+		assert(keys.InstanceAccess[k], "InstanceAccess contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceAccess
 -- <p>Information required to remotely connect to a fleet instance. Access is requested by calling <a>GetInstanceAccess</a>. </p>
--- @param InstanceId [InstanceId] <p>Unique identifier for an instance being accessed.</p>
--- @param IpAddress [IpAddress] <p>IP address assigned to the instance.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet containing the instance being accessed.</p>
--- @param OperatingSystem [OperatingSystem] <p>Operating system that is running on the instance.</p>
--- @param Credentials [InstanceCredentials] <p>Credentials required to access the instance.</p>
-function M.InstanceAccess(InstanceId, IpAddress, FleetId, OperatingSystem, Credentials, ...)
+-- @param _InstanceId [InstanceId] <p>Unique identifier for an instance being accessed.</p>
+-- @param _IpAddress [IpAddress] <p>IP address assigned to the instance.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet containing the instance being accessed.</p>
+-- @param _OperatingSystem [OperatingSystem] <p>Operating system that is running on the instance.</p>
+-- @param _Credentials [InstanceCredentials] <p>Credentials required to access the instance.</p>
+function M.InstanceAccess(_InstanceId, _IpAddress, _FleetId, _OperatingSystem, _Credentials, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAccess")
 	local t = { 
-		["InstanceId"] = InstanceId,
-		["IpAddress"] = IpAddress,
-		["FleetId"] = FleetId,
-		["OperatingSystem"] = OperatingSystem,
-		["Credentials"] = Credentials,
+		["InstanceId"] = _InstanceId,
+		["IpAddress"] = _IpAddress,
+		["FleetId"] = _FleetId,
+		["OperatingSystem"] = _OperatingSystem,
+		["Credentials"] = _Credentials,
 	}
-	M.AssertInstanceAccess(t)
+	asserts.AssertInstanceAccess(t)
 	return t
 end
 
-local PlacedPlayerSession_keys = { "PlayerId" = true, "PlayerSessionId" = true, nil }
+keys.PlacedPlayerSession = { ["PlayerId"] = true, ["PlayerSessionId"] = true, nil }
 
-function M.AssertPlacedPlayerSession(struct)
+function asserts.AssertPlacedPlayerSession(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PlacedPlayerSession to be of type 'table'")
-	if struct["PlayerId"] then M.AssertNonZeroAndMaxString(struct["PlayerId"]) end
-	if struct["PlayerSessionId"] then M.AssertPlayerSessionId(struct["PlayerSessionId"]) end
+	if struct["PlayerId"] then asserts.AssertNonZeroAndMaxString(struct["PlayerId"]) end
+	if struct["PlayerSessionId"] then asserts.AssertPlayerSessionId(struct["PlayerSessionId"]) end
 	for k,_ in pairs(struct) do
-		assert(PlacedPlayerSession_keys[k], "PlacedPlayerSession contains unknown key " .. tostring(k))
+		assert(keys.PlacedPlayerSession[k], "PlacedPlayerSession contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PlacedPlayerSession
 -- <p>Information about a player session that was created as part of a <a>StartGameSessionPlacement</a> request. This object contains only the player ID and player session ID. To retrieve full details on a player session, call <a>DescribePlayerSessions</a> with the player session ID.</p>
--- @param PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player that is associated with this player session.</p>
--- @param PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
-function M.PlacedPlayerSession(PlayerId, PlayerSessionId, ...)
+-- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player that is associated with this player session.</p>
+-- @param _PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
+function M.PlacedPlayerSession(_PlayerId, _PlayerSessionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlacedPlayerSession")
 	local t = { 
-		["PlayerId"] = PlayerId,
-		["PlayerSessionId"] = PlayerSessionId,
+		["PlayerId"] = _PlayerId,
+		["PlayerSessionId"] = _PlayerSessionId,
 	}
-	M.AssertPlacedPlayerSession(t)
+	asserts.AssertPlacedPlayerSession(t)
 	return t
 end
 
-local DescribeInstancesInput_keys = { "InstanceId" = true, "Limit" = true, "NextToken" = true, "FleetId" = true, nil }
+keys.DescribeInstancesInput = { ["InstanceId"] = true, ["Limit"] = true, ["NextToken"] = true, ["FleetId"] = true, nil }
 
-function M.AssertDescribeInstancesInput(struct)
+function asserts.AssertDescribeInstancesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeInstancesInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["InstanceId"] then M.AssertInstanceId(struct["InstanceId"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["InstanceId"] then asserts.AssertInstanceId(struct["InstanceId"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeInstancesInput_keys[k], "DescribeInstancesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeInstancesInput[k], "DescribeInstancesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeInstancesInput
 -- <p>Represents the input for a request action.</p>
--- @param InstanceId [InstanceId] <p>Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to retrieve instance information for.</p>
+-- @param _InstanceId [InstanceId] <p>Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve instance information for.</p>
 -- Required parameter: FleetId
-function M.DescribeInstancesInput(InstanceId, Limit, NextToken, FleetId, ...)
+function M.DescribeInstancesInput(_InstanceId, _Limit, _NextToken, _FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesInput")
 	local t = { 
-		["InstanceId"] = InstanceId,
-		["Limit"] = Limit,
-		["NextToken"] = NextToken,
-		["FleetId"] = FleetId,
+		["InstanceId"] = _InstanceId,
+		["Limit"] = _Limit,
+		["NextToken"] = _NextToken,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertDescribeInstancesInput(t)
+	asserts.AssertDescribeInstancesInput(t)
 	return t
 end
 
-local DescribeEC2InstanceLimitsOutput_keys = { "EC2InstanceLimits" = true, nil }
+keys.DescribeEC2InstanceLimitsOutput = { ["EC2InstanceLimits"] = true, nil }
 
-function M.AssertDescribeEC2InstanceLimitsOutput(struct)
+function asserts.AssertDescribeEC2InstanceLimitsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEC2InstanceLimitsOutput to be of type 'table'")
-	if struct["EC2InstanceLimits"] then M.AssertEC2InstanceLimitList(struct["EC2InstanceLimits"]) end
+	if struct["EC2InstanceLimits"] then asserts.AssertEC2InstanceLimitList(struct["EC2InstanceLimits"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEC2InstanceLimitsOutput_keys[k], "DescribeEC2InstanceLimitsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeEC2InstanceLimitsOutput[k], "DescribeEC2InstanceLimitsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEC2InstanceLimitsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param EC2InstanceLimits [EC2InstanceLimitList] <p>Object that contains the maximum number of instances for the specified instance type.</p>
-function M.DescribeEC2InstanceLimitsOutput(EC2InstanceLimits, ...)
+-- @param _EC2InstanceLimits [EC2InstanceLimitList] <p>Object that contains the maximum number of instances for the specified instance type.</p>
+function M.DescribeEC2InstanceLimitsOutput(_EC2InstanceLimits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEC2InstanceLimitsOutput")
 	local t = { 
-		["EC2InstanceLimits"] = EC2InstanceLimits,
+		["EC2InstanceLimits"] = _EC2InstanceLimits,
 	}
-	M.AssertDescribeEC2InstanceLimitsOutput(t)
+	asserts.AssertDescribeEC2InstanceLimitsOutput(t)
 	return t
 end
 
-local FleetCapacity_keys = { "FleetId" = true, "InstanceType" = true, "InstanceCounts" = true, nil }
+keys.FleetCapacity = { ["FleetId"] = true, ["InstanceType"] = true, ["InstanceCounts"] = true, nil }
 
-function M.AssertFleetCapacity(struct)
+function asserts.AssertFleetCapacity(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FleetCapacity to be of type 'table'")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["InstanceType"] then M.AssertEC2InstanceType(struct["InstanceType"]) end
-	if struct["InstanceCounts"] then M.AssertEC2InstanceCounts(struct["InstanceCounts"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["InstanceType"] then asserts.AssertEC2InstanceType(struct["InstanceType"]) end
+	if struct["InstanceCounts"] then asserts.AssertEC2InstanceCounts(struct["InstanceCounts"]) end
 	for k,_ in pairs(struct) do
-		assert(FleetCapacity_keys[k], "FleetCapacity contains unknown key " .. tostring(k))
+		assert(keys.FleetCapacity[k], "FleetCapacity contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FleetCapacity
 -- <p>Information about the fleet's capacity. Fleet capacity is measured in EC2 instances. By default, new fleets have a capacity of one instance, but can be updated as needed. The maximum number of instances for a fleet is determined by the fleet's instance type.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet.</p>
--- @param InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
--- @param InstanceCounts [EC2InstanceCounts] <p>Current status of fleet capacity.</p>
-function M.FleetCapacity(FleetId, InstanceType, InstanceCounts, ...)
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet.</p>
+-- @param _InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
+-- @param _InstanceCounts [EC2InstanceCounts] <p>Current status of fleet capacity.</p>
+function M.FleetCapacity(_FleetId, _InstanceType, _InstanceCounts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FleetCapacity")
 	local t = { 
-		["FleetId"] = FleetId,
-		["InstanceType"] = InstanceType,
-		["InstanceCounts"] = InstanceCounts,
+		["FleetId"] = _FleetId,
+		["InstanceType"] = _InstanceType,
+		["InstanceCounts"] = _InstanceCounts,
 	}
-	M.AssertFleetCapacity(t)
+	asserts.AssertFleetCapacity(t)
 	return t
 end
 
-local CreateGameSessionQueueOutput_keys = { "GameSessionQueue" = true, nil }
+keys.CreateGameSessionQueueOutput = { ["GameSessionQueue"] = true, nil }
 
-function M.AssertCreateGameSessionQueueOutput(struct)
+function asserts.AssertCreateGameSessionQueueOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGameSessionQueueOutput to be of type 'table'")
-	if struct["GameSessionQueue"] then M.AssertGameSessionQueue(struct["GameSessionQueue"]) end
+	if struct["GameSessionQueue"] then asserts.AssertGameSessionQueue(struct["GameSessionQueue"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGameSessionQueueOutput_keys[k], "CreateGameSessionQueueOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateGameSessionQueueOutput[k], "CreateGameSessionQueueOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGameSessionQueueOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSessionQueue [GameSessionQueue] <p>Object that describes the newly created game session queue.</p>
-function M.CreateGameSessionQueueOutput(GameSessionQueue, ...)
+-- @param _GameSessionQueue [GameSessionQueue] <p>Object that describes the newly created game session queue.</p>
+function M.CreateGameSessionQueueOutput(_GameSessionQueue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGameSessionQueueOutput")
 	local t = { 
-		["GameSessionQueue"] = GameSessionQueue,
+		["GameSessionQueue"] = _GameSessionQueue,
 	}
-	M.AssertCreateGameSessionQueueOutput(t)
+	asserts.AssertCreateGameSessionQueueOutput(t)
 	return t
 end
 
-local DeleteFleetInput_keys = { "FleetId" = true, nil }
+keys.DeleteFleetInput = { ["FleetId"] = true, nil }
 
-function M.AssertDeleteFleetInput(struct)
+function asserts.AssertDeleteFleetInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFleetInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteFleetInput_keys[k], "DeleteFleetInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteFleetInput[k], "DeleteFleetInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteFleetInput
 -- <p>Represents the input for a request action.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to be deleted.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to be deleted.</p>
 -- Required parameter: FleetId
-function M.DeleteFleetInput(FleetId, ...)
+function M.DeleteFleetInput(_FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFleetInput")
 	local t = { 
-		["FleetId"] = FleetId,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertDeleteFleetInput(t)
+	asserts.AssertDeleteFleetInput(t)
 	return t
 end
 
-local DescribeFleetPortSettingsInput_keys = { "FleetId" = true, nil }
+keys.DescribeFleetPortSettingsInput = { ["FleetId"] = true, nil }
 
-function M.AssertDescribeFleetPortSettingsInput(struct)
+function asserts.AssertDescribeFleetPortSettingsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetPortSettingsInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetPortSettingsInput_keys[k], "DescribeFleetPortSettingsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetPortSettingsInput[k], "DescribeFleetPortSettingsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetPortSettingsInput
 -- <p>Represents the input for a request action.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to retrieve port settings for.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve port settings for.</p>
 -- Required parameter: FleetId
-function M.DescribeFleetPortSettingsInput(FleetId, ...)
+function M.DescribeFleetPortSettingsInput(_FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetPortSettingsInput")
 	local t = { 
-		["FleetId"] = FleetId,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertDescribeFleetPortSettingsInput(t)
+	asserts.AssertDescribeFleetPortSettingsInput(t)
 	return t
 end
 
-local DescribeFleetCapacityOutput_keys = { "NextToken" = true, "FleetCapacity" = true, nil }
+keys.DescribeFleetCapacityOutput = { ["NextToken"] = true, ["FleetCapacity"] = true, nil }
 
-function M.AssertDescribeFleetCapacityOutput(struct)
+function asserts.AssertDescribeFleetCapacityOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetCapacityOutput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["FleetCapacity"] then M.AssertFleetCapacityList(struct["FleetCapacity"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["FleetCapacity"] then asserts.AssertFleetCapacityList(struct["FleetCapacity"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetCapacityOutput_keys[k], "DescribeFleetCapacityOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetCapacityOutput[k], "DescribeFleetCapacityOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetCapacityOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param FleetCapacity [FleetCapacityList] <p>Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to retrieve capacity information for all fleets.</p>
-function M.DescribeFleetCapacityOutput(NextToken, FleetCapacity, ...)
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @param _FleetCapacity [FleetCapacityList] <p>Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to retrieve capacity information for all fleets.</p>
+function M.DescribeFleetCapacityOutput(_NextToken, _FleetCapacity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetCapacityOutput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["FleetCapacity"] = FleetCapacity,
+		["NextToken"] = _NextToken,
+		["FleetCapacity"] = _FleetCapacity,
 	}
-	M.AssertDescribeFleetCapacityOutput(t)
+	asserts.AssertDescribeFleetCapacityOutput(t)
 	return t
 end
 
-local DeleteBuildInput_keys = { "BuildId" = true, nil }
+keys.DeleteBuildInput = { ["BuildId"] = true, nil }
 
-function M.AssertDeleteBuildInput(struct)
+function asserts.AssertDeleteBuildInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteBuildInput to be of type 'table'")
 	assert(struct["BuildId"], "Expected key BuildId to exist in table")
-	if struct["BuildId"] then M.AssertBuildId(struct["BuildId"]) end
+	if struct["BuildId"] then asserts.AssertBuildId(struct["BuildId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteBuildInput_keys[k], "DeleteBuildInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteBuildInput[k], "DeleteBuildInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteBuildInput
 -- <p>Represents the input for a request action.</p>
--- @param BuildId [BuildId] <p>Unique identifier for a build to delete.</p>
+-- @param _BuildId [BuildId] <p>Unique identifier for a build to delete.</p>
 -- Required parameter: BuildId
-function M.DeleteBuildInput(BuildId, ...)
+function M.DeleteBuildInput(_BuildId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBuildInput")
 	local t = { 
-		["BuildId"] = BuildId,
+		["BuildId"] = _BuildId,
 	}
-	M.AssertDeleteBuildInput(t)
+	asserts.AssertDeleteBuildInput(t)
 	return t
 end
 
-local UpdateFleetAttributesInput_keys = { "Name" = true, "MetricGroups" = true, "NewGameSessionProtectionPolicy" = true, "FleetId" = true, "ResourceCreationLimitPolicy" = true, "Description" = true, nil }
+keys.UpdateFleetAttributesInput = { ["Name"] = true, ["MetricGroups"] = true, ["NewGameSessionProtectionPolicy"] = true, ["FleetId"] = true, ["ResourceCreationLimitPolicy"] = true, ["Description"] = true, nil }
 
-function M.AssertUpdateFleetAttributesInput(struct)
+function asserts.AssertUpdateFleetAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFleetAttributesInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
-	if struct["MetricGroups"] then M.AssertMetricGroupList(struct["MetricGroups"]) end
-	if struct["NewGameSessionProtectionPolicy"] then M.AssertProtectionPolicy(struct["NewGameSessionProtectionPolicy"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["ResourceCreationLimitPolicy"] then M.AssertResourceCreationLimitPolicy(struct["ResourceCreationLimitPolicy"]) end
-	if struct["Description"] then M.AssertNonZeroAndMaxString(struct["Description"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["MetricGroups"] then asserts.AssertMetricGroupList(struct["MetricGroups"]) end
+	if struct["NewGameSessionProtectionPolicy"] then asserts.AssertProtectionPolicy(struct["NewGameSessionProtectionPolicy"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["ResourceCreationLimitPolicy"] then asserts.AssertResourceCreationLimitPolicy(struct["ResourceCreationLimitPolicy"]) end
+	if struct["Description"] then asserts.AssertNonZeroAndMaxString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFleetAttributesInput_keys[k], "UpdateFleetAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateFleetAttributesInput[k], "UpdateFleetAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFleetAttributesInput
 -- <p>Represents the input for a request action.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
--- @param MetricGroups [MetricGroupList] <p>Names of metric groups to include this fleet with. A fleet metric group is used in Amazon CloudWatch to aggregate metrics from multiple fleets. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a time.</p>
--- @param NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to update attribute metadata for.</p>
--- @param ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Policy that limits the number of game sessions an individual player can create over a span of time. </p>
--- @param Description [NonZeroAndMaxString] <p>Human-readable description of a fleet.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
+-- @param _MetricGroups [MetricGroupList] <p>Names of metric groups to include this fleet with. A fleet metric group is used in Amazon CloudWatch to aggregate metrics from multiple fleets. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a time.</p>
+-- @param _NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to update attribute metadata for.</p>
+-- @param _ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Policy that limits the number of game sessions an individual player can create over a span of time. </p>
+-- @param _Description [NonZeroAndMaxString] <p>Human-readable description of a fleet.</p>
 -- Required parameter: FleetId
-function M.UpdateFleetAttributesInput(Name, MetricGroups, NewGameSessionProtectionPolicy, FleetId, ResourceCreationLimitPolicy, Description, ...)
+function M.UpdateFleetAttributesInput(_Name, _MetricGroups, _NewGameSessionProtectionPolicy, _FleetId, _ResourceCreationLimitPolicy, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetAttributesInput")
 	local t = { 
-		["Name"] = Name,
-		["MetricGroups"] = MetricGroups,
-		["NewGameSessionProtectionPolicy"] = NewGameSessionProtectionPolicy,
-		["FleetId"] = FleetId,
-		["ResourceCreationLimitPolicy"] = ResourceCreationLimitPolicy,
-		["Description"] = Description,
+		["Name"] = _Name,
+		["MetricGroups"] = _MetricGroups,
+		["NewGameSessionProtectionPolicy"] = _NewGameSessionProtectionPolicy,
+		["FleetId"] = _FleetId,
+		["ResourceCreationLimitPolicy"] = _ResourceCreationLimitPolicy,
+		["Description"] = _Description,
 	}
-	M.AssertUpdateFleetAttributesInput(t)
+	asserts.AssertUpdateFleetAttributesInput(t)
 	return t
 end
 
-local DescribeGameSessionsOutput_keys = { "GameSessions" = true, "NextToken" = true, nil }
+keys.DescribeGameSessionsOutput = { ["GameSessions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeGameSessionsOutput(struct)
+function asserts.AssertDescribeGameSessionsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeGameSessionsOutput to be of type 'table'")
-	if struct["GameSessions"] then M.AssertGameSessionList(struct["GameSessions"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["GameSessions"] then asserts.AssertGameSessionList(struct["GameSessions"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeGameSessionsOutput_keys[k], "DescribeGameSessionsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGameSessionsOutput[k], "DescribeGameSessionsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeGameSessionsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSessions [GameSessionList] <p>Collection of objects containing game session properties for each session matching the request.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeGameSessionsOutput(GameSessions, NextToken, ...)
+-- @param _GameSessions [GameSessionList] <p>Collection of objects containing game session properties for each session matching the request.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.DescribeGameSessionsOutput(_GameSessions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionsOutput")
 	local t = { 
-		["GameSessions"] = GameSessions,
-		["NextToken"] = NextToken,
+		["GameSessions"] = _GameSessions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeGameSessionsOutput(t)
+	asserts.AssertDescribeGameSessionsOutput(t)
 	return t
 end
 
-local ResourceCreationLimitPolicy_keys = { "NewGameSessionsPerCreator" = true, "PolicyPeriodInMinutes" = true, nil }
+keys.ResourceCreationLimitPolicy = { ["NewGameSessionsPerCreator"] = true, ["PolicyPeriodInMinutes"] = true, nil }
 
-function M.AssertResourceCreationLimitPolicy(struct)
+function asserts.AssertResourceCreationLimitPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceCreationLimitPolicy to be of type 'table'")
-	if struct["NewGameSessionsPerCreator"] then M.AssertWholeNumber(struct["NewGameSessionsPerCreator"]) end
-	if struct["PolicyPeriodInMinutes"] then M.AssertWholeNumber(struct["PolicyPeriodInMinutes"]) end
+	if struct["NewGameSessionsPerCreator"] then asserts.AssertWholeNumber(struct["NewGameSessionsPerCreator"]) end
+	if struct["PolicyPeriodInMinutes"] then asserts.AssertWholeNumber(struct["PolicyPeriodInMinutes"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceCreationLimitPolicy_keys[k], "ResourceCreationLimitPolicy contains unknown key " .. tostring(k))
+		assert(keys.ResourceCreationLimitPolicy[k], "ResourceCreationLimitPolicy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceCreationLimitPolicy
 -- <p>Policy that limits the number of game sessions a player can create on the same fleet. This optional policy gives game owners control over how players can consume available game server resources. A resource creation policy makes the following statement: "An individual player can create a maximum number of new game sessions within a specified time period".</p> <p>The policy is evaluated when a player tries to create a new game session. For example, with a policy of 10 new game sessions and a time period of 60 minutes, on receiving a <code>CreateGameSession</code> request, Amazon GameLift checks that the player (identified by <code>CreatorId</code>) has created fewer than 10 game sessions in the past 60 minutes.</p>
--- @param NewGameSessionsPerCreator [WholeNumber] <p>Maximum number of game sessions that an individual can create during the policy period. </p>
--- @param PolicyPeriodInMinutes [WholeNumber] <p>Time span used in evaluating the resource creation limit policy. </p>
-function M.ResourceCreationLimitPolicy(NewGameSessionsPerCreator, PolicyPeriodInMinutes, ...)
+-- @param _NewGameSessionsPerCreator [WholeNumber] <p>Maximum number of game sessions that an individual can create during the policy period. </p>
+-- @param _PolicyPeriodInMinutes [WholeNumber] <p>Time span used in evaluating the resource creation limit policy. </p>
+function M.ResourceCreationLimitPolicy(_NewGameSessionsPerCreator, _PolicyPeriodInMinutes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceCreationLimitPolicy")
 	local t = { 
-		["NewGameSessionsPerCreator"] = NewGameSessionsPerCreator,
-		["PolicyPeriodInMinutes"] = PolicyPeriodInMinutes,
+		["NewGameSessionsPerCreator"] = _NewGameSessionsPerCreator,
+		["PolicyPeriodInMinutes"] = _PolicyPeriodInMinutes,
 	}
-	M.AssertResourceCreationLimitPolicy(t)
+	asserts.AssertResourceCreationLimitPolicy(t)
 	return t
 end
 
-local EC2InstanceCounts_keys = { "TERMINATING" = true, "MAXIMUM" = true, "DESIRED" = true, "IDLE" = true, "MINIMUM" = true, "ACTIVE" = true, "PENDING" = true, nil }
+keys.EC2InstanceCounts = { ["TERMINATING"] = true, ["MAXIMUM"] = true, ["DESIRED"] = true, ["IDLE"] = true, ["MINIMUM"] = true, ["ACTIVE"] = true, ["PENDING"] = true, nil }
 
-function M.AssertEC2InstanceCounts(struct)
+function asserts.AssertEC2InstanceCounts(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EC2InstanceCounts to be of type 'table'")
-	if struct["TERMINATING"] then M.AssertWholeNumber(struct["TERMINATING"]) end
-	if struct["MAXIMUM"] then M.AssertWholeNumber(struct["MAXIMUM"]) end
-	if struct["DESIRED"] then M.AssertWholeNumber(struct["DESIRED"]) end
-	if struct["IDLE"] then M.AssertWholeNumber(struct["IDLE"]) end
-	if struct["MINIMUM"] then M.AssertWholeNumber(struct["MINIMUM"]) end
-	if struct["ACTIVE"] then M.AssertWholeNumber(struct["ACTIVE"]) end
-	if struct["PENDING"] then M.AssertWholeNumber(struct["PENDING"]) end
+	if struct["TERMINATING"] then asserts.AssertWholeNumber(struct["TERMINATING"]) end
+	if struct["MAXIMUM"] then asserts.AssertWholeNumber(struct["MAXIMUM"]) end
+	if struct["DESIRED"] then asserts.AssertWholeNumber(struct["DESIRED"]) end
+	if struct["IDLE"] then asserts.AssertWholeNumber(struct["IDLE"]) end
+	if struct["MINIMUM"] then asserts.AssertWholeNumber(struct["MINIMUM"]) end
+	if struct["ACTIVE"] then asserts.AssertWholeNumber(struct["ACTIVE"]) end
+	if struct["PENDING"] then asserts.AssertWholeNumber(struct["PENDING"]) end
 	for k,_ in pairs(struct) do
-		assert(EC2InstanceCounts_keys[k], "EC2InstanceCounts contains unknown key " .. tostring(k))
+		assert(keys.EC2InstanceCounts[k], "EC2InstanceCounts contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EC2InstanceCounts
 -- <p>Current status of fleet capacity. The number of active instances should match or be in the process of matching the number of desired instances. Pending and terminating counts are non-zero only if fleet capacity is adjusting to an <a>UpdateFleetCapacity</a> request, or if access to resources is temporarily affected.</p>
--- @param TERMINATING [WholeNumber] <p>Number of instances in the fleet that are no longer active but haven't yet been terminated.</p>
--- @param MAXIMUM [WholeNumber] <p>Maximum value allowed for the fleet's instance count.</p>
--- @param DESIRED [WholeNumber] <p>Ideal number of active instances in the fleet.</p>
--- @param IDLE [WholeNumber] <p>Number of active instances in the fleet that are not currently hosting a game session.</p>
--- @param MINIMUM [WholeNumber] <p>Minimum value allowed for the fleet's instance count.</p>
--- @param ACTIVE [WholeNumber] <p>Actual number of active instances in the fleet.</p>
--- @param PENDING [WholeNumber] <p>Number of instances in the fleet that are starting but not yet active.</p>
-function M.EC2InstanceCounts(TERMINATING, MAXIMUM, DESIRED, IDLE, MINIMUM, ACTIVE, PENDING, ...)
+-- @param _TERMINATING [WholeNumber] <p>Number of instances in the fleet that are no longer active but haven't yet been terminated.</p>
+-- @param _MAXIMUM [WholeNumber] <p>Maximum value allowed for the fleet's instance count.</p>
+-- @param _DESIRED [WholeNumber] <p>Ideal number of active instances in the fleet.</p>
+-- @param _IDLE [WholeNumber] <p>Number of active instances in the fleet that are not currently hosting a game session.</p>
+-- @param _MINIMUM [WholeNumber] <p>Minimum value allowed for the fleet's instance count.</p>
+-- @param _ACTIVE [WholeNumber] <p>Actual number of active instances in the fleet.</p>
+-- @param _PENDING [WholeNumber] <p>Number of instances in the fleet that are starting but not yet active.</p>
+function M.EC2InstanceCounts(_TERMINATING, _MAXIMUM, _DESIRED, _IDLE, _MINIMUM, _ACTIVE, _PENDING, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EC2InstanceCounts")
 	local t = { 
-		["TERMINATING"] = TERMINATING,
-		["MAXIMUM"] = MAXIMUM,
-		["DESIRED"] = DESIRED,
-		["IDLE"] = IDLE,
-		["MINIMUM"] = MINIMUM,
-		["ACTIVE"] = ACTIVE,
-		["PENDING"] = PENDING,
+		["TERMINATING"] = _TERMINATING,
+		["MAXIMUM"] = _MAXIMUM,
+		["DESIRED"] = _DESIRED,
+		["IDLE"] = _IDLE,
+		["MINIMUM"] = _MINIMUM,
+		["ACTIVE"] = _ACTIVE,
+		["PENDING"] = _PENDING,
 	}
-	M.AssertEC2InstanceCounts(t)
+	asserts.AssertEC2InstanceCounts(t)
 	return t
 end
 
-local ResolveAliasOutput_keys = { "FleetId" = true, nil }
+keys.ResolveAliasOutput = { ["FleetId"] = true, nil }
 
-function M.AssertResolveAliasOutput(struct)
+function asserts.AssertResolveAliasOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResolveAliasOutput to be of type 'table'")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(ResolveAliasOutput_keys[k], "ResolveAliasOutput contains unknown key " .. tostring(k))
+		assert(keys.ResolveAliasOutput[k], "ResolveAliasOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResolveAliasOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param FleetId [FleetId] <p>Fleet identifier that is associated with the requested alias.</p>
-function M.ResolveAliasOutput(FleetId, ...)
+-- @param _FleetId [FleetId] <p>Fleet identifier that is associated with the requested alias.</p>
+function M.ResolveAliasOutput(_FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveAliasOutput")
 	local t = { 
-		["FleetId"] = FleetId,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertResolveAliasOutput(t)
+	asserts.AssertResolveAliasOutput(t)
 	return t
 end
 
-local InvalidRequestException_keys = { "Message" = true, nil }
+keys.InvalidRequestException = { ["Message"] = true, nil }
 
-function M.AssertInvalidRequestException(struct)
+function asserts.AssertInvalidRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRequestException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidRequestException_keys[k], "InvalidRequestException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRequestException[k], "InvalidRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidRequestException
 -- <p>One or more parameter values in the request are invalid. Correct the invalid parameter values before retrying.</p>
--- @param Message [NonEmptyString] <p>One or more parameter values in the request are invalid. Correct the invalid parameter values before retrying.</p>
-function M.InvalidRequestException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.InvalidRequestException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidRequestException(t)
+	asserts.AssertInvalidRequestException(t)
 	return t
 end
 
-local UpdateAliasOutput_keys = { "Alias" = true, nil }
+keys.UpdateAliasOutput = { ["Alias"] = true, nil }
 
-function M.AssertUpdateAliasOutput(struct)
+function asserts.AssertUpdateAliasOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateAliasOutput to be of type 'table'")
-	if struct["Alias"] then M.AssertAlias(struct["Alias"]) end
+	if struct["Alias"] then asserts.AssertAlias(struct["Alias"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateAliasOutput_keys[k], "UpdateAliasOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateAliasOutput[k], "UpdateAliasOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateAliasOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param Alias [Alias] <p>Object that contains the updated alias configuration.</p>
-function M.UpdateAliasOutput(Alias, ...)
+-- @param _Alias [Alias] <p>Object that contains the updated alias configuration.</p>
+function M.UpdateAliasOutput(_Alias, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAliasOutput")
 	local t = { 
-		["Alias"] = Alias,
+		["Alias"] = _Alias,
 	}
-	M.AssertUpdateAliasOutput(t)
+	asserts.AssertUpdateAliasOutput(t)
 	return t
 end
 
-local UpdateAliasInput_keys = { "RoutingStrategy" = true, "AliasId" = true, "Name" = true, "Description" = true, nil }
+keys.UpdateAliasInput = { ["RoutingStrategy"] = true, ["AliasId"] = true, ["Name"] = true, ["Description"] = true, nil }
 
-function M.AssertUpdateAliasInput(struct)
+function asserts.AssertUpdateAliasInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateAliasInput to be of type 'table'")
 	assert(struct["AliasId"], "Expected key AliasId to exist in table")
-	if struct["RoutingStrategy"] then M.AssertRoutingStrategy(struct["RoutingStrategy"]) end
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
-	if struct["Name"] then M.AssertNonBlankAndLengthConstraintString(struct["Name"]) end
-	if struct["Description"] then M.AssertNonZeroAndMaxString(struct["Description"]) end
+	if struct["RoutingStrategy"] then asserts.AssertRoutingStrategy(struct["RoutingStrategy"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
+	if struct["Name"] then asserts.AssertNonBlankAndLengthConstraintString(struct["Name"]) end
+	if struct["Description"] then asserts.AssertNonZeroAndMaxString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateAliasInput_keys[k], "UpdateAliasInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateAliasInput[k], "UpdateAliasInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param RoutingStrategy [RoutingStrategy] <p>Object that specifies the fleet and routing type to use for the alias.</p>
--- @param AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to update.</p>
--- @param Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
--- @param Description [NonZeroAndMaxString] <p>Human-readable description of an alias.</p>
+-- @param _RoutingStrategy [RoutingStrategy] <p>Object that specifies the fleet and routing type to use for the alias.</p>
+-- @param _AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to update.</p>
+-- @param _Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
+-- @param _Description [NonZeroAndMaxString] <p>Human-readable description of an alias.</p>
 -- Required parameter: AliasId
-function M.UpdateAliasInput(RoutingStrategy, AliasId, Name, Description, ...)
+function M.UpdateAliasInput(_RoutingStrategy, _AliasId, _Name, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAliasInput")
 	local t = { 
-		["RoutingStrategy"] = RoutingStrategy,
-		["AliasId"] = AliasId,
-		["Name"] = Name,
-		["Description"] = Description,
+		["RoutingStrategy"] = _RoutingStrategy,
+		["AliasId"] = _AliasId,
+		["Name"] = _Name,
+		["Description"] = _Description,
 	}
-	M.AssertUpdateAliasInput(t)
+	asserts.AssertUpdateAliasInput(t)
 	return t
 end
 
-local GameProperty_keys = { "Value" = true, "Key" = true, nil }
+keys.GameProperty = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertGameProperty(struct)
+function asserts.AssertGameProperty(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GameProperty to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
 	assert(struct["Value"], "Expected key Value to exist in table")
-	if struct["Value"] then M.AssertGamePropertyValue(struct["Value"]) end
-	if struct["Key"] then M.AssertGamePropertyKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertGamePropertyValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertGamePropertyKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(GameProperty_keys[k], "GameProperty contains unknown key " .. tostring(k))
+		assert(keys.GameProperty[k], "GameProperty contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GameProperty
 -- <p>Set of key-value pairs containing information a server process requires to set up a game session. This object allows you to pass in any set of data needed for your game. For more information, see the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/">Amazon GameLift Developer Guide</a>.</p>
--- @param Value [GamePropertyValue] <p>TBD</p>
--- @param Key [GamePropertyKey] <p>TBD</p>
+-- @param _Value [GamePropertyValue] <p>TBD</p>
+-- @param _Key [GamePropertyKey] <p>TBD</p>
 -- Required parameter: Key
 -- Required parameter: Value
-function M.GameProperty(Value, Key, ...)
+function M.GameProperty(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GameProperty")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertGameProperty(t)
+	asserts.AssertGameProperty(t)
 	return t
 end
 
-local GameSessionDetail_keys = { "GameSession" = true, "ProtectionPolicy" = true, nil }
+keys.GameSessionDetail = { ["GameSession"] = true, ["ProtectionPolicy"] = true, nil }
 
-function M.AssertGameSessionDetail(struct)
+function asserts.AssertGameSessionDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GameSessionDetail to be of type 'table'")
-	if struct["GameSession"] then M.AssertGameSession(struct["GameSession"]) end
-	if struct["ProtectionPolicy"] then M.AssertProtectionPolicy(struct["ProtectionPolicy"]) end
+	if struct["GameSession"] then asserts.AssertGameSession(struct["GameSession"]) end
+	if struct["ProtectionPolicy"] then asserts.AssertProtectionPolicy(struct["ProtectionPolicy"]) end
 	for k,_ in pairs(struct) do
-		assert(GameSessionDetail_keys[k], "GameSessionDetail contains unknown key " .. tostring(k))
+		assert(keys.GameSessionDetail[k], "GameSessionDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GameSessionDetail
 -- <p>A game session's properties plus the protection policy currently in force.</p>
--- @param GameSession [GameSession] <p>Object that describes a game session.</p>
--- @param ProtectionPolicy [ProtectionPolicy] <p>Current status of protection for the game session.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
-function M.GameSessionDetail(GameSession, ProtectionPolicy, ...)
+-- @param _GameSession [GameSession] <p>Object that describes a game session.</p>
+-- @param _ProtectionPolicy [ProtectionPolicy] <p>Current status of protection for the game session.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+function M.GameSessionDetail(_GameSession, _ProtectionPolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionDetail")
 	local t = { 
-		["GameSession"] = GameSession,
-		["ProtectionPolicy"] = ProtectionPolicy,
+		["GameSession"] = _GameSession,
+		["ProtectionPolicy"] = _ProtectionPolicy,
 	}
-	M.AssertGameSessionDetail(t)
+	asserts.AssertGameSessionDetail(t)
 	return t
 end
 
-local DescribeFleetAttributesInput_keys = { "FleetIds" = true, "NextToken" = true, "Limit" = true, nil }
+keys.DescribeFleetAttributesInput = { ["FleetIds"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
 
-function M.AssertDescribeFleetAttributesInput(struct)
+function asserts.AssertDescribeFleetAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetAttributesInput to be of type 'table'")
-	if struct["FleetIds"] then M.AssertFleetIdList(struct["FleetIds"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
+	if struct["FleetIds"] then asserts.AssertFleetIdList(struct["FleetIds"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetAttributesInput_keys[k], "DescribeFleetAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetAttributesInput[k], "DescribeFleetAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetAttributesInput
 -- <p>Represents the input for a request action.</p>
--- @param FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve attributes for. To request attributes for all fleets, leave this parameter empty.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-function M.DescribeFleetAttributesInput(FleetIds, NextToken, Limit, ...)
+-- @param _FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve attributes for. To request attributes for all fleets, leave this parameter empty.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+function M.DescribeFleetAttributesInput(_FleetIds, _NextToken, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetAttributesInput")
 	local t = { 
-		["FleetIds"] = FleetIds,
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
+		["FleetIds"] = _FleetIds,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
 	}
-	M.AssertDescribeFleetAttributesInput(t)
+	asserts.AssertDescribeFleetAttributesInput(t)
 	return t
 end
 
-local InvalidGameSessionStatusException_keys = { "Message" = true, nil }
+keys.InvalidGameSessionStatusException = { ["Message"] = true, nil }
 
-function M.AssertInvalidGameSessionStatusException(struct)
+function asserts.AssertInvalidGameSessionStatusException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidGameSessionStatusException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidGameSessionStatusException_keys[k], "InvalidGameSessionStatusException contains unknown key " .. tostring(k))
+		assert(keys.InvalidGameSessionStatusException[k], "InvalidGameSessionStatusException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidGameSessionStatusException
 -- <p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the game instance. Resolve the conflict before retrying.</p>
--- @param Message [NonEmptyString] <p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the game instance. Resolve the conflict before retrying.</p>
-function M.InvalidGameSessionStatusException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.InvalidGameSessionStatusException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidGameSessionStatusException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidGameSessionStatusException(t)
+	asserts.AssertInvalidGameSessionStatusException(t)
 	return t
 end
 
-local DescribeAliasInput_keys = { "AliasId" = true, nil }
+keys.DescribeAliasInput = { ["AliasId"] = true, nil }
 
-function M.AssertDescribeAliasInput(struct)
+function asserts.AssertDescribeAliasInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAliasInput to be of type 'table'")
 	assert(struct["AliasId"], "Expected key AliasId to exist in table")
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAliasInput_keys[k], "DescribeAliasInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeAliasInput[k], "DescribeAliasInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to retrieve.</p>
+-- @param _AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to retrieve.</p>
 -- Required parameter: AliasId
-function M.DescribeAliasInput(AliasId, ...)
+function M.DescribeAliasInput(_AliasId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAliasInput")
 	local t = { 
-		["AliasId"] = AliasId,
+		["AliasId"] = _AliasId,
 	}
-	M.AssertDescribeAliasInput(t)
+	asserts.AssertDescribeAliasInput(t)
 	return t
 end
 
-local GameSession_keys = { "Status" = true, "MaximumPlayerSessionCount" = true, "Name" = true, "CurrentPlayerSessionCount" = true, "TerminationTime" = true, "GameProperties" = true, "CreationTime" = true, "PlayerSessionCreationPolicy" = true, "FleetId" = true, "CreatorId" = true, "GameSessionId" = true, "IpAddress" = true, "Port" = true, nil }
+keys.GameSession = { ["Status"] = true, ["MaximumPlayerSessionCount"] = true, ["Name"] = true, ["CurrentPlayerSessionCount"] = true, ["TerminationTime"] = true, ["GameProperties"] = true, ["CreationTime"] = true, ["PlayerSessionCreationPolicy"] = true, ["FleetId"] = true, ["CreatorId"] = true, ["GameSessionId"] = true, ["IpAddress"] = true, ["Port"] = true, nil }
 
-function M.AssertGameSession(struct)
+function asserts.AssertGameSession(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GameSession to be of type 'table'")
-	if struct["Status"] then M.AssertGameSessionStatus(struct["Status"]) end
-	if struct["MaximumPlayerSessionCount"] then M.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
-	if struct["CurrentPlayerSessionCount"] then M.AssertWholeNumber(struct["CurrentPlayerSessionCount"]) end
-	if struct["TerminationTime"] then M.AssertTimestamp(struct["TerminationTime"]) end
-	if struct["GameProperties"] then M.AssertGamePropertyList(struct["GameProperties"]) end
-	if struct["CreationTime"] then M.AssertTimestamp(struct["CreationTime"]) end
-	if struct["PlayerSessionCreationPolicy"] then M.AssertPlayerSessionCreationPolicy(struct["PlayerSessionCreationPolicy"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["CreatorId"] then M.AssertNonZeroAndMaxString(struct["CreatorId"]) end
-	if struct["GameSessionId"] then M.AssertNonZeroAndMaxString(struct["GameSessionId"]) end
-	if struct["IpAddress"] then M.AssertIpAddress(struct["IpAddress"]) end
-	if struct["Port"] then M.AssertPortNumber(struct["Port"]) end
+	if struct["Status"] then asserts.AssertGameSessionStatus(struct["Status"]) end
+	if struct["MaximumPlayerSessionCount"] then asserts.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["CurrentPlayerSessionCount"] then asserts.AssertWholeNumber(struct["CurrentPlayerSessionCount"]) end
+	if struct["TerminationTime"] then asserts.AssertTimestamp(struct["TerminationTime"]) end
+	if struct["GameProperties"] then asserts.AssertGamePropertyList(struct["GameProperties"]) end
+	if struct["CreationTime"] then asserts.AssertTimestamp(struct["CreationTime"]) end
+	if struct["PlayerSessionCreationPolicy"] then asserts.AssertPlayerSessionCreationPolicy(struct["PlayerSessionCreationPolicy"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["CreatorId"] then asserts.AssertNonZeroAndMaxString(struct["CreatorId"]) end
+	if struct["GameSessionId"] then asserts.AssertNonZeroAndMaxString(struct["GameSessionId"]) end
+	if struct["IpAddress"] then asserts.AssertIpAddress(struct["IpAddress"]) end
+	if struct["Port"] then asserts.AssertPortNumber(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(GameSession_keys[k], "GameSession contains unknown key " .. tostring(k))
+		assert(keys.GameSession[k], "GameSession contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GameSession
 -- <p>Properties describing a game session.</p>
--- @param Status [GameSessionStatus] <p>Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player sessions.</p>
--- @param MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param CurrentPlayerSessionCount [WholeNumber] <p>Number of players currently in the game session.</p>
--- @param TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
--- @param CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param PlayerSessionCreationPolicy [PlayerSessionCreationPolicy] <p>Indicates whether or not the game session is accepting new players.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet the game session is running on.</p>
--- @param CreatorId [NonZeroAndMaxString] <p>Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that limits the number of game sessions a player can create.</p>
--- @param GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session. A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.</p>
--- @param IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
--- @param Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
-function M.GameSession(Status, MaximumPlayerSessionCount, Name, CurrentPlayerSessionCount, TerminationTime, GameProperties, CreationTime, PlayerSessionCreationPolicy, FleetId, CreatorId, GameSessionId, IpAddress, Port, ...)
+-- @param _Status [GameSessionStatus] <p>Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player sessions.</p>
+-- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- @param _CurrentPlayerSessionCount [WholeNumber] <p>Number of players currently in the game session.</p>
+-- @param _TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
+-- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _PlayerSessionCreationPolicy [PlayerSessionCreationPolicy] <p>Indicates whether or not the game session is accepting new players.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet the game session is running on.</p>
+-- @param _CreatorId [NonZeroAndMaxString] <p>Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that limits the number of game sessions a player can create.</p>
+-- @param _GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session. A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.</p>
+-- @param _IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
+-- @param _Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
+function M.GameSession(_Status, _MaximumPlayerSessionCount, _Name, _CurrentPlayerSessionCount, _TerminationTime, _GameProperties, _CreationTime, _PlayerSessionCreationPolicy, _FleetId, _CreatorId, _GameSessionId, _IpAddress, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GameSession")
 	local t = { 
-		["Status"] = Status,
-		["MaximumPlayerSessionCount"] = MaximumPlayerSessionCount,
-		["Name"] = Name,
-		["CurrentPlayerSessionCount"] = CurrentPlayerSessionCount,
-		["TerminationTime"] = TerminationTime,
-		["GameProperties"] = GameProperties,
-		["CreationTime"] = CreationTime,
-		["PlayerSessionCreationPolicy"] = PlayerSessionCreationPolicy,
-		["FleetId"] = FleetId,
-		["CreatorId"] = CreatorId,
-		["GameSessionId"] = GameSessionId,
-		["IpAddress"] = IpAddress,
-		["Port"] = Port,
+		["Status"] = _Status,
+		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
+		["Name"] = _Name,
+		["CurrentPlayerSessionCount"] = _CurrentPlayerSessionCount,
+		["TerminationTime"] = _TerminationTime,
+		["GameProperties"] = _GameProperties,
+		["CreationTime"] = _CreationTime,
+		["PlayerSessionCreationPolicy"] = _PlayerSessionCreationPolicy,
+		["FleetId"] = _FleetId,
+		["CreatorId"] = _CreatorId,
+		["GameSessionId"] = _GameSessionId,
+		["IpAddress"] = _IpAddress,
+		["Port"] = _Port,
 	}
-	M.AssertGameSession(t)
+	asserts.AssertGameSession(t)
 	return t
 end
 
-local DescribeGameSessionQueuesInput_keys = { "NextToken" = true, "Limit" = true, "Names" = true, nil }
+keys.DescribeGameSessionQueuesInput = { ["NextToken"] = true, ["Limit"] = true, ["Names"] = true, nil }
 
-function M.AssertDescribeGameSessionQueuesInput(struct)
+function asserts.AssertDescribeGameSessionQueuesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeGameSessionQueuesInput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["Names"] then M.AssertGameSessionQueueNameList(struct["Names"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["Names"] then asserts.AssertGameSessionQueueNameList(struct["Names"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeGameSessionQueuesInput_keys[k], "DescribeGameSessionQueuesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGameSessionQueuesInput[k], "DescribeGameSessionQueuesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeGameSessionQueuesInput
 -- <p>Represents the input for a request action.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param Names [GameSessionQueueNameList] <p>List of queue names to retrieve information for. To request settings for all queues, leave this parameter empty.</p>
-function M.DescribeGameSessionQueuesInput(NextToken, Limit, Names, ...)
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @param _Names [GameSessionQueueNameList] <p>List of queue names to retrieve information for. To request settings for all queues, leave this parameter empty.</p>
+function M.DescribeGameSessionQueuesInput(_NextToken, _Limit, _Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionQueuesInput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
-		["Names"] = Names,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
+		["Names"] = _Names,
 	}
-	M.AssertDescribeGameSessionQueuesInput(t)
+	asserts.AssertDescribeGameSessionQueuesInput(t)
 	return t
 end
 
-local CreatePlayerSessionsOutput_keys = { "PlayerSessions" = true, nil }
+keys.CreatePlayerSessionsOutput = { ["PlayerSessions"] = true, nil }
 
-function M.AssertCreatePlayerSessionsOutput(struct)
+function asserts.AssertCreatePlayerSessionsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePlayerSessionsOutput to be of type 'table'")
-	if struct["PlayerSessions"] then M.AssertPlayerSessionList(struct["PlayerSessions"]) end
+	if struct["PlayerSessions"] then asserts.AssertPlayerSessionList(struct["PlayerSessions"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePlayerSessionsOutput_keys[k], "CreatePlayerSessionsOutput contains unknown key " .. tostring(k))
+		assert(keys.CreatePlayerSessionsOutput[k], "CreatePlayerSessionsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePlayerSessionsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param PlayerSessions [PlayerSessionList] <p>Collection of player session objects created for the added players.</p>
-function M.CreatePlayerSessionsOutput(PlayerSessions, ...)
+-- @param _PlayerSessions [PlayerSessionList] <p>Collection of player session objects created for the added players.</p>
+function M.CreatePlayerSessionsOutput(_PlayerSessions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlayerSessionsOutput")
 	local t = { 
-		["PlayerSessions"] = PlayerSessions,
+		["PlayerSessions"] = _PlayerSessions,
 	}
-	M.AssertCreatePlayerSessionsOutput(t)
+	asserts.AssertCreatePlayerSessionsOutput(t)
 	return t
 end
 
-local PlayerLatency_keys = { "PlayerId" = true, "LatencyInMilliseconds" = true, "RegionIdentifier" = true, nil }
+keys.PlayerLatency = { ["PlayerId"] = true, ["LatencyInMilliseconds"] = true, ["RegionIdentifier"] = true, nil }
 
-function M.AssertPlayerLatency(struct)
+function asserts.AssertPlayerLatency(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PlayerLatency to be of type 'table'")
-	if struct["PlayerId"] then M.AssertNonZeroAndMaxString(struct["PlayerId"]) end
-	if struct["LatencyInMilliseconds"] then M.AssertFloat(struct["LatencyInMilliseconds"]) end
-	if struct["RegionIdentifier"] then M.AssertNonZeroAndMaxString(struct["RegionIdentifier"]) end
+	if struct["PlayerId"] then asserts.AssertNonZeroAndMaxString(struct["PlayerId"]) end
+	if struct["LatencyInMilliseconds"] then asserts.AssertFloat(struct["LatencyInMilliseconds"]) end
+	if struct["RegionIdentifier"] then asserts.AssertNonZeroAndMaxString(struct["RegionIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(PlayerLatency_keys[k], "PlayerLatency contains unknown key " .. tostring(k))
+		assert(keys.PlayerLatency[k], "PlayerLatency contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PlayerLatency
 -- <p>Regional latency information for a player, used when requesting a new game session with <a>StartGameSessionPlacement</a>. This value indicates the amount of time lag that exists when the player is connected to a fleet in the specified region. The relative difference between a player's latency values for multiple regions are used to determine which fleets are best suited to place a new game session for the player. </p>
--- @param PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player associated with the latency data.</p>
--- @param LatencyInMilliseconds [Float] <p>Amount of time that represents the time lag experienced by the player when connected to the specified region.</p>
--- @param RegionIdentifier [NonZeroAndMaxString] <p>Name of the region that is associated with the latency value.</p>
-function M.PlayerLatency(PlayerId, LatencyInMilliseconds, RegionIdentifier, ...)
+-- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player associated with the latency data.</p>
+-- @param _LatencyInMilliseconds [Float] <p>Amount of time that represents the time lag experienced by the player when connected to the specified region.</p>
+-- @param _RegionIdentifier [NonZeroAndMaxString] <p>Name of the region that is associated with the latency value.</p>
+function M.PlayerLatency(_PlayerId, _LatencyInMilliseconds, _RegionIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlayerLatency")
 	local t = { 
-		["PlayerId"] = PlayerId,
-		["LatencyInMilliseconds"] = LatencyInMilliseconds,
-		["RegionIdentifier"] = RegionIdentifier,
+		["PlayerId"] = _PlayerId,
+		["LatencyInMilliseconds"] = _LatencyInMilliseconds,
+		["RegionIdentifier"] = _RegionIdentifier,
 	}
-	M.AssertPlayerLatency(t)
+	asserts.AssertPlayerLatency(t)
 	return t
 end
 
-local GetGameSessionLogUrlOutput_keys = { "PreSignedUrl" = true, nil }
+keys.GetGameSessionLogUrlOutput = { ["PreSignedUrl"] = true, nil }
 
-function M.AssertGetGameSessionLogUrlOutput(struct)
+function asserts.AssertGetGameSessionLogUrlOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGameSessionLogUrlOutput to be of type 'table'")
-	if struct["PreSignedUrl"] then M.AssertNonZeroAndMaxString(struct["PreSignedUrl"]) end
+	if struct["PreSignedUrl"] then asserts.AssertNonZeroAndMaxString(struct["PreSignedUrl"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGameSessionLogUrlOutput_keys[k], "GetGameSessionLogUrlOutput contains unknown key " .. tostring(k))
+		assert(keys.GetGameSessionLogUrlOutput[k], "GetGameSessionLogUrlOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGameSessionLogUrlOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param PreSignedUrl [NonZeroAndMaxString] <p>Location of the requested game session logs, available for download.</p>
-function M.GetGameSessionLogUrlOutput(PreSignedUrl, ...)
+-- @param _PreSignedUrl [NonZeroAndMaxString] <p>Location of the requested game session logs, available for download.</p>
+function M.GetGameSessionLogUrlOutput(_PreSignedUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGameSessionLogUrlOutput")
 	local t = { 
-		["PreSignedUrl"] = PreSignedUrl,
+		["PreSignedUrl"] = _PreSignedUrl,
 	}
-	M.AssertGetGameSessionLogUrlOutput(t)
+	asserts.AssertGetGameSessionLogUrlOutput(t)
 	return t
 end
 
-local DescribeGameSessionPlacementInput_keys = { "PlacementId" = true, nil }
+keys.DescribeGameSessionPlacementInput = { ["PlacementId"] = true, nil }
 
-function M.AssertDescribeGameSessionPlacementInput(struct)
+function asserts.AssertDescribeGameSessionPlacementInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeGameSessionPlacementInput to be of type 'table'")
 	assert(struct["PlacementId"], "Expected key PlacementId to exist in table")
-	if struct["PlacementId"] then M.AssertIdStringModel(struct["PlacementId"]) end
+	if struct["PlacementId"] then asserts.AssertIdStringModel(struct["PlacementId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeGameSessionPlacementInput_keys[k], "DescribeGameSessionPlacementInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGameSessionPlacementInput[k], "DescribeGameSessionPlacementInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeGameSessionPlacementInput
 -- <p>Represents the input for a request action.</p>
--- @param PlacementId [IdStringModel] <p>Unique identifier for a game session placement to retrieve.</p>
+-- @param _PlacementId [IdStringModel] <p>Unique identifier for a game session placement to retrieve.</p>
 -- Required parameter: PlacementId
-function M.DescribeGameSessionPlacementInput(PlacementId, ...)
+function M.DescribeGameSessionPlacementInput(_PlacementId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionPlacementInput")
 	local t = { 
-		["PlacementId"] = PlacementId,
+		["PlacementId"] = _PlacementId,
 	}
-	M.AssertDescribeGameSessionPlacementInput(t)
+	asserts.AssertDescribeGameSessionPlacementInput(t)
 	return t
 end
 
-local S3Location_keys = { "RoleArn" = true, "Bucket" = true, "Key" = true, nil }
+keys.S3Location = { ["RoleArn"] = true, ["Bucket"] = true, ["Key"] = true, nil }
 
-function M.AssertS3Location(struct)
+function asserts.AssertS3Location(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected S3Location to be of type 'table'")
-	if struct["RoleArn"] then M.AssertNonEmptyString(struct["RoleArn"]) end
-	if struct["Bucket"] then M.AssertNonEmptyString(struct["Bucket"]) end
-	if struct["Key"] then M.AssertNonEmptyString(struct["Key"]) end
+	if struct["RoleArn"] then asserts.AssertNonEmptyString(struct["RoleArn"]) end
+	if struct["Bucket"] then asserts.AssertNonEmptyString(struct["Bucket"]) end
+	if struct["Key"] then asserts.AssertNonEmptyString(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(S3Location_keys[k], "S3Location contains unknown key " .. tostring(k))
+		assert(keys.S3Location[k], "S3Location contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type S3Location
 -- <p>Location in Amazon Simple Storage Service (Amazon S3) where build files can be stored for access by Amazon GameLift. This location is specified in a <a>CreateBuild</a> request. For more details, see the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build">Create a Build with Files in Amazon S3</a>.</p>
--- @param RoleArn [NonEmptyString] <p>Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) for the access role that allows Amazon GameLift to access your S3 bucket.</p>
--- @param Bucket [NonEmptyString] <p>Amazon S3 bucket identifier. This is the name of your S3 bucket.</p>
--- @param Key [NonEmptyString] <p>Name of the zip file containing your build files. </p>
-function M.S3Location(RoleArn, Bucket, Key, ...)
+-- @param _RoleArn [NonEmptyString] <p>Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) for the access role that allows Amazon GameLift to access your S3 bucket.</p>
+-- @param _Bucket [NonEmptyString] <p>Amazon S3 bucket identifier. This is the name of your S3 bucket.</p>
+-- @param _Key [NonEmptyString] <p>Name of the zip file containing your build files. </p>
+function M.S3Location(_RoleArn, _Bucket, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3Location")
 	local t = { 
-		["RoleArn"] = RoleArn,
-		["Bucket"] = Bucket,
-		["Key"] = Key,
+		["RoleArn"] = _RoleArn,
+		["Bucket"] = _Bucket,
+		["Key"] = _Key,
 	}
-	M.AssertS3Location(t)
+	asserts.AssertS3Location(t)
 	return t
 end
 
-local ListAliasesInput_keys = { "NextToken" = true, "Limit" = true, "Name" = true, "RoutingStrategyType" = true, nil }
+keys.ListAliasesInput = { ["NextToken"] = true, ["Limit"] = true, ["Name"] = true, ["RoutingStrategyType"] = true, nil }
 
-function M.AssertListAliasesInput(struct)
+function asserts.AssertListAliasesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAliasesInput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNonEmptyString(struct["NextToken"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["Name"] then M.AssertNonEmptyString(struct["Name"]) end
-	if struct["RoutingStrategyType"] then M.AssertRoutingStrategyType(struct["RoutingStrategyType"]) end
+	if struct["NextToken"] then asserts.AssertNonEmptyString(struct["NextToken"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["Name"] then asserts.AssertNonEmptyString(struct["Name"]) end
+	if struct["RoutingStrategyType"] then asserts.AssertRoutingStrategyType(struct["RoutingStrategyType"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAliasesInput_keys[k], "ListAliasesInput contains unknown key " .. tostring(k))
+		assert(keys.ListAliasesInput[k], "ListAliasesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAliasesInput
 -- <p>Represents the input for a request action.</p>
--- @param NextToken [NonEmptyString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param Name [NonEmptyString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
--- @param RoutingStrategyType [RoutingStrategyType] <p>Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
-function M.ListAliasesInput(NextToken, Limit, Name, RoutingStrategyType, ...)
+-- @param _NextToken [NonEmptyString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @param _Name [NonEmptyString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
+-- @param _RoutingStrategyType [RoutingStrategyType] <p>Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
+function M.ListAliasesInput(_NextToken, _Limit, _Name, _RoutingStrategyType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesInput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Limit"] = Limit,
-		["Name"] = Name,
-		["RoutingStrategyType"] = RoutingStrategyType,
+		["NextToken"] = _NextToken,
+		["Limit"] = _Limit,
+		["Name"] = _Name,
+		["RoutingStrategyType"] = _RoutingStrategyType,
 	}
-	M.AssertListAliasesInput(t)
+	asserts.AssertListAliasesInput(t)
 	return t
 end
 
-local DescribeGameSessionDetailsOutput_keys = { "NextToken" = true, "GameSessionDetails" = true, nil }
+keys.DescribeGameSessionDetailsOutput = { ["NextToken"] = true, ["GameSessionDetails"] = true, nil }
 
-function M.AssertDescribeGameSessionDetailsOutput(struct)
+function asserts.AssertDescribeGameSessionDetailsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeGameSessionDetailsOutput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["GameSessionDetails"] then M.AssertGameSessionDetailList(struct["GameSessionDetails"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["GameSessionDetails"] then asserts.AssertGameSessionDetailList(struct["GameSessionDetails"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeGameSessionDetailsOutput_keys[k], "DescribeGameSessionDetailsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGameSessionDetailsOutput[k], "DescribeGameSessionDetailsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeGameSessionDetailsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param GameSessionDetails [GameSessionDetailList] <p>Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.</p>
-function M.DescribeGameSessionDetailsOutput(NextToken, GameSessionDetails, ...)
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @param _GameSessionDetails [GameSessionDetailList] <p>Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.</p>
+function M.DescribeGameSessionDetailsOutput(_NextToken, _GameSessionDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionDetailsOutput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["GameSessionDetails"] = GameSessionDetails,
+		["NextToken"] = _NextToken,
+		["GameSessionDetails"] = _GameSessionDetails,
 	}
-	M.AssertDescribeGameSessionDetailsOutput(t)
+	asserts.AssertDescribeGameSessionDetailsOutput(t)
 	return t
 end
 
-local CreateFleetOutput_keys = { "FleetAttributes" = true, nil }
+keys.CreateFleetOutput = { ["FleetAttributes"] = true, nil }
 
-function M.AssertCreateFleetOutput(struct)
+function asserts.AssertCreateFleetOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFleetOutput to be of type 'table'")
-	if struct["FleetAttributes"] then M.AssertFleetAttributes(struct["FleetAttributes"]) end
+	if struct["FleetAttributes"] then asserts.AssertFleetAttributes(struct["FleetAttributes"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFleetOutput_keys[k], "CreateFleetOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateFleetOutput[k], "CreateFleetOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFleetOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param FleetAttributes [FleetAttributes] <p>Properties for the newly created fleet.</p>
-function M.CreateFleetOutput(FleetAttributes, ...)
+-- @param _FleetAttributes [FleetAttributes] <p>Properties for the newly created fleet.</p>
+function M.CreateFleetOutput(_FleetAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetOutput")
 	local t = { 
-		["FleetAttributes"] = FleetAttributes,
+		["FleetAttributes"] = _FleetAttributes,
 	}
-	M.AssertCreateFleetOutput(t)
+	asserts.AssertCreateFleetOutput(t)
 	return t
 end
 
-local DescribeFleetEventsOutput_keys = { "NextToken" = true, "Events" = true, nil }
+keys.DescribeFleetEventsOutput = { ["NextToken"] = true, ["Events"] = true, nil }
 
-function M.AssertDescribeFleetEventsOutput(struct)
+function asserts.AssertDescribeFleetEventsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetEventsOutput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["Events"] then M.AssertEventList(struct["Events"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["Events"] then asserts.AssertEventList(struct["Events"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetEventsOutput_keys[k], "DescribeFleetEventsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetEventsOutput[k], "DescribeFleetEventsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetEventsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param Events [EventList] <p>Collection of objects containing event log entries for the specified fleet.</p>
-function M.DescribeFleetEventsOutput(NextToken, Events, ...)
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @param _Events [EventList] <p>Collection of objects containing event log entries for the specified fleet.</p>
+function M.DescribeFleetEventsOutput(_NextToken, _Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetEventsOutput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Events"] = Events,
+		["NextToken"] = _NextToken,
+		["Events"] = _Events,
 	}
-	M.AssertDescribeFleetEventsOutput(t)
+	asserts.AssertDescribeFleetEventsOutput(t)
 	return t
 end
 
-local DescribeRuntimeConfigurationInput_keys = { "FleetId" = true, nil }
+keys.DescribeRuntimeConfigurationInput = { ["FleetId"] = true, nil }
 
-function M.AssertDescribeRuntimeConfigurationInput(struct)
+function asserts.AssertDescribeRuntimeConfigurationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRuntimeConfigurationInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRuntimeConfigurationInput_keys[k], "DescribeRuntimeConfigurationInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeRuntimeConfigurationInput[k], "DescribeRuntimeConfigurationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRuntimeConfigurationInput
 -- <p>Represents the input for a request action.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to get the runtime configuration for.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to get the runtime configuration for.</p>
 -- Required parameter: FleetId
-function M.DescribeRuntimeConfigurationInput(FleetId, ...)
+function M.DescribeRuntimeConfigurationInput(_FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRuntimeConfigurationInput")
 	local t = { 
-		["FleetId"] = FleetId,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertDescribeRuntimeConfigurationInput(t)
+	asserts.AssertDescribeRuntimeConfigurationInput(t)
 	return t
 end
 
-local GameSessionFullException_keys = { "Message" = true, nil }
+keys.GameSessionFullException = { ["Message"] = true, nil }
 
-function M.AssertGameSessionFullException(struct)
+function asserts.AssertGameSessionFullException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GameSessionFullException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(GameSessionFullException_keys[k], "GameSessionFullException contains unknown key " .. tostring(k))
+		assert(keys.GameSessionFullException[k], "GameSessionFullException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GameSessionFullException
 -- <p>The game instance is currently full and cannot allow the requested player(s) to join. Clients can retry such requests immediately or after a waiting period.</p>
--- @param Message [NonEmptyString] <p>The game instance is currently full and cannot allow the requested player(s) to join. Clients can retry such requests immediately or after a waiting period.</p>
-function M.GameSessionFullException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.GameSessionFullException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionFullException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertGameSessionFullException(t)
+	asserts.AssertGameSessionFullException(t)
 	return t
 end
 
-local CreateGameSessionInput_keys = { "MaximumPlayerSessionCount" = true, "Name" = true, "GameProperties" = true, "IdempotencyToken" = true, "FleetId" = true, "CreatorId" = true, "GameSessionId" = true, "AliasId" = true, nil }
+keys.CreateGameSessionInput = { ["MaximumPlayerSessionCount"] = true, ["Name"] = true, ["GameProperties"] = true, ["IdempotencyToken"] = true, ["FleetId"] = true, ["CreatorId"] = true, ["GameSessionId"] = true, ["AliasId"] = true, nil }
 
-function M.AssertCreateGameSessionInput(struct)
+function asserts.AssertCreateGameSessionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGameSessionInput to be of type 'table'")
 	assert(struct["MaximumPlayerSessionCount"], "Expected key MaximumPlayerSessionCount to exist in table")
-	if struct["MaximumPlayerSessionCount"] then M.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
-	if struct["GameProperties"] then M.AssertGamePropertyList(struct["GameProperties"]) end
-	if struct["IdempotencyToken"] then M.AssertIdStringModel(struct["IdempotencyToken"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["CreatorId"] then M.AssertNonZeroAndMaxString(struct["CreatorId"]) end
-	if struct["GameSessionId"] then M.AssertIdStringModel(struct["GameSessionId"]) end
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
+	if struct["MaximumPlayerSessionCount"] then asserts.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["GameProperties"] then asserts.AssertGamePropertyList(struct["GameProperties"]) end
+	if struct["IdempotencyToken"] then asserts.AssertIdStringModel(struct["IdempotencyToken"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["CreatorId"] then asserts.AssertNonZeroAndMaxString(struct["CreatorId"]) end
+	if struct["GameSessionId"] then asserts.AssertIdStringModel(struct["GameSessionId"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGameSessionInput_keys[k], "CreateGameSessionInput contains unknown key " .. tostring(k))
+		assert(keys.CreateGameSessionInput[k], "CreateGameSessionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGameSessionInput
 -- <p>Represents the input for a request action.</p>
--- @param MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
--- @param IdempotencyToken [IdStringModel] <p>Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.) </p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
--- @param CreatorId [NonZeroAndMaxString] <p>Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.</p>
--- @param GameSessionId [IdStringModel] <p> <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.) </p>
--- @param AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
+-- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- @param _GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
+-- @param _IdempotencyToken [IdStringModel] <p>Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.) </p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
+-- @param _CreatorId [NonZeroAndMaxString] <p>Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.</p>
+-- @param _GameSessionId [IdStringModel] <p> <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.) </p>
+-- @param _AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
 -- Required parameter: MaximumPlayerSessionCount
-function M.CreateGameSessionInput(MaximumPlayerSessionCount, Name, GameProperties, IdempotencyToken, FleetId, CreatorId, GameSessionId, AliasId, ...)
+function M.CreateGameSessionInput(_MaximumPlayerSessionCount, _Name, _GameProperties, _IdempotencyToken, _FleetId, _CreatorId, _GameSessionId, _AliasId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGameSessionInput")
 	local t = { 
-		["MaximumPlayerSessionCount"] = MaximumPlayerSessionCount,
-		["Name"] = Name,
-		["GameProperties"] = GameProperties,
-		["IdempotencyToken"] = IdempotencyToken,
-		["FleetId"] = FleetId,
-		["CreatorId"] = CreatorId,
-		["GameSessionId"] = GameSessionId,
-		["AliasId"] = AliasId,
+		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
+		["Name"] = _Name,
+		["GameProperties"] = _GameProperties,
+		["IdempotencyToken"] = _IdempotencyToken,
+		["FleetId"] = _FleetId,
+		["CreatorId"] = _CreatorId,
+		["GameSessionId"] = _GameSessionId,
+		["AliasId"] = _AliasId,
 	}
-	M.AssertCreateGameSessionInput(t)
+	asserts.AssertCreateGameSessionInput(t)
 	return t
 end
 
-local DeleteGameSessionQueueOutput_keys = { nil }
+keys.DeleteGameSessionQueueOutput = { nil }
 
-function M.AssertDeleteGameSessionQueueOutput(struct)
+function asserts.AssertDeleteGameSessionQueueOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteGameSessionQueueOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteGameSessionQueueOutput_keys[k], "DeleteGameSessionQueueOutput contains unknown key " .. tostring(k))
+		assert(keys.DeleteGameSessionQueueOutput[k], "DeleteGameSessionQueueOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2563,1226 +2566,1226 @@ function M.DeleteGameSessionQueueOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGameSessionQueueOutput")
 	local t = { 
 	}
-	M.AssertDeleteGameSessionQueueOutput(t)
+	asserts.AssertDeleteGameSessionQueueOutput(t)
 	return t
 end
 
-local CreateGameSessionOutput_keys = { "GameSession" = true, nil }
+keys.CreateGameSessionOutput = { ["GameSession"] = true, nil }
 
-function M.AssertCreateGameSessionOutput(struct)
+function asserts.AssertCreateGameSessionOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGameSessionOutput to be of type 'table'")
-	if struct["GameSession"] then M.AssertGameSession(struct["GameSession"]) end
+	if struct["GameSession"] then asserts.AssertGameSession(struct["GameSession"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGameSessionOutput_keys[k], "CreateGameSessionOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateGameSessionOutput[k], "CreateGameSessionOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGameSessionOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSession [GameSession] <p>Object that describes the newly created game session record.</p>
-function M.CreateGameSessionOutput(GameSession, ...)
+-- @param _GameSession [GameSession] <p>Object that describes the newly created game session record.</p>
+function M.CreateGameSessionOutput(_GameSession, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGameSessionOutput")
 	local t = { 
-		["GameSession"] = GameSession,
+		["GameSession"] = _GameSession,
 	}
-	M.AssertCreateGameSessionOutput(t)
+	asserts.AssertCreateGameSessionOutput(t)
 	return t
 end
 
-local UpdateFleetPortSettingsInput_keys = { "InboundPermissionRevocations" = true, "FleetId" = true, "InboundPermissionAuthorizations" = true, nil }
+keys.UpdateFleetPortSettingsInput = { ["InboundPermissionRevocations"] = true, ["FleetId"] = true, ["InboundPermissionAuthorizations"] = true, nil }
 
-function M.AssertUpdateFleetPortSettingsInput(struct)
+function asserts.AssertUpdateFleetPortSettingsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFleetPortSettingsInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["InboundPermissionRevocations"] then M.AssertIpPermissionsList(struct["InboundPermissionRevocations"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["InboundPermissionAuthorizations"] then M.AssertIpPermissionsList(struct["InboundPermissionAuthorizations"]) end
+	if struct["InboundPermissionRevocations"] then asserts.AssertIpPermissionsList(struct["InboundPermissionRevocations"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["InboundPermissionAuthorizations"] then asserts.AssertIpPermissionsList(struct["InboundPermissionAuthorizations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFleetPortSettingsInput_keys[k], "UpdateFleetPortSettingsInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateFleetPortSettingsInput[k], "UpdateFleetPortSettingsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFleetPortSettingsInput
 -- <p>Represents the input for a request action.</p>
--- @param InboundPermissionRevocations [IpPermissionsList] <p>Collection of port settings to be removed from the fleet record.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to update port settings for.</p>
--- @param InboundPermissionAuthorizations [IpPermissionsList] <p>Collection of port settings to be added to the fleet record.</p>
+-- @param _InboundPermissionRevocations [IpPermissionsList] <p>Collection of port settings to be removed from the fleet record.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to update port settings for.</p>
+-- @param _InboundPermissionAuthorizations [IpPermissionsList] <p>Collection of port settings to be added to the fleet record.</p>
 -- Required parameter: FleetId
-function M.UpdateFleetPortSettingsInput(InboundPermissionRevocations, FleetId, InboundPermissionAuthorizations, ...)
+function M.UpdateFleetPortSettingsInput(_InboundPermissionRevocations, _FleetId, _InboundPermissionAuthorizations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetPortSettingsInput")
 	local t = { 
-		["InboundPermissionRevocations"] = InboundPermissionRevocations,
-		["FleetId"] = FleetId,
-		["InboundPermissionAuthorizations"] = InboundPermissionAuthorizations,
+		["InboundPermissionRevocations"] = _InboundPermissionRevocations,
+		["FleetId"] = _FleetId,
+		["InboundPermissionAuthorizations"] = _InboundPermissionAuthorizations,
 	}
-	M.AssertUpdateFleetPortSettingsInput(t)
+	asserts.AssertUpdateFleetPortSettingsInput(t)
 	return t
 end
 
-local ConflictException_keys = { "Message" = true, nil }
+keys.ConflictException = { ["Message"] = true, nil }
 
-function M.AssertConflictException(struct)
+function asserts.AssertConflictException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConflictException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ConflictException_keys[k], "ConflictException contains unknown key " .. tostring(k))
+		assert(keys.ConflictException[k], "ConflictException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConflictException
 -- <p>The requested operation would cause a conflict with the current state of a service resource associated with the request. Resolve the conflict before retrying this request.</p>
--- @param Message [NonEmptyString] <p>The requested operation would cause a conflict with the current state of a service resource associated with the request. Resolve the conflict before retrying this request.</p>
-function M.ConflictException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.ConflictException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConflictException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertConflictException(t)
+	asserts.AssertConflictException(t)
 	return t
 end
 
-local SearchGameSessionsInput_keys = { "FilterExpression" = true, "SortExpression" = true, "FleetId" = true, "Limit" = true, "NextToken" = true, "AliasId" = true, nil }
+keys.SearchGameSessionsInput = { ["FilterExpression"] = true, ["SortExpression"] = true, ["FleetId"] = true, ["Limit"] = true, ["NextToken"] = true, ["AliasId"] = true, nil }
 
-function M.AssertSearchGameSessionsInput(struct)
+function asserts.AssertSearchGameSessionsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SearchGameSessionsInput to be of type 'table'")
-	if struct["FilterExpression"] then M.AssertNonZeroAndMaxString(struct["FilterExpression"]) end
-	if struct["SortExpression"] then M.AssertNonZeroAndMaxString(struct["SortExpression"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
+	if struct["FilterExpression"] then asserts.AssertNonZeroAndMaxString(struct["FilterExpression"]) end
+	if struct["SortExpression"] then asserts.AssertNonZeroAndMaxString(struct["SortExpression"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
 	for k,_ in pairs(struct) do
-		assert(SearchGameSessionsInput_keys[k], "SearchGameSessionsInput contains unknown key " .. tostring(k))
+		assert(keys.SearchGameSessionsInput[k], "SearchGameSessionsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SearchGameSessionsInput
 -- <p>Represents the input for a request action.</p>
--- @param FilterExpression [NonZeroAndMaxString] <p>String containing the search criteria for the session search. If no filter expression is included, the request returns results for all game sessions in the fleet that are in <code>ACTIVE</code> status.</p> <p>A filter expression can contain one or multiple conditions. Each condition consists of the following:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Comparator</b> -- Valid comparators are: <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. </p> </li> <li> <p> <b>Value</b> -- Value to be searched for. Values can be numbers, boolean values (true/false) or strings. String values are case sensitive, enclosed in single quotes. Special characters must be escaped. Boolean and string values can only be used with the comparators <code>=</code> and <code>&lt;&gt;</code>. For example, the following filter expression searches on <code>gameSessionName</code>: "<code>FilterExpression": "gameSessionName = 'Matt\\'s Awesome Game 1'"</code>. </p> </li> </ul> <p>To chain multiple conditions in a single expression, use the logical keywords <code>AND</code>, <code>OR</code>, and <code>NOT</code> and parentheses as needed. For example: <code>x AND y AND NOT z</code>, <code>NOT (x OR y)</code>.</p> <p>Session search evaluates conditions from left to right using the following precedence rules:</p> <ol> <li> <p> <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> </p> </li> <li> <p>Parentheses</p> </li> <li> <p>NOT</p> </li> <li> <p>AND</p> </li> <li> <p>OR</p> </li> </ol> <p>For example, this filter expression retrieves game sessions hosting at least ten players that have an open player slot: <code>"maximumSessions&gt;=10 AND hasAvailablePlayerSessions=true"</code>. </p>
--- @param SortExpression [NonZeroAndMaxString] <p>Instructions on how to sort the search results. If no sort expression is included, the request returns results in random order. A sort expression consists of the following elements:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Order</b> -- Valid sort orders are <code>ASC</code> (ascending) and <code>DESC</code> (descending).</p> </li> </ul> <p>For example, this sort expression returns the oldest active sessions first: <code>"SortExpression": "creationTimeMillis ASC"</code>. Results with a null value for the sort operand are returned at the end of the list.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. The maximum number of results returned is 20, even if this value is not set or is set higher than 20. </p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
-function M.SearchGameSessionsInput(FilterExpression, SortExpression, FleetId, Limit, NextToken, AliasId, ...)
+-- @param _FilterExpression [NonZeroAndMaxString] <p>String containing the search criteria for the session search. If no filter expression is included, the request returns results for all game sessions in the fleet that are in <code>ACTIVE</code> status.</p> <p>A filter expression can contain one or multiple conditions. Each condition consists of the following:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Comparator</b> -- Valid comparators are: <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. </p> </li> <li> <p> <b>Value</b> -- Value to be searched for. Values can be numbers, boolean values (true/false) or strings. String values are case sensitive, enclosed in single quotes. Special characters must be escaped. Boolean and string values can only be used with the comparators <code>=</code> and <code>&lt;&gt;</code>. For example, the following filter expression searches on <code>gameSessionName</code>: "<code>FilterExpression": "gameSessionName = 'Matt\\'s Awesome Game 1'"</code>. </p> </li> </ul> <p>To chain multiple conditions in a single expression, use the logical keywords <code>AND</code>, <code>OR</code>, and <code>NOT</code> and parentheses as needed. For example: <code>x AND y AND NOT z</code>, <code>NOT (x OR y)</code>.</p> <p>Session search evaluates conditions from left to right using the following precedence rules:</p> <ol> <li> <p> <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> </p> </li> <li> <p>Parentheses</p> </li> <li> <p>NOT</p> </li> <li> <p>AND</p> </li> <li> <p>OR</p> </li> </ol> <p>For example, this filter expression retrieves game sessions hosting at least ten players that have an open player slot: <code>"maximumSessions&gt;=10 AND hasAvailablePlayerSessions=true"</code>. </p>
+-- @param _SortExpression [NonZeroAndMaxString] <p>Instructions on how to sort the search results. If no sort expression is included, the request returns results in random order. A sort expression consists of the following elements:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Order</b> -- Valid sort orders are <code>ASC</code> (ascending) and <code>DESC</code> (descending).</p> </li> </ul> <p>For example, this sort expression returns the oldest active sessions first: <code>"SortExpression": "creationTimeMillis ASC"</code>. Results with a null value for the sort operand are returned at the end of the list.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. The maximum number of results returned is 20, even if this value is not set or is set higher than 20. </p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
+function M.SearchGameSessionsInput(_FilterExpression, _SortExpression, _FleetId, _Limit, _NextToken, _AliasId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchGameSessionsInput")
 	local t = { 
-		["FilterExpression"] = FilterExpression,
-		["SortExpression"] = SortExpression,
-		["FleetId"] = FleetId,
-		["Limit"] = Limit,
-		["NextToken"] = NextToken,
-		["AliasId"] = AliasId,
+		["FilterExpression"] = _FilterExpression,
+		["SortExpression"] = _SortExpression,
+		["FleetId"] = _FleetId,
+		["Limit"] = _Limit,
+		["NextToken"] = _NextToken,
+		["AliasId"] = _AliasId,
 	}
-	M.AssertSearchGameSessionsInput(t)
+	asserts.AssertSearchGameSessionsInput(t)
 	return t
 end
 
-local DescribeFleetUtilizationOutput_keys = { "FleetUtilization" = true, "NextToken" = true, nil }
+keys.DescribeFleetUtilizationOutput = { ["FleetUtilization"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeFleetUtilizationOutput(struct)
+function asserts.AssertDescribeFleetUtilizationOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetUtilizationOutput to be of type 'table'")
-	if struct["FleetUtilization"] then M.AssertFleetUtilizationList(struct["FleetUtilization"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["FleetUtilization"] then asserts.AssertFleetUtilizationList(struct["FleetUtilization"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetUtilizationOutput_keys[k], "DescribeFleetUtilizationOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetUtilizationOutput[k], "DescribeFleetUtilizationOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetUtilizationOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param FleetUtilization [FleetUtilizationList] <p>Collection of objects containing utilization information for each requested fleet ID.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeFleetUtilizationOutput(FleetUtilization, NextToken, ...)
+-- @param _FleetUtilization [FleetUtilizationList] <p>Collection of objects containing utilization information for each requested fleet ID.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.DescribeFleetUtilizationOutput(_FleetUtilization, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetUtilizationOutput")
 	local t = { 
-		["FleetUtilization"] = FleetUtilization,
-		["NextToken"] = NextToken,
+		["FleetUtilization"] = _FleetUtilization,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeFleetUtilizationOutput(t)
+	asserts.AssertDescribeFleetUtilizationOutput(t)
 	return t
 end
 
-local UpdateGameSessionInput_keys = { "MaximumPlayerSessionCount" = true, "PlayerSessionCreationPolicy" = true, "GameSessionId" = true, "Name" = true, "ProtectionPolicy" = true, nil }
+keys.UpdateGameSessionInput = { ["MaximumPlayerSessionCount"] = true, ["PlayerSessionCreationPolicy"] = true, ["GameSessionId"] = true, ["Name"] = true, ["ProtectionPolicy"] = true, nil }
 
-function M.AssertUpdateGameSessionInput(struct)
+function asserts.AssertUpdateGameSessionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGameSessionInput to be of type 'table'")
 	assert(struct["GameSessionId"], "Expected key GameSessionId to exist in table")
-	if struct["MaximumPlayerSessionCount"] then M.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
-	if struct["PlayerSessionCreationPolicy"] then M.AssertPlayerSessionCreationPolicy(struct["PlayerSessionCreationPolicy"]) end
-	if struct["GameSessionId"] then M.AssertArnStringModel(struct["GameSessionId"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
-	if struct["ProtectionPolicy"] then M.AssertProtectionPolicy(struct["ProtectionPolicy"]) end
+	if struct["MaximumPlayerSessionCount"] then asserts.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
+	if struct["PlayerSessionCreationPolicy"] then asserts.AssertPlayerSessionCreationPolicy(struct["PlayerSessionCreationPolicy"]) end
+	if struct["GameSessionId"] then asserts.AssertArnStringModel(struct["GameSessionId"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["ProtectionPolicy"] then asserts.AssertProtectionPolicy(struct["ProtectionPolicy"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGameSessionInput_keys[k], "UpdateGameSessionInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateGameSessionInput[k], "UpdateGameSessionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGameSessionInput
 -- <p>Represents the input for a request action.</p>
--- @param MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param PlayerSessionCreationPolicy [PlayerSessionCreationPolicy] <p>Policy determining whether or not the game session accepts new players.</p>
--- @param GameSessionId [ArnStringModel] <p>Unique identifier for the game session to update.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param ProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to this game session only.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- @param _PlayerSessionCreationPolicy [PlayerSessionCreationPolicy] <p>Policy determining whether or not the game session accepts new players.</p>
+-- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to update.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- @param _ProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to this game session only.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
 -- Required parameter: GameSessionId
-function M.UpdateGameSessionInput(MaximumPlayerSessionCount, PlayerSessionCreationPolicy, GameSessionId, Name, ProtectionPolicy, ...)
+function M.UpdateGameSessionInput(_MaximumPlayerSessionCount, _PlayerSessionCreationPolicy, _GameSessionId, _Name, _ProtectionPolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGameSessionInput")
 	local t = { 
-		["MaximumPlayerSessionCount"] = MaximumPlayerSessionCount,
-		["PlayerSessionCreationPolicy"] = PlayerSessionCreationPolicy,
-		["GameSessionId"] = GameSessionId,
-		["Name"] = Name,
-		["ProtectionPolicy"] = ProtectionPolicy,
+		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
+		["PlayerSessionCreationPolicy"] = _PlayerSessionCreationPolicy,
+		["GameSessionId"] = _GameSessionId,
+		["Name"] = _Name,
+		["ProtectionPolicy"] = _ProtectionPolicy,
 	}
-	M.AssertUpdateGameSessionInput(t)
+	asserts.AssertUpdateGameSessionInput(t)
 	return t
 end
 
-local UpdateGameSessionOutput_keys = { "GameSession" = true, nil }
+keys.UpdateGameSessionOutput = { ["GameSession"] = true, nil }
 
-function M.AssertUpdateGameSessionOutput(struct)
+function asserts.AssertUpdateGameSessionOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGameSessionOutput to be of type 'table'")
-	if struct["GameSession"] then M.AssertGameSession(struct["GameSession"]) end
+	if struct["GameSession"] then asserts.AssertGameSession(struct["GameSession"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGameSessionOutput_keys[k], "UpdateGameSessionOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateGameSessionOutput[k], "UpdateGameSessionOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGameSessionOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSession [GameSession] <p>Object that contains the updated game session metadata.</p>
-function M.UpdateGameSessionOutput(GameSession, ...)
+-- @param _GameSession [GameSession] <p>Object that contains the updated game session metadata.</p>
+function M.UpdateGameSessionOutput(_GameSession, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGameSessionOutput")
 	local t = { 
-		["GameSession"] = GameSession,
+		["GameSession"] = _GameSession,
 	}
-	M.AssertUpdateGameSessionOutput(t)
+	asserts.AssertUpdateGameSessionOutput(t)
 	return t
 end
 
-local GameSessionQueueDestination_keys = { "DestinationArn" = true, nil }
+keys.GameSessionQueueDestination = { ["DestinationArn"] = true, nil }
 
-function M.AssertGameSessionQueueDestination(struct)
+function asserts.AssertGameSessionQueueDestination(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GameSessionQueueDestination to be of type 'table'")
-	if struct["DestinationArn"] then M.AssertArnStringModel(struct["DestinationArn"]) end
+	if struct["DestinationArn"] then asserts.AssertArnStringModel(struct["DestinationArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GameSessionQueueDestination_keys[k], "GameSessionQueueDestination contains unknown key " .. tostring(k))
+		assert(keys.GameSessionQueueDestination[k], "GameSessionQueueDestination contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GameSessionQueueDestination
 -- <p>Fleet designated in a game session queue. Requests for new game sessions in the queue are fulfilled by starting a new game session on any destination configured for a queue. </p>
--- @param DestinationArn [ArnStringModel] <p>Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a region name, provide a unique identifier across all regions. </p>
-function M.GameSessionQueueDestination(DestinationArn, ...)
+-- @param _DestinationArn [ArnStringModel] <p>Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a region name, provide a unique identifier across all regions. </p>
+function M.GameSessionQueueDestination(_DestinationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionQueueDestination")
 	local t = { 
-		["DestinationArn"] = DestinationArn,
+		["DestinationArn"] = _DestinationArn,
 	}
-	M.AssertGameSessionQueueDestination(t)
+	asserts.AssertGameSessionQueueDestination(t)
 	return t
 end
 
-local DescribeGameSessionPlacementOutput_keys = { "GameSessionPlacement" = true, nil }
+keys.DescribeGameSessionPlacementOutput = { ["GameSessionPlacement"] = true, nil }
 
-function M.AssertDescribeGameSessionPlacementOutput(struct)
+function asserts.AssertDescribeGameSessionPlacementOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeGameSessionPlacementOutput to be of type 'table'")
-	if struct["GameSessionPlacement"] then M.AssertGameSessionPlacement(struct["GameSessionPlacement"]) end
+	if struct["GameSessionPlacement"] then asserts.AssertGameSessionPlacement(struct["GameSessionPlacement"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeGameSessionPlacementOutput_keys[k], "DescribeGameSessionPlacementOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeGameSessionPlacementOutput[k], "DescribeGameSessionPlacementOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeGameSessionPlacementOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSessionPlacement [GameSessionPlacement] <p>Object that describes the requested game session placement.</p>
-function M.DescribeGameSessionPlacementOutput(GameSessionPlacement, ...)
+-- @param _GameSessionPlacement [GameSessionPlacement] <p>Object that describes the requested game session placement.</p>
+function M.DescribeGameSessionPlacementOutput(_GameSessionPlacement, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionPlacementOutput")
 	local t = { 
-		["GameSessionPlacement"] = GameSessionPlacement,
+		["GameSessionPlacement"] = _GameSessionPlacement,
 	}
-	M.AssertDescribeGameSessionPlacementOutput(t)
+	asserts.AssertDescribeGameSessionPlacementOutput(t)
 	return t
 end
 
-local UpdateFleetCapacityInput_keys = { "MinSize" = true, "MaxSize" = true, "FleetId" = true, "DesiredInstances" = true, nil }
+keys.UpdateFleetCapacityInput = { ["MinSize"] = true, ["MaxSize"] = true, ["FleetId"] = true, ["DesiredInstances"] = true, nil }
 
-function M.AssertUpdateFleetCapacityInput(struct)
+function asserts.AssertUpdateFleetCapacityInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFleetCapacityInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["MinSize"] then M.AssertWholeNumber(struct["MinSize"]) end
-	if struct["MaxSize"] then M.AssertWholeNumber(struct["MaxSize"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["DesiredInstances"] then M.AssertWholeNumber(struct["DesiredInstances"]) end
+	if struct["MinSize"] then asserts.AssertWholeNumber(struct["MinSize"]) end
+	if struct["MaxSize"] then asserts.AssertWholeNumber(struct["MaxSize"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["DesiredInstances"] then asserts.AssertWholeNumber(struct["DesiredInstances"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFleetCapacityInput_keys[k], "UpdateFleetCapacityInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateFleetCapacityInput[k], "UpdateFleetCapacityInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFleetCapacityInput
 -- <p>Represents the input for a request action.</p>
--- @param MinSize [WholeNumber] <p>Minimum value allowed for the fleet's instance count. Default if not set is 0.</p>
--- @param MaxSize [WholeNumber] <p>Maximum value allowed for the fleet's instance count. Default if not set is 1.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to update capacity for.</p>
--- @param DesiredInstances [WholeNumber] <p>Number of EC2 instances you want this fleet to host.</p>
+-- @param _MinSize [WholeNumber] <p>Minimum value allowed for the fleet's instance count. Default if not set is 0.</p>
+-- @param _MaxSize [WholeNumber] <p>Maximum value allowed for the fleet's instance count. Default if not set is 1.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to update capacity for.</p>
+-- @param _DesiredInstances [WholeNumber] <p>Number of EC2 instances you want this fleet to host.</p>
 -- Required parameter: FleetId
-function M.UpdateFleetCapacityInput(MinSize, MaxSize, FleetId, DesiredInstances, ...)
+function M.UpdateFleetCapacityInput(_MinSize, _MaxSize, _FleetId, _DesiredInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetCapacityInput")
 	local t = { 
-		["MinSize"] = MinSize,
-		["MaxSize"] = MaxSize,
-		["FleetId"] = FleetId,
-		["DesiredInstances"] = DesiredInstances,
+		["MinSize"] = _MinSize,
+		["MaxSize"] = _MaxSize,
+		["FleetId"] = _FleetId,
+		["DesiredInstances"] = _DesiredInstances,
 	}
-	M.AssertUpdateFleetCapacityInput(t)
+	asserts.AssertUpdateFleetCapacityInput(t)
 	return t
 end
 
-local GameSessionQueue_keys = { "Destinations" = true, "GameSessionQueueArn" = true, "PlayerLatencyPolicies" = true, "Name" = true, "TimeoutInSeconds" = true, nil }
+keys.GameSessionQueue = { ["Destinations"] = true, ["GameSessionQueueArn"] = true, ["PlayerLatencyPolicies"] = true, ["Name"] = true, ["TimeoutInSeconds"] = true, nil }
 
-function M.AssertGameSessionQueue(struct)
+function asserts.AssertGameSessionQueue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GameSessionQueue to be of type 'table'")
-	if struct["Destinations"] then M.AssertGameSessionQueueDestinationList(struct["Destinations"]) end
-	if struct["GameSessionQueueArn"] then M.AssertArnStringModel(struct["GameSessionQueueArn"]) end
-	if struct["PlayerLatencyPolicies"] then M.AssertPlayerLatencyPolicyList(struct["PlayerLatencyPolicies"]) end
-	if struct["Name"] then M.AssertGameSessionQueueName(struct["Name"]) end
-	if struct["TimeoutInSeconds"] then M.AssertWholeNumber(struct["TimeoutInSeconds"]) end
+	if struct["Destinations"] then asserts.AssertGameSessionQueueDestinationList(struct["Destinations"]) end
+	if struct["GameSessionQueueArn"] then asserts.AssertArnStringModel(struct["GameSessionQueueArn"]) end
+	if struct["PlayerLatencyPolicies"] then asserts.AssertPlayerLatencyPolicyList(struct["PlayerLatencyPolicies"]) end
+	if struct["Name"] then asserts.AssertGameSessionQueueName(struct["Name"]) end
+	if struct["TimeoutInSeconds"] then asserts.AssertWholeNumber(struct["TimeoutInSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(GameSessionQueue_keys[k], "GameSessionQueue contains unknown key " .. tostring(k))
+		assert(keys.GameSessionQueue[k], "GameSessionQueue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GameSessionQueue
 -- <p>Configuration of a queue that is used to process game session placement requests. The queue configuration identifies several game features:</p> <ul> <li> <p>The destinations where a new game session can potentially be hosted. Amazon GameLift tries these destinations in an order based on either the queue's default order or player latency information, if provided in a placement request. With latency information, Amazon GameLift can place game sessions where the majority of players are reporting the lowest possible latency. </p> </li> <li> <p>The length of time that placement requests can wait in the queue before timing out. </p> </li> <li> <p>A set of optional latency policies that protect individual players from high latencies, preventing game sessions from being placed where any individual player is reporting latency higher than a policy's maximum.</p> </li> </ul> <p>Queue-related operations include the following:</p> <ul> <li> <p> <a>CreateGameSessionQueue</a> </p> </li> <li> <p> <a>DescribeGameSessionQueues</a> </p> </li> <li> <p> <a>UpdateGameSessionQueue</a> </p> </li> <li> <p> <a>DeleteGameSessionQueue</a> </p> </li> </ul>
--- @param Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
--- @param GameSessionQueueArn [ArnStringModel] <p>Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a game session queue and uniquely identifies it. Format is <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
--- @param PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. </p>
--- @param Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- @param TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
-function M.GameSessionQueue(Destinations, GameSessionQueueArn, PlayerLatencyPolicies, Name, TimeoutInSeconds, ...)
+-- @param _Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
+-- @param _GameSessionQueueArn [ArnStringModel] <p>Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a game session queue and uniquely identifies it. Format is <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
+-- @param _PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. </p>
+-- @param _Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- @param _TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
+function M.GameSessionQueue(_Destinations, _GameSessionQueueArn, _PlayerLatencyPolicies, _Name, _TimeoutInSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionQueue")
 	local t = { 
-		["Destinations"] = Destinations,
-		["GameSessionQueueArn"] = GameSessionQueueArn,
-		["PlayerLatencyPolicies"] = PlayerLatencyPolicies,
-		["Name"] = Name,
-		["TimeoutInSeconds"] = TimeoutInSeconds,
+		["Destinations"] = _Destinations,
+		["GameSessionQueueArn"] = _GameSessionQueueArn,
+		["PlayerLatencyPolicies"] = _PlayerLatencyPolicies,
+		["Name"] = _Name,
+		["TimeoutInSeconds"] = _TimeoutInSeconds,
 	}
-	M.AssertGameSessionQueue(t)
+	asserts.AssertGameSessionQueue(t)
 	return t
 end
 
-local ResolveAliasInput_keys = { "AliasId" = true, nil }
+keys.ResolveAliasInput = { ["AliasId"] = true, nil }
 
-function M.AssertResolveAliasInput(struct)
+function asserts.AssertResolveAliasInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResolveAliasInput to be of type 'table'")
 	assert(struct["AliasId"], "Expected key AliasId to exist in table")
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
 	for k,_ in pairs(struct) do
-		assert(ResolveAliasInput_keys[k], "ResolveAliasInput contains unknown key " .. tostring(k))
+		assert(keys.ResolveAliasInput[k], "ResolveAliasInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResolveAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param AliasId [AliasId] <p>Unique identifier for the alias you want to resolve.</p>
+-- @param _AliasId [AliasId] <p>Unique identifier for the alias you want to resolve.</p>
 -- Required parameter: AliasId
-function M.ResolveAliasInput(AliasId, ...)
+function M.ResolveAliasInput(_AliasId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveAliasInput")
 	local t = { 
-		["AliasId"] = AliasId,
+		["AliasId"] = _AliasId,
 	}
-	M.AssertResolveAliasInput(t)
+	asserts.AssertResolveAliasInput(t)
 	return t
 end
 
-local DescribeInstancesOutput_keys = { "Instances" = true, "NextToken" = true, nil }
+keys.DescribeInstancesOutput = { ["Instances"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeInstancesOutput(struct)
+function asserts.AssertDescribeInstancesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeInstancesOutput to be of type 'table'")
-	if struct["Instances"] then M.AssertInstanceList(struct["Instances"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["Instances"] then asserts.AssertInstanceList(struct["Instances"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeInstancesOutput_keys[k], "DescribeInstancesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeInstancesOutput[k], "DescribeInstancesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeInstancesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param Instances [InstanceList] <p>Collection of objects containing properties for each instance returned.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeInstancesOutput(Instances, NextToken, ...)
+-- @param _Instances [InstanceList] <p>Collection of objects containing properties for each instance returned.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.DescribeInstancesOutput(_Instances, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesOutput")
 	local t = { 
-		["Instances"] = Instances,
-		["NextToken"] = NextToken,
+		["Instances"] = _Instances,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeInstancesOutput(t)
+	asserts.AssertDescribeInstancesOutput(t)
 	return t
 end
 
-local ListFleetsOutput_keys = { "FleetIds" = true, "NextToken" = true, nil }
+keys.ListFleetsOutput = { ["FleetIds"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListFleetsOutput(struct)
+function asserts.AssertListFleetsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFleetsOutput to be of type 'table'")
-	if struct["FleetIds"] then M.AssertFleetIdList(struct["FleetIds"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["FleetIds"] then asserts.AssertFleetIdList(struct["FleetIds"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFleetsOutput_keys[k], "ListFleetsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListFleetsOutput[k], "ListFleetsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFleetsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param FleetIds [FleetIdList] <p>Set of fleet IDs matching the list request. You can retrieve additional information about all returned fleets by passing this result set to a call to <a>DescribeFleetAttributes</a>, <a>DescribeFleetCapacity</a>, or <a>DescribeFleetUtilization</a>.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.ListFleetsOutput(FleetIds, NextToken, ...)
+-- @param _FleetIds [FleetIdList] <p>Set of fleet IDs matching the list request. You can retrieve additional information about all returned fleets by passing this result set to a call to <a>DescribeFleetAttributes</a>, <a>DescribeFleetCapacity</a>, or <a>DescribeFleetUtilization</a>.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.ListFleetsOutput(_FleetIds, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFleetsOutput")
 	local t = { 
-		["FleetIds"] = FleetIds,
-		["NextToken"] = NextToken,
+		["FleetIds"] = _FleetIds,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListFleetsOutput(t)
+	asserts.AssertListFleetsOutput(t)
 	return t
 end
 
-local UpdateRuntimeConfigurationInput_keys = { "FleetId" = true, "RuntimeConfiguration" = true, nil }
+keys.UpdateRuntimeConfigurationInput = { ["FleetId"] = true, ["RuntimeConfiguration"] = true, nil }
 
-function M.AssertUpdateRuntimeConfigurationInput(struct)
+function asserts.AssertUpdateRuntimeConfigurationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateRuntimeConfigurationInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
 	assert(struct["RuntimeConfiguration"], "Expected key RuntimeConfiguration to exist in table")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["RuntimeConfiguration"] then M.AssertRuntimeConfiguration(struct["RuntimeConfiguration"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["RuntimeConfiguration"] then asserts.AssertRuntimeConfiguration(struct["RuntimeConfiguration"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateRuntimeConfigurationInput_keys[k], "UpdateRuntimeConfigurationInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateRuntimeConfigurationInput[k], "UpdateRuntimeConfigurationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateRuntimeConfigurationInput
 -- <p>Represents the input for a request action.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to update runtime configuration for.</p>
--- @param RuntimeConfiguration [RuntimeConfiguration] <p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to update runtime configuration for.</p>
+-- @param _RuntimeConfiguration [RuntimeConfiguration] <p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance.</p>
 -- Required parameter: FleetId
 -- Required parameter: RuntimeConfiguration
-function M.UpdateRuntimeConfigurationInput(FleetId, RuntimeConfiguration, ...)
+function M.UpdateRuntimeConfigurationInput(_FleetId, _RuntimeConfiguration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRuntimeConfigurationInput")
 	local t = { 
-		["FleetId"] = FleetId,
-		["RuntimeConfiguration"] = RuntimeConfiguration,
+		["FleetId"] = _FleetId,
+		["RuntimeConfiguration"] = _RuntimeConfiguration,
 	}
-	M.AssertUpdateRuntimeConfigurationInput(t)
+	asserts.AssertUpdateRuntimeConfigurationInput(t)
 	return t
 end
 
-local GameSessionPlacement_keys = { "Status" = true, "MaximumPlayerSessionCount" = true, "PlacedPlayerSessions" = true, "PlacementId" = true, "GameSessionName" = true, "GameSessionQueueName" = true, "GameProperties" = true, "GameSessionId" = true, "StartTime" = true, "GameSessionRegion" = true, "PlayerLatencies" = true, "EndTime" = true, "IpAddress" = true, "Port" = true, "GameSessionArn" = true, nil }
+keys.GameSessionPlacement = { ["Status"] = true, ["MaximumPlayerSessionCount"] = true, ["PlacedPlayerSessions"] = true, ["PlacementId"] = true, ["GameSessionName"] = true, ["GameSessionQueueName"] = true, ["GameProperties"] = true, ["GameSessionId"] = true, ["StartTime"] = true, ["GameSessionRegion"] = true, ["PlayerLatencies"] = true, ["EndTime"] = true, ["IpAddress"] = true, ["Port"] = true, ["GameSessionArn"] = true, nil }
 
-function M.AssertGameSessionPlacement(struct)
+function asserts.AssertGameSessionPlacement(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GameSessionPlacement to be of type 'table'")
-	if struct["Status"] then M.AssertGameSessionPlacementState(struct["Status"]) end
-	if struct["MaximumPlayerSessionCount"] then M.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
-	if struct["PlacedPlayerSessions"] then M.AssertPlacedPlayerSessionList(struct["PlacedPlayerSessions"]) end
-	if struct["PlacementId"] then M.AssertIdStringModel(struct["PlacementId"]) end
-	if struct["GameSessionName"] then M.AssertNonZeroAndMaxString(struct["GameSessionName"]) end
-	if struct["GameSessionQueueName"] then M.AssertGameSessionQueueName(struct["GameSessionQueueName"]) end
-	if struct["GameProperties"] then M.AssertGamePropertyList(struct["GameProperties"]) end
-	if struct["GameSessionId"] then M.AssertNonZeroAndMaxString(struct["GameSessionId"]) end
-	if struct["StartTime"] then M.AssertTimestamp(struct["StartTime"]) end
-	if struct["GameSessionRegion"] then M.AssertNonZeroAndMaxString(struct["GameSessionRegion"]) end
-	if struct["PlayerLatencies"] then M.AssertPlayerLatencyList(struct["PlayerLatencies"]) end
-	if struct["EndTime"] then M.AssertTimestamp(struct["EndTime"]) end
-	if struct["IpAddress"] then M.AssertIpAddress(struct["IpAddress"]) end
-	if struct["Port"] then M.AssertPortNumber(struct["Port"]) end
-	if struct["GameSessionArn"] then M.AssertNonZeroAndMaxString(struct["GameSessionArn"]) end
+	if struct["Status"] then asserts.AssertGameSessionPlacementState(struct["Status"]) end
+	if struct["MaximumPlayerSessionCount"] then asserts.AssertWholeNumber(struct["MaximumPlayerSessionCount"]) end
+	if struct["PlacedPlayerSessions"] then asserts.AssertPlacedPlayerSessionList(struct["PlacedPlayerSessions"]) end
+	if struct["PlacementId"] then asserts.AssertIdStringModel(struct["PlacementId"]) end
+	if struct["GameSessionName"] then asserts.AssertNonZeroAndMaxString(struct["GameSessionName"]) end
+	if struct["GameSessionQueueName"] then asserts.AssertGameSessionQueueName(struct["GameSessionQueueName"]) end
+	if struct["GameProperties"] then asserts.AssertGamePropertyList(struct["GameProperties"]) end
+	if struct["GameSessionId"] then asserts.AssertNonZeroAndMaxString(struct["GameSessionId"]) end
+	if struct["StartTime"] then asserts.AssertTimestamp(struct["StartTime"]) end
+	if struct["GameSessionRegion"] then asserts.AssertNonZeroAndMaxString(struct["GameSessionRegion"]) end
+	if struct["PlayerLatencies"] then asserts.AssertPlayerLatencyList(struct["PlayerLatencies"]) end
+	if struct["EndTime"] then asserts.AssertTimestamp(struct["EndTime"]) end
+	if struct["IpAddress"] then asserts.AssertIpAddress(struct["IpAddress"]) end
+	if struct["Port"] then asserts.AssertPortNumber(struct["Port"]) end
+	if struct["GameSessionArn"] then asserts.AssertNonZeroAndMaxString(struct["GameSessionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GameSessionPlacement_keys[k], "GameSessionPlacement contains unknown key " .. tostring(k))
+		assert(keys.GameSessionPlacement[k], "GameSessionPlacement contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GameSessionPlacement
 -- <p>Object that describes a <a>StartGameSessionPlacement</a> request. This object includes the full details of the original request plus the current status and start/end time stamps.</p> <p>Game session placement-related operations include:</p> <ul> <li> <p> <a>StartGameSessionPlacement</a> </p> </li> <li> <p> <a>DescribeGameSessionPlacement</a> </p> </li> <li> <p> <a>StopGameSessionPlacement</a> </p> </li> </ul>
--- @param Status [GameSessionPlacementState] <p>Current status of the game session placement request.</p> <ul> <li> <p> <b>PENDING</b> – The placement request is currently in the queue waiting to be processed.</p> </li> <li> <p> <b>FULFILLED</b> – A new game session and player sessions (if requested) have been successfully created. Values for <i>GameSessionArn</i> and <i>GameSessionRegion</i> are available. </p> </li> <li> <p> <b>CANCELLED</b> – The placement request was canceled with a call to <a>StopGameSessionPlacement</a>.</p> </li> <li> <p> <b>TIMED_OUT</b> – A new game session was not successfully created before the time limit expired. You can resubmit the placement request as needed.</p> </li> </ul>
--- @param MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param PlacedPlayerSessions [PlacedPlayerSessionList] <p>Collection of information on player sessions created in response to the game session placement request. These player sessions are created only once a new game session is successfully placed (placement status is Fulfilled). This information includes the player ID (as provided in the placement request) and the corresponding player session ID. Retrieve full player sessions by calling <a>DescribePlayerSessions</a> with the player session ID.</p>
--- @param PlacementId [IdStringModel] <p>Unique identifier for a game session placement.</p>
--- @param GameSessionName [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param GameSessionQueueName [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- @param GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
--- @param GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session. This value is set once the new game session is placed (placement status is Fulfilled).</p>
--- @param StartTime [Timestamp] <p>Time stamp indicating when this request was placed in the queue. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param GameSessionRegion [NonZeroAndMaxString] <p>Name of the region where the game session created by this placement request is running. This value is set once the new game session is placed (placement status is Fulfilled).</p>
--- @param PlayerLatencies [PlayerLatencyList] <p>Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions.</p>
--- @param EndTime [Timestamp] <p>Time stamp indicating when this request was completed, canceled, or timed out.</p>
--- @param IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number. This value is set once the new game session is placed (placement status is Fulfilled). </p>
--- @param Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number. This value is set once the new game session is placed (placement status is Fulfilled).</p>
--- @param GameSessionArn [NonZeroAndMaxString] <p>Identifier for the game session created by this placement request. This value is set once the new game session is placed (placement status is Fulfilled). This identifier is unique across all regions. You can use this value as a <code>GameSessionId</code> value as needed.</p>
-function M.GameSessionPlacement(Status, MaximumPlayerSessionCount, PlacedPlayerSessions, PlacementId, GameSessionName, GameSessionQueueName, GameProperties, GameSessionId, StartTime, GameSessionRegion, PlayerLatencies, EndTime, IpAddress, Port, GameSessionArn, ...)
+-- @param _Status [GameSessionPlacementState] <p>Current status of the game session placement request.</p> <ul> <li> <p> <b>PENDING</b> – The placement request is currently in the queue waiting to be processed.</p> </li> <li> <p> <b>FULFILLED</b> – A new game session and player sessions (if requested) have been successfully created. Values for <i>GameSessionArn</i> and <i>GameSessionRegion</i> are available. </p> </li> <li> <p> <b>CANCELLED</b> – The placement request was canceled with a call to <a>StopGameSessionPlacement</a>.</p> </li> <li> <p> <b>TIMED_OUT</b> – A new game session was not successfully created before the time limit expired. You can resubmit the placement request as needed.</p> </li> </ul>
+-- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- @param _PlacedPlayerSessions [PlacedPlayerSessionList] <p>Collection of information on player sessions created in response to the game session placement request. These player sessions are created only once a new game session is successfully placed (placement status is Fulfilled). This information includes the player ID (as provided in the placement request) and the corresponding player session ID. Retrieve full player sessions by calling <a>DescribePlayerSessions</a> with the player session ID.</p>
+-- @param _PlacementId [IdStringModel] <p>Unique identifier for a game session placement.</p>
+-- @param _GameSessionName [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- @param _GameSessionQueueName [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- @param _GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
+-- @param _GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session. This value is set once the new game session is placed (placement status is Fulfilled).</p>
+-- @param _StartTime [Timestamp] <p>Time stamp indicating when this request was placed in the queue. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _GameSessionRegion [NonZeroAndMaxString] <p>Name of the region where the game session created by this placement request is running. This value is set once the new game session is placed (placement status is Fulfilled).</p>
+-- @param _PlayerLatencies [PlayerLatencyList] <p>Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions.</p>
+-- @param _EndTime [Timestamp] <p>Time stamp indicating when this request was completed, canceled, or timed out.</p>
+-- @param _IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number. This value is set once the new game session is placed (placement status is Fulfilled). </p>
+-- @param _Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number. This value is set once the new game session is placed (placement status is Fulfilled).</p>
+-- @param _GameSessionArn [NonZeroAndMaxString] <p>Identifier for the game session created by this placement request. This value is set once the new game session is placed (placement status is Fulfilled). This identifier is unique across all regions. You can use this value as a <code>GameSessionId</code> value as needed.</p>
+function M.GameSessionPlacement(_Status, _MaximumPlayerSessionCount, _PlacedPlayerSessions, _PlacementId, _GameSessionName, _GameSessionQueueName, _GameProperties, _GameSessionId, _StartTime, _GameSessionRegion, _PlayerLatencies, _EndTime, _IpAddress, _Port, _GameSessionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionPlacement")
 	local t = { 
-		["Status"] = Status,
-		["MaximumPlayerSessionCount"] = MaximumPlayerSessionCount,
-		["PlacedPlayerSessions"] = PlacedPlayerSessions,
-		["PlacementId"] = PlacementId,
-		["GameSessionName"] = GameSessionName,
-		["GameSessionQueueName"] = GameSessionQueueName,
-		["GameProperties"] = GameProperties,
-		["GameSessionId"] = GameSessionId,
-		["StartTime"] = StartTime,
-		["GameSessionRegion"] = GameSessionRegion,
-		["PlayerLatencies"] = PlayerLatencies,
-		["EndTime"] = EndTime,
-		["IpAddress"] = IpAddress,
-		["Port"] = Port,
-		["GameSessionArn"] = GameSessionArn,
+		["Status"] = _Status,
+		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
+		["PlacedPlayerSessions"] = _PlacedPlayerSessions,
+		["PlacementId"] = _PlacementId,
+		["GameSessionName"] = _GameSessionName,
+		["GameSessionQueueName"] = _GameSessionQueueName,
+		["GameProperties"] = _GameProperties,
+		["GameSessionId"] = _GameSessionId,
+		["StartTime"] = _StartTime,
+		["GameSessionRegion"] = _GameSessionRegion,
+		["PlayerLatencies"] = _PlayerLatencies,
+		["EndTime"] = _EndTime,
+		["IpAddress"] = _IpAddress,
+		["Port"] = _Port,
+		["GameSessionArn"] = _GameSessionArn,
 	}
-	M.AssertGameSessionPlacement(t)
+	asserts.AssertGameSessionPlacement(t)
 	return t
 end
 
-local DescribeBuildInput_keys = { "BuildId" = true, nil }
+keys.DescribeBuildInput = { ["BuildId"] = true, nil }
 
-function M.AssertDescribeBuildInput(struct)
+function asserts.AssertDescribeBuildInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeBuildInput to be of type 'table'")
 	assert(struct["BuildId"], "Expected key BuildId to exist in table")
-	if struct["BuildId"] then M.AssertBuildId(struct["BuildId"]) end
+	if struct["BuildId"] then asserts.AssertBuildId(struct["BuildId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeBuildInput_keys[k], "DescribeBuildInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeBuildInput[k], "DescribeBuildInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeBuildInput
 -- <p>Represents the input for a request action.</p>
--- @param BuildId [BuildId] <p>Unique identifier for a build to retrieve properties for.</p>
+-- @param _BuildId [BuildId] <p>Unique identifier for a build to retrieve properties for.</p>
 -- Required parameter: BuildId
-function M.DescribeBuildInput(BuildId, ...)
+function M.DescribeBuildInput(_BuildId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBuildInput")
 	local t = { 
-		["BuildId"] = BuildId,
+		["BuildId"] = _BuildId,
 	}
-	M.AssertDescribeBuildInput(t)
+	asserts.AssertDescribeBuildInput(t)
 	return t
 end
 
-local DescribeFleetEventsInput_keys = { "Limit" = true, "EndTime" = true, "FleetId" = true, "NextToken" = true, "StartTime" = true, nil }
+keys.DescribeFleetEventsInput = { ["Limit"] = true, ["EndTime"] = true, ["FleetId"] = true, ["NextToken"] = true, ["StartTime"] = true, nil }
 
-function M.AssertDescribeFleetEventsInput(struct)
+function asserts.AssertDescribeFleetEventsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetEventsInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["EndTime"] then M.AssertTimestamp(struct["EndTime"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["StartTime"] then M.AssertTimestamp(struct["StartTime"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["EndTime"] then asserts.AssertTimestamp(struct["EndTime"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["StartTime"] then asserts.AssertTimestamp(struct["StartTime"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetEventsInput_keys[k], "DescribeFleetEventsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetEventsInput[k], "DescribeFleetEventsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetEventsInput
 -- <p>Represents the input for a request action.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param EndTime [Timestamp] <p>Most recent date to retrieve event logs for. If no end time is specified, this call returns entries from the specified start time up to the present. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to get event logs for.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param StartTime [Timestamp] <p>Earliest date to retrieve event logs for. If no start time is specified, this call returns entries starting from when the fleet was created to the specified end time. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @param _EndTime [Timestamp] <p>Most recent date to retrieve event logs for. If no end time is specified, this call returns entries from the specified start time up to the present. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to get event logs for.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- @param _StartTime [Timestamp] <p>Earliest date to retrieve event logs for. If no start time is specified, this call returns entries starting from when the fleet was created to the specified end time. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
 -- Required parameter: FleetId
-function M.DescribeFleetEventsInput(Limit, EndTime, FleetId, NextToken, StartTime, ...)
+function M.DescribeFleetEventsInput(_Limit, _EndTime, _FleetId, _NextToken, _StartTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetEventsInput")
 	local t = { 
-		["Limit"] = Limit,
-		["EndTime"] = EndTime,
-		["FleetId"] = FleetId,
-		["NextToken"] = NextToken,
-		["StartTime"] = StartTime,
+		["Limit"] = _Limit,
+		["EndTime"] = _EndTime,
+		["FleetId"] = _FleetId,
+		["NextToken"] = _NextToken,
+		["StartTime"] = _StartTime,
 	}
-	M.AssertDescribeFleetEventsInput(t)
+	asserts.AssertDescribeFleetEventsInput(t)
 	return t
 end
 
-local UnauthorizedException_keys = { "Message" = true, nil }
+keys.UnauthorizedException = { ["Message"] = true, nil }
 
-function M.AssertUnauthorizedException(struct)
+function asserts.AssertUnauthorizedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnauthorizedException to be of type 'table'")
-	if struct["Message"] then M.AssertNonEmptyString(struct["Message"]) end
+	if struct["Message"] then asserts.AssertNonEmptyString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnauthorizedException_keys[k], "UnauthorizedException contains unknown key " .. tostring(k))
+		assert(keys.UnauthorizedException[k], "UnauthorizedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnauthorizedException
 -- <p>The client failed authentication. Clients should not retry such requests.</p>
--- @param Message [NonEmptyString] <p>The client failed authentication. Clients should not retry such requests.</p>
-function M.UnauthorizedException(Message, ...)
+-- @param _Message [NonEmptyString] 
+function M.UnauthorizedException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertUnauthorizedException(t)
+	asserts.AssertUnauthorizedException(t)
 	return t
 end
 
-local CreateAliasInput_keys = { "RoutingStrategy" = true, "Name" = true, "Description" = true, nil }
+keys.CreateAliasInput = { ["RoutingStrategy"] = true, ["Name"] = true, ["Description"] = true, nil }
 
-function M.AssertCreateAliasInput(struct)
+function asserts.AssertCreateAliasInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAliasInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["RoutingStrategy"], "Expected key RoutingStrategy to exist in table")
-	if struct["RoutingStrategy"] then M.AssertRoutingStrategy(struct["RoutingStrategy"]) end
-	if struct["Name"] then M.AssertNonBlankAndLengthConstraintString(struct["Name"]) end
-	if struct["Description"] then M.AssertNonZeroAndMaxString(struct["Description"]) end
+	if struct["RoutingStrategy"] then asserts.AssertRoutingStrategy(struct["RoutingStrategy"]) end
+	if struct["Name"] then asserts.AssertNonBlankAndLengthConstraintString(struct["Name"]) end
+	if struct["Description"] then asserts.AssertNonZeroAndMaxString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAliasInput_keys[k], "CreateAliasInput contains unknown key " .. tostring(k))
+		assert(keys.CreateAliasInput[k], "CreateAliasInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param RoutingStrategy [RoutingStrategy] <p>Object that specifies the fleet and routing type to use for the alias.</p>
--- @param Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
--- @param Description [NonZeroAndMaxString] <p>Human-readable description of an alias.</p>
+-- @param _RoutingStrategy [RoutingStrategy] <p>Object that specifies the fleet and routing type to use for the alias.</p>
+-- @param _Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
+-- @param _Description [NonZeroAndMaxString] <p>Human-readable description of an alias.</p>
 -- Required parameter: Name
 -- Required parameter: RoutingStrategy
-function M.CreateAliasInput(RoutingStrategy, Name, Description, ...)
+function M.CreateAliasInput(_RoutingStrategy, _Name, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasInput")
 	local t = { 
-		["RoutingStrategy"] = RoutingStrategy,
-		["Name"] = Name,
-		["Description"] = Description,
+		["RoutingStrategy"] = _RoutingStrategy,
+		["Name"] = _Name,
+		["Description"] = _Description,
 	}
-	M.AssertCreateAliasInput(t)
+	asserts.AssertCreateAliasInput(t)
 	return t
 end
 
-local DescribePlayerSessionsInput_keys = { "NextToken" = true, "PlayerId" = true, "PlayerSessionId" = true, "GameSessionId" = true, "Limit" = true, "PlayerSessionStatusFilter" = true, nil }
+keys.DescribePlayerSessionsInput = { ["NextToken"] = true, ["PlayerId"] = true, ["PlayerSessionId"] = true, ["GameSessionId"] = true, ["Limit"] = true, ["PlayerSessionStatusFilter"] = true, nil }
 
-function M.AssertDescribePlayerSessionsInput(struct)
+function asserts.AssertDescribePlayerSessionsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribePlayerSessionsInput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
-	if struct["PlayerId"] then M.AssertNonZeroAndMaxString(struct["PlayerId"]) end
-	if struct["PlayerSessionId"] then M.AssertPlayerSessionId(struct["PlayerSessionId"]) end
-	if struct["GameSessionId"] then M.AssertArnStringModel(struct["GameSessionId"]) end
-	if struct["Limit"] then M.AssertPositiveInteger(struct["Limit"]) end
-	if struct["PlayerSessionStatusFilter"] then M.AssertNonZeroAndMaxString(struct["PlayerSessionStatusFilter"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["PlayerId"] then asserts.AssertNonZeroAndMaxString(struct["PlayerId"]) end
+	if struct["PlayerSessionId"] then asserts.AssertPlayerSessionId(struct["PlayerSessionId"]) end
+	if struct["GameSessionId"] then asserts.AssertArnStringModel(struct["GameSessionId"]) end
+	if struct["Limit"] then asserts.AssertPositiveInteger(struct["Limit"]) end
+	if struct["PlayerSessionStatusFilter"] then asserts.AssertNonZeroAndMaxString(struct["PlayerSessionStatusFilter"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribePlayerSessionsInput_keys[k], "DescribePlayerSessionsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribePlayerSessionsInput[k], "DescribePlayerSessionsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribePlayerSessionsInput
 -- <p>Represents the input for a request action.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. If a player session ID is specified, this parameter is ignored.</p>
--- @param PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player to retrieve player sessions for.</p>
--- @param PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session to retrieve.</p>
--- @param GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve player sessions for.</p>
--- @param Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. If a player session ID is specified, this parameter is ignored.</p>
--- @param PlayerSessionStatusFilter [NonZeroAndMaxString] <p>Player session status to filter results on.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
-function M.DescribePlayerSessionsInput(NextToken, PlayerId, PlayerSessionId, GameSessionId, Limit, PlayerSessionStatusFilter, ...)
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. If a player session ID is specified, this parameter is ignored.</p>
+-- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player to retrieve player sessions for.</p>
+-- @param _PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session to retrieve.</p>
+-- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve player sessions for.</p>
+-- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. If a player session ID is specified, this parameter is ignored.</p>
+-- @param _PlayerSessionStatusFilter [NonZeroAndMaxString] <p>Player session status to filter results on.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
+function M.DescribePlayerSessionsInput(_NextToken, _PlayerId, _PlayerSessionId, _GameSessionId, _Limit, _PlayerSessionStatusFilter, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePlayerSessionsInput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["PlayerId"] = PlayerId,
-		["PlayerSessionId"] = PlayerSessionId,
-		["GameSessionId"] = GameSessionId,
-		["Limit"] = Limit,
-		["PlayerSessionStatusFilter"] = PlayerSessionStatusFilter,
+		["NextToken"] = _NextToken,
+		["PlayerId"] = _PlayerId,
+		["PlayerSessionId"] = _PlayerSessionId,
+		["GameSessionId"] = _GameSessionId,
+		["Limit"] = _Limit,
+		["PlayerSessionStatusFilter"] = _PlayerSessionStatusFilter,
 	}
-	M.AssertDescribePlayerSessionsInput(t)
+	asserts.AssertDescribePlayerSessionsInput(t)
 	return t
 end
 
-local CreateGameSessionQueueInput_keys = { "Destinations" = true, "PlayerLatencyPolicies" = true, "Name" = true, "TimeoutInSeconds" = true, nil }
+keys.CreateGameSessionQueueInput = { ["Destinations"] = true, ["PlayerLatencyPolicies"] = true, ["Name"] = true, ["TimeoutInSeconds"] = true, nil }
 
-function M.AssertCreateGameSessionQueueInput(struct)
+function asserts.AssertCreateGameSessionQueueInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGameSessionQueueInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Destinations"] then M.AssertGameSessionQueueDestinationList(struct["Destinations"]) end
-	if struct["PlayerLatencyPolicies"] then M.AssertPlayerLatencyPolicyList(struct["PlayerLatencyPolicies"]) end
-	if struct["Name"] then M.AssertGameSessionQueueName(struct["Name"]) end
-	if struct["TimeoutInSeconds"] then M.AssertWholeNumber(struct["TimeoutInSeconds"]) end
+	if struct["Destinations"] then asserts.AssertGameSessionQueueDestinationList(struct["Destinations"]) end
+	if struct["PlayerLatencyPolicies"] then asserts.AssertPlayerLatencyPolicyList(struct["PlayerLatencyPolicies"]) end
+	if struct["Name"] then asserts.AssertGameSessionQueueName(struct["Name"]) end
+	if struct["TimeoutInSeconds"] then asserts.AssertWholeNumber(struct["TimeoutInSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGameSessionQueueInput_keys[k], "CreateGameSessionQueueInput contains unknown key " .. tostring(k))
+		assert(keys.CreateGameSessionQueueInput[k], "CreateGameSessionQueueInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGameSessionQueueInput
 -- <p>Represents the input for a request action.</p>
--- @param Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
--- @param PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. A player latency policy must set a value for MaximumIndividualPlayerLatencyMilliseconds; if none is set, this API requests will fail.</p>
--- @param Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- @param TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
+-- @param _Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
+-- @param _PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. A player latency policy must set a value for MaximumIndividualPlayerLatencyMilliseconds; if none is set, this API requests will fail.</p>
+-- @param _Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- @param _TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
 -- Required parameter: Name
-function M.CreateGameSessionQueueInput(Destinations, PlayerLatencyPolicies, Name, TimeoutInSeconds, ...)
+function M.CreateGameSessionQueueInput(_Destinations, _PlayerLatencyPolicies, _Name, _TimeoutInSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGameSessionQueueInput")
 	local t = { 
-		["Destinations"] = Destinations,
-		["PlayerLatencyPolicies"] = PlayerLatencyPolicies,
-		["Name"] = Name,
-		["TimeoutInSeconds"] = TimeoutInSeconds,
+		["Destinations"] = _Destinations,
+		["PlayerLatencyPolicies"] = _PlayerLatencyPolicies,
+		["Name"] = _Name,
+		["TimeoutInSeconds"] = _TimeoutInSeconds,
 	}
-	M.AssertCreateGameSessionQueueInput(t)
+	asserts.AssertCreateGameSessionQueueInput(t)
 	return t
 end
 
-local RoutingStrategy_keys = { "FleetId" = true, "Message" = true, "Type" = true, nil }
+keys.RoutingStrategy = { ["FleetId"] = true, ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertRoutingStrategy(struct)
+function asserts.AssertRoutingStrategy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RoutingStrategy to be of type 'table'")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["Message"] then M.AssertFreeText(struct["Message"]) end
-	if struct["Type"] then M.AssertRoutingStrategyType(struct["Type"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["Message"] then asserts.AssertFreeText(struct["Message"]) end
+	if struct["Type"] then asserts.AssertRoutingStrategyType(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(RoutingStrategy_keys[k], "RoutingStrategy contains unknown key " .. tostring(k))
+		assert(keys.RoutingStrategy[k], "RoutingStrategy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RoutingStrategy
 -- <p>Routing configuration for a fleet alias.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet that the alias points to.</p>
--- @param Message [FreeText] <p>Message text to be used with a terminal routing strategy.</p>
--- @param Type [RoutingStrategyType] <p>Type of routing strategy.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
-function M.RoutingStrategy(FleetId, Message, Type, ...)
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet that the alias points to.</p>
+-- @param _Message [FreeText] <p>Message text to be used with a terminal routing strategy.</p>
+-- @param _Type [RoutingStrategyType] <p>Type of routing strategy.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
+function M.RoutingStrategy(_FleetId, _Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RoutingStrategy")
 	local t = { 
-		["FleetId"] = FleetId,
-		["Message"] = Message,
-		["Type"] = Type,
+		["FleetId"] = _FleetId,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertRoutingStrategy(t)
+	asserts.AssertRoutingStrategy(t)
 	return t
 end
 
-local PlayerSession_keys = { "Status" = true, "PlayerId" = true, "TerminationTime" = true, "CreationTime" = true, "PlayerData" = true, "PlayerSessionId" = true, "GameSessionId" = true, "FleetId" = true, "IpAddress" = true, "Port" = true, nil }
+keys.PlayerSession = { ["Status"] = true, ["PlayerId"] = true, ["TerminationTime"] = true, ["CreationTime"] = true, ["PlayerData"] = true, ["PlayerSessionId"] = true, ["GameSessionId"] = true, ["FleetId"] = true, ["IpAddress"] = true, ["Port"] = true, nil }
 
-function M.AssertPlayerSession(struct)
+function asserts.AssertPlayerSession(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PlayerSession to be of type 'table'")
-	if struct["Status"] then M.AssertPlayerSessionStatus(struct["Status"]) end
-	if struct["PlayerId"] then M.AssertNonZeroAndMaxString(struct["PlayerId"]) end
-	if struct["TerminationTime"] then M.AssertTimestamp(struct["TerminationTime"]) end
-	if struct["CreationTime"] then M.AssertTimestamp(struct["CreationTime"]) end
-	if struct["PlayerData"] then M.AssertPlayerData(struct["PlayerData"]) end
-	if struct["PlayerSessionId"] then M.AssertPlayerSessionId(struct["PlayerSessionId"]) end
-	if struct["GameSessionId"] then M.AssertNonZeroAndMaxString(struct["GameSessionId"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["IpAddress"] then M.AssertIpAddress(struct["IpAddress"]) end
-	if struct["Port"] then M.AssertPortNumber(struct["Port"]) end
+	if struct["Status"] then asserts.AssertPlayerSessionStatus(struct["Status"]) end
+	if struct["PlayerId"] then asserts.AssertNonZeroAndMaxString(struct["PlayerId"]) end
+	if struct["TerminationTime"] then asserts.AssertTimestamp(struct["TerminationTime"]) end
+	if struct["CreationTime"] then asserts.AssertTimestamp(struct["CreationTime"]) end
+	if struct["PlayerData"] then asserts.AssertPlayerData(struct["PlayerData"]) end
+	if struct["PlayerSessionId"] then asserts.AssertPlayerSessionId(struct["PlayerSessionId"]) end
+	if struct["GameSessionId"] then asserts.AssertNonZeroAndMaxString(struct["GameSessionId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["IpAddress"] then asserts.AssertIpAddress(struct["IpAddress"]) end
+	if struct["Port"] then asserts.AssertPortNumber(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(PlayerSession_keys[k], "PlayerSession contains unknown key " .. tostring(k))
+		assert(keys.PlayerSession[k], "PlayerSession contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PlayerSession
 -- <p>Properties describing a player session. A player session represents either a player reservation for a game session or actual player activity in a game session. A player session object (including player data) is automatically passed to a game session when the player connects to the game session and is validated.</p> <p>Player session-related operations include:</p> <ul> <li> <p> <a>CreatePlayerSession</a> </p> </li> <li> <p> <a>CreatePlayerSessions</a> </p> </li> <li> <p> <a>DescribePlayerSessions</a> </p> </li> </ul>
--- @param Status [PlayerSessionStatus] <p>Current status of the player session.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
--- @param PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player that is associated with this player session.</p>
--- @param TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. </p>
--- @param PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
--- @param GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session that the player session is connected to.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet that the player's game session is running on.</p>
--- @param IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
--- @param Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift server process, an app needs both the IP address and port number.</p>
-function M.PlayerSession(Status, PlayerId, TerminationTime, CreationTime, PlayerData, PlayerSessionId, GameSessionId, FleetId, IpAddress, Port, ...)
+-- @param _Status [PlayerSessionStatus] <p>Current status of the player session.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
+-- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player that is associated with this player session.</p>
+-- @param _TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. </p>
+-- @param _PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
+-- @param _GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session that the player session is connected to.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet that the player's game session is running on.</p>
+-- @param _IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
+-- @param _Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift server process, an app needs both the IP address and port number.</p>
+function M.PlayerSession(_Status, _PlayerId, _TerminationTime, _CreationTime, _PlayerData, _PlayerSessionId, _GameSessionId, _FleetId, _IpAddress, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlayerSession")
 	local t = { 
-		["Status"] = Status,
-		["PlayerId"] = PlayerId,
-		["TerminationTime"] = TerminationTime,
-		["CreationTime"] = CreationTime,
-		["PlayerData"] = PlayerData,
-		["PlayerSessionId"] = PlayerSessionId,
-		["GameSessionId"] = GameSessionId,
-		["FleetId"] = FleetId,
-		["IpAddress"] = IpAddress,
-		["Port"] = Port,
+		["Status"] = _Status,
+		["PlayerId"] = _PlayerId,
+		["TerminationTime"] = _TerminationTime,
+		["CreationTime"] = _CreationTime,
+		["PlayerData"] = _PlayerData,
+		["PlayerSessionId"] = _PlayerSessionId,
+		["GameSessionId"] = _GameSessionId,
+		["FleetId"] = _FleetId,
+		["IpAddress"] = _IpAddress,
+		["Port"] = _Port,
 	}
-	M.AssertPlayerSession(t)
+	asserts.AssertPlayerSession(t)
 	return t
 end
 
-local RequestUploadCredentialsInput_keys = { "BuildId" = true, nil }
+keys.RequestUploadCredentialsInput = { ["BuildId"] = true, nil }
 
-function M.AssertRequestUploadCredentialsInput(struct)
+function asserts.AssertRequestUploadCredentialsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RequestUploadCredentialsInput to be of type 'table'")
 	assert(struct["BuildId"], "Expected key BuildId to exist in table")
-	if struct["BuildId"] then M.AssertBuildId(struct["BuildId"]) end
+	if struct["BuildId"] then asserts.AssertBuildId(struct["BuildId"]) end
 	for k,_ in pairs(struct) do
-		assert(RequestUploadCredentialsInput_keys[k], "RequestUploadCredentialsInput contains unknown key " .. tostring(k))
+		assert(keys.RequestUploadCredentialsInput[k], "RequestUploadCredentialsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RequestUploadCredentialsInput
 -- <p>Represents the input for a request action.</p>
--- @param BuildId [BuildId] <p>Unique identifier for a build to get credentials for.</p>
+-- @param _BuildId [BuildId] <p>Unique identifier for a build to get credentials for.</p>
 -- Required parameter: BuildId
-function M.RequestUploadCredentialsInput(BuildId, ...)
+function M.RequestUploadCredentialsInput(_BuildId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestUploadCredentialsInput")
 	local t = { 
-		["BuildId"] = BuildId,
+		["BuildId"] = _BuildId,
 	}
-	M.AssertRequestUploadCredentialsInput(t)
+	asserts.AssertRequestUploadCredentialsInput(t)
 	return t
 end
 
-local DescribePlayerSessionsOutput_keys = { "PlayerSessions" = true, "NextToken" = true, nil }
+keys.DescribePlayerSessionsOutput = { ["PlayerSessions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribePlayerSessionsOutput(struct)
+function asserts.AssertDescribePlayerSessionsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribePlayerSessionsOutput to be of type 'table'")
-	if struct["PlayerSessions"] then M.AssertPlayerSessionList(struct["PlayerSessions"]) end
-	if struct["NextToken"] then M.AssertNonZeroAndMaxString(struct["NextToken"]) end
+	if struct["PlayerSessions"] then asserts.AssertPlayerSessionList(struct["PlayerSessions"]) end
+	if struct["NextToken"] then asserts.AssertNonZeroAndMaxString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribePlayerSessionsOutput_keys[k], "DescribePlayerSessionsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribePlayerSessionsOutput[k], "DescribePlayerSessionsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribePlayerSessionsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param PlayerSessions [PlayerSessionList] <p>Collection of objects containing properties for each player session that matches the request.</p>
--- @param NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribePlayerSessionsOutput(PlayerSessions, NextToken, ...)
+-- @param _PlayerSessions [PlayerSessionList] <p>Collection of objects containing properties for each player session that matches the request.</p>
+-- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+function M.DescribePlayerSessionsOutput(_PlayerSessions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePlayerSessionsOutput")
 	local t = { 
-		["PlayerSessions"] = PlayerSessions,
-		["NextToken"] = NextToken,
+		["PlayerSessions"] = _PlayerSessions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribePlayerSessionsOutput(t)
+	asserts.AssertDescribePlayerSessionsOutput(t)
 	return t
 end
 
-local Alias_keys = { "Name" = true, "AliasArn" = true, "CreationTime" = true, "LastUpdatedTime" = true, "RoutingStrategy" = true, "AliasId" = true, "Description" = true, nil }
+keys.Alias = { ["Name"] = true, ["AliasArn"] = true, ["CreationTime"] = true, ["LastUpdatedTime"] = true, ["RoutingStrategy"] = true, ["AliasId"] = true, ["Description"] = true, nil }
 
-function M.AssertAlias(struct)
+function asserts.AssertAlias(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Alias to be of type 'table'")
-	if struct["Name"] then M.AssertNonBlankAndLengthConstraintString(struct["Name"]) end
-	if struct["AliasArn"] then M.AssertArnStringModel(struct["AliasArn"]) end
-	if struct["CreationTime"] then M.AssertTimestamp(struct["CreationTime"]) end
-	if struct["LastUpdatedTime"] then M.AssertTimestamp(struct["LastUpdatedTime"]) end
-	if struct["RoutingStrategy"] then M.AssertRoutingStrategy(struct["RoutingStrategy"]) end
-	if struct["AliasId"] then M.AssertAliasId(struct["AliasId"]) end
-	if struct["Description"] then M.AssertFreeText(struct["Description"]) end
+	if struct["Name"] then asserts.AssertNonBlankAndLengthConstraintString(struct["Name"]) end
+	if struct["AliasArn"] then asserts.AssertArnStringModel(struct["AliasArn"]) end
+	if struct["CreationTime"] then asserts.AssertTimestamp(struct["CreationTime"]) end
+	if struct["LastUpdatedTime"] then asserts.AssertTimestamp(struct["LastUpdatedTime"]) end
+	if struct["RoutingStrategy"] then asserts.AssertRoutingStrategy(struct["RoutingStrategy"]) end
+	if struct["AliasId"] then asserts.AssertAliasId(struct["AliasId"]) end
+	if struct["Description"] then asserts.AssertFreeText(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(Alias_keys[k], "Alias contains unknown key " .. tostring(k))
+		assert(keys.Alias[k], "Alias contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Alias
 -- <p>Properties describing a fleet alias.</p> <p>Alias-related operations include:</p> <ul> <li> <p> <a>CreateAlias</a> </p> </li> <li> <p> <a>ListAliases</a> </p> </li> <li> <p> <a>DescribeAlias</a> </p> </li> <li> <p> <a>UpdateAlias</a> </p> </li> <li> <p> <a>DeleteAlias</a> </p> </li> </ul>
--- @param Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
--- @param AliasArn [ArnStringModel] <p>Unique identifier for an alias; alias ARNs are unique across all regions.</p>
--- @param CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param LastUpdatedTime [Timestamp] <p>Time stamp indicating when this data object was last modified. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param RoutingStrategy [RoutingStrategy] <p>Alias configuration for the alias, including routing type and settings.</p>
--- @param AliasId [AliasId] <p>Unique identifier for an alias; alias IDs are unique within a region.</p>
--- @param Description [FreeText] <p>Human-readable description of an alias.</p>
-function M.Alias(Name, AliasArn, CreationTime, LastUpdatedTime, RoutingStrategy, AliasId, Description, ...)
+-- @param _Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
+-- @param _AliasArn [ArnStringModel] <p>Unique identifier for an alias; alias ARNs are unique across all regions.</p>
+-- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _LastUpdatedTime [Timestamp] <p>Time stamp indicating when this data object was last modified. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- @param _RoutingStrategy [RoutingStrategy] <p>Alias configuration for the alias, including routing type and settings.</p>
+-- @param _AliasId [AliasId] <p>Unique identifier for an alias; alias IDs are unique within a region.</p>
+-- @param _Description [FreeText] <p>Human-readable description of an alias.</p>
+function M.Alias(_Name, _AliasArn, _CreationTime, _LastUpdatedTime, _RoutingStrategy, _AliasId, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Alias")
 	local t = { 
-		["Name"] = Name,
-		["AliasArn"] = AliasArn,
-		["CreationTime"] = CreationTime,
-		["LastUpdatedTime"] = LastUpdatedTime,
-		["RoutingStrategy"] = RoutingStrategy,
-		["AliasId"] = AliasId,
-		["Description"] = Description,
+		["Name"] = _Name,
+		["AliasArn"] = _AliasArn,
+		["CreationTime"] = _CreationTime,
+		["LastUpdatedTime"] = _LastUpdatedTime,
+		["RoutingStrategy"] = _RoutingStrategy,
+		["AliasId"] = _AliasId,
+		["Description"] = _Description,
 	}
-	M.AssertAlias(t)
+	asserts.AssertAlias(t)
 	return t
 end
 
-local RuntimeConfiguration_keys = { "GameSessionActivationTimeoutSeconds" = true, "ServerProcesses" = true, "MaxConcurrentGameSessionActivations" = true, nil }
+keys.RuntimeConfiguration = { ["GameSessionActivationTimeoutSeconds"] = true, ["ServerProcesses"] = true, ["MaxConcurrentGameSessionActivations"] = true, nil }
 
-function M.AssertRuntimeConfiguration(struct)
+function asserts.AssertRuntimeConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RuntimeConfiguration to be of type 'table'")
-	if struct["GameSessionActivationTimeoutSeconds"] then M.AssertGameSessionActivationTimeoutSeconds(struct["GameSessionActivationTimeoutSeconds"]) end
-	if struct["ServerProcesses"] then M.AssertServerProcessList(struct["ServerProcesses"]) end
-	if struct["MaxConcurrentGameSessionActivations"] then M.AssertMaxConcurrentGameSessionActivations(struct["MaxConcurrentGameSessionActivations"]) end
+	if struct["GameSessionActivationTimeoutSeconds"] then asserts.AssertGameSessionActivationTimeoutSeconds(struct["GameSessionActivationTimeoutSeconds"]) end
+	if struct["ServerProcesses"] then asserts.AssertServerProcessList(struct["ServerProcesses"]) end
+	if struct["MaxConcurrentGameSessionActivations"] then asserts.AssertMaxConcurrentGameSessionActivations(struct["MaxConcurrentGameSessionActivations"]) end
 	for k,_ in pairs(struct) do
-		assert(RuntimeConfiguration_keys[k], "RuntimeConfiguration contains unknown key " .. tostring(k))
+		assert(keys.RuntimeConfiguration[k], "RuntimeConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RuntimeConfiguration
 -- <p>Collection of server process configurations that describe what processes should be run on each instance in a fleet. An instance can launch and maintain multiple server processes based on the runtime configuration; it regularly checks for an updated runtime configuration and starts new server processes to match the latest version.</p> <p>The key purpose of a runtime configuration with multiple server process configurations is to be able to run more than one kind of game server in a single fleet. You can include configurations for more than one server executable in order to run two or more different programs to run on the same instance. This option might be useful, for example, to run more than one version of your game server on the same fleet. Another option is to specify configurations for the same server executable but with different launch parameters.</p> <p>A Amazon GameLift instance is limited to 50 processes running simultaneously. To calculate the total number of processes specified in a runtime configuration, add the values of the <code>ConcurrentExecutions</code> parameter for each <code> <a>ServerProcess</a> </code> object in the runtime configuration.</p>
--- @param GameSessionActivationTimeoutSeconds [GameSessionActivationTimeoutSeconds] <p>Maximum amount of time (in seconds) that a game session can remain in status ACTIVATING. If the game session is not active before the timeout, activation is terminated and the game session status is changed to TERMINATED.</p>
--- @param ServerProcesses [ServerProcessList] <p>Collection of server process configurations that describe which server processes to run on each instance in a fleet.</p>
--- @param MaxConcurrentGameSessionActivations [MaxConcurrentGameSessionActivations] <p>Maximum number of game sessions with status ACTIVATING to allow on an instance simultaneously. This setting limits the amount of instance resources that can be used for new game activations at any one time.</p>
-function M.RuntimeConfiguration(GameSessionActivationTimeoutSeconds, ServerProcesses, MaxConcurrentGameSessionActivations, ...)
+-- @param _GameSessionActivationTimeoutSeconds [GameSessionActivationTimeoutSeconds] <p>Maximum amount of time (in seconds) that a game session can remain in status ACTIVATING. If the game session is not active before the timeout, activation is terminated and the game session status is changed to TERMINATED.</p>
+-- @param _ServerProcesses [ServerProcessList] <p>Collection of server process configurations that describe which server processes to run on each instance in a fleet.</p>
+-- @param _MaxConcurrentGameSessionActivations [MaxConcurrentGameSessionActivations] <p>Maximum number of game sessions with status ACTIVATING to allow on an instance simultaneously. This setting limits the amount of instance resources that can be used for new game activations at any one time.</p>
+function M.RuntimeConfiguration(_GameSessionActivationTimeoutSeconds, _ServerProcesses, _MaxConcurrentGameSessionActivations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RuntimeConfiguration")
 	local t = { 
-		["GameSessionActivationTimeoutSeconds"] = GameSessionActivationTimeoutSeconds,
-		["ServerProcesses"] = ServerProcesses,
-		["MaxConcurrentGameSessionActivations"] = MaxConcurrentGameSessionActivations,
+		["GameSessionActivationTimeoutSeconds"] = _GameSessionActivationTimeoutSeconds,
+		["ServerProcesses"] = _ServerProcesses,
+		["MaxConcurrentGameSessionActivations"] = _MaxConcurrentGameSessionActivations,
 	}
-	M.AssertRuntimeConfiguration(t)
+	asserts.AssertRuntimeConfiguration(t)
 	return t
 end
 
-local StopGameSessionPlacementOutput_keys = { "GameSessionPlacement" = true, nil }
+keys.StopGameSessionPlacementOutput = { ["GameSessionPlacement"] = true, nil }
 
-function M.AssertStopGameSessionPlacementOutput(struct)
+function asserts.AssertStopGameSessionPlacementOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopGameSessionPlacementOutput to be of type 'table'")
-	if struct["GameSessionPlacement"] then M.AssertGameSessionPlacement(struct["GameSessionPlacement"]) end
+	if struct["GameSessionPlacement"] then asserts.AssertGameSessionPlacement(struct["GameSessionPlacement"]) end
 	for k,_ in pairs(struct) do
-		assert(StopGameSessionPlacementOutput_keys[k], "StopGameSessionPlacementOutput contains unknown key " .. tostring(k))
+		assert(keys.StopGameSessionPlacementOutput[k], "StopGameSessionPlacementOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopGameSessionPlacementOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param GameSessionPlacement [GameSessionPlacement] <p>Object that describes the canceled game session placement, with Cancelled status and an end time stamp. </p>
-function M.StopGameSessionPlacementOutput(GameSessionPlacement, ...)
+-- @param _GameSessionPlacement [GameSessionPlacement] <p>Object that describes the canceled game session placement, with Cancelled status and an end time stamp. </p>
+function M.StopGameSessionPlacementOutput(_GameSessionPlacement, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopGameSessionPlacementOutput")
 	local t = { 
-		["GameSessionPlacement"] = GameSessionPlacement,
+		["GameSessionPlacement"] = _GameSessionPlacement,
 	}
-	M.AssertStopGameSessionPlacementOutput(t)
+	asserts.AssertStopGameSessionPlacementOutput(t)
 	return t
 end
 
-local CreatePlayerSessionsInput_keys = { "PlayerIds" = true, "GameSessionId" = true, "PlayerDataMap" = true, nil }
+keys.CreatePlayerSessionsInput = { ["PlayerIds"] = true, ["GameSessionId"] = true, ["PlayerDataMap"] = true, nil }
 
-function M.AssertCreatePlayerSessionsInput(struct)
+function asserts.AssertCreatePlayerSessionsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePlayerSessionsInput to be of type 'table'")
 	assert(struct["GameSessionId"], "Expected key GameSessionId to exist in table")
 	assert(struct["PlayerIds"], "Expected key PlayerIds to exist in table")
-	if struct["PlayerIds"] then M.AssertPlayerIdList(struct["PlayerIds"]) end
-	if struct["GameSessionId"] then M.AssertArnStringModel(struct["GameSessionId"]) end
-	if struct["PlayerDataMap"] then M.AssertPlayerDataMap(struct["PlayerDataMap"]) end
+	if struct["PlayerIds"] then asserts.AssertPlayerIdList(struct["PlayerIds"]) end
+	if struct["GameSessionId"] then asserts.AssertArnStringModel(struct["GameSessionId"]) end
+	if struct["PlayerDataMap"] then asserts.AssertPlayerDataMap(struct["PlayerDataMap"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePlayerSessionsInput_keys[k], "CreatePlayerSessionsInput contains unknown key " .. tostring(k))
+		assert(keys.CreatePlayerSessionsInput[k], "CreatePlayerSessionsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePlayerSessionsInput
 -- <p>Represents the input for a request action.</p>
--- @param PlayerIds [PlayerIdList] <p>List of unique identifiers for the players to be added.</p>
--- @param GameSessionId [ArnStringModel] <p>Unique identifier for the game session to add players to.</p>
--- @param PlayerDataMap [PlayerDataMap] <p>Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored. </p>
+-- @param _PlayerIds [PlayerIdList] <p>List of unique identifiers for the players to be added.</p>
+-- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to add players to.</p>
+-- @param _PlayerDataMap [PlayerDataMap] <p>Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored. </p>
 -- Required parameter: GameSessionId
 -- Required parameter: PlayerIds
-function M.CreatePlayerSessionsInput(PlayerIds, GameSessionId, PlayerDataMap, ...)
+function M.CreatePlayerSessionsInput(_PlayerIds, _GameSessionId, _PlayerDataMap, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlayerSessionsInput")
 	local t = { 
-		["PlayerIds"] = PlayerIds,
-		["GameSessionId"] = GameSessionId,
-		["PlayerDataMap"] = PlayerDataMap,
+		["PlayerIds"] = _PlayerIds,
+		["GameSessionId"] = _GameSessionId,
+		["PlayerDataMap"] = _PlayerDataMap,
 	}
-	M.AssertCreatePlayerSessionsInput(t)
+	asserts.AssertCreatePlayerSessionsInput(t)
 	return t
 end
 
-local ListAliasesOutput_keys = { "NextToken" = true, "Aliases" = true, nil }
+keys.ListAliasesOutput = { ["NextToken"] = true, ["Aliases"] = true, nil }
 
-function M.AssertListAliasesOutput(struct)
+function asserts.AssertListAliasesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAliasesOutput to be of type 'table'")
-	if struct["NextToken"] then M.AssertNonEmptyString(struct["NextToken"]) end
-	if struct["Aliases"] then M.AssertAliasList(struct["Aliases"]) end
+	if struct["NextToken"] then asserts.AssertNonEmptyString(struct["NextToken"]) end
+	if struct["Aliases"] then asserts.AssertAliasList(struct["Aliases"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAliasesOutput_keys[k], "ListAliasesOutput contains unknown key " .. tostring(k))
+		assert(keys.ListAliasesOutput[k], "ListAliasesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAliasesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param NextToken [NonEmptyString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param Aliases [AliasList] <p>Collection of alias records that match the list request.</p>
-function M.ListAliasesOutput(NextToken, Aliases, ...)
+-- @param _NextToken [NonEmptyString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @param _Aliases [AliasList] <p>Collection of alias records that match the list request.</p>
+function M.ListAliasesOutput(_NextToken, _Aliases, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesOutput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Aliases"] = Aliases,
+		["NextToken"] = _NextToken,
+		["Aliases"] = _Aliases,
 	}
-	M.AssertListAliasesOutput(t)
+	asserts.AssertListAliasesOutput(t)
 	return t
 end
 
-local GetInstanceAccessInput_keys = { "InstanceId" = true, "FleetId" = true, nil }
+keys.GetInstanceAccessInput = { ["InstanceId"] = true, ["FleetId"] = true, nil }
 
-function M.AssertGetInstanceAccessInput(struct)
+function asserts.AssertGetInstanceAccessInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetInstanceAccessInput to be of type 'table'")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
 	assert(struct["InstanceId"], "Expected key InstanceId to exist in table")
-	if struct["InstanceId"] then M.AssertInstanceId(struct["InstanceId"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["InstanceId"] then asserts.AssertInstanceId(struct["InstanceId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetInstanceAccessInput_keys[k], "GetInstanceAccessInput contains unknown key " .. tostring(k))
+		assert(keys.GetInstanceAccessInput[k], "GetInstanceAccessInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetInstanceAccessInput
 -- <p>Represents the input for a request action.</p>
--- @param InstanceId [InstanceId] <p>Unique identifier for an instance you want to get access to. You can access an instance in any status.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: <code>ACTIVATING</code>, <code>ACTIVE</code>, or <code>ERROR</code>. Fleets with an <code>ERROR</code> status may be accessible for a short time before they are deleted.</p>
+-- @param _InstanceId [InstanceId] <p>Unique identifier for an instance you want to get access to. You can access an instance in any status.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: <code>ACTIVATING</code>, <code>ACTIVE</code>, or <code>ERROR</code>. Fleets with an <code>ERROR</code> status may be accessible for a short time before they are deleted.</p>
 -- Required parameter: FleetId
 -- Required parameter: InstanceId
-function M.GetInstanceAccessInput(InstanceId, FleetId, ...)
+function M.GetInstanceAccessInput(_InstanceId, _FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceAccessInput")
 	local t = { 
-		["InstanceId"] = InstanceId,
-		["FleetId"] = FleetId,
+		["InstanceId"] = _InstanceId,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertGetInstanceAccessInput(t)
+	asserts.AssertGetInstanceAccessInput(t)
 	return t
 end
 
-local InstanceCredentials_keys = { "UserName" = true, "Secret" = true, nil }
+keys.InstanceCredentials = { ["UserName"] = true, ["Secret"] = true, nil }
 
-function M.AssertInstanceCredentials(struct)
+function asserts.AssertInstanceCredentials(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceCredentials to be of type 'table'")
-	if struct["UserName"] then M.AssertNonEmptyString(struct["UserName"]) end
-	if struct["Secret"] then M.AssertNonEmptyString(struct["Secret"]) end
+	if struct["UserName"] then asserts.AssertNonEmptyString(struct["UserName"]) end
+	if struct["Secret"] then asserts.AssertNonEmptyString(struct["Secret"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceCredentials_keys[k], "InstanceCredentials contains unknown key " .. tostring(k))
+		assert(keys.InstanceCredentials[k], "InstanceCredentials contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceCredentials
 -- <p>Set of credentials required to remotely access a fleet instance. Access credentials are requested by calling <a>GetInstanceAccess</a> and returned in an <a>InstanceAccess</a> object.</p>
--- @param UserName [NonEmptyString] <p>User login string.</p>
--- @param Secret [NonEmptyString] <p>Secret string. For Windows instances, the secret is a password for use with Windows Remote Desktop. For Linux instances, it is a private key (which must be saved as a <code>.pem</code> file) for use with SSH.</p>
-function M.InstanceCredentials(UserName, Secret, ...)
+-- @param _UserName [NonEmptyString] <p>User login string.</p>
+-- @param _Secret [NonEmptyString] <p>Secret string. For Windows instances, the secret is a password for use with Windows Remote Desktop. For Linux instances, it is a private key (which must be saved as a <code>.pem</code> file) for use with SSH.</p>
+function M.InstanceCredentials(_UserName, _Secret, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceCredentials")
 	local t = { 
-		["UserName"] = UserName,
-		["Secret"] = Secret,
+		["UserName"] = _UserName,
+		["Secret"] = _Secret,
 	}
-	M.AssertInstanceCredentials(t)
+	asserts.AssertInstanceCredentials(t)
 	return t
 end
 
-local CreateFleetInput_keys = { "EC2InboundPermissions" = true, "Name" = true, "NewGameSessionProtectionPolicy" = true, "BuildId" = true, "RuntimeConfiguration" = true, "ServerLaunchPath" = true, "EC2InstanceType" = true, "ResourceCreationLimitPolicy" = true, "LogPaths" = true, "MetricGroups" = true, "ServerLaunchParameters" = true, "Description" = true, nil }
+keys.CreateFleetInput = { ["EC2InboundPermissions"] = true, ["Name"] = true, ["NewGameSessionProtectionPolicy"] = true, ["BuildId"] = true, ["RuntimeConfiguration"] = true, ["ServerLaunchPath"] = true, ["EC2InstanceType"] = true, ["ResourceCreationLimitPolicy"] = true, ["LogPaths"] = true, ["MetricGroups"] = true, ["ServerLaunchParameters"] = true, ["Description"] = true, nil }
 
-function M.AssertCreateFleetInput(struct)
+function asserts.AssertCreateFleetInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFleetInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["BuildId"], "Expected key BuildId to exist in table")
 	assert(struct["EC2InstanceType"], "Expected key EC2InstanceType to exist in table")
-	if struct["EC2InboundPermissions"] then M.AssertIpPermissionsList(struct["EC2InboundPermissions"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
-	if struct["NewGameSessionProtectionPolicy"] then M.AssertProtectionPolicy(struct["NewGameSessionProtectionPolicy"]) end
-	if struct["BuildId"] then M.AssertBuildId(struct["BuildId"]) end
-	if struct["RuntimeConfiguration"] then M.AssertRuntimeConfiguration(struct["RuntimeConfiguration"]) end
-	if struct["ServerLaunchPath"] then M.AssertNonZeroAndMaxString(struct["ServerLaunchPath"]) end
-	if struct["EC2InstanceType"] then M.AssertEC2InstanceType(struct["EC2InstanceType"]) end
-	if struct["ResourceCreationLimitPolicy"] then M.AssertResourceCreationLimitPolicy(struct["ResourceCreationLimitPolicy"]) end
-	if struct["LogPaths"] then M.AssertStringList(struct["LogPaths"]) end
-	if struct["MetricGroups"] then M.AssertMetricGroupList(struct["MetricGroups"]) end
-	if struct["ServerLaunchParameters"] then M.AssertNonZeroAndMaxString(struct["ServerLaunchParameters"]) end
-	if struct["Description"] then M.AssertNonZeroAndMaxString(struct["Description"]) end
+	if struct["EC2InboundPermissions"] then asserts.AssertIpPermissionsList(struct["EC2InboundPermissions"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["NewGameSessionProtectionPolicy"] then asserts.AssertProtectionPolicy(struct["NewGameSessionProtectionPolicy"]) end
+	if struct["BuildId"] then asserts.AssertBuildId(struct["BuildId"]) end
+	if struct["RuntimeConfiguration"] then asserts.AssertRuntimeConfiguration(struct["RuntimeConfiguration"]) end
+	if struct["ServerLaunchPath"] then asserts.AssertNonZeroAndMaxString(struct["ServerLaunchPath"]) end
+	if struct["EC2InstanceType"] then asserts.AssertEC2InstanceType(struct["EC2InstanceType"]) end
+	if struct["ResourceCreationLimitPolicy"] then asserts.AssertResourceCreationLimitPolicy(struct["ResourceCreationLimitPolicy"]) end
+	if struct["LogPaths"] then asserts.AssertStringList(struct["LogPaths"]) end
+	if struct["MetricGroups"] then asserts.AssertMetricGroupList(struct["MetricGroups"]) end
+	if struct["ServerLaunchParameters"] then asserts.AssertNonZeroAndMaxString(struct["ServerLaunchParameters"]) end
+	if struct["Description"] then asserts.AssertNonZeroAndMaxString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFleetInput_keys[k], "CreateFleetInput contains unknown key " .. tostring(k))
+		assert(keys.CreateFleetInput[k], "CreateFleetInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFleetInput
 -- <p>Represents the input for a request action.</p>
--- @param EC2InboundPermissions [IpPermissionsList] <p>Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. If no inbound permissions are set, including both IP address range and port range, the server processes in the fleet cannot accept connections. You can specify one or more sets of permissions for a fleet.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
--- @param NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet's protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
--- @param BuildId [BuildId] <p>Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.</p>
--- @param RuntimeConfiguration [RuntimeConfiguration] <p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include a runtime configuration with at least one server process configuration; otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime configuration will continue to work.) </p>
--- @param ServerLaunchPath [NonZeroAndMaxString] <p>This parameter is no longer used. Instead, specify a server launch path using the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
--- @param EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
--- @param ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Policy that limits the number of game sessions an individual player can create over a span of time for this fleet.</p>
--- @param LogPaths [StringList] <p>This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more directory paths in <code>logParameters</code>. See more information in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process">Server API Reference</a>. </p>
--- @param MetricGroups [MetricGroupList] <p>Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a time.</p>
--- @param ServerLaunchParameters [NonZeroAndMaxString] <p>This parameter is no longer used. Instead, specify server launch parameters in the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
--- @param Description [NonZeroAndMaxString] <p>Human-readable description of a fleet.</p>
+-- @param _EC2InboundPermissions [IpPermissionsList] <p>Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. If no inbound permissions are set, including both IP address range and port range, the server processes in the fleet cannot accept connections. You can specify one or more sets of permissions for a fleet.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
+-- @param _NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet's protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- @param _BuildId [BuildId] <p>Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.</p>
+-- @param _RuntimeConfiguration [RuntimeConfiguration] <p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include a runtime configuration with at least one server process configuration; otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime configuration will continue to work.) </p>
+-- @param _ServerLaunchPath [NonZeroAndMaxString] <p>This parameter is no longer used. Instead, specify a server launch path using the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
+-- @param _EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
+-- @param _ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Policy that limits the number of game sessions an individual player can create over a span of time for this fleet.</p>
+-- @param _LogPaths [StringList] <p>This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more directory paths in <code>logParameters</code>. See more information in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process">Server API Reference</a>. </p>
+-- @param _MetricGroups [MetricGroupList] <p>Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a time.</p>
+-- @param _ServerLaunchParameters [NonZeroAndMaxString] <p>This parameter is no longer used. Instead, specify server launch parameters in the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
+-- @param _Description [NonZeroAndMaxString] <p>Human-readable description of a fleet.</p>
 -- Required parameter: Name
 -- Required parameter: BuildId
 -- Required parameter: EC2InstanceType
-function M.CreateFleetInput(EC2InboundPermissions, Name, NewGameSessionProtectionPolicy, BuildId, RuntimeConfiguration, ServerLaunchPath, EC2InstanceType, ResourceCreationLimitPolicy, LogPaths, MetricGroups, ServerLaunchParameters, Description, ...)
+function M.CreateFleetInput(_EC2InboundPermissions, _Name, _NewGameSessionProtectionPolicy, _BuildId, _RuntimeConfiguration, _ServerLaunchPath, _EC2InstanceType, _ResourceCreationLimitPolicy, _LogPaths, _MetricGroups, _ServerLaunchParameters, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetInput")
 	local t = { 
-		["EC2InboundPermissions"] = EC2InboundPermissions,
-		["Name"] = Name,
-		["NewGameSessionProtectionPolicy"] = NewGameSessionProtectionPolicy,
-		["BuildId"] = BuildId,
-		["RuntimeConfiguration"] = RuntimeConfiguration,
-		["ServerLaunchPath"] = ServerLaunchPath,
-		["EC2InstanceType"] = EC2InstanceType,
-		["ResourceCreationLimitPolicy"] = ResourceCreationLimitPolicy,
-		["LogPaths"] = LogPaths,
-		["MetricGroups"] = MetricGroups,
-		["ServerLaunchParameters"] = ServerLaunchParameters,
-		["Description"] = Description,
+		["EC2InboundPermissions"] = _EC2InboundPermissions,
+		["Name"] = _Name,
+		["NewGameSessionProtectionPolicy"] = _NewGameSessionProtectionPolicy,
+		["BuildId"] = _BuildId,
+		["RuntimeConfiguration"] = _RuntimeConfiguration,
+		["ServerLaunchPath"] = _ServerLaunchPath,
+		["EC2InstanceType"] = _EC2InstanceType,
+		["ResourceCreationLimitPolicy"] = _ResourceCreationLimitPolicy,
+		["LogPaths"] = _LogPaths,
+		["MetricGroups"] = _MetricGroups,
+		["ServerLaunchParameters"] = _ServerLaunchParameters,
+		["Description"] = _Description,
 	}
-	M.AssertCreateFleetInput(t)
+	asserts.AssertCreateFleetInput(t)
 	return t
 end
 
-local PutScalingPolicyOutput_keys = { "Name" = true, nil }
+keys.PutScalingPolicyOutput = { ["Name"] = true, nil }
 
-function M.AssertPutScalingPolicyOutput(struct)
+function asserts.AssertPutScalingPolicyOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutScalingPolicyOutput to be of type 'table'")
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(PutScalingPolicyOutput_keys[k], "PutScalingPolicyOutput contains unknown key " .. tostring(k))
+		assert(keys.PutScalingPolicyOutput[k], "PutScalingPolicyOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutScalingPolicyOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
-function M.PutScalingPolicyOutput(Name, ...)
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
+function M.PutScalingPolicyOutput(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutScalingPolicyOutput")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertPutScalingPolicyOutput(t)
+	asserts.AssertPutScalingPolicyOutput(t)
 	return t
 end
 
-local UpdateFleetPortSettingsOutput_keys = { "FleetId" = true, nil }
+keys.UpdateFleetPortSettingsOutput = { ["FleetId"] = true, nil }
 
-function M.AssertUpdateFleetPortSettingsOutput(struct)
+function asserts.AssertUpdateFleetPortSettingsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFleetPortSettingsOutput to be of type 'table'")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFleetPortSettingsOutput_keys[k], "UpdateFleetPortSettingsOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateFleetPortSettingsOutput[k], "UpdateFleetPortSettingsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFleetPortSettingsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
-function M.UpdateFleetPortSettingsOutput(FleetId, ...)
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
+function M.UpdateFleetPortSettingsOutput(_FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetPortSettingsOutput")
 	local t = { 
-		["FleetId"] = FleetId,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertUpdateFleetPortSettingsOutput(t)
+	asserts.AssertUpdateFleetPortSettingsOutput(t)
 	return t
 end
 
-local ServerProcess_keys = { "ConcurrentExecutions" = true, "Parameters" = true, "LaunchPath" = true, nil }
+keys.ServerProcess = { ["ConcurrentExecutions"] = true, ["Parameters"] = true, ["LaunchPath"] = true, nil }
 
-function M.AssertServerProcess(struct)
+function asserts.AssertServerProcess(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ServerProcess to be of type 'table'")
 	assert(struct["LaunchPath"], "Expected key LaunchPath to exist in table")
 	assert(struct["ConcurrentExecutions"], "Expected key ConcurrentExecutions to exist in table")
-	if struct["ConcurrentExecutions"] then M.AssertPositiveInteger(struct["ConcurrentExecutions"]) end
-	if struct["Parameters"] then M.AssertNonZeroAndMaxString(struct["Parameters"]) end
-	if struct["LaunchPath"] then M.AssertNonZeroAndMaxString(struct["LaunchPath"]) end
+	if struct["ConcurrentExecutions"] then asserts.AssertPositiveInteger(struct["ConcurrentExecutions"]) end
+	if struct["Parameters"] then asserts.AssertNonZeroAndMaxString(struct["Parameters"]) end
+	if struct["LaunchPath"] then asserts.AssertNonZeroAndMaxString(struct["LaunchPath"]) end
 	for k,_ in pairs(struct) do
-		assert(ServerProcess_keys[k], "ServerProcess contains unknown key " .. tostring(k))
+		assert(keys.ServerProcess[k], "ServerProcess contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ServerProcess
 -- <p>A set of instructions for launching server processes on each instance in a fleet. Each instruction set identifies the location of the server executable, optional launch parameters, and the number of server processes with this configuration to maintain concurrently on the instance. Server process configurations make up a fleet's <code> <a>RuntimeConfiguration</a> </code>.</p>
--- @param ConcurrentExecutions [PositiveInteger] <p>Number of server processes using this configuration to run concurrently on an instance.</p>
--- @param Parameters [NonZeroAndMaxString] <p>Optional list of parameters to pass to the server executable on launch.</p>
--- @param LaunchPath [NonZeroAndMaxString] <p>Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows game build with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch path of "<code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file located at <code>MyGame/latest/server.exe</code> must have a launch path of "<code>/local/game/MyGame/latest/server.exe</code>". </p>
+-- @param _ConcurrentExecutions [PositiveInteger] <p>Number of server processes using this configuration to run concurrently on an instance.</p>
+-- @param _Parameters [NonZeroAndMaxString] <p>Optional list of parameters to pass to the server executable on launch.</p>
+-- @param _LaunchPath [NonZeroAndMaxString] <p>Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows game build with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch path of "<code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file located at <code>MyGame/latest/server.exe</code> must have a launch path of "<code>/local/game/MyGame/latest/server.exe</code>". </p>
 -- Required parameter: LaunchPath
 -- Required parameter: ConcurrentExecutions
-function M.ServerProcess(ConcurrentExecutions, Parameters, LaunchPath, ...)
+function M.ServerProcess(_ConcurrentExecutions, _Parameters, _LaunchPath, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServerProcess")
 	local t = { 
-		["ConcurrentExecutions"] = ConcurrentExecutions,
-		["Parameters"] = Parameters,
-		["LaunchPath"] = LaunchPath,
+		["ConcurrentExecutions"] = _ConcurrentExecutions,
+		["Parameters"] = _Parameters,
+		["LaunchPath"] = _LaunchPath,
 	}
-	M.AssertServerProcess(t)
+	asserts.AssertServerProcess(t)
 	return t
 end
 
-local DesiredPlayerSession_keys = { "PlayerId" = true, "PlayerData" = true, nil }
+keys.DesiredPlayerSession = { ["PlayerId"] = true, ["PlayerData"] = true, nil }
 
-function M.AssertDesiredPlayerSession(struct)
+function asserts.AssertDesiredPlayerSession(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DesiredPlayerSession to be of type 'table'")
-	if struct["PlayerId"] then M.AssertNonZeroAndMaxString(struct["PlayerId"]) end
-	if struct["PlayerData"] then M.AssertPlayerData(struct["PlayerData"]) end
+	if struct["PlayerId"] then asserts.AssertNonZeroAndMaxString(struct["PlayerId"]) end
+	if struct["PlayerData"] then asserts.AssertPlayerData(struct["PlayerData"]) end
 	for k,_ in pairs(struct) do
-		assert(DesiredPlayerSession_keys[k], "DesiredPlayerSession contains unknown key " .. tostring(k))
+		assert(keys.DesiredPlayerSession[k], "DesiredPlayerSession contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DesiredPlayerSession
 -- <p>Player information for use when creating player sessions using a game session placement request with <a>StartGameSessionPlacement</a>.</p>
--- @param PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player to associate with the player session.</p>
--- @param PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
-function M.DesiredPlayerSession(PlayerId, PlayerData, ...)
+-- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player to associate with the player session.</p>
+-- @param _PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
+function M.DesiredPlayerSession(_PlayerId, _PlayerData, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DesiredPlayerSession")
 	local t = { 
-		["PlayerId"] = PlayerId,
-		["PlayerData"] = PlayerData,
+		["PlayerId"] = _PlayerId,
+		["PlayerData"] = _PlayerData,
 	}
-	M.AssertDesiredPlayerSession(t)
+	asserts.AssertDesiredPlayerSession(t)
 	return t
 end
 
-local DeleteScalingPolicyInput_keys = { "FleetId" = true, "Name" = true, nil }
+keys.DeleteScalingPolicyInput = { ["FleetId"] = true, ["Name"] = true, nil }
 
-function M.AssertDeleteScalingPolicyInput(struct)
+function asserts.AssertDeleteScalingPolicyInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteScalingPolicyInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["FleetId"], "Expected key FleetId to exist in table")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteScalingPolicyInput_keys[k], "DeleteScalingPolicyInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteScalingPolicyInput[k], "DeleteScalingPolicyInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteScalingPolicyInput
 -- <p>Represents the input for a request action.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to be deleted.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to be deleted.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
 -- Required parameter: Name
 -- Required parameter: FleetId
-function M.DeleteScalingPolicyInput(FleetId, Name, ...)
+function M.DeleteScalingPolicyInput(_FleetId, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteScalingPolicyInput")
 	local t = { 
-		["FleetId"] = FleetId,
-		["Name"] = Name,
+		["FleetId"] = _FleetId,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteScalingPolicyInput(t)
+	asserts.AssertDeleteScalingPolicyInput(t)
 	return t
 end
 
-local PutScalingPolicyInput_keys = { "EvaluationPeriods" = true, "Name" = true, "ComparisonOperator" = true, "FleetId" = true, "Threshold" = true, "ScalingAdjustment" = true, "MetricName" = true, "ScalingAdjustmentType" = true, nil }
+keys.PutScalingPolicyInput = { ["EvaluationPeriods"] = true, ["Name"] = true, ["ComparisonOperator"] = true, ["FleetId"] = true, ["Threshold"] = true, ["ScalingAdjustment"] = true, ["MetricName"] = true, ["ScalingAdjustmentType"] = true, nil }
 
-function M.AssertPutScalingPolicyInput(struct)
+function asserts.AssertPutScalingPolicyInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutScalingPolicyInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
@@ -3793,29 +3796,29 @@ function M.AssertPutScalingPolicyInput(struct)
 	assert(struct["ComparisonOperator"], "Expected key ComparisonOperator to exist in table")
 	assert(struct["EvaluationPeriods"], "Expected key EvaluationPeriods to exist in table")
 	assert(struct["MetricName"], "Expected key MetricName to exist in table")
-	if struct["EvaluationPeriods"] then M.AssertPositiveInteger(struct["EvaluationPeriods"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
-	if struct["ComparisonOperator"] then M.AssertComparisonOperatorType(struct["ComparisonOperator"]) end
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
-	if struct["Threshold"] then M.AssertDouble(struct["Threshold"]) end
-	if struct["ScalingAdjustment"] then M.AssertInteger(struct["ScalingAdjustment"]) end
-	if struct["MetricName"] then M.AssertMetricName(struct["MetricName"]) end
-	if struct["ScalingAdjustmentType"] then M.AssertScalingAdjustmentType(struct["ScalingAdjustmentType"]) end
+	if struct["EvaluationPeriods"] then asserts.AssertPositiveInteger(struct["EvaluationPeriods"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["ComparisonOperator"] then asserts.AssertComparisonOperatorType(struct["ComparisonOperator"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
+	if struct["Threshold"] then asserts.AssertDouble(struct["Threshold"]) end
+	if struct["ScalingAdjustment"] then asserts.AssertInteger(struct["ScalingAdjustment"]) end
+	if struct["MetricName"] then asserts.AssertMetricName(struct["MetricName"]) end
+	if struct["ScalingAdjustmentType"] then asserts.AssertScalingAdjustmentType(struct["ScalingAdjustmentType"]) end
 	for k,_ in pairs(struct) do
-		assert(PutScalingPolicyInput_keys[k], "PutScalingPolicyInput contains unknown key " .. tostring(k))
+		assert(keys.PutScalingPolicyInput[k], "PutScalingPolicyInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutScalingPolicyInput
 -- <p>Represents the input for a request action.</p>
--- @param EvaluationPeriods [PositiveInteger] <p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.</p>
--- @param ComparisonOperator [ComparisonOperatorType] <p>Comparison operator to use when measuring the metric against the threshold value.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet to apply this policy to.</p>
--- @param Threshold [Double] <p>Metric value used to trigger a scaling event.</p>
--- @param ScalingAdjustment [Integer] <p>Amount of adjustment to make, based on the scaling adjustment type.</p>
--- @param MetricName [MetricName] <p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul>
--- @param ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the fleet down by 10%.</p> </li> </ul>
+-- @param _EvaluationPeriods [PositiveInteger] <p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.</p>
+-- @param _ComparisonOperator [ComparisonOperatorType] <p>Comparison operator to use when measuring the metric against the threshold value.</p>
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet to apply this policy to.</p>
+-- @param _Threshold [Double] <p>Metric value used to trigger a scaling event.</p>
+-- @param _ScalingAdjustment [Integer] <p>Amount of adjustment to make, based on the scaling adjustment type.</p>
+-- @param _MetricName [MetricName] <p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul>
+-- @param _ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the fleet down by 10%.</p> </li> </ul>
 -- Required parameter: Name
 -- Required parameter: FleetId
 -- Required parameter: ScalingAdjustment
@@ -3824,181 +3827,179 @@ end
 -- Required parameter: ComparisonOperator
 -- Required parameter: EvaluationPeriods
 -- Required parameter: MetricName
-function M.PutScalingPolicyInput(EvaluationPeriods, Name, ComparisonOperator, FleetId, Threshold, ScalingAdjustment, MetricName, ScalingAdjustmentType, ...)
+function M.PutScalingPolicyInput(_EvaluationPeriods, _Name, _ComparisonOperator, _FleetId, _Threshold, _ScalingAdjustment, _MetricName, _ScalingAdjustmentType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutScalingPolicyInput")
 	local t = { 
-		["EvaluationPeriods"] = EvaluationPeriods,
-		["Name"] = Name,
-		["ComparisonOperator"] = ComparisonOperator,
-		["FleetId"] = FleetId,
-		["Threshold"] = Threshold,
-		["ScalingAdjustment"] = ScalingAdjustment,
-		["MetricName"] = MetricName,
-		["ScalingAdjustmentType"] = ScalingAdjustmentType,
+		["EvaluationPeriods"] = _EvaluationPeriods,
+		["Name"] = _Name,
+		["ComparisonOperator"] = _ComparisonOperator,
+		["FleetId"] = _FleetId,
+		["Threshold"] = _Threshold,
+		["ScalingAdjustment"] = _ScalingAdjustment,
+		["MetricName"] = _MetricName,
+		["ScalingAdjustmentType"] = _ScalingAdjustmentType,
 	}
-	M.AssertPutScalingPolicyInput(t)
+	asserts.AssertPutScalingPolicyInput(t)
 	return t
 end
 
-local UpdateGameSessionQueueInput_keys = { "Destinations" = true, "PlayerLatencyPolicies" = true, "Name" = true, "TimeoutInSeconds" = true, nil }
+keys.UpdateGameSessionQueueInput = { ["Destinations"] = true, ["PlayerLatencyPolicies"] = true, ["Name"] = true, ["TimeoutInSeconds"] = true, nil }
 
-function M.AssertUpdateGameSessionQueueInput(struct)
+function asserts.AssertUpdateGameSessionQueueInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGameSessionQueueInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Destinations"] then M.AssertGameSessionQueueDestinationList(struct["Destinations"]) end
-	if struct["PlayerLatencyPolicies"] then M.AssertPlayerLatencyPolicyList(struct["PlayerLatencyPolicies"]) end
-	if struct["Name"] then M.AssertGameSessionQueueName(struct["Name"]) end
-	if struct["TimeoutInSeconds"] then M.AssertWholeNumber(struct["TimeoutInSeconds"]) end
+	if struct["Destinations"] then asserts.AssertGameSessionQueueDestinationList(struct["Destinations"]) end
+	if struct["PlayerLatencyPolicies"] then asserts.AssertPlayerLatencyPolicyList(struct["PlayerLatencyPolicies"]) end
+	if struct["Name"] then asserts.AssertGameSessionQueueName(struct["Name"]) end
+	if struct["TimeoutInSeconds"] then asserts.AssertWholeNumber(struct["TimeoutInSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGameSessionQueueInput_keys[k], "UpdateGameSessionQueueInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateGameSessionQueueInput[k], "UpdateGameSessionQueueInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGameSessionQueueInput
 -- <p>Represents the input for a request action.</p>
--- @param Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order. When updating this list, provide a complete list of destinations.</p>
--- @param PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.</p>
--- @param Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- @param TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
+-- @param _Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order. When updating this list, provide a complete list of destinations.</p>
+-- @param _PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.</p>
+-- @param _Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- @param _TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
 -- Required parameter: Name
-function M.UpdateGameSessionQueueInput(Destinations, PlayerLatencyPolicies, Name, TimeoutInSeconds, ...)
+function M.UpdateGameSessionQueueInput(_Destinations, _PlayerLatencyPolicies, _Name, _TimeoutInSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGameSessionQueueInput")
 	local t = { 
-		["Destinations"] = Destinations,
-		["PlayerLatencyPolicies"] = PlayerLatencyPolicies,
-		["Name"] = Name,
-		["TimeoutInSeconds"] = TimeoutInSeconds,
+		["Destinations"] = _Destinations,
+		["PlayerLatencyPolicies"] = _PlayerLatencyPolicies,
+		["Name"] = _Name,
+		["TimeoutInSeconds"] = _TimeoutInSeconds,
 	}
-	M.AssertUpdateGameSessionQueueInput(t)
+	asserts.AssertUpdateGameSessionQueueInput(t)
 	return t
 end
 
-local UpdateFleetAttributesOutput_keys = { "FleetId" = true, nil }
+keys.UpdateFleetAttributesOutput = { ["FleetId"] = true, nil }
 
-function M.AssertUpdateFleetAttributesOutput(struct)
+function asserts.AssertUpdateFleetAttributesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFleetAttributesOutput to be of type 'table'")
-	if struct["FleetId"] then M.AssertFleetId(struct["FleetId"]) end
+	if struct["FleetId"] then asserts.AssertFleetId(struct["FleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFleetAttributesOutput_keys[k], "UpdateFleetAttributesOutput contains unknown key " .. tostring(k))
+		assert(keys.UpdateFleetAttributesOutput[k], "UpdateFleetAttributesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFleetAttributesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
-function M.UpdateFleetAttributesOutput(FleetId, ...)
+-- @param _FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
+function M.UpdateFleetAttributesOutput(_FleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetAttributesOutput")
 	local t = { 
-		["FleetId"] = FleetId,
+		["FleetId"] = _FleetId,
 	}
-	M.AssertUpdateFleetAttributesOutput(t)
+	asserts.AssertUpdateFleetAttributesOutput(t)
 	return t
 end
 
-local UpdateBuildInput_keys = { "BuildId" = true, "Version" = true, "Name" = true, nil }
+keys.UpdateBuildInput = { ["BuildId"] = true, ["Version"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateBuildInput(struct)
+function asserts.AssertUpdateBuildInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateBuildInput to be of type 'table'")
 	assert(struct["BuildId"], "Expected key BuildId to exist in table")
-	if struct["BuildId"] then M.AssertBuildId(struct["BuildId"]) end
-	if struct["Version"] then M.AssertNonZeroAndMaxString(struct["Version"]) end
-	if struct["Name"] then M.AssertNonZeroAndMaxString(struct["Name"]) end
+	if struct["BuildId"] then asserts.AssertBuildId(struct["BuildId"]) end
+	if struct["Version"] then asserts.AssertNonZeroAndMaxString(struct["Version"]) end
+	if struct["Name"] then asserts.AssertNonZeroAndMaxString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateBuildInput_keys[k], "UpdateBuildInput contains unknown key " .. tostring(k))
+		assert(keys.UpdateBuildInput[k], "UpdateBuildInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateBuildInput
 -- <p>Represents the input for a request action.</p>
--- @param BuildId [BuildId] <p>Unique identifier for a build to update.</p>
--- @param Version [NonZeroAndMaxString] <p>Version that is associated with this build. Version strings do not need to be unique.</p>
--- @param Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a build. Build names do not need to be unique. </p>
+-- @param _BuildId [BuildId] <p>Unique identifier for a build to update.</p>
+-- @param _Version [NonZeroAndMaxString] <p>Version that is associated with this build. Version strings do not need to be unique.</p>
+-- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a build. Build names do not need to be unique. </p>
 -- Required parameter: BuildId
-function M.UpdateBuildInput(BuildId, Version, Name, ...)
+function M.UpdateBuildInput(_BuildId, _Version, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBuildInput")
 	local t = { 
-		["BuildId"] = BuildId,
-		["Version"] = Version,
-		["Name"] = Name,
+		["BuildId"] = _BuildId,
+		["Version"] = _Version,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateBuildInput(t)
+	asserts.AssertUpdateBuildInput(t)
 	return t
 end
 
-function M.AssertNonBlankString(str)
+function asserts.AssertNonBlankString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NonBlankString to be of type 'string'")
-	assert(str:match("[^%s]+"), "Expected string to match pattern '[^%s]+'")
 end
 
 --  
 function M.NonBlankString(str)
-	M.AssertNonBlankString(str)
+	asserts.AssertNonBlankString(str)
 	return str
 end
 
-function M.AssertFreeText(str)
+function asserts.AssertFreeText(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FreeText to be of type 'string'")
 end
 
 --  
 function M.FreeText(str)
-	M.AssertFreeText(str)
+	asserts.AssertFreeText(str)
 	return str
 end
 
-function M.AssertProtectionPolicy(str)
+function asserts.AssertProtectionPolicy(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProtectionPolicy to be of type 'string'")
 end
 
 --  
 function M.ProtectionPolicy(str)
-	M.AssertProtectionPolicy(str)
+	asserts.AssertProtectionPolicy(str)
 	return str
 end
 
-function M.AssertGameSessionQueueName(str)
+function asserts.AssertGameSessionQueueName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GameSessionQueueName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9-]+"), "Expected string to match pattern '[a-zA-Z0-9-]+'")
 end
 
 --  
 function M.GameSessionQueueName(str)
-	M.AssertGameSessionQueueName(str)
+	asserts.AssertGameSessionQueueName(str)
 	return str
 end
 
-function M.AssertPlayerSessionCreationPolicy(str)
+function asserts.AssertPlayerSessionCreationPolicy(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PlayerSessionCreationPolicy to be of type 'string'")
 end
 
 --  
 function M.PlayerSessionCreationPolicy(str)
-	M.AssertPlayerSessionCreationPolicy(str)
+	asserts.AssertPlayerSessionCreationPolicy(str)
 	return str
 end
 
-function M.AssertRoutingStrategyType(str)
+function asserts.AssertRoutingStrategyType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RoutingStrategyType to be of type 'string'")
 end
 
 --  
 function M.RoutingStrategyType(str)
-	M.AssertRoutingStrategyType(str)
+	asserts.AssertRoutingStrategyType(str)
 	return str
 end
 
-function M.AssertMetricGroup(str)
+function asserts.AssertMetricGroup(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MetricGroup to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -4007,34 +4008,33 @@ end
 
 --  
 function M.MetricGroup(str)
-	M.AssertMetricGroup(str)
+	asserts.AssertMetricGroup(str)
 	return str
 end
 
-function M.AssertBuildId(str)
+function asserts.AssertBuildId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BuildId to be of type 'string'")
-	assert(str:match("^build-%S+"), "Expected string to match pattern '^build-%S+'")
 end
 
 --  
 function M.BuildId(str)
-	M.AssertBuildId(str)
+	asserts.AssertBuildId(str)
 	return str
 end
 
-function M.AssertEC2InstanceType(str)
+function asserts.AssertEC2InstanceType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EC2InstanceType to be of type 'string'")
 end
 
 --  
 function M.EC2InstanceType(str)
-	M.AssertEC2InstanceType(str)
+	asserts.AssertEC2InstanceType(str)
 	return str
 end
 
-function M.AssertPlayerData(str)
+function asserts.AssertPlayerData(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PlayerData to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -4043,22 +4043,22 @@ end
 
 --  
 function M.PlayerData(str)
-	M.AssertPlayerData(str)
+	asserts.AssertPlayerData(str)
 	return str
 end
 
-function M.AssertIpProtocol(str)
+function asserts.AssertIpProtocol(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IpProtocol to be of type 'string'")
 end
 
 --  
 function M.IpProtocol(str)
-	M.AssertIpProtocol(str)
+	asserts.AssertIpProtocol(str)
 	return str
 end
 
-function M.AssertNonEmptyString(str)
+function asserts.AssertNonEmptyString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NonEmptyString to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
@@ -4066,58 +4066,57 @@ end
 
 --  
 function M.NonEmptyString(str)
-	M.AssertNonEmptyString(str)
+	asserts.AssertNonEmptyString(str)
 	return str
 end
 
-function M.AssertMetricName(str)
+function asserts.AssertMetricName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MetricName to be of type 'string'")
 end
 
 --  
 function M.MetricName(str)
-	M.AssertMetricName(str)
+	asserts.AssertMetricName(str)
 	return str
 end
 
-function M.AssertEventCode(str)
+function asserts.AssertEventCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EventCode to be of type 'string'")
 end
 
 --  
 function M.EventCode(str)
-	M.AssertEventCode(str)
+	asserts.AssertEventCode(str)
 	return str
 end
 
-function M.AssertIdStringModel(str)
+function asserts.AssertIdStringModel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdStringModel to be of type 'string'")
 	assert(#str <= 48, "Expected string to be max 48 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9-]+"), "Expected string to match pattern '[a-zA-Z0-9-]+'")
 end
 
 --  
 function M.IdStringModel(str)
-	M.AssertIdStringModel(str)
+	asserts.AssertIdStringModel(str)
 	return str
 end
 
-function M.AssertFleetStatus(str)
+function asserts.AssertFleetStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FleetStatus to be of type 'string'")
 end
 
 --  
 function M.FleetStatus(str)
-	M.AssertFleetStatus(str)
+	asserts.AssertFleetStatus(str)
 	return str
 end
 
-function M.AssertNonZeroAndMaxString(str)
+function asserts.AssertNonZeroAndMaxString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NonZeroAndMaxString to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -4126,22 +4125,22 @@ end
 
 --  
 function M.NonZeroAndMaxString(str)
-	M.AssertNonZeroAndMaxString(str)
+	asserts.AssertNonZeroAndMaxString(str)
 	return str
 end
 
-function M.AssertPlayerSessionStatus(str)
+function asserts.AssertPlayerSessionStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PlayerSessionStatus to be of type 'string'")
 end
 
 --  
 function M.PlayerSessionStatus(str)
-	M.AssertPlayerSessionStatus(str)
+	asserts.AssertPlayerSessionStatus(str)
 	return str
 end
 
-function M.AssertGamePropertyKey(str)
+function asserts.AssertGamePropertyKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GamePropertyKey to be of type 'string'")
 	assert(#str <= 32, "Expected string to be max 32 characters")
@@ -4149,174 +4148,169 @@ end
 
 --  
 function M.GamePropertyKey(str)
-	M.AssertGamePropertyKey(str)
+	asserts.AssertGamePropertyKey(str)
 	return str
 end
 
-function M.AssertGameSessionStatus(str)
+function asserts.AssertGameSessionStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GameSessionStatus to be of type 'string'")
 end
 
 --  
 function M.GameSessionStatus(str)
-	M.AssertGameSessionStatus(str)
+	asserts.AssertGameSessionStatus(str)
 	return str
 end
 
-function M.AssertFleetId(str)
+function asserts.AssertFleetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FleetId to be of type 'string'")
-	assert(str:match("^fleet-%S+"), "Expected string to match pattern '^fleet-%S+'")
 end
 
 --  
 function M.FleetId(str)
-	M.AssertFleetId(str)
+	asserts.AssertFleetId(str)
 	return str
 end
 
-function M.AssertScalingAdjustmentType(str)
+function asserts.AssertScalingAdjustmentType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ScalingAdjustmentType to be of type 'string'")
 end
 
 --  
 function M.ScalingAdjustmentType(str)
-	M.AssertScalingAdjustmentType(str)
+	asserts.AssertScalingAdjustmentType(str)
 	return str
 end
 
-function M.AssertInstanceStatus(str)
+function asserts.AssertInstanceStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceStatus to be of type 'string'")
 end
 
 --  
 function M.InstanceStatus(str)
-	M.AssertInstanceStatus(str)
+	asserts.AssertInstanceStatus(str)
 	return str
 end
 
-function M.AssertScalingStatusType(str)
+function asserts.AssertScalingStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ScalingStatusType to be of type 'string'")
 end
 
 --  
 function M.ScalingStatusType(str)
-	M.AssertScalingStatusType(str)
+	asserts.AssertScalingStatusType(str)
 	return str
 end
 
-function M.AssertArnStringModel(str)
+function asserts.AssertArnStringModel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ArnStringModel to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9:/-]+"), "Expected string to match pattern '[a-zA-Z0-9:/-]+'")
 end
 
 --  
 function M.ArnStringModel(str)
-	M.AssertArnStringModel(str)
+	asserts.AssertArnStringModel(str)
 	return str
 end
 
-function M.AssertComparisonOperatorType(str)
+function asserts.AssertComparisonOperatorType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ComparisonOperatorType to be of type 'string'")
 end
 
 --  
 function M.ComparisonOperatorType(str)
-	M.AssertComparisonOperatorType(str)
+	asserts.AssertComparisonOperatorType(str)
 	return str
 end
 
-function M.AssertBuildStatus(str)
+function asserts.AssertBuildStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BuildStatus to be of type 'string'")
 end
 
 --  
 function M.BuildStatus(str)
-	M.AssertBuildStatus(str)
+	asserts.AssertBuildStatus(str)
 	return str
 end
 
-function M.AssertInstanceId(str)
+function asserts.AssertInstanceId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceId to be of type 'string'")
-	assert(str:match("[a-zA-Z0-9%.-]+"), "Expected string to match pattern '[a-zA-Z0-9%.-]+'")
 end
 
 --  
 function M.InstanceId(str)
-	M.AssertInstanceId(str)
+	asserts.AssertInstanceId(str)
 	return str
 end
 
-function M.AssertIpAddress(str)
+function asserts.AssertIpAddress(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IpAddress to be of type 'string'")
 end
 
 --  
 function M.IpAddress(str)
-	M.AssertIpAddress(str)
+	asserts.AssertIpAddress(str)
 	return str
 end
 
-function M.AssertOperatingSystem(str)
+function asserts.AssertOperatingSystem(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OperatingSystem to be of type 'string'")
 end
 
 --  
 function M.OperatingSystem(str)
-	M.AssertOperatingSystem(str)
+	asserts.AssertOperatingSystem(str)
 	return str
 end
 
-function M.AssertAliasId(str)
+function asserts.AssertAliasId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AliasId to be of type 'string'")
-	assert(str:match("^alias-%S+"), "Expected string to match pattern '^alias-%S+'")
 end
 
 --  
 function M.AliasId(str)
-	M.AssertAliasId(str)
+	asserts.AssertAliasId(str)
 	return str
 end
 
-function M.AssertNonBlankAndLengthConstraintString(str)
+function asserts.AssertNonBlankAndLengthConstraintString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NonBlankAndLengthConstraintString to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match(".*%S.*"), "Expected string to match pattern '.*%S.*'")
 end
 
 --  
 function M.NonBlankAndLengthConstraintString(str)
-	M.AssertNonBlankAndLengthConstraintString(str)
+	asserts.AssertNonBlankAndLengthConstraintString(str)
 	return str
 end
 
-function M.AssertGameSessionPlacementState(str)
+function asserts.AssertGameSessionPlacementState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GameSessionPlacementState to be of type 'string'")
 end
 
 --  
 function M.GameSessionPlacementState(str)
-	M.AssertGameSessionPlacementState(str)
+	asserts.AssertGameSessionPlacementState(str)
 	return str
 end
 
-function M.AssertGamePropertyValue(str)
+function asserts.AssertGamePropertyValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GamePropertyValue to be of type 'string'")
 	assert(#str <= 96, "Expected string to be max 96 characters")
@@ -4324,54 +4318,53 @@ end
 
 --  
 function M.GamePropertyValue(str)
-	M.AssertGamePropertyValue(str)
+	asserts.AssertGamePropertyValue(str)
 	return str
 end
 
-function M.AssertPlayerSessionId(str)
+function asserts.AssertPlayerSessionId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PlayerSessionId to be of type 'string'")
-	assert(str:match("^psess-%S+"), "Expected string to match pattern '^psess-%S+'")
 end
 
 --  
 function M.PlayerSessionId(str)
-	M.AssertPlayerSessionId(str)
+	asserts.AssertPlayerSessionId(str)
 	return str
 end
 
-function M.AssertFloat(float)
+function asserts.AssertFloat(float)
 	assert(float)
 	assert(type(float) == "number", "Expected Float to be of type 'number'")
 end
 
 function M.Float(float)
-	M.AssertFloat(float)
+	asserts.AssertFloat(float)
 	return float
 end
 
-function M.AssertDouble(double)
+function asserts.AssertDouble(double)
 	assert(double)
 	assert(type(double) == "number", "Expected Double to be of type 'number'")
 end
 
 function M.Double(double)
-	M.AssertDouble(double)
+	asserts.AssertDouble(double)
 	return double
 end
 
-function M.AssertPositiveLong(long)
+function asserts.AssertPositiveLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected PositiveLong to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.PositiveLong(long)
-	M.AssertPositiveLong(long)
+	asserts.AssertPositiveLong(long)
 	return long
 end
 
-function M.AssertPortNumber(integer)
+function asserts.AssertPortNumber(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PortNumber to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -4380,11 +4373,11 @@ function M.AssertPortNumber(integer)
 end
 
 function M.PortNumber(integer)
-	M.AssertPortNumber(integer)
+	asserts.AssertPortNumber(integer)
 	return integer
 end
 
-function M.AssertGameSessionActivationTimeoutSeconds(integer)
+function asserts.AssertGameSessionActivationTimeoutSeconds(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected GameSessionActivationTimeoutSeconds to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -4393,33 +4386,33 @@ function M.AssertGameSessionActivationTimeoutSeconds(integer)
 end
 
 function M.GameSessionActivationTimeoutSeconds(integer)
-	M.AssertGameSessionActivationTimeoutSeconds(integer)
+	asserts.AssertGameSessionActivationTimeoutSeconds(integer)
 	return integer
 end
 
-function M.AssertWholeNumber(integer)
+function asserts.AssertWholeNumber(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected WholeNumber to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.WholeNumber(integer)
-	M.AssertWholeNumber(integer)
+	asserts.AssertWholeNumber(integer)
 	return integer
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertMaxConcurrentGameSessionActivations(integer)
+function asserts.AssertMaxConcurrentGameSessionActivations(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxConcurrentGameSessionActivations to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -4428,11 +4421,11 @@ function M.AssertMaxConcurrentGameSessionActivations(integer)
 end
 
 function M.MaxConcurrentGameSessionActivations(integer)
-	M.AssertMaxConcurrentGameSessionActivations(integer)
+	asserts.AssertMaxConcurrentGameSessionActivations(integer)
 	return integer
 end
 
-function M.AssertPositiveInteger(integer)
+function asserts.AssertPositiveInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PositiveInteger to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -4440,429 +4433,429 @@ function M.AssertPositiveInteger(integer)
 end
 
 function M.PositiveInteger(integer)
-	M.AssertPositiveInteger(integer)
+	asserts.AssertPositiveInteger(integer)
 	return integer
 end
 
-function M.AssertPlayerDataMap(map)
+function asserts.AssertPlayerDataMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected PlayerDataMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertNonZeroAndMaxString(k)
-		M.AssertPlayerData(v)
+		asserts.AssertNonZeroAndMaxString(k)
+		asserts.AssertPlayerData(v)
 	end
 end
 
 function M.PlayerDataMap(map)
-	M.AssertPlayerDataMap(map)
+	asserts.AssertPlayerDataMap(map)
 	return map
 end
 
-function M.AssertTimestamp(timestamp)
+function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 function M.Timestamp(timestamp)
-	M.AssertTimestamp(timestamp)
+	asserts.AssertTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertGamePropertyList(list)
+function asserts.AssertGamePropertyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GamePropertyList to be of type ''table")
 	assert(#list <= 16, "Expected list to be contain 16 elements")
 	for _,v in ipairs(list) do
-		M.AssertGameProperty(v)
+		asserts.AssertGameProperty(v)
 	end
 end
 
 --  
 -- List of GameProperty objects
 function M.GamePropertyList(list)
-	M.AssertGamePropertyList(list)
+	asserts.AssertGamePropertyList(list)
 	return list
 end
 
-function M.AssertFleetIdList(list)
+function asserts.AssertFleetIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FleetIdList to be of type ''table")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertFleetId(v)
+		asserts.AssertFleetId(v)
 	end
 end
 
 --  
 -- List of FleetId objects
 function M.FleetIdList(list)
-	M.AssertFleetIdList(list)
+	asserts.AssertFleetIdList(list)
 	return list
 end
 
-function M.AssertIpPermissionsList(list)
+function asserts.AssertIpPermissionsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IpPermissionsList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertIpPermission(v)
+		asserts.AssertIpPermission(v)
 	end
 end
 
 --  
 -- List of IpPermission objects
 function M.IpPermissionsList(list)
-	M.AssertIpPermissionsList(list)
+	asserts.AssertIpPermissionsList(list)
 	return list
 end
 
-function M.AssertFleetUtilizationList(list)
+function asserts.AssertFleetUtilizationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FleetUtilizationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFleetUtilization(v)
+		asserts.AssertFleetUtilization(v)
 	end
 end
 
 --  
 -- List of FleetUtilization objects
 function M.FleetUtilizationList(list)
-	M.AssertFleetUtilizationList(list)
+	asserts.AssertFleetUtilizationList(list)
 	return list
 end
 
-function M.AssertPlayerLatencyPolicyList(list)
+function asserts.AssertPlayerLatencyPolicyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PlayerLatencyPolicyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPlayerLatencyPolicy(v)
+		asserts.AssertPlayerLatencyPolicy(v)
 	end
 end
 
 --  
 -- List of PlayerLatencyPolicy objects
 function M.PlayerLatencyPolicyList(list)
-	M.AssertPlayerLatencyPolicyList(list)
+	asserts.AssertPlayerLatencyPolicyList(list)
 	return list
 end
 
-function M.AssertAliasList(list)
+function asserts.AssertAliasList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AliasList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAlias(v)
+		asserts.AssertAlias(v)
 	end
 end
 
 --  
 -- List of Alias objects
 function M.AliasList(list)
-	M.AssertAliasList(list)
+	asserts.AssertAliasList(list)
 	return list
 end
 
-function M.AssertPlacedPlayerSessionList(list)
+function asserts.AssertPlacedPlayerSessionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PlacedPlayerSessionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPlacedPlayerSession(v)
+		asserts.AssertPlacedPlayerSession(v)
 	end
 end
 
 --  
 -- List of PlacedPlayerSession objects
 function M.PlacedPlayerSessionList(list)
-	M.AssertPlacedPlayerSessionList(list)
+	asserts.AssertPlacedPlayerSessionList(list)
 	return list
 end
 
-function M.AssertFleetCapacityList(list)
+function asserts.AssertFleetCapacityList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FleetCapacityList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFleetCapacity(v)
+		asserts.AssertFleetCapacity(v)
 	end
 end
 
 --  
 -- List of FleetCapacity objects
 function M.FleetCapacityList(list)
-	M.AssertFleetCapacityList(list)
+	asserts.AssertFleetCapacityList(list)
 	return list
 end
 
-function M.AssertInstanceList(list)
+function asserts.AssertInstanceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstance(v)
+		asserts.AssertInstance(v)
 	end
 end
 
 --  
 -- List of Instance objects
 function M.InstanceList(list)
-	M.AssertInstanceList(list)
+	asserts.AssertInstanceList(list)
 	return list
 end
 
-function M.AssertStringList(list)
+function asserts.AssertStringList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StringList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertNonZeroAndMaxString(v)
+		asserts.AssertNonZeroAndMaxString(v)
 	end
 end
 
 --  
 -- List of NonZeroAndMaxString objects
 function M.StringList(list)
-	M.AssertStringList(list)
+	asserts.AssertStringList(list)
 	return list
 end
 
-function M.AssertPlayerLatencyList(list)
+function asserts.AssertPlayerLatencyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PlayerLatencyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPlayerLatency(v)
+		asserts.AssertPlayerLatency(v)
 	end
 end
 
 --  
 -- List of PlayerLatency objects
 function M.PlayerLatencyList(list)
-	M.AssertPlayerLatencyList(list)
+	asserts.AssertPlayerLatencyList(list)
 	return list
 end
 
-function M.AssertGameSessionQueueNameList(list)
+function asserts.AssertGameSessionQueueNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GameSessionQueueNameList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGameSessionQueueName(v)
+		asserts.AssertGameSessionQueueName(v)
 	end
 end
 
 --  
 -- List of GameSessionQueueName objects
 function M.GameSessionQueueNameList(list)
-	M.AssertGameSessionQueueNameList(list)
+	asserts.AssertGameSessionQueueNameList(list)
 	return list
 end
 
-function M.AssertEventList(list)
+function asserts.AssertEventList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEvent(v)
+		asserts.AssertEvent(v)
 	end
 end
 
 --  
 -- List of Event objects
 function M.EventList(list)
-	M.AssertEventList(list)
+	asserts.AssertEventList(list)
 	return list
 end
 
-function M.AssertGameSessionList(list)
+function asserts.AssertGameSessionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GameSessionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGameSession(v)
+		asserts.AssertGameSession(v)
 	end
 end
 
 --  
 -- List of GameSession objects
 function M.GameSessionList(list)
-	M.AssertGameSessionList(list)
+	asserts.AssertGameSessionList(list)
 	return list
 end
 
-function M.AssertScalingPolicyList(list)
+function asserts.AssertScalingPolicyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ScalingPolicyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertScalingPolicy(v)
+		asserts.AssertScalingPolicy(v)
 	end
 end
 
 --  
 -- List of ScalingPolicy objects
 function M.ScalingPolicyList(list)
-	M.AssertScalingPolicyList(list)
+	asserts.AssertScalingPolicyList(list)
 	return list
 end
 
-function M.AssertDesiredPlayerSessionList(list)
+function asserts.AssertDesiredPlayerSessionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DesiredPlayerSessionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDesiredPlayerSession(v)
+		asserts.AssertDesiredPlayerSession(v)
 	end
 end
 
 --  
 -- List of DesiredPlayerSession objects
 function M.DesiredPlayerSessionList(list)
-	M.AssertDesiredPlayerSessionList(list)
+	asserts.AssertDesiredPlayerSessionList(list)
 	return list
 end
 
-function M.AssertMetricGroupList(list)
+function asserts.AssertMetricGroupList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MetricGroupList to be of type ''table")
 	assert(#list <= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertMetricGroup(v)
+		asserts.AssertMetricGroup(v)
 	end
 end
 
 --  
 -- List of MetricGroup objects
 function M.MetricGroupList(list)
-	M.AssertMetricGroupList(list)
+	asserts.AssertMetricGroupList(list)
 	return list
 end
 
-function M.AssertServerProcessList(list)
+function asserts.AssertServerProcessList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ServerProcessList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertServerProcess(v)
+		asserts.AssertServerProcess(v)
 	end
 end
 
 --  
 -- List of ServerProcess objects
 function M.ServerProcessList(list)
-	M.AssertServerProcessList(list)
+	asserts.AssertServerProcessList(list)
 	return list
 end
 
-function M.AssertBuildList(list)
+function asserts.AssertBuildList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BuildList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBuild(v)
+		asserts.AssertBuild(v)
 	end
 end
 
 --  
 -- List of Build objects
 function M.BuildList(list)
-	M.AssertBuildList(list)
+	asserts.AssertBuildList(list)
 	return list
 end
 
-function M.AssertGameSessionQueueDestinationList(list)
+function asserts.AssertGameSessionQueueDestinationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GameSessionQueueDestinationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGameSessionQueueDestination(v)
+		asserts.AssertGameSessionQueueDestination(v)
 	end
 end
 
 --  
 -- List of GameSessionQueueDestination objects
 function M.GameSessionQueueDestinationList(list)
-	M.AssertGameSessionQueueDestinationList(list)
+	asserts.AssertGameSessionQueueDestinationList(list)
 	return list
 end
 
-function M.AssertGameSessionDetailList(list)
+function asserts.AssertGameSessionDetailList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GameSessionDetailList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGameSessionDetail(v)
+		asserts.AssertGameSessionDetail(v)
 	end
 end
 
 --  
 -- List of GameSessionDetail objects
 function M.GameSessionDetailList(list)
-	M.AssertGameSessionDetailList(list)
+	asserts.AssertGameSessionDetailList(list)
 	return list
 end
 
-function M.AssertGameSessionQueueList(list)
+function asserts.AssertGameSessionQueueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GameSessionQueueList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGameSessionQueue(v)
+		asserts.AssertGameSessionQueue(v)
 	end
 end
 
 --  
 -- List of GameSessionQueue objects
 function M.GameSessionQueueList(list)
-	M.AssertGameSessionQueueList(list)
+	asserts.AssertGameSessionQueueList(list)
 	return list
 end
 
-function M.AssertPlayerIdList(list)
+function asserts.AssertPlayerIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PlayerIdList to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertNonZeroAndMaxString(v)
+		asserts.AssertNonZeroAndMaxString(v)
 	end
 end
 
 --  
 -- List of NonZeroAndMaxString objects
 function M.PlayerIdList(list)
-	M.AssertPlayerIdList(list)
+	asserts.AssertPlayerIdList(list)
 	return list
 end
 
-function M.AssertPlayerSessionList(list)
+function asserts.AssertPlayerSessionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PlayerSessionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPlayerSession(v)
+		asserts.AssertPlayerSession(v)
 	end
 end
 
 --  
 -- List of PlayerSession objects
 function M.PlayerSessionList(list)
-	M.AssertPlayerSessionList(list)
+	asserts.AssertPlayerSessionList(list)
 	return list
 end
 
-function M.AssertEC2InstanceLimitList(list)
+function asserts.AssertEC2InstanceLimitList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EC2InstanceLimitList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEC2InstanceLimit(v)
+		asserts.AssertEC2InstanceLimit(v)
 	end
 end
 
 --  
 -- List of EC2InstanceLimit objects
 function M.EC2InstanceLimitList(list)
-	M.AssertEC2InstanceLimitList(list)
+	asserts.AssertEC2InstanceLimitList(list)
 	return list
 end
 
-function M.AssertFleetAttributesList(list)
+function asserts.AssertFleetAttributesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FleetAttributesList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFleetAttributes(v)
+		asserts.AssertFleetAttributes(v)
 	end
 end
 
 --  
 -- List of FleetAttributes objects
 function M.FleetAttributesList(list)
-	M.AssertFleetAttributesList(list)
+	asserts.AssertFleetAttributesList(list)
 	return list
 end
 

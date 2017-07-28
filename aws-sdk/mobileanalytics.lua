@@ -18,148 +18,151 @@ M.metadata = {
 	uid = "",
 }
 
-local BadRequestException_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertBadRequestException(struct)
+keys.BadRequestException = { ["message"] = true, nil }
+
+function asserts.AssertBadRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BadRequestException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(BadRequestException_keys[k], "BadRequestException contains unknown key " .. tostring(k))
+		assert(keys.BadRequestException[k], "BadRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BadRequestException
 -- <p>An exception object returned when a request fails.</p>
--- @param message [String] <p>A text description associated with the BadRequestException object.</p>
-function M.BadRequestException(message, ...)
+-- @param _message [String] <p>A text description associated with the BadRequestException object.</p>
+function M.BadRequestException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BadRequestException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertBadRequestException(t)
+	asserts.AssertBadRequestException(t)
 	return t
 end
 
-local Session_keys = { "duration" = true, "startTimestamp" = true, "id" = true, "stopTimestamp" = true, nil }
+keys.Session = { ["duration"] = true, ["startTimestamp"] = true, ["id"] = true, ["stopTimestamp"] = true, nil }
 
-function M.AssertSession(struct)
+function asserts.AssertSession(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Session to be of type 'table'")
-	if struct["duration"] then M.AssertLong(struct["duration"]) end
-	if struct["startTimestamp"] then M.AssertISO8601Timestamp(struct["startTimestamp"]) end
-	if struct["id"] then M.AssertString50Chars(struct["id"]) end
-	if struct["stopTimestamp"] then M.AssertISO8601Timestamp(struct["stopTimestamp"]) end
+	if struct["duration"] then asserts.AssertLong(struct["duration"]) end
+	if struct["startTimestamp"] then asserts.AssertISO8601Timestamp(struct["startTimestamp"]) end
+	if struct["id"] then asserts.AssertString50Chars(struct["id"]) end
+	if struct["stopTimestamp"] then asserts.AssertISO8601Timestamp(struct["stopTimestamp"]) end
 	for k,_ in pairs(struct) do
-		assert(Session_keys[k], "Session contains unknown key " .. tostring(k))
+		assert(keys.Session[k], "Session contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Session
 -- <p>Describes the session. Session information is required on ALL events.</p>
--- @param duration [Long] <p>The duration of the session.</p>
--- @param startTimestamp [ISO8601Timestamp] <p>The time the event started in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
--- @param id [String50Chars] <p>A unique identifier for the session</p>
--- @param stopTimestamp [ISO8601Timestamp] <p>The time the event terminated in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
-function M.Session(duration, startTimestamp, id, stopTimestamp, ...)
+-- @param _duration [Long] <p>The duration of the session.</p>
+-- @param _startTimestamp [ISO8601Timestamp] <p>The time the event started in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
+-- @param _id [String50Chars] <p>A unique identifier for the session</p>
+-- @param _stopTimestamp [ISO8601Timestamp] <p>The time the event terminated in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
+function M.Session(_duration, _startTimestamp, _id, _stopTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Session")
 	local t = { 
-		["duration"] = duration,
-		["startTimestamp"] = startTimestamp,
-		["id"] = id,
-		["stopTimestamp"] = stopTimestamp,
+		["duration"] = _duration,
+		["startTimestamp"] = _startTimestamp,
+		["id"] = _id,
+		["stopTimestamp"] = _stopTimestamp,
 	}
-	M.AssertSession(t)
+	asserts.AssertSession(t)
 	return t
 end
 
-local PutEventsInput_keys = { "clientContextEncoding" = true, "events" = true, "clientContext" = true, nil }
+keys.PutEventsInput = { ["clientContextEncoding"] = true, ["events"] = true, ["clientContext"] = true, nil }
 
-function M.AssertPutEventsInput(struct)
+function asserts.AssertPutEventsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutEventsInput to be of type 'table'")
 	assert(struct["events"], "Expected key events to exist in table")
 	assert(struct["clientContext"], "Expected key clientContext to exist in table")
-	if struct["clientContextEncoding"] then M.AssertString(struct["clientContextEncoding"]) end
-	if struct["events"] then M.AssertEventListDefinition(struct["events"]) end
-	if struct["clientContext"] then M.AssertString(struct["clientContext"]) end
+	if struct["clientContextEncoding"] then asserts.AssertString(struct["clientContextEncoding"]) end
+	if struct["events"] then asserts.AssertEventListDefinition(struct["events"]) end
+	if struct["clientContext"] then asserts.AssertString(struct["clientContext"]) end
 	for k,_ in pairs(struct) do
-		assert(PutEventsInput_keys[k], "PutEventsInput contains unknown key " .. tostring(k))
+		assert(keys.PutEventsInput[k], "PutEventsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutEventsInput
 -- <p>A container for the data needed for a PutEvent operation</p>
--- @param clientContextEncoding [String] <p>The encoding used for the client context.</p>
--- @param events [EventListDefinition] <p>An array of Event JSON objects</p>
--- @param clientContext [String] <p>The client context including the client ID, app title, app version and package name.</p>
+-- @param _clientContextEncoding [String] <p>The encoding used for the client context.</p>
+-- @param _events [EventListDefinition] <p>An array of Event JSON objects</p>
+-- @param _clientContext [String] <p>The client context including the client ID, app title, app version and package name.</p>
 -- Required parameter: events
 -- Required parameter: clientContext
-function M.PutEventsInput(clientContextEncoding, events, clientContext, ...)
+function M.PutEventsInput(_clientContextEncoding, _events, _clientContext, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsInput")
 	local t = { 
-		["clientContextEncoding"] = clientContextEncoding,
-		["events"] = events,
-		["clientContext"] = clientContext,
+		["clientContextEncoding"] = _clientContextEncoding,
+		["events"] = _events,
+		["clientContext"] = _clientContext,
 	}
-	M.AssertPutEventsInput(t)
+	asserts.AssertPutEventsInput(t)
 	return t
 end
 
-local Event_keys = { "version" = true, "eventType" = true, "metrics" = true, "session" = true, "timestamp" = true, "attributes" = true, nil }
+keys.Event = { ["version"] = true, ["eventType"] = true, ["metrics"] = true, ["session"] = true, ["timestamp"] = true, ["attributes"] = true, nil }
 
-function M.AssertEvent(struct)
+function asserts.AssertEvent(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Event to be of type 'table'")
 	assert(struct["eventType"], "Expected key eventType to exist in table")
 	assert(struct["timestamp"], "Expected key timestamp to exist in table")
-	if struct["version"] then M.AssertString10Chars(struct["version"]) end
-	if struct["eventType"] then M.AssertString50Chars(struct["eventType"]) end
-	if struct["metrics"] then M.AssertMapOfStringToNumber(struct["metrics"]) end
-	if struct["session"] then M.AssertSession(struct["session"]) end
-	if struct["timestamp"] then M.AssertISO8601Timestamp(struct["timestamp"]) end
-	if struct["attributes"] then M.AssertMapOfStringToString(struct["attributes"]) end
+	if struct["version"] then asserts.AssertString10Chars(struct["version"]) end
+	if struct["eventType"] then asserts.AssertString50Chars(struct["eventType"]) end
+	if struct["metrics"] then asserts.AssertMapOfStringToNumber(struct["metrics"]) end
+	if struct["session"] then asserts.AssertSession(struct["session"]) end
+	if struct["timestamp"] then asserts.AssertISO8601Timestamp(struct["timestamp"]) end
+	if struct["attributes"] then asserts.AssertMapOfStringToString(struct["attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(Event_keys[k], "Event contains unknown key " .. tostring(k))
+		assert(keys.Event[k], "Event contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Event
 -- <p>A JSON object representing a batch of unique event occurrences in your app.</p>
--- @param version [String10Chars] <p>The version of the event.</p>
--- @param eventType [String50Chars] <p>A name signifying an event that occurred in your app. This is used for grouping and aggregating like events together for reporting purposes.</p>
--- @param metrics [MapOfStringToNumber] <p>A collection of key-value pairs that gives additional, measurable context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
--- @param session [Session] <p>The session the event occured within. </p>
--- @param timestamp [ISO8601Timestamp] <p>The time the event occurred in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
--- @param attributes [MapOfStringToString] <p>A collection of key-value pairs that give additional context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
+-- @param _version [String10Chars] <p>The version of the event.</p>
+-- @param _eventType [String50Chars] <p>A name signifying an event that occurred in your app. This is used for grouping and aggregating like events together for reporting purposes.</p>
+-- @param _metrics [MapOfStringToNumber] <p>A collection of key-value pairs that gives additional, measurable context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
+-- @param _session [Session] <p>The session the event occured within. </p>
+-- @param _timestamp [ISO8601Timestamp] <p>The time the event occurred in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
+-- @param _attributes [MapOfStringToString] <p>A collection of key-value pairs that give additional context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
 -- Required parameter: eventType
 -- Required parameter: timestamp
-function M.Event(version, eventType, metrics, session, timestamp, attributes, ...)
+function M.Event(_version, _eventType, _metrics, _session, _timestamp, _attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 
-		["version"] = version,
-		["eventType"] = eventType,
-		["metrics"] = metrics,
-		["session"] = session,
-		["timestamp"] = timestamp,
-		["attributes"] = attributes,
+		["version"] = _version,
+		["eventType"] = _eventType,
+		["metrics"] = _metrics,
+		["session"] = _session,
+		["timestamp"] = _timestamp,
+		["attributes"] = _attributes,
 	}
-	M.AssertEvent(t)
+	asserts.AssertEvent(t)
 	return t
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertString10Chars(str)
+function asserts.AssertString10Chars(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String10Chars to be of type 'string'")
 	assert(#str <= 10, "Expected string to be max 10 characters")
@@ -168,22 +171,22 @@ end
 
 --  
 function M.String10Chars(str)
-	M.AssertString10Chars(str)
+	asserts.AssertString10Chars(str)
 	return str
 end
 
-function M.AssertISO8601Timestamp(str)
+function asserts.AssertISO8601Timestamp(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ISO8601Timestamp to be of type 'string'")
 end
 
 --  
 function M.ISO8601Timestamp(str)
-	M.AssertISO8601Timestamp(str)
+	asserts.AssertISO8601Timestamp(str)
 	return str
 end
 
-function M.AssertString50Chars(str)
+function asserts.AssertString50Chars(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String50Chars to be of type 'string'")
 	assert(#str <= 50, "Expected string to be max 50 characters")
@@ -192,11 +195,11 @@ end
 
 --  
 function M.String50Chars(str)
-	M.AssertString50Chars(str)
+	asserts.AssertString50Chars(str)
 	return str
 end
 
-function M.AssertString0to1000Chars(str)
+function asserts.AssertString0to1000Chars(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String0to1000Chars to be of type 'string'")
 	assert(#str <= 1000, "Expected string to be max 1000 characters")
@@ -204,71 +207,71 @@ end
 
 --  
 function M.String0to1000Chars(str)
-	M.AssertString0to1000Chars(str)
+	asserts.AssertString0to1000Chars(str)
 	return str
 end
 
-function M.AssertDouble(double)
+function asserts.AssertDouble(double)
 	assert(double)
 	assert(type(double) == "number", "Expected Double to be of type 'number'")
 end
 
 function M.Double(double)
-	M.AssertDouble(double)
+	asserts.AssertDouble(double)
 	return double
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertMapOfStringToNumber(map)
+function asserts.AssertMapOfStringToNumber(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfStringToNumber to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString50Chars(k)
-		M.AssertDouble(v)
+		asserts.AssertString50Chars(k)
+		asserts.AssertDouble(v)
 	end
 end
 
 function M.MapOfStringToNumber(map)
-	M.AssertMapOfStringToNumber(map)
+	asserts.AssertMapOfStringToNumber(map)
 	return map
 end
 
-function M.AssertMapOfStringToString(map)
+function asserts.AssertMapOfStringToString(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfStringToString to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString50Chars(k)
-		M.AssertString0to1000Chars(v)
+		asserts.AssertString50Chars(k)
+		asserts.AssertString0to1000Chars(v)
 	end
 end
 
 function M.MapOfStringToString(map)
-	M.AssertMapOfStringToString(map)
+	asserts.AssertMapOfStringToString(map)
 	return map
 end
 
-function M.AssertEventListDefinition(list)
+function asserts.AssertEventListDefinition(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventListDefinition to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEvent(v)
+		asserts.AssertEvent(v)
 	end
 end
 
 --  
 -- List of Event objects
 function M.EventListDefinition(list)
-	M.AssertEventListDefinition(list)
+	asserts.AssertEventListDefinition(list)
 	return list
 end
 

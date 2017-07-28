@@ -18,114 +18,117 @@ M.metadata = {
 	uid = "clouddirectory-2016-05-10",
 }
 
-local GetSchemaAsJsonResponse_keys = { "Document" = true, "Name" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertGetSchemaAsJsonResponse(struct)
+keys.GetSchemaAsJsonResponse = { ["Document"] = true, ["Name"] = true, nil }
+
+function asserts.AssertGetSchemaAsJsonResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSchemaAsJsonResponse to be of type 'table'")
-	if struct["Document"] then M.AssertSchemaJsonDocument(struct["Document"]) end
-	if struct["Name"] then M.AssertSchemaName(struct["Name"]) end
+	if struct["Document"] then asserts.AssertSchemaJsonDocument(struct["Document"]) end
+	if struct["Name"] then asserts.AssertSchemaName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSchemaAsJsonResponse_keys[k], "GetSchemaAsJsonResponse contains unknown key " .. tostring(k))
+		assert(keys.GetSchemaAsJsonResponse[k], "GetSchemaAsJsonResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSchemaAsJsonResponse
 --  
--- @param Document [SchemaJsonDocument] <p>The JSON representation of the schema document.</p>
--- @param Name [SchemaName] <p>The name of the retrieved schema.</p>
-function M.GetSchemaAsJsonResponse(Document, Name, ...)
+-- @param _Document [SchemaJsonDocument] <p>The JSON representation of the schema document.</p>
+-- @param _Name [SchemaName] <p>The name of the retrieved schema.</p>
+function M.GetSchemaAsJsonResponse(_Document, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSchemaAsJsonResponse")
 	local t = { 
-		["Document"] = Document,
-		["Name"] = Name,
+		["Document"] = _Document,
+		["Name"] = _Name,
 	}
-	M.AssertGetSchemaAsJsonResponse(t)
+	asserts.AssertGetSchemaAsJsonResponse(t)
 	return t
 end
 
-local ObjectAttributeRange_keys = { "AttributeKey" = true, "Range" = true, nil }
+keys.ObjectAttributeRange = { ["AttributeKey"] = true, ["Range"] = true, nil }
 
-function M.AssertObjectAttributeRange(struct)
+function asserts.AssertObjectAttributeRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ObjectAttributeRange to be of type 'table'")
-	if struct["AttributeKey"] then M.AssertAttributeKey(struct["AttributeKey"]) end
-	if struct["Range"] then M.AssertTypedAttributeValueRange(struct["Range"]) end
+	if struct["AttributeKey"] then asserts.AssertAttributeKey(struct["AttributeKey"]) end
+	if struct["Range"] then asserts.AssertTypedAttributeValueRange(struct["Range"]) end
 	for k,_ in pairs(struct) do
-		assert(ObjectAttributeRange_keys[k], "ObjectAttributeRange contains unknown key " .. tostring(k))
+		assert(keys.ObjectAttributeRange[k], "ObjectAttributeRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ObjectAttributeRange
 -- <p>A range of attributes.</p>
--- @param AttributeKey [AttributeKey] <p>The key of the attribute that the attribute range covers.</p>
--- @param Range [TypedAttributeValueRange] <p>The range of attribute values being selected.</p>
-function M.ObjectAttributeRange(AttributeKey, Range, ...)
+-- @param _AttributeKey [AttributeKey] <p>The key of the attribute that the attribute range covers.</p>
+-- @param _Range [TypedAttributeValueRange] <p>The range of attribute values being selected.</p>
+function M.ObjectAttributeRange(_AttributeKey, _Range, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAttributeRange")
 	local t = { 
-		["AttributeKey"] = AttributeKey,
-		["Range"] = Range,
+		["AttributeKey"] = _AttributeKey,
+		["Range"] = _Range,
 	}
-	M.AssertObjectAttributeRange(t)
+	asserts.AssertObjectAttributeRange(t)
 	return t
 end
 
-local LinkNameAlreadyInUseException_keys = { "Message" = true, nil }
+keys.LinkNameAlreadyInUseException = { ["Message"] = true, nil }
 
-function M.AssertLinkNameAlreadyInUseException(struct)
+function asserts.AssertLinkNameAlreadyInUseException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LinkNameAlreadyInUseException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(LinkNameAlreadyInUseException_keys[k], "LinkNameAlreadyInUseException contains unknown key " .. tostring(k))
+		assert(keys.LinkNameAlreadyInUseException[k], "LinkNameAlreadyInUseException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LinkNameAlreadyInUseException
 -- <p>Indicates that a link could not be created due to a naming conflict. Choose a different name and then try again.</p>
--- @param Message [ExceptionMessage] <p>Indicates that a link could not be created due to a naming conflict. Choose a different name and then try again.</p>
-function M.LinkNameAlreadyInUseException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.LinkNameAlreadyInUseException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LinkNameAlreadyInUseException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertLinkNameAlreadyInUseException(t)
+	asserts.AssertLinkNameAlreadyInUseException(t)
 	return t
 end
 
-local BatchReadException_keys = { "Message" = true, "Type" = true, nil }
+keys.BatchReadException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertBatchReadException(struct)
+function asserts.AssertBatchReadException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchReadException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
-	if struct["Type"] then M.AssertBatchReadExceptionType(struct["Type"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	if struct["Type"] then asserts.AssertBatchReadExceptionType(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchReadException_keys[k], "BatchReadException contains unknown key " .. tostring(k))
+		assert(keys.BatchReadException[k], "BatchReadException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchReadException
 -- <p>The batch read exception structure, which contains the exception type and message.</p>
--- @param Message [ExceptionMessage] <p>An exception message that is associated with the failure.</p>
--- @param Type [BatchReadExceptionType] <p>A type of exception, such as <code>InvalidArnException</code>.</p>
-function M.BatchReadException(Message, Type, ...)
+-- @param _Message [ExceptionMessage] <p>An exception message that is associated with the failure.</p>
+-- @param _Type [BatchReadExceptionType] <p>A type of exception, such as <code>InvalidArnException</code>.</p>
+function M.BatchReadException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertBatchReadException(t)
+	asserts.AssertBatchReadException(t)
 	return t
 end
 
-local RemoveFacetFromObjectResponse_keys = { nil }
+keys.RemoveFacetFromObjectResponse = { nil }
 
-function M.AssertRemoveFacetFromObjectResponse(struct)
+function asserts.AssertRemoveFacetFromObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveFacetFromObjectResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RemoveFacetFromObjectResponse_keys[k], "RemoveFacetFromObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.RemoveFacetFromObjectResponse[k], "RemoveFacetFromObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -135,498 +138,498 @@ function M.RemoveFacetFromObjectResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveFacetFromObjectResponse")
 	local t = { 
 	}
-	M.AssertRemoveFacetFromObjectResponse(t)
+	asserts.AssertRemoveFacetFromObjectResponse(t)
 	return t
 end
 
-local InvalidNextTokenException_keys = { "Message" = true, nil }
+keys.InvalidNextTokenException = { ["Message"] = true, nil }
 
-function M.AssertInvalidNextTokenException(struct)
+function asserts.AssertInvalidNextTokenException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidNextTokenException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidNextTokenException_keys[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
+		assert(keys.InvalidNextTokenException[k], "InvalidNextTokenException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>Indicates that the <code>NextToken</code> value is not valid.</p>
--- @param Message [ExceptionMessage] <p>Indicates that the <code>NextToken</code> value is not valid.</p>
-function M.InvalidNextTokenException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InvalidNextTokenException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidNextTokenException(t)
+	asserts.AssertInvalidNextTokenException(t)
 	return t
 end
 
-local AttachObjectRequest_keys = { "ParentReference" = true, "LinkName" = true, "DirectoryArn" = true, "ChildReference" = true, nil }
+keys.AttachObjectRequest = { ["ParentReference"] = true, ["LinkName"] = true, ["DirectoryArn"] = true, ["ChildReference"] = true, nil }
 
-function M.AssertAttachObjectRequest(struct)
+function asserts.AssertAttachObjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachObjectRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ParentReference"], "Expected key ParentReference to exist in table")
 	assert(struct["ChildReference"], "Expected key ChildReference to exist in table")
 	assert(struct["LinkName"], "Expected key LinkName to exist in table")
-	if struct["ParentReference"] then M.AssertObjectReference(struct["ParentReference"]) end
-	if struct["LinkName"] then M.AssertLinkName(struct["LinkName"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["ChildReference"] then M.AssertObjectReference(struct["ChildReference"]) end
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["ChildReference"] then asserts.AssertObjectReference(struct["ChildReference"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachObjectRequest_keys[k], "AttachObjectRequest contains unknown key " .. tostring(k))
+		assert(keys.AttachObjectRequest[k], "AttachObjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachObjectRequest
 --  
--- @param ParentReference [ObjectReference] <p>The parent object reference.</p>
--- @param LinkName [LinkName] <p>The link name with which the child object is attached to the parent.</p>
--- @param DirectoryArn [Arn] <p>Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
--- @param ChildReference [ObjectReference] <p>The child object reference to be attached to the object.</p>
+-- @param _ParentReference [ObjectReference] <p>The parent object reference.</p>
+-- @param _LinkName [LinkName] <p>The link name with which the child object is attached to the parent.</p>
+-- @param _DirectoryArn [Arn] <p>Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
+-- @param _ChildReference [ObjectReference] <p>The child object reference to be attached to the object.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ParentReference
 -- Required parameter: ChildReference
 -- Required parameter: LinkName
-function M.AttachObjectRequest(ParentReference, LinkName, DirectoryArn, ChildReference, ...)
+function M.AttachObjectRequest(_ParentReference, _LinkName, _DirectoryArn, _ChildReference, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachObjectRequest")
 	local t = { 
-		["ParentReference"] = ParentReference,
-		["LinkName"] = LinkName,
-		["DirectoryArn"] = DirectoryArn,
-		["ChildReference"] = ChildReference,
+		["ParentReference"] = _ParentReference,
+		["LinkName"] = _LinkName,
+		["DirectoryArn"] = _DirectoryArn,
+		["ChildReference"] = _ChildReference,
 	}
-	M.AssertAttachObjectRequest(t)
+	asserts.AssertAttachObjectRequest(t)
 	return t
 end
 
-local SchemaAlreadyPublishedException_keys = { "Message" = true, nil }
+keys.SchemaAlreadyPublishedException = { ["Message"] = true, nil }
 
-function M.AssertSchemaAlreadyPublishedException(struct)
+function asserts.AssertSchemaAlreadyPublishedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SchemaAlreadyPublishedException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(SchemaAlreadyPublishedException_keys[k], "SchemaAlreadyPublishedException contains unknown key " .. tostring(k))
+		assert(keys.SchemaAlreadyPublishedException[k], "SchemaAlreadyPublishedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SchemaAlreadyPublishedException
 -- <p>Indicates that a schema is already published.</p>
--- @param Message [ExceptionMessage] <p>Indicates that a schema is already published.</p>
-function M.SchemaAlreadyPublishedException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.SchemaAlreadyPublishedException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SchemaAlreadyPublishedException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertSchemaAlreadyPublishedException(t)
+	asserts.AssertSchemaAlreadyPublishedException(t)
 	return t
 end
 
-local ApplySchemaRequest_keys = { "DirectoryArn" = true, "PublishedSchemaArn" = true, nil }
+keys.ApplySchemaRequest = { ["DirectoryArn"] = true, ["PublishedSchemaArn"] = true, nil }
 
-function M.AssertApplySchemaRequest(struct)
+function asserts.AssertApplySchemaRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ApplySchemaRequest to be of type 'table'")
 	assert(struct["PublishedSchemaArn"], "Expected key PublishedSchemaArn to exist in table")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["PublishedSchemaArn"] then M.AssertArn(struct["PublishedSchemaArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["PublishedSchemaArn"] then asserts.AssertArn(struct["PublishedSchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ApplySchemaRequest_keys[k], "ApplySchemaRequest contains unknown key " .. tostring(k))
+		assert(keys.ApplySchemaRequest[k], "ApplySchemaRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ApplySchemaRequest
 --  
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> into which the schema is copied. For more information, see <a>arns</a>.</p>
--- @param PublishedSchemaArn [Arn] <p>Published schema Amazon Resource Name (ARN) that needs to be copied. For more information, see <a>arns</a>.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> into which the schema is copied. For more information, see <a>arns</a>.</p>
+-- @param _PublishedSchemaArn [Arn] <p>Published schema Amazon Resource Name (ARN) that needs to be copied. For more information, see <a>arns</a>.</p>
 -- Required parameter: PublishedSchemaArn
 -- Required parameter: DirectoryArn
-function M.ApplySchemaRequest(DirectoryArn, PublishedSchemaArn, ...)
+function M.ApplySchemaRequest(_DirectoryArn, _PublishedSchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplySchemaRequest")
 	local t = { 
-		["DirectoryArn"] = DirectoryArn,
-		["PublishedSchemaArn"] = PublishedSchemaArn,
+		["DirectoryArn"] = _DirectoryArn,
+		["PublishedSchemaArn"] = _PublishedSchemaArn,
 	}
-	M.AssertApplySchemaRequest(t)
+	asserts.AssertApplySchemaRequest(t)
 	return t
 end
 
-local TypedAttributeValueRange_keys = { "EndMode" = true, "StartMode" = true, "StartValue" = true, "EndValue" = true, nil }
+keys.TypedAttributeValueRange = { ["EndMode"] = true, ["StartMode"] = true, ["StartValue"] = true, ["EndValue"] = true, nil }
 
-function M.AssertTypedAttributeValueRange(struct)
+function asserts.AssertTypedAttributeValueRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TypedAttributeValueRange to be of type 'table'")
 	assert(struct["StartMode"], "Expected key StartMode to exist in table")
 	assert(struct["EndMode"], "Expected key EndMode to exist in table")
-	if struct["EndMode"] then M.AssertRangeMode(struct["EndMode"]) end
-	if struct["StartMode"] then M.AssertRangeMode(struct["StartMode"]) end
-	if struct["StartValue"] then M.AssertTypedAttributeValue(struct["StartValue"]) end
-	if struct["EndValue"] then M.AssertTypedAttributeValue(struct["EndValue"]) end
+	if struct["EndMode"] then asserts.AssertRangeMode(struct["EndMode"]) end
+	if struct["StartMode"] then asserts.AssertRangeMode(struct["StartMode"]) end
+	if struct["StartValue"] then asserts.AssertTypedAttributeValue(struct["StartValue"]) end
+	if struct["EndValue"] then asserts.AssertTypedAttributeValue(struct["EndValue"]) end
 	for k,_ in pairs(struct) do
-		assert(TypedAttributeValueRange_keys[k], "TypedAttributeValueRange contains unknown key " .. tostring(k))
+		assert(keys.TypedAttributeValueRange[k], "TypedAttributeValueRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TypedAttributeValueRange
 -- <p>A range of attribute values.</p>
--- @param EndMode [RangeMode] <p>The inclusive or exclusive range end.</p>
--- @param StartMode [RangeMode] <p>The inclusive or exclusive range start.</p>
--- @param StartValue [TypedAttributeValue] <p>The value to start the range at.</p>
--- @param EndValue [TypedAttributeValue] <p>The attribute value to terminate the range at.</p>
+-- @param _EndMode [RangeMode] <p>The inclusive or exclusive range end.</p>
+-- @param _StartMode [RangeMode] <p>The inclusive or exclusive range start.</p>
+-- @param _StartValue [TypedAttributeValue] <p>The value to start the range at.</p>
+-- @param _EndValue [TypedAttributeValue] <p>The attribute value to terminate the range at.</p>
 -- Required parameter: StartMode
 -- Required parameter: EndMode
-function M.TypedAttributeValueRange(EndMode, StartMode, StartValue, EndValue, ...)
+function M.TypedAttributeValueRange(_EndMode, _StartMode, _StartValue, _EndValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TypedAttributeValueRange")
 	local t = { 
-		["EndMode"] = EndMode,
-		["StartMode"] = StartMode,
-		["StartValue"] = StartValue,
-		["EndValue"] = EndValue,
+		["EndMode"] = _EndMode,
+		["StartMode"] = _StartMode,
+		["StartValue"] = _StartValue,
+		["EndValue"] = _EndValue,
 	}
-	M.AssertTypedAttributeValueRange(t)
+	asserts.AssertTypedAttributeValueRange(t)
 	return t
 end
 
-local InvalidFacetUpdateException_keys = { "Message" = true, nil }
+keys.InvalidFacetUpdateException = { ["Message"] = true, nil }
 
-function M.AssertInvalidFacetUpdateException(struct)
+function asserts.AssertInvalidFacetUpdateException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidFacetUpdateException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidFacetUpdateException_keys[k], "InvalidFacetUpdateException contains unknown key " .. tostring(k))
+		assert(keys.InvalidFacetUpdateException[k], "InvalidFacetUpdateException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidFacetUpdateException
 -- <p>An attempt to modify a <a>Facet</a> resulted in an invalid schema exception.</p>
--- @param Message [ExceptionMessage] <p>An attempt to modify a <a>Facet</a> resulted in an invalid schema exception.</p>
-function M.InvalidFacetUpdateException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InvalidFacetUpdateException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFacetUpdateException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidFacetUpdateException(t)
+	asserts.AssertInvalidFacetUpdateException(t)
 	return t
 end
 
-local ListObjectChildrenResponse_keys = { "NextToken" = true, "Children" = true, nil }
+keys.ListObjectChildrenResponse = { ["NextToken"] = true, ["Children"] = true, nil }
 
-function M.AssertListObjectChildrenResponse(struct)
+function asserts.AssertListObjectChildrenResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectChildrenResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["Children"] then M.AssertLinkNameToObjectIdentifierMap(struct["Children"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Children"] then asserts.AssertLinkNameToObjectIdentifierMap(struct["Children"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectChildrenResponse_keys[k], "ListObjectChildrenResponse contains unknown key " .. tostring(k))
+		assert(keys.ListObjectChildrenResponse[k], "ListObjectChildrenResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectChildrenResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param Children [LinkNameToObjectIdentifierMap] <p>Children structure, which is a map with key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
-function M.ListObjectChildrenResponse(NextToken, Children, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _Children [LinkNameToObjectIdentifierMap] <p>Children structure, which is a map with key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
+function M.ListObjectChildrenResponse(_NextToken, _Children, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectChildrenResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Children"] = Children,
+		["NextToken"] = _NextToken,
+		["Children"] = _Children,
 	}
-	M.AssertListObjectChildrenResponse(t)
+	asserts.AssertListObjectChildrenResponse(t)
 	return t
 end
 
-local ListPolicyAttachmentsResponse_keys = { "NextToken" = true, "ObjectIdentifiers" = true, nil }
+keys.ListPolicyAttachmentsResponse = { ["NextToken"] = true, ["ObjectIdentifiers"] = true, nil }
 
-function M.AssertListPolicyAttachmentsResponse(struct)
+function asserts.AssertListPolicyAttachmentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPolicyAttachmentsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["ObjectIdentifiers"] then M.AssertObjectIdentifierList(struct["ObjectIdentifiers"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["ObjectIdentifiers"] then asserts.AssertObjectIdentifierList(struct["ObjectIdentifiers"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPolicyAttachmentsResponse_keys[k], "ListPolicyAttachmentsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListPolicyAttachmentsResponse[k], "ListPolicyAttachmentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPolicyAttachmentsResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param ObjectIdentifiers [ObjectIdentifierList] <p>A list of <code>ObjectIdentifiers</code> to which the policy is attached.</p>
-function M.ListPolicyAttachmentsResponse(NextToken, ObjectIdentifiers, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _ObjectIdentifiers [ObjectIdentifierList] <p>A list of <code>ObjectIdentifiers</code> to which the policy is attached.</p>
+function M.ListPolicyAttachmentsResponse(_NextToken, _ObjectIdentifiers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyAttachmentsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["ObjectIdentifiers"] = ObjectIdentifiers,
+		["NextToken"] = _NextToken,
+		["ObjectIdentifiers"] = _ObjectIdentifiers,
 	}
-	M.AssertListPolicyAttachmentsResponse(t)
+	asserts.AssertListPolicyAttachmentsResponse(t)
 	return t
 end
 
-local AttachPolicyRequest_keys = { "PolicyReference" = true, "ObjectReference" = true, "DirectoryArn" = true, nil }
+keys.AttachPolicyRequest = { ["PolicyReference"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertAttachPolicyRequest(struct)
+function asserts.AssertAttachPolicyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachPolicyRequest to be of type 'table'")
 	assert(struct["PolicyReference"], "Expected key PolicyReference to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["PolicyReference"] then M.AssertObjectReference(struct["PolicyReference"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["PolicyReference"] then asserts.AssertObjectReference(struct["PolicyReference"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachPolicyRequest_keys[k], "AttachPolicyRequest contains unknown key " .. tostring(k))
+		assert(keys.AttachPolicyRequest[k], "AttachPolicyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachPolicyRequest
 --  
--- @param PolicyReference [ObjectReference] <p>The reference that is associated with the policy object.</p>
--- @param ObjectReference [ObjectReference] <p>The reference that identifies the object to which the policy will be attached.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
+-- @param _PolicyReference [ObjectReference] <p>The reference that is associated with the policy object.</p>
+-- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object to which the policy will be attached.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
 -- Required parameter: PolicyReference
 -- Required parameter: ObjectReference
-function M.AttachPolicyRequest(PolicyReference, ObjectReference, DirectoryArn, ...)
+function M.AttachPolicyRequest(_PolicyReference, _ObjectReference, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachPolicyRequest")
 	local t = { 
-		["PolicyReference"] = PolicyReference,
-		["ObjectReference"] = ObjectReference,
-		["DirectoryArn"] = DirectoryArn,
+		["PolicyReference"] = _PolicyReference,
+		["ObjectReference"] = _ObjectReference,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertAttachPolicyRequest(t)
+	asserts.AssertAttachPolicyRequest(t)
 	return t
 end
 
-local EnableDirectoryResponse_keys = { "DirectoryArn" = true, nil }
+keys.EnableDirectoryResponse = { ["DirectoryArn"] = true, nil }
 
-function M.AssertEnableDirectoryResponse(struct)
+function asserts.AssertEnableDirectoryResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnableDirectoryResponse to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(EnableDirectoryResponse_keys[k], "EnableDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.EnableDirectoryResponse[k], "EnableDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnableDirectoryResponse
 --  
--- @param DirectoryArn [Arn] <p>The ARN of the enabled directory.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the enabled directory.</p>
 -- Required parameter: DirectoryArn
-function M.EnableDirectoryResponse(DirectoryArn, ...)
+function M.EnableDirectoryResponse(_DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableDirectoryResponse")
 	local t = { 
-		["DirectoryArn"] = DirectoryArn,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertEnableDirectoryResponse(t)
+	asserts.AssertEnableDirectoryResponse(t)
 	return t
 end
 
-local ListDevelopmentSchemaArnsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListDevelopmentSchemaArnsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListDevelopmentSchemaArnsRequest(struct)
+function asserts.AssertListDevelopmentSchemaArnsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDevelopmentSchemaArnsRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDevelopmentSchemaArnsRequest_keys[k], "ListDevelopmentSchemaArnsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDevelopmentSchemaArnsRequest[k], "ListDevelopmentSchemaArnsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDevelopmentSchemaArnsRequest
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
-function M.ListDevelopmentSchemaArnsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+function M.ListDevelopmentSchemaArnsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDevelopmentSchemaArnsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListDevelopmentSchemaArnsRequest(t)
+	asserts.AssertListDevelopmentSchemaArnsRequest(t)
 	return t
 end
 
-local ObjectNotDetachedException_keys = { "Message" = true, nil }
+keys.ObjectNotDetachedException = { ["Message"] = true, nil }
 
-function M.AssertObjectNotDetachedException(struct)
+function asserts.AssertObjectNotDetachedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ObjectNotDetachedException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ObjectNotDetachedException_keys[k], "ObjectNotDetachedException contains unknown key " .. tostring(k))
+		assert(keys.ObjectNotDetachedException[k], "ObjectNotDetachedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ObjectNotDetachedException
 -- <p>Indicates that the requested operation cannot be completed because the object has not been detached from the tree.</p>
--- @param Message [ExceptionMessage] <p>Indicates that the requested operation cannot be completed because the object has not been detached from the tree.</p>
-function M.ObjectNotDetachedException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.ObjectNotDetachedException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ObjectNotDetachedException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertObjectNotDetachedException(t)
+	asserts.AssertObjectNotDetachedException(t)
 	return t
 end
 
-local StillContainsLinksException_keys = { "Message" = true, nil }
+keys.StillContainsLinksException = { ["Message"] = true, nil }
 
-function M.AssertStillContainsLinksException(struct)
+function asserts.AssertStillContainsLinksException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StillContainsLinksException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(StillContainsLinksException_keys[k], "StillContainsLinksException contains unknown key " .. tostring(k))
+		assert(keys.StillContainsLinksException[k], "StillContainsLinksException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StillContainsLinksException
 -- <p>The object could not be deleted because links still exist. Remove the links and then try the operation again.</p>
--- @param Message [ExceptionMessage] <p>The object could not be deleted because links still exist. Remove the links and then try the operation again.</p>
-function M.StillContainsLinksException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.StillContainsLinksException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StillContainsLinksException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertStillContainsLinksException(t)
+	asserts.AssertStillContainsLinksException(t)
 	return t
 end
 
-local BatchWriteRequest_keys = { "Operations" = true, "DirectoryArn" = true, nil }
+keys.BatchWriteRequest = { ["Operations"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertBatchWriteRequest(struct)
+function asserts.AssertBatchWriteRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchWriteRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["Operations"], "Expected key Operations to exist in table")
-	if struct["Operations"] then M.AssertBatchWriteOperationList(struct["Operations"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["Operations"] then asserts.AssertBatchWriteOperationList(struct["Operations"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchWriteRequest_keys[k], "BatchWriteRequest contains unknown key " .. tostring(k))
+		assert(keys.BatchWriteRequest[k], "BatchWriteRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchWriteRequest
 --  
--- @param Operations [BatchWriteOperationList] <p>A list of operations that are part of the batch.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- @param _Operations [BatchWriteOperationList] <p>A list of operations that are part of the batch.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: Operations
-function M.BatchWriteRequest(Operations, DirectoryArn, ...)
+function M.BatchWriteRequest(_Operations, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteRequest")
 	local t = { 
-		["Operations"] = Operations,
-		["DirectoryArn"] = DirectoryArn,
+		["Operations"] = _Operations,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertBatchWriteRequest(t)
+	asserts.AssertBatchWriteRequest(t)
 	return t
 end
 
-local PolicyAttachment_keys = { "PolicyType" = true, "ObjectIdentifier" = true, "PolicyId" = true, nil }
+keys.PolicyAttachment = { ["PolicyType"] = true, ["ObjectIdentifier"] = true, ["PolicyId"] = true, nil }
 
-function M.AssertPolicyAttachment(struct)
+function asserts.AssertPolicyAttachment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PolicyAttachment to be of type 'table'")
-	if struct["PolicyType"] then M.AssertPolicyType(struct["PolicyType"]) end
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
-	if struct["PolicyId"] then M.AssertObjectIdentifier(struct["PolicyId"]) end
+	if struct["PolicyType"] then asserts.AssertPolicyType(struct["PolicyType"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["PolicyId"] then asserts.AssertObjectIdentifier(struct["PolicyId"]) end
 	for k,_ in pairs(struct) do
-		assert(PolicyAttachment_keys[k], "PolicyAttachment contains unknown key " .. tostring(k))
+		assert(keys.PolicyAttachment[k], "PolicyAttachment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PolicyAttachment
 -- <p>Contains the <code>PolicyType</code>, <code>PolicyId</code>, and the <code>ObjectIdentifier</code> to which it is attached. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
--- @param PolicyType [PolicyType] <p>The type of policy that can be associated with <code>PolicyAttachment</code>.</p>
--- @param ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that is associated with <code>PolicyAttachment</code>.</p>
--- @param PolicyId [ObjectIdentifier] <p>The ID of <code>PolicyAttachment</code>.</p>
-function M.PolicyAttachment(PolicyType, ObjectIdentifier, PolicyId, ...)
+-- @param _PolicyType [PolicyType] <p>The type of policy that can be associated with <code>PolicyAttachment</code>.</p>
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that is associated with <code>PolicyAttachment</code>.</p>
+-- @param _PolicyId [ObjectIdentifier] <p>The ID of <code>PolicyAttachment</code>.</p>
+function M.PolicyAttachment(_PolicyType, _ObjectIdentifier, _PolicyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyAttachment")
 	local t = { 
-		["PolicyType"] = PolicyType,
-		["ObjectIdentifier"] = ObjectIdentifier,
-		["PolicyId"] = PolicyId,
+		["PolicyType"] = _PolicyType,
+		["ObjectIdentifier"] = _ObjectIdentifier,
+		["PolicyId"] = _PolicyId,
 	}
-	M.AssertPolicyAttachment(t)
+	asserts.AssertPolicyAttachment(t)
 	return t
 end
 
-local AttachToIndexResponse_keys = { "AttachedObjectIdentifier" = true, nil }
+keys.AttachToIndexResponse = { ["AttachedObjectIdentifier"] = true, nil }
 
-function M.AssertAttachToIndexResponse(struct)
+function asserts.AssertAttachToIndexResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachToIndexResponse to be of type 'table'")
-	if struct["AttachedObjectIdentifier"] then M.AssertObjectIdentifier(struct["AttachedObjectIdentifier"]) end
+	if struct["AttachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["AttachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachToIndexResponse_keys[k], "AttachToIndexResponse contains unknown key " .. tostring(k))
+		assert(keys.AttachToIndexResponse[k], "AttachToIndexResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachToIndexResponse
 --  
--- @param AttachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was attached to the index.</p>
-function M.AttachToIndexResponse(AttachedObjectIdentifier, ...)
+-- @param _AttachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was attached to the index.</p>
+function M.AttachToIndexResponse(_AttachedObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachToIndexResponse")
 	local t = { 
-		["AttachedObjectIdentifier"] = AttachedObjectIdentifier,
+		["AttachedObjectIdentifier"] = _AttachedObjectIdentifier,
 	}
-	M.AssertAttachToIndexResponse(t)
+	asserts.AssertAttachToIndexResponse(t)
 	return t
 end
 
-local FacetNotFoundException_keys = { "Message" = true, nil }
+keys.FacetNotFoundException = { ["Message"] = true, nil }
 
-function M.AssertFacetNotFoundException(struct)
+function asserts.AssertFacetNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FacetNotFoundException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(FacetNotFoundException_keys[k], "FacetNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.FacetNotFoundException[k], "FacetNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FacetNotFoundException
 -- <p>The specified <a>Facet</a> could not be found.</p>
--- @param Message [ExceptionMessage] <p>The specified <a>Facet</a> could not be found.</p>
-function M.FacetNotFoundException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.FacetNotFoundException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FacetNotFoundException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertFacetNotFoundException(t)
+	asserts.AssertFacetNotFoundException(t)
 	return t
 end
 
-local UpdateObjectAttributesResponse_keys = { "ObjectIdentifier" = true, nil }
+keys.UpdateObjectAttributesResponse = { ["ObjectIdentifier"] = true, nil }
 
-function M.AssertUpdateObjectAttributesResponse(struct)
+function asserts.AssertUpdateObjectAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateObjectAttributesResponse to be of type 'table'")
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateObjectAttributesResponse_keys[k], "UpdateObjectAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateObjectAttributesResponse[k], "UpdateObjectAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateObjectAttributesResponse
 --  
--- @param ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the updated object.</p>
-function M.UpdateObjectAttributesResponse(ObjectIdentifier, ...)
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the updated object.</p>
+function M.UpdateObjectAttributesResponse(_ObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateObjectAttributesResponse")
 	local t = { 
-		["ObjectIdentifier"] = ObjectIdentifier,
+		["ObjectIdentifier"] = _ObjectIdentifier,
 	}
-	M.AssertUpdateObjectAttributesResponse(t)
+	asserts.AssertUpdateObjectAttributesResponse(t)
 	return t
 end
 
-local AttachTypedLinkRequest_keys = { "SourceObjectReference" = true, "Attributes" = true, "TargetObjectReference" = true, "DirectoryArn" = true, "TypedLinkFacet" = true, nil }
+keys.AttachTypedLinkRequest = { ["SourceObjectReference"] = true, ["Attributes"] = true, ["TargetObjectReference"] = true, ["DirectoryArn"] = true, ["TypedLinkFacet"] = true, nil }
 
-function M.AssertAttachTypedLinkRequest(struct)
+function asserts.AssertAttachTypedLinkRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachTypedLinkRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
@@ -634,97 +637,97 @@ function M.AssertAttachTypedLinkRequest(struct)
 	assert(struct["TargetObjectReference"], "Expected key TargetObjectReference to exist in table")
 	assert(struct["TypedLinkFacet"], "Expected key TypedLinkFacet to exist in table")
 	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["SourceObjectReference"] then M.AssertObjectReference(struct["SourceObjectReference"]) end
-	if struct["Attributes"] then M.AssertAttributeNameAndValueList(struct["Attributes"]) end
-	if struct["TargetObjectReference"] then M.AssertObjectReference(struct["TargetObjectReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["TypedLinkFacet"] then M.AssertTypedLinkSchemaAndFacetName(struct["TypedLinkFacet"]) end
+	if struct["SourceObjectReference"] then asserts.AssertObjectReference(struct["SourceObjectReference"]) end
+	if struct["Attributes"] then asserts.AssertAttributeNameAndValueList(struct["Attributes"]) end
+	if struct["TargetObjectReference"] then asserts.AssertObjectReference(struct["TargetObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["TypedLinkFacet"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["TypedLinkFacet"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachTypedLinkRequest_keys[k], "AttachTypedLinkRequest contains unknown key " .. tostring(k))
+		assert(keys.AttachTypedLinkRequest[k], "AttachTypedLinkRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachTypedLinkRequest
 --  
--- @param SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
--- @param Attributes [AttributeNameAndValueList] <p>A set of attributes that are associated with the typed link.</p>
--- @param TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.</p>
--- @param TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
+-- @param _SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
+-- @param _Attributes [AttributeNameAndValueList] <p>A set of attributes that are associated with the typed link.</p>
+-- @param _TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.</p>
+-- @param _TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: SourceObjectReference
 -- Required parameter: TargetObjectReference
 -- Required parameter: TypedLinkFacet
 -- Required parameter: Attributes
-function M.AttachTypedLinkRequest(SourceObjectReference, Attributes, TargetObjectReference, DirectoryArn, TypedLinkFacet, ...)
+function M.AttachTypedLinkRequest(_SourceObjectReference, _Attributes, _TargetObjectReference, _DirectoryArn, _TypedLinkFacet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachTypedLinkRequest")
 	local t = { 
-		["SourceObjectReference"] = SourceObjectReference,
-		["Attributes"] = Attributes,
-		["TargetObjectReference"] = TargetObjectReference,
-		["DirectoryArn"] = DirectoryArn,
-		["TypedLinkFacet"] = TypedLinkFacet,
+		["SourceObjectReference"] = _SourceObjectReference,
+		["Attributes"] = _Attributes,
+		["TargetObjectReference"] = _TargetObjectReference,
+		["DirectoryArn"] = _DirectoryArn,
+		["TypedLinkFacet"] = _TypedLinkFacet,
 	}
-	M.AssertAttachTypedLinkRequest(t)
+	asserts.AssertAttachTypedLinkRequest(t)
 	return t
 end
 
-local UnsupportedIndexTypeException_keys = { "Message" = true, nil }
+keys.UnsupportedIndexTypeException = { ["Message"] = true, nil }
 
-function M.AssertUnsupportedIndexTypeException(struct)
+function asserts.AssertUnsupportedIndexTypeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedIndexTypeException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedIndexTypeException_keys[k], "UnsupportedIndexTypeException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedIndexTypeException[k], "UnsupportedIndexTypeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedIndexTypeException
 -- <p>Indicates that the requested index type is not supported.</p>
--- @param Message [ExceptionMessage] <p>Indicates that the requested index type is not supported.</p>
-function M.UnsupportedIndexTypeException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.UnsupportedIndexTypeException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedIndexTypeException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertUnsupportedIndexTypeException(t)
+	asserts.AssertUnsupportedIndexTypeException(t)
 	return t
 end
 
-local BatchReadOperationResponse_keys = { "SuccessfulResponse" = true, "ExceptionResponse" = true, nil }
+keys.BatchReadOperationResponse = { ["SuccessfulResponse"] = true, ["ExceptionResponse"] = true, nil }
 
-function M.AssertBatchReadOperationResponse(struct)
+function asserts.AssertBatchReadOperationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchReadOperationResponse to be of type 'table'")
-	if struct["SuccessfulResponse"] then M.AssertBatchReadSuccessfulResponse(struct["SuccessfulResponse"]) end
-	if struct["ExceptionResponse"] then M.AssertBatchReadException(struct["ExceptionResponse"]) end
+	if struct["SuccessfulResponse"] then asserts.AssertBatchReadSuccessfulResponse(struct["SuccessfulResponse"]) end
+	if struct["ExceptionResponse"] then asserts.AssertBatchReadException(struct["ExceptionResponse"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchReadOperationResponse_keys[k], "BatchReadOperationResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchReadOperationResponse[k], "BatchReadOperationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchReadOperationResponse
 -- <p>Represents the output of a <code>BatchRead</code> response operation.</p>
--- @param SuccessfulResponse [BatchReadSuccessfulResponse] <p>Identifies which operation in a batch has succeeded.</p>
--- @param ExceptionResponse [BatchReadException] <p>Identifies which operation in a batch has failed.</p>
-function M.BatchReadOperationResponse(SuccessfulResponse, ExceptionResponse, ...)
+-- @param _SuccessfulResponse [BatchReadSuccessfulResponse] <p>Identifies which operation in a batch has succeeded.</p>
+-- @param _ExceptionResponse [BatchReadException] <p>Identifies which operation in a batch has failed.</p>
+function M.BatchReadOperationResponse(_SuccessfulResponse, _ExceptionResponse, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadOperationResponse")
 	local t = { 
-		["SuccessfulResponse"] = SuccessfulResponse,
-		["ExceptionResponse"] = ExceptionResponse,
+		["SuccessfulResponse"] = _SuccessfulResponse,
+		["ExceptionResponse"] = _ExceptionResponse,
 	}
-	M.AssertBatchReadOperationResponse(t)
+	asserts.AssertBatchReadOperationResponse(t)
 	return t
 end
 
-local AddFacetToObjectResponse_keys = { nil }
+keys.AddFacetToObjectResponse = { nil }
 
-function M.AssertAddFacetToObjectResponse(struct)
+function asserts.AssertAddFacetToObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddFacetToObjectResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AddFacetToObjectResponse_keys[k], "AddFacetToObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.AddFacetToObjectResponse[k], "AddFacetToObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -734,48 +737,48 @@ function M.AddFacetToObjectResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddFacetToObjectResponse")
 	local t = { 
 	}
-	M.AssertAddFacetToObjectResponse(t)
+	asserts.AssertAddFacetToObjectResponse(t)
 	return t
 end
 
-local ListFacetNamesRequest_keys = { "SchemaArn" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.ListFacetNamesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListFacetNamesRequest(struct)
+function asserts.AssertListFacetNamesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFacetNamesRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFacetNamesRequest_keys[k], "ListFacetNamesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListFacetNamesRequest[k], "ListFacetNamesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFacetNamesRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) to retrieve facet names from.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) to retrieve facet names from.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- Required parameter: SchemaArn
-function M.ListFacetNamesRequest(SchemaArn, NextToken, MaxResults, ...)
+function M.ListFacetNamesRequest(_SchemaArn, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFacetNamesRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["SchemaArn"] = _SchemaArn,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListFacetNamesRequest(t)
+	asserts.AssertListFacetNamesRequest(t)
 	return t
 end
 
-local DeleteFacetResponse_keys = { nil }
+keys.DeleteFacetResponse = { nil }
 
-function M.AssertDeleteFacetResponse(struct)
+function asserts.AssertDeleteFacetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFacetResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteFacetResponse_keys[k], "DeleteFacetResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteFacetResponse[k], "DeleteFacetResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -785,129 +788,129 @@ function M.DeleteFacetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFacetResponse")
 	local t = { 
 	}
-	M.AssertDeleteFacetResponse(t)
+	asserts.AssertDeleteFacetResponse(t)
 	return t
 end
 
-local InvalidArnException_keys = { "Message" = true, nil }
+keys.InvalidArnException = { ["Message"] = true, nil }
 
-function M.AssertInvalidArnException(struct)
+function asserts.AssertInvalidArnException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidArnException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidArnException_keys[k], "InvalidArnException contains unknown key " .. tostring(k))
+		assert(keys.InvalidArnException[k], "InvalidArnException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidArnException
 -- <p>Indicates that the provided ARN value is not valid.</p>
--- @param Message [ExceptionMessage] <p>Indicates that the provided ARN value is not valid.</p>
-function M.InvalidArnException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InvalidArnException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArnException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidArnException(t)
+	asserts.AssertInvalidArnException(t)
 	return t
 end
 
-local AttributeKey_keys = { "SchemaArn" = true, "FacetName" = true, "Name" = true, nil }
+keys.AttributeKey = { ["SchemaArn"] = true, ["FacetName"] = true, ["Name"] = true, nil }
 
-function M.AssertAttributeKey(struct)
+function asserts.AssertAttributeKey(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttributeKey to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["FacetName"], "Expected key FacetName to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["FacetName"] then M.AssertFacetName(struct["FacetName"]) end
-	if struct["Name"] then M.AssertAttributeName(struct["Name"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["FacetName"] then asserts.AssertFacetName(struct["FacetName"]) end
+	if struct["Name"] then asserts.AssertAttributeName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(AttributeKey_keys[k], "AttributeKey contains unknown key " .. tostring(k))
+		assert(keys.AttributeKey[k], "AttributeKey contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttributeKey
 -- <p>A unique identifier for an attribute.</p>
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.</p>
--- @param FacetName [FacetName] <p>The name of the facet that the attribute exists within.</p>
--- @param Name [AttributeName] <p>The name of the attribute.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.</p>
+-- @param _FacetName [FacetName] <p>The name of the facet that the attribute exists within.</p>
+-- @param _Name [AttributeName] <p>The name of the attribute.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: FacetName
 -- Required parameter: Name
-function M.AttributeKey(SchemaArn, FacetName, Name, ...)
+function M.AttributeKey(_SchemaArn, _FacetName, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttributeKey")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["FacetName"] = FacetName,
-		["Name"] = Name,
+		["SchemaArn"] = _SchemaArn,
+		["FacetName"] = _FacetName,
+		["Name"] = _Name,
 	}
-	M.AssertAttributeKey(t)
+	asserts.AssertAttributeKey(t)
 	return t
 end
 
-local ListAppliedSchemaArnsRequest_keys = { "NextToken" = true, "MaxResults" = true, "DirectoryArn" = true, nil }
+keys.ListAppliedSchemaArnsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertListAppliedSchemaArnsRequest(struct)
+function asserts.AssertListAppliedSchemaArnsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAppliedSchemaArnsRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAppliedSchemaArnsRequest_keys[k], "ListAppliedSchemaArnsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAppliedSchemaArnsRequest[k], "ListAppliedSchemaArnsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAppliedSchemaArnsRequest
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @param DirectoryArn [Arn] <p>The ARN of the directory you are listing.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory you are listing.</p>
 -- Required parameter: DirectoryArn
-function M.ListAppliedSchemaArnsRequest(NextToken, MaxResults, DirectoryArn, ...)
+function M.ListAppliedSchemaArnsRequest(_NextToken, _MaxResults, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAppliedSchemaArnsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["DirectoryArn"] = DirectoryArn,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertListAppliedSchemaArnsRequest(t)
+	asserts.AssertListAppliedSchemaArnsRequest(t)
 	return t
 end
 
-local BatchCreateObjectResponse_keys = { "ObjectIdentifier" = true, nil }
+keys.BatchCreateObjectResponse = { ["ObjectIdentifier"] = true, nil }
 
-function M.AssertBatchCreateObjectResponse(struct)
+function asserts.AssertBatchCreateObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchCreateObjectResponse to be of type 'table'")
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchCreateObjectResponse_keys[k], "BatchCreateObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchCreateObjectResponse[k], "BatchCreateObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchCreateObjectResponse
 -- <p>Represents the output of a <code>CreateObject</code> response operation.</p>
--- @param ObjectIdentifier [ObjectIdentifier] <p>The ID that is associated with the object.</p>
-function M.BatchCreateObjectResponse(ObjectIdentifier, ...)
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>The ID that is associated with the object.</p>
+function M.BatchCreateObjectResponse(_ObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchCreateObjectResponse")
 	local t = { 
-		["ObjectIdentifier"] = ObjectIdentifier,
+		["ObjectIdentifier"] = _ObjectIdentifier,
 	}
-	M.AssertBatchCreateObjectResponse(t)
+	asserts.AssertBatchCreateObjectResponse(t)
 	return t
 end
 
-local UpdateFacetResponse_keys = { nil }
+keys.UpdateFacetResponse = { nil }
 
-function M.AssertUpdateFacetResponse(struct)
+function asserts.AssertUpdateFacetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFacetResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateFacetResponse_keys[k], "UpdateFacetResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateFacetResponse[k], "UpdateFacetResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -917,940 +920,940 @@ function M.UpdateFacetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFacetResponse")
 	local t = { 
 	}
-	M.AssertUpdateFacetResponse(t)
+	asserts.AssertUpdateFacetResponse(t)
 	return t
 end
 
-local FacetInUseException_keys = { "Message" = true, nil }
+keys.FacetInUseException = { ["Message"] = true, nil }
 
-function M.AssertFacetInUseException(struct)
+function asserts.AssertFacetInUseException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FacetInUseException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(FacetInUseException_keys[k], "FacetInUseException contains unknown key " .. tostring(k))
+		assert(keys.FacetInUseException[k], "FacetInUseException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FacetInUseException
 -- <p>Occurs when deleting a facet that contains an attribute that is a target to an attribute reference in a different facet.</p>
--- @param Message [ExceptionMessage] <p>Occurs when deleting a facet that contains an attribute that is a target to an attribute reference in a different facet.</p>
-function M.FacetInUseException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.FacetInUseException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FacetInUseException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertFacetInUseException(t)
+	asserts.AssertFacetInUseException(t)
 	return t
 end
 
-local PathToObjectIdentifiers_keys = { "Path" = true, "ObjectIdentifiers" = true, nil }
+keys.PathToObjectIdentifiers = { ["Path"] = true, ["ObjectIdentifiers"] = true, nil }
 
-function M.AssertPathToObjectIdentifiers(struct)
+function asserts.AssertPathToObjectIdentifiers(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PathToObjectIdentifiers to be of type 'table'")
-	if struct["Path"] then M.AssertPathString(struct["Path"]) end
-	if struct["ObjectIdentifiers"] then M.AssertObjectIdentifierList(struct["ObjectIdentifiers"]) end
+	if struct["Path"] then asserts.AssertPathString(struct["Path"]) end
+	if struct["ObjectIdentifiers"] then asserts.AssertObjectIdentifierList(struct["ObjectIdentifiers"]) end
 	for k,_ in pairs(struct) do
-		assert(PathToObjectIdentifiers_keys[k], "PathToObjectIdentifiers contains unknown key " .. tostring(k))
+		assert(keys.PathToObjectIdentifiers[k], "PathToObjectIdentifiers contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PathToObjectIdentifiers
 -- <p>Returns the path to the <code>ObjectIdentifiers</code> that is associated with the directory.</p>
--- @param Path [PathString] <p>The path that is used to identify the object starting from directory root.</p>
--- @param ObjectIdentifiers [ObjectIdentifierList] <p>Lists <code>ObjectIdentifiers</code> starting from directory root to the object in the request.</p>
-function M.PathToObjectIdentifiers(Path, ObjectIdentifiers, ...)
+-- @param _Path [PathString] <p>The path that is used to identify the object starting from directory root.</p>
+-- @param _ObjectIdentifiers [ObjectIdentifierList] <p>Lists <code>ObjectIdentifiers</code> starting from directory root to the object in the request.</p>
+function M.PathToObjectIdentifiers(_Path, _ObjectIdentifiers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PathToObjectIdentifiers")
 	local t = { 
-		["Path"] = Path,
-		["ObjectIdentifiers"] = ObjectIdentifiers,
+		["Path"] = _Path,
+		["ObjectIdentifiers"] = _ObjectIdentifiers,
 	}
-	M.AssertPathToObjectIdentifiers(t)
+	asserts.AssertPathToObjectIdentifiers(t)
 	return t
 end
 
-local BatchReadRequest_keys = { "Operations" = true, "ConsistencyLevel" = true, "DirectoryArn" = true, nil }
+keys.BatchReadRequest = { ["Operations"] = true, ["ConsistencyLevel"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertBatchReadRequest(struct)
+function asserts.AssertBatchReadRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchReadRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["Operations"], "Expected key Operations to exist in table")
-	if struct["Operations"] then M.AssertBatchReadOperationList(struct["Operations"]) end
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["Operations"] then asserts.AssertBatchReadOperationList(struct["Operations"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchReadRequest_keys[k], "BatchReadRequest contains unknown key " .. tostring(k))
+		assert(keys.BatchReadRequest[k], "BatchReadRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchReadRequest
 --  
--- @param Operations [BatchReadOperationList] <p>A list of operations that are part of the batch.</p>
--- @param ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- @param _Operations [BatchReadOperationList] <p>A list of operations that are part of the batch.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: Operations
-function M.BatchReadRequest(Operations, ConsistencyLevel, DirectoryArn, ...)
+function M.BatchReadRequest(_Operations, _ConsistencyLevel, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadRequest")
 	local t = { 
-		["Operations"] = Operations,
-		["ConsistencyLevel"] = ConsistencyLevel,
-		["DirectoryArn"] = DirectoryArn,
+		["Operations"] = _Operations,
+		["ConsistencyLevel"] = _ConsistencyLevel,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertBatchReadRequest(t)
+	asserts.AssertBatchReadRequest(t)
 	return t
 end
 
-local FacetValidationException_keys = { "Message" = true, nil }
+keys.FacetValidationException = { ["Message"] = true, nil }
 
-function M.AssertFacetValidationException(struct)
+function asserts.AssertFacetValidationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FacetValidationException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(FacetValidationException_keys[k], "FacetValidationException contains unknown key " .. tostring(k))
+		assert(keys.FacetValidationException[k], "FacetValidationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FacetValidationException
 -- <p>The <a>Facet</a> that you provided was not well formed or could not be validated with the schema.</p>
--- @param Message [ExceptionMessage] <p>The <a>Facet</a> that you provided was not well formed or could not be validated with the schema.</p>
-function M.FacetValidationException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.FacetValidationException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FacetValidationException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertFacetValidationException(t)
+	asserts.AssertFacetValidationException(t)
 	return t
 end
 
-local ListObjectChildrenRequest_keys = { "ConsistencyLevel" = true, "ObjectReference" = true, "NextToken" = true, "MaxResults" = true, "DirectoryArn" = true, nil }
+keys.ListObjectChildrenRequest = { ["ConsistencyLevel"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertListObjectChildrenRequest(struct)
+function asserts.AssertListObjectChildrenRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectChildrenRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectChildrenRequest_keys[k], "ListObjectChildrenRequest contains unknown key " .. tostring(k))
+		assert(keys.ListObjectChildrenRequest[k], "ListObjectChildrenRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectChildrenRequest
 --  
--- @param ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param ObjectReference [ObjectReference] <p>The reference that identifies the object for which child objects are being listed.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object for which child objects are being listed.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.ListObjectChildrenRequest(ConsistencyLevel, ObjectReference, NextToken, MaxResults, DirectoryArn, ...)
+function M.ListObjectChildrenRequest(_ConsistencyLevel, _ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectChildrenRequest")
 	local t = { 
-		["ConsistencyLevel"] = ConsistencyLevel,
-		["ObjectReference"] = ObjectReference,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["DirectoryArn"] = DirectoryArn,
+		["ConsistencyLevel"] = _ConsistencyLevel,
+		["ObjectReference"] = _ObjectReference,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertListObjectChildrenRequest(t)
+	asserts.AssertListObjectChildrenRequest(t)
 	return t
 end
 
-local BatchWriteOperationResponse_keys = { "DetachObject" = true, "AttachObject" = true, "AddFacetToObject" = true, "RemoveFacetFromObject" = true, "CreateObject" = true, "DeleteObject" = true, "UpdateObjectAttributes" = true, nil }
+keys.BatchWriteOperationResponse = { ["DetachObject"] = true, ["AttachObject"] = true, ["AddFacetToObject"] = true, ["RemoveFacetFromObject"] = true, ["CreateObject"] = true, ["DeleteObject"] = true, ["UpdateObjectAttributes"] = true, nil }
 
-function M.AssertBatchWriteOperationResponse(struct)
+function asserts.AssertBatchWriteOperationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchWriteOperationResponse to be of type 'table'")
-	if struct["DetachObject"] then M.AssertBatchDetachObjectResponse(struct["DetachObject"]) end
-	if struct["AttachObject"] then M.AssertBatchAttachObjectResponse(struct["AttachObject"]) end
-	if struct["AddFacetToObject"] then M.AssertBatchAddFacetToObjectResponse(struct["AddFacetToObject"]) end
-	if struct["RemoveFacetFromObject"] then M.AssertBatchRemoveFacetFromObjectResponse(struct["RemoveFacetFromObject"]) end
-	if struct["CreateObject"] then M.AssertBatchCreateObjectResponse(struct["CreateObject"]) end
-	if struct["DeleteObject"] then M.AssertBatchDeleteObjectResponse(struct["DeleteObject"]) end
-	if struct["UpdateObjectAttributes"] then M.AssertBatchUpdateObjectAttributesResponse(struct["UpdateObjectAttributes"]) end
+	if struct["DetachObject"] then asserts.AssertBatchDetachObjectResponse(struct["DetachObject"]) end
+	if struct["AttachObject"] then asserts.AssertBatchAttachObjectResponse(struct["AttachObject"]) end
+	if struct["AddFacetToObject"] then asserts.AssertBatchAddFacetToObjectResponse(struct["AddFacetToObject"]) end
+	if struct["RemoveFacetFromObject"] then asserts.AssertBatchRemoveFacetFromObjectResponse(struct["RemoveFacetFromObject"]) end
+	if struct["CreateObject"] then asserts.AssertBatchCreateObjectResponse(struct["CreateObject"]) end
+	if struct["DeleteObject"] then asserts.AssertBatchDeleteObjectResponse(struct["DeleteObject"]) end
+	if struct["UpdateObjectAttributes"] then asserts.AssertBatchUpdateObjectAttributesResponse(struct["UpdateObjectAttributes"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchWriteOperationResponse_keys[k], "BatchWriteOperationResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchWriteOperationResponse[k], "BatchWriteOperationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchWriteOperationResponse
 -- <p>Represents the output of a <code>BatchWrite</code> response operation.</p>
--- @param DetachObject [BatchDetachObjectResponse] <p>Detaches an object from a <a>Directory</a>.</p>
--- @param AttachObject [BatchAttachObjectResponse] <p>Attaches an object to a <a>Directory</a>.</p>
--- @param AddFacetToObject [BatchAddFacetToObjectResponse] <p>The result of an add facet to object batch operation.</p>
--- @param RemoveFacetFromObject [BatchRemoveFacetFromObjectResponse] <p>The result of a batch remove facet from object operation.</p>
--- @param CreateObject [BatchCreateObjectResponse] <p>Creates an object in a <a>Directory</a>.</p>
--- @param DeleteObject [BatchDeleteObjectResponse] <p>Deletes an object in a <a>Directory</a>.</p>
--- @param UpdateObjectAttributes [BatchUpdateObjectAttributesResponse] <p>Updates a given object’s attributes.</p>
-function M.BatchWriteOperationResponse(DetachObject, AttachObject, AddFacetToObject, RemoveFacetFromObject, CreateObject, DeleteObject, UpdateObjectAttributes, ...)
+-- @param _DetachObject [BatchDetachObjectResponse] <p>Detaches an object from a <a>Directory</a>.</p>
+-- @param _AttachObject [BatchAttachObjectResponse] <p>Attaches an object to a <a>Directory</a>.</p>
+-- @param _AddFacetToObject [BatchAddFacetToObjectResponse] <p>The result of an add facet to object batch operation.</p>
+-- @param _RemoveFacetFromObject [BatchRemoveFacetFromObjectResponse] <p>The result of a batch remove facet from object operation.</p>
+-- @param _CreateObject [BatchCreateObjectResponse] <p>Creates an object in a <a>Directory</a>.</p>
+-- @param _DeleteObject [BatchDeleteObjectResponse] <p>Deletes an object in a <a>Directory</a>.</p>
+-- @param _UpdateObjectAttributes [BatchUpdateObjectAttributesResponse] <p>Updates a given object’s attributes.</p>
+function M.BatchWriteOperationResponse(_DetachObject, _AttachObject, _AddFacetToObject, _RemoveFacetFromObject, _CreateObject, _DeleteObject, _UpdateObjectAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteOperationResponse")
 	local t = { 
-		["DetachObject"] = DetachObject,
-		["AttachObject"] = AttachObject,
-		["AddFacetToObject"] = AddFacetToObject,
-		["RemoveFacetFromObject"] = RemoveFacetFromObject,
-		["CreateObject"] = CreateObject,
-		["DeleteObject"] = DeleteObject,
-		["UpdateObjectAttributes"] = UpdateObjectAttributes,
+		["DetachObject"] = _DetachObject,
+		["AttachObject"] = _AttachObject,
+		["AddFacetToObject"] = _AddFacetToObject,
+		["RemoveFacetFromObject"] = _RemoveFacetFromObject,
+		["CreateObject"] = _CreateObject,
+		["DeleteObject"] = _DeleteObject,
+		["UpdateObjectAttributes"] = _UpdateObjectAttributes,
 	}
-	M.AssertBatchWriteOperationResponse(t)
+	asserts.AssertBatchWriteOperationResponse(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>The tag structure that contains a tag key and value.</p>
--- @param Value [TagValue] <p>The value that is associated with the tag.</p>
--- @param Key [TagKey] <p>The key that is associated with the tag.</p>
-function M.Tag(Value, Key, ...)
+-- @param _Value [TagValue] <p>The value that is associated with the tag.</p>
+-- @param _Key [TagKey] <p>The key that is associated with the tag.</p>
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local ListFacetAttributesResponse_keys = { "Attributes" = true, "NextToken" = true, nil }
+keys.ListFacetAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListFacetAttributesResponse(struct)
+function asserts.AssertListFacetAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFacetAttributesResponse to be of type 'table'")
-	if struct["Attributes"] then M.AssertFacetAttributeList(struct["Attributes"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["Attributes"] then asserts.AssertFacetAttributeList(struct["Attributes"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFacetAttributesResponse_keys[k], "ListFacetAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListFacetAttributesResponse[k], "ListFacetAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFacetAttributesResponse
 --  
--- @param Attributes [FacetAttributeList] <p>The attributes attached to the facet.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.ListFacetAttributesResponse(Attributes, NextToken, ...)
+-- @param _Attributes [FacetAttributeList] <p>The attributes attached to the facet.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.ListFacetAttributesResponse(_Attributes, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFacetAttributesResponse")
 	local t = { 
-		["Attributes"] = Attributes,
-		["NextToken"] = NextToken,
+		["Attributes"] = _Attributes,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListFacetAttributesResponse(t)
+	asserts.AssertListFacetAttributesResponse(t)
 	return t
 end
 
-local UpdateSchemaResponse_keys = { "SchemaArn" = true, nil }
+keys.UpdateSchemaResponse = { ["SchemaArn"] = true, nil }
 
-function M.AssertUpdateSchemaResponse(struct)
+function asserts.AssertUpdateSchemaResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateSchemaResponse to be of type 'table'")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateSchemaResponse_keys[k], "UpdateSchemaResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateSchemaResponse[k], "UpdateSchemaResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateSchemaResponse
 --  
--- @param SchemaArn [Arn] <p>The ARN that is associated with the updated schema. For more information, see <a>arns</a>.</p>
-function M.UpdateSchemaResponse(SchemaArn, ...)
+-- @param _SchemaArn [Arn] <p>The ARN that is associated with the updated schema. For more information, see <a>arns</a>.</p>
+function M.UpdateSchemaResponse(_SchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSchemaResponse")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
+		["SchemaArn"] = _SchemaArn,
 	}
-	M.AssertUpdateSchemaResponse(t)
+	asserts.AssertUpdateSchemaResponse(t)
 	return t
 end
 
-local DisableDirectoryRequest_keys = { "DirectoryArn" = true, nil }
+keys.DisableDirectoryRequest = { ["DirectoryArn"] = true, nil }
 
-function M.AssertDisableDirectoryRequest(struct)
+function asserts.AssertDisableDirectoryRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisableDirectoryRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DisableDirectoryRequest_keys[k], "DisableDirectoryRequest contains unknown key " .. tostring(k))
+		assert(keys.DisableDirectoryRequest[k], "DisableDirectoryRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisableDirectoryRequest
 --  
--- @param DirectoryArn [Arn] <p>The ARN of the directory to disable.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory to disable.</p>
 -- Required parameter: DirectoryArn
-function M.DisableDirectoryRequest(DirectoryArn, ...)
+function M.DisableDirectoryRequest(_DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableDirectoryRequest")
 	local t = { 
-		["DirectoryArn"] = DirectoryArn,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDisableDirectoryRequest(t)
+	asserts.AssertDisableDirectoryRequest(t)
 	return t
 end
 
-local LimitExceededException_keys = { "Message" = true, nil }
+keys.LimitExceededException = { ["Message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>Indicates that limits are exceeded. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html">Limits</a> for more information.</p>
--- @param Message [ExceptionMessage] <p>Indicates that limits are exceeded. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html">Limits</a> for more information.</p>
-function M.LimitExceededException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.LimitExceededException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local ListTypedLinkFacetNamesRequest_keys = { "SchemaArn" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.ListTypedLinkFacetNamesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListTypedLinkFacetNamesRequest(struct)
+function asserts.AssertListTypedLinkFacetNamesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTypedLinkFacetNamesRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTypedLinkFacetNamesRequest_keys[k], "ListTypedLinkFacetNamesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListTypedLinkFacetNamesRequest[k], "ListTypedLinkFacetNamesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTypedLinkFacetNamesRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- Required parameter: SchemaArn
-function M.ListTypedLinkFacetNamesRequest(SchemaArn, NextToken, MaxResults, ...)
+function M.ListTypedLinkFacetNamesRequest(_SchemaArn, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTypedLinkFacetNamesRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["SchemaArn"] = _SchemaArn,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListTypedLinkFacetNamesRequest(t)
+	asserts.AssertListTypedLinkFacetNamesRequest(t)
 	return t
 end
 
-local ListObjectPoliciesRequest_keys = { "ConsistencyLevel" = true, "ObjectReference" = true, "NextToken" = true, "MaxResults" = true, "DirectoryArn" = true, nil }
+keys.ListObjectPoliciesRequest = { ["ConsistencyLevel"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertListObjectPoliciesRequest(struct)
+function asserts.AssertListObjectPoliciesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectPoliciesRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectPoliciesRequest_keys[k], "ListObjectPoliciesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListObjectPoliciesRequest[k], "ListObjectPoliciesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectPoliciesRequest
 --  
--- @param ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param ObjectReference [ObjectReference] <p>Reference that identifies the object for which policies will be listed.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object for which policies will be listed.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.ListObjectPoliciesRequest(ConsistencyLevel, ObjectReference, NextToken, MaxResults, DirectoryArn, ...)
+function M.ListObjectPoliciesRequest(_ConsistencyLevel, _ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectPoliciesRequest")
 	local t = { 
-		["ConsistencyLevel"] = ConsistencyLevel,
-		["ObjectReference"] = ObjectReference,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["DirectoryArn"] = DirectoryArn,
+		["ConsistencyLevel"] = _ConsistencyLevel,
+		["ObjectReference"] = _ObjectReference,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertListObjectPoliciesRequest(t)
+	asserts.AssertListObjectPoliciesRequest(t)
 	return t
 end
 
-local GetFacetResponse_keys = { "Facet" = true, nil }
+keys.GetFacetResponse = { ["Facet"] = true, nil }
 
-function M.AssertGetFacetResponse(struct)
+function asserts.AssertGetFacetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFacetResponse to be of type 'table'")
-	if struct["Facet"] then M.AssertFacet(struct["Facet"]) end
+	if struct["Facet"] then asserts.AssertFacet(struct["Facet"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFacetResponse_keys[k], "GetFacetResponse contains unknown key " .. tostring(k))
+		assert(keys.GetFacetResponse[k], "GetFacetResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFacetResponse
 --  
--- @param Facet [Facet] <p>The <a>Facet</a> structure that is associated with the facet.</p>
-function M.GetFacetResponse(Facet, ...)
+-- @param _Facet [Facet] <p>The <a>Facet</a> structure that is associated with the facet.</p>
+function M.GetFacetResponse(_Facet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFacetResponse")
 	local t = { 
-		["Facet"] = Facet,
+		["Facet"] = _Facet,
 	}
-	M.AssertGetFacetResponse(t)
+	asserts.AssertGetFacetResponse(t)
 	return t
 end
 
-local ListDirectoriesRequest_keys = { "state" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.ListDirectoriesRequest = { ["state"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListDirectoriesRequest(struct)
+function asserts.AssertListDirectoriesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDirectoriesRequest to be of type 'table'")
-	if struct["state"] then M.AssertDirectoryState(struct["state"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["state"] then asserts.AssertDirectoryState(struct["state"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDirectoriesRequest_keys[k], "ListDirectoriesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDirectoriesRequest[k], "ListDirectoriesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDirectoriesRequest
 --  
--- @param state [DirectoryState] <p>The state of the directories in the list. Can be either Enabled, Disabled, or Deleted.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
-function M.ListDirectoriesRequest(state, NextToken, MaxResults, ...)
+-- @param _state [DirectoryState] <p>The state of the directories in the list. Can be either Enabled, Disabled, or Deleted.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+function M.ListDirectoriesRequest(_state, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDirectoriesRequest")
 	local t = { 
-		["state"] = state,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["state"] = _state,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListDirectoriesRequest(t)
+	asserts.AssertListDirectoriesRequest(t)
 	return t
 end
 
-local ValidationException_keys = { "Message" = true, nil }
+keys.ValidationException = { ["Message"] = true, nil }
 
-function M.AssertValidationException(struct)
+function asserts.AssertValidationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ValidationException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ValidationException_keys[k], "ValidationException contains unknown key " .. tostring(k))
+		assert(keys.ValidationException[k], "ValidationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ValidationException
 -- <p>Indicates that your request is malformed in some manner. See the exception message.</p>
--- @param Message [ExceptionMessage] <p>Indicates that your request is malformed in some manner. See the exception message.</p>
-function M.ValidationException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.ValidationException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertValidationException(t)
+	asserts.AssertValidationException(t)
 	return t
 end
 
-local DirectoryNotDisabledException_keys = { "Message" = true, nil }
+keys.DirectoryNotDisabledException = { ["Message"] = true, nil }
 
-function M.AssertDirectoryNotDisabledException(struct)
+function asserts.AssertDirectoryNotDisabledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DirectoryNotDisabledException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(DirectoryNotDisabledException_keys[k], "DirectoryNotDisabledException contains unknown key " .. tostring(k))
+		assert(keys.DirectoryNotDisabledException[k], "DirectoryNotDisabledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DirectoryNotDisabledException
 -- <p>An operation can only operate on a disabled directory.</p>
--- @param Message [ExceptionMessage] <p>An operation can only operate on a disabled directory.</p>
-function M.DirectoryNotDisabledException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.DirectoryNotDisabledException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryNotDisabledException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertDirectoryNotDisabledException(t)
+	asserts.AssertDirectoryNotDisabledException(t)
 	return t
 end
 
-local ObjectReference_keys = { "Selector" = true, nil }
+keys.ObjectReference = { ["Selector"] = true, nil }
 
-function M.AssertObjectReference(struct)
+function asserts.AssertObjectReference(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ObjectReference to be of type 'table'")
-	if struct["Selector"] then M.AssertSelectorObjectReference(struct["Selector"]) end
+	if struct["Selector"] then asserts.AssertSelectorObjectReference(struct["Selector"]) end
 	for k,_ in pairs(struct) do
-		assert(ObjectReference_keys[k], "ObjectReference contains unknown key " .. tostring(k))
+		assert(keys.ObjectReference[k], "ObjectReference contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ObjectReference
 -- <p>The reference that identifies an object.</p>
--- @param Selector [SelectorObjectReference] <p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects">Accessing Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>
-function M.ObjectReference(Selector, ...)
+-- @param _Selector [SelectorObjectReference] <p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects">Accessing Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>
+function M.ObjectReference(_Selector, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ObjectReference")
 	local t = { 
-		["Selector"] = Selector,
+		["Selector"] = _Selector,
 	}
-	M.AssertObjectReference(t)
+	asserts.AssertObjectReference(t)
 	return t
 end
 
-local ListObjectPoliciesResponse_keys = { "AttachedPolicyIds" = true, "NextToken" = true, nil }
+keys.ListObjectPoliciesResponse = { ["AttachedPolicyIds"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListObjectPoliciesResponse(struct)
+function asserts.AssertListObjectPoliciesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectPoliciesResponse to be of type 'table'")
-	if struct["AttachedPolicyIds"] then M.AssertObjectIdentifierList(struct["AttachedPolicyIds"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["AttachedPolicyIds"] then asserts.AssertObjectIdentifierList(struct["AttachedPolicyIds"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectPoliciesResponse_keys[k], "ListObjectPoliciesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListObjectPoliciesResponse[k], "ListObjectPoliciesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectPoliciesResponse
 --  
--- @param AttachedPolicyIds [ObjectIdentifierList] <p>A list of policy <code>ObjectIdentifiers</code>, that are attached to the object.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.ListObjectPoliciesResponse(AttachedPolicyIds, NextToken, ...)
+-- @param _AttachedPolicyIds [ObjectIdentifierList] <p>A list of policy <code>ObjectIdentifiers</code>, that are attached to the object.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.ListObjectPoliciesResponse(_AttachedPolicyIds, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectPoliciesResponse")
 	local t = { 
-		["AttachedPolicyIds"] = AttachedPolicyIds,
-		["NextToken"] = NextToken,
+		["AttachedPolicyIds"] = _AttachedPolicyIds,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListObjectPoliciesResponse(t)
+	asserts.AssertListObjectPoliciesResponse(t)
 	return t
 end
 
-local InternalServiceException_keys = { "Message" = true, nil }
+keys.InternalServiceException = { ["Message"] = true, nil }
 
-function M.AssertInternalServiceException(struct)
+function asserts.AssertInternalServiceException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServiceException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServiceException_keys[k], "InternalServiceException contains unknown key " .. tostring(k))
+		assert(keys.InternalServiceException[k], "InternalServiceException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServiceException
 -- <p>Indicates a problem that must be resolved by Amazon Web Services. This might be a transient error in which case you can retry your request until it succeeds. Otherwise, go to the <a href="http://status.aws.amazon.com/">AWS Service Health Dashboard</a> site to see if there are any operational issues with the service.</p>
--- @param Message [ExceptionMessage] <p>Indicates a problem that must be resolved by Amazon Web Services. This might be a transient error in which case you can retry your request until it succeeds. Otherwise, go to the <a href="http://status.aws.amazon.com/">AWS Service Health Dashboard</a> site to see if there are any operational issues with the service.</p>
-function M.InternalServiceException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InternalServiceException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInternalServiceException(t)
+	asserts.AssertInternalServiceException(t)
 	return t
 end
 
-local ApplySchemaResponse_keys = { "AppliedSchemaArn" = true, "DirectoryArn" = true, nil }
+keys.ApplySchemaResponse = { ["AppliedSchemaArn"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertApplySchemaResponse(struct)
+function asserts.AssertApplySchemaResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ApplySchemaResponse to be of type 'table'")
-	if struct["AppliedSchemaArn"] then M.AssertArn(struct["AppliedSchemaArn"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["AppliedSchemaArn"] then asserts.AssertArn(struct["AppliedSchemaArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ApplySchemaResponse_keys[k], "ApplySchemaResponse contains unknown key " .. tostring(k))
+		assert(keys.ApplySchemaResponse[k], "ApplySchemaResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ApplySchemaResponse
 --  
--- @param AppliedSchemaArn [Arn] <p>The applied schema ARN that is associated with the copied schema in the <a>Directory</a>. You can use this ARN to describe the schema information applied on this directory. For more information, see <a>arns</a>.</p>
--- @param DirectoryArn [Arn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
-function M.ApplySchemaResponse(AppliedSchemaArn, DirectoryArn, ...)
+-- @param _AppliedSchemaArn [Arn] <p>The applied schema ARN that is associated with the copied schema in the <a>Directory</a>. You can use this ARN to describe the schema information applied on this directory. For more information, see <a>arns</a>.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+function M.ApplySchemaResponse(_AppliedSchemaArn, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplySchemaResponse")
 	local t = { 
-		["AppliedSchemaArn"] = AppliedSchemaArn,
-		["DirectoryArn"] = DirectoryArn,
+		["AppliedSchemaArn"] = _AppliedSchemaArn,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertApplySchemaResponse(t)
+	asserts.AssertApplySchemaResponse(t)
 	return t
 end
 
-local FacetAttribute_keys = { "AttributeDefinition" = true, "RequiredBehavior" = true, "Name" = true, "AttributeReference" = true, nil }
+keys.FacetAttribute = { ["AttributeDefinition"] = true, ["RequiredBehavior"] = true, ["Name"] = true, ["AttributeReference"] = true, nil }
 
-function M.AssertFacetAttribute(struct)
+function asserts.AssertFacetAttribute(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FacetAttribute to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["AttributeDefinition"] then M.AssertFacetAttributeDefinition(struct["AttributeDefinition"]) end
-	if struct["RequiredBehavior"] then M.AssertRequiredAttributeBehavior(struct["RequiredBehavior"]) end
-	if struct["Name"] then M.AssertAttributeName(struct["Name"]) end
-	if struct["AttributeReference"] then M.AssertFacetAttributeReference(struct["AttributeReference"]) end
+	if struct["AttributeDefinition"] then asserts.AssertFacetAttributeDefinition(struct["AttributeDefinition"]) end
+	if struct["RequiredBehavior"] then asserts.AssertRequiredAttributeBehavior(struct["RequiredBehavior"]) end
+	if struct["Name"] then asserts.AssertAttributeName(struct["Name"]) end
+	if struct["AttributeReference"] then asserts.AssertFacetAttributeReference(struct["AttributeReference"]) end
 	for k,_ in pairs(struct) do
-		assert(FacetAttribute_keys[k], "FacetAttribute contains unknown key " .. tostring(k))
+		assert(keys.FacetAttribute[k], "FacetAttribute contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FacetAttribute
 -- <p>An attribute that is associated with the <a>Facet</a>.</p>
--- @param AttributeDefinition [FacetAttributeDefinition] <p>A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- @param RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>FacetAttribute</code>.</p>
--- @param Name [AttributeName] <p>The name of the facet attribute.</p>
--- @param AttributeReference [FacetAttributeReference] <p>An attribute reference that is associated with the attribute. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- @param _AttributeDefinition [FacetAttributeDefinition] <p>A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- @param _RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>FacetAttribute</code>.</p>
+-- @param _Name [AttributeName] <p>The name of the facet attribute.</p>
+-- @param _AttributeReference [FacetAttributeReference] <p>An attribute reference that is associated with the attribute. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
 -- Required parameter: Name
-function M.FacetAttribute(AttributeDefinition, RequiredBehavior, Name, AttributeReference, ...)
+function M.FacetAttribute(_AttributeDefinition, _RequiredBehavior, _Name, _AttributeReference, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FacetAttribute")
 	local t = { 
-		["AttributeDefinition"] = AttributeDefinition,
-		["RequiredBehavior"] = RequiredBehavior,
-		["Name"] = Name,
-		["AttributeReference"] = AttributeReference,
+		["AttributeDefinition"] = _AttributeDefinition,
+		["RequiredBehavior"] = _RequiredBehavior,
+		["Name"] = _Name,
+		["AttributeReference"] = _AttributeReference,
 	}
-	M.AssertFacetAttribute(t)
+	asserts.AssertFacetAttribute(t)
 	return t
 end
 
-local BatchUpdateObjectAttributes_keys = { "AttributeUpdates" = true, "ObjectReference" = true, nil }
+keys.BatchUpdateObjectAttributes = { ["AttributeUpdates"] = true, ["ObjectReference"] = true, nil }
 
-function M.AssertBatchUpdateObjectAttributes(struct)
+function asserts.AssertBatchUpdateObjectAttributes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchUpdateObjectAttributes to be of type 'table'")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
 	assert(struct["AttributeUpdates"], "Expected key AttributeUpdates to exist in table")
-	if struct["AttributeUpdates"] then M.AssertObjectAttributeUpdateList(struct["AttributeUpdates"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["AttributeUpdates"] then asserts.AssertObjectAttributeUpdateList(struct["AttributeUpdates"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchUpdateObjectAttributes_keys[k], "BatchUpdateObjectAttributes contains unknown key " .. tostring(k))
+		assert(keys.BatchUpdateObjectAttributes[k], "BatchUpdateObjectAttributes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchUpdateObjectAttributes
 -- <p>Represents the output of a <code>BatchUpdate</code> operation. </p>
--- @param AttributeUpdates [ObjectAttributeUpdateList] <p>Attributes update structure.</p>
--- @param ObjectReference [ObjectReference] <p>Reference that identifies the object.</p>
+-- @param _AttributeUpdates [ObjectAttributeUpdateList] <p>Attributes update structure.</p>
+-- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object.</p>
 -- Required parameter: ObjectReference
 -- Required parameter: AttributeUpdates
-function M.BatchUpdateObjectAttributes(AttributeUpdates, ObjectReference, ...)
+function M.BatchUpdateObjectAttributes(_AttributeUpdates, _ObjectReference, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchUpdateObjectAttributes")
 	local t = { 
-		["AttributeUpdates"] = AttributeUpdates,
-		["ObjectReference"] = ObjectReference,
+		["AttributeUpdates"] = _AttributeUpdates,
+		["ObjectReference"] = _ObjectReference,
 	}
-	M.AssertBatchUpdateObjectAttributes(t)
+	asserts.AssertBatchUpdateObjectAttributes(t)
 	return t
 end
 
-local UpdateFacetRequest_keys = { "AttributeUpdates" = true, "SchemaArn" = true, "Name" = true, "ObjectType" = true, nil }
+keys.UpdateFacetRequest = { ["AttributeUpdates"] = true, ["SchemaArn"] = true, ["Name"] = true, ["ObjectType"] = true, nil }
 
-function M.AssertUpdateFacetRequest(struct)
+function asserts.AssertUpdateFacetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFacetRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["AttributeUpdates"] then M.AssertFacetAttributeUpdateList(struct["AttributeUpdates"]) end
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then M.AssertFacetName(struct["Name"]) end
-	if struct["ObjectType"] then M.AssertObjectType(struct["ObjectType"]) end
+	if struct["AttributeUpdates"] then asserts.AssertFacetAttributeUpdateList(struct["AttributeUpdates"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
+	if struct["ObjectType"] then asserts.AssertObjectType(struct["ObjectType"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFacetRequest_keys[k], "UpdateFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateFacetRequest[k], "UpdateFacetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFacetRequest
 --  
--- @param AttributeUpdates [FacetAttributeUpdateList] <p>List of attributes that need to be updated in a given schema <a>Facet</a>. Each attribute is followed by <code>AttributeAction</code>, which specifies the type of update operation to perform. </p>
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
--- @param Name [FacetName] <p>The name of the facet.</p>
--- @param ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
+-- @param _AttributeUpdates [FacetAttributeUpdateList] <p>List of attributes that need to be updated in a given schema <a>Facet</a>. Each attribute is followed by <code>AttributeAction</code>, which specifies the type of update operation to perform. </p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
+-- @param _Name [FacetName] <p>The name of the facet.</p>
+-- @param _ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
-function M.UpdateFacetRequest(AttributeUpdates, SchemaArn, Name, ObjectType, ...)
+function M.UpdateFacetRequest(_AttributeUpdates, _SchemaArn, _Name, _ObjectType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFacetRequest")
 	local t = { 
-		["AttributeUpdates"] = AttributeUpdates,
-		["SchemaArn"] = SchemaArn,
-		["Name"] = Name,
-		["ObjectType"] = ObjectType,
+		["AttributeUpdates"] = _AttributeUpdates,
+		["SchemaArn"] = _SchemaArn,
+		["Name"] = _Name,
+		["ObjectType"] = _ObjectType,
 	}
-	M.AssertUpdateFacetRequest(t)
+	asserts.AssertUpdateFacetRequest(t)
 	return t
 end
 
-local ListObjectParentPathsRequest_keys = { "ObjectReference" = true, "NextToken" = true, "MaxResults" = true, "DirectoryArn" = true, nil }
+keys.ListObjectParentPathsRequest = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertListObjectParentPathsRequest(struct)
+function asserts.AssertListObjectParentPathsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectParentPathsRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectParentPathsRequest_keys[k], "ListObjectParentPathsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListObjectParentPathsRequest[k], "ListObjectParentPathsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectParentPathsRequest
 --  
--- @param ObjectReference [ObjectReference] <p>The reference that identifies the object whose parent paths are listed.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param DirectoryArn [Arn] <p>The ARN of the directory to which the parent path applies.</p>
+-- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object whose parent paths are listed.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory to which the parent path applies.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.ListObjectParentPathsRequest(ObjectReference, NextToken, MaxResults, DirectoryArn, ...)
+function M.ListObjectParentPathsRequest(_ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectParentPathsRequest")
 	local t = { 
-		["ObjectReference"] = ObjectReference,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["DirectoryArn"] = DirectoryArn,
+		["ObjectReference"] = _ObjectReference,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertListObjectParentPathsRequest(t)
+	asserts.AssertListObjectParentPathsRequest(t)
 	return t
 end
 
-local RetryableConflictException_keys = { "Message" = true, nil }
+keys.RetryableConflictException = { ["Message"] = true, nil }
 
-function M.AssertRetryableConflictException(struct)
+function asserts.AssertRetryableConflictException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RetryableConflictException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(RetryableConflictException_keys[k], "RetryableConflictException contains unknown key " .. tostring(k))
+		assert(keys.RetryableConflictException[k], "RetryableConflictException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RetryableConflictException
 -- <p>Occurs when a conflict with a previous successful write is detected. For example, if a write operation occurs on an object and then an attempt is made to read the object using “SERIALIZABLE” consistency, this exception may result. This generally occurs when the previous write did not have time to propagate to the host serving the current request. A retry (with appropriate backoff logic) is the recommended response to this exception.</p>
--- @param Message [ExceptionMessage] <p>Occurs when a conflict with a previous successful write is detected. For example, if a write operation occurs on an object and then an attempt is made to read the object using “SERIALIZABLE” consistency, this exception may result. This generally occurs when the previous write did not have time to propagate to the host serving the current request. A retry (with appropriate backoff logic) is the recommended response to this exception.</p>
-function M.RetryableConflictException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.RetryableConflictException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetryableConflictException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertRetryableConflictException(t)
+	asserts.AssertRetryableConflictException(t)
 	return t
 end
 
-local SchemaAlreadyExistsException_keys = { "Message" = true, nil }
+keys.SchemaAlreadyExistsException = { ["Message"] = true, nil }
 
-function M.AssertSchemaAlreadyExistsException(struct)
+function asserts.AssertSchemaAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SchemaAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(SchemaAlreadyExistsException_keys[k], "SchemaAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.SchemaAlreadyExistsException[k], "SchemaAlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SchemaAlreadyExistsException
 -- <p>Indicates that a schema could not be created due to a naming conflict. Please select a different name and then try again.</p>
--- @param Message [ExceptionMessage] <p>Indicates that a schema could not be created due to a naming conflict. Please select a different name and then try again.</p>
-function M.SchemaAlreadyExistsException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.SchemaAlreadyExistsException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SchemaAlreadyExistsException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertSchemaAlreadyExistsException(t)
+	asserts.AssertSchemaAlreadyExistsException(t)
 	return t
 end
 
-local NotIndexException_keys = { "Message" = true, nil }
+keys.NotIndexException = { ["Message"] = true, nil }
 
-function M.AssertNotIndexException(struct)
+function asserts.AssertNotIndexException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotIndexException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotIndexException_keys[k], "NotIndexException contains unknown key " .. tostring(k))
+		assert(keys.NotIndexException[k], "NotIndexException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotIndexException
 -- <p>Indicates that the requested operation can only operate on index objects.</p>
--- @param Message [ExceptionMessage] <p>Indicates that the requested operation can only operate on index objects.</p>
-function M.NotIndexException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.NotIndexException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotIndexException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertNotIndexException(t)
+	asserts.AssertNotIndexException(t)
 	return t
 end
 
-local ListObjectParentsResponse_keys = { "NextToken" = true, "Parents" = true, nil }
+keys.ListObjectParentsResponse = { ["NextToken"] = true, ["Parents"] = true, nil }
 
-function M.AssertListObjectParentsResponse(struct)
+function asserts.AssertListObjectParentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectParentsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["Parents"] then M.AssertObjectIdentifierToLinkNameMap(struct["Parents"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Parents"] then asserts.AssertObjectIdentifierToLinkNameMap(struct["Parents"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectParentsResponse_keys[k], "ListObjectParentsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListObjectParentsResponse[k], "ListObjectParentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectParentsResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param Parents [ObjectIdentifierToLinkNameMap] <p>The parent structure, which is a map with key as the <code>ObjectIdentifier</code> and LinkName as the value.</p>
-function M.ListObjectParentsResponse(NextToken, Parents, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _Parents [ObjectIdentifierToLinkNameMap] <p>The parent structure, which is a map with key as the <code>ObjectIdentifier</code> and LinkName as the value.</p>
+function M.ListObjectParentsResponse(_NextToken, _Parents, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectParentsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Parents"] = Parents,
+		["NextToken"] = _NextToken,
+		["Parents"] = _Parents,
 	}
-	M.AssertListObjectParentsResponse(t)
+	asserts.AssertListObjectParentsResponse(t)
 	return t
 end
 
-local AttributeNameAndValue_keys = { "AttributeName" = true, "Value" = true, nil }
+keys.AttributeNameAndValue = { ["AttributeName"] = true, ["Value"] = true, nil }
 
-function M.AssertAttributeNameAndValue(struct)
+function asserts.AssertAttributeNameAndValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttributeNameAndValue to be of type 'table'")
 	assert(struct["AttributeName"], "Expected key AttributeName to exist in table")
 	assert(struct["Value"], "Expected key Value to exist in table")
-	if struct["AttributeName"] then M.AssertAttributeName(struct["AttributeName"]) end
-	if struct["Value"] then M.AssertTypedAttributeValue(struct["Value"]) end
+	if struct["AttributeName"] then asserts.AssertAttributeName(struct["AttributeName"]) end
+	if struct["Value"] then asserts.AssertTypedAttributeValue(struct["Value"]) end
 	for k,_ in pairs(struct) do
-		assert(AttributeNameAndValue_keys[k], "AttributeNameAndValue contains unknown key " .. tostring(k))
+		assert(keys.AttributeNameAndValue[k], "AttributeNameAndValue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttributeNameAndValue
 -- <p>Identifies the attribute name and value for a typed link.</p>
--- @param AttributeName [AttributeName] <p>The attribute name of the typed link.</p>
--- @param Value [TypedAttributeValue] <p>The value for the typed link.</p>
+-- @param _AttributeName [AttributeName] <p>The attribute name of the typed link.</p>
+-- @param _Value [TypedAttributeValue] <p>The value for the typed link.</p>
 -- Required parameter: AttributeName
 -- Required parameter: Value
-function M.AttributeNameAndValue(AttributeName, Value, ...)
+function M.AttributeNameAndValue(_AttributeName, _Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttributeNameAndValue")
 	local t = { 
-		["AttributeName"] = AttributeName,
-		["Value"] = Value,
+		["AttributeName"] = _AttributeName,
+		["Value"] = _Value,
 	}
-	M.AssertAttributeNameAndValue(t)
+	asserts.AssertAttributeNameAndValue(t)
 	return t
 end
 
-local RemoveFacetFromObjectRequest_keys = { "ObjectReference" = true, "SchemaFacet" = true, "DirectoryArn" = true, nil }
+keys.RemoveFacetFromObjectRequest = { ["ObjectReference"] = true, ["SchemaFacet"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertRemoveFacetFromObjectRequest(struct)
+function asserts.AssertRemoveFacetFromObjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveFacetFromObjectRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["SchemaFacet"] then M.AssertSchemaFacet(struct["SchemaFacet"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["SchemaFacet"] then asserts.AssertSchemaFacet(struct["SchemaFacet"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveFacetFromObjectRequest_keys[k], "RemoveFacetFromObjectRequest contains unknown key " .. tostring(k))
+		assert(keys.RemoveFacetFromObjectRequest[k], "RemoveFacetFromObjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveFacetFromObjectRequest
 --  
--- @param ObjectReference [ObjectReference] <p>A reference to the object to remove the facet from.</p>
--- @param SchemaFacet [SchemaFacet] <p>The facet to remove.</p>
--- @param DirectoryArn [Arn] <p>The ARN of the directory in which the object resides.</p>
+-- @param _ObjectReference [ObjectReference] <p>A reference to the object to remove the facet from.</p>
+-- @param _SchemaFacet [SchemaFacet] <p>The facet to remove.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory in which the object resides.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: SchemaFacet
 -- Required parameter: ObjectReference
-function M.RemoveFacetFromObjectRequest(ObjectReference, SchemaFacet, DirectoryArn, ...)
+function M.RemoveFacetFromObjectRequest(_ObjectReference, _SchemaFacet, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveFacetFromObjectRequest")
 	local t = { 
-		["ObjectReference"] = ObjectReference,
-		["SchemaFacet"] = SchemaFacet,
-		["DirectoryArn"] = DirectoryArn,
+		["ObjectReference"] = _ObjectReference,
+		["SchemaFacet"] = _SchemaFacet,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertRemoveFacetFromObjectRequest(t)
+	asserts.AssertRemoveFacetFromObjectRequest(t)
 	return t
 end
 
-local TypedLinkFacetAttributeUpdate_keys = { "Action" = true, "Attribute" = true, nil }
+keys.TypedLinkFacetAttributeUpdate = { ["Action"] = true, ["Attribute"] = true, nil }
 
-function M.AssertTypedLinkFacetAttributeUpdate(struct)
+function asserts.AssertTypedLinkFacetAttributeUpdate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TypedLinkFacetAttributeUpdate to be of type 'table'")
 	assert(struct["Attribute"], "Expected key Attribute to exist in table")
 	assert(struct["Action"], "Expected key Action to exist in table")
-	if struct["Action"] then M.AssertUpdateActionType(struct["Action"]) end
-	if struct["Attribute"] then M.AssertTypedLinkAttributeDefinition(struct["Attribute"]) end
+	if struct["Action"] then asserts.AssertUpdateActionType(struct["Action"]) end
+	if struct["Attribute"] then asserts.AssertTypedLinkAttributeDefinition(struct["Attribute"]) end
 	for k,_ in pairs(struct) do
-		assert(TypedLinkFacetAttributeUpdate_keys[k], "TypedLinkFacetAttributeUpdate contains unknown key " .. tostring(k))
+		assert(keys.TypedLinkFacetAttributeUpdate[k], "TypedLinkFacetAttributeUpdate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TypedLinkFacetAttributeUpdate
 -- <p>A typed link facet attribute update.</p>
--- @param Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
--- @param Attribute [TypedLinkAttributeDefinition] <p>The attribute to update.</p>
+-- @param _Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
+-- @param _Attribute [TypedLinkAttributeDefinition] <p>The attribute to update.</p>
 -- Required parameter: Attribute
 -- Required parameter: Action
-function M.TypedLinkFacetAttributeUpdate(Action, Attribute, ...)
+function M.TypedLinkFacetAttributeUpdate(_Action, _Attribute, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkFacetAttributeUpdate")
 	local t = { 
-		["Action"] = Action,
-		["Attribute"] = Attribute,
+		["Action"] = _Action,
+		["Attribute"] = _Attribute,
 	}
-	M.AssertTypedLinkFacetAttributeUpdate(t)
+	asserts.AssertTypedLinkFacetAttributeUpdate(t)
 	return t
 end
 
-local InvalidSchemaDocException_keys = { "Message" = true, nil }
+keys.InvalidSchemaDocException = { ["Message"] = true, nil }
 
-function M.AssertInvalidSchemaDocException(struct)
+function asserts.AssertInvalidSchemaDocException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSchemaDocException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidSchemaDocException_keys[k], "InvalidSchemaDocException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSchemaDocException[k], "InvalidSchemaDocException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidSchemaDocException
 -- <p>Indicates that the provided <code>SchemaDoc</code> value is not valid.</p>
--- @param Message [ExceptionMessage] <p>Indicates that the provided <code>SchemaDoc</code> value is not valid.</p>
-function M.InvalidSchemaDocException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InvalidSchemaDocException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSchemaDocException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidSchemaDocException(t)
+	asserts.AssertInvalidSchemaDocException(t)
 	return t
 end
 
-local DeleteObjectResponse_keys = { nil }
+keys.DeleteObjectResponse = { nil }
 
-function M.AssertDeleteObjectResponse(struct)
+function asserts.AssertDeleteObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteObjectResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteObjectResponse_keys[k], "DeleteObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteObjectResponse[k], "DeleteObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1860,501 +1863,501 @@ function M.DeleteObjectResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectResponse")
 	local t = { 
 	}
-	M.AssertDeleteObjectResponse(t)
+	asserts.AssertDeleteObjectResponse(t)
 	return t
 end
 
-local ListAttachedIndicesRequest_keys = { "MaxResults" = true, "ConsistencyLevel" = true, "NextToken" = true, "TargetReference" = true, "DirectoryArn" = true, nil }
+keys.ListAttachedIndicesRequest = { ["MaxResults"] = true, ["ConsistencyLevel"] = true, ["NextToken"] = true, ["TargetReference"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertListAttachedIndicesRequest(struct)
+function asserts.AssertListAttachedIndicesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAttachedIndicesRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["TargetReference"], "Expected key TargetReference to exist in table")
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["TargetReference"] then M.AssertObjectReference(struct["TargetReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["TargetReference"] then asserts.AssertObjectReference(struct["TargetReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAttachedIndicesRequest_keys[k], "ListAttachedIndicesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAttachedIndicesRequest[k], "ListAttachedIndicesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAttachedIndicesRequest
 --  
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @param ConsistencyLevel [ConsistencyLevel] <p>The consistency level to use for this operation.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param TargetReference [ObjectReference] <p>A reference to the object to that has indices attached.</p>
--- @param DirectoryArn [Arn] <p>The ARN of the directory.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level to use for this operation.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _TargetReference [ObjectReference] <p>A reference to the object to that has indices attached.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: TargetReference
-function M.ListAttachedIndicesRequest(MaxResults, ConsistencyLevel, NextToken, TargetReference, DirectoryArn, ...)
+function M.ListAttachedIndicesRequest(_MaxResults, _ConsistencyLevel, _NextToken, _TargetReference, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedIndicesRequest")
 	local t = { 
-		["MaxResults"] = MaxResults,
-		["ConsistencyLevel"] = ConsistencyLevel,
-		["NextToken"] = NextToken,
-		["TargetReference"] = TargetReference,
-		["DirectoryArn"] = DirectoryArn,
+		["MaxResults"] = _MaxResults,
+		["ConsistencyLevel"] = _ConsistencyLevel,
+		["NextToken"] = _NextToken,
+		["TargetReference"] = _TargetReference,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertListAttachedIndicesRequest(t)
+	asserts.AssertListAttachedIndicesRequest(t)
 	return t
 end
 
-local AttachObjectResponse_keys = { "AttachedObjectIdentifier" = true, nil }
+keys.AttachObjectResponse = { ["AttachedObjectIdentifier"] = true, nil }
 
-function M.AssertAttachObjectResponse(struct)
+function asserts.AssertAttachObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachObjectResponse to be of type 'table'")
-	if struct["AttachedObjectIdentifier"] then M.AssertObjectIdentifier(struct["AttachedObjectIdentifier"]) end
+	if struct["AttachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["AttachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachObjectResponse_keys[k], "AttachObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.AttachObjectResponse[k], "AttachObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachObjectResponse
 --  
--- @param AttachedObjectIdentifier [ObjectIdentifier] <p>The attached <code>ObjectIdentifier</code>, which is the child <code>ObjectIdentifier</code>.</p>
-function M.AttachObjectResponse(AttachedObjectIdentifier, ...)
+-- @param _AttachedObjectIdentifier [ObjectIdentifier] <p>The attached <code>ObjectIdentifier</code>, which is the child <code>ObjectIdentifier</code>.</p>
+function M.AttachObjectResponse(_AttachedObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachObjectResponse")
 	local t = { 
-		["AttachedObjectIdentifier"] = AttachedObjectIdentifier,
+		["AttachedObjectIdentifier"] = _AttachedObjectIdentifier,
 	}
-	M.AssertAttachObjectResponse(t)
+	asserts.AssertAttachObjectResponse(t)
 	return t
 end
 
-local TypedAttributeValue_keys = { "StringValue" = true, "BooleanValue" = true, "DatetimeValue" = true, "BinaryValue" = true, "NumberValue" = true, nil }
+keys.TypedAttributeValue = { ["StringValue"] = true, ["BooleanValue"] = true, ["DatetimeValue"] = true, ["BinaryValue"] = true, ["NumberValue"] = true, nil }
 
-function M.AssertTypedAttributeValue(struct)
+function asserts.AssertTypedAttributeValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TypedAttributeValue to be of type 'table'")
-	if struct["StringValue"] then M.AssertStringAttributeValue(struct["StringValue"]) end
-	if struct["BooleanValue"] then M.AssertBooleanAttributeValue(struct["BooleanValue"]) end
-	if struct["DatetimeValue"] then M.AssertDatetimeAttributeValue(struct["DatetimeValue"]) end
-	if struct["BinaryValue"] then M.AssertBinaryAttributeValue(struct["BinaryValue"]) end
-	if struct["NumberValue"] then M.AssertNumberAttributeValue(struct["NumberValue"]) end
+	if struct["StringValue"] then asserts.AssertStringAttributeValue(struct["StringValue"]) end
+	if struct["BooleanValue"] then asserts.AssertBooleanAttributeValue(struct["BooleanValue"]) end
+	if struct["DatetimeValue"] then asserts.AssertDatetimeAttributeValue(struct["DatetimeValue"]) end
+	if struct["BinaryValue"] then asserts.AssertBinaryAttributeValue(struct["BinaryValue"]) end
+	if struct["NumberValue"] then asserts.AssertNumberAttributeValue(struct["NumberValue"]) end
 	for k,_ in pairs(struct) do
-		assert(TypedAttributeValue_keys[k], "TypedAttributeValue contains unknown key " .. tostring(k))
+		assert(keys.TypedAttributeValue[k], "TypedAttributeValue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TypedAttributeValue
 -- <p>Represents the data for a typed attribute. You can set one, and only one, of the elements. Each attribute in an item is a name-value pair. Attributes have a single value.</p>
--- @param StringValue [StringAttributeValue] <p>A string data value.</p>
--- @param BooleanValue [BooleanAttributeValue] <p>A Boolean data value.</p>
--- @param DatetimeValue [DatetimeAttributeValue] <p>A date and time value.</p>
--- @param BinaryValue [BinaryAttributeValue] <p>A binary data value.</p>
--- @param NumberValue [NumberAttributeValue] <p>A number data value.</p>
-function M.TypedAttributeValue(StringValue, BooleanValue, DatetimeValue, BinaryValue, NumberValue, ...)
+-- @param _StringValue [StringAttributeValue] <p>A string data value.</p>
+-- @param _BooleanValue [BooleanAttributeValue] <p>A Boolean data value.</p>
+-- @param _DatetimeValue [DatetimeAttributeValue] <p>A date and time value.</p>
+-- @param _BinaryValue [BinaryAttributeValue] <p>A binary data value.</p>
+-- @param _NumberValue [NumberAttributeValue] <p>A number data value.</p>
+function M.TypedAttributeValue(_StringValue, _BooleanValue, _DatetimeValue, _BinaryValue, _NumberValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TypedAttributeValue")
 	local t = { 
-		["StringValue"] = StringValue,
-		["BooleanValue"] = BooleanValue,
-		["DatetimeValue"] = DatetimeValue,
-		["BinaryValue"] = BinaryValue,
-		["NumberValue"] = NumberValue,
+		["StringValue"] = _StringValue,
+		["BooleanValue"] = _BooleanValue,
+		["DatetimeValue"] = _DatetimeValue,
+		["BinaryValue"] = _BinaryValue,
+		["NumberValue"] = _NumberValue,
 	}
-	M.AssertTypedAttributeValue(t)
+	asserts.AssertTypedAttributeValue(t)
 	return t
 end
 
-local UpdateSchemaRequest_keys = { "SchemaArn" = true, "Name" = true, nil }
+keys.UpdateSchemaRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateSchemaRequest(struct)
+function asserts.AssertUpdateSchemaRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateSchemaRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then M.AssertSchemaName(struct["Name"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertSchemaName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateSchemaRequest_keys[k], "UpdateSchemaRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateSchemaRequest[k], "UpdateSchemaRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateSchemaRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the development schema. For more information, see <a>arns</a>.</p>
--- @param Name [SchemaName] <p>The name of the schema.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the development schema. For more information, see <a>arns</a>.</p>
+-- @param _Name [SchemaName] <p>The name of the schema.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
-function M.UpdateSchemaRequest(SchemaArn, Name, ...)
+function M.UpdateSchemaRequest(_SchemaArn, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSchemaRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["Name"] = Name,
+		["SchemaArn"] = _SchemaArn,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateSchemaRequest(t)
+	asserts.AssertUpdateSchemaRequest(t)
 	return t
 end
 
-local FacetAttributeUpdate_keys = { "Action" = true, "Attribute" = true, nil }
+keys.FacetAttributeUpdate = { ["Action"] = true, ["Attribute"] = true, nil }
 
-function M.AssertFacetAttributeUpdate(struct)
+function asserts.AssertFacetAttributeUpdate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FacetAttributeUpdate to be of type 'table'")
-	if struct["Action"] then M.AssertUpdateActionType(struct["Action"]) end
-	if struct["Attribute"] then M.AssertFacetAttribute(struct["Attribute"]) end
+	if struct["Action"] then asserts.AssertUpdateActionType(struct["Action"]) end
+	if struct["Attribute"] then asserts.AssertFacetAttribute(struct["Attribute"]) end
 	for k,_ in pairs(struct) do
-		assert(FacetAttributeUpdate_keys[k], "FacetAttributeUpdate contains unknown key " .. tostring(k))
+		assert(keys.FacetAttributeUpdate[k], "FacetAttributeUpdate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FacetAttributeUpdate
 -- <p>A structure that contains information used to update an attribute.</p>
--- @param Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
--- @param Attribute [FacetAttribute] <p>The attribute to update.</p>
-function M.FacetAttributeUpdate(Action, Attribute, ...)
+-- @param _Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
+-- @param _Attribute [FacetAttribute] <p>The attribute to update.</p>
+function M.FacetAttributeUpdate(_Action, _Attribute, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FacetAttributeUpdate")
 	local t = { 
-		["Action"] = Action,
-		["Attribute"] = Attribute,
+		["Action"] = _Action,
+		["Attribute"] = _Attribute,
 	}
-	M.AssertFacetAttributeUpdate(t)
+	asserts.AssertFacetAttributeUpdate(t)
 	return t
 end
 
-local CreateIndexRequest_keys = { "ParentReference" = true, "OrderedIndexedAttributeList" = true, "IsUnique" = true, "DirectoryArn" = true, "LinkName" = true, nil }
+keys.CreateIndexRequest = { ["ParentReference"] = true, ["OrderedIndexedAttributeList"] = true, ["IsUnique"] = true, ["DirectoryArn"] = true, ["LinkName"] = true, nil }
 
-function M.AssertCreateIndexRequest(struct)
+function asserts.AssertCreateIndexRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateIndexRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["OrderedIndexedAttributeList"], "Expected key OrderedIndexedAttributeList to exist in table")
 	assert(struct["IsUnique"], "Expected key IsUnique to exist in table")
-	if struct["ParentReference"] then M.AssertObjectReference(struct["ParentReference"]) end
-	if struct["OrderedIndexedAttributeList"] then M.AssertAttributeKeyList(struct["OrderedIndexedAttributeList"]) end
-	if struct["IsUnique"] then M.AssertBool(struct["IsUnique"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["LinkName"] then M.AssertLinkName(struct["LinkName"]) end
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["OrderedIndexedAttributeList"] then asserts.AssertAttributeKeyList(struct["OrderedIndexedAttributeList"]) end
+	if struct["IsUnique"] then asserts.AssertBool(struct["IsUnique"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateIndexRequest_keys[k], "CreateIndexRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateIndexRequest[k], "CreateIndexRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateIndexRequest
 --  
--- @param ParentReference [ObjectReference] <p>A reference to the parent object that contains the index object.</p>
--- @param OrderedIndexedAttributeList [AttributeKeyList] <p>Specifies the attributes that should be indexed on. Currently only a single attribute is supported.</p>
--- @param IsUnique [Bool] <p>Indicates whether the attribute that is being indexed has unique values or not.</p>
--- @param DirectoryArn [Arn] <p>The ARN of the directory where the index should be created.</p>
--- @param LinkName [LinkName] <p>The name of the link between the parent object and the index object.</p>
+-- @param _ParentReference [ObjectReference] <p>A reference to the parent object that contains the index object.</p>
+-- @param _OrderedIndexedAttributeList [AttributeKeyList] <p>Specifies the attributes that should be indexed on. Currently only a single attribute is supported.</p>
+-- @param _IsUnique [Bool] <p>Indicates whether the attribute that is being indexed has unique values or not.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory where the index should be created.</p>
+-- @param _LinkName [LinkName] <p>The name of the link between the parent object and the index object.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: OrderedIndexedAttributeList
 -- Required parameter: IsUnique
-function M.CreateIndexRequest(ParentReference, OrderedIndexedAttributeList, IsUnique, DirectoryArn, LinkName, ...)
+function M.CreateIndexRequest(_ParentReference, _OrderedIndexedAttributeList, _IsUnique, _DirectoryArn, _LinkName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateIndexRequest")
 	local t = { 
-		["ParentReference"] = ParentReference,
-		["OrderedIndexedAttributeList"] = OrderedIndexedAttributeList,
-		["IsUnique"] = IsUnique,
-		["DirectoryArn"] = DirectoryArn,
-		["LinkName"] = LinkName,
+		["ParentReference"] = _ParentReference,
+		["OrderedIndexedAttributeList"] = _OrderedIndexedAttributeList,
+		["IsUnique"] = _IsUnique,
+		["DirectoryArn"] = _DirectoryArn,
+		["LinkName"] = _LinkName,
 	}
-	M.AssertCreateIndexRequest(t)
+	asserts.AssertCreateIndexRequest(t)
 	return t
 end
 
-local DeleteSchemaResponse_keys = { "SchemaArn" = true, nil }
+keys.DeleteSchemaResponse = { ["SchemaArn"] = true, nil }
 
-function M.AssertDeleteSchemaResponse(struct)
+function asserts.AssertDeleteSchemaResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteSchemaResponse to be of type 'table'")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteSchemaResponse_keys[k], "DeleteSchemaResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteSchemaResponse[k], "DeleteSchemaResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteSchemaResponse
 --  
--- @param SchemaArn [Arn] <p>The input ARN that is returned as part of the response. For more information, see <a>arns</a>.</p>
-function M.DeleteSchemaResponse(SchemaArn, ...)
+-- @param _SchemaArn [Arn] <p>The input ARN that is returned as part of the response. For more information, see <a>arns</a>.</p>
+function M.DeleteSchemaResponse(_SchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSchemaResponse")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
+		["SchemaArn"] = _SchemaArn,
 	}
-	M.AssertDeleteSchemaResponse(t)
+	asserts.AssertDeleteSchemaResponse(t)
 	return t
 end
 
-local Facet_keys = { "Name" = true, "ObjectType" = true, nil }
+keys.Facet = { ["Name"] = true, ["ObjectType"] = true, nil }
 
-function M.AssertFacet(struct)
+function asserts.AssertFacet(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Facet to be of type 'table'")
-	if struct["Name"] then M.AssertFacetName(struct["Name"]) end
-	if struct["ObjectType"] then M.AssertObjectType(struct["ObjectType"]) end
+	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
+	if struct["ObjectType"] then asserts.AssertObjectType(struct["ObjectType"]) end
 	for k,_ in pairs(struct) do
-		assert(Facet_keys[k], "Facet contains unknown key " .. tostring(k))
+		assert(keys.Facet[k], "Facet contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Facet
 -- <p>A structure that contains <code>Name</code>, <code>ARN</code>, <code>Attributes</code>, <a>Rule</a>s, and <code>ObjectTypes</code>.</p>
--- @param Name [FacetName] <p>The name of the <a>Facet</a>.</p>
--- @param ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
-function M.Facet(Name, ObjectType, ...)
+-- @param _Name [FacetName] <p>The name of the <a>Facet</a>.</p>
+-- @param _ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
+function M.Facet(_Name, _ObjectType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Facet")
 	local t = { 
-		["Name"] = Name,
-		["ObjectType"] = ObjectType,
+		["Name"] = _Name,
+		["ObjectType"] = _ObjectType,
 	}
-	M.AssertFacet(t)
+	asserts.AssertFacet(t)
 	return t
 end
 
-local CreateTypedLinkFacetRequest_keys = { "Facet" = true, "SchemaArn" = true, nil }
+keys.CreateTypedLinkFacetRequest = { ["Facet"] = true, ["SchemaArn"] = true, nil }
 
-function M.AssertCreateTypedLinkFacetRequest(struct)
+function asserts.AssertCreateTypedLinkFacetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTypedLinkFacetRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Facet"], "Expected key Facet to exist in table")
-	if struct["Facet"] then M.AssertTypedLinkFacet(struct["Facet"]) end
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
+	if struct["Facet"] then asserts.AssertTypedLinkFacet(struct["Facet"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateTypedLinkFacetRequest_keys[k], "CreateTypedLinkFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateTypedLinkFacetRequest[k], "CreateTypedLinkFacetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateTypedLinkFacetRequest
 --  
--- @param Facet [TypedLinkFacet] <p> <a>Facet</a> structure that is associated with the typed link facet.</p>
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- @param _Facet [TypedLinkFacet] <p> <a>Facet</a> structure that is associated with the typed link facet.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Facet
-function M.CreateTypedLinkFacetRequest(Facet, SchemaArn, ...)
+function M.CreateTypedLinkFacetRequest(_Facet, _SchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTypedLinkFacetRequest")
 	local t = { 
-		["Facet"] = Facet,
-		["SchemaArn"] = SchemaArn,
+		["Facet"] = _Facet,
+		["SchemaArn"] = _SchemaArn,
 	}
-	M.AssertCreateTypedLinkFacetRequest(t)
+	asserts.AssertCreateTypedLinkFacetRequest(t)
 	return t
 end
 
-local DirectoryDeletedException_keys = { "Message" = true, nil }
+keys.DirectoryDeletedException = { ["Message"] = true, nil }
 
-function M.AssertDirectoryDeletedException(struct)
+function asserts.AssertDirectoryDeletedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DirectoryDeletedException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(DirectoryDeletedException_keys[k], "DirectoryDeletedException contains unknown key " .. tostring(k))
+		assert(keys.DirectoryDeletedException[k], "DirectoryDeletedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DirectoryDeletedException
 -- <p>A directory that has been deleted and to which access has been attempted. Note: The requested resource will eventually cease to exist.</p>
--- @param Message [ExceptionMessage] <p>A directory that has been deleted and to which access has been attempted. Note: The requested resource will eventually cease to exist.</p>
-function M.DirectoryDeletedException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.DirectoryDeletedException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryDeletedException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertDirectoryDeletedException(t)
+	asserts.AssertDirectoryDeletedException(t)
 	return t
 end
 
-local ListObjectParentsRequest_keys = { "ConsistencyLevel" = true, "ObjectReference" = true, "NextToken" = true, "MaxResults" = true, "DirectoryArn" = true, nil }
+keys.ListObjectParentsRequest = { ["ConsistencyLevel"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertListObjectParentsRequest(struct)
+function asserts.AssertListObjectParentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectParentsRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectParentsRequest_keys[k], "ListObjectParentsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListObjectParentsRequest[k], "ListObjectParentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectParentsRequest
 --  
--- @param ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param ObjectReference [ObjectReference] <p>The reference that identifies the object for which parent objects are being listed.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object for which parent objects are being listed.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.ListObjectParentsRequest(ConsistencyLevel, ObjectReference, NextToken, MaxResults, DirectoryArn, ...)
+function M.ListObjectParentsRequest(_ConsistencyLevel, _ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectParentsRequest")
 	local t = { 
-		["ConsistencyLevel"] = ConsistencyLevel,
-		["ObjectReference"] = ObjectReference,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["DirectoryArn"] = DirectoryArn,
+		["ConsistencyLevel"] = _ConsistencyLevel,
+		["ObjectReference"] = _ObjectReference,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertListObjectParentsRequest(t)
+	asserts.AssertListObjectParentsRequest(t)
 	return t
 end
 
-local Directory_keys = { "State" = true, "CreationDateTime" = true, "Name" = true, "DirectoryArn" = true, nil }
+keys.Directory = { ["State"] = true, ["CreationDateTime"] = true, ["Name"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertDirectory(struct)
+function asserts.AssertDirectory(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Directory to be of type 'table'")
-	if struct["State"] then M.AssertDirectoryState(struct["State"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["Name"] then M.AssertDirectoryName(struct["Name"]) end
-	if struct["DirectoryArn"] then M.AssertDirectoryArn(struct["DirectoryArn"]) end
+	if struct["State"] then asserts.AssertDirectoryState(struct["State"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["Name"] then asserts.AssertDirectoryName(struct["Name"]) end
+	if struct["DirectoryArn"] then asserts.AssertDirectoryArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(Directory_keys[k], "Directory contains unknown key " .. tostring(k))
+		assert(keys.Directory[k], "Directory contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Directory
 -- <p>Directory structure that includes the directory name and directory ARN.</p>
--- @param State [DirectoryState] <p>The state of the directory. Can be either <code>Enabled</code>, <code>Disabled</code>, or <code>Deleted</code>.</p>
--- @param CreationDateTime [Date] <p>The date and time when the directory was created.</p>
--- @param Name [DirectoryName] <p>The name of the directory.</p>
--- @param DirectoryArn [DirectoryArn] <p>The Amazon Resource Name (ARN) that is associated with the directory. For more information, see <a>arns</a>.</p>
-function M.Directory(State, CreationDateTime, Name, DirectoryArn, ...)
+-- @param _State [DirectoryState] <p>The state of the directory. Can be either <code>Enabled</code>, <code>Disabled</code>, or <code>Deleted</code>.</p>
+-- @param _CreationDateTime [Date] <p>The date and time when the directory was created.</p>
+-- @param _Name [DirectoryName] <p>The name of the directory.</p>
+-- @param _DirectoryArn [DirectoryArn] <p>The Amazon Resource Name (ARN) that is associated with the directory. For more information, see <a>arns</a>.</p>
+function M.Directory(_State, _CreationDateTime, _Name, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Directory")
 	local t = { 
-		["State"] = State,
-		["CreationDateTime"] = CreationDateTime,
-		["Name"] = Name,
-		["DirectoryArn"] = DirectoryArn,
+		["State"] = _State,
+		["CreationDateTime"] = _CreationDateTime,
+		["Name"] = _Name,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDirectory(t)
+	asserts.AssertDirectory(t)
 	return t
 end
 
-local SchemaFacet_keys = { "SchemaArn" = true, "FacetName" = true, nil }
+keys.SchemaFacet = { ["SchemaArn"] = true, ["FacetName"] = true, nil }
 
-function M.AssertSchemaFacet(struct)
+function asserts.AssertSchemaFacet(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SchemaFacet to be of type 'table'")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["FacetName"] then M.AssertFacetName(struct["FacetName"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["FacetName"] then asserts.AssertFacetName(struct["FacetName"]) end
 	for k,_ in pairs(struct) do
-		assert(SchemaFacet_keys[k], "SchemaFacet contains unknown key " .. tostring(k))
+		assert(keys.SchemaFacet[k], "SchemaFacet contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SchemaFacet
 -- <p>A facet.</p>
--- @param SchemaArn [Arn] <p>The ARN of the schema that contains the facet.</p>
--- @param FacetName [FacetName] <p>The name of the facet.</p>
-function M.SchemaFacet(SchemaArn, FacetName, ...)
+-- @param _SchemaArn [Arn] <p>The ARN of the schema that contains the facet.</p>
+-- @param _FacetName [FacetName] <p>The name of the facet.</p>
+function M.SchemaFacet(_SchemaArn, _FacetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SchemaFacet")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["FacetName"] = FacetName,
+		["SchemaArn"] = _SchemaArn,
+		["FacetName"] = _FacetName,
 	}
-	M.AssertSchemaFacet(t)
+	asserts.AssertSchemaFacet(t)
 	return t
 end
 
-local ListObjectAttributesRequest_keys = { "FacetFilter" = true, "MaxResults" = true, "ObjectReference" = true, "DirectoryArn" = true, "NextToken" = true, "ConsistencyLevel" = true, nil }
+keys.ListObjectAttributesRequest = { ["FacetFilter"] = true, ["MaxResults"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
 
-function M.AssertListObjectAttributesRequest(struct)
+function asserts.AssertListObjectAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectAttributesRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["FacetFilter"] then M.AssertSchemaFacet(struct["FacetFilter"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["FacetFilter"] then asserts.AssertSchemaFacet(struct["FacetFilter"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectAttributesRequest_keys[k], "ListObjectAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListObjectAttributesRequest[k], "ListObjectAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectAttributesRequest
 --  
--- @param FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param ObjectReference [ObjectReference] <p>The reference that identifies the object whose attributes will be listed.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- @param _FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object whose attributes will be listed.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.ListObjectAttributesRequest(FacetFilter, MaxResults, ObjectReference, DirectoryArn, NextToken, ConsistencyLevel, ...)
+function M.ListObjectAttributesRequest(_FacetFilter, _MaxResults, _ObjectReference, _DirectoryArn, _NextToken, _ConsistencyLevel, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectAttributesRequest")
 	local t = { 
-		["FacetFilter"] = FacetFilter,
-		["MaxResults"] = MaxResults,
-		["ObjectReference"] = ObjectReference,
-		["DirectoryArn"] = DirectoryArn,
-		["NextToken"] = NextToken,
-		["ConsistencyLevel"] = ConsistencyLevel,
+		["FacetFilter"] = _FacetFilter,
+		["MaxResults"] = _MaxResults,
+		["ObjectReference"] = _ObjectReference,
+		["DirectoryArn"] = _DirectoryArn,
+		["NextToken"] = _NextToken,
+		["ConsistencyLevel"] = _ConsistencyLevel,
 	}
-	M.AssertListObjectAttributesRequest(t)
+	asserts.AssertListObjectAttributesRequest(t)
 	return t
 end
 
-local BatchDetachObjectResponse_keys = { "detachedObjectIdentifier" = true, nil }
+keys.BatchDetachObjectResponse = { ["detachedObjectIdentifier"] = true, nil }
 
-function M.AssertBatchDetachObjectResponse(struct)
+function asserts.AssertBatchDetachObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchDetachObjectResponse to be of type 'table'")
-	if struct["detachedObjectIdentifier"] then M.AssertObjectIdentifier(struct["detachedObjectIdentifier"]) end
+	if struct["detachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["detachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchDetachObjectResponse_keys[k], "BatchDetachObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchDetachObjectResponse[k], "BatchDetachObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchDetachObjectResponse
 -- <p>Represents the output of a <code>DetachObject</code> response operation.</p>
--- @param detachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the detached object.</p>
-function M.BatchDetachObjectResponse(detachedObjectIdentifier, ...)
+-- @param _detachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the detached object.</p>
+function M.BatchDetachObjectResponse(_detachedObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchDetachObjectResponse")
 	local t = { 
-		["detachedObjectIdentifier"] = detachedObjectIdentifier,
+		["detachedObjectIdentifier"] = _detachedObjectIdentifier,
 	}
-	M.AssertBatchDetachObjectResponse(t)
+	asserts.AssertBatchDetachObjectResponse(t)
 	return t
 end
 
-local ListIndexResponse_keys = { "IndexAttachments" = true, "NextToken" = true, nil }
+keys.ListIndexResponse = { ["IndexAttachments"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListIndexResponse(struct)
+function asserts.AssertListIndexResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIndexResponse to be of type 'table'")
-	if struct["IndexAttachments"] then M.AssertIndexAttachmentList(struct["IndexAttachments"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["IndexAttachments"] then asserts.AssertIndexAttachmentList(struct["IndexAttachments"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIndexResponse_keys[k], "ListIndexResponse contains unknown key " .. tostring(k))
+		assert(keys.ListIndexResponse[k], "ListIndexResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIndexResponse
 --  
--- @param IndexAttachments [IndexAttachmentList] <p>The objects and indexed values attached to the index.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.ListIndexResponse(IndexAttachments, NextToken, ...)
+-- @param _IndexAttachments [IndexAttachmentList] <p>The objects and indexed values attached to the index.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.ListIndexResponse(_IndexAttachments, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIndexResponse")
 	local t = { 
-		["IndexAttachments"] = IndexAttachments,
-		["NextToken"] = NextToken,
+		["IndexAttachments"] = _IndexAttachments,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListIndexResponse(t)
+	asserts.AssertListIndexResponse(t)
 	return t
 end
 
-local DetachPolicyResponse_keys = { nil }
+keys.DetachPolicyResponse = { nil }
 
-function M.AssertDetachPolicyResponse(struct)
+function asserts.AssertDetachPolicyResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachPolicyResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DetachPolicyResponse_keys[k], "DetachPolicyResponse contains unknown key " .. tostring(k))
+		assert(keys.DetachPolicyResponse[k], "DetachPolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2364,783 +2367,783 @@ function M.DetachPolicyResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachPolicyResponse")
 	local t = { 
 	}
-	M.AssertDetachPolicyResponse(t)
+	asserts.AssertDetachPolicyResponse(t)
 	return t
 end
 
-local PublishSchemaRequest_keys = { "DevelopmentSchemaArn" = true, "Version" = true, "Name" = true, nil }
+keys.PublishSchemaRequest = { ["DevelopmentSchemaArn"] = true, ["Version"] = true, ["Name"] = true, nil }
 
-function M.AssertPublishSchemaRequest(struct)
+function asserts.AssertPublishSchemaRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PublishSchemaRequest to be of type 'table'")
 	assert(struct["DevelopmentSchemaArn"], "Expected key DevelopmentSchemaArn to exist in table")
 	assert(struct["Version"], "Expected key Version to exist in table")
-	if struct["DevelopmentSchemaArn"] then M.AssertArn(struct["DevelopmentSchemaArn"]) end
-	if struct["Version"] then M.AssertVersion(struct["Version"]) end
-	if struct["Name"] then M.AssertSchemaName(struct["Name"]) end
+	if struct["DevelopmentSchemaArn"] then asserts.AssertArn(struct["DevelopmentSchemaArn"]) end
+	if struct["Version"] then asserts.AssertVersion(struct["Version"]) end
+	if struct["Name"] then asserts.AssertSchemaName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(PublishSchemaRequest_keys[k], "PublishSchemaRequest contains unknown key " .. tostring(k))
+		assert(keys.PublishSchemaRequest[k], "PublishSchemaRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PublishSchemaRequest
 --  
--- @param DevelopmentSchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see <a>arns</a>.</p>
--- @param Version [Version] <p>The version under which the schema will be published.</p>
--- @param Name [SchemaName] <p>The new name under which the schema will be published. If this is not provided, the development schema is considered.</p>
+-- @param _DevelopmentSchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see <a>arns</a>.</p>
+-- @param _Version [Version] <p>The version under which the schema will be published.</p>
+-- @param _Name [SchemaName] <p>The new name under which the schema will be published. If this is not provided, the development schema is considered.</p>
 -- Required parameter: DevelopmentSchemaArn
 -- Required parameter: Version
-function M.PublishSchemaRequest(DevelopmentSchemaArn, Version, Name, ...)
+function M.PublishSchemaRequest(_DevelopmentSchemaArn, _Version, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishSchemaRequest")
 	local t = { 
-		["DevelopmentSchemaArn"] = DevelopmentSchemaArn,
-		["Version"] = Version,
-		["Name"] = Name,
+		["DevelopmentSchemaArn"] = _DevelopmentSchemaArn,
+		["Version"] = _Version,
+		["Name"] = _Name,
 	}
-	M.AssertPublishSchemaRequest(t)
+	asserts.AssertPublishSchemaRequest(t)
 	return t
 end
 
-local CreateObjectResponse_keys = { "ObjectIdentifier" = true, nil }
+keys.CreateObjectResponse = { ["ObjectIdentifier"] = true, nil }
 
-function M.AssertCreateObjectResponse(struct)
+function asserts.AssertCreateObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateObjectResponse to be of type 'table'")
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateObjectResponse_keys[k], "CreateObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateObjectResponse[k], "CreateObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateObjectResponse
 --  
--- @param ObjectIdentifier [ObjectIdentifier] <p>The identifier that is associated with the object.</p>
-function M.CreateObjectResponse(ObjectIdentifier, ...)
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>The identifier that is associated with the object.</p>
+function M.CreateObjectResponse(_ObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateObjectResponse")
 	local t = { 
-		["ObjectIdentifier"] = ObjectIdentifier,
+		["ObjectIdentifier"] = _ObjectIdentifier,
 	}
-	M.AssertCreateObjectResponse(t)
+	asserts.AssertCreateObjectResponse(t)
 	return t
 end
 
-local ListFacetAttributesRequest_keys = { "SchemaArn" = true, "NextToken" = true, "Name" = true, "MaxResults" = true, nil }
+keys.ListFacetAttributesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["Name"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListFacetAttributesRequest(struct)
+function asserts.AssertListFacetAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFacetAttributesRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["Name"] then M.AssertFacetName(struct["Name"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFacetAttributesRequest_keys[k], "ListFacetAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListFacetAttributesRequest[k], "ListFacetAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFacetAttributesRequest
 --  
--- @param SchemaArn [Arn] <p>The ARN of the schema where the facet resides.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param Name [FacetName] <p>The name of the facet whose attributes will be retrieved.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @param _SchemaArn [Arn] <p>The ARN of the schema where the facet resides.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _Name [FacetName] <p>The name of the facet whose attributes will be retrieved.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
-function M.ListFacetAttributesRequest(SchemaArn, NextToken, Name, MaxResults, ...)
+function M.ListFacetAttributesRequest(_SchemaArn, _NextToken, _Name, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFacetAttributesRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["NextToken"] = NextToken,
-		["Name"] = Name,
-		["MaxResults"] = MaxResults,
+		["SchemaArn"] = _SchemaArn,
+		["NextToken"] = _NextToken,
+		["Name"] = _Name,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListFacetAttributesRequest(t)
+	asserts.AssertListFacetAttributesRequest(t)
 	return t
 end
 
-local DeleteObjectRequest_keys = { "ObjectReference" = true, "DirectoryArn" = true, nil }
+keys.DeleteObjectRequest = { ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertDeleteObjectRequest(struct)
+function asserts.AssertDeleteObjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteObjectRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteObjectRequest_keys[k], "DeleteObjectRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteObjectRequest[k], "DeleteObjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteObjectRequest
 --  
--- @param ObjectReference [ObjectReference] <p>A reference that identifies the object.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- @param _ObjectReference [ObjectReference] <p>A reference that identifies the object.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.DeleteObjectRequest(ObjectReference, DirectoryArn, ...)
+function M.DeleteObjectRequest(_ObjectReference, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectRequest")
 	local t = { 
-		["ObjectReference"] = ObjectReference,
-		["DirectoryArn"] = DirectoryArn,
+		["ObjectReference"] = _ObjectReference,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDeleteObjectRequest(t)
+	asserts.AssertDeleteObjectRequest(t)
 	return t
 end
 
-local DetachObjectRequest_keys = { "ParentReference" = true, "LinkName" = true, "DirectoryArn" = true, nil }
+keys.DetachObjectRequest = { ["ParentReference"] = true, ["LinkName"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertDetachObjectRequest(struct)
+function asserts.AssertDetachObjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachObjectRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ParentReference"], "Expected key ParentReference to exist in table")
 	assert(struct["LinkName"], "Expected key LinkName to exist in table")
-	if struct["ParentReference"] then M.AssertObjectReference(struct["ParentReference"]) end
-	if struct["LinkName"] then M.AssertLinkName(struct["LinkName"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachObjectRequest_keys[k], "DetachObjectRequest contains unknown key " .. tostring(k))
+		assert(keys.DetachObjectRequest[k], "DetachObjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachObjectRequest
 --  
--- @param ParentReference [ObjectReference] <p>The parent reference from which the object with the specified link name is detached.</p>
--- @param LinkName [LinkName] <p>The link name associated with the object that needs to be detached.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
+-- @param _ParentReference [ObjectReference] <p>The parent reference from which the object with the specified link name is detached.</p>
+-- @param _LinkName [LinkName] <p>The link name associated with the object that needs to be detached.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ParentReference
 -- Required parameter: LinkName
-function M.DetachObjectRequest(ParentReference, LinkName, DirectoryArn, ...)
+function M.DetachObjectRequest(_ParentReference, _LinkName, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachObjectRequest")
 	local t = { 
-		["ParentReference"] = ParentReference,
-		["LinkName"] = LinkName,
-		["DirectoryArn"] = DirectoryArn,
+		["ParentReference"] = _ParentReference,
+		["LinkName"] = _LinkName,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDetachObjectRequest(t)
+	asserts.AssertDetachObjectRequest(t)
 	return t
 end
 
-local GetFacetRequest_keys = { "SchemaArn" = true, "Name" = true, nil }
+keys.GetFacetRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
 
-function M.AssertGetFacetRequest(struct)
+function asserts.AssertGetFacetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFacetRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then M.AssertFacetName(struct["Name"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFacetRequest_keys[k], "GetFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.GetFacetRequest[k], "GetFacetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFacetRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
--- @param Name [FacetName] <p>The name of the facet to retrieve.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
+-- @param _Name [FacetName] <p>The name of the facet to retrieve.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
-function M.GetFacetRequest(SchemaArn, Name, ...)
+function M.GetFacetRequest(_SchemaArn, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFacetRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["Name"] = Name,
+		["SchemaArn"] = _SchemaArn,
+		["Name"] = _Name,
 	}
-	M.AssertGetFacetRequest(t)
+	asserts.AssertGetFacetRequest(t)
 	return t
 end
 
-local ListDirectoriesResponse_keys = { "Directories" = true, "NextToken" = true, nil }
+keys.ListDirectoriesResponse = { ["Directories"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListDirectoriesResponse(struct)
+function asserts.AssertListDirectoriesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDirectoriesResponse to be of type 'table'")
 	assert(struct["Directories"], "Expected key Directories to exist in table")
-	if struct["Directories"] then M.AssertDirectoryList(struct["Directories"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["Directories"] then asserts.AssertDirectoryList(struct["Directories"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDirectoriesResponse_keys[k], "ListDirectoriesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDirectoriesResponse[k], "ListDirectoriesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDirectoriesResponse
 --  
--- @param Directories [DirectoryList] <p>Lists all directories that are associated with your account in pagination fashion.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
+-- @param _Directories [DirectoryList] <p>Lists all directories that are associated with your account in pagination fashion.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
 -- Required parameter: Directories
-function M.ListDirectoriesResponse(Directories, NextToken, ...)
+function M.ListDirectoriesResponse(_Directories, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDirectoriesResponse")
 	local t = { 
-		["Directories"] = Directories,
-		["NextToken"] = NextToken,
+		["Directories"] = _Directories,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListDirectoriesResponse(t)
+	asserts.AssertListDirectoriesResponse(t)
 	return t
 end
 
-local InvalidTaggingRequestException_keys = { "Message" = true, nil }
+keys.InvalidTaggingRequestException = { ["Message"] = true, nil }
 
-function M.AssertInvalidTaggingRequestException(struct)
+function asserts.AssertInvalidTaggingRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidTaggingRequestException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidTaggingRequestException_keys[k], "InvalidTaggingRequestException contains unknown key " .. tostring(k))
+		assert(keys.InvalidTaggingRequestException[k], "InvalidTaggingRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidTaggingRequestException
 -- <p>Can occur for multiple reasons such as when you tag a resource that doesn’t exist or if you specify a higher number of tags for a resource than the allowed limit. Allowed limit is 50 tags per resource.</p>
--- @param Message [ExceptionMessage] <p>Can occur for multiple reasons such as when you tag a resource that doesn’t exist or if you specify a higher number of tags for a resource than the allowed limit. Allowed limit is 50 tags per resource.</p>
-function M.InvalidTaggingRequestException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InvalidTaggingRequestException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTaggingRequestException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidTaggingRequestException(t)
+	asserts.AssertInvalidTaggingRequestException(t)
 	return t
 end
 
-local CreateDirectoryResponse_keys = { "AppliedSchemaArn" = true, "ObjectIdentifier" = true, "Name" = true, "DirectoryArn" = true, nil }
+keys.CreateDirectoryResponse = { ["AppliedSchemaArn"] = true, ["ObjectIdentifier"] = true, ["Name"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertCreateDirectoryResponse(struct)
+function asserts.AssertCreateDirectoryResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDirectoryResponse to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["ObjectIdentifier"], "Expected key ObjectIdentifier to exist in table")
 	assert(struct["AppliedSchemaArn"], "Expected key AppliedSchemaArn to exist in table")
-	if struct["AppliedSchemaArn"] then M.AssertArn(struct["AppliedSchemaArn"]) end
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
-	if struct["Name"] then M.AssertDirectoryName(struct["Name"]) end
-	if struct["DirectoryArn"] then M.AssertDirectoryArn(struct["DirectoryArn"]) end
+	if struct["AppliedSchemaArn"] then asserts.AssertArn(struct["AppliedSchemaArn"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["Name"] then asserts.AssertDirectoryName(struct["Name"]) end
+	if struct["DirectoryArn"] then asserts.AssertDirectoryArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDirectoryResponse_keys[k], "CreateDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateDirectoryResponse[k], "CreateDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDirectoryResponse
 --  
--- @param AppliedSchemaArn [Arn] <p>The ARN of the published schema in the <a>Directory</a>. Once a published schema is copied into the directory, it has its own ARN, which is referred to applied schema ARN. For more information, see <a>arns</a>.</p>
--- @param ObjectIdentifier [ObjectIdentifier] <p>The root object node of the created directory.</p>
--- @param Name [DirectoryName] <p>The name of the <a>Directory</a>.</p>
--- @param DirectoryArn [DirectoryArn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- @param _AppliedSchemaArn [Arn] <p>The ARN of the published schema in the <a>Directory</a>. Once a published schema is copied into the directory, it has its own ARN, which is referred to applied schema ARN. For more information, see <a>arns</a>.</p>
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>The root object node of the created directory.</p>
+-- @param _Name [DirectoryName] <p>The name of the <a>Directory</a>.</p>
+-- @param _DirectoryArn [DirectoryArn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: Name
 -- Required parameter: ObjectIdentifier
 -- Required parameter: AppliedSchemaArn
-function M.CreateDirectoryResponse(AppliedSchemaArn, ObjectIdentifier, Name, DirectoryArn, ...)
+function M.CreateDirectoryResponse(_AppliedSchemaArn, _ObjectIdentifier, _Name, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDirectoryResponse")
 	local t = { 
-		["AppliedSchemaArn"] = AppliedSchemaArn,
-		["ObjectIdentifier"] = ObjectIdentifier,
-		["Name"] = Name,
-		["DirectoryArn"] = DirectoryArn,
+		["AppliedSchemaArn"] = _AppliedSchemaArn,
+		["ObjectIdentifier"] = _ObjectIdentifier,
+		["Name"] = _Name,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertCreateDirectoryResponse(t)
+	asserts.AssertCreateDirectoryResponse(t)
 	return t
 end
 
-local ListAttachedIndicesResponse_keys = { "IndexAttachments" = true, "NextToken" = true, nil }
+keys.ListAttachedIndicesResponse = { ["IndexAttachments"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListAttachedIndicesResponse(struct)
+function asserts.AssertListAttachedIndicesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAttachedIndicesResponse to be of type 'table'")
-	if struct["IndexAttachments"] then M.AssertIndexAttachmentList(struct["IndexAttachments"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["IndexAttachments"] then asserts.AssertIndexAttachmentList(struct["IndexAttachments"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAttachedIndicesResponse_keys[k], "ListAttachedIndicesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAttachedIndicesResponse[k], "ListAttachedIndicesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAttachedIndicesResponse
 --  
--- @param IndexAttachments [IndexAttachmentList] <p>The indices attached to the specified object.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.ListAttachedIndicesResponse(IndexAttachments, NextToken, ...)
+-- @param _IndexAttachments [IndexAttachmentList] <p>The indices attached to the specified object.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.ListAttachedIndicesResponse(_IndexAttachments, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedIndicesResponse")
 	local t = { 
-		["IndexAttachments"] = IndexAttachments,
-		["NextToken"] = NextToken,
+		["IndexAttachments"] = _IndexAttachments,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListAttachedIndicesResponse(t)
+	asserts.AssertListAttachedIndicesResponse(t)
 	return t
 end
 
-local UntagResourceRequest_keys = { "ResourceArn" = true, "TagKeys" = true, nil }
+keys.UntagResourceRequest = { ["ResourceArn"] = true, ["TagKeys"] = true, nil }
 
-function M.AssertUntagResourceRequest(struct)
+function asserts.AssertUntagResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UntagResourceRequest to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["ResourceArn"] then M.AssertArn(struct["ResourceArn"]) end
-	if struct["TagKeys"] then M.AssertTagKeyList(struct["TagKeys"]) end
+	if struct["ResourceArn"] then asserts.AssertArn(struct["ResourceArn"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
 	for k,_ in pairs(struct) do
-		assert(UntagResourceRequest_keys[k], "UntagResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.UntagResourceRequest[k], "UntagResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
--- @param TagKeys [TagKeyList] <p>Keys of the tag that need to be removed from the resource.</p>
+-- @param _ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
+-- @param _TagKeys [TagKeyList] <p>Keys of the tag that need to be removed from the resource.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: TagKeys
-function M.UntagResourceRequest(ResourceArn, TagKeys, ...)
+function M.UntagResourceRequest(_ResourceArn, _TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceRequest")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
-		["TagKeys"] = TagKeys,
+		["ResourceArn"] = _ResourceArn,
+		["TagKeys"] = _TagKeys,
 	}
-	M.AssertUntagResourceRequest(t)
+	asserts.AssertUntagResourceRequest(t)
 	return t
 end
 
-local DirectoryAlreadyExistsException_keys = { "Message" = true, nil }
+keys.DirectoryAlreadyExistsException = { ["Message"] = true, nil }
 
-function M.AssertDirectoryAlreadyExistsException(struct)
+function asserts.AssertDirectoryAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DirectoryAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(DirectoryAlreadyExistsException_keys[k], "DirectoryAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.DirectoryAlreadyExistsException[k], "DirectoryAlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DirectoryAlreadyExistsException
 -- <p>Indicates that a <a>Directory</a> could not be created due to a naming conflict. Choose a different name and try again.</p>
--- @param Message [ExceptionMessage] <p>Indicates that a <a>Directory</a> could not be created due to a naming conflict. Choose a different name and try again.</p>
-function M.DirectoryAlreadyExistsException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.DirectoryAlreadyExistsException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryAlreadyExistsException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertDirectoryAlreadyExistsException(t)
+	asserts.AssertDirectoryAlreadyExistsException(t)
 	return t
 end
 
-local BatchListObjectChildrenResponse_keys = { "NextToken" = true, "Children" = true, nil }
+keys.BatchListObjectChildrenResponse = { ["NextToken"] = true, ["Children"] = true, nil }
 
-function M.AssertBatchListObjectChildrenResponse(struct)
+function asserts.AssertBatchListObjectChildrenResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchListObjectChildrenResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["Children"] then M.AssertLinkNameToObjectIdentifierMap(struct["Children"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Children"] then asserts.AssertLinkNameToObjectIdentifierMap(struct["Children"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchListObjectChildrenResponse_keys[k], "BatchListObjectChildrenResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchListObjectChildrenResponse[k], "BatchListObjectChildrenResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchListObjectChildrenResponse
 -- <p>Represents the output of a <code>ListObjectChildren</code> response operation.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param Children [LinkNameToObjectIdentifierMap] <p>The children structure, which is a map with the key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
-function M.BatchListObjectChildrenResponse(NextToken, Children, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _Children [LinkNameToObjectIdentifierMap] <p>The children structure, which is a map with the key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
+function M.BatchListObjectChildrenResponse(_NextToken, _Children, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchListObjectChildrenResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Children"] = Children,
+		["NextToken"] = _NextToken,
+		["Children"] = _Children,
 	}
-	M.AssertBatchListObjectChildrenResponse(t)
+	asserts.AssertBatchListObjectChildrenResponse(t)
 	return t
 end
 
-local GetObjectInformationRequest_keys = { "ObjectReference" = true, "ConsistencyLevel" = true, "DirectoryArn" = true, nil }
+keys.GetObjectInformationRequest = { ["ObjectReference"] = true, ["ConsistencyLevel"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertGetObjectInformationRequest(struct)
+function asserts.AssertGetObjectInformationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetObjectInformationRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetObjectInformationRequest_keys[k], "GetObjectInformationRequest contains unknown key " .. tostring(k))
+		assert(keys.GetObjectInformationRequest[k], "GetObjectInformationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetObjectInformationRequest
 --  
--- @param ObjectReference [ObjectReference] <p>A reference to the object.</p>
--- @param ConsistencyLevel [ConsistencyLevel] <p>The consistency level at which to retrieve the object information.</p>
--- @param DirectoryArn [Arn] <p>The ARN of the directory being retrieved.</p>
+-- @param _ObjectReference [ObjectReference] <p>A reference to the object.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level at which to retrieve the object information.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory being retrieved.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.GetObjectInformationRequest(ObjectReference, ConsistencyLevel, DirectoryArn, ...)
+function M.GetObjectInformationRequest(_ObjectReference, _ConsistencyLevel, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectInformationRequest")
 	local t = { 
-		["ObjectReference"] = ObjectReference,
-		["ConsistencyLevel"] = ConsistencyLevel,
-		["DirectoryArn"] = DirectoryArn,
+		["ObjectReference"] = _ObjectReference,
+		["ConsistencyLevel"] = _ConsistencyLevel,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertGetObjectInformationRequest(t)
+	asserts.AssertGetObjectInformationRequest(t)
 	return t
 end
 
-local PublishSchemaResponse_keys = { "PublishedSchemaArn" = true, nil }
+keys.PublishSchemaResponse = { ["PublishedSchemaArn"] = true, nil }
 
-function M.AssertPublishSchemaResponse(struct)
+function asserts.AssertPublishSchemaResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PublishSchemaResponse to be of type 'table'")
-	if struct["PublishedSchemaArn"] then M.AssertArn(struct["PublishedSchemaArn"]) end
+	if struct["PublishedSchemaArn"] then asserts.AssertArn(struct["PublishedSchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(PublishSchemaResponse_keys[k], "PublishSchemaResponse contains unknown key " .. tostring(k))
+		assert(keys.PublishSchemaResponse[k], "PublishSchemaResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PublishSchemaResponse
 --  
--- @param PublishedSchemaArn [Arn] <p>The ARN that is associated with the published schema. For more information, see <a>arns</a>.</p>
-function M.PublishSchemaResponse(PublishedSchemaArn, ...)
+-- @param _PublishedSchemaArn [Arn] <p>The ARN that is associated with the published schema. For more information, see <a>arns</a>.</p>
+function M.PublishSchemaResponse(_PublishedSchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishSchemaResponse")
 	local t = { 
-		["PublishedSchemaArn"] = PublishedSchemaArn,
+		["PublishedSchemaArn"] = _PublishedSchemaArn,
 	}
-	M.AssertPublishSchemaResponse(t)
+	asserts.AssertPublishSchemaResponse(t)
 	return t
 end
 
-local InvalidAttachmentException_keys = { "Message" = true, nil }
+keys.InvalidAttachmentException = { ["Message"] = true, nil }
 
-function M.AssertInvalidAttachmentException(struct)
+function asserts.AssertInvalidAttachmentException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidAttachmentException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidAttachmentException_keys[k], "InvalidAttachmentException contains unknown key " .. tostring(k))
+		assert(keys.InvalidAttachmentException[k], "InvalidAttachmentException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidAttachmentException
 -- <p>Indicates that an attempt to attach an object with the same link name or to apply a schema with the same name has occurred. Rename the link or the schema and then try again.</p>
--- @param Message [ExceptionMessage] <p>Indicates that an attempt to attach an object with the same link name or to apply a schema with the same name has occurred. Rename the link or the schema and then try again.</p>
-function M.InvalidAttachmentException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InvalidAttachmentException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAttachmentException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidAttachmentException(t)
+	asserts.AssertInvalidAttachmentException(t)
 	return t
 end
 
-local UpdateObjectAttributesRequest_keys = { "AttributeUpdates" = true, "ObjectReference" = true, "DirectoryArn" = true, nil }
+keys.UpdateObjectAttributesRequest = { ["AttributeUpdates"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertUpdateObjectAttributesRequest(struct)
+function asserts.AssertUpdateObjectAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateObjectAttributesRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
 	assert(struct["AttributeUpdates"], "Expected key AttributeUpdates to exist in table")
-	if struct["AttributeUpdates"] then M.AssertObjectAttributeUpdateList(struct["AttributeUpdates"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["AttributeUpdates"] then asserts.AssertObjectAttributeUpdateList(struct["AttributeUpdates"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateObjectAttributesRequest_keys[k], "UpdateObjectAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateObjectAttributesRequest[k], "UpdateObjectAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateObjectAttributesRequest
 --  
--- @param AttributeUpdates [ObjectAttributeUpdateList] <p>The attributes update structure.</p>
--- @param ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- @param _AttributeUpdates [ObjectAttributeUpdateList] <p>The attributes update structure.</p>
+-- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
 -- Required parameter: AttributeUpdates
-function M.UpdateObjectAttributesRequest(AttributeUpdates, ObjectReference, DirectoryArn, ...)
+function M.UpdateObjectAttributesRequest(_AttributeUpdates, _ObjectReference, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateObjectAttributesRequest")
 	local t = { 
-		["AttributeUpdates"] = AttributeUpdates,
-		["ObjectReference"] = ObjectReference,
-		["DirectoryArn"] = DirectoryArn,
+		["AttributeUpdates"] = _AttributeUpdates,
+		["ObjectReference"] = _ObjectReference,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertUpdateObjectAttributesRequest(t)
+	asserts.AssertUpdateObjectAttributesRequest(t)
 	return t
 end
 
-local DetachFromIndexRequest_keys = { "IndexReference" = true, "DirectoryArn" = true, "TargetReference" = true, nil }
+keys.DetachFromIndexRequest = { ["IndexReference"] = true, ["DirectoryArn"] = true, ["TargetReference"] = true, nil }
 
-function M.AssertDetachFromIndexRequest(struct)
+function asserts.AssertDetachFromIndexRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachFromIndexRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["IndexReference"], "Expected key IndexReference to exist in table")
 	assert(struct["TargetReference"], "Expected key TargetReference to exist in table")
-	if struct["IndexReference"] then M.AssertObjectReference(struct["IndexReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["TargetReference"] then M.AssertObjectReference(struct["TargetReference"]) end
+	if struct["IndexReference"] then asserts.AssertObjectReference(struct["IndexReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["TargetReference"] then asserts.AssertObjectReference(struct["TargetReference"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachFromIndexRequest_keys[k], "DetachFromIndexRequest contains unknown key " .. tostring(k))
+		assert(keys.DetachFromIndexRequest[k], "DetachFromIndexRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachFromIndexRequest
 --  
--- @param IndexReference [ObjectReference] <p>A reference to the index object.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory the index and object exist in.</p>
--- @param TargetReference [ObjectReference] <p>A reference to the object being detached from the index.</p>
+-- @param _IndexReference [ObjectReference] <p>A reference to the index object.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory the index and object exist in.</p>
+-- @param _TargetReference [ObjectReference] <p>A reference to the object being detached from the index.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: IndexReference
 -- Required parameter: TargetReference
-function M.DetachFromIndexRequest(IndexReference, DirectoryArn, TargetReference, ...)
+function M.DetachFromIndexRequest(_IndexReference, _DirectoryArn, _TargetReference, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachFromIndexRequest")
 	local t = { 
-		["IndexReference"] = IndexReference,
-		["DirectoryArn"] = DirectoryArn,
-		["TargetReference"] = TargetReference,
+		["IndexReference"] = _IndexReference,
+		["DirectoryArn"] = _DirectoryArn,
+		["TargetReference"] = _TargetReference,
 	}
-	M.AssertDetachFromIndexRequest(t)
+	asserts.AssertDetachFromIndexRequest(t)
 	return t
 end
 
-local ListAppliedSchemaArnsResponse_keys = { "NextToken" = true, "SchemaArns" = true, nil }
+keys.ListAppliedSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
 
-function M.AssertListAppliedSchemaArnsResponse(struct)
+function asserts.AssertListAppliedSchemaArnsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAppliedSchemaArnsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["SchemaArns"] then M.AssertArns(struct["SchemaArns"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["SchemaArns"] then asserts.AssertArns(struct["SchemaArns"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAppliedSchemaArnsResponse_keys[k], "ListAppliedSchemaArnsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAppliedSchemaArnsResponse[k], "ListAppliedSchemaArnsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAppliedSchemaArnsResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param SchemaArns [Arns] <p>The ARNs of schemas that are applied to the directory.</p>
-function M.ListAppliedSchemaArnsResponse(NextToken, SchemaArns, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _SchemaArns [Arns] <p>The ARNs of schemas that are applied to the directory.</p>
+function M.ListAppliedSchemaArnsResponse(_NextToken, _SchemaArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAppliedSchemaArnsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["SchemaArns"] = SchemaArns,
+		["NextToken"] = _NextToken,
+		["SchemaArns"] = _SchemaArns,
 	}
-	M.AssertListAppliedSchemaArnsResponse(t)
+	asserts.AssertListAppliedSchemaArnsResponse(t)
 	return t
 end
 
-local ListIncomingTypedLinksRequest_keys = { "FilterAttributeRanges" = true, "MaxResults" = true, "FilterTypedLink" = true, "ObjectReference" = true, "DirectoryArn" = true, "NextToken" = true, "ConsistencyLevel" = true, nil }
+keys.ListIncomingTypedLinksRequest = { ["FilterAttributeRanges"] = true, ["MaxResults"] = true, ["FilterTypedLink"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
 
-function M.AssertListIncomingTypedLinksRequest(struct)
+function asserts.AssertListIncomingTypedLinksRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIncomingTypedLinksRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["FilterAttributeRanges"] then M.AssertTypedLinkAttributeRangeList(struct["FilterAttributeRanges"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["FilterTypedLink"] then M.AssertTypedLinkSchemaAndFacetName(struct["FilterTypedLink"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["FilterAttributeRanges"] then asserts.AssertTypedLinkAttributeRangeList(struct["FilterAttributeRanges"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["FilterTypedLink"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["FilterTypedLink"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIncomingTypedLinksRequest_keys[k], "ListIncomingTypedLinksRequest contains unknown key " .. tostring(k))
+		assert(keys.ListIncomingTypedLinksRequest[k], "ListIncomingTypedLinksRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIncomingTypedLinksRequest
 --  
--- @param FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @param FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.</p>
--- @param ObjectReference [ObjectReference] <p>Reference that identifies the object whose attributes will be listed.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to list the typed links.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
+-- @param _FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @param _FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.</p>
+-- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object whose attributes will be listed.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to list the typed links.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.ListIncomingTypedLinksRequest(FilterAttributeRanges, MaxResults, FilterTypedLink, ObjectReference, DirectoryArn, NextToken, ConsistencyLevel, ...)
+function M.ListIncomingTypedLinksRequest(_FilterAttributeRanges, _MaxResults, _FilterTypedLink, _ObjectReference, _DirectoryArn, _NextToken, _ConsistencyLevel, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIncomingTypedLinksRequest")
 	local t = { 
-		["FilterAttributeRanges"] = FilterAttributeRanges,
-		["MaxResults"] = MaxResults,
-		["FilterTypedLink"] = FilterTypedLink,
-		["ObjectReference"] = ObjectReference,
-		["DirectoryArn"] = DirectoryArn,
-		["NextToken"] = NextToken,
-		["ConsistencyLevel"] = ConsistencyLevel,
+		["FilterAttributeRanges"] = _FilterAttributeRanges,
+		["MaxResults"] = _MaxResults,
+		["FilterTypedLink"] = _FilterTypedLink,
+		["ObjectReference"] = _ObjectReference,
+		["DirectoryArn"] = _DirectoryArn,
+		["NextToken"] = _NextToken,
+		["ConsistencyLevel"] = _ConsistencyLevel,
 	}
-	M.AssertListIncomingTypedLinksRequest(t)
+	asserts.AssertListIncomingTypedLinksRequest(t)
 	return t
 end
 
-local DetachPolicyRequest_keys = { "PolicyReference" = true, "ObjectReference" = true, "DirectoryArn" = true, nil }
+keys.DetachPolicyRequest = { ["PolicyReference"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertDetachPolicyRequest(struct)
+function asserts.AssertDetachPolicyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachPolicyRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["PolicyReference"], "Expected key PolicyReference to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["PolicyReference"] then M.AssertObjectReference(struct["PolicyReference"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["PolicyReference"] then asserts.AssertObjectReference(struct["PolicyReference"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachPolicyRequest_keys[k], "DetachPolicyRequest contains unknown key " .. tostring(k))
+		assert(keys.DetachPolicyRequest[k], "DetachPolicyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachPolicyRequest
 --  
--- @param PolicyReference [ObjectReference] <p>Reference that identifies the policy object.</p>
--- @param ObjectReference [ObjectReference] <p>Reference that identifies the object whose policy object will be detached.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
+-- @param _PolicyReference [ObjectReference] <p>Reference that identifies the policy object.</p>
+-- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object whose policy object will be detached.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: PolicyReference
 -- Required parameter: ObjectReference
-function M.DetachPolicyRequest(PolicyReference, ObjectReference, DirectoryArn, ...)
+function M.DetachPolicyRequest(_PolicyReference, _ObjectReference, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachPolicyRequest")
 	local t = { 
-		["PolicyReference"] = PolicyReference,
-		["ObjectReference"] = ObjectReference,
-		["DirectoryArn"] = DirectoryArn,
+		["PolicyReference"] = _PolicyReference,
+		["ObjectReference"] = _ObjectReference,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDetachPolicyRequest(t)
+	asserts.AssertDetachPolicyRequest(t)
 	return t
 end
 
-local PutSchemaFromJsonResponse_keys = { "Arn" = true, nil }
+keys.PutSchemaFromJsonResponse = { ["Arn"] = true, nil }
 
-function M.AssertPutSchemaFromJsonResponse(struct)
+function asserts.AssertPutSchemaFromJsonResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutSchemaFromJsonResponse to be of type 'table'")
-	if struct["Arn"] then M.AssertArn(struct["Arn"]) end
+	if struct["Arn"] then asserts.AssertArn(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(PutSchemaFromJsonResponse_keys[k], "PutSchemaFromJsonResponse contains unknown key " .. tostring(k))
+		assert(keys.PutSchemaFromJsonResponse[k], "PutSchemaFromJsonResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutSchemaFromJsonResponse
 --  
--- @param Arn [Arn] <p>The ARN of the schema to update.</p>
-function M.PutSchemaFromJsonResponse(Arn, ...)
+-- @param _Arn [Arn] <p>The ARN of the schema to update.</p>
+function M.PutSchemaFromJsonResponse(_Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutSchemaFromJsonResponse")
 	local t = { 
-		["Arn"] = Arn,
+		["Arn"] = _Arn,
 	}
-	M.AssertPutSchemaFromJsonResponse(t)
+	asserts.AssertPutSchemaFromJsonResponse(t)
 	return t
 end
 
-local TypedLinkSpecifier_keys = { "SourceObjectReference" = true, "IdentityAttributeValues" = true, "TargetObjectReference" = true, "TypedLinkFacet" = true, nil }
+keys.TypedLinkSpecifier = { ["SourceObjectReference"] = true, ["IdentityAttributeValues"] = true, ["TargetObjectReference"] = true, ["TypedLinkFacet"] = true, nil }
 
-function M.AssertTypedLinkSpecifier(struct)
+function asserts.AssertTypedLinkSpecifier(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TypedLinkSpecifier to be of type 'table'")
 	assert(struct["TypedLinkFacet"], "Expected key TypedLinkFacet to exist in table")
 	assert(struct["SourceObjectReference"], "Expected key SourceObjectReference to exist in table")
 	assert(struct["TargetObjectReference"], "Expected key TargetObjectReference to exist in table")
 	assert(struct["IdentityAttributeValues"], "Expected key IdentityAttributeValues to exist in table")
-	if struct["SourceObjectReference"] then M.AssertObjectReference(struct["SourceObjectReference"]) end
-	if struct["IdentityAttributeValues"] then M.AssertAttributeNameAndValueList(struct["IdentityAttributeValues"]) end
-	if struct["TargetObjectReference"] then M.AssertObjectReference(struct["TargetObjectReference"]) end
-	if struct["TypedLinkFacet"] then M.AssertTypedLinkSchemaAndFacetName(struct["TypedLinkFacet"]) end
+	if struct["SourceObjectReference"] then asserts.AssertObjectReference(struct["SourceObjectReference"]) end
+	if struct["IdentityAttributeValues"] then asserts.AssertAttributeNameAndValueList(struct["IdentityAttributeValues"]) end
+	if struct["TargetObjectReference"] then asserts.AssertObjectReference(struct["TargetObjectReference"]) end
+	if struct["TypedLinkFacet"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["TypedLinkFacet"]) end
 	for k,_ in pairs(struct) do
-		assert(TypedLinkSpecifier_keys[k], "TypedLinkSpecifier contains unknown key " .. tostring(k))
+		assert(keys.TypedLinkSpecifier[k], "TypedLinkSpecifier contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TypedLinkSpecifier
 -- <p>Contains all the information that is used to uniquely identify a typed link. The parameters discussed in this topic are used to uniquely specify the typed link being operated on. The <a>AttachTypedLink</a> API returns a typed link specifier while the <a>DetachTypedLink</a> API accepts one as input. Similarly, the <a>ListIncomingTypedLinks</a> and <a>ListOutgoingTypedLinks</a> API operations provide typed link specifiers as output. You can also construct a typed link specifier from scratch.</p>
--- @param SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
--- @param IdentityAttributeValues [AttributeNameAndValueList] <p>Identifies the attribute value to update.</p>
--- @param TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
--- @param TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
+-- @param _SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
+-- @param _IdentityAttributeValues [AttributeNameAndValueList] <p>Identifies the attribute value to update.</p>
+-- @param _TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
+-- @param _TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
 -- Required parameter: TypedLinkFacet
 -- Required parameter: SourceObjectReference
 -- Required parameter: TargetObjectReference
 -- Required parameter: IdentityAttributeValues
-function M.TypedLinkSpecifier(SourceObjectReference, IdentityAttributeValues, TargetObjectReference, TypedLinkFacet, ...)
+function M.TypedLinkSpecifier(_SourceObjectReference, _IdentityAttributeValues, _TargetObjectReference, _TypedLinkFacet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkSpecifier")
 	local t = { 
-		["SourceObjectReference"] = SourceObjectReference,
-		["IdentityAttributeValues"] = IdentityAttributeValues,
-		["TargetObjectReference"] = TargetObjectReference,
-		["TypedLinkFacet"] = TypedLinkFacet,
+		["SourceObjectReference"] = _SourceObjectReference,
+		["IdentityAttributeValues"] = _IdentityAttributeValues,
+		["TargetObjectReference"] = _TargetObjectReference,
+		["TypedLinkFacet"] = _TypedLinkFacet,
 	}
-	M.AssertTypedLinkSpecifier(t)
+	asserts.AssertTypedLinkSpecifier(t)
 	return t
 end
 
-local ObjectAlreadyDetachedException_keys = { "Message" = true, nil }
+keys.ObjectAlreadyDetachedException = { ["Message"] = true, nil }
 
-function M.AssertObjectAlreadyDetachedException(struct)
+function asserts.AssertObjectAlreadyDetachedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ObjectAlreadyDetachedException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ObjectAlreadyDetachedException_keys[k], "ObjectAlreadyDetachedException contains unknown key " .. tostring(k))
+		assert(keys.ObjectAlreadyDetachedException[k], "ObjectAlreadyDetachedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ObjectAlreadyDetachedException
 -- <p>Indicates that the object is not attached to the index.</p>
--- @param Message [ExceptionMessage] <p>Indicates that the object is not attached to the index.</p>
-function M.ObjectAlreadyDetachedException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.ObjectAlreadyDetachedException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAlreadyDetachedException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertObjectAlreadyDetachedException(t)
+	asserts.AssertObjectAlreadyDetachedException(t)
 	return t
 end
 
-local ListIndexRequest_keys = { "MaxResults" = true, "RangesOnIndexedValues" = true, "IndexReference" = true, "DirectoryArn" = true, "NextToken" = true, "ConsistencyLevel" = true, nil }
+keys.ListIndexRequest = { ["MaxResults"] = true, ["RangesOnIndexedValues"] = true, ["IndexReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
 
-function M.AssertListIndexRequest(struct)
+function asserts.AssertListIndexRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIndexRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["IndexReference"], "Expected key IndexReference to exist in table")
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["RangesOnIndexedValues"] then M.AssertObjectAttributeRangeList(struct["RangesOnIndexedValues"]) end
-	if struct["IndexReference"] then M.AssertObjectReference(struct["IndexReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["RangesOnIndexedValues"] then asserts.AssertObjectAttributeRangeList(struct["RangesOnIndexedValues"]) end
+	if struct["IndexReference"] then asserts.AssertObjectReference(struct["IndexReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIndexRequest_keys[k], "ListIndexRequest contains unknown key " .. tostring(k))
+		assert(keys.ListIndexRequest[k], "ListIndexRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIndexRequest
 --  
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve from the index.</p>
--- @param RangesOnIndexedValues [ObjectAttributeRangeList] <p>Specifies the ranges of indexed values that you want to query.</p>
--- @param IndexReference [ObjectReference] <p>The reference to the index to list.</p>
--- @param DirectoryArn [Arn] <p>The ARN of the directory that the index exists in.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve from the index.</p>
+-- @param _RangesOnIndexedValues [ObjectAttributeRangeList] <p>Specifies the ranges of indexed values that you want to query.</p>
+-- @param _IndexReference [ObjectReference] <p>The reference to the index to list.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory that the index exists in.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: IndexReference
-function M.ListIndexRequest(MaxResults, RangesOnIndexedValues, IndexReference, DirectoryArn, NextToken, ConsistencyLevel, ...)
+function M.ListIndexRequest(_MaxResults, _RangesOnIndexedValues, _IndexReference, _DirectoryArn, _NextToken, _ConsistencyLevel, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIndexRequest")
 	local t = { 
-		["MaxResults"] = MaxResults,
-		["RangesOnIndexedValues"] = RangesOnIndexedValues,
-		["IndexReference"] = IndexReference,
-		["DirectoryArn"] = DirectoryArn,
-		["NextToken"] = NextToken,
-		["ConsistencyLevel"] = ConsistencyLevel,
+		["MaxResults"] = _MaxResults,
+		["RangesOnIndexedValues"] = _RangesOnIndexedValues,
+		["IndexReference"] = _IndexReference,
+		["DirectoryArn"] = _DirectoryArn,
+		["NextToken"] = _NextToken,
+		["ConsistencyLevel"] = _ConsistencyLevel,
 	}
-	M.AssertListIndexRequest(t)
+	asserts.AssertListIndexRequest(t)
 	return t
 end
 
-local CreateTypedLinkFacetResponse_keys = { nil }
+keys.CreateTypedLinkFacetResponse = { nil }
 
-function M.AssertCreateTypedLinkFacetResponse(struct)
+function asserts.AssertCreateTypedLinkFacetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTypedLinkFacetResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CreateTypedLinkFacetResponse_keys[k], "CreateTypedLinkFacetResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateTypedLinkFacetResponse[k], "CreateTypedLinkFacetResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3150,166 +3153,166 @@ function M.CreateTypedLinkFacetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTypedLinkFacetResponse")
 	local t = { 
 	}
-	M.AssertCreateTypedLinkFacetResponse(t)
+	asserts.AssertCreateTypedLinkFacetResponse(t)
 	return t
 end
 
-local ListPublishedSchemaArnsResponse_keys = { "NextToken" = true, "SchemaArns" = true, nil }
+keys.ListPublishedSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
 
-function M.AssertListPublishedSchemaArnsResponse(struct)
+function asserts.AssertListPublishedSchemaArnsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPublishedSchemaArnsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["SchemaArns"] then M.AssertArns(struct["SchemaArns"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["SchemaArns"] then asserts.AssertArns(struct["SchemaArns"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPublishedSchemaArnsResponse_keys[k], "ListPublishedSchemaArnsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListPublishedSchemaArnsResponse[k], "ListPublishedSchemaArnsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPublishedSchemaArnsResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param SchemaArns [Arns] <p>The ARNs of published schemas.</p>
-function M.ListPublishedSchemaArnsResponse(NextToken, SchemaArns, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _SchemaArns [Arns] <p>The ARNs of published schemas.</p>
+function M.ListPublishedSchemaArnsResponse(_NextToken, _SchemaArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPublishedSchemaArnsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["SchemaArns"] = SchemaArns,
+		["NextToken"] = _NextToken,
+		["SchemaArns"] = _SchemaArns,
 	}
-	M.AssertListPublishedSchemaArnsResponse(t)
+	asserts.AssertListPublishedSchemaArnsResponse(t)
 	return t
 end
 
-local CreateIndexResponse_keys = { "ObjectIdentifier" = true, nil }
+keys.CreateIndexResponse = { ["ObjectIdentifier"] = true, nil }
 
-function M.AssertCreateIndexResponse(struct)
+function asserts.AssertCreateIndexResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateIndexResponse to be of type 'table'")
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateIndexResponse_keys[k], "CreateIndexResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateIndexResponse[k], "CreateIndexResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateIndexResponse
 --  
--- @param ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-function M.CreateIndexResponse(ObjectIdentifier, ...)
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
+function M.CreateIndexResponse(_ObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateIndexResponse")
 	local t = { 
-		["ObjectIdentifier"] = ObjectIdentifier,
+		["ObjectIdentifier"] = _ObjectIdentifier,
 	}
-	M.AssertCreateIndexResponse(t)
+	asserts.AssertCreateIndexResponse(t)
 	return t
 end
 
-local BatchAttachObject_keys = { "ParentReference" = true, "LinkName" = true, "ChildReference" = true, nil }
+keys.BatchAttachObject = { ["ParentReference"] = true, ["LinkName"] = true, ["ChildReference"] = true, nil }
 
-function M.AssertBatchAttachObject(struct)
+function asserts.AssertBatchAttachObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchAttachObject to be of type 'table'")
 	assert(struct["ParentReference"], "Expected key ParentReference to exist in table")
 	assert(struct["ChildReference"], "Expected key ChildReference to exist in table")
 	assert(struct["LinkName"], "Expected key LinkName to exist in table")
-	if struct["ParentReference"] then M.AssertObjectReference(struct["ParentReference"]) end
-	if struct["LinkName"] then M.AssertLinkName(struct["LinkName"]) end
-	if struct["ChildReference"] then M.AssertObjectReference(struct["ChildReference"]) end
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
+	if struct["ChildReference"] then asserts.AssertObjectReference(struct["ChildReference"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchAttachObject_keys[k], "BatchAttachObject contains unknown key " .. tostring(k))
+		assert(keys.BatchAttachObject[k], "BatchAttachObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchAttachObject
 -- <p>Represents the output of an <code>AttachObject</code> operation.</p>
--- @param ParentReference [ObjectReference] <p>The parent object reference.</p>
--- @param LinkName [LinkName] <p>The name of the link.</p>
--- @param ChildReference [ObjectReference] <p>The child object reference that is to be attached to the object.</p>
+-- @param _ParentReference [ObjectReference] <p>The parent object reference.</p>
+-- @param _LinkName [LinkName] <p>The name of the link.</p>
+-- @param _ChildReference [ObjectReference] <p>The child object reference that is to be attached to the object.</p>
 -- Required parameter: ParentReference
 -- Required parameter: ChildReference
 -- Required parameter: LinkName
-function M.BatchAttachObject(ParentReference, LinkName, ChildReference, ...)
+function M.BatchAttachObject(_ParentReference, _LinkName, _ChildReference, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchAttachObject")
 	local t = { 
-		["ParentReference"] = ParentReference,
-		["LinkName"] = LinkName,
-		["ChildReference"] = ChildReference,
+		["ParentReference"] = _ParentReference,
+		["LinkName"] = _LinkName,
+		["ChildReference"] = _ChildReference,
 	}
-	M.AssertBatchAttachObject(t)
+	asserts.AssertBatchAttachObject(t)
 	return t
 end
 
-local FacetAttributeDefinition_keys = { "Rules" = true, "DefaultValue" = true, "Type" = true, "IsImmutable" = true, nil }
+keys.FacetAttributeDefinition = { ["Rules"] = true, ["DefaultValue"] = true, ["Type"] = true, ["IsImmutable"] = true, nil }
 
-function M.AssertFacetAttributeDefinition(struct)
+function asserts.AssertFacetAttributeDefinition(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FacetAttributeDefinition to be of type 'table'")
 	assert(struct["Type"], "Expected key Type to exist in table")
-	if struct["Rules"] then M.AssertRuleMap(struct["Rules"]) end
-	if struct["DefaultValue"] then M.AssertTypedAttributeValue(struct["DefaultValue"]) end
-	if struct["Type"] then M.AssertFacetAttributeType(struct["Type"]) end
-	if struct["IsImmutable"] then M.AssertBool(struct["IsImmutable"]) end
+	if struct["Rules"] then asserts.AssertRuleMap(struct["Rules"]) end
+	if struct["DefaultValue"] then asserts.AssertTypedAttributeValue(struct["DefaultValue"]) end
+	if struct["Type"] then asserts.AssertFacetAttributeType(struct["Type"]) end
+	if struct["IsImmutable"] then asserts.AssertBool(struct["IsImmutable"]) end
 	for k,_ in pairs(struct) do
-		assert(FacetAttributeDefinition_keys[k], "FacetAttributeDefinition contains unknown key " .. tostring(k))
+		assert(keys.FacetAttributeDefinition[k], "FacetAttributeDefinition contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FacetAttributeDefinition
 -- <p>A facet attribute definition. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- @param Rules [RuleMap] <p>Validation rules attached to the attribute definition.</p>
--- @param DefaultValue [TypedAttributeValue] <p>The default value of the attribute (if configured).</p>
--- @param Type [FacetAttributeType] <p>The type of the attribute.</p>
--- @param IsImmutable [Bool] <p>Whether the attribute is mutable or not.</p>
+-- @param _Rules [RuleMap] <p>Validation rules attached to the attribute definition.</p>
+-- @param _DefaultValue [TypedAttributeValue] <p>The default value of the attribute (if configured).</p>
+-- @param _Type [FacetAttributeType] <p>The type of the attribute.</p>
+-- @param _IsImmutable [Bool] <p>Whether the attribute is mutable or not.</p>
 -- Required parameter: Type
-function M.FacetAttributeDefinition(Rules, DefaultValue, Type, IsImmutable, ...)
+function M.FacetAttributeDefinition(_Rules, _DefaultValue, _Type, _IsImmutable, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FacetAttributeDefinition")
 	local t = { 
-		["Rules"] = Rules,
-		["DefaultValue"] = DefaultValue,
-		["Type"] = Type,
-		["IsImmutable"] = IsImmutable,
+		["Rules"] = _Rules,
+		["DefaultValue"] = _DefaultValue,
+		["Type"] = _Type,
+		["IsImmutable"] = _IsImmutable,
 	}
-	M.AssertFacetAttributeDefinition(t)
+	asserts.AssertFacetAttributeDefinition(t)
 	return t
 end
 
-local ListTagsForResourceRequest_keys = { "ResourceArn" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.ListTagsForResourceRequest = { ["ResourceArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListTagsForResourceRequest(struct)
+function asserts.AssertListTagsForResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForResourceRequest to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
-	if struct["ResourceArn"] then M.AssertArn(struct["ResourceArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertTagsNumberResults(struct["MaxResults"]) end
+	if struct["ResourceArn"] then asserts.AssertArn(struct["ResourceArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertTagsNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForResourceRequest_keys[k], "ListTagsForResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceRequest[k], "ListTagsForResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
--- @param NextToken [NextToken] <p>The pagination token. This is for future use. Currently pagination is not supported for tagging.</p>
--- @param MaxResults [TagsNumberResults] <p>The <code>MaxResults</code> parameter sets the maximum number of results returned in a single page. This is for future use and is not supported currently.</p>
+-- @param _ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
+-- @param _NextToken [NextToken] <p>The pagination token. This is for future use. Currently pagination is not supported for tagging.</p>
+-- @param _MaxResults [TagsNumberResults] <p>The <code>MaxResults</code> parameter sets the maximum number of results returned in a single page. This is for future use and is not supported currently.</p>
 -- Required parameter: ResourceArn
-function M.ListTagsForResourceRequest(ResourceArn, NextToken, MaxResults, ...)
+function M.ListTagsForResourceRequest(_ResourceArn, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["ResourceArn"] = _ResourceArn,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListTagsForResourceRequest(t)
+	asserts.AssertListTagsForResourceRequest(t)
 	return t
 end
 
-local BatchAddFacetToObjectResponse_keys = { nil }
+keys.BatchAddFacetToObjectResponse = { nil }
 
-function M.AssertBatchAddFacetToObjectResponse(struct)
+function asserts.AssertBatchAddFacetToObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchAddFacetToObjectResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(BatchAddFacetToObjectResponse_keys[k], "BatchAddFacetToObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchAddFacetToObjectResponse[k], "BatchAddFacetToObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3319,17 +3322,17 @@ function M.BatchAddFacetToObjectResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchAddFacetToObjectResponse")
 	local t = { 
 	}
-	M.AssertBatchAddFacetToObjectResponse(t)
+	asserts.AssertBatchAddFacetToObjectResponse(t)
 	return t
 end
 
-local BatchRemoveFacetFromObjectResponse_keys = { nil }
+keys.BatchRemoveFacetFromObjectResponse = { nil }
 
-function M.AssertBatchRemoveFacetFromObjectResponse(struct)
+function asserts.AssertBatchRemoveFacetFromObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchRemoveFacetFromObjectResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(BatchRemoveFacetFromObjectResponse_keys[k], "BatchRemoveFacetFromObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchRemoveFacetFromObjectResponse[k], "BatchRemoveFacetFromObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3339,17 +3342,17 @@ function M.BatchRemoveFacetFromObjectResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchRemoveFacetFromObjectResponse")
 	local t = { 
 	}
-	M.AssertBatchRemoveFacetFromObjectResponse(t)
+	asserts.AssertBatchRemoveFacetFromObjectResponse(t)
 	return t
 end
 
-local AttachPolicyResponse_keys = { nil }
+keys.AttachPolicyResponse = { nil }
 
-function M.AssertAttachPolicyResponse(struct)
+function asserts.AssertAttachPolicyResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachPolicyResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AttachPolicyResponse_keys[k], "AttachPolicyResponse contains unknown key " .. tostring(k))
+		assert(keys.AttachPolicyResponse[k], "AttachPolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3359,100 +3362,100 @@ function M.AttachPolicyResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachPolicyResponse")
 	local t = { 
 	}
-	M.AssertAttachPolicyResponse(t)
+	asserts.AssertAttachPolicyResponse(t)
 	return t
 end
 
-local PolicyToPath_keys = { "Path" = true, "Policies" = true, nil }
+keys.PolicyToPath = { ["Path"] = true, ["Policies"] = true, nil }
 
-function M.AssertPolicyToPath(struct)
+function asserts.AssertPolicyToPath(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PolicyToPath to be of type 'table'")
-	if struct["Path"] then M.AssertPathString(struct["Path"]) end
-	if struct["Policies"] then M.AssertPolicyAttachmentList(struct["Policies"]) end
+	if struct["Path"] then asserts.AssertPathString(struct["Path"]) end
+	if struct["Policies"] then asserts.AssertPolicyAttachmentList(struct["Policies"]) end
 	for k,_ in pairs(struct) do
-		assert(PolicyToPath_keys[k], "PolicyToPath contains unknown key " .. tostring(k))
+		assert(keys.PolicyToPath[k], "PolicyToPath contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PolicyToPath
 -- <p>Used when a regular object exists in a <a>Directory</a> and you want to find all of the policies that are associated with that object and the parent to that object.</p>
--- @param Path [PathString] <p>The path that is referenced from the root.</p>
--- @param Policies [PolicyAttachmentList] <p>List of policy objects.</p>
-function M.PolicyToPath(Path, Policies, ...)
+-- @param _Path [PathString] <p>The path that is referenced from the root.</p>
+-- @param _Policies [PolicyAttachmentList] <p>List of policy objects.</p>
+function M.PolicyToPath(_Path, _Policies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyToPath")
 	local t = { 
-		["Path"] = Path,
-		["Policies"] = Policies,
+		["Path"] = _Path,
+		["Policies"] = _Policies,
 	}
-	M.AssertPolicyToPath(t)
+	asserts.AssertPolicyToPath(t)
 	return t
 end
 
-local BatchListObjectChildren_keys = { "ObjectReference" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.BatchListObjectChildren = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertBatchListObjectChildren(struct)
+function asserts.AssertBatchListObjectChildren(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchListObjectChildren to be of type 'table'")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchListObjectChildren_keys[k], "BatchListObjectChildren contains unknown key " .. tostring(k))
+		assert(keys.BatchListObjectChildren[k], "BatchListObjectChildren contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchListObjectChildren
 -- <p>Represents the output of a <code>ListObjectChildren</code> operation.</p>
--- @param ObjectReference [ObjectReference] <p>Reference of the object for which child objects are being listed.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>Maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _ObjectReference [ObjectReference] <p>Reference of the object for which child objects are being listed.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>Maximum number of items to be retrieved in a single call. This is an approximate number.</p>
 -- Required parameter: ObjectReference
-function M.BatchListObjectChildren(ObjectReference, NextToken, MaxResults, ...)
+function M.BatchListObjectChildren(_ObjectReference, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchListObjectChildren")
 	local t = { 
-		["ObjectReference"] = ObjectReference,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["ObjectReference"] = _ObjectReference,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertBatchListObjectChildren(t)
+	asserts.AssertBatchListObjectChildren(t)
 	return t
 end
 
-local ListPublishedSchemaArnsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListPublishedSchemaArnsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListPublishedSchemaArnsRequest(struct)
+function asserts.AssertListPublishedSchemaArnsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPublishedSchemaArnsRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPublishedSchemaArnsRequest_keys[k], "ListPublishedSchemaArnsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListPublishedSchemaArnsRequest[k], "ListPublishedSchemaArnsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPublishedSchemaArnsRequest
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
-function M.ListPublishedSchemaArnsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+function M.ListPublishedSchemaArnsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPublishedSchemaArnsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListPublishedSchemaArnsRequest(t)
+	asserts.AssertListPublishedSchemaArnsRequest(t)
 	return t
 end
 
-local UpdateTypedLinkFacetResponse_keys = { nil }
+keys.UpdateTypedLinkFacetResponse = { nil }
 
-function M.AssertUpdateTypedLinkFacetResponse(struct)
+function asserts.AssertUpdateTypedLinkFacetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateTypedLinkFacetResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateTypedLinkFacetResponse_keys[k], "UpdateTypedLinkFacetResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateTypedLinkFacetResponse[k], "UpdateTypedLinkFacetResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3462,198 +3465,198 @@ function M.UpdateTypedLinkFacetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTypedLinkFacetResponse")
 	local t = { 
 	}
-	M.AssertUpdateTypedLinkFacetResponse(t)
+	asserts.AssertUpdateTypedLinkFacetResponse(t)
 	return t
 end
 
-local FacetAlreadyExistsException_keys = { "Message" = true, nil }
+keys.FacetAlreadyExistsException = { ["Message"] = true, nil }
 
-function M.AssertFacetAlreadyExistsException(struct)
+function asserts.AssertFacetAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FacetAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(FacetAlreadyExistsException_keys[k], "FacetAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.FacetAlreadyExistsException[k], "FacetAlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FacetAlreadyExistsException
 -- <p>A facet with the same name already exists.</p>
--- @param Message [ExceptionMessage] <p>A facet with the same name already exists.</p>
-function M.FacetAlreadyExistsException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.FacetAlreadyExistsException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FacetAlreadyExistsException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertFacetAlreadyExistsException(t)
+	asserts.AssertFacetAlreadyExistsException(t)
 	return t
 end
 
-local TagResourceRequest_keys = { "ResourceArn" = true, "Tags" = true, nil }
+keys.TagResourceRequest = { ["ResourceArn"] = true, ["Tags"] = true, nil }
 
-function M.AssertTagResourceRequest(struct)
+function asserts.AssertTagResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagResourceRequest to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceArn"] then M.AssertArn(struct["ResourceArn"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["ResourceArn"] then asserts.AssertArn(struct["ResourceArn"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(TagResourceRequest_keys[k], "TagResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.TagResourceRequest[k], "TagResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
--- @param Tags [TagList] <p>A list of tag key-value pairs.</p>
+-- @param _ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
+-- @param _Tags [TagList] <p>A list of tag key-value pairs.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: Tags
-function M.TagResourceRequest(ResourceArn, Tags, ...)
+function M.TagResourceRequest(_ResourceArn, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceRequest")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
-		["Tags"] = Tags,
+		["ResourceArn"] = _ResourceArn,
+		["Tags"] = _Tags,
 	}
-	M.AssertTagResourceRequest(t)
+	asserts.AssertTagResourceRequest(t)
 	return t
 end
 
-local AttachTypedLinkResponse_keys = { "TypedLinkSpecifier" = true, nil }
+keys.AttachTypedLinkResponse = { ["TypedLinkSpecifier"] = true, nil }
 
-function M.AssertAttachTypedLinkResponse(struct)
+function asserts.AssertAttachTypedLinkResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachTypedLinkResponse to be of type 'table'")
-	if struct["TypedLinkSpecifier"] then M.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
+	if struct["TypedLinkSpecifier"] then asserts.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachTypedLinkResponse_keys[k], "AttachTypedLinkResponse contains unknown key " .. tostring(k))
+		assert(keys.AttachTypedLinkResponse[k], "AttachTypedLinkResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachTypedLinkResponse
 --  
--- @param TypedLinkSpecifier [TypedLinkSpecifier] <p>Returns a typed link specifier as output.</p>
-function M.AttachTypedLinkResponse(TypedLinkSpecifier, ...)
+-- @param _TypedLinkSpecifier [TypedLinkSpecifier] <p>Returns a typed link specifier as output.</p>
+function M.AttachTypedLinkResponse(_TypedLinkSpecifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachTypedLinkResponse")
 	local t = { 
-		["TypedLinkSpecifier"] = TypedLinkSpecifier,
+		["TypedLinkSpecifier"] = _TypedLinkSpecifier,
 	}
-	M.AssertAttachTypedLinkResponse(t)
+	asserts.AssertAttachTypedLinkResponse(t)
 	return t
 end
 
-local DisableDirectoryResponse_keys = { "DirectoryArn" = true, nil }
+keys.DisableDirectoryResponse = { ["DirectoryArn"] = true, nil }
 
-function M.AssertDisableDirectoryResponse(struct)
+function asserts.AssertDisableDirectoryResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisableDirectoryResponse to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DisableDirectoryResponse_keys[k], "DisableDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.DisableDirectoryResponse[k], "DisableDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisableDirectoryResponse
 --  
--- @param DirectoryArn [Arn] <p>The ARN of the directory that has been disabled.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory that has been disabled.</p>
 -- Required parameter: DirectoryArn
-function M.DisableDirectoryResponse(DirectoryArn, ...)
+function M.DisableDirectoryResponse(_DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableDirectoryResponse")
 	local t = { 
-		["DirectoryArn"] = DirectoryArn,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDisableDirectoryResponse(t)
+	asserts.AssertDisableDirectoryResponse(t)
 	return t
 end
 
-local DetachObjectResponse_keys = { "DetachedObjectIdentifier" = true, nil }
+keys.DetachObjectResponse = { ["DetachedObjectIdentifier"] = true, nil }
 
-function M.AssertDetachObjectResponse(struct)
+function asserts.AssertDetachObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachObjectResponse to be of type 'table'")
-	if struct["DetachedObjectIdentifier"] then M.AssertObjectIdentifier(struct["DetachedObjectIdentifier"]) end
+	if struct["DetachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["DetachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachObjectResponse_keys[k], "DetachObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.DetachObjectResponse[k], "DetachObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachObjectResponse
 --  
--- @param DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that was detached from the object.</p>
-function M.DetachObjectResponse(DetachedObjectIdentifier, ...)
+-- @param _DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that was detached from the object.</p>
+function M.DetachObjectResponse(_DetachedObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachObjectResponse")
 	local t = { 
-		["DetachedObjectIdentifier"] = DetachedObjectIdentifier,
+		["DetachedObjectIdentifier"] = _DetachedObjectIdentifier,
 	}
-	M.AssertDetachObjectResponse(t)
+	asserts.AssertDetachObjectResponse(t)
 	return t
 end
 
-local BatchListObjectAttributes_keys = { "FacetFilter" = true, "ObjectReference" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.BatchListObjectAttributes = { ["FacetFilter"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertBatchListObjectAttributes(struct)
+function asserts.AssertBatchListObjectAttributes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchListObjectAttributes to be of type 'table'")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["FacetFilter"] then M.AssertSchemaFacet(struct["FacetFilter"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["FacetFilter"] then asserts.AssertSchemaFacet(struct["FacetFilter"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchListObjectAttributes_keys[k], "BatchListObjectAttributes contains unknown key " .. tostring(k))
+		assert(keys.BatchListObjectAttributes[k], "BatchListObjectAttributes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchListObjectAttributes
 -- <p>Represents the output of a <code>ListObjectAttributes</code> operation.</p>
--- @param FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
--- @param ObjectReference [ObjectReference] <p>Reference of the object whose attributes need to be listed.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
+-- @param _ObjectReference [ObjectReference] <p>Reference of the object whose attributes need to be listed.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
 -- Required parameter: ObjectReference
-function M.BatchListObjectAttributes(FacetFilter, ObjectReference, NextToken, MaxResults, ...)
+function M.BatchListObjectAttributes(_FacetFilter, _ObjectReference, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchListObjectAttributes")
 	local t = { 
-		["FacetFilter"] = FacetFilter,
-		["ObjectReference"] = ObjectReference,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["FacetFilter"] = _FacetFilter,
+		["ObjectReference"] = _ObjectReference,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertBatchListObjectAttributes(t)
+	asserts.AssertBatchListObjectAttributes(t)
 	return t
 end
 
-local GetTypedLinkFacetInformationResponse_keys = { "IdentityAttributeOrder" = true, nil }
+keys.GetTypedLinkFacetInformationResponse = { ["IdentityAttributeOrder"] = true, nil }
 
-function M.AssertGetTypedLinkFacetInformationResponse(struct)
+function asserts.AssertGetTypedLinkFacetInformationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTypedLinkFacetInformationResponse to be of type 'table'")
-	if struct["IdentityAttributeOrder"] then M.AssertAttributeNameList(struct["IdentityAttributeOrder"]) end
+	if struct["IdentityAttributeOrder"] then asserts.AssertAttributeNameList(struct["IdentityAttributeOrder"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTypedLinkFacetInformationResponse_keys[k], "GetTypedLinkFacetInformationResponse contains unknown key " .. tostring(k))
+		assert(keys.GetTypedLinkFacetInformationResponse[k], "GetTypedLinkFacetInformationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTypedLinkFacetInformationResponse
 --  
--- @param IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
-function M.GetTypedLinkFacetInformationResponse(IdentityAttributeOrder, ...)
+-- @param _IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
+function M.GetTypedLinkFacetInformationResponse(_IdentityAttributeOrder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTypedLinkFacetInformationResponse")
 	local t = { 
-		["IdentityAttributeOrder"] = IdentityAttributeOrder,
+		["IdentityAttributeOrder"] = _IdentityAttributeOrder,
 	}
-	M.AssertGetTypedLinkFacetInformationResponse(t)
+	asserts.AssertGetTypedLinkFacetInformationResponse(t)
 	return t
 end
 
-local UntagResourceResponse_keys = { nil }
+keys.UntagResourceResponse = { nil }
 
-function M.AssertUntagResourceResponse(struct)
+function asserts.AssertUntagResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UntagResourceResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UntagResourceResponse_keys[k], "UntagResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.UntagResourceResponse[k], "UntagResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3663,89 +3666,89 @@ function M.UntagResourceResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceResponse")
 	local t = { 
 	}
-	M.AssertUntagResourceResponse(t)
+	asserts.AssertUntagResourceResponse(t)
 	return t
 end
 
-local GetObjectInformationResponse_keys = { "ObjectIdentifier" = true, "SchemaFacets" = true, nil }
+keys.GetObjectInformationResponse = { ["ObjectIdentifier"] = true, ["SchemaFacets"] = true, nil }
 
-function M.AssertGetObjectInformationResponse(struct)
+function asserts.AssertGetObjectInformationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetObjectInformationResponse to be of type 'table'")
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
-	if struct["SchemaFacets"] then M.AssertSchemaFacetList(struct["SchemaFacets"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["SchemaFacets"] then asserts.AssertSchemaFacetList(struct["SchemaFacets"]) end
 	for k,_ in pairs(struct) do
-		assert(GetObjectInformationResponse_keys[k], "GetObjectInformationResponse contains unknown key " .. tostring(k))
+		assert(keys.GetObjectInformationResponse[k], "GetObjectInformationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetObjectInformationResponse
 --  
--- @param ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the specified object.</p>
--- @param SchemaFacets [SchemaFacetList] <p>The facets attached to the specified object.</p>
-function M.GetObjectInformationResponse(ObjectIdentifier, SchemaFacets, ...)
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the specified object.</p>
+-- @param _SchemaFacets [SchemaFacetList] <p>The facets attached to the specified object.</p>
+function M.GetObjectInformationResponse(_ObjectIdentifier, _SchemaFacets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectInformationResponse")
 	local t = { 
-		["ObjectIdentifier"] = ObjectIdentifier,
-		["SchemaFacets"] = SchemaFacets,
+		["ObjectIdentifier"] = _ObjectIdentifier,
+		["SchemaFacets"] = _SchemaFacets,
 	}
-	M.AssertGetObjectInformationResponse(t)
+	asserts.AssertGetObjectInformationResponse(t)
 	return t
 end
 
-local DirectoryNotEnabledException_keys = { "Message" = true, nil }
+keys.DirectoryNotEnabledException = { ["Message"] = true, nil }
 
-function M.AssertDirectoryNotEnabledException(struct)
+function asserts.AssertDirectoryNotEnabledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DirectoryNotEnabledException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(DirectoryNotEnabledException_keys[k], "DirectoryNotEnabledException contains unknown key " .. tostring(k))
+		assert(keys.DirectoryNotEnabledException[k], "DirectoryNotEnabledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DirectoryNotEnabledException
 -- <p>An operation can only operate on a directory that is not enabled.</p>
--- @param Message [ExceptionMessage] <p>An operation can only operate on a directory that is not enabled.</p>
-function M.DirectoryNotEnabledException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.DirectoryNotEnabledException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryNotEnabledException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertDirectoryNotEnabledException(t)
+	asserts.AssertDirectoryNotEnabledException(t)
 	return t
 end
 
-local CreateSchemaResponse_keys = { "SchemaArn" = true, nil }
+keys.CreateSchemaResponse = { ["SchemaArn"] = true, nil }
 
-function M.AssertCreateSchemaResponse(struct)
+function asserts.AssertCreateSchemaResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateSchemaResponse to be of type 'table'")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateSchemaResponse_keys[k], "CreateSchemaResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateSchemaResponse[k], "CreateSchemaResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateSchemaResponse
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
-function M.CreateSchemaResponse(SchemaArn, ...)
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+function M.CreateSchemaResponse(_SchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSchemaResponse")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
+		["SchemaArn"] = _SchemaArn,
 	}
-	M.AssertCreateSchemaResponse(t)
+	asserts.AssertCreateSchemaResponse(t)
 	return t
 end
 
-local CreateFacetResponse_keys = { nil }
+keys.CreateFacetResponse = { nil }
 
-function M.AssertCreateFacetResponse(struct)
+function asserts.AssertCreateFacetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFacetResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CreateFacetResponse_keys[k], "CreateFacetResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateFacetResponse[k], "CreateFacetResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3755,42 +3758,42 @@ function M.CreateFacetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFacetResponse")
 	local t = { 
 	}
-	M.AssertCreateFacetResponse(t)
+	asserts.AssertCreateFacetResponse(t)
 	return t
 end
 
-local GetSchemaAsJsonRequest_keys = { "SchemaArn" = true, nil }
+keys.GetSchemaAsJsonRequest = { ["SchemaArn"] = true, nil }
 
-function M.AssertGetSchemaAsJsonRequest(struct)
+function asserts.AssertGetSchemaAsJsonRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSchemaAsJsonRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSchemaAsJsonRequest_keys[k], "GetSchemaAsJsonRequest contains unknown key " .. tostring(k))
+		assert(keys.GetSchemaAsJsonRequest[k], "GetSchemaAsJsonRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSchemaAsJsonRequest
 --  
--- @param SchemaArn [Arn] <p>The ARN of the schema to retrieve.</p>
+-- @param _SchemaArn [Arn] <p>The ARN of the schema to retrieve.</p>
 -- Required parameter: SchemaArn
-function M.GetSchemaAsJsonRequest(SchemaArn, ...)
+function M.GetSchemaAsJsonRequest(_SchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSchemaAsJsonRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
+		["SchemaArn"] = _SchemaArn,
 	}
-	M.AssertGetSchemaAsJsonRequest(t)
+	asserts.AssertGetSchemaAsJsonRequest(t)
 	return t
 end
 
-local DeleteTypedLinkFacetResponse_keys = { nil }
+keys.DeleteTypedLinkFacetResponse = { nil }
 
-function M.AssertDeleteTypedLinkFacetResponse(struct)
+function asserts.AssertDeleteTypedLinkFacetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTypedLinkFacetResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteTypedLinkFacetResponse_keys[k], "DeleteTypedLinkFacetResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteTypedLinkFacetResponse[k], "DeleteTypedLinkFacetResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3800,279 +3803,279 @@ function M.DeleteTypedLinkFacetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTypedLinkFacetResponse")
 	local t = { 
 	}
-	M.AssertDeleteTypedLinkFacetResponse(t)
+	asserts.AssertDeleteTypedLinkFacetResponse(t)
 	return t
 end
 
-local GetTypedLinkFacetInformationRequest_keys = { "SchemaArn" = true, "Name" = true, nil }
+keys.GetTypedLinkFacetInformationRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
 
-function M.AssertGetTypedLinkFacetInformationRequest(struct)
+function asserts.AssertGetTypedLinkFacetInformationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTypedLinkFacetInformationRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then M.AssertTypedLinkName(struct["Name"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertTypedLinkName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTypedLinkFacetInformationRequest_keys[k], "GetTypedLinkFacetInformationRequest contains unknown key " .. tostring(k))
+		assert(keys.GetTypedLinkFacetInformationRequest[k], "GetTypedLinkFacetInformationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTypedLinkFacetInformationRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
-function M.GetTypedLinkFacetInformationRequest(SchemaArn, Name, ...)
+function M.GetTypedLinkFacetInformationRequest(_SchemaArn, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTypedLinkFacetInformationRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["Name"] = Name,
+		["SchemaArn"] = _SchemaArn,
+		["Name"] = _Name,
 	}
-	M.AssertGetTypedLinkFacetInformationRequest(t)
+	asserts.AssertGetTypedLinkFacetInformationRequest(t)
 	return t
 end
 
-local ListOutgoingTypedLinksResponse_keys = { "NextToken" = true, "TypedLinkSpecifiers" = true, nil }
+keys.ListOutgoingTypedLinksResponse = { ["NextToken"] = true, ["TypedLinkSpecifiers"] = true, nil }
 
-function M.AssertListOutgoingTypedLinksResponse(struct)
+function asserts.AssertListOutgoingTypedLinksResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListOutgoingTypedLinksResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["TypedLinkSpecifiers"] then M.AssertTypedLinkSpecifierList(struct["TypedLinkSpecifiers"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["TypedLinkSpecifiers"] then asserts.AssertTypedLinkSpecifierList(struct["TypedLinkSpecifiers"]) end
 	for k,_ in pairs(struct) do
-		assert(ListOutgoingTypedLinksResponse_keys[k], "ListOutgoingTypedLinksResponse contains unknown key " .. tostring(k))
+		assert(keys.ListOutgoingTypedLinksResponse[k], "ListOutgoingTypedLinksResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListOutgoingTypedLinksResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param TypedLinkSpecifiers [TypedLinkSpecifierList] <p>Returns a typed link specifier as output.</p>
-function M.ListOutgoingTypedLinksResponse(NextToken, TypedLinkSpecifiers, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _TypedLinkSpecifiers [TypedLinkSpecifierList] <p>Returns a typed link specifier as output.</p>
+function M.ListOutgoingTypedLinksResponse(_NextToken, _TypedLinkSpecifiers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListOutgoingTypedLinksResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["TypedLinkSpecifiers"] = TypedLinkSpecifiers,
+		["NextToken"] = _NextToken,
+		["TypedLinkSpecifiers"] = _TypedLinkSpecifiers,
 	}
-	M.AssertListOutgoingTypedLinksResponse(t)
+	asserts.AssertListOutgoingTypedLinksResponse(t)
 	return t
 end
 
-local PutSchemaFromJsonRequest_keys = { "Document" = true, "SchemaArn" = true, nil }
+keys.PutSchemaFromJsonRequest = { ["Document"] = true, ["SchemaArn"] = true, nil }
 
-function M.AssertPutSchemaFromJsonRequest(struct)
+function asserts.AssertPutSchemaFromJsonRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutSchemaFromJsonRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Document"], "Expected key Document to exist in table")
-	if struct["Document"] then M.AssertSchemaJsonDocument(struct["Document"]) end
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
+	if struct["Document"] then asserts.AssertSchemaJsonDocument(struct["Document"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(PutSchemaFromJsonRequest_keys[k], "PutSchemaFromJsonRequest contains unknown key " .. tostring(k))
+		assert(keys.PutSchemaFromJsonRequest[k], "PutSchemaFromJsonRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutSchemaFromJsonRequest
 --  
--- @param Document [SchemaJsonDocument] <p>The replacement JSON schema.</p>
--- @param SchemaArn [Arn] <p>The ARN of the schema to update.</p>
+-- @param _Document [SchemaJsonDocument] <p>The replacement JSON schema.</p>
+-- @param _SchemaArn [Arn] <p>The ARN of the schema to update.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Document
-function M.PutSchemaFromJsonRequest(Document, SchemaArn, ...)
+function M.PutSchemaFromJsonRequest(_Document, _SchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutSchemaFromJsonRequest")
 	local t = { 
-		["Document"] = Document,
-		["SchemaArn"] = SchemaArn,
+		["Document"] = _Document,
+		["SchemaArn"] = _SchemaArn,
 	}
-	M.AssertPutSchemaFromJsonRequest(t)
+	asserts.AssertPutSchemaFromJsonRequest(t)
 	return t
 end
 
-local EnableDirectoryRequest_keys = { "DirectoryArn" = true, nil }
+keys.EnableDirectoryRequest = { ["DirectoryArn"] = true, nil }
 
-function M.AssertEnableDirectoryRequest(struct)
+function asserts.AssertEnableDirectoryRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnableDirectoryRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(EnableDirectoryRequest_keys[k], "EnableDirectoryRequest contains unknown key " .. tostring(k))
+		assert(keys.EnableDirectoryRequest[k], "EnableDirectoryRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnableDirectoryRequest
 --  
--- @param DirectoryArn [Arn] <p>The ARN of the directory to enable.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory to enable.</p>
 -- Required parameter: DirectoryArn
-function M.EnableDirectoryRequest(DirectoryArn, ...)
+function M.EnableDirectoryRequest(_DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableDirectoryRequest")
 	local t = { 
-		["DirectoryArn"] = DirectoryArn,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertEnableDirectoryRequest(t)
+	asserts.AssertEnableDirectoryRequest(t)
 	return t
 end
 
-local IndexedAttributeMissingException_keys = { "Message" = true, nil }
+keys.IndexedAttributeMissingException = { ["Message"] = true, nil }
 
-function M.AssertIndexedAttributeMissingException(struct)
+function asserts.AssertIndexedAttributeMissingException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IndexedAttributeMissingException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(IndexedAttributeMissingException_keys[k], "IndexedAttributeMissingException contains unknown key " .. tostring(k))
+		assert(keys.IndexedAttributeMissingException[k], "IndexedAttributeMissingException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IndexedAttributeMissingException
 -- <p>An object has been attempted to be attached to an object that does not have the appropriate attribute value.</p>
--- @param Message [ExceptionMessage] <p>An object has been attempted to be attached to an object that does not have the appropriate attribute value.</p>
-function M.IndexedAttributeMissingException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.IndexedAttributeMissingException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IndexedAttributeMissingException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertIndexedAttributeMissingException(t)
+	asserts.AssertIndexedAttributeMissingException(t)
 	return t
 end
 
-local ListObjectParentPathsResponse_keys = { "PathToObjectIdentifiersList" = true, "NextToken" = true, nil }
+keys.ListObjectParentPathsResponse = { ["PathToObjectIdentifiersList"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListObjectParentPathsResponse(struct)
+function asserts.AssertListObjectParentPathsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectParentPathsResponse to be of type 'table'")
-	if struct["PathToObjectIdentifiersList"] then M.AssertPathToObjectIdentifiersList(struct["PathToObjectIdentifiersList"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["PathToObjectIdentifiersList"] then asserts.AssertPathToObjectIdentifiersList(struct["PathToObjectIdentifiersList"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectParentPathsResponse_keys[k], "ListObjectParentPathsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListObjectParentPathsResponse[k], "ListObjectParentPathsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectParentPathsResponse
 --  
--- @param PathToObjectIdentifiersList [PathToObjectIdentifiersList] <p>Returns the path to the <code>ObjectIdentifiers</code> that are associated with the directory.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.ListObjectParentPathsResponse(PathToObjectIdentifiersList, NextToken, ...)
+-- @param _PathToObjectIdentifiersList [PathToObjectIdentifiersList] <p>Returns the path to the <code>ObjectIdentifiers</code> that are associated with the directory.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.ListObjectParentPathsResponse(_PathToObjectIdentifiersList, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectParentPathsResponse")
 	local t = { 
-		["PathToObjectIdentifiersList"] = PathToObjectIdentifiersList,
-		["NextToken"] = NextToken,
+		["PathToObjectIdentifiersList"] = _PathToObjectIdentifiersList,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListObjectParentPathsResponse(t)
+	asserts.AssertListObjectParentPathsResponse(t)
 	return t
 end
 
-local UpdateTypedLinkFacetRequest_keys = { "AttributeUpdates" = true, "SchemaArn" = true, "IdentityAttributeOrder" = true, "Name" = true, nil }
+keys.UpdateTypedLinkFacetRequest = { ["AttributeUpdates"] = true, ["SchemaArn"] = true, ["IdentityAttributeOrder"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateTypedLinkFacetRequest(struct)
+function asserts.AssertUpdateTypedLinkFacetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateTypedLinkFacetRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["AttributeUpdates"], "Expected key AttributeUpdates to exist in table")
 	assert(struct["IdentityAttributeOrder"], "Expected key IdentityAttributeOrder to exist in table")
-	if struct["AttributeUpdates"] then M.AssertTypedLinkFacetAttributeUpdateList(struct["AttributeUpdates"]) end
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["IdentityAttributeOrder"] then M.AssertAttributeNameList(struct["IdentityAttributeOrder"]) end
-	if struct["Name"] then M.AssertTypedLinkName(struct["Name"]) end
+	if struct["AttributeUpdates"] then asserts.AssertTypedLinkFacetAttributeUpdateList(struct["AttributeUpdates"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["IdentityAttributeOrder"] then asserts.AssertAttributeNameList(struct["IdentityAttributeOrder"]) end
+	if struct["Name"] then asserts.AssertTypedLinkName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateTypedLinkFacetRequest_keys[k], "UpdateTypedLinkFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateTypedLinkFacetRequest[k], "UpdateTypedLinkFacetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateTypedLinkFacetRequest
 --  
--- @param AttributeUpdates [TypedLinkFacetAttributeUpdateList] <p>Attributes update structure.</p>
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
--- @param Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- @param _AttributeUpdates [TypedLinkFacetAttributeUpdateList] <p>Attributes update structure.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- @param _IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
+-- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
 -- Required parameter: AttributeUpdates
 -- Required parameter: IdentityAttributeOrder
-function M.UpdateTypedLinkFacetRequest(AttributeUpdates, SchemaArn, IdentityAttributeOrder, Name, ...)
+function M.UpdateTypedLinkFacetRequest(_AttributeUpdates, _SchemaArn, _IdentityAttributeOrder, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTypedLinkFacetRequest")
 	local t = { 
-		["AttributeUpdates"] = AttributeUpdates,
-		["SchemaArn"] = SchemaArn,
-		["IdentityAttributeOrder"] = IdentityAttributeOrder,
-		["Name"] = Name,
+		["AttributeUpdates"] = _AttributeUpdates,
+		["SchemaArn"] = _SchemaArn,
+		["IdentityAttributeOrder"] = _IdentityAttributeOrder,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateTypedLinkFacetRequest(t)
+	asserts.AssertUpdateTypedLinkFacetRequest(t)
 	return t
 end
 
-local ListFacetNamesResponse_keys = { "NextToken" = true, "FacetNames" = true, nil }
+keys.ListFacetNamesResponse = { ["NextToken"] = true, ["FacetNames"] = true, nil }
 
-function M.AssertListFacetNamesResponse(struct)
+function asserts.AssertListFacetNamesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFacetNamesResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["FacetNames"] then M.AssertFacetNameList(struct["FacetNames"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["FacetNames"] then asserts.AssertFacetNameList(struct["FacetNames"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFacetNamesResponse_keys[k], "ListFacetNamesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListFacetNamesResponse[k], "ListFacetNamesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFacetNamesResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param FacetNames [FacetNameList] <p>The names of facets that exist within the schema.</p>
-function M.ListFacetNamesResponse(NextToken, FacetNames, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _FacetNames [FacetNameList] <p>The names of facets that exist within the schema.</p>
+function M.ListFacetNamesResponse(_NextToken, _FacetNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFacetNamesResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["FacetNames"] = FacetNames,
+		["NextToken"] = _NextToken,
+		["FacetNames"] = _FacetNames,
 	}
-	M.AssertListFacetNamesResponse(t)
+	asserts.AssertListFacetNamesResponse(t)
 	return t
 end
 
-local ListTypedLinkFacetAttributesRequest_keys = { "SchemaArn" = true, "NextToken" = true, "Name" = true, "MaxResults" = true, nil }
+keys.ListTypedLinkFacetAttributesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["Name"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListTypedLinkFacetAttributesRequest(struct)
+function asserts.AssertListTypedLinkFacetAttributesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTypedLinkFacetAttributesRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["Name"] then M.AssertTypedLinkName(struct["Name"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Name"] then asserts.AssertTypedLinkName(struct["Name"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTypedLinkFacetAttributesRequest_keys[k], "ListTypedLinkFacetAttributesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListTypedLinkFacetAttributesRequest[k], "ListTypedLinkFacetAttributesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTypedLinkFacetAttributesRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
-function M.ListTypedLinkFacetAttributesRequest(SchemaArn, NextToken, Name, MaxResults, ...)
+function M.ListTypedLinkFacetAttributesRequest(_SchemaArn, _NextToken, _Name, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTypedLinkFacetAttributesRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["NextToken"] = NextToken,
-		["Name"] = Name,
-		["MaxResults"] = MaxResults,
+		["SchemaArn"] = _SchemaArn,
+		["NextToken"] = _NextToken,
+		["Name"] = _Name,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListTypedLinkFacetAttributesRequest(t)
+	asserts.AssertListTypedLinkFacetAttributesRequest(t)
 	return t
 end
 
-local TagResourceResponse_keys = { nil }
+keys.TagResourceResponse = { nil }
 
-function M.AssertTagResourceResponse(struct)
+function asserts.AssertTagResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagResourceResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(TagResourceResponse_keys[k], "TagResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.TagResourceResponse[k], "TagResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -4082,584 +4085,584 @@ function M.TagResourceResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceResponse")
 	local t = { 
 	}
-	M.AssertTagResourceResponse(t)
+	asserts.AssertTagResourceResponse(t)
 	return t
 end
 
-local TypedLinkAttributeDefinition_keys = { "RequiredBehavior" = true, "Name" = true, "IsImmutable" = true, "Rules" = true, "DefaultValue" = true, "Type" = true, nil }
+keys.TypedLinkAttributeDefinition = { ["RequiredBehavior"] = true, ["Name"] = true, ["IsImmutable"] = true, ["Rules"] = true, ["DefaultValue"] = true, ["Type"] = true, nil }
 
-function M.AssertTypedLinkAttributeDefinition(struct)
+function asserts.AssertTypedLinkAttributeDefinition(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TypedLinkAttributeDefinition to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Type"], "Expected key Type to exist in table")
 	assert(struct["RequiredBehavior"], "Expected key RequiredBehavior to exist in table")
-	if struct["RequiredBehavior"] then M.AssertRequiredAttributeBehavior(struct["RequiredBehavior"]) end
-	if struct["Name"] then M.AssertAttributeName(struct["Name"]) end
-	if struct["IsImmutable"] then M.AssertBool(struct["IsImmutable"]) end
-	if struct["Rules"] then M.AssertRuleMap(struct["Rules"]) end
-	if struct["DefaultValue"] then M.AssertTypedAttributeValue(struct["DefaultValue"]) end
-	if struct["Type"] then M.AssertFacetAttributeType(struct["Type"]) end
+	if struct["RequiredBehavior"] then asserts.AssertRequiredAttributeBehavior(struct["RequiredBehavior"]) end
+	if struct["Name"] then asserts.AssertAttributeName(struct["Name"]) end
+	if struct["IsImmutable"] then asserts.AssertBool(struct["IsImmutable"]) end
+	if struct["Rules"] then asserts.AssertRuleMap(struct["Rules"]) end
+	if struct["DefaultValue"] then asserts.AssertTypedAttributeValue(struct["DefaultValue"]) end
+	if struct["Type"] then asserts.AssertFacetAttributeType(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(TypedLinkAttributeDefinition_keys[k], "TypedLinkAttributeDefinition contains unknown key " .. tostring(k))
+		assert(keys.TypedLinkAttributeDefinition[k], "TypedLinkAttributeDefinition contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TypedLinkAttributeDefinition
 -- <p>A typed link attribute definition.</p>
--- @param RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>TypedLinkAttributeDefinition</code>.</p>
--- @param Name [AttributeName] <p>The unique name of the typed link attribute.</p>
--- @param IsImmutable [Bool] <p>Whether the attribute is mutable or not.</p>
--- @param Rules [RuleMap] <p>Validation rules that are attached to the attribute definition.</p>
--- @param DefaultValue [TypedAttributeValue] <p>The default value of the attribute (if configured).</p>
--- @param Type [FacetAttributeType] <p>The type of the attribute.</p>
+-- @param _RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>TypedLinkAttributeDefinition</code>.</p>
+-- @param _Name [AttributeName] <p>The unique name of the typed link attribute.</p>
+-- @param _IsImmutable [Bool] <p>Whether the attribute is mutable or not.</p>
+-- @param _Rules [RuleMap] <p>Validation rules that are attached to the attribute definition.</p>
+-- @param _DefaultValue [TypedAttributeValue] <p>The default value of the attribute (if configured).</p>
+-- @param _Type [FacetAttributeType] <p>The type of the attribute.</p>
 -- Required parameter: Name
 -- Required parameter: Type
 -- Required parameter: RequiredBehavior
-function M.TypedLinkAttributeDefinition(RequiredBehavior, Name, IsImmutable, Rules, DefaultValue, Type, ...)
+function M.TypedLinkAttributeDefinition(_RequiredBehavior, _Name, _IsImmutable, _Rules, _DefaultValue, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkAttributeDefinition")
 	local t = { 
-		["RequiredBehavior"] = RequiredBehavior,
-		["Name"] = Name,
-		["IsImmutable"] = IsImmutable,
-		["Rules"] = Rules,
-		["DefaultValue"] = DefaultValue,
-		["Type"] = Type,
+		["RequiredBehavior"] = _RequiredBehavior,
+		["Name"] = _Name,
+		["IsImmutable"] = _IsImmutable,
+		["Rules"] = _Rules,
+		["DefaultValue"] = _DefaultValue,
+		["Type"] = _Type,
 	}
-	M.AssertTypedLinkAttributeDefinition(t)
+	asserts.AssertTypedLinkAttributeDefinition(t)
 	return t
 end
 
-local ListOutgoingTypedLinksRequest_keys = { "FilterAttributeRanges" = true, "MaxResults" = true, "FilterTypedLink" = true, "ObjectReference" = true, "DirectoryArn" = true, "NextToken" = true, "ConsistencyLevel" = true, nil }
+keys.ListOutgoingTypedLinksRequest = { ["FilterAttributeRanges"] = true, ["MaxResults"] = true, ["FilterTypedLink"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
 
-function M.AssertListOutgoingTypedLinksRequest(struct)
+function asserts.AssertListOutgoingTypedLinksRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListOutgoingTypedLinksRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["FilterAttributeRanges"] then M.AssertTypedLinkAttributeRangeList(struct["FilterAttributeRanges"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["FilterTypedLink"] then M.AssertTypedLinkSchemaAndFacetName(struct["FilterTypedLink"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["FilterAttributeRanges"] then asserts.AssertTypedLinkAttributeRangeList(struct["FilterAttributeRanges"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["FilterTypedLink"] then asserts.AssertTypedLinkSchemaAndFacetName(struct["FilterTypedLink"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
 	for k,_ in pairs(struct) do
-		assert(ListOutgoingTypedLinksRequest_keys[k], "ListOutgoingTypedLinksRequest contains unknown key " .. tostring(k))
+		assert(keys.ListOutgoingTypedLinksRequest[k], "ListOutgoingTypedLinksRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListOutgoingTypedLinksRequest
 --  
--- @param FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @param FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes defined on the typed link facet, not the order they are supplied to any API calls.</p>
--- @param ObjectReference [ObjectReference] <p>A reference that identifies the object whose attributes will be listed.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to list the typed links.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
+-- @param _FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @param _FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes defined on the typed link facet, not the order they are supplied to any API calls.</p>
+-- @param _ObjectReference [ObjectReference] <p>A reference that identifies the object whose attributes will be listed.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to list the typed links.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.ListOutgoingTypedLinksRequest(FilterAttributeRanges, MaxResults, FilterTypedLink, ObjectReference, DirectoryArn, NextToken, ConsistencyLevel, ...)
+function M.ListOutgoingTypedLinksRequest(_FilterAttributeRanges, _MaxResults, _FilterTypedLink, _ObjectReference, _DirectoryArn, _NextToken, _ConsistencyLevel, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListOutgoingTypedLinksRequest")
 	local t = { 
-		["FilterAttributeRanges"] = FilterAttributeRanges,
-		["MaxResults"] = MaxResults,
-		["FilterTypedLink"] = FilterTypedLink,
-		["ObjectReference"] = ObjectReference,
-		["DirectoryArn"] = DirectoryArn,
-		["NextToken"] = NextToken,
-		["ConsistencyLevel"] = ConsistencyLevel,
+		["FilterAttributeRanges"] = _FilterAttributeRanges,
+		["MaxResults"] = _MaxResults,
+		["FilterTypedLink"] = _FilterTypedLink,
+		["ObjectReference"] = _ObjectReference,
+		["DirectoryArn"] = _DirectoryArn,
+		["NextToken"] = _NextToken,
+		["ConsistencyLevel"] = _ConsistencyLevel,
 	}
-	M.AssertListOutgoingTypedLinksRequest(t)
+	asserts.AssertListOutgoingTypedLinksRequest(t)
 	return t
 end
 
-local CreateDirectoryRequest_keys = { "SchemaArn" = true, "Name" = true, nil }
+keys.CreateDirectoryRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateDirectoryRequest(struct)
+function asserts.AssertCreateDirectoryRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDirectoryRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then M.AssertDirectoryName(struct["Name"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertDirectoryName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDirectoryRequest_keys[k], "CreateDirectoryRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDirectoryRequest[k], "CreateDirectoryRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDirectoryRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the published schema that will be copied into the data <a>Directory</a>. For more information, see <a>arns</a>.</p>
--- @param Name [DirectoryName] <p>The name of the <a>Directory</a>. Should be unique per account, per region.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the published schema that will be copied into the data <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- @param _Name [DirectoryName] <p>The name of the <a>Directory</a>. Should be unique per account, per region.</p>
 -- Required parameter: Name
 -- Required parameter: SchemaArn
-function M.CreateDirectoryRequest(SchemaArn, Name, ...)
+function M.CreateDirectoryRequest(_SchemaArn, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDirectoryRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["Name"] = Name,
+		["SchemaArn"] = _SchemaArn,
+		["Name"] = _Name,
 	}
-	M.AssertCreateDirectoryRequest(t)
+	asserts.AssertCreateDirectoryRequest(t)
 	return t
 end
 
-local ListTypedLinkFacetNamesResponse_keys = { "NextToken" = true, "FacetNames" = true, nil }
+keys.ListTypedLinkFacetNamesResponse = { ["NextToken"] = true, ["FacetNames"] = true, nil }
 
-function M.AssertListTypedLinkFacetNamesResponse(struct)
+function asserts.AssertListTypedLinkFacetNamesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTypedLinkFacetNamesResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["FacetNames"] then M.AssertTypedLinkNameList(struct["FacetNames"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["FacetNames"] then asserts.AssertTypedLinkNameList(struct["FacetNames"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTypedLinkFacetNamesResponse_keys[k], "ListTypedLinkFacetNamesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTypedLinkFacetNamesResponse[k], "ListTypedLinkFacetNamesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTypedLinkFacetNamesResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param FacetNames [TypedLinkNameList] <p>The names of typed link facets that exist within the schema.</p>
-function M.ListTypedLinkFacetNamesResponse(NextToken, FacetNames, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _FacetNames [TypedLinkNameList] <p>The names of typed link facets that exist within the schema.</p>
+function M.ListTypedLinkFacetNamesResponse(_NextToken, _FacetNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTypedLinkFacetNamesResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["FacetNames"] = FacetNames,
+		["NextToken"] = _NextToken,
+		["FacetNames"] = _FacetNames,
 	}
-	M.AssertListTypedLinkFacetNamesResponse(t)
+	asserts.AssertListTypedLinkFacetNamesResponse(t)
 	return t
 end
 
-local GetDirectoryRequest_keys = { "DirectoryArn" = true, nil }
+keys.GetDirectoryRequest = { ["DirectoryArn"] = true, nil }
 
-function M.AssertGetDirectoryRequest(struct)
+function asserts.AssertGetDirectoryRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDirectoryRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then M.AssertDirectoryArn(struct["DirectoryArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertDirectoryArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDirectoryRequest_keys[k], "GetDirectoryRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDirectoryRequest[k], "GetDirectoryRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDirectoryRequest
 --  
--- @param DirectoryArn [DirectoryArn] <p>The ARN of the directory.</p>
+-- @param _DirectoryArn [DirectoryArn] <p>The ARN of the directory.</p>
 -- Required parameter: DirectoryArn
-function M.GetDirectoryRequest(DirectoryArn, ...)
+function M.GetDirectoryRequest(_DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDirectoryRequest")
 	local t = { 
-		["DirectoryArn"] = DirectoryArn,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertGetDirectoryRequest(t)
+	asserts.AssertGetDirectoryRequest(t)
 	return t
 end
 
-local BatchAttachObjectResponse_keys = { "attachedObjectIdentifier" = true, nil }
+keys.BatchAttachObjectResponse = { ["attachedObjectIdentifier"] = true, nil }
 
-function M.AssertBatchAttachObjectResponse(struct)
+function asserts.AssertBatchAttachObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchAttachObjectResponse to be of type 'table'")
-	if struct["attachedObjectIdentifier"] then M.AssertObjectIdentifier(struct["attachedObjectIdentifier"]) end
+	if struct["attachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["attachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchAttachObjectResponse_keys[k], "BatchAttachObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchAttachObjectResponse[k], "BatchAttachObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchAttachObjectResponse
 -- <p>Represents the output batch <code>AttachObject</code> response operation.</p>
--- @param attachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that has been attached.</p>
-function M.BatchAttachObjectResponse(attachedObjectIdentifier, ...)
+-- @param _attachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that has been attached.</p>
+function M.BatchAttachObjectResponse(_attachedObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchAttachObjectResponse")
 	local t = { 
-		["attachedObjectIdentifier"] = attachedObjectIdentifier,
+		["attachedObjectIdentifier"] = _attachedObjectIdentifier,
 	}
-	M.AssertBatchAttachObjectResponse(t)
+	asserts.AssertBatchAttachObjectResponse(t)
 	return t
 end
 
-local BatchWriteOperation_keys = { "DetachObject" = true, "AttachObject" = true, "AddFacetToObject" = true, "RemoveFacetFromObject" = true, "CreateObject" = true, "DeleteObject" = true, "UpdateObjectAttributes" = true, nil }
+keys.BatchWriteOperation = { ["DetachObject"] = true, ["AttachObject"] = true, ["AddFacetToObject"] = true, ["RemoveFacetFromObject"] = true, ["CreateObject"] = true, ["DeleteObject"] = true, ["UpdateObjectAttributes"] = true, nil }
 
-function M.AssertBatchWriteOperation(struct)
+function asserts.AssertBatchWriteOperation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchWriteOperation to be of type 'table'")
-	if struct["DetachObject"] then M.AssertBatchDetachObject(struct["DetachObject"]) end
-	if struct["AttachObject"] then M.AssertBatchAttachObject(struct["AttachObject"]) end
-	if struct["AddFacetToObject"] then M.AssertBatchAddFacetToObject(struct["AddFacetToObject"]) end
-	if struct["RemoveFacetFromObject"] then M.AssertBatchRemoveFacetFromObject(struct["RemoveFacetFromObject"]) end
-	if struct["CreateObject"] then M.AssertBatchCreateObject(struct["CreateObject"]) end
-	if struct["DeleteObject"] then M.AssertBatchDeleteObject(struct["DeleteObject"]) end
-	if struct["UpdateObjectAttributes"] then M.AssertBatchUpdateObjectAttributes(struct["UpdateObjectAttributes"]) end
+	if struct["DetachObject"] then asserts.AssertBatchDetachObject(struct["DetachObject"]) end
+	if struct["AttachObject"] then asserts.AssertBatchAttachObject(struct["AttachObject"]) end
+	if struct["AddFacetToObject"] then asserts.AssertBatchAddFacetToObject(struct["AddFacetToObject"]) end
+	if struct["RemoveFacetFromObject"] then asserts.AssertBatchRemoveFacetFromObject(struct["RemoveFacetFromObject"]) end
+	if struct["CreateObject"] then asserts.AssertBatchCreateObject(struct["CreateObject"]) end
+	if struct["DeleteObject"] then asserts.AssertBatchDeleteObject(struct["DeleteObject"]) end
+	if struct["UpdateObjectAttributes"] then asserts.AssertBatchUpdateObjectAttributes(struct["UpdateObjectAttributes"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchWriteOperation_keys[k], "BatchWriteOperation contains unknown key " .. tostring(k))
+		assert(keys.BatchWriteOperation[k], "BatchWriteOperation contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchWriteOperation
 -- <p>Represents the output of a <code>BatchWrite</code> operation. </p>
--- @param DetachObject [BatchDetachObject] <p>Detaches an object from a <a>Directory</a>.</p>
--- @param AttachObject [BatchAttachObject] <p>Attaches an object to a <a>Directory</a>.</p>
--- @param AddFacetToObject [BatchAddFacetToObject] <p>A batch operation that adds a facet to an object.</p>
--- @param RemoveFacetFromObject [BatchRemoveFacetFromObject] <p>A batch operation that removes a facet from an object.</p>
--- @param CreateObject [BatchCreateObject] <p>Creates an object.</p>
--- @param DeleteObject [BatchDeleteObject] <p>Deletes an object in a <a>Directory</a>.</p>
--- @param UpdateObjectAttributes [BatchUpdateObjectAttributes] <p>Updates a given object's attributes.</p>
-function M.BatchWriteOperation(DetachObject, AttachObject, AddFacetToObject, RemoveFacetFromObject, CreateObject, DeleteObject, UpdateObjectAttributes, ...)
+-- @param _DetachObject [BatchDetachObject] <p>Detaches an object from a <a>Directory</a>.</p>
+-- @param _AttachObject [BatchAttachObject] <p>Attaches an object to a <a>Directory</a>.</p>
+-- @param _AddFacetToObject [BatchAddFacetToObject] <p>A batch operation that adds a facet to an object.</p>
+-- @param _RemoveFacetFromObject [BatchRemoveFacetFromObject] <p>A batch operation that removes a facet from an object.</p>
+-- @param _CreateObject [BatchCreateObject] <p>Creates an object.</p>
+-- @param _DeleteObject [BatchDeleteObject] <p>Deletes an object in a <a>Directory</a>.</p>
+-- @param _UpdateObjectAttributes [BatchUpdateObjectAttributes] <p>Updates a given object's attributes.</p>
+function M.BatchWriteOperation(_DetachObject, _AttachObject, _AddFacetToObject, _RemoveFacetFromObject, _CreateObject, _DeleteObject, _UpdateObjectAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteOperation")
 	local t = { 
-		["DetachObject"] = DetachObject,
-		["AttachObject"] = AttachObject,
-		["AddFacetToObject"] = AddFacetToObject,
-		["RemoveFacetFromObject"] = RemoveFacetFromObject,
-		["CreateObject"] = CreateObject,
-		["DeleteObject"] = DeleteObject,
-		["UpdateObjectAttributes"] = UpdateObjectAttributes,
+		["DetachObject"] = _DetachObject,
+		["AttachObject"] = _AttachObject,
+		["AddFacetToObject"] = _AddFacetToObject,
+		["RemoveFacetFromObject"] = _RemoveFacetFromObject,
+		["CreateObject"] = _CreateObject,
+		["DeleteObject"] = _DeleteObject,
+		["UpdateObjectAttributes"] = _UpdateObjectAttributes,
 	}
-	M.AssertBatchWriteOperation(t)
+	asserts.AssertBatchWriteOperation(t)
 	return t
 end
 
-local GetDirectoryResponse_keys = { "Directory" = true, nil }
+keys.GetDirectoryResponse = { ["Directory"] = true, nil }
 
-function M.AssertGetDirectoryResponse(struct)
+function asserts.AssertGetDirectoryResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDirectoryResponse to be of type 'table'")
 	assert(struct["Directory"], "Expected key Directory to exist in table")
-	if struct["Directory"] then M.AssertDirectory(struct["Directory"]) end
+	if struct["Directory"] then asserts.AssertDirectory(struct["Directory"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDirectoryResponse_keys[k], "GetDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDirectoryResponse[k], "GetDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDirectoryResponse
 --  
--- @param Directory [Directory] <p>Metadata about the directory.</p>
+-- @param _Directory [Directory] <p>Metadata about the directory.</p>
 -- Required parameter: Directory
-function M.GetDirectoryResponse(Directory, ...)
+function M.GetDirectoryResponse(_Directory, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDirectoryResponse")
 	local t = { 
-		["Directory"] = Directory,
+		["Directory"] = _Directory,
 	}
-	M.AssertGetDirectoryResponse(t)
+	asserts.AssertGetDirectoryResponse(t)
 	return t
 end
 
-local BatchReadSuccessfulResponse_keys = { "ListObjectAttributes" = true, "ListObjectChildren" = true, nil }
+keys.BatchReadSuccessfulResponse = { ["ListObjectAttributes"] = true, ["ListObjectChildren"] = true, nil }
 
-function M.AssertBatchReadSuccessfulResponse(struct)
+function asserts.AssertBatchReadSuccessfulResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchReadSuccessfulResponse to be of type 'table'")
-	if struct["ListObjectAttributes"] then M.AssertBatchListObjectAttributesResponse(struct["ListObjectAttributes"]) end
-	if struct["ListObjectChildren"] then M.AssertBatchListObjectChildrenResponse(struct["ListObjectChildren"]) end
+	if struct["ListObjectAttributes"] then asserts.AssertBatchListObjectAttributesResponse(struct["ListObjectAttributes"]) end
+	if struct["ListObjectChildren"] then asserts.AssertBatchListObjectChildrenResponse(struct["ListObjectChildren"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchReadSuccessfulResponse_keys[k], "BatchReadSuccessfulResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchReadSuccessfulResponse[k], "BatchReadSuccessfulResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchReadSuccessfulResponse
 -- <p>Represents the output of a <code>BatchRead</code> success response operation.</p>
--- @param ListObjectAttributes [BatchListObjectAttributesResponse] <p>Lists all attributes that are associated with an object.</p>
--- @param ListObjectChildren [BatchListObjectChildrenResponse] <p>Returns a paginated list of child objects that are associated with a given object.</p>
-function M.BatchReadSuccessfulResponse(ListObjectAttributes, ListObjectChildren, ...)
+-- @param _ListObjectAttributes [BatchListObjectAttributesResponse] <p>Lists all attributes that are associated with an object.</p>
+-- @param _ListObjectChildren [BatchListObjectChildrenResponse] <p>Returns a paginated list of child objects that are associated with a given object.</p>
+function M.BatchReadSuccessfulResponse(_ListObjectAttributes, _ListObjectChildren, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadSuccessfulResponse")
 	local t = { 
-		["ListObjectAttributes"] = ListObjectAttributes,
-		["ListObjectChildren"] = ListObjectChildren,
+		["ListObjectAttributes"] = _ListObjectAttributes,
+		["ListObjectChildren"] = _ListObjectChildren,
 	}
-	M.AssertBatchReadSuccessfulResponse(t)
+	asserts.AssertBatchReadSuccessfulResponse(t)
 	return t
 end
 
-local CreateSchemaRequest_keys = { "Name" = true, nil }
+keys.CreateSchemaRequest = { ["Name"] = true, nil }
 
-function M.AssertCreateSchemaRequest(struct)
+function asserts.AssertCreateSchemaRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateSchemaRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertSchemaName(struct["Name"]) end
+	if struct["Name"] then asserts.AssertSchemaName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateSchemaRequest_keys[k], "CreateSchemaRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateSchemaRequest[k], "CreateSchemaRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateSchemaRequest
 --  
--- @param Name [SchemaName] <p>The name that is associated with the schema. This is unique to each account and in each region.</p>
+-- @param _Name [SchemaName] <p>The name that is associated with the schema. This is unique to each account and in each region.</p>
 -- Required parameter: Name
-function M.CreateSchemaRequest(Name, ...)
+function M.CreateSchemaRequest(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSchemaRequest")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertCreateSchemaRequest(t)
+	asserts.AssertCreateSchemaRequest(t)
 	return t
 end
 
-local BatchReadResponse_keys = { "Responses" = true, nil }
+keys.BatchReadResponse = { ["Responses"] = true, nil }
 
-function M.AssertBatchReadResponse(struct)
+function asserts.AssertBatchReadResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchReadResponse to be of type 'table'")
-	if struct["Responses"] then M.AssertBatchReadOperationResponseList(struct["Responses"]) end
+	if struct["Responses"] then asserts.AssertBatchReadOperationResponseList(struct["Responses"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchReadResponse_keys[k], "BatchReadResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchReadResponse[k], "BatchReadResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchReadResponse
 --  
--- @param Responses [BatchReadOperationResponseList] <p>A list of all the responses for each batch read.</p>
-function M.BatchReadResponse(Responses, ...)
+-- @param _Responses [BatchReadOperationResponseList] <p>A list of all the responses for each batch read.</p>
+function M.BatchReadResponse(_Responses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadResponse")
 	local t = { 
-		["Responses"] = Responses,
+		["Responses"] = _Responses,
 	}
-	M.AssertBatchReadResponse(t)
+	asserts.AssertBatchReadResponse(t)
 	return t
 end
 
-local DeleteTypedLinkFacetRequest_keys = { "SchemaArn" = true, "Name" = true, nil }
+keys.DeleteTypedLinkFacetRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
 
-function M.AssertDeleteTypedLinkFacetRequest(struct)
+function asserts.AssertDeleteTypedLinkFacetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTypedLinkFacetRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then M.AssertTypedLinkName(struct["Name"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertTypedLinkName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteTypedLinkFacetRequest_keys[k], "DeleteTypedLinkFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteTypedLinkFacetRequest[k], "DeleteTypedLinkFacetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteTypedLinkFacetRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
-function M.DeleteTypedLinkFacetRequest(SchemaArn, Name, ...)
+function M.DeleteTypedLinkFacetRequest(_SchemaArn, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTypedLinkFacetRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["Name"] = Name,
+		["SchemaArn"] = _SchemaArn,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteTypedLinkFacetRequest(t)
+	asserts.AssertDeleteTypedLinkFacetRequest(t)
 	return t
 end
 
-local ListObjectAttributesResponse_keys = { "Attributes" = true, "NextToken" = true, nil }
+keys.ListObjectAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListObjectAttributesResponse(struct)
+function asserts.AssertListObjectAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListObjectAttributesResponse to be of type 'table'")
-	if struct["Attributes"] then M.AssertAttributeKeyAndValueList(struct["Attributes"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["Attributes"] then asserts.AssertAttributeKeyAndValueList(struct["Attributes"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListObjectAttributesResponse_keys[k], "ListObjectAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListObjectAttributesResponse[k], "ListObjectAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListObjectAttributesResponse
 --  
--- @param Attributes [AttributeKeyAndValueList] <p>Attributes map that is associated with the object. <code>AttributeArn</code> is the key, and attribute value is the value.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.ListObjectAttributesResponse(Attributes, NextToken, ...)
+-- @param _Attributes [AttributeKeyAndValueList] <p>Attributes map that is associated with the object. <code>AttributeArn</code> is the key, and attribute value is the value.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.ListObjectAttributesResponse(_Attributes, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectAttributesResponse")
 	local t = { 
-		["Attributes"] = Attributes,
-		["NextToken"] = NextToken,
+		["Attributes"] = _Attributes,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListObjectAttributesResponse(t)
+	asserts.AssertListObjectAttributesResponse(t)
 	return t
 end
 
-local AttachToIndexRequest_keys = { "IndexReference" = true, "DirectoryArn" = true, "TargetReference" = true, nil }
+keys.AttachToIndexRequest = { ["IndexReference"] = true, ["DirectoryArn"] = true, ["TargetReference"] = true, nil }
 
-function M.AssertAttachToIndexRequest(struct)
+function asserts.AssertAttachToIndexRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachToIndexRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["IndexReference"], "Expected key IndexReference to exist in table")
 	assert(struct["TargetReference"], "Expected key TargetReference to exist in table")
-	if struct["IndexReference"] then M.AssertObjectReference(struct["IndexReference"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["TargetReference"] then M.AssertObjectReference(struct["TargetReference"]) end
+	if struct["IndexReference"] then asserts.AssertObjectReference(struct["IndexReference"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["TargetReference"] then asserts.AssertObjectReference(struct["TargetReference"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachToIndexRequest_keys[k], "AttachToIndexRequest contains unknown key " .. tostring(k))
+		assert(keys.AttachToIndexRequest[k], "AttachToIndexRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachToIndexRequest
 --  
--- @param IndexReference [ObjectReference] <p>A reference to the index that you are attaching the object to.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where the object and index exist.</p>
--- @param TargetReference [ObjectReference] <p>A reference to the object that you are attaching to the index.</p>
+-- @param _IndexReference [ObjectReference] <p>A reference to the index that you are attaching the object to.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where the object and index exist.</p>
+-- @param _TargetReference [ObjectReference] <p>A reference to the object that you are attaching to the index.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: IndexReference
 -- Required parameter: TargetReference
-function M.AttachToIndexRequest(IndexReference, DirectoryArn, TargetReference, ...)
+function M.AttachToIndexRequest(_IndexReference, _DirectoryArn, _TargetReference, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachToIndexRequest")
 	local t = { 
-		["IndexReference"] = IndexReference,
-		["DirectoryArn"] = DirectoryArn,
-		["TargetReference"] = TargetReference,
+		["IndexReference"] = _IndexReference,
+		["DirectoryArn"] = _DirectoryArn,
+		["TargetReference"] = _TargetReference,
 	}
-	M.AssertAttachToIndexRequest(t)
+	asserts.AssertAttachToIndexRequest(t)
 	return t
 end
 
-local LookupPolicyRequest_keys = { "ObjectReference" = true, "NextToken" = true, "MaxResults" = true, "DirectoryArn" = true, nil }
+keys.LookupPolicyRequest = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertLookupPolicyRequest(struct)
+function asserts.AssertLookupPolicyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LookupPolicyRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(LookupPolicyRequest_keys[k], "LookupPolicyRequest contains unknown key " .. tostring(k))
+		assert(keys.LookupPolicyRequest[k], "LookupPolicyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LookupPolicyRequest
 --  
--- @param ObjectReference [ObjectReference] <p>Reference that identifies the object whose policies will be looked up.</p>
--- @param NextToken [NextToken] <p>The token to request the next page of results.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object whose policies will be looked up.</p>
+-- @param _NextToken [NextToken] <p>The token to request the next page of results.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: ObjectReference
-function M.LookupPolicyRequest(ObjectReference, NextToken, MaxResults, DirectoryArn, ...)
+function M.LookupPolicyRequest(_ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LookupPolicyRequest")
 	local t = { 
-		["ObjectReference"] = ObjectReference,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["DirectoryArn"] = DirectoryArn,
+		["ObjectReference"] = _ObjectReference,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertLookupPolicyRequest(t)
+	asserts.AssertLookupPolicyRequest(t)
 	return t
 end
 
-local BatchWriteException_keys = { "Index" = true, "Message" = true, "Type" = true, nil }
+keys.BatchWriteException = { ["Index"] = true, ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertBatchWriteException(struct)
+function asserts.AssertBatchWriteException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchWriteException to be of type 'table'")
-	if struct["Index"] then M.AssertBatchOperationIndex(struct["Index"]) end
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
-	if struct["Type"] then M.AssertBatchWriteExceptionType(struct["Type"]) end
+	if struct["Index"] then asserts.AssertBatchOperationIndex(struct["Index"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
+	if struct["Type"] then asserts.AssertBatchWriteExceptionType(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchWriteException_keys[k], "BatchWriteException contains unknown key " .. tostring(k))
+		assert(keys.BatchWriteException[k], "BatchWriteException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchWriteException
 -- <p>A <code>BatchWrite</code> exception has occurred.</p>
--- @param Index [BatchOperationIndex] <p>A <code>BatchWrite</code> exception has occurred.</p>
--- @param Message [ExceptionMessage] <p>A <code>BatchWrite</code> exception has occurred.</p>
--- @param Type [BatchWriteExceptionType] <p>A <code>BatchWrite</code> exception has occurred.</p>
-function M.BatchWriteException(Index, Message, Type, ...)
+-- @param _Index [BatchOperationIndex] 
+-- @param _Message [ExceptionMessage] 
+-- @param _Type [BatchWriteExceptionType] 
+function M.BatchWriteException(_Index, _Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteException")
 	local t = { 
-		["Index"] = Index,
-		["Message"] = Message,
-		["Type"] = Type,
+		["Index"] = _Index,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertBatchWriteException(t)
+	asserts.AssertBatchWriteException(t)
 	return t
 end
 
-local BatchReadOperation_keys = { "ListObjectAttributes" = true, "ListObjectChildren" = true, nil }
+keys.BatchReadOperation = { ["ListObjectAttributes"] = true, ["ListObjectChildren"] = true, nil }
 
-function M.AssertBatchReadOperation(struct)
+function asserts.AssertBatchReadOperation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchReadOperation to be of type 'table'")
-	if struct["ListObjectAttributes"] then M.AssertBatchListObjectAttributes(struct["ListObjectAttributes"]) end
-	if struct["ListObjectChildren"] then M.AssertBatchListObjectChildren(struct["ListObjectChildren"]) end
+	if struct["ListObjectAttributes"] then asserts.AssertBatchListObjectAttributes(struct["ListObjectAttributes"]) end
+	if struct["ListObjectChildren"] then asserts.AssertBatchListObjectChildren(struct["ListObjectChildren"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchReadOperation_keys[k], "BatchReadOperation contains unknown key " .. tostring(k))
+		assert(keys.BatchReadOperation[k], "BatchReadOperation contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchReadOperation
 -- <p>Represents the output of a <code>BatchRead</code> operation.</p>
--- @param ListObjectAttributes [BatchListObjectAttributes] <p>Lists all attributes that are associated with an object.</p>
--- @param ListObjectChildren [BatchListObjectChildren] <p>Returns a paginated list of child objects that are associated with a given object.</p>
-function M.BatchReadOperation(ListObjectAttributes, ListObjectChildren, ...)
+-- @param _ListObjectAttributes [BatchListObjectAttributes] <p>Lists all attributes that are associated with an object.</p>
+-- @param _ListObjectChildren [BatchListObjectChildren] <p>Returns a paginated list of child objects that are associated with a given object.</p>
+function M.BatchReadOperation(_ListObjectAttributes, _ListObjectChildren, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadOperation")
 	local t = { 
-		["ListObjectAttributes"] = ListObjectAttributes,
-		["ListObjectChildren"] = ListObjectChildren,
+		["ListObjectAttributes"] = _ListObjectAttributes,
+		["ListObjectChildren"] = _ListObjectChildren,
 	}
-	M.AssertBatchReadOperation(t)
+	asserts.AssertBatchReadOperation(t)
 	return t
 end
 
-local AttributeKeyAndValue_keys = { "Value" = true, "Key" = true, nil }
+keys.AttributeKeyAndValue = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertAttributeKeyAndValue(struct)
+function asserts.AssertAttributeKeyAndValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttributeKeyAndValue to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
 	assert(struct["Value"], "Expected key Value to exist in table")
-	if struct["Value"] then M.AssertTypedAttributeValue(struct["Value"]) end
-	if struct["Key"] then M.AssertAttributeKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTypedAttributeValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertAttributeKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(AttributeKeyAndValue_keys[k], "AttributeKeyAndValue contains unknown key " .. tostring(k))
+		assert(keys.AttributeKeyAndValue[k], "AttributeKeyAndValue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttributeKeyAndValue
 -- <p>The combination of an attribute key and an attribute value.</p>
--- @param Value [TypedAttributeValue] <p>The value of the attribute.</p>
--- @param Key [AttributeKey] <p>The key of the attribute.</p>
+-- @param _Value [TypedAttributeValue] <p>The value of the attribute.</p>
+-- @param _Key [AttributeKey] <p>The key of the attribute.</p>
 -- Required parameter: Key
 -- Required parameter: Value
-function M.AttributeKeyAndValue(Value, Key, ...)
+function M.AttributeKeyAndValue(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttributeKeyAndValue")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertAttributeKeyAndValue(t)
+	asserts.AssertAttributeKeyAndValue(t)
 	return t
 end
 
-local IndexAttachment_keys = { "ObjectIdentifier" = true, "IndexedAttributes" = true, nil }
+keys.IndexAttachment = { ["ObjectIdentifier"] = true, ["IndexedAttributes"] = true, nil }
 
-function M.AssertIndexAttachment(struct)
+function asserts.AssertIndexAttachment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IndexAttachment to be of type 'table'")
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
-	if struct["IndexedAttributes"] then M.AssertAttributeKeyAndValueList(struct["IndexedAttributes"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["IndexedAttributes"] then asserts.AssertAttributeKeyAndValueList(struct["IndexedAttributes"]) end
 	for k,_ in pairs(struct) do
-		assert(IndexAttachment_keys[k], "IndexAttachment contains unknown key " .. tostring(k))
+		assert(keys.IndexAttachment[k], "IndexAttachment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IndexAttachment
 -- <p>Represents an index and an attached object.</p>
--- @param ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object attached to the index.</p>
--- @param IndexedAttributes [AttributeKeyAndValueList] <p>The indexed attribute values.</p>
-function M.IndexAttachment(ObjectIdentifier, IndexedAttributes, ...)
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object attached to the index.</p>
+-- @param _IndexedAttributes [AttributeKeyAndValueList] <p>The indexed attribute values.</p>
+function M.IndexAttachment(_ObjectIdentifier, _IndexedAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IndexAttachment")
 	local t = { 
-		["ObjectIdentifier"] = ObjectIdentifier,
-		["IndexedAttributes"] = IndexedAttributes,
+		["ObjectIdentifier"] = _ObjectIdentifier,
+		["IndexedAttributes"] = _IndexedAttributes,
 	}
-	M.AssertIndexAttachment(t)
+	asserts.AssertIndexAttachment(t)
 	return t
 end
 
-local BatchCreateObject_keys = { "ObjectAttributeList" = true, "ParentReference" = true, "BatchReferenceName" = true, "SchemaFacet" = true, "LinkName" = true, nil }
+keys.BatchCreateObject = { ["ObjectAttributeList"] = true, ["ParentReference"] = true, ["BatchReferenceName"] = true, ["SchemaFacet"] = true, ["LinkName"] = true, nil }
 
-function M.AssertBatchCreateObject(struct)
+function asserts.AssertBatchCreateObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchCreateObject to be of type 'table'")
 	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
@@ -4667,733 +4670,733 @@ function M.AssertBatchCreateObject(struct)
 	assert(struct["ParentReference"], "Expected key ParentReference to exist in table")
 	assert(struct["LinkName"], "Expected key LinkName to exist in table")
 	assert(struct["BatchReferenceName"], "Expected key BatchReferenceName to exist in table")
-	if struct["ObjectAttributeList"] then M.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
-	if struct["ParentReference"] then M.AssertObjectReference(struct["ParentReference"]) end
-	if struct["BatchReferenceName"] then M.AssertBatchReferenceName(struct["BatchReferenceName"]) end
-	if struct["SchemaFacet"] then M.AssertSchemaFacetList(struct["SchemaFacet"]) end
-	if struct["LinkName"] then M.AssertLinkName(struct["LinkName"]) end
+	if struct["ObjectAttributeList"] then asserts.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["BatchReferenceName"] then asserts.AssertBatchReferenceName(struct["BatchReferenceName"]) end
+	if struct["SchemaFacet"] then asserts.AssertSchemaFacetList(struct["SchemaFacet"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchCreateObject_keys[k], "BatchCreateObject contains unknown key " .. tostring(k))
+		assert(keys.BatchCreateObject[k], "BatchCreateObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchCreateObject
 -- <p>Represents the output of a <code>CreateObject</code> operation.</p>
--- @param ObjectAttributeList [AttributeKeyAndValueList] <p>An attribute map, which contains an attribute ARN as the key and attribute value as the map value.</p>
--- @param ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
--- @param BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
--- @param SchemaFacet [SchemaFacetList] <p>A list of <code>FacetArns</code> that will be associated with the object. For more information, see <a>arns</a>.</p>
--- @param LinkName [LinkName] <p>The name of the link.</p>
+-- @param _ObjectAttributeList [AttributeKeyAndValueList] <p>An attribute map, which contains an attribute ARN as the key and attribute value as the map value.</p>
+-- @param _ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
+-- @param _BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
+-- @param _SchemaFacet [SchemaFacetList] <p>A list of <code>FacetArns</code> that will be associated with the object. For more information, see <a>arns</a>.</p>
+-- @param _LinkName [LinkName] <p>The name of the link.</p>
 -- Required parameter: SchemaFacet
 -- Required parameter: ObjectAttributeList
 -- Required parameter: ParentReference
 -- Required parameter: LinkName
 -- Required parameter: BatchReferenceName
-function M.BatchCreateObject(ObjectAttributeList, ParentReference, BatchReferenceName, SchemaFacet, LinkName, ...)
+function M.BatchCreateObject(_ObjectAttributeList, _ParentReference, _BatchReferenceName, _SchemaFacet, _LinkName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchCreateObject")
 	local t = { 
-		["ObjectAttributeList"] = ObjectAttributeList,
-		["ParentReference"] = ParentReference,
-		["BatchReferenceName"] = BatchReferenceName,
-		["SchemaFacet"] = SchemaFacet,
-		["LinkName"] = LinkName,
+		["ObjectAttributeList"] = _ObjectAttributeList,
+		["ParentReference"] = _ParentReference,
+		["BatchReferenceName"] = _BatchReferenceName,
+		["SchemaFacet"] = _SchemaFacet,
+		["LinkName"] = _LinkName,
 	}
-	M.AssertBatchCreateObject(t)
+	asserts.AssertBatchCreateObject(t)
 	return t
 end
 
-local ListDevelopmentSchemaArnsResponse_keys = { "NextToken" = true, "SchemaArns" = true, nil }
+keys.ListDevelopmentSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
 
-function M.AssertListDevelopmentSchemaArnsResponse(struct)
+function asserts.AssertListDevelopmentSchemaArnsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDevelopmentSchemaArnsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["SchemaArns"] then M.AssertArns(struct["SchemaArns"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["SchemaArns"] then asserts.AssertArns(struct["SchemaArns"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDevelopmentSchemaArnsResponse_keys[k], "ListDevelopmentSchemaArnsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDevelopmentSchemaArnsResponse[k], "ListDevelopmentSchemaArnsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDevelopmentSchemaArnsResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param SchemaArns [Arns] <p>The ARNs of retrieved development schemas.</p>
-function M.ListDevelopmentSchemaArnsResponse(NextToken, SchemaArns, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _SchemaArns [Arns] <p>The ARNs of retrieved development schemas.</p>
+function M.ListDevelopmentSchemaArnsResponse(_NextToken, _SchemaArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDevelopmentSchemaArnsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["SchemaArns"] = SchemaArns,
+		["NextToken"] = _NextToken,
+		["SchemaArns"] = _SchemaArns,
 	}
-	M.AssertListDevelopmentSchemaArnsResponse(t)
+	asserts.AssertListDevelopmentSchemaArnsResponse(t)
 	return t
 end
 
-local LookupPolicyResponse_keys = { "PolicyToPathList" = true, "NextToken" = true, nil }
+keys.LookupPolicyResponse = { ["PolicyToPathList"] = true, ["NextToken"] = true, nil }
 
-function M.AssertLookupPolicyResponse(struct)
+function asserts.AssertLookupPolicyResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LookupPolicyResponse to be of type 'table'")
-	if struct["PolicyToPathList"] then M.AssertPolicyToPathList(struct["PolicyToPathList"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["PolicyToPathList"] then asserts.AssertPolicyToPathList(struct["PolicyToPathList"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(LookupPolicyResponse_keys[k], "LookupPolicyResponse contains unknown key " .. tostring(k))
+		assert(keys.LookupPolicyResponse[k], "LookupPolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LookupPolicyResponse
 --  
--- @param PolicyToPathList [PolicyToPathList] <p>Provides list of path to policies. Policies contain <code>PolicyId</code>, <code>ObjectIdentifier</code>, and <code>PolicyType</code>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.LookupPolicyResponse(PolicyToPathList, NextToken, ...)
+-- @param _PolicyToPathList [PolicyToPathList] <p>Provides list of path to policies. Policies contain <code>PolicyId</code>, <code>ObjectIdentifier</code>, and <code>PolicyType</code>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.LookupPolicyResponse(_PolicyToPathList, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LookupPolicyResponse")
 	local t = { 
-		["PolicyToPathList"] = PolicyToPathList,
-		["NextToken"] = NextToken,
+		["PolicyToPathList"] = _PolicyToPathList,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertLookupPolicyResponse(t)
+	asserts.AssertLookupPolicyResponse(t)
 	return t
 end
 
-local InvalidRuleException_keys = { "Message" = true, nil }
+keys.InvalidRuleException = { ["Message"] = true, nil }
 
-function M.AssertInvalidRuleException(struct)
+function asserts.AssertInvalidRuleException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRuleException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidRuleException_keys[k], "InvalidRuleException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRuleException[k], "InvalidRuleException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidRuleException
 -- <p>Occurs when any of the rule parameter keys or values are invalid.</p>
--- @param Message [ExceptionMessage] <p>Occurs when any of the rule parameter keys or values are invalid.</p>
-function M.InvalidRuleException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InvalidRuleException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRuleException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidRuleException(t)
+	asserts.AssertInvalidRuleException(t)
 	return t
 end
 
-local ListTagsForResourceResponse_keys = { "NextToken" = true, "Tags" = true, nil }
+keys.ListTagsForResourceResponse = { ["NextToken"] = true, ["Tags"] = true, nil }
 
-function M.AssertListTagsForResourceResponse(struct)
+function asserts.AssertListTagsForResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForResourceResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForResourceResponse_keys[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceResponse[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForResourceResponse
 --  
--- @param NextToken [NextToken] <p>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</p>
--- @param Tags [TagList] <p>A list of tag key value pairs that are associated with the response.</p>
-function M.ListTagsForResourceResponse(NextToken, Tags, ...)
+-- @param _NextToken [NextToken] <p>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</p>
+-- @param _Tags [TagList] <p>A list of tag key value pairs that are associated with the response.</p>
+function M.ListTagsForResourceResponse(_NextToken, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Tags"] = Tags,
+		["NextToken"] = _NextToken,
+		["Tags"] = _Tags,
 	}
-	M.AssertListTagsForResourceResponse(t)
+	asserts.AssertListTagsForResourceResponse(t)
 	return t
 end
 
-local TypedLinkSchemaAndFacetName_keys = { "TypedLinkName" = true, "SchemaArn" = true, nil }
+keys.TypedLinkSchemaAndFacetName = { ["TypedLinkName"] = true, ["SchemaArn"] = true, nil }
 
-function M.AssertTypedLinkSchemaAndFacetName(struct)
+function asserts.AssertTypedLinkSchemaAndFacetName(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TypedLinkSchemaAndFacetName to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["TypedLinkName"], "Expected key TypedLinkName to exist in table")
-	if struct["TypedLinkName"] then M.AssertTypedLinkName(struct["TypedLinkName"]) end
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
+	if struct["TypedLinkName"] then asserts.AssertTypedLinkName(struct["TypedLinkName"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(TypedLinkSchemaAndFacetName_keys[k], "TypedLinkSchemaAndFacetName contains unknown key " .. tostring(k))
+		assert(keys.TypedLinkSchemaAndFacetName[k], "TypedLinkSchemaAndFacetName contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TypedLinkSchemaAndFacetName
 -- <p>Identifies the schema Amazon Resource Name (ARN) and facet name for the typed link.</p>
--- @param TypedLinkName [TypedLinkName] <p>The unique name of the typed link facet.</p>
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- @param _TypedLinkName [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: TypedLinkName
-function M.TypedLinkSchemaAndFacetName(TypedLinkName, SchemaArn, ...)
+function M.TypedLinkSchemaAndFacetName(_TypedLinkName, _SchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkSchemaAndFacetName")
 	local t = { 
-		["TypedLinkName"] = TypedLinkName,
-		["SchemaArn"] = SchemaArn,
+		["TypedLinkName"] = _TypedLinkName,
+		["SchemaArn"] = _SchemaArn,
 	}
-	M.AssertTypedLinkSchemaAndFacetName(t)
+	asserts.AssertTypedLinkSchemaAndFacetName(t)
 	return t
 end
 
-local ListIncomingTypedLinksResponse_keys = { "NextToken" = true, "LinkSpecifiers" = true, nil }
+keys.ListIncomingTypedLinksResponse = { ["NextToken"] = true, ["LinkSpecifiers"] = true, nil }
 
-function M.AssertListIncomingTypedLinksResponse(struct)
+function asserts.AssertListIncomingTypedLinksResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIncomingTypedLinksResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["LinkSpecifiers"] then M.AssertTypedLinkSpecifierList(struct["LinkSpecifiers"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["LinkSpecifiers"] then asserts.AssertTypedLinkSpecifierList(struct["LinkSpecifiers"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIncomingTypedLinksResponse_keys[k], "ListIncomingTypedLinksResponse contains unknown key " .. tostring(k))
+		assert(keys.ListIncomingTypedLinksResponse[k], "ListIncomingTypedLinksResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIncomingTypedLinksResponse
 --  
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param LinkSpecifiers [TypedLinkSpecifierList] <p>Returns one or more typed link specifiers as output.</p>
-function M.ListIncomingTypedLinksResponse(NextToken, LinkSpecifiers, ...)
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _LinkSpecifiers [TypedLinkSpecifierList] <p>Returns one or more typed link specifiers as output.</p>
+function M.ListIncomingTypedLinksResponse(_NextToken, _LinkSpecifiers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIncomingTypedLinksResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["LinkSpecifiers"] = LinkSpecifiers,
+		["NextToken"] = _NextToken,
+		["LinkSpecifiers"] = _LinkSpecifiers,
 	}
-	M.AssertListIncomingTypedLinksResponse(t)
+	asserts.AssertListIncomingTypedLinksResponse(t)
 	return t
 end
 
-local BatchDetachObject_keys = { "ParentReference" = true, "LinkName" = true, "BatchReferenceName" = true, nil }
+keys.BatchDetachObject = { ["ParentReference"] = true, ["LinkName"] = true, ["BatchReferenceName"] = true, nil }
 
-function M.AssertBatchDetachObject(struct)
+function asserts.AssertBatchDetachObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchDetachObject to be of type 'table'")
 	assert(struct["ParentReference"], "Expected key ParentReference to exist in table")
 	assert(struct["LinkName"], "Expected key LinkName to exist in table")
 	assert(struct["BatchReferenceName"], "Expected key BatchReferenceName to exist in table")
-	if struct["ParentReference"] then M.AssertObjectReference(struct["ParentReference"]) end
-	if struct["LinkName"] then M.AssertLinkName(struct["LinkName"]) end
-	if struct["BatchReferenceName"] then M.AssertBatchReferenceName(struct["BatchReferenceName"]) end
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
+	if struct["BatchReferenceName"] then asserts.AssertBatchReferenceName(struct["BatchReferenceName"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchDetachObject_keys[k], "BatchDetachObject contains unknown key " .. tostring(k))
+		assert(keys.BatchDetachObject[k], "BatchDetachObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchDetachObject
 -- <p>Represents the output of a <code>DetachObject</code> operation.</p>
--- @param ParentReference [ObjectReference] <p>Parent reference from which the object with the specified link name is detached.</p>
--- @param LinkName [LinkName] <p>The name of the link.</p>
--- @param BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
+-- @param _ParentReference [ObjectReference] <p>Parent reference from which the object with the specified link name is detached.</p>
+-- @param _LinkName [LinkName] <p>The name of the link.</p>
+-- @param _BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
 -- Required parameter: ParentReference
 -- Required parameter: LinkName
 -- Required parameter: BatchReferenceName
-function M.BatchDetachObject(ParentReference, LinkName, BatchReferenceName, ...)
+function M.BatchDetachObject(_ParentReference, _LinkName, _BatchReferenceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchDetachObject")
 	local t = { 
-		["ParentReference"] = ParentReference,
-		["LinkName"] = LinkName,
-		["BatchReferenceName"] = BatchReferenceName,
+		["ParentReference"] = _ParentReference,
+		["LinkName"] = _LinkName,
+		["BatchReferenceName"] = _BatchReferenceName,
 	}
-	M.AssertBatchDetachObject(t)
+	asserts.AssertBatchDetachObject(t)
 	return t
 end
 
-local CreateFacetRequest_keys = { "Attributes" = true, "SchemaArn" = true, "Name" = true, "ObjectType" = true, nil }
+keys.CreateFacetRequest = { ["Attributes"] = true, ["SchemaArn"] = true, ["Name"] = true, ["ObjectType"] = true, nil }
 
-function M.AssertCreateFacetRequest(struct)
+function asserts.AssertCreateFacetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFacetRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["ObjectType"], "Expected key ObjectType to exist in table")
-	if struct["Attributes"] then M.AssertFacetAttributeList(struct["Attributes"]) end
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then M.AssertFacetName(struct["Name"]) end
-	if struct["ObjectType"] then M.AssertObjectType(struct["ObjectType"]) end
+	if struct["Attributes"] then asserts.AssertFacetAttributeList(struct["Attributes"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
+	if struct["ObjectType"] then asserts.AssertObjectType(struct["ObjectType"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFacetRequest_keys[k], "CreateFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateFacetRequest[k], "CreateFacetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFacetRequest
 --  
--- @param Attributes [FacetAttributeList] <p>The attributes that are associated with the <a>Facet</a>.</p>
--- @param SchemaArn [Arn] <p>The schema ARN in which the new <a>Facet</a> will be created. For more information, see <a>arns</a>.</p>
--- @param Name [FacetName] <p>The name of the <a>Facet</a>, which is unique for a given schema.</p>
--- @param ObjectType [ObjectType] <p>Specifies whether a given object created from this facet is of type node, leaf node, policy or index.</p> <ul> <li> <p>Node: Can have multiple children but one parent.</p> </li> </ul> <ul> <li> <p>Leaf node: Cannot have children but can have multiple parents.</p> </li> </ul> <ul> <li> <p>Policy: Allows you to store a policy document and policy type. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p> </li> </ul> <ul> <li> <p>Index: Can be created with the Index API.</p> </li> </ul>
+-- @param _Attributes [FacetAttributeList] <p>The attributes that are associated with the <a>Facet</a>.</p>
+-- @param _SchemaArn [Arn] <p>The schema ARN in which the new <a>Facet</a> will be created. For more information, see <a>arns</a>.</p>
+-- @param _Name [FacetName] <p>The name of the <a>Facet</a>, which is unique for a given schema.</p>
+-- @param _ObjectType [ObjectType] <p>Specifies whether a given object created from this facet is of type node, leaf node, policy or index.</p> <ul> <li> <p>Node: Can have multiple children but one parent.</p> </li> </ul> <ul> <li> <p>Leaf node: Cannot have children but can have multiple parents.</p> </li> </ul> <ul> <li> <p>Policy: Allows you to store a policy document and policy type. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p> </li> </ul> <ul> <li> <p>Index: Can be created with the Index API.</p> </li> </ul>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
 -- Required parameter: ObjectType
-function M.CreateFacetRequest(Attributes, SchemaArn, Name, ObjectType, ...)
+function M.CreateFacetRequest(_Attributes, _SchemaArn, _Name, _ObjectType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFacetRequest")
 	local t = { 
-		["Attributes"] = Attributes,
-		["SchemaArn"] = SchemaArn,
-		["Name"] = Name,
-		["ObjectType"] = ObjectType,
+		["Attributes"] = _Attributes,
+		["SchemaArn"] = _SchemaArn,
+		["Name"] = _Name,
+		["ObjectType"] = _ObjectType,
 	}
-	M.AssertCreateFacetRequest(t)
+	asserts.AssertCreateFacetRequest(t)
 	return t
 end
 
-local TypedLinkAttributeRange_keys = { "Range" = true, "AttributeName" = true, nil }
+keys.TypedLinkAttributeRange = { ["Range"] = true, ["AttributeName"] = true, nil }
 
-function M.AssertTypedLinkAttributeRange(struct)
+function asserts.AssertTypedLinkAttributeRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TypedLinkAttributeRange to be of type 'table'")
 	assert(struct["Range"], "Expected key Range to exist in table")
-	if struct["Range"] then M.AssertTypedAttributeValueRange(struct["Range"]) end
-	if struct["AttributeName"] then M.AssertAttributeName(struct["AttributeName"]) end
+	if struct["Range"] then asserts.AssertTypedAttributeValueRange(struct["Range"]) end
+	if struct["AttributeName"] then asserts.AssertAttributeName(struct["AttributeName"]) end
 	for k,_ in pairs(struct) do
-		assert(TypedLinkAttributeRange_keys[k], "TypedLinkAttributeRange contains unknown key " .. tostring(k))
+		assert(keys.TypedLinkAttributeRange[k], "TypedLinkAttributeRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TypedLinkAttributeRange
 -- <p>Identifies the range of attributes that are used by a specified filter.</p>
--- @param Range [TypedAttributeValueRange] <p>The range of attribute values that are being selected.</p>
--- @param AttributeName [AttributeName] <p>The unique name of the typed link attribute.</p>
+-- @param _Range [TypedAttributeValueRange] <p>The range of attribute values that are being selected.</p>
+-- @param _AttributeName [AttributeName] <p>The unique name of the typed link attribute.</p>
 -- Required parameter: Range
-function M.TypedLinkAttributeRange(Range, AttributeName, ...)
+function M.TypedLinkAttributeRange(_Range, _AttributeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkAttributeRange")
 	local t = { 
-		["Range"] = Range,
-		["AttributeName"] = AttributeName,
+		["Range"] = _Range,
+		["AttributeName"] = _AttributeName,
 	}
-	M.AssertTypedLinkAttributeRange(t)
+	asserts.AssertTypedLinkAttributeRange(t)
 	return t
 end
 
-local BatchDeleteObject_keys = { "ObjectReference" = true, nil }
+keys.BatchDeleteObject = { ["ObjectReference"] = true, nil }
 
-function M.AssertBatchDeleteObject(struct)
+function asserts.AssertBatchDeleteObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchDeleteObject to be of type 'table'")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchDeleteObject_keys[k], "BatchDeleteObject contains unknown key " .. tostring(k))
+		assert(keys.BatchDeleteObject[k], "BatchDeleteObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchDeleteObject
 -- <p>Represents the output of a <code>DeleteObject</code> operation.</p>
--- @param ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
+-- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
 -- Required parameter: ObjectReference
-function M.BatchDeleteObject(ObjectReference, ...)
+function M.BatchDeleteObject(_ObjectReference, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchDeleteObject")
 	local t = { 
-		["ObjectReference"] = ObjectReference,
+		["ObjectReference"] = _ObjectReference,
 	}
-	M.AssertBatchDeleteObject(t)
+	asserts.AssertBatchDeleteObject(t)
 	return t
 end
 
-local DeleteDirectoryRequest_keys = { "DirectoryArn" = true, nil }
+keys.DeleteDirectoryRequest = { ["DirectoryArn"] = true, nil }
 
-function M.AssertDeleteDirectoryRequest(struct)
+function asserts.AssertDeleteDirectoryRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDirectoryRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDirectoryRequest_keys[k], "DeleteDirectoryRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteDirectoryRequest[k], "DeleteDirectoryRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDirectoryRequest
 --  
--- @param DirectoryArn [Arn] <p>The ARN of the directory to delete.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the directory to delete.</p>
 -- Required parameter: DirectoryArn
-function M.DeleteDirectoryRequest(DirectoryArn, ...)
+function M.DeleteDirectoryRequest(_DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDirectoryRequest")
 	local t = { 
-		["DirectoryArn"] = DirectoryArn,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDeleteDirectoryRequest(t)
+	asserts.AssertDeleteDirectoryRequest(t)
 	return t
 end
 
-local BatchListObjectAttributesResponse_keys = { "Attributes" = true, "NextToken" = true, nil }
+keys.BatchListObjectAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
 
-function M.AssertBatchListObjectAttributesResponse(struct)
+function asserts.AssertBatchListObjectAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchListObjectAttributesResponse to be of type 'table'")
-	if struct["Attributes"] then M.AssertAttributeKeyAndValueList(struct["Attributes"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["Attributes"] then asserts.AssertAttributeKeyAndValueList(struct["Attributes"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchListObjectAttributesResponse_keys[k], "BatchListObjectAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchListObjectAttributesResponse[k], "BatchListObjectAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchListObjectAttributesResponse
 -- <p>Represents the output of a <code>ListObjectAttributes</code> response operation.</p>
--- @param Attributes [AttributeKeyAndValueList] <p>The attributes map that is associated with the object. <code>AttributeArn</code> is the key; attribute value is the value.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.BatchListObjectAttributesResponse(Attributes, NextToken, ...)
+-- @param _Attributes [AttributeKeyAndValueList] <p>The attributes map that is associated with the object. <code>AttributeArn</code> is the key; attribute value is the value.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.BatchListObjectAttributesResponse(_Attributes, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchListObjectAttributesResponse")
 	local t = { 
-		["Attributes"] = Attributes,
-		["NextToken"] = NextToken,
+		["Attributes"] = _Attributes,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertBatchListObjectAttributesResponse(t)
+	asserts.AssertBatchListObjectAttributesResponse(t)
 	return t
 end
 
-local AddFacetToObjectRequest_keys = { "ObjectAttributeList" = true, "ObjectReference" = true, "SchemaFacet" = true, "DirectoryArn" = true, nil }
+keys.AddFacetToObjectRequest = { ["ObjectAttributeList"] = true, ["ObjectReference"] = true, ["SchemaFacet"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertAddFacetToObjectRequest(struct)
+function asserts.AssertAddFacetToObjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddFacetToObjectRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectAttributeList"] then M.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["SchemaFacet"] then M.AssertSchemaFacet(struct["SchemaFacet"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ObjectAttributeList"] then asserts.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["SchemaFacet"] then asserts.AssertSchemaFacet(struct["SchemaFacet"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(AddFacetToObjectRequest_keys[k], "AddFacetToObjectRequest contains unknown key " .. tostring(k))
+		assert(keys.AddFacetToObjectRequest[k], "AddFacetToObjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddFacetToObjectRequest
 --  
--- @param ObjectAttributeList [AttributeKeyAndValueList] <p>Attributes on the facet that you are adding to the object.</p>
--- @param ObjectReference [ObjectReference] <p>A reference to the object you are adding the specified facet to.</p>
--- @param SchemaFacet [SchemaFacet] <p>Identifiers for the facet that you are adding to the object.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- @param _ObjectAttributeList [AttributeKeyAndValueList] <p>Attributes on the facet that you are adding to the object.</p>
+-- @param _ObjectReference [ObjectReference] <p>A reference to the object you are adding the specified facet to.</p>
+-- @param _SchemaFacet [SchemaFacet] <p>Identifiers for the facet that you are adding to the object.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: SchemaFacet
 -- Required parameter: ObjectReference
-function M.AddFacetToObjectRequest(ObjectAttributeList, ObjectReference, SchemaFacet, DirectoryArn, ...)
+function M.AddFacetToObjectRequest(_ObjectAttributeList, _ObjectReference, _SchemaFacet, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddFacetToObjectRequest")
 	local t = { 
-		["ObjectAttributeList"] = ObjectAttributeList,
-		["ObjectReference"] = ObjectReference,
-		["SchemaFacet"] = SchemaFacet,
-		["DirectoryArn"] = DirectoryArn,
+		["ObjectAttributeList"] = _ObjectAttributeList,
+		["ObjectReference"] = _ObjectReference,
+		["SchemaFacet"] = _SchemaFacet,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertAddFacetToObjectRequest(t)
+	asserts.AssertAddFacetToObjectRequest(t)
 	return t
 end
 
-local ObjectAttributeUpdate_keys = { "ObjectAttributeAction" = true, "ObjectAttributeKey" = true, nil }
+keys.ObjectAttributeUpdate = { ["ObjectAttributeAction"] = true, ["ObjectAttributeKey"] = true, nil }
 
-function M.AssertObjectAttributeUpdate(struct)
+function asserts.AssertObjectAttributeUpdate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ObjectAttributeUpdate to be of type 'table'")
-	if struct["ObjectAttributeAction"] then M.AssertObjectAttributeAction(struct["ObjectAttributeAction"]) end
-	if struct["ObjectAttributeKey"] then M.AssertAttributeKey(struct["ObjectAttributeKey"]) end
+	if struct["ObjectAttributeAction"] then asserts.AssertObjectAttributeAction(struct["ObjectAttributeAction"]) end
+	if struct["ObjectAttributeKey"] then asserts.AssertAttributeKey(struct["ObjectAttributeKey"]) end
 	for k,_ in pairs(struct) do
-		assert(ObjectAttributeUpdate_keys[k], "ObjectAttributeUpdate contains unknown key " .. tostring(k))
+		assert(keys.ObjectAttributeUpdate[k], "ObjectAttributeUpdate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ObjectAttributeUpdate
 -- <p>Structure that contains attribute update information.</p>
--- @param ObjectAttributeAction [ObjectAttributeAction] <p>The action to perform as part of the attribute update.</p>
--- @param ObjectAttributeKey [AttributeKey] <p>The key of the attribute being updated.</p>
-function M.ObjectAttributeUpdate(ObjectAttributeAction, ObjectAttributeKey, ...)
+-- @param _ObjectAttributeAction [ObjectAttributeAction] <p>The action to perform as part of the attribute update.</p>
+-- @param _ObjectAttributeKey [AttributeKey] <p>The key of the attribute being updated.</p>
+function M.ObjectAttributeUpdate(_ObjectAttributeAction, _ObjectAttributeKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAttributeUpdate")
 	local t = { 
-		["ObjectAttributeAction"] = ObjectAttributeAction,
-		["ObjectAttributeKey"] = ObjectAttributeKey,
+		["ObjectAttributeAction"] = _ObjectAttributeAction,
+		["ObjectAttributeKey"] = _ObjectAttributeKey,
 	}
-	M.AssertObjectAttributeUpdate(t)
+	asserts.AssertObjectAttributeUpdate(t)
 	return t
 end
 
-local CannotListParentOfRootException_keys = { "Message" = true, nil }
+keys.CannotListParentOfRootException = { ["Message"] = true, nil }
 
-function M.AssertCannotListParentOfRootException(struct)
+function asserts.AssertCannotListParentOfRootException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CannotListParentOfRootException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(CannotListParentOfRootException_keys[k], "CannotListParentOfRootException contains unknown key " .. tostring(k))
+		assert(keys.CannotListParentOfRootException[k], "CannotListParentOfRootException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CannotListParentOfRootException
 -- <p>Cannot list the parents of a <a>Directory</a> root.</p>
--- @param Message [ExceptionMessage] <p>Cannot list the parents of a <a>Directory</a> root.</p>
-function M.CannotListParentOfRootException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.CannotListParentOfRootException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CannotListParentOfRootException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertCannotListParentOfRootException(t)
+	asserts.AssertCannotListParentOfRootException(t)
 	return t
 end
 
-local ListTypedLinkFacetAttributesResponse_keys = { "Attributes" = true, "NextToken" = true, nil }
+keys.ListTypedLinkFacetAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListTypedLinkFacetAttributesResponse(struct)
+function asserts.AssertListTypedLinkFacetAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTypedLinkFacetAttributesResponse to be of type 'table'")
-	if struct["Attributes"] then M.AssertTypedLinkAttributeDefinitionList(struct["Attributes"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
+	if struct["Attributes"] then asserts.AssertTypedLinkAttributeDefinitionList(struct["Attributes"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTypedLinkFacetAttributesResponse_keys[k], "ListTypedLinkFacetAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTypedLinkFacetAttributesResponse[k], "ListTypedLinkFacetAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTypedLinkFacetAttributesResponse
 --  
--- @param Attributes [TypedLinkAttributeDefinitionList] <p>An ordered set of attributes associate with the typed link.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
-function M.ListTypedLinkFacetAttributesResponse(Attributes, NextToken, ...)
+-- @param _Attributes [TypedLinkAttributeDefinitionList] <p>An ordered set of attributes associate with the typed link.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+function M.ListTypedLinkFacetAttributesResponse(_Attributes, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTypedLinkFacetAttributesResponse")
 	local t = { 
-		["Attributes"] = Attributes,
-		["NextToken"] = NextToken,
+		["Attributes"] = _Attributes,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListTypedLinkFacetAttributesResponse(t)
+	asserts.AssertListTypedLinkFacetAttributesResponse(t)
 	return t
 end
 
-local DetachFromIndexResponse_keys = { "DetachedObjectIdentifier" = true, nil }
+keys.DetachFromIndexResponse = { ["DetachedObjectIdentifier"] = true, nil }
 
-function M.AssertDetachFromIndexResponse(struct)
+function asserts.AssertDetachFromIndexResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachFromIndexResponse to be of type 'table'")
-	if struct["DetachedObjectIdentifier"] then M.AssertObjectIdentifier(struct["DetachedObjectIdentifier"]) end
+	if struct["DetachedObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["DetachedObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachFromIndexResponse_keys[k], "DetachFromIndexResponse contains unknown key " .. tostring(k))
+		assert(keys.DetachFromIndexResponse[k], "DetachFromIndexResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachFromIndexResponse
 --  
--- @param DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was detached from the index.</p>
-function M.DetachFromIndexResponse(DetachedObjectIdentifier, ...)
+-- @param _DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was detached from the index.</p>
+function M.DetachFromIndexResponse(_DetachedObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachFromIndexResponse")
 	local t = { 
-		["DetachedObjectIdentifier"] = DetachedObjectIdentifier,
+		["DetachedObjectIdentifier"] = _DetachedObjectIdentifier,
 	}
-	M.AssertDetachFromIndexResponse(t)
+	asserts.AssertDetachFromIndexResponse(t)
 	return t
 end
 
-local AccessDeniedException_keys = { "Message" = true, nil }
+keys.AccessDeniedException = { ["Message"] = true, nil }
 
-function M.AssertAccessDeniedException(struct)
+function asserts.AssertAccessDeniedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccessDeniedException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(AccessDeniedException_keys[k], "AccessDeniedException contains unknown key " .. tostring(k))
+		assert(keys.AccessDeniedException[k], "AccessDeniedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AccessDeniedException
 -- <p>Access denied. Check your permissions.</p>
--- @param Message [ExceptionMessage] <p>Access denied. Check your permissions.</p>
-function M.AccessDeniedException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.AccessDeniedException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertAccessDeniedException(t)
+	asserts.AssertAccessDeniedException(t)
 	return t
 end
 
-local NotPolicyException_keys = { "Message" = true, nil }
+keys.NotPolicyException = { ["Message"] = true, nil }
 
-function M.AssertNotPolicyException(struct)
+function asserts.AssertNotPolicyException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotPolicyException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotPolicyException_keys[k], "NotPolicyException contains unknown key " .. tostring(k))
+		assert(keys.NotPolicyException[k], "NotPolicyException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotPolicyException
 -- <p>Indicates that the requested operation can only operate on policy objects.</p>
--- @param Message [ExceptionMessage] <p>Indicates that the requested operation can only operate on policy objects.</p>
-function M.NotPolicyException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.NotPolicyException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotPolicyException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertNotPolicyException(t)
+	asserts.AssertNotPolicyException(t)
 	return t
 end
 
-local NotNodeException_keys = { "Message" = true, nil }
+keys.NotNodeException = { ["Message"] = true, nil }
 
-function M.AssertNotNodeException(struct)
+function asserts.AssertNotNodeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotNodeException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotNodeException_keys[k], "NotNodeException contains unknown key " .. tostring(k))
+		assert(keys.NotNodeException[k], "NotNodeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotNodeException
 -- <p>Occurs when any invalid operations are performed on an object that is not a node, such as calling <code>ListObjectChildren</code> for a leaf node object.</p>
--- @param Message [ExceptionMessage] <p>Occurs when any invalid operations are performed on an object that is not a node, such as calling <code>ListObjectChildren</code> for a leaf node object.</p>
-function M.NotNodeException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.NotNodeException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotNodeException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertNotNodeException(t)
+	asserts.AssertNotNodeException(t)
 	return t
 end
 
-local BatchUpdateObjectAttributesResponse_keys = { "ObjectIdentifier" = true, nil }
+keys.BatchUpdateObjectAttributesResponse = { ["ObjectIdentifier"] = true, nil }
 
-function M.AssertBatchUpdateObjectAttributesResponse(struct)
+function asserts.AssertBatchUpdateObjectAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchUpdateObjectAttributesResponse to be of type 'table'")
-	if struct["ObjectIdentifier"] then M.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
+	if struct["ObjectIdentifier"] then asserts.AssertObjectIdentifier(struct["ObjectIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchUpdateObjectAttributesResponse_keys[k], "BatchUpdateObjectAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchUpdateObjectAttributesResponse[k], "BatchUpdateObjectAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchUpdateObjectAttributesResponse
 -- <p>Represents the output of a <code>BatchUpdate</code> response operation.</p>
--- @param ObjectIdentifier [ObjectIdentifier] <p>ID that is associated with the object.</p>
-function M.BatchUpdateObjectAttributesResponse(ObjectIdentifier, ...)
+-- @param _ObjectIdentifier [ObjectIdentifier] <p>ID that is associated with the object.</p>
+function M.BatchUpdateObjectAttributesResponse(_ObjectIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchUpdateObjectAttributesResponse")
 	local t = { 
-		["ObjectIdentifier"] = ObjectIdentifier,
+		["ObjectIdentifier"] = _ObjectIdentifier,
 	}
-	M.AssertBatchUpdateObjectAttributesResponse(t)
+	asserts.AssertBatchUpdateObjectAttributesResponse(t)
 	return t
 end
 
-local Rule_keys = { "Type" = true, "Parameters" = true, nil }
+keys.Rule = { ["Type"] = true, ["Parameters"] = true, nil }
 
-function M.AssertRule(struct)
+function asserts.AssertRule(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Rule to be of type 'table'")
-	if struct["Type"] then M.AssertRuleType(struct["Type"]) end
-	if struct["Parameters"] then M.AssertRuleParameterMap(struct["Parameters"]) end
+	if struct["Type"] then asserts.AssertRuleType(struct["Type"]) end
+	if struct["Parameters"] then asserts.AssertRuleParameterMap(struct["Parameters"]) end
 	for k,_ in pairs(struct) do
-		assert(Rule_keys[k], "Rule contains unknown key " .. tostring(k))
+		assert(keys.Rule[k], "Rule contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Rule
 -- <p>Contains an Amazon Resource Name (ARN) and parameters that are associated with the rule.</p>
--- @param Type [RuleType] <p>The type of attribute validation rule.</p>
--- @param Parameters [RuleParameterMap] <p>The minimum and maximum parameters that are associated with the rule.</p>
-function M.Rule(Type, Parameters, ...)
+-- @param _Type [RuleType] <p>The type of attribute validation rule.</p>
+-- @param _Parameters [RuleParameterMap] <p>The minimum and maximum parameters that are associated with the rule.</p>
+function M.Rule(_Type, _Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
 	local t = { 
-		["Type"] = Type,
-		["Parameters"] = Parameters,
+		["Type"] = _Type,
+		["Parameters"] = _Parameters,
 	}
-	M.AssertRule(t)
+	asserts.AssertRule(t)
 	return t
 end
 
-local CreateObjectRequest_keys = { "ObjectAttributeList" = true, "ParentReference" = true, "SchemaFacets" = true, "DirectoryArn" = true, "LinkName" = true, nil }
+keys.CreateObjectRequest = { ["ObjectAttributeList"] = true, ["ParentReference"] = true, ["SchemaFacets"] = true, ["DirectoryArn"] = true, ["LinkName"] = true, nil }
 
-function M.AssertCreateObjectRequest(struct)
+function asserts.AssertCreateObjectRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateObjectRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["SchemaFacets"], "Expected key SchemaFacets to exist in table")
-	if struct["ObjectAttributeList"] then M.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
-	if struct["ParentReference"] then M.AssertObjectReference(struct["ParentReference"]) end
-	if struct["SchemaFacets"] then M.AssertSchemaFacetList(struct["SchemaFacets"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
-	if struct["LinkName"] then M.AssertLinkName(struct["LinkName"]) end
+	if struct["ObjectAttributeList"] then asserts.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
+	if struct["ParentReference"] then asserts.AssertObjectReference(struct["ParentReference"]) end
+	if struct["SchemaFacets"] then asserts.AssertSchemaFacetList(struct["SchemaFacets"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
+	if struct["LinkName"] then asserts.AssertLinkName(struct["LinkName"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateObjectRequest_keys[k], "CreateObjectRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateObjectRequest[k], "CreateObjectRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateObjectRequest
 --  
--- @param ObjectAttributeList [AttributeKeyAndValueList] <p>The attribute map whose attribute ARN contains the key and attribute value as the map value.</p>
--- @param ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
--- @param SchemaFacets [SchemaFacetList] <p>A list of schema facets to be associated with the object that contains <code>SchemaArn</code> and facet name. For more information, see <a>arns</a>.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> in which the object will be created. For more information, see <a>arns</a>.</p>
--- @param LinkName [LinkName] <p>The name of link that is used to attach this object to a parent.</p>
+-- @param _ObjectAttributeList [AttributeKeyAndValueList] <p>The attribute map whose attribute ARN contains the key and attribute value as the map value.</p>
+-- @param _ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
+-- @param _SchemaFacets [SchemaFacetList] <p>A list of schema facets to be associated with the object that contains <code>SchemaArn</code> and facet name. For more information, see <a>arns</a>.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> in which the object will be created. For more information, see <a>arns</a>.</p>
+-- @param _LinkName [LinkName] <p>The name of link that is used to attach this object to a parent.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: SchemaFacets
-function M.CreateObjectRequest(ObjectAttributeList, ParentReference, SchemaFacets, DirectoryArn, LinkName, ...)
+function M.CreateObjectRequest(_ObjectAttributeList, _ParentReference, _SchemaFacets, _DirectoryArn, _LinkName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateObjectRequest")
 	local t = { 
-		["ObjectAttributeList"] = ObjectAttributeList,
-		["ParentReference"] = ParentReference,
-		["SchemaFacets"] = SchemaFacets,
-		["DirectoryArn"] = DirectoryArn,
-		["LinkName"] = LinkName,
+		["ObjectAttributeList"] = _ObjectAttributeList,
+		["ParentReference"] = _ParentReference,
+		["SchemaFacets"] = _SchemaFacets,
+		["DirectoryArn"] = _DirectoryArn,
+		["LinkName"] = _LinkName,
 	}
-	M.AssertCreateObjectRequest(t)
+	asserts.AssertCreateObjectRequest(t)
 	return t
 end
 
-local BatchAddFacetToObject_keys = { "ObjectAttributeList" = true, "ObjectReference" = true, "SchemaFacet" = true, nil }
+keys.BatchAddFacetToObject = { ["ObjectAttributeList"] = true, ["ObjectReference"] = true, ["SchemaFacet"] = true, nil }
 
-function M.AssertBatchAddFacetToObject(struct)
+function asserts.AssertBatchAddFacetToObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchAddFacetToObject to be of type 'table'")
 	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
 	assert(struct["ObjectAttributeList"], "Expected key ObjectAttributeList to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectAttributeList"] then M.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["SchemaFacet"] then M.AssertSchemaFacet(struct["SchemaFacet"]) end
+	if struct["ObjectAttributeList"] then asserts.AssertAttributeKeyAndValueList(struct["ObjectAttributeList"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["SchemaFacet"] then asserts.AssertSchemaFacet(struct["SchemaFacet"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchAddFacetToObject_keys[k], "BatchAddFacetToObject contains unknown key " .. tostring(k))
+		assert(keys.BatchAddFacetToObject[k], "BatchAddFacetToObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchAddFacetToObject
 -- <p>Represents the output of a batch add facet to object operation.</p>
--- @param ObjectAttributeList [AttributeKeyAndValueList] <p>The attributes to set on the object.</p>
--- @param ObjectReference [ObjectReference] <p>A reference to the object being mutated.</p>
--- @param SchemaFacet [SchemaFacet] <p>Represents the facet being added to the object.</p>
+-- @param _ObjectAttributeList [AttributeKeyAndValueList] <p>The attributes to set on the object.</p>
+-- @param _ObjectReference [ObjectReference] <p>A reference to the object being mutated.</p>
+-- @param _SchemaFacet [SchemaFacet] <p>Represents the facet being added to the object.</p>
 -- Required parameter: SchemaFacet
 -- Required parameter: ObjectAttributeList
 -- Required parameter: ObjectReference
-function M.BatchAddFacetToObject(ObjectAttributeList, ObjectReference, SchemaFacet, ...)
+function M.BatchAddFacetToObject(_ObjectAttributeList, _ObjectReference, _SchemaFacet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchAddFacetToObject")
 	local t = { 
-		["ObjectAttributeList"] = ObjectAttributeList,
-		["ObjectReference"] = ObjectReference,
-		["SchemaFacet"] = SchemaFacet,
+		["ObjectAttributeList"] = _ObjectAttributeList,
+		["ObjectReference"] = _ObjectReference,
+		["SchemaFacet"] = _SchemaFacet,
 	}
-	M.AssertBatchAddFacetToObject(t)
+	asserts.AssertBatchAddFacetToObject(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "Message" = true, nil }
+keys.ResourceNotFoundException = { ["Message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource could not be found.</p>
--- @param Message [ExceptionMessage] <p>The specified resource could not be found.</p>
-function M.ResourceNotFoundException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.ResourceNotFoundException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local BatchDeleteObjectResponse_keys = { nil }
+keys.BatchDeleteObjectResponse = { nil }
 
-function M.AssertBatchDeleteObjectResponse(struct)
+function asserts.AssertBatchDeleteObjectResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchDeleteObjectResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(BatchDeleteObjectResponse_keys[k], "BatchDeleteObjectResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchDeleteObjectResponse[k], "BatchDeleteObjectResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -5403,700 +5406,692 @@ function M.BatchDeleteObjectResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchDeleteObjectResponse")
 	local t = { 
 	}
-	M.AssertBatchDeleteObjectResponse(t)
+	asserts.AssertBatchDeleteObjectResponse(t)
 	return t
 end
 
-local DeleteDirectoryResponse_keys = { "DirectoryArn" = true, nil }
+keys.DeleteDirectoryResponse = { ["DirectoryArn"] = true, nil }
 
-function M.AssertDeleteDirectoryResponse(struct)
+function asserts.AssertDeleteDirectoryResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDirectoryResponse to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDirectoryResponse_keys[k], "DeleteDirectoryResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteDirectoryResponse[k], "DeleteDirectoryResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDirectoryResponse
 --  
--- @param DirectoryArn [Arn] <p>The ARN of the deleted directory.</p>
+-- @param _DirectoryArn [Arn] <p>The ARN of the deleted directory.</p>
 -- Required parameter: DirectoryArn
-function M.DeleteDirectoryResponse(DirectoryArn, ...)
+function M.DeleteDirectoryResponse(_DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDirectoryResponse")
 	local t = { 
-		["DirectoryArn"] = DirectoryArn,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDeleteDirectoryResponse(t)
+	asserts.AssertDeleteDirectoryResponse(t)
 	return t
 end
 
-local FacetAttributeReference_keys = { "TargetFacetName" = true, "TargetAttributeName" = true, nil }
+keys.FacetAttributeReference = { ["TargetFacetName"] = true, ["TargetAttributeName"] = true, nil }
 
-function M.AssertFacetAttributeReference(struct)
+function asserts.AssertFacetAttributeReference(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FacetAttributeReference to be of type 'table'")
 	assert(struct["TargetFacetName"], "Expected key TargetFacetName to exist in table")
 	assert(struct["TargetAttributeName"], "Expected key TargetAttributeName to exist in table")
-	if struct["TargetFacetName"] then M.AssertFacetName(struct["TargetFacetName"]) end
-	if struct["TargetAttributeName"] then M.AssertAttributeName(struct["TargetAttributeName"]) end
+	if struct["TargetFacetName"] then asserts.AssertFacetName(struct["TargetFacetName"]) end
+	if struct["TargetAttributeName"] then asserts.AssertAttributeName(struct["TargetAttributeName"]) end
 	for k,_ in pairs(struct) do
-		assert(FacetAttributeReference_keys[k], "FacetAttributeReference contains unknown key " .. tostring(k))
+		assert(keys.FacetAttributeReference[k], "FacetAttributeReference contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FacetAttributeReference
 -- <p>The facet attribute reference that specifies the attribute definition that contains the attribute facet name and attribute name.</p>
--- @param TargetFacetName [FacetName] <p>The target facet name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- @param TargetAttributeName [AttributeName] <p>The target attribute name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- @param _TargetFacetName [FacetName] <p>The target facet name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- @param _TargetAttributeName [AttributeName] <p>The target attribute name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
 -- Required parameter: TargetFacetName
 -- Required parameter: TargetAttributeName
-function M.FacetAttributeReference(TargetFacetName, TargetAttributeName, ...)
+function M.FacetAttributeReference(_TargetFacetName, _TargetAttributeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FacetAttributeReference")
 	local t = { 
-		["TargetFacetName"] = TargetFacetName,
-		["TargetAttributeName"] = TargetAttributeName,
+		["TargetFacetName"] = _TargetFacetName,
+		["TargetAttributeName"] = _TargetAttributeName,
 	}
-	M.AssertFacetAttributeReference(t)
+	asserts.AssertFacetAttributeReference(t)
 	return t
 end
 
-local DetachTypedLinkRequest_keys = { "TypedLinkSpecifier" = true, "DirectoryArn" = true, nil }
+keys.DetachTypedLinkRequest = { ["TypedLinkSpecifier"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertDetachTypedLinkRequest(struct)
+function asserts.AssertDetachTypedLinkRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachTypedLinkRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["TypedLinkSpecifier"], "Expected key TypedLinkSpecifier to exist in table")
-	if struct["TypedLinkSpecifier"] then M.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["TypedLinkSpecifier"] then asserts.AssertTypedLinkSpecifier(struct["TypedLinkSpecifier"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachTypedLinkRequest_keys[k], "DetachTypedLinkRequest contains unknown key " .. tostring(k))
+		assert(keys.DetachTypedLinkRequest[k], "DetachTypedLinkRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachTypedLinkRequest
 --  
--- @param TypedLinkSpecifier [TypedLinkSpecifier] <p>Used to accept a typed link specifier as input.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to detach the typed link.</p>
+-- @param _TypedLinkSpecifier [TypedLinkSpecifier] <p>Used to accept a typed link specifier as input.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to detach the typed link.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: TypedLinkSpecifier
-function M.DetachTypedLinkRequest(TypedLinkSpecifier, DirectoryArn, ...)
+function M.DetachTypedLinkRequest(_TypedLinkSpecifier, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachTypedLinkRequest")
 	local t = { 
-		["TypedLinkSpecifier"] = TypedLinkSpecifier,
-		["DirectoryArn"] = DirectoryArn,
+		["TypedLinkSpecifier"] = _TypedLinkSpecifier,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertDetachTypedLinkRequest(t)
+	asserts.AssertDetachTypedLinkRequest(t)
 	return t
 end
 
-local ObjectAttributeAction_keys = { "ObjectAttributeActionType" = true, "ObjectAttributeUpdateValue" = true, nil }
+keys.ObjectAttributeAction = { ["ObjectAttributeActionType"] = true, ["ObjectAttributeUpdateValue"] = true, nil }
 
-function M.AssertObjectAttributeAction(struct)
+function asserts.AssertObjectAttributeAction(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ObjectAttributeAction to be of type 'table'")
-	if struct["ObjectAttributeActionType"] then M.AssertUpdateActionType(struct["ObjectAttributeActionType"]) end
-	if struct["ObjectAttributeUpdateValue"] then M.AssertTypedAttributeValue(struct["ObjectAttributeUpdateValue"]) end
+	if struct["ObjectAttributeActionType"] then asserts.AssertUpdateActionType(struct["ObjectAttributeActionType"]) end
+	if struct["ObjectAttributeUpdateValue"] then asserts.AssertTypedAttributeValue(struct["ObjectAttributeUpdateValue"]) end
 	for k,_ in pairs(struct) do
-		assert(ObjectAttributeAction_keys[k], "ObjectAttributeAction contains unknown key " .. tostring(k))
+		assert(keys.ObjectAttributeAction[k], "ObjectAttributeAction contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ObjectAttributeAction
 -- <p>The action to take on the object attribute.</p>
--- @param ObjectAttributeActionType [UpdateActionType] <p>A type that can be either <code>Update</code> or <code>Delete</code>.</p>
--- @param ObjectAttributeUpdateValue [TypedAttributeValue] <p>The value that you want to update to.</p>
-function M.ObjectAttributeAction(ObjectAttributeActionType, ObjectAttributeUpdateValue, ...)
+-- @param _ObjectAttributeActionType [UpdateActionType] <p>A type that can be either <code>Update</code> or <code>Delete</code>.</p>
+-- @param _ObjectAttributeUpdateValue [TypedAttributeValue] <p>The value that you want to update to.</p>
+function M.ObjectAttributeAction(_ObjectAttributeActionType, _ObjectAttributeUpdateValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAttributeAction")
 	local t = { 
-		["ObjectAttributeActionType"] = ObjectAttributeActionType,
-		["ObjectAttributeUpdateValue"] = ObjectAttributeUpdateValue,
+		["ObjectAttributeActionType"] = _ObjectAttributeActionType,
+		["ObjectAttributeUpdateValue"] = _ObjectAttributeUpdateValue,
 	}
-	M.AssertObjectAttributeAction(t)
+	asserts.AssertObjectAttributeAction(t)
 	return t
 end
 
-local BatchRemoveFacetFromObject_keys = { "ObjectReference" = true, "SchemaFacet" = true, nil }
+keys.BatchRemoveFacetFromObject = { ["ObjectReference"] = true, ["SchemaFacet"] = true, nil }
 
-function M.AssertBatchRemoveFacetFromObject(struct)
+function asserts.AssertBatchRemoveFacetFromObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchRemoveFacetFromObject to be of type 'table'")
 	assert(struct["SchemaFacet"], "Expected key SchemaFacet to exist in table")
 	assert(struct["ObjectReference"], "Expected key ObjectReference to exist in table")
-	if struct["ObjectReference"] then M.AssertObjectReference(struct["ObjectReference"]) end
-	if struct["SchemaFacet"] then M.AssertSchemaFacet(struct["SchemaFacet"]) end
+	if struct["ObjectReference"] then asserts.AssertObjectReference(struct["ObjectReference"]) end
+	if struct["SchemaFacet"] then asserts.AssertSchemaFacet(struct["SchemaFacet"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchRemoveFacetFromObject_keys[k], "BatchRemoveFacetFromObject contains unknown key " .. tostring(k))
+		assert(keys.BatchRemoveFacetFromObject[k], "BatchRemoveFacetFromObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchRemoveFacetFromObject
 -- <p>A batch operation to remove a facet from an object.</p>
--- @param ObjectReference [ObjectReference] <p>A reference to the object whose facet will be removed.</p>
--- @param SchemaFacet [SchemaFacet] <p>The facet to remove from the object.</p>
+-- @param _ObjectReference [ObjectReference] <p>A reference to the object whose facet will be removed.</p>
+-- @param _SchemaFacet [SchemaFacet] <p>The facet to remove from the object.</p>
 -- Required parameter: SchemaFacet
 -- Required parameter: ObjectReference
-function M.BatchRemoveFacetFromObject(ObjectReference, SchemaFacet, ...)
+function M.BatchRemoveFacetFromObject(_ObjectReference, _SchemaFacet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchRemoveFacetFromObject")
 	local t = { 
-		["ObjectReference"] = ObjectReference,
-		["SchemaFacet"] = SchemaFacet,
+		["ObjectReference"] = _ObjectReference,
+		["SchemaFacet"] = _SchemaFacet,
 	}
-	M.AssertBatchRemoveFacetFromObject(t)
+	asserts.AssertBatchRemoveFacetFromObject(t)
 	return t
 end
 
-local ListPolicyAttachmentsRequest_keys = { "ConsistencyLevel" = true, "PolicyReference" = true, "NextToken" = true, "MaxResults" = true, "DirectoryArn" = true, nil }
+keys.ListPolicyAttachmentsRequest = { ["ConsistencyLevel"] = true, ["PolicyReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
 
-function M.AssertListPolicyAttachmentsRequest(struct)
+function asserts.AssertListPolicyAttachmentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPolicyAttachmentsRequest to be of type 'table'")
 	assert(struct["DirectoryArn"], "Expected key DirectoryArn to exist in table")
 	assert(struct["PolicyReference"], "Expected key PolicyReference to exist in table")
-	if struct["ConsistencyLevel"] then M.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
-	if struct["PolicyReference"] then M.AssertObjectReference(struct["PolicyReference"]) end
-	if struct["NextToken"] then M.AssertNextToken(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertNumberResults(struct["MaxResults"]) end
-	if struct["DirectoryArn"] then M.AssertArn(struct["DirectoryArn"]) end
+	if struct["ConsistencyLevel"] then asserts.AssertConsistencyLevel(struct["ConsistencyLevel"]) end
+	if struct["PolicyReference"] then asserts.AssertObjectReference(struct["PolicyReference"]) end
+	if struct["NextToken"] then asserts.AssertNextToken(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertNumberResults(struct["MaxResults"]) end
+	if struct["DirectoryArn"] then asserts.AssertArn(struct["DirectoryArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPolicyAttachmentsRequest_keys[k], "ListPolicyAttachmentsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListPolicyAttachmentsRequest[k], "ListPolicyAttachmentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPolicyAttachmentsRequest
 --  
--- @param ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param PolicyReference [ObjectReference] <p>The reference that identifies the policy object.</p>
--- @param NextToken [NextToken] <p>The pagination token.</p>
--- @param MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
+-- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- @param _PolicyReference [ObjectReference] <p>The reference that identifies the policy object.</p>
+-- @param _NextToken [NextToken] <p>The pagination token.</p>
+-- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
 -- Required parameter: DirectoryArn
 -- Required parameter: PolicyReference
-function M.ListPolicyAttachmentsRequest(ConsistencyLevel, PolicyReference, NextToken, MaxResults, DirectoryArn, ...)
+function M.ListPolicyAttachmentsRequest(_ConsistencyLevel, _PolicyReference, _NextToken, _MaxResults, _DirectoryArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyAttachmentsRequest")
 	local t = { 
-		["ConsistencyLevel"] = ConsistencyLevel,
-		["PolicyReference"] = PolicyReference,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["DirectoryArn"] = DirectoryArn,
+		["ConsistencyLevel"] = _ConsistencyLevel,
+		["PolicyReference"] = _PolicyReference,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["DirectoryArn"] = _DirectoryArn,
 	}
-	M.AssertListPolicyAttachmentsRequest(t)
+	asserts.AssertListPolicyAttachmentsRequest(t)
 	return t
 end
 
-local DeleteSchemaRequest_keys = { "SchemaArn" = true, nil }
+keys.DeleteSchemaRequest = { ["SchemaArn"] = true, nil }
 
-function M.AssertDeleteSchemaRequest(struct)
+function asserts.AssertDeleteSchemaRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteSchemaRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteSchemaRequest_keys[k], "DeleteSchemaRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteSchemaRequest[k], "DeleteSchemaRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteSchemaRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the development schema. For more information, see <a>arns</a>.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the development schema. For more information, see <a>arns</a>.</p>
 -- Required parameter: SchemaArn
-function M.DeleteSchemaRequest(SchemaArn, ...)
+function M.DeleteSchemaRequest(_SchemaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSchemaRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
+		["SchemaArn"] = _SchemaArn,
 	}
-	M.AssertDeleteSchemaRequest(t)
+	asserts.AssertDeleteSchemaRequest(t)
 	return t
 end
 
-local DeleteFacetRequest_keys = { "SchemaArn" = true, "Name" = true, nil }
+keys.DeleteFacetRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
 
-function M.AssertDeleteFacetRequest(struct)
+function asserts.AssertDeleteFacetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFacetRequest to be of type 'table'")
 	assert(struct["SchemaArn"], "Expected key SchemaArn to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["SchemaArn"] then M.AssertArn(struct["SchemaArn"]) end
-	if struct["Name"] then M.AssertFacetName(struct["Name"]) end
+	if struct["SchemaArn"] then asserts.AssertArn(struct["SchemaArn"]) end
+	if struct["Name"] then asserts.AssertFacetName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteFacetRequest_keys[k], "DeleteFacetRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteFacetRequest[k], "DeleteFacetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteFacetRequest
 --  
--- @param SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
--- @param Name [FacetName] <p>The name of the facet to delete.</p>
+-- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
+-- @param _Name [FacetName] <p>The name of the facet to delete.</p>
 -- Required parameter: SchemaArn
 -- Required parameter: Name
-function M.DeleteFacetRequest(SchemaArn, Name, ...)
+function M.DeleteFacetRequest(_SchemaArn, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFacetRequest")
 	local t = { 
-		["SchemaArn"] = SchemaArn,
-		["Name"] = Name,
+		["SchemaArn"] = _SchemaArn,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteFacetRequest(t)
+	asserts.AssertDeleteFacetRequest(t)
 	return t
 end
 
-local TypedLinkFacet_keys = { "Attributes" = true, "IdentityAttributeOrder" = true, "Name" = true, nil }
+keys.TypedLinkFacet = { ["Attributes"] = true, ["IdentityAttributeOrder"] = true, ["Name"] = true, nil }
 
-function M.AssertTypedLinkFacet(struct)
+function asserts.AssertTypedLinkFacet(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TypedLinkFacet to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Attributes"], "Expected key Attributes to exist in table")
 	assert(struct["IdentityAttributeOrder"], "Expected key IdentityAttributeOrder to exist in table")
-	if struct["Attributes"] then M.AssertTypedLinkAttributeDefinitionList(struct["Attributes"]) end
-	if struct["IdentityAttributeOrder"] then M.AssertAttributeNameList(struct["IdentityAttributeOrder"]) end
-	if struct["Name"] then M.AssertTypedLinkName(struct["Name"]) end
+	if struct["Attributes"] then asserts.AssertTypedLinkAttributeDefinitionList(struct["Attributes"]) end
+	if struct["IdentityAttributeOrder"] then asserts.AssertAttributeNameList(struct["IdentityAttributeOrder"]) end
+	if struct["Name"] then asserts.AssertTypedLinkName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(TypedLinkFacet_keys[k], "TypedLinkFacet contains unknown key " .. tostring(k))
+		assert(keys.TypedLinkFacet[k], "TypedLinkFacet contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TypedLinkFacet
 -- <p>Defines the typed links structure and its attributes. To create a typed link facet, use the <a>CreateTypedLinkFacet</a> API.</p>
--- @param Attributes [TypedLinkAttributeDefinitionList] <p>A set of key-value pairs associated with the typed link. Typed link attributes are used when you have data values that are related to the link itself, and not to one of the two objects being linked. Identity attributes also serve to distinguish the link from others of the same type between the same objects.</p>
--- @param IdentityAttributeOrder [AttributeNameList] <p>The set of attributes that distinguish links made from this facet from each other, in the order of significance. Listing typed links can filter on the values of these attributes. See <a>ListOutgoingTypedLinks</a> and <a>ListIncomingTypeLinks</a> for details.</p>
--- @param Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- @param _Attributes [TypedLinkAttributeDefinitionList] <p>A set of key-value pairs associated with the typed link. Typed link attributes are used when you have data values that are related to the link itself, and not to one of the two objects being linked. Identity attributes also serve to distinguish the link from others of the same type between the same objects.</p>
+-- @param _IdentityAttributeOrder [AttributeNameList] <p>The set of attributes that distinguish links made from this facet from each other, in the order of significance. Listing typed links can filter on the values of these attributes. See <a>ListOutgoingTypedLinks</a> and <a>ListIncomingTypeLinks</a> for details.</p>
+-- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
 -- Required parameter: Name
 -- Required parameter: Attributes
 -- Required parameter: IdentityAttributeOrder
-function M.TypedLinkFacet(Attributes, IdentityAttributeOrder, Name, ...)
+function M.TypedLinkFacet(_Attributes, _IdentityAttributeOrder, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkFacet")
 	local t = { 
-		["Attributes"] = Attributes,
-		["IdentityAttributeOrder"] = IdentityAttributeOrder,
-		["Name"] = Name,
+		["Attributes"] = _Attributes,
+		["IdentityAttributeOrder"] = _IdentityAttributeOrder,
+		["Name"] = _Name,
 	}
-	M.AssertTypedLinkFacet(t)
+	asserts.AssertTypedLinkFacet(t)
 	return t
 end
 
-local BatchWriteResponse_keys = { "Responses" = true, nil }
+keys.BatchWriteResponse = { ["Responses"] = true, nil }
 
-function M.AssertBatchWriteResponse(struct)
+function asserts.AssertBatchWriteResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchWriteResponse to be of type 'table'")
-	if struct["Responses"] then M.AssertBatchWriteOperationResponseList(struct["Responses"]) end
+	if struct["Responses"] then asserts.AssertBatchWriteOperationResponseList(struct["Responses"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchWriteResponse_keys[k], "BatchWriteResponse contains unknown key " .. tostring(k))
+		assert(keys.BatchWriteResponse[k], "BatchWriteResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchWriteResponse
 --  
--- @param Responses [BatchWriteOperationResponseList] <p>A list of all the responses for each batch write.</p>
-function M.BatchWriteResponse(Responses, ...)
+-- @param _Responses [BatchWriteOperationResponseList] <p>A list of all the responses for each batch write.</p>
+function M.BatchWriteResponse(_Responses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteResponse")
 	local t = { 
-		["Responses"] = Responses,
+		["Responses"] = _Responses,
 	}
-	M.AssertBatchWriteResponse(t)
+	asserts.AssertBatchWriteResponse(t)
 	return t
 end
 
-function M.AssertDirectoryArn(str)
+function asserts.AssertDirectoryArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DirectoryArn to be of type 'string'")
 end
 
 --  
 function M.DirectoryArn(str)
-	M.AssertDirectoryArn(str)
+	asserts.AssertDirectoryArn(str)
 	return str
 end
 
-function M.AssertSchemaJsonDocument(str)
+function asserts.AssertSchemaJsonDocument(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SchemaJsonDocument to be of type 'string'")
 end
 
 --  
 function M.SchemaJsonDocument(str)
-	M.AssertSchemaJsonDocument(str)
+	asserts.AssertSchemaJsonDocument(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertBatchReferenceName(str)
+function asserts.AssertBatchReferenceName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BatchReferenceName to be of type 'string'")
 end
 
 --  
 function M.BatchReferenceName(str)
-	M.AssertBatchReferenceName(str)
+	asserts.AssertBatchReferenceName(str)
 	return str
 end
 
-function M.AssertObjectType(str)
+function asserts.AssertObjectType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ObjectType to be of type 'string'")
 end
 
 --  
 function M.ObjectType(str)
-	M.AssertObjectType(str)
+	asserts.AssertObjectType(str)
 	return str
 end
 
-function M.AssertPathString(str)
+function asserts.AssertPathString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PathString to be of type 'string'")
 end
 
 --  
 function M.PathString(str)
-	M.AssertPathString(str)
+	asserts.AssertPathString(str)
 	return str
 end
 
-function M.AssertBatchWriteExceptionType(str)
+function asserts.AssertBatchWriteExceptionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BatchWriteExceptionType to be of type 'string'")
 end
 
 --  
 function M.BatchWriteExceptionType(str)
-	M.AssertBatchWriteExceptionType(str)
+	asserts.AssertBatchWriteExceptionType(str)
 	return str
 end
 
-function M.AssertRuleParameterValue(str)
+function asserts.AssertRuleParameterValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RuleParameterValue to be of type 'string'")
 end
 
 --  
 function M.RuleParameterValue(str)
-	M.AssertRuleParameterValue(str)
+	asserts.AssertRuleParameterValue(str)
 	return str
 end
 
-function M.AssertRangeMode(str)
+function asserts.AssertRangeMode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RangeMode to be of type 'string'")
 end
 
 --  
 function M.RangeMode(str)
-	M.AssertRangeMode(str)
+	asserts.AssertRangeMode(str)
 	return str
 end
 
-function M.AssertBatchReadExceptionType(str)
+function asserts.AssertBatchReadExceptionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BatchReadExceptionType to be of type 'string'")
 end
 
 --  
 function M.BatchReadExceptionType(str)
-	M.AssertBatchReadExceptionType(str)
+	asserts.AssertBatchReadExceptionType(str)
 	return str
 end
 
-function M.AssertArn(str)
+function asserts.AssertArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Arn to be of type 'string'")
 end
 
 --  
 function M.Arn(str)
-	M.AssertArn(str)
+	asserts.AssertArn(str)
 	return str
 end
 
-function M.AssertNextToken(str)
+function asserts.AssertNextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
 end
 
 --  
 function M.NextToken(str)
-	M.AssertNextToken(str)
+	asserts.AssertNextToken(str)
 	return str
 end
 
-function M.AssertNumberAttributeValue(str)
+function asserts.AssertNumberAttributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NumberAttributeValue to be of type 'string'")
 end
 
 --  
 function M.NumberAttributeValue(str)
-	M.AssertNumberAttributeValue(str)
+	asserts.AssertNumberAttributeValue(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertPolicyType(str)
+function asserts.AssertPolicyType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PolicyType to be of type 'string'")
 end
 
 --  
 function M.PolicyType(str)
-	M.AssertPolicyType(str)
+	asserts.AssertPolicyType(str)
 	return str
 end
 
-function M.AssertRequiredAttributeBehavior(str)
+function asserts.AssertRequiredAttributeBehavior(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RequiredAttributeBehavior to be of type 'string'")
 end
 
 --  
 function M.RequiredAttributeBehavior(str)
-	M.AssertRequiredAttributeBehavior(str)
+	asserts.AssertRequiredAttributeBehavior(str)
 	return str
 end
 
-function M.AssertSchemaName(str)
+function asserts.AssertSchemaName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SchemaName to be of type 'string'")
 	assert(#str <= 32, "Expected string to be max 32 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[a-zA-Z0-9._-]*$"), "Expected string to match pattern '^[a-zA-Z0-9._-]*$'")
 end
 
 --  
 function M.SchemaName(str)
-	M.AssertSchemaName(str)
+	asserts.AssertSchemaName(str)
 	return str
 end
 
-function M.AssertDirectoryName(str)
+function asserts.AssertDirectoryName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DirectoryName to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[a-zA-Z0-9._-]*$"), "Expected string to match pattern '^[a-zA-Z0-9._-]*$'")
 end
 
 --  
 function M.DirectoryName(str)
-	M.AssertDirectoryName(str)
+	asserts.AssertDirectoryName(str)
 	return str
 end
 
-function M.AssertLinkName(str)
+function asserts.AssertLinkName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LinkName to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[^%/%[%]%(%):%{%}#@!?%s%%;]+"), "Expected string to match pattern '[^%/%[%]%(%):%{%}#@!?%s%%;]+'")
 end
 
 --  
 function M.LinkName(str)
-	M.AssertLinkName(str)
+	asserts.AssertLinkName(str)
 	return str
 end
 
-function M.AssertFacetAttributeType(str)
+function asserts.AssertFacetAttributeType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FacetAttributeType to be of type 'string'")
 end
 
 --  
 function M.FacetAttributeType(str)
-	M.AssertFacetAttributeType(str)
+	asserts.AssertFacetAttributeType(str)
 	return str
 end
 
-function M.AssertDirectoryState(str)
+function asserts.AssertDirectoryState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DirectoryState to be of type 'string'")
 end
 
 --  
 function M.DirectoryState(str)
-	M.AssertDirectoryState(str)
+	asserts.AssertDirectoryState(str)
 	return str
 end
 
-function M.AssertTypedLinkName(str)
+function asserts.AssertTypedLinkName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TypedLinkName to be of type 'string'")
-	assert(str:match("^[a-zA-Z0-9._-]*$"), "Expected string to match pattern '^[a-zA-Z0-9._-]*$'")
 end
 
 --  
 function M.TypedLinkName(str)
-	M.AssertTypedLinkName(str)
+	asserts.AssertTypedLinkName(str)
 	return str
 end
 
-function M.AssertConsistencyLevel(str)
+function asserts.AssertConsistencyLevel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConsistencyLevel to be of type 'string'")
 end
 
 --  
 function M.ConsistencyLevel(str)
-	M.AssertConsistencyLevel(str)
+	asserts.AssertConsistencyLevel(str)
 	return str
 end
 
-function M.AssertRuleType(str)
+function asserts.AssertRuleType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RuleType to be of type 'string'")
 end
 
 --  
 function M.RuleType(str)
-	M.AssertRuleType(str)
+	asserts.AssertRuleType(str)
 	return str
 end
 
-function M.AssertObjectIdentifier(str)
+function asserts.AssertObjectIdentifier(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ObjectIdentifier to be of type 'string'")
 end
 
 --  
 function M.ObjectIdentifier(str)
-	M.AssertObjectIdentifier(str)
+	asserts.AssertObjectIdentifier(str)
 	return str
 end
 
-function M.AssertUpdateActionType(str)
+function asserts.AssertUpdateActionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UpdateActionType to be of type 'string'")
 end
 
 --  
 function M.UpdateActionType(str)
-	M.AssertUpdateActionType(str)
+	asserts.AssertUpdateActionType(str)
 	return str
 end
 
-function M.AssertExceptionMessage(str)
+function asserts.AssertExceptionMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
 end
 
 --  
 function M.ExceptionMessage(str)
-	M.AssertExceptionMessage(str)
+	asserts.AssertExceptionMessage(str)
 	return str
 end
 
-function M.AssertAttributeName(str)
+function asserts.AssertAttributeName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttributeName to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[a-zA-Z0-9._-]*$"), "Expected string to match pattern '^[a-zA-Z0-9._-]*$'")
 end
 
 --  
 function M.AttributeName(str)
-	M.AssertAttributeName(str)
+	asserts.AssertAttributeName(str)
 	return str
 end
 
-function M.AssertVersion(str)
+function asserts.AssertVersion(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Version to be of type 'string'")
 	assert(#str <= 10, "Expected string to be max 10 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[a-zA-Z0-9._-]*$"), "Expected string to match pattern '^[a-zA-Z0-9._-]*$'")
 end
 
 --  
 function M.Version(str)
-	M.AssertVersion(str)
+	asserts.AssertVersion(str)
 	return str
 end
 
-function M.AssertStringAttributeValue(str)
+function asserts.AssertStringAttributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StringAttributeValue to be of type 'string'")
 end
 
 --  
 function M.StringAttributeValue(str)
-	M.AssertStringAttributeValue(str)
+	asserts.AssertStringAttributeValue(str)
 	return str
 end
 
-function M.AssertFacetName(str)
+function asserts.AssertFacetName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FacetName to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[a-zA-Z0-9._-]*$"), "Expected string to match pattern '^[a-zA-Z0-9._-]*$'")
 end
 
 --  
 function M.FacetName(str)
-	M.AssertFacetName(str)
+	asserts.AssertFacetName(str)
 	return str
 end
 
-function M.AssertSelectorObjectReference(str)
+function asserts.AssertSelectorObjectReference(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SelectorObjectReference to be of type 'string'")
 end
 
 --  
 function M.SelectorObjectReference(str)
-	M.AssertSelectorObjectReference(str)
+	asserts.AssertSelectorObjectReference(str)
 	return str
 end
 
-function M.AssertRuleKey(str)
+function asserts.AssertRuleKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RuleKey to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("^[a-zA-Z0-9._-]*$"), "Expected string to match pattern '^[a-zA-Z0-9._-]*$'")
 end
 
 --  
 function M.RuleKey(str)
-	M.AssertRuleKey(str)
+	asserts.AssertRuleKey(str)
 	return str
 end
 
-function M.AssertRuleParameterKey(str)
+function asserts.AssertRuleParameterKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RuleParameterKey to be of type 'string'")
 end
 
 --  
 function M.RuleParameterKey(str)
-	M.AssertRuleParameterKey(str)
+	asserts.AssertRuleParameterKey(str)
 	return str
 end
 
-function M.AssertTagsNumberResults(integer)
+function asserts.AssertTagsNumberResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected TagsNumberResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6104,22 +6099,22 @@ function M.AssertTagsNumberResults(integer)
 end
 
 function M.TagsNumberResults(integer)
-	M.AssertTagsNumberResults(integer)
+	asserts.AssertTagsNumberResults(integer)
 	return integer
 end
 
-function M.AssertBatchOperationIndex(integer)
+function asserts.AssertBatchOperationIndex(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected BatchOperationIndex to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.BatchOperationIndex(integer)
-	M.AssertBatchOperationIndex(integer)
+	asserts.AssertBatchOperationIndex(integer)
 	return integer
 end
 
-function M.AssertNumberResults(integer)
+function asserts.AssertNumberResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected NumberResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -6127,533 +6122,533 @@ function M.AssertNumberResults(integer)
 end
 
 function M.NumberResults(integer)
-	M.AssertNumberResults(integer)
+	asserts.AssertNumberResults(integer)
 	return integer
 end
 
-function M.AssertBool(boolean)
+function asserts.AssertBool(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Bool to be of type 'boolean'")
 end
 
 function M.Bool(boolean)
-	M.AssertBool(boolean)
+	asserts.AssertBool(boolean)
 	return boolean
 end
 
-function M.AssertBooleanAttributeValue(boolean)
+function asserts.AssertBooleanAttributeValue(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanAttributeValue to be of type 'boolean'")
 end
 
 function M.BooleanAttributeValue(boolean)
-	M.AssertBooleanAttributeValue(boolean)
+	asserts.AssertBooleanAttributeValue(boolean)
 	return boolean
 end
 
-function M.AssertObjectIdentifierToLinkNameMap(map)
+function asserts.AssertObjectIdentifierToLinkNameMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected ObjectIdentifierToLinkNameMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertObjectIdentifier(k)
-		M.AssertLinkName(v)
+		asserts.AssertObjectIdentifier(k)
+		asserts.AssertLinkName(v)
 	end
 end
 
 function M.ObjectIdentifierToLinkNameMap(map)
-	M.AssertObjectIdentifierToLinkNameMap(map)
+	asserts.AssertObjectIdentifierToLinkNameMap(map)
 	return map
 end
 
-function M.AssertRuleParameterMap(map)
+function asserts.AssertRuleParameterMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected RuleParameterMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertRuleParameterKey(k)
-		M.AssertRuleParameterValue(v)
+		asserts.AssertRuleParameterKey(k)
+		asserts.AssertRuleParameterValue(v)
 	end
 end
 
 function M.RuleParameterMap(map)
-	M.AssertRuleParameterMap(map)
+	asserts.AssertRuleParameterMap(map)
 	return map
 end
 
-function M.AssertRuleMap(map)
+function asserts.AssertRuleMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected RuleMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertRuleKey(k)
-		M.AssertRule(v)
+		asserts.AssertRuleKey(k)
+		asserts.AssertRule(v)
 	end
 end
 
 function M.RuleMap(map)
-	M.AssertRuleMap(map)
+	asserts.AssertRuleMap(map)
 	return map
 end
 
-function M.AssertLinkNameToObjectIdentifierMap(map)
+function asserts.AssertLinkNameToObjectIdentifierMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected LinkNameToObjectIdentifierMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertLinkName(k)
-		M.AssertObjectIdentifier(v)
+		asserts.AssertLinkName(k)
+		asserts.AssertObjectIdentifier(v)
 	end
 end
 
 function M.LinkNameToObjectIdentifierMap(map)
-	M.AssertLinkNameToObjectIdentifierMap(map)
+	asserts.AssertLinkNameToObjectIdentifierMap(map)
 	return map
 end
 
-function M.AssertDate(timestamp)
+function asserts.AssertDate(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Date to be of type 'string'")
 end
 
 function M.Date(timestamp)
-	M.AssertDate(timestamp)
+	asserts.AssertDate(timestamp)
 	return timestamp
 end
 
-function M.AssertDatetimeAttributeValue(timestamp)
+function asserts.AssertDatetimeAttributeValue(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected DatetimeAttributeValue to be of type 'string'")
 end
 
 function M.DatetimeAttributeValue(timestamp)
-	M.AssertDatetimeAttributeValue(timestamp)
+	asserts.AssertDatetimeAttributeValue(timestamp)
 	return timestamp
 end
 
-function M.AssertBinaryAttributeValue(blob)
+function asserts.AssertBinaryAttributeValue(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected BinaryAttributeValue to be of type 'string'")
 end
 
 function M.BinaryAttributeValue(blob)
-	M.AssertBinaryAttributeValue(blob)
+	asserts.AssertBinaryAttributeValue(blob)
 	return blob
 end
 
-function M.AssertPolicyToPathList(list)
+function asserts.AssertPolicyToPathList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PolicyToPathList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPolicyToPath(v)
+		asserts.AssertPolicyToPath(v)
 	end
 end
 
 --  
 -- List of PolicyToPath objects
 function M.PolicyToPathList(list)
-	M.AssertPolicyToPathList(list)
+	asserts.AssertPolicyToPathList(list)
 	return list
 end
 
-function M.AssertAttributeNameAndValueList(list)
+function asserts.AssertAttributeNameAndValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeNameAndValueList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttributeNameAndValue(v)
+		asserts.AssertAttributeNameAndValue(v)
 	end
 end
 
 --  
 -- List of AttributeNameAndValue objects
 function M.AttributeNameAndValueList(list)
-	M.AssertAttributeNameAndValueList(list)
+	asserts.AssertAttributeNameAndValueList(list)
 	return list
 end
 
-function M.AssertAttributeKeyList(list)
+function asserts.AssertAttributeKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeKeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttributeKey(v)
+		asserts.AssertAttributeKey(v)
 	end
 end
 
 --  
 -- List of AttributeKey objects
 function M.AttributeKeyList(list)
-	M.AssertAttributeKeyList(list)
+	asserts.AssertAttributeKeyList(list)
 	return list
 end
 
-function M.AssertTypedLinkSpecifierList(list)
+function asserts.AssertTypedLinkSpecifierList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TypedLinkSpecifierList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTypedLinkSpecifier(v)
+		asserts.AssertTypedLinkSpecifier(v)
 	end
 end
 
 --  
 -- List of TypedLinkSpecifier objects
 function M.TypedLinkSpecifierList(list)
-	M.AssertTypedLinkSpecifierList(list)
+	asserts.AssertTypedLinkSpecifierList(list)
 	return list
 end
 
-function M.AssertObjectAttributeUpdateList(list)
+function asserts.AssertObjectAttributeUpdateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ObjectAttributeUpdateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertObjectAttributeUpdate(v)
+		asserts.AssertObjectAttributeUpdate(v)
 	end
 end
 
 --  
 -- List of ObjectAttributeUpdate objects
 function M.ObjectAttributeUpdateList(list)
-	M.AssertObjectAttributeUpdateList(list)
+	asserts.AssertObjectAttributeUpdateList(list)
 	return list
 end
 
-function M.AssertTagKeyList(list)
+function asserts.AssertTagKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagKey(v)
+		asserts.AssertTagKey(v)
 	end
 end
 
 --  
 -- List of TagKey objects
 function M.TagKeyList(list)
-	M.AssertTagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
-function M.AssertObjectAttributeRangeList(list)
+function asserts.AssertObjectAttributeRangeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ObjectAttributeRangeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertObjectAttributeRange(v)
+		asserts.AssertObjectAttributeRange(v)
 	end
 end
 
 --  
 -- List of ObjectAttributeRange objects
 function M.ObjectAttributeRangeList(list)
-	M.AssertObjectAttributeRangeList(list)
+	asserts.AssertObjectAttributeRangeList(list)
 	return list
 end
 
-function M.AssertDirectoryList(list)
+function asserts.AssertDirectoryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DirectoryList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDirectory(v)
+		asserts.AssertDirectory(v)
 	end
 end
 
 --  
 -- List of Directory objects
 function M.DirectoryList(list)
-	M.AssertDirectoryList(list)
+	asserts.AssertDirectoryList(list)
 	return list
 end
 
-function M.AssertIndexAttachmentList(list)
+function asserts.AssertIndexAttachmentList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IndexAttachmentList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertIndexAttachment(v)
+		asserts.AssertIndexAttachment(v)
 	end
 end
 
 --  
 -- List of IndexAttachment objects
 function M.IndexAttachmentList(list)
-	M.AssertIndexAttachmentList(list)
+	asserts.AssertIndexAttachmentList(list)
 	return list
 end
 
-function M.AssertTypedLinkNameList(list)
+function asserts.AssertTypedLinkNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TypedLinkNameList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTypedLinkName(v)
+		asserts.AssertTypedLinkName(v)
 	end
 end
 
 --  
 -- List of TypedLinkName objects
 function M.TypedLinkNameList(list)
-	M.AssertTypedLinkNameList(list)
+	asserts.AssertTypedLinkNameList(list)
 	return list
 end
 
-function M.AssertFacetAttributeList(list)
+function asserts.AssertFacetAttributeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FacetAttributeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFacetAttribute(v)
+		asserts.AssertFacetAttribute(v)
 	end
 end
 
 --  
 -- List of FacetAttribute objects
 function M.FacetAttributeList(list)
-	M.AssertFacetAttributeList(list)
+	asserts.AssertFacetAttributeList(list)
 	return list
 end
 
-function M.AssertArns(list)
+function asserts.AssertArns(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Arns to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.Arns(list)
-	M.AssertArns(list)
+	asserts.AssertArns(list)
 	return list
 end
 
-function M.AssertBatchReadOperationList(list)
+function asserts.AssertBatchReadOperationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BatchReadOperationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBatchReadOperation(v)
+		asserts.AssertBatchReadOperation(v)
 	end
 end
 
 --  
 -- List of BatchReadOperation objects
 function M.BatchReadOperationList(list)
-	M.AssertBatchReadOperationList(list)
+	asserts.AssertBatchReadOperationList(list)
 	return list
 end
 
-function M.AssertAttributeNameList(list)
+function asserts.AssertAttributeNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeNameList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttributeName(v)
+		asserts.AssertAttributeName(v)
 	end
 end
 
 --  
 -- List of AttributeName objects
 function M.AttributeNameList(list)
-	M.AssertAttributeNameList(list)
+	asserts.AssertAttributeNameList(list)
 	return list
 end
 
-function M.AssertSchemaFacetList(list)
+function asserts.AssertSchemaFacetList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SchemaFacetList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSchemaFacet(v)
+		asserts.AssertSchemaFacet(v)
 	end
 end
 
 --  
 -- List of SchemaFacet objects
 function M.SchemaFacetList(list)
-	M.AssertSchemaFacetList(list)
+	asserts.AssertSchemaFacetList(list)
 	return list
 end
 
-function M.AssertFacetAttributeUpdateList(list)
+function asserts.AssertFacetAttributeUpdateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FacetAttributeUpdateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFacetAttributeUpdate(v)
+		asserts.AssertFacetAttributeUpdate(v)
 	end
 end
 
 --  
 -- List of FacetAttributeUpdate objects
 function M.FacetAttributeUpdateList(list)
-	M.AssertFacetAttributeUpdateList(list)
+	asserts.AssertFacetAttributeUpdateList(list)
 	return list
 end
 
-function M.AssertTypedLinkAttributeRangeList(list)
+function asserts.AssertTypedLinkAttributeRangeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TypedLinkAttributeRangeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTypedLinkAttributeRange(v)
+		asserts.AssertTypedLinkAttributeRange(v)
 	end
 end
 
 --  
 -- List of TypedLinkAttributeRange objects
 function M.TypedLinkAttributeRangeList(list)
-	M.AssertTypedLinkAttributeRangeList(list)
+	asserts.AssertTypedLinkAttributeRangeList(list)
 	return list
 end
 
-function M.AssertBatchWriteOperationResponseList(list)
+function asserts.AssertBatchWriteOperationResponseList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BatchWriteOperationResponseList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBatchWriteOperationResponse(v)
+		asserts.AssertBatchWriteOperationResponse(v)
 	end
 end
 
 --  
 -- List of BatchWriteOperationResponse objects
 function M.BatchWriteOperationResponseList(list)
-	M.AssertBatchWriteOperationResponseList(list)
+	asserts.AssertBatchWriteOperationResponseList(list)
 	return list
 end
 
-function M.AssertTypedLinkFacetAttributeUpdateList(list)
+function asserts.AssertTypedLinkFacetAttributeUpdateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TypedLinkFacetAttributeUpdateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTypedLinkFacetAttributeUpdate(v)
+		asserts.AssertTypedLinkFacetAttributeUpdate(v)
 	end
 end
 
 --  
 -- List of TypedLinkFacetAttributeUpdate objects
 function M.TypedLinkFacetAttributeUpdateList(list)
-	M.AssertTypedLinkFacetAttributeUpdateList(list)
+	asserts.AssertTypedLinkFacetAttributeUpdateList(list)
 	return list
 end
 
-function M.AssertObjectIdentifierList(list)
+function asserts.AssertObjectIdentifierList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ObjectIdentifierList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertObjectIdentifier(v)
+		asserts.AssertObjectIdentifier(v)
 	end
 end
 
 --  
 -- List of ObjectIdentifier objects
 function M.ObjectIdentifierList(list)
-	M.AssertObjectIdentifierList(list)
+	asserts.AssertObjectIdentifierList(list)
 	return list
 end
 
-function M.AssertFacetNameList(list)
+function asserts.AssertFacetNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FacetNameList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFacetName(v)
+		asserts.AssertFacetName(v)
 	end
 end
 
 --  
 -- List of FacetName objects
 function M.FacetNameList(list)
-	M.AssertFacetNameList(list)
+	asserts.AssertFacetNameList(list)
 	return list
 end
 
-function M.AssertBatchReadOperationResponseList(list)
+function asserts.AssertBatchReadOperationResponseList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BatchReadOperationResponseList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBatchReadOperationResponse(v)
+		asserts.AssertBatchReadOperationResponse(v)
 	end
 end
 
 --  
 -- List of BatchReadOperationResponse objects
 function M.BatchReadOperationResponseList(list)
-	M.AssertBatchReadOperationResponseList(list)
+	asserts.AssertBatchReadOperationResponseList(list)
 	return list
 end
 
-function M.AssertPolicyAttachmentList(list)
+function asserts.AssertPolicyAttachmentList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PolicyAttachmentList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPolicyAttachment(v)
+		asserts.AssertPolicyAttachment(v)
 	end
 end
 
 --  
 -- List of PolicyAttachment objects
 function M.PolicyAttachmentList(list)
-	M.AssertPolicyAttachmentList(list)
+	asserts.AssertPolicyAttachmentList(list)
 	return list
 end
 
-function M.AssertTypedLinkAttributeDefinitionList(list)
+function asserts.AssertTypedLinkAttributeDefinitionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TypedLinkAttributeDefinitionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTypedLinkAttributeDefinition(v)
+		asserts.AssertTypedLinkAttributeDefinition(v)
 	end
 end
 
 --  
 -- List of TypedLinkAttributeDefinition objects
 function M.TypedLinkAttributeDefinitionList(list)
-	M.AssertTypedLinkAttributeDefinitionList(list)
+	asserts.AssertTypedLinkAttributeDefinitionList(list)
 	return list
 end
 
-function M.AssertAttributeKeyAndValueList(list)
+function asserts.AssertAttributeKeyAndValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeKeyAndValueList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttributeKeyAndValue(v)
+		asserts.AssertAttributeKeyAndValue(v)
 	end
 end
 
 --  
 -- List of AttributeKeyAndValue objects
 function M.AttributeKeyAndValueList(list)
-	M.AssertAttributeKeyAndValueList(list)
+	asserts.AssertAttributeKeyAndValueList(list)
 	return list
 end
 
-function M.AssertBatchWriteOperationList(list)
+function asserts.AssertBatchWriteOperationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BatchWriteOperationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBatchWriteOperation(v)
+		asserts.AssertBatchWriteOperation(v)
 	end
 end
 
 --  
 -- List of BatchWriteOperation objects
 function M.BatchWriteOperationList(list)
-	M.AssertBatchWriteOperationList(list)
+	asserts.AssertBatchWriteOperationList(list)
 	return list
 end
 
-function M.AssertPathToObjectIdentifiersList(list)
+function asserts.AssertPathToObjectIdentifiersList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PathToObjectIdentifiersList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPathToObjectIdentifiers(v)
+		asserts.AssertPathToObjectIdentifiers(v)
 	end
 end
 
 --  
 -- List of PathToObjectIdentifiers objects
 function M.PathToObjectIdentifiersList(list)
-	M.AssertPathToObjectIdentifiersList(list)
+	asserts.AssertPathToObjectIdentifiersList(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 

@@ -18,796 +18,799 @@ M.metadata = {
 	uid = "health-2016-08-04",
 }
 
-local UnsupportedLocale_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertUnsupportedLocale(struct)
+keys.UnsupportedLocale = { ["message"] = true, nil }
+
+function asserts.AssertUnsupportedLocale(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedLocale to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedLocale_keys[k], "UnsupportedLocale contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedLocale[k], "UnsupportedLocale contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedLocale
 -- <p>The specified locale is not supported.</p>
--- @param message [string] <p>The specified locale is not supported.</p>
-function M.UnsupportedLocale(message, ...)
+-- @param _message [string] 
+function M.UnsupportedLocale(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedLocale")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedLocale(t)
+	asserts.AssertUnsupportedLocale(t)
 	return t
 end
 
-local DescribeEventAggregatesResponse_keys = { "nextToken" = true, "eventAggregates" = true, nil }
+keys.DescribeEventAggregatesResponse = { ["nextToken"] = true, ["eventAggregates"] = true, nil }
 
-function M.AssertDescribeEventAggregatesResponse(struct)
+function asserts.AssertDescribeEventAggregatesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventAggregatesResponse to be of type 'table'")
-	if struct["nextToken"] then M.AssertnextToken(struct["nextToken"]) end
-	if struct["eventAggregates"] then M.AssertEventAggregateList(struct["eventAggregates"]) end
+	if struct["nextToken"] then asserts.AssertnextToken(struct["nextToken"]) end
+	if struct["eventAggregates"] then asserts.AssertEventAggregateList(struct["eventAggregates"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventAggregatesResponse_keys[k], "DescribeEventAggregatesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventAggregatesResponse[k], "DescribeEventAggregatesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventAggregatesResponse
 --  
--- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param eventAggregates [EventAggregateList] <p>The number of events in each category that meet the optional filter criteria.</p>
-function M.DescribeEventAggregatesResponse(nextToken, eventAggregates, ...)
+-- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param _eventAggregates [EventAggregateList] <p>The number of events in each category that meet the optional filter criteria.</p>
+function M.DescribeEventAggregatesResponse(_nextToken, _eventAggregates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventAggregatesResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["eventAggregates"] = eventAggregates,
+		["nextToken"] = _nextToken,
+		["eventAggregates"] = _eventAggregates,
 	}
-	M.AssertDescribeEventAggregatesResponse(t)
+	asserts.AssertDescribeEventAggregatesResponse(t)
 	return t
 end
 
-local EntityFilter_keys = { "eventArns" = true, "statusCodes" = true, "entityValues" = true, "entityArns" = true, "lastUpdatedTimes" = true, "tags" = true, nil }
+keys.EntityFilter = { ["eventArns"] = true, ["statusCodes"] = true, ["entityValues"] = true, ["entityArns"] = true, ["lastUpdatedTimes"] = true, ["tags"] = true, nil }
 
-function M.AssertEntityFilter(struct)
+function asserts.AssertEntityFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EntityFilter to be of type 'table'")
 	assert(struct["eventArns"], "Expected key eventArns to exist in table")
-	if struct["eventArns"] then M.AsserteventArnList(struct["eventArns"]) end
-	if struct["statusCodes"] then M.AssertentityStatusCodeList(struct["statusCodes"]) end
-	if struct["entityValues"] then M.AssertentityValueList(struct["entityValues"]) end
-	if struct["entityArns"] then M.AssertentityArnList(struct["entityArns"]) end
-	if struct["lastUpdatedTimes"] then M.AssertdateTimeRangeList(struct["lastUpdatedTimes"]) end
-	if struct["tags"] then M.AsserttagFilter(struct["tags"]) end
+	if struct["eventArns"] then asserts.AsserteventArnList(struct["eventArns"]) end
+	if struct["statusCodes"] then asserts.AssertentityStatusCodeList(struct["statusCodes"]) end
+	if struct["entityValues"] then asserts.AssertentityValueList(struct["entityValues"]) end
+	if struct["entityArns"] then asserts.AssertentityArnList(struct["entityArns"]) end
+	if struct["lastUpdatedTimes"] then asserts.AssertdateTimeRangeList(struct["lastUpdatedTimes"]) end
+	if struct["tags"] then asserts.AsserttagFilter(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(EntityFilter_keys[k], "EntityFilter contains unknown key " .. tostring(k))
+		assert(keys.EntityFilter[k], "EntityFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EntityFilter
 -- <p>The values to use to filter results from the <a>DescribeAffectedEntities</a> operation.</p>
--- @param eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
--- @param statusCodes [entityStatusCodeList] <p>A list of entity status codes (<code>IMPAIRED</code>, <code>UNIMPAIRED</code>, or <code>UNKNOWN</code>).</p>
--- @param entityValues [entityValueList] <p>A list of IDs for affected entities.</p>
--- @param entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
--- @param lastUpdatedTimes [dateTimeRangeList] <p>A list of the most recent dates and times that the entity was updated.</p>
--- @param tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
+-- @param _eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- @param _statusCodes [entityStatusCodeList] <p>A list of entity status codes (<code>IMPAIRED</code>, <code>UNIMPAIRED</code>, or <code>UNKNOWN</code>).</p>
+-- @param _entityValues [entityValueList] <p>A list of IDs for affected entities.</p>
+-- @param _entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
+-- @param _lastUpdatedTimes [dateTimeRangeList] <p>A list of the most recent dates and times that the entity was updated.</p>
+-- @param _tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
 -- Required parameter: eventArns
-function M.EntityFilter(eventArns, statusCodes, entityValues, entityArns, lastUpdatedTimes, tags, ...)
+function M.EntityFilter(_eventArns, _statusCodes, _entityValues, _entityArns, _lastUpdatedTimes, _tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityFilter")
 	local t = { 
-		["eventArns"] = eventArns,
-		["statusCodes"] = statusCodes,
-		["entityValues"] = entityValues,
-		["entityArns"] = entityArns,
-		["lastUpdatedTimes"] = lastUpdatedTimes,
-		["tags"] = tags,
+		["eventArns"] = _eventArns,
+		["statusCodes"] = _statusCodes,
+		["entityValues"] = _entityValues,
+		["entityArns"] = _entityArns,
+		["lastUpdatedTimes"] = _lastUpdatedTimes,
+		["tags"] = _tags,
 	}
-	M.AssertEntityFilter(t)
+	asserts.AssertEntityFilter(t)
 	return t
 end
 
-local EventDetails_keys = { "eventMetadata" = true, "event" = true, "eventDescription" = true, nil }
+keys.EventDetails = { ["eventMetadata"] = true, ["event"] = true, ["eventDescription"] = true, nil }
 
-function M.AssertEventDetails(struct)
+function asserts.AssertEventDetails(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventDetails to be of type 'table'")
-	if struct["eventMetadata"] then M.AsserteventMetadata(struct["eventMetadata"]) end
-	if struct["event"] then M.AssertEvent(struct["event"]) end
-	if struct["eventDescription"] then M.AssertEventDescription(struct["eventDescription"]) end
+	if struct["eventMetadata"] then asserts.AsserteventMetadata(struct["eventMetadata"]) end
+	if struct["event"] then asserts.AssertEvent(struct["event"]) end
+	if struct["eventDescription"] then asserts.AssertEventDescription(struct["eventDescription"]) end
 	for k,_ in pairs(struct) do
-		assert(EventDetails_keys[k], "EventDetails contains unknown key " .. tostring(k))
+		assert(keys.EventDetails[k], "EventDetails contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventDetails
 -- <p>Detailed information about an event. A combination of an <a>Event</a> object, an <a>EventDescription</a> object, and additional metadata about the event. Returned by the <a>DescribeEventDetails</a> operation.</p>
--- @param eventMetadata [eventMetadata] <p>Additional metadata about the event.</p>
--- @param event [Event] <p>Summary information about the event.</p>
--- @param eventDescription [EventDescription] <p>The most recent description of the event.</p>
-function M.EventDetails(eventMetadata, event, eventDescription, ...)
+-- @param _eventMetadata [eventMetadata] <p>Additional metadata about the event.</p>
+-- @param _event [Event] <p>Summary information about the event.</p>
+-- @param _eventDescription [EventDescription] <p>The most recent description of the event.</p>
+function M.EventDetails(_eventMetadata, _event, _eventDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDetails")
 	local t = { 
-		["eventMetadata"] = eventMetadata,
-		["event"] = event,
-		["eventDescription"] = eventDescription,
+		["eventMetadata"] = _eventMetadata,
+		["event"] = _event,
+		["eventDescription"] = _eventDescription,
 	}
-	M.AssertEventDetails(t)
+	asserts.AssertEventDetails(t)
 	return t
 end
 
-local DescribeEventTypesResponse_keys = { "eventTypes" = true, "nextToken" = true, nil }
+keys.DescribeEventTypesResponse = { ["eventTypes"] = true, ["nextToken"] = true, nil }
 
-function M.AssertDescribeEventTypesResponse(struct)
+function asserts.AssertDescribeEventTypesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventTypesResponse to be of type 'table'")
-	if struct["eventTypes"] then M.AssertEventTypeList(struct["eventTypes"]) end
-	if struct["nextToken"] then M.AssertnextToken(struct["nextToken"]) end
+	if struct["eventTypes"] then asserts.AssertEventTypeList(struct["eventTypes"]) end
+	if struct["nextToken"] then asserts.AssertnextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventTypesResponse_keys[k], "DescribeEventTypesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventTypesResponse[k], "DescribeEventTypesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventTypesResponse
 --  
--- @param eventTypes [EventTypeList] <p>A list of event types that match the filter criteria. Event types have a category (<code>issue</code>, <code>accountNotification</code>, or <code>scheduledChange</code>), a service (for example, <code>EC2</code>, <code>RDS</code>, <code>DATAPIPELINE</code>, <code>BILLING</code>), and a code (in the format <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>
--- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
-function M.DescribeEventTypesResponse(eventTypes, nextToken, ...)
+-- @param _eventTypes [EventTypeList] <p>A list of event types that match the filter criteria. Event types have a category (<code>issue</code>, <code>accountNotification</code>, or <code>scheduledChange</code>), a service (for example, <code>EC2</code>, <code>RDS</code>, <code>DATAPIPELINE</code>, <code>BILLING</code>), and a code (in the format <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>
+-- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+function M.DescribeEventTypesResponse(_eventTypes, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTypesResponse")
 	local t = { 
-		["eventTypes"] = eventTypes,
-		["nextToken"] = nextToken,
+		["eventTypes"] = _eventTypes,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertDescribeEventTypesResponse(t)
+	asserts.AssertDescribeEventTypesResponse(t)
 	return t
 end
 
-local DescribeAffectedEntitiesRequest_keys = { "filter" = true, "locale" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.DescribeAffectedEntitiesRequest = { ["filter"] = true, ["locale"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertDescribeAffectedEntitiesRequest(struct)
+function asserts.AssertDescribeAffectedEntitiesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAffectedEntitiesRequest to be of type 'table'")
 	assert(struct["filter"], "Expected key filter to exist in table")
-	if struct["filter"] then M.AssertEntityFilter(struct["filter"]) end
-	if struct["locale"] then M.Assertlocale(struct["locale"]) end
-	if struct["nextToken"] then M.AssertnextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertmaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertEntityFilter(struct["filter"]) end
+	if struct["locale"] then asserts.Assertlocale(struct["locale"]) end
+	if struct["nextToken"] then asserts.AssertnextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertmaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAffectedEntitiesRequest_keys[k], "DescribeAffectedEntitiesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeAffectedEntitiesRequest[k], "DescribeAffectedEntitiesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAffectedEntitiesRequest
 --  
--- @param filter [EntityFilter] <p>Values to narrow the results returned. At least one event ARN is required. </p>
--- @param locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
--- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
+-- @param _filter [EntityFilter] <p>Values to narrow the results returned. At least one event ARN is required. </p>
+-- @param _locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param _maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
 -- Required parameter: filter
-function M.DescribeAffectedEntitiesRequest(filter, locale, nextToken, maxResults, ...)
+function M.DescribeAffectedEntitiesRequest(_filter, _locale, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAffectedEntitiesRequest")
 	local t = { 
-		["filter"] = filter,
-		["locale"] = locale,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["filter"] = _filter,
+		["locale"] = _locale,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertDescribeAffectedEntitiesRequest(t)
+	asserts.AssertDescribeAffectedEntitiesRequest(t)
 	return t
 end
 
-local AffectedEntity_keys = { "entityValue" = true, "lastUpdatedTime" = true, "tags" = true, "entityArn" = true, "awsAccountId" = true, "eventArn" = true, "statusCode" = true, nil }
+keys.AffectedEntity = { ["entityValue"] = true, ["lastUpdatedTime"] = true, ["tags"] = true, ["entityArn"] = true, ["awsAccountId"] = true, ["eventArn"] = true, ["statusCode"] = true, nil }
 
-function M.AssertAffectedEntity(struct)
+function asserts.AssertAffectedEntity(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AffectedEntity to be of type 'table'")
-	if struct["entityValue"] then M.AssertentityValue(struct["entityValue"]) end
-	if struct["lastUpdatedTime"] then M.Asserttimestamp(struct["lastUpdatedTime"]) end
-	if struct["tags"] then M.AsserttagSet(struct["tags"]) end
-	if struct["entityArn"] then M.AssertentityArn(struct["entityArn"]) end
-	if struct["awsAccountId"] then M.AssertaccountId(struct["awsAccountId"]) end
-	if struct["eventArn"] then M.AsserteventArn(struct["eventArn"]) end
-	if struct["statusCode"] then M.AssertentityStatusCode(struct["statusCode"]) end
+	if struct["entityValue"] then asserts.AssertentityValue(struct["entityValue"]) end
+	if struct["lastUpdatedTime"] then asserts.Asserttimestamp(struct["lastUpdatedTime"]) end
+	if struct["tags"] then asserts.AsserttagSet(struct["tags"]) end
+	if struct["entityArn"] then asserts.AssertentityArn(struct["entityArn"]) end
+	if struct["awsAccountId"] then asserts.AssertaccountId(struct["awsAccountId"]) end
+	if struct["eventArn"] then asserts.AsserteventArn(struct["eventArn"]) end
+	if struct["statusCode"] then asserts.AssertentityStatusCode(struct["statusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(AffectedEntity_keys[k], "AffectedEntity contains unknown key " .. tostring(k))
+		assert(keys.AffectedEntity[k], "AffectedEntity contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AffectedEntity
 -- <p>Information about an entity that is affected by a Health event.</p>
--- @param entityValue [entityValue] <p>The ID of the affected entity.</p>
--- @param lastUpdatedTime [timestamp] <p>The most recent time that the entity was updated.</p>
--- @param tags [tagSet] <p>A map of entity tags attached to the affected entity.</p>
--- @param entityArn [entityArn] <p>The unique identifier for the entity. Format: <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i> </code>. Example: <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code> </p>
--- @param awsAccountId [accountId] <p>The 12-digit AWS account number that contains the affected entity.</p>
--- @param eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
--- @param statusCode [entityStatusCode] <p>The most recent status of the entity affected by the event. The possible values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and <code>UNKNOWN</code>.</p>
-function M.AffectedEntity(entityValue, lastUpdatedTime, tags, entityArn, awsAccountId, eventArn, statusCode, ...)
+-- @param _entityValue [entityValue] <p>The ID of the affected entity.</p>
+-- @param _lastUpdatedTime [timestamp] <p>The most recent time that the entity was updated.</p>
+-- @param _tags [tagSet] <p>A map of entity tags attached to the affected entity.</p>
+-- @param _entityArn [entityArn] <p>The unique identifier for the entity. Format: <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i> </code>. Example: <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code> </p>
+-- @param _awsAccountId [accountId] <p>The 12-digit AWS account number that contains the affected entity.</p>
+-- @param _eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- @param _statusCode [entityStatusCode] <p>The most recent status of the entity affected by the event. The possible values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and <code>UNKNOWN</code>.</p>
+function M.AffectedEntity(_entityValue, _lastUpdatedTime, _tags, _entityArn, _awsAccountId, _eventArn, _statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AffectedEntity")
 	local t = { 
-		["entityValue"] = entityValue,
-		["lastUpdatedTime"] = lastUpdatedTime,
-		["tags"] = tags,
-		["entityArn"] = entityArn,
-		["awsAccountId"] = awsAccountId,
-		["eventArn"] = eventArn,
-		["statusCode"] = statusCode,
+		["entityValue"] = _entityValue,
+		["lastUpdatedTime"] = _lastUpdatedTime,
+		["tags"] = _tags,
+		["entityArn"] = _entityArn,
+		["awsAccountId"] = _awsAccountId,
+		["eventArn"] = _eventArn,
+		["statusCode"] = _statusCode,
 	}
-	M.AssertAffectedEntity(t)
+	asserts.AssertAffectedEntity(t)
 	return t
 end
 
-local DescribeEventAggregatesRequest_keys = { "filter" = true, "aggregateField" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.DescribeEventAggregatesRequest = { ["filter"] = true, ["aggregateField"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertDescribeEventAggregatesRequest(struct)
+function asserts.AssertDescribeEventAggregatesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventAggregatesRequest to be of type 'table'")
 	assert(struct["aggregateField"], "Expected key aggregateField to exist in table")
-	if struct["filter"] then M.AssertEventFilter(struct["filter"]) end
-	if struct["aggregateField"] then M.AsserteventAggregateField(struct["aggregateField"]) end
-	if struct["nextToken"] then M.AssertnextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertmaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertEventFilter(struct["filter"]) end
+	if struct["aggregateField"] then asserts.AsserteventAggregateField(struct["aggregateField"]) end
+	if struct["nextToken"] then asserts.AssertnextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertmaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventAggregatesRequest_keys[k], "DescribeEventAggregatesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventAggregatesRequest[k], "DescribeEventAggregatesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventAggregatesRequest
 --  
--- @param filter [EventFilter] <p>Values to narrow the results returned.</p>
--- @param aggregateField [eventAggregateField] <p>The only currently supported value is <code>eventTypeCategory</code>.</p>
--- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
+-- @param _filter [EventFilter] <p>Values to narrow the results returned.</p>
+-- @param _aggregateField [eventAggregateField] <p>The only currently supported value is <code>eventTypeCategory</code>.</p>
+-- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param _maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
 -- Required parameter: aggregateField
-function M.DescribeEventAggregatesRequest(filter, aggregateField, nextToken, maxResults, ...)
+function M.DescribeEventAggregatesRequest(_filter, _aggregateField, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventAggregatesRequest")
 	local t = { 
-		["filter"] = filter,
-		["aggregateField"] = aggregateField,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["filter"] = _filter,
+		["aggregateField"] = _aggregateField,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertDescribeEventAggregatesRequest(t)
+	asserts.AssertDescribeEventAggregatesRequest(t)
 	return t
 end
 
-local DescribeEventsResponse_keys = { "nextToken" = true, "events" = true, nil }
+keys.DescribeEventsResponse = { ["nextToken"] = true, ["events"] = true, nil }
 
-function M.AssertDescribeEventsResponse(struct)
+function asserts.AssertDescribeEventsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventsResponse to be of type 'table'")
-	if struct["nextToken"] then M.AssertnextToken(struct["nextToken"]) end
-	if struct["events"] then M.AssertEventList(struct["events"]) end
+	if struct["nextToken"] then asserts.AssertnextToken(struct["nextToken"]) end
+	if struct["events"] then asserts.AssertEventList(struct["events"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventsResponse_keys[k], "DescribeEventsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventsResponse[k], "DescribeEventsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventsResponse
 --  
--- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param events [EventList] <p>The events that match the specified filter criteria.</p>
-function M.DescribeEventsResponse(nextToken, events, ...)
+-- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param _events [EventList] <p>The events that match the specified filter criteria.</p>
+function M.DescribeEventsResponse(_nextToken, _events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["events"] = events,
+		["nextToken"] = _nextToken,
+		["events"] = _events,
 	}
-	M.AssertDescribeEventsResponse(t)
+	asserts.AssertDescribeEventsResponse(t)
 	return t
 end
 
-local EventDescription_keys = { "latestDescription" = true, nil }
+keys.EventDescription = { ["latestDescription"] = true, nil }
 
-function M.AssertEventDescription(struct)
+function asserts.AssertEventDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventDescription to be of type 'table'")
-	if struct["latestDescription"] then M.AsserteventDescription(struct["latestDescription"]) end
+	if struct["latestDescription"] then asserts.AsserteventDescription(struct["latestDescription"]) end
 	for k,_ in pairs(struct) do
-		assert(EventDescription_keys[k], "EventDescription contains unknown key " .. tostring(k))
+		assert(keys.EventDescription[k], "EventDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventDescription
 -- <p>The detailed description of the event. Included in the information returned by the <a>DescribeEventDetails</a> operation.</p>
--- @param latestDescription [eventDescription] <p>The most recent description of the event.</p>
-function M.EventDescription(latestDescription, ...)
+-- @param _latestDescription [eventDescription] <p>The most recent description of the event.</p>
+function M.EventDescription(_latestDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDescription")
 	local t = { 
-		["latestDescription"] = latestDescription,
+		["latestDescription"] = _latestDescription,
 	}
-	M.AssertEventDescription(t)
+	asserts.AssertEventDescription(t)
 	return t
 end
 
-local EventType_keys = { "category" = true, "code" = true, "service" = true, nil }
+keys.EventType = { ["category"] = true, ["code"] = true, ["service"] = true, nil }
 
-function M.AssertEventType(struct)
+function asserts.AssertEventType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventType to be of type 'table'")
-	if struct["category"] then M.AsserteventTypeCategory(struct["category"]) end
-	if struct["code"] then M.AsserteventTypeCode(struct["code"]) end
-	if struct["service"] then M.Assertservice(struct["service"]) end
+	if struct["category"] then asserts.AsserteventTypeCategory(struct["category"]) end
+	if struct["code"] then asserts.AsserteventTypeCode(struct["code"]) end
+	if struct["service"] then asserts.Assertservice(struct["service"]) end
 	for k,_ in pairs(struct) do
-		assert(EventType_keys[k], "EventType contains unknown key " .. tostring(k))
+		assert(keys.EventType[k], "EventType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventType
 -- <p>Metadata about a type of event that is reported by AWS Health. Data consists of the category (for example, <code>issue</code>), the service (for example, <code>EC2</code>), and the event type code (for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>
--- @param category [eventTypeCategory] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
--- @param code [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
--- @param service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
-function M.EventType(category, code, service, ...)
+-- @param _category [eventTypeCategory] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
+-- @param _code [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
+-- @param _service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+function M.EventType(_category, _code, _service, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventType")
 	local t = { 
-		["category"] = category,
-		["code"] = code,
-		["service"] = service,
+		["category"] = _category,
+		["code"] = _code,
+		["service"] = _service,
 	}
-	M.AssertEventType(t)
+	asserts.AssertEventType(t)
 	return t
 end
 
-local DescribeEntityAggregatesResponse_keys = { "entityAggregates" = true, nil }
+keys.DescribeEntityAggregatesResponse = { ["entityAggregates"] = true, nil }
 
-function M.AssertDescribeEntityAggregatesResponse(struct)
+function asserts.AssertDescribeEntityAggregatesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEntityAggregatesResponse to be of type 'table'")
-	if struct["entityAggregates"] then M.AssertEntityAggregateList(struct["entityAggregates"]) end
+	if struct["entityAggregates"] then asserts.AssertEntityAggregateList(struct["entityAggregates"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEntityAggregatesResponse_keys[k], "DescribeEntityAggregatesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEntityAggregatesResponse[k], "DescribeEntityAggregatesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEntityAggregatesResponse
 --  
--- @param entityAggregates [EntityAggregateList] <p>The number of entities that are affected by each of the specified events.</p>
-function M.DescribeEntityAggregatesResponse(entityAggregates, ...)
+-- @param _entityAggregates [EntityAggregateList] <p>The number of entities that are affected by each of the specified events.</p>
+function M.DescribeEntityAggregatesResponse(_entityAggregates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEntityAggregatesResponse")
 	local t = { 
-		["entityAggregates"] = entityAggregates,
+		["entityAggregates"] = _entityAggregates,
 	}
-	M.AssertDescribeEntityAggregatesResponse(t)
+	asserts.AssertDescribeEntityAggregatesResponse(t)
 	return t
 end
 
-local EventDetailsErrorItem_keys = { "errorMessage" = true, "eventArn" = true, "errorName" = true, nil }
+keys.EventDetailsErrorItem = { ["errorMessage"] = true, ["eventArn"] = true, ["errorName"] = true, nil }
 
-function M.AssertEventDetailsErrorItem(struct)
+function asserts.AssertEventDetailsErrorItem(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventDetailsErrorItem to be of type 'table'")
-	if struct["errorMessage"] then M.Assertstring(struct["errorMessage"]) end
-	if struct["eventArn"] then M.AsserteventArn(struct["eventArn"]) end
-	if struct["errorName"] then M.Assertstring(struct["errorName"]) end
+	if struct["errorMessage"] then asserts.Assertstring(struct["errorMessage"]) end
+	if struct["eventArn"] then asserts.AsserteventArn(struct["eventArn"]) end
+	if struct["errorName"] then asserts.Assertstring(struct["errorName"]) end
 	for k,_ in pairs(struct) do
-		assert(EventDetailsErrorItem_keys[k], "EventDetailsErrorItem contains unknown key " .. tostring(k))
+		assert(keys.EventDetailsErrorItem[k], "EventDetailsErrorItem contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventDetailsErrorItem
 -- <p>Error information returned when a <a>DescribeEventDetails</a> operation cannot find a specified event.</p>
--- @param errorMessage [string] <p>A message that describes the error.</p>
--- @param eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
--- @param errorName [string] <p>The name of the error.</p>
-function M.EventDetailsErrorItem(errorMessage, eventArn, errorName, ...)
+-- @param _errorMessage [string] <p>A message that describes the error.</p>
+-- @param _eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- @param _errorName [string] <p>The name of the error.</p>
+function M.EventDetailsErrorItem(_errorMessage, _eventArn, _errorName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDetailsErrorItem")
 	local t = { 
-		["errorMessage"] = errorMessage,
-		["eventArn"] = eventArn,
-		["errorName"] = errorName,
+		["errorMessage"] = _errorMessage,
+		["eventArn"] = _eventArn,
+		["errorName"] = _errorName,
 	}
-	M.AssertEventDetailsErrorItem(t)
+	asserts.AssertEventDetailsErrorItem(t)
 	return t
 end
 
-local EventTypeFilter_keys = { "eventTypeCodes" = true, "services" = true, "eventTypeCategories" = true, nil }
+keys.EventTypeFilter = { ["eventTypeCodes"] = true, ["services"] = true, ["eventTypeCategories"] = true, nil }
 
-function M.AssertEventTypeFilter(struct)
+function asserts.AssertEventTypeFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventTypeFilter to be of type 'table'")
-	if struct["eventTypeCodes"] then M.AssertEventTypeCodeList(struct["eventTypeCodes"]) end
-	if struct["services"] then M.AssertserviceList(struct["services"]) end
-	if struct["eventTypeCategories"] then M.AssertEventTypeCategoryList(struct["eventTypeCategories"]) end
+	if struct["eventTypeCodes"] then asserts.AssertEventTypeCodeList(struct["eventTypeCodes"]) end
+	if struct["services"] then asserts.AssertserviceList(struct["services"]) end
+	if struct["eventTypeCategories"] then asserts.AssertEventTypeCategoryList(struct["eventTypeCategories"]) end
 	for k,_ in pairs(struct) do
-		assert(EventTypeFilter_keys[k], "EventTypeFilter contains unknown key " .. tostring(k))
+		assert(keys.EventTypeFilter[k], "EventTypeFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventTypeFilter
 -- <p>The values to use to filter results from the <a>DescribeEventTypes</a> operation.</p>
--- @param eventTypeCodes [EventTypeCodeList] <p>A list of event type codes.</p>
--- @param services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
--- @param eventTypeCategories [EventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
-function M.EventTypeFilter(eventTypeCodes, services, eventTypeCategories, ...)
+-- @param _eventTypeCodes [EventTypeCodeList] <p>A list of event type codes.</p>
+-- @param _services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- @param _eventTypeCategories [EventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
+function M.EventTypeFilter(_eventTypeCodes, _services, _eventTypeCategories, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventTypeFilter")
 	local t = { 
-		["eventTypeCodes"] = eventTypeCodes,
-		["services"] = services,
-		["eventTypeCategories"] = eventTypeCategories,
+		["eventTypeCodes"] = _eventTypeCodes,
+		["services"] = _services,
+		["eventTypeCategories"] = _eventTypeCategories,
 	}
-	M.AssertEventTypeFilter(t)
+	asserts.AssertEventTypeFilter(t)
 	return t
 end
 
-local DateTimeRange_keys = { "to" = true, "from" = true, nil }
+keys.DateTimeRange = { ["to"] = true, ["from"] = true, nil }
 
-function M.AssertDateTimeRange(struct)
+function asserts.AssertDateTimeRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DateTimeRange to be of type 'table'")
-	if struct["to"] then M.Asserttimestamp(struct["to"]) end
-	if struct["from"] then M.Asserttimestamp(struct["from"]) end
+	if struct["to"] then asserts.Asserttimestamp(struct["to"]) end
+	if struct["from"] then asserts.Asserttimestamp(struct["from"]) end
 	for k,_ in pairs(struct) do
-		assert(DateTimeRange_keys[k], "DateTimeRange contains unknown key " .. tostring(k))
+		assert(keys.DateTimeRange[k], "DateTimeRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DateTimeRange
 -- <p>A range of dates and times that is used by the <a>EventFilter</a> and <a>EntityFilter</a> objects. If <code>from</code> is set and <code>to</code> is set: match items where the timestamp (<code>startTime</code>, <code>endTime</code>, or <code>lastUpdatedTime</code>) is between <code>from</code> and <code>to</code> inclusive. If <code>from</code> is set and <code>to</code> is not set: match items where the timestamp value is equal to or after <code>from</code>. If <code>from</code> is not set and <code>to</code> is set: match items where the timestamp value is equal to or before <code>to</code>.</p>
--- @param to [timestamp] <p>The ending date and time of a time range.</p>
--- @param from [timestamp] <p>The starting date and time of a time range.</p>
-function M.DateTimeRange(to, from, ...)
+-- @param _to [timestamp] <p>The ending date and time of a time range.</p>
+-- @param _from [timestamp] <p>The starting date and time of a time range.</p>
+function M.DateTimeRange(_to, _from, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DateTimeRange")
 	local t = { 
-		["to"] = to,
-		["from"] = from,
+		["to"] = _to,
+		["from"] = _from,
 	}
-	M.AssertDateTimeRange(t)
+	asserts.AssertDateTimeRange(t)
 	return t
 end
 
-local InvalidPaginationToken_keys = { "message" = true, nil }
+keys.InvalidPaginationToken = { ["message"] = true, nil }
 
-function M.AssertInvalidPaginationToken(struct)
+function asserts.AssertInvalidPaginationToken(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidPaginationToken to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidPaginationToken_keys[k], "InvalidPaginationToken contains unknown key " .. tostring(k))
+		assert(keys.InvalidPaginationToken[k], "InvalidPaginationToken contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidPaginationToken
 -- <p>The specified pagination token (<code>nextToken</code>) is not valid.</p>
--- @param message [string] <p>The specified pagination token (<code>nextToken</code>) is not valid.</p>
-function M.InvalidPaginationToken(message, ...)
+-- @param _message [string] 
+function M.InvalidPaginationToken(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPaginationToken")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidPaginationToken(t)
+	asserts.AssertInvalidPaginationToken(t)
 	return t
 end
 
-local EventFilter_keys = { "startTimes" = true, "eventArns" = true, "entityValues" = true, "eventTypeCodes" = true, "eventTypeCategories" = true, "endTimes" = true, "regions" = true, "eventStatusCodes" = true, "entityArns" = true, "services" = true, "availabilityZones" = true, "lastUpdatedTimes" = true, "tags" = true, nil }
+keys.EventFilter = { ["startTimes"] = true, ["eventArns"] = true, ["entityValues"] = true, ["eventTypeCodes"] = true, ["eventTypeCategories"] = true, ["endTimes"] = true, ["regions"] = true, ["eventStatusCodes"] = true, ["entityArns"] = true, ["services"] = true, ["availabilityZones"] = true, ["lastUpdatedTimes"] = true, ["tags"] = true, nil }
 
-function M.AssertEventFilter(struct)
+function asserts.AssertEventFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventFilter to be of type 'table'")
-	if struct["startTimes"] then M.AssertdateTimeRangeList(struct["startTimes"]) end
-	if struct["eventArns"] then M.AsserteventArnList(struct["eventArns"]) end
-	if struct["entityValues"] then M.AssertentityValueList(struct["entityValues"]) end
-	if struct["eventTypeCodes"] then M.AsserteventTypeList(struct["eventTypeCodes"]) end
-	if struct["eventTypeCategories"] then M.AsserteventTypeCategoryList(struct["eventTypeCategories"]) end
-	if struct["endTimes"] then M.AssertdateTimeRangeList(struct["endTimes"]) end
-	if struct["regions"] then M.AssertregionList(struct["regions"]) end
-	if struct["eventStatusCodes"] then M.AsserteventStatusCodeList(struct["eventStatusCodes"]) end
-	if struct["entityArns"] then M.AssertentityArnList(struct["entityArns"]) end
-	if struct["services"] then M.AssertserviceList(struct["services"]) end
-	if struct["availabilityZones"] then M.AssertavailabilityZones(struct["availabilityZones"]) end
-	if struct["lastUpdatedTimes"] then M.AssertdateTimeRangeList(struct["lastUpdatedTimes"]) end
-	if struct["tags"] then M.AsserttagFilter(struct["tags"]) end
+	if struct["startTimes"] then asserts.AssertdateTimeRangeList(struct["startTimes"]) end
+	if struct["eventArns"] then asserts.AsserteventArnList(struct["eventArns"]) end
+	if struct["entityValues"] then asserts.AssertentityValueList(struct["entityValues"]) end
+	if struct["eventTypeCodes"] then asserts.AsserteventTypeList(struct["eventTypeCodes"]) end
+	if struct["eventTypeCategories"] then asserts.AsserteventTypeCategoryList(struct["eventTypeCategories"]) end
+	if struct["endTimes"] then asserts.AssertdateTimeRangeList(struct["endTimes"]) end
+	if struct["regions"] then asserts.AssertregionList(struct["regions"]) end
+	if struct["eventStatusCodes"] then asserts.AsserteventStatusCodeList(struct["eventStatusCodes"]) end
+	if struct["entityArns"] then asserts.AssertentityArnList(struct["entityArns"]) end
+	if struct["services"] then asserts.AssertserviceList(struct["services"]) end
+	if struct["availabilityZones"] then asserts.AssertavailabilityZones(struct["availabilityZones"]) end
+	if struct["lastUpdatedTimes"] then asserts.AssertdateTimeRangeList(struct["lastUpdatedTimes"]) end
+	if struct["tags"] then asserts.AsserttagFilter(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(EventFilter_keys[k], "EventFilter contains unknown key " .. tostring(k))
+		assert(keys.EventFilter[k], "EventFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventFilter
 -- <p>The values to use to filter results from the <a>DescribeEvents</a> and <a>DescribeEventAggregates</a> operations.</p>
--- @param startTimes [dateTimeRangeList] <p>A list of dates and times that the event began.</p>
--- @param eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
--- @param entityValues [entityValueList] <p>A list of entity identifiers, such as EC2 instance IDs (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
--- @param eventTypeCodes [eventTypeList] <p>A list of unique identifiers for event types. For example, <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED"</code> </p>
--- @param eventTypeCategories [eventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
--- @param endTimes [dateTimeRangeList] <p>A list of dates and times that the event ended.</p>
--- @param regions [regionList] <p>A list of AWS regions.</p>
--- @param eventStatusCodes [eventStatusCodeList] <p>A list of event status codes.</p>
--- @param entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
--- @param services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
--- @param availabilityZones [availabilityZones] <p>A list of AWS availability zones.</p>
--- @param lastUpdatedTimes [dateTimeRangeList] <p>A list of dates and times that the event was last updated.</p>
--- @param tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
-function M.EventFilter(startTimes, eventArns, entityValues, eventTypeCodes, eventTypeCategories, endTimes, regions, eventStatusCodes, entityArns, services, availabilityZones, lastUpdatedTimes, tags, ...)
+-- @param _startTimes [dateTimeRangeList] <p>A list of dates and times that the event began.</p>
+-- @param _eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- @param _entityValues [entityValueList] <p>A list of entity identifiers, such as EC2 instance IDs (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
+-- @param _eventTypeCodes [eventTypeList] <p>A list of unique identifiers for event types. For example, <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED"</code> </p>
+-- @param _eventTypeCategories [eventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
+-- @param _endTimes [dateTimeRangeList] <p>A list of dates and times that the event ended.</p>
+-- @param _regions [regionList] <p>A list of AWS regions.</p>
+-- @param _eventStatusCodes [eventStatusCodeList] <p>A list of event status codes.</p>
+-- @param _entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
+-- @param _services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- @param _availabilityZones [availabilityZones] <p>A list of AWS availability zones.</p>
+-- @param _lastUpdatedTimes [dateTimeRangeList] <p>A list of dates and times that the event was last updated.</p>
+-- @param _tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
+function M.EventFilter(_startTimes, _eventArns, _entityValues, _eventTypeCodes, _eventTypeCategories, _endTimes, _regions, _eventStatusCodes, _entityArns, _services, _availabilityZones, _lastUpdatedTimes, _tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventFilter")
 	local t = { 
-		["startTimes"] = startTimes,
-		["eventArns"] = eventArns,
-		["entityValues"] = entityValues,
-		["eventTypeCodes"] = eventTypeCodes,
-		["eventTypeCategories"] = eventTypeCategories,
-		["endTimes"] = endTimes,
-		["regions"] = regions,
-		["eventStatusCodes"] = eventStatusCodes,
-		["entityArns"] = entityArns,
-		["services"] = services,
-		["availabilityZones"] = availabilityZones,
-		["lastUpdatedTimes"] = lastUpdatedTimes,
-		["tags"] = tags,
+		["startTimes"] = _startTimes,
+		["eventArns"] = _eventArns,
+		["entityValues"] = _entityValues,
+		["eventTypeCodes"] = _eventTypeCodes,
+		["eventTypeCategories"] = _eventTypeCategories,
+		["endTimes"] = _endTimes,
+		["regions"] = _regions,
+		["eventStatusCodes"] = _eventStatusCodes,
+		["entityArns"] = _entityArns,
+		["services"] = _services,
+		["availabilityZones"] = _availabilityZones,
+		["lastUpdatedTimes"] = _lastUpdatedTimes,
+		["tags"] = _tags,
 	}
-	M.AssertEventFilter(t)
+	asserts.AssertEventFilter(t)
 	return t
 end
 
-local DescribeAffectedEntitiesResponse_keys = { "entities" = true, "nextToken" = true, nil }
+keys.DescribeAffectedEntitiesResponse = { ["entities"] = true, ["nextToken"] = true, nil }
 
-function M.AssertDescribeAffectedEntitiesResponse(struct)
+function asserts.AssertDescribeAffectedEntitiesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAffectedEntitiesResponse to be of type 'table'")
-	if struct["entities"] then M.AssertEntityList(struct["entities"]) end
-	if struct["nextToken"] then M.AssertnextToken(struct["nextToken"]) end
+	if struct["entities"] then asserts.AssertEntityList(struct["entities"]) end
+	if struct["nextToken"] then asserts.AssertnextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAffectedEntitiesResponse_keys[k], "DescribeAffectedEntitiesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeAffectedEntitiesResponse[k], "DescribeAffectedEntitiesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAffectedEntitiesResponse
 --  
--- @param entities [EntityList] <p>The entities that match the filter criteria.</p>
--- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
-function M.DescribeAffectedEntitiesResponse(entities, nextToken, ...)
+-- @param _entities [EntityList] <p>The entities that match the filter criteria.</p>
+-- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+function M.DescribeAffectedEntitiesResponse(_entities, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAffectedEntitiesResponse")
 	local t = { 
-		["entities"] = entities,
-		["nextToken"] = nextToken,
+		["entities"] = _entities,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertDescribeAffectedEntitiesResponse(t)
+	asserts.AssertDescribeAffectedEntitiesResponse(t)
 	return t
 end
 
-local DescribeEventTypesRequest_keys = { "filter" = true, "locale" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.DescribeEventTypesRequest = { ["filter"] = true, ["locale"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertDescribeEventTypesRequest(struct)
+function asserts.AssertDescribeEventTypesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventTypesRequest to be of type 'table'")
-	if struct["filter"] then M.AssertEventTypeFilter(struct["filter"]) end
-	if struct["locale"] then M.Assertlocale(struct["locale"]) end
-	if struct["nextToken"] then M.AssertnextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertmaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertEventTypeFilter(struct["filter"]) end
+	if struct["locale"] then asserts.Assertlocale(struct["locale"]) end
+	if struct["nextToken"] then asserts.AssertnextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertmaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventTypesRequest_keys[k], "DescribeEventTypesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventTypesRequest[k], "DescribeEventTypesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventTypesRequest
 --  
--- @param filter [EventTypeFilter] <p>Values to narrow the results returned.</p>
--- @param locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
--- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
-function M.DescribeEventTypesRequest(filter, locale, nextToken, maxResults, ...)
+-- @param _filter [EventTypeFilter] <p>Values to narrow the results returned.</p>
+-- @param _locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param _maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
+function M.DescribeEventTypesRequest(_filter, _locale, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTypesRequest")
 	local t = { 
-		["filter"] = filter,
-		["locale"] = locale,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["filter"] = _filter,
+		["locale"] = _locale,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertDescribeEventTypesRequest(t)
+	asserts.AssertDescribeEventTypesRequest(t)
 	return t
 end
 
-local DescribeEventDetailsRequest_keys = { "locale" = true, "eventArns" = true, nil }
+keys.DescribeEventDetailsRequest = { ["locale"] = true, ["eventArns"] = true, nil }
 
-function M.AssertDescribeEventDetailsRequest(struct)
+function asserts.AssertDescribeEventDetailsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventDetailsRequest to be of type 'table'")
 	assert(struct["eventArns"], "Expected key eventArns to exist in table")
-	if struct["locale"] then M.Assertlocale(struct["locale"]) end
-	if struct["eventArns"] then M.AsserteventArnList(struct["eventArns"]) end
+	if struct["locale"] then asserts.Assertlocale(struct["locale"]) end
+	if struct["eventArns"] then asserts.AsserteventArnList(struct["eventArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventDetailsRequest_keys[k], "DescribeEventDetailsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventDetailsRequest[k], "DescribeEventDetailsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventDetailsRequest
 --  
--- @param locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
--- @param eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- @param _locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- @param _eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
 -- Required parameter: eventArns
-function M.DescribeEventDetailsRequest(locale, eventArns, ...)
+function M.DescribeEventDetailsRequest(_locale, _eventArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventDetailsRequest")
 	local t = { 
-		["locale"] = locale,
-		["eventArns"] = eventArns,
+		["locale"] = _locale,
+		["eventArns"] = _eventArns,
 	}
-	M.AssertDescribeEventDetailsRequest(t)
+	asserts.AssertDescribeEventDetailsRequest(t)
 	return t
 end
 
-local DescribeEventDetailsResponse_keys = { "failedSet" = true, "successfulSet" = true, nil }
+keys.DescribeEventDetailsResponse = { ["failedSet"] = true, ["successfulSet"] = true, nil }
 
-function M.AssertDescribeEventDetailsResponse(struct)
+function asserts.AssertDescribeEventDetailsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventDetailsResponse to be of type 'table'")
-	if struct["failedSet"] then M.AssertDescribeEventDetailsFailedSet(struct["failedSet"]) end
-	if struct["successfulSet"] then M.AssertDescribeEventDetailsSuccessfulSet(struct["successfulSet"]) end
+	if struct["failedSet"] then asserts.AssertDescribeEventDetailsFailedSet(struct["failedSet"]) end
+	if struct["successfulSet"] then asserts.AssertDescribeEventDetailsSuccessfulSet(struct["successfulSet"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventDetailsResponse_keys[k], "DescribeEventDetailsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventDetailsResponse[k], "DescribeEventDetailsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventDetailsResponse
 --  
--- @param failedSet [DescribeEventDetailsFailedSet] <p>Error messages for any events that could not be retrieved.</p>
--- @param successfulSet [DescribeEventDetailsSuccessfulSet] <p>Information about the events that could be retrieved.</p>
-function M.DescribeEventDetailsResponse(failedSet, successfulSet, ...)
+-- @param _failedSet [DescribeEventDetailsFailedSet] <p>Error messages for any events that could not be retrieved.</p>
+-- @param _successfulSet [DescribeEventDetailsSuccessfulSet] <p>Information about the events that could be retrieved.</p>
+function M.DescribeEventDetailsResponse(_failedSet, _successfulSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventDetailsResponse")
 	local t = { 
-		["failedSet"] = failedSet,
-		["successfulSet"] = successfulSet,
+		["failedSet"] = _failedSet,
+		["successfulSet"] = _successfulSet,
 	}
-	M.AssertDescribeEventDetailsResponse(t)
+	asserts.AssertDescribeEventDetailsResponse(t)
 	return t
 end
 
-local DescribeEventsRequest_keys = { "filter" = true, "locale" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.DescribeEventsRequest = { ["filter"] = true, ["locale"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertDescribeEventsRequest(struct)
+function asserts.AssertDescribeEventsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventsRequest to be of type 'table'")
-	if struct["filter"] then M.AssertEventFilter(struct["filter"]) end
-	if struct["locale"] then M.Assertlocale(struct["locale"]) end
-	if struct["nextToken"] then M.AssertnextToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertmaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertEventFilter(struct["filter"]) end
+	if struct["locale"] then asserts.Assertlocale(struct["locale"]) end
+	if struct["nextToken"] then asserts.AssertnextToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertmaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventsRequest_keys[k], "DescribeEventsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventsRequest[k], "DescribeEventsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventsRequest
 --  
--- @param filter [EventFilter] <p>Values to narrow the results returned.</p>
--- @param locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
--- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
-function M.DescribeEventsRequest(filter, locale, nextToken, maxResults, ...)
+-- @param _filter [EventFilter] <p>Values to narrow the results returned.</p>
+-- @param _locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param _maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
+function M.DescribeEventsRequest(_filter, _locale, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsRequest")
 	local t = { 
-		["filter"] = filter,
-		["locale"] = locale,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["filter"] = _filter,
+		["locale"] = _locale,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertDescribeEventsRequest(t)
+	asserts.AssertDescribeEventsRequest(t)
 	return t
 end
 
-local EntityAggregate_keys = { "count" = true, "eventArn" = true, nil }
+keys.EntityAggregate = { ["count"] = true, ["eventArn"] = true, nil }
 
-function M.AssertEntityAggregate(struct)
+function asserts.AssertEntityAggregate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EntityAggregate to be of type 'table'")
-	if struct["count"] then M.Assertcount(struct["count"]) end
-	if struct["eventArn"] then M.AsserteventArn(struct["eventArn"]) end
+	if struct["count"] then asserts.Assertcount(struct["count"]) end
+	if struct["eventArn"] then asserts.AsserteventArn(struct["eventArn"]) end
 	for k,_ in pairs(struct) do
-		assert(EntityAggregate_keys[k], "EntityAggregate contains unknown key " .. tostring(k))
+		assert(keys.EntityAggregate[k], "EntityAggregate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EntityAggregate
 -- <p>The number of entities that are affected by one or more events. Returned by the <a>DescribeEntityAggregates</a> operation.</p>
--- @param count [count] <p>The number entities that match the criteria for the specified events.</p>
--- @param eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
-function M.EntityAggregate(count, eventArn, ...)
+-- @param _count [count] <p>The number entities that match the criteria for the specified events.</p>
+-- @param _eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+function M.EntityAggregate(_count, _eventArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityAggregate")
 	local t = { 
-		["count"] = count,
-		["eventArn"] = eventArn,
+		["count"] = _count,
+		["eventArn"] = _eventArn,
 	}
-	M.AssertEntityAggregate(t)
+	asserts.AssertEntityAggregate(t)
 	return t
 end
 
-local DescribeEntityAggregatesRequest_keys = { "eventArns" = true, nil }
+keys.DescribeEntityAggregatesRequest = { ["eventArns"] = true, nil }
 
-function M.AssertDescribeEntityAggregatesRequest(struct)
+function asserts.AssertDescribeEntityAggregatesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEntityAggregatesRequest to be of type 'table'")
-	if struct["eventArns"] then M.AssertEventArnsList(struct["eventArns"]) end
+	if struct["eventArns"] then asserts.AssertEventArnsList(struct["eventArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEntityAggregatesRequest_keys[k], "DescribeEntityAggregatesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeEntityAggregatesRequest[k], "DescribeEntityAggregatesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEntityAggregatesRequest
 --  
--- @param eventArns [EventArnsList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
-function M.DescribeEntityAggregatesRequest(eventArns, ...)
+-- @param _eventArns [EventArnsList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+function M.DescribeEntityAggregatesRequest(_eventArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEntityAggregatesRequest")
 	local t = { 
-		["eventArns"] = eventArns,
+		["eventArns"] = _eventArns,
 	}
-	M.AssertDescribeEntityAggregatesRequest(t)
+	asserts.AssertDescribeEntityAggregatesRequest(t)
 	return t
 end
 
-local EventAggregate_keys = { "count" = true, "aggregateValue" = true, nil }
+keys.EventAggregate = { ["count"] = true, ["aggregateValue"] = true, nil }
 
-function M.AssertEventAggregate(struct)
+function asserts.AssertEventAggregate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventAggregate to be of type 'table'")
-	if struct["count"] then M.Assertcount(struct["count"]) end
-	if struct["aggregateValue"] then M.AssertaggregateValue(struct["aggregateValue"]) end
+	if struct["count"] then asserts.Assertcount(struct["count"]) end
+	if struct["aggregateValue"] then asserts.AssertaggregateValue(struct["aggregateValue"]) end
 	for k,_ in pairs(struct) do
-		assert(EventAggregate_keys[k], "EventAggregate contains unknown key " .. tostring(k))
+		assert(keys.EventAggregate[k], "EventAggregate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventAggregate
 -- <p>The number of events of each issue type. Returned by the <a>DescribeEventAggregates</a> operation.</p>
--- @param count [count] <p>The number of events of the associated issue type.</p>
--- @param aggregateValue [aggregateValue] <p>The issue type for the associated count.</p>
-function M.EventAggregate(count, aggregateValue, ...)
+-- @param _count [count] <p>The number of events of the associated issue type.</p>
+-- @param _aggregateValue [aggregateValue] <p>The issue type for the associated count.</p>
+function M.EventAggregate(_count, _aggregateValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventAggregate")
 	local t = { 
-		["count"] = count,
-		["aggregateValue"] = aggregateValue,
+		["count"] = _count,
+		["aggregateValue"] = _aggregateValue,
 	}
-	M.AssertEventAggregate(t)
+	asserts.AssertEventAggregate(t)
 	return t
 end
 
-local Event_keys = { "availabilityZone" = true, "lastUpdatedTime" = true, "service" = true, "eventTypeCode" = true, "startTime" = true, "eventTypeCategory" = true, "endTime" = true, "region" = true, "arn" = true, "statusCode" = true, nil }
+keys.Event = { ["availabilityZone"] = true, ["lastUpdatedTime"] = true, ["service"] = true, ["eventTypeCode"] = true, ["startTime"] = true, ["eventTypeCategory"] = true, ["endTime"] = true, ["region"] = true, ["arn"] = true, ["statusCode"] = true, nil }
 
-function M.AssertEvent(struct)
+function asserts.AssertEvent(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Event to be of type 'table'")
-	if struct["availabilityZone"] then M.AssertavailabilityZone(struct["availabilityZone"]) end
-	if struct["lastUpdatedTime"] then M.Asserttimestamp(struct["lastUpdatedTime"]) end
-	if struct["service"] then M.Assertservice(struct["service"]) end
-	if struct["eventTypeCode"] then M.AsserteventTypeCode(struct["eventTypeCode"]) end
-	if struct["startTime"] then M.Asserttimestamp(struct["startTime"]) end
-	if struct["eventTypeCategory"] then M.AsserteventTypeCategory(struct["eventTypeCategory"]) end
-	if struct["endTime"] then M.Asserttimestamp(struct["endTime"]) end
-	if struct["region"] then M.Assertregion(struct["region"]) end
-	if struct["arn"] then M.AsserteventArn(struct["arn"]) end
-	if struct["statusCode"] then M.AsserteventStatusCode(struct["statusCode"]) end
+	if struct["availabilityZone"] then asserts.AssertavailabilityZone(struct["availabilityZone"]) end
+	if struct["lastUpdatedTime"] then asserts.Asserttimestamp(struct["lastUpdatedTime"]) end
+	if struct["service"] then asserts.Assertservice(struct["service"]) end
+	if struct["eventTypeCode"] then asserts.AsserteventTypeCode(struct["eventTypeCode"]) end
+	if struct["startTime"] then asserts.Asserttimestamp(struct["startTime"]) end
+	if struct["eventTypeCategory"] then asserts.AsserteventTypeCategory(struct["eventTypeCategory"]) end
+	if struct["endTime"] then asserts.Asserttimestamp(struct["endTime"]) end
+	if struct["region"] then asserts.Assertregion(struct["region"]) end
+	if struct["arn"] then asserts.AsserteventArn(struct["arn"]) end
+	if struct["statusCode"] then asserts.AsserteventStatusCode(struct["statusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(Event_keys[k], "Event contains unknown key " .. tostring(k))
+		assert(keys.Event[k], "Event contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Event
 -- <p>Summary information about an event, returned by the <a>DescribeEvents</a> operation. The <a>DescribeEventDetails</a> operation also returns this information, as well as the <a>EventDescription</a> and additional event metadata.</p>
--- @param availabilityZone [availabilityZone] <p>The AWS Availability Zone of the event. For example, us-east-1a.</p>
--- @param lastUpdatedTime [timestamp] <p>The most recent date and time that the event was updated.</p>
--- @param service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
--- @param eventTypeCode [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
--- @param startTime [timestamp] <p>The date and time that the event began.</p>
--- @param eventTypeCategory [eventTypeCategory] <p>The </p>
--- @param endTime [timestamp] <p>The date and time that the event ended.</p>
--- @param region [region] <p>The AWS region name of the event.</p>
--- @param arn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
--- @param statusCode [eventStatusCode] <p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>
-function M.Event(availabilityZone, lastUpdatedTime, service, eventTypeCode, startTime, eventTypeCategory, endTime, region, arn, statusCode, ...)
+-- @param _availabilityZone [availabilityZone] <p>The AWS Availability Zone of the event. For example, us-east-1a.</p>
+-- @param _lastUpdatedTime [timestamp] <p>The most recent date and time that the event was updated.</p>
+-- @param _service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- @param _eventTypeCode [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
+-- @param _startTime [timestamp] <p>The date and time that the event began.</p>
+-- @param _eventTypeCategory [eventTypeCategory] <p>The </p>
+-- @param _endTime [timestamp] <p>The date and time that the event ended.</p>
+-- @param _region [region] <p>The AWS region name of the event.</p>
+-- @param _arn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- @param _statusCode [eventStatusCode] <p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>
+function M.Event(_availabilityZone, _lastUpdatedTime, _service, _eventTypeCode, _startTime, _eventTypeCategory, _endTime, _region, _arn, _statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 
-		["availabilityZone"] = availabilityZone,
-		["lastUpdatedTime"] = lastUpdatedTime,
-		["service"] = service,
-		["eventTypeCode"] = eventTypeCode,
-		["startTime"] = startTime,
-		["eventTypeCategory"] = eventTypeCategory,
-		["endTime"] = endTime,
-		["region"] = region,
-		["arn"] = arn,
-		["statusCode"] = statusCode,
+		["availabilityZone"] = _availabilityZone,
+		["lastUpdatedTime"] = _lastUpdatedTime,
+		["service"] = _service,
+		["eventTypeCode"] = _eventTypeCode,
+		["startTime"] = _startTime,
+		["eventTypeCategory"] = _eventTypeCategory,
+		["endTime"] = _endTime,
+		["region"] = _region,
+		["arn"] = _arn,
+		["statusCode"] = _statusCode,
 	}
-	M.AssertEvent(t)
+	asserts.AssertEvent(t)
 	return t
 end
 
-function M.AsserttagKey(str)
+function asserts.AsserttagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected tagKey to be of type 'string'")
 	assert(#str <= 127, "Expected string to be max 127 characters")
@@ -815,22 +818,22 @@ end
 
 --  
 function M.tagKey(str)
-	M.AsserttagKey(str)
+	asserts.AsserttagKey(str)
 	return str
 end
 
-function M.AsserteventDescription(str)
+function asserts.AsserteventDescription(str)
 	assert(str)
 	assert(type(str) == "string", "Expected eventDescription to be of type 'string'")
 end
 
 --  
 function M.eventDescription(str)
-	M.AsserteventDescription(str)
+	asserts.AsserteventDescription(str)
 	return str
 end
 
-function M.AssertentityValue(str)
+function asserts.AssertentityValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected entityValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -838,11 +841,11 @@ end
 
 --  
 function M.entityValue(str)
-	M.AssertentityValue(str)
+	asserts.AssertentityValue(str)
 	return str
 end
 
-function M.Assertlocale(str)
+function asserts.Assertlocale(str)
 	assert(str)
 	assert(type(str) == "string", "Expected locale to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -851,11 +854,11 @@ end
 
 --  
 function M.locale(str)
-	M.Assertlocale(str)
+	asserts.Assertlocale(str)
 	return str
 end
 
-function M.AsserteventType(str)
+function asserts.AsserteventType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected eventType to be of type 'string'")
 	assert(#str <= 100, "Expected string to be max 100 characters")
@@ -864,11 +867,11 @@ end
 
 --  
 function M.eventType(str)
-	M.AsserteventType(str)
+	asserts.AsserteventType(str)
 	return str
 end
 
-function M.AssertmetadataValue(str)
+function asserts.AssertmetadataValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected metadataValue to be of type 'string'")
 	assert(#str <= 10240, "Expected string to be max 10240 characters")
@@ -876,11 +879,11 @@ end
 
 --  
 function M.metadataValue(str)
-	M.AssertmetadataValue(str)
+	asserts.AssertmetadataValue(str)
 	return str
 end
 
-function M.AsserteventTypeCategory(str)
+function asserts.AsserteventTypeCategory(str)
 	assert(str)
 	assert(type(str) == "string", "Expected eventTypeCategory to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -889,34 +892,33 @@ end
 
 --  
 function M.eventTypeCategory(str)
-	M.AsserteventTypeCategory(str)
+	asserts.AsserteventTypeCategory(str)
 	return str
 end
 
-function M.AssertaccountId(str)
+function asserts.AssertaccountId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected accountId to be of type 'string'")
-	assert(str:match("[0-9]{12}"), "Expected string to match pattern '[0-9]{12}'")
 end
 
 --  
 function M.accountId(str)
-	M.AssertaccountId(str)
+	asserts.AssertaccountId(str)
 	return str
 end
 
-function M.Assertstring(str)
+function asserts.Assertstring(str)
 	assert(str)
 	assert(type(str) == "string", "Expected string to be of type 'string'")
 end
 
 --  
 function M.string(str)
-	M.Assertstring(str)
+	asserts.Assertstring(str)
 	return str
 end
 
-function M.AsserttagValue(str)
+function asserts.AsserttagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected tagValue to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -924,22 +926,22 @@ end
 
 --  
 function M.tagValue(str)
-	M.AsserttagValue(str)
+	asserts.AsserttagValue(str)
 	return str
 end
 
-function M.AssertaggregateValue(str)
+function asserts.AssertaggregateValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected aggregateValue to be of type 'string'")
 end
 
 --  
 function M.aggregateValue(str)
-	M.AssertaggregateValue(str)
+	asserts.AssertaggregateValue(str)
 	return str
 end
 
-function M.AsserteventTypeCode(str)
+function asserts.AsserteventTypeCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected eventTypeCode to be of type 'string'")
 	assert(#str <= 100, "Expected string to be max 100 characters")
@@ -948,45 +950,44 @@ end
 
 --  
 function M.eventTypeCode(str)
-	M.AsserteventTypeCode(str)
+	asserts.AsserteventTypeCode(str)
 	return str
 end
 
-function M.AssertavailabilityZone(str)
+function asserts.AssertavailabilityZone(str)
 	assert(str)
 	assert(type(str) == "string", "Expected availabilityZone to be of type 'string'")
-	assert(str:match("[a-z]{2}%-[0-9a-z%-]{4,16}"), "Expected string to match pattern '[a-z]{2}%-[0-9a-z%-]{4,16}'")
 end
 
 --  
 function M.availabilityZone(str)
-	M.AssertavailabilityZone(str)
+	asserts.AssertavailabilityZone(str)
 	return str
 end
 
-function M.AssertentityStatusCode(str)
+function asserts.AssertentityStatusCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected entityStatusCode to be of type 'string'")
 end
 
 --  
 function M.entityStatusCode(str)
-	M.AssertentityStatusCode(str)
+	asserts.AssertentityStatusCode(str)
 	return str
 end
 
-function M.AsserteventStatusCode(str)
+function asserts.AsserteventStatusCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected eventStatusCode to be of type 'string'")
 end
 
 --  
 function M.eventStatusCode(str)
-	M.AsserteventStatusCode(str)
+	asserts.AsserteventStatusCode(str)
 	return str
 end
 
-function M.Assertservice(str)
+function asserts.Assertservice(str)
 	assert(str)
 	assert(type(str) == "string", "Expected service to be of type 'string'")
 	assert(#str <= 30, "Expected string to be max 30 characters")
@@ -995,24 +996,23 @@ end
 
 --  
 function M.service(str)
-	M.Assertservice(str)
+	asserts.Assertservice(str)
 	return str
 end
 
-function M.AsserteventArn(str)
+function asserts.AsserteventArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected eventArn to be of type 'string'")
 	assert(#str <= 1600, "Expected string to be max 1600 characters")
-	assert(str:match("arn:aws:health:[^:]*:[^:]*:event/[%w-]+"), "Expected string to match pattern 'arn:aws:health:[^:]*:[^:]*:event/[%w-]+'")
 end
 
 --  
 function M.eventArn(str)
-	M.AsserteventArn(str)
+	asserts.AsserteventArn(str)
 	return str
 end
 
-function M.AssertentityArn(str)
+function asserts.AssertentityArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected entityArn to be of type 'string'")
 	assert(#str <= 1600, "Expected string to be max 1600 characters")
@@ -1020,57 +1020,55 @@ end
 
 --  
 function M.entityArn(str)
-	M.AssertentityArn(str)
+	asserts.AssertentityArn(str)
 	return str
 end
 
-function M.AsserteventAggregateField(str)
+function asserts.AsserteventAggregateField(str)
 	assert(str)
 	assert(type(str) == "string", "Expected eventAggregateField to be of type 'string'")
 end
 
 --  
 function M.eventAggregateField(str)
-	M.AsserteventAggregateField(str)
+	asserts.AsserteventAggregateField(str)
 	return str
 end
 
-function M.Assertregion(str)
+function asserts.Assertregion(str)
 	assert(str)
 	assert(type(str) == "string", "Expected region to be of type 'string'")
-	assert(str:match("[^:/]{2,25}"), "Expected string to match pattern '[^:/]{2,25}'")
 end
 
 --  
 function M.region(str)
-	M.Assertregion(str)
+	asserts.Assertregion(str)
 	return str
 end
 
-function M.AssertnextToken(str)
+function asserts.AssertnextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected nextToken to be of type 'string'")
-	assert(str:match("[a-zA-Z0-9=/+_.-]{4,512}"), "Expected string to match pattern '[a-zA-Z0-9=/+_.-]{4,512}'")
 end
 
 --  
 function M.nextToken(str)
-	M.AssertnextToken(str)
+	asserts.AssertnextToken(str)
 	return str
 end
 
-function M.AssertmetadataKey(str)
+function asserts.AssertmetadataKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected metadataKey to be of type 'string'")
 end
 
 --  
 function M.metadataKey(str)
-	M.AssertmetadataKey(str)
+	asserts.AssertmetadataKey(str)
 	return str
 end
 
-function M.AssertmaxResults(integer)
+function asserts.AssertmaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected maxResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1079,413 +1077,413 @@ function M.AssertmaxResults(integer)
 end
 
 function M.maxResults(integer)
-	M.AssertmaxResults(integer)
+	asserts.AssertmaxResults(integer)
 	return integer
 end
 
-function M.Assertcount(integer)
+function asserts.Assertcount(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected count to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.count(integer)
-	M.Assertcount(integer)
+	asserts.Assertcount(integer)
 	return integer
 end
 
-function M.AsserttagSet(map)
+function asserts.AsserttagSet(map)
 	assert(map)
 	assert(type(map) == "table", "Expected tagSet to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AsserttagKey(k)
-		M.AsserttagValue(v)
+		asserts.AsserttagKey(k)
+		asserts.AsserttagValue(v)
 	end
 end
 
 function M.tagSet(map)
-	M.AsserttagSet(map)
+	asserts.AsserttagSet(map)
 	return map
 end
 
-function M.AsserteventMetadata(map)
+function asserts.AsserteventMetadata(map)
 	assert(map)
 	assert(type(map) == "table", "Expected eventMetadata to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertmetadataKey(k)
-		M.AssertmetadataValue(v)
+		asserts.AssertmetadataKey(k)
+		asserts.AssertmetadataValue(v)
 	end
 end
 
 function M.eventMetadata(map)
-	M.AsserteventMetadata(map)
+	asserts.AsserteventMetadata(map)
 	return map
 end
 
-function M.Asserttimestamp(timestamp)
+function asserts.Asserttimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected timestamp to be of type 'string'")
 end
 
 function M.timestamp(timestamp)
-	M.Asserttimestamp(timestamp)
+	asserts.Asserttimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertDescribeEventDetailsFailedSet(list)
+function asserts.AssertDescribeEventDetailsFailedSet(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DescribeEventDetailsFailedSet to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEventDetailsErrorItem(v)
+		asserts.AssertEventDetailsErrorItem(v)
 	end
 end
 
 --  
 -- List of EventDetailsErrorItem objects
 function M.DescribeEventDetailsFailedSet(list)
-	M.AssertDescribeEventDetailsFailedSet(list)
+	asserts.AssertDescribeEventDetailsFailedSet(list)
 	return list
 end
 
-function M.AssertentityArnList(list)
+function asserts.AssertentityArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected entityArnList to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertentityArn(v)
+		asserts.AssertentityArn(v)
 	end
 end
 
 --  
 -- List of entityArn objects
 function M.entityArnList(list)
-	M.AssertentityArnList(list)
+	asserts.AssertentityArnList(list)
 	return list
 end
 
-function M.AssertEventTypeCodeList(list)
+function asserts.AssertEventTypeCodeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventTypeCodeList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AsserteventTypeCode(v)
+		asserts.AsserteventTypeCode(v)
 	end
 end
 
 --  
 -- List of eventTypeCode objects
 function M.EventTypeCodeList(list)
-	M.AssertEventTypeCodeList(list)
+	asserts.AssertEventTypeCodeList(list)
 	return list
 end
 
-function M.AssertEventTypeList(list)
+function asserts.AssertEventTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventTypeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEventType(v)
+		asserts.AssertEventType(v)
 	end
 end
 
 --  
 -- List of EventType objects
 function M.EventTypeList(list)
-	M.AssertEventTypeList(list)
+	asserts.AssertEventTypeList(list)
 	return list
 end
 
-function M.AsserttagFilter(list)
+function asserts.AsserttagFilter(list)
 	assert(list)
 	assert(type(list) == "table", "Expected tagFilter to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AsserttagSet(v)
+		asserts.AsserttagSet(v)
 	end
 end
 
 --  
 -- List of tagSet objects
 function M.tagFilter(list)
-	M.AsserttagFilter(list)
+	asserts.AsserttagFilter(list)
 	return list
 end
 
-function M.AssertavailabilityZones(list)
+function asserts.AssertavailabilityZones(list)
 	assert(list)
 	assert(type(list) == "table", "Expected availabilityZones to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertavailabilityZone(v)
+		asserts.AssertavailabilityZone(v)
 	end
 end
 
 --  
 -- List of availabilityZone objects
 function M.availabilityZones(list)
-	M.AssertavailabilityZones(list)
+	asserts.AssertavailabilityZones(list)
 	return list
 end
 
-function M.AssertEventList(list)
+function asserts.AssertEventList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEvent(v)
+		asserts.AssertEvent(v)
 	end
 end
 
 --  
 -- List of Event objects
 function M.EventList(list)
-	M.AssertEventList(list)
+	asserts.AssertEventList(list)
 	return list
 end
 
-function M.AssertdateTimeRangeList(list)
+function asserts.AssertdateTimeRangeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected dateTimeRangeList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertDateTimeRange(v)
+		asserts.AssertDateTimeRange(v)
 	end
 end
 
 --  
 -- List of DateTimeRange objects
 function M.dateTimeRangeList(list)
-	M.AssertdateTimeRangeList(list)
+	asserts.AssertdateTimeRangeList(list)
 	return list
 end
 
-function M.AssertserviceList(list)
+function asserts.AssertserviceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected serviceList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.Assertservice(v)
+		asserts.Assertservice(v)
 	end
 end
 
 --  
 -- List of service objects
 function M.serviceList(list)
-	M.AssertserviceList(list)
+	asserts.AssertserviceList(list)
 	return list
 end
 
-function M.AsserteventArnList(list)
+function asserts.AsserteventArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected eventArnList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AsserteventArn(v)
+		asserts.AsserteventArn(v)
 	end
 end
 
 --  
 -- List of eventArn objects
 function M.eventArnList(list)
-	M.AsserteventArnList(list)
+	asserts.AsserteventArnList(list)
 	return list
 end
 
-function M.AssertEventAggregateList(list)
+function asserts.AssertEventAggregateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventAggregateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEventAggregate(v)
+		asserts.AssertEventAggregate(v)
 	end
 end
 
 --  
 -- List of EventAggregate objects
 function M.EventAggregateList(list)
-	M.AssertEventAggregateList(list)
+	asserts.AssertEventAggregateList(list)
 	return list
 end
 
-function M.AsserteventTypeCategoryList(list)
+function asserts.AsserteventTypeCategoryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected eventTypeCategoryList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AsserteventTypeCategory(v)
+		asserts.AsserteventTypeCategory(v)
 	end
 end
 
 --  
 -- List of eventTypeCategory objects
 function M.eventTypeCategoryList(list)
-	M.AsserteventTypeCategoryList(list)
+	asserts.AsserteventTypeCategoryList(list)
 	return list
 end
 
-function M.AssertregionList(list)
+function asserts.AssertregionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected regionList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.Assertregion(v)
+		asserts.Assertregion(v)
 	end
 end
 
 --  
 -- List of region objects
 function M.regionList(list)
-	M.AssertregionList(list)
+	asserts.AssertregionList(list)
 	return list
 end
 
-function M.AssertEventArnsList(list)
+function asserts.AssertEventArnsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventArnsList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AsserteventArn(v)
+		asserts.AsserteventArn(v)
 	end
 end
 
 --  
 -- List of eventArn objects
 function M.EventArnsList(list)
-	M.AssertEventArnsList(list)
+	asserts.AssertEventArnsList(list)
 	return list
 end
 
-function M.AssertentityValueList(list)
+function asserts.AssertentityValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected entityValueList to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertentityValue(v)
+		asserts.AssertentityValue(v)
 	end
 end
 
 --  
 -- List of entityValue objects
 function M.entityValueList(list)
-	M.AssertentityValueList(list)
+	asserts.AssertentityValueList(list)
 	return list
 end
 
-function M.AssertEntityList(list)
+function asserts.AssertEntityList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EntityList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAffectedEntity(v)
+		asserts.AssertAffectedEntity(v)
 	end
 end
 
 --  
 -- List of AffectedEntity objects
 function M.EntityList(list)
-	M.AssertEntityList(list)
+	asserts.AssertEntityList(list)
 	return list
 end
 
-function M.AssertEventTypeCategoryList(list)
+function asserts.AssertEventTypeCategoryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventTypeCategoryList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AsserteventTypeCategory(v)
+		asserts.AsserteventTypeCategory(v)
 	end
 end
 
 --  
 -- List of eventTypeCategory objects
 function M.EventTypeCategoryList(list)
-	M.AssertEventTypeCategoryList(list)
+	asserts.AssertEventTypeCategoryList(list)
 	return list
 end
 
-function M.AssertentityStatusCodeList(list)
+function asserts.AssertentityStatusCodeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected entityStatusCodeList to be of type ''table")
 	assert(#list <= 3, "Expected list to be contain 3 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertentityStatusCode(v)
+		asserts.AssertentityStatusCode(v)
 	end
 end
 
 --  
 -- List of entityStatusCode objects
 function M.entityStatusCodeList(list)
-	M.AssertentityStatusCodeList(list)
+	asserts.AssertentityStatusCodeList(list)
 	return list
 end
 
-function M.AsserteventStatusCodeList(list)
+function asserts.AsserteventStatusCodeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected eventStatusCodeList to be of type ''table")
 	assert(#list <= 6, "Expected list to be contain 6 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AsserteventStatusCode(v)
+		asserts.AsserteventStatusCode(v)
 	end
 end
 
 --  
 -- List of eventStatusCode objects
 function M.eventStatusCodeList(list)
-	M.AsserteventStatusCodeList(list)
+	asserts.AsserteventStatusCodeList(list)
 	return list
 end
 
-function M.AssertEntityAggregateList(list)
+function asserts.AssertEntityAggregateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EntityAggregateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEntityAggregate(v)
+		asserts.AssertEntityAggregate(v)
 	end
 end
 
 --  
 -- List of EntityAggregate objects
 function M.EntityAggregateList(list)
-	M.AssertEntityAggregateList(list)
+	asserts.AssertEntityAggregateList(list)
 	return list
 end
 
-function M.AsserteventTypeList(list)
+function asserts.AsserteventTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected eventTypeList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AsserteventType(v)
+		asserts.AsserteventType(v)
 	end
 end
 
 --  
 -- List of eventType objects
 function M.eventTypeList(list)
-	M.AsserteventTypeList(list)
+	asserts.AsserteventTypeList(list)
 	return list
 end
 
-function M.AssertDescribeEventDetailsSuccessfulSet(list)
+function asserts.AssertDescribeEventDetailsSuccessfulSet(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DescribeEventDetailsSuccessfulSet to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEventDetails(v)
+		asserts.AssertEventDetails(v)
 	end
 end
 
 --  
 -- List of EventDetails objects
 function M.DescribeEventDetailsSuccessfulSet(list)
-	M.AssertDescribeEventDetailsSuccessfulSet(list)
+	asserts.AssertDescribeEventDetailsSuccessfulSet(list)
 	return list
 end
 

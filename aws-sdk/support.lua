@@ -18,112 +18,115 @@ M.metadata = {
 	uid = "support-2013-04-15",
 }
 
-local CaseCreationLimitExceeded_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertCaseCreationLimitExceeded(struct)
+keys.CaseCreationLimitExceeded = { ["message"] = true, nil }
+
+function asserts.AssertCaseCreationLimitExceeded(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CaseCreationLimitExceeded to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(CaseCreationLimitExceeded_keys[k], "CaseCreationLimitExceeded contains unknown key " .. tostring(k))
+		assert(keys.CaseCreationLimitExceeded[k], "CaseCreationLimitExceeded contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CaseCreationLimitExceeded
 -- <p>The case creation limit for the account has been exceeded.</p>
--- @param message [ErrorMessage] <p>An error message that indicates that you have exceeded the number of cases you can have open.</p>
-function M.CaseCreationLimitExceeded(message, ...)
+-- @param _message [ErrorMessage] <p>An error message that indicates that you have exceeded the number of cases you can have open.</p>
+function M.CaseCreationLimitExceeded(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CaseCreationLimitExceeded")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertCaseCreationLimitExceeded(t)
+	asserts.AssertCaseCreationLimitExceeded(t)
 	return t
 end
 
-local Service_keys = { "code" = true, "name" = true, "categories" = true, nil }
+keys.Service = { ["code"] = true, ["name"] = true, ["categories"] = true, nil }
 
-function M.AssertService(struct)
+function asserts.AssertService(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Service to be of type 'table'")
-	if struct["code"] then M.AssertServiceCode(struct["code"]) end
-	if struct["name"] then M.AssertServiceName(struct["name"]) end
-	if struct["categories"] then M.AssertCategoryList(struct["categories"]) end
+	if struct["code"] then asserts.AssertServiceCode(struct["code"]) end
+	if struct["name"] then asserts.AssertServiceName(struct["name"]) end
+	if struct["categories"] then asserts.AssertCategoryList(struct["categories"]) end
 	for k,_ in pairs(struct) do
-		assert(Service_keys[k], "Service contains unknown key " .. tostring(k))
+		assert(keys.Service[k], "Service contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Service
 -- <p>Information about an AWS service returned by the <a>DescribeServices</a> operation. </p>
--- @param code [ServiceCode] <p>The code for an AWS service returned by the <a>DescribeServices</a> response. The <code>name</code> element contains the corresponding friendly name.</p>
--- @param name [ServiceName] <p>The friendly name for an AWS service. The <code>code</code> element contains the corresponding code.</p>
--- @param categories [CategoryList] <p>A list of categories that describe the type of support issue a case describes. Categories consist of a category name and a category code. Category names and codes are passed to AWS Support when you call <a>CreateCase</a>.</p>
-function M.Service(code, name, categories, ...)
+-- @param _code [ServiceCode] <p>The code for an AWS service returned by the <a>DescribeServices</a> response. The <code>name</code> element contains the corresponding friendly name.</p>
+-- @param _name [ServiceName] <p>The friendly name for an AWS service. The <code>code</code> element contains the corresponding code.</p>
+-- @param _categories [CategoryList] <p>A list of categories that describe the type of support issue a case describes. Categories consist of a category name and a category code. Category names and codes are passed to AWS Support when you call <a>CreateCase</a>.</p>
+function M.Service(_code, _name, _categories, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Service")
 	local t = { 
-		["code"] = code,
-		["name"] = name,
-		["categories"] = categories,
+		["code"] = _code,
+		["name"] = _name,
+		["categories"] = _categories,
 	}
-	M.AssertService(t)
+	asserts.AssertService(t)
 	return t
 end
 
-local RecentCaseCommunications_keys = { "communications" = true, "nextToken" = true, nil }
+keys.RecentCaseCommunications = { ["communications"] = true, ["nextToken"] = true, nil }
 
-function M.AssertRecentCaseCommunications(struct)
+function asserts.AssertRecentCaseCommunications(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RecentCaseCommunications to be of type 'table'")
-	if struct["communications"] then M.AssertCommunicationList(struct["communications"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
+	if struct["communications"] then asserts.AssertCommunicationList(struct["communications"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(RecentCaseCommunications_keys[k], "RecentCaseCommunications contains unknown key " .. tostring(k))
+		assert(keys.RecentCaseCommunications[k], "RecentCaseCommunications contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RecentCaseCommunications
 -- <p>The five most recent communications associated with the case.</p>
--- @param communications [CommunicationList] <p>The five most recent communications associated with the case.</p>
--- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
-function M.RecentCaseCommunications(communications, nextToken, ...)
+-- @param _communications [CommunicationList] <p>The five most recent communications associated with the case.</p>
+-- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
+function M.RecentCaseCommunications(_communications, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecentCaseCommunications")
 	local t = { 
-		["communications"] = communications,
-		["nextToken"] = nextToken,
+		["communications"] = _communications,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertRecentCaseCommunications(t)
+	asserts.AssertRecentCaseCommunications(t)
 	return t
 end
 
-local DescribeAttachmentRequest_keys = { "attachmentId" = true, nil }
+keys.DescribeAttachmentRequest = { ["attachmentId"] = true, nil }
 
-function M.AssertDescribeAttachmentRequest(struct)
+function asserts.AssertDescribeAttachmentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAttachmentRequest to be of type 'table'")
 	assert(struct["attachmentId"], "Expected key attachmentId to exist in table")
-	if struct["attachmentId"] then M.AssertAttachmentId(struct["attachmentId"]) end
+	if struct["attachmentId"] then asserts.AssertAttachmentId(struct["attachmentId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAttachmentRequest_keys[k], "DescribeAttachmentRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeAttachmentRequest[k], "DescribeAttachmentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAttachmentRequest
 --  
--- @param attachmentId [AttachmentId] <p>The ID of the attachment to return. Attachment IDs are returned by the <a>DescribeCommunications</a> operation.</p>
+-- @param _attachmentId [AttachmentId] <p>The ID of the attachment to return. Attachment IDs are returned by the <a>DescribeCommunications</a> operation.</p>
 -- Required parameter: attachmentId
-function M.DescribeAttachmentRequest(attachmentId, ...)
+function M.DescribeAttachmentRequest(_attachmentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentRequest")
 	local t = { 
-		["attachmentId"] = attachmentId,
+		["attachmentId"] = _attachmentId,
 	}
-	M.AssertDescribeAttachmentRequest(t)
+	asserts.AssertDescribeAttachmentRequest(t)
 	return t
 end
 
-local TrustedAdvisorCheckDescription_keys = { "category" = true, "description" = true, "metadata" = true, "id" = true, "name" = true, nil }
+keys.TrustedAdvisorCheckDescription = { ["category"] = true, ["description"] = true, ["metadata"] = true, ["id"] = true, ["name"] = true, nil }
 
-function M.AssertTrustedAdvisorCheckDescription(struct)
+function asserts.AssertTrustedAdvisorCheckDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrustedAdvisorCheckDescription to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
@@ -131,336 +134,336 @@ function M.AssertTrustedAdvisorCheckDescription(struct)
 	assert(struct["description"], "Expected key description to exist in table")
 	assert(struct["category"], "Expected key category to exist in table")
 	assert(struct["metadata"], "Expected key metadata to exist in table")
-	if struct["category"] then M.AssertString(struct["category"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["metadata"] then M.AssertStringList(struct["metadata"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
+	if struct["category"] then asserts.AssertString(struct["category"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["metadata"] then asserts.AssertStringList(struct["metadata"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(TrustedAdvisorCheckDescription_keys[k], "TrustedAdvisorCheckDescription contains unknown key " .. tostring(k))
+		assert(keys.TrustedAdvisorCheckDescription[k], "TrustedAdvisorCheckDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrustedAdvisorCheckDescription
 -- <p>The description and metadata for a Trusted Advisor check.</p>
--- @param category [String] <p>The category of the Trusted Advisor check.</p>
--- @param description [String] <p>The description of the Trusted Advisor check, which includes the alert criteria and recommended actions (contains HTML markup).</p>
--- @param metadata [StringList] <p>The column headings for the data returned by the Trusted Advisor check. The order of the headings corresponds to the order of the data in the <b>Metadata</b> element of the <a>TrustedAdvisorResourceDetail</a> for the check. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
--- @param id [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param name [String] <p>The display name for the Trusted Advisor check.</p>
+-- @param _category [String] <p>The category of the Trusted Advisor check.</p>
+-- @param _description [String] <p>The description of the Trusted Advisor check, which includes the alert criteria and recommended actions (contains HTML markup).</p>
+-- @param _metadata [StringList] <p>The column headings for the data returned by the Trusted Advisor check. The order of the headings corresponds to the order of the data in the <b>Metadata</b> element of the <a>TrustedAdvisorResourceDetail</a> for the check. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
+-- @param _id [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param _name [String] <p>The display name for the Trusted Advisor check.</p>
 -- Required parameter: id
 -- Required parameter: name
 -- Required parameter: description
 -- Required parameter: category
 -- Required parameter: metadata
-function M.TrustedAdvisorCheckDescription(category, description, metadata, id, name, ...)
+function M.TrustedAdvisorCheckDescription(_category, _description, _metadata, _id, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCheckDescription")
 	local t = { 
-		["category"] = category,
-		["description"] = description,
-		["metadata"] = metadata,
-		["id"] = id,
-		["name"] = name,
+		["category"] = _category,
+		["description"] = _description,
+		["metadata"] = _metadata,
+		["id"] = _id,
+		["name"] = _name,
 	}
-	M.AssertTrustedAdvisorCheckDescription(t)
+	asserts.AssertTrustedAdvisorCheckDescription(t)
 	return t
 end
 
-local AttachmentSetIdNotFound_keys = { "message" = true, nil }
+keys.AttachmentSetIdNotFound = { ["message"] = true, nil }
 
-function M.AssertAttachmentSetIdNotFound(struct)
+function asserts.AssertAttachmentSetIdNotFound(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachmentSetIdNotFound to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachmentSetIdNotFound_keys[k], "AttachmentSetIdNotFound contains unknown key " .. tostring(k))
+		assert(keys.AttachmentSetIdNotFound[k], "AttachmentSetIdNotFound contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachmentSetIdNotFound
 -- <p>An attachment set with the specified ID could not be found.</p>
--- @param message [ErrorMessage] <p>An attachment set with the specified ID could not be found.</p>
-function M.AttachmentSetIdNotFound(message, ...)
+-- @param _message [ErrorMessage] <p>An attachment set with the specified ID could not be found.</p>
+function M.AttachmentSetIdNotFound(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetIdNotFound")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAttachmentSetIdNotFound(t)
+	asserts.AssertAttachmentSetIdNotFound(t)
 	return t
 end
 
-local InternalServerError_keys = { "message" = true, nil }
+keys.InternalServerError = { ["message"] = true, nil }
 
-function M.AssertInternalServerError(struct)
+function asserts.AssertInternalServerError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServerError to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServerError_keys[k], "InternalServerError contains unknown key " .. tostring(k))
+		assert(keys.InternalServerError[k], "InternalServerError contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServerError
 -- <p>An internal server error occurred.</p>
--- @param message [ErrorMessage] <p>An internal server error occurred.</p>
-function M.InternalServerError(message, ...)
+-- @param _message [ErrorMessage] <p>An internal server error occurred.</p>
+function M.InternalServerError(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalServerError(t)
+	asserts.AssertInternalServerError(t)
 	return t
 end
 
-local DescribeAttachmentResponse_keys = { "attachment" = true, nil }
+keys.DescribeAttachmentResponse = { ["attachment"] = true, nil }
 
-function M.AssertDescribeAttachmentResponse(struct)
+function asserts.AssertDescribeAttachmentResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAttachmentResponse to be of type 'table'")
-	if struct["attachment"] then M.AssertAttachment(struct["attachment"]) end
+	if struct["attachment"] then asserts.AssertAttachment(struct["attachment"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAttachmentResponse_keys[k], "DescribeAttachmentResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeAttachmentResponse[k], "DescribeAttachmentResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAttachmentResponse
 -- <p>The content and file name of the attachment returned by the <a>DescribeAttachment</a> operation.</p>
--- @param attachment [Attachment] <p>The attachment content and file name.</p>
-function M.DescribeAttachmentResponse(attachment, ...)
+-- @param _attachment [Attachment] <p>The attachment content and file name.</p>
+function M.DescribeAttachmentResponse(_attachment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentResponse")
 	local t = { 
-		["attachment"] = attachment,
+		["attachment"] = _attachment,
 	}
-	M.AssertDescribeAttachmentResponse(t)
+	asserts.AssertDescribeAttachmentResponse(t)
 	return t
 end
 
-local TrustedAdvisorCheckRefreshStatus_keys = { "checkId" = true, "status" = true, "millisUntilNextRefreshable" = true, nil }
+keys.TrustedAdvisorCheckRefreshStatus = { ["checkId"] = true, ["status"] = true, ["millisUntilNextRefreshable"] = true, nil }
 
-function M.AssertTrustedAdvisorCheckRefreshStatus(struct)
+function asserts.AssertTrustedAdvisorCheckRefreshStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrustedAdvisorCheckRefreshStatus to be of type 'table'")
 	assert(struct["checkId"], "Expected key checkId to exist in table")
 	assert(struct["status"], "Expected key status to exist in table")
 	assert(struct["millisUntilNextRefreshable"], "Expected key millisUntilNextRefreshable to exist in table")
-	if struct["checkId"] then M.AssertString(struct["checkId"]) end
-	if struct["status"] then M.AssertString(struct["status"]) end
-	if struct["millisUntilNextRefreshable"] then M.AssertLong(struct["millisUntilNextRefreshable"]) end
+	if struct["checkId"] then asserts.AssertString(struct["checkId"]) end
+	if struct["status"] then asserts.AssertString(struct["status"]) end
+	if struct["millisUntilNextRefreshable"] then asserts.AssertLong(struct["millisUntilNextRefreshable"]) end
 	for k,_ in pairs(struct) do
-		assert(TrustedAdvisorCheckRefreshStatus_keys[k], "TrustedAdvisorCheckRefreshStatus contains unknown key " .. tostring(k))
+		assert(keys.TrustedAdvisorCheckRefreshStatus[k], "TrustedAdvisorCheckRefreshStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrustedAdvisorCheckRefreshStatus
 -- <p>The refresh status of a Trusted Advisor check.</p>
--- @param checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param status [String] <p>The status of the Trusted Advisor check for which a refresh has been requested: "none", "enqueued", "processing", "success", or "abandoned".</p>
--- @param millisUntilNextRefreshable [Long] <p>The amount of time, in milliseconds, until the Trusted Advisor check is eligible for refresh.</p>
+-- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param _status [String] <p>The status of the Trusted Advisor check for which a refresh has been requested: "none", "enqueued", "processing", "success", or "abandoned".</p>
+-- @param _millisUntilNextRefreshable [Long] <p>The amount of time, in milliseconds, until the Trusted Advisor check is eligible for refresh.</p>
 -- Required parameter: checkId
 -- Required parameter: status
 -- Required parameter: millisUntilNextRefreshable
-function M.TrustedAdvisorCheckRefreshStatus(checkId, status, millisUntilNextRefreshable, ...)
+function M.TrustedAdvisorCheckRefreshStatus(_checkId, _status, _millisUntilNextRefreshable, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCheckRefreshStatus")
 	local t = { 
-		["checkId"] = checkId,
-		["status"] = status,
-		["millisUntilNextRefreshable"] = millisUntilNextRefreshable,
+		["checkId"] = _checkId,
+		["status"] = _status,
+		["millisUntilNextRefreshable"] = _millisUntilNextRefreshable,
 	}
-	M.AssertTrustedAdvisorCheckRefreshStatus(t)
+	asserts.AssertTrustedAdvisorCheckRefreshStatus(t)
 	return t
 end
 
-local RefreshTrustedAdvisorCheckRequest_keys = { "checkId" = true, nil }
+keys.RefreshTrustedAdvisorCheckRequest = { ["checkId"] = true, nil }
 
-function M.AssertRefreshTrustedAdvisorCheckRequest(struct)
+function asserts.AssertRefreshTrustedAdvisorCheckRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RefreshTrustedAdvisorCheckRequest to be of type 'table'")
 	assert(struct["checkId"], "Expected key checkId to exist in table")
-	if struct["checkId"] then M.AssertString(struct["checkId"]) end
+	if struct["checkId"] then asserts.AssertString(struct["checkId"]) end
 	for k,_ in pairs(struct) do
-		assert(RefreshTrustedAdvisorCheckRequest_keys[k], "RefreshTrustedAdvisorCheckRequest contains unknown key " .. tostring(k))
+		assert(keys.RefreshTrustedAdvisorCheckRequest[k], "RefreshTrustedAdvisorCheckRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RefreshTrustedAdvisorCheckRequest
 -- <p/>
--- @param checkId [String] <p>The unique identifier for the Trusted Advisor check to refresh. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
+-- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check to refresh. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
 -- Required parameter: checkId
-function M.RefreshTrustedAdvisorCheckRequest(checkId, ...)
+function M.RefreshTrustedAdvisorCheckRequest(_checkId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshTrustedAdvisorCheckRequest")
 	local t = { 
-		["checkId"] = checkId,
+		["checkId"] = _checkId,
 	}
-	M.AssertRefreshTrustedAdvisorCheckRequest(t)
+	asserts.AssertRefreshTrustedAdvisorCheckRequest(t)
 	return t
 end
 
-local AttachmentIdNotFound_keys = { "message" = true, nil }
+keys.AttachmentIdNotFound = { ["message"] = true, nil }
 
-function M.AssertAttachmentIdNotFound(struct)
+function asserts.AssertAttachmentIdNotFound(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachmentIdNotFound to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachmentIdNotFound_keys[k], "AttachmentIdNotFound contains unknown key " .. tostring(k))
+		assert(keys.AttachmentIdNotFound[k], "AttachmentIdNotFound contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachmentIdNotFound
 -- <p>An attachment with the specified ID could not be found.</p>
--- @param message [ErrorMessage] <p>An attachment with the specified ID could not be found.</p>
-function M.AttachmentIdNotFound(message, ...)
+-- @param _message [ErrorMessage] <p>An attachment with the specified ID could not be found.</p>
+function M.AttachmentIdNotFound(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentIdNotFound")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAttachmentIdNotFound(t)
+	asserts.AssertAttachmentIdNotFound(t)
 	return t
 end
 
-local CaseIdNotFound_keys = { "message" = true, nil }
+keys.CaseIdNotFound = { ["message"] = true, nil }
 
-function M.AssertCaseIdNotFound(struct)
+function asserts.AssertCaseIdNotFound(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CaseIdNotFound to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(CaseIdNotFound_keys[k], "CaseIdNotFound contains unknown key " .. tostring(k))
+		assert(keys.CaseIdNotFound[k], "CaseIdNotFound contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CaseIdNotFound
 -- <p>The requested <code>caseId</code> could not be located.</p>
--- @param message [ErrorMessage] <p>The requested <code>CaseId</code> could not be located.</p>
-function M.CaseIdNotFound(message, ...)
+-- @param _message [ErrorMessage] <p>The requested <code>CaseId</code> could not be located.</p>
+function M.CaseIdNotFound(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CaseIdNotFound")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertCaseIdNotFound(t)
+	asserts.AssertCaseIdNotFound(t)
 	return t
 end
 
-local CreateCaseRequest_keys = { "language" = true, "ccEmailAddresses" = true, "communicationBody" = true, "attachmentSetId" = true, "severityCode" = true, "categoryCode" = true, "serviceCode" = true, "issueType" = true, "subject" = true, nil }
+keys.CreateCaseRequest = { ["language"] = true, ["ccEmailAddresses"] = true, ["communicationBody"] = true, ["attachmentSetId"] = true, ["severityCode"] = true, ["categoryCode"] = true, ["serviceCode"] = true, ["issueType"] = true, ["subject"] = true, nil }
 
-function M.AssertCreateCaseRequest(struct)
+function asserts.AssertCreateCaseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCaseRequest to be of type 'table'")
 	assert(struct["subject"], "Expected key subject to exist in table")
 	assert(struct["communicationBody"], "Expected key communicationBody to exist in table")
-	if struct["language"] then M.AssertLanguage(struct["language"]) end
-	if struct["ccEmailAddresses"] then M.AssertCcEmailAddressList(struct["ccEmailAddresses"]) end
-	if struct["communicationBody"] then M.AssertCommunicationBody(struct["communicationBody"]) end
-	if struct["attachmentSetId"] then M.AssertAttachmentSetId(struct["attachmentSetId"]) end
-	if struct["severityCode"] then M.AssertSeverityCode(struct["severityCode"]) end
-	if struct["categoryCode"] then M.AssertCategoryCode(struct["categoryCode"]) end
-	if struct["serviceCode"] then M.AssertServiceCode(struct["serviceCode"]) end
-	if struct["issueType"] then M.AssertIssueType(struct["issueType"]) end
-	if struct["subject"] then M.AssertSubject(struct["subject"]) end
+	if struct["language"] then asserts.AssertLanguage(struct["language"]) end
+	if struct["ccEmailAddresses"] then asserts.AssertCcEmailAddressList(struct["ccEmailAddresses"]) end
+	if struct["communicationBody"] then asserts.AssertCommunicationBody(struct["communicationBody"]) end
+	if struct["attachmentSetId"] then asserts.AssertAttachmentSetId(struct["attachmentSetId"]) end
+	if struct["severityCode"] then asserts.AssertSeverityCode(struct["severityCode"]) end
+	if struct["categoryCode"] then asserts.AssertCategoryCode(struct["categoryCode"]) end
+	if struct["serviceCode"] then asserts.AssertServiceCode(struct["serviceCode"]) end
+	if struct["issueType"] then asserts.AssertIssueType(struct["issueType"]) end
+	if struct["subject"] then asserts.AssertSubject(struct["subject"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCaseRequest_keys[k], "CreateCaseRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateCaseRequest[k], "CreateCaseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCaseRequest
 -- <p/>
--- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
--- @param ccEmailAddresses [CcEmailAddressList] <p>A list of email addresses that AWS Support copies on case correspondence.</p>
--- @param communicationBody [CommunicationBody] <p>The communication body text when you create an AWS Support case by calling <a>CreateCase</a>.</p>
--- @param attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the case. Create the set by using <a>AddAttachmentsToSet</a>.</p>
--- @param severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p> <note> <p>The availability of severity levels depends on each customer's support subscription. In other words, your subscription may not necessarily require the urgent level of response time.</p> </note>
--- @param categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
--- @param serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
--- @param issueType [IssueType] <p>The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical."</p>
--- @param subject [Subject] <p>The title of the AWS Support case.</p>
+-- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @param _ccEmailAddresses [CcEmailAddressList] <p>A list of email addresses that AWS Support copies on case correspondence.</p>
+-- @param _communicationBody [CommunicationBody] <p>The communication body text when you create an AWS Support case by calling <a>CreateCase</a>.</p>
+-- @param _attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the case. Create the set by using <a>AddAttachmentsToSet</a>.</p>
+-- @param _severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p> <note> <p>The availability of severity levels depends on each customer's support subscription. In other words, your subscription may not necessarily require the urgent level of response time.</p> </note>
+-- @param _categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
+-- @param _serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
+-- @param _issueType [IssueType] <p>The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical."</p>
+-- @param _subject [Subject] <p>The title of the AWS Support case.</p>
 -- Required parameter: subject
 -- Required parameter: communicationBody
-function M.CreateCaseRequest(language, ccEmailAddresses, communicationBody, attachmentSetId, severityCode, categoryCode, serviceCode, issueType, subject, ...)
+function M.CreateCaseRequest(_language, _ccEmailAddresses, _communicationBody, _attachmentSetId, _severityCode, _categoryCode, _serviceCode, _issueType, _subject, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCaseRequest")
 	local t = { 
-		["language"] = language,
-		["ccEmailAddresses"] = ccEmailAddresses,
-		["communicationBody"] = communicationBody,
-		["attachmentSetId"] = attachmentSetId,
-		["severityCode"] = severityCode,
-		["categoryCode"] = categoryCode,
-		["serviceCode"] = serviceCode,
-		["issueType"] = issueType,
-		["subject"] = subject,
+		["language"] = _language,
+		["ccEmailAddresses"] = _ccEmailAddresses,
+		["communicationBody"] = _communicationBody,
+		["attachmentSetId"] = _attachmentSetId,
+		["severityCode"] = _severityCode,
+		["categoryCode"] = _categoryCode,
+		["serviceCode"] = _serviceCode,
+		["issueType"] = _issueType,
+		["subject"] = _subject,
 	}
-	M.AssertCreateCaseRequest(t)
+	asserts.AssertCreateCaseRequest(t)
 	return t
 end
 
-local DescribeTrustedAdvisorCheckRefreshStatusesResponse_keys = { "statuses" = true, nil }
+keys.DescribeTrustedAdvisorCheckRefreshStatusesResponse = { ["statuses"] = true, nil }
 
-function M.AssertDescribeTrustedAdvisorCheckRefreshStatusesResponse(struct)
+function asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTrustedAdvisorCheckRefreshStatusesResponse to be of type 'table'")
 	assert(struct["statuses"], "Expected key statuses to exist in table")
-	if struct["statuses"] then M.AssertTrustedAdvisorCheckRefreshStatusList(struct["statuses"]) end
+	if struct["statuses"] then asserts.AssertTrustedAdvisorCheckRefreshStatusList(struct["statuses"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTrustedAdvisorCheckRefreshStatusesResponse_keys[k], "DescribeTrustedAdvisorCheckRefreshStatusesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrustedAdvisorCheckRefreshStatusesResponse[k], "DescribeTrustedAdvisorCheckRefreshStatusesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckRefreshStatusesResponse
 -- <p>The statuses of the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorCheckRefreshStatuses</a> operation.</p>
--- @param statuses [TrustedAdvisorCheckRefreshStatusList] <p>The refresh status of the specified Trusted Advisor checks.</p>
+-- @param _statuses [TrustedAdvisorCheckRefreshStatusList] <p>The refresh status of the specified Trusted Advisor checks.</p>
 -- Required parameter: statuses
-function M.DescribeTrustedAdvisorCheckRefreshStatusesResponse(statuses, ...)
+function M.DescribeTrustedAdvisorCheckRefreshStatusesResponse(_statuses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckRefreshStatusesResponse")
 	local t = { 
-		["statuses"] = statuses,
+		["statuses"] = _statuses,
 	}
-	M.AssertDescribeTrustedAdvisorCheckRefreshStatusesResponse(t)
+	asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesResponse(t)
 	return t
 end
 
-local TrustedAdvisorResourceDetail_keys = { "status" = true, "resourceId" = true, "region" = true, "isSuppressed" = true, "metadata" = true, nil }
+keys.TrustedAdvisorResourceDetail = { ["status"] = true, ["resourceId"] = true, ["region"] = true, ["isSuppressed"] = true, ["metadata"] = true, nil }
 
-function M.AssertTrustedAdvisorResourceDetail(struct)
+function asserts.AssertTrustedAdvisorResourceDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrustedAdvisorResourceDetail to be of type 'table'")
 	assert(struct["status"], "Expected key status to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["metadata"], "Expected key metadata to exist in table")
-	if struct["status"] then M.AssertString(struct["status"]) end
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["region"] then M.AssertString(struct["region"]) end
-	if struct["isSuppressed"] then M.AssertBoolean(struct["isSuppressed"]) end
-	if struct["metadata"] then M.AssertStringList(struct["metadata"]) end
+	if struct["status"] then asserts.AssertString(struct["status"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["region"] then asserts.AssertString(struct["region"]) end
+	if struct["isSuppressed"] then asserts.AssertBoolean(struct["isSuppressed"]) end
+	if struct["metadata"] then asserts.AssertStringList(struct["metadata"]) end
 	for k,_ in pairs(struct) do
-		assert(TrustedAdvisorResourceDetail_keys[k], "TrustedAdvisorResourceDetail contains unknown key " .. tostring(k))
+		assert(keys.TrustedAdvisorResourceDetail[k], "TrustedAdvisorResourceDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrustedAdvisorResourceDetail
 -- <p>Contains information about a resource identified by a Trusted Advisor check.</p>
--- @param status [String] <p>The status code for the resource identified in the Trusted Advisor check.</p>
--- @param resourceId [String] <p>The unique identifier for the identified resource.</p>
--- @param region [String] <p>The AWS region in which the identified resource is located.</p>
--- @param isSuppressed [Boolean] <p>Specifies whether the AWS resource was ignored by Trusted Advisor because it was marked as suppressed by the user.</p>
--- @param metadata [StringList] <p>Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the <a>TrustedAdvisorCheckDescription</a> object returned by the call to <a>DescribeTrustedAdvisorChecks</a>. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
+-- @param _status [String] <p>The status code for the resource identified in the Trusted Advisor check.</p>
+-- @param _resourceId [String] <p>The unique identifier for the identified resource.</p>
+-- @param _region [String] <p>The AWS region in which the identified resource is located.</p>
+-- @param _isSuppressed [Boolean] <p>Specifies whether the AWS resource was ignored by Trusted Advisor because it was marked as suppressed by the user.</p>
+-- @param _metadata [StringList] <p>Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the <a>TrustedAdvisorCheckDescription</a> object returned by the call to <a>DescribeTrustedAdvisorChecks</a>. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
 -- Required parameter: status
 -- Required parameter: resourceId
 -- Required parameter: metadata
-function M.TrustedAdvisorResourceDetail(status, resourceId, region, isSuppressed, metadata, ...)
+function M.TrustedAdvisorResourceDetail(_status, _resourceId, _region, _isSuppressed, _metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorResourceDetail")
 	local t = { 
-		["status"] = status,
-		["resourceId"] = resourceId,
-		["region"] = region,
-		["isSuppressed"] = isSuppressed,
-		["metadata"] = metadata,
+		["status"] = _status,
+		["resourceId"] = _resourceId,
+		["region"] = _region,
+		["isSuppressed"] = _isSuppressed,
+		["metadata"] = _metadata,
 	}
-	M.AssertTrustedAdvisorResourceDetail(t)
+	asserts.AssertTrustedAdvisorResourceDetail(t)
 	return t
 end
 
-local TrustedAdvisorCheckResult_keys = { "checkId" = true, "status" = true, "flaggedResources" = true, "timestamp" = true, "resourcesSummary" = true, "categorySpecificSummary" = true, nil }
+keys.TrustedAdvisorCheckResult = { ["checkId"] = true, ["status"] = true, ["flaggedResources"] = true, ["timestamp"] = true, ["resourcesSummary"] = true, ["categorySpecificSummary"] = true, nil }
 
-function M.AssertTrustedAdvisorCheckResult(struct)
+function asserts.AssertTrustedAdvisorCheckResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrustedAdvisorCheckResult to be of type 'table'")
 	assert(struct["checkId"], "Expected key checkId to exist in table")
@@ -469,282 +472,282 @@ function M.AssertTrustedAdvisorCheckResult(struct)
 	assert(struct["resourcesSummary"], "Expected key resourcesSummary to exist in table")
 	assert(struct["categorySpecificSummary"], "Expected key categorySpecificSummary to exist in table")
 	assert(struct["flaggedResources"], "Expected key flaggedResources to exist in table")
-	if struct["checkId"] then M.AssertString(struct["checkId"]) end
-	if struct["status"] then M.AssertString(struct["status"]) end
-	if struct["flaggedResources"] then M.AssertTrustedAdvisorResourceDetailList(struct["flaggedResources"]) end
-	if struct["timestamp"] then M.AssertString(struct["timestamp"]) end
-	if struct["resourcesSummary"] then M.AssertTrustedAdvisorResourcesSummary(struct["resourcesSummary"]) end
-	if struct["categorySpecificSummary"] then M.AssertTrustedAdvisorCategorySpecificSummary(struct["categorySpecificSummary"]) end
+	if struct["checkId"] then asserts.AssertString(struct["checkId"]) end
+	if struct["status"] then asserts.AssertString(struct["status"]) end
+	if struct["flaggedResources"] then asserts.AssertTrustedAdvisorResourceDetailList(struct["flaggedResources"]) end
+	if struct["timestamp"] then asserts.AssertString(struct["timestamp"]) end
+	if struct["resourcesSummary"] then asserts.AssertTrustedAdvisorResourcesSummary(struct["resourcesSummary"]) end
+	if struct["categorySpecificSummary"] then asserts.AssertTrustedAdvisorCategorySpecificSummary(struct["categorySpecificSummary"]) end
 	for k,_ in pairs(struct) do
-		assert(TrustedAdvisorCheckResult_keys[k], "TrustedAdvisorCheckResult contains unknown key " .. tostring(k))
+		assert(keys.TrustedAdvisorCheckResult[k], "TrustedAdvisorCheckResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrustedAdvisorCheckResult
 -- <p>The results of a Trusted Advisor check returned by <a>DescribeTrustedAdvisorCheckResult</a>.</p>
--- @param checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
--- @param flaggedResources [TrustedAdvisorResourceDetailList] <p>The details about each resource listed in the check result.</p>
--- @param timestamp [String] <p>The time of the last refresh of the check.</p>
--- @param resourcesSummary [TrustedAdvisorResourcesSummary] <p>The results of a Trusted Advisor check returned by <a>DescribeTrustedAdvisorCheckResult</a>.</p>
--- @param categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
+-- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param _status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
+-- @param _flaggedResources [TrustedAdvisorResourceDetailList] <p>The details about each resource listed in the check result.</p>
+-- @param _timestamp [String] <p>The time of the last refresh of the check.</p>
+-- @param _resourcesSummary [TrustedAdvisorResourcesSummary] 
+-- @param _categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
 -- Required parameter: checkId
 -- Required parameter: timestamp
 -- Required parameter: status
 -- Required parameter: resourcesSummary
 -- Required parameter: categorySpecificSummary
 -- Required parameter: flaggedResources
-function M.TrustedAdvisorCheckResult(checkId, status, flaggedResources, timestamp, resourcesSummary, categorySpecificSummary, ...)
+function M.TrustedAdvisorCheckResult(_checkId, _status, _flaggedResources, _timestamp, _resourcesSummary, _categorySpecificSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCheckResult")
 	local t = { 
-		["checkId"] = checkId,
-		["status"] = status,
-		["flaggedResources"] = flaggedResources,
-		["timestamp"] = timestamp,
-		["resourcesSummary"] = resourcesSummary,
-		["categorySpecificSummary"] = categorySpecificSummary,
+		["checkId"] = _checkId,
+		["status"] = _status,
+		["flaggedResources"] = _flaggedResources,
+		["timestamp"] = _timestamp,
+		["resourcesSummary"] = _resourcesSummary,
+		["categorySpecificSummary"] = _categorySpecificSummary,
 	}
-	M.AssertTrustedAdvisorCheckResult(t)
+	asserts.AssertTrustedAdvisorCheckResult(t)
 	return t
 end
 
-local DescribeTrustedAdvisorChecksRequest_keys = { "language" = true, nil }
+keys.DescribeTrustedAdvisorChecksRequest = { ["language"] = true, nil }
 
-function M.AssertDescribeTrustedAdvisorChecksRequest(struct)
+function asserts.AssertDescribeTrustedAdvisorChecksRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTrustedAdvisorChecksRequest to be of type 'table'")
 	assert(struct["language"], "Expected key language to exist in table")
-	if struct["language"] then M.AssertString(struct["language"]) end
+	if struct["language"] then asserts.AssertString(struct["language"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTrustedAdvisorChecksRequest_keys[k], "DescribeTrustedAdvisorChecksRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrustedAdvisorChecksRequest[k], "DescribeTrustedAdvisorChecksRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTrustedAdvisorChecksRequest
 -- <p/>
--- @param language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @param _language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
 -- Required parameter: language
-function M.DescribeTrustedAdvisorChecksRequest(language, ...)
+function M.DescribeTrustedAdvisorChecksRequest(_language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorChecksRequest")
 	local t = { 
-		["language"] = language,
+		["language"] = _language,
 	}
-	M.AssertDescribeTrustedAdvisorChecksRequest(t)
+	asserts.AssertDescribeTrustedAdvisorChecksRequest(t)
 	return t
 end
 
-local DescribeTrustedAdvisorCheckResultRequest_keys = { "checkId" = true, "language" = true, nil }
+keys.DescribeTrustedAdvisorCheckResultRequest = { ["checkId"] = true, ["language"] = true, nil }
 
-function M.AssertDescribeTrustedAdvisorCheckResultRequest(struct)
+function asserts.AssertDescribeTrustedAdvisorCheckResultRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTrustedAdvisorCheckResultRequest to be of type 'table'")
 	assert(struct["checkId"], "Expected key checkId to exist in table")
-	if struct["checkId"] then M.AssertString(struct["checkId"]) end
-	if struct["language"] then M.AssertString(struct["language"]) end
+	if struct["checkId"] then asserts.AssertString(struct["checkId"]) end
+	if struct["language"] then asserts.AssertString(struct["language"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTrustedAdvisorCheckResultRequest_keys[k], "DescribeTrustedAdvisorCheckResultRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrustedAdvisorCheckResultRequest[k], "DescribeTrustedAdvisorCheckResultRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckResultRequest
 -- <p/>
--- @param checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param _language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
 -- Required parameter: checkId
-function M.DescribeTrustedAdvisorCheckResultRequest(checkId, language, ...)
+function M.DescribeTrustedAdvisorCheckResultRequest(_checkId, _language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckResultRequest")
 	local t = { 
-		["checkId"] = checkId,
-		["language"] = language,
+		["checkId"] = _checkId,
+		["language"] = _language,
 	}
-	M.AssertDescribeTrustedAdvisorCheckResultRequest(t)
+	asserts.AssertDescribeTrustedAdvisorCheckResultRequest(t)
 	return t
 end
 
-local CreateCaseResponse_keys = { "caseId" = true, nil }
+keys.CreateCaseResponse = { ["caseId"] = true, nil }
 
-function M.AssertCreateCaseResponse(struct)
+function asserts.AssertCreateCaseResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCaseResponse to be of type 'table'")
-	if struct["caseId"] then M.AssertCaseId(struct["caseId"]) end
+	if struct["caseId"] then asserts.AssertCaseId(struct["caseId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCaseResponse_keys[k], "CreateCaseResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateCaseResponse[k], "CreateCaseResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCaseResponse
 -- <p>The AWS Support case ID returned by a successful completion of the <a>CreateCase</a> operation. </p>
--- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
-function M.CreateCaseResponse(caseId, ...)
+-- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+function M.CreateCaseResponse(_caseId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCaseResponse")
 	local t = { 
-		["caseId"] = caseId,
+		["caseId"] = _caseId,
 	}
-	M.AssertCreateCaseResponse(t)
+	asserts.AssertCreateCaseResponse(t)
 	return t
 end
 
-local DescribeServicesRequest_keys = { "serviceCodeList" = true, "language" = true, nil }
+keys.DescribeServicesRequest = { ["serviceCodeList"] = true, ["language"] = true, nil }
 
-function M.AssertDescribeServicesRequest(struct)
+function asserts.AssertDescribeServicesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeServicesRequest to be of type 'table'")
-	if struct["serviceCodeList"] then M.AssertServiceCodeList(struct["serviceCodeList"]) end
-	if struct["language"] then M.AssertLanguage(struct["language"]) end
+	if struct["serviceCodeList"] then asserts.AssertServiceCodeList(struct["serviceCodeList"]) end
+	if struct["language"] then asserts.AssertLanguage(struct["language"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeServicesRequest_keys[k], "DescribeServicesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeServicesRequest[k], "DescribeServicesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeServicesRequest
 -- <p/>
--- @param serviceCodeList [ServiceCodeList] <p>A JSON-formatted list of service codes available for AWS services.</p>
--- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
-function M.DescribeServicesRequest(serviceCodeList, language, ...)
+-- @param _serviceCodeList [ServiceCodeList] <p>A JSON-formatted list of service codes available for AWS services.</p>
+-- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+function M.DescribeServicesRequest(_serviceCodeList, _language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServicesRequest")
 	local t = { 
-		["serviceCodeList"] = serviceCodeList,
-		["language"] = language,
+		["serviceCodeList"] = _serviceCodeList,
+		["language"] = _language,
 	}
-	M.AssertDescribeServicesRequest(t)
+	asserts.AssertDescribeServicesRequest(t)
 	return t
 end
 
-local RefreshTrustedAdvisorCheckResponse_keys = { "status" = true, nil }
+keys.RefreshTrustedAdvisorCheckResponse = { ["status"] = true, nil }
 
-function M.AssertRefreshTrustedAdvisorCheckResponse(struct)
+function asserts.AssertRefreshTrustedAdvisorCheckResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RefreshTrustedAdvisorCheckResponse to be of type 'table'")
 	assert(struct["status"], "Expected key status to exist in table")
-	if struct["status"] then M.AssertTrustedAdvisorCheckRefreshStatus(struct["status"]) end
+	if struct["status"] then asserts.AssertTrustedAdvisorCheckRefreshStatus(struct["status"]) end
 	for k,_ in pairs(struct) do
-		assert(RefreshTrustedAdvisorCheckResponse_keys[k], "RefreshTrustedAdvisorCheckResponse contains unknown key " .. tostring(k))
+		assert(keys.RefreshTrustedAdvisorCheckResponse[k], "RefreshTrustedAdvisorCheckResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RefreshTrustedAdvisorCheckResponse
 -- <p>The current refresh status of a Trusted Advisor check.</p>
--- @param status [TrustedAdvisorCheckRefreshStatus] <p>The current refresh status for a check, including the amount of time until the check is eligible for refresh.</p>
+-- @param _status [TrustedAdvisorCheckRefreshStatus] <p>The current refresh status for a check, including the amount of time until the check is eligible for refresh.</p>
 -- Required parameter: status
-function M.RefreshTrustedAdvisorCheckResponse(status, ...)
+function M.RefreshTrustedAdvisorCheckResponse(_status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshTrustedAdvisorCheckResponse")
 	local t = { 
-		["status"] = status,
+		["status"] = _status,
 	}
-	M.AssertRefreshTrustedAdvisorCheckResponse(t)
+	asserts.AssertRefreshTrustedAdvisorCheckResponse(t)
 	return t
 end
 
-local DescribeCommunicationsResponse_keys = { "communications" = true, "nextToken" = true, nil }
+keys.DescribeCommunicationsResponse = { ["communications"] = true, ["nextToken"] = true, nil }
 
-function M.AssertDescribeCommunicationsResponse(struct)
+function asserts.AssertDescribeCommunicationsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCommunicationsResponse to be of type 'table'")
-	if struct["communications"] then M.AssertCommunicationList(struct["communications"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
+	if struct["communications"] then asserts.AssertCommunicationList(struct["communications"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCommunicationsResponse_keys[k], "DescribeCommunicationsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeCommunicationsResponse[k], "DescribeCommunicationsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCommunicationsResponse
 -- <p>The communications returned by the <a>DescribeCommunications</a> operation.</p>
--- @param communications [CommunicationList] <p>The communications for the case.</p>
--- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
-function M.DescribeCommunicationsResponse(communications, nextToken, ...)
+-- @param _communications [CommunicationList] <p>The communications for the case.</p>
+-- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
+function M.DescribeCommunicationsResponse(_communications, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommunicationsResponse")
 	local t = { 
-		["communications"] = communications,
-		["nextToken"] = nextToken,
+		["communications"] = _communications,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertDescribeCommunicationsResponse(t)
+	asserts.AssertDescribeCommunicationsResponse(t)
 	return t
 end
 
-local Communication_keys = { "body" = true, "attachmentSet" = true, "caseId" = true, "timeCreated" = true, "submittedBy" = true, nil }
+keys.Communication = { ["body"] = true, ["attachmentSet"] = true, ["caseId"] = true, ["timeCreated"] = true, ["submittedBy"] = true, nil }
 
-function M.AssertCommunication(struct)
+function asserts.AssertCommunication(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Communication to be of type 'table'")
-	if struct["body"] then M.AssertCommunicationBody(struct["body"]) end
-	if struct["attachmentSet"] then M.AssertAttachmentSet(struct["attachmentSet"]) end
-	if struct["caseId"] then M.AssertCaseId(struct["caseId"]) end
-	if struct["timeCreated"] then M.AssertTimeCreated(struct["timeCreated"]) end
-	if struct["submittedBy"] then M.AssertSubmittedBy(struct["submittedBy"]) end
+	if struct["body"] then asserts.AssertCommunicationBody(struct["body"]) end
+	if struct["attachmentSet"] then asserts.AssertAttachmentSet(struct["attachmentSet"]) end
+	if struct["caseId"] then asserts.AssertCaseId(struct["caseId"]) end
+	if struct["timeCreated"] then asserts.AssertTimeCreated(struct["timeCreated"]) end
+	if struct["submittedBy"] then asserts.AssertSubmittedBy(struct["submittedBy"]) end
 	for k,_ in pairs(struct) do
-		assert(Communication_keys[k], "Communication contains unknown key " .. tostring(k))
+		assert(keys.Communication[k], "Communication contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Communication
 -- <p>A communication associated with an AWS Support case. The communication consists of the case ID, the message body, attachment information, the account email address, and the date and time of the communication.</p>
--- @param body [CommunicationBody] <p>The text of the communication between the customer and AWS Support.</p>
--- @param attachmentSet [AttachmentSet] <p>Information about the attachments to the case communication.</p>
--- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
--- @param timeCreated [TimeCreated] <p>The time the communication was created.</p>
--- @param submittedBy [SubmittedBy] <p>The email address of the account that submitted the AWS Support case.</p>
-function M.Communication(body, attachmentSet, caseId, timeCreated, submittedBy, ...)
+-- @param _body [CommunicationBody] <p>The text of the communication between the customer and AWS Support.</p>
+-- @param _attachmentSet [AttachmentSet] <p>Information about the attachments to the case communication.</p>
+-- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @param _timeCreated [TimeCreated] <p>The time the communication was created.</p>
+-- @param _submittedBy [SubmittedBy] <p>The email address of the account that submitted the AWS Support case.</p>
+function M.Communication(_body, _attachmentSet, _caseId, _timeCreated, _submittedBy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Communication")
 	local t = { 
-		["body"] = body,
-		["attachmentSet"] = attachmentSet,
-		["caseId"] = caseId,
-		["timeCreated"] = timeCreated,
-		["submittedBy"] = submittedBy,
+		["body"] = _body,
+		["attachmentSet"] = _attachmentSet,
+		["caseId"] = _caseId,
+		["timeCreated"] = _timeCreated,
+		["submittedBy"] = _submittedBy,
 	}
-	M.AssertCommunication(t)
+	asserts.AssertCommunication(t)
 	return t
 end
 
-local AttachmentSetExpired_keys = { "message" = true, nil }
+keys.AttachmentSetExpired = { ["message"] = true, nil }
 
-function M.AssertAttachmentSetExpired(struct)
+function asserts.AssertAttachmentSetExpired(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachmentSetExpired to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachmentSetExpired_keys[k], "AttachmentSetExpired contains unknown key " .. tostring(k))
+		assert(keys.AttachmentSetExpired[k], "AttachmentSetExpired contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachmentSetExpired
 -- <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
--- @param message [ErrorMessage] <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
-function M.AttachmentSetExpired(message, ...)
+-- @param _message [ErrorMessage] <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
+function M.AttachmentSetExpired(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetExpired")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAttachmentSetExpired(t)
+	asserts.AssertAttachmentSetExpired(t)
 	return t
 end
 
-local AttachmentSetSizeLimitExceeded_keys = { "message" = true, nil }
+keys.AttachmentSetSizeLimitExceeded = { ["message"] = true, nil }
 
-function M.AssertAttachmentSetSizeLimitExceeded(struct)
+function asserts.AssertAttachmentSetSizeLimitExceeded(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachmentSetSizeLimitExceeded to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachmentSetSizeLimitExceeded_keys[k], "AttachmentSetSizeLimitExceeded contains unknown key " .. tostring(k))
+		assert(keys.AttachmentSetSizeLimitExceeded[k], "AttachmentSetSizeLimitExceeded contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachmentSetSizeLimitExceeded
 -- <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
--- @param message [ErrorMessage] <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
-function M.AttachmentSetSizeLimitExceeded(message, ...)
+-- @param _message [ErrorMessage] <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
+function M.AttachmentSetSizeLimitExceeded(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetSizeLimitExceeded")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAttachmentSetSizeLimitExceeded(t)
+	asserts.AssertAttachmentSetSizeLimitExceeded(t)
 	return t
 end
 
-local TrustedAdvisorCheckSummary_keys = { "checkId" = true, "status" = true, "timestamp" = true, "resourcesSummary" = true, "hasFlaggedResources" = true, "categorySpecificSummary" = true, nil }
+keys.TrustedAdvisorCheckSummary = { ["checkId"] = true, ["status"] = true, ["timestamp"] = true, ["resourcesSummary"] = true, ["hasFlaggedResources"] = true, ["categorySpecificSummary"] = true, nil }
 
-function M.AssertTrustedAdvisorCheckSummary(struct)
+function asserts.AssertTrustedAdvisorCheckSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrustedAdvisorCheckSummary to be of type 'table'")
 	assert(struct["checkId"], "Expected key checkId to exist in table")
@@ -752,1037 +755,1037 @@ function M.AssertTrustedAdvisorCheckSummary(struct)
 	assert(struct["status"], "Expected key status to exist in table")
 	assert(struct["resourcesSummary"], "Expected key resourcesSummary to exist in table")
 	assert(struct["categorySpecificSummary"], "Expected key categorySpecificSummary to exist in table")
-	if struct["checkId"] then M.AssertString(struct["checkId"]) end
-	if struct["status"] then M.AssertString(struct["status"]) end
-	if struct["timestamp"] then M.AssertString(struct["timestamp"]) end
-	if struct["resourcesSummary"] then M.AssertTrustedAdvisorResourcesSummary(struct["resourcesSummary"]) end
-	if struct["hasFlaggedResources"] then M.AssertBoolean(struct["hasFlaggedResources"]) end
-	if struct["categorySpecificSummary"] then M.AssertTrustedAdvisorCategorySpecificSummary(struct["categorySpecificSummary"]) end
+	if struct["checkId"] then asserts.AssertString(struct["checkId"]) end
+	if struct["status"] then asserts.AssertString(struct["status"]) end
+	if struct["timestamp"] then asserts.AssertString(struct["timestamp"]) end
+	if struct["resourcesSummary"] then asserts.AssertTrustedAdvisorResourcesSummary(struct["resourcesSummary"]) end
+	if struct["hasFlaggedResources"] then asserts.AssertBoolean(struct["hasFlaggedResources"]) end
+	if struct["categorySpecificSummary"] then asserts.AssertTrustedAdvisorCategorySpecificSummary(struct["categorySpecificSummary"]) end
 	for k,_ in pairs(struct) do
-		assert(TrustedAdvisorCheckSummary_keys[k], "TrustedAdvisorCheckSummary contains unknown key " .. tostring(k))
+		assert(keys.TrustedAdvisorCheckSummary[k], "TrustedAdvisorCheckSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrustedAdvisorCheckSummary
 -- <p>A summary of a Trusted Advisor check result, including the alert status, last refresh, and number of resources examined.</p>
--- @param checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
--- @param timestamp [String] <p>The time of the last refresh of the check.</p>
--- @param resourcesSummary [TrustedAdvisorResourcesSummary] <p>A summary of a Trusted Advisor check result, including the alert status, last refresh, and number of resources examined.</p>
--- @param hasFlaggedResources [Boolean] <p>Specifies whether the Trusted Advisor check has flagged resources.</p>
--- @param categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
+-- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param _status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
+-- @param _timestamp [String] <p>The time of the last refresh of the check.</p>
+-- @param _resourcesSummary [TrustedAdvisorResourcesSummary] 
+-- @param _hasFlaggedResources [Boolean] <p>Specifies whether the Trusted Advisor check has flagged resources.</p>
+-- @param _categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
 -- Required parameter: checkId
 -- Required parameter: timestamp
 -- Required parameter: status
 -- Required parameter: resourcesSummary
 -- Required parameter: categorySpecificSummary
-function M.TrustedAdvisorCheckSummary(checkId, status, timestamp, resourcesSummary, hasFlaggedResources, categorySpecificSummary, ...)
+function M.TrustedAdvisorCheckSummary(_checkId, _status, _timestamp, _resourcesSummary, _hasFlaggedResources, _categorySpecificSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCheckSummary")
 	local t = { 
-		["checkId"] = checkId,
-		["status"] = status,
-		["timestamp"] = timestamp,
-		["resourcesSummary"] = resourcesSummary,
-		["hasFlaggedResources"] = hasFlaggedResources,
-		["categorySpecificSummary"] = categorySpecificSummary,
+		["checkId"] = _checkId,
+		["status"] = _status,
+		["timestamp"] = _timestamp,
+		["resourcesSummary"] = _resourcesSummary,
+		["hasFlaggedResources"] = _hasFlaggedResources,
+		["categorySpecificSummary"] = _categorySpecificSummary,
 	}
-	M.AssertTrustedAdvisorCheckSummary(t)
+	asserts.AssertTrustedAdvisorCheckSummary(t)
 	return t
 end
 
-local AddCommunicationToCaseResponse_keys = { "result" = true, nil }
+keys.AddCommunicationToCaseResponse = { ["result"] = true, nil }
 
-function M.AssertAddCommunicationToCaseResponse(struct)
+function asserts.AssertAddCommunicationToCaseResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddCommunicationToCaseResponse to be of type 'table'")
-	if struct["result"] then M.AssertResult(struct["result"]) end
+	if struct["result"] then asserts.AssertResult(struct["result"]) end
 	for k,_ in pairs(struct) do
-		assert(AddCommunicationToCaseResponse_keys[k], "AddCommunicationToCaseResponse contains unknown key " .. tostring(k))
+		assert(keys.AddCommunicationToCaseResponse[k], "AddCommunicationToCaseResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddCommunicationToCaseResponse
 -- <p>The result of the <a>AddCommunicationToCase</a> operation.</p>
--- @param result [Result] <p>True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an error.</p>
-function M.AddCommunicationToCaseResponse(result, ...)
+-- @param _result [Result] <p>True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an error.</p>
+function M.AddCommunicationToCaseResponse(_result, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddCommunicationToCaseResponse")
 	local t = { 
-		["result"] = result,
+		["result"] = _result,
 	}
-	M.AssertAddCommunicationToCaseResponse(t)
+	asserts.AssertAddCommunicationToCaseResponse(t)
 	return t
 end
 
-local Category_keys = { "code" = true, "name" = true, nil }
+keys.Category = { ["code"] = true, ["name"] = true, nil }
 
-function M.AssertCategory(struct)
+function asserts.AssertCategory(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Category to be of type 'table'")
-	if struct["code"] then M.AssertCategoryCode(struct["code"]) end
-	if struct["name"] then M.AssertCategoryName(struct["name"]) end
+	if struct["code"] then asserts.AssertCategoryCode(struct["code"]) end
+	if struct["name"] then asserts.AssertCategoryName(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(Category_keys[k], "Category contains unknown key " .. tostring(k))
+		assert(keys.Category[k], "Category contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Category
 -- <p>A JSON-formatted name/value pair that represents the category name and category code of the problem, selected from the <a>DescribeServices</a> response for each AWS service.</p>
--- @param code [CategoryCode] <p>The category code for the support case.</p>
--- @param name [CategoryName] <p>The category name for the support case.</p>
-function M.Category(code, name, ...)
+-- @param _code [CategoryCode] <p>The category code for the support case.</p>
+-- @param _name [CategoryName] <p>The category name for the support case.</p>
+function M.Category(_code, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Category")
 	local t = { 
-		["code"] = code,
-		["name"] = name,
+		["code"] = _code,
+		["name"] = _name,
 	}
-	M.AssertCategory(t)
+	asserts.AssertCategory(t)
 	return t
 end
 
-local ResolveCaseResponse_keys = { "finalCaseStatus" = true, "initialCaseStatus" = true, nil }
+keys.ResolveCaseResponse = { ["finalCaseStatus"] = true, ["initialCaseStatus"] = true, nil }
 
-function M.AssertResolveCaseResponse(struct)
+function asserts.AssertResolveCaseResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResolveCaseResponse to be of type 'table'")
-	if struct["finalCaseStatus"] then M.AssertCaseStatus(struct["finalCaseStatus"]) end
-	if struct["initialCaseStatus"] then M.AssertCaseStatus(struct["initialCaseStatus"]) end
+	if struct["finalCaseStatus"] then asserts.AssertCaseStatus(struct["finalCaseStatus"]) end
+	if struct["initialCaseStatus"] then asserts.AssertCaseStatus(struct["initialCaseStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(ResolveCaseResponse_keys[k], "ResolveCaseResponse contains unknown key " .. tostring(k))
+		assert(keys.ResolveCaseResponse[k], "ResolveCaseResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResolveCaseResponse
 -- <p>The status of the case returned by the <a>ResolveCase</a> operation.</p>
--- @param finalCaseStatus [CaseStatus] <p>The status of the case after the <a>ResolveCase</a> request was processed.</p>
--- @param initialCaseStatus [CaseStatus] <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
-function M.ResolveCaseResponse(finalCaseStatus, initialCaseStatus, ...)
+-- @param _finalCaseStatus [CaseStatus] <p>The status of the case after the <a>ResolveCase</a> request was processed.</p>
+-- @param _initialCaseStatus [CaseStatus] <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
+function M.ResolveCaseResponse(_finalCaseStatus, _initialCaseStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCaseResponse")
 	local t = { 
-		["finalCaseStatus"] = finalCaseStatus,
-		["initialCaseStatus"] = initialCaseStatus,
+		["finalCaseStatus"] = _finalCaseStatus,
+		["initialCaseStatus"] = _initialCaseStatus,
 	}
-	M.AssertResolveCaseResponse(t)
+	asserts.AssertResolveCaseResponse(t)
 	return t
 end
 
-local DescribeTrustedAdvisorCheckResultResponse_keys = { "result" = true, nil }
+keys.DescribeTrustedAdvisorCheckResultResponse = { ["result"] = true, nil }
 
-function M.AssertDescribeTrustedAdvisorCheckResultResponse(struct)
+function asserts.AssertDescribeTrustedAdvisorCheckResultResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTrustedAdvisorCheckResultResponse to be of type 'table'")
-	if struct["result"] then M.AssertTrustedAdvisorCheckResult(struct["result"]) end
+	if struct["result"] then asserts.AssertTrustedAdvisorCheckResult(struct["result"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTrustedAdvisorCheckResultResponse_keys[k], "DescribeTrustedAdvisorCheckResultResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrustedAdvisorCheckResultResponse[k], "DescribeTrustedAdvisorCheckResultResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckResultResponse
 -- <p>The result of the Trusted Advisor check returned by the <a>DescribeTrustedAdvisorCheckResult</a> operation.</p>
--- @param result [TrustedAdvisorCheckResult] <p>The detailed results of the Trusted Advisor check.</p>
-function M.DescribeTrustedAdvisorCheckResultResponse(result, ...)
+-- @param _result [TrustedAdvisorCheckResult] <p>The detailed results of the Trusted Advisor check.</p>
+function M.DescribeTrustedAdvisorCheckResultResponse(_result, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckResultResponse")
 	local t = { 
-		["result"] = result,
+		["result"] = _result,
 	}
-	M.AssertDescribeTrustedAdvisorCheckResultResponse(t)
+	asserts.AssertDescribeTrustedAdvisorCheckResultResponse(t)
 	return t
 end
 
-local DescribeCasesRequest_keys = { "includeCommunications" = true, "language" = true, "includeResolvedCases" = true, "maxResults" = true, "afterTime" = true, "caseIdList" = true, "displayId" = true, "nextToken" = true, "beforeTime" = true, nil }
+keys.DescribeCasesRequest = { ["includeCommunications"] = true, ["language"] = true, ["includeResolvedCases"] = true, ["maxResults"] = true, ["afterTime"] = true, ["caseIdList"] = true, ["displayId"] = true, ["nextToken"] = true, ["beforeTime"] = true, nil }
 
-function M.AssertDescribeCasesRequest(struct)
+function asserts.AssertDescribeCasesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCasesRequest to be of type 'table'")
-	if struct["includeCommunications"] then M.AssertIncludeCommunications(struct["includeCommunications"]) end
-	if struct["language"] then M.AssertLanguage(struct["language"]) end
-	if struct["includeResolvedCases"] then M.AssertIncludeResolvedCases(struct["includeResolvedCases"]) end
-	if struct["maxResults"] then M.AssertMaxResults(struct["maxResults"]) end
-	if struct["afterTime"] then M.AssertAfterTime(struct["afterTime"]) end
-	if struct["caseIdList"] then M.AssertCaseIdList(struct["caseIdList"]) end
-	if struct["displayId"] then M.AssertDisplayId(struct["displayId"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["beforeTime"] then M.AssertBeforeTime(struct["beforeTime"]) end
+	if struct["includeCommunications"] then asserts.AssertIncludeCommunications(struct["includeCommunications"]) end
+	if struct["language"] then asserts.AssertLanguage(struct["language"]) end
+	if struct["includeResolvedCases"] then asserts.AssertIncludeResolvedCases(struct["includeResolvedCases"]) end
+	if struct["maxResults"] then asserts.AssertMaxResults(struct["maxResults"]) end
+	if struct["afterTime"] then asserts.AssertAfterTime(struct["afterTime"]) end
+	if struct["caseIdList"] then asserts.AssertCaseIdList(struct["caseIdList"]) end
+	if struct["displayId"] then asserts.AssertDisplayId(struct["displayId"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["beforeTime"] then asserts.AssertBeforeTime(struct["beforeTime"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCasesRequest_keys[k], "DescribeCasesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeCasesRequest[k], "DescribeCasesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCasesRequest
 -- <p/>
--- @param includeCommunications [IncludeCommunications] <p>Specifies whether communications should be included in the <a>DescribeCases</a> results. The default is <i>true</i>.</p>
--- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
--- @param includeResolvedCases [IncludeResolvedCases] <p>Specifies whether resolved support cases should be included in the <a>DescribeCases</a> results. The default is <i>false</i>.</p>
--- @param maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
--- @param afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
--- @param caseIdList [CaseIdList] <p>A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.</p>
--- @param displayId [DisplayId] <p>The ID displayed for a case in the AWS Support Center user interface.</p>
--- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
--- @param beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
-function M.DescribeCasesRequest(includeCommunications, language, includeResolvedCases, maxResults, afterTime, caseIdList, displayId, nextToken, beforeTime, ...)
+-- @param _includeCommunications [IncludeCommunications] <p>Specifies whether communications should be included in the <a>DescribeCases</a> results. The default is <i>true</i>.</p>
+-- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @param _includeResolvedCases [IncludeResolvedCases] <p>Specifies whether resolved support cases should be included in the <a>DescribeCases</a> results. The default is <i>false</i>.</p>
+-- @param _maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
+-- @param _afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- @param _caseIdList [CaseIdList] <p>A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.</p>
+-- @param _displayId [DisplayId] <p>The ID displayed for a case in the AWS Support Center user interface.</p>
+-- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- @param _beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+function M.DescribeCasesRequest(_includeCommunications, _language, _includeResolvedCases, _maxResults, _afterTime, _caseIdList, _displayId, _nextToken, _beforeTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCasesRequest")
 	local t = { 
-		["includeCommunications"] = includeCommunications,
-		["language"] = language,
-		["includeResolvedCases"] = includeResolvedCases,
-		["maxResults"] = maxResults,
-		["afterTime"] = afterTime,
-		["caseIdList"] = caseIdList,
-		["displayId"] = displayId,
-		["nextToken"] = nextToken,
-		["beforeTime"] = beforeTime,
+		["includeCommunications"] = _includeCommunications,
+		["language"] = _language,
+		["includeResolvedCases"] = _includeResolvedCases,
+		["maxResults"] = _maxResults,
+		["afterTime"] = _afterTime,
+		["caseIdList"] = _caseIdList,
+		["displayId"] = _displayId,
+		["nextToken"] = _nextToken,
+		["beforeTime"] = _beforeTime,
 	}
-	M.AssertDescribeCasesRequest(t)
+	asserts.AssertDescribeCasesRequest(t)
 	return t
 end
 
-local DescribeTrustedAdvisorChecksResponse_keys = { "checks" = true, nil }
+keys.DescribeTrustedAdvisorChecksResponse = { ["checks"] = true, nil }
 
-function M.AssertDescribeTrustedAdvisorChecksResponse(struct)
+function asserts.AssertDescribeTrustedAdvisorChecksResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTrustedAdvisorChecksResponse to be of type 'table'")
 	assert(struct["checks"], "Expected key checks to exist in table")
-	if struct["checks"] then M.AssertTrustedAdvisorCheckList(struct["checks"]) end
+	if struct["checks"] then asserts.AssertTrustedAdvisorCheckList(struct["checks"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTrustedAdvisorChecksResponse_keys[k], "DescribeTrustedAdvisorChecksResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrustedAdvisorChecksResponse[k], "DescribeTrustedAdvisorChecksResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTrustedAdvisorChecksResponse
 -- <p>Information about the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorChecks</a> operation.</p>
--- @param checks [TrustedAdvisorCheckList] <p>Information about all available Trusted Advisor checks.</p>
+-- @param _checks [TrustedAdvisorCheckList] <p>Information about all available Trusted Advisor checks.</p>
 -- Required parameter: checks
-function M.DescribeTrustedAdvisorChecksResponse(checks, ...)
+function M.DescribeTrustedAdvisorChecksResponse(_checks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorChecksResponse")
 	local t = { 
-		["checks"] = checks,
+		["checks"] = _checks,
 	}
-	M.AssertDescribeTrustedAdvisorChecksResponse(t)
+	asserts.AssertDescribeTrustedAdvisorChecksResponse(t)
 	return t
 end
 
-local Attachment_keys = { "data" = true, "fileName" = true, nil }
+keys.Attachment = { ["data"] = true, ["fileName"] = true, nil }
 
-function M.AssertAttachment(struct)
+function asserts.AssertAttachment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Attachment to be of type 'table'")
-	if struct["data"] then M.AssertData(struct["data"]) end
-	if struct["fileName"] then M.AssertFileName(struct["fileName"]) end
+	if struct["data"] then asserts.AssertData(struct["data"]) end
+	if struct["fileName"] then asserts.AssertFileName(struct["fileName"]) end
 	for k,_ in pairs(struct) do
-		assert(Attachment_keys[k], "Attachment contains unknown key " .. tostring(k))
+		assert(keys.Attachment[k], "Attachment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Attachment
 -- <p>An attachment to a case communication. The attachment consists of the file name and the content of the file.</p>
--- @param data [Data] <p>The content of the attachment file.</p>
--- @param fileName [FileName] <p>The name of the attachment file.</p>
-function M.Attachment(data, fileName, ...)
+-- @param _data [Data] <p>The content of the attachment file.</p>
+-- @param _fileName [FileName] <p>The name of the attachment file.</p>
+function M.Attachment(_data, _fileName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Attachment")
 	local t = { 
-		["data"] = data,
-		["fileName"] = fileName,
+		["data"] = _data,
+		["fileName"] = _fileName,
 	}
-	M.AssertAttachment(t)
+	asserts.AssertAttachment(t)
 	return t
 end
 
-local DescribeTrustedAdvisorCheckRefreshStatusesRequest_keys = { "checkIds" = true, nil }
+keys.DescribeTrustedAdvisorCheckRefreshStatusesRequest = { ["checkIds"] = true, nil }
 
-function M.AssertDescribeTrustedAdvisorCheckRefreshStatusesRequest(struct)
+function asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTrustedAdvisorCheckRefreshStatusesRequest to be of type 'table'")
 	assert(struct["checkIds"], "Expected key checkIds to exist in table")
-	if struct["checkIds"] then M.AssertStringList(struct["checkIds"]) end
+	if struct["checkIds"] then asserts.AssertStringList(struct["checkIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTrustedAdvisorCheckRefreshStatusesRequest_keys[k], "DescribeTrustedAdvisorCheckRefreshStatusesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrustedAdvisorCheckRefreshStatusesRequest[k], "DescribeTrustedAdvisorCheckRefreshStatusesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckRefreshStatusesRequest
 -- <p/>
--- @param checkIds [StringList] <p>The IDs of the Trusted Advisor checks to get the status of. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
+-- @param _checkIds [StringList] <p>The IDs of the Trusted Advisor checks to get the status of. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
 -- Required parameter: checkIds
-function M.DescribeTrustedAdvisorCheckRefreshStatusesRequest(checkIds, ...)
+function M.DescribeTrustedAdvisorCheckRefreshStatusesRequest(_checkIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckRefreshStatusesRequest")
 	local t = { 
-		["checkIds"] = checkIds,
+		["checkIds"] = _checkIds,
 	}
-	M.AssertDescribeTrustedAdvisorCheckRefreshStatusesRequest(t)
+	asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesRequest(t)
 	return t
 end
 
-local DescribeCommunicationsRequest_keys = { "afterTime" = true, "nextToken" = true, "beforeTime" = true, "caseId" = true, "maxResults" = true, nil }
+keys.DescribeCommunicationsRequest = { ["afterTime"] = true, ["nextToken"] = true, ["beforeTime"] = true, ["caseId"] = true, ["maxResults"] = true, nil }
 
-function M.AssertDescribeCommunicationsRequest(struct)
+function asserts.AssertDescribeCommunicationsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCommunicationsRequest to be of type 'table'")
 	assert(struct["caseId"], "Expected key caseId to exist in table")
-	if struct["afterTime"] then M.AssertAfterTime(struct["afterTime"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
-	if struct["beforeTime"] then M.AssertBeforeTime(struct["beforeTime"]) end
-	if struct["caseId"] then M.AssertCaseId(struct["caseId"]) end
-	if struct["maxResults"] then M.AssertMaxResults(struct["maxResults"]) end
+	if struct["afterTime"] then asserts.AssertAfterTime(struct["afterTime"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
+	if struct["beforeTime"] then asserts.AssertBeforeTime(struct["beforeTime"]) end
+	if struct["caseId"] then asserts.AssertCaseId(struct["caseId"]) end
+	if struct["maxResults"] then asserts.AssertMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCommunicationsRequest_keys[k], "DescribeCommunicationsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeCommunicationsRequest[k], "DescribeCommunicationsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCommunicationsRequest
 -- <p/>
--- @param afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
--- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
--- @param beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
--- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
--- @param maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
+-- @param _afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- @param _beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @param _maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
 -- Required parameter: caseId
-function M.DescribeCommunicationsRequest(afterTime, nextToken, beforeTime, caseId, maxResults, ...)
+function M.DescribeCommunicationsRequest(_afterTime, _nextToken, _beforeTime, _caseId, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommunicationsRequest")
 	local t = { 
-		["afterTime"] = afterTime,
-		["nextToken"] = nextToken,
-		["beforeTime"] = beforeTime,
-		["caseId"] = caseId,
-		["maxResults"] = maxResults,
+		["afterTime"] = _afterTime,
+		["nextToken"] = _nextToken,
+		["beforeTime"] = _beforeTime,
+		["caseId"] = _caseId,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertDescribeCommunicationsRequest(t)
+	asserts.AssertDescribeCommunicationsRequest(t)
 	return t
 end
 
-local AddCommunicationToCaseRequest_keys = { "communicationBody" = true, "caseId" = true, "ccEmailAddresses" = true, "attachmentSetId" = true, nil }
+keys.AddCommunicationToCaseRequest = { ["communicationBody"] = true, ["caseId"] = true, ["ccEmailAddresses"] = true, ["attachmentSetId"] = true, nil }
 
-function M.AssertAddCommunicationToCaseRequest(struct)
+function asserts.AssertAddCommunicationToCaseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddCommunicationToCaseRequest to be of type 'table'")
 	assert(struct["communicationBody"], "Expected key communicationBody to exist in table")
-	if struct["communicationBody"] then M.AssertCommunicationBody(struct["communicationBody"]) end
-	if struct["caseId"] then M.AssertCaseId(struct["caseId"]) end
-	if struct["ccEmailAddresses"] then M.AssertCcEmailAddressList(struct["ccEmailAddresses"]) end
-	if struct["attachmentSetId"] then M.AssertAttachmentSetId(struct["attachmentSetId"]) end
+	if struct["communicationBody"] then asserts.AssertCommunicationBody(struct["communicationBody"]) end
+	if struct["caseId"] then asserts.AssertCaseId(struct["caseId"]) end
+	if struct["ccEmailAddresses"] then asserts.AssertCcEmailAddressList(struct["ccEmailAddresses"]) end
+	if struct["attachmentSetId"] then asserts.AssertAttachmentSetId(struct["attachmentSetId"]) end
 	for k,_ in pairs(struct) do
-		assert(AddCommunicationToCaseRequest_keys[k], "AddCommunicationToCaseRequest contains unknown key " .. tostring(k))
+		assert(keys.AddCommunicationToCaseRequest[k], "AddCommunicationToCaseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddCommunicationToCaseRequest
 -- <p>To be written.</p>
--- @param communicationBody [CommunicationBody] <p>The body of an email communication to add to the support case.</p>
--- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
--- @param ccEmailAddresses [CcEmailAddressList] <p>The email addresses in the CC line of an email to be added to the support case.</p>
--- @param attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling <a>AddAttachmentsToSet</a> </p>
+-- @param _communicationBody [CommunicationBody] <p>The body of an email communication to add to the support case.</p>
+-- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @param _ccEmailAddresses [CcEmailAddressList] <p>The email addresses in the CC line of an email to be added to the support case.</p>
+-- @param _attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling <a>AddAttachmentsToSet</a> </p>
 -- Required parameter: communicationBody
-function M.AddCommunicationToCaseRequest(communicationBody, caseId, ccEmailAddresses, attachmentSetId, ...)
+function M.AddCommunicationToCaseRequest(_communicationBody, _caseId, _ccEmailAddresses, _attachmentSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddCommunicationToCaseRequest")
 	local t = { 
-		["communicationBody"] = communicationBody,
-		["caseId"] = caseId,
-		["ccEmailAddresses"] = ccEmailAddresses,
-		["attachmentSetId"] = attachmentSetId,
+		["communicationBody"] = _communicationBody,
+		["caseId"] = _caseId,
+		["ccEmailAddresses"] = _ccEmailAddresses,
+		["attachmentSetId"] = _attachmentSetId,
 	}
-	M.AssertAddCommunicationToCaseRequest(t)
+	asserts.AssertAddCommunicationToCaseRequest(t)
 	return t
 end
 
-local AddAttachmentsToSetResponse_keys = { "expiryTime" = true, "attachmentSetId" = true, nil }
+keys.AddAttachmentsToSetResponse = { ["expiryTime"] = true, ["attachmentSetId"] = true, nil }
 
-function M.AssertAddAttachmentsToSetResponse(struct)
+function asserts.AssertAddAttachmentsToSetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddAttachmentsToSetResponse to be of type 'table'")
-	if struct["expiryTime"] then M.AssertExpiryTime(struct["expiryTime"]) end
-	if struct["attachmentSetId"] then M.AssertAttachmentSetId(struct["attachmentSetId"]) end
+	if struct["expiryTime"] then asserts.AssertExpiryTime(struct["expiryTime"]) end
+	if struct["attachmentSetId"] then asserts.AssertAttachmentSetId(struct["attachmentSetId"]) end
 	for k,_ in pairs(struct) do
-		assert(AddAttachmentsToSetResponse_keys[k], "AddAttachmentsToSetResponse contains unknown key " .. tostring(k))
+		assert(keys.AddAttachmentsToSetResponse[k], "AddAttachmentsToSetResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddAttachmentsToSetResponse
 -- <p>The ID and expiry time of the attachment set returned by the <a>AddAttachmentsToSet</a> operation.</p>
--- @param expiryTime [ExpiryTime] <p>The time and date when the attachment set expires.</p>
--- @param attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> was not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> was specified, the attachments are added to the specified set, if it exists.</p>
-function M.AddAttachmentsToSetResponse(expiryTime, attachmentSetId, ...)
+-- @param _expiryTime [ExpiryTime] <p>The time and date when the attachment set expires.</p>
+-- @param _attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> was not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> was specified, the attachments are added to the specified set, if it exists.</p>
+function M.AddAttachmentsToSetResponse(_expiryTime, _attachmentSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddAttachmentsToSetResponse")
 	local t = { 
-		["expiryTime"] = expiryTime,
-		["attachmentSetId"] = attachmentSetId,
+		["expiryTime"] = _expiryTime,
+		["attachmentSetId"] = _attachmentSetId,
 	}
-	M.AssertAddAttachmentsToSetResponse(t)
+	asserts.AssertAddAttachmentsToSetResponse(t)
 	return t
 end
 
-local TrustedAdvisorResourcesSummary_keys = { "resourcesFlagged" = true, "resourcesProcessed" = true, "resourcesSuppressed" = true, "resourcesIgnored" = true, nil }
+keys.TrustedAdvisorResourcesSummary = { ["resourcesFlagged"] = true, ["resourcesProcessed"] = true, ["resourcesSuppressed"] = true, ["resourcesIgnored"] = true, nil }
 
-function M.AssertTrustedAdvisorResourcesSummary(struct)
+function asserts.AssertTrustedAdvisorResourcesSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrustedAdvisorResourcesSummary to be of type 'table'")
 	assert(struct["resourcesProcessed"], "Expected key resourcesProcessed to exist in table")
 	assert(struct["resourcesFlagged"], "Expected key resourcesFlagged to exist in table")
 	assert(struct["resourcesIgnored"], "Expected key resourcesIgnored to exist in table")
 	assert(struct["resourcesSuppressed"], "Expected key resourcesSuppressed to exist in table")
-	if struct["resourcesFlagged"] then M.AssertLong(struct["resourcesFlagged"]) end
-	if struct["resourcesProcessed"] then M.AssertLong(struct["resourcesProcessed"]) end
-	if struct["resourcesSuppressed"] then M.AssertLong(struct["resourcesSuppressed"]) end
-	if struct["resourcesIgnored"] then M.AssertLong(struct["resourcesIgnored"]) end
+	if struct["resourcesFlagged"] then asserts.AssertLong(struct["resourcesFlagged"]) end
+	if struct["resourcesProcessed"] then asserts.AssertLong(struct["resourcesProcessed"]) end
+	if struct["resourcesSuppressed"] then asserts.AssertLong(struct["resourcesSuppressed"]) end
+	if struct["resourcesIgnored"] then asserts.AssertLong(struct["resourcesIgnored"]) end
 	for k,_ in pairs(struct) do
-		assert(TrustedAdvisorResourcesSummary_keys[k], "TrustedAdvisorResourcesSummary contains unknown key " .. tostring(k))
+		assert(keys.TrustedAdvisorResourcesSummary[k], "TrustedAdvisorResourcesSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrustedAdvisorResourcesSummary
 -- <p>Details about AWS resources that were analyzed in a call to Trusted Advisor <a>DescribeTrustedAdvisorCheckSummaries</a>. </p>
--- @param resourcesFlagged [Long] <p>The number of AWS resources that were flagged (listed) by the Trusted Advisor check.</p>
--- @param resourcesProcessed [Long] <p>The number of AWS resources that were analyzed by the Trusted Advisor check.</p>
--- @param resourcesSuppressed [Long] <p>The number of AWS resources ignored by Trusted Advisor because they were marked as suppressed by the user.</p>
--- @param resourcesIgnored [Long] <p>The number of AWS resources ignored by Trusted Advisor because information was unavailable.</p>
+-- @param _resourcesFlagged [Long] <p>The number of AWS resources that were flagged (listed) by the Trusted Advisor check.</p>
+-- @param _resourcesProcessed [Long] <p>The number of AWS resources that were analyzed by the Trusted Advisor check.</p>
+-- @param _resourcesSuppressed [Long] <p>The number of AWS resources ignored by Trusted Advisor because they were marked as suppressed by the user.</p>
+-- @param _resourcesIgnored [Long] <p>The number of AWS resources ignored by Trusted Advisor because information was unavailable.</p>
 -- Required parameter: resourcesProcessed
 -- Required parameter: resourcesFlagged
 -- Required parameter: resourcesIgnored
 -- Required parameter: resourcesSuppressed
-function M.TrustedAdvisorResourcesSummary(resourcesFlagged, resourcesProcessed, resourcesSuppressed, resourcesIgnored, ...)
+function M.TrustedAdvisorResourcesSummary(_resourcesFlagged, _resourcesProcessed, _resourcesSuppressed, _resourcesIgnored, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorResourcesSummary")
 	local t = { 
-		["resourcesFlagged"] = resourcesFlagged,
-		["resourcesProcessed"] = resourcesProcessed,
-		["resourcesSuppressed"] = resourcesSuppressed,
-		["resourcesIgnored"] = resourcesIgnored,
+		["resourcesFlagged"] = _resourcesFlagged,
+		["resourcesProcessed"] = _resourcesProcessed,
+		["resourcesSuppressed"] = _resourcesSuppressed,
+		["resourcesIgnored"] = _resourcesIgnored,
 	}
-	M.AssertTrustedAdvisorResourcesSummary(t)
+	asserts.AssertTrustedAdvisorResourcesSummary(t)
 	return t
 end
 
-local ResolveCaseRequest_keys = { "caseId" = true, nil }
+keys.ResolveCaseRequest = { ["caseId"] = true, nil }
 
-function M.AssertResolveCaseRequest(struct)
+function asserts.AssertResolveCaseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResolveCaseRequest to be of type 'table'")
-	if struct["caseId"] then M.AssertCaseId(struct["caseId"]) end
+	if struct["caseId"] then asserts.AssertCaseId(struct["caseId"]) end
 	for k,_ in pairs(struct) do
-		assert(ResolveCaseRequest_keys[k], "ResolveCaseRequest contains unknown key " .. tostring(k))
+		assert(keys.ResolveCaseRequest[k], "ResolveCaseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResolveCaseRequest
 -- <p/>
--- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
-function M.ResolveCaseRequest(caseId, ...)
+-- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+function M.ResolveCaseRequest(_caseId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCaseRequest")
 	local t = { 
-		["caseId"] = caseId,
+		["caseId"] = _caseId,
 	}
-	M.AssertResolveCaseRequest(t)
+	asserts.AssertResolveCaseRequest(t)
 	return t
 end
 
-local TrustedAdvisorCostOptimizingSummary_keys = { "estimatedMonthlySavings" = true, "estimatedPercentMonthlySavings" = true, nil }
+keys.TrustedAdvisorCostOptimizingSummary = { ["estimatedMonthlySavings"] = true, ["estimatedPercentMonthlySavings"] = true, nil }
 
-function M.AssertTrustedAdvisorCostOptimizingSummary(struct)
+function asserts.AssertTrustedAdvisorCostOptimizingSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrustedAdvisorCostOptimizingSummary to be of type 'table'")
 	assert(struct["estimatedMonthlySavings"], "Expected key estimatedMonthlySavings to exist in table")
 	assert(struct["estimatedPercentMonthlySavings"], "Expected key estimatedPercentMonthlySavings to exist in table")
-	if struct["estimatedMonthlySavings"] then M.AssertDouble(struct["estimatedMonthlySavings"]) end
-	if struct["estimatedPercentMonthlySavings"] then M.AssertDouble(struct["estimatedPercentMonthlySavings"]) end
+	if struct["estimatedMonthlySavings"] then asserts.AssertDouble(struct["estimatedMonthlySavings"]) end
+	if struct["estimatedPercentMonthlySavings"] then asserts.AssertDouble(struct["estimatedPercentMonthlySavings"]) end
 	for k,_ in pairs(struct) do
-		assert(TrustedAdvisorCostOptimizingSummary_keys[k], "TrustedAdvisorCostOptimizingSummary contains unknown key " .. tostring(k))
+		assert(keys.TrustedAdvisorCostOptimizingSummary[k], "TrustedAdvisorCostOptimizingSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrustedAdvisorCostOptimizingSummary
 -- <p>The estimated cost savings that might be realized if the recommended actions are taken.</p>
--- @param estimatedMonthlySavings [Double] <p>The estimated monthly savings that might be realized if the recommended actions are taken.</p>
--- @param estimatedPercentMonthlySavings [Double] <p>The estimated percentage of savings that might be realized if the recommended actions are taken.</p>
+-- @param _estimatedMonthlySavings [Double] <p>The estimated monthly savings that might be realized if the recommended actions are taken.</p>
+-- @param _estimatedPercentMonthlySavings [Double] <p>The estimated percentage of savings that might be realized if the recommended actions are taken.</p>
 -- Required parameter: estimatedMonthlySavings
 -- Required parameter: estimatedPercentMonthlySavings
-function M.TrustedAdvisorCostOptimizingSummary(estimatedMonthlySavings, estimatedPercentMonthlySavings, ...)
+function M.TrustedAdvisorCostOptimizingSummary(_estimatedMonthlySavings, _estimatedPercentMonthlySavings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCostOptimizingSummary")
 	local t = { 
-		["estimatedMonthlySavings"] = estimatedMonthlySavings,
-		["estimatedPercentMonthlySavings"] = estimatedPercentMonthlySavings,
+		["estimatedMonthlySavings"] = _estimatedMonthlySavings,
+		["estimatedPercentMonthlySavings"] = _estimatedPercentMonthlySavings,
 	}
-	M.AssertTrustedAdvisorCostOptimizingSummary(t)
+	asserts.AssertTrustedAdvisorCostOptimizingSummary(t)
 	return t
 end
 
-local DescribeSeverityLevelsResponse_keys = { "severityLevels" = true, nil }
+keys.DescribeSeverityLevelsResponse = { ["severityLevels"] = true, nil }
 
-function M.AssertDescribeSeverityLevelsResponse(struct)
+function asserts.AssertDescribeSeverityLevelsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSeverityLevelsResponse to be of type 'table'")
-	if struct["severityLevels"] then M.AssertSeverityLevelsList(struct["severityLevels"]) end
+	if struct["severityLevels"] then asserts.AssertSeverityLevelsList(struct["severityLevels"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSeverityLevelsResponse_keys[k], "DescribeSeverityLevelsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeSeverityLevelsResponse[k], "DescribeSeverityLevelsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSeverityLevelsResponse
 -- <p>The list of severity levels returned by the <a>DescribeSeverityLevels</a> operation.</p>
--- @param severityLevels [SeverityLevelsList] <p>The available severity levels for the support case. Available severity levels are defined by your service level agreement with AWS.</p>
-function M.DescribeSeverityLevelsResponse(severityLevels, ...)
+-- @param _severityLevels [SeverityLevelsList] <p>The available severity levels for the support case. Available severity levels are defined by your service level agreement with AWS.</p>
+function M.DescribeSeverityLevelsResponse(_severityLevels, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSeverityLevelsResponse")
 	local t = { 
-		["severityLevels"] = severityLevels,
+		["severityLevels"] = _severityLevels,
 	}
-	M.AssertDescribeSeverityLevelsResponse(t)
+	asserts.AssertDescribeSeverityLevelsResponse(t)
 	return t
 end
 
-local DescribeSeverityLevelsRequest_keys = { "language" = true, nil }
+keys.DescribeSeverityLevelsRequest = { ["language"] = true, nil }
 
-function M.AssertDescribeSeverityLevelsRequest(struct)
+function asserts.AssertDescribeSeverityLevelsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSeverityLevelsRequest to be of type 'table'")
-	if struct["language"] then M.AssertLanguage(struct["language"]) end
+	if struct["language"] then asserts.AssertLanguage(struct["language"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSeverityLevelsRequest_keys[k], "DescribeSeverityLevelsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeSeverityLevelsRequest[k], "DescribeSeverityLevelsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSeverityLevelsRequest
 -- <p/>
--- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
-function M.DescribeSeverityLevelsRequest(language, ...)
+-- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+function M.DescribeSeverityLevelsRequest(_language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSeverityLevelsRequest")
 	local t = { 
-		["language"] = language,
+		["language"] = _language,
 	}
-	M.AssertDescribeSeverityLevelsRequest(t)
+	asserts.AssertDescribeSeverityLevelsRequest(t)
 	return t
 end
 
-local TrustedAdvisorCategorySpecificSummary_keys = { "costOptimizing" = true, nil }
+keys.TrustedAdvisorCategorySpecificSummary = { ["costOptimizing"] = true, nil }
 
-function M.AssertTrustedAdvisorCategorySpecificSummary(struct)
+function asserts.AssertTrustedAdvisorCategorySpecificSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TrustedAdvisorCategorySpecificSummary to be of type 'table'")
-	if struct["costOptimizing"] then M.AssertTrustedAdvisorCostOptimizingSummary(struct["costOptimizing"]) end
+	if struct["costOptimizing"] then asserts.AssertTrustedAdvisorCostOptimizingSummary(struct["costOptimizing"]) end
 	for k,_ in pairs(struct) do
-		assert(TrustedAdvisorCategorySpecificSummary_keys[k], "TrustedAdvisorCategorySpecificSummary contains unknown key " .. tostring(k))
+		assert(keys.TrustedAdvisorCategorySpecificSummary[k], "TrustedAdvisorCategorySpecificSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TrustedAdvisorCategorySpecificSummary
 -- <p>The container for summary information that relates to the category of the Trusted Advisor check.</p>
--- @param costOptimizing [TrustedAdvisorCostOptimizingSummary] <p>The summary information about cost savings for a Trusted Advisor check that is in the Cost Optimizing category.</p>
-function M.TrustedAdvisorCategorySpecificSummary(costOptimizing, ...)
+-- @param _costOptimizing [TrustedAdvisorCostOptimizingSummary] <p>The summary information about cost savings for a Trusted Advisor check that is in the Cost Optimizing category.</p>
+function M.TrustedAdvisorCategorySpecificSummary(_costOptimizing, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCategorySpecificSummary")
 	local t = { 
-		["costOptimizing"] = costOptimizing,
+		["costOptimizing"] = _costOptimizing,
 	}
-	M.AssertTrustedAdvisorCategorySpecificSummary(t)
+	asserts.AssertTrustedAdvisorCategorySpecificSummary(t)
 	return t
 end
 
-local AddAttachmentsToSetRequest_keys = { "attachmentSetId" = true, "attachments" = true, nil }
+keys.AddAttachmentsToSetRequest = { ["attachmentSetId"] = true, ["attachments"] = true, nil }
 
-function M.AssertAddAttachmentsToSetRequest(struct)
+function asserts.AssertAddAttachmentsToSetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddAttachmentsToSetRequest to be of type 'table'")
 	assert(struct["attachments"], "Expected key attachments to exist in table")
-	if struct["attachmentSetId"] then M.AssertAttachmentSetId(struct["attachmentSetId"]) end
-	if struct["attachments"] then M.AssertAttachments(struct["attachments"]) end
+	if struct["attachmentSetId"] then asserts.AssertAttachmentSetId(struct["attachmentSetId"]) end
+	if struct["attachments"] then asserts.AssertAttachments(struct["attachments"]) end
 	for k,_ in pairs(struct) do
-		assert(AddAttachmentsToSetRequest_keys[k], "AddAttachmentsToSetRequest contains unknown key " .. tostring(k))
+		assert(keys.AddAttachmentsToSetRequest[k], "AddAttachmentsToSetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddAttachmentsToSetRequest
 -- <p/>
--- @param attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> is specified, the attachments are added to the specified set, if it exists.</p>
--- @param attachments [Attachments] <p>One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.</p>
+-- @param _attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> is specified, the attachments are added to the specified set, if it exists.</p>
+-- @param _attachments [Attachments] <p>One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.</p>
 -- Required parameter: attachments
-function M.AddAttachmentsToSetRequest(attachmentSetId, attachments, ...)
+function M.AddAttachmentsToSetRequest(_attachmentSetId, _attachments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddAttachmentsToSetRequest")
 	local t = { 
-		["attachmentSetId"] = attachmentSetId,
-		["attachments"] = attachments,
+		["attachmentSetId"] = _attachmentSetId,
+		["attachments"] = _attachments,
 	}
-	M.AssertAddAttachmentsToSetRequest(t)
+	asserts.AssertAddAttachmentsToSetRequest(t)
 	return t
 end
 
-local DescribeAttachmentLimitExceeded_keys = { "message" = true, nil }
+keys.DescribeAttachmentLimitExceeded = { ["message"] = true, nil }
 
-function M.AssertDescribeAttachmentLimitExceeded(struct)
+function asserts.AssertDescribeAttachmentLimitExceeded(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAttachmentLimitExceeded to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAttachmentLimitExceeded_keys[k], "DescribeAttachmentLimitExceeded contains unknown key " .. tostring(k))
+		assert(keys.DescribeAttachmentLimitExceeded[k], "DescribeAttachmentLimitExceeded contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAttachmentLimitExceeded
 -- <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
--- @param message [ErrorMessage] <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
-function M.DescribeAttachmentLimitExceeded(message, ...)
+-- @param _message [ErrorMessage] <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
+function M.DescribeAttachmentLimitExceeded(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentLimitExceeded")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertDescribeAttachmentLimitExceeded(t)
+	asserts.AssertDescribeAttachmentLimitExceeded(t)
 	return t
 end
 
-local AttachmentDetails_keys = { "attachmentId" = true, "fileName" = true, nil }
+keys.AttachmentDetails = { ["attachmentId"] = true, ["fileName"] = true, nil }
 
-function M.AssertAttachmentDetails(struct)
+function asserts.AssertAttachmentDetails(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachmentDetails to be of type 'table'")
-	if struct["attachmentId"] then M.AssertAttachmentId(struct["attachmentId"]) end
-	if struct["fileName"] then M.AssertFileName(struct["fileName"]) end
+	if struct["attachmentId"] then asserts.AssertAttachmentId(struct["attachmentId"]) end
+	if struct["fileName"] then asserts.AssertFileName(struct["fileName"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachmentDetails_keys[k], "AttachmentDetails contains unknown key " .. tostring(k))
+		assert(keys.AttachmentDetails[k], "AttachmentDetails contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachmentDetails
 -- <p>The file name and ID of an attachment to a case communication. You can use the ID to retrieve the attachment with the <a>DescribeAttachment</a> operation.</p>
--- @param attachmentId [AttachmentId] <p>The ID of the attachment.</p>
--- @param fileName [FileName] <p>The file name of the attachment.</p>
-function M.AttachmentDetails(attachmentId, fileName, ...)
+-- @param _attachmentId [AttachmentId] <p>The ID of the attachment.</p>
+-- @param _fileName [FileName] <p>The file name of the attachment.</p>
+function M.AttachmentDetails(_attachmentId, _fileName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentDetails")
 	local t = { 
-		["attachmentId"] = attachmentId,
-		["fileName"] = fileName,
+		["attachmentId"] = _attachmentId,
+		["fileName"] = _fileName,
 	}
-	M.AssertAttachmentDetails(t)
+	asserts.AssertAttachmentDetails(t)
 	return t
 end
 
-local DescribeServicesResponse_keys = { "services" = true, nil }
+keys.DescribeServicesResponse = { ["services"] = true, nil }
 
-function M.AssertDescribeServicesResponse(struct)
+function asserts.AssertDescribeServicesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeServicesResponse to be of type 'table'")
-	if struct["services"] then M.AssertServiceList(struct["services"]) end
+	if struct["services"] then asserts.AssertServiceList(struct["services"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeServicesResponse_keys[k], "DescribeServicesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeServicesResponse[k], "DescribeServicesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeServicesResponse
 -- <p>The list of AWS services returned by the <a>DescribeServices</a> operation.</p>
--- @param services [ServiceList] <p>A JSON-formatted list of AWS services.</p>
-function M.DescribeServicesResponse(services, ...)
+-- @param _services [ServiceList] <p>A JSON-formatted list of AWS services.</p>
+function M.DescribeServicesResponse(_services, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServicesResponse")
 	local t = { 
-		["services"] = services,
+		["services"] = _services,
 	}
-	M.AssertDescribeServicesResponse(t)
+	asserts.AssertDescribeServicesResponse(t)
 	return t
 end
 
-local DescribeTrustedAdvisorCheckSummariesResponse_keys = { "summaries" = true, nil }
+keys.DescribeTrustedAdvisorCheckSummariesResponse = { ["summaries"] = true, nil }
 
-function M.AssertDescribeTrustedAdvisorCheckSummariesResponse(struct)
+function asserts.AssertDescribeTrustedAdvisorCheckSummariesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTrustedAdvisorCheckSummariesResponse to be of type 'table'")
 	assert(struct["summaries"], "Expected key summaries to exist in table")
-	if struct["summaries"] then M.AssertTrustedAdvisorCheckSummaryList(struct["summaries"]) end
+	if struct["summaries"] then asserts.AssertTrustedAdvisorCheckSummaryList(struct["summaries"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTrustedAdvisorCheckSummariesResponse_keys[k], "DescribeTrustedAdvisorCheckSummariesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrustedAdvisorCheckSummariesResponse[k], "DescribeTrustedAdvisorCheckSummariesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckSummariesResponse
 -- <p>The summaries of the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorCheckSummaries</a> operation.</p>
--- @param summaries [TrustedAdvisorCheckSummaryList] <p>The summary information for the requested Trusted Advisor checks.</p>
+-- @param _summaries [TrustedAdvisorCheckSummaryList] <p>The summary information for the requested Trusted Advisor checks.</p>
 -- Required parameter: summaries
-function M.DescribeTrustedAdvisorCheckSummariesResponse(summaries, ...)
+function M.DescribeTrustedAdvisorCheckSummariesResponse(_summaries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckSummariesResponse")
 	local t = { 
-		["summaries"] = summaries,
+		["summaries"] = _summaries,
 	}
-	M.AssertDescribeTrustedAdvisorCheckSummariesResponse(t)
+	asserts.AssertDescribeTrustedAdvisorCheckSummariesResponse(t)
 	return t
 end
 
-local SeverityLevel_keys = { "code" = true, "name" = true, nil }
+keys.SeverityLevel = { ["code"] = true, ["name"] = true, nil }
 
-function M.AssertSeverityLevel(struct)
+function asserts.AssertSeverityLevel(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SeverityLevel to be of type 'table'")
-	if struct["code"] then M.AssertSeverityLevelCode(struct["code"]) end
-	if struct["name"] then M.AssertSeverityLevelName(struct["name"]) end
+	if struct["code"] then asserts.AssertSeverityLevelCode(struct["code"]) end
+	if struct["name"] then asserts.AssertSeverityLevelName(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(SeverityLevel_keys[k], "SeverityLevel contains unknown key " .. tostring(k))
+		assert(keys.SeverityLevel[k], "SeverityLevel contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SeverityLevel
 -- <p>A code and name pair that represent a severity level that can be applied to a support case.</p>
--- @param code [SeverityLevelCode] <p>One of four values: "low," "medium," "high," and "urgent". These values correspond to response times returned to the caller in <code>severityLevel.name</code>. </p>
--- @param name [SeverityLevelName] <p>The name of the severity level that corresponds to the severity level code.</p>
-function M.SeverityLevel(code, name, ...)
+-- @param _code [SeverityLevelCode] <p>One of four values: "low," "medium," "high," and "urgent". These values correspond to response times returned to the caller in <code>severityLevel.name</code>. </p>
+-- @param _name [SeverityLevelName] <p>The name of the severity level that corresponds to the severity level code.</p>
+function M.SeverityLevel(_code, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SeverityLevel")
 	local t = { 
-		["code"] = code,
-		["name"] = name,
+		["code"] = _code,
+		["name"] = _name,
 	}
-	M.AssertSeverityLevel(t)
+	asserts.AssertSeverityLevel(t)
 	return t
 end
 
-local AttachmentLimitExceeded_keys = { "message" = true, nil }
+keys.AttachmentLimitExceeded = { ["message"] = true, nil }
 
-function M.AssertAttachmentLimitExceeded(struct)
+function asserts.AssertAttachmentLimitExceeded(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachmentLimitExceeded to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachmentLimitExceeded_keys[k], "AttachmentLimitExceeded contains unknown key " .. tostring(k))
+		assert(keys.AttachmentLimitExceeded[k], "AttachmentLimitExceeded contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachmentLimitExceeded
 -- <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
--- @param message [ErrorMessage] <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
-function M.AttachmentLimitExceeded(message, ...)
+-- @param _message [ErrorMessage] <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
+function M.AttachmentLimitExceeded(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentLimitExceeded")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAttachmentLimitExceeded(t)
+	asserts.AssertAttachmentLimitExceeded(t)
 	return t
 end
 
-local CaseDetails_keys = { "status" = true, "recentCommunications" = true, "ccEmailAddresses" = true, "timeCreated" = true, "caseId" = true, "severityCode" = true, "language" = true, "categoryCode" = true, "serviceCode" = true, "submittedBy" = true, "displayId" = true, "subject" = true, nil }
+keys.CaseDetails = { ["status"] = true, ["recentCommunications"] = true, ["ccEmailAddresses"] = true, ["timeCreated"] = true, ["caseId"] = true, ["severityCode"] = true, ["language"] = true, ["categoryCode"] = true, ["serviceCode"] = true, ["submittedBy"] = true, ["displayId"] = true, ["subject"] = true, nil }
 
-function M.AssertCaseDetails(struct)
+function asserts.AssertCaseDetails(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CaseDetails to be of type 'table'")
-	if struct["status"] then M.AssertStatus(struct["status"]) end
-	if struct["recentCommunications"] then M.AssertRecentCaseCommunications(struct["recentCommunications"]) end
-	if struct["ccEmailAddresses"] then M.AssertCcEmailAddressList(struct["ccEmailAddresses"]) end
-	if struct["timeCreated"] then M.AssertTimeCreated(struct["timeCreated"]) end
-	if struct["caseId"] then M.AssertCaseId(struct["caseId"]) end
-	if struct["severityCode"] then M.AssertSeverityCode(struct["severityCode"]) end
-	if struct["language"] then M.AssertLanguage(struct["language"]) end
-	if struct["categoryCode"] then M.AssertCategoryCode(struct["categoryCode"]) end
-	if struct["serviceCode"] then M.AssertServiceCode(struct["serviceCode"]) end
-	if struct["submittedBy"] then M.AssertSubmittedBy(struct["submittedBy"]) end
-	if struct["displayId"] then M.AssertDisplayId(struct["displayId"]) end
-	if struct["subject"] then M.AssertSubject(struct["subject"]) end
+	if struct["status"] then asserts.AssertStatus(struct["status"]) end
+	if struct["recentCommunications"] then asserts.AssertRecentCaseCommunications(struct["recentCommunications"]) end
+	if struct["ccEmailAddresses"] then asserts.AssertCcEmailAddressList(struct["ccEmailAddresses"]) end
+	if struct["timeCreated"] then asserts.AssertTimeCreated(struct["timeCreated"]) end
+	if struct["caseId"] then asserts.AssertCaseId(struct["caseId"]) end
+	if struct["severityCode"] then asserts.AssertSeverityCode(struct["severityCode"]) end
+	if struct["language"] then asserts.AssertLanguage(struct["language"]) end
+	if struct["categoryCode"] then asserts.AssertCategoryCode(struct["categoryCode"]) end
+	if struct["serviceCode"] then asserts.AssertServiceCode(struct["serviceCode"]) end
+	if struct["submittedBy"] then asserts.AssertSubmittedBy(struct["submittedBy"]) end
+	if struct["displayId"] then asserts.AssertDisplayId(struct["displayId"]) end
+	if struct["subject"] then asserts.AssertSubject(struct["subject"]) end
 	for k,_ in pairs(struct) do
-		assert(CaseDetails_keys[k], "CaseDetails contains unknown key " .. tostring(k))
+		assert(keys.CaseDetails[k], "CaseDetails contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CaseDetails
 -- <p>A JSON-formatted object that contains the metadata for a support case. It is contained the response from a <a>DescribeCases</a> request. <b>CaseDetails</b> contains the following fields:</p> <ul> <li> <p> <b>caseId.</b> The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>.</p> </li> <li> <p> <b>categoryCode.</b> The category of problem for the AWS Support case. Corresponds to the CategoryCode values returned by a call to <a>DescribeServices</a>.</p> </li> <li> <p> <b>displayId.</b> The identifier for the case on pages in the AWS Support Center.</p> </li> <li> <p> <b>language.</b> The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p> </li> <li> <p> <b>recentCommunications.</b> One or more <a>Communication</a> objects. Fields of these objects are <code>attachments</code>, <code>body</code>, <code>caseId</code>, <code>submittedBy</code>, and <code>timeCreated</code>.</p> </li> <li> <p> <b>nextToken.</b> A resumption point for pagination.</p> </li> <li> <p> <b>serviceCode.</b> The identifier for the AWS service that corresponds to the service code defined in the call to <a>DescribeServices</a>.</p> </li> <li> <p> <b>severityCode. </b>The severity code assigned to the case. Contains one of the values returned by the call to <a>DescribeSeverityLevels</a>.</p> </li> <li> <p> <b>status.</b> The status of the case in the AWS Support Center.</p> </li> <li> <p> <b>subject.</b> The subject line of the case.</p> </li> <li> <p> <b>submittedBy.</b> The email address of the account that submitted the case.</p> </li> <li> <p> <b>timeCreated.</b> The time the case was created, in ISO-8601 format.</p> </li> </ul>
--- @param status [Status] <p>The status of the case.</p>
--- @param recentCommunications [RecentCaseCommunications] <p>The five most recent communications between you and AWS Support Center, including the IDs of any attachments to the communications. Also includes a <code>nextToken</code> that you can use to retrieve earlier communications.</p>
--- @param ccEmailAddresses [CcEmailAddressList] <p>The email addresses that receive copies of communication about the case.</p>
--- @param timeCreated [TimeCreated] <p>The time that the case was case created in the AWS Support Center.</p>
--- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
--- @param severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p>
--- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
--- @param categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
--- @param serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
--- @param submittedBy [SubmittedBy] <p>The email address of the account that submitted the case.</p>
--- @param displayId [DisplayId] <p>The ID displayed for the case in the AWS Support Center. This is a numeric string.</p>
--- @param subject [Subject] <p>The subject line for the case in the AWS Support Center.</p>
-function M.CaseDetails(status, recentCommunications, ccEmailAddresses, timeCreated, caseId, severityCode, language, categoryCode, serviceCode, submittedBy, displayId, subject, ...)
+-- @param _status [Status] <p>The status of the case.</p>
+-- @param _recentCommunications [RecentCaseCommunications] <p>The five most recent communications between you and AWS Support Center, including the IDs of any attachments to the communications. Also includes a <code>nextToken</code> that you can use to retrieve earlier communications.</p>
+-- @param _ccEmailAddresses [CcEmailAddressList] <p>The email addresses that receive copies of communication about the case.</p>
+-- @param _timeCreated [TimeCreated] <p>The time that the case was case created in the AWS Support Center.</p>
+-- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @param _severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p>
+-- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @param _categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
+-- @param _serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
+-- @param _submittedBy [SubmittedBy] <p>The email address of the account that submitted the case.</p>
+-- @param _displayId [DisplayId] <p>The ID displayed for the case in the AWS Support Center. This is a numeric string.</p>
+-- @param _subject [Subject] <p>The subject line for the case in the AWS Support Center.</p>
+function M.CaseDetails(_status, _recentCommunications, _ccEmailAddresses, _timeCreated, _caseId, _severityCode, _language, _categoryCode, _serviceCode, _submittedBy, _displayId, _subject, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CaseDetails")
 	local t = { 
-		["status"] = status,
-		["recentCommunications"] = recentCommunications,
-		["ccEmailAddresses"] = ccEmailAddresses,
-		["timeCreated"] = timeCreated,
-		["caseId"] = caseId,
-		["severityCode"] = severityCode,
-		["language"] = language,
-		["categoryCode"] = categoryCode,
-		["serviceCode"] = serviceCode,
-		["submittedBy"] = submittedBy,
-		["displayId"] = displayId,
-		["subject"] = subject,
+		["status"] = _status,
+		["recentCommunications"] = _recentCommunications,
+		["ccEmailAddresses"] = _ccEmailAddresses,
+		["timeCreated"] = _timeCreated,
+		["caseId"] = _caseId,
+		["severityCode"] = _severityCode,
+		["language"] = _language,
+		["categoryCode"] = _categoryCode,
+		["serviceCode"] = _serviceCode,
+		["submittedBy"] = _submittedBy,
+		["displayId"] = _displayId,
+		["subject"] = _subject,
 	}
-	M.AssertCaseDetails(t)
+	asserts.AssertCaseDetails(t)
 	return t
 end
 
-local DescribeCasesResponse_keys = { "cases" = true, "nextToken" = true, nil }
+keys.DescribeCasesResponse = { ["cases"] = true, ["nextToken"] = true, nil }
 
-function M.AssertDescribeCasesResponse(struct)
+function asserts.AssertDescribeCasesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCasesResponse to be of type 'table'")
-	if struct["cases"] then M.AssertCaseList(struct["cases"]) end
-	if struct["nextToken"] then M.AssertNextToken(struct["nextToken"]) end
+	if struct["cases"] then asserts.AssertCaseList(struct["cases"]) end
+	if struct["nextToken"] then asserts.AssertNextToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCasesResponse_keys[k], "DescribeCasesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeCasesResponse[k], "DescribeCasesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCasesResponse
 -- <p>Returns an array of <a>CaseDetails</a> objects and a <code>nextToken</code> that defines a point for pagination in the result set.</p>
--- @param cases [CaseList] <p>The details for the cases that match the request.</p>
--- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
-function M.DescribeCasesResponse(cases, nextToken, ...)
+-- @param _cases [CaseList] <p>The details for the cases that match the request.</p>
+-- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
+function M.DescribeCasesResponse(_cases, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCasesResponse")
 	local t = { 
-		["cases"] = cases,
-		["nextToken"] = nextToken,
+		["cases"] = _cases,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertDescribeCasesResponse(t)
+	asserts.AssertDescribeCasesResponse(t)
 	return t
 end
 
-local DescribeTrustedAdvisorCheckSummariesRequest_keys = { "checkIds" = true, nil }
+keys.DescribeTrustedAdvisorCheckSummariesRequest = { ["checkIds"] = true, nil }
 
-function M.AssertDescribeTrustedAdvisorCheckSummariesRequest(struct)
+function asserts.AssertDescribeTrustedAdvisorCheckSummariesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTrustedAdvisorCheckSummariesRequest to be of type 'table'")
 	assert(struct["checkIds"], "Expected key checkIds to exist in table")
-	if struct["checkIds"] then M.AssertStringList(struct["checkIds"]) end
+	if struct["checkIds"] then asserts.AssertStringList(struct["checkIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTrustedAdvisorCheckSummariesRequest_keys[k], "DescribeTrustedAdvisorCheckSummariesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeTrustedAdvisorCheckSummariesRequest[k], "DescribeTrustedAdvisorCheckSummariesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckSummariesRequest
 -- <p/>
--- @param checkIds [StringList] <p>The IDs of the Trusted Advisor checks.</p>
+-- @param _checkIds [StringList] <p>The IDs of the Trusted Advisor checks.</p>
 -- Required parameter: checkIds
-function M.DescribeTrustedAdvisorCheckSummariesRequest(checkIds, ...)
+function M.DescribeTrustedAdvisorCheckSummariesRequest(_checkIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckSummariesRequest")
 	local t = { 
-		["checkIds"] = checkIds,
+		["checkIds"] = _checkIds,
 	}
-	M.AssertDescribeTrustedAdvisorCheckSummariesRequest(t)
+	asserts.AssertDescribeTrustedAdvisorCheckSummariesRequest(t)
 	return t
 end
 
-function M.AssertServiceCode(str)
+function asserts.AssertServiceCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ServiceCode to be of type 'string'")
 end
 
 --  
 function M.ServiceCode(str)
-	M.AssertServiceCode(str)
+	asserts.AssertServiceCode(str)
 	return str
 end
 
-function M.AssertBeforeTime(str)
+function asserts.AssertBeforeTime(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BeforeTime to be of type 'string'")
 end
 
 --  
 function M.BeforeTime(str)
-	M.AssertBeforeTime(str)
+	asserts.AssertBeforeTime(str)
 	return str
 end
 
-function M.AssertCaseStatus(str)
+function asserts.AssertCaseStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CaseStatus to be of type 'string'")
 end
 
 --  
 function M.CaseStatus(str)
-	M.AssertCaseStatus(str)
+	asserts.AssertCaseStatus(str)
 	return str
 end
 
-function M.AssertAfterTime(str)
+function asserts.AssertAfterTime(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AfterTime to be of type 'string'")
 end
 
 --  
 function M.AfterTime(str)
-	M.AssertAfterTime(str)
+	asserts.AssertAfterTime(str)
 	return str
 end
 
-function M.AssertCcEmailAddress(str)
+function asserts.AssertCcEmailAddress(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CcEmailAddress to be of type 'string'")
 end
 
 --  
 function M.CcEmailAddress(str)
-	M.AssertCcEmailAddress(str)
+	asserts.AssertCcEmailAddress(str)
 	return str
 end
 
-function M.AssertFileName(str)
+function asserts.AssertFileName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FileName to be of type 'string'")
 end
 
 --  
 function M.FileName(str)
-	M.AssertFileName(str)
+	asserts.AssertFileName(str)
 	return str
 end
 
-function M.AssertSubject(str)
+function asserts.AssertSubject(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Subject to be of type 'string'")
 end
 
 --  
 function M.Subject(str)
-	M.AssertSubject(str)
+	asserts.AssertSubject(str)
 	return str
 end
 
-function M.AssertSeverityLevelCode(str)
+function asserts.AssertSeverityLevelCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SeverityLevelCode to be of type 'string'")
 end
 
 --  
 function M.SeverityLevelCode(str)
-	M.AssertSeverityLevelCode(str)
+	asserts.AssertSeverityLevelCode(str)
 	return str
 end
 
-function M.AssertAttachmentId(str)
+function asserts.AssertAttachmentId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttachmentId to be of type 'string'")
 end
 
 --  
 function M.AttachmentId(str)
-	M.AssertAttachmentId(str)
+	asserts.AssertAttachmentId(str)
 	return str
 end
 
-function M.AssertNextToken(str)
+function asserts.AssertNextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
 end
 
 --  
 function M.NextToken(str)
-	M.AssertNextToken(str)
+	asserts.AssertNextToken(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertServiceName(str)
+function asserts.AssertServiceName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ServiceName to be of type 'string'")
 end
 
 --  
 function M.ServiceName(str)
-	M.AssertServiceName(str)
+	asserts.AssertServiceName(str)
 	return str
 end
 
-function M.AssertTimeCreated(str)
+function asserts.AssertTimeCreated(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TimeCreated to be of type 'string'")
 end
 
 --  
 function M.TimeCreated(str)
-	M.AssertTimeCreated(str)
+	asserts.AssertTimeCreated(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertSeverityLevelName(str)
+function asserts.AssertSeverityLevelName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SeverityLevelName to be of type 'string'")
 end
 
 --  
 function M.SeverityLevelName(str)
-	M.AssertSeverityLevelName(str)
+	asserts.AssertSeverityLevelName(str)
 	return str
 end
 
-function M.AssertAttachmentSetId(str)
+function asserts.AssertAttachmentSetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttachmentSetId to be of type 'string'")
 end
 
 --  
 function M.AttachmentSetId(str)
-	M.AssertAttachmentSetId(str)
+	asserts.AssertAttachmentSetId(str)
 	return str
 end
 
-function M.AssertStatus(str)
+function asserts.AssertStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Status to be of type 'string'")
 end
 
 --  
 function M.Status(str)
-	M.AssertStatus(str)
+	asserts.AssertStatus(str)
 	return str
 end
 
-function M.AssertCaseId(str)
+function asserts.AssertCaseId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CaseId to be of type 'string'")
 end
 
 --  
 function M.CaseId(str)
-	M.AssertCaseId(str)
+	asserts.AssertCaseId(str)
 	return str
 end
 
-function M.AssertSeverityCode(str)
+function asserts.AssertSeverityCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SeverityCode to be of type 'string'")
 end
 
 --  
 function M.SeverityCode(str)
-	M.AssertSeverityCode(str)
+	asserts.AssertSeverityCode(str)
 	return str
 end
 
-function M.AssertSubmittedBy(str)
+function asserts.AssertSubmittedBy(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubmittedBy to be of type 'string'")
 end
 
 --  
 function M.SubmittedBy(str)
-	M.AssertSubmittedBy(str)
+	asserts.AssertSubmittedBy(str)
 	return str
 end
 
-function M.AssertLanguage(str)
+function asserts.AssertLanguage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Language to be of type 'string'")
 end
 
 --  
 function M.Language(str)
-	M.AssertLanguage(str)
+	asserts.AssertLanguage(str)
 	return str
 end
 
-function M.AssertCommunicationBody(str)
+function asserts.AssertCommunicationBody(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CommunicationBody to be of type 'string'")
 	assert(#str <= 8000, "Expected string to be max 8000 characters")
@@ -1791,87 +1794,87 @@ end
 
 --  
 function M.CommunicationBody(str)
-	M.AssertCommunicationBody(str)
+	asserts.AssertCommunicationBody(str)
 	return str
 end
 
-function M.AssertCategoryName(str)
+function asserts.AssertCategoryName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CategoryName to be of type 'string'")
 end
 
 --  
 function M.CategoryName(str)
-	M.AssertCategoryName(str)
+	asserts.AssertCategoryName(str)
 	return str
 end
 
-function M.AssertCategoryCode(str)
+function asserts.AssertCategoryCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CategoryCode to be of type 'string'")
 end
 
 --  
 function M.CategoryCode(str)
-	M.AssertCategoryCode(str)
+	asserts.AssertCategoryCode(str)
 	return str
 end
 
-function M.AssertDisplayId(str)
+function asserts.AssertDisplayId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DisplayId to be of type 'string'")
 end
 
 --  
 function M.DisplayId(str)
-	M.AssertDisplayId(str)
+	asserts.AssertDisplayId(str)
 	return str
 end
 
-function M.AssertIssueType(str)
+function asserts.AssertIssueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IssueType to be of type 'string'")
 end
 
 --  
 function M.IssueType(str)
-	M.AssertIssueType(str)
+	asserts.AssertIssueType(str)
 	return str
 end
 
-function M.AssertExpiryTime(str)
+function asserts.AssertExpiryTime(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExpiryTime to be of type 'string'")
 end
 
 --  
 function M.ExpiryTime(str)
-	M.AssertExpiryTime(str)
+	asserts.AssertExpiryTime(str)
 	return str
 end
 
-function M.AssertDouble(double)
+function asserts.AssertDouble(double)
 	assert(double)
 	assert(type(double) == "number", "Expected Double to be of type 'number'")
 end
 
 function M.Double(double)
-	M.AssertDouble(double)
+	asserts.AssertDouble(double)
 	return double
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertMaxResults(integer)
+function asserts.AssertMaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1880,285 +1883,285 @@ function M.AssertMaxResults(integer)
 end
 
 function M.MaxResults(integer)
-	M.AssertMaxResults(integer)
+	asserts.AssertMaxResults(integer)
 	return integer
 end
 
-function M.AssertIncludeCommunications(boolean)
+function asserts.AssertIncludeCommunications(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected IncludeCommunications to be of type 'boolean'")
 end
 
 function M.IncludeCommunications(boolean)
-	M.AssertIncludeCommunications(boolean)
+	asserts.AssertIncludeCommunications(boolean)
 	return boolean
 end
 
-function M.AssertResult(boolean)
+function asserts.AssertResult(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Result to be of type 'boolean'")
 end
 
 function M.Result(boolean)
-	M.AssertResult(boolean)
+	asserts.AssertResult(boolean)
 	return boolean
 end
 
-function M.AssertIncludeResolvedCases(boolean)
+function asserts.AssertIncludeResolvedCases(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected IncludeResolvedCases to be of type 'boolean'")
 end
 
 function M.IncludeResolvedCases(boolean)
-	M.AssertIncludeResolvedCases(boolean)
+	asserts.AssertIncludeResolvedCases(boolean)
 	return boolean
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertData(blob)
+function asserts.AssertData(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected Data to be of type 'string'")
 end
 
 function M.Data(blob)
-	M.AssertData(blob)
+	asserts.AssertData(blob)
 	return blob
 end
 
-function M.AssertCaseList(list)
+function asserts.AssertCaseList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CaseList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCaseDetails(v)
+		asserts.AssertCaseDetails(v)
 	end
 end
 
 --  
 -- List of CaseDetails objects
 function M.CaseList(list)
-	M.AssertCaseList(list)
+	asserts.AssertCaseList(list)
 	return list
 end
 
-function M.AssertAttachments(list)
+function asserts.AssertAttachments(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Attachments to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttachment(v)
+		asserts.AssertAttachment(v)
 	end
 end
 
 --  
 -- List of Attachment objects
 function M.Attachments(list)
-	M.AssertAttachments(list)
+	asserts.AssertAttachments(list)
 	return list
 end
 
-function M.AssertServiceCodeList(list)
+function asserts.AssertServiceCodeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ServiceCodeList to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	for _,v in ipairs(list) do
-		M.AssertServiceCode(v)
+		asserts.AssertServiceCode(v)
 	end
 end
 
 --  
 -- List of ServiceCode objects
 function M.ServiceCodeList(list)
-	M.AssertServiceCodeList(list)
+	asserts.AssertServiceCodeList(list)
 	return list
 end
 
-function M.AssertCaseIdList(list)
+function asserts.AssertCaseIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CaseIdList to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	for _,v in ipairs(list) do
-		M.AssertCaseId(v)
+		asserts.AssertCaseId(v)
 	end
 end
 
 --  
 -- List of CaseId objects
 function M.CaseIdList(list)
-	M.AssertCaseIdList(list)
+	asserts.AssertCaseIdList(list)
 	return list
 end
 
-function M.AssertTrustedAdvisorCheckRefreshStatusList(list)
+function asserts.AssertTrustedAdvisorCheckRefreshStatusList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TrustedAdvisorCheckRefreshStatusList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTrustedAdvisorCheckRefreshStatus(v)
+		asserts.AssertTrustedAdvisorCheckRefreshStatus(v)
 	end
 end
 
 --  
 -- List of TrustedAdvisorCheckRefreshStatus objects
 function M.TrustedAdvisorCheckRefreshStatusList(list)
-	M.AssertTrustedAdvisorCheckRefreshStatusList(list)
+	asserts.AssertTrustedAdvisorCheckRefreshStatusList(list)
 	return list
 end
 
-function M.AssertCategoryList(list)
+function asserts.AssertCategoryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CategoryList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCategory(v)
+		asserts.AssertCategory(v)
 	end
 end
 
 --  
 -- List of Category objects
 function M.CategoryList(list)
-	M.AssertCategoryList(list)
+	asserts.AssertCategoryList(list)
 	return list
 end
 
-function M.AssertCcEmailAddressList(list)
+function asserts.AssertCcEmailAddressList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CcEmailAddressList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertCcEmailAddress(v)
+		asserts.AssertCcEmailAddress(v)
 	end
 end
 
 --  
 -- List of CcEmailAddress objects
 function M.CcEmailAddressList(list)
-	M.AssertCcEmailAddressList(list)
+	asserts.AssertCcEmailAddressList(list)
 	return list
 end
 
-function M.AssertStringList(list)
+function asserts.AssertStringList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StringList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.StringList(list)
-	M.AssertStringList(list)
+	asserts.AssertStringList(list)
 	return list
 end
 
-function M.AssertAttachmentSet(list)
+function asserts.AssertAttachmentSet(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttachmentSet to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAttachmentDetails(v)
+		asserts.AssertAttachmentDetails(v)
 	end
 end
 
 --  
 -- List of AttachmentDetails objects
 function M.AttachmentSet(list)
-	M.AssertAttachmentSet(list)
+	asserts.AssertAttachmentSet(list)
 	return list
 end
 
-function M.AssertTrustedAdvisorCheckList(list)
+function asserts.AssertTrustedAdvisorCheckList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TrustedAdvisorCheckList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTrustedAdvisorCheckDescription(v)
+		asserts.AssertTrustedAdvisorCheckDescription(v)
 	end
 end
 
 --  
 -- List of TrustedAdvisorCheckDescription objects
 function M.TrustedAdvisorCheckList(list)
-	M.AssertTrustedAdvisorCheckList(list)
+	asserts.AssertTrustedAdvisorCheckList(list)
 	return list
 end
 
-function M.AssertSeverityLevelsList(list)
+function asserts.AssertSeverityLevelsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SeverityLevelsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSeverityLevel(v)
+		asserts.AssertSeverityLevel(v)
 	end
 end
 
 --  
 -- List of SeverityLevel objects
 function M.SeverityLevelsList(list)
-	M.AssertSeverityLevelsList(list)
+	asserts.AssertSeverityLevelsList(list)
 	return list
 end
 
-function M.AssertTrustedAdvisorResourceDetailList(list)
+function asserts.AssertTrustedAdvisorResourceDetailList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TrustedAdvisorResourceDetailList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTrustedAdvisorResourceDetail(v)
+		asserts.AssertTrustedAdvisorResourceDetail(v)
 	end
 end
 
 --  
 -- List of TrustedAdvisorResourceDetail objects
 function M.TrustedAdvisorResourceDetailList(list)
-	M.AssertTrustedAdvisorResourceDetailList(list)
+	asserts.AssertTrustedAdvisorResourceDetailList(list)
 	return list
 end
 
-function M.AssertTrustedAdvisorCheckSummaryList(list)
+function asserts.AssertTrustedAdvisorCheckSummaryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TrustedAdvisorCheckSummaryList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTrustedAdvisorCheckSummary(v)
+		asserts.AssertTrustedAdvisorCheckSummary(v)
 	end
 end
 
 --  
 -- List of TrustedAdvisorCheckSummary objects
 function M.TrustedAdvisorCheckSummaryList(list)
-	M.AssertTrustedAdvisorCheckSummaryList(list)
+	asserts.AssertTrustedAdvisorCheckSummaryList(list)
 	return list
 end
 
-function M.AssertServiceList(list)
+function asserts.AssertServiceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ServiceList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertService(v)
+		asserts.AssertService(v)
 	end
 end
 
 --  
 -- List of Service objects
 function M.ServiceList(list)
-	M.AssertServiceList(list)
+	asserts.AssertServiceList(list)
 	return list
 end
 
-function M.AssertCommunicationList(list)
+function asserts.AssertCommunicationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CommunicationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCommunication(v)
+		asserts.AssertCommunication(v)
 	end
 end
 
 --  
 -- List of Communication objects
 function M.CommunicationList(list)
-	M.AssertCommunicationList(list)
+	asserts.AssertCommunicationList(list)
 	return list
 end
 

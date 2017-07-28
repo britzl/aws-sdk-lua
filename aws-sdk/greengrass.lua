@@ -18,251 +18,254 @@ M.metadata = {
 	uid = "greengrass-2017-06-07",
 }
 
-local GroupCertificateAuthorityProperties_keys = { "GroupCertificateAuthorityId" = true, "GroupCertificateAuthorityArn" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertGroupCertificateAuthorityProperties(struct)
+keys.GroupCertificateAuthorityProperties = { ["GroupCertificateAuthorityId"] = true, ["GroupCertificateAuthorityArn"] = true, nil }
+
+function asserts.AssertGroupCertificateAuthorityProperties(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GroupCertificateAuthorityProperties to be of type 'table'")
-	if struct["GroupCertificateAuthorityId"] then M.Assert__string(struct["GroupCertificateAuthorityId"]) end
-	if struct["GroupCertificateAuthorityArn"] then M.Assert__string(struct["GroupCertificateAuthorityArn"]) end
+	if struct["GroupCertificateAuthorityId"] then asserts.Assert__string(struct["GroupCertificateAuthorityId"]) end
+	if struct["GroupCertificateAuthorityArn"] then asserts.Assert__string(struct["GroupCertificateAuthorityArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GroupCertificateAuthorityProperties_keys[k], "GroupCertificateAuthorityProperties contains unknown key " .. tostring(k))
+		assert(keys.GroupCertificateAuthorityProperties[k], "GroupCertificateAuthorityProperties contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GroupCertificateAuthorityProperties
 -- Information on group certificate authority properties
--- @param GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
--- @param GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
-function M.GroupCertificateAuthorityProperties(GroupCertificateAuthorityId, GroupCertificateAuthorityArn, ...)
+-- @param _GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
+-- @param _GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
+function M.GroupCertificateAuthorityProperties(_GroupCertificateAuthorityId, _GroupCertificateAuthorityArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupCertificateAuthorityProperties")
 	local t = { 
-		["GroupCertificateAuthorityId"] = GroupCertificateAuthorityId,
-		["GroupCertificateAuthorityArn"] = GroupCertificateAuthorityArn,
+		["GroupCertificateAuthorityId"] = _GroupCertificateAuthorityId,
+		["GroupCertificateAuthorityArn"] = _GroupCertificateAuthorityArn,
 	}
-	M.AssertGroupCertificateAuthorityProperties(t)
+	asserts.AssertGroupCertificateAuthorityProperties(t)
 	return t
 end
 
-local GetGroupCertificateConfigurationRequest_keys = { "GroupId" = true, nil }
+keys.GetGroupCertificateConfigurationRequest = { ["GroupId"] = true, nil }
 
-function M.AssertGetGroupCertificateConfigurationRequest(struct)
+function asserts.AssertGetGroupCertificateConfigurationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupCertificateConfigurationRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupCertificateConfigurationRequest_keys[k], "GetGroupCertificateConfigurationRequest contains unknown key " .. tostring(k))
+		assert(keys.GetGroupCertificateConfigurationRequest[k], "GetGroupCertificateConfigurationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupCertificateConfigurationRequest
 --  
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.GetGroupCertificateConfigurationRequest(GroupId, ...)
+function M.GetGroupCertificateConfigurationRequest(_GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupCertificateConfigurationRequest")
 	local t = { 
-		["GroupId"] = GroupId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertGetGroupCertificateConfigurationRequest(t)
+	asserts.AssertGetGroupCertificateConfigurationRequest(t)
 	return t
 end
 
-local ListSubscriptionDefinitionVersionsRequest_keys = { "SubscriptionDefinitionId" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.ListSubscriptionDefinitionVersionsRequest = { ["SubscriptionDefinitionId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListSubscriptionDefinitionVersionsRequest(struct)
+function asserts.AssertListSubscriptionDefinitionVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionDefinitionVersionsRequest to be of type 'table'")
 	assert(struct["SubscriptionDefinitionId"], "Expected key SubscriptionDefinitionId to exist in table")
-	if struct["SubscriptionDefinitionId"] then M.Assert__string(struct["SubscriptionDefinitionId"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["SubscriptionDefinitionId"] then asserts.Assert__string(struct["SubscriptionDefinitionId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSubscriptionDefinitionVersionsRequest_keys[k], "ListSubscriptionDefinitionVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListSubscriptionDefinitionVersionsRequest[k], "ListSubscriptionDefinitionVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSubscriptionDefinitionVersionsRequest
 --  
--- @param SubscriptionDefinitionId [__string] subscription definition Id
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @param _SubscriptionDefinitionId [__string] subscription definition Id
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- Required parameter: SubscriptionDefinitionId
-function M.ListSubscriptionDefinitionVersionsRequest(SubscriptionDefinitionId, NextToken, MaxResults, ...)
+function M.ListSubscriptionDefinitionVersionsRequest(_SubscriptionDefinitionId, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionDefinitionVersionsRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = SubscriptionDefinitionId,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListSubscriptionDefinitionVersionsRequest(t)
+	asserts.AssertListSubscriptionDefinitionVersionsRequest(t)
 	return t
 end
 
-local BadRequestException_keys = { "ErrorDetails" = true, "Message" = true, nil }
+keys.BadRequestException = { ["ErrorDetails"] = true, ["Message"] = true, nil }
 
-function M.AssertBadRequestException(struct)
+function asserts.AssertBadRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BadRequestException to be of type 'table'")
-	if struct["ErrorDetails"] then M.AssertErrorDetails(struct["ErrorDetails"]) end
-	if struct["Message"] then M.Assert__string(struct["Message"]) end
+	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
+	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(BadRequestException_keys[k], "BadRequestException contains unknown key " .. tostring(k))
+		assert(keys.BadRequestException[k], "BadRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BadRequestException
 -- General Error
--- @param ErrorDetails [ErrorDetails] Error Details
--- @param Message [__string] Message
-function M.BadRequestException(ErrorDetails, Message, ...)
+-- @param _ErrorDetails [ErrorDetails] Error Details
+-- @param _Message [__string] Message
+function M.BadRequestException(_ErrorDetails, _Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BadRequestException")
 	local t = { 
-		["ErrorDetails"] = ErrorDetails,
-		["Message"] = Message,
+		["ErrorDetails"] = _ErrorDetails,
+		["Message"] = _Message,
 	}
-	M.AssertBadRequestException(t)
+	asserts.AssertBadRequestException(t)
 	return t
 end
 
-local AssociateServiceRoleToAccountRequest_keys = { "RoleArn" = true, nil }
+keys.AssociateServiceRoleToAccountRequest = { ["RoleArn"] = true, nil }
 
-function M.AssertAssociateServiceRoleToAccountRequest(struct)
+function asserts.AssertAssociateServiceRoleToAccountRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateServiceRoleToAccountRequest to be of type 'table'")
-	if struct["RoleArn"] then M.Assert__string(struct["RoleArn"]) end
+	if struct["RoleArn"] then asserts.Assert__string(struct["RoleArn"]) end
 	for k,_ in pairs(struct) do
-		assert(AssociateServiceRoleToAccountRequest_keys[k], "AssociateServiceRoleToAccountRequest contains unknown key " .. tostring(k))
+		assert(keys.AssociateServiceRoleToAccountRequest[k], "AssociateServiceRoleToAccountRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssociateServiceRoleToAccountRequest
 --  
--- @param RoleArn [__string] Role arn you wish to associate with this account.
-function M.AssociateServiceRoleToAccountRequest(RoleArn, ...)
+-- @param _RoleArn [__string] Role arn you wish to associate with this account.
+function M.AssociateServiceRoleToAccountRequest(_RoleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateServiceRoleToAccountRequest")
 	local t = { 
-		["RoleArn"] = RoleArn,
+		["RoleArn"] = _RoleArn,
 	}
-	M.AssertAssociateServiceRoleToAccountRequest(t)
+	asserts.AssertAssociateServiceRoleToAccountRequest(t)
 	return t
 end
 
-local ListGroupsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListGroupsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListGroupsRequest(struct)
+function asserts.AssertListGroupsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupsRequest to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGroupsRequest_keys[k], "ListGroupsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListGroupsRequest[k], "ListGroupsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGroupsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListGroupsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+function M.ListGroupsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListGroupsRequest(t)
+	asserts.AssertListGroupsRequest(t)
 	return t
 end
 
-local ListCoreDefinitionsResponse_keys = { "Definitions" = true, "NextToken" = true, nil }
+keys.ListCoreDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListCoreDefinitionsResponse(struct)
+function asserts.AssertListCoreDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListCoreDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then M.AssertListOfDefinitionInformation(struct["Definitions"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
+	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListCoreDefinitionsResponse_keys[k], "ListCoreDefinitionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListCoreDefinitionsResponse[k], "ListCoreDefinitionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListCoreDefinitionsResponse
 --  
--- @param Definitions [ListOfDefinitionInformation] Definitions
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListCoreDefinitionsResponse(Definitions, NextToken, ...)
+-- @param _Definitions [ListOfDefinitionInformation] Definitions
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+function M.ListCoreDefinitionsResponse(_Definitions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCoreDefinitionsResponse")
 	local t = { 
-		["Definitions"] = Definitions,
-		["NextToken"] = NextToken,
+		["Definitions"] = _Definitions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListCoreDefinitionsResponse(t)
+	asserts.AssertListCoreDefinitionsResponse(t)
 	return t
 end
 
-local CreateDeviceDefinitionRequest_keys = { "AmznClientToken" = true, "InitialVersion" = true, "Name" = true, nil }
+keys.CreateDeviceDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateDeviceDefinitionRequest(struct)
+function asserts.AssertCreateDeviceDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeviceDefinitionRequest to be of type 'table'")
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["InitialVersion"] then M.AssertDeviceDefinitionVersion(struct["InitialVersion"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["InitialVersion"] then asserts.AssertDeviceDefinitionVersion(struct["InitialVersion"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDeviceDefinitionRequest_keys[k], "CreateDeviceDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDeviceDefinitionRequest[k], "CreateDeviceDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDeviceDefinitionRequest
 --  
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param InitialVersion [DeviceDefinitionVersion] Information on the initial version
--- @param Name [__string] name of the device definition
-function M.CreateDeviceDefinitionRequest(AmznClientToken, InitialVersion, Name, ...)
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _InitialVersion [DeviceDefinitionVersion] Information on the initial version
+-- @param _Name [__string] name of the device definition
+function M.CreateDeviceDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeviceDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = AmznClientToken,
-		["InitialVersion"] = InitialVersion,
-		["Name"] = Name,
+		["AmznClientToken"] = _AmznClientToken,
+		["InitialVersion"] = _InitialVersion,
+		["Name"] = _Name,
 	}
-	M.AssertCreateDeviceDefinitionRequest(t)
+	asserts.AssertCreateDeviceDefinitionRequest(t)
 	return t
 end
 
-local InternalServerErrorException_keys = { "ErrorDetails" = true, "Message" = true, nil }
+keys.InternalServerErrorException = { ["ErrorDetails"] = true, ["Message"] = true, nil }
 
-function M.AssertInternalServerErrorException(struct)
+function asserts.AssertInternalServerErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServerErrorException to be of type 'table'")
-	if struct["ErrorDetails"] then M.AssertErrorDetails(struct["ErrorDetails"]) end
-	if struct["Message"] then M.Assert__string(struct["Message"]) end
+	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
+	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServerErrorException_keys[k], "InternalServerErrorException contains unknown key " .. tostring(k))
+		assert(keys.InternalServerErrorException[k], "InternalServerErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServerErrorException
 -- General Error
--- @param ErrorDetails [ErrorDetails] Error Details
--- @param Message [__string] Message
-function M.InternalServerErrorException(ErrorDetails, Message, ...)
+-- @param _ErrorDetails [ErrorDetails] Error Details
+-- @param _Message [__string] Message
+function M.InternalServerErrorException(_ErrorDetails, _Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerErrorException")
 	local t = { 
-		["ErrorDetails"] = ErrorDetails,
-		["Message"] = Message,
+		["ErrorDetails"] = _ErrorDetails,
+		["Message"] = _Message,
 	}
-	M.AssertInternalServerErrorException(t)
+	asserts.AssertInternalServerErrorException(t)
 	return t
 end
 
-local GetServiceRoleForAccountRequest_keys = { nil }
+keys.GetServiceRoleForAccountRequest = { nil }
 
-function M.AssertGetServiceRoleForAccountRequest(struct)
+function asserts.AssertGetServiceRoleForAccountRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetServiceRoleForAccountRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(GetServiceRoleForAccountRequest_keys[k], "GetServiceRoleForAccountRequest contains unknown key " .. tostring(k))
+		assert(keys.GetServiceRoleForAccountRequest[k], "GetServiceRoleForAccountRequest contains unknown key " .. tostring(k))
 	end
 end
 
@@ -272,288 +275,288 @@ function M.GetServiceRoleForAccountRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetServiceRoleForAccountRequest")
 	local t = { 
 	}
-	M.AssertGetServiceRoleForAccountRequest(t)
+	asserts.AssertGetServiceRoleForAccountRequest(t)
 	return t
 end
 
-local ListDeviceDefinitionVersionsRequest_keys = { "DeviceDefinitionId" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.ListDeviceDefinitionVersionsRequest = { ["DeviceDefinitionId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListDeviceDefinitionVersionsRequest(struct)
+function asserts.AssertListDeviceDefinitionVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDeviceDefinitionVersionsRequest to be of type 'table'")
 	assert(struct["DeviceDefinitionId"], "Expected key DeviceDefinitionId to exist in table")
-	if struct["DeviceDefinitionId"] then M.Assert__string(struct["DeviceDefinitionId"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["DeviceDefinitionId"] then asserts.Assert__string(struct["DeviceDefinitionId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDeviceDefinitionVersionsRequest_keys[k], "ListDeviceDefinitionVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDeviceDefinitionVersionsRequest[k], "ListDeviceDefinitionVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDeviceDefinitionVersionsRequest
 --  
--- @param DeviceDefinitionId [__string] device definition Id
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @param _DeviceDefinitionId [__string] device definition Id
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- Required parameter: DeviceDefinitionId
-function M.ListDeviceDefinitionVersionsRequest(DeviceDefinitionId, NextToken, MaxResults, ...)
+function M.ListDeviceDefinitionVersionsRequest(_DeviceDefinitionId, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDeviceDefinitionVersionsRequest")
 	local t = { 
-		["DeviceDefinitionId"] = DeviceDefinitionId,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["DeviceDefinitionId"] = _DeviceDefinitionId,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListDeviceDefinitionVersionsRequest(t)
+	asserts.AssertListDeviceDefinitionVersionsRequest(t)
 	return t
 end
 
-local CreateLoggerDefinitionRequest_keys = { "AmznClientToken" = true, "InitialVersion" = true, "Name" = true, nil }
+keys.CreateLoggerDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateLoggerDefinitionRequest(struct)
+function asserts.AssertCreateLoggerDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLoggerDefinitionRequest to be of type 'table'")
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["InitialVersion"] then M.AssertLoggerDefinitionVersion(struct["InitialVersion"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["InitialVersion"] then asserts.AssertLoggerDefinitionVersion(struct["InitialVersion"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLoggerDefinitionRequest_keys[k], "CreateLoggerDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateLoggerDefinitionRequest[k], "CreateLoggerDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLoggerDefinitionRequest
 --  
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param InitialVersion [LoggerDefinitionVersion] Information on the initial version
--- @param Name [__string] name of the logger definition
-function M.CreateLoggerDefinitionRequest(AmznClientToken, InitialVersion, Name, ...)
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _InitialVersion [LoggerDefinitionVersion] Information on the initial version
+-- @param _Name [__string] name of the logger definition
+function M.CreateLoggerDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoggerDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = AmznClientToken,
-		["InitialVersion"] = InitialVersion,
-		["Name"] = Name,
+		["AmznClientToken"] = _AmznClientToken,
+		["InitialVersion"] = _InitialVersion,
+		["Name"] = _Name,
 	}
-	M.AssertCreateLoggerDefinitionRequest(t)
+	asserts.AssertCreateLoggerDefinitionRequest(t)
 	return t
 end
 
-local CreateSubscriptionDefinitionRequest_keys = { "AmznClientToken" = true, "InitialVersion" = true, "Name" = true, nil }
+keys.CreateSubscriptionDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateSubscriptionDefinitionRequest(struct)
+function asserts.AssertCreateSubscriptionDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateSubscriptionDefinitionRequest to be of type 'table'")
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["InitialVersion"] then M.AssertSubscriptionDefinitionVersion(struct["InitialVersion"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["InitialVersion"] then asserts.AssertSubscriptionDefinitionVersion(struct["InitialVersion"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateSubscriptionDefinitionRequest_keys[k], "CreateSubscriptionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateSubscriptionDefinitionRequest[k], "CreateSubscriptionDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateSubscriptionDefinitionRequest
 --  
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param InitialVersion [SubscriptionDefinitionVersion] Information on the initial version
--- @param Name [__string] name of the subscription definition
-function M.CreateSubscriptionDefinitionRequest(AmznClientToken, InitialVersion, Name, ...)
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _InitialVersion [SubscriptionDefinitionVersion] Information on the initial version
+-- @param _Name [__string] name of the subscription definition
+function M.CreateSubscriptionDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = AmznClientToken,
-		["InitialVersion"] = InitialVersion,
-		["Name"] = Name,
+		["AmznClientToken"] = _AmznClientToken,
+		["InitialVersion"] = _InitialVersion,
+		["Name"] = _Name,
 	}
-	M.AssertCreateSubscriptionDefinitionRequest(t)
+	asserts.AssertCreateSubscriptionDefinitionRequest(t)
 	return t
 end
 
-local ListCoreDefinitionVersionsResponse_keys = { "NextToken" = true, "Versions" = true, nil }
+keys.ListCoreDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
 
-function M.AssertListCoreDefinitionVersionsResponse(struct)
+function asserts.AssertListCoreDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListCoreDefinitionVersionsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then M.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListCoreDefinitionVersionsResponse_keys[k], "ListCoreDefinitionVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListCoreDefinitionVersionsResponse[k], "ListCoreDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListCoreDefinitionVersionsResponse
 --  
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Versions [ListOfVersionInformation] Versions
-function M.ListCoreDefinitionVersionsResponse(NextToken, Versions, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Versions [ListOfVersionInformation] Versions
+function M.ListCoreDefinitionVersionsResponse(_NextToken, _Versions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCoreDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Versions"] = Versions,
+		["NextToken"] = _NextToken,
+		["Versions"] = _Versions,
 	}
-	M.AssertListCoreDefinitionVersionsResponse(t)
+	asserts.AssertListCoreDefinitionVersionsResponse(t)
 	return t
 end
 
-local ListLoggerDefinitionsResponse_keys = { "Definitions" = true, "NextToken" = true, nil }
+keys.ListLoggerDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListLoggerDefinitionsResponse(struct)
+function asserts.AssertListLoggerDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLoggerDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then M.AssertListOfDefinitionInformation(struct["Definitions"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
+	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListLoggerDefinitionsResponse_keys[k], "ListLoggerDefinitionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListLoggerDefinitionsResponse[k], "ListLoggerDefinitionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListLoggerDefinitionsResponse
 --  
--- @param Definitions [ListOfDefinitionInformation] Definitions
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListLoggerDefinitionsResponse(Definitions, NextToken, ...)
+-- @param _Definitions [ListOfDefinitionInformation] Definitions
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+function M.ListLoggerDefinitionsResponse(_Definitions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLoggerDefinitionsResponse")
 	local t = { 
-		["Definitions"] = Definitions,
-		["NextToken"] = NextToken,
+		["Definitions"] = _Definitions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListLoggerDefinitionsResponse(t)
+	asserts.AssertListLoggerDefinitionsResponse(t)
 	return t
 end
 
-local GetLoggerDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetLoggerDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetLoggerDefinitionResponse(struct)
+function asserts.AssertGetLoggerDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetLoggerDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetLoggerDefinitionResponse_keys[k], "GetLoggerDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetLoggerDefinitionResponse[k], "GetLoggerDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetLoggerDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.GetLoggerDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.GetLoggerDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggerDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetLoggerDefinitionResponse(t)
+	asserts.AssertGetLoggerDefinitionResponse(t)
 	return t
 end
 
-local GetGroupVersionResponse_keys = { "Definition" = true, "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetGroupVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetGroupVersionResponse(struct)
+function asserts.AssertGetGroupVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupVersionResponse to be of type 'table'")
-	if struct["Definition"] then M.AssertGroupVersion(struct["Definition"]) end
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Definition"] then asserts.AssertGroupVersion(struct["Definition"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupVersionResponse_keys[k], "GetGroupVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetGroupVersionResponse[k], "GetGroupVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupVersionResponse
 --  
--- @param Definition [GroupVersion] Information on the definition
--- @param Version [__string] Unique Id for a version of the Group.
--- @param CreationTimestamp [__string] Timestamp when the group version was created.
--- @param Id [__string] Id of the group version.
--- @param Arn [__string] Arn of the group version.
-function M.GetGroupVersionResponse(Definition, Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Definition [GroupVersion] Information on the definition
+-- @param _Version [__string] Unique Id for a version of the Group.
+-- @param _CreationTimestamp [__string] Timestamp when the group version was created.
+-- @param _Id [__string] Id of the group version.
+-- @param _Arn [__string] Arn of the group version.
+function M.GetGroupVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupVersionResponse")
 	local t = { 
-		["Definition"] = Definition,
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Definition"] = _Definition,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetGroupVersionResponse(t)
+	asserts.AssertGetGroupVersionResponse(t)
 	return t
 end
 
-local CreateGroupRequest_keys = { "AmznClientToken" = true, "InitialVersion" = true, "Name" = true, nil }
+keys.CreateGroupRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateGroupRequest(struct)
+function asserts.AssertCreateGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupRequest to be of type 'table'")
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["InitialVersion"] then M.AssertGroupVersion(struct["InitialVersion"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["InitialVersion"] then asserts.AssertGroupVersion(struct["InitialVersion"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGroupRequest_keys[k], "CreateGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateGroupRequest[k], "CreateGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGroupRequest
 --  
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param InitialVersion [GroupVersion] Information on the initial version
--- @param Name [__string] name of the group
-function M.CreateGroupRequest(AmznClientToken, InitialVersion, Name, ...)
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _InitialVersion [GroupVersion] Information on the initial version
+-- @param _Name [__string] name of the group
+function M.CreateGroupRequest(_AmznClientToken, _InitialVersion, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupRequest")
 	local t = { 
-		["AmznClientToken"] = AmznClientToken,
-		["InitialVersion"] = InitialVersion,
-		["Name"] = Name,
+		["AmznClientToken"] = _AmznClientToken,
+		["InitialVersion"] = _InitialVersion,
+		["Name"] = _Name,
 	}
-	M.AssertCreateGroupRequest(t)
+	asserts.AssertCreateGroupRequest(t)
 	return t
 end
 
-local GetGroupRequest_keys = { "GroupId" = true, nil }
+keys.GetGroupRequest = { ["GroupId"] = true, nil }
 
-function M.AssertGetGroupRequest(struct)
+function asserts.AssertGetGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupRequest_keys[k], "GetGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.GetGroupRequest[k], "GetGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupRequest
 --  
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.GetGroupRequest(GroupId, ...)
+function M.GetGroupRequest(_GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupRequest")
 	local t = { 
-		["GroupId"] = GroupId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertGetGroupRequest(t)
+	asserts.AssertGetGroupRequest(t)
 	return t
 end
 
-local UpdateSubscriptionDefinitionResponse_keys = { nil }
+keys.UpdateSubscriptionDefinitionResponse = { nil }
 
-function M.AssertUpdateSubscriptionDefinitionResponse(struct)
+function asserts.AssertUpdateSubscriptionDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateSubscriptionDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateSubscriptionDefinitionResponse_keys[k], "UpdateSubscriptionDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateSubscriptionDefinitionResponse[k], "UpdateSubscriptionDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -563,197 +566,197 @@ function M.UpdateSubscriptionDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubscriptionDefinitionResponse")
 	local t = { 
 	}
-	M.AssertUpdateSubscriptionDefinitionResponse(t)
+	asserts.AssertUpdateSubscriptionDefinitionResponse(t)
 	return t
 end
 
-local AssociateServiceRoleToAccountResponse_keys = { "AssociatedAt" = true, nil }
+keys.AssociateServiceRoleToAccountResponse = { ["AssociatedAt"] = true, nil }
 
-function M.AssertAssociateServiceRoleToAccountResponse(struct)
+function asserts.AssertAssociateServiceRoleToAccountResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateServiceRoleToAccountResponse to be of type 'table'")
-	if struct["AssociatedAt"] then M.Assert__string(struct["AssociatedAt"]) end
+	if struct["AssociatedAt"] then asserts.Assert__string(struct["AssociatedAt"]) end
 	for k,_ in pairs(struct) do
-		assert(AssociateServiceRoleToAccountResponse_keys[k], "AssociateServiceRoleToAccountResponse contains unknown key " .. tostring(k))
+		assert(keys.AssociateServiceRoleToAccountResponse[k], "AssociateServiceRoleToAccountResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssociateServiceRoleToAccountResponse
 --  
--- @param AssociatedAt [__string] Time when the service role was associated to the account.
-function M.AssociateServiceRoleToAccountResponse(AssociatedAt, ...)
+-- @param _AssociatedAt [__string] Time when the service role was associated to the account.
+function M.AssociateServiceRoleToAccountResponse(_AssociatedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateServiceRoleToAccountResponse")
 	local t = { 
-		["AssociatedAt"] = AssociatedAt,
+		["AssociatedAt"] = _AssociatedAt,
 	}
-	M.AssertAssociateServiceRoleToAccountResponse(t)
+	asserts.AssertAssociateServiceRoleToAccountResponse(t)
 	return t
 end
 
-local CreateLoggerDefinitionVersionRequest_keys = { "Loggers" = true, "LoggerDefinitionId" = true, "AmznClientToken" = true, nil }
+keys.CreateLoggerDefinitionVersionRequest = { ["Loggers"] = true, ["LoggerDefinitionId"] = true, ["AmznClientToken"] = true, nil }
 
-function M.AssertCreateLoggerDefinitionVersionRequest(struct)
+function asserts.AssertCreateLoggerDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLoggerDefinitionVersionRequest to be of type 'table'")
 	assert(struct["LoggerDefinitionId"], "Expected key LoggerDefinitionId to exist in table")
-	if struct["Loggers"] then M.AssertListOfLogger(struct["Loggers"]) end
-	if struct["LoggerDefinitionId"] then M.Assert__string(struct["LoggerDefinitionId"]) end
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
+	if struct["Loggers"] then asserts.AssertListOfLogger(struct["Loggers"]) end
+	if struct["LoggerDefinitionId"] then asserts.Assert__string(struct["LoggerDefinitionId"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLoggerDefinitionVersionRequest_keys[k], "CreateLoggerDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateLoggerDefinitionVersionRequest[k], "CreateLoggerDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLoggerDefinitionVersionRequest
 --  
--- @param Loggers [ListOfLogger] List of loggers.
--- @param LoggerDefinitionId [__string] logger definition Id
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _Loggers [ListOfLogger] List of loggers.
+-- @param _LoggerDefinitionId [__string] logger definition Id
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
 -- Required parameter: LoggerDefinitionId
-function M.CreateLoggerDefinitionVersionRequest(Loggers, LoggerDefinitionId, AmznClientToken, ...)
+function M.CreateLoggerDefinitionVersionRequest(_Loggers, _LoggerDefinitionId, _AmznClientToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoggerDefinitionVersionRequest")
 	local t = { 
-		["Loggers"] = Loggers,
-		["LoggerDefinitionId"] = LoggerDefinitionId,
-		["AmznClientToken"] = AmznClientToken,
+		["Loggers"] = _Loggers,
+		["LoggerDefinitionId"] = _LoggerDefinitionId,
+		["AmznClientToken"] = _AmznClientToken,
 	}
-	M.AssertCreateLoggerDefinitionVersionRequest(t)
+	asserts.AssertCreateLoggerDefinitionVersionRequest(t)
 	return t
 end
 
-local DeleteLoggerDefinitionRequest_keys = { "LoggerDefinitionId" = true, nil }
+keys.DeleteLoggerDefinitionRequest = { ["LoggerDefinitionId"] = true, nil }
 
-function M.AssertDeleteLoggerDefinitionRequest(struct)
+function asserts.AssertDeleteLoggerDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLoggerDefinitionRequest to be of type 'table'")
 	assert(struct["LoggerDefinitionId"], "Expected key LoggerDefinitionId to exist in table")
-	if struct["LoggerDefinitionId"] then M.Assert__string(struct["LoggerDefinitionId"]) end
+	if struct["LoggerDefinitionId"] then asserts.Assert__string(struct["LoggerDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteLoggerDefinitionRequest_keys[k], "DeleteLoggerDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteLoggerDefinitionRequest[k], "DeleteLoggerDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteLoggerDefinitionRequest
 --  
--- @param LoggerDefinitionId [__string] logger definition Id
+-- @param _LoggerDefinitionId [__string] logger definition Id
 -- Required parameter: LoggerDefinitionId
-function M.DeleteLoggerDefinitionRequest(LoggerDefinitionId, ...)
+function M.DeleteLoggerDefinitionRequest(_LoggerDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoggerDefinitionRequest")
 	local t = { 
-		["LoggerDefinitionId"] = LoggerDefinitionId,
+		["LoggerDefinitionId"] = _LoggerDefinitionId,
 	}
-	M.AssertDeleteLoggerDefinitionRequest(t)
+	asserts.AssertDeleteLoggerDefinitionRequest(t)
 	return t
 end
 
-local ListGroupVersionsRequest_keys = { "NextToken" = true, "GroupId" = true, "MaxResults" = true, nil }
+keys.ListGroupVersionsRequest = { ["NextToken"] = true, ["GroupId"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListGroupVersionsRequest(struct)
+function asserts.AssertListGroupVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupVersionsRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGroupVersionsRequest_keys[k], "ListGroupVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListGroupVersionsRequest[k], "ListGroupVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGroupVersionsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- Required parameter: GroupId
-function M.ListGroupVersionsRequest(NextToken, GroupId, MaxResults, ...)
+function M.ListGroupVersionsRequest(_NextToken, _GroupId, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupVersionsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["GroupId"] = GroupId,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["GroupId"] = _GroupId,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListGroupVersionsRequest(t)
+	asserts.AssertListGroupVersionsRequest(t)
 	return t
 end
 
-local GetGroupCertificateAuthorityResponse_keys = { "PemEncodedCertificate" = true, "GroupCertificateAuthorityId" = true, "GroupCertificateAuthorityArn" = true, nil }
+keys.GetGroupCertificateAuthorityResponse = { ["PemEncodedCertificate"] = true, ["GroupCertificateAuthorityId"] = true, ["GroupCertificateAuthorityArn"] = true, nil }
 
-function M.AssertGetGroupCertificateAuthorityResponse(struct)
+function asserts.AssertGetGroupCertificateAuthorityResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupCertificateAuthorityResponse to be of type 'table'")
-	if struct["PemEncodedCertificate"] then M.Assert__string(struct["PemEncodedCertificate"]) end
-	if struct["GroupCertificateAuthorityId"] then M.Assert__string(struct["GroupCertificateAuthorityId"]) end
-	if struct["GroupCertificateAuthorityArn"] then M.Assert__string(struct["GroupCertificateAuthorityArn"]) end
+	if struct["PemEncodedCertificate"] then asserts.Assert__string(struct["PemEncodedCertificate"]) end
+	if struct["GroupCertificateAuthorityId"] then asserts.Assert__string(struct["GroupCertificateAuthorityId"]) end
+	if struct["GroupCertificateAuthorityArn"] then asserts.Assert__string(struct["GroupCertificateAuthorityArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupCertificateAuthorityResponse_keys[k], "GetGroupCertificateAuthorityResponse contains unknown key " .. tostring(k))
+		assert(keys.GetGroupCertificateAuthorityResponse[k], "GetGroupCertificateAuthorityResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupCertificateAuthorityResponse
 --  
--- @param PemEncodedCertificate [__string] PEM encoded certificate for the group.
--- @param GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
--- @param GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
-function M.GetGroupCertificateAuthorityResponse(PemEncodedCertificate, GroupCertificateAuthorityId, GroupCertificateAuthorityArn, ...)
+-- @param _PemEncodedCertificate [__string] PEM encoded certificate for the group.
+-- @param _GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
+-- @param _GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
+function M.GetGroupCertificateAuthorityResponse(_PemEncodedCertificate, _GroupCertificateAuthorityId, _GroupCertificateAuthorityArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupCertificateAuthorityResponse")
 	local t = { 
-		["PemEncodedCertificate"] = PemEncodedCertificate,
-		["GroupCertificateAuthorityId"] = GroupCertificateAuthorityId,
-		["GroupCertificateAuthorityArn"] = GroupCertificateAuthorityArn,
+		["PemEncodedCertificate"] = _PemEncodedCertificate,
+		["GroupCertificateAuthorityId"] = _GroupCertificateAuthorityId,
+		["GroupCertificateAuthorityArn"] = _GroupCertificateAuthorityArn,
 	}
-	M.AssertGetGroupCertificateAuthorityResponse(t)
+	asserts.AssertGetGroupCertificateAuthorityResponse(t)
 	return t
 end
 
-local CreateDeviceDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateDeviceDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateDeviceDefinitionResponse(struct)
+function asserts.AssertCreateDeviceDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeviceDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDeviceDefinitionResponse_keys[k], "CreateDeviceDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateDeviceDefinitionResponse[k], "CreateDeviceDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDeviceDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.CreateDeviceDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.CreateDeviceDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeviceDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateDeviceDefinitionResponse(t)
+	asserts.AssertCreateDeviceDefinitionResponse(t)
 	return t
 end
 
-local DeleteFunctionDefinitionResponse_keys = { nil }
+keys.DeleteFunctionDefinitionResponse = { nil }
 
-function M.AssertDeleteFunctionDefinitionResponse(struct)
+function asserts.AssertDeleteFunctionDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFunctionDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteFunctionDefinitionResponse_keys[k], "DeleteFunctionDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteFunctionDefinitionResponse[k], "DeleteFunctionDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -763,200 +766,200 @@ function M.DeleteFunctionDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFunctionDefinitionResponse")
 	local t = { 
 	}
-	M.AssertDeleteFunctionDefinitionResponse(t)
+	asserts.AssertDeleteFunctionDefinitionResponse(t)
 	return t
 end
 
-local CreateCoreDefinitionRequest_keys = { "AmznClientToken" = true, "InitialVersion" = true, "Name" = true, nil }
+keys.CreateCoreDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateCoreDefinitionRequest(struct)
+function asserts.AssertCreateCoreDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCoreDefinitionRequest to be of type 'table'")
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["InitialVersion"] then M.AssertCoreDefinitionVersion(struct["InitialVersion"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["InitialVersion"] then asserts.AssertCoreDefinitionVersion(struct["InitialVersion"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCoreDefinitionRequest_keys[k], "CreateCoreDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateCoreDefinitionRequest[k], "CreateCoreDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCoreDefinitionRequest
 -- Information on the core definition request
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param InitialVersion [CoreDefinitionVersion] Information on the initial version
--- @param Name [__string] name of the core definition
-function M.CreateCoreDefinitionRequest(AmznClientToken, InitialVersion, Name, ...)
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _InitialVersion [CoreDefinitionVersion] Information on the initial version
+-- @param _Name [__string] name of the core definition
+function M.CreateCoreDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCoreDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = AmznClientToken,
-		["InitialVersion"] = InitialVersion,
-		["Name"] = Name,
+		["AmznClientToken"] = _AmznClientToken,
+		["InitialVersion"] = _InitialVersion,
+		["Name"] = _Name,
 	}
-	M.AssertCreateCoreDefinitionRequest(t)
+	asserts.AssertCreateCoreDefinitionRequest(t)
 	return t
 end
 
-local DisassociateServiceRoleFromAccountResponse_keys = { "DisassociatedAt" = true, nil }
+keys.DisassociateServiceRoleFromAccountResponse = { ["DisassociatedAt"] = true, nil }
 
-function M.AssertDisassociateServiceRoleFromAccountResponse(struct)
+function asserts.AssertDisassociateServiceRoleFromAccountResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateServiceRoleFromAccountResponse to be of type 'table'")
-	if struct["DisassociatedAt"] then M.Assert__string(struct["DisassociatedAt"]) end
+	if struct["DisassociatedAt"] then asserts.Assert__string(struct["DisassociatedAt"]) end
 	for k,_ in pairs(struct) do
-		assert(DisassociateServiceRoleFromAccountResponse_keys[k], "DisassociateServiceRoleFromAccountResponse contains unknown key " .. tostring(k))
+		assert(keys.DisassociateServiceRoleFromAccountResponse[k], "DisassociateServiceRoleFromAccountResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisassociateServiceRoleFromAccountResponse
 --  
--- @param DisassociatedAt [__string] Time when the service role was disassociated from the account.
-function M.DisassociateServiceRoleFromAccountResponse(DisassociatedAt, ...)
+-- @param _DisassociatedAt [__string] Time when the service role was disassociated from the account.
+function M.DisassociateServiceRoleFromAccountResponse(_DisassociatedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateServiceRoleFromAccountResponse")
 	local t = { 
-		["DisassociatedAt"] = DisassociatedAt,
+		["DisassociatedAt"] = _DisassociatedAt,
 	}
-	M.AssertDisassociateServiceRoleFromAccountResponse(t)
+	asserts.AssertDisassociateServiceRoleFromAccountResponse(t)
 	return t
 end
 
-local DeviceDefinitionVersion_keys = { "Devices" = true, nil }
+keys.DeviceDefinitionVersion = { ["Devices"] = true, nil }
 
-function M.AssertDeviceDefinitionVersion(struct)
+function asserts.AssertDeviceDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeviceDefinitionVersion to be of type 'table'")
-	if struct["Devices"] then M.AssertListOfDevice(struct["Devices"]) end
+	if struct["Devices"] then asserts.AssertListOfDevice(struct["Devices"]) end
 	for k,_ in pairs(struct) do
-		assert(DeviceDefinitionVersion_keys[k], "DeviceDefinitionVersion contains unknown key " .. tostring(k))
+		assert(keys.DeviceDefinitionVersion[k], "DeviceDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeviceDefinitionVersion
 -- Information on device definition version
--- @param Devices [ListOfDevice] Devices in the definition version.
-function M.DeviceDefinitionVersion(Devices, ...)
+-- @param _Devices [ListOfDevice] Devices in the definition version.
+function M.DeviceDefinitionVersion(_Devices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeviceDefinitionVersion")
 	local t = { 
-		["Devices"] = Devices,
+		["Devices"] = _Devices,
 	}
-	M.AssertDeviceDefinitionVersion(t)
+	asserts.AssertDeviceDefinitionVersion(t)
 	return t
 end
 
-local ListFunctionDefinitionVersionsRequest_keys = { "FunctionDefinitionId" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.ListFunctionDefinitionVersionsRequest = { ["FunctionDefinitionId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListFunctionDefinitionVersionsRequest(struct)
+function asserts.AssertListFunctionDefinitionVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFunctionDefinitionVersionsRequest to be of type 'table'")
 	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
-	if struct["FunctionDefinitionId"] then M.Assert__string(struct["FunctionDefinitionId"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFunctionDefinitionVersionsRequest_keys[k], "ListFunctionDefinitionVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListFunctionDefinitionVersionsRequest[k], "ListFunctionDefinitionVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFunctionDefinitionVersionsRequest
 --  
--- @param FunctionDefinitionId [__string] the unique Id of the lambda definition
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- Required parameter: FunctionDefinitionId
-function M.ListFunctionDefinitionVersionsRequest(FunctionDefinitionId, NextToken, MaxResults, ...)
+function M.ListFunctionDefinitionVersionsRequest(_FunctionDefinitionId, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionDefinitionVersionsRequest")
 	local t = { 
-		["FunctionDefinitionId"] = FunctionDefinitionId,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["FunctionDefinitionId"] = _FunctionDefinitionId,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListFunctionDefinitionVersionsRequest(t)
+	asserts.AssertListFunctionDefinitionVersionsRequest(t)
 	return t
 end
 
-local DisassociateRoleFromGroupResponse_keys = { "DisassociatedAt" = true, nil }
+keys.DisassociateRoleFromGroupResponse = { ["DisassociatedAt"] = true, nil }
 
-function M.AssertDisassociateRoleFromGroupResponse(struct)
+function asserts.AssertDisassociateRoleFromGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateRoleFromGroupResponse to be of type 'table'")
-	if struct["DisassociatedAt"] then M.Assert__string(struct["DisassociatedAt"]) end
+	if struct["DisassociatedAt"] then asserts.Assert__string(struct["DisassociatedAt"]) end
 	for k,_ in pairs(struct) do
-		assert(DisassociateRoleFromGroupResponse_keys[k], "DisassociateRoleFromGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.DisassociateRoleFromGroupResponse[k], "DisassociateRoleFromGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisassociateRoleFromGroupResponse
 --  
--- @param DisassociatedAt [__string] Time when the role was disassociated from the group.
-function M.DisassociateRoleFromGroupResponse(DisassociatedAt, ...)
+-- @param _DisassociatedAt [__string] Time when the role was disassociated from the group.
+function M.DisassociateRoleFromGroupResponse(_DisassociatedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateRoleFromGroupResponse")
 	local t = { 
-		["DisassociatedAt"] = DisassociatedAt,
+		["DisassociatedAt"] = _DisassociatedAt,
 	}
-	M.AssertDisassociateRoleFromGroupResponse(t)
+	asserts.AssertDisassociateRoleFromGroupResponse(t)
 	return t
 end
 
-local LoggerDefinitionVersion_keys = { "Loggers" = true, nil }
+keys.LoggerDefinitionVersion = { ["Loggers"] = true, nil }
 
-function M.AssertLoggerDefinitionVersion(struct)
+function asserts.AssertLoggerDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LoggerDefinitionVersion to be of type 'table'")
-	if struct["Loggers"] then M.AssertListOfLogger(struct["Loggers"]) end
+	if struct["Loggers"] then asserts.AssertListOfLogger(struct["Loggers"]) end
 	for k,_ in pairs(struct) do
-		assert(LoggerDefinitionVersion_keys[k], "LoggerDefinitionVersion contains unknown key " .. tostring(k))
+		assert(keys.LoggerDefinitionVersion[k], "LoggerDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LoggerDefinitionVersion
 -- Information on logger definition version
--- @param Loggers [ListOfLogger] List of loggers.
-function M.LoggerDefinitionVersion(Loggers, ...)
+-- @param _Loggers [ListOfLogger] List of loggers.
+function M.LoggerDefinitionVersion(_Loggers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoggerDefinitionVersion")
 	local t = { 
-		["Loggers"] = Loggers,
+		["Loggers"] = _Loggers,
 	}
-	M.AssertLoggerDefinitionVersion(t)
+	asserts.AssertLoggerDefinitionVersion(t)
 	return t
 end
 
-local CreateFunctionDefinitionVersionRequest_keys = { "FunctionDefinitionId" = true, "Functions" = true, "AmznClientToken" = true, nil }
+keys.CreateFunctionDefinitionVersionRequest = { ["FunctionDefinitionId"] = true, ["Functions"] = true, ["AmznClientToken"] = true, nil }
 
-function M.AssertCreateFunctionDefinitionVersionRequest(struct)
+function asserts.AssertCreateFunctionDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFunctionDefinitionVersionRequest to be of type 'table'")
 	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
-	if struct["FunctionDefinitionId"] then M.Assert__string(struct["FunctionDefinitionId"]) end
-	if struct["Functions"] then M.AssertListOfFunction(struct["Functions"]) end
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
+	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
+	if struct["Functions"] then asserts.AssertListOfFunction(struct["Functions"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFunctionDefinitionVersionRequest_keys[k], "CreateFunctionDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateFunctionDefinitionVersionRequest[k], "CreateFunctionDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFunctionDefinitionVersionRequest
 -- Function definition version
--- @param FunctionDefinitionId [__string] the unique Id of the lambda definition
--- @param Functions [ListOfFunction] Lambda functions in this function definition version.
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- @param _Functions [ListOfFunction] Lambda functions in this function definition version.
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
 -- Required parameter: FunctionDefinitionId
-function M.CreateFunctionDefinitionVersionRequest(FunctionDefinitionId, Functions, AmznClientToken, ...)
+function M.CreateFunctionDefinitionVersionRequest(_FunctionDefinitionId, _Functions, _AmznClientToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionDefinitionVersionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = FunctionDefinitionId,
-		["Functions"] = Functions,
-		["AmznClientToken"] = AmznClientToken,
+		["FunctionDefinitionId"] = _FunctionDefinitionId,
+		["Functions"] = _Functions,
+		["AmznClientToken"] = _AmznClientToken,
 	}
-	M.AssertCreateFunctionDefinitionVersionRequest(t)
+	asserts.AssertCreateFunctionDefinitionVersionRequest(t)
 	return t
 end
 
-local DeleteDeviceDefinitionResponse_keys = { nil }
+keys.DeleteDeviceDefinitionResponse = { nil }
 
-function M.AssertDeleteDeviceDefinitionResponse(struct)
+function asserts.AssertDeleteDeviceDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDeviceDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteDeviceDefinitionResponse_keys[k], "DeleteDeviceDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteDeviceDefinitionResponse[k], "DeleteDeviceDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -966,213 +969,213 @@ function M.DeleteDeviceDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeviceDefinitionResponse")
 	local t = { 
 	}
-	M.AssertDeleteDeviceDefinitionResponse(t)
+	asserts.AssertDeleteDeviceDefinitionResponse(t)
 	return t
 end
 
-local CreateDeviceDefinitionVersionResponse_keys = { "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateDeviceDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateDeviceDefinitionVersionResponse(struct)
+function asserts.AssertCreateDeviceDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeviceDefinitionVersionResponse to be of type 'table'")
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDeviceDefinitionVersionResponse_keys[k], "CreateDeviceDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateDeviceDefinitionVersionResponse[k], "CreateDeviceDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDeviceDefinitionVersionResponse
 --  
--- @param Version [__string] Unique Id of a version.
--- @param CreationTimestamp [__string] Timestamp of when the version was created.
--- @param Id [__string] Id of the resource container.
--- @param Arn [__string] Arn of the version.
-function M.CreateDeviceDefinitionVersionResponse(Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Version [__string] Unique Id of a version.
+-- @param _CreationTimestamp [__string] Timestamp of when the version was created.
+-- @param _Id [__string] Id of the resource container.
+-- @param _Arn [__string] Arn of the version.
+function M.CreateDeviceDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeviceDefinitionVersionResponse")
 	local t = { 
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateDeviceDefinitionVersionResponse(t)
+	asserts.AssertCreateDeviceDefinitionVersionResponse(t)
 	return t
 end
 
-local ListLoggerDefinitionVersionsRequest_keys = { "LoggerDefinitionId" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.ListLoggerDefinitionVersionsRequest = { ["LoggerDefinitionId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListLoggerDefinitionVersionsRequest(struct)
+function asserts.AssertListLoggerDefinitionVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLoggerDefinitionVersionsRequest to be of type 'table'")
 	assert(struct["LoggerDefinitionId"], "Expected key LoggerDefinitionId to exist in table")
-	if struct["LoggerDefinitionId"] then M.Assert__string(struct["LoggerDefinitionId"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["LoggerDefinitionId"] then asserts.Assert__string(struct["LoggerDefinitionId"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListLoggerDefinitionVersionsRequest_keys[k], "ListLoggerDefinitionVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListLoggerDefinitionVersionsRequest[k], "ListLoggerDefinitionVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListLoggerDefinitionVersionsRequest
 --  
--- @param LoggerDefinitionId [__string] logger definition Id
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @param _LoggerDefinitionId [__string] logger definition Id
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- Required parameter: LoggerDefinitionId
-function M.ListLoggerDefinitionVersionsRequest(LoggerDefinitionId, NextToken, MaxResults, ...)
+function M.ListLoggerDefinitionVersionsRequest(_LoggerDefinitionId, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLoggerDefinitionVersionsRequest")
 	local t = { 
-		["LoggerDefinitionId"] = LoggerDefinitionId,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["LoggerDefinitionId"] = _LoggerDefinitionId,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListLoggerDefinitionVersionsRequest(t)
+	asserts.AssertListLoggerDefinitionVersionsRequest(t)
 	return t
 end
 
-local DefinitionInformation_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.DefinitionInformation = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertDefinitionInformation(struct)
+function asserts.AssertDefinitionInformation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DefinitionInformation to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(DefinitionInformation_keys[k], "DefinitionInformation contains unknown key " .. tostring(k))
+		assert(keys.DefinitionInformation[k], "DefinitionInformation contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DefinitionInformation
 -- Information on the Definition
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.DefinitionInformation(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.DefinitionInformation(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DefinitionInformation")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertDefinitionInformation(t)
+	asserts.AssertDefinitionInformation(t)
 	return t
 end
 
-local GeneralError_keys = { "ErrorDetails" = true, "Message" = true, nil }
+keys.GeneralError = { ["ErrorDetails"] = true, ["Message"] = true, nil }
 
-function M.AssertGeneralError(struct)
+function asserts.AssertGeneralError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GeneralError to be of type 'table'")
-	if struct["ErrorDetails"] then M.AssertErrorDetails(struct["ErrorDetails"]) end
-	if struct["Message"] then M.Assert__string(struct["Message"]) end
+	if struct["ErrorDetails"] then asserts.AssertErrorDetails(struct["ErrorDetails"]) end
+	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(GeneralError_keys[k], "GeneralError contains unknown key " .. tostring(k))
+		assert(keys.GeneralError[k], "GeneralError contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GeneralError
 -- General Error
--- @param ErrorDetails [ErrorDetails] Error Details
--- @param Message [__string] Message
-function M.GeneralError(ErrorDetails, Message, ...)
+-- @param _ErrorDetails [ErrorDetails] Error Details
+-- @param _Message [__string] Message
+function M.GeneralError(_ErrorDetails, _Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GeneralError")
 	local t = { 
-		["ErrorDetails"] = ErrorDetails,
-		["Message"] = Message,
+		["ErrorDetails"] = _ErrorDetails,
+		["Message"] = _Message,
 	}
-	M.AssertGeneralError(t)
+	asserts.AssertGeneralError(t)
 	return t
 end
 
-local GetCoreDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetCoreDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetCoreDefinitionResponse(struct)
+function asserts.AssertGetCoreDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCoreDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCoreDefinitionResponse_keys[k], "GetCoreDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetCoreDefinitionResponse[k], "GetCoreDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCoreDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.GetCoreDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.GetCoreDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCoreDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetCoreDefinitionResponse(t)
+	asserts.AssertGetCoreDefinitionResponse(t)
 	return t
 end
 
-local GetSubscriptionDefinitionRequest_keys = { "SubscriptionDefinitionId" = true, nil }
+keys.GetSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, nil }
 
-function M.AssertGetSubscriptionDefinitionRequest(struct)
+function asserts.AssertGetSubscriptionDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSubscriptionDefinitionRequest to be of type 'table'")
 	assert(struct["SubscriptionDefinitionId"], "Expected key SubscriptionDefinitionId to exist in table")
-	if struct["SubscriptionDefinitionId"] then M.Assert__string(struct["SubscriptionDefinitionId"]) end
+	if struct["SubscriptionDefinitionId"] then asserts.Assert__string(struct["SubscriptionDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSubscriptionDefinitionRequest_keys[k], "GetSubscriptionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetSubscriptionDefinitionRequest[k], "GetSubscriptionDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSubscriptionDefinitionRequest
 --  
--- @param SubscriptionDefinitionId [__string] subscription definition Id
+-- @param _SubscriptionDefinitionId [__string] subscription definition Id
 -- Required parameter: SubscriptionDefinitionId
-function M.GetSubscriptionDefinitionRequest(SubscriptionDefinitionId, ...)
+function M.GetSubscriptionDefinitionRequest(_SubscriptionDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionDefinitionRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = SubscriptionDefinitionId,
+		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
 	}
-	M.AssertGetSubscriptionDefinitionRequest(t)
+	asserts.AssertGetSubscriptionDefinitionRequest(t)
 	return t
 end
 
-local UpdateFunctionDefinitionResponse_keys = { nil }
+keys.UpdateFunctionDefinitionResponse = { nil }
 
-function M.AssertUpdateFunctionDefinitionResponse(struct)
+function asserts.AssertUpdateFunctionDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFunctionDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateFunctionDefinitionResponse_keys[k], "UpdateFunctionDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateFunctionDefinitionResponse[k], "UpdateFunctionDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1182,164 +1185,164 @@ function M.UpdateFunctionDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFunctionDefinitionResponse")
 	local t = { 
 	}
-	M.AssertUpdateFunctionDefinitionResponse(t)
+	asserts.AssertUpdateFunctionDefinitionResponse(t)
 	return t
 end
 
-local UpdateSubscriptionDefinitionRequest_keys = { "SubscriptionDefinitionId" = true, "Name" = true, nil }
+keys.UpdateSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateSubscriptionDefinitionRequest(struct)
+function asserts.AssertUpdateSubscriptionDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateSubscriptionDefinitionRequest to be of type 'table'")
 	assert(struct["SubscriptionDefinitionId"], "Expected key SubscriptionDefinitionId to exist in table")
-	if struct["SubscriptionDefinitionId"] then M.Assert__string(struct["SubscriptionDefinitionId"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["SubscriptionDefinitionId"] then asserts.Assert__string(struct["SubscriptionDefinitionId"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateSubscriptionDefinitionRequest_keys[k], "UpdateSubscriptionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateSubscriptionDefinitionRequest[k], "UpdateSubscriptionDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateSubscriptionDefinitionRequest
 --  
--- @param SubscriptionDefinitionId [__string] subscription definition Id
--- @param Name [__string] name of the definition
+-- @param _SubscriptionDefinitionId [__string] subscription definition Id
+-- @param _Name [__string] name of the definition
 -- Required parameter: SubscriptionDefinitionId
-function M.UpdateSubscriptionDefinitionRequest(SubscriptionDefinitionId, Name, ...)
+function M.UpdateSubscriptionDefinitionRequest(_SubscriptionDefinitionId, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubscriptionDefinitionRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = SubscriptionDefinitionId,
-		["Name"] = Name,
+		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateSubscriptionDefinitionRequest(t)
+	asserts.AssertUpdateSubscriptionDefinitionRequest(t)
 	return t
 end
 
-local CreateDeploymentRequest_keys = { "DeploymentId" = true, "DeploymentType" = true, "AmznClientToken" = true, "GroupVersionId" = true, "GroupId" = true, nil }
+keys.CreateDeploymentRequest = { ["DeploymentId"] = true, ["DeploymentType"] = true, ["AmznClientToken"] = true, ["GroupVersionId"] = true, ["GroupId"] = true, nil }
 
-function M.AssertCreateDeploymentRequest(struct)
+function asserts.AssertCreateDeploymentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeploymentRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["DeploymentId"] then M.Assert__string(struct["DeploymentId"]) end
-	if struct["DeploymentType"] then M.AssertDeploymentType(struct["DeploymentType"]) end
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["GroupVersionId"] then M.Assert__string(struct["GroupVersionId"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["DeploymentId"] then asserts.Assert__string(struct["DeploymentId"]) end
+	if struct["DeploymentType"] then asserts.AssertDeploymentType(struct["DeploymentType"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["GroupVersionId"] then asserts.Assert__string(struct["GroupVersionId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDeploymentRequest_keys[k], "CreateDeploymentRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDeploymentRequest[k], "CreateDeploymentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDeploymentRequest
 --  
--- @param DeploymentId [__string] Id of the deployment if you wish to redeploy a previous deployment.
--- @param DeploymentType [DeploymentType] Type of deployment
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param GroupVersionId [__string] Group Version you wish to deploy.
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _DeploymentId [__string] Id of the deployment if you wish to redeploy a previous deployment.
+-- @param _DeploymentType [DeploymentType] Type of deployment
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _GroupVersionId [__string] Group Version you wish to deploy.
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.CreateDeploymentRequest(DeploymentId, DeploymentType, AmznClientToken, GroupVersionId, GroupId, ...)
+function M.CreateDeploymentRequest(_DeploymentId, _DeploymentType, _AmznClientToken, _GroupVersionId, _GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentRequest")
 	local t = { 
-		["DeploymentId"] = DeploymentId,
-		["DeploymentType"] = DeploymentType,
-		["AmznClientToken"] = AmznClientToken,
-		["GroupVersionId"] = GroupVersionId,
-		["GroupId"] = GroupId,
+		["DeploymentId"] = _DeploymentId,
+		["DeploymentType"] = _DeploymentType,
+		["AmznClientToken"] = _AmznClientToken,
+		["GroupVersionId"] = _GroupVersionId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertCreateDeploymentRequest(t)
+	asserts.AssertCreateDeploymentRequest(t)
 	return t
 end
 
-local GetConnectivityInfoResponse_keys = { "ConnectivityInfo" = true, "Message" = true, nil }
+keys.GetConnectivityInfoResponse = { ["ConnectivityInfo"] = true, ["Message"] = true, nil }
 
-function M.AssertGetConnectivityInfoResponse(struct)
+function asserts.AssertGetConnectivityInfoResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetConnectivityInfoResponse to be of type 'table'")
-	if struct["ConnectivityInfo"] then M.AssertListOfConnectivityInfo(struct["ConnectivityInfo"]) end
-	if struct["Message"] then M.Assert__string(struct["Message"]) end
+	if struct["ConnectivityInfo"] then asserts.AssertListOfConnectivityInfo(struct["ConnectivityInfo"]) end
+	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(GetConnectivityInfoResponse_keys[k], "GetConnectivityInfoResponse contains unknown key " .. tostring(k))
+		assert(keys.GetConnectivityInfoResponse[k], "GetConnectivityInfoResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetConnectivityInfoResponse
 --  
--- @param ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
--- @param Message [__string] Response Text
-function M.GetConnectivityInfoResponse(ConnectivityInfo, Message, ...)
+-- @param _ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
+-- @param _Message [__string] Response Text
+function M.GetConnectivityInfoResponse(_ConnectivityInfo, _Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetConnectivityInfoResponse")
 	local t = { 
-		["ConnectivityInfo"] = ConnectivityInfo,
-		["Message"] = Message,
+		["ConnectivityInfo"] = _ConnectivityInfo,
+		["Message"] = _Message,
 	}
-	M.AssertGetConnectivityInfoResponse(t)
+	asserts.AssertGetConnectivityInfoResponse(t)
 	return t
 end
 
-local ListCoreDefinitionVersionsRequest_keys = { "NextToken" = true, "CoreDefinitionId" = true, "MaxResults" = true, nil }
+keys.ListCoreDefinitionVersionsRequest = { ["NextToken"] = true, ["CoreDefinitionId"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListCoreDefinitionVersionsRequest(struct)
+function asserts.AssertListCoreDefinitionVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListCoreDefinitionVersionsRequest to be of type 'table'")
 	assert(struct["CoreDefinitionId"], "Expected key CoreDefinitionId to exist in table")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["CoreDefinitionId"] then M.Assert__string(struct["CoreDefinitionId"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["CoreDefinitionId"] then asserts.Assert__string(struct["CoreDefinitionId"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListCoreDefinitionVersionsRequest_keys[k], "ListCoreDefinitionVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListCoreDefinitionVersionsRequest[k], "ListCoreDefinitionVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListCoreDefinitionVersionsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param CoreDefinitionId [__string] core definition Id
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _CoreDefinitionId [__string] core definition Id
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- Required parameter: CoreDefinitionId
-function M.ListCoreDefinitionVersionsRequest(NextToken, CoreDefinitionId, MaxResults, ...)
+function M.ListCoreDefinitionVersionsRequest(_NextToken, _CoreDefinitionId, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCoreDefinitionVersionsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["CoreDefinitionId"] = CoreDefinitionId,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["CoreDefinitionId"] = _CoreDefinitionId,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListCoreDefinitionVersionsRequest(t)
+	asserts.AssertListCoreDefinitionVersionsRequest(t)
 	return t
 end
 
-local DeleteDeviceDefinitionRequest_keys = { "DeviceDefinitionId" = true, nil }
+keys.DeleteDeviceDefinitionRequest = { ["DeviceDefinitionId"] = true, nil }
 
-function M.AssertDeleteDeviceDefinitionRequest(struct)
+function asserts.AssertDeleteDeviceDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDeviceDefinitionRequest to be of type 'table'")
 	assert(struct["DeviceDefinitionId"], "Expected key DeviceDefinitionId to exist in table")
-	if struct["DeviceDefinitionId"] then M.Assert__string(struct["DeviceDefinitionId"]) end
+	if struct["DeviceDefinitionId"] then asserts.Assert__string(struct["DeviceDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDeviceDefinitionRequest_keys[k], "DeleteDeviceDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteDeviceDefinitionRequest[k], "DeleteDeviceDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDeviceDefinitionRequest
 --  
--- @param DeviceDefinitionId [__string] device definition Id
+-- @param _DeviceDefinitionId [__string] device definition Id
 -- Required parameter: DeviceDefinitionId
-function M.DeleteDeviceDefinitionRequest(DeviceDefinitionId, ...)
+function M.DeleteDeviceDefinitionRequest(_DeviceDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeviceDefinitionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = DeviceDefinitionId,
+		["DeviceDefinitionId"] = _DeviceDefinitionId,
 	}
-	M.AssertDeleteDeviceDefinitionRequest(t)
+	asserts.AssertDeleteDeviceDefinitionRequest(t)
 	return t
 end
 
-local UpdateCoreDefinitionResponse_keys = { nil }
+keys.UpdateCoreDefinitionResponse = { nil }
 
-function M.AssertUpdateCoreDefinitionResponse(struct)
+function asserts.AssertUpdateCoreDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateCoreDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateCoreDefinitionResponse_keys[k], "UpdateCoreDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateCoreDefinitionResponse[k], "UpdateCoreDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1349,17 +1352,17 @@ function M.UpdateCoreDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCoreDefinitionResponse")
 	local t = { 
 	}
-	M.AssertUpdateCoreDefinitionResponse(t)
+	asserts.AssertUpdateCoreDefinitionResponse(t)
 	return t
 end
 
-local UpdateLoggerDefinitionResponse_keys = { nil }
+keys.UpdateLoggerDefinitionResponse = { nil }
 
-function M.AssertUpdateLoggerDefinitionResponse(struct)
+function asserts.AssertUpdateLoggerDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateLoggerDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateLoggerDefinitionResponse_keys[k], "UpdateLoggerDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateLoggerDefinitionResponse[k], "UpdateLoggerDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1369,232 +1372,232 @@ function M.UpdateLoggerDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLoggerDefinitionResponse")
 	local t = { 
 	}
-	M.AssertUpdateLoggerDefinitionResponse(t)
+	asserts.AssertUpdateLoggerDefinitionResponse(t)
 	return t
 end
 
-local FunctionDefinitionVersion_keys = { "Functions" = true, nil }
+keys.FunctionDefinitionVersion = { ["Functions"] = true, nil }
 
-function M.AssertFunctionDefinitionVersion(struct)
+function asserts.AssertFunctionDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FunctionDefinitionVersion to be of type 'table'")
-	if struct["Functions"] then M.AssertListOfFunction(struct["Functions"]) end
+	if struct["Functions"] then asserts.AssertListOfFunction(struct["Functions"]) end
 	for k,_ in pairs(struct) do
-		assert(FunctionDefinitionVersion_keys[k], "FunctionDefinitionVersion contains unknown key " .. tostring(k))
+		assert(keys.FunctionDefinitionVersion[k], "FunctionDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionDefinitionVersion
 -- Information on the function definition version
--- @param Functions [ListOfFunction] Lambda functions in this function definition version.
-function M.FunctionDefinitionVersion(Functions, ...)
+-- @param _Functions [ListOfFunction] Lambda functions in this function definition version.
+function M.FunctionDefinitionVersion(_Functions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FunctionDefinitionVersion")
 	local t = { 
-		["Functions"] = Functions,
+		["Functions"] = _Functions,
 	}
-	M.AssertFunctionDefinitionVersion(t)
+	asserts.AssertFunctionDefinitionVersion(t)
 	return t
 end
 
-local CreateSubscriptionDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateSubscriptionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateSubscriptionDefinitionResponse(struct)
+function asserts.AssertCreateSubscriptionDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateSubscriptionDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateSubscriptionDefinitionResponse_keys[k], "CreateSubscriptionDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateSubscriptionDefinitionResponse[k], "CreateSubscriptionDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateSubscriptionDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.CreateSubscriptionDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.CreateSubscriptionDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateSubscriptionDefinitionResponse(t)
+	asserts.AssertCreateSubscriptionDefinitionResponse(t)
 	return t
 end
 
-local GetDeviceDefinitionRequest_keys = { "DeviceDefinitionId" = true, nil }
+keys.GetDeviceDefinitionRequest = { ["DeviceDefinitionId"] = true, nil }
 
-function M.AssertGetDeviceDefinitionRequest(struct)
+function asserts.AssertGetDeviceDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeviceDefinitionRequest to be of type 'table'")
 	assert(struct["DeviceDefinitionId"], "Expected key DeviceDefinitionId to exist in table")
-	if struct["DeviceDefinitionId"] then M.Assert__string(struct["DeviceDefinitionId"]) end
+	if struct["DeviceDefinitionId"] then asserts.Assert__string(struct["DeviceDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeviceDefinitionRequest_keys[k], "GetDeviceDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDeviceDefinitionRequest[k], "GetDeviceDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeviceDefinitionRequest
 --  
--- @param DeviceDefinitionId [__string] device definition Id
+-- @param _DeviceDefinitionId [__string] device definition Id
 -- Required parameter: DeviceDefinitionId
-function M.GetDeviceDefinitionRequest(DeviceDefinitionId, ...)
+function M.GetDeviceDefinitionRequest(_DeviceDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceDefinitionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = DeviceDefinitionId,
+		["DeviceDefinitionId"] = _DeviceDefinitionId,
 	}
-	M.AssertGetDeviceDefinitionRequest(t)
+	asserts.AssertGetDeviceDefinitionRequest(t)
 	return t
 end
 
-local SubscriptionDefinitionVersion_keys = { "Subscriptions" = true, nil }
+keys.SubscriptionDefinitionVersion = { ["Subscriptions"] = true, nil }
 
-function M.AssertSubscriptionDefinitionVersion(struct)
+function asserts.AssertSubscriptionDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubscriptionDefinitionVersion to be of type 'table'")
-	if struct["Subscriptions"] then M.AssertListOfSubscription(struct["Subscriptions"]) end
+	if struct["Subscriptions"] then asserts.AssertListOfSubscription(struct["Subscriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(SubscriptionDefinitionVersion_keys[k], "SubscriptionDefinitionVersion contains unknown key " .. tostring(k))
+		assert(keys.SubscriptionDefinitionVersion[k], "SubscriptionDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubscriptionDefinitionVersion
 -- Information on subscription definition version
--- @param Subscriptions [ListOfSubscription] Subscriptions in the version.
-function M.SubscriptionDefinitionVersion(Subscriptions, ...)
+-- @param _Subscriptions [ListOfSubscription] Subscriptions in the version.
+function M.SubscriptionDefinitionVersion(_Subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionDefinitionVersion")
 	local t = { 
-		["Subscriptions"] = Subscriptions,
+		["Subscriptions"] = _Subscriptions,
 	}
-	M.AssertSubscriptionDefinitionVersion(t)
+	asserts.AssertSubscriptionDefinitionVersion(t)
 	return t
 end
 
-local CoreDefinitionVersion_keys = { "Cores" = true, nil }
+keys.CoreDefinitionVersion = { ["Cores"] = true, nil }
 
-function M.AssertCoreDefinitionVersion(struct)
+function asserts.AssertCoreDefinitionVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CoreDefinitionVersion to be of type 'table'")
-	if struct["Cores"] then M.AssertListOfCore(struct["Cores"]) end
+	if struct["Cores"] then asserts.AssertListOfCore(struct["Cores"]) end
 	for k,_ in pairs(struct) do
-		assert(CoreDefinitionVersion_keys[k], "CoreDefinitionVersion contains unknown key " .. tostring(k))
+		assert(keys.CoreDefinitionVersion[k], "CoreDefinitionVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CoreDefinitionVersion
 -- Information on core definition version
--- @param Cores [ListOfCore] Cores in the definition version.
-function M.CoreDefinitionVersion(Cores, ...)
+-- @param _Cores [ListOfCore] Cores in the definition version.
+function M.CoreDefinitionVersion(_Cores, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CoreDefinitionVersion")
 	local t = { 
-		["Cores"] = Cores,
+		["Cores"] = _Cores,
 	}
-	M.AssertCoreDefinitionVersion(t)
+	asserts.AssertCoreDefinitionVersion(t)
 	return t
 end
 
-local GetDeploymentStatusResponse_keys = { "UpdatedAt" = true, "DeploymentStatus" = true, "ErrorMessage" = true, nil }
+keys.GetDeploymentStatusResponse = { ["UpdatedAt"] = true, ["DeploymentStatus"] = true, ["ErrorMessage"] = true, nil }
 
-function M.AssertGetDeploymentStatusResponse(struct)
+function asserts.AssertGetDeploymentStatusResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeploymentStatusResponse to be of type 'table'")
-	if struct["UpdatedAt"] then M.Assert__string(struct["UpdatedAt"]) end
-	if struct["DeploymentStatus"] then M.Assert__string(struct["DeploymentStatus"]) end
-	if struct["ErrorMessage"] then M.Assert__string(struct["ErrorMessage"]) end
+	if struct["UpdatedAt"] then asserts.Assert__string(struct["UpdatedAt"]) end
+	if struct["DeploymentStatus"] then asserts.Assert__string(struct["DeploymentStatus"]) end
+	if struct["ErrorMessage"] then asserts.Assert__string(struct["ErrorMessage"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeploymentStatusResponse_keys[k], "GetDeploymentStatusResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDeploymentStatusResponse[k], "GetDeploymentStatusResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeploymentStatusResponse
 --  
--- @param UpdatedAt [__string] Last time the deployment status was updated.
--- @param DeploymentStatus [__string] Status of the deployment.
--- @param ErrorMessage [__string] Error Message
-function M.GetDeploymentStatusResponse(UpdatedAt, DeploymentStatus, ErrorMessage, ...)
+-- @param _UpdatedAt [__string] Last time the deployment status was updated.
+-- @param _DeploymentStatus [__string] Status of the deployment.
+-- @param _ErrorMessage [__string] Error Message
+function M.GetDeploymentStatusResponse(_UpdatedAt, _DeploymentStatus, _ErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentStatusResponse")
 	local t = { 
-		["UpdatedAt"] = UpdatedAt,
-		["DeploymentStatus"] = DeploymentStatus,
-		["ErrorMessage"] = ErrorMessage,
+		["UpdatedAt"] = _UpdatedAt,
+		["DeploymentStatus"] = _DeploymentStatus,
+		["ErrorMessage"] = _ErrorMessage,
 	}
-	M.AssertGetDeploymentStatusResponse(t)
+	asserts.AssertGetDeploymentStatusResponse(t)
 	return t
 end
 
-local GetAssociatedRoleResponse_keys = { "AssociatedAt" = true, "RoleArn" = true, nil }
+keys.GetAssociatedRoleResponse = { ["AssociatedAt"] = true, ["RoleArn"] = true, nil }
 
-function M.AssertGetAssociatedRoleResponse(struct)
+function asserts.AssertGetAssociatedRoleResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAssociatedRoleResponse to be of type 'table'")
-	if struct["AssociatedAt"] then M.Assert__string(struct["AssociatedAt"]) end
-	if struct["RoleArn"] then M.Assert__string(struct["RoleArn"]) end
+	if struct["AssociatedAt"] then asserts.Assert__string(struct["AssociatedAt"]) end
+	if struct["RoleArn"] then asserts.Assert__string(struct["RoleArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetAssociatedRoleResponse_keys[k], "GetAssociatedRoleResponse contains unknown key " .. tostring(k))
+		assert(keys.GetAssociatedRoleResponse[k], "GetAssociatedRoleResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetAssociatedRoleResponse
 --  
--- @param AssociatedAt [__string] Time when the role was associated for the group.
--- @param RoleArn [__string] Arn of the role that is associated with the group.
-function M.GetAssociatedRoleResponse(AssociatedAt, RoleArn, ...)
+-- @param _AssociatedAt [__string] Time when the role was associated for the group.
+-- @param _RoleArn [__string] Arn of the role that is associated with the group.
+function M.GetAssociatedRoleResponse(_AssociatedAt, _RoleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAssociatedRoleResponse")
 	local t = { 
-		["AssociatedAt"] = AssociatedAt,
-		["RoleArn"] = RoleArn,
+		["AssociatedAt"] = _AssociatedAt,
+		["RoleArn"] = _RoleArn,
 	}
-	M.AssertGetAssociatedRoleResponse(t)
+	asserts.AssertGetAssociatedRoleResponse(t)
 	return t
 end
 
-local DeleteGroupRequest_keys = { "GroupId" = true, nil }
+keys.DeleteGroupRequest = { ["GroupId"] = true, nil }
 
-function M.AssertDeleteGroupRequest(struct)
+function asserts.AssertDeleteGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteGroupRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteGroupRequest_keys[k], "DeleteGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteGroupRequest[k], "DeleteGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteGroupRequest
 --  
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.DeleteGroupRequest(GroupId, ...)
+function M.DeleteGroupRequest(_GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGroupRequest")
 	local t = { 
-		["GroupId"] = GroupId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertDeleteGroupRequest(t)
+	asserts.AssertDeleteGroupRequest(t)
 	return t
 end
 
-local DeleteSubscriptionDefinitionResponse_keys = { nil }
+keys.DeleteSubscriptionDefinitionResponse = { nil }
 
-function M.AssertDeleteSubscriptionDefinitionResponse(struct)
+function asserts.AssertDeleteSubscriptionDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteSubscriptionDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteSubscriptionDefinitionResponse_keys[k], "DeleteSubscriptionDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteSubscriptionDefinitionResponse[k], "DeleteSubscriptionDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1604,386 +1607,386 @@ function M.DeleteSubscriptionDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriptionDefinitionResponse")
 	local t = { 
 	}
-	M.AssertDeleteSubscriptionDefinitionResponse(t)
+	asserts.AssertDeleteSubscriptionDefinitionResponse(t)
 	return t
 end
 
-local ListDeploymentsRequest_keys = { "NextToken" = true, "GroupId" = true, "MaxResults" = true, nil }
+keys.ListDeploymentsRequest = { ["NextToken"] = true, ["GroupId"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListDeploymentsRequest(struct)
+function asserts.AssertListDeploymentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDeploymentsRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDeploymentsRequest_keys[k], "ListDeploymentsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDeploymentsRequest[k], "ListDeploymentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDeploymentsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- Required parameter: GroupId
-function M.ListDeploymentsRequest(NextToken, GroupId, MaxResults, ...)
+function M.ListDeploymentsRequest(_NextToken, _GroupId, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["GroupId"] = GroupId,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["GroupId"] = _GroupId,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListDeploymentsRequest(t)
+	asserts.AssertListDeploymentsRequest(t)
 	return t
 end
 
-local ListGroupsResponse_keys = { "NextToken" = true, "Groups" = true, nil }
+keys.ListGroupsResponse = { ["NextToken"] = true, ["Groups"] = true, nil }
 
-function M.AssertListGroupsResponse(struct)
+function asserts.AssertListGroupsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Groups"] then M.AssertListOfGroupInformation(struct["Groups"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Groups"] then asserts.AssertListOfGroupInformation(struct["Groups"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGroupsResponse_keys[k], "ListGroupsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListGroupsResponse[k], "ListGroupsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGroupsResponse
 --  
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Groups [ListOfGroupInformation] Groups
-function M.ListGroupsResponse(NextToken, Groups, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Groups [ListOfGroupInformation] Groups
+function M.ListGroupsResponse(_NextToken, _Groups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Groups"] = Groups,
+		["NextToken"] = _NextToken,
+		["Groups"] = _Groups,
 	}
-	M.AssertListGroupsResponse(t)
+	asserts.AssertListGroupsResponse(t)
 	return t
 end
 
-local UpdateGroupRequest_keys = { "GroupId" = true, "Name" = true, nil }
+keys.UpdateGroupRequest = { ["GroupId"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateGroupRequest(struct)
+function asserts.AssertUpdateGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGroupRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGroupRequest_keys[k], "UpdateGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateGroupRequest[k], "UpdateGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGroupRequest
 --  
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
--- @param Name [__string] name of the definition
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _Name [__string] name of the definition
 -- Required parameter: GroupId
-function M.UpdateGroupRequest(GroupId, Name, ...)
+function M.UpdateGroupRequest(_GroupId, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupRequest")
 	local t = { 
-		["GroupId"] = GroupId,
-		["Name"] = Name,
+		["GroupId"] = _GroupId,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateGroupRequest(t)
+	asserts.AssertUpdateGroupRequest(t)
 	return t
 end
 
-local ConnectivityInfo_keys = { "Metadata" = true, "PortNumber" = true, "HostAddress" = true, "Id" = true, nil }
+keys.ConnectivityInfo = { ["Metadata"] = true, ["PortNumber"] = true, ["HostAddress"] = true, ["Id"] = true, nil }
 
-function M.AssertConnectivityInfo(struct)
+function asserts.AssertConnectivityInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConnectivityInfo to be of type 'table'")
-	if struct["Metadata"] then M.Assert__string(struct["Metadata"]) end
-	if struct["PortNumber"] then M.Assert__integer(struct["PortNumber"]) end
-	if struct["HostAddress"] then M.Assert__string(struct["HostAddress"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
+	if struct["Metadata"] then asserts.Assert__string(struct["Metadata"]) end
+	if struct["PortNumber"] then asserts.Assert__integer(struct["PortNumber"]) end
+	if struct["HostAddress"] then asserts.Assert__string(struct["HostAddress"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(ConnectivityInfo_keys[k], "ConnectivityInfo contains unknown key " .. tostring(k))
+		assert(keys.ConnectivityInfo[k], "ConnectivityInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConnectivityInfo
 -- Connectivity Info
--- @param Metadata [__string] Metadata for this endpoint.
--- @param PortNumber [__integer] Port of the GGC. Usually 8883.
--- @param HostAddress [__string] Endpoint for the GGC. Can be an IP address or DNS.
--- @param Id [__string] Element Id for this entry in the list.
-function M.ConnectivityInfo(Metadata, PortNumber, HostAddress, Id, ...)
+-- @param _Metadata [__string] Metadata for this endpoint.
+-- @param _PortNumber [__integer] Port of the GGC. Usually 8883.
+-- @param _HostAddress [__string] Endpoint for the GGC. Can be an IP address or DNS.
+-- @param _Id [__string] Element Id for this entry in the list.
+function M.ConnectivityInfo(_Metadata, _PortNumber, _HostAddress, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConnectivityInfo")
 	local t = { 
-		["Metadata"] = Metadata,
-		["PortNumber"] = PortNumber,
-		["HostAddress"] = HostAddress,
-		["Id"] = Id,
+		["Metadata"] = _Metadata,
+		["PortNumber"] = _PortNumber,
+		["HostAddress"] = _HostAddress,
+		["Id"] = _Id,
 	}
-	M.AssertConnectivityInfo(t)
+	asserts.AssertConnectivityInfo(t)
 	return t
 end
 
-local ErrorDetail_keys = { "DetailedErrorCode" = true, "DetailedErrorMessage" = true, nil }
+keys.ErrorDetail = { ["DetailedErrorCode"] = true, ["DetailedErrorMessage"] = true, nil }
 
-function M.AssertErrorDetail(struct)
+function asserts.AssertErrorDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ErrorDetail to be of type 'table'")
-	if struct["DetailedErrorCode"] then M.Assert__string(struct["DetailedErrorCode"]) end
-	if struct["DetailedErrorMessage"] then M.Assert__string(struct["DetailedErrorMessage"]) end
+	if struct["DetailedErrorCode"] then asserts.Assert__string(struct["DetailedErrorCode"]) end
+	if struct["DetailedErrorMessage"] then asserts.Assert__string(struct["DetailedErrorMessage"]) end
 	for k,_ in pairs(struct) do
-		assert(ErrorDetail_keys[k], "ErrorDetail contains unknown key " .. tostring(k))
+		assert(keys.ErrorDetail[k], "ErrorDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ErrorDetail
 -- ErrorDetail
--- @param DetailedErrorCode [__string] Detailed Error Code
--- @param DetailedErrorMessage [__string] Detailed Error Message
-function M.ErrorDetail(DetailedErrorCode, DetailedErrorMessage, ...)
+-- @param _DetailedErrorCode [__string] Detailed Error Code
+-- @param _DetailedErrorMessage [__string] Detailed Error Message
+function M.ErrorDetail(_DetailedErrorCode, _DetailedErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ErrorDetail")
 	local t = { 
-		["DetailedErrorCode"] = DetailedErrorCode,
-		["DetailedErrorMessage"] = DetailedErrorMessage,
+		["DetailedErrorCode"] = _DetailedErrorCode,
+		["DetailedErrorMessage"] = _DetailedErrorMessage,
 	}
-	M.AssertErrorDetail(t)
+	asserts.AssertErrorDetail(t)
 	return t
 end
 
-local DeleteCoreDefinitionRequest_keys = { "CoreDefinitionId" = true, nil }
+keys.DeleteCoreDefinitionRequest = { ["CoreDefinitionId"] = true, nil }
 
-function M.AssertDeleteCoreDefinitionRequest(struct)
+function asserts.AssertDeleteCoreDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteCoreDefinitionRequest to be of type 'table'")
 	assert(struct["CoreDefinitionId"], "Expected key CoreDefinitionId to exist in table")
-	if struct["CoreDefinitionId"] then M.Assert__string(struct["CoreDefinitionId"]) end
+	if struct["CoreDefinitionId"] then asserts.Assert__string(struct["CoreDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteCoreDefinitionRequest_keys[k], "DeleteCoreDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteCoreDefinitionRequest[k], "DeleteCoreDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteCoreDefinitionRequest
 --  
--- @param CoreDefinitionId [__string] core definition Id
+-- @param _CoreDefinitionId [__string] core definition Id
 -- Required parameter: CoreDefinitionId
-function M.DeleteCoreDefinitionRequest(CoreDefinitionId, ...)
+function M.DeleteCoreDefinitionRequest(_CoreDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCoreDefinitionRequest")
 	local t = { 
-		["CoreDefinitionId"] = CoreDefinitionId,
+		["CoreDefinitionId"] = _CoreDefinitionId,
 	}
-	M.AssertDeleteCoreDefinitionRequest(t)
+	asserts.AssertDeleteCoreDefinitionRequest(t)
 	return t
 end
 
-local GetDeviceDefinitionVersionResponse_keys = { "Definition" = true, "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetDeviceDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetDeviceDefinitionVersionResponse(struct)
+function asserts.AssertGetDeviceDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeviceDefinitionVersionResponse to be of type 'table'")
-	if struct["Definition"] then M.AssertDeviceDefinitionVersion(struct["Definition"]) end
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Definition"] then asserts.AssertDeviceDefinitionVersion(struct["Definition"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeviceDefinitionVersionResponse_keys[k], "GetDeviceDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDeviceDefinitionVersionResponse[k], "GetDeviceDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeviceDefinitionVersionResponse
 --  
--- @param Definition [DeviceDefinitionVersion] Device definition version
--- @param Version [__string] Version of the device definition version.
--- @param CreationTimestamp [__string] Timestamp of when the device definition version was created.
--- @param Id [__string] Id of the device definition the version belongs to.
--- @param Arn [__string] Arn of the device definition version.
-function M.GetDeviceDefinitionVersionResponse(Definition, Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Definition [DeviceDefinitionVersion] Device definition version
+-- @param _Version [__string] Version of the device definition version.
+-- @param _CreationTimestamp [__string] Timestamp of when the device definition version was created.
+-- @param _Id [__string] Id of the device definition the version belongs to.
+-- @param _Arn [__string] Arn of the device definition version.
+function M.GetDeviceDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = Definition,
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Definition"] = _Definition,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetDeviceDefinitionVersionResponse(t)
+	asserts.AssertGetDeviceDefinitionVersionResponse(t)
 	return t
 end
 
-local GroupInformation_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GroupInformation = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGroupInformation(struct)
+function asserts.AssertGroupInformation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GroupInformation to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GroupInformation_keys[k], "GroupInformation contains unknown key " .. tostring(k))
+		assert(keys.GroupInformation[k], "GroupInformation contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GroupInformation
 -- Information of a group
--- @param LatestVersionArn [__string] Latest version arn of the group.
--- @param Name [__string] Name of a group.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the group.
--- @param LatestVersion [__string] Last version of the group.
--- @param CreationTimestamp [__string] Timestamp of when the group was created.
--- @param Id [__string] Id of a group.
--- @param Arn [__string] Arn of a group.
-function M.GroupInformation(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the group.
+-- @param _Name [__string] Name of a group.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the group.
+-- @param _LatestVersion [__string] Last version of the group.
+-- @param _CreationTimestamp [__string] Timestamp of when the group was created.
+-- @param _Id [__string] Id of a group.
+-- @param _Arn [__string] Arn of a group.
+function M.GroupInformation(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupInformation")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGroupInformation(t)
+	asserts.AssertGroupInformation(t)
 	return t
 end
 
-local CreateGroupCertificateAuthorityRequest_keys = { "AmznClientToken" = true, "GroupId" = true, nil }
+keys.CreateGroupCertificateAuthorityRequest = { ["AmznClientToken"] = true, ["GroupId"] = true, nil }
 
-function M.AssertCreateGroupCertificateAuthorityRequest(struct)
+function asserts.AssertCreateGroupCertificateAuthorityRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupCertificateAuthorityRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGroupCertificateAuthorityRequest_keys[k], "CreateGroupCertificateAuthorityRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateGroupCertificateAuthorityRequest[k], "CreateGroupCertificateAuthorityRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGroupCertificateAuthorityRequest
 --  
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.CreateGroupCertificateAuthorityRequest(AmznClientToken, GroupId, ...)
+function M.CreateGroupCertificateAuthorityRequest(_AmznClientToken, _GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupCertificateAuthorityRequest")
 	local t = { 
-		["AmznClientToken"] = AmznClientToken,
-		["GroupId"] = GroupId,
+		["AmznClientToken"] = _AmznClientToken,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertCreateGroupCertificateAuthorityRequest(t)
+	asserts.AssertCreateGroupCertificateAuthorityRequest(t)
 	return t
 end
 
-local Subscription_keys = { "Source" = true, "Target" = true, "Id" = true, "Subject" = true, nil }
+keys.Subscription = { ["Source"] = true, ["Target"] = true, ["Id"] = true, ["Subject"] = true, nil }
 
-function M.AssertSubscription(struct)
+function asserts.AssertSubscription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Subscription to be of type 'table'")
-	if struct["Source"] then M.Assert__string(struct["Source"]) end
-	if struct["Target"] then M.Assert__string(struct["Target"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Subject"] then M.Assert__string(struct["Subject"]) end
+	if struct["Source"] then asserts.Assert__string(struct["Source"]) end
+	if struct["Target"] then asserts.Assert__string(struct["Target"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Subject"] then asserts.Assert__string(struct["Subject"]) end
 	for k,_ in pairs(struct) do
-		assert(Subscription_keys[k], "Subscription contains unknown key " .. tostring(k))
+		assert(keys.Subscription[k], "Subscription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Subscription
 -- Information on subscription
--- @param Source [__string] Source of the subscription. Can be a thing arn, lambda arn or word 'cloud'
--- @param Target [__string] Where the message is sent to. Can be a thing arn, lambda arn or word 'cloud'.
--- @param Id [__string] Element Id for this entry in the list.
--- @param Subject [__string] Subject of the message.
-function M.Subscription(Source, Target, Id, Subject, ...)
+-- @param _Source [__string] Source of the subscription. Can be a thing arn, lambda arn or word 'cloud'
+-- @param _Target [__string] Where the message is sent to. Can be a thing arn, lambda arn or word 'cloud'.
+-- @param _Id [__string] Element Id for this entry in the list.
+-- @param _Subject [__string] Subject of the message.
+function M.Subscription(_Source, _Target, _Id, _Subject, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
 	local t = { 
-		["Source"] = Source,
-		["Target"] = Target,
-		["Id"] = Id,
-		["Subject"] = Subject,
+		["Source"] = _Source,
+		["Target"] = _Target,
+		["Id"] = _Id,
+		["Subject"] = _Subject,
 	}
-	M.AssertSubscription(t)
+	asserts.AssertSubscription(t)
 	return t
 end
 
-local GetSubscriptionDefinitionVersionResponse_keys = { "Definition" = true, "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetSubscriptionDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetSubscriptionDefinitionVersionResponse(struct)
+function asserts.AssertGetSubscriptionDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSubscriptionDefinitionVersionResponse to be of type 'table'")
-	if struct["Definition"] then M.AssertSubscriptionDefinitionVersion(struct["Definition"]) end
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Definition"] then asserts.AssertSubscriptionDefinitionVersion(struct["Definition"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSubscriptionDefinitionVersionResponse_keys[k], "GetSubscriptionDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetSubscriptionDefinitionVersionResponse[k], "GetSubscriptionDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSubscriptionDefinitionVersionResponse
 --  
--- @param Definition [SubscriptionDefinitionVersion] Information on the definition
--- @param Version [__string] Version of the subscription definition version.
--- @param CreationTimestamp [__string] Timestamp of when the subscription definition version was created.
--- @param Id [__string] Id of the subscription definition the version belongs to.
--- @param Arn [__string] Arn of the subscription definition version.
-function M.GetSubscriptionDefinitionVersionResponse(Definition, Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Definition [SubscriptionDefinitionVersion] Information on the definition
+-- @param _Version [__string] Version of the subscription definition version.
+-- @param _CreationTimestamp [__string] Timestamp of when the subscription definition version was created.
+-- @param _Id [__string] Id of the subscription definition the version belongs to.
+-- @param _Arn [__string] Arn of the subscription definition version.
+function M.GetSubscriptionDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = Definition,
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Definition"] = _Definition,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetSubscriptionDefinitionVersionResponse(t)
+	asserts.AssertGetSubscriptionDefinitionVersionResponse(t)
 	return t
 end
 
-local GetCoreDefinitionVersionRequest_keys = { "CoreDefinitionId" = true, "CoreDefinitionVersionId" = true, nil }
+keys.GetCoreDefinitionVersionRequest = { ["CoreDefinitionId"] = true, ["CoreDefinitionVersionId"] = true, nil }
 
-function M.AssertGetCoreDefinitionVersionRequest(struct)
+function asserts.AssertGetCoreDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCoreDefinitionVersionRequest to be of type 'table'")
 	assert(struct["CoreDefinitionId"], "Expected key CoreDefinitionId to exist in table")
 	assert(struct["CoreDefinitionVersionId"], "Expected key CoreDefinitionVersionId to exist in table")
-	if struct["CoreDefinitionId"] then M.Assert__string(struct["CoreDefinitionId"]) end
-	if struct["CoreDefinitionVersionId"] then M.Assert__string(struct["CoreDefinitionVersionId"]) end
+	if struct["CoreDefinitionId"] then asserts.Assert__string(struct["CoreDefinitionId"]) end
+	if struct["CoreDefinitionVersionId"] then asserts.Assert__string(struct["CoreDefinitionVersionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCoreDefinitionVersionRequest_keys[k], "GetCoreDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetCoreDefinitionVersionRequest[k], "GetCoreDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCoreDefinitionVersionRequest
 --  
--- @param CoreDefinitionId [__string] core definition Id
--- @param CoreDefinitionVersionId [__string] core definition version Id
+-- @param _CoreDefinitionId [__string] core definition Id
+-- @param _CoreDefinitionVersionId [__string] core definition version Id
 -- Required parameter: CoreDefinitionId
 -- Required parameter: CoreDefinitionVersionId
-function M.GetCoreDefinitionVersionRequest(CoreDefinitionId, CoreDefinitionVersionId, ...)
+function M.GetCoreDefinitionVersionRequest(_CoreDefinitionId, _CoreDefinitionVersionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCoreDefinitionVersionRequest")
 	local t = { 
-		["CoreDefinitionId"] = CoreDefinitionId,
-		["CoreDefinitionVersionId"] = CoreDefinitionVersionId,
+		["CoreDefinitionId"] = _CoreDefinitionId,
+		["CoreDefinitionVersionId"] = _CoreDefinitionVersionId,
 	}
-	M.AssertGetCoreDefinitionVersionRequest(t)
+	asserts.AssertGetCoreDefinitionVersionRequest(t)
 	return t
 end
 
-local DisassociateServiceRoleFromAccountRequest_keys = { nil }
+keys.DisassociateServiceRoleFromAccountRequest = { nil }
 
-function M.AssertDisassociateServiceRoleFromAccountRequest(struct)
+function asserts.AssertDisassociateServiceRoleFromAccountRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateServiceRoleFromAccountRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DisassociateServiceRoleFromAccountRequest_keys[k], "DisassociateServiceRoleFromAccountRequest contains unknown key " .. tostring(k))
+		assert(keys.DisassociateServiceRoleFromAccountRequest[k], "DisassociateServiceRoleFromAccountRequest contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1993,159 +1996,159 @@ function M.DisassociateServiceRoleFromAccountRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateServiceRoleFromAccountRequest")
 	local t = { 
 	}
-	M.AssertDisassociateServiceRoleFromAccountRequest(t)
+	asserts.AssertDisassociateServiceRoleFromAccountRequest(t)
 	return t
 end
 
-local GetSubscriptionDefinitionVersionRequest_keys = { "SubscriptionDefinitionVersionId" = true, "SubscriptionDefinitionId" = true, nil }
+keys.GetSubscriptionDefinitionVersionRequest = { ["SubscriptionDefinitionVersionId"] = true, ["SubscriptionDefinitionId"] = true, nil }
 
-function M.AssertGetSubscriptionDefinitionVersionRequest(struct)
+function asserts.AssertGetSubscriptionDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSubscriptionDefinitionVersionRequest to be of type 'table'")
 	assert(struct["SubscriptionDefinitionId"], "Expected key SubscriptionDefinitionId to exist in table")
 	assert(struct["SubscriptionDefinitionVersionId"], "Expected key SubscriptionDefinitionVersionId to exist in table")
-	if struct["SubscriptionDefinitionVersionId"] then M.Assert__string(struct["SubscriptionDefinitionVersionId"]) end
-	if struct["SubscriptionDefinitionId"] then M.Assert__string(struct["SubscriptionDefinitionId"]) end
+	if struct["SubscriptionDefinitionVersionId"] then asserts.Assert__string(struct["SubscriptionDefinitionVersionId"]) end
+	if struct["SubscriptionDefinitionId"] then asserts.Assert__string(struct["SubscriptionDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSubscriptionDefinitionVersionRequest_keys[k], "GetSubscriptionDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetSubscriptionDefinitionVersionRequest[k], "GetSubscriptionDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSubscriptionDefinitionVersionRequest
 --  
--- @param SubscriptionDefinitionVersionId [__string] subscription definition version Id
--- @param SubscriptionDefinitionId [__string] subscription definition Id
+-- @param _SubscriptionDefinitionVersionId [__string] subscription definition version Id
+-- @param _SubscriptionDefinitionId [__string] subscription definition Id
 -- Required parameter: SubscriptionDefinitionId
 -- Required parameter: SubscriptionDefinitionVersionId
-function M.GetSubscriptionDefinitionVersionRequest(SubscriptionDefinitionVersionId, SubscriptionDefinitionId, ...)
+function M.GetSubscriptionDefinitionVersionRequest(_SubscriptionDefinitionVersionId, _SubscriptionDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionDefinitionVersionRequest")
 	local t = { 
-		["SubscriptionDefinitionVersionId"] = SubscriptionDefinitionVersionId,
-		["SubscriptionDefinitionId"] = SubscriptionDefinitionId,
+		["SubscriptionDefinitionVersionId"] = _SubscriptionDefinitionVersionId,
+		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
 	}
-	M.AssertGetSubscriptionDefinitionVersionRequest(t)
+	asserts.AssertGetSubscriptionDefinitionVersionRequest(t)
 	return t
 end
 
-local ListFunctionDefinitionVersionsResponse_keys = { "NextToken" = true, "Versions" = true, nil }
+keys.ListFunctionDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
 
-function M.AssertListFunctionDefinitionVersionsResponse(struct)
+function asserts.AssertListFunctionDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFunctionDefinitionVersionsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then M.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFunctionDefinitionVersionsResponse_keys[k], "ListFunctionDefinitionVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListFunctionDefinitionVersionsResponse[k], "ListFunctionDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFunctionDefinitionVersionsResponse
 --  
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Versions [ListOfVersionInformation] Versions
-function M.ListFunctionDefinitionVersionsResponse(NextToken, Versions, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Versions [ListOfVersionInformation] Versions
+function M.ListFunctionDefinitionVersionsResponse(_NextToken, _Versions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Versions"] = Versions,
+		["NextToken"] = _NextToken,
+		["Versions"] = _Versions,
 	}
-	M.AssertListFunctionDefinitionVersionsResponse(t)
+	asserts.AssertListFunctionDefinitionVersionsResponse(t)
 	return t
 end
 
-local CreateDeploymentResponse_keys = { "DeploymentId" = true, "DeploymentArn" = true, nil }
+keys.CreateDeploymentResponse = { ["DeploymentId"] = true, ["DeploymentArn"] = true, nil }
 
-function M.AssertCreateDeploymentResponse(struct)
+function asserts.AssertCreateDeploymentResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeploymentResponse to be of type 'table'")
-	if struct["DeploymentId"] then M.Assert__string(struct["DeploymentId"]) end
-	if struct["DeploymentArn"] then M.Assert__string(struct["DeploymentArn"]) end
+	if struct["DeploymentId"] then asserts.Assert__string(struct["DeploymentId"]) end
+	if struct["DeploymentArn"] then asserts.Assert__string(struct["DeploymentArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDeploymentResponse_keys[k], "CreateDeploymentResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateDeploymentResponse[k], "CreateDeploymentResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDeploymentResponse
 --  
--- @param DeploymentId [__string] Id of the deployment.
--- @param DeploymentArn [__string] Arn of the deployment.
-function M.CreateDeploymentResponse(DeploymentId, DeploymentArn, ...)
+-- @param _DeploymentId [__string] Id of the deployment.
+-- @param _DeploymentArn [__string] Arn of the deployment.
+function M.CreateDeploymentResponse(_DeploymentId, _DeploymentArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentResponse")
 	local t = { 
-		["DeploymentId"] = DeploymentId,
-		["DeploymentArn"] = DeploymentArn,
+		["DeploymentId"] = _DeploymentId,
+		["DeploymentArn"] = _DeploymentArn,
 	}
-	M.AssertCreateDeploymentResponse(t)
+	asserts.AssertCreateDeploymentResponse(t)
 	return t
 end
 
-local UpdateFunctionDefinitionRequest_keys = { "FunctionDefinitionId" = true, "Name" = true, nil }
+keys.UpdateFunctionDefinitionRequest = { ["FunctionDefinitionId"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateFunctionDefinitionRequest(struct)
+function asserts.AssertUpdateFunctionDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFunctionDefinitionRequest to be of type 'table'")
 	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
-	if struct["FunctionDefinitionId"] then M.Assert__string(struct["FunctionDefinitionId"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFunctionDefinitionRequest_keys[k], "UpdateFunctionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateFunctionDefinitionRequest[k], "UpdateFunctionDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFunctionDefinitionRequest
 --  
--- @param FunctionDefinitionId [__string] the unique Id of the lambda definition
--- @param Name [__string] name of the definition
+-- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- @param _Name [__string] name of the definition
 -- Required parameter: FunctionDefinitionId
-function M.UpdateFunctionDefinitionRequest(FunctionDefinitionId, Name, ...)
+function M.UpdateFunctionDefinitionRequest(_FunctionDefinitionId, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFunctionDefinitionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = FunctionDefinitionId,
-		["Name"] = Name,
+		["FunctionDefinitionId"] = _FunctionDefinitionId,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateFunctionDefinitionRequest(t)
+	asserts.AssertUpdateFunctionDefinitionRequest(t)
 	return t
 end
 
-local CreateLoggerDefinitionVersionResponse_keys = { "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateLoggerDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateLoggerDefinitionVersionResponse(struct)
+function asserts.AssertCreateLoggerDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLoggerDefinitionVersionResponse to be of type 'table'")
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLoggerDefinitionVersionResponse_keys[k], "CreateLoggerDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateLoggerDefinitionVersionResponse[k], "CreateLoggerDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLoggerDefinitionVersionResponse
 --  
--- @param Version [__string] Unique Id of a version.
--- @param CreationTimestamp [__string] Timestamp of when the version was created.
--- @param Id [__string] Id of the resource container.
--- @param Arn [__string] Arn of the version.
-function M.CreateLoggerDefinitionVersionResponse(Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Version [__string] Unique Id of a version.
+-- @param _CreationTimestamp [__string] Timestamp of when the version was created.
+-- @param _Id [__string] Id of the resource container.
+-- @param _Arn [__string] Arn of the version.
+function M.CreateLoggerDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoggerDefinitionVersionResponse")
 	local t = { 
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateLoggerDefinitionVersionResponse(t)
+	asserts.AssertCreateLoggerDefinitionVersionResponse(t)
 	return t
 end
 
-local DeleteCoreDefinitionResponse_keys = { nil }
+keys.DeleteCoreDefinitionResponse = { nil }
 
-function M.AssertDeleteCoreDefinitionResponse(struct)
+function asserts.AssertDeleteCoreDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteCoreDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteCoreDefinitionResponse_keys[k], "DeleteCoreDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteCoreDefinitionResponse[k], "DeleteCoreDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2155,328 +2158,328 @@ function M.DeleteCoreDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCoreDefinitionResponse")
 	local t = { 
 	}
-	M.AssertDeleteCoreDefinitionResponse(t)
+	asserts.AssertDeleteCoreDefinitionResponse(t)
 	return t
 end
 
-local GetDeviceDefinitionVersionRequest_keys = { "DeviceDefinitionId" = true, "DeviceDefinitionVersionId" = true, nil }
+keys.GetDeviceDefinitionVersionRequest = { ["DeviceDefinitionId"] = true, ["DeviceDefinitionVersionId"] = true, nil }
 
-function M.AssertGetDeviceDefinitionVersionRequest(struct)
+function asserts.AssertGetDeviceDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeviceDefinitionVersionRequest to be of type 'table'")
 	assert(struct["DeviceDefinitionVersionId"], "Expected key DeviceDefinitionVersionId to exist in table")
 	assert(struct["DeviceDefinitionId"], "Expected key DeviceDefinitionId to exist in table")
-	if struct["DeviceDefinitionId"] then M.Assert__string(struct["DeviceDefinitionId"]) end
-	if struct["DeviceDefinitionVersionId"] then M.Assert__string(struct["DeviceDefinitionVersionId"]) end
+	if struct["DeviceDefinitionId"] then asserts.Assert__string(struct["DeviceDefinitionId"]) end
+	if struct["DeviceDefinitionVersionId"] then asserts.Assert__string(struct["DeviceDefinitionVersionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeviceDefinitionVersionRequest_keys[k], "GetDeviceDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDeviceDefinitionVersionRequest[k], "GetDeviceDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeviceDefinitionVersionRequest
 --  
--- @param DeviceDefinitionId [__string] device definition Id
--- @param DeviceDefinitionVersionId [__string] device definition version Id
+-- @param _DeviceDefinitionId [__string] device definition Id
+-- @param _DeviceDefinitionVersionId [__string] device definition version Id
 -- Required parameter: DeviceDefinitionVersionId
 -- Required parameter: DeviceDefinitionId
-function M.GetDeviceDefinitionVersionRequest(DeviceDefinitionId, DeviceDefinitionVersionId, ...)
+function M.GetDeviceDefinitionVersionRequest(_DeviceDefinitionId, _DeviceDefinitionVersionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceDefinitionVersionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = DeviceDefinitionId,
-		["DeviceDefinitionVersionId"] = DeviceDefinitionVersionId,
+		["DeviceDefinitionId"] = _DeviceDefinitionId,
+		["DeviceDefinitionVersionId"] = _DeviceDefinitionVersionId,
 	}
-	M.AssertGetDeviceDefinitionVersionRequest(t)
+	asserts.AssertGetDeviceDefinitionVersionRequest(t)
 	return t
 end
 
-local ListDefinitionsResponse_keys = { "Definitions" = true, "NextToken" = true, nil }
+keys.ListDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListDefinitionsResponse(struct)
+function asserts.AssertListDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then M.AssertListOfDefinitionInformation(struct["Definitions"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
+	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDefinitionsResponse_keys[k], "ListDefinitionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDefinitionsResponse[k], "ListDefinitionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDefinitionsResponse
 -- List of definition response
--- @param Definitions [ListOfDefinitionInformation] Definitions
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListDefinitionsResponse(Definitions, NextToken, ...)
+-- @param _Definitions [ListOfDefinitionInformation] Definitions
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+function M.ListDefinitionsResponse(_Definitions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDefinitionsResponse")
 	local t = { 
-		["Definitions"] = Definitions,
-		["NextToken"] = NextToken,
+		["Definitions"] = _Definitions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListDefinitionsResponse(t)
+	asserts.AssertListDefinitionsResponse(t)
 	return t
 end
 
-local CreateCoreDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateCoreDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateCoreDefinitionResponse(struct)
+function asserts.AssertCreateCoreDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCoreDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCoreDefinitionResponse_keys[k], "CreateCoreDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateCoreDefinitionResponse[k], "CreateCoreDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCoreDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.CreateCoreDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.CreateCoreDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCoreDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateCoreDefinitionResponse(t)
+	asserts.AssertCreateCoreDefinitionResponse(t)
 	return t
 end
 
-local UpdateLoggerDefinitionRequest_keys = { "LoggerDefinitionId" = true, "Name" = true, nil }
+keys.UpdateLoggerDefinitionRequest = { ["LoggerDefinitionId"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateLoggerDefinitionRequest(struct)
+function asserts.AssertUpdateLoggerDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateLoggerDefinitionRequest to be of type 'table'")
 	assert(struct["LoggerDefinitionId"], "Expected key LoggerDefinitionId to exist in table")
-	if struct["LoggerDefinitionId"] then M.Assert__string(struct["LoggerDefinitionId"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["LoggerDefinitionId"] then asserts.Assert__string(struct["LoggerDefinitionId"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateLoggerDefinitionRequest_keys[k], "UpdateLoggerDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateLoggerDefinitionRequest[k], "UpdateLoggerDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateLoggerDefinitionRequest
 --  
--- @param LoggerDefinitionId [__string] logger definition Id
--- @param Name [__string] name of the definition
+-- @param _LoggerDefinitionId [__string] logger definition Id
+-- @param _Name [__string] name of the definition
 -- Required parameter: LoggerDefinitionId
-function M.UpdateLoggerDefinitionRequest(LoggerDefinitionId, Name, ...)
+function M.UpdateLoggerDefinitionRequest(_LoggerDefinitionId, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLoggerDefinitionRequest")
 	local t = { 
-		["LoggerDefinitionId"] = LoggerDefinitionId,
-		["Name"] = Name,
+		["LoggerDefinitionId"] = _LoggerDefinitionId,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateLoggerDefinitionRequest(t)
+	asserts.AssertUpdateLoggerDefinitionRequest(t)
 	return t
 end
 
-local GetDeviceDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetDeviceDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetDeviceDefinitionResponse(struct)
+function asserts.AssertGetDeviceDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeviceDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeviceDefinitionResponse_keys[k], "GetDeviceDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDeviceDefinitionResponse[k], "GetDeviceDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeviceDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.GetDeviceDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.GetDeviceDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetDeviceDefinitionResponse(t)
+	asserts.AssertGetDeviceDefinitionResponse(t)
 	return t
 end
 
-local GetFunctionDefinitionVersionRequest_keys = { "FunctionDefinitionId" = true, "FunctionDefinitionVersionId" = true, nil }
+keys.GetFunctionDefinitionVersionRequest = { ["FunctionDefinitionId"] = true, ["FunctionDefinitionVersionId"] = true, nil }
 
-function M.AssertGetFunctionDefinitionVersionRequest(struct)
+function asserts.AssertGetFunctionDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFunctionDefinitionVersionRequest to be of type 'table'")
 	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
 	assert(struct["FunctionDefinitionVersionId"], "Expected key FunctionDefinitionVersionId to exist in table")
-	if struct["FunctionDefinitionId"] then M.Assert__string(struct["FunctionDefinitionId"]) end
-	if struct["FunctionDefinitionVersionId"] then M.Assert__string(struct["FunctionDefinitionVersionId"]) end
+	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
+	if struct["FunctionDefinitionVersionId"] then asserts.Assert__string(struct["FunctionDefinitionVersionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFunctionDefinitionVersionRequest_keys[k], "GetFunctionDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetFunctionDefinitionVersionRequest[k], "GetFunctionDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFunctionDefinitionVersionRequest
 --  
--- @param FunctionDefinitionId [__string] the unique Id of the lambda definition
--- @param FunctionDefinitionVersionId [__string] Function definition version Id
+-- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- @param _FunctionDefinitionVersionId [__string] Function definition version Id
 -- Required parameter: FunctionDefinitionId
 -- Required parameter: FunctionDefinitionVersionId
-function M.GetFunctionDefinitionVersionRequest(FunctionDefinitionId, FunctionDefinitionVersionId, ...)
+function M.GetFunctionDefinitionVersionRequest(_FunctionDefinitionId, _FunctionDefinitionVersionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionDefinitionVersionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = FunctionDefinitionId,
-		["FunctionDefinitionVersionId"] = FunctionDefinitionVersionId,
+		["FunctionDefinitionId"] = _FunctionDefinitionId,
+		["FunctionDefinitionVersionId"] = _FunctionDefinitionVersionId,
 	}
-	M.AssertGetFunctionDefinitionVersionRequest(t)
+	asserts.AssertGetFunctionDefinitionVersionRequest(t)
 	return t
 end
 
-local ListSubscriptionDefinitionsResponse_keys = { "Definitions" = true, "NextToken" = true, nil }
+keys.ListSubscriptionDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListSubscriptionDefinitionsResponse(struct)
+function asserts.AssertListSubscriptionDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then M.AssertListOfDefinitionInformation(struct["Definitions"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
+	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSubscriptionDefinitionsResponse_keys[k], "ListSubscriptionDefinitionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListSubscriptionDefinitionsResponse[k], "ListSubscriptionDefinitionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSubscriptionDefinitionsResponse
 --  
--- @param Definitions [ListOfDefinitionInformation] Definitions
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListSubscriptionDefinitionsResponse(Definitions, NextToken, ...)
+-- @param _Definitions [ListOfDefinitionInformation] Definitions
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+function M.ListSubscriptionDefinitionsResponse(_Definitions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionDefinitionsResponse")
 	local t = { 
-		["Definitions"] = Definitions,
-		["NextToken"] = NextToken,
+		["Definitions"] = _Definitions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListSubscriptionDefinitionsResponse(t)
+	asserts.AssertListSubscriptionDefinitionsResponse(t)
 	return t
 end
 
-local GetConnectivityInfoRequest_keys = { "ThingName" = true, nil }
+keys.GetConnectivityInfoRequest = { ["ThingName"] = true, nil }
 
-function M.AssertGetConnectivityInfoRequest(struct)
+function asserts.AssertGetConnectivityInfoRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetConnectivityInfoRequest to be of type 'table'")
 	assert(struct["ThingName"], "Expected key ThingName to exist in table")
-	if struct["ThingName"] then M.Assert__string(struct["ThingName"]) end
+	if struct["ThingName"] then asserts.Assert__string(struct["ThingName"]) end
 	for k,_ in pairs(struct) do
-		assert(GetConnectivityInfoRequest_keys[k], "GetConnectivityInfoRequest contains unknown key " .. tostring(k))
+		assert(keys.GetConnectivityInfoRequest[k], "GetConnectivityInfoRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetConnectivityInfoRequest
 --  
--- @param ThingName [__string] Thing Name
+-- @param _ThingName [__string] Thing Name
 -- Required parameter: ThingName
-function M.GetConnectivityInfoRequest(ThingName, ...)
+function M.GetConnectivityInfoRequest(_ThingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetConnectivityInfoRequest")
 	local t = { 
-		["ThingName"] = ThingName,
+		["ThingName"] = _ThingName,
 	}
-	M.AssertGetConnectivityInfoRequest(t)
+	asserts.AssertGetConnectivityInfoRequest(t)
 	return t
 end
 
-local FunctionConfiguration_keys = { "ExecArgs" = true, "Executable" = true, "MemorySize" = true, "Environment" = true, "Pinned" = true, "Timeout" = true, nil }
+keys.FunctionConfiguration = { ["ExecArgs"] = true, ["Executable"] = true, ["MemorySize"] = true, ["Environment"] = true, ["Pinned"] = true, ["Timeout"] = true, nil }
 
-function M.AssertFunctionConfiguration(struct)
+function asserts.AssertFunctionConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FunctionConfiguration to be of type 'table'")
-	if struct["ExecArgs"] then M.Assert__string(struct["ExecArgs"]) end
-	if struct["Executable"] then M.Assert__string(struct["Executable"]) end
-	if struct["MemorySize"] then M.Assert__integer(struct["MemorySize"]) end
-	if struct["Environment"] then M.AssertFunctionConfigurationEnvironment(struct["Environment"]) end
-	if struct["Pinned"] then M.Assert__boolean(struct["Pinned"]) end
-	if struct["Timeout"] then M.Assert__integer(struct["Timeout"]) end
+	if struct["ExecArgs"] then asserts.Assert__string(struct["ExecArgs"]) end
+	if struct["Executable"] then asserts.Assert__string(struct["Executable"]) end
+	if struct["MemorySize"] then asserts.Assert__integer(struct["MemorySize"]) end
+	if struct["Environment"] then asserts.AssertFunctionConfigurationEnvironment(struct["Environment"]) end
+	if struct["Pinned"] then asserts.Assert__boolean(struct["Pinned"]) end
+	if struct["Timeout"] then asserts.Assert__integer(struct["Timeout"]) end
 	for k,_ in pairs(struct) do
-		assert(FunctionConfiguration_keys[k], "FunctionConfiguration contains unknown key " .. tostring(k))
+		assert(keys.FunctionConfiguration[k], "FunctionConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionConfiguration
 -- Configuration of the function
--- @param ExecArgs [__string] Execution Arguments
--- @param Executable [__string] Executable
--- @param MemorySize [__integer] The memory size, in KB, you configured for the function.
--- @param Environment [FunctionConfigurationEnvironment] Environment of the function configuration
--- @param Pinned [__boolean] Whether the function is pinned or not. Pinned means the function is long-lived and starts when the core starts.
--- @param Timeout [__integer] The function execution time at which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
-function M.FunctionConfiguration(ExecArgs, Executable, MemorySize, Environment, Pinned, Timeout, ...)
+-- @param _ExecArgs [__string] Execution Arguments
+-- @param _Executable [__string] Executable
+-- @param _MemorySize [__integer] The memory size, in KB, you configured for the function.
+-- @param _Environment [FunctionConfigurationEnvironment] Environment of the function configuration
+-- @param _Pinned [__boolean] Whether the function is pinned or not. Pinned means the function is long-lived and starts when the core starts.
+-- @param _Timeout [__integer] The function execution time at which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
+function M.FunctionConfiguration(_ExecArgs, _Executable, _MemorySize, _Environment, _Pinned, _Timeout, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FunctionConfiguration")
 	local t = { 
-		["ExecArgs"] = ExecArgs,
-		["Executable"] = Executable,
-		["MemorySize"] = MemorySize,
-		["Environment"] = Environment,
-		["Pinned"] = Pinned,
-		["Timeout"] = Timeout,
+		["ExecArgs"] = _ExecArgs,
+		["Executable"] = _Executable,
+		["MemorySize"] = _MemorySize,
+		["Environment"] = _Environment,
+		["Pinned"] = _Pinned,
+		["Timeout"] = _Timeout,
 	}
-	M.AssertFunctionConfiguration(t)
+	asserts.AssertFunctionConfiguration(t)
 	return t
 end
 
-local ListFunctionDefinitionsResponse_keys = { "Definitions" = true, "NextToken" = true, nil }
+keys.ListFunctionDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListFunctionDefinitionsResponse(struct)
+function asserts.AssertListFunctionDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFunctionDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then M.AssertListOfDefinitionInformation(struct["Definitions"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
+	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFunctionDefinitionsResponse_keys[k], "ListFunctionDefinitionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListFunctionDefinitionsResponse[k], "ListFunctionDefinitionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFunctionDefinitionsResponse
 --  
--- @param Definitions [ListOfDefinitionInformation] Definitions
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListFunctionDefinitionsResponse(Definitions, NextToken, ...)
+-- @param _Definitions [ListOfDefinitionInformation] Definitions
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+function M.ListFunctionDefinitionsResponse(_Definitions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionDefinitionsResponse")
 	local t = { 
-		["Definitions"] = Definitions,
-		["NextToken"] = NextToken,
+		["Definitions"] = _Definitions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListFunctionDefinitionsResponse(t)
+	asserts.AssertListFunctionDefinitionsResponse(t)
 	return t
 end
 
-local Empty_keys = { nil }
+keys.Empty = { nil }
 
-function M.AssertEmpty(struct)
+function asserts.AssertEmpty(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Empty to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(Empty_keys[k], "Empty contains unknown key " .. tostring(k))
+		assert(keys.Empty[k], "Empty contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2486,507 +2489,507 @@ function M.Empty(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Empty")
 	local t = { 
 	}
-	M.AssertEmpty(t)
+	asserts.AssertEmpty(t)
 	return t
 end
 
-local Core_keys = { "CertificateArn" = true, "ThingArn" = true, "SyncShadow" = true, "Id" = true, nil }
+keys.Core = { ["CertificateArn"] = true, ["ThingArn"] = true, ["SyncShadow"] = true, ["Id"] = true, nil }
 
-function M.AssertCore(struct)
+function asserts.AssertCore(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Core to be of type 'table'")
-	if struct["CertificateArn"] then M.Assert__string(struct["CertificateArn"]) end
-	if struct["ThingArn"] then M.Assert__string(struct["ThingArn"]) end
-	if struct["SyncShadow"] then M.Assert__boolean(struct["SyncShadow"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
+	if struct["CertificateArn"] then asserts.Assert__string(struct["CertificateArn"]) end
+	if struct["ThingArn"] then asserts.Assert__string(struct["ThingArn"]) end
+	if struct["SyncShadow"] then asserts.Assert__boolean(struct["SyncShadow"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(Core_keys[k], "Core contains unknown key " .. tostring(k))
+		assert(keys.Core[k], "Core contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Core
 -- Information on the core
--- @param CertificateArn [__string] Certificate arn of the core.
--- @param ThingArn [__string] Thing arn of the core.
--- @param SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
--- @param Id [__string] Element Id for this entry in the list.
-function M.Core(CertificateArn, ThingArn, SyncShadow, Id, ...)
+-- @param _CertificateArn [__string] Certificate arn of the core.
+-- @param _ThingArn [__string] Thing arn of the core.
+-- @param _SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
+-- @param _Id [__string] Element Id for this entry in the list.
+function M.Core(_CertificateArn, _ThingArn, _SyncShadow, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Core")
 	local t = { 
-		["CertificateArn"] = CertificateArn,
-		["ThingArn"] = ThingArn,
-		["SyncShadow"] = SyncShadow,
-		["Id"] = Id,
+		["CertificateArn"] = _CertificateArn,
+		["ThingArn"] = _ThingArn,
+		["SyncShadow"] = _SyncShadow,
+		["Id"] = _Id,
 	}
-	M.AssertCore(t)
+	asserts.AssertCore(t)
 	return t
 end
 
-local GetFunctionDefinitionRequest_keys = { "FunctionDefinitionId" = true, nil }
+keys.GetFunctionDefinitionRequest = { ["FunctionDefinitionId"] = true, nil }
 
-function M.AssertGetFunctionDefinitionRequest(struct)
+function asserts.AssertGetFunctionDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFunctionDefinitionRequest to be of type 'table'")
 	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
-	if struct["FunctionDefinitionId"] then M.Assert__string(struct["FunctionDefinitionId"]) end
+	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFunctionDefinitionRequest_keys[k], "GetFunctionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetFunctionDefinitionRequest[k], "GetFunctionDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFunctionDefinitionRequest
 --  
--- @param FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
 -- Required parameter: FunctionDefinitionId
-function M.GetFunctionDefinitionRequest(FunctionDefinitionId, ...)
+function M.GetFunctionDefinitionRequest(_FunctionDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionDefinitionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = FunctionDefinitionId,
+		["FunctionDefinitionId"] = _FunctionDefinitionId,
 	}
-	M.AssertGetFunctionDefinitionRequest(t)
+	asserts.AssertGetFunctionDefinitionRequest(t)
 	return t
 end
 
-local CreateCoreDefinitionVersionResponse_keys = { "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateCoreDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateCoreDefinitionVersionResponse(struct)
+function asserts.AssertCreateCoreDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCoreDefinitionVersionResponse to be of type 'table'")
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCoreDefinitionVersionResponse_keys[k], "CreateCoreDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateCoreDefinitionVersionResponse[k], "CreateCoreDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCoreDefinitionVersionResponse
 --  
--- @param Version [__string] Unique Id of a version.
--- @param CreationTimestamp [__string] Timestamp of when the version was created.
--- @param Id [__string] Id of the resource container.
--- @param Arn [__string] Arn of the version.
-function M.CreateCoreDefinitionVersionResponse(Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Version [__string] Unique Id of a version.
+-- @param _CreationTimestamp [__string] Timestamp of when the version was created.
+-- @param _Id [__string] Id of the resource container.
+-- @param _Arn [__string] Arn of the version.
+function M.CreateCoreDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCoreDefinitionVersionResponse")
 	local t = { 
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateCoreDefinitionVersionResponse(t)
+	asserts.AssertCreateCoreDefinitionVersionResponse(t)
 	return t
 end
 
-local UpdateGroupCertificateConfigurationResponse_keys = { "CertificateExpiryInMilliseconds" = true, "GroupId" = true, "CertificateAuthorityExpiryInMilliseconds" = true, nil }
+keys.UpdateGroupCertificateConfigurationResponse = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, ["CertificateAuthorityExpiryInMilliseconds"] = true, nil }
 
-function M.AssertUpdateGroupCertificateConfigurationResponse(struct)
+function asserts.AssertUpdateGroupCertificateConfigurationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGroupCertificateConfigurationResponse to be of type 'table'")
-	if struct["CertificateExpiryInMilliseconds"] then M.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
-	if struct["CertificateAuthorityExpiryInMilliseconds"] then M.Assert__string(struct["CertificateAuthorityExpiryInMilliseconds"]) end
+	if struct["CertificateExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	if struct["CertificateAuthorityExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateAuthorityExpiryInMilliseconds"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGroupCertificateConfigurationResponse_keys[k], "UpdateGroupCertificateConfigurationResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateGroupCertificateConfigurationResponse[k], "UpdateGroupCertificateConfigurationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGroupCertificateConfigurationResponse
 --  
--- @param CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- @param GroupId [__string] Id of the group the certificate configuration belongs to.
--- @param CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
-function M.UpdateGroupCertificateConfigurationResponse(CertificateExpiryInMilliseconds, GroupId, CertificateAuthorityExpiryInMilliseconds, ...)
+-- @param _CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
+-- @param _GroupId [__string] Id of the group the certificate configuration belongs to.
+-- @param _CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
+function M.UpdateGroupCertificateConfigurationResponse(_CertificateExpiryInMilliseconds, _GroupId, _CertificateAuthorityExpiryInMilliseconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupCertificateConfigurationResponse")
 	local t = { 
-		["CertificateExpiryInMilliseconds"] = CertificateExpiryInMilliseconds,
-		["GroupId"] = GroupId,
-		["CertificateAuthorityExpiryInMilliseconds"] = CertificateAuthorityExpiryInMilliseconds,
+		["CertificateExpiryInMilliseconds"] = _CertificateExpiryInMilliseconds,
+		["GroupId"] = _GroupId,
+		["CertificateAuthorityExpiryInMilliseconds"] = _CertificateAuthorityExpiryInMilliseconds,
 	}
-	M.AssertUpdateGroupCertificateConfigurationResponse(t)
+	asserts.AssertUpdateGroupCertificateConfigurationResponse(t)
 	return t
 end
 
-local GetGroupResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetGroupResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetGroupResponse(struct)
+function asserts.AssertGetGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupResponse_keys[k], "GetGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.GetGroupResponse[k], "GetGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.GetGroupResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.GetGroupResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetGroupResponse(t)
+	asserts.AssertGetGroupResponse(t)
 	return t
 end
 
-local GetLoggerDefinitionVersionRequest_keys = { "LoggerDefinitionId" = true, "LoggerDefinitionVersionId" = true, nil }
+keys.GetLoggerDefinitionVersionRequest = { ["LoggerDefinitionId"] = true, ["LoggerDefinitionVersionId"] = true, nil }
 
-function M.AssertGetLoggerDefinitionVersionRequest(struct)
+function asserts.AssertGetLoggerDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetLoggerDefinitionVersionRequest to be of type 'table'")
 	assert(struct["LoggerDefinitionVersionId"], "Expected key LoggerDefinitionVersionId to exist in table")
 	assert(struct["LoggerDefinitionId"], "Expected key LoggerDefinitionId to exist in table")
-	if struct["LoggerDefinitionId"] then M.Assert__string(struct["LoggerDefinitionId"]) end
-	if struct["LoggerDefinitionVersionId"] then M.Assert__string(struct["LoggerDefinitionVersionId"]) end
+	if struct["LoggerDefinitionId"] then asserts.Assert__string(struct["LoggerDefinitionId"]) end
+	if struct["LoggerDefinitionVersionId"] then asserts.Assert__string(struct["LoggerDefinitionVersionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetLoggerDefinitionVersionRequest_keys[k], "GetLoggerDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetLoggerDefinitionVersionRequest[k], "GetLoggerDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetLoggerDefinitionVersionRequest
 --  
--- @param LoggerDefinitionId [__string] logger definition Id
--- @param LoggerDefinitionVersionId [__string] logger definition version Id
+-- @param _LoggerDefinitionId [__string] logger definition Id
+-- @param _LoggerDefinitionVersionId [__string] logger definition version Id
 -- Required parameter: LoggerDefinitionVersionId
 -- Required parameter: LoggerDefinitionId
-function M.GetLoggerDefinitionVersionRequest(LoggerDefinitionId, LoggerDefinitionVersionId, ...)
+function M.GetLoggerDefinitionVersionRequest(_LoggerDefinitionId, _LoggerDefinitionVersionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggerDefinitionVersionRequest")
 	local t = { 
-		["LoggerDefinitionId"] = LoggerDefinitionId,
-		["LoggerDefinitionVersionId"] = LoggerDefinitionVersionId,
+		["LoggerDefinitionId"] = _LoggerDefinitionId,
+		["LoggerDefinitionVersionId"] = _LoggerDefinitionVersionId,
 	}
-	M.AssertGetLoggerDefinitionVersionRequest(t)
+	asserts.AssertGetLoggerDefinitionVersionRequest(t)
 	return t
 end
 
-local ListLoggerDefinitionsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListLoggerDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListLoggerDefinitionsRequest(struct)
+function asserts.AssertListLoggerDefinitionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLoggerDefinitionsRequest to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListLoggerDefinitionsRequest_keys[k], "ListLoggerDefinitionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListLoggerDefinitionsRequest[k], "ListLoggerDefinitionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListLoggerDefinitionsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListLoggerDefinitionsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+function M.ListLoggerDefinitionsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLoggerDefinitionsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListLoggerDefinitionsRequest(t)
+	asserts.AssertListLoggerDefinitionsRequest(t)
 	return t
 end
 
-local Device_keys = { "CertificateArn" = true, "ThingArn" = true, "SyncShadow" = true, "Id" = true, nil }
+keys.Device = { ["CertificateArn"] = true, ["ThingArn"] = true, ["SyncShadow"] = true, ["Id"] = true, nil }
 
-function M.AssertDevice(struct)
+function asserts.AssertDevice(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Device to be of type 'table'")
-	if struct["CertificateArn"] then M.Assert__string(struct["CertificateArn"]) end
-	if struct["ThingArn"] then M.Assert__string(struct["ThingArn"]) end
-	if struct["SyncShadow"] then M.Assert__boolean(struct["SyncShadow"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
+	if struct["CertificateArn"] then asserts.Assert__string(struct["CertificateArn"]) end
+	if struct["ThingArn"] then asserts.Assert__string(struct["ThingArn"]) end
+	if struct["SyncShadow"] then asserts.Assert__boolean(struct["SyncShadow"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(Device_keys[k], "Device contains unknown key " .. tostring(k))
+		assert(keys.Device[k], "Device contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Device
 -- Information on a Device
--- @param CertificateArn [__string] Certificate arn of the device.
--- @param ThingArn [__string] Thing arn of the device.
--- @param SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
--- @param Id [__string] Element Id for this entry in the list.
-function M.Device(CertificateArn, ThingArn, SyncShadow, Id, ...)
+-- @param _CertificateArn [__string] Certificate arn of the device.
+-- @param _ThingArn [__string] Thing arn of the device.
+-- @param _SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
+-- @param _Id [__string] Element Id for this entry in the list.
+function M.Device(_CertificateArn, _ThingArn, _SyncShadow, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Device")
 	local t = { 
-		["CertificateArn"] = CertificateArn,
-		["ThingArn"] = ThingArn,
-		["SyncShadow"] = SyncShadow,
-		["Id"] = Id,
+		["CertificateArn"] = _CertificateArn,
+		["ThingArn"] = _ThingArn,
+		["SyncShadow"] = _SyncShadow,
+		["Id"] = _Id,
 	}
-	M.AssertDevice(t)
+	asserts.AssertDevice(t)
 	return t
 end
 
-local GetFunctionDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetFunctionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetFunctionDefinitionResponse(struct)
+function asserts.AssertGetFunctionDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFunctionDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFunctionDefinitionResponse_keys[k], "GetFunctionDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetFunctionDefinitionResponse[k], "GetFunctionDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFunctionDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.GetFunctionDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.GetFunctionDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetFunctionDefinitionResponse(t)
+	asserts.AssertGetFunctionDefinitionResponse(t)
 	return t
 end
 
-local GetGroupCertificateAuthorityRequest_keys = { "CertificateAuthorityId" = true, "GroupId" = true, nil }
+keys.GetGroupCertificateAuthorityRequest = { ["CertificateAuthorityId"] = true, ["GroupId"] = true, nil }
 
-function M.AssertGetGroupCertificateAuthorityRequest(struct)
+function asserts.AssertGetGroupCertificateAuthorityRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupCertificateAuthorityRequest to be of type 'table'")
 	assert(struct["CertificateAuthorityId"], "Expected key CertificateAuthorityId to exist in table")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["CertificateAuthorityId"] then M.Assert__string(struct["CertificateAuthorityId"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["CertificateAuthorityId"] then asserts.Assert__string(struct["CertificateAuthorityId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupCertificateAuthorityRequest_keys[k], "GetGroupCertificateAuthorityRequest contains unknown key " .. tostring(k))
+		assert(keys.GetGroupCertificateAuthorityRequest[k], "GetGroupCertificateAuthorityRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupCertificateAuthorityRequest
 --  
--- @param CertificateAuthorityId [__string] certificate authority Id
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _CertificateAuthorityId [__string] certificate authority Id
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: CertificateAuthorityId
 -- Required parameter: GroupId
-function M.GetGroupCertificateAuthorityRequest(CertificateAuthorityId, GroupId, ...)
+function M.GetGroupCertificateAuthorityRequest(_CertificateAuthorityId, _GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupCertificateAuthorityRequest")
 	local t = { 
-		["CertificateAuthorityId"] = CertificateAuthorityId,
-		["GroupId"] = GroupId,
+		["CertificateAuthorityId"] = _CertificateAuthorityId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertGetGroupCertificateAuthorityRequest(t)
+	asserts.AssertGetGroupCertificateAuthorityRequest(t)
 	return t
 end
 
-local ListSubscriptionDefinitionVersionsResponse_keys = { "NextToken" = true, "Versions" = true, nil }
+keys.ListSubscriptionDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
 
-function M.AssertListSubscriptionDefinitionVersionsResponse(struct)
+function asserts.AssertListSubscriptionDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionDefinitionVersionsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then M.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSubscriptionDefinitionVersionsResponse_keys[k], "ListSubscriptionDefinitionVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListSubscriptionDefinitionVersionsResponse[k], "ListSubscriptionDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSubscriptionDefinitionVersionsResponse
 --  
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Versions [ListOfVersionInformation] Versions
-function M.ListSubscriptionDefinitionVersionsResponse(NextToken, Versions, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Versions [ListOfVersionInformation] Versions
+function M.ListSubscriptionDefinitionVersionsResponse(_NextToken, _Versions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Versions"] = Versions,
+		["NextToken"] = _NextToken,
+		["Versions"] = _Versions,
 	}
-	M.AssertListSubscriptionDefinitionVersionsResponse(t)
+	asserts.AssertListSubscriptionDefinitionVersionsResponse(t)
 	return t
 end
 
-local UpdateCoreDefinitionRequest_keys = { "CoreDefinitionId" = true, "Name" = true, nil }
+keys.UpdateCoreDefinitionRequest = { ["CoreDefinitionId"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateCoreDefinitionRequest(struct)
+function asserts.AssertUpdateCoreDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateCoreDefinitionRequest to be of type 'table'")
 	assert(struct["CoreDefinitionId"], "Expected key CoreDefinitionId to exist in table")
-	if struct["CoreDefinitionId"] then M.Assert__string(struct["CoreDefinitionId"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["CoreDefinitionId"] then asserts.Assert__string(struct["CoreDefinitionId"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateCoreDefinitionRequest_keys[k], "UpdateCoreDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateCoreDefinitionRequest[k], "UpdateCoreDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateCoreDefinitionRequest
 --  
--- @param CoreDefinitionId [__string] core definition Id
--- @param Name [__string] name of the definition
+-- @param _CoreDefinitionId [__string] core definition Id
+-- @param _Name [__string] name of the definition
 -- Required parameter: CoreDefinitionId
-function M.UpdateCoreDefinitionRequest(CoreDefinitionId, Name, ...)
+function M.UpdateCoreDefinitionRequest(_CoreDefinitionId, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCoreDefinitionRequest")
 	local t = { 
-		["CoreDefinitionId"] = CoreDefinitionId,
-		["Name"] = Name,
+		["CoreDefinitionId"] = _CoreDefinitionId,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateCoreDefinitionRequest(t)
+	asserts.AssertUpdateCoreDefinitionRequest(t)
 	return t
 end
 
-local GetCoreDefinitionVersionResponse_keys = { "Definition" = true, "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetCoreDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetCoreDefinitionVersionResponse(struct)
+function asserts.AssertGetCoreDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCoreDefinitionVersionResponse to be of type 'table'")
-	if struct["Definition"] then M.AssertCoreDefinitionVersion(struct["Definition"]) end
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Definition"] then asserts.AssertCoreDefinitionVersion(struct["Definition"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCoreDefinitionVersionResponse_keys[k], "GetCoreDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetCoreDefinitionVersionResponse[k], "GetCoreDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCoreDefinitionVersionResponse
 --  
--- @param Definition [CoreDefinitionVersion] Information on definition
--- @param Version [__string] Version of the core definition version.
--- @param CreationTimestamp [__string] Timestamp of when the core definition version was created.
--- @param Id [__string] Id of the core definition the version belongs to.
--- @param Arn [__string] Arn of the core definition version.
-function M.GetCoreDefinitionVersionResponse(Definition, Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Definition [CoreDefinitionVersion] Information on definition
+-- @param _Version [__string] Version of the core definition version.
+-- @param _CreationTimestamp [__string] Timestamp of when the core definition version was created.
+-- @param _Id [__string] Id of the core definition the version belongs to.
+-- @param _Arn [__string] Arn of the core definition version.
+function M.GetCoreDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCoreDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = Definition,
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Definition"] = _Definition,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetCoreDefinitionVersionResponse(t)
+	asserts.AssertGetCoreDefinitionVersionResponse(t)
 	return t
 end
 
-local DisassociateRoleFromGroupRequest_keys = { "GroupId" = true, nil }
+keys.DisassociateRoleFromGroupRequest = { ["GroupId"] = true, nil }
 
-function M.AssertDisassociateRoleFromGroupRequest(struct)
+function asserts.AssertDisassociateRoleFromGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateRoleFromGroupRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(DisassociateRoleFromGroupRequest_keys[k], "DisassociateRoleFromGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.DisassociateRoleFromGroupRequest[k], "DisassociateRoleFromGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisassociateRoleFromGroupRequest
 --  
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.DisassociateRoleFromGroupRequest(GroupId, ...)
+function M.DisassociateRoleFromGroupRequest(_GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateRoleFromGroupRequest")
 	local t = { 
-		["GroupId"] = GroupId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertDisassociateRoleFromGroupRequest(t)
+	asserts.AssertDisassociateRoleFromGroupRequest(t)
 	return t
 end
 
-local ListDeviceDefinitionsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListDeviceDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListDeviceDefinitionsRequest(struct)
+function asserts.AssertListDeviceDefinitionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDeviceDefinitionsRequest to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDeviceDefinitionsRequest_keys[k], "ListDeviceDefinitionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDeviceDefinitionsRequest[k], "ListDeviceDefinitionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDeviceDefinitionsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListDeviceDefinitionsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+function M.ListDeviceDefinitionsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDeviceDefinitionsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListDeviceDefinitionsRequest(t)
+	asserts.AssertListDeviceDefinitionsRequest(t)
 	return t
 end
 
-local CreateSubscriptionDefinitionVersionResponse_keys = { "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateSubscriptionDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateSubscriptionDefinitionVersionResponse(struct)
+function asserts.AssertCreateSubscriptionDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateSubscriptionDefinitionVersionResponse to be of type 'table'")
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateSubscriptionDefinitionVersionResponse_keys[k], "CreateSubscriptionDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateSubscriptionDefinitionVersionResponse[k], "CreateSubscriptionDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateSubscriptionDefinitionVersionResponse
 --  
--- @param Version [__string] Unique Id of a version.
--- @param CreationTimestamp [__string] Timestamp of when the version was created.
--- @param Id [__string] Id of the resource container.
--- @param Arn [__string] Arn of the version.
-function M.CreateSubscriptionDefinitionVersionResponse(Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Version [__string] Unique Id of a version.
+-- @param _CreationTimestamp [__string] Timestamp of when the version was created.
+-- @param _Id [__string] Id of the resource container.
+-- @param _Arn [__string] Arn of the version.
+function M.CreateSubscriptionDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionDefinitionVersionResponse")
 	local t = { 
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateSubscriptionDefinitionVersionResponse(t)
+	asserts.AssertCreateSubscriptionDefinitionVersionResponse(t)
 	return t
 end
 
-local UpdateGroupResponse_keys = { nil }
+keys.UpdateGroupResponse = { nil }
 
-function M.AssertUpdateGroupResponse(struct)
+function asserts.AssertUpdateGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGroupResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateGroupResponse_keys[k], "UpdateGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateGroupResponse[k], "UpdateGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2996,744 +2999,744 @@ function M.UpdateGroupResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupResponse")
 	local t = { 
 	}
-	M.AssertUpdateGroupResponse(t)
+	asserts.AssertUpdateGroupResponse(t)
 	return t
 end
 
-local UpdateConnectivityInfoRequest_keys = { "ConnectivityInfo" = true, "ThingName" = true, nil }
+keys.UpdateConnectivityInfoRequest = { ["ConnectivityInfo"] = true, ["ThingName"] = true, nil }
 
-function M.AssertUpdateConnectivityInfoRequest(struct)
+function asserts.AssertUpdateConnectivityInfoRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateConnectivityInfoRequest to be of type 'table'")
 	assert(struct["ThingName"], "Expected key ThingName to exist in table")
-	if struct["ConnectivityInfo"] then M.AssertListOfConnectivityInfo(struct["ConnectivityInfo"]) end
-	if struct["ThingName"] then M.Assert__string(struct["ThingName"]) end
+	if struct["ConnectivityInfo"] then asserts.AssertListOfConnectivityInfo(struct["ConnectivityInfo"]) end
+	if struct["ThingName"] then asserts.Assert__string(struct["ThingName"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateConnectivityInfoRequest_keys[k], "UpdateConnectivityInfoRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateConnectivityInfoRequest[k], "UpdateConnectivityInfoRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateConnectivityInfoRequest
 -- connectivity info request
--- @param ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
--- @param ThingName [__string] Thing Name
+-- @param _ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
+-- @param _ThingName [__string] Thing Name
 -- Required parameter: ThingName
-function M.UpdateConnectivityInfoRequest(ConnectivityInfo, ThingName, ...)
+function M.UpdateConnectivityInfoRequest(_ConnectivityInfo, _ThingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConnectivityInfoRequest")
 	local t = { 
-		["ConnectivityInfo"] = ConnectivityInfo,
-		["ThingName"] = ThingName,
+		["ConnectivityInfo"] = _ConnectivityInfo,
+		["ThingName"] = _ThingName,
 	}
-	M.AssertUpdateConnectivityInfoRequest(t)
+	asserts.AssertUpdateConnectivityInfoRequest(t)
 	return t
 end
 
-local DeleteSubscriptionDefinitionRequest_keys = { "SubscriptionDefinitionId" = true, nil }
+keys.DeleteSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, nil }
 
-function M.AssertDeleteSubscriptionDefinitionRequest(struct)
+function asserts.AssertDeleteSubscriptionDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteSubscriptionDefinitionRequest to be of type 'table'")
 	assert(struct["SubscriptionDefinitionId"], "Expected key SubscriptionDefinitionId to exist in table")
-	if struct["SubscriptionDefinitionId"] then M.Assert__string(struct["SubscriptionDefinitionId"]) end
+	if struct["SubscriptionDefinitionId"] then asserts.Assert__string(struct["SubscriptionDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteSubscriptionDefinitionRequest_keys[k], "DeleteSubscriptionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteSubscriptionDefinitionRequest[k], "DeleteSubscriptionDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteSubscriptionDefinitionRequest
 --  
--- @param SubscriptionDefinitionId [__string] subscription definition Id
+-- @param _SubscriptionDefinitionId [__string] subscription definition Id
 -- Required parameter: SubscriptionDefinitionId
-function M.DeleteSubscriptionDefinitionRequest(SubscriptionDefinitionId, ...)
+function M.DeleteSubscriptionDefinitionRequest(_SubscriptionDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriptionDefinitionRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = SubscriptionDefinitionId,
+		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
 	}
-	M.AssertDeleteSubscriptionDefinitionRequest(t)
+	asserts.AssertDeleteSubscriptionDefinitionRequest(t)
 	return t
 end
 
-local VersionInformation_keys = { "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.VersionInformation = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertVersionInformation(struct)
+function asserts.AssertVersionInformation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VersionInformation to be of type 'table'")
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(VersionInformation_keys[k], "VersionInformation contains unknown key " .. tostring(k))
+		assert(keys.VersionInformation[k], "VersionInformation contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type VersionInformation
 -- Information on the version
--- @param Version [__string] Unique Id of a version.
--- @param CreationTimestamp [__string] Timestamp of when the version was created.
--- @param Id [__string] Id of the resource container.
--- @param Arn [__string] Arn of the version.
-function M.VersionInformation(Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Version [__string] Unique Id of a version.
+-- @param _CreationTimestamp [__string] Timestamp of when the version was created.
+-- @param _Id [__string] Id of the resource container.
+-- @param _Arn [__string] Arn of the version.
+function M.VersionInformation(_Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VersionInformation")
 	local t = { 
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertVersionInformation(t)
+	asserts.AssertVersionInformation(t)
 	return t
 end
 
-local GroupCertificateConfiguration_keys = { "CertificateExpiryInMilliseconds" = true, "GroupId" = true, "CertificateAuthorityExpiryInMilliseconds" = true, nil }
+keys.GroupCertificateConfiguration = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, ["CertificateAuthorityExpiryInMilliseconds"] = true, nil }
 
-function M.AssertGroupCertificateConfiguration(struct)
+function asserts.AssertGroupCertificateConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GroupCertificateConfiguration to be of type 'table'")
-	if struct["CertificateExpiryInMilliseconds"] then M.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
-	if struct["CertificateAuthorityExpiryInMilliseconds"] then M.Assert__string(struct["CertificateAuthorityExpiryInMilliseconds"]) end
+	if struct["CertificateExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	if struct["CertificateAuthorityExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateAuthorityExpiryInMilliseconds"]) end
 	for k,_ in pairs(struct) do
-		assert(GroupCertificateConfiguration_keys[k], "GroupCertificateConfiguration contains unknown key " .. tostring(k))
+		assert(keys.GroupCertificateConfiguration[k], "GroupCertificateConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GroupCertificateConfiguration
 -- Information on the group certificate configuration
--- @param CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- @param GroupId [__string] Id of the group the certificate configuration belongs to.
--- @param CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
-function M.GroupCertificateConfiguration(CertificateExpiryInMilliseconds, GroupId, CertificateAuthorityExpiryInMilliseconds, ...)
+-- @param _CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
+-- @param _GroupId [__string] Id of the group the certificate configuration belongs to.
+-- @param _CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
+function M.GroupCertificateConfiguration(_CertificateExpiryInMilliseconds, _GroupId, _CertificateAuthorityExpiryInMilliseconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupCertificateConfiguration")
 	local t = { 
-		["CertificateExpiryInMilliseconds"] = CertificateExpiryInMilliseconds,
-		["GroupId"] = GroupId,
-		["CertificateAuthorityExpiryInMilliseconds"] = CertificateAuthorityExpiryInMilliseconds,
+		["CertificateExpiryInMilliseconds"] = _CertificateExpiryInMilliseconds,
+		["GroupId"] = _GroupId,
+		["CertificateAuthorityExpiryInMilliseconds"] = _CertificateAuthorityExpiryInMilliseconds,
 	}
-	M.AssertGroupCertificateConfiguration(t)
+	asserts.AssertGroupCertificateConfiguration(t)
 	return t
 end
 
-local GetAssociatedRoleRequest_keys = { "GroupId" = true, nil }
+keys.GetAssociatedRoleRequest = { ["GroupId"] = true, nil }
 
-function M.AssertGetAssociatedRoleRequest(struct)
+function asserts.AssertGetAssociatedRoleRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAssociatedRoleRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetAssociatedRoleRequest_keys[k], "GetAssociatedRoleRequest contains unknown key " .. tostring(k))
+		assert(keys.GetAssociatedRoleRequest[k], "GetAssociatedRoleRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetAssociatedRoleRequest
 --  
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.GetAssociatedRoleRequest(GroupId, ...)
+function M.GetAssociatedRoleRequest(_GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAssociatedRoleRequest")
 	local t = { 
-		["GroupId"] = GroupId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertGetAssociatedRoleRequest(t)
+	asserts.AssertGetAssociatedRoleRequest(t)
 	return t
 end
 
-local GetCoreDefinitionRequest_keys = { "CoreDefinitionId" = true, nil }
+keys.GetCoreDefinitionRequest = { ["CoreDefinitionId"] = true, nil }
 
-function M.AssertGetCoreDefinitionRequest(struct)
+function asserts.AssertGetCoreDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCoreDefinitionRequest to be of type 'table'")
 	assert(struct["CoreDefinitionId"], "Expected key CoreDefinitionId to exist in table")
-	if struct["CoreDefinitionId"] then M.Assert__string(struct["CoreDefinitionId"]) end
+	if struct["CoreDefinitionId"] then asserts.Assert__string(struct["CoreDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCoreDefinitionRequest_keys[k], "GetCoreDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetCoreDefinitionRequest[k], "GetCoreDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCoreDefinitionRequest
 --  
--- @param CoreDefinitionId [__string] core definition Id
+-- @param _CoreDefinitionId [__string] core definition Id
 -- Required parameter: CoreDefinitionId
-function M.GetCoreDefinitionRequest(CoreDefinitionId, ...)
+function M.GetCoreDefinitionRequest(_CoreDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCoreDefinitionRequest")
 	local t = { 
-		["CoreDefinitionId"] = CoreDefinitionId,
+		["CoreDefinitionId"] = _CoreDefinitionId,
 	}
-	M.AssertGetCoreDefinitionRequest(t)
+	asserts.AssertGetCoreDefinitionRequest(t)
 	return t
 end
 
-local ListSubscriptionDefinitionsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListSubscriptionDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListSubscriptionDefinitionsRequest(struct)
+function asserts.AssertListSubscriptionDefinitionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionDefinitionsRequest to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSubscriptionDefinitionsRequest_keys[k], "ListSubscriptionDefinitionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListSubscriptionDefinitionsRequest[k], "ListSubscriptionDefinitionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSubscriptionDefinitionsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListSubscriptionDefinitionsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+function M.ListSubscriptionDefinitionsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionDefinitionsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListSubscriptionDefinitionsRequest(t)
+	asserts.AssertListSubscriptionDefinitionsRequest(t)
 	return t
 end
 
-local CreateSubscriptionDefinitionVersionRequest_keys = { "SubscriptionDefinitionId" = true, "AmznClientToken" = true, "Subscriptions" = true, nil }
+keys.CreateSubscriptionDefinitionVersionRequest = { ["SubscriptionDefinitionId"] = true, ["AmznClientToken"] = true, ["Subscriptions"] = true, nil }
 
-function M.AssertCreateSubscriptionDefinitionVersionRequest(struct)
+function asserts.AssertCreateSubscriptionDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateSubscriptionDefinitionVersionRequest to be of type 'table'")
 	assert(struct["SubscriptionDefinitionId"], "Expected key SubscriptionDefinitionId to exist in table")
-	if struct["SubscriptionDefinitionId"] then M.Assert__string(struct["SubscriptionDefinitionId"]) end
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["Subscriptions"] then M.AssertListOfSubscription(struct["Subscriptions"]) end
+	if struct["SubscriptionDefinitionId"] then asserts.Assert__string(struct["SubscriptionDefinitionId"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["Subscriptions"] then asserts.AssertListOfSubscription(struct["Subscriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateSubscriptionDefinitionVersionRequest_keys[k], "CreateSubscriptionDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateSubscriptionDefinitionVersionRequest[k], "CreateSubscriptionDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateSubscriptionDefinitionVersionRequest
 --  
--- @param SubscriptionDefinitionId [__string] subscription definition Id
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param Subscriptions [ListOfSubscription] Subscriptions in the version.
+-- @param _SubscriptionDefinitionId [__string] subscription definition Id
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _Subscriptions [ListOfSubscription] Subscriptions in the version.
 -- Required parameter: SubscriptionDefinitionId
-function M.CreateSubscriptionDefinitionVersionRequest(SubscriptionDefinitionId, AmznClientToken, Subscriptions, ...)
+function M.CreateSubscriptionDefinitionVersionRequest(_SubscriptionDefinitionId, _AmznClientToken, _Subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionDefinitionVersionRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = SubscriptionDefinitionId,
-		["AmznClientToken"] = AmznClientToken,
-		["Subscriptions"] = Subscriptions,
+		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
+		["AmznClientToken"] = _AmznClientToken,
+		["Subscriptions"] = _Subscriptions,
 	}
-	M.AssertCreateSubscriptionDefinitionVersionRequest(t)
+	asserts.AssertCreateSubscriptionDefinitionVersionRequest(t)
 	return t
 end
 
-local CreateCoreDefinitionVersionRequest_keys = { "Cores" = true, "AmznClientToken" = true, "CoreDefinitionId" = true, nil }
+keys.CreateCoreDefinitionVersionRequest = { ["Cores"] = true, ["AmznClientToken"] = true, ["CoreDefinitionId"] = true, nil }
 
-function M.AssertCreateCoreDefinitionVersionRequest(struct)
+function asserts.AssertCreateCoreDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCoreDefinitionVersionRequest to be of type 'table'")
 	assert(struct["CoreDefinitionId"], "Expected key CoreDefinitionId to exist in table")
-	if struct["Cores"] then M.AssertListOfCore(struct["Cores"]) end
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["CoreDefinitionId"] then M.Assert__string(struct["CoreDefinitionId"]) end
+	if struct["Cores"] then asserts.AssertListOfCore(struct["Cores"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["CoreDefinitionId"] then asserts.Assert__string(struct["CoreDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCoreDefinitionVersionRequest_keys[k], "CreateCoreDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateCoreDefinitionVersionRequest[k], "CreateCoreDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCoreDefinitionVersionRequest
 --  
--- @param Cores [ListOfCore] Cores in the definition version.
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param CoreDefinitionId [__string] core definition Id
+-- @param _Cores [ListOfCore] Cores in the definition version.
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _CoreDefinitionId [__string] core definition Id
 -- Required parameter: CoreDefinitionId
-function M.CreateCoreDefinitionVersionRequest(Cores, AmznClientToken, CoreDefinitionId, ...)
+function M.CreateCoreDefinitionVersionRequest(_Cores, _AmznClientToken, _CoreDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCoreDefinitionVersionRequest")
 	local t = { 
-		["Cores"] = Cores,
-		["AmznClientToken"] = AmznClientToken,
-		["CoreDefinitionId"] = CoreDefinitionId,
+		["Cores"] = _Cores,
+		["AmznClientToken"] = _AmznClientToken,
+		["CoreDefinitionId"] = _CoreDefinitionId,
 	}
-	M.AssertCreateCoreDefinitionVersionRequest(t)
+	asserts.AssertCreateCoreDefinitionVersionRequest(t)
 	return t
 end
 
-local CreateFunctionDefinitionRequest_keys = { "AmznClientToken" = true, "InitialVersion" = true, "Name" = true, nil }
+keys.CreateFunctionDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateFunctionDefinitionRequest(struct)
+function asserts.AssertCreateFunctionDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFunctionDefinitionRequest to be of type 'table'")
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["InitialVersion"] then M.AssertFunctionDefinitionVersion(struct["InitialVersion"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["InitialVersion"] then asserts.AssertFunctionDefinitionVersion(struct["InitialVersion"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFunctionDefinitionRequest_keys[k], "CreateFunctionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateFunctionDefinitionRequest[k], "CreateFunctionDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFunctionDefinitionRequest
 --  
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param InitialVersion [FunctionDefinitionVersion] Information on the initial version
--- @param Name [__string] name of the function definition
-function M.CreateFunctionDefinitionRequest(AmznClientToken, InitialVersion, Name, ...)
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _InitialVersion [FunctionDefinitionVersion] Information on the initial version
+-- @param _Name [__string] name of the function definition
+function M.CreateFunctionDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = AmznClientToken,
-		["InitialVersion"] = InitialVersion,
-		["Name"] = Name,
+		["AmznClientToken"] = _AmznClientToken,
+		["InitialVersion"] = _InitialVersion,
+		["Name"] = _Name,
 	}
-	M.AssertCreateFunctionDefinitionRequest(t)
+	asserts.AssertCreateFunctionDefinitionRequest(t)
 	return t
 end
 
-local AssociateRoleToGroupRequest_keys = { "RoleArn" = true, "GroupId" = true, nil }
+keys.AssociateRoleToGroupRequest = { ["RoleArn"] = true, ["GroupId"] = true, nil }
 
-function M.AssertAssociateRoleToGroupRequest(struct)
+function asserts.AssertAssociateRoleToGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateRoleToGroupRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["RoleArn"] then M.Assert__string(struct["RoleArn"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["RoleArn"] then asserts.Assert__string(struct["RoleArn"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(AssociateRoleToGroupRequest_keys[k], "AssociateRoleToGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.AssociateRoleToGroupRequest[k], "AssociateRoleToGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssociateRoleToGroupRequest
 --  
--- @param RoleArn [__string] Role arn you wish to associate with this group.
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _RoleArn [__string] Role arn you wish to associate with this group.
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.AssociateRoleToGroupRequest(RoleArn, GroupId, ...)
+function M.AssociateRoleToGroupRequest(_RoleArn, _GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateRoleToGroupRequest")
 	local t = { 
-		["RoleArn"] = RoleArn,
-		["GroupId"] = GroupId,
+		["RoleArn"] = _RoleArn,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertAssociateRoleToGroupRequest(t)
+	asserts.AssertAssociateRoleToGroupRequest(t)
 	return t
 end
 
-local GetSubscriptionDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetSubscriptionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetSubscriptionDefinitionResponse(struct)
+function asserts.AssertGetSubscriptionDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSubscriptionDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSubscriptionDefinitionResponse_keys[k], "GetSubscriptionDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetSubscriptionDefinitionResponse[k], "GetSubscriptionDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSubscriptionDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.GetSubscriptionDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.GetSubscriptionDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetSubscriptionDefinitionResponse(t)
+	asserts.AssertGetSubscriptionDefinitionResponse(t)
 	return t
 end
 
-local ListGroupVersionsResponse_keys = { "NextToken" = true, "Versions" = true, nil }
+keys.ListGroupVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
 
-function M.AssertListGroupVersionsResponse(struct)
+function asserts.AssertListGroupVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupVersionsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then M.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGroupVersionsResponse_keys[k], "ListGroupVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListGroupVersionsResponse[k], "ListGroupVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGroupVersionsResponse
 --  
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Versions [ListOfVersionInformation] Versions
-function M.ListGroupVersionsResponse(NextToken, Versions, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Versions [ListOfVersionInformation] Versions
+function M.ListGroupVersionsResponse(_NextToken, _Versions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupVersionsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Versions"] = Versions,
+		["NextToken"] = _NextToken,
+		["Versions"] = _Versions,
 	}
-	M.AssertListGroupVersionsResponse(t)
+	asserts.AssertListGroupVersionsResponse(t)
 	return t
 end
 
-local ListCoreDefinitionsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListCoreDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListCoreDefinitionsRequest(struct)
+function asserts.AssertListCoreDefinitionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListCoreDefinitionsRequest to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListCoreDefinitionsRequest_keys[k], "ListCoreDefinitionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListCoreDefinitionsRequest[k], "ListCoreDefinitionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListCoreDefinitionsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListCoreDefinitionsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+function M.ListCoreDefinitionsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCoreDefinitionsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListCoreDefinitionsRequest(t)
+	asserts.AssertListCoreDefinitionsRequest(t)
 	return t
 end
 
-local ListGroupCertificateAuthoritiesResponse_keys = { "GroupCertificateAuthorities" = true, nil }
+keys.ListGroupCertificateAuthoritiesResponse = { ["GroupCertificateAuthorities"] = true, nil }
 
-function M.AssertListGroupCertificateAuthoritiesResponse(struct)
+function asserts.AssertListGroupCertificateAuthoritiesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupCertificateAuthoritiesResponse to be of type 'table'")
-	if struct["GroupCertificateAuthorities"] then M.AssertListOfGroupCertificateAuthorityProperties(struct["GroupCertificateAuthorities"]) end
+	if struct["GroupCertificateAuthorities"] then asserts.AssertListOfGroupCertificateAuthorityProperties(struct["GroupCertificateAuthorities"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGroupCertificateAuthoritiesResponse_keys[k], "ListGroupCertificateAuthoritiesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListGroupCertificateAuthoritiesResponse[k], "ListGroupCertificateAuthoritiesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGroupCertificateAuthoritiesResponse
 --  
--- @param GroupCertificateAuthorities [ListOfGroupCertificateAuthorityProperties] List of certificate authorities associated with the group.
-function M.ListGroupCertificateAuthoritiesResponse(GroupCertificateAuthorities, ...)
+-- @param _GroupCertificateAuthorities [ListOfGroupCertificateAuthorityProperties] List of certificate authorities associated with the group.
+function M.ListGroupCertificateAuthoritiesResponse(_GroupCertificateAuthorities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupCertificateAuthoritiesResponse")
 	local t = { 
-		["GroupCertificateAuthorities"] = GroupCertificateAuthorities,
+		["GroupCertificateAuthorities"] = _GroupCertificateAuthorities,
 	}
-	M.AssertListGroupCertificateAuthoritiesResponse(t)
+	asserts.AssertListGroupCertificateAuthoritiesResponse(t)
 	return t
 end
 
-local Logger_keys = { "Type" = true, "Space" = true, "Component" = true, "Id" = true, "Level" = true, nil }
+keys.Logger = { ["Type"] = true, ["Space"] = true, ["Component"] = true, ["Id"] = true, ["Level"] = true, nil }
 
-function M.AssertLogger(struct)
+function asserts.AssertLogger(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Logger to be of type 'table'")
-	if struct["Type"] then M.AssertLoggerType(struct["Type"]) end
-	if struct["Space"] then M.Assert__integer(struct["Space"]) end
-	if struct["Component"] then M.AssertLoggerComponent(struct["Component"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Level"] then M.AssertLoggerLevel(struct["Level"]) end
+	if struct["Type"] then asserts.AssertLoggerType(struct["Type"]) end
+	if struct["Space"] then asserts.Assert__integer(struct["Space"]) end
+	if struct["Component"] then asserts.AssertLoggerComponent(struct["Component"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Level"] then asserts.AssertLoggerLevel(struct["Level"]) end
 	for k,_ in pairs(struct) do
-		assert(Logger_keys[k], "Logger contains unknown key " .. tostring(k))
+		assert(keys.Logger[k], "Logger contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Logger
 -- Information on the Logger
--- @param Type [LoggerType] The type which will be use for log output
--- @param Space [__integer] Amount of hardware space, in KB, to use if file system is used for logging purposes.
--- @param Component [LoggerComponent] The component that will be subject to logs
--- @param Id [__string] Element Id for this entry in the list.
--- @param Level [LoggerLevel] The level of the logs
-function M.Logger(Type, Space, Component, Id, Level, ...)
+-- @param _Type [LoggerType] The type which will be use for log output
+-- @param _Space [__integer] Amount of hardware space, in KB, to use if file system is used for logging purposes.
+-- @param _Component [LoggerComponent] The component that will be subject to logs
+-- @param _Id [__string] Element Id for this entry in the list.
+-- @param _Level [LoggerLevel] The level of the logs
+function M.Logger(_Type, _Space, _Component, _Id, _Level, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Logger")
 	local t = { 
-		["Type"] = Type,
-		["Space"] = Space,
-		["Component"] = Component,
-		["Id"] = Id,
-		["Level"] = Level,
+		["Type"] = _Type,
+		["Space"] = _Space,
+		["Component"] = _Component,
+		["Id"] = _Id,
+		["Level"] = _Level,
 	}
-	M.AssertLogger(t)
+	asserts.AssertLogger(t)
 	return t
 end
 
-local UpdateGroupCertificateConfigurationRequest_keys = { "CertificateExpiryInMilliseconds" = true, "GroupId" = true, nil }
+keys.UpdateGroupCertificateConfigurationRequest = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, nil }
 
-function M.AssertUpdateGroupCertificateConfigurationRequest(struct)
+function asserts.AssertUpdateGroupCertificateConfigurationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateGroupCertificateConfigurationRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["CertificateExpiryInMilliseconds"] then M.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["CertificateExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateGroupCertificateConfigurationRequest_keys[k], "UpdateGroupCertificateConfigurationRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateGroupCertificateConfigurationRequest[k], "UpdateGroupCertificateConfigurationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateGroupCertificateConfigurationRequest
 --  
--- @param CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.UpdateGroupCertificateConfigurationRequest(CertificateExpiryInMilliseconds, GroupId, ...)
+function M.UpdateGroupCertificateConfigurationRequest(_CertificateExpiryInMilliseconds, _GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupCertificateConfigurationRequest")
 	local t = { 
-		["CertificateExpiryInMilliseconds"] = CertificateExpiryInMilliseconds,
-		["GroupId"] = GroupId,
+		["CertificateExpiryInMilliseconds"] = _CertificateExpiryInMilliseconds,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertUpdateGroupCertificateConfigurationRequest(t)
+	asserts.AssertUpdateGroupCertificateConfigurationRequest(t)
 	return t
 end
 
-local GetFunctionDefinitionVersionResponse_keys = { "Definition" = true, "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetFunctionDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetFunctionDefinitionVersionResponse(struct)
+function asserts.AssertGetFunctionDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFunctionDefinitionVersionResponse to be of type 'table'")
-	if struct["Definition"] then M.AssertFunctionDefinitionVersion(struct["Definition"]) end
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Definition"] then asserts.AssertFunctionDefinitionVersion(struct["Definition"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFunctionDefinitionVersionResponse_keys[k], "GetFunctionDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetFunctionDefinitionVersionResponse[k], "GetFunctionDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFunctionDefinitionVersionResponse
 --  
--- @param Definition [FunctionDefinitionVersion]  
--- @param Version [__string] Version of the function definition version.
--- @param CreationTimestamp [__string] Timestamp when the funtion definition version was created.
--- @param Id [__string] Id of the function definition the version belongs to.
--- @param Arn [__string] Arn of the function definition version.
-function M.GetFunctionDefinitionVersionResponse(Definition, Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Definition [FunctionDefinitionVersion] 
+-- @param _Version [__string] Version of the function definition version.
+-- @param _CreationTimestamp [__string] Timestamp when the funtion definition version was created.
+-- @param _Id [__string] Id of the function definition the version belongs to.
+-- @param _Arn [__string] Arn of the function definition version.
+function M.GetFunctionDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = Definition,
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Definition"] = _Definition,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetFunctionDefinitionVersionResponse(t)
+	asserts.AssertGetFunctionDefinitionVersionResponse(t)
 	return t
 end
 
-local ListGroupCertificateAuthoritiesRequest_keys = { "GroupId" = true, nil }
+keys.ListGroupCertificateAuthoritiesRequest = { ["GroupId"] = true, nil }
 
-function M.AssertListGroupCertificateAuthoritiesRequest(struct)
+function asserts.AssertListGroupCertificateAuthoritiesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListGroupCertificateAuthoritiesRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListGroupCertificateAuthoritiesRequest_keys[k], "ListGroupCertificateAuthoritiesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListGroupCertificateAuthoritiesRequest[k], "ListGroupCertificateAuthoritiesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListGroupCertificateAuthoritiesRequest
 --  
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.ListGroupCertificateAuthoritiesRequest(GroupId, ...)
+function M.ListGroupCertificateAuthoritiesRequest(_GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupCertificateAuthoritiesRequest")
 	local t = { 
-		["GroupId"] = GroupId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertListGroupCertificateAuthoritiesRequest(t)
+	asserts.AssertListGroupCertificateAuthoritiesRequest(t)
 	return t
 end
 
-local ListDeviceDefinitionsResponse_keys = { "Definitions" = true, "NextToken" = true, nil }
+keys.ListDeviceDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListDeviceDefinitionsResponse(struct)
+function asserts.AssertListDeviceDefinitionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDeviceDefinitionsResponse to be of type 'table'")
-	if struct["Definitions"] then M.AssertListOfDefinitionInformation(struct["Definitions"]) end
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
+	if struct["Definitions"] then asserts.AssertListOfDefinitionInformation(struct["Definitions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDeviceDefinitionsResponse_keys[k], "ListDeviceDefinitionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDeviceDefinitionsResponse[k], "ListDeviceDefinitionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDeviceDefinitionsResponse
 --  
--- @param Definitions [ListOfDefinitionInformation] Definitions
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListDeviceDefinitionsResponse(Definitions, NextToken, ...)
+-- @param _Definitions [ListOfDefinitionInformation] Definitions
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+function M.ListDeviceDefinitionsResponse(_Definitions, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDeviceDefinitionsResponse")
 	local t = { 
-		["Definitions"] = Definitions,
-		["NextToken"] = NextToken,
+		["Definitions"] = _Definitions,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListDeviceDefinitionsResponse(t)
+	asserts.AssertListDeviceDefinitionsResponse(t)
 	return t
 end
 
-local CreateFunctionDefinitionVersionResponse_keys = { "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateFunctionDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateFunctionDefinitionVersionResponse(struct)
+function asserts.AssertCreateFunctionDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFunctionDefinitionVersionResponse to be of type 'table'")
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFunctionDefinitionVersionResponse_keys[k], "CreateFunctionDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateFunctionDefinitionVersionResponse[k], "CreateFunctionDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFunctionDefinitionVersionResponse
 --  
--- @param Version [__string] Unique Id of a version.
--- @param CreationTimestamp [__string] Timestamp of when the version was created.
--- @param Id [__string] Id of the resource container.
--- @param Arn [__string] Arn of the version.
-function M.CreateFunctionDefinitionVersionResponse(Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Version [__string] Unique Id of a version.
+-- @param _CreationTimestamp [__string] Timestamp of when the version was created.
+-- @param _Id [__string] Id of the resource container.
+-- @param _Arn [__string] Arn of the version.
+function M.CreateFunctionDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionDefinitionVersionResponse")
 	local t = { 
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateFunctionDefinitionVersionResponse(t)
+	asserts.AssertCreateFunctionDefinitionVersionResponse(t)
 	return t
 end
 
-local CreateGroupVersionResponse_keys = { "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateGroupVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateGroupVersionResponse(struct)
+function asserts.AssertCreateGroupVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupVersionResponse to be of type 'table'")
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGroupVersionResponse_keys[k], "CreateGroupVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateGroupVersionResponse[k], "CreateGroupVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGroupVersionResponse
 --  
--- @param Version [__string] Unique Id of a version.
--- @param CreationTimestamp [__string] Timestamp of when the version was created.
--- @param Id [__string] Id of the resource container.
--- @param Arn [__string] Arn of the version.
-function M.CreateGroupVersionResponse(Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Version [__string] Unique Id of a version.
+-- @param _CreationTimestamp [__string] Timestamp of when the version was created.
+-- @param _Id [__string] Id of the resource container.
+-- @param _Arn [__string] Arn of the version.
+function M.CreateGroupVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupVersionResponse")
 	local t = { 
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateGroupVersionResponse(t)
+	asserts.AssertCreateGroupVersionResponse(t)
 	return t
 end
 
-local ListVersionsResponse_keys = { "NextToken" = true, "Versions" = true, nil }
+keys.ListVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
 
-function M.AssertListVersionsResponse(struct)
+function asserts.AssertListVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListVersionsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then M.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListVersionsResponse_keys[k], "ListVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListVersionsResponse[k], "ListVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListVersionsResponse
 -- List of versions response
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Versions [ListOfVersionInformation] Versions
-function M.ListVersionsResponse(NextToken, Versions, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Versions [ListOfVersionInformation] Versions
+function M.ListVersionsResponse(_NextToken, _Versions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListVersionsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Versions"] = Versions,
+		["NextToken"] = _NextToken,
+		["Versions"] = _Versions,
 	}
-	M.AssertListVersionsResponse(t)
+	asserts.AssertListVersionsResponse(t)
 	return t
 end
 
-local UpdateDeviceDefinitionRequest_keys = { "DeviceDefinitionId" = true, "Name" = true, nil }
+keys.UpdateDeviceDefinitionRequest = { ["DeviceDefinitionId"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateDeviceDefinitionRequest(struct)
+function asserts.AssertUpdateDeviceDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDeviceDefinitionRequest to be of type 'table'")
 	assert(struct["DeviceDefinitionId"], "Expected key DeviceDefinitionId to exist in table")
-	if struct["DeviceDefinitionId"] then M.Assert__string(struct["DeviceDefinitionId"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
+	if struct["DeviceDefinitionId"] then asserts.Assert__string(struct["DeviceDefinitionId"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateDeviceDefinitionRequest_keys[k], "UpdateDeviceDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateDeviceDefinitionRequest[k], "UpdateDeviceDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateDeviceDefinitionRequest
 --  
--- @param DeviceDefinitionId [__string] device definition Id
--- @param Name [__string] name of the definition
+-- @param _DeviceDefinitionId [__string] device definition Id
+-- @param _Name [__string] name of the definition
 -- Required parameter: DeviceDefinitionId
-function M.UpdateDeviceDefinitionRequest(DeviceDefinitionId, Name, ...)
+function M.UpdateDeviceDefinitionRequest(_DeviceDefinitionId, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeviceDefinitionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = DeviceDefinitionId,
-		["Name"] = Name,
+		["DeviceDefinitionId"] = _DeviceDefinitionId,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateDeviceDefinitionRequest(t)
+	asserts.AssertUpdateDeviceDefinitionRequest(t)
 	return t
 end
 
-local GroupVersion_keys = { "CoreDefinitionVersionArn" = true, "LoggerDefinitionVersionArn" = true, "FunctionDefinitionVersionArn" = true, "DeviceDefinitionVersionArn" = true, "SubscriptionDefinitionVersionArn" = true, nil }
+keys.GroupVersion = { ["CoreDefinitionVersionArn"] = true, ["LoggerDefinitionVersionArn"] = true, ["FunctionDefinitionVersionArn"] = true, ["DeviceDefinitionVersionArn"] = true, ["SubscriptionDefinitionVersionArn"] = true, nil }
 
-function M.AssertGroupVersion(struct)
+function asserts.AssertGroupVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GroupVersion to be of type 'table'")
-	if struct["CoreDefinitionVersionArn"] then M.Assert__string(struct["CoreDefinitionVersionArn"]) end
-	if struct["LoggerDefinitionVersionArn"] then M.Assert__string(struct["LoggerDefinitionVersionArn"]) end
-	if struct["FunctionDefinitionVersionArn"] then M.Assert__string(struct["FunctionDefinitionVersionArn"]) end
-	if struct["DeviceDefinitionVersionArn"] then M.Assert__string(struct["DeviceDefinitionVersionArn"]) end
-	if struct["SubscriptionDefinitionVersionArn"] then M.Assert__string(struct["SubscriptionDefinitionVersionArn"]) end
+	if struct["CoreDefinitionVersionArn"] then asserts.Assert__string(struct["CoreDefinitionVersionArn"]) end
+	if struct["LoggerDefinitionVersionArn"] then asserts.Assert__string(struct["LoggerDefinitionVersionArn"]) end
+	if struct["FunctionDefinitionVersionArn"] then asserts.Assert__string(struct["FunctionDefinitionVersionArn"]) end
+	if struct["DeviceDefinitionVersionArn"] then asserts.Assert__string(struct["DeviceDefinitionVersionArn"]) end
+	if struct["SubscriptionDefinitionVersionArn"] then asserts.Assert__string(struct["SubscriptionDefinitionVersionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GroupVersion_keys[k], "GroupVersion contains unknown key " .. tostring(k))
+		assert(keys.GroupVersion[k], "GroupVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GroupVersion
 -- Information on group version
--- @param CoreDefinitionVersionArn [__string] Core definition version arn for this group.
--- @param LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
--- @param FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
--- @param DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
--- @param SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
-function M.GroupVersion(CoreDefinitionVersionArn, LoggerDefinitionVersionArn, FunctionDefinitionVersionArn, DeviceDefinitionVersionArn, SubscriptionDefinitionVersionArn, ...)
+-- @param _CoreDefinitionVersionArn [__string] Core definition version arn for this group.
+-- @param _LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
+-- @param _FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
+-- @param _DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
+-- @param _SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
+function M.GroupVersion(_CoreDefinitionVersionArn, _LoggerDefinitionVersionArn, _FunctionDefinitionVersionArn, _DeviceDefinitionVersionArn, _SubscriptionDefinitionVersionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupVersion")
 	local t = { 
-		["CoreDefinitionVersionArn"] = CoreDefinitionVersionArn,
-		["LoggerDefinitionVersionArn"] = LoggerDefinitionVersionArn,
-		["FunctionDefinitionVersionArn"] = FunctionDefinitionVersionArn,
-		["DeviceDefinitionVersionArn"] = DeviceDefinitionVersionArn,
-		["SubscriptionDefinitionVersionArn"] = SubscriptionDefinitionVersionArn,
+		["CoreDefinitionVersionArn"] = _CoreDefinitionVersionArn,
+		["LoggerDefinitionVersionArn"] = _LoggerDefinitionVersionArn,
+		["FunctionDefinitionVersionArn"] = _FunctionDefinitionVersionArn,
+		["DeviceDefinitionVersionArn"] = _DeviceDefinitionVersionArn,
+		["SubscriptionDefinitionVersionArn"] = _SubscriptionDefinitionVersionArn,
 	}
-	M.AssertGroupVersion(t)
+	asserts.AssertGroupVersion(t)
 	return t
 end
 
-local DeleteLoggerDefinitionResponse_keys = { nil }
+keys.DeleteLoggerDefinitionResponse = { nil }
 
-function M.AssertDeleteLoggerDefinitionResponse(struct)
+function asserts.AssertDeleteLoggerDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLoggerDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteLoggerDefinitionResponse_keys[k], "DeleteLoggerDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteLoggerDefinitionResponse[k], "DeleteLoggerDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3743,251 +3746,251 @@ function M.DeleteLoggerDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoggerDefinitionResponse")
 	local t = { 
 	}
-	M.AssertDeleteLoggerDefinitionResponse(t)
+	asserts.AssertDeleteLoggerDefinitionResponse(t)
 	return t
 end
 
-local DeleteFunctionDefinitionRequest_keys = { "FunctionDefinitionId" = true, nil }
+keys.DeleteFunctionDefinitionRequest = { ["FunctionDefinitionId"] = true, nil }
 
-function M.AssertDeleteFunctionDefinitionRequest(struct)
+function asserts.AssertDeleteFunctionDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFunctionDefinitionRequest to be of type 'table'")
 	assert(struct["FunctionDefinitionId"], "Expected key FunctionDefinitionId to exist in table")
-	if struct["FunctionDefinitionId"] then M.Assert__string(struct["FunctionDefinitionId"]) end
+	if struct["FunctionDefinitionId"] then asserts.Assert__string(struct["FunctionDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteFunctionDefinitionRequest_keys[k], "DeleteFunctionDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteFunctionDefinitionRequest[k], "DeleteFunctionDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteFunctionDefinitionRequest
 --  
--- @param FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
 -- Required parameter: FunctionDefinitionId
-function M.DeleteFunctionDefinitionRequest(FunctionDefinitionId, ...)
+function M.DeleteFunctionDefinitionRequest(_FunctionDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFunctionDefinitionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = FunctionDefinitionId,
+		["FunctionDefinitionId"] = _FunctionDefinitionId,
 	}
-	M.AssertDeleteFunctionDefinitionRequest(t)
+	asserts.AssertDeleteFunctionDefinitionRequest(t)
 	return t
 end
 
-local Deployment_keys = { "DeploymentId" = true, "DeploymentArn" = true, "GroupArn" = true, "CreatedAt" = true, nil }
+keys.Deployment = { ["DeploymentId"] = true, ["DeploymentArn"] = true, ["GroupArn"] = true, ["CreatedAt"] = true, nil }
 
-function M.AssertDeployment(struct)
+function asserts.AssertDeployment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Deployment to be of type 'table'")
-	if struct["DeploymentId"] then M.Assert__string(struct["DeploymentId"]) end
-	if struct["DeploymentArn"] then M.Assert__string(struct["DeploymentArn"]) end
-	if struct["GroupArn"] then M.Assert__string(struct["GroupArn"]) end
-	if struct["CreatedAt"] then M.Assert__string(struct["CreatedAt"]) end
+	if struct["DeploymentId"] then asserts.Assert__string(struct["DeploymentId"]) end
+	if struct["DeploymentArn"] then asserts.Assert__string(struct["DeploymentArn"]) end
+	if struct["GroupArn"] then asserts.Assert__string(struct["GroupArn"]) end
+	if struct["CreatedAt"] then asserts.Assert__string(struct["CreatedAt"]) end
 	for k,_ in pairs(struct) do
-		assert(Deployment_keys[k], "Deployment contains unknown key " .. tostring(k))
+		assert(keys.Deployment[k], "Deployment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Deployment
 -- Information on the deployment
--- @param DeploymentId [__string] Id of the deployment.
--- @param DeploymentArn [__string] Arn of the deployment.
--- @param GroupArn [__string] Arn of the group for this deployment.
--- @param CreatedAt [__string] Timestamp when the deployment was created.
-function M.Deployment(DeploymentId, DeploymentArn, GroupArn, CreatedAt, ...)
+-- @param _DeploymentId [__string] Id of the deployment.
+-- @param _DeploymentArn [__string] Arn of the deployment.
+-- @param _GroupArn [__string] Arn of the group for this deployment.
+-- @param _CreatedAt [__string] Timestamp when the deployment was created.
+function M.Deployment(_DeploymentId, _DeploymentArn, _GroupArn, _CreatedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
 	local t = { 
-		["DeploymentId"] = DeploymentId,
-		["DeploymentArn"] = DeploymentArn,
-		["GroupArn"] = GroupArn,
-		["CreatedAt"] = CreatedAt,
+		["DeploymentId"] = _DeploymentId,
+		["DeploymentArn"] = _DeploymentArn,
+		["GroupArn"] = _GroupArn,
+		["CreatedAt"] = _CreatedAt,
 	}
-	M.AssertDeployment(t)
+	asserts.AssertDeployment(t)
 	return t
 end
 
-local GetGroupCertificateConfigurationResponse_keys = { "CertificateExpiryInMilliseconds" = true, "GroupId" = true, "CertificateAuthorityExpiryInMilliseconds" = true, nil }
+keys.GetGroupCertificateConfigurationResponse = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, ["CertificateAuthorityExpiryInMilliseconds"] = true, nil }
 
-function M.AssertGetGroupCertificateConfigurationResponse(struct)
+function asserts.AssertGetGroupCertificateConfigurationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupCertificateConfigurationResponse to be of type 'table'")
-	if struct["CertificateExpiryInMilliseconds"] then M.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
-	if struct["CertificateAuthorityExpiryInMilliseconds"] then M.Assert__string(struct["CertificateAuthorityExpiryInMilliseconds"]) end
+	if struct["CertificateExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateExpiryInMilliseconds"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	if struct["CertificateAuthorityExpiryInMilliseconds"] then asserts.Assert__string(struct["CertificateAuthorityExpiryInMilliseconds"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupCertificateConfigurationResponse_keys[k], "GetGroupCertificateConfigurationResponse contains unknown key " .. tostring(k))
+		assert(keys.GetGroupCertificateConfigurationResponse[k], "GetGroupCertificateConfigurationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupCertificateConfigurationResponse
 --  
--- @param CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- @param GroupId [__string] Id of the group the certificate configuration belongs to.
--- @param CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
-function M.GetGroupCertificateConfigurationResponse(CertificateExpiryInMilliseconds, GroupId, CertificateAuthorityExpiryInMilliseconds, ...)
+-- @param _CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
+-- @param _GroupId [__string] Id of the group the certificate configuration belongs to.
+-- @param _CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
+function M.GetGroupCertificateConfigurationResponse(_CertificateExpiryInMilliseconds, _GroupId, _CertificateAuthorityExpiryInMilliseconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupCertificateConfigurationResponse")
 	local t = { 
-		["CertificateExpiryInMilliseconds"] = CertificateExpiryInMilliseconds,
-		["GroupId"] = GroupId,
-		["CertificateAuthorityExpiryInMilliseconds"] = CertificateAuthorityExpiryInMilliseconds,
+		["CertificateExpiryInMilliseconds"] = _CertificateExpiryInMilliseconds,
+		["GroupId"] = _GroupId,
+		["CertificateAuthorityExpiryInMilliseconds"] = _CertificateAuthorityExpiryInMilliseconds,
 	}
-	M.AssertGetGroupCertificateConfigurationResponse(t)
+	asserts.AssertGetGroupCertificateConfigurationResponse(t)
 	return t
 end
 
-local CreateGroupCertificateAuthorityResponse_keys = { "GroupCertificateAuthorityArn" = true, nil }
+keys.CreateGroupCertificateAuthorityResponse = { ["GroupCertificateAuthorityArn"] = true, nil }
 
-function M.AssertCreateGroupCertificateAuthorityResponse(struct)
+function asserts.AssertCreateGroupCertificateAuthorityResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupCertificateAuthorityResponse to be of type 'table'")
-	if struct["GroupCertificateAuthorityArn"] then M.Assert__string(struct["GroupCertificateAuthorityArn"]) end
+	if struct["GroupCertificateAuthorityArn"] then asserts.Assert__string(struct["GroupCertificateAuthorityArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGroupCertificateAuthorityResponse_keys[k], "CreateGroupCertificateAuthorityResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateGroupCertificateAuthorityResponse[k], "CreateGroupCertificateAuthorityResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGroupCertificateAuthorityResponse
 --  
--- @param GroupCertificateAuthorityArn [__string] Arn of the group certificate authority.
-function M.CreateGroupCertificateAuthorityResponse(GroupCertificateAuthorityArn, ...)
+-- @param _GroupCertificateAuthorityArn [__string] Arn of the group certificate authority.
+function M.CreateGroupCertificateAuthorityResponse(_GroupCertificateAuthorityArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupCertificateAuthorityResponse")
 	local t = { 
-		["GroupCertificateAuthorityArn"] = GroupCertificateAuthorityArn,
+		["GroupCertificateAuthorityArn"] = _GroupCertificateAuthorityArn,
 	}
-	M.AssertCreateGroupCertificateAuthorityResponse(t)
+	asserts.AssertCreateGroupCertificateAuthorityResponse(t)
 	return t
 end
 
-local GetDeploymentStatusRequest_keys = { "DeploymentId" = true, "GroupId" = true, nil }
+keys.GetDeploymentStatusRequest = { ["DeploymentId"] = true, ["GroupId"] = true, nil }
 
-function M.AssertGetDeploymentStatusRequest(struct)
+function asserts.AssertGetDeploymentStatusRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeploymentStatusRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
 	assert(struct["DeploymentId"], "Expected key DeploymentId to exist in table")
-	if struct["DeploymentId"] then M.Assert__string(struct["DeploymentId"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["DeploymentId"] then asserts.Assert__string(struct["DeploymentId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeploymentStatusRequest_keys[k], "GetDeploymentStatusRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDeploymentStatusRequest[k], "GetDeploymentStatusRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeploymentStatusRequest
 --  
--- @param DeploymentId [__string] the deployment Id
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _DeploymentId [__string] the deployment Id
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
 -- Required parameter: DeploymentId
-function M.GetDeploymentStatusRequest(DeploymentId, GroupId, ...)
+function M.GetDeploymentStatusRequest(_DeploymentId, _GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentStatusRequest")
 	local t = { 
-		["DeploymentId"] = DeploymentId,
-		["GroupId"] = GroupId,
+		["DeploymentId"] = _DeploymentId,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertGetDeploymentStatusRequest(t)
+	asserts.AssertGetDeploymentStatusRequest(t)
 	return t
 end
 
-local FunctionConfigurationEnvironment_keys = { "Variables" = true, nil }
+keys.FunctionConfigurationEnvironment = { ["Variables"] = true, nil }
 
-function M.AssertFunctionConfigurationEnvironment(struct)
+function asserts.AssertFunctionConfigurationEnvironment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FunctionConfigurationEnvironment to be of type 'table'")
-	if struct["Variables"] then M.AssertMapOf__string(struct["Variables"]) end
+	if struct["Variables"] then asserts.AssertMapOf__string(struct["Variables"]) end
 	for k,_ in pairs(struct) do
-		assert(FunctionConfigurationEnvironment_keys[k], "FunctionConfigurationEnvironment contains unknown key " .. tostring(k))
+		assert(keys.FunctionConfigurationEnvironment[k], "FunctionConfigurationEnvironment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionConfigurationEnvironment
 -- Environment of the function configuration
--- @param Variables [MapOf__string] Environment variables for the lambda function.
-function M.FunctionConfigurationEnvironment(Variables, ...)
+-- @param _Variables [MapOf__string] Environment variables for the lambda function.
+function M.FunctionConfigurationEnvironment(_Variables, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FunctionConfigurationEnvironment")
 	local t = { 
-		["Variables"] = Variables,
+		["Variables"] = _Variables,
 	}
-	M.AssertFunctionConfigurationEnvironment(t)
+	asserts.AssertFunctionConfigurationEnvironment(t)
 	return t
 end
 
-local Function_keys = { "FunctionConfiguration" = true, "Id" = true, "FunctionArn" = true, nil }
+keys.Function = { ["FunctionConfiguration"] = true, ["Id"] = true, ["FunctionArn"] = true, nil }
 
-function M.AssertFunction(struct)
+function asserts.AssertFunction(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Function to be of type 'table'")
-	if struct["FunctionConfiguration"] then M.AssertFunctionConfiguration(struct["FunctionConfiguration"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["FunctionArn"] then M.Assert__string(struct["FunctionArn"]) end
+	if struct["FunctionConfiguration"] then asserts.AssertFunctionConfiguration(struct["FunctionConfiguration"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["FunctionArn"] then asserts.Assert__string(struct["FunctionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(Function_keys[k], "Function contains unknown key " .. tostring(k))
+		assert(keys.Function[k], "Function contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Function
 -- Information on function
--- @param FunctionConfiguration [FunctionConfiguration] Configuration of the function
--- @param Id [__string] Id of the function in this version.
--- @param FunctionArn [__string] Arn of the Lambda function.
-function M.Function(FunctionConfiguration, Id, FunctionArn, ...)
+-- @param _FunctionConfiguration [FunctionConfiguration] Configuration of the function
+-- @param _Id [__string] Id of the function in this version.
+-- @param _FunctionArn [__string] Arn of the Lambda function.
+function M.Function(_FunctionConfiguration, _Id, _FunctionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Function")
 	local t = { 
-		["FunctionConfiguration"] = FunctionConfiguration,
-		["Id"] = Id,
-		["FunctionArn"] = FunctionArn,
+		["FunctionConfiguration"] = _FunctionConfiguration,
+		["Id"] = _Id,
+		["FunctionArn"] = _FunctionArn,
 	}
-	M.AssertFunction(t)
+	asserts.AssertFunction(t)
 	return t
 end
 
-local CreateGroupVersionRequest_keys = { "AmznClientToken" = true, "DeviceDefinitionVersionArn" = true, "SubscriptionDefinitionVersionArn" = true, "FunctionDefinitionVersionArn" = true, "CoreDefinitionVersionArn" = true, "LoggerDefinitionVersionArn" = true, "GroupId" = true, nil }
+keys.CreateGroupVersionRequest = { ["AmznClientToken"] = true, ["DeviceDefinitionVersionArn"] = true, ["SubscriptionDefinitionVersionArn"] = true, ["FunctionDefinitionVersionArn"] = true, ["CoreDefinitionVersionArn"] = true, ["LoggerDefinitionVersionArn"] = true, ["GroupId"] = true, nil }
 
-function M.AssertCreateGroupVersionRequest(struct)
+function asserts.AssertCreateGroupVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupVersionRequest to be of type 'table'")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["DeviceDefinitionVersionArn"] then M.Assert__string(struct["DeviceDefinitionVersionArn"]) end
-	if struct["SubscriptionDefinitionVersionArn"] then M.Assert__string(struct["SubscriptionDefinitionVersionArn"]) end
-	if struct["FunctionDefinitionVersionArn"] then M.Assert__string(struct["FunctionDefinitionVersionArn"]) end
-	if struct["CoreDefinitionVersionArn"] then M.Assert__string(struct["CoreDefinitionVersionArn"]) end
-	if struct["LoggerDefinitionVersionArn"] then M.Assert__string(struct["LoggerDefinitionVersionArn"]) end
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["DeviceDefinitionVersionArn"] then asserts.Assert__string(struct["DeviceDefinitionVersionArn"]) end
+	if struct["SubscriptionDefinitionVersionArn"] then asserts.Assert__string(struct["SubscriptionDefinitionVersionArn"]) end
+	if struct["FunctionDefinitionVersionArn"] then asserts.Assert__string(struct["FunctionDefinitionVersionArn"]) end
+	if struct["CoreDefinitionVersionArn"] then asserts.Assert__string(struct["CoreDefinitionVersionArn"]) end
+	if struct["LoggerDefinitionVersionArn"] then asserts.Assert__string(struct["LoggerDefinitionVersionArn"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGroupVersionRequest_keys[k], "CreateGroupVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateGroupVersionRequest[k], "CreateGroupVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGroupVersionRequest
 --  
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
--- @param SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
--- @param FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
--- @param CoreDefinitionVersionArn [__string] Core definition version arn for this group.
--- @param LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
+-- @param _SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
+-- @param _FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
+-- @param _CoreDefinitionVersionArn [__string] Core definition version arn for this group.
+-- @param _LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
 -- Required parameter: GroupId
-function M.CreateGroupVersionRequest(AmznClientToken, DeviceDefinitionVersionArn, SubscriptionDefinitionVersionArn, FunctionDefinitionVersionArn, CoreDefinitionVersionArn, LoggerDefinitionVersionArn, GroupId, ...)
+function M.CreateGroupVersionRequest(_AmznClientToken, _DeviceDefinitionVersionArn, _SubscriptionDefinitionVersionArn, _FunctionDefinitionVersionArn, _CoreDefinitionVersionArn, _LoggerDefinitionVersionArn, _GroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupVersionRequest")
 	local t = { 
-		["AmznClientToken"] = AmznClientToken,
-		["DeviceDefinitionVersionArn"] = DeviceDefinitionVersionArn,
-		["SubscriptionDefinitionVersionArn"] = SubscriptionDefinitionVersionArn,
-		["FunctionDefinitionVersionArn"] = FunctionDefinitionVersionArn,
-		["CoreDefinitionVersionArn"] = CoreDefinitionVersionArn,
-		["LoggerDefinitionVersionArn"] = LoggerDefinitionVersionArn,
-		["GroupId"] = GroupId,
+		["AmznClientToken"] = _AmznClientToken,
+		["DeviceDefinitionVersionArn"] = _DeviceDefinitionVersionArn,
+		["SubscriptionDefinitionVersionArn"] = _SubscriptionDefinitionVersionArn,
+		["FunctionDefinitionVersionArn"] = _FunctionDefinitionVersionArn,
+		["CoreDefinitionVersionArn"] = _CoreDefinitionVersionArn,
+		["LoggerDefinitionVersionArn"] = _LoggerDefinitionVersionArn,
+		["GroupId"] = _GroupId,
 	}
-	M.AssertCreateGroupVersionRequest(t)
+	asserts.AssertCreateGroupVersionRequest(t)
 	return t
 end
 
-local DeleteGroupResponse_keys = { nil }
+keys.DeleteGroupResponse = { nil }
 
-function M.AssertDeleteGroupResponse(struct)
+function asserts.AssertDeleteGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteGroupResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteGroupResponse_keys[k], "DeleteGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteGroupResponse[k], "DeleteGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3997,214 +4000,214 @@ function M.DeleteGroupResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGroupResponse")
 	local t = { 
 	}
-	M.AssertDeleteGroupResponse(t)
+	asserts.AssertDeleteGroupResponse(t)
 	return t
 end
 
-local CreateFunctionDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateFunctionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateFunctionDefinitionResponse(struct)
+function asserts.AssertCreateFunctionDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFunctionDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFunctionDefinitionResponse_keys[k], "CreateFunctionDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateFunctionDefinitionResponse[k], "CreateFunctionDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFunctionDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.CreateFunctionDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.CreateFunctionDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateFunctionDefinitionResponse(t)
+	asserts.AssertCreateFunctionDefinitionResponse(t)
 	return t
 end
 
-local AssociateRoleToGroupResponse_keys = { "AssociatedAt" = true, nil }
+keys.AssociateRoleToGroupResponse = { ["AssociatedAt"] = true, nil }
 
-function M.AssertAssociateRoleToGroupResponse(struct)
+function asserts.AssertAssociateRoleToGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateRoleToGroupResponse to be of type 'table'")
-	if struct["AssociatedAt"] then M.Assert__string(struct["AssociatedAt"]) end
+	if struct["AssociatedAt"] then asserts.Assert__string(struct["AssociatedAt"]) end
 	for k,_ in pairs(struct) do
-		assert(AssociateRoleToGroupResponse_keys[k], "AssociateRoleToGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.AssociateRoleToGroupResponse[k], "AssociateRoleToGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssociateRoleToGroupResponse
 --  
--- @param AssociatedAt [__string] Time the role arn was associated to your group.
-function M.AssociateRoleToGroupResponse(AssociatedAt, ...)
+-- @param _AssociatedAt [__string] Time the role arn was associated to your group.
+function M.AssociateRoleToGroupResponse(_AssociatedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateRoleToGroupResponse")
 	local t = { 
-		["AssociatedAt"] = AssociatedAt,
+		["AssociatedAt"] = _AssociatedAt,
 	}
-	M.AssertAssociateRoleToGroupResponse(t)
+	asserts.AssertAssociateRoleToGroupResponse(t)
 	return t
 end
 
-local CreateLoggerDefinitionResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateLoggerDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateLoggerDefinitionResponse(struct)
+function asserts.AssertCreateLoggerDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLoggerDefinitionResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLoggerDefinitionResponse_keys[k], "CreateLoggerDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateLoggerDefinitionResponse[k], "CreateLoggerDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLoggerDefinitionResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.CreateLoggerDefinitionResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.CreateLoggerDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoggerDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateLoggerDefinitionResponse(t)
+	asserts.AssertCreateLoggerDefinitionResponse(t)
 	return t
 end
 
-local UpdateConnectivityInfoResponse_keys = { "Message" = true, "Version" = true, nil }
+keys.UpdateConnectivityInfoResponse = { ["Message"] = true, ["Version"] = true, nil }
 
-function M.AssertUpdateConnectivityInfoResponse(struct)
+function asserts.AssertUpdateConnectivityInfoResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateConnectivityInfoResponse to be of type 'table'")
-	if struct["Message"] then M.Assert__string(struct["Message"]) end
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
+	if struct["Message"] then asserts.Assert__string(struct["Message"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateConnectivityInfoResponse_keys[k], "UpdateConnectivityInfoResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateConnectivityInfoResponse[k], "UpdateConnectivityInfoResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateConnectivityInfoResponse
 --  
--- @param Message [__string] Response Text
--- @param Version [__string] New Version
-function M.UpdateConnectivityInfoResponse(Message, Version, ...)
+-- @param _Message [__string] Response Text
+-- @param _Version [__string] New Version
+function M.UpdateConnectivityInfoResponse(_Message, _Version, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConnectivityInfoResponse")
 	local t = { 
-		["Message"] = Message,
-		["Version"] = Version,
+		["Message"] = _Message,
+		["Version"] = _Version,
 	}
-	M.AssertUpdateConnectivityInfoResponse(t)
+	asserts.AssertUpdateConnectivityInfoResponse(t)
 	return t
 end
 
-local CreateDeviceDefinitionVersionRequest_keys = { "DeviceDefinitionId" = true, "AmznClientToken" = true, "Devices" = true, nil }
+keys.CreateDeviceDefinitionVersionRequest = { ["DeviceDefinitionId"] = true, ["AmznClientToken"] = true, ["Devices"] = true, nil }
 
-function M.AssertCreateDeviceDefinitionVersionRequest(struct)
+function asserts.AssertCreateDeviceDefinitionVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeviceDefinitionVersionRequest to be of type 'table'")
 	assert(struct["DeviceDefinitionId"], "Expected key DeviceDefinitionId to exist in table")
-	if struct["DeviceDefinitionId"] then M.Assert__string(struct["DeviceDefinitionId"]) end
-	if struct["AmznClientToken"] then M.Assert__string(struct["AmznClientToken"]) end
-	if struct["Devices"] then M.AssertListOfDevice(struct["Devices"]) end
+	if struct["DeviceDefinitionId"] then asserts.Assert__string(struct["DeviceDefinitionId"]) end
+	if struct["AmznClientToken"] then asserts.Assert__string(struct["AmznClientToken"]) end
+	if struct["Devices"] then asserts.AssertListOfDevice(struct["Devices"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDeviceDefinitionVersionRequest_keys[k], "CreateDeviceDefinitionVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDeviceDefinitionVersionRequest[k], "CreateDeviceDefinitionVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDeviceDefinitionVersionRequest
 --  
--- @param DeviceDefinitionId [__string] device definition Id
--- @param AmznClientToken [__string] The client token used to request idempotent operations.
--- @param Devices [ListOfDevice] Devices in the definition version.
+-- @param _DeviceDefinitionId [__string] device definition Id
+-- @param _AmznClientToken [__string] The client token used to request idempotent operations.
+-- @param _Devices [ListOfDevice] Devices in the definition version.
 -- Required parameter: DeviceDefinitionId
-function M.CreateDeviceDefinitionVersionRequest(DeviceDefinitionId, AmznClientToken, Devices, ...)
+function M.CreateDeviceDefinitionVersionRequest(_DeviceDefinitionId, _AmznClientToken, _Devices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeviceDefinitionVersionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = DeviceDefinitionId,
-		["AmznClientToken"] = AmznClientToken,
-		["Devices"] = Devices,
+		["DeviceDefinitionId"] = _DeviceDefinitionId,
+		["AmznClientToken"] = _AmznClientToken,
+		["Devices"] = _Devices,
 	}
-	M.AssertCreateDeviceDefinitionVersionRequest(t)
+	asserts.AssertCreateDeviceDefinitionVersionRequest(t)
 	return t
 end
 
-local GetLoggerDefinitionVersionResponse_keys = { "Definition" = true, "Version" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.GetLoggerDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertGetLoggerDefinitionVersionResponse(struct)
+function asserts.AssertGetLoggerDefinitionVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetLoggerDefinitionVersionResponse to be of type 'table'")
-	if struct["Definition"] then M.AssertLoggerDefinitionVersion(struct["Definition"]) end
-	if struct["Version"] then M.Assert__string(struct["Version"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["Definition"] then asserts.AssertLoggerDefinitionVersion(struct["Definition"]) end
+	if struct["Version"] then asserts.Assert__string(struct["Version"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetLoggerDefinitionVersionResponse_keys[k], "GetLoggerDefinitionVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetLoggerDefinitionVersionResponse[k], "GetLoggerDefinitionVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetLoggerDefinitionVersionResponse
 --  
--- @param Definition [LoggerDefinitionVersion] Information on definition
--- @param Version [__string] Version of the logger definition version.
--- @param CreationTimestamp [__string] Timestamp of when the logger definition version was created.
--- @param Id [__string] Id of the logger definition the version belongs to.
--- @param Arn [__string] Arn of the logger definition version.
-function M.GetLoggerDefinitionVersionResponse(Definition, Version, CreationTimestamp, Id, Arn, ...)
+-- @param _Definition [LoggerDefinitionVersion] Information on definition
+-- @param _Version [__string] Version of the logger definition version.
+-- @param _CreationTimestamp [__string] Timestamp of when the logger definition version was created.
+-- @param _Id [__string] Id of the logger definition the version belongs to.
+-- @param _Arn [__string] Arn of the logger definition version.
+function M.GetLoggerDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggerDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = Definition,
-		["Version"] = Version,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["Definition"] = _Definition,
+		["Version"] = _Version,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertGetLoggerDefinitionVersionResponse(t)
+	asserts.AssertGetLoggerDefinitionVersionResponse(t)
 	return t
 end
 
-local UpdateDeviceDefinitionResponse_keys = { nil }
+keys.UpdateDeviceDefinitionResponse = { nil }
 
-function M.AssertUpdateDeviceDefinitionResponse(struct)
+function asserts.AssertUpdateDeviceDefinitionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDeviceDefinitionResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UpdateDeviceDefinitionResponse_keys[k], "UpdateDeviceDefinitionResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateDeviceDefinitionResponse[k], "UpdateDeviceDefinitionResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -4214,523 +4217,523 @@ function M.UpdateDeviceDefinitionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeviceDefinitionResponse")
 	local t = { 
 	}
-	M.AssertUpdateDeviceDefinitionResponse(t)
+	asserts.AssertUpdateDeviceDefinitionResponse(t)
 	return t
 end
 
-local ListFunctionDefinitionsRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListFunctionDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListFunctionDefinitionsRequest(struct)
+function asserts.AssertListFunctionDefinitionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFunctionDefinitionsRequest to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["MaxResults"] then M.Assert__string(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.Assert__string(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFunctionDefinitionsRequest_keys[k], "ListFunctionDefinitionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListFunctionDefinitionsRequest[k], "ListFunctionDefinitionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFunctionDefinitionsRequest
 --  
--- @param NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListFunctionDefinitionsRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+function M.ListFunctionDefinitionsRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionDefinitionsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListFunctionDefinitionsRequest(t)
+	asserts.AssertListFunctionDefinitionsRequest(t)
 	return t
 end
 
-local ListLoggerDefinitionVersionsResponse_keys = { "NextToken" = true, "Versions" = true, nil }
+keys.ListLoggerDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
 
-function M.AssertListLoggerDefinitionVersionsResponse(struct)
+function asserts.AssertListLoggerDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListLoggerDefinitionVersionsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then M.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListLoggerDefinitionVersionsResponse_keys[k], "ListLoggerDefinitionVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListLoggerDefinitionVersionsResponse[k], "ListLoggerDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListLoggerDefinitionVersionsResponse
 --  
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Versions [ListOfVersionInformation] Versions
-function M.ListLoggerDefinitionVersionsResponse(NextToken, Versions, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Versions [ListOfVersionInformation] Versions
+function M.ListLoggerDefinitionVersionsResponse(_NextToken, _Versions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLoggerDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Versions"] = Versions,
+		["NextToken"] = _NextToken,
+		["Versions"] = _Versions,
 	}
-	M.AssertListLoggerDefinitionVersionsResponse(t)
+	asserts.AssertListLoggerDefinitionVersionsResponse(t)
 	return t
 end
 
-local GetServiceRoleForAccountResponse_keys = { "AssociatedAt" = true, "RoleArn" = true, nil }
+keys.GetServiceRoleForAccountResponse = { ["AssociatedAt"] = true, ["RoleArn"] = true, nil }
 
-function M.AssertGetServiceRoleForAccountResponse(struct)
+function asserts.AssertGetServiceRoleForAccountResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetServiceRoleForAccountResponse to be of type 'table'")
-	if struct["AssociatedAt"] then M.Assert__string(struct["AssociatedAt"]) end
-	if struct["RoleArn"] then M.Assert__string(struct["RoleArn"]) end
+	if struct["AssociatedAt"] then asserts.Assert__string(struct["AssociatedAt"]) end
+	if struct["RoleArn"] then asserts.Assert__string(struct["RoleArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetServiceRoleForAccountResponse_keys[k], "GetServiceRoleForAccountResponse contains unknown key " .. tostring(k))
+		assert(keys.GetServiceRoleForAccountResponse[k], "GetServiceRoleForAccountResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetServiceRoleForAccountResponse
 --  
--- @param AssociatedAt [__string] Time when the service role was associated to the account.
--- @param RoleArn [__string] Role arn which is associated to the account.
-function M.GetServiceRoleForAccountResponse(AssociatedAt, RoleArn, ...)
+-- @param _AssociatedAt [__string] Time when the service role was associated to the account.
+-- @param _RoleArn [__string] Role arn which is associated to the account.
+function M.GetServiceRoleForAccountResponse(_AssociatedAt, _RoleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetServiceRoleForAccountResponse")
 	local t = { 
-		["AssociatedAt"] = AssociatedAt,
-		["RoleArn"] = RoleArn,
+		["AssociatedAt"] = _AssociatedAt,
+		["RoleArn"] = _RoleArn,
 	}
-	M.AssertGetServiceRoleForAccountResponse(t)
+	asserts.AssertGetServiceRoleForAccountResponse(t)
 	return t
 end
 
-local GetLoggerDefinitionRequest_keys = { "LoggerDefinitionId" = true, nil }
+keys.GetLoggerDefinitionRequest = { ["LoggerDefinitionId"] = true, nil }
 
-function M.AssertGetLoggerDefinitionRequest(struct)
+function asserts.AssertGetLoggerDefinitionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetLoggerDefinitionRequest to be of type 'table'")
 	assert(struct["LoggerDefinitionId"], "Expected key LoggerDefinitionId to exist in table")
-	if struct["LoggerDefinitionId"] then M.Assert__string(struct["LoggerDefinitionId"]) end
+	if struct["LoggerDefinitionId"] then asserts.Assert__string(struct["LoggerDefinitionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetLoggerDefinitionRequest_keys[k], "GetLoggerDefinitionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetLoggerDefinitionRequest[k], "GetLoggerDefinitionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetLoggerDefinitionRequest
 --  
--- @param LoggerDefinitionId [__string] logger definition Id
+-- @param _LoggerDefinitionId [__string] logger definition Id
 -- Required parameter: LoggerDefinitionId
-function M.GetLoggerDefinitionRequest(LoggerDefinitionId, ...)
+function M.GetLoggerDefinitionRequest(_LoggerDefinitionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggerDefinitionRequest")
 	local t = { 
-		["LoggerDefinitionId"] = LoggerDefinitionId,
+		["LoggerDefinitionId"] = _LoggerDefinitionId,
 	}
-	M.AssertGetLoggerDefinitionRequest(t)
+	asserts.AssertGetLoggerDefinitionRequest(t)
 	return t
 end
 
-local GetGroupVersionRequest_keys = { "GroupId" = true, "GroupVersionId" = true, nil }
+keys.GetGroupVersionRequest = { ["GroupId"] = true, ["GroupVersionId"] = true, nil }
 
-function M.AssertGetGroupVersionRequest(struct)
+function asserts.AssertGetGroupVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetGroupVersionRequest to be of type 'table'")
 	assert(struct["GroupVersionId"], "Expected key GroupVersionId to exist in table")
 	assert(struct["GroupId"], "Expected key GroupId to exist in table")
-	if struct["GroupId"] then M.Assert__string(struct["GroupId"]) end
-	if struct["GroupVersionId"] then M.Assert__string(struct["GroupVersionId"]) end
+	if struct["GroupId"] then asserts.Assert__string(struct["GroupId"]) end
+	if struct["GroupVersionId"] then asserts.Assert__string(struct["GroupVersionId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetGroupVersionRequest_keys[k], "GetGroupVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetGroupVersionRequest[k], "GetGroupVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetGroupVersionRequest
 --  
--- @param GroupId [__string] The unique Id of the AWS Greengrass Group
--- @param GroupVersionId [__string] Group version Id
+-- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
+-- @param _GroupVersionId [__string] Group version Id
 -- Required parameter: GroupVersionId
 -- Required parameter: GroupId
-function M.GetGroupVersionRequest(GroupId, GroupVersionId, ...)
+function M.GetGroupVersionRequest(_GroupId, _GroupVersionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupVersionRequest")
 	local t = { 
-		["GroupId"] = GroupId,
-		["GroupVersionId"] = GroupVersionId,
+		["GroupId"] = _GroupId,
+		["GroupVersionId"] = _GroupVersionId,
 	}
-	M.AssertGetGroupVersionRequest(t)
+	asserts.AssertGetGroupVersionRequest(t)
 	return t
 end
 
-local ListDeploymentsResponse_keys = { "NextToken" = true, "Deployments" = true, nil }
+keys.ListDeploymentsResponse = { ["NextToken"] = true, ["Deployments"] = true, nil }
 
-function M.AssertListDeploymentsResponse(struct)
+function asserts.AssertListDeploymentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDeploymentsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Deployments"] then M.AssertDeployments(struct["Deployments"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Deployments"] then asserts.AssertDeployments(struct["Deployments"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDeploymentsResponse_keys[k], "ListDeploymentsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDeploymentsResponse[k], "ListDeploymentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDeploymentsResponse
 --  
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Deployments [Deployments] Information on deployments
-function M.ListDeploymentsResponse(NextToken, Deployments, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Deployments [Deployments] Information on deployments
+function M.ListDeploymentsResponse(_NextToken, _Deployments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Deployments"] = Deployments,
+		["NextToken"] = _NextToken,
+		["Deployments"] = _Deployments,
 	}
-	M.AssertListDeploymentsResponse(t)
+	asserts.AssertListDeploymentsResponse(t)
 	return t
 end
 
-local ListDeviceDefinitionVersionsResponse_keys = { "NextToken" = true, "Versions" = true, nil }
+keys.ListDeviceDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
 
-function M.AssertListDeviceDefinitionVersionsResponse(struct)
+function asserts.AssertListDeviceDefinitionVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDeviceDefinitionVersionsResponse to be of type 'table'")
-	if struct["NextToken"] then M.Assert__string(struct["NextToken"]) end
-	if struct["Versions"] then M.AssertListOfVersionInformation(struct["Versions"]) end
+	if struct["NextToken"] then asserts.Assert__string(struct["NextToken"]) end
+	if struct["Versions"] then asserts.AssertListOfVersionInformation(struct["Versions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDeviceDefinitionVersionsResponse_keys[k], "ListDeviceDefinitionVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDeviceDefinitionVersionsResponse[k], "ListDeviceDefinitionVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDeviceDefinitionVersionsResponse
 --  
--- @param NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param Versions [ListOfVersionInformation] Versions
-function M.ListDeviceDefinitionVersionsResponse(NextToken, Versions, ...)
+-- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @param _Versions [ListOfVersionInformation] Versions
+function M.ListDeviceDefinitionVersionsResponse(_NextToken, _Versions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDeviceDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Versions"] = Versions,
+		["NextToken"] = _NextToken,
+		["Versions"] = _Versions,
 	}
-	M.AssertListDeviceDefinitionVersionsResponse(t)
+	asserts.AssertListDeviceDefinitionVersionsResponse(t)
 	return t
 end
 
-local CreateGroupResponse_keys = { "LatestVersionArn" = true, "Name" = true, "LastUpdatedTimestamp" = true, "LatestVersion" = true, "CreationTimestamp" = true, "Id" = true, "Arn" = true, nil }
+keys.CreateGroupResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
 
-function M.AssertCreateGroupResponse(struct)
+function asserts.AssertCreateGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateGroupResponse to be of type 'table'")
-	if struct["LatestVersionArn"] then M.Assert__string(struct["LatestVersionArn"]) end
-	if struct["Name"] then M.Assert__string(struct["Name"]) end
-	if struct["LastUpdatedTimestamp"] then M.Assert__string(struct["LastUpdatedTimestamp"]) end
-	if struct["LatestVersion"] then M.Assert__string(struct["LatestVersion"]) end
-	if struct["CreationTimestamp"] then M.Assert__string(struct["CreationTimestamp"]) end
-	if struct["Id"] then M.Assert__string(struct["Id"]) end
-	if struct["Arn"] then M.Assert__string(struct["Arn"]) end
+	if struct["LatestVersionArn"] then asserts.Assert__string(struct["LatestVersionArn"]) end
+	if struct["Name"] then asserts.Assert__string(struct["Name"]) end
+	if struct["LastUpdatedTimestamp"] then asserts.Assert__string(struct["LastUpdatedTimestamp"]) end
+	if struct["LatestVersion"] then asserts.Assert__string(struct["LatestVersion"]) end
+	if struct["CreationTimestamp"] then asserts.Assert__string(struct["CreationTimestamp"]) end
+	if struct["Id"] then asserts.Assert__string(struct["Id"]) end
+	if struct["Arn"] then asserts.Assert__string(struct["Arn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateGroupResponse_keys[k], "CreateGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateGroupResponse[k], "CreateGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateGroupResponse
 --  
--- @param LatestVersionArn [__string] Latest version arn of the definition.
--- @param Name [__string] Name of the definition.
--- @param LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param LatestVersion [__string] Last version of the definition.
--- @param CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param Id [__string] Id of the definition.
--- @param Arn [__string] Arn of the definition.
-function M.CreateGroupResponse(LatestVersionArn, Name, LastUpdatedTimestamp, LatestVersion, CreationTimestamp, Id, Arn, ...)
+-- @param _LatestVersionArn [__string] Latest version arn of the definition.
+-- @param _Name [__string] Name of the definition.
+-- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- @param _LatestVersion [__string] Last version of the definition.
+-- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
+-- @param _Id [__string] Id of the definition.
+-- @param _Arn [__string] Arn of the definition.
+function M.CreateGroupResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupResponse")
 	local t = { 
-		["LatestVersionArn"] = LatestVersionArn,
-		["Name"] = Name,
-		["LastUpdatedTimestamp"] = LastUpdatedTimestamp,
-		["LatestVersion"] = LatestVersion,
-		["CreationTimestamp"] = CreationTimestamp,
-		["Id"] = Id,
-		["Arn"] = Arn,
+		["LatestVersionArn"] = _LatestVersionArn,
+		["Name"] = _Name,
+		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
+		["LatestVersion"] = _LatestVersion,
+		["CreationTimestamp"] = _CreationTimestamp,
+		["Id"] = _Id,
+		["Arn"] = _Arn,
 	}
-	M.AssertCreateGroupResponse(t)
+	asserts.AssertCreateGroupResponse(t)
 	return t
 end
 
-function M.AssertLoggerLevel(str)
+function asserts.AssertLoggerLevel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoggerLevel to be of type 'string'")
 end
 
 --  
 function M.LoggerLevel(str)
-	M.AssertLoggerLevel(str)
+	asserts.AssertLoggerLevel(str)
 	return str
 end
 
-function M.AssertLoggerComponent(str)
+function asserts.AssertLoggerComponent(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoggerComponent to be of type 'string'")
 end
 
 --  
 function M.LoggerComponent(str)
-	M.AssertLoggerComponent(str)
+	asserts.AssertLoggerComponent(str)
 	return str
 end
 
-function M.AssertDeploymentType(str)
+function asserts.AssertDeploymentType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeploymentType to be of type 'string'")
 end
 
 --  
 function M.DeploymentType(str)
-	M.AssertDeploymentType(str)
+	asserts.AssertDeploymentType(str)
 	return str
 end
 
-function M.Assert__string(str)
+function asserts.Assert__string(str)
 	assert(str)
 	assert(type(str) == "string", "Expected __string to be of type 'string'")
 end
 
 --  
 function M.__string(str)
-	M.Assert__string(str)
+	asserts.Assert__string(str)
 	return str
 end
 
-function M.AssertLoggerType(str)
+function asserts.AssertLoggerType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LoggerType to be of type 'string'")
 end
 
 --  
 function M.LoggerType(str)
-	M.AssertLoggerType(str)
+	asserts.AssertLoggerType(str)
 	return str
 end
 
-function M.Assert__double(double)
+function asserts.Assert__double(double)
 	assert(double)
 	assert(type(double) == "number", "Expected __double to be of type 'number'")
 end
 
 function M.__double(double)
-	M.Assert__double(double)
+	asserts.Assert__double(double)
 	return double
 end
 
-function M.Assert__integer(integer)
+function asserts.Assert__integer(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected __integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.__integer(integer)
-	M.Assert__integer(integer)
+	asserts.Assert__integer(integer)
 	return integer
 end
 
-function M.Assert__boolean(boolean)
+function asserts.Assert__boolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected __boolean to be of type 'boolean'")
 end
 
 function M.__boolean(boolean)
-	M.Assert__boolean(boolean)
+	asserts.Assert__boolean(boolean)
 	return boolean
 end
 
-function M.AssertMapOf__string(map)
+function asserts.AssertMapOf__string(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOf__string to be of type 'table'")
 	for k,v in pairs(map) do
-		M.Assert__string(k)
-		M.Assert__string(v)
+		asserts.Assert__string(k)
+		asserts.Assert__string(v)
 	end
 end
 
 function M.MapOf__string(map)
-	M.AssertMapOf__string(map)
+	asserts.AssertMapOf__string(map)
 	return map
 end
 
-function M.Assert__timestamp(timestamp)
+function asserts.Assert__timestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected __timestamp to be of type 'string'")
 end
 
 function M.__timestamp(timestamp)
-	M.Assert__timestamp(timestamp)
+	asserts.Assert__timestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertListOfLogger(list)
+function asserts.AssertListOfLogger(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfLogger to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLogger(v)
+		asserts.AssertLogger(v)
 	end
 end
 
 --  
 -- List of Logger objects
 function M.ListOfLogger(list)
-	M.AssertListOfLogger(list)
+	asserts.AssertListOfLogger(list)
 	return list
 end
 
-function M.AssertDeployments(list)
+function asserts.AssertDeployments(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Deployments to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDeployment(v)
+		asserts.AssertDeployment(v)
 	end
 end
 
 --  
 -- List of Deployment objects
 function M.Deployments(list)
-	M.AssertDeployments(list)
+	asserts.AssertDeployments(list)
 	return list
 end
 
-function M.AssertListOfCore(list)
+function asserts.AssertListOfCore(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfCore to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCore(v)
+		asserts.AssertCore(v)
 	end
 end
 
 --  
 -- List of Core objects
 function M.ListOfCore(list)
-	M.AssertListOfCore(list)
+	asserts.AssertListOfCore(list)
 	return list
 end
 
-function M.AssertListOfFunction(list)
+function asserts.AssertListOfFunction(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfFunction to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFunction(v)
+		asserts.AssertFunction(v)
 	end
 end
 
 --  
 -- List of Function objects
 function M.ListOfFunction(list)
-	M.AssertListOfFunction(list)
+	asserts.AssertListOfFunction(list)
 	return list
 end
 
-function M.AssertListOfGroupInformation(list)
+function asserts.AssertListOfGroupInformation(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfGroupInformation to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGroupInformation(v)
+		asserts.AssertGroupInformation(v)
 	end
 end
 
 --  
 -- List of GroupInformation objects
 function M.ListOfGroupInformation(list)
-	M.AssertListOfGroupInformation(list)
+	asserts.AssertListOfGroupInformation(list)
 	return list
 end
 
-function M.AssertErrorDetails(list)
+function asserts.AssertErrorDetails(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ErrorDetails to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertErrorDetail(v)
+		asserts.AssertErrorDetail(v)
 	end
 end
 
 -- Error Details
 -- List of ErrorDetail objects
 function M.ErrorDetails(list)
-	M.AssertErrorDetails(list)
+	asserts.AssertErrorDetails(list)
 	return list
 end
 
-function M.AssertListOfDefinitionInformation(list)
+function asserts.AssertListOfDefinitionInformation(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfDefinitionInformation to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDefinitionInformation(v)
+		asserts.AssertDefinitionInformation(v)
 	end
 end
 
 --  
 -- List of DefinitionInformation objects
 function M.ListOfDefinitionInformation(list)
-	M.AssertListOfDefinitionInformation(list)
+	asserts.AssertListOfDefinitionInformation(list)
 	return list
 end
 
-function M.AssertListOfDevice(list)
+function asserts.AssertListOfDevice(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfDevice to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDevice(v)
+		asserts.AssertDevice(v)
 	end
 end
 
 --  
 -- List of Device objects
 function M.ListOfDevice(list)
-	M.AssertListOfDevice(list)
+	asserts.AssertListOfDevice(list)
 	return list
 end
 
-function M.AssertListOfConnectivityInfo(list)
+function asserts.AssertListOfConnectivityInfo(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfConnectivityInfo to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertConnectivityInfo(v)
+		asserts.AssertConnectivityInfo(v)
 	end
 end
 
 --  
 -- List of ConnectivityInfo objects
 function M.ListOfConnectivityInfo(list)
-	M.AssertListOfConnectivityInfo(list)
+	asserts.AssertListOfConnectivityInfo(list)
 	return list
 end
 
-function M.AssertListOfSubscription(list)
+function asserts.AssertListOfSubscription(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfSubscription to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSubscription(v)
+		asserts.AssertSubscription(v)
 	end
 end
 
 --  
 -- List of Subscription objects
 function M.ListOfSubscription(list)
-	M.AssertListOfSubscription(list)
+	asserts.AssertListOfSubscription(list)
 	return list
 end
 
-function M.AssertListOfVersionInformation(list)
+function asserts.AssertListOfVersionInformation(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfVersionInformation to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertVersionInformation(v)
+		asserts.AssertVersionInformation(v)
 	end
 end
 
 --  
 -- List of VersionInformation objects
 function M.ListOfVersionInformation(list)
-	M.AssertListOfVersionInformation(list)
+	asserts.AssertListOfVersionInformation(list)
 	return list
 end
 
-function M.AssertListOfGroupCertificateAuthorityProperties(list)
+function asserts.AssertListOfGroupCertificateAuthorityProperties(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfGroupCertificateAuthorityProperties to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGroupCertificateAuthorityProperties(v)
+		asserts.AssertGroupCertificateAuthorityProperties(v)
 	end
 end
 
 --  
 -- List of GroupCertificateAuthorityProperties objects
 function M.ListOfGroupCertificateAuthorityProperties(list)
-	M.AssertListOfGroupCertificateAuthorityProperties(list)
+	asserts.AssertListOfGroupCertificateAuthorityProperties(list)
 	return list
 end
 

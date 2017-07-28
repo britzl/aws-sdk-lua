@@ -18,2667 +18,2670 @@ M.metadata = {
 	uid = "apigateway-2015-07-09",
 }
 
-local UpdateIntegrationRequest_keys = { "resourceId" = true, "patchOperations" = true, "restApiId" = true, "httpMethod" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertUpdateIntegrationRequest(struct)
+keys.UpdateIntegrationRequest = { ["resourceId"] = true, ["patchOperations"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
+
+function asserts.AssertUpdateIntegrationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateIntegrationRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateIntegrationRequest_keys[k], "UpdateIntegrationRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateIntegrationRequest[k], "UpdateIntegrationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateIntegrationRequest
 -- <p>Represents an update integration request.</p>
--- @param resourceId [String] <p>Represents an update integration request's resource identifier.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- @param restApiId [String] <p>Represents an update integration request's API identifier.</p>
--- @param httpMethod [String] <p>Represents an update integration request's HTTP method.</p>
+-- @param _resourceId [String] <p>Represents an update integration request's resource identifier.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _restApiId [String] <p>Represents an update integration request's API identifier.</p>
+-- @param _httpMethod [String] <p>Represents an update integration request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
-function M.UpdateIntegrationRequest(resourceId, patchOperations, restApiId, httpMethod, ...)
+function M.UpdateIntegrationRequest(_resourceId, _patchOperations, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateIntegrationRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["patchOperations"] = patchOperations,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["patchOperations"] = _patchOperations,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertUpdateIntegrationRequest(t)
+	asserts.AssertUpdateIntegrationRequest(t)
 	return t
 end
 
-local CreateResourceRequest_keys = { "restApiId" = true, "pathPart" = true, "parentId" = true, nil }
+keys.CreateResourceRequest = { ["restApiId"] = true, ["pathPart"] = true, ["parentId"] = true, nil }
 
-function M.AssertCreateResourceRequest(struct)
+function asserts.AssertCreateResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateResourceRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["parentId"], "Expected key parentId to exist in table")
 	assert(struct["pathPart"], "Expected key pathPart to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["pathPart"] then M.AssertString(struct["pathPart"]) end
-	if struct["parentId"] then M.AssertString(struct["parentId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["pathPart"] then asserts.AssertString(struct["pathPart"]) end
+	if struct["parentId"] then asserts.AssertString(struct["parentId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateResourceRequest_keys[k], "CreateResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateResourceRequest[k], "CreateResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateResourceRequest
 -- <p>Requests Amazon API Gateway to create a <a>Resource</a> resource.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> for the resource. </p>
--- @param pathPart [String] <p>The last path segment for this resource.</p>
--- @param parentId [String] <p>The parent resource's identifier.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> for the resource. </p>
+-- @param _pathPart [String] <p>The last path segment for this resource.</p>
+-- @param _parentId [String] <p>The parent resource's identifier.</p>
 -- Required parameter: restApiId
 -- Required parameter: parentId
 -- Required parameter: pathPart
-function M.CreateResourceRequest(restApiId, pathPart, parentId, ...)
+function M.CreateResourceRequest(_restApiId, _pathPart, _parentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateResourceRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["pathPart"] = pathPart,
-		["parentId"] = parentId,
+		["restApiId"] = _restApiId,
+		["pathPart"] = _pathPart,
+		["parentId"] = _parentId,
 	}
-	M.AssertCreateResourceRequest(t)
+	asserts.AssertCreateResourceRequest(t)
 	return t
 end
 
-local UpdateStageRequest_keys = { "restApiId" = true, "stageName" = true, "patchOperations" = true, nil }
+keys.UpdateStageRequest = { ["restApiId"] = true, ["stageName"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateStageRequest(struct)
+function asserts.AssertUpdateStageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateStageRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateStageRequest_keys[k], "UpdateStageRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateStageRequest[k], "UpdateStageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateStageRequest
 -- <p>Requests Amazon API Gateway to change information about a <a>Stage</a> resource.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to change information about.</p>
--- @param stageName [String] <p>The name of the <a>Stage</a> resource to change information about.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to change information about.</p>
+-- @param _stageName [String] <p>The name of the <a>Stage</a> resource to change information about.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
-function M.UpdateStageRequest(restApiId, stageName, patchOperations, ...)
+function M.UpdateStageRequest(_restApiId, _stageName, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStageRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["stageName"] = stageName,
-		["patchOperations"] = patchOperations,
+		["restApiId"] = _restApiId,
+		["stageName"] = _stageName,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateStageRequest(t)
+	asserts.AssertUpdateStageRequest(t)
 	return t
 end
 
-local ServiceUnavailableException_keys = { "message" = true, "retryAfterSeconds" = true, nil }
+keys.ServiceUnavailableException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
 
-function M.AssertServiceUnavailableException(struct)
+function asserts.AssertServiceUnavailableException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ServiceUnavailableException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["retryAfterSeconds"] then M.AssertString(struct["retryAfterSeconds"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["retryAfterSeconds"] then asserts.AssertString(struct["retryAfterSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(ServiceUnavailableException_keys[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
+		assert(keys.ServiceUnavailableException[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ServiceUnavailableException
 --  
--- @param message [String]  
--- @param retryAfterSeconds [String]  
-function M.ServiceUnavailableException(message, retryAfterSeconds, ...)
+-- @param _message [String] 
+-- @param _retryAfterSeconds [String] 
+function M.ServiceUnavailableException(_message, _retryAfterSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
 	local t = { 
-		["message"] = message,
-		["retryAfterSeconds"] = retryAfterSeconds,
+		["message"] = _message,
+		["retryAfterSeconds"] = _retryAfterSeconds,
 	}
-	M.AssertServiceUnavailableException(t)
+	asserts.AssertServiceUnavailableException(t)
 	return t
 end
 
-local BadRequestException_keys = { "message" = true, nil }
+keys.BadRequestException = { ["message"] = true, nil }
 
-function M.AssertBadRequestException(struct)
+function asserts.AssertBadRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BadRequestException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(BadRequestException_keys[k], "BadRequestException contains unknown key " .. tostring(k))
+		assert(keys.BadRequestException[k], "BadRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BadRequestException
 --  
--- @param message [String]  
-function M.BadRequestException(message, ...)
+-- @param _message [String] 
+function M.BadRequestException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BadRequestException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertBadRequestException(t)
+	asserts.AssertBadRequestException(t)
 	return t
 end
 
-local ClientCertificates_keys = { "position" = true, "items" = true, nil }
+keys.ClientCertificates = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertClientCertificates(struct)
+function asserts.AssertClientCertificates(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ClientCertificates to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfClientCertificate(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfClientCertificate(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(ClientCertificates_keys[k], "ClientCertificates contains unknown key " .. tostring(k))
+		assert(keys.ClientCertificates[k], "ClientCertificates contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ClientCertificates
 -- <p>Represents a collection of <a>ClientCertificate</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
--- @param position [String] <p>Represents a collection of <a>ClientCertificate</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
--- @param items [ListOfClientCertificate] <p>The current page of any <a>ClientCertificate</a> resources in the collection of <a>ClientCertificate</a> resources.</p>
-function M.ClientCertificates(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfClientCertificate] <p>The current page of any <a>ClientCertificate</a> resources in the collection of <a>ClientCertificate</a> resources.</p>
+function M.ClientCertificates(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClientCertificates")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertClientCertificates(t)
+	asserts.AssertClientCertificates(t)
 	return t
 end
 
-local UnauthorizedException_keys = { "message" = true, nil }
+keys.UnauthorizedException = { ["message"] = true, nil }
 
-function M.AssertUnauthorizedException(struct)
+function asserts.AssertUnauthorizedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnauthorizedException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnauthorizedException_keys[k], "UnauthorizedException contains unknown key " .. tostring(k))
+		assert(keys.UnauthorizedException[k], "UnauthorizedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnauthorizedException
 --  
--- @param message [String]  
-function M.UnauthorizedException(message, ...)
+-- @param _message [String] 
+function M.UnauthorizedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnauthorizedException(t)
+	asserts.AssertUnauthorizedException(t)
 	return t
 end
 
-local GetApiKeyRequest_keys = { "apiKey" = true, "includeValue" = true, nil }
+keys.GetApiKeyRequest = { ["apiKey"] = true, ["includeValue"] = true, nil }
 
-function M.AssertGetApiKeyRequest(struct)
+function asserts.AssertGetApiKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetApiKeyRequest to be of type 'table'")
 	assert(struct["apiKey"], "Expected key apiKey to exist in table")
-	if struct["apiKey"] then M.AssertString(struct["apiKey"]) end
-	if struct["includeValue"] then M.AssertNullableBoolean(struct["includeValue"]) end
+	if struct["apiKey"] then asserts.AssertString(struct["apiKey"]) end
+	if struct["includeValue"] then asserts.AssertNullableBoolean(struct["includeValue"]) end
 	for k,_ in pairs(struct) do
-		assert(GetApiKeyRequest_keys[k], "GetApiKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.GetApiKeyRequest[k], "GetApiKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetApiKeyRequest
 -- <p>A request to get information about the current <a>ApiKey</a> resource.</p>
--- @param apiKey [String] <p>The identifier of the <a>ApiKey</a> resource.</p>
--- @param includeValue [NullableBoolean] <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key value.</p>
+-- @param _apiKey [String] <p>The identifier of the <a>ApiKey</a> resource.</p>
+-- @param _includeValue [NullableBoolean] <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key value.</p>
 -- Required parameter: apiKey
-function M.GetApiKeyRequest(apiKey, includeValue, ...)
+function M.GetApiKeyRequest(_apiKey, _includeValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetApiKeyRequest")
 	local t = { 
-		["apiKey"] = apiKey,
-		["includeValue"] = includeValue,
+		["apiKey"] = _apiKey,
+		["includeValue"] = _includeValue,
 	}
-	M.AssertGetApiKeyRequest(t)
+	asserts.AssertGetApiKeyRequest(t)
 	return t
 end
 
-local Template_keys = { "value" = true, nil }
+keys.Template = { ["value"] = true, nil }
 
-function M.AssertTemplate(struct)
+function asserts.AssertTemplate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Template to be of type 'table'")
-	if struct["value"] then M.AssertString(struct["value"]) end
+	if struct["value"] then asserts.AssertString(struct["value"]) end
 	for k,_ in pairs(struct) do
-		assert(Template_keys[k], "Template contains unknown key " .. tostring(k))
+		assert(keys.Template[k], "Template contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Template
 -- <p>Represents a mapping template used to transform a payload.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings">Mapping Templates</a> </div>
--- @param value [String] <p>The Apache <a href="http://velocity.apache.org/engine/devel/vtl-reference-guide.html" target="_blank">Velocity Template Language (VTL)</a> template content used for the template resource.</p>
-function M.Template(value, ...)
+-- @param _value [String] <p>The Apache <a href="http://velocity.apache.org/engine/devel/vtl-reference-guide.html" target="_blank">Velocity Template Language (VTL)</a> template content used for the template resource.</p>
+function M.Template(_value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Template")
 	local t = { 
-		["value"] = value,
+		["value"] = _value,
 	}
-	M.AssertTemplate(t)
+	asserts.AssertTemplate(t)
 	return t
 end
 
-local GenerateClientCertificateRequest_keys = { "description" = true, nil }
+keys.GenerateClientCertificateRequest = { ["description"] = true, nil }
 
-function M.AssertGenerateClientCertificateRequest(struct)
+function asserts.AssertGenerateClientCertificateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GenerateClientCertificateRequest to be of type 'table'")
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(GenerateClientCertificateRequest_keys[k], "GenerateClientCertificateRequest contains unknown key " .. tostring(k))
+		assert(keys.GenerateClientCertificateRequest[k], "GenerateClientCertificateRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GenerateClientCertificateRequest
 -- <p>A request to generate a <a>ClientCertificate</a> resource.</p>
--- @param description [String] <p>The description of the <a>ClientCertificate</a>.</p>
-function M.GenerateClientCertificateRequest(description, ...)
+-- @param _description [String] <p>The description of the <a>ClientCertificate</a>.</p>
+function M.GenerateClientCertificateRequest(_description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GenerateClientCertificateRequest")
 	local t = { 
-		["description"] = description,
+		["description"] = _description,
 	}
-	M.AssertGenerateClientCertificateRequest(t)
+	asserts.AssertGenerateClientCertificateRequest(t)
 	return t
 end
 
-local Resources_keys = { "position" = true, "items" = true, nil }
+keys.Resources = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertResources(struct)
+function asserts.AssertResources(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Resources to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfResource(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfResource(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(Resources_keys[k], "Resources contains unknown key " .. tostring(k))
+		assert(keys.Resources[k], "Resources contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Resources
 -- <p>Represents a collection of <a>Resource</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
--- @param position [String] <p>Represents a collection of <a>Resource</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
--- @param items [ListOfResource] <p>Gets the current <a>Resource</a> resource in the collection.</p>
-function M.Resources(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfResource] <p>Gets the current <a>Resource</a> resource in the collection.</p>
+function M.Resources(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Resources")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertResources(t)
+	asserts.AssertResources(t)
 	return t
 end
 
-local GetDomainNameRequest_keys = { "domainName" = true, nil }
+keys.GetDomainNameRequest = { ["domainName"] = true, nil }
 
-function M.AssertGetDomainNameRequest(struct)
+function asserts.AssertGetDomainNameRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDomainNameRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDomainNameRequest_keys[k], "GetDomainNameRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDomainNameRequest[k], "GetDomainNameRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDomainNameRequest
 -- <p>Request to get the name of a <a>DomainName</a> resource.</p>
--- @param domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
+-- @param _domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
 -- Required parameter: domainName
-function M.GetDomainNameRequest(domainName, ...)
+function M.GetDomainNameRequest(_domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainNameRequest")
 	local t = { 
-		["domainName"] = domainName,
+		["domainName"] = _domainName,
 	}
-	M.AssertGetDomainNameRequest(t)
+	asserts.AssertGetDomainNameRequest(t)
 	return t
 end
 
-local PutMethodRequest_keys = { "restApiId" = true, "requestParameters" = true, "requestModels" = true, "resourceId" = true, "authorizationType" = true, "operationName" = true, "apiKeyRequired" = true, "httpMethod" = true, "requestValidatorId" = true, "authorizerId" = true, nil }
+keys.PutMethodRequest = { ["restApiId"] = true, ["requestParameters"] = true, ["requestModels"] = true, ["resourceId"] = true, ["authorizationType"] = true, ["operationName"] = true, ["apiKeyRequired"] = true, ["httpMethod"] = true, ["requestValidatorId"] = true, ["authorizerId"] = true, nil }
 
-function M.AssertPutMethodRequest(struct)
+function asserts.AssertPutMethodRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutMethodRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["authorizationType"], "Expected key authorizationType to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["requestParameters"] then M.AssertMapOfStringToBoolean(struct["requestParameters"]) end
-	if struct["requestModels"] then M.AssertMapOfStringToString(struct["requestModels"]) end
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["authorizationType"] then M.AssertString(struct["authorizationType"]) end
-	if struct["operationName"] then M.AssertString(struct["operationName"]) end
-	if struct["apiKeyRequired"] then M.AssertBoolean(struct["apiKeyRequired"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
-	if struct["requestValidatorId"] then M.AssertString(struct["requestValidatorId"]) end
-	if struct["authorizerId"] then M.AssertString(struct["authorizerId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["requestParameters"] then asserts.AssertMapOfStringToBoolean(struct["requestParameters"]) end
+	if struct["requestModels"] then asserts.AssertMapOfStringToString(struct["requestModels"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["authorizationType"] then asserts.AssertString(struct["authorizationType"]) end
+	if struct["operationName"] then asserts.AssertString(struct["operationName"]) end
+	if struct["apiKeyRequired"] then asserts.AssertBoolean(struct["apiKeyRequired"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
+	if struct["requestValidatorId"] then asserts.AssertString(struct["requestValidatorId"]) end
+	if struct["authorizerId"] then asserts.AssertString(struct["authorizerId"]) end
 	for k,_ in pairs(struct) do
-		assert(PutMethodRequest_keys[k], "PutMethodRequest contains unknown key " .. tostring(k))
+		assert(keys.PutMethodRequest[k], "PutMethodRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutMethodRequest
 -- <p>Request to add a method to an existing <a>Resource</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the new <a>Method</a> resource.</p>
--- @param requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key defines a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or body-mapping templates.</p>
--- @param requestModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the request's content type. Request models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
--- @param resourceId [String] <p>The <a>Resource</a> identifier for the new <a>Method</a> resource.</p>
--- @param authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
--- @param operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
--- @param apiKeyRequired [Boolean] <p>Specifies whether the method required a valid <a>ApiKey</a>.</p>
--- @param httpMethod [String] <p>Specifies the method request's HTTP method type.</p>
--- @param requestValidatorId [String] <p>The identifier of a <a>RequestValidator</a> for validating the method request.</p>
--- @param authorizerId [String] <p>Specifies the identifier of an <a>Authorizer</a> to use on this Method, if the type is CUSTOM.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the new <a>Method</a> resource.</p>
+-- @param _requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key defines a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or body-mapping templates.</p>
+-- @param _requestModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the request's content type. Request models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
+-- @param _resourceId [String] <p>The <a>Resource</a> identifier for the new <a>Method</a> resource.</p>
+-- @param _authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
+-- @param _operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
+-- @param _apiKeyRequired [Boolean] <p>Specifies whether the method required a valid <a>ApiKey</a>.</p>
+-- @param _httpMethod [String] <p>Specifies the method request's HTTP method type.</p>
+-- @param _requestValidatorId [String] <p>The identifier of a <a>RequestValidator</a> for validating the method request.</p>
+-- @param _authorizerId [String] <p>Specifies the identifier of an <a>Authorizer</a> to use on this Method, if the type is CUSTOM.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: authorizationType
-function M.PutMethodRequest(restApiId, requestParameters, requestModels, resourceId, authorizationType, operationName, apiKeyRequired, httpMethod, requestValidatorId, authorizerId, ...)
+function M.PutMethodRequest(_restApiId, _requestParameters, _requestModels, _resourceId, _authorizationType, _operationName, _apiKeyRequired, _httpMethod, _requestValidatorId, _authorizerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutMethodRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["requestParameters"] = requestParameters,
-		["requestModels"] = requestModels,
-		["resourceId"] = resourceId,
-		["authorizationType"] = authorizationType,
-		["operationName"] = operationName,
-		["apiKeyRequired"] = apiKeyRequired,
-		["httpMethod"] = httpMethod,
-		["requestValidatorId"] = requestValidatorId,
-		["authorizerId"] = authorizerId,
+		["restApiId"] = _restApiId,
+		["requestParameters"] = _requestParameters,
+		["requestModels"] = _requestModels,
+		["resourceId"] = _resourceId,
+		["authorizationType"] = _authorizationType,
+		["operationName"] = _operationName,
+		["apiKeyRequired"] = _apiKeyRequired,
+		["httpMethod"] = _httpMethod,
+		["requestValidatorId"] = _requestValidatorId,
+		["authorizerId"] = _authorizerId,
 	}
-	M.AssertPutMethodRequest(t)
+	asserts.AssertPutMethodRequest(t)
 	return t
 end
 
-local DocumentationPart_keys = { "properties" = true, "id" = true, "location" = true, nil }
+keys.DocumentationPart = { ["properties"] = true, ["id"] = true, ["location"] = true, nil }
 
-function M.AssertDocumentationPart(struct)
+function asserts.AssertDocumentationPart(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentationPart to be of type 'table'")
-	if struct["properties"] then M.AssertString(struct["properties"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["location"] then M.AssertDocumentationPartLocation(struct["location"]) end
+	if struct["properties"] then asserts.AssertString(struct["properties"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["location"] then asserts.AssertDocumentationPartLocation(struct["location"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentationPart_keys[k], "DocumentationPart contains unknown key " .. tostring(k))
+		assert(keys.DocumentationPart[k], "DocumentationPart contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentationPart
 -- <p>A documentation part for a targeted API entity.</p> <div class="remarks"> <p>A documentation part consists of a content map (<code>properties</code>) and a target (<code>location</code>). The target specifies an API entity to which the documentation content applies. The supported API entity types are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Valid <code>location</code> fields depend on the API entity type. All valid fields are not required.</p> <p>The content map is a JSON string of API-specific key-value pairs. Although an API can use any shape for the content map, only the Swagger-compliant documentation fields will be injected into the associated API entity definition in the exported Swagger definition file.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationParts</a> </div>
--- @param properties [String] <p>A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., <code>"{ \"description\": \"The API does ...\" }"</code>. Only Swagger-compliant documentation-related fields from the <literal>properties</literal> map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a Swagger extension of <code>x-amazon-apigateway-documentation</code>.</p>
--- @param id [String] <p>The <a>DocumentationPart</a> identifier, generated by Amazon API Gateway when the <code>DocumentationPart</code> is created.</p>
--- @param location [DocumentationPartLocation] <p>The location of the API entity to which the documentation applies. Valid fields depend on the targeted API entity type. All the valid location fields are not required. If not explicitly specified, a valid location field is treated as a wildcard and associated documentation content may be inherited by matching entities, unless overridden.</p>
-function M.DocumentationPart(properties, id, location, ...)
+-- @param _properties [String] <p>A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., <code>"{ \"description\": \"The API does ...\" }"</code>. Only Swagger-compliant documentation-related fields from the <literal>properties</literal> map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a Swagger extension of <code>x-amazon-apigateway-documentation</code>.</p>
+-- @param _id [String] <p>The <a>DocumentationPart</a> identifier, generated by Amazon API Gateway when the <code>DocumentationPart</code> is created.</p>
+-- @param _location [DocumentationPartLocation] <p>The location of the API entity to which the documentation applies. Valid fields depend on the targeted API entity type. All the valid location fields are not required. If not explicitly specified, a valid location field is treated as a wildcard and associated documentation content may be inherited by matching entities, unless overridden.</p>
+function M.DocumentationPart(_properties, _id, _location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationPart")
 	local t = { 
-		["properties"] = properties,
-		["id"] = id,
-		["location"] = location,
+		["properties"] = _properties,
+		["id"] = _id,
+		["location"] = _location,
 	}
-	M.AssertDocumentationPart(t)
+	asserts.AssertDocumentationPart(t)
 	return t
 end
 
-local TestInvokeAuthorizerResponse_keys = { "latency" = true, "log" = true, "principalId" = true, "policy" = true, "claims" = true, "authorization" = true, "clientStatus" = true, nil }
+keys.TestInvokeAuthorizerResponse = { ["latency"] = true, ["log"] = true, ["principalId"] = true, ["policy"] = true, ["claims"] = true, ["authorization"] = true, ["clientStatus"] = true, nil }
 
-function M.AssertTestInvokeAuthorizerResponse(struct)
+function asserts.AssertTestInvokeAuthorizerResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TestInvokeAuthorizerResponse to be of type 'table'")
-	if struct["latency"] then M.AssertLong(struct["latency"]) end
-	if struct["log"] then M.AssertString(struct["log"]) end
-	if struct["principalId"] then M.AssertString(struct["principalId"]) end
-	if struct["policy"] then M.AssertString(struct["policy"]) end
-	if struct["claims"] then M.AssertMapOfStringToString(struct["claims"]) end
-	if struct["authorization"] then M.AssertMapOfStringToList(struct["authorization"]) end
-	if struct["clientStatus"] then M.AssertInteger(struct["clientStatus"]) end
+	if struct["latency"] then asserts.AssertLong(struct["latency"]) end
+	if struct["log"] then asserts.AssertString(struct["log"]) end
+	if struct["principalId"] then asserts.AssertString(struct["principalId"]) end
+	if struct["policy"] then asserts.AssertString(struct["policy"]) end
+	if struct["claims"] then asserts.AssertMapOfStringToString(struct["claims"]) end
+	if struct["authorization"] then asserts.AssertMapOfStringToList(struct["authorization"]) end
+	if struct["clientStatus"] then asserts.AssertInteger(struct["clientStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(TestInvokeAuthorizerResponse_keys[k], "TestInvokeAuthorizerResponse contains unknown key " .. tostring(k))
+		assert(keys.TestInvokeAuthorizerResponse[k], "TestInvokeAuthorizerResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TestInvokeAuthorizerResponse
 -- <p>Represents the response of the test invoke request for a custom <a>Authorizer</a></p>
--- @param latency [Long] <p>The execution latency of the test authorizer request.</p>
--- @param log [String] <p>The Amazon API Gateway execution log for the test authorizer request.</p>
--- @param principalId [String] <p>The principal identity returned by the <a>Authorizer</a></p>
--- @param policy [String] <p>The JSON policy document returned by the <a>Authorizer</a></p>
--- @param claims [MapOfStringToString] <p>The <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">open identity claims</a>, with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.</p>
--- @param authorization [MapOfStringToList] <p>Represents the response of the test invoke request for a custom <a>Authorizer</a></p>
--- @param clientStatus [Integer] <p>The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.</p>
-function M.TestInvokeAuthorizerResponse(latency, log, principalId, policy, claims, authorization, clientStatus, ...)
+-- @param _latency [Long] <p>The execution latency of the test authorizer request.</p>
+-- @param _log [String] <p>The Amazon API Gateway execution log for the test authorizer request.</p>
+-- @param _principalId [String] <p>The principal identity returned by the <a>Authorizer</a></p>
+-- @param _policy [String] <p>The JSON policy document returned by the <a>Authorizer</a></p>
+-- @param _claims [MapOfStringToString] <p>The <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">open identity claims</a>, with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.</p>
+-- @param _authorization [MapOfStringToList] 
+-- @param _clientStatus [Integer] <p>The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.</p>
+function M.TestInvokeAuthorizerResponse(_latency, _log, _principalId, _policy, _claims, _authorization, _clientStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestInvokeAuthorizerResponse")
 	local t = { 
-		["latency"] = latency,
-		["log"] = log,
-		["principalId"] = principalId,
-		["policy"] = policy,
-		["claims"] = claims,
-		["authorization"] = authorization,
-		["clientStatus"] = clientStatus,
+		["latency"] = _latency,
+		["log"] = _log,
+		["principalId"] = _principalId,
+		["policy"] = _policy,
+		["claims"] = _claims,
+		["authorization"] = _authorization,
+		["clientStatus"] = _clientStatus,
 	}
-	M.AssertTestInvokeAuthorizerResponse(t)
+	asserts.AssertTestInvokeAuthorizerResponse(t)
 	return t
 end
 
-local GetClientCertificateRequest_keys = { "clientCertificateId" = true, nil }
+keys.GetClientCertificateRequest = { ["clientCertificateId"] = true, nil }
 
-function M.AssertGetClientCertificateRequest(struct)
+function asserts.AssertGetClientCertificateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetClientCertificateRequest to be of type 'table'")
 	assert(struct["clientCertificateId"], "Expected key clientCertificateId to exist in table")
-	if struct["clientCertificateId"] then M.AssertString(struct["clientCertificateId"]) end
+	if struct["clientCertificateId"] then asserts.AssertString(struct["clientCertificateId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetClientCertificateRequest_keys[k], "GetClientCertificateRequest contains unknown key " .. tostring(k))
+		assert(keys.GetClientCertificateRequest[k], "GetClientCertificateRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetClientCertificateRequest
 -- <p>A request to get information about the current <a>ClientCertificate</a> resource.</p>
--- @param clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be described.</p>
+-- @param _clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be described.</p>
 -- Required parameter: clientCertificateId
-function M.GetClientCertificateRequest(clientCertificateId, ...)
+function M.GetClientCertificateRequest(_clientCertificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetClientCertificateRequest")
 	local t = { 
-		["clientCertificateId"] = clientCertificateId,
+		["clientCertificateId"] = _clientCertificateId,
 	}
-	M.AssertGetClientCertificateRequest(t)
+	asserts.AssertGetClientCertificateRequest(t)
 	return t
 end
 
-local GetIntegrationRequest_keys = { "resourceId" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.GetIntegrationRequest = { ["resourceId"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertGetIntegrationRequest(struct)
+function asserts.AssertGetIntegrationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIntegrationRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIntegrationRequest_keys[k], "GetIntegrationRequest contains unknown key " .. tostring(k))
+		assert(keys.GetIntegrationRequest[k], "GetIntegrationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIntegrationRequest
 -- <p>Represents a get integration request.</p>
--- @param resourceId [String] <p>Specifies a get integration request's resource identifier</p>
--- @param restApiId [String] <p>Specifies a get integration request's API identifier.</p>
--- @param httpMethod [String] <p>Specifies a get integration request's HTTP method.</p>
+-- @param _resourceId [String] <p>Specifies a get integration request's resource identifier</p>
+-- @param _restApiId [String] <p>Specifies a get integration request's API identifier.</p>
+-- @param _httpMethod [String] <p>Specifies a get integration request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
-function M.GetIntegrationRequest(resourceId, restApiId, httpMethod, ...)
+function M.GetIntegrationRequest(_resourceId, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIntegrationRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertGetIntegrationRequest(t)
+	asserts.AssertGetIntegrationRequest(t)
 	return t
 end
 
-local SdkResponse_keys = { "body" = true, "contentType" = true, "contentDisposition" = true, nil }
+keys.SdkResponse = { ["body"] = true, ["contentType"] = true, ["contentDisposition"] = true, nil }
 
-function M.AssertSdkResponse(struct)
+function asserts.AssertSdkResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SdkResponse to be of type 'table'")
-	if struct["body"] then M.AssertBlob(struct["body"]) end
-	if struct["contentType"] then M.AssertString(struct["contentType"]) end
-	if struct["contentDisposition"] then M.AssertString(struct["contentDisposition"]) end
+	if struct["body"] then asserts.AssertBlob(struct["body"]) end
+	if struct["contentType"] then asserts.AssertString(struct["contentType"]) end
+	if struct["contentDisposition"] then asserts.AssertString(struct["contentDisposition"]) end
 	for k,_ in pairs(struct) do
-		assert(SdkResponse_keys[k], "SdkResponse contains unknown key " .. tostring(k))
+		assert(keys.SdkResponse[k], "SdkResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SdkResponse
 -- <p>The binary blob response to <a>GetSdk</a>, which contains the generated SDK.</p>
--- @param body [Blob] <p>The binary blob response to <a>GetSdk</a>, which contains the generated SDK.</p>
--- @param contentType [String] <p>The content-type header value in the HTTP response.</p>
--- @param contentDisposition [String] <p>The content-disposition header value in the HTTP response.</p>
-function M.SdkResponse(body, contentType, contentDisposition, ...)
+-- @param _body [Blob] <p>The binary blob response to <a>GetSdk</a>, which contains the generated SDK.</p>
+-- @param _contentType [String] <p>The content-type header value in the HTTP response.</p>
+-- @param _contentDisposition [String] <p>The content-disposition header value in the HTTP response.</p>
+function M.SdkResponse(_body, _contentType, _contentDisposition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SdkResponse")
 	local t = { 
-		["body"] = body,
-		["contentType"] = contentType,
-		["contentDisposition"] = contentDisposition,
+		["body"] = _body,
+		["contentType"] = _contentType,
+		["contentDisposition"] = _contentDisposition,
 	}
-	M.AssertSdkResponse(t)
+	asserts.AssertSdkResponse(t)
 	return t
 end
 
-local Account_keys = { "cloudwatchRoleArn" = true, "throttleSettings" = true, "features" = true, "apiKeyVersion" = true, nil }
+keys.Account = { ["cloudwatchRoleArn"] = true, ["throttleSettings"] = true, ["features"] = true, ["apiKeyVersion"] = true, nil }
 
-function M.AssertAccount(struct)
+function asserts.AssertAccount(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Account to be of type 'table'")
-	if struct["cloudwatchRoleArn"] then M.AssertString(struct["cloudwatchRoleArn"]) end
-	if struct["throttleSettings"] then M.AssertThrottleSettings(struct["throttleSettings"]) end
-	if struct["features"] then M.AssertListOfString(struct["features"]) end
-	if struct["apiKeyVersion"] then M.AssertString(struct["apiKeyVersion"]) end
+	if struct["cloudwatchRoleArn"] then asserts.AssertString(struct["cloudwatchRoleArn"]) end
+	if struct["throttleSettings"] then asserts.AssertThrottleSettings(struct["throttleSettings"]) end
+	if struct["features"] then asserts.AssertListOfString(struct["features"]) end
+	if struct["apiKeyVersion"] then asserts.AssertString(struct["apiKeyVersion"]) end
 	for k,_ in pairs(struct) do
-		assert(Account_keys[k], "Account contains unknown key " .. tostring(k))
+		assert(keys.Account[k], "Account contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Account
 -- <p>Represents an AWS account that is associated with Amazon API Gateway.</p> <div class="remarks"> <p>To view the account info, call <code>GET</code> on this resource.</p> <h4>Error Codes</h4> <p>The following exception may be thrown when the request fails.</p> <ul> <li>UnauthorizedException</li> <li>NotFoundException</li> <li>TooManyRequestsException</li> </ul> <p>For detailed error code information, including the corresponding HTTP Status Codes, see <a href="http://docs.aws.amazon.com/apigateway/api-reference/handling-errors/#api-error-codes">API Gateway Error Codes</a></p> <h4>Example: Get the information about an account.</h4> <h5>Request</h5> <pre><code>GET /account HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160531T184618Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/account-apigateway-{rel}.html", "name": "account", "templated": true }, "self": { "href": "/account" }, "account:update": { "href": "/account" } }, "cloudwatchRoleArn": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "throttleSettings": { "rateLimit": 500, "burstLimit": 1000 } } </code></pre> <p>In addition to making the REST API call directly, you can use the AWS CLI and an AWS SDK to access this resource.</p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-limits.html">API Gateway Limits</a> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html">Developer Guide</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html">AWS CLI</a> </div>
--- @param cloudwatchRoleArn [String] <p>The ARN of an Amazon CloudWatch role for the current <a>Account</a>. </p>
--- @param throttleSettings [ThrottleSettings] <p>Specifies the API request limits configured for the current <a>Account</a>.</p>
--- @param features [ListOfString] <p>A list of features supported for the account. When usage plans are enabled, the features list will include an entry of <code>"UsagePlans"</code>.</p>
--- @param apiKeyVersion [String] <p>The version of the API keys used for the account.</p>
-function M.Account(cloudwatchRoleArn, throttleSettings, features, apiKeyVersion, ...)
+-- @param _cloudwatchRoleArn [String] <p>The ARN of an Amazon CloudWatch role for the current <a>Account</a>. </p>
+-- @param _throttleSettings [ThrottleSettings] <p>Specifies the API request limits configured for the current <a>Account</a>.</p>
+-- @param _features [ListOfString] <p>A list of features supported for the account. When usage plans are enabled, the features list will include an entry of <code>"UsagePlans"</code>.</p>
+-- @param _apiKeyVersion [String] <p>The version of the API keys used for the account.</p>
+function M.Account(_cloudwatchRoleArn, _throttleSettings, _features, _apiKeyVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Account")
 	local t = { 
-		["cloudwatchRoleArn"] = cloudwatchRoleArn,
-		["throttleSettings"] = throttleSettings,
-		["features"] = features,
-		["apiKeyVersion"] = apiKeyVersion,
+		["cloudwatchRoleArn"] = _cloudwatchRoleArn,
+		["throttleSettings"] = _throttleSettings,
+		["features"] = _features,
+		["apiKeyVersion"] = _apiKeyVersion,
 	}
-	M.AssertAccount(t)
+	asserts.AssertAccount(t)
 	return t
 end
 
-local UpdateBasePathMappingRequest_keys = { "basePath" = true, "patchOperations" = true, "domainName" = true, nil }
+keys.UpdateBasePathMappingRequest = { ["basePath"] = true, ["patchOperations"] = true, ["domainName"] = true, nil }
 
-function M.AssertUpdateBasePathMappingRequest(struct)
+function asserts.AssertUpdateBasePathMappingRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateBasePathMappingRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
 	assert(struct["basePath"], "Expected key basePath to exist in table")
-	if struct["basePath"] then M.AssertString(struct["basePath"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["basePath"] then asserts.AssertString(struct["basePath"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateBasePathMappingRequest_keys[k], "UpdateBasePathMappingRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateBasePathMappingRequest[k], "UpdateBasePathMappingRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateBasePathMappingRequest
 -- <p>A request to change information about the <a>BasePathMapping</a> resource.</p>
--- @param basePath [String] <p>The base path of the <a>BasePathMapping</a> resource to change.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- @param domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to change.</p>
+-- @param _basePath [String] <p>The base path of the <a>BasePathMapping</a> resource to change.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to change.</p>
 -- Required parameter: domainName
 -- Required parameter: basePath
-function M.UpdateBasePathMappingRequest(basePath, patchOperations, domainName, ...)
+function M.UpdateBasePathMappingRequest(_basePath, _patchOperations, _domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBasePathMappingRequest")
 	local t = { 
-		["basePath"] = basePath,
-		["patchOperations"] = patchOperations,
-		["domainName"] = domainName,
+		["basePath"] = _basePath,
+		["patchOperations"] = _patchOperations,
+		["domainName"] = _domainName,
 	}
-	M.AssertUpdateBasePathMappingRequest(t)
+	asserts.AssertUpdateBasePathMappingRequest(t)
 	return t
 end
 
-local GetStagesRequest_keys = { "deploymentId" = true, "restApiId" = true, nil }
+keys.GetStagesRequest = { ["deploymentId"] = true, ["restApiId"] = true, nil }
 
-function M.AssertGetStagesRequest(struct)
+function asserts.AssertGetStagesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetStagesRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["deploymentId"] then M.AssertString(struct["deploymentId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetStagesRequest_keys[k], "GetStagesRequest contains unknown key " .. tostring(k))
+		assert(keys.GetStagesRequest[k], "GetStagesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetStagesRequest
 -- <p>Requests Amazon API Gateway to get information about one or more <a>Stage</a> resources.</p>
--- @param deploymentId [String] <p>The stages' deployment identifiers.</p>
--- @param restApiId [String] <p>The stages' API identifiers.</p>
+-- @param _deploymentId [String] <p>The stages' deployment identifiers.</p>
+-- @param _restApiId [String] <p>The stages' API identifiers.</p>
 -- Required parameter: restApiId
-function M.GetStagesRequest(deploymentId, restApiId, ...)
+function M.GetStagesRequest(_deploymentId, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStagesRequest")
 	local t = { 
-		["deploymentId"] = deploymentId,
-		["restApiId"] = restApiId,
+		["deploymentId"] = _deploymentId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertGetStagesRequest(t)
+	asserts.AssertGetStagesRequest(t)
 	return t
 end
 
-local GetRestApisRequest_keys = { "position" = true, "limit" = true, nil }
+keys.GetRestApisRequest = { ["position"] = true, ["limit"] = true, nil }
 
-function M.AssertGetRestApisRequest(struct)
+function asserts.AssertGetRestApisRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetRestApisRequest to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetRestApisRequest_keys[k], "GetRestApisRequest contains unknown key " .. tostring(k))
+		assert(keys.GetRestApisRequest[k], "GetRestApisRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetRestApisRequest
 -- <p>The GET request to list existing <a>RestApis</a> defined for your collection.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
-function M.GetRestApisRequest(position, limit, ...)
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+function M.GetRestApisRequest(_position, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRestApisRequest")
 	local t = { 
-		["position"] = position,
-		["limit"] = limit,
+		["position"] = _position,
+		["limit"] = _limit,
 	}
-	M.AssertGetRestApisRequest(t)
+	asserts.AssertGetRestApisRequest(t)
 	return t
 end
 
-local DeleteDocumentationPartRequest_keys = { "documentationPartId" = true, "restApiId" = true, nil }
+keys.DeleteDocumentationPartRequest = { ["documentationPartId"] = true, ["restApiId"] = true, nil }
 
-function M.AssertDeleteDocumentationPartRequest(struct)
+function asserts.AssertDeleteDocumentationPartRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDocumentationPartRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["documentationPartId"], "Expected key documentationPartId to exist in table")
-	if struct["documentationPartId"] then M.AssertString(struct["documentationPartId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["documentationPartId"] then asserts.AssertString(struct["documentationPartId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDocumentationPartRequest_keys[k], "DeleteDocumentationPartRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteDocumentationPartRequest[k], "DeleteDocumentationPartRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDocumentationPartRequest
 -- <p>Deletes an existing documentation part of an API.</p>
--- @param documentationPartId [String] <p>[Required] The identifier of the to-be-deleted documentation part.</p>
--- @param restApiId [String] <p>[Required] Specifies the identifier of an API of the to-be-deleted documentation part.</p>
+-- @param _documentationPartId [String] <p>[Required] The identifier of the to-be-deleted documentation part.</p>
+-- @param _restApiId [String] <p>[Required] Specifies the identifier of an API of the to-be-deleted documentation part.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationPartId
-function M.DeleteDocumentationPartRequest(documentationPartId, restApiId, ...)
+function M.DeleteDocumentationPartRequest(_documentationPartId, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDocumentationPartRequest")
 	local t = { 
-		["documentationPartId"] = documentationPartId,
-		["restApiId"] = restApiId,
+		["documentationPartId"] = _documentationPartId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertDeleteDocumentationPartRequest(t)
+	asserts.AssertDeleteDocumentationPartRequest(t)
 	return t
 end
 
-local GetStageRequest_keys = { "restApiId" = true, "stageName" = true, nil }
+keys.GetStageRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
 
-function M.AssertGetStageRequest(struct)
+function asserts.AssertGetStageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetStageRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	for k,_ in pairs(struct) do
-		assert(GetStageRequest_keys[k], "GetStageRequest contains unknown key " .. tostring(k))
+		assert(keys.GetStageRequest[k], "GetStageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetStageRequest
 -- <p>Requests Amazon API Gateway to get information about a <a>Stage</a> resource.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to get information about.</p>
--- @param stageName [String] <p>The name of the <a>Stage</a> resource to get information about.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to get information about.</p>
+-- @param _stageName [String] <p>The name of the <a>Stage</a> resource to get information about.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
-function M.GetStageRequest(restApiId, stageName, ...)
+function M.GetStageRequest(_restApiId, _stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStageRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["stageName"] = stageName,
+		["restApiId"] = _restApiId,
+		["stageName"] = _stageName,
 	}
-	M.AssertGetStageRequest(t)
+	asserts.AssertGetStageRequest(t)
 	return t
 end
 
-local DeleteUsagePlanRequest_keys = { "usagePlanId" = true, nil }
+keys.DeleteUsagePlanRequest = { ["usagePlanId"] = true, nil }
 
-function M.AssertDeleteUsagePlanRequest(struct)
+function asserts.AssertDeleteUsagePlanRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUsagePlanRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUsagePlanRequest_keys[k], "DeleteUsagePlanRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUsagePlanRequest[k], "DeleteUsagePlanRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUsagePlanRequest
 -- <p>The DELETE request to delete a uasge plan of a given plan Id.</p>
--- @param usagePlanId [String] <p>The Id of the to-be-deleted usage plan.</p>
+-- @param _usagePlanId [String] <p>The Id of the to-be-deleted usage plan.</p>
 -- Required parameter: usagePlanId
-function M.DeleteUsagePlanRequest(usagePlanId, ...)
+function M.DeleteUsagePlanRequest(_usagePlanId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUsagePlanRequest")
 	local t = { 
-		["usagePlanId"] = usagePlanId,
+		["usagePlanId"] = _usagePlanId,
 	}
-	M.AssertDeleteUsagePlanRequest(t)
+	asserts.AssertDeleteUsagePlanRequest(t)
 	return t
 end
 
-local Deployments_keys = { "position" = true, "items" = true, nil }
+keys.Deployments = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertDeployments(struct)
+function asserts.AssertDeployments(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Deployments to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfDeployment(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfDeployment(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(Deployments_keys[k], "Deployments contains unknown key " .. tostring(k))
+		assert(keys.Deployments[k], "Deployments contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Deployments
 -- <p>Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.</p> <div class="remarks">To create a new deployment of a <a>RestApi</a>, make a <code>POST</code> request against this resource. To view, update, or delete an existing deployment, make a <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> request, respectively, on a specified <a>Deployment</a> resource.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploying an API</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
--- @param position [String] <p>Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.</p> <div class="remarks">To create a new deployment of a <a>RestApi</a>, make a <code>POST</code> request against this resource. To view, update, or delete an existing deployment, make a <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> request, respectively, on a specified <a>Deployment</a> resource.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploying an API</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
--- @param items [ListOfDeployment] <p>The current page of any <a>Deployment</a> resources in the collection of deployment resources.</p>
-function M.Deployments(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfDeployment] <p>The current page of any <a>Deployment</a> resources in the collection of deployment resources.</p>
+function M.Deployments(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Deployments")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertDeployments(t)
+	asserts.AssertDeployments(t)
 	return t
 end
 
-local ApiKeys_keys = { "position" = true, "items" = true, "warnings" = true, nil }
+keys.ApiKeys = { ["position"] = true, ["items"] = true, ["warnings"] = true, nil }
 
-function M.AssertApiKeys(struct)
+function asserts.AssertApiKeys(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ApiKeys to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfApiKey(struct["items"]) end
-	if struct["warnings"] then M.AssertListOfString(struct["warnings"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfApiKey(struct["items"]) end
+	if struct["warnings"] then asserts.AssertListOfString(struct["warnings"]) end
 	for k,_ in pairs(struct) do
-		assert(ApiKeys_keys[k], "ApiKeys contains unknown key " .. tostring(k))
+		assert(keys.ApiKeys[k], "ApiKeys contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ApiKeys
 -- <p>Represents a collection of API keys as represented by an <a>ApiKeys</a> resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
--- @param position [String] <p>Represents a collection of API keys as represented by an <a>ApiKeys</a> resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
--- @param items [ListOfApiKey] <p>The current page of any <a>ApiKey</a> resources in the collection of <a>ApiKey</a> resources.</p>
--- @param warnings [ListOfString] <p>A list of warning messages logged during the import of API keys when the <code>failOnWarnings</code> option is set to true.</p>
-function M.ApiKeys(position, items, warnings, ...)
+-- @param _position [String] 
+-- @param _items [ListOfApiKey] <p>The current page of any <a>ApiKey</a> resources in the collection of <a>ApiKey</a> resources.</p>
+-- @param _warnings [ListOfString] <p>A list of warning messages logged during the import of API keys when the <code>failOnWarnings</code> option is set to true.</p>
+function M.ApiKeys(_position, _items, _warnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApiKeys")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
-		["warnings"] = warnings,
+		["position"] = _position,
+		["items"] = _items,
+		["warnings"] = _warnings,
 	}
-	M.AssertApiKeys(t)
+	asserts.AssertApiKeys(t)
 	return t
 end
 
-local ImportRestApiRequest_keys = { "body" = true, "failOnWarnings" = true, "parameters" = true, nil }
+keys.ImportRestApiRequest = { ["body"] = true, ["failOnWarnings"] = true, ["parameters"] = true, nil }
 
-function M.AssertImportRestApiRequest(struct)
+function asserts.AssertImportRestApiRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ImportRestApiRequest to be of type 'table'")
 	assert(struct["body"], "Expected key body to exist in table")
-	if struct["body"] then M.AssertBlob(struct["body"]) end
-	if struct["failOnWarnings"] then M.AssertBoolean(struct["failOnWarnings"]) end
-	if struct["parameters"] then M.AssertMapOfStringToString(struct["parameters"]) end
+	if struct["body"] then asserts.AssertBlob(struct["body"]) end
+	if struct["failOnWarnings"] then asserts.AssertBoolean(struct["failOnWarnings"]) end
+	if struct["parameters"] then asserts.AssertMapOfStringToString(struct["parameters"]) end
 	for k,_ in pairs(struct) do
-		assert(ImportRestApiRequest_keys[k], "ImportRestApiRequest contains unknown key " .. tostring(k))
+		assert(keys.ImportRestApiRequest[k], "ImportRestApiRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ImportRestApiRequest
 -- <p>A POST request to import an API to Amazon API Gateway using an input of an API definition file.</p>
--- @param body [Blob] <p>The POST request body containing external API definitions. Currently, only Swagger definition JSON files are supported.</p>
--- @param failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback the API creation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
--- @param parameters [MapOfStringToString] <p>Custom header parameters as part of the request.</p>
+-- @param _body [Blob] <p>The POST request body containing external API definitions. Currently, only Swagger definition JSON files are supported.</p>
+-- @param _failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback the API creation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
+-- @param _parameters [MapOfStringToString] <p>Custom header parameters as part of the request.</p>
 -- Required parameter: body
-function M.ImportRestApiRequest(body, failOnWarnings, parameters, ...)
+function M.ImportRestApiRequest(_body, _failOnWarnings, _parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportRestApiRequest")
 	local t = { 
-		["body"] = body,
-		["failOnWarnings"] = failOnWarnings,
-		["parameters"] = parameters,
+		["body"] = _body,
+		["failOnWarnings"] = _failOnWarnings,
+		["parameters"] = _parameters,
 	}
-	M.AssertImportRestApiRequest(t)
+	asserts.AssertImportRestApiRequest(t)
 	return t
 end
 
-local UpdateDomainNameRequest_keys = { "patchOperations" = true, "domainName" = true, nil }
+keys.UpdateDomainNameRequest = { ["patchOperations"] = true, ["domainName"] = true, nil }
 
-function M.AssertUpdateDomainNameRequest(struct)
+function asserts.AssertUpdateDomainNameRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDomainNameRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateDomainNameRequest_keys[k], "UpdateDomainNameRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateDomainNameRequest[k], "UpdateDomainNameRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateDomainNameRequest
 -- <p>A request to change information about the <a>DomainName</a> resource.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- @param domainName [String] <p>The name of the <a>DomainName</a> resource to be changed.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _domainName [String] <p>The name of the <a>DomainName</a> resource to be changed.</p>
 -- Required parameter: domainName
-function M.UpdateDomainNameRequest(patchOperations, domainName, ...)
+function M.UpdateDomainNameRequest(_patchOperations, _domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainNameRequest")
 	local t = { 
-		["patchOperations"] = patchOperations,
-		["domainName"] = domainName,
+		["patchOperations"] = _patchOperations,
+		["domainName"] = _domainName,
 	}
-	M.AssertUpdateDomainNameRequest(t)
+	asserts.AssertUpdateDomainNameRequest(t)
 	return t
 end
 
-local CreateRequestValidatorRequest_keys = { "validateRequestParameters" = true, "validateRequestBody" = true, "restApiId" = true, "name" = true, nil }
+keys.CreateRequestValidatorRequest = { ["validateRequestParameters"] = true, ["validateRequestBody"] = true, ["restApiId"] = true, ["name"] = true, nil }
 
-function M.AssertCreateRequestValidatorRequest(struct)
+function asserts.AssertCreateRequestValidatorRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateRequestValidatorRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["validateRequestParameters"] then M.AssertBoolean(struct["validateRequestParameters"]) end
-	if struct["validateRequestBody"] then M.AssertBoolean(struct["validateRequestBody"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
+	if struct["validateRequestParameters"] then asserts.AssertBoolean(struct["validateRequestParameters"]) end
+	if struct["validateRequestBody"] then asserts.AssertBoolean(struct["validateRequestBody"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateRequestValidatorRequest_keys[k], "CreateRequestValidatorRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateRequestValidatorRequest[k], "CreateRequestValidatorRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateRequestValidatorRequest
 -- <p>Creates a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
--- @param validateRequestParameters [Boolean] <p>A Boolean flag to indicate whether to validate request parameters, <code>true</code>, or not <code>false</code>.</p>
--- @param validateRequestBody [Boolean] <p>A Boolean flag to indicate whether to validate request body according to the configured model schema for the method (<code>true</code>) or not (<code>false</code>).</p>
--- @param restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> for which the <a>RequestValidator</a> is created.</p>
--- @param name [String] <p>The name of the to-be-created <a>RequestValidator</a>.</p>
+-- @param _validateRequestParameters [Boolean] <p>A Boolean flag to indicate whether to validate request parameters, <code>true</code>, or not <code>false</code>.</p>
+-- @param _validateRequestBody [Boolean] <p>A Boolean flag to indicate whether to validate request body according to the configured model schema for the method (<code>true</code>) or not (<code>false</code>).</p>
+-- @param _restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> for which the <a>RequestValidator</a> is created.</p>
+-- @param _name [String] <p>The name of the to-be-created <a>RequestValidator</a>.</p>
 -- Required parameter: restApiId
-function M.CreateRequestValidatorRequest(validateRequestParameters, validateRequestBody, restApiId, name, ...)
+function M.CreateRequestValidatorRequest(_validateRequestParameters, _validateRequestBody, _restApiId, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRequestValidatorRequest")
 	local t = { 
-		["validateRequestParameters"] = validateRequestParameters,
-		["validateRequestBody"] = validateRequestBody,
-		["restApiId"] = restApiId,
-		["name"] = name,
+		["validateRequestParameters"] = _validateRequestParameters,
+		["validateRequestBody"] = _validateRequestBody,
+		["restApiId"] = _restApiId,
+		["name"] = _name,
 	}
-	M.AssertCreateRequestValidatorRequest(t)
+	asserts.AssertCreateRequestValidatorRequest(t)
 	return t
 end
 
-local DeleteDeploymentRequest_keys = { "deploymentId" = true, "restApiId" = true, nil }
+keys.DeleteDeploymentRequest = { ["deploymentId"] = true, ["restApiId"] = true, nil }
 
-function M.AssertDeleteDeploymentRequest(struct)
+function asserts.AssertDeleteDeploymentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDeploymentRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["deploymentId"], "Expected key deploymentId to exist in table")
-	if struct["deploymentId"] then M.AssertString(struct["deploymentId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDeploymentRequest_keys[k], "DeleteDeploymentRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteDeploymentRequest[k], "DeleteDeploymentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDeploymentRequest
 -- <p>Requests Amazon API Gateway to delete a <a>Deployment</a> resource.</p>
--- @param deploymentId [String] <p>The identifier of the <a>Deployment</a> resource to delete.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to delete.</p>
+-- @param _deploymentId [String] <p>The identifier of the <a>Deployment</a> resource to delete.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to delete.</p>
 -- Required parameter: restApiId
 -- Required parameter: deploymentId
-function M.DeleteDeploymentRequest(deploymentId, restApiId, ...)
+function M.DeleteDeploymentRequest(_deploymentId, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeploymentRequest")
 	local t = { 
-		["deploymentId"] = deploymentId,
-		["restApiId"] = restApiId,
+		["deploymentId"] = _deploymentId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertDeleteDeploymentRequest(t)
+	asserts.AssertDeleteDeploymentRequest(t)
 	return t
 end
 
-local UsagePlanKey_keys = { "type" = true, "id" = true, "value" = true, "name" = true, nil }
+keys.UsagePlanKey = { ["type"] = true, ["id"] = true, ["value"] = true, ["name"] = true, nil }
 
-function M.AssertUsagePlanKey(struct)
+function asserts.AssertUsagePlanKey(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UsagePlanKey to be of type 'table'")
-	if struct["type"] then M.AssertString(struct["type"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["value"] then M.AssertString(struct["value"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
+	if struct["type"] then asserts.AssertString(struct["type"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["value"] then asserts.AssertString(struct["value"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(UsagePlanKey_keys[k], "UsagePlanKey contains unknown key " .. tostring(k))
+		assert(keys.UsagePlanKey[k], "UsagePlanKey contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UsagePlanKey
 -- <p>Represents a usage plan key to identify a plan customer.</p> <div class="remarks"> <p>To associate an API stage with a selected API key in a usage plan, you must create a UsagePlanKey resource to represent the selected <a>ApiKey</a>.</p> </div>" <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
--- @param type [String] <p>The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.</p>
--- @param id [String] <p>The Id of a usage plan key.</p>
--- @param value [String] <p>The value of a usage plan key.</p>
--- @param name [String] <p>The name of a usage plan key.</p>
-function M.UsagePlanKey(type, id, value, name, ...)
+-- @param _type [String] <p>The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.</p>
+-- @param _id [String] <p>The Id of a usage plan key.</p>
+-- @param _value [String] <p>The value of a usage plan key.</p>
+-- @param _name [String] <p>The name of a usage plan key.</p>
+function M.UsagePlanKey(_type, _id, _value, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsagePlanKey")
 	local t = { 
-		["type"] = type,
-		["id"] = id,
-		["value"] = value,
-		["name"] = name,
+		["type"] = _type,
+		["id"] = _id,
+		["value"] = _value,
+		["name"] = _name,
 	}
-	M.AssertUsagePlanKey(t)
+	asserts.AssertUsagePlanKey(t)
 	return t
 end
 
-local DeleteStageRequest_keys = { "restApiId" = true, "stageName" = true, nil }
+keys.DeleteStageRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
 
-function M.AssertDeleteStageRequest(struct)
+function asserts.AssertDeleteStageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteStageRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteStageRequest_keys[k], "DeleteStageRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteStageRequest[k], "DeleteStageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteStageRequest
 -- <p>Requests Amazon API Gateway to delete a <a>Stage</a> resource.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to delete.</p>
--- @param stageName [String] <p>The name of the <a>Stage</a> resource to delete.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to delete.</p>
+-- @param _stageName [String] <p>The name of the <a>Stage</a> resource to delete.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
-function M.DeleteStageRequest(restApiId, stageName, ...)
+function M.DeleteStageRequest(_restApiId, _stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStageRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["stageName"] = stageName,
+		["restApiId"] = _restApiId,
+		["stageName"] = _stageName,
 	}
-	M.AssertDeleteStageRequest(t)
+	asserts.AssertDeleteStageRequest(t)
 	return t
 end
 
-local GetExportRequest_keys = { "exportType" = true, "accepts" = true, "restApiId" = true, "parameters" = true, "stageName" = true, nil }
+keys.GetExportRequest = { ["exportType"] = true, ["accepts"] = true, ["restApiId"] = true, ["parameters"] = true, ["stageName"] = true, nil }
 
-function M.AssertGetExportRequest(struct)
+function asserts.AssertGetExportRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetExportRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
 	assert(struct["exportType"], "Expected key exportType to exist in table")
-	if struct["exportType"] then M.AssertString(struct["exportType"]) end
-	if struct["accepts"] then M.AssertString(struct["accepts"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["parameters"] then M.AssertMapOfStringToString(struct["parameters"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
+	if struct["exportType"] then asserts.AssertString(struct["exportType"]) end
+	if struct["accepts"] then asserts.AssertString(struct["accepts"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["parameters"] then asserts.AssertMapOfStringToString(struct["parameters"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	for k,_ in pairs(struct) do
-		assert(GetExportRequest_keys[k], "GetExportRequest contains unknown key " .. tostring(k))
+		assert(keys.GetExportRequest[k], "GetExportRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetExportRequest
 -- <p>Request a new export of a <a>RestApi</a> for a particular <a>Stage</a>.</p>
--- @param exportType [String] <p>The type of export. Currently only 'swagger' is supported.</p>
--- @param accepts [String] <p>The content-type of the export, for example <code>application/json</code>. Currently <code>application/json</code> and <code>application/yaml</code> are supported for <code>exportType</code> of <code>swagger</code>. This should be specified in the <code>Accept</code> header for direct API requests.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> to be exported.</p>
--- @param parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the export, depending on the requested <code>exportType</code>. For <code>exportType</code> <code>swagger</code>, any combination of the following parameters are supported: <code>integrations</code> will export the API with x-amazon-apigateway-integration extensions. <code>authorizers</code> will export the API with x-amazon-apigateway-authorizer extensions. <code>postman</code> will export the API with Postman extensions, allowing for import to the Postman tool</p>
--- @param stageName [String] <p>The name of the <a>Stage</a> that will be exported.</p>
+-- @param _exportType [String] <p>The type of export. Currently only 'swagger' is supported.</p>
+-- @param _accepts [String] <p>The content-type of the export, for example <code>application/json</code>. Currently <code>application/json</code> and <code>application/yaml</code> are supported for <code>exportType</code> of <code>swagger</code>. This should be specified in the <code>Accept</code> header for direct API requests.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> to be exported.</p>
+-- @param _parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the export, depending on the requested <code>exportType</code>. For <code>exportType</code> <code>swagger</code>, any combination of the following parameters are supported: <code>integrations</code> will export the API with x-amazon-apigateway-integration extensions. <code>authorizers</code> will export the API with x-amazon-apigateway-authorizer extensions. <code>postman</code> will export the API with Postman extensions, allowing for import to the Postman tool</p>
+-- @param _stageName [String] <p>The name of the <a>Stage</a> that will be exported.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 -- Required parameter: exportType
-function M.GetExportRequest(exportType, accepts, restApiId, parameters, stageName, ...)
+function M.GetExportRequest(_exportType, _accepts, _restApiId, _parameters, _stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetExportRequest")
 	local t = { 
-		["exportType"] = exportType,
-		["accepts"] = accepts,
-		["restApiId"] = restApiId,
-		["parameters"] = parameters,
-		["stageName"] = stageName,
+		["exportType"] = _exportType,
+		["accepts"] = _accepts,
+		["restApiId"] = _restApiId,
+		["parameters"] = _parameters,
+		["stageName"] = _stageName,
 	}
-	M.AssertGetExportRequest(t)
+	asserts.AssertGetExportRequest(t)
 	return t
 end
 
-local GetDomainNamesRequest_keys = { "position" = true, "limit" = true, nil }
+keys.GetDomainNamesRequest = { ["position"] = true, ["limit"] = true, nil }
 
-function M.AssertGetDomainNamesRequest(struct)
+function asserts.AssertGetDomainNamesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDomainNamesRequest to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDomainNamesRequest_keys[k], "GetDomainNamesRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDomainNamesRequest[k], "GetDomainNamesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDomainNamesRequest
 -- <p>Request to describe a collection of <a>DomainName</a> resources.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
-function M.GetDomainNamesRequest(position, limit, ...)
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+function M.GetDomainNamesRequest(_position, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainNamesRequest")
 	local t = { 
-		["position"] = position,
-		["limit"] = limit,
+		["position"] = _position,
+		["limit"] = _limit,
 	}
-	M.AssertGetDomainNamesRequest(t)
+	asserts.AssertGetDomainNamesRequest(t)
 	return t
 end
 
-local CreateStageRequest_keys = { "restApiId" = true, "description" = true, "stageName" = true, "cacheClusterSize" = true, "variables" = true, "cacheClusterEnabled" = true, "documentationVersion" = true, "deploymentId" = true, nil }
+keys.CreateStageRequest = { ["restApiId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, ["documentationVersion"] = true, ["deploymentId"] = true, nil }
 
-function M.AssertCreateStageRequest(struct)
+function asserts.AssertCreateStageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateStageRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
 	assert(struct["deploymentId"], "Expected key deploymentId to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
-	if struct["cacheClusterSize"] then M.AssertCacheClusterSize(struct["cacheClusterSize"]) end
-	if struct["variables"] then M.AssertMapOfStringToString(struct["variables"]) end
-	if struct["cacheClusterEnabled"] then M.AssertBoolean(struct["cacheClusterEnabled"]) end
-	if struct["documentationVersion"] then M.AssertString(struct["documentationVersion"]) end
-	if struct["deploymentId"] then M.AssertString(struct["deploymentId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
+	if struct["cacheClusterSize"] then asserts.AssertCacheClusterSize(struct["cacheClusterSize"]) end
+	if struct["variables"] then asserts.AssertMapOfStringToString(struct["variables"]) end
+	if struct["cacheClusterEnabled"] then asserts.AssertBoolean(struct["cacheClusterEnabled"]) end
+	if struct["documentationVersion"] then asserts.AssertString(struct["documentationVersion"]) end
+	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateStageRequest_keys[k], "CreateStageRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateStageRequest[k], "CreateStageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateStageRequest
 -- <p>Requests Amazon API Gateway to create a <a>Stage</a> resource.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.</p>
--- @param description [String] <p>The description of the <a>Stage</a> resource.</p>
--- @param stageName [String] <p>The name for the <a>Stage</a> resource.</p>
--- @param cacheClusterSize [CacheClusterSize] <p>The stage's cache cluster size.</p>
--- @param variables [MapOfStringToString] <p>A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
--- @param cacheClusterEnabled [Boolean] <p>Whether cache clustering is enabled for the stage.</p>
--- @param documentationVersion [String] <p>The version of the associated API documentation.</p>
--- @param deploymentId [String] <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.</p>
+-- @param _description [String] <p>The description of the <a>Stage</a> resource.</p>
+-- @param _stageName [String] <p>The name for the <a>Stage</a> resource.</p>
+-- @param _cacheClusterSize [CacheClusterSize] <p>The stage's cache cluster size.</p>
+-- @param _variables [MapOfStringToString] <p>A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
+-- @param _cacheClusterEnabled [Boolean] <p>Whether cache clustering is enabled for the stage.</p>
+-- @param _documentationVersion [String] <p>The version of the associated API documentation.</p>
+-- @param _deploymentId [String] <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 -- Required parameter: deploymentId
-function M.CreateStageRequest(restApiId, description, stageName, cacheClusterSize, variables, cacheClusterEnabled, documentationVersion, deploymentId, ...)
+function M.CreateStageRequest(_restApiId, _description, _stageName, _cacheClusterSize, _variables, _cacheClusterEnabled, _documentationVersion, _deploymentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStageRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["description"] = description,
-		["stageName"] = stageName,
-		["cacheClusterSize"] = cacheClusterSize,
-		["variables"] = variables,
-		["cacheClusterEnabled"] = cacheClusterEnabled,
-		["documentationVersion"] = documentationVersion,
-		["deploymentId"] = deploymentId,
+		["restApiId"] = _restApiId,
+		["description"] = _description,
+		["stageName"] = _stageName,
+		["cacheClusterSize"] = _cacheClusterSize,
+		["variables"] = _variables,
+		["cacheClusterEnabled"] = _cacheClusterEnabled,
+		["documentationVersion"] = _documentationVersion,
+		["deploymentId"] = _deploymentId,
 	}
-	M.AssertCreateStageRequest(t)
+	asserts.AssertCreateStageRequest(t)
 	return t
 end
 
-local ApiKeyIds_keys = { "ids" = true, "warnings" = true, nil }
+keys.ApiKeyIds = { ["ids"] = true, ["warnings"] = true, nil }
 
-function M.AssertApiKeyIds(struct)
+function asserts.AssertApiKeyIds(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ApiKeyIds to be of type 'table'")
-	if struct["ids"] then M.AssertListOfString(struct["ids"]) end
-	if struct["warnings"] then M.AssertListOfString(struct["warnings"]) end
+	if struct["ids"] then asserts.AssertListOfString(struct["ids"]) end
+	if struct["warnings"] then asserts.AssertListOfString(struct["warnings"]) end
 	for k,_ in pairs(struct) do
-		assert(ApiKeyIds_keys[k], "ApiKeyIds contains unknown key " .. tostring(k))
+		assert(keys.ApiKeyIds[k], "ApiKeyIds contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ApiKeyIds
 -- <p>The identifier of an <a>ApiKey</a> used in a <a>UsagePlan</a>.</p>
--- @param ids [ListOfString] <p>A list of all the <a>ApiKey</a> identifiers.</p>
--- @param warnings [ListOfString] <p>A list of warning messages.</p>
-function M.ApiKeyIds(ids, warnings, ...)
+-- @param _ids [ListOfString] <p>A list of all the <a>ApiKey</a> identifiers.</p>
+-- @param _warnings [ListOfString] <p>A list of warning messages.</p>
+function M.ApiKeyIds(_ids, _warnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApiKeyIds")
 	local t = { 
-		["ids"] = ids,
-		["warnings"] = warnings,
+		["ids"] = _ids,
+		["warnings"] = _warnings,
 	}
-	M.AssertApiKeyIds(t)
+	asserts.AssertApiKeyIds(t)
 	return t
 end
 
-local GetMethodResponseRequest_keys = { "resourceId" = true, "statusCode" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.GetMethodResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertGetMethodResponseRequest(struct)
+function asserts.AssertGetMethodResponseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetMethodResponseRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(GetMethodResponseRequest_keys[k], "GetMethodResponseRequest contains unknown key " .. tostring(k))
+		assert(keys.GetMethodResponseRequest[k], "GetMethodResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetMethodResponseRequest
 -- <p>Request to describe a <a>MethodResponse</a> resource.</p>
--- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
--- @param statusCode [StatusCode] <p>The status code for the <a>MethodResponse</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
--- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- @param _resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param _statusCode [StatusCode] <p>The status code for the <a>MethodResponse</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param _httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: statusCode
-function M.GetMethodResponseRequest(resourceId, statusCode, restApiId, httpMethod, ...)
+function M.GetMethodResponseRequest(_resourceId, _statusCode, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMethodResponseRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["statusCode"] = statusCode,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["statusCode"] = _statusCode,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertGetMethodResponseRequest(t)
+	asserts.AssertGetMethodResponseRequest(t)
 	return t
 end
 
-local UpdateClientCertificateRequest_keys = { "clientCertificateId" = true, "patchOperations" = true, nil }
+keys.UpdateClientCertificateRequest = { ["clientCertificateId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateClientCertificateRequest(struct)
+function asserts.AssertUpdateClientCertificateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateClientCertificateRequest to be of type 'table'")
 	assert(struct["clientCertificateId"], "Expected key clientCertificateId to exist in table")
-	if struct["clientCertificateId"] then M.AssertString(struct["clientCertificateId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["clientCertificateId"] then asserts.AssertString(struct["clientCertificateId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateClientCertificateRequest_keys[k], "UpdateClientCertificateRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateClientCertificateRequest[k], "UpdateClientCertificateRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateClientCertificateRequest
 -- <p>A request to change information about an <a>ClientCertificate</a> resource.</p>
--- @param clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be updated.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be updated.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: clientCertificateId
-function M.UpdateClientCertificateRequest(clientCertificateId, patchOperations, ...)
+function M.UpdateClientCertificateRequest(_clientCertificateId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClientCertificateRequest")
 	local t = { 
-		["clientCertificateId"] = clientCertificateId,
-		["patchOperations"] = patchOperations,
+		["clientCertificateId"] = _clientCertificateId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateClientCertificateRequest(t)
+	asserts.AssertUpdateClientCertificateRequest(t)
 	return t
 end
 
-local DeleteDomainNameRequest_keys = { "domainName" = true, nil }
+keys.DeleteDomainNameRequest = { ["domainName"] = true, nil }
 
-function M.AssertDeleteDomainNameRequest(struct)
+function asserts.AssertDeleteDomainNameRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDomainNameRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDomainNameRequest_keys[k], "DeleteDomainNameRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteDomainNameRequest[k], "DeleteDomainNameRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDomainNameRequest
 -- <p>A request to delete the <a>DomainName</a> resource.</p>
--- @param domainName [String] <p>The name of the <a>DomainName</a> resource to be deleted.</p>
+-- @param _domainName [String] <p>The name of the <a>DomainName</a> resource to be deleted.</p>
 -- Required parameter: domainName
-function M.DeleteDomainNameRequest(domainName, ...)
+function M.DeleteDomainNameRequest(_domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainNameRequest")
 	local t = { 
-		["domainName"] = domainName,
+		["domainName"] = _domainName,
 	}
-	M.AssertDeleteDomainNameRequest(t)
+	asserts.AssertDeleteDomainNameRequest(t)
 	return t
 end
 
-local DeleteModelRequest_keys = { "modelName" = true, "restApiId" = true, nil }
+keys.DeleteModelRequest = { ["modelName"] = true, ["restApiId"] = true, nil }
 
-function M.AssertDeleteModelRequest(struct)
+function asserts.AssertDeleteModelRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteModelRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["modelName"], "Expected key modelName to exist in table")
-	if struct["modelName"] then M.AssertString(struct["modelName"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["modelName"] then asserts.AssertString(struct["modelName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteModelRequest_keys[k], "DeleteModelRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteModelRequest[k], "DeleteModelRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteModelRequest
 -- <p>Request to delete an existing model in an existing <a>RestApi</a> resource.</p>
--- @param modelName [String] <p>The name of the model to delete.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> under which the model will be deleted.</p>
+-- @param _modelName [String] <p>The name of the model to delete.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> under which the model will be deleted.</p>
 -- Required parameter: restApiId
 -- Required parameter: modelName
-function M.DeleteModelRequest(modelName, restApiId, ...)
+function M.DeleteModelRequest(_modelName, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteModelRequest")
 	local t = { 
-		["modelName"] = modelName,
-		["restApiId"] = restApiId,
+		["modelName"] = _modelName,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertDeleteModelRequest(t)
+	asserts.AssertDeleteModelRequest(t)
 	return t
 end
 
-local Authorizer_keys = { "authType" = true, "name" = true, "providerARNs" = true, "authorizerUri" = true, "identityValidationExpression" = true, "authorizerResultTtlInSeconds" = true, "authorizerCredentials" = true, "identitySource" = true, "type" = true, "id" = true, nil }
+keys.Authorizer = { ["authType"] = true, ["name"] = true, ["providerARNs"] = true, ["authorizerUri"] = true, ["identityValidationExpression"] = true, ["authorizerResultTtlInSeconds"] = true, ["authorizerCredentials"] = true, ["identitySource"] = true, ["type"] = true, ["id"] = true, nil }
 
-function M.AssertAuthorizer(struct)
+function asserts.AssertAuthorizer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Authorizer to be of type 'table'")
-	if struct["authType"] then M.AssertString(struct["authType"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["providerARNs"] then M.AssertListOfARNs(struct["providerARNs"]) end
-	if struct["authorizerUri"] then M.AssertString(struct["authorizerUri"]) end
-	if struct["identityValidationExpression"] then M.AssertString(struct["identityValidationExpression"]) end
-	if struct["authorizerResultTtlInSeconds"] then M.AssertNullableInteger(struct["authorizerResultTtlInSeconds"]) end
-	if struct["authorizerCredentials"] then M.AssertString(struct["authorizerCredentials"]) end
-	if struct["identitySource"] then M.AssertString(struct["identitySource"]) end
-	if struct["type"] then M.AssertAuthorizerType(struct["type"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
+	if struct["authType"] then asserts.AssertString(struct["authType"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["providerARNs"] then asserts.AssertListOfARNs(struct["providerARNs"]) end
+	if struct["authorizerUri"] then asserts.AssertString(struct["authorizerUri"]) end
+	if struct["identityValidationExpression"] then asserts.AssertString(struct["identityValidationExpression"]) end
+	if struct["authorizerResultTtlInSeconds"] then asserts.AssertNullableInteger(struct["authorizerResultTtlInSeconds"]) end
+	if struct["authorizerCredentials"] then asserts.AssertString(struct["authorizerCredentials"]) end
+	if struct["identitySource"] then asserts.AssertString(struct["identitySource"]) end
+	if struct["type"] then asserts.AssertAuthorizerType(struct["type"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
 	for k,_ in pairs(struct) do
-		assert(Authorizer_keys[k], "Authorizer contains unknown key " .. tostring(k))
+		assert(keys.Authorizer[k], "Authorizer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Authorizer
 -- <p>Represents an authorization layer for methods. If enabled on a method, API Gateway will activate the authorizer when a client calls the method.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
--- @param authType [String] <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
--- @param name [String] <p>[Required] The name of the authorizer.</p>
--- @param providerARNs [ListOfARNs] <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code> authorizer, this is not defined. For authorizers of the <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool ARN of this format: <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>. </p>
--- @param authorizerUri [String] <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI, for example, <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>. In general, the URI has this form <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where <code>{region}</code> is the same as the region hosting the Lambda function, <code>path</code> indicates that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>. For Lambda functions, this is usually of the form /2015-03-31/functions/[FunctionARN]/invocations.</p>
--- @param identityValidationExpression [String] <p>A validation expression for the incoming identity. For <code>TOKEN</code> authorizers, this value should be a regular expression. The incoming token from the client is matched against this expression, and will proceed if the token matches. If the token doesn't match, the client receives a 401 Unauthorized response.</p>
--- @param authorizerResultTtlInSeconds [NullableInteger] <p>The TTL in seconds of cached authorizer results. If greater than 0, API Gateway will cache authorizer responses. If this field is not set, the default value is 300. The maximum value is 3600, or 1 hour.</p>
--- @param authorizerCredentials [String] <p>Specifies the credentials required for the authorizer, if any. Two options are available. To specify an IAM role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.</p>
--- @param identitySource [String] <p>[Required] The source of the identity in an incoming request. For a <code>TOKEN</code> authorizer, this value is a mapping expression with the same syntax as integration parameter mappings. The only valid source for tokens is 'header', so the expression should match 'method.request.header.[headerName]'. The value of the header '[headerName]' will be interpreted as the incoming token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is used.</p>
--- @param type [AuthorizerType] <p>[Required] The type of the authorizer. Currently, the valid type is <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for an Amazon Cognito user pool.</p>
--- @param id [String] <p>The identifier for the authorizer resource.</p>
-function M.Authorizer(authType, name, providerARNs, authorizerUri, identityValidationExpression, authorizerResultTtlInSeconds, authorizerCredentials, identitySource, type, id, ...)
+-- @param _authType [String] <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
+-- @param _name [String] <p>[Required] The name of the authorizer.</p>
+-- @param _providerARNs [ListOfARNs] <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code> authorizer, this is not defined. For authorizers of the <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool ARN of this format: <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>. </p>
+-- @param _authorizerUri [String] <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI, for example, <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>. In general, the URI has this form <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where <code>{region}</code> is the same as the region hosting the Lambda function, <code>path</code> indicates that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>. For Lambda functions, this is usually of the form /2015-03-31/functions/[FunctionARN]/invocations.</p>
+-- @param _identityValidationExpression [String] <p>A validation expression for the incoming identity. For <code>TOKEN</code> authorizers, this value should be a regular expression. The incoming token from the client is matched against this expression, and will proceed if the token matches. If the token doesn't match, the client receives a 401 Unauthorized response.</p>
+-- @param _authorizerResultTtlInSeconds [NullableInteger] <p>The TTL in seconds of cached authorizer results. If greater than 0, API Gateway will cache authorizer responses. If this field is not set, the default value is 300. The maximum value is 3600, or 1 hour.</p>
+-- @param _authorizerCredentials [String] <p>Specifies the credentials required for the authorizer, if any. Two options are available. To specify an IAM role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.</p>
+-- @param _identitySource [String] <p>[Required] The source of the identity in an incoming request. For a <code>TOKEN</code> authorizer, this value is a mapping expression with the same syntax as integration parameter mappings. The only valid source for tokens is 'header', so the expression should match 'method.request.header.[headerName]'. The value of the header '[headerName]' will be interpreted as the incoming token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is used.</p>
+-- @param _type [AuthorizerType] <p>[Required] The type of the authorizer. Currently, the valid type is <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for an Amazon Cognito user pool.</p>
+-- @param _id [String] <p>The identifier for the authorizer resource.</p>
+function M.Authorizer(_authType, _name, _providerARNs, _authorizerUri, _identityValidationExpression, _authorizerResultTtlInSeconds, _authorizerCredentials, _identitySource, _type, _id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Authorizer")
 	local t = { 
-		["authType"] = authType,
-		["name"] = name,
-		["providerARNs"] = providerARNs,
-		["authorizerUri"] = authorizerUri,
-		["identityValidationExpression"] = identityValidationExpression,
-		["authorizerResultTtlInSeconds"] = authorizerResultTtlInSeconds,
-		["authorizerCredentials"] = authorizerCredentials,
-		["identitySource"] = identitySource,
-		["type"] = type,
-		["id"] = id,
+		["authType"] = _authType,
+		["name"] = _name,
+		["providerARNs"] = _providerARNs,
+		["authorizerUri"] = _authorizerUri,
+		["identityValidationExpression"] = _identityValidationExpression,
+		["authorizerResultTtlInSeconds"] = _authorizerResultTtlInSeconds,
+		["authorizerCredentials"] = _authorizerCredentials,
+		["identitySource"] = _identitySource,
+		["type"] = _type,
+		["id"] = _id,
 	}
-	M.AssertAuthorizer(t)
+	asserts.AssertAuthorizer(t)
 	return t
 end
 
-local ImportDocumentationPartsRequest_keys = { "body" = true, "failOnWarnings" = true, "restApiId" = true, "mode" = true, nil }
+keys.ImportDocumentationPartsRequest = { ["body"] = true, ["failOnWarnings"] = true, ["restApiId"] = true, ["mode"] = true, nil }
 
-function M.AssertImportDocumentationPartsRequest(struct)
+function asserts.AssertImportDocumentationPartsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ImportDocumentationPartsRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["body"], "Expected key body to exist in table")
-	if struct["body"] then M.AssertBlob(struct["body"]) end
-	if struct["failOnWarnings"] then M.AssertBoolean(struct["failOnWarnings"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["mode"] then M.AssertPutMode(struct["mode"]) end
+	if struct["body"] then asserts.AssertBlob(struct["body"]) end
+	if struct["failOnWarnings"] then asserts.AssertBoolean(struct["failOnWarnings"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["mode"] then asserts.AssertPutMode(struct["mode"]) end
 	for k,_ in pairs(struct) do
-		assert(ImportDocumentationPartsRequest_keys[k], "ImportDocumentationPartsRequest contains unknown key " .. tostring(k))
+		assert(keys.ImportDocumentationPartsRequest[k], "ImportDocumentationPartsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ImportDocumentationPartsRequest
 -- <p>Import documentation parts from an external (e.g., Swagger) definition file. </p>
--- @param body [Blob] <p>[Required] Raw byte array representing the to-be-imported documentation parts. To import from a Swagger file, this is a JSON object.</p>
--- @param failOnWarnings [Boolean] <p>A query parameter to specify whether to rollback the documentation importation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
--- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-imported documentation parts.</p>
--- @param mode [PutMode] <p>A query parameter to indicate whether to overwrite (<code>OVERWRITE</code>) any existing <a>DocumentationParts</a> definition or to merge (<code>MERGE</code>) the new definition into the existing one. The default value is <code>MERGE</code>.</p>
+-- @param _body [Blob] <p>[Required] Raw byte array representing the to-be-imported documentation parts. To import from a Swagger file, this is a JSON object.</p>
+-- @param _failOnWarnings [Boolean] <p>A query parameter to specify whether to rollback the documentation importation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of an API of the to-be-imported documentation parts.</p>
+-- @param _mode [PutMode] <p>A query parameter to indicate whether to overwrite (<code>OVERWRITE</code>) any existing <a>DocumentationParts</a> definition or to merge (<code>MERGE</code>) the new definition into the existing one. The default value is <code>MERGE</code>.</p>
 -- Required parameter: restApiId
 -- Required parameter: body
-function M.ImportDocumentationPartsRequest(body, failOnWarnings, restApiId, mode, ...)
+function M.ImportDocumentationPartsRequest(_body, _failOnWarnings, _restApiId, _mode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportDocumentationPartsRequest")
 	local t = { 
-		["body"] = body,
-		["failOnWarnings"] = failOnWarnings,
-		["restApiId"] = restApiId,
-		["mode"] = mode,
+		["body"] = _body,
+		["failOnWarnings"] = _failOnWarnings,
+		["restApiId"] = _restApiId,
+		["mode"] = _mode,
 	}
-	M.AssertImportDocumentationPartsRequest(t)
+	asserts.AssertImportDocumentationPartsRequest(t)
 	return t
 end
 
-local DomainName_keys = { "certificateArn" = true, "distributionDomainName" = true, "certificateUploadDate" = true, "certificateName" = true, "domainName" = true, nil }
+keys.DomainName = { ["certificateArn"] = true, ["distributionDomainName"] = true, ["certificateUploadDate"] = true, ["certificateName"] = true, ["domainName"] = true, nil }
 
-function M.AssertDomainName(struct)
+function asserts.AssertDomainName(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DomainName to be of type 'table'")
-	if struct["certificateArn"] then M.AssertString(struct["certificateArn"]) end
-	if struct["distributionDomainName"] then M.AssertString(struct["distributionDomainName"]) end
-	if struct["certificateUploadDate"] then M.AssertTimestamp(struct["certificateUploadDate"]) end
-	if struct["certificateName"] then M.AssertString(struct["certificateName"]) end
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["certificateArn"] then asserts.AssertString(struct["certificateArn"]) end
+	if struct["distributionDomainName"] then asserts.AssertString(struct["distributionDomainName"]) end
+	if struct["certificateUploadDate"] then asserts.AssertTimestamp(struct["certificateUploadDate"]) end
+	if struct["certificateName"] then asserts.AssertString(struct["certificateName"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(DomainName_keys[k], "DomainName contains unknown key " .. tostring(k))
+		assert(keys.DomainName[k], "DomainName contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DomainName
 -- <p>Represents a domain name that is contained in a simpler, more intuitive URL that can be called.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
--- @param certificateArn [String] <p>The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.</p>
--- @param distributionDomainName [String] <p>The domain name of the Amazon CloudFront distribution. For more information, see the <a href="http://aws.amazon.com/documentation/cloudfront/" target="_blank">Amazon CloudFront documentation</a>.</p>
--- @param certificateUploadDate [Timestamp] <p>The timestamp when the certificate was uploaded.</p>
--- @param certificateName [String] <p>The name of the certificate.</p>
--- @param domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
-function M.DomainName(certificateArn, distributionDomainName, certificateUploadDate, certificateName, domainName, ...)
+-- @param _certificateArn [String] <p>The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.</p>
+-- @param _distributionDomainName [String] <p>The domain name of the Amazon CloudFront distribution. For more information, see the <a href="http://aws.amazon.com/documentation/cloudfront/" target="_blank">Amazon CloudFront documentation</a>.</p>
+-- @param _certificateUploadDate [Timestamp] <p>The timestamp when the certificate was uploaded.</p>
+-- @param _certificateName [String] <p>The name of the certificate.</p>
+-- @param _domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
+function M.DomainName(_certificateArn, _distributionDomainName, _certificateUploadDate, _certificateName, _domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainName")
 	local t = { 
-		["certificateArn"] = certificateArn,
-		["distributionDomainName"] = distributionDomainName,
-		["certificateUploadDate"] = certificateUploadDate,
-		["certificateName"] = certificateName,
-		["domainName"] = domainName,
+		["certificateArn"] = _certificateArn,
+		["distributionDomainName"] = _distributionDomainName,
+		["certificateUploadDate"] = _certificateUploadDate,
+		["certificateName"] = _certificateName,
+		["domainName"] = _domainName,
 	}
-	M.AssertDomainName(t)
+	asserts.AssertDomainName(t)
 	return t
 end
 
-local CreateDeploymentRequest_keys = { "stageDescription" = true, "restApiId" = true, "description" = true, "stageName" = true, "cacheClusterSize" = true, "variables" = true, "cacheClusterEnabled" = true, nil }
+keys.CreateDeploymentRequest = { ["stageDescription"] = true, ["restApiId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, nil }
 
-function M.AssertCreateDeploymentRequest(struct)
+function asserts.AssertCreateDeploymentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDeploymentRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["stageDescription"] then M.AssertString(struct["stageDescription"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
-	if struct["cacheClusterSize"] then M.AssertCacheClusterSize(struct["cacheClusterSize"]) end
-	if struct["variables"] then M.AssertMapOfStringToString(struct["variables"]) end
-	if struct["cacheClusterEnabled"] then M.AssertNullableBoolean(struct["cacheClusterEnabled"]) end
+	if struct["stageDescription"] then asserts.AssertString(struct["stageDescription"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
+	if struct["cacheClusterSize"] then asserts.AssertCacheClusterSize(struct["cacheClusterSize"]) end
+	if struct["variables"] then asserts.AssertMapOfStringToString(struct["variables"]) end
+	if struct["cacheClusterEnabled"] then asserts.AssertNullableBoolean(struct["cacheClusterEnabled"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDeploymentRequest_keys[k], "CreateDeploymentRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDeploymentRequest[k], "CreateDeploymentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDeploymentRequest
 -- <p>Requests Amazon API Gateway to create a <a>Deployment</a> resource.</p>
--- @param stageDescription [String] <p>The description of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> resource identifier for the <a>Deployment</a> resource to create.</p>
--- @param description [String] <p>The description for the <a>Deployment</a> resource to create.</p>
--- @param stageName [String] <p>The name of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
--- @param cacheClusterSize [CacheClusterSize] <p>Specifies the cache cluster size for the <a>Stage</a> resource specified in the input, if a cache cluster is enabled.</p>
--- @param variables [MapOfStringToString] <p>A map that defines the stage variables for the <a>Stage</a> resource that is associated with the new deployment. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
--- @param cacheClusterEnabled [NullableBoolean] <p>Enables a cache cluster for the <a>Stage</a> resource specified in the input.</p>
+-- @param _stageDescription [String] <p>The description of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> resource identifier for the <a>Deployment</a> resource to create.</p>
+-- @param _description [String] <p>The description for the <a>Deployment</a> resource to create.</p>
+-- @param _stageName [String] <p>The name of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
+-- @param _cacheClusterSize [CacheClusterSize] <p>Specifies the cache cluster size for the <a>Stage</a> resource specified in the input, if a cache cluster is enabled.</p>
+-- @param _variables [MapOfStringToString] <p>A map that defines the stage variables for the <a>Stage</a> resource that is associated with the new deployment. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
+-- @param _cacheClusterEnabled [NullableBoolean] <p>Enables a cache cluster for the <a>Stage</a> resource specified in the input.</p>
 -- Required parameter: restApiId
-function M.CreateDeploymentRequest(stageDescription, restApiId, description, stageName, cacheClusterSize, variables, cacheClusterEnabled, ...)
+function M.CreateDeploymentRequest(_stageDescription, _restApiId, _description, _stageName, _cacheClusterSize, _variables, _cacheClusterEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentRequest")
 	local t = { 
-		["stageDescription"] = stageDescription,
-		["restApiId"] = restApiId,
-		["description"] = description,
-		["stageName"] = stageName,
-		["cacheClusterSize"] = cacheClusterSize,
-		["variables"] = variables,
-		["cacheClusterEnabled"] = cacheClusterEnabled,
+		["stageDescription"] = _stageDescription,
+		["restApiId"] = _restApiId,
+		["description"] = _description,
+		["stageName"] = _stageName,
+		["cacheClusterSize"] = _cacheClusterSize,
+		["variables"] = _variables,
+		["cacheClusterEnabled"] = _cacheClusterEnabled,
 	}
-	M.AssertCreateDeploymentRequest(t)
+	asserts.AssertCreateDeploymentRequest(t)
 	return t
 end
 
-local DeleteBasePathMappingRequest_keys = { "basePath" = true, "domainName" = true, nil }
+keys.DeleteBasePathMappingRequest = { ["basePath"] = true, ["domainName"] = true, nil }
 
-function M.AssertDeleteBasePathMappingRequest(struct)
+function asserts.AssertDeleteBasePathMappingRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteBasePathMappingRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
 	assert(struct["basePath"], "Expected key basePath to exist in table")
-	if struct["basePath"] then M.AssertString(struct["basePath"]) end
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["basePath"] then asserts.AssertString(struct["basePath"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteBasePathMappingRequest_keys[k], "DeleteBasePathMappingRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteBasePathMappingRequest[k], "DeleteBasePathMappingRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteBasePathMappingRequest
 -- <p>A request to delete the <a>BasePathMapping</a> resource.</p>
--- @param basePath [String] <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>
--- @param domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
+-- @param _basePath [String] <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>
+-- @param _domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
 -- Required parameter: domainName
 -- Required parameter: basePath
-function M.DeleteBasePathMappingRequest(basePath, domainName, ...)
+function M.DeleteBasePathMappingRequest(_basePath, _domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBasePathMappingRequest")
 	local t = { 
-		["basePath"] = basePath,
-		["domainName"] = domainName,
+		["basePath"] = _basePath,
+		["domainName"] = _domainName,
 	}
-	M.AssertDeleteBasePathMappingRequest(t)
+	asserts.AssertDeleteBasePathMappingRequest(t)
 	return t
 end
 
-local Usage_keys = { "startDate" = true, "items" = true, "usagePlanId" = true, "endDate" = true, "position" = true, nil }
+keys.Usage = { ["startDate"] = true, ["items"] = true, ["usagePlanId"] = true, ["endDate"] = true, ["position"] = true, nil }
 
-function M.AssertUsage(struct)
+function asserts.AssertUsage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Usage to be of type 'table'")
-	if struct["startDate"] then M.AssertString(struct["startDate"]) end
-	if struct["items"] then M.AssertMapOfKeyUsages(struct["items"]) end
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
-	if struct["endDate"] then M.AssertString(struct["endDate"]) end
-	if struct["position"] then M.AssertString(struct["position"]) end
+	if struct["startDate"] then asserts.AssertString(struct["startDate"]) end
+	if struct["items"] then asserts.AssertMapOfKeyUsages(struct["items"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
+	if struct["endDate"] then asserts.AssertString(struct["endDate"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
 	for k,_ in pairs(struct) do
-		assert(Usage_keys[k], "Usage contains unknown key " .. tostring(k))
+		assert(keys.Usage[k], "Usage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Usage
 -- <p>Represents the usage data of a usage plan.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a> </div>
--- @param startDate [String] <p>The starting date of the usage data.</p>
--- @param items [MapOfKeyUsages] <p>The usage data, as daily logs of used and remaining quotas, over the specified time interval indexed over the API keys in a usage plan. For example, <code>{..., "values" : { "{api_key}" : [ [0, 100], [10, 90], [100, 10]]}</code>, where <code>{api_key}</code> stands for an API key value and the daily log entry is of the format <code>[used quota, remaining quota]</code>.</p>
--- @param usagePlanId [String] <p>The plan Id associated with this usage data.</p>
--- @param endDate [String] <p>The ending date of the usage data.</p>
--- @param position [String] <p>Represents the usage data of a usage plan.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a> </div>
-function M.Usage(startDate, items, usagePlanId, endDate, position, ...)
+-- @param _startDate [String] <p>The starting date of the usage data.</p>
+-- @param _items [MapOfKeyUsages] <p>The usage data, as daily logs of used and remaining quotas, over the specified time interval indexed over the API keys in a usage plan. For example, <code>{..., "values" : { "{api_key}" : [ [0, 100], [10, 90], [100, 10]]}</code>, where <code>{api_key}</code> stands for an API key value and the daily log entry is of the format <code>[used quota, remaining quota]</code>.</p>
+-- @param _usagePlanId [String] <p>The plan Id associated with this usage data.</p>
+-- @param _endDate [String] <p>The ending date of the usage data.</p>
+-- @param _position [String] 
+function M.Usage(_startDate, _items, _usagePlanId, _endDate, _position, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Usage")
 	local t = { 
-		["startDate"] = startDate,
-		["items"] = items,
-		["usagePlanId"] = usagePlanId,
-		["endDate"] = endDate,
-		["position"] = position,
+		["startDate"] = _startDate,
+		["items"] = _items,
+		["usagePlanId"] = _usagePlanId,
+		["endDate"] = _endDate,
+		["position"] = _position,
 	}
-	M.AssertUsage(t)
+	asserts.AssertUsage(t)
 	return t
 end
 
-local SdkType_keys = { "friendlyName" = true, "configurationProperties" = true, "id" = true, "description" = true, nil }
+keys.SdkType = { ["friendlyName"] = true, ["configurationProperties"] = true, ["id"] = true, ["description"] = true, nil }
 
-function M.AssertSdkType(struct)
+function asserts.AssertSdkType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SdkType to be of type 'table'")
-	if struct["friendlyName"] then M.AssertString(struct["friendlyName"]) end
-	if struct["configurationProperties"] then M.AssertListOfSdkConfigurationProperty(struct["configurationProperties"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["friendlyName"] then asserts.AssertString(struct["friendlyName"]) end
+	if struct["configurationProperties"] then asserts.AssertListOfSdkConfigurationProperty(struct["configurationProperties"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(SdkType_keys[k], "SdkType contains unknown key " .. tostring(k))
+		assert(keys.SdkType[k], "SdkType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SdkType
 -- <p>A type of SDK that API Gateway can generate.</p>
--- @param friendlyName [String] <p>The user-friendly name of an <a>SdkType</a> instance.</p>
--- @param configurationProperties [ListOfSdkConfigurationProperty] <p>A list of configuration properties of an <a>SdkType</a>.</p>
--- @param id [String] <p>The identifier of an <a>SdkType</a> instance.</p>
--- @param description [String] <p>The description of an <a>SdkType</a>.</p>
-function M.SdkType(friendlyName, configurationProperties, id, description, ...)
+-- @param _friendlyName [String] <p>The user-friendly name of an <a>SdkType</a> instance.</p>
+-- @param _configurationProperties [ListOfSdkConfigurationProperty] <p>A list of configuration properties of an <a>SdkType</a>.</p>
+-- @param _id [String] <p>The identifier of an <a>SdkType</a> instance.</p>
+-- @param _description [String] <p>The description of an <a>SdkType</a>.</p>
+function M.SdkType(_friendlyName, _configurationProperties, _id, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SdkType")
 	local t = { 
-		["friendlyName"] = friendlyName,
-		["configurationProperties"] = configurationProperties,
-		["id"] = id,
-		["description"] = description,
+		["friendlyName"] = _friendlyName,
+		["configurationProperties"] = _configurationProperties,
+		["id"] = _id,
+		["description"] = _description,
 	}
-	M.AssertSdkType(t)
+	asserts.AssertSdkType(t)
 	return t
 end
 
-local MethodSnapshot_keys = { "apiKeyRequired" = true, "authorizationType" = true, nil }
+keys.MethodSnapshot = { ["apiKeyRequired"] = true, ["authorizationType"] = true, nil }
 
-function M.AssertMethodSnapshot(struct)
+function asserts.AssertMethodSnapshot(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MethodSnapshot to be of type 'table'")
-	if struct["apiKeyRequired"] then M.AssertBoolean(struct["apiKeyRequired"]) end
-	if struct["authorizationType"] then M.AssertString(struct["authorizationType"]) end
+	if struct["apiKeyRequired"] then asserts.AssertBoolean(struct["apiKeyRequired"]) end
+	if struct["authorizationType"] then asserts.AssertString(struct["authorizationType"]) end
 	for k,_ in pairs(struct) do
-		assert(MethodSnapshot_keys[k], "MethodSnapshot contains unknown key " .. tostring(k))
+		assert(keys.MethodSnapshot[k], "MethodSnapshot contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MethodSnapshot
 -- <p>Represents a summary of a <a>Method</a> resource, given a particular date and time.</p>
--- @param apiKeyRequired [Boolean] <p>Specifies whether the method requires a valid <a>ApiKey</a>.</p>
--- @param authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
-function M.MethodSnapshot(apiKeyRequired, authorizationType, ...)
+-- @param _apiKeyRequired [Boolean] <p>Specifies whether the method requires a valid <a>ApiKey</a>.</p>
+-- @param _authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
+function M.MethodSnapshot(_apiKeyRequired, _authorizationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MethodSnapshot")
 	local t = { 
-		["apiKeyRequired"] = apiKeyRequired,
-		["authorizationType"] = authorizationType,
+		["apiKeyRequired"] = _apiKeyRequired,
+		["authorizationType"] = _authorizationType,
 	}
-	M.AssertMethodSnapshot(t)
+	asserts.AssertMethodSnapshot(t)
 	return t
 end
 
-local Resource_keys = { "path" = true, "resourceMethods" = true, "id" = true, "pathPart" = true, "parentId" = true, nil }
+keys.Resource = { ["path"] = true, ["resourceMethods"] = true, ["id"] = true, ["pathPart"] = true, ["parentId"] = true, nil }
 
-function M.AssertResource(struct)
+function asserts.AssertResource(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Resource to be of type 'table'")
-	if struct["path"] then M.AssertString(struct["path"]) end
-	if struct["resourceMethods"] then M.AssertMapOfMethod(struct["resourceMethods"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["pathPart"] then M.AssertString(struct["pathPart"]) end
-	if struct["parentId"] then M.AssertString(struct["parentId"]) end
+	if struct["path"] then asserts.AssertString(struct["path"]) end
+	if struct["resourceMethods"] then asserts.AssertMapOfMethod(struct["resourceMethods"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["pathPart"] then asserts.AssertString(struct["pathPart"]) end
+	if struct["parentId"] then asserts.AssertString(struct["parentId"]) end
 	for k,_ in pairs(struct) do
-		assert(Resource_keys[k], "Resource contains unknown key " .. tostring(k))
+		assert(keys.Resource[k], "Resource contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Resource
 -- <p>Represents an API resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
--- @param path [String] <p>The full path for this resource.</p>
--- @param resourceMethods [MapOfMethod] <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks"> <p>The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the <code>200 OK</code> response of the <code>GET /restapis/{restapi_id}/resources/{resource_id}</code> or <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code> request.</p> <h4>Example: Get the GET method of an API resource</h4> <h5>Request</h5> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>If the <code>OPTIONS</code> is enabled on the resource, you can follow the example here to get that method. Just replace the <code>GET</code> of the last path segment in the request URL with <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
--- @param id [String] <p>The resource's identifier.</p>
--- @param pathPart [String] <p>The last path segment for this resource.</p>
--- @param parentId [String] <p>The parent resource's identifier.</p>
-function M.Resource(path, resourceMethods, id, pathPart, parentId, ...)
+-- @param _path [String] <p>The full path for this resource.</p>
+-- @param _resourceMethods [MapOfMethod] <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks"> <p>The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the <code>200 OK</code> response of the <code>GET /restapis/{restapi_id}/resources/{resource_id}</code> or <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code> request.</p> <h4>Example: Get the GET method of an API resource</h4> <h5>Request</h5> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>If the <code>OPTIONS</code> is enabled on the resource, you can follow the example here to get that method. Just replace the <code>GET</code> of the last path segment in the request URL with <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
+-- @param _id [String] <p>The resource's identifier.</p>
+-- @param _pathPart [String] <p>The last path segment for this resource.</p>
+-- @param _parentId [String] <p>The parent resource's identifier.</p>
+function M.Resource(_path, _resourceMethods, _id, _pathPart, _parentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Resource")
 	local t = { 
-		["path"] = path,
-		["resourceMethods"] = resourceMethods,
-		["id"] = id,
-		["pathPart"] = pathPart,
-		["parentId"] = parentId,
+		["path"] = _path,
+		["resourceMethods"] = _resourceMethods,
+		["id"] = _id,
+		["pathPart"] = _pathPart,
+		["parentId"] = _parentId,
 	}
-	M.AssertResource(t)
+	asserts.AssertResource(t)
 	return t
 end
 
-local DeleteUsagePlanKeyRequest_keys = { "keyId" = true, "usagePlanId" = true, nil }
+keys.DeleteUsagePlanKeyRequest = { ["keyId"] = true, ["usagePlanId"] = true, nil }
 
-function M.AssertDeleteUsagePlanKeyRequest(struct)
+function asserts.AssertDeleteUsagePlanKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUsagePlanKeyRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
 	assert(struct["keyId"], "Expected key keyId to exist in table")
-	if struct["keyId"] then M.AssertString(struct["keyId"]) end
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
+	if struct["keyId"] then asserts.AssertString(struct["keyId"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUsagePlanKeyRequest_keys[k], "DeleteUsagePlanKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUsagePlanKeyRequest[k], "DeleteUsagePlanKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUsagePlanKeyRequest
 -- <p>The DELETE request to delete a usage plan key and remove the underlying API key from the associated usage plan.</p>
--- @param keyId [String] <p>The Id of the <a>UsagePlanKey</a> resource to be deleted.</p>
--- @param usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-deleted <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- @param _keyId [String] <p>The Id of the <a>UsagePlanKey</a> resource to be deleted.</p>
+-- @param _usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-deleted <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: keyId
-function M.DeleteUsagePlanKeyRequest(keyId, usagePlanId, ...)
+function M.DeleteUsagePlanKeyRequest(_keyId, _usagePlanId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUsagePlanKeyRequest")
 	local t = { 
-		["keyId"] = keyId,
-		["usagePlanId"] = usagePlanId,
+		["keyId"] = _keyId,
+		["usagePlanId"] = _usagePlanId,
 	}
-	M.AssertDeleteUsagePlanKeyRequest(t)
+	asserts.AssertDeleteUsagePlanKeyRequest(t)
 	return t
 end
 
-local DomainNames_keys = { "position" = true, "items" = true, nil }
+keys.DomainNames = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertDomainNames(struct)
+function asserts.AssertDomainNames(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DomainNames to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfDomainName(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfDomainName(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(DomainNames_keys[k], "DomainNames contains unknown key " .. tostring(k))
+		assert(keys.DomainNames[k], "DomainNames contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DomainNames
 -- <p>Represents a collection of <a>DomainName</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
--- @param position [String] <p>Represents a collection of <a>DomainName</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
--- @param items [ListOfDomainName] <p>The current page of any <a>DomainName</a> resources in the collection of <a>DomainName</a> resources.</p>
-function M.DomainNames(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfDomainName] <p>The current page of any <a>DomainName</a> resources in the collection of <a>DomainName</a> resources.</p>
+function M.DomainNames(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainNames")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertDomainNames(t)
+	asserts.AssertDomainNames(t)
 	return t
 end
 
-local FlushStageAuthorizersCacheRequest_keys = { "restApiId" = true, "stageName" = true, nil }
+keys.FlushStageAuthorizersCacheRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
 
-function M.AssertFlushStageAuthorizersCacheRequest(struct)
+function asserts.AssertFlushStageAuthorizersCacheRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FlushStageAuthorizersCacheRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	for k,_ in pairs(struct) do
-		assert(FlushStageAuthorizersCacheRequest_keys[k], "FlushStageAuthorizersCacheRequest contains unknown key " .. tostring(k))
+		assert(keys.FlushStageAuthorizersCacheRequest[k], "FlushStageAuthorizersCacheRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FlushStageAuthorizersCacheRequest
 -- <p>Request to flush authorizer cache entries on a specified stage.</p>
--- @param restApiId [String] <p>The API identifier of the stage to flush.</p>
--- @param stageName [String] <p>The name of the stage to flush.</p>
+-- @param _restApiId [String] <p>The API identifier of the stage to flush.</p>
+-- @param _stageName [String] <p>The name of the stage to flush.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
-function M.FlushStageAuthorizersCacheRequest(restApiId, stageName, ...)
+function M.FlushStageAuthorizersCacheRequest(_restApiId, _stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FlushStageAuthorizersCacheRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["stageName"] = stageName,
+		["restApiId"] = _restApiId,
+		["stageName"] = _stageName,
 	}
-	M.AssertFlushStageAuthorizersCacheRequest(t)
+	asserts.AssertFlushStageAuthorizersCacheRequest(t)
 	return t
 end
 
-local DeleteClientCertificateRequest_keys = { "clientCertificateId" = true, nil }
+keys.DeleteClientCertificateRequest = { ["clientCertificateId"] = true, nil }
 
-function M.AssertDeleteClientCertificateRequest(struct)
+function asserts.AssertDeleteClientCertificateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteClientCertificateRequest to be of type 'table'")
 	assert(struct["clientCertificateId"], "Expected key clientCertificateId to exist in table")
-	if struct["clientCertificateId"] then M.AssertString(struct["clientCertificateId"]) end
+	if struct["clientCertificateId"] then asserts.AssertString(struct["clientCertificateId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteClientCertificateRequest_keys[k], "DeleteClientCertificateRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteClientCertificateRequest[k], "DeleteClientCertificateRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteClientCertificateRequest
 -- <p>A request to delete the <a>ClientCertificate</a> resource.</p>
--- @param clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be deleted.</p>
+-- @param _clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be deleted.</p>
 -- Required parameter: clientCertificateId
-function M.DeleteClientCertificateRequest(clientCertificateId, ...)
+function M.DeleteClientCertificateRequest(_clientCertificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClientCertificateRequest")
 	local t = { 
-		["clientCertificateId"] = clientCertificateId,
+		["clientCertificateId"] = _clientCertificateId,
 	}
-	M.AssertDeleteClientCertificateRequest(t)
+	asserts.AssertDeleteClientCertificateRequest(t)
 	return t
 end
 
-local DocumentationVersion_keys = { "version" = true, "description" = true, "createdDate" = true, nil }
+keys.DocumentationVersion = { ["version"] = true, ["description"] = true, ["createdDate"] = true, nil }
 
-function M.AssertDocumentationVersion(struct)
+function asserts.AssertDocumentationVersion(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentationVersion to be of type 'table'")
-	if struct["version"] then M.AssertString(struct["version"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["createdDate"] then M.AssertTimestamp(struct["createdDate"]) end
+	if struct["version"] then asserts.AssertString(struct["version"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentationVersion_keys[k], "DocumentationVersion contains unknown key " .. tostring(k))
+		assert(keys.DocumentationVersion[k], "DocumentationVersion contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentationVersion
 -- <p>A snapshot of the documentation of an API.</p> <div class="remarks"><p>Publishing API documentation involves creating a documentation version associated with an API stage and exporting the versioned documentation to an external (e.g., Swagger) file.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersions</a> </div>
--- @param version [String] <p>The version identifier of the API documentation snapshot.</p>
--- @param description [String] <p>The description of the API documentation snapshot.</p>
--- @param createdDate [Timestamp] <p>The date when the API documentation snapshot is created.</p>
-function M.DocumentationVersion(version, description, createdDate, ...)
+-- @param _version [String] <p>The version identifier of the API documentation snapshot.</p>
+-- @param _description [String] <p>The description of the API documentation snapshot.</p>
+-- @param _createdDate [Timestamp] <p>The date when the API documentation snapshot is created.</p>
+function M.DocumentationVersion(_version, _description, _createdDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationVersion")
 	local t = { 
-		["version"] = version,
-		["description"] = description,
-		["createdDate"] = createdDate,
+		["version"] = _version,
+		["description"] = _description,
+		["createdDate"] = _createdDate,
 	}
-	M.AssertDocumentationVersion(t)
+	asserts.AssertDocumentationVersion(t)
 	return t
 end
 
-local GetModelsRequest_keys = { "position" = true, "restApiId" = true, "limit" = true, nil }
+keys.GetModelsRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
 
-function M.AssertGetModelsRequest(struct)
+function asserts.AssertGetModelsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetModelsRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetModelsRequest_keys[k], "GetModelsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetModelsRequest[k], "GetModelsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetModelsRequest
 -- <p>Request to list existing <a>Models</a> defined for a <a>RestApi</a> resource.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- Required parameter: restApiId
-function M.GetModelsRequest(position, restApiId, limit, ...)
+function M.GetModelsRequest(_position, _restApiId, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetModelsRequest")
 	local t = { 
-		["position"] = position,
-		["restApiId"] = restApiId,
-		["limit"] = limit,
+		["position"] = _position,
+		["restApiId"] = _restApiId,
+		["limit"] = _limit,
 	}
-	M.AssertGetModelsRequest(t)
+	asserts.AssertGetModelsRequest(t)
 	return t
 end
 
-local ThrottleSettings_keys = { "rateLimit" = true, "burstLimit" = true, nil }
+keys.ThrottleSettings = { ["rateLimit"] = true, ["burstLimit"] = true, nil }
 
-function M.AssertThrottleSettings(struct)
+function asserts.AssertThrottleSettings(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ThrottleSettings to be of type 'table'")
-	if struct["rateLimit"] then M.AssertDouble(struct["rateLimit"]) end
-	if struct["burstLimit"] then M.AssertInteger(struct["burstLimit"]) end
+	if struct["rateLimit"] then asserts.AssertDouble(struct["rateLimit"]) end
+	if struct["burstLimit"] then asserts.AssertInteger(struct["burstLimit"]) end
 	for k,_ in pairs(struct) do
-		assert(ThrottleSettings_keys[k], "ThrottleSettings contains unknown key " .. tostring(k))
+		assert(keys.ThrottleSettings[k], "ThrottleSettings contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ThrottleSettings
 -- <p> The API request rate limits.</p>
--- @param rateLimit [Double] <p>The API request steady-state rate limit.</p>
--- @param burstLimit [Integer] <p>The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.</p>
-function M.ThrottleSettings(rateLimit, burstLimit, ...)
+-- @param _rateLimit [Double] <p>The API request steady-state rate limit.</p>
+-- @param _burstLimit [Integer] <p>The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.</p>
+function M.ThrottleSettings(_rateLimit, _burstLimit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottleSettings")
 	local t = { 
-		["rateLimit"] = rateLimit,
-		["burstLimit"] = burstLimit,
+		["rateLimit"] = _rateLimit,
+		["burstLimit"] = _burstLimit,
 	}
-	M.AssertThrottleSettings(t)
+	asserts.AssertThrottleSettings(t)
 	return t
 end
 
-local UsagePlan_keys = { "productCode" = true, "throttle" = true, "description" = true, "quota" = true, "apiStages" = true, "id" = true, "name" = true, nil }
+keys.UsagePlan = { ["productCode"] = true, ["throttle"] = true, ["description"] = true, ["quota"] = true, ["apiStages"] = true, ["id"] = true, ["name"] = true, nil }
 
-function M.AssertUsagePlan(struct)
+function asserts.AssertUsagePlan(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UsagePlan to be of type 'table'")
-	if struct["productCode"] then M.AssertString(struct["productCode"]) end
-	if struct["throttle"] then M.AssertThrottleSettings(struct["throttle"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["quota"] then M.AssertQuotaSettings(struct["quota"]) end
-	if struct["apiStages"] then M.AssertListOfApiStage(struct["apiStages"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
+	if struct["productCode"] then asserts.AssertString(struct["productCode"]) end
+	if struct["throttle"] then asserts.AssertThrottleSettings(struct["throttle"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["quota"] then asserts.AssertQuotaSettings(struct["quota"]) end
+	if struct["apiStages"] then asserts.AssertListOfApiStage(struct["apiStages"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(UsagePlan_keys[k], "UsagePlan contains unknown key " .. tostring(k))
+		assert(keys.UsagePlan[k], "UsagePlan contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UsagePlan
 -- <p>Represents a usage plan than can specify who can assess associated API stages with specified request limits and quotas.</p> <div class="remarks"> <p>In a usage plan, you associate an API by specifying the API's Id and a stage name of the specified API. You add plan customers by adding API keys to the plan. </p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
--- @param productCode [String] <p>The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.</p>
--- @param throttle [ThrottleSettings] <p>The request throttle limits of a usage plan.</p>
--- @param description [String] <p>The description of a usage plan.</p>
--- @param quota [QuotaSettings] <p>The maximum number of permitted requests per a given unit time interval.</p>
--- @param apiStages [ListOfApiStage] <p>The associated API stages of a usage plan.</p>
--- @param id [String] <p>The identifier of a <a>UsagePlan</a> resource.</p>
--- @param name [String] <p>The name of a usage plan.</p>
-function M.UsagePlan(productCode, throttle, description, quota, apiStages, id, name, ...)
+-- @param _productCode [String] <p>The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.</p>
+-- @param _throttle [ThrottleSettings] <p>The request throttle limits of a usage plan.</p>
+-- @param _description [String] <p>The description of a usage plan.</p>
+-- @param _quota [QuotaSettings] <p>The maximum number of permitted requests per a given unit time interval.</p>
+-- @param _apiStages [ListOfApiStage] <p>The associated API stages of a usage plan.</p>
+-- @param _id [String] <p>The identifier of a <a>UsagePlan</a> resource.</p>
+-- @param _name [String] <p>The name of a usage plan.</p>
+function M.UsagePlan(_productCode, _throttle, _description, _quota, _apiStages, _id, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsagePlan")
 	local t = { 
-		["productCode"] = productCode,
-		["throttle"] = throttle,
-		["description"] = description,
-		["quota"] = quota,
-		["apiStages"] = apiStages,
-		["id"] = id,
-		["name"] = name,
+		["productCode"] = _productCode,
+		["throttle"] = _throttle,
+		["description"] = _description,
+		["quota"] = _quota,
+		["apiStages"] = _apiStages,
+		["id"] = _id,
+		["name"] = _name,
 	}
-	M.AssertUsagePlan(t)
+	asserts.AssertUsagePlan(t)
 	return t
 end
 
-local CreateRestApiRequest_keys = { "binaryMediaTypes" = true, "version" = true, "name" = true, "cloneFrom" = true, "description" = true, nil }
+keys.CreateRestApiRequest = { ["binaryMediaTypes"] = true, ["version"] = true, ["name"] = true, ["cloneFrom"] = true, ["description"] = true, nil }
 
-function M.AssertCreateRestApiRequest(struct)
+function asserts.AssertCreateRestApiRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateRestApiRequest to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
-	if struct["binaryMediaTypes"] then M.AssertListOfString(struct["binaryMediaTypes"]) end
-	if struct["version"] then M.AssertString(struct["version"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["cloneFrom"] then M.AssertString(struct["cloneFrom"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["binaryMediaTypes"] then asserts.AssertListOfString(struct["binaryMediaTypes"]) end
+	if struct["version"] then asserts.AssertString(struct["version"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["cloneFrom"] then asserts.AssertString(struct["cloneFrom"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateRestApiRequest_keys[k], "CreateRestApiRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateRestApiRequest[k], "CreateRestApiRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateRestApiRequest
 -- <p>The POST Request to add a new <a>RestApi</a> resource to your collection.</p>
--- @param binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
--- @param version [String] <p>A version identifier for the API.</p>
--- @param name [String] <p>The name of the <a>RestApi</a>.</p>
--- @param cloneFrom [String] <p>The ID of the <a>RestApi</a> that you want to clone from.</p>
--- @param description [String] <p>The description of the <a>RestApi</a>.</p>
+-- @param _binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+-- @param _version [String] <p>A version identifier for the API.</p>
+-- @param _name [String] <p>The name of the <a>RestApi</a>.</p>
+-- @param _cloneFrom [String] <p>The ID of the <a>RestApi</a> that you want to clone from.</p>
+-- @param _description [String] <p>The description of the <a>RestApi</a>.</p>
 -- Required parameter: name
-function M.CreateRestApiRequest(binaryMediaTypes, version, name, cloneFrom, description, ...)
+function M.CreateRestApiRequest(_binaryMediaTypes, _version, _name, _cloneFrom, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRestApiRequest")
 	local t = { 
-		["binaryMediaTypes"] = binaryMediaTypes,
-		["version"] = version,
-		["name"] = name,
-		["cloneFrom"] = cloneFrom,
-		["description"] = description,
+		["binaryMediaTypes"] = _binaryMediaTypes,
+		["version"] = _version,
+		["name"] = _name,
+		["cloneFrom"] = _cloneFrom,
+		["description"] = _description,
 	}
-	M.AssertCreateRestApiRequest(t)
+	asserts.AssertCreateRestApiRequest(t)
 	return t
 end
 
-local Stage_keys = { "clientCertificateId" = true, "description" = true, "stageName" = true, "cacheClusterSize" = true, "variables" = true, "cacheClusterEnabled" = true, "documentationVersion" = true, "cacheClusterStatus" = true, "deploymentId" = true, "lastUpdatedDate" = true, "createdDate" = true, "methodSettings" = true, nil }
+keys.Stage = { ["clientCertificateId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, ["documentationVersion"] = true, ["cacheClusterStatus"] = true, ["deploymentId"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["methodSettings"] = true, nil }
 
-function M.AssertStage(struct)
+function asserts.AssertStage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Stage to be of type 'table'")
-	if struct["clientCertificateId"] then M.AssertString(struct["clientCertificateId"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
-	if struct["cacheClusterSize"] then M.AssertCacheClusterSize(struct["cacheClusterSize"]) end
-	if struct["variables"] then M.AssertMapOfStringToString(struct["variables"]) end
-	if struct["cacheClusterEnabled"] then M.AssertBoolean(struct["cacheClusterEnabled"]) end
-	if struct["documentationVersion"] then M.AssertString(struct["documentationVersion"]) end
-	if struct["cacheClusterStatus"] then M.AssertCacheClusterStatus(struct["cacheClusterStatus"]) end
-	if struct["deploymentId"] then M.AssertString(struct["deploymentId"]) end
-	if struct["lastUpdatedDate"] then M.AssertTimestamp(struct["lastUpdatedDate"]) end
-	if struct["createdDate"] then M.AssertTimestamp(struct["createdDate"]) end
-	if struct["methodSettings"] then M.AssertMapOfMethodSettings(struct["methodSettings"]) end
+	if struct["clientCertificateId"] then asserts.AssertString(struct["clientCertificateId"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
+	if struct["cacheClusterSize"] then asserts.AssertCacheClusterSize(struct["cacheClusterSize"]) end
+	if struct["variables"] then asserts.AssertMapOfStringToString(struct["variables"]) end
+	if struct["cacheClusterEnabled"] then asserts.AssertBoolean(struct["cacheClusterEnabled"]) end
+	if struct["documentationVersion"] then asserts.AssertString(struct["documentationVersion"]) end
+	if struct["cacheClusterStatus"] then asserts.AssertCacheClusterStatus(struct["cacheClusterStatus"]) end
+	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
+	if struct["lastUpdatedDate"] then asserts.AssertTimestamp(struct["lastUpdatedDate"]) end
+	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["methodSettings"] then asserts.AssertMapOfMethodSettings(struct["methodSettings"]) end
 	for k,_ in pairs(struct) do
-		assert(Stage_keys[k], "Stage contains unknown key " .. tostring(k))
+		assert(keys.Stage[k], "Stage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Stage
 -- <p>Represents a unique identifier for a version of a deployed <a>RestApi</a> that is callable by users.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a> </div>
--- @param clientCertificateId [String] <p>The identifier of a client certificate for an API stage.</p>
--- @param description [String] <p>The stage's description.</p>
--- @param stageName [String] <p>The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to Amazon API Gateway.</p>
--- @param cacheClusterSize [CacheClusterSize] <p>The size of the cache cluster for the stage, if enabled.</p>
--- @param variables [MapOfStringToString] <p>A map that defines the stage variables for a <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
--- @param cacheClusterEnabled [Boolean] <p>Specifies whether a cache cluster is enabled for the stage.</p>
--- @param documentationVersion [String] <p>The version of the associated API documentation.</p>
--- @param cacheClusterStatus [CacheClusterStatus] <p>The status of the cache cluster for the stage, if enabled.</p>
--- @param deploymentId [String] <p>The identifier of the <a>Deployment</a> that the stage points to.</p>
--- @param lastUpdatedDate [Timestamp] <p>The timestamp when the stage last updated.</p>
--- @param createdDate [Timestamp] <p>The timestamp when the stage was created.</p>
--- @param methodSettings [MapOfMethodSettings] <p>A map that defines the method settings for a <a>Stage</a> resource. Keys (designated as <code>/{method_setting_key</code> below) are method paths defined as <code>{resource_path}/{http_method}</code> for an individual method override, or <code>/\*/\*</code> for overriding all methods in the stage. </p>
-function M.Stage(clientCertificateId, description, stageName, cacheClusterSize, variables, cacheClusterEnabled, documentationVersion, cacheClusterStatus, deploymentId, lastUpdatedDate, createdDate, methodSettings, ...)
+-- @param _clientCertificateId [String] <p>The identifier of a client certificate for an API stage.</p>
+-- @param _description [String] <p>The stage's description.</p>
+-- @param _stageName [String] <p>The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to Amazon API Gateway.</p>
+-- @param _cacheClusterSize [CacheClusterSize] <p>The size of the cache cluster for the stage, if enabled.</p>
+-- @param _variables [MapOfStringToString] <p>A map that defines the stage variables for a <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
+-- @param _cacheClusterEnabled [Boolean] <p>Specifies whether a cache cluster is enabled for the stage.</p>
+-- @param _documentationVersion [String] <p>The version of the associated API documentation.</p>
+-- @param _cacheClusterStatus [CacheClusterStatus] <p>The status of the cache cluster for the stage, if enabled.</p>
+-- @param _deploymentId [String] <p>The identifier of the <a>Deployment</a> that the stage points to.</p>
+-- @param _lastUpdatedDate [Timestamp] <p>The timestamp when the stage last updated.</p>
+-- @param _createdDate [Timestamp] <p>The timestamp when the stage was created.</p>
+-- @param _methodSettings [MapOfMethodSettings] <p>A map that defines the method settings for a <a>Stage</a> resource. Keys (designated as <code>/{method_setting_key</code> below) are method paths defined as <code>{resource_path}/{http_method}</code> for an individual method override, or <code>/\*/\*</code> for overriding all methods in the stage. </p>
+function M.Stage(_clientCertificateId, _description, _stageName, _cacheClusterSize, _variables, _cacheClusterEnabled, _documentationVersion, _cacheClusterStatus, _deploymentId, _lastUpdatedDate, _createdDate, _methodSettings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Stage")
 	local t = { 
-		["clientCertificateId"] = clientCertificateId,
-		["description"] = description,
-		["stageName"] = stageName,
-		["cacheClusterSize"] = cacheClusterSize,
-		["variables"] = variables,
-		["cacheClusterEnabled"] = cacheClusterEnabled,
-		["documentationVersion"] = documentationVersion,
-		["cacheClusterStatus"] = cacheClusterStatus,
-		["deploymentId"] = deploymentId,
-		["lastUpdatedDate"] = lastUpdatedDate,
-		["createdDate"] = createdDate,
-		["methodSettings"] = methodSettings,
+		["clientCertificateId"] = _clientCertificateId,
+		["description"] = _description,
+		["stageName"] = _stageName,
+		["cacheClusterSize"] = _cacheClusterSize,
+		["variables"] = _variables,
+		["cacheClusterEnabled"] = _cacheClusterEnabled,
+		["documentationVersion"] = _documentationVersion,
+		["cacheClusterStatus"] = _cacheClusterStatus,
+		["deploymentId"] = _deploymentId,
+		["lastUpdatedDate"] = _lastUpdatedDate,
+		["createdDate"] = _createdDate,
+		["methodSettings"] = _methodSettings,
 	}
-	M.AssertStage(t)
+	asserts.AssertStage(t)
 	return t
 end
 
-local DocumentationParts_keys = { "position" = true, "items" = true, nil }
+keys.DocumentationParts = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertDocumentationParts(struct)
+function asserts.AssertDocumentationParts(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentationParts to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfDocumentationPart(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfDocumentationPart(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentationParts_keys[k], "DocumentationParts contains unknown key " .. tostring(k))
+		assert(keys.DocumentationParts[k], "DocumentationParts contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentationParts
 -- <p>The collection of documentation parts of an API.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a> </div>
--- @param position [String] <p>The collection of documentation parts of an API.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a> </div>
--- @param items [ListOfDocumentationPart] <p>The current page of <a>DocumentationPart</a> resources in the <a>DocumentationParts</a> collection.</p>
-function M.DocumentationParts(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfDocumentationPart] <p>The current page of <a>DocumentationPart</a> resources in the <a>DocumentationParts</a> collection.</p>
+function M.DocumentationParts(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationParts")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertDocumentationParts(t)
+	asserts.AssertDocumentationParts(t)
 	return t
 end
 
-local GetMethodRequest_keys = { "resourceId" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.GetMethodRequest = { ["resourceId"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertGetMethodRequest(struct)
+function asserts.AssertGetMethodRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetMethodRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(GetMethodRequest_keys[k], "GetMethodRequest contains unknown key " .. tostring(k))
+		assert(keys.GetMethodRequest[k], "GetMethodRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetMethodRequest
 -- <p>Request to describe an existing <a>Method</a> resource.</p>
--- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
--- @param httpMethod [String] <p>Specifies the method request's HTTP method type.</p>
+-- @param _resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
+-- @param _httpMethod [String] <p>Specifies the method request's HTTP method type.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
-function M.GetMethodRequest(resourceId, restApiId, httpMethod, ...)
+function M.GetMethodRequest(_resourceId, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMethodRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertGetMethodRequest(t)
+	asserts.AssertGetMethodRequest(t)
 	return t
 end
 
-local SdkTypes_keys = { "position" = true, "items" = true, nil }
+keys.SdkTypes = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertSdkTypes(struct)
+function asserts.AssertSdkTypes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SdkTypes to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfSdkType(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfSdkType(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(SdkTypes_keys[k], "SdkTypes contains unknown key " .. tostring(k))
+		assert(keys.SdkTypes[k], "SdkTypes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SdkTypes
 -- <p>The collection of <a>SdkType</a> instances.</p>
--- @param position [String] <p>The collection of <a>SdkType</a> instances.</p>
--- @param items [ListOfSdkType] <p>The set of <a>SdkType</a> items that comprise this view of the <a>SdkTypes</a> collection.</p>
-function M.SdkTypes(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfSdkType] <p>The set of <a>SdkType</a> items that comprise this view of the <a>SdkTypes</a> collection.</p>
+function M.SdkTypes(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SdkTypes")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertSdkTypes(t)
+	asserts.AssertSdkTypes(t)
 	return t
 end
 
-local DocumentationVersions_keys = { "position" = true, "items" = true, nil }
+keys.DocumentationVersions = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertDocumentationVersions(struct)
+function asserts.AssertDocumentationVersions(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentationVersions to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfDocumentationVersion(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfDocumentationVersion(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentationVersions_keys[k], "DocumentationVersions contains unknown key " .. tostring(k))
+		assert(keys.DocumentationVersions[k], "DocumentationVersions contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentationVersions
 -- <p>The collection of documentation snapshots of an API. </p> <div class="remarks"><p>Use the <a>DocumentationVersions</a> to manage documentation snapshots associated with various API stages.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersion</a> </div>
--- @param position [String] <p>The collection of documentation snapshots of an API. </p> <div class="remarks"><p>Use the <a>DocumentationVersions</a> to manage documentation snapshots associated with various API stages.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersion</a> </div>
--- @param items [ListOfDocumentationVersion] <p>The current page of <a>DocumentationVersion</a> items from the <a>DocumentationVersions</a> collection of an API.</p>
-function M.DocumentationVersions(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfDocumentationVersion] <p>The current page of <a>DocumentationVersion</a> items from the <a>DocumentationVersions</a> collection of an API.</p>
+function M.DocumentationVersions(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationVersions")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertDocumentationVersions(t)
+	asserts.AssertDocumentationVersions(t)
 	return t
 end
 
-local RestApi_keys = { "description" = true, "warnings" = true, "version" = true, "createdDate" = true, "binaryMediaTypes" = true, "id" = true, "name" = true, nil }
+keys.RestApi = { ["description"] = true, ["warnings"] = true, ["version"] = true, ["createdDate"] = true, ["binaryMediaTypes"] = true, ["id"] = true, ["name"] = true, nil }
 
-function M.AssertRestApi(struct)
+function asserts.AssertRestApi(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RestApi to be of type 'table'")
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["warnings"] then M.AssertListOfString(struct["warnings"]) end
-	if struct["version"] then M.AssertString(struct["version"]) end
-	if struct["createdDate"] then M.AssertTimestamp(struct["createdDate"]) end
-	if struct["binaryMediaTypes"] then M.AssertListOfString(struct["binaryMediaTypes"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["warnings"] then asserts.AssertListOfString(struct["warnings"]) end
+	if struct["version"] then asserts.AssertString(struct["version"]) end
+	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["binaryMediaTypes"] then asserts.AssertListOfString(struct["binaryMediaTypes"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(RestApi_keys[k], "RestApi contains unknown key " .. tostring(k))
+		assert(keys.RestApi[k], "RestApi contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RestApi
 -- <p>Represents a REST API.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
--- @param description [String] <p>The API's description.</p>
--- @param warnings [ListOfString] <p>The warning messages reported when <code>failonwarnings</code> is turned on during API import.</p>
--- @param version [String] <p>A version identifier for the API.</p>
--- @param createdDate [Timestamp] <p>The timestamp when the API was created.</p>
--- @param binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
--- @param id [String] <p>The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.</p>
--- @param name [String] <p>The API's name.</p>
-function M.RestApi(description, warnings, version, createdDate, binaryMediaTypes, id, name, ...)
+-- @param _description [String] <p>The API's description.</p>
+-- @param _warnings [ListOfString] <p>The warning messages reported when <code>failonwarnings</code> is turned on during API import.</p>
+-- @param _version [String] <p>A version identifier for the API.</p>
+-- @param _createdDate [Timestamp] <p>The timestamp when the API was created.</p>
+-- @param _binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+-- @param _id [String] <p>The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.</p>
+-- @param _name [String] <p>The API's name.</p>
+function M.RestApi(_description, _warnings, _version, _createdDate, _binaryMediaTypes, _id, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RestApi")
 	local t = { 
-		["description"] = description,
-		["warnings"] = warnings,
-		["version"] = version,
-		["createdDate"] = createdDate,
-		["binaryMediaTypes"] = binaryMediaTypes,
-		["id"] = id,
-		["name"] = name,
+		["description"] = _description,
+		["warnings"] = _warnings,
+		["version"] = _version,
+		["createdDate"] = _createdDate,
+		["binaryMediaTypes"] = _binaryMediaTypes,
+		["id"] = _id,
+		["name"] = _name,
 	}
-	M.AssertRestApi(t)
+	asserts.AssertRestApi(t)
 	return t
 end
 
-local BasePathMapping_keys = { "basePath" = true, "restApiId" = true, "stage" = true, nil }
+keys.BasePathMapping = { ["basePath"] = true, ["restApiId"] = true, ["stage"] = true, nil }
 
-function M.AssertBasePathMapping(struct)
+function asserts.AssertBasePathMapping(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BasePathMapping to be of type 'table'")
-	if struct["basePath"] then M.AssertString(struct["basePath"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["stage"] then M.AssertString(struct["stage"]) end
+	if struct["basePath"] then asserts.AssertString(struct["basePath"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["stage"] then asserts.AssertString(struct["stage"]) end
 	for k,_ in pairs(struct) do
-		assert(BasePathMapping_keys[k], "BasePathMapping contains unknown key " .. tostring(k))
+		assert(keys.BasePathMapping[k], "BasePathMapping contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BasePathMapping
 -- <p>Represents the base path that callers of the API must provide as part of the URL after the domain name.</p> <div class="remarks">A custom domain name plus a <code>BasePathMapping</code> specification identifies a deployed <a>RestApi</a> in a given stage of the owner <a>Account</a>.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
--- @param basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name.</p>
--- @param restApiId [String] <p>The name of the API.</p>
--- @param stage [String] <p>The name of the API's stage.</p>
-function M.BasePathMapping(basePath, restApiId, stage, ...)
+-- @param _basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name.</p>
+-- @param _restApiId [String] <p>The name of the API.</p>
+-- @param _stage [String] <p>The name of the API's stage.</p>
+function M.BasePathMapping(_basePath, _restApiId, _stage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BasePathMapping")
 	local t = { 
-		["basePath"] = basePath,
-		["restApiId"] = restApiId,
-		["stage"] = stage,
+		["basePath"] = _basePath,
+		["restApiId"] = _restApiId,
+		["stage"] = _stage,
 	}
-	M.AssertBasePathMapping(t)
+	asserts.AssertBasePathMapping(t)
 	return t
 end
 
-local TooManyRequestsException_keys = { "message" = true, "retryAfterSeconds" = true, nil }
+keys.TooManyRequestsException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
 
-function M.AssertTooManyRequestsException(struct)
+function asserts.AssertTooManyRequestsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyRequestsException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["retryAfterSeconds"] then M.AssertString(struct["retryAfterSeconds"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["retryAfterSeconds"] then asserts.AssertString(struct["retryAfterSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(TooManyRequestsException_keys[k], "TooManyRequestsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyRequestsException[k], "TooManyRequestsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TooManyRequestsException
 --  
--- @param message [String]  
--- @param retryAfterSeconds [String]  
-function M.TooManyRequestsException(message, retryAfterSeconds, ...)
+-- @param _message [String] 
+-- @param _retryAfterSeconds [String] 
+function M.TooManyRequestsException(_message, _retryAfterSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
-		["message"] = message,
-		["retryAfterSeconds"] = retryAfterSeconds,
+		["message"] = _message,
+		["retryAfterSeconds"] = _retryAfterSeconds,
 	}
-	M.AssertTooManyRequestsException(t)
+	asserts.AssertTooManyRequestsException(t)
 	return t
 end
 
-local GetDocumentationPartsRequest_keys = { "restApiId" = true, "nameQuery" = true, "limit" = true, "path" = true, "position" = true, "type" = true, nil }
+keys.GetDocumentationPartsRequest = { ["restApiId"] = true, ["nameQuery"] = true, ["limit"] = true, ["path"] = true, ["position"] = true, ["type"] = true, nil }
 
-function M.AssertGetDocumentationPartsRequest(struct)
+function asserts.AssertGetDocumentationPartsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentationPartsRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["nameQuery"] then M.AssertString(struct["nameQuery"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
-	if struct["path"] then M.AssertString(struct["path"]) end
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["type"] then M.AssertDocumentationPartType(struct["type"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["nameQuery"] then asserts.AssertString(struct["nameQuery"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	if struct["path"] then asserts.AssertString(struct["path"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["type"] then asserts.AssertDocumentationPartType(struct["type"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentationPartsRequest_keys[k], "GetDocumentationPartsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentationPartsRequest[k], "GetDocumentationPartsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentationPartsRequest
 -- <p>Gets the documentation parts of an API. The result may be filtered by the type, name, or path of API entities (targets).</p>
--- @param restApiId [String] <p>[Required] The identifier of the API of the to-be-retrieved documentation parts.</p>
--- @param nameQuery [String] <p>The name of API entities of the to-be-retrieved documentation parts.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
--- @param path [String] <p>The path of API entities of the to-be-retrieved documentation parts.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param type [DocumentationPartType] <p>The type of API entities of the to-be-retrieved documentation parts. </p>
+-- @param _restApiId [String] <p>[Required] The identifier of the API of the to-be-retrieved documentation parts.</p>
+-- @param _nameQuery [String] <p>The name of API entities of the to-be-retrieved documentation parts.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- @param _path [String] <p>The path of API entities of the to-be-retrieved documentation parts.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _type [DocumentationPartType] <p>The type of API entities of the to-be-retrieved documentation parts. </p>
 -- Required parameter: restApiId
-function M.GetDocumentationPartsRequest(restApiId, nameQuery, limit, path, position, type, ...)
+function M.GetDocumentationPartsRequest(_restApiId, _nameQuery, _limit, _path, _position, _type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentationPartsRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["nameQuery"] = nameQuery,
-		["limit"] = limit,
-		["path"] = path,
-		["position"] = position,
-		["type"] = type,
+		["restApiId"] = _restApiId,
+		["nameQuery"] = _nameQuery,
+		["limit"] = _limit,
+		["path"] = _path,
+		["position"] = _position,
+		["type"] = _type,
 	}
-	M.AssertGetDocumentationPartsRequest(t)
+	asserts.AssertGetDocumentationPartsRequest(t)
 	return t
 end
 
-local CreateUsagePlanRequest_keys = { "throttle" = true, "quota" = true, "apiStages" = true, "name" = true, "description" = true, nil }
+keys.CreateUsagePlanRequest = { ["throttle"] = true, ["quota"] = true, ["apiStages"] = true, ["name"] = true, ["description"] = true, nil }
 
-function M.AssertCreateUsagePlanRequest(struct)
+function asserts.AssertCreateUsagePlanRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUsagePlanRequest to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
-	if struct["throttle"] then M.AssertThrottleSettings(struct["throttle"]) end
-	if struct["quota"] then M.AssertQuotaSettings(struct["quota"]) end
-	if struct["apiStages"] then M.AssertListOfApiStage(struct["apiStages"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["throttle"] then asserts.AssertThrottleSettings(struct["throttle"]) end
+	if struct["quota"] then asserts.AssertQuotaSettings(struct["quota"]) end
+	if struct["apiStages"] then asserts.AssertListOfApiStage(struct["apiStages"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUsagePlanRequest_keys[k], "CreateUsagePlanRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateUsagePlanRequest[k], "CreateUsagePlanRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUsagePlanRequest
 -- <p>The POST request to create a usage plan with the name, description, throttle limits and quota limits, as well as the associated API stages, specified in the payload.</p>
--- @param throttle [ThrottleSettings] <p>The throttling limits of the usage plan.</p>
--- @param quota [QuotaSettings] <p>The quota of the usage plan.</p>
--- @param apiStages [ListOfApiStage] <p>The associated API stages of the usage plan.</p>
--- @param name [String] <p>The name of the usage plan.</p>
--- @param description [String] <p>The description of the usage plan.</p>
+-- @param _throttle [ThrottleSettings] <p>The throttling limits of the usage plan.</p>
+-- @param _quota [QuotaSettings] <p>The quota of the usage plan.</p>
+-- @param _apiStages [ListOfApiStage] <p>The associated API stages of the usage plan.</p>
+-- @param _name [String] <p>The name of the usage plan.</p>
+-- @param _description [String] <p>The description of the usage plan.</p>
 -- Required parameter: name
-function M.CreateUsagePlanRequest(throttle, quota, apiStages, name, description, ...)
+function M.CreateUsagePlanRequest(_throttle, _quota, _apiStages, _name, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUsagePlanRequest")
 	local t = { 
-		["throttle"] = throttle,
-		["quota"] = quota,
-		["apiStages"] = apiStages,
-		["name"] = name,
-		["description"] = description,
+		["throttle"] = _throttle,
+		["quota"] = _quota,
+		["apiStages"] = _apiStages,
+		["name"] = _name,
+		["description"] = _description,
 	}
-	M.AssertCreateUsagePlanRequest(t)
+	asserts.AssertCreateUsagePlanRequest(t)
 	return t
 end
 
-local QuotaSettings_keys = { "limit" = true, "period" = true, "offset" = true, nil }
+keys.QuotaSettings = { ["limit"] = true, ["period"] = true, ["offset"] = true, nil }
 
-function M.AssertQuotaSettings(struct)
+function asserts.AssertQuotaSettings(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected QuotaSettings to be of type 'table'")
-	if struct["limit"] then M.AssertInteger(struct["limit"]) end
-	if struct["period"] then M.AssertQuotaPeriodType(struct["period"]) end
-	if struct["offset"] then M.AssertInteger(struct["offset"]) end
+	if struct["limit"] then asserts.AssertInteger(struct["limit"]) end
+	if struct["period"] then asserts.AssertQuotaPeriodType(struct["period"]) end
+	if struct["offset"] then asserts.AssertInteger(struct["offset"]) end
 	for k,_ in pairs(struct) do
-		assert(QuotaSettings_keys[k], "QuotaSettings contains unknown key " .. tostring(k))
+		assert(keys.QuotaSettings[k], "QuotaSettings contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type QuotaSettings
 -- <p>Quotas configured for a usage plan.</p>
--- @param limit [Integer] <p>The maximum number of requests that can be made in a given time period.</p>
--- @param period [QuotaPeriodType] <p>The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".</p>
--- @param offset [Integer] <p>The number of requests subtracted from the given limit in the initial time period.</p>
-function M.QuotaSettings(limit, period, offset, ...)
+-- @param _limit [Integer] <p>The maximum number of requests that can be made in a given time period.</p>
+-- @param _period [QuotaPeriodType] <p>The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".</p>
+-- @param _offset [Integer] <p>The number of requests subtracted from the given limit in the initial time period.</p>
+function M.QuotaSettings(_limit, _period, _offset, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QuotaSettings")
 	local t = { 
-		["limit"] = limit,
-		["period"] = period,
-		["offset"] = offset,
+		["limit"] = _limit,
+		["period"] = _period,
+		["offset"] = _offset,
 	}
-	M.AssertQuotaSettings(t)
+	asserts.AssertQuotaSettings(t)
 	return t
 end
 
-local Stages_keys = { "item" = true, nil }
+keys.Stages = { ["item"] = true, nil }
 
-function M.AssertStages(struct)
+function asserts.AssertStages(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Stages to be of type 'table'")
-	if struct["item"] then M.AssertListOfStage(struct["item"]) end
+	if struct["item"] then asserts.AssertListOfStage(struct["item"]) end
 	for k,_ in pairs(struct) do
-		assert(Stages_keys[k], "Stages contains unknown key " .. tostring(k))
+		assert(keys.Stages[k], "Stages contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Stages
 -- <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html">Deploying API in Stages</a></div>
--- @param item [ListOfStage] <p>An individual <a>Stage</a> resource.</p>
-function M.Stages(item, ...)
+-- @param _item [ListOfStage] <p>An individual <a>Stage</a> resource.</p>
+function M.Stages(_item, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Stages")
 	local t = { 
-		["item"] = item,
+		["item"] = _item,
 	}
-	M.AssertStages(t)
+	asserts.AssertStages(t)
 	return t
 end
 
-local GetDeploymentRequest_keys = { "deploymentId" = true, "restApiId" = true, "embed" = true, nil }
+keys.GetDeploymentRequest = { ["deploymentId"] = true, ["restApiId"] = true, ["embed"] = true, nil }
 
-function M.AssertGetDeploymentRequest(struct)
+function asserts.AssertGetDeploymentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeploymentRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["deploymentId"], "Expected key deploymentId to exist in table")
-	if struct["deploymentId"] then M.AssertString(struct["deploymentId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["embed"] then M.AssertListOfString(struct["embed"]) end
+	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["embed"] then asserts.AssertListOfString(struct["embed"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeploymentRequest_keys[k], "GetDeploymentRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDeploymentRequest[k], "GetDeploymentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeploymentRequest
 -- <p>Requests Amazon API Gateway to get information about a <a>Deployment</a> resource.</p>
--- @param deploymentId [String] <p>The identifier of the <a>Deployment</a> resource to get information about.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to get information about.</p>
--- @param embed [ListOfString] <p>A query parameter to retrieve the specified embedded resources of the returned <a>Deployment</a> resource in the response. In a REST API call, this <code>embed</code> parameter value is a list of comma-separated strings, as in <code>GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=var1,var2</code>. The SDK and other platform-dependent libraries might use a different format for the list. Currently, this request supports only retrieval of the embedded API summary this way. Hence, the parameter value must be a single-valued list containing only the <code>"apisummary"</code> string. For example, <code>GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary</code>.</p>
+-- @param _deploymentId [String] <p>The identifier of the <a>Deployment</a> resource to get information about.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to get information about.</p>
+-- @param _embed [ListOfString] <p>A query parameter to retrieve the specified embedded resources of the returned <a>Deployment</a> resource in the response. In a REST API call, this <code>embed</code> parameter value is a list of comma-separated strings, as in <code>GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=var1,var2</code>. The SDK and other platform-dependent libraries might use a different format for the list. Currently, this request supports only retrieval of the embedded API summary this way. Hence, the parameter value must be a single-valued list containing only the <code>"apisummary"</code> string. For example, <code>GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary</code>.</p>
 -- Required parameter: restApiId
 -- Required parameter: deploymentId
-function M.GetDeploymentRequest(deploymentId, restApiId, embed, ...)
+function M.GetDeploymentRequest(_deploymentId, _restApiId, _embed, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentRequest")
 	local t = { 
-		["deploymentId"] = deploymentId,
-		["restApiId"] = restApiId,
-		["embed"] = embed,
+		["deploymentId"] = _deploymentId,
+		["restApiId"] = _restApiId,
+		["embed"] = _embed,
 	}
-	M.AssertGetDeploymentRequest(t)
+	asserts.AssertGetDeploymentRequest(t)
 	return t
 end
 
-local CreateDomainNameRequest_keys = { "certificateArn" = true, "certificateName" = true, "domainName" = true, "certificateChain" = true, "certificatePrivateKey" = true, "certificateBody" = true, nil }
+keys.CreateDomainNameRequest = { ["certificateArn"] = true, ["certificateName"] = true, ["domainName"] = true, ["certificateChain"] = true, ["certificatePrivateKey"] = true, ["certificateBody"] = true, nil }
 
-function M.AssertCreateDomainNameRequest(struct)
+function asserts.AssertCreateDomainNameRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDomainNameRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
-	if struct["certificateArn"] then M.AssertString(struct["certificateArn"]) end
-	if struct["certificateName"] then M.AssertString(struct["certificateName"]) end
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
-	if struct["certificateChain"] then M.AssertString(struct["certificateChain"]) end
-	if struct["certificatePrivateKey"] then M.AssertString(struct["certificatePrivateKey"]) end
-	if struct["certificateBody"] then M.AssertString(struct["certificateBody"]) end
+	if struct["certificateArn"] then asserts.AssertString(struct["certificateArn"]) end
+	if struct["certificateName"] then asserts.AssertString(struct["certificateName"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
+	if struct["certificateChain"] then asserts.AssertString(struct["certificateChain"]) end
+	if struct["certificatePrivateKey"] then asserts.AssertString(struct["certificatePrivateKey"]) end
+	if struct["certificateBody"] then asserts.AssertString(struct["certificateBody"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDomainNameRequest_keys[k], "CreateDomainNameRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDomainNameRequest[k], "CreateDomainNameRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDomainNameRequest
 -- <p>A request to create a new domain name.</p>
--- @param certificateArn [String] <p>The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.</p>
--- @param certificateName [String] <p>The user-friendly name of the certificate.</p>
--- @param domainName [String] <p>(Required) The name of the <a>DomainName</a> resource.</p>
--- @param certificateChain [String] <p>[Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.</p>
--- @param certificatePrivateKey [String] <p>[Deprecated] Your certificate's private key.</p>
--- @param certificateBody [String] <p>[Deprecated] The body of the server certificate provided by your certificate authority.</p>
+-- @param _certificateArn [String] <p>The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.</p>
+-- @param _certificateName [String] <p>The user-friendly name of the certificate.</p>
+-- @param _domainName [String] <p>(Required) The name of the <a>DomainName</a> resource.</p>
+-- @param _certificateChain [String] <p>[Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.</p>
+-- @param _certificatePrivateKey [String] <p>[Deprecated] Your certificate's private key.</p>
+-- @param _certificateBody [String] <p>[Deprecated] The body of the server certificate provided by your certificate authority.</p>
 -- Required parameter: domainName
-function M.CreateDomainNameRequest(certificateArn, certificateName, domainName, certificateChain, certificatePrivateKey, certificateBody, ...)
+function M.CreateDomainNameRequest(_certificateArn, _certificateName, _domainName, _certificateChain, _certificatePrivateKey, _certificateBody, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainNameRequest")
 	local t = { 
-		["certificateArn"] = certificateArn,
-		["certificateName"] = certificateName,
-		["domainName"] = domainName,
-		["certificateChain"] = certificateChain,
-		["certificatePrivateKey"] = certificatePrivateKey,
-		["certificateBody"] = certificateBody,
+		["certificateArn"] = _certificateArn,
+		["certificateName"] = _certificateName,
+		["domainName"] = _domainName,
+		["certificateChain"] = _certificateChain,
+		["certificatePrivateKey"] = _certificatePrivateKey,
+		["certificateBody"] = _certificateBody,
 	}
-	M.AssertCreateDomainNameRequest(t)
+	asserts.AssertCreateDomainNameRequest(t)
 	return t
 end
 
-local DeleteApiKeyRequest_keys = { "apiKey" = true, nil }
+keys.DeleteApiKeyRequest = { ["apiKey"] = true, nil }
 
-function M.AssertDeleteApiKeyRequest(struct)
+function asserts.AssertDeleteApiKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteApiKeyRequest to be of type 'table'")
 	assert(struct["apiKey"], "Expected key apiKey to exist in table")
-	if struct["apiKey"] then M.AssertString(struct["apiKey"]) end
+	if struct["apiKey"] then asserts.AssertString(struct["apiKey"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteApiKeyRequest_keys[k], "DeleteApiKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteApiKeyRequest[k], "DeleteApiKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteApiKeyRequest
 -- <p>A request to delete the <a>ApiKey</a> resource.</p>
--- @param apiKey [String] <p>The identifier of the <a>ApiKey</a> resource to be deleted.</p>
+-- @param _apiKey [String] <p>The identifier of the <a>ApiKey</a> resource to be deleted.</p>
 -- Required parameter: apiKey
-function M.DeleteApiKeyRequest(apiKey, ...)
+function M.DeleteApiKeyRequest(_apiKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApiKeyRequest")
 	local t = { 
-		["apiKey"] = apiKey,
+		["apiKey"] = _apiKey,
 	}
-	M.AssertDeleteApiKeyRequest(t)
+	asserts.AssertDeleteApiKeyRequest(t)
 	return t
 end
 
-local DocumentationPartIds_keys = { "ids" = true, "warnings" = true, nil }
+keys.DocumentationPartIds = { ["ids"] = true, ["warnings"] = true, nil }
 
-function M.AssertDocumentationPartIds(struct)
+function asserts.AssertDocumentationPartIds(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentationPartIds to be of type 'table'")
-	if struct["ids"] then M.AssertListOfString(struct["ids"]) end
-	if struct["warnings"] then M.AssertListOfString(struct["warnings"]) end
+	if struct["ids"] then asserts.AssertListOfString(struct["ids"]) end
+	if struct["warnings"] then asserts.AssertListOfString(struct["warnings"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentationPartIds_keys[k], "DocumentationPartIds contains unknown key " .. tostring(k))
+		assert(keys.DocumentationPartIds[k], "DocumentationPartIds contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentationPartIds
 -- <p>A collection of the imported <a>DocumentationPart</a> identifiers.</p> <div class="remarks">This is used to return the result when documentation parts in an external (e.g., Swagger) file are imported into Amazon API Gateway</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a href="http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/">documentationpart:import</a>, <a>DocumentationPart</a> </div>
--- @param ids [ListOfString] <p>A list of the returned documentation part identifiers.</p>
--- @param warnings [ListOfString] <p>A list of warning messages reported during import of documentation parts.</p>
-function M.DocumentationPartIds(ids, warnings, ...)
+-- @param _ids [ListOfString] <p>A list of the returned documentation part identifiers.</p>
+-- @param _warnings [ListOfString] <p>A list of warning messages reported during import of documentation parts.</p>
+function M.DocumentationPartIds(_ids, _warnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationPartIds")
 	local t = { 
-		["ids"] = ids,
-		["warnings"] = warnings,
+		["ids"] = _ids,
+		["warnings"] = _warnings,
 	}
-	M.AssertDocumentationPartIds(t)
+	asserts.AssertDocumentationPartIds(t)
 	return t
 end
 
-local GetApiKeysRequest_keys = { "position" = true, "nameQuery" = true, "includeValues" = true, "limit" = true, "customerId" = true, nil }
+keys.GetApiKeysRequest = { ["position"] = true, ["nameQuery"] = true, ["includeValues"] = true, ["limit"] = true, ["customerId"] = true, nil }
 
-function M.AssertGetApiKeysRequest(struct)
+function asserts.AssertGetApiKeysRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetApiKeysRequest to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["nameQuery"] then M.AssertString(struct["nameQuery"]) end
-	if struct["includeValues"] then M.AssertNullableBoolean(struct["includeValues"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
-	if struct["customerId"] then M.AssertString(struct["customerId"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["nameQuery"] then asserts.AssertString(struct["nameQuery"]) end
+	if struct["includeValues"] then asserts.AssertNullableBoolean(struct["includeValues"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	if struct["customerId"] then asserts.AssertString(struct["customerId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetApiKeysRequest_keys[k], "GetApiKeysRequest contains unknown key " .. tostring(k))
+		assert(keys.GetApiKeysRequest[k], "GetApiKeysRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetApiKeysRequest
 -- <p>A request to get information about the current <a>ApiKeys</a> resource.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param nameQuery [String] <p>The name of queried API keys.</p>
--- @param includeValues [NullableBoolean] <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains key values.</p>
--- @param limit [NullableInteger] <p>The maximum number of <a>ApiKeys</a> to get information about.</p>
--- @param customerId [String] <p>The identifier of a customer in AWS Marketplace or an external system, such as a developer portal.</p>
-function M.GetApiKeysRequest(position, nameQuery, includeValues, limit, customerId, ...)
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _nameQuery [String] <p>The name of queried API keys.</p>
+-- @param _includeValues [NullableBoolean] <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains key values.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of <a>ApiKeys</a> to get information about.</p>
+-- @param _customerId [String] <p>The identifier of a customer in AWS Marketplace or an external system, such as a developer portal.</p>
+function M.GetApiKeysRequest(_position, _nameQuery, _includeValues, _limit, _customerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetApiKeysRequest")
 	local t = { 
-		["position"] = position,
-		["nameQuery"] = nameQuery,
-		["includeValues"] = includeValues,
-		["limit"] = limit,
-		["customerId"] = customerId,
+		["position"] = _position,
+		["nameQuery"] = _nameQuery,
+		["includeValues"] = _includeValues,
+		["limit"] = _limit,
+		["customerId"] = _customerId,
 	}
-	M.AssertGetApiKeysRequest(t)
+	asserts.AssertGetApiKeysRequest(t)
 	return t
 end
 
-local DeleteMethodRequest_keys = { "resourceId" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.DeleteMethodRequest = { ["resourceId"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertDeleteMethodRequest(struct)
+function asserts.AssertDeleteMethodRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteMethodRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteMethodRequest_keys[k], "DeleteMethodRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteMethodRequest[k], "DeleteMethodRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteMethodRequest
 -- <p>Request to delete an existing <a>Method</a> resource.</p>
--- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
--- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- @param _resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
+-- @param _httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
-function M.DeleteMethodRequest(resourceId, restApiId, httpMethod, ...)
+function M.DeleteMethodRequest(_resourceId, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMethodRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertDeleteMethodRequest(t)
+	asserts.AssertDeleteMethodRequest(t)
 	return t
 end
 
-local DeleteDocumentationVersionRequest_keys = { "restApiId" = true, "documentationVersion" = true, nil }
+keys.DeleteDocumentationVersionRequest = { ["restApiId"] = true, ["documentationVersion"] = true, nil }
 
-function M.AssertDeleteDocumentationVersionRequest(struct)
+function asserts.AssertDeleteDocumentationVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDocumentationVersionRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["documentationVersion"], "Expected key documentationVersion to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["documentationVersion"] then M.AssertString(struct["documentationVersion"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["documentationVersion"] then asserts.AssertString(struct["documentationVersion"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDocumentationVersionRequest_keys[k], "DeleteDocumentationVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteDocumentationVersionRequest[k], "DeleteDocumentationVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDocumentationVersionRequest
 -- <p>Deletes an existing documentation version of an API.</p>
--- @param restApiId [String] <p>[Required] The identifier of an API of a to-be-deleted documentation snapshot.</p>
--- @param documentationVersion [String] <p>[Required] The version identifier of a to-be-deleted documentation snapshot.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of an API of a to-be-deleted documentation snapshot.</p>
+-- @param _documentationVersion [String] <p>[Required] The version identifier of a to-be-deleted documentation snapshot.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationVersion
-function M.DeleteDocumentationVersionRequest(restApiId, documentationVersion, ...)
+function M.DeleteDocumentationVersionRequest(_restApiId, _documentationVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDocumentationVersionRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["documentationVersion"] = documentationVersion,
+		["restApiId"] = _restApiId,
+		["documentationVersion"] = _documentationVersion,
 	}
-	M.AssertDeleteDocumentationVersionRequest(t)
+	asserts.AssertDeleteDocumentationVersionRequest(t)
 	return t
 end
 
-local GetUsagePlanRequest_keys = { "usagePlanId" = true, nil }
+keys.GetUsagePlanRequest = { ["usagePlanId"] = true, nil }
 
-function M.AssertGetUsagePlanRequest(struct)
+function asserts.AssertGetUsagePlanRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUsagePlanRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUsagePlanRequest_keys[k], "GetUsagePlanRequest contains unknown key " .. tostring(k))
+		assert(keys.GetUsagePlanRequest[k], "GetUsagePlanRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUsagePlanRequest
 -- <p>The GET request to get a usage plan of a given plan identifier.</p>
--- @param usagePlanId [String] <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
+-- @param _usagePlanId [String] <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
 -- Required parameter: usagePlanId
-function M.GetUsagePlanRequest(usagePlanId, ...)
+function M.GetUsagePlanRequest(_usagePlanId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUsagePlanRequest")
 	local t = { 
-		["usagePlanId"] = usagePlanId,
+		["usagePlanId"] = _usagePlanId,
 	}
-	M.AssertGetUsagePlanRequest(t)
+	asserts.AssertGetUsagePlanRequest(t)
 	return t
 end
 
-local UsagePlans_keys = { "position" = true, "items" = true, nil }
+keys.UsagePlans = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertUsagePlans(struct)
+function asserts.AssertUsagePlans(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UsagePlans to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfUsagePlan(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfUsagePlan(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(UsagePlans_keys[k], "UsagePlans contains unknown key " .. tostring(k))
+		assert(keys.UsagePlans[k], "UsagePlans contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UsagePlans
 -- <p>Represents a collection of usage plans for an AWS account.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
--- @param position [String] <p>Represents a collection of usage plans for an AWS account.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
--- @param items [ListOfUsagePlan] <p>Gets the current item when enumerating the collection of <a>UsagePlan</a>.</p>
-function M.UsagePlans(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfUsagePlan] <p>Gets the current item when enumerating the collection of <a>UsagePlan</a>.</p>
+function M.UsagePlans(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsagePlans")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertUsagePlans(t)
+	asserts.AssertUsagePlans(t)
 	return t
 end
 
-local UpdateUsagePlanRequest_keys = { "usagePlanId" = true, "patchOperations" = true, nil }
+keys.UpdateUsagePlanRequest = { ["usagePlanId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateUsagePlanRequest(struct)
+function asserts.AssertUpdateUsagePlanRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUsagePlanRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUsagePlanRequest_keys[k], "UpdateUsagePlanRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateUsagePlanRequest[k], "UpdateUsagePlanRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUsagePlanRequest
 -- <p>The PATCH request to update a usage plan of a given plan Id.</p>
--- @param usagePlanId [String] <p>The Id of the to-be-updated usage plan.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _usagePlanId [String] <p>The Id of the to-be-updated usage plan.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: usagePlanId
-function M.UpdateUsagePlanRequest(usagePlanId, patchOperations, ...)
+function M.UpdateUsagePlanRequest(_usagePlanId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUsagePlanRequest")
 	local t = { 
-		["usagePlanId"] = usagePlanId,
-		["patchOperations"] = patchOperations,
+		["usagePlanId"] = _usagePlanId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateUsagePlanRequest(t)
+	asserts.AssertUpdateUsagePlanRequest(t)
 	return t
 end
 
-local GetDocumentationPartRequest_keys = { "documentationPartId" = true, "restApiId" = true, nil }
+keys.GetDocumentationPartRequest = { ["documentationPartId"] = true, ["restApiId"] = true, nil }
 
-function M.AssertGetDocumentationPartRequest(struct)
+function asserts.AssertGetDocumentationPartRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentationPartRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["documentationPartId"], "Expected key documentationPartId to exist in table")
-	if struct["documentationPartId"] then M.AssertString(struct["documentationPartId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["documentationPartId"] then asserts.AssertString(struct["documentationPartId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentationPartRequest_keys[k], "GetDocumentationPartRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentationPartRequest[k], "GetDocumentationPartRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentationPartRequest
 -- <p>Gets a specified documentation part of a given API.</p>
--- @param documentationPartId [String] <p>[Required] The identifier of the to-be-retrieved documentation part.</p>
--- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-retrieved documentation part.</p>
+-- @param _documentationPartId [String] <p>[Required] The identifier of the to-be-retrieved documentation part.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of an API of the to-be-retrieved documentation part.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationPartId
-function M.GetDocumentationPartRequest(documentationPartId, restApiId, ...)
+function M.GetDocumentationPartRequest(_documentationPartId, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentationPartRequest")
 	local t = { 
-		["documentationPartId"] = documentationPartId,
-		["restApiId"] = restApiId,
+		["documentationPartId"] = _documentationPartId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertGetDocumentationPartRequest(t)
+	asserts.AssertGetDocumentationPartRequest(t)
 	return t
 end
 
-local UpdateAccountRequest_keys = { "patchOperations" = true, nil }
+keys.UpdateAccountRequest = { ["patchOperations"] = true, nil }
 
-function M.AssertUpdateAccountRequest(struct)
+function asserts.AssertUpdateAccountRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateAccountRequest to be of type 'table'")
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateAccountRequest_keys[k], "UpdateAccountRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateAccountRequest[k], "UpdateAccountRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateAccountRequest
 -- <p>Requests Amazon API Gateway to change information about the current <a>Account</a> resource.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
-function M.UpdateAccountRequest(patchOperations, ...)
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+function M.UpdateAccountRequest(_patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAccountRequest")
 	local t = { 
-		["patchOperations"] = patchOperations,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateAccountRequest(t)
+	asserts.AssertUpdateAccountRequest(t)
 	return t
 end
 
-local GetRestApiRequest_keys = { "restApiId" = true, nil }
+keys.GetRestApiRequest = { ["restApiId"] = true, nil }
 
-function M.AssertGetRestApiRequest(struct)
+function asserts.AssertGetRestApiRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetRestApiRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetRestApiRequest_keys[k], "GetRestApiRequest contains unknown key " .. tostring(k))
+		assert(keys.GetRestApiRequest[k], "GetRestApiRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetRestApiRequest
 -- <p>The GET request to list an existing <a>RestApi</a> defined for your collection. </p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> resource.</p>
 -- Required parameter: restApiId
-function M.GetRestApiRequest(restApiId, ...)
+function M.GetRestApiRequest(_restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRestApiRequest")
 	local t = { 
-		["restApiId"] = restApiId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertGetRestApiRequest(t)
+	asserts.AssertGetRestApiRequest(t)
 	return t
 end
 
-local GetSdkTypesRequest_keys = { "position" = true, "limit" = true, nil }
+keys.GetSdkTypesRequest = { ["position"] = true, ["limit"] = true, nil }
 
-function M.AssertGetSdkTypesRequest(struct)
+function asserts.AssertGetSdkTypesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSdkTypesRequest to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSdkTypesRequest_keys[k], "GetSdkTypesRequest contains unknown key " .. tostring(k))
+		assert(keys.GetSdkTypesRequest[k], "GetSdkTypesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSdkTypesRequest
 -- <p>Get the <a>SdkTypes</a> collection.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
-function M.GetSdkTypesRequest(position, limit, ...)
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+function M.GetSdkTypesRequest(_position, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSdkTypesRequest")
 	local t = { 
-		["position"] = position,
-		["limit"] = limit,
+		["position"] = _position,
+		["limit"] = _limit,
 	}
-	M.AssertGetSdkTypesRequest(t)
+	asserts.AssertGetSdkTypesRequest(t)
 	return t
 end
 
-local GetAccountRequest_keys = { nil }
+keys.GetAccountRequest = { nil }
 
-function M.AssertGetAccountRequest(struct)
+function asserts.AssertGetAccountRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAccountRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(GetAccountRequest_keys[k], "GetAccountRequest contains unknown key " .. tostring(k))
+		assert(keys.GetAccountRequest[k], "GetAccountRequest contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2688,3606 +2691,3604 @@ function M.GetAccountRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountRequest")
 	local t = { 
 	}
-	M.AssertGetAccountRequest(t)
+	asserts.AssertGetAccountRequest(t)
 	return t
 end
 
-local GetUsagePlanKeyRequest_keys = { "keyId" = true, "usagePlanId" = true, nil }
+keys.GetUsagePlanKeyRequest = { ["keyId"] = true, ["usagePlanId"] = true, nil }
 
-function M.AssertGetUsagePlanKeyRequest(struct)
+function asserts.AssertGetUsagePlanKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUsagePlanKeyRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
 	assert(struct["keyId"], "Expected key keyId to exist in table")
-	if struct["keyId"] then M.AssertString(struct["keyId"]) end
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
+	if struct["keyId"] then asserts.AssertString(struct["keyId"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUsagePlanKeyRequest_keys[k], "GetUsagePlanKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.GetUsagePlanKeyRequest[k], "GetUsagePlanKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUsagePlanKeyRequest
 -- <p>The GET request to get a usage plan key of a given key identifier.</p>
--- @param keyId [String] <p>The key Id of the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
--- @param usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- @param _keyId [String] <p>The key Id of the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- @param _usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: keyId
-function M.GetUsagePlanKeyRequest(keyId, usagePlanId, ...)
+function M.GetUsagePlanKeyRequest(_keyId, _usagePlanId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUsagePlanKeyRequest")
 	local t = { 
-		["keyId"] = keyId,
-		["usagePlanId"] = usagePlanId,
+		["keyId"] = _keyId,
+		["usagePlanId"] = _usagePlanId,
 	}
-	M.AssertGetUsagePlanKeyRequest(t)
+	asserts.AssertGetUsagePlanKeyRequest(t)
 	return t
 end
 
-local DeleteRequestValidatorRequest_keys = { "requestValidatorId" = true, "restApiId" = true, nil }
+keys.DeleteRequestValidatorRequest = { ["requestValidatorId"] = true, ["restApiId"] = true, nil }
 
-function M.AssertDeleteRequestValidatorRequest(struct)
+function asserts.AssertDeleteRequestValidatorRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteRequestValidatorRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["requestValidatorId"], "Expected key requestValidatorId to exist in table")
-	if struct["requestValidatorId"] then M.AssertString(struct["requestValidatorId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["requestValidatorId"] then asserts.AssertString(struct["requestValidatorId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteRequestValidatorRequest_keys[k], "DeleteRequestValidatorRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteRequestValidatorRequest[k], "DeleteRequestValidatorRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteRequestValidatorRequest
 -- <p>Deletes a specified <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
--- @param requestValidatorId [String] <p>[Required] The identifier of the <a>RequestValidator</a> to be deleted.</p>
--- @param restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> from which the given <a>RequestValidator</a> is deleted.</p>
+-- @param _requestValidatorId [String] <p>[Required] The identifier of the <a>RequestValidator</a> to be deleted.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> from which the given <a>RequestValidator</a> is deleted.</p>
 -- Required parameter: restApiId
 -- Required parameter: requestValidatorId
-function M.DeleteRequestValidatorRequest(requestValidatorId, restApiId, ...)
+function M.DeleteRequestValidatorRequest(_requestValidatorId, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRequestValidatorRequest")
 	local t = { 
-		["requestValidatorId"] = requestValidatorId,
-		["restApiId"] = restApiId,
+		["requestValidatorId"] = _requestValidatorId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertDeleteRequestValidatorRequest(t)
+	asserts.AssertDeleteRequestValidatorRequest(t)
 	return t
 end
 
-local BasePathMappings_keys = { "position" = true, "items" = true, nil }
+keys.BasePathMappings = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertBasePathMappings(struct)
+function asserts.AssertBasePathMappings(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BasePathMappings to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfBasePathMapping(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfBasePathMapping(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(BasePathMappings_keys[k], "BasePathMappings contains unknown key " .. tostring(k))
+		assert(keys.BasePathMappings[k], "BasePathMappings contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BasePathMappings
 -- <p>Represents a collection of <a>BasePathMapping</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
--- @param position [String] <p>Represents a collection of <a>BasePathMapping</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
--- @param items [ListOfBasePathMapping] <p>The current page of any <a>BasePathMapping</a> resources in the collection of base path mapping resources.</p>
-function M.BasePathMappings(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfBasePathMapping] <p>The current page of any <a>BasePathMapping</a> resources in the collection of base path mapping resources.</p>
+function M.BasePathMappings(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BasePathMappings")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertBasePathMappings(t)
+	asserts.AssertBasePathMappings(t)
 	return t
 end
 
-local RequestValidator_keys = { "validateRequestParameters" = true, "validateRequestBody" = true, "id" = true, "name" = true, nil }
+keys.RequestValidator = { ["validateRequestParameters"] = true, ["validateRequestBody"] = true, ["id"] = true, ["name"] = true, nil }
 
-function M.AssertRequestValidator(struct)
+function asserts.AssertRequestValidator(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RequestValidator to be of type 'table'")
-	if struct["validateRequestParameters"] then M.AssertBoolean(struct["validateRequestParameters"]) end
-	if struct["validateRequestBody"] then M.AssertBoolean(struct["validateRequestBody"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
+	if struct["validateRequestParameters"] then asserts.AssertBoolean(struct["validateRequestParameters"]) end
+	if struct["validateRequestBody"] then asserts.AssertBoolean(struct["validateRequestBody"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(RequestValidator_keys[k], "RequestValidator contains unknown key " .. tostring(k))
+		assert(keys.RequestValidator[k], "RequestValidator contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RequestValidator
 -- <p>A set of validation rules for incoming <a>Method</a> requests.</p> <div class="remarks"> <p>In Swagger, a <a>RequestValidator</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.requestValidator.html">x-amazon-apigateway-request-validators.requestValidator</a> object. It the referenced using the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validator">x-amazon-apigateway-request-validator</a> property.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
--- @param validateRequestParameters [Boolean] <p>A Boolean flag to indicate whether to validate request parameters (<code>true</code>) or not (<code>false</code>).</p>
--- @param validateRequestBody [Boolean] <p>A Boolean flag to indicate whether to validate a request body according to the configured <a>Model</a> schema.</p>
--- @param id [String] <p>The identifier of this <a>RequestValidator</a>.</p>
--- @param name [String] <p>The name of this <a>RequestValidator</a></p>
-function M.RequestValidator(validateRequestParameters, validateRequestBody, id, name, ...)
+-- @param _validateRequestParameters [Boolean] <p>A Boolean flag to indicate whether to validate request parameters (<code>true</code>) or not (<code>false</code>).</p>
+-- @param _validateRequestBody [Boolean] <p>A Boolean flag to indicate whether to validate a request body according to the configured <a>Model</a> schema.</p>
+-- @param _id [String] <p>The identifier of this <a>RequestValidator</a>.</p>
+-- @param _name [String] <p>The name of this <a>RequestValidator</a></p>
+function M.RequestValidator(_validateRequestParameters, _validateRequestBody, _id, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestValidator")
 	local t = { 
-		["validateRequestParameters"] = validateRequestParameters,
-		["validateRequestBody"] = validateRequestBody,
-		["id"] = id,
-		["name"] = name,
+		["validateRequestParameters"] = _validateRequestParameters,
+		["validateRequestBody"] = _validateRequestBody,
+		["id"] = _id,
+		["name"] = _name,
 	}
-	M.AssertRequestValidator(t)
+	asserts.AssertRequestValidator(t)
 	return t
 end
 
-local MethodResponse_keys = { "responseModels" = true, "responseParameters" = true, "statusCode" = true, nil }
+keys.MethodResponse = { ["responseModels"] = true, ["responseParameters"] = true, ["statusCode"] = true, nil }
 
-function M.AssertMethodResponse(struct)
+function asserts.AssertMethodResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MethodResponse to be of type 'table'")
-	if struct["responseModels"] then M.AssertMapOfStringToString(struct["responseModels"]) end
-	if struct["responseParameters"] then M.AssertMapOfStringToBoolean(struct["responseParameters"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
+	if struct["responseModels"] then asserts.AssertMapOfStringToString(struct["responseModels"]) end
+	if struct["responseParameters"] then asserts.AssertMapOfStringToBoolean(struct["responseParameters"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(MethodResponse_keys[k], "MethodResponse contains unknown key " .. tostring(k))
+		assert(keys.MethodResponse[k], "MethodResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MethodResponse
 -- <p>Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template. </p> <div class="remarks"> <p/> <h4>Example: A <b>MethodResponse</b> instance of an API</h4> <h5>Request</h5> <p>The example request retrieves a <b>MethodResponse</b> of the 200 status code.</p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T222952Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a>Method</a>, <a>IntegrationResponse</a>, <a>Integration</a> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
--- @param responseModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the response's content-type. Response models are represented as a key/value map, with a content-type as the key and a <a>Model</a> name as the value.</p>
--- @param responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header and the value specifies whether the associated method response header is required or not. The expression of the key must match the pattern <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. Amazon API Gateway passes certain integration response data to the method response headers specified here according to the mapping you prescribe in the API's <a>IntegrationResponse</a>. The integration response data that can be mapped include an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
--- @param statusCode [StatusCode] <p>The method response's status code.</p>
-function M.MethodResponse(responseModels, responseParameters, statusCode, ...)
+-- @param _responseModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the response's content-type. Response models are represented as a key/value map, with a content-type as the key and a <a>Model</a> name as the value.</p>
+-- @param _responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header and the value specifies whether the associated method response header is required or not. The expression of the key must match the pattern <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. Amazon API Gateway passes certain integration response data to the method response headers specified here according to the mapping you prescribe in the API's <a>IntegrationResponse</a>. The integration response data that can be mapped include an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
+-- @param _statusCode [StatusCode] <p>The method response's status code.</p>
+function M.MethodResponse(_responseModels, _responseParameters, _statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MethodResponse")
 	local t = { 
-		["responseModels"] = responseModels,
-		["responseParameters"] = responseParameters,
-		["statusCode"] = statusCode,
+		["responseModels"] = _responseModels,
+		["responseParameters"] = _responseParameters,
+		["statusCode"] = _statusCode,
 	}
-	M.AssertMethodResponse(t)
+	asserts.AssertMethodResponse(t)
 	return t
 end
 
-local LimitExceededException_keys = { "message" = true, "retryAfterSeconds" = true, nil }
+keys.LimitExceededException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["retryAfterSeconds"] then M.AssertString(struct["retryAfterSeconds"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["retryAfterSeconds"] then asserts.AssertString(struct["retryAfterSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 --  
--- @param message [String]  
--- @param retryAfterSeconds [String]  
-function M.LimitExceededException(message, retryAfterSeconds, ...)
+-- @param _message [String] 
+-- @param _retryAfterSeconds [String] 
+function M.LimitExceededException(_message, _retryAfterSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["message"] = message,
-		["retryAfterSeconds"] = retryAfterSeconds,
+		["message"] = _message,
+		["retryAfterSeconds"] = _retryAfterSeconds,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local TestInvokeAuthorizerRequest_keys = { "body" = true, "restApiId" = true, "pathWithQueryString" = true, "additionalContext" = true, "headers" = true, "stageVariables" = true, "authorizerId" = true, nil }
+keys.TestInvokeAuthorizerRequest = { ["body"] = true, ["restApiId"] = true, ["pathWithQueryString"] = true, ["additionalContext"] = true, ["headers"] = true, ["stageVariables"] = true, ["authorizerId"] = true, nil }
 
-function M.AssertTestInvokeAuthorizerRequest(struct)
+function asserts.AssertTestInvokeAuthorizerRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TestInvokeAuthorizerRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["authorizerId"], "Expected key authorizerId to exist in table")
-	if struct["body"] then M.AssertString(struct["body"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["pathWithQueryString"] then M.AssertString(struct["pathWithQueryString"]) end
-	if struct["additionalContext"] then M.AssertMapOfStringToString(struct["additionalContext"]) end
-	if struct["headers"] then M.AssertMapOfHeaderValues(struct["headers"]) end
-	if struct["stageVariables"] then M.AssertMapOfStringToString(struct["stageVariables"]) end
-	if struct["authorizerId"] then M.AssertString(struct["authorizerId"]) end
+	if struct["body"] then asserts.AssertString(struct["body"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["pathWithQueryString"] then asserts.AssertString(struct["pathWithQueryString"]) end
+	if struct["additionalContext"] then asserts.AssertMapOfStringToString(struct["additionalContext"]) end
+	if struct["headers"] then asserts.AssertMapOfHeaderValues(struct["headers"]) end
+	if struct["stageVariables"] then asserts.AssertMapOfStringToString(struct["stageVariables"]) end
+	if struct["authorizerId"] then asserts.AssertString(struct["authorizerId"]) end
 	for k,_ in pairs(struct) do
-		assert(TestInvokeAuthorizerRequest_keys[k], "TestInvokeAuthorizerRequest contains unknown key " .. tostring(k))
+		assert(keys.TestInvokeAuthorizerRequest[k], "TestInvokeAuthorizerRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TestInvokeAuthorizerRequest
 -- <p>Make a request to simulate the execution of an <a>Authorizer</a>.</p>
--- @param body [String] <p>[Optional] The simulated request body of an incoming invocation request.</p>
--- @param restApiId [String] <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
--- @param pathWithQueryString [String] <p>[Optional] The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
--- @param additionalContext [MapOfStringToString] <p>[Optional] A key-value map of additional context variables.</p>
--- @param headers [MapOfHeaderValues] <p>[Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.</p>
--- @param stageVariables [MapOfStringToString] <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
--- @param authorizerId [String] <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
+-- @param _body [String] <p>[Optional] The simulated request body of an incoming invocation request.</p>
+-- @param _restApiId [String] <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
+-- @param _pathWithQueryString [String] <p>[Optional] The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
+-- @param _additionalContext [MapOfStringToString] <p>[Optional] A key-value map of additional context variables.</p>
+-- @param _headers [MapOfHeaderValues] <p>[Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.</p>
+-- @param _stageVariables [MapOfStringToString] <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
+-- @param _authorizerId [String] <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
 -- Required parameter: restApiId
 -- Required parameter: authorizerId
-function M.TestInvokeAuthorizerRequest(body, restApiId, pathWithQueryString, additionalContext, headers, stageVariables, authorizerId, ...)
+function M.TestInvokeAuthorizerRequest(_body, _restApiId, _pathWithQueryString, _additionalContext, _headers, _stageVariables, _authorizerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestInvokeAuthorizerRequest")
 	local t = { 
-		["body"] = body,
-		["restApiId"] = restApiId,
-		["pathWithQueryString"] = pathWithQueryString,
-		["additionalContext"] = additionalContext,
-		["headers"] = headers,
-		["stageVariables"] = stageVariables,
-		["authorizerId"] = authorizerId,
+		["body"] = _body,
+		["restApiId"] = _restApiId,
+		["pathWithQueryString"] = _pathWithQueryString,
+		["additionalContext"] = _additionalContext,
+		["headers"] = _headers,
+		["stageVariables"] = _stageVariables,
+		["authorizerId"] = _authorizerId,
 	}
-	M.AssertTestInvokeAuthorizerRequest(t)
+	asserts.AssertTestInvokeAuthorizerRequest(t)
 	return t
 end
 
-local FlushStageCacheRequest_keys = { "restApiId" = true, "stageName" = true, nil }
+keys.FlushStageCacheRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
 
-function M.AssertFlushStageCacheRequest(struct)
+function asserts.AssertFlushStageCacheRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FlushStageCacheRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	for k,_ in pairs(struct) do
-		assert(FlushStageCacheRequest_keys[k], "FlushStageCacheRequest contains unknown key " .. tostring(k))
+		assert(keys.FlushStageCacheRequest[k], "FlushStageCacheRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FlushStageCacheRequest
 -- <p>Requests Amazon API Gateway to flush a stage's cache.</p>
--- @param restApiId [String] <p>The API identifier of the stage to flush its cache.</p>
--- @param stageName [String] <p>The name of the stage to flush its cache.</p>
+-- @param _restApiId [String] <p>The API identifier of the stage to flush its cache.</p>
+-- @param _stageName [String] <p>The name of the stage to flush its cache.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
-function M.FlushStageCacheRequest(restApiId, stageName, ...)
+function M.FlushStageCacheRequest(_restApiId, _stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FlushStageCacheRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["stageName"] = stageName,
+		["restApiId"] = _restApiId,
+		["stageName"] = _stageName,
 	}
-	M.AssertFlushStageCacheRequest(t)
+	asserts.AssertFlushStageCacheRequest(t)
 	return t
 end
 
-local GetAuthorizerRequest_keys = { "restApiId" = true, "authorizerId" = true, nil }
+keys.GetAuthorizerRequest = { ["restApiId"] = true, ["authorizerId"] = true, nil }
 
-function M.AssertGetAuthorizerRequest(struct)
+function asserts.AssertGetAuthorizerRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAuthorizerRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["authorizerId"], "Expected key authorizerId to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["authorizerId"] then M.AssertString(struct["authorizerId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["authorizerId"] then asserts.AssertString(struct["authorizerId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetAuthorizerRequest_keys[k], "GetAuthorizerRequest contains unknown key " .. tostring(k))
+		assert(keys.GetAuthorizerRequest[k], "GetAuthorizerRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetAuthorizerRequest
 -- <p>Request to describe an existing <a>Authorizer</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
--- @param authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
+-- @param _authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: authorizerId
-function M.GetAuthorizerRequest(restApiId, authorizerId, ...)
+function M.GetAuthorizerRequest(_restApiId, _authorizerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAuthorizerRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["authorizerId"] = authorizerId,
+		["restApiId"] = _restApiId,
+		["authorizerId"] = _authorizerId,
 	}
-	M.AssertGetAuthorizerRequest(t)
+	asserts.AssertGetAuthorizerRequest(t)
 	return t
 end
 
-local Method_keys = { "methodResponses" = true, "requestParameters" = true, "requestModels" = true, "authorizationType" = true, "operationName" = true, "apiKeyRequired" = true, "httpMethod" = true, "methodIntegration" = true, "requestValidatorId" = true, "authorizerId" = true, nil }
+keys.Method = { ["methodResponses"] = true, ["requestParameters"] = true, ["requestModels"] = true, ["authorizationType"] = true, ["operationName"] = true, ["apiKeyRequired"] = true, ["httpMethod"] = true, ["methodIntegration"] = true, ["requestValidatorId"] = true, ["authorizerId"] = true, nil }
 
-function M.AssertMethod(struct)
+function asserts.AssertMethod(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Method to be of type 'table'")
-	if struct["methodResponses"] then M.AssertMapOfMethodResponse(struct["methodResponses"]) end
-	if struct["requestParameters"] then M.AssertMapOfStringToBoolean(struct["requestParameters"]) end
-	if struct["requestModels"] then M.AssertMapOfStringToString(struct["requestModels"]) end
-	if struct["authorizationType"] then M.AssertString(struct["authorizationType"]) end
-	if struct["operationName"] then M.AssertString(struct["operationName"]) end
-	if struct["apiKeyRequired"] then M.AssertNullableBoolean(struct["apiKeyRequired"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
-	if struct["methodIntegration"] then M.AssertIntegration(struct["methodIntegration"]) end
-	if struct["requestValidatorId"] then M.AssertString(struct["requestValidatorId"]) end
-	if struct["authorizerId"] then M.AssertString(struct["authorizerId"]) end
+	if struct["methodResponses"] then asserts.AssertMapOfMethodResponse(struct["methodResponses"]) end
+	if struct["requestParameters"] then asserts.AssertMapOfStringToBoolean(struct["requestParameters"]) end
+	if struct["requestModels"] then asserts.AssertMapOfStringToString(struct["requestModels"]) end
+	if struct["authorizationType"] then asserts.AssertString(struct["authorizationType"]) end
+	if struct["operationName"] then asserts.AssertString(struct["operationName"]) end
+	if struct["apiKeyRequired"] then asserts.AssertNullableBoolean(struct["apiKeyRequired"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
+	if struct["methodIntegration"] then asserts.AssertIntegration(struct["methodIntegration"]) end
+	if struct["requestValidatorId"] then asserts.AssertString(struct["requestValidatorId"]) end
+	if struct["authorizerId"] then asserts.AssertString(struct["authorizerId"]) end
 	for k,_ in pairs(struct) do
-		assert(Method_keys[k], "Method contains unknown key " .. tostring(k))
+		assert(keys.Method[k], "Method contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Method
 -- <p> Represents a client-facing interface by which the client calls the API to access back-end resources. A <b>Method</b> resource is integrated with an <a>Integration</a> resource. Both consist of a request and one or more responses. The method request takes the client input that is passed to the back end through the integration request. A method response returns the output from the back end to the client through an integration response. A method request is embodied in a <b>Method</b> resource, whereas an integration request is embodied in an <a>Integration</a> resource. On the other hand, a method response is represented by a <a>MethodResponse</a> resource, whereas an integration response is represented by an <a>IntegrationResponse</a> resource. </p> <div class="remarks"> <p/> <h4>Example: Retrive the GET method on a specified resource</h4> <h5>Request</h5> <p>The following example request retrieves the information about the GET method on an API resource (<code>3kzxbg5sa2</code>) of an API (<code>fugvjdxtri</code>). </p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T210259Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": true, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\")" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>In the example above, the response template for the <code>200 OK</code> response maps the JSON output from the <code>ListStreams</code> action in the back end to an XML output. The mapping template is URL-encoded as <code>%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E</code> and the output is decoded using the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#util-templat-reference">$util.urlDecode()</a> helper function.</p> </div> <div class="seeAlso"> <a>MethodResponse</a>, <a>Integration</a>, <a>IntegrationResponse</a>, <a>Resource</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's method</a> </div>
--- @param methodResponses [MapOfMethodResponse] <p>Gets a method response associated with a given HTTP status code. </p> <div class="remarks"> <p>The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a <a>MethodResponse</a> resource that specifies the response returned to the caller from the back end through the integration response.</p> <h4>Example: Get a 200 OK response of a GET method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html">AWS CLI</a> </div>
--- @param requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key is a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or templates.</p>
--- @param requestModels [MapOfStringToString] <p>A key-value map specifying data schemas, represented by <a>Model</a> resources, (as the mapped value) of the request payloads of given content types (as the mapping key).</p>
--- @param authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
--- @param operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
--- @param apiKeyRequired [NullableBoolean] <p>A boolean flag specifying whether a valid <a>ApiKey</a> is required to invoke this method.</p>
--- @param httpMethod [String] <p>The method's HTTP verb.</p>
--- @param methodIntegration [Integration] <p>Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end.</p> <div class="remarks"> <p/> <h4>Example: </h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html">AWS CLI</a> </div>
--- @param requestValidatorId [String] <p>The identifier of a <a>RequestValidator</a> for request validation.</p>
--- @param authorizerId [String] <p>The identifier of an <a>Authorizer</a> to use on this method. The <code>authorizationType</code> must be <code>CUSTOM</code>.</p>
-function M.Method(methodResponses, requestParameters, requestModels, authorizationType, operationName, apiKeyRequired, httpMethod, methodIntegration, requestValidatorId, authorizerId, ...)
+-- @param _methodResponses [MapOfMethodResponse] <p>Gets a method response associated with a given HTTP status code. </p> <div class="remarks"> <p>The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a <a>MethodResponse</a> resource that specifies the response returned to the caller from the back end through the integration response.</p> <h4>Example: Get a 200 OK response of a GET method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html">AWS CLI</a> </div>
+-- @param _requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key is a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or templates.</p>
+-- @param _requestModels [MapOfStringToString] <p>A key-value map specifying data schemas, represented by <a>Model</a> resources, (as the mapped value) of the request payloads of given content types (as the mapping key).</p>
+-- @param _authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
+-- @param _operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
+-- @param _apiKeyRequired [NullableBoolean] <p>A boolean flag specifying whether a valid <a>ApiKey</a> is required to invoke this method.</p>
+-- @param _httpMethod [String] <p>The method's HTTP verb.</p>
+-- @param _methodIntegration [Integration] <p>Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end.</p> <div class="remarks"> <p/> <h4>Example: </h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html">AWS CLI</a> </div>
+-- @param _requestValidatorId [String] <p>The identifier of a <a>RequestValidator</a> for request validation.</p>
+-- @param _authorizerId [String] <p>The identifier of an <a>Authorizer</a> to use on this method. The <code>authorizationType</code> must be <code>CUSTOM</code>.</p>
+function M.Method(_methodResponses, _requestParameters, _requestModels, _authorizationType, _operationName, _apiKeyRequired, _httpMethod, _methodIntegration, _requestValidatorId, _authorizerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Method")
 	local t = { 
-		["methodResponses"] = methodResponses,
-		["requestParameters"] = requestParameters,
-		["requestModels"] = requestModels,
-		["authorizationType"] = authorizationType,
-		["operationName"] = operationName,
-		["apiKeyRequired"] = apiKeyRequired,
-		["httpMethod"] = httpMethod,
-		["methodIntegration"] = methodIntegration,
-		["requestValidatorId"] = requestValidatorId,
-		["authorizerId"] = authorizerId,
+		["methodResponses"] = _methodResponses,
+		["requestParameters"] = _requestParameters,
+		["requestModels"] = _requestModels,
+		["authorizationType"] = _authorizationType,
+		["operationName"] = _operationName,
+		["apiKeyRequired"] = _apiKeyRequired,
+		["httpMethod"] = _httpMethod,
+		["methodIntegration"] = _methodIntegration,
+		["requestValidatorId"] = _requestValidatorId,
+		["authorizerId"] = _authorizerId,
 	}
-	M.AssertMethod(t)
+	asserts.AssertMethod(t)
 	return t
 end
 
-local Models_keys = { "position" = true, "items" = true, nil }
+keys.Models = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertModels(struct)
+function asserts.AssertModels(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Models to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfModel(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfModel(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(Models_keys[k], "Models contains unknown key " .. tostring(k))
+		assert(keys.Models[k], "Models contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Models
 -- <p>Represents a collection of <a>Model</a> resources.</p> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
--- @param position [String] <p>Represents a collection of <a>Model</a> resources.</p> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
--- @param items [ListOfModel] <p>Gets the current <a>Model</a> resource in the collection.</p>
-function M.Models(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfModel] <p>Gets the current <a>Model</a> resource in the collection.</p>
+function M.Models(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Models")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertModels(t)
+	asserts.AssertModels(t)
 	return t
 end
 
-local UpdateMethodResponseRequest_keys = { "resourceId" = true, "statusCode" = true, "restApiId" = true, "patchOperations" = true, "httpMethod" = true, nil }
+keys.UpdateMethodResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["patchOperations"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertUpdateMethodResponseRequest(struct)
+function asserts.AssertUpdateMethodResponseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateMethodResponseRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateMethodResponseRequest_keys[k], "UpdateMethodResponseRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateMethodResponseRequest[k], "UpdateMethodResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateMethodResponseRequest
 -- <p>A request to update an existing <a>MethodResponse</a> resource.</p>
--- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
--- @param statusCode [StatusCode] <p>The status code for the <a>MethodResponse</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- @param _resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param _statusCode [StatusCode] <p>The status code for the <a>MethodResponse</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: statusCode
-function M.UpdateMethodResponseRequest(resourceId, statusCode, restApiId, patchOperations, httpMethod, ...)
+function M.UpdateMethodResponseRequest(_resourceId, _statusCode, _restApiId, _patchOperations, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMethodResponseRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["statusCode"] = statusCode,
-		["restApiId"] = restApiId,
-		["patchOperations"] = patchOperations,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["statusCode"] = _statusCode,
+		["restApiId"] = _restApiId,
+		["patchOperations"] = _patchOperations,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertUpdateMethodResponseRequest(t)
+	asserts.AssertUpdateMethodResponseRequest(t)
 	return t
 end
 
-local DeleteAuthorizerRequest_keys = { "restApiId" = true, "authorizerId" = true, nil }
+keys.DeleteAuthorizerRequest = { ["restApiId"] = true, ["authorizerId"] = true, nil }
 
-function M.AssertDeleteAuthorizerRequest(struct)
+function asserts.AssertDeleteAuthorizerRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteAuthorizerRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["authorizerId"], "Expected key authorizerId to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["authorizerId"] then M.AssertString(struct["authorizerId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["authorizerId"] then asserts.AssertString(struct["authorizerId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteAuthorizerRequest_keys[k], "DeleteAuthorizerRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteAuthorizerRequest[k], "DeleteAuthorizerRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteAuthorizerRequest
 -- <p>Request to delete an existing <a>Authorizer</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
--- @param authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
+-- @param _authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: authorizerId
-function M.DeleteAuthorizerRequest(restApiId, authorizerId, ...)
+function M.DeleteAuthorizerRequest(_restApiId, _authorizerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAuthorizerRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["authorizerId"] = authorizerId,
+		["restApiId"] = _restApiId,
+		["authorizerId"] = _authorizerId,
 	}
-	M.AssertDeleteAuthorizerRequest(t)
+	asserts.AssertDeleteAuthorizerRequest(t)
 	return t
 end
 
-local CreateAuthorizerRequest_keys = { "authType" = true, "restApiId" = true, "name" = true, "providerARNs" = true, "authorizerUri" = true, "identityValidationExpression" = true, "authorizerResultTtlInSeconds" = true, "authorizerCredentials" = true, "identitySource" = true, "type" = true, nil }
+keys.CreateAuthorizerRequest = { ["authType"] = true, ["restApiId"] = true, ["name"] = true, ["providerARNs"] = true, ["authorizerUri"] = true, ["identityValidationExpression"] = true, ["authorizerResultTtlInSeconds"] = true, ["authorizerCredentials"] = true, ["identitySource"] = true, ["type"] = true, nil }
 
-function M.AssertCreateAuthorizerRequest(struct)
+function asserts.AssertCreateAuthorizerRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAuthorizerRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["type"], "Expected key type to exist in table")
 	assert(struct["identitySource"], "Expected key identitySource to exist in table")
-	if struct["authType"] then M.AssertString(struct["authType"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["providerARNs"] then M.AssertListOfARNs(struct["providerARNs"]) end
-	if struct["authorizerUri"] then M.AssertString(struct["authorizerUri"]) end
-	if struct["identityValidationExpression"] then M.AssertString(struct["identityValidationExpression"]) end
-	if struct["authorizerResultTtlInSeconds"] then M.AssertNullableInteger(struct["authorizerResultTtlInSeconds"]) end
-	if struct["authorizerCredentials"] then M.AssertString(struct["authorizerCredentials"]) end
-	if struct["identitySource"] then M.AssertString(struct["identitySource"]) end
-	if struct["type"] then M.AssertAuthorizerType(struct["type"]) end
+	if struct["authType"] then asserts.AssertString(struct["authType"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["providerARNs"] then asserts.AssertListOfARNs(struct["providerARNs"]) end
+	if struct["authorizerUri"] then asserts.AssertString(struct["authorizerUri"]) end
+	if struct["identityValidationExpression"] then asserts.AssertString(struct["identityValidationExpression"]) end
+	if struct["authorizerResultTtlInSeconds"] then asserts.AssertNullableInteger(struct["authorizerResultTtlInSeconds"]) end
+	if struct["authorizerCredentials"] then asserts.AssertString(struct["authorizerCredentials"]) end
+	if struct["identitySource"] then asserts.AssertString(struct["identitySource"]) end
+	if struct["type"] then asserts.AssertAuthorizerType(struct["type"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAuthorizerRequest_keys[k], "CreateAuthorizerRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateAuthorizerRequest[k], "CreateAuthorizerRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAuthorizerRequest
 -- <p>Request to add a new <a>Authorizer</a> to an existing <a>RestApi</a> resource.</p>
--- @param authType [String] <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Authorizer</a> will be created.</p>
--- @param name [String] <p>[Required] The name of the authorizer.</p>
--- @param providerARNs [ListOfARNs] <p>A list of the Cognito Your User Pool authorizer's provider ARNs.</p>
--- @param authorizerUri [String] <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI).</p>
--- @param identityValidationExpression [String] <p>A validation expression for the incoming identity.</p>
--- @param authorizerResultTtlInSeconds [NullableInteger] <p>The TTL of cached authorizer results.</p>
--- @param authorizerCredentials [String] <p>Specifies the credentials required for the authorizer, if any.</p>
--- @param identitySource [String] <p>[Required] The source of the identity in an incoming request.</p>
--- @param type [AuthorizerType] <p>[Required] The type of the authorizer.</p>
+-- @param _authType [String] <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Authorizer</a> will be created.</p>
+-- @param _name [String] <p>[Required] The name of the authorizer.</p>
+-- @param _providerARNs [ListOfARNs] <p>A list of the Cognito Your User Pool authorizer's provider ARNs.</p>
+-- @param _authorizerUri [String] <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI).</p>
+-- @param _identityValidationExpression [String] <p>A validation expression for the incoming identity.</p>
+-- @param _authorizerResultTtlInSeconds [NullableInteger] <p>The TTL of cached authorizer results.</p>
+-- @param _authorizerCredentials [String] <p>Specifies the credentials required for the authorizer, if any.</p>
+-- @param _identitySource [String] <p>[Required] The source of the identity in an incoming request.</p>
+-- @param _type [AuthorizerType] <p>[Required] The type of the authorizer.</p>
 -- Required parameter: restApiId
 -- Required parameter: name
 -- Required parameter: type
 -- Required parameter: identitySource
-function M.CreateAuthorizerRequest(authType, restApiId, name, providerARNs, authorizerUri, identityValidationExpression, authorizerResultTtlInSeconds, authorizerCredentials, identitySource, type, ...)
+function M.CreateAuthorizerRequest(_authType, _restApiId, _name, _providerARNs, _authorizerUri, _identityValidationExpression, _authorizerResultTtlInSeconds, _authorizerCredentials, _identitySource, _type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAuthorizerRequest")
 	local t = { 
-		["authType"] = authType,
-		["restApiId"] = restApiId,
-		["name"] = name,
-		["providerARNs"] = providerARNs,
-		["authorizerUri"] = authorizerUri,
-		["identityValidationExpression"] = identityValidationExpression,
-		["authorizerResultTtlInSeconds"] = authorizerResultTtlInSeconds,
-		["authorizerCredentials"] = authorizerCredentials,
-		["identitySource"] = identitySource,
-		["type"] = type,
+		["authType"] = _authType,
+		["restApiId"] = _restApiId,
+		["name"] = _name,
+		["providerARNs"] = _providerARNs,
+		["authorizerUri"] = _authorizerUri,
+		["identityValidationExpression"] = _identityValidationExpression,
+		["authorizerResultTtlInSeconds"] = _authorizerResultTtlInSeconds,
+		["authorizerCredentials"] = _authorizerCredentials,
+		["identitySource"] = _identitySource,
+		["type"] = _type,
 	}
-	M.AssertCreateAuthorizerRequest(t)
+	asserts.AssertCreateAuthorizerRequest(t)
 	return t
 end
 
-local MethodSetting_keys = { "cacheTtlInSeconds" = true, "loggingLevel" = true, "dataTraceEnabled" = true, "metricsEnabled" = true, "unauthorizedCacheControlHeaderStrategy" = true, "throttlingRateLimit" = true, "cacheDataEncrypted" = true, "cachingEnabled" = true, "throttlingBurstLimit" = true, "requireAuthorizationForCacheControl" = true, nil }
+keys.MethodSetting = { ["cacheTtlInSeconds"] = true, ["loggingLevel"] = true, ["dataTraceEnabled"] = true, ["metricsEnabled"] = true, ["unauthorizedCacheControlHeaderStrategy"] = true, ["throttlingRateLimit"] = true, ["cacheDataEncrypted"] = true, ["cachingEnabled"] = true, ["throttlingBurstLimit"] = true, ["requireAuthorizationForCacheControl"] = true, nil }
 
-function M.AssertMethodSetting(struct)
+function asserts.AssertMethodSetting(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MethodSetting to be of type 'table'")
-	if struct["cacheTtlInSeconds"] then M.AssertInteger(struct["cacheTtlInSeconds"]) end
-	if struct["loggingLevel"] then M.AssertString(struct["loggingLevel"]) end
-	if struct["dataTraceEnabled"] then M.AssertBoolean(struct["dataTraceEnabled"]) end
-	if struct["metricsEnabled"] then M.AssertBoolean(struct["metricsEnabled"]) end
-	if struct["unauthorizedCacheControlHeaderStrategy"] then M.AssertUnauthorizedCacheControlHeaderStrategy(struct["unauthorizedCacheControlHeaderStrategy"]) end
-	if struct["throttlingRateLimit"] then M.AssertDouble(struct["throttlingRateLimit"]) end
-	if struct["cacheDataEncrypted"] then M.AssertBoolean(struct["cacheDataEncrypted"]) end
-	if struct["cachingEnabled"] then M.AssertBoolean(struct["cachingEnabled"]) end
-	if struct["throttlingBurstLimit"] then M.AssertInteger(struct["throttlingBurstLimit"]) end
-	if struct["requireAuthorizationForCacheControl"] then M.AssertBoolean(struct["requireAuthorizationForCacheControl"]) end
+	if struct["cacheTtlInSeconds"] then asserts.AssertInteger(struct["cacheTtlInSeconds"]) end
+	if struct["loggingLevel"] then asserts.AssertString(struct["loggingLevel"]) end
+	if struct["dataTraceEnabled"] then asserts.AssertBoolean(struct["dataTraceEnabled"]) end
+	if struct["metricsEnabled"] then asserts.AssertBoolean(struct["metricsEnabled"]) end
+	if struct["unauthorizedCacheControlHeaderStrategy"] then asserts.AssertUnauthorizedCacheControlHeaderStrategy(struct["unauthorizedCacheControlHeaderStrategy"]) end
+	if struct["throttlingRateLimit"] then asserts.AssertDouble(struct["throttlingRateLimit"]) end
+	if struct["cacheDataEncrypted"] then asserts.AssertBoolean(struct["cacheDataEncrypted"]) end
+	if struct["cachingEnabled"] then asserts.AssertBoolean(struct["cachingEnabled"]) end
+	if struct["throttlingBurstLimit"] then asserts.AssertInteger(struct["throttlingBurstLimit"]) end
+	if struct["requireAuthorizationForCacheControl"] then asserts.AssertBoolean(struct["requireAuthorizationForCacheControl"]) end
 	for k,_ in pairs(struct) do
-		assert(MethodSetting_keys[k], "MethodSetting contains unknown key " .. tostring(k))
+		assert(keys.MethodSetting[k], "MethodSetting contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MethodSetting
 -- <p>Specifies the method setting properties.</p>
--- @param cacheTtlInSeconds [Integer] <p>Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached. The PATCH path for this setting is <code>/{method_setting_key}/caching/ttlInSeconds</code>, and the value is an integer.</p>
--- @param loggingLevel [String] <p>Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/loglevel</code>, and the available levels are <code>OFF</code>, <code>ERROR</code>, and <code>INFO</code>.</p>
--- @param dataTraceEnabled [Boolean] <p>Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/dataTrace</code>, and the value is a Boolean.</p>
--- @param metricsEnabled [Boolean] <p>Specifies whether Amazon CloudWatch metrics are enabled for this method. The PATCH path for this setting is <code>/{method_setting_key}/metrics/enabled</code>, and the value is a Boolean.</p>
--- @param unauthorizedCacheControlHeaderStrategy [UnauthorizedCacheControlHeaderStrategy] <p>Specifies how to handle unauthorized requests for cache invalidation. The PATCH path for this setting is <code>/{method_setting_key}/caching/unauthorizedCacheControlHeaderStrategy</code>, and the available values are <code>FAIL_WITH_403</code>, <code>SUCCEED_WITH_RESPONSE_HEADER</code>, <code>SUCCEED_WITHOUT_RESPONSE_HEADER</code>.</p>
--- @param throttlingRateLimit [Double] <p>Specifies the throttling rate limit. The PATCH path for this setting is <code>/{method_setting_key}/throttling/rateLimit</code>, and the value is a double.</p>
--- @param cacheDataEncrypted [Boolean] <p>Specifies whether the cached responses are encrypted. The PATCH path for this setting is <code>/{method_setting_key}/caching/dataEncrypted</code>, and the value is a Boolean.</p>
--- @param cachingEnabled [Boolean] <p>Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached. The PATCH path for this setting is <code>/{method_setting_key}/caching/enabled</code>, and the value is a Boolean.</p>
--- @param throttlingBurstLimit [Integer] <p>Specifies the throttling burst limit. The PATCH path for this setting is <code>/{method_setting_key}/throttling/burstLimit</code>, and the value is an integer.</p>
--- @param requireAuthorizationForCacheControl [Boolean] <p>Specifies whether authorization is required for a cache invalidation request. The PATCH path for this setting is <code>/{method_setting_key}/caching/requireAuthorizationForCacheControl</code>, and the value is a Boolean.</p>
-function M.MethodSetting(cacheTtlInSeconds, loggingLevel, dataTraceEnabled, metricsEnabled, unauthorizedCacheControlHeaderStrategy, throttlingRateLimit, cacheDataEncrypted, cachingEnabled, throttlingBurstLimit, requireAuthorizationForCacheControl, ...)
+-- @param _cacheTtlInSeconds [Integer] <p>Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached. The PATCH path for this setting is <code>/{method_setting_key}/caching/ttlInSeconds</code>, and the value is an integer.</p>
+-- @param _loggingLevel [String] <p>Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/loglevel</code>, and the available levels are <code>OFF</code>, <code>ERROR</code>, and <code>INFO</code>.</p>
+-- @param _dataTraceEnabled [Boolean] <p>Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/dataTrace</code>, and the value is a Boolean.</p>
+-- @param _metricsEnabled [Boolean] <p>Specifies whether Amazon CloudWatch metrics are enabled for this method. The PATCH path for this setting is <code>/{method_setting_key}/metrics/enabled</code>, and the value is a Boolean.</p>
+-- @param _unauthorizedCacheControlHeaderStrategy [UnauthorizedCacheControlHeaderStrategy] <p>Specifies how to handle unauthorized requests for cache invalidation. The PATCH path for this setting is <code>/{method_setting_key}/caching/unauthorizedCacheControlHeaderStrategy</code>, and the available values are <code>FAIL_WITH_403</code>, <code>SUCCEED_WITH_RESPONSE_HEADER</code>, <code>SUCCEED_WITHOUT_RESPONSE_HEADER</code>.</p>
+-- @param _throttlingRateLimit [Double] <p>Specifies the throttling rate limit. The PATCH path for this setting is <code>/{method_setting_key}/throttling/rateLimit</code>, and the value is a double.</p>
+-- @param _cacheDataEncrypted [Boolean] <p>Specifies whether the cached responses are encrypted. The PATCH path for this setting is <code>/{method_setting_key}/caching/dataEncrypted</code>, and the value is a Boolean.</p>
+-- @param _cachingEnabled [Boolean] <p>Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached. The PATCH path for this setting is <code>/{method_setting_key}/caching/enabled</code>, and the value is a Boolean.</p>
+-- @param _throttlingBurstLimit [Integer] <p>Specifies the throttling burst limit. The PATCH path for this setting is <code>/{method_setting_key}/throttling/burstLimit</code>, and the value is an integer.</p>
+-- @param _requireAuthorizationForCacheControl [Boolean] <p>Specifies whether authorization is required for a cache invalidation request. The PATCH path for this setting is <code>/{method_setting_key}/caching/requireAuthorizationForCacheControl</code>, and the value is a Boolean.</p>
+function M.MethodSetting(_cacheTtlInSeconds, _loggingLevel, _dataTraceEnabled, _metricsEnabled, _unauthorizedCacheControlHeaderStrategy, _throttlingRateLimit, _cacheDataEncrypted, _cachingEnabled, _throttlingBurstLimit, _requireAuthorizationForCacheControl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MethodSetting")
 	local t = { 
-		["cacheTtlInSeconds"] = cacheTtlInSeconds,
-		["loggingLevel"] = loggingLevel,
-		["dataTraceEnabled"] = dataTraceEnabled,
-		["metricsEnabled"] = metricsEnabled,
-		["unauthorizedCacheControlHeaderStrategy"] = unauthorizedCacheControlHeaderStrategy,
-		["throttlingRateLimit"] = throttlingRateLimit,
-		["cacheDataEncrypted"] = cacheDataEncrypted,
-		["cachingEnabled"] = cachingEnabled,
-		["throttlingBurstLimit"] = throttlingBurstLimit,
-		["requireAuthorizationForCacheControl"] = requireAuthorizationForCacheControl,
+		["cacheTtlInSeconds"] = _cacheTtlInSeconds,
+		["loggingLevel"] = _loggingLevel,
+		["dataTraceEnabled"] = _dataTraceEnabled,
+		["metricsEnabled"] = _metricsEnabled,
+		["unauthorizedCacheControlHeaderStrategy"] = _unauthorizedCacheControlHeaderStrategy,
+		["throttlingRateLimit"] = _throttlingRateLimit,
+		["cacheDataEncrypted"] = _cacheDataEncrypted,
+		["cachingEnabled"] = _cachingEnabled,
+		["throttlingBurstLimit"] = _throttlingBurstLimit,
+		["requireAuthorizationForCacheControl"] = _requireAuthorizationForCacheControl,
 	}
-	M.AssertMethodSetting(t)
+	asserts.AssertMethodSetting(t)
 	return t
 end
 
-local GetDocumentationVersionsRequest_keys = { "position" = true, "restApiId" = true, "limit" = true, nil }
+keys.GetDocumentationVersionsRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
 
-function M.AssertGetDocumentationVersionsRequest(struct)
+function asserts.AssertGetDocumentationVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentationVersionsRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentationVersionsRequest_keys[k], "GetDocumentationVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentationVersionsRequest[k], "GetDocumentationVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentationVersionsRequest
 -- <p>Gets the documentation versions of an API.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-retrieved documentation versions.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of an API of the to-be-retrieved documentation versions.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- Required parameter: restApiId
-function M.GetDocumentationVersionsRequest(position, restApiId, limit, ...)
+function M.GetDocumentationVersionsRequest(_position, _restApiId, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentationVersionsRequest")
 	local t = { 
-		["position"] = position,
-		["restApiId"] = restApiId,
-		["limit"] = limit,
+		["position"] = _position,
+		["restApiId"] = _restApiId,
+		["limit"] = _limit,
 	}
-	M.AssertGetDocumentationVersionsRequest(t)
+	asserts.AssertGetDocumentationVersionsRequest(t)
 	return t
 end
 
-local DeleteMethodResponseRequest_keys = { "resourceId" = true, "statusCode" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.DeleteMethodResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertDeleteMethodResponseRequest(struct)
+function asserts.AssertDeleteMethodResponseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteMethodResponseRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteMethodResponseRequest_keys[k], "DeleteMethodResponseRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteMethodResponseRequest[k], "DeleteMethodResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteMethodResponseRequest
 -- <p>A request to delete an existing <a>MethodResponse</a> resource.</p>
--- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
--- @param statusCode [StatusCode] <p>The status code identifier for the <a>MethodResponse</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
--- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- @param _resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param _statusCode [StatusCode] <p>The status code identifier for the <a>MethodResponse</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param _httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: statusCode
-function M.DeleteMethodResponseRequest(resourceId, statusCode, restApiId, httpMethod, ...)
+function M.DeleteMethodResponseRequest(_resourceId, _statusCode, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMethodResponseRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["statusCode"] = statusCode,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["statusCode"] = _statusCode,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertDeleteMethodResponseRequest(t)
+	asserts.AssertDeleteMethodResponseRequest(t)
 	return t
 end
 
-local GetUsageRequest_keys = { "startDate" = true, "keyId" = true, "usagePlanId" = true, "limit" = true, "position" = true, "endDate" = true, nil }
+keys.GetUsageRequest = { ["startDate"] = true, ["keyId"] = true, ["usagePlanId"] = true, ["limit"] = true, ["position"] = true, ["endDate"] = true, nil }
 
-function M.AssertGetUsageRequest(struct)
+function asserts.AssertGetUsageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUsageRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
 	assert(struct["startDate"], "Expected key startDate to exist in table")
 	assert(struct["endDate"], "Expected key endDate to exist in table")
-	if struct["startDate"] then M.AssertString(struct["startDate"]) end
-	if struct["keyId"] then M.AssertString(struct["keyId"]) end
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["endDate"] then M.AssertString(struct["endDate"]) end
+	if struct["startDate"] then asserts.AssertString(struct["startDate"]) end
+	if struct["keyId"] then asserts.AssertString(struct["keyId"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["endDate"] then asserts.AssertString(struct["endDate"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUsageRequest_keys[k], "GetUsageRequest contains unknown key " .. tostring(k))
+		assert(keys.GetUsageRequest[k], "GetUsageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUsageRequest
 -- <p>The GET request to get the usage data of a usage plan in a specified time interval.</p>
--- @param startDate [String] <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
--- @param keyId [String] <p>The Id of the API key associated with the resultant usage data.</p>
--- @param usagePlanId [String] <p>The Id of the usage plan associated with the usage data.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param endDate [String] <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
+-- @param _startDate [String] <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
+-- @param _keyId [String] <p>The Id of the API key associated with the resultant usage data.</p>
+-- @param _usagePlanId [String] <p>The Id of the usage plan associated with the usage data.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _endDate [String] <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: startDate
 -- Required parameter: endDate
-function M.GetUsageRequest(startDate, keyId, usagePlanId, limit, position, endDate, ...)
+function M.GetUsageRequest(_startDate, _keyId, _usagePlanId, _limit, _position, _endDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUsageRequest")
 	local t = { 
-		["startDate"] = startDate,
-		["keyId"] = keyId,
-		["usagePlanId"] = usagePlanId,
-		["limit"] = limit,
-		["position"] = position,
-		["endDate"] = endDate,
+		["startDate"] = _startDate,
+		["keyId"] = _keyId,
+		["usagePlanId"] = _usagePlanId,
+		["limit"] = _limit,
+		["position"] = _position,
+		["endDate"] = _endDate,
 	}
-	M.AssertGetUsageRequest(t)
+	asserts.AssertGetUsageRequest(t)
 	return t
 end
 
-local UpdateRequestValidatorRequest_keys = { "requestValidatorId" = true, "restApiId" = true, "patchOperations" = true, nil }
+keys.UpdateRequestValidatorRequest = { ["requestValidatorId"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateRequestValidatorRequest(struct)
+function asserts.AssertUpdateRequestValidatorRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateRequestValidatorRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["requestValidatorId"], "Expected key requestValidatorId to exist in table")
-	if struct["requestValidatorId"] then M.AssertString(struct["requestValidatorId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["requestValidatorId"] then asserts.AssertString(struct["requestValidatorId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateRequestValidatorRequest_keys[k], "UpdateRequestValidatorRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateRequestValidatorRequest[k], "UpdateRequestValidatorRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateRequestValidatorRequest
 -- <p>Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
--- @param requestValidatorId [String] <p>[Required] The identifier of <a>RequestValidator</a> to be updated.</p>
--- @param restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> for which the given <a>RequestValidator</a> is updated.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _requestValidatorId [String] <p>[Required] The identifier of <a>RequestValidator</a> to be updated.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> for which the given <a>RequestValidator</a> is updated.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: requestValidatorId
-function M.UpdateRequestValidatorRequest(requestValidatorId, restApiId, patchOperations, ...)
+function M.UpdateRequestValidatorRequest(_requestValidatorId, _restApiId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRequestValidatorRequest")
 	local t = { 
-		["requestValidatorId"] = requestValidatorId,
-		["restApiId"] = restApiId,
-		["patchOperations"] = patchOperations,
+		["requestValidatorId"] = _requestValidatorId,
+		["restApiId"] = _restApiId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateRequestValidatorRequest(t)
+	asserts.AssertUpdateRequestValidatorRequest(t)
 	return t
 end
 
-local DeleteIntegrationRequest_keys = { "resourceId" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.DeleteIntegrationRequest = { ["resourceId"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertDeleteIntegrationRequest(struct)
+function asserts.AssertDeleteIntegrationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteIntegrationRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteIntegrationRequest_keys[k], "DeleteIntegrationRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteIntegrationRequest[k], "DeleteIntegrationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteIntegrationRequest
 -- <p>Represents a delete integration request.</p>
--- @param resourceId [String] <p>Specifies a delete integration request's resource identifier.</p>
--- @param restApiId [String] <p>Specifies a delete integration request's API identifier.</p>
--- @param httpMethod [String] <p>Specifies a delete integration request's HTTP method.</p>
+-- @param _resourceId [String] <p>Specifies a delete integration request's resource identifier.</p>
+-- @param _restApiId [String] <p>Specifies a delete integration request's API identifier.</p>
+-- @param _httpMethod [String] <p>Specifies a delete integration request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
-function M.DeleteIntegrationRequest(resourceId, restApiId, httpMethod, ...)
+function M.DeleteIntegrationRequest(_resourceId, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIntegrationRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertDeleteIntegrationRequest(t)
+	asserts.AssertDeleteIntegrationRequest(t)
 	return t
 end
 
-local UpdateApiKeyRequest_keys = { "apiKey" = true, "patchOperations" = true, nil }
+keys.UpdateApiKeyRequest = { ["apiKey"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateApiKeyRequest(struct)
+function asserts.AssertUpdateApiKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateApiKeyRequest to be of type 'table'")
 	assert(struct["apiKey"], "Expected key apiKey to exist in table")
-	if struct["apiKey"] then M.AssertString(struct["apiKey"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["apiKey"] then asserts.AssertString(struct["apiKey"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateApiKeyRequest_keys[k], "UpdateApiKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateApiKeyRequest[k], "UpdateApiKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateApiKeyRequest
 -- <p>A request to change information about an <a>ApiKey</a> resource.</p>
--- @param apiKey [String] <p>The identifier of the <a>ApiKey</a> resource to be updated.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _apiKey [String] <p>The identifier of the <a>ApiKey</a> resource to be updated.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: apiKey
-function M.UpdateApiKeyRequest(apiKey, patchOperations, ...)
+function M.UpdateApiKeyRequest(_apiKey, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApiKeyRequest")
 	local t = { 
-		["apiKey"] = apiKey,
-		["patchOperations"] = patchOperations,
+		["apiKey"] = _apiKey,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateApiKeyRequest(t)
+	asserts.AssertUpdateApiKeyRequest(t)
 	return t
 end
 
-local TestInvokeMethodRequest_keys = { "body" = true, "clientCertificateId" = true, "restApiId" = true, "httpMethod" = true, "resourceId" = true, "pathWithQueryString" = true, "headers" = true, "stageVariables" = true, nil }
+keys.TestInvokeMethodRequest = { ["body"] = true, ["clientCertificateId"] = true, ["restApiId"] = true, ["httpMethod"] = true, ["resourceId"] = true, ["pathWithQueryString"] = true, ["headers"] = true, ["stageVariables"] = true, nil }
 
-function M.AssertTestInvokeMethodRequest(struct)
+function asserts.AssertTestInvokeMethodRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TestInvokeMethodRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
-	if struct["body"] then M.AssertString(struct["body"]) end
-	if struct["clientCertificateId"] then M.AssertString(struct["clientCertificateId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["pathWithQueryString"] then M.AssertString(struct["pathWithQueryString"]) end
-	if struct["headers"] then M.AssertMapOfHeaderValues(struct["headers"]) end
-	if struct["stageVariables"] then M.AssertMapOfStringToString(struct["stageVariables"]) end
+	if struct["body"] then asserts.AssertString(struct["body"]) end
+	if struct["clientCertificateId"] then asserts.AssertString(struct["clientCertificateId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["pathWithQueryString"] then asserts.AssertString(struct["pathWithQueryString"]) end
+	if struct["headers"] then asserts.AssertMapOfHeaderValues(struct["headers"]) end
+	if struct["stageVariables"] then asserts.AssertMapOfStringToString(struct["stageVariables"]) end
 	for k,_ in pairs(struct) do
-		assert(TestInvokeMethodRequest_keys[k], "TestInvokeMethodRequest contains unknown key " .. tostring(k))
+		assert(keys.TestInvokeMethodRequest[k], "TestInvokeMethodRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TestInvokeMethodRequest
 -- <p>Make a request to simulate the execution of a <a>Method</a>.</p>
--- @param body [String] <p>The simulated request body of an incoming invocation request.</p>
--- @param clientCertificateId [String] <p>A <a>ClientCertificate</a> identifier to use in the test invocation. API Gateway will use the certificate when making the HTTPS request to the defined back-end endpoint.</p>
--- @param restApiId [String] <p>Specifies a test invoke method request's API identifier.</p>
--- @param httpMethod [String] <p>Specifies a test invoke method request's HTTP method.</p>
--- @param resourceId [String] <p>Specifies a test invoke method request's resource ID.</p>
--- @param pathWithQueryString [String] <p>The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
--- @param headers [MapOfHeaderValues] <p>A key-value map of headers to simulate an incoming invocation request.</p>
--- @param stageVariables [MapOfStringToString] <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
+-- @param _body [String] <p>The simulated request body of an incoming invocation request.</p>
+-- @param _clientCertificateId [String] <p>A <a>ClientCertificate</a> identifier to use in the test invocation. API Gateway will use the certificate when making the HTTPS request to the defined back-end endpoint.</p>
+-- @param _restApiId [String] <p>Specifies a test invoke method request's API identifier.</p>
+-- @param _httpMethod [String] <p>Specifies a test invoke method request's HTTP method.</p>
+-- @param _resourceId [String] <p>Specifies a test invoke method request's resource ID.</p>
+-- @param _pathWithQueryString [String] <p>The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
+-- @param _headers [MapOfHeaderValues] <p>A key-value map of headers to simulate an incoming invocation request.</p>
+-- @param _stageVariables [MapOfStringToString] <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
-function M.TestInvokeMethodRequest(body, clientCertificateId, restApiId, httpMethod, resourceId, pathWithQueryString, headers, stageVariables, ...)
+function M.TestInvokeMethodRequest(_body, _clientCertificateId, _restApiId, _httpMethod, _resourceId, _pathWithQueryString, _headers, _stageVariables, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestInvokeMethodRequest")
 	local t = { 
-		["body"] = body,
-		["clientCertificateId"] = clientCertificateId,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
-		["resourceId"] = resourceId,
-		["pathWithQueryString"] = pathWithQueryString,
-		["headers"] = headers,
-		["stageVariables"] = stageVariables,
+		["body"] = _body,
+		["clientCertificateId"] = _clientCertificateId,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
+		["resourceId"] = _resourceId,
+		["pathWithQueryString"] = _pathWithQueryString,
+		["headers"] = _headers,
+		["stageVariables"] = _stageVariables,
 	}
-	M.AssertTestInvokeMethodRequest(t)
+	asserts.AssertTestInvokeMethodRequest(t)
 	return t
 end
 
-local ConflictException_keys = { "message" = true, nil }
+keys.ConflictException = { ["message"] = true, nil }
 
-function M.AssertConflictException(struct)
+function asserts.AssertConflictException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConflictException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ConflictException_keys[k], "ConflictException contains unknown key " .. tostring(k))
+		assert(keys.ConflictException[k], "ConflictException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConflictException
 --  
--- @param message [String]  
-function M.ConflictException(message, ...)
+-- @param _message [String] 
+function M.ConflictException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConflictException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertConflictException(t)
+	asserts.AssertConflictException(t)
 	return t
 end
 
-local UpdateModelRequest_keys = { "modelName" = true, "restApiId" = true, "patchOperations" = true, nil }
+keys.UpdateModelRequest = { ["modelName"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateModelRequest(struct)
+function asserts.AssertUpdateModelRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateModelRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["modelName"], "Expected key modelName to exist in table")
-	if struct["modelName"] then M.AssertString(struct["modelName"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["modelName"] then asserts.AssertString(struct["modelName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateModelRequest_keys[k], "UpdateModelRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateModelRequest[k], "UpdateModelRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateModelRequest
 -- <p>Request to update an existing model in an existing <a>RestApi</a> resource.</p>
--- @param modelName [String] <p>The name of the model to update.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier under which the model exists.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _modelName [String] <p>The name of the model to update.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier under which the model exists.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: modelName
-function M.UpdateModelRequest(modelName, restApiId, patchOperations, ...)
+function M.UpdateModelRequest(_modelName, _restApiId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateModelRequest")
 	local t = { 
-		["modelName"] = modelName,
-		["restApiId"] = restApiId,
-		["patchOperations"] = patchOperations,
+		["modelName"] = _modelName,
+		["restApiId"] = _restApiId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateModelRequest(t)
+	asserts.AssertUpdateModelRequest(t)
 	return t
 end
 
-local UpdateDeploymentRequest_keys = { "deploymentId" = true, "restApiId" = true, "patchOperations" = true, nil }
+keys.UpdateDeploymentRequest = { ["deploymentId"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateDeploymentRequest(struct)
+function asserts.AssertUpdateDeploymentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDeploymentRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["deploymentId"], "Expected key deploymentId to exist in table")
-	if struct["deploymentId"] then M.AssertString(struct["deploymentId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["deploymentId"] then asserts.AssertString(struct["deploymentId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateDeploymentRequest_keys[k], "UpdateDeploymentRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateDeploymentRequest[k], "UpdateDeploymentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateDeploymentRequest
 -- <p>Requests Amazon API Gateway to change information about a <a>Deployment</a> resource.</p>
--- @param deploymentId [String] <p>The replacement identifier for the <a>Deployment</a> resource to change information about.</p>
--- @param restApiId [String] <p>The replacement identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to change information about.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _deploymentId [String] <p>The replacement identifier for the <a>Deployment</a> resource to change information about.</p>
+-- @param _restApiId [String] <p>The replacement identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to change information about.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: deploymentId
-function M.UpdateDeploymentRequest(deploymentId, restApiId, patchOperations, ...)
+function M.UpdateDeploymentRequest(_deploymentId, _restApiId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeploymentRequest")
 	local t = { 
-		["deploymentId"] = deploymentId,
-		["restApiId"] = restApiId,
-		["patchOperations"] = patchOperations,
+		["deploymentId"] = _deploymentId,
+		["restApiId"] = _restApiId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateDeploymentRequest(t)
+	asserts.AssertUpdateDeploymentRequest(t)
 	return t
 end
 
-local PutRestApiRequest_keys = { "body" = true, "failOnWarnings" = true, "restApiId" = true, "mode" = true, "parameters" = true, nil }
+keys.PutRestApiRequest = { ["body"] = true, ["failOnWarnings"] = true, ["restApiId"] = true, ["mode"] = true, ["parameters"] = true, nil }
 
-function M.AssertPutRestApiRequest(struct)
+function asserts.AssertPutRestApiRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutRestApiRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["body"], "Expected key body to exist in table")
-	if struct["body"] then M.AssertBlob(struct["body"]) end
-	if struct["failOnWarnings"] then M.AssertBoolean(struct["failOnWarnings"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["mode"] then M.AssertPutMode(struct["mode"]) end
-	if struct["parameters"] then M.AssertMapOfStringToString(struct["parameters"]) end
+	if struct["body"] then asserts.AssertBlob(struct["body"]) end
+	if struct["failOnWarnings"] then asserts.AssertBoolean(struct["failOnWarnings"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["mode"] then asserts.AssertPutMode(struct["mode"]) end
+	if struct["parameters"] then asserts.AssertMapOfStringToString(struct["parameters"]) end
 	for k,_ in pairs(struct) do
-		assert(PutRestApiRequest_keys[k], "PutRestApiRequest contains unknown key " .. tostring(k))
+		assert(keys.PutRestApiRequest[k], "PutRestApiRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutRestApiRequest
 -- <p>A PUT request to update an existing API, with external API definitions specified as the request body.</p>
--- @param body [Blob] <p>The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are supported.</p>
--- @param failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback the API update (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> to be updated. </p>
--- @param mode [PutMode] <p>The <code>mode</code> query parameter to specify the update mode. Valid values are "merge" and "overwrite". By default, the update mode is "merge".</p>
--- @param parameters [MapOfStringToString] <p>Custom headers supplied as part of the request. </p>
+-- @param _body [Blob] <p>The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are supported.</p>
+-- @param _failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback the API update (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> to be updated. </p>
+-- @param _mode [PutMode] <p>The <code>mode</code> query parameter to specify the update mode. Valid values are "merge" and "overwrite". By default, the update mode is "merge".</p>
+-- @param _parameters [MapOfStringToString] <p>Custom headers supplied as part of the request. </p>
 -- Required parameter: restApiId
 -- Required parameter: body
-function M.PutRestApiRequest(body, failOnWarnings, restApiId, mode, parameters, ...)
+function M.PutRestApiRequest(_body, _failOnWarnings, _restApiId, _mode, _parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRestApiRequest")
 	local t = { 
-		["body"] = body,
-		["failOnWarnings"] = failOnWarnings,
-		["restApiId"] = restApiId,
-		["mode"] = mode,
-		["parameters"] = parameters,
+		["body"] = _body,
+		["failOnWarnings"] = _failOnWarnings,
+		["restApiId"] = _restApiId,
+		["mode"] = _mode,
+		["parameters"] = _parameters,
 	}
-	M.AssertPutRestApiRequest(t)
+	asserts.AssertPutRestApiRequest(t)
 	return t
 end
 
-local GetSdkRequest_keys = { "sdkType" = true, "restApiId" = true, "parameters" = true, "stageName" = true, nil }
+keys.GetSdkRequest = { ["sdkType"] = true, ["restApiId"] = true, ["parameters"] = true, ["stageName"] = true, nil }
 
-function M.AssertGetSdkRequest(struct)
+function asserts.AssertGetSdkRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSdkRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["stageName"], "Expected key stageName to exist in table")
 	assert(struct["sdkType"], "Expected key sdkType to exist in table")
-	if struct["sdkType"] then M.AssertString(struct["sdkType"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["parameters"] then M.AssertMapOfStringToString(struct["parameters"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
+	if struct["sdkType"] then asserts.AssertString(struct["sdkType"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["parameters"] then asserts.AssertMapOfStringToString(struct["parameters"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSdkRequest_keys[k], "GetSdkRequest contains unknown key " .. tostring(k))
+		assert(keys.GetSdkRequest[k], "GetSdkRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSdkRequest
 -- <p>Request a new generated client SDK for a <a>RestApi</a> and <a>Stage</a>.</p>
--- @param sdkType [String] <p>The language for the generated SDK. Currently <code>javascript</code>, <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
--- @param parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the SDK, depending on the requested <code>sdkType</code>. For <code>sdkType</code> of <code>objectivec</code>, a parameter named <code>classPrefix</code> is required. For <code>sdkType</code> of <code>android</code>, parameters named <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and <code>invokerPackage</code> are required.</p>
--- @param stageName [String] <p>The name of the <a>Stage</a> that the SDK will use.</p>
+-- @param _sdkType [String] <p>The language for the generated SDK. Currently <code>javascript</code>, <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
+-- @param _parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the SDK, depending on the requested <code>sdkType</code>. For <code>sdkType</code> of <code>objectivec</code>, a parameter named <code>classPrefix</code> is required. For <code>sdkType</code> of <code>android</code>, parameters named <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and <code>invokerPackage</code> are required.</p>
+-- @param _stageName [String] <p>The name of the <a>Stage</a> that the SDK will use.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 -- Required parameter: sdkType
-function M.GetSdkRequest(sdkType, restApiId, parameters, stageName, ...)
+function M.GetSdkRequest(_sdkType, _restApiId, _parameters, _stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSdkRequest")
 	local t = { 
-		["sdkType"] = sdkType,
-		["restApiId"] = restApiId,
-		["parameters"] = parameters,
-		["stageName"] = stageName,
+		["sdkType"] = _sdkType,
+		["restApiId"] = _restApiId,
+		["parameters"] = _parameters,
+		["stageName"] = _stageName,
 	}
-	M.AssertGetSdkRequest(t)
+	asserts.AssertGetSdkRequest(t)
 	return t
 end
 
-local UpdateUsageRequest_keys = { "keyId" = true, "usagePlanId" = true, "patchOperations" = true, nil }
+keys.UpdateUsageRequest = { ["keyId"] = true, ["usagePlanId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateUsageRequest(struct)
+function asserts.AssertUpdateUsageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUsageRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
 	assert(struct["keyId"], "Expected key keyId to exist in table")
-	if struct["keyId"] then M.AssertString(struct["keyId"]) end
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["keyId"] then asserts.AssertString(struct["keyId"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUsageRequest_keys[k], "UpdateUsageRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateUsageRequest[k], "UpdateUsageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUsageRequest
 -- <p>The PATCH request to grant a temporary extension to the reamining quota of a usage plan associated with a specified API key.</p>
--- @param keyId [String] <p>The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.</p>
--- @param usagePlanId [String] <p>The Id of the usage plan associated with the usage data.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _keyId [String] <p>The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.</p>
+-- @param _usagePlanId [String] <p>The Id of the usage plan associated with the usage data.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: keyId
-function M.UpdateUsageRequest(keyId, usagePlanId, patchOperations, ...)
+function M.UpdateUsageRequest(_keyId, _usagePlanId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUsageRequest")
 	local t = { 
-		["keyId"] = keyId,
-		["usagePlanId"] = usagePlanId,
-		["patchOperations"] = patchOperations,
+		["keyId"] = _keyId,
+		["usagePlanId"] = _usagePlanId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateUsageRequest(t)
+	asserts.AssertUpdateUsageRequest(t)
 	return t
 end
 
-local StageKey_keys = { "restApiId" = true, "stageName" = true, nil }
+keys.StageKey = { ["restApiId"] = true, ["stageName"] = true, nil }
 
-function M.AssertStageKey(struct)
+function asserts.AssertStageKey(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StageKey to be of type 'table'")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
 	for k,_ in pairs(struct) do
-		assert(StageKey_keys[k], "StageKey contains unknown key " .. tostring(k))
+		assert(keys.StageKey[k], "StageKey contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StageKey
 -- <p>A reference to a unique stage identified in the format <code>{restApiId}/{stage}</code>.</p>
--- @param restApiId [String] <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p>
--- @param stageName [String] <p>The stage name in the <a>RestApi</a> that the stage key references.</p>
-function M.StageKey(restApiId, stageName, ...)
+-- @param _restApiId [String] <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p>
+-- @param _stageName [String] <p>The stage name in the <a>RestApi</a> that the stage key references.</p>
+function M.StageKey(_restApiId, _stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StageKey")
 	local t = { 
-		["restApiId"] = restApiId,
-		["stageName"] = stageName,
+		["restApiId"] = _restApiId,
+		["stageName"] = _stageName,
 	}
-	M.AssertStageKey(t)
+	asserts.AssertStageKey(t)
 	return t
 end
 
-local CreateModelRequest_keys = { "contentType" = true, "schema" = true, "restApiId" = true, "name" = true, "description" = true, nil }
+keys.CreateModelRequest = { ["contentType"] = true, ["schema"] = true, ["restApiId"] = true, ["name"] = true, ["description"] = true, nil }
 
-function M.AssertCreateModelRequest(struct)
+function asserts.AssertCreateModelRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateModelRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["contentType"], "Expected key contentType to exist in table")
-	if struct["contentType"] then M.AssertString(struct["contentType"]) end
-	if struct["schema"] then M.AssertString(struct["schema"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["contentType"] then asserts.AssertString(struct["contentType"]) end
+	if struct["schema"] then asserts.AssertString(struct["schema"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateModelRequest_keys[k], "CreateModelRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateModelRequest[k], "CreateModelRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateModelRequest
 -- <p>Request to add a new <a>Model</a> to an existing <a>RestApi</a> resource.</p>
--- @param contentType [String] <p>The content-type for the model.</p>
--- @param schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Model</a> will be created.</p>
--- @param name [String] <p>The name of the model.</p>
--- @param description [String] <p>The description of the model.</p>
+-- @param _contentType [String] <p>The content-type for the model.</p>
+-- @param _schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Model</a> will be created.</p>
+-- @param _name [String] <p>The name of the model.</p>
+-- @param _description [String] <p>The description of the model.</p>
 -- Required parameter: restApiId
 -- Required parameter: name
 -- Required parameter: contentType
-function M.CreateModelRequest(contentType, schema, restApiId, name, description, ...)
+function M.CreateModelRequest(_contentType, _schema, _restApiId, _name, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateModelRequest")
 	local t = { 
-		["contentType"] = contentType,
-		["schema"] = schema,
-		["restApiId"] = restApiId,
-		["name"] = name,
-		["description"] = description,
+		["contentType"] = _contentType,
+		["schema"] = _schema,
+		["restApiId"] = _restApiId,
+		["name"] = _name,
+		["description"] = _description,
 	}
-	M.AssertCreateModelRequest(t)
+	asserts.AssertCreateModelRequest(t)
 	return t
 end
 
-local RequestValidators_keys = { "position" = true, "items" = true, nil }
+keys.RequestValidators = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertRequestValidators(struct)
+function asserts.AssertRequestValidators(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RequestValidators to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfRequestValidator(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfRequestValidator(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(RequestValidators_keys[k], "RequestValidators contains unknown key " .. tostring(k))
+		assert(keys.RequestValidators[k], "RequestValidators contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RequestValidators
 -- <p>A collection of <a>RequestValidator</a> resources of a given <a>RestApi</a>.</p> <div class="remarks"> <p>In Swagger, the <a>RequestValidators</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html">x-amazon-apigateway-request-validators</a> extension.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
--- @param position [String] <p>A collection of <a>RequestValidator</a> resources of a given <a>RestApi</a>.</p> <div class="remarks"> <p>In Swagger, the <a>RequestValidators</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html">x-amazon-apigateway-request-validators</a> extension.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
--- @param items [ListOfRequestValidator] <p>The current page of <a>RequestValidator</a> resources in the <a>RequestValidators</a> collection.</p>
-function M.RequestValidators(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfRequestValidator] <p>The current page of <a>RequestValidator</a> resources in the <a>RequestValidators</a> collection.</p>
+function M.RequestValidators(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestValidators")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertRequestValidators(t)
+	asserts.AssertRequestValidators(t)
 	return t
 end
 
-local PutMethodResponseRequest_keys = { "responseModels" = true, "restApiId" = true, "resourceId" = true, "httpMethod" = true, "responseParameters" = true, "statusCode" = true, nil }
+keys.PutMethodResponseRequest = { ["responseModels"] = true, ["restApiId"] = true, ["resourceId"] = true, ["httpMethod"] = true, ["responseParameters"] = true, ["statusCode"] = true, nil }
 
-function M.AssertPutMethodResponseRequest(struct)
+function asserts.AssertPutMethodResponseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutMethodResponseRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["responseModels"] then M.AssertMapOfStringToString(struct["responseModels"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
-	if struct["responseParameters"] then M.AssertMapOfStringToBoolean(struct["responseParameters"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
+	if struct["responseModels"] then asserts.AssertMapOfStringToString(struct["responseModels"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
+	if struct["responseParameters"] then asserts.AssertMapOfStringToBoolean(struct["responseParameters"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(PutMethodResponseRequest_keys[k], "PutMethodResponseRequest contains unknown key " .. tostring(k))
+		assert(keys.PutMethodResponseRequest[k], "PutMethodResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutMethodResponseRequest
 -- <p>Request to add a <a>MethodResponse</a> to an existing <a>Method</a> resource.</p>
--- @param responseModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
--- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
--- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
--- @param responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
--- @param statusCode [StatusCode] <p>The method response's status code.</p>
+-- @param _responseModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
+-- @param _resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- @param _httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- @param _responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
+-- @param _statusCode [StatusCode] <p>The method response's status code.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: statusCode
-function M.PutMethodResponseRequest(responseModels, restApiId, resourceId, httpMethod, responseParameters, statusCode, ...)
+function M.PutMethodResponseRequest(_responseModels, _restApiId, _resourceId, _httpMethod, _responseParameters, _statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutMethodResponseRequest")
 	local t = { 
-		["responseModels"] = responseModels,
-		["restApiId"] = restApiId,
-		["resourceId"] = resourceId,
-		["httpMethod"] = httpMethod,
-		["responseParameters"] = responseParameters,
-		["statusCode"] = statusCode,
+		["responseModels"] = _responseModels,
+		["restApiId"] = _restApiId,
+		["resourceId"] = _resourceId,
+		["httpMethod"] = _httpMethod,
+		["responseParameters"] = _responseParameters,
+		["statusCode"] = _statusCode,
 	}
-	M.AssertPutMethodResponseRequest(t)
+	asserts.AssertPutMethodResponseRequest(t)
 	return t
 end
 
-local GetDeploymentsRequest_keys = { "position" = true, "restApiId" = true, "limit" = true, nil }
+keys.GetDeploymentsRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
 
-function M.AssertGetDeploymentsRequest(struct)
+function asserts.AssertGetDeploymentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDeploymentsRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDeploymentsRequest_keys[k], "GetDeploymentsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDeploymentsRequest[k], "GetDeploymentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDeploymentsRequest
 -- <p>Requests Amazon API Gateway to get information about a <a>Deployments</a> collection.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get information about.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get information about.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- Required parameter: restApiId
-function M.GetDeploymentsRequest(position, restApiId, limit, ...)
+function M.GetDeploymentsRequest(_position, _restApiId, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentsRequest")
 	local t = { 
-		["position"] = position,
-		["restApiId"] = restApiId,
-		["limit"] = limit,
+		["position"] = _position,
+		["restApiId"] = _restApiId,
+		["limit"] = _limit,
 	}
-	M.AssertGetDeploymentsRequest(t)
+	asserts.AssertGetDeploymentsRequest(t)
 	return t
 end
 
-local PutIntegrationRequest_keys = { "passthroughBehavior" = true, "restApiId" = true, "cacheKeyParameters" = true, "requestParameters" = true, "integrationHttpMethod" = true, "resourceId" = true, "uri" = true, "httpMethod" = true, "contentHandling" = true, "requestTemplates" = true, "cacheNamespace" = true, "credentials" = true, "type" = true, nil }
+keys.PutIntegrationRequest = { ["passthroughBehavior"] = true, ["restApiId"] = true, ["cacheKeyParameters"] = true, ["requestParameters"] = true, ["integrationHttpMethod"] = true, ["resourceId"] = true, ["uri"] = true, ["httpMethod"] = true, ["contentHandling"] = true, ["requestTemplates"] = true, ["cacheNamespace"] = true, ["credentials"] = true, ["type"] = true, nil }
 
-function M.AssertPutIntegrationRequest(struct)
+function asserts.AssertPutIntegrationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutIntegrationRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["type"], "Expected key type to exist in table")
-	if struct["passthroughBehavior"] then M.AssertString(struct["passthroughBehavior"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["cacheKeyParameters"] then M.AssertListOfString(struct["cacheKeyParameters"]) end
-	if struct["requestParameters"] then M.AssertMapOfStringToString(struct["requestParameters"]) end
-	if struct["integrationHttpMethod"] then M.AssertString(struct["integrationHttpMethod"]) end
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["uri"] then M.AssertString(struct["uri"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
-	if struct["contentHandling"] then M.AssertContentHandlingStrategy(struct["contentHandling"]) end
-	if struct["requestTemplates"] then M.AssertMapOfStringToString(struct["requestTemplates"]) end
-	if struct["cacheNamespace"] then M.AssertString(struct["cacheNamespace"]) end
-	if struct["credentials"] then M.AssertString(struct["credentials"]) end
-	if struct["type"] then M.AssertIntegrationType(struct["type"]) end
+	if struct["passthroughBehavior"] then asserts.AssertString(struct["passthroughBehavior"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["cacheKeyParameters"] then asserts.AssertListOfString(struct["cacheKeyParameters"]) end
+	if struct["requestParameters"] then asserts.AssertMapOfStringToString(struct["requestParameters"]) end
+	if struct["integrationHttpMethod"] then asserts.AssertString(struct["integrationHttpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["uri"] then asserts.AssertString(struct["uri"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
+	if struct["contentHandling"] then asserts.AssertContentHandlingStrategy(struct["contentHandling"]) end
+	if struct["requestTemplates"] then asserts.AssertMapOfStringToString(struct["requestTemplates"]) end
+	if struct["cacheNamespace"] then asserts.AssertString(struct["cacheNamespace"]) end
+	if struct["credentials"] then asserts.AssertString(struct["credentials"]) end
+	if struct["type"] then asserts.AssertIntegrationType(struct["type"]) end
 	for k,_ in pairs(struct) do
-		assert(PutIntegrationRequest_keys[k], "PutIntegrationRequest contains unknown key " .. tostring(k))
+		assert(keys.PutIntegrationRequest[k], "PutIntegrationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutIntegrationRequest
 -- <p>Represents a put integration request.</p>
--- @param passthroughBehavior [String] <p>Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the <code>requestTemplates</code> property on the Integration resource. There are three valid values: <code>WHEN_NO_MATCH</code>, <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul> <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content types through to the integration back end without transformation.</p></li> <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415 'Unsupported Media Type' response.</p></li> <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration has NO content types mapped to templates. However if there is at least one content type defined, unmapped content types will be rejected with the same 415 response.</p></li> </ul>
--- @param restApiId [String] <p>Specifies a put integration request's API identifier.</p>
--- @param cacheKeyParameters [ListOfString] <p>Specifies a put integration input's cache key parameters.</p>
--- @param requestParameters [MapOfStringToString] <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
--- @param integrationHttpMethod [String] <p>Specifies a put integration HTTP method. When the integration type is HTTP or AWS, this field is required.</p>
--- @param resourceId [String] <p>Specifies a put integration request's resource ID.</p>
--- @param uri [String] <p>Specifies a put integration input's Uniform Resource Identifier (URI). When the integration type is HTTP or AWS, this field is required. For integration with Lambda as an AWS service proxy, this value is of the 'arn:aws:apigateway:&lt;region&gt;:lambda:path/2015-03-31/functions/&lt;functionArn&gt;/invocations' format.</p>
--- @param httpMethod [String] <p>Specifies a put integration request's HTTP method.</p>
--- @param contentHandling [ContentHandlingStrategy] <p>Specifies how to handle request payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to support payload pass-through.</p>
--- @param requestTemplates [MapOfStringToString] <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
--- @param cacheNamespace [String] <p>Specifies a put integration input's cache namespace.</p>
--- @param credentials [String] <p>Specifies whether credentials are required for a put integration.</p>
--- @param type [IntegrationType] <p>Specifies a put integration input's type.</p>
+-- @param _passthroughBehavior [String] <p>Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the <code>requestTemplates</code> property on the Integration resource. There are three valid values: <code>WHEN_NO_MATCH</code>, <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul> <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content types through to the integration back end without transformation.</p></li> <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415 'Unsupported Media Type' response.</p></li> <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration has NO content types mapped to templates. However if there is at least one content type defined, unmapped content types will be rejected with the same 415 response.</p></li> </ul>
+-- @param _restApiId [String] <p>Specifies a put integration request's API identifier.</p>
+-- @param _cacheKeyParameters [ListOfString] <p>Specifies a put integration input's cache key parameters.</p>
+-- @param _requestParameters [MapOfStringToString] <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
+-- @param _integrationHttpMethod [String] <p>Specifies a put integration HTTP method. When the integration type is HTTP or AWS, this field is required.</p>
+-- @param _resourceId [String] <p>Specifies a put integration request's resource ID.</p>
+-- @param _uri [String] <p>Specifies a put integration input's Uniform Resource Identifier (URI). When the integration type is HTTP or AWS, this field is required. For integration with Lambda as an AWS service proxy, this value is of the 'arn:aws:apigateway:&lt;region&gt;:lambda:path/2015-03-31/functions/&lt;functionArn&gt;/invocations' format.</p>
+-- @param _httpMethod [String] <p>Specifies a put integration request's HTTP method.</p>
+-- @param _contentHandling [ContentHandlingStrategy] <p>Specifies how to handle request payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to support payload pass-through.</p>
+-- @param _requestTemplates [MapOfStringToString] <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
+-- @param _cacheNamespace [String] <p>Specifies a put integration input's cache namespace.</p>
+-- @param _credentials [String] <p>Specifies whether credentials are required for a put integration.</p>
+-- @param _type [IntegrationType] <p>Specifies a put integration input's type.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: type
-function M.PutIntegrationRequest(passthroughBehavior, restApiId, cacheKeyParameters, requestParameters, integrationHttpMethod, resourceId, uri, httpMethod, contentHandling, requestTemplates, cacheNamespace, credentials, type, ...)
+function M.PutIntegrationRequest(_passthroughBehavior, _restApiId, _cacheKeyParameters, _requestParameters, _integrationHttpMethod, _resourceId, _uri, _httpMethod, _contentHandling, _requestTemplates, _cacheNamespace, _credentials, _type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutIntegrationRequest")
 	local t = { 
-		["passthroughBehavior"] = passthroughBehavior,
-		["restApiId"] = restApiId,
-		["cacheKeyParameters"] = cacheKeyParameters,
-		["requestParameters"] = requestParameters,
-		["integrationHttpMethod"] = integrationHttpMethod,
-		["resourceId"] = resourceId,
-		["uri"] = uri,
-		["httpMethod"] = httpMethod,
-		["contentHandling"] = contentHandling,
-		["requestTemplates"] = requestTemplates,
-		["cacheNamespace"] = cacheNamespace,
-		["credentials"] = credentials,
-		["type"] = type,
+		["passthroughBehavior"] = _passthroughBehavior,
+		["restApiId"] = _restApiId,
+		["cacheKeyParameters"] = _cacheKeyParameters,
+		["requestParameters"] = _requestParameters,
+		["integrationHttpMethod"] = _integrationHttpMethod,
+		["resourceId"] = _resourceId,
+		["uri"] = _uri,
+		["httpMethod"] = _httpMethod,
+		["contentHandling"] = _contentHandling,
+		["requestTemplates"] = _requestTemplates,
+		["cacheNamespace"] = _cacheNamespace,
+		["credentials"] = _credentials,
+		["type"] = _type,
 	}
-	M.AssertPutIntegrationRequest(t)
+	asserts.AssertPutIntegrationRequest(t)
 	return t
 end
 
-local UpdateAuthorizerRequest_keys = { "restApiId" = true, "authorizerId" = true, "patchOperations" = true, nil }
+keys.UpdateAuthorizerRequest = { ["restApiId"] = true, ["authorizerId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateAuthorizerRequest(struct)
+function asserts.AssertUpdateAuthorizerRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateAuthorizerRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["authorizerId"], "Expected key authorizerId to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["authorizerId"] then M.AssertString(struct["authorizerId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["authorizerId"] then asserts.AssertString(struct["authorizerId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateAuthorizerRequest_keys[k], "UpdateAuthorizerRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateAuthorizerRequest[k], "UpdateAuthorizerRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateAuthorizerRequest
 -- <p>Request to update an existing <a>Authorizer</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
--- @param authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
+-- @param _authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: authorizerId
-function M.UpdateAuthorizerRequest(restApiId, authorizerId, patchOperations, ...)
+function M.UpdateAuthorizerRequest(_restApiId, _authorizerId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAuthorizerRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["authorizerId"] = authorizerId,
-		["patchOperations"] = patchOperations,
+		["restApiId"] = _restApiId,
+		["authorizerId"] = _authorizerId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateAuthorizerRequest(t)
+	asserts.AssertUpdateAuthorizerRequest(t)
 	return t
 end
 
-local GetDocumentationVersionRequest_keys = { "restApiId" = true, "documentationVersion" = true, nil }
+keys.GetDocumentationVersionRequest = { ["restApiId"] = true, ["documentationVersion"] = true, nil }
 
-function M.AssertGetDocumentationVersionRequest(struct)
+function asserts.AssertGetDocumentationVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentationVersionRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["documentationVersion"], "Expected key documentationVersion to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["documentationVersion"] then M.AssertString(struct["documentationVersion"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["documentationVersion"] then asserts.AssertString(struct["documentationVersion"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentationVersionRequest_keys[k], "GetDocumentationVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentationVersionRequest[k], "GetDocumentationVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentationVersionRequest
 -- <p>Gets a documentation snapshot of an API.</p>
--- @param restApiId [String] <p>[Required] The identifier of the API of the to-be-retrieved documentation snapshot.</p>
--- @param documentationVersion [String] <p>[Required] The version identifier of the to-be-retrieved documentation snapshot.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of the API of the to-be-retrieved documentation snapshot.</p>
+-- @param _documentationVersion [String] <p>[Required] The version identifier of the to-be-retrieved documentation snapshot.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationVersion
-function M.GetDocumentationVersionRequest(restApiId, documentationVersion, ...)
+function M.GetDocumentationVersionRequest(_restApiId, _documentationVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentationVersionRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["documentationVersion"] = documentationVersion,
+		["restApiId"] = _restApiId,
+		["documentationVersion"] = _documentationVersion,
 	}
-	M.AssertGetDocumentationVersionRequest(t)
+	asserts.AssertGetDocumentationVersionRequest(t)
 	return t
 end
 
-local CreateDocumentationVersionRequest_keys = { "restApiId" = true, "stageName" = true, "documentationVersion" = true, "description" = true, nil }
+keys.CreateDocumentationVersionRequest = { ["restApiId"] = true, ["stageName"] = true, ["documentationVersion"] = true, ["description"] = true, nil }
 
-function M.AssertCreateDocumentationVersionRequest(struct)
+function asserts.AssertCreateDocumentationVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDocumentationVersionRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["documentationVersion"], "Expected key documentationVersion to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["stageName"] then M.AssertString(struct["stageName"]) end
-	if struct["documentationVersion"] then M.AssertString(struct["documentationVersion"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["stageName"] then asserts.AssertString(struct["stageName"]) end
+	if struct["documentationVersion"] then asserts.AssertString(struct["documentationVersion"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDocumentationVersionRequest_keys[k], "CreateDocumentationVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDocumentationVersionRequest[k], "CreateDocumentationVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDocumentationVersionRequest
 -- <p>Creates a new documentation version of a given API.</p>
--- @param restApiId [String] <p>[Required] Specifies the API identifier of the to-be-created documentation version.</p>
--- @param stageName [String] <p>The stage name to be associated with the new documentation snapshot.</p>
--- @param documentationVersion [String] <p>[Required] The version identifier of the new snapshot.</p>
--- @param description [String] <p>A description about the new documentation snapshot.</p>
+-- @param _restApiId [String] <p>[Required] Specifies the API identifier of the to-be-created documentation version.</p>
+-- @param _stageName [String] <p>The stage name to be associated with the new documentation snapshot.</p>
+-- @param _documentationVersion [String] <p>[Required] The version identifier of the new snapshot.</p>
+-- @param _description [String] <p>A description about the new documentation snapshot.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationVersion
-function M.CreateDocumentationVersionRequest(restApiId, stageName, documentationVersion, description, ...)
+function M.CreateDocumentationVersionRequest(_restApiId, _stageName, _documentationVersion, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDocumentationVersionRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["stageName"] = stageName,
-		["documentationVersion"] = documentationVersion,
-		["description"] = description,
+		["restApiId"] = _restApiId,
+		["stageName"] = _stageName,
+		["documentationVersion"] = _documentationVersion,
+		["description"] = _description,
 	}
-	M.AssertCreateDocumentationVersionRequest(t)
+	asserts.AssertCreateDocumentationVersionRequest(t)
 	return t
 end
 
-local UpdateRestApiRequest_keys = { "restApiId" = true, "patchOperations" = true, nil }
+keys.UpdateRestApiRequest = { ["restApiId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateRestApiRequest(struct)
+function asserts.AssertUpdateRestApiRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateRestApiRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateRestApiRequest_keys[k], "UpdateRestApiRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateRestApiRequest[k], "UpdateRestApiRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateRestApiRequest
 -- <p>Request to update an existing <a>RestApi</a> resource in your collection.</p>
--- @param restApiId [String] <p>The ID of the <a>RestApi</a> you want to update.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _restApiId [String] <p>The ID of the <a>RestApi</a> you want to update.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
-function M.UpdateRestApiRequest(restApiId, patchOperations, ...)
+function M.UpdateRestApiRequest(_restApiId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRestApiRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["patchOperations"] = patchOperations,
+		["restApiId"] = _restApiId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateRestApiRequest(t)
+	asserts.AssertUpdateRestApiRequest(t)
 	return t
 end
 
-local UpdateResourceRequest_keys = { "resourceId" = true, "restApiId" = true, "patchOperations" = true, nil }
+keys.UpdateResourceRequest = { ["resourceId"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateResourceRequest(struct)
+function asserts.AssertUpdateResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateResourceRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateResourceRequest_keys[k], "UpdateResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateResourceRequest[k], "UpdateResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateResourceRequest
 -- <p>Request to change information about a <a>Resource</a> resource.</p>
--- @param resourceId [String] <p>The identifier of the <a>Resource</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _resourceId [String] <p>The identifier of the <a>Resource</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
-function M.UpdateResourceRequest(resourceId, restApiId, patchOperations, ...)
+function M.UpdateResourceRequest(_resourceId, _restApiId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateResourceRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["restApiId"] = restApiId,
-		["patchOperations"] = patchOperations,
+		["resourceId"] = _resourceId,
+		["restApiId"] = _restApiId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateResourceRequest(t)
+	asserts.AssertUpdateResourceRequest(t)
 	return t
 end
 
-local PutIntegrationResponseRequest_keys = { "contentHandling" = true, "restApiId" = true, "resourceId" = true, "responseTemplates" = true, "httpMethod" = true, "selectionPattern" = true, "statusCode" = true, "responseParameters" = true, nil }
+keys.PutIntegrationResponseRequest = { ["contentHandling"] = true, ["restApiId"] = true, ["resourceId"] = true, ["responseTemplates"] = true, ["httpMethod"] = true, ["selectionPattern"] = true, ["statusCode"] = true, ["responseParameters"] = true, nil }
 
-function M.AssertPutIntegrationResponseRequest(struct)
+function asserts.AssertPutIntegrationResponseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutIntegrationResponseRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["contentHandling"] then M.AssertContentHandlingStrategy(struct["contentHandling"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["responseTemplates"] then M.AssertMapOfStringToString(struct["responseTemplates"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
-	if struct["selectionPattern"] then M.AssertString(struct["selectionPattern"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
-	if struct["responseParameters"] then M.AssertMapOfStringToString(struct["responseParameters"]) end
+	if struct["contentHandling"] then asserts.AssertContentHandlingStrategy(struct["contentHandling"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["responseTemplates"] then asserts.AssertMapOfStringToString(struct["responseTemplates"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
+	if struct["selectionPattern"] then asserts.AssertString(struct["selectionPattern"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	if struct["responseParameters"] then asserts.AssertMapOfStringToString(struct["responseParameters"]) end
 	for k,_ in pairs(struct) do
-		assert(PutIntegrationResponseRequest_keys[k], "PutIntegrationResponseRequest contains unknown key " .. tostring(k))
+		assert(keys.PutIntegrationResponseRequest[k], "PutIntegrationResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutIntegrationResponseRequest
 -- <p>Represents a put integration response request.</p>
--- @param contentHandling [ContentHandlingStrategy] <p>Specifies how to handle response payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a response payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a response payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.</p>
--- @param restApiId [String] <p>Specifies a put integration response request's API identifier.</p>
--- @param resourceId [String] <p>Specifies a put integration response request's resource identifier.</p>
--- @param responseTemplates [MapOfStringToString] <p>Specifies a put integration response's templates.</p>
--- @param httpMethod [String] <p>Specifies a put integration response request's HTTP method.</p>
--- @param selectionPattern [String] <p>Specifies the selection pattern of a put integration response.</p>
--- @param statusCode [StatusCode] <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
--- @param responseParameters [MapOfStringToString] <p>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The mapped non-static value must match the pattern of <code>integration.response.header.{name}</code> or <code>integration.response.body.{JSON-expression}</code>, where <code>name</code> must be a valid and unique response header name and <code>JSON-expression</code> a valid JSON expression without the <code>$</code> prefix.</p>
+-- @param _contentHandling [ContentHandlingStrategy] <p>Specifies how to handle response payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a response payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a response payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.</p>
+-- @param _restApiId [String] <p>Specifies a put integration response request's API identifier.</p>
+-- @param _resourceId [String] <p>Specifies a put integration response request's resource identifier.</p>
+-- @param _responseTemplates [MapOfStringToString] <p>Specifies a put integration response's templates.</p>
+-- @param _httpMethod [String] <p>Specifies a put integration response request's HTTP method.</p>
+-- @param _selectionPattern [String] <p>Specifies the selection pattern of a put integration response.</p>
+-- @param _statusCode [StatusCode] <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
+-- @param _responseParameters [MapOfStringToString] <p>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The mapped non-static value must match the pattern of <code>integration.response.header.{name}</code> or <code>integration.response.body.{JSON-expression}</code>, where <code>name</code> must be a valid and unique response header name and <code>JSON-expression</code> a valid JSON expression without the <code>$</code> prefix.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: statusCode
-function M.PutIntegrationResponseRequest(contentHandling, restApiId, resourceId, responseTemplates, httpMethod, selectionPattern, statusCode, responseParameters, ...)
+function M.PutIntegrationResponseRequest(_contentHandling, _restApiId, _resourceId, _responseTemplates, _httpMethod, _selectionPattern, _statusCode, _responseParameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutIntegrationResponseRequest")
 	local t = { 
-		["contentHandling"] = contentHandling,
-		["restApiId"] = restApiId,
-		["resourceId"] = resourceId,
-		["responseTemplates"] = responseTemplates,
-		["httpMethod"] = httpMethod,
-		["selectionPattern"] = selectionPattern,
-		["statusCode"] = statusCode,
-		["responseParameters"] = responseParameters,
+		["contentHandling"] = _contentHandling,
+		["restApiId"] = _restApiId,
+		["resourceId"] = _resourceId,
+		["responseTemplates"] = _responseTemplates,
+		["httpMethod"] = _httpMethod,
+		["selectionPattern"] = _selectionPattern,
+		["statusCode"] = _statusCode,
+		["responseParameters"] = _responseParameters,
 	}
-	M.AssertPutIntegrationResponseRequest(t)
+	asserts.AssertPutIntegrationResponseRequest(t)
 	return t
 end
 
-local GetResourcesRequest_keys = { "position" = true, "embed" = true, "restApiId" = true, "limit" = true, nil }
+keys.GetResourcesRequest = { ["position"] = true, ["embed"] = true, ["restApiId"] = true, ["limit"] = true, nil }
 
-function M.AssertGetResourcesRequest(struct)
+function asserts.AssertGetResourcesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetResourcesRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["embed"] then M.AssertListOfString(struct["embed"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["embed"] then asserts.AssertListOfString(struct["embed"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetResourcesRequest_keys[k], "GetResourcesRequest contains unknown key " .. tostring(k))
+		assert(keys.GetResourcesRequest[k], "GetResourcesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetResourcesRequest
 -- <p>Request to list information about a collection of resources.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param embed [ListOfString] <p>A query parameter used to retrieve the specified resources embedded in the returned <a>Resources</a> resource in the response. This <code>embed</code> parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded <a>Method</a> resources this way. The query parameter value must be a single-valued list and contain the <code>"methods"</code> string. For example, <code>GET /restapis/{restapi_id}/resources?embed=methods</code>.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the Resource.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _embed [ListOfString] <p>A query parameter used to retrieve the specified resources embedded in the returned <a>Resources</a> resource in the response. This <code>embed</code> parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded <a>Method</a> resources this way. The query parameter value must be a single-valued list and contain the <code>"methods"</code> string. For example, <code>GET /restapis/{restapi_id}/resources?embed=methods</code>.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the Resource.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- Required parameter: restApiId
-function M.GetResourcesRequest(position, embed, restApiId, limit, ...)
+function M.GetResourcesRequest(_position, _embed, _restApiId, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetResourcesRequest")
 	local t = { 
-		["position"] = position,
-		["embed"] = embed,
-		["restApiId"] = restApiId,
-		["limit"] = limit,
+		["position"] = _position,
+		["embed"] = _embed,
+		["restApiId"] = _restApiId,
+		["limit"] = _limit,
 	}
-	M.AssertGetResourcesRequest(t)
+	asserts.AssertGetResourcesRequest(t)
 	return t
 end
 
-local GetBasePathMappingsRequest_keys = { "position" = true, "limit" = true, "domainName" = true, nil }
+keys.GetBasePathMappingsRequest = { ["position"] = true, ["limit"] = true, ["domainName"] = true, nil }
 
-function M.AssertGetBasePathMappingsRequest(struct)
+function asserts.AssertGetBasePathMappingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetBasePathMappingsRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(GetBasePathMappingsRequest_keys[k], "GetBasePathMappingsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetBasePathMappingsRequest[k], "GetBasePathMappingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetBasePathMappingsRequest
 -- <p>A request to get information about a collection of <a>BasePathMapping</a> resources.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
--- @param domainName [String] <p>The domain name of a <a>BasePathMapping</a> resource.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- @param _domainName [String] <p>The domain name of a <a>BasePathMapping</a> resource.</p>
 -- Required parameter: domainName
-function M.GetBasePathMappingsRequest(position, limit, domainName, ...)
+function M.GetBasePathMappingsRequest(_position, _limit, _domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBasePathMappingsRequest")
 	local t = { 
-		["position"] = position,
-		["limit"] = limit,
-		["domainName"] = domainName,
+		["position"] = _position,
+		["limit"] = _limit,
+		["domainName"] = _domainName,
 	}
-	M.AssertGetBasePathMappingsRequest(t)
+	asserts.AssertGetBasePathMappingsRequest(t)
 	return t
 end
 
-local Integration_keys = { "integrationResponses" = true, "passthroughBehavior" = true, "cacheKeyParameters" = true, "requestParameters" = true, "uri" = true, "httpMethod" = true, "contentHandling" = true, "requestTemplates" = true, "cacheNamespace" = true, "credentials" = true, "type" = true, nil }
+keys.Integration = { ["integrationResponses"] = true, ["passthroughBehavior"] = true, ["cacheKeyParameters"] = true, ["requestParameters"] = true, ["uri"] = true, ["httpMethod"] = true, ["contentHandling"] = true, ["requestTemplates"] = true, ["cacheNamespace"] = true, ["credentials"] = true, ["type"] = true, nil }
 
-function M.AssertIntegration(struct)
+function asserts.AssertIntegration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Integration to be of type 'table'")
-	if struct["integrationResponses"] then M.AssertMapOfIntegrationResponse(struct["integrationResponses"]) end
-	if struct["passthroughBehavior"] then M.AssertString(struct["passthroughBehavior"]) end
-	if struct["cacheKeyParameters"] then M.AssertListOfString(struct["cacheKeyParameters"]) end
-	if struct["requestParameters"] then M.AssertMapOfStringToString(struct["requestParameters"]) end
-	if struct["uri"] then M.AssertString(struct["uri"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
-	if struct["contentHandling"] then M.AssertContentHandlingStrategy(struct["contentHandling"]) end
-	if struct["requestTemplates"] then M.AssertMapOfStringToString(struct["requestTemplates"]) end
-	if struct["cacheNamespace"] then M.AssertString(struct["cacheNamespace"]) end
-	if struct["credentials"] then M.AssertString(struct["credentials"]) end
-	if struct["type"] then M.AssertIntegrationType(struct["type"]) end
+	if struct["integrationResponses"] then asserts.AssertMapOfIntegrationResponse(struct["integrationResponses"]) end
+	if struct["passthroughBehavior"] then asserts.AssertString(struct["passthroughBehavior"]) end
+	if struct["cacheKeyParameters"] then asserts.AssertListOfString(struct["cacheKeyParameters"]) end
+	if struct["requestParameters"] then asserts.AssertMapOfStringToString(struct["requestParameters"]) end
+	if struct["uri"] then asserts.AssertString(struct["uri"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
+	if struct["contentHandling"] then asserts.AssertContentHandlingStrategy(struct["contentHandling"]) end
+	if struct["requestTemplates"] then asserts.AssertMapOfStringToString(struct["requestTemplates"]) end
+	if struct["cacheNamespace"] then asserts.AssertString(struct["cacheNamespace"]) end
+	if struct["credentials"] then asserts.AssertString(struct["credentials"]) end
+	if struct["type"] then asserts.AssertIntegrationType(struct["type"]) end
 	for k,_ in pairs(struct) do
-		assert(Integration_keys[k], "Integration contains unknown key " .. tostring(k))
+		assert(keys.Integration[k], "Integration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Integration
 -- <p>Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.</p> <div class="remarks">In the API Gateway console, the built-in Lambda integration is an AWS integration.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
--- @param integrationResponses [MapOfIntegrationResponse] <p>Specifies the integration's responses.</p> <div class="remarks"> <p/> <h4>Example: Get integration responses of a method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
--- @param passthroughBehavior [String] <div> <p> Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in <code>requestTemplates</code>. There are three valid values: <code>WHEN_NO_MATCH</code>, <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul> <li> <code>WHEN_NO_MATCH</code> passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request. </li> <li> <code>WHEN_NO_TEMPLATES</code> passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP <code>415 Unsupported Media Type</code> response. </li> <li> <code>NEVER</code> rejects the method request with an HTTP <code>415 Unsupported Media Type</code> response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request. </li> </ul> </div>
--- @param cacheKeyParameters [ListOfString] <p>Specifies the integration's cache key parameters.</p>
--- @param requestParameters [MapOfStringToString] <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
--- @param uri [String] <p>Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>. <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right endpoint. For AWS services that use the <code>Action=</code> query string parameter, <code>service_api</code> should be a valid action for the desired service. For RESTful AWS service APIs, <code>path</code> is used to indicate that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>.</p>
--- @param httpMethod [String] <p>Specifies the integration's HTTP method type.</p>
--- @param contentHandling [ContentHandlingStrategy] <p>Specifies how to handle request payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to support payload pass-through.</p>
--- @param requestTemplates [MapOfStringToString] <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
--- @param cacheNamespace [String] <p>Specifies the integration's cache namespace.</p>
--- @param credentials [String] <p>Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string <code>arn:aws:iam::\*:user/\*</code>. To use resource-based permissions on supported AWS services, specify null.</p>
--- @param type [IntegrationType] <p>Specifies the integration's type. The valid value is <code>HTTP</code> for integrating with an HTTP back end, <code>AWS</code> for any AWS service endpoints, <code>MOCK</code> for testing without actually invoking the back end, <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration, or <code>AWS_PROXY</code> for integrating with the Lambda proxy integration type.</p>
-function M.Integration(integrationResponses, passthroughBehavior, cacheKeyParameters, requestParameters, uri, httpMethod, contentHandling, requestTemplates, cacheNamespace, credentials, type, ...)
+-- @param _integrationResponses [MapOfIntegrationResponse] <p>Specifies the integration's responses.</p> <div class="remarks"> <p/> <h4>Example: Get integration responses of a method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- @param _passthroughBehavior [String] <div> <p> Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in <code>requestTemplates</code>. There are three valid values: <code>WHEN_NO_MATCH</code>, <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul> <li> <code>WHEN_NO_MATCH</code> passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request. </li> <li> <code>WHEN_NO_TEMPLATES</code> passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP <code>415 Unsupported Media Type</code> response. </li> <li> <code>NEVER</code> rejects the method request with an HTTP <code>415 Unsupported Media Type</code> response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request. </li> </ul> </div>
+-- @param _cacheKeyParameters [ListOfString] <p>Specifies the integration's cache key parameters.</p>
+-- @param _requestParameters [MapOfStringToString] <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
+-- @param _uri [String] <p>Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>. <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right endpoint. For AWS services that use the <code>Action=</code> query string parameter, <code>service_api</code> should be a valid action for the desired service. For RESTful AWS service APIs, <code>path</code> is used to indicate that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>.</p>
+-- @param _httpMethod [String] <p>Specifies the integration's HTTP method type.</p>
+-- @param _contentHandling [ContentHandlingStrategy] <p>Specifies how to handle request payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to support payload pass-through.</p>
+-- @param _requestTemplates [MapOfStringToString] <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
+-- @param _cacheNamespace [String] <p>Specifies the integration's cache namespace.</p>
+-- @param _credentials [String] <p>Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string <code>arn:aws:iam::\*:user/\*</code>. To use resource-based permissions on supported AWS services, specify null.</p>
+-- @param _type [IntegrationType] <p>Specifies the integration's type. The valid value is <code>HTTP</code> for integrating with an HTTP back end, <code>AWS</code> for any AWS service endpoints, <code>MOCK</code> for testing without actually invoking the back end, <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration, or <code>AWS_PROXY</code> for integrating with the Lambda proxy integration type.</p>
+function M.Integration(_integrationResponses, _passthroughBehavior, _cacheKeyParameters, _requestParameters, _uri, _httpMethod, _contentHandling, _requestTemplates, _cacheNamespace, _credentials, _type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Integration")
 	local t = { 
-		["integrationResponses"] = integrationResponses,
-		["passthroughBehavior"] = passthroughBehavior,
-		["cacheKeyParameters"] = cacheKeyParameters,
-		["requestParameters"] = requestParameters,
-		["uri"] = uri,
-		["httpMethod"] = httpMethod,
-		["contentHandling"] = contentHandling,
-		["requestTemplates"] = requestTemplates,
-		["cacheNamespace"] = cacheNamespace,
-		["credentials"] = credentials,
-		["type"] = type,
+		["integrationResponses"] = _integrationResponses,
+		["passthroughBehavior"] = _passthroughBehavior,
+		["cacheKeyParameters"] = _cacheKeyParameters,
+		["requestParameters"] = _requestParameters,
+		["uri"] = _uri,
+		["httpMethod"] = _httpMethod,
+		["contentHandling"] = _contentHandling,
+		["requestTemplates"] = _requestTemplates,
+		["cacheNamespace"] = _cacheNamespace,
+		["credentials"] = _credentials,
+		["type"] = _type,
 	}
-	M.AssertIntegration(t)
+	asserts.AssertIntegration(t)
 	return t
 end
 
-local RestApis_keys = { "position" = true, "items" = true, nil }
+keys.RestApis = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertRestApis(struct)
+function asserts.AssertRestApis(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RestApis to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfRestApi(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfRestApi(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(RestApis_keys[k], "RestApis contains unknown key " .. tostring(k))
+		assert(keys.RestApis[k], "RestApis contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RestApis
 -- <p>Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
--- @param position [String] <p>Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
--- @param items [ListOfRestApi] <p>An array of links to the current page of <a>RestApi</a> resources.</p>
-function M.RestApis(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfRestApi] <p>An array of links to the current page of <a>RestApi</a> resources.</p>
+function M.RestApis(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RestApis")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertRestApis(t)
+	asserts.AssertRestApis(t)
 	return t
 end
 
-local CreateDocumentationPartRequest_keys = { "restApiId" = true, "location" = true, "properties" = true, nil }
+keys.CreateDocumentationPartRequest = { ["restApiId"] = true, ["location"] = true, ["properties"] = true, nil }
 
-function M.AssertCreateDocumentationPartRequest(struct)
+function asserts.AssertCreateDocumentationPartRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateDocumentationPartRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["location"], "Expected key location to exist in table")
 	assert(struct["properties"], "Expected key properties to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["location"] then M.AssertDocumentationPartLocation(struct["location"]) end
-	if struct["properties"] then M.AssertString(struct["properties"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["location"] then asserts.AssertDocumentationPartLocation(struct["location"]) end
+	if struct["properties"] then asserts.AssertString(struct["properties"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateDocumentationPartRequest_keys[k], "CreateDocumentationPartRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateDocumentationPartRequest[k], "CreateDocumentationPartRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateDocumentationPartRequest
 -- <p>Creates a new documentation part of a given API.</p>
--- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-created documentation part.</p>
--- @param location [DocumentationPartLocation] <p>[Required] The location of the targeted API entity of the to-be-created documentation part.</p>
--- @param properties [String] <p>[Required] The new documentation content map of the targeted API entity. Enclosed key-value pairs are API-specific, but only Swagger-compliant key-value pairs can be exported and, hence, published.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of an API of the to-be-created documentation part.</p>
+-- @param _location [DocumentationPartLocation] <p>[Required] The location of the targeted API entity of the to-be-created documentation part.</p>
+-- @param _properties [String] <p>[Required] The new documentation content map of the targeted API entity. Enclosed key-value pairs are API-specific, but only Swagger-compliant key-value pairs can be exported and, hence, published.</p>
 -- Required parameter: restApiId
 -- Required parameter: location
 -- Required parameter: properties
-function M.CreateDocumentationPartRequest(restApiId, location, properties, ...)
+function M.CreateDocumentationPartRequest(_restApiId, _location, _properties, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDocumentationPartRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["location"] = location,
-		["properties"] = properties,
+		["restApiId"] = _restApiId,
+		["location"] = _location,
+		["properties"] = _properties,
 	}
-	M.AssertCreateDocumentationPartRequest(t)
+	asserts.AssertCreateDocumentationPartRequest(t)
 	return t
 end
 
-local CreateBasePathMappingRequest_keys = { "basePath" = true, "stage" = true, "restApiId" = true, "domainName" = true, nil }
+keys.CreateBasePathMappingRequest = { ["basePath"] = true, ["stage"] = true, ["restApiId"] = true, ["domainName"] = true, nil }
 
-function M.AssertCreateBasePathMappingRequest(struct)
+function asserts.AssertCreateBasePathMappingRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateBasePathMappingRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["basePath"] then M.AssertString(struct["basePath"]) end
-	if struct["stage"] then M.AssertString(struct["stage"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["basePath"] then asserts.AssertString(struct["basePath"]) end
+	if struct["stage"] then asserts.AssertString(struct["stage"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateBasePathMappingRequest_keys[k], "CreateBasePathMappingRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateBasePathMappingRequest[k], "CreateBasePathMappingRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateBasePathMappingRequest
 -- <p>Requests Amazon API Gateway to create a new <a>BasePathMapping</a> resource.</p>
--- @param basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a base path name after the domain name.</p>
--- @param stage [String] <p>The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to explicitly specify the stage name after any base path name.</p>
--- @param restApiId [String] <p>The name of the API that you want to apply this mapping to.</p>
--- @param domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to create.</p>
+-- @param _basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a base path name after the domain name.</p>
+-- @param _stage [String] <p>The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to explicitly specify the stage name after any base path name.</p>
+-- @param _restApiId [String] <p>The name of the API that you want to apply this mapping to.</p>
+-- @param _domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to create.</p>
 -- Required parameter: domainName
 -- Required parameter: restApiId
-function M.CreateBasePathMappingRequest(basePath, stage, restApiId, domainName, ...)
+function M.CreateBasePathMappingRequest(_basePath, _stage, _restApiId, _domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateBasePathMappingRequest")
 	local t = { 
-		["basePath"] = basePath,
-		["stage"] = stage,
-		["restApiId"] = restApiId,
-		["domainName"] = domainName,
+		["basePath"] = _basePath,
+		["stage"] = _stage,
+		["restApiId"] = _restApiId,
+		["domainName"] = _domainName,
 	}
-	M.AssertCreateBasePathMappingRequest(t)
+	asserts.AssertCreateBasePathMappingRequest(t)
 	return t
 end
 
-local GetUsagePlansRequest_keys = { "position" = true, "keyId" = true, "limit" = true, nil }
+keys.GetUsagePlansRequest = { ["position"] = true, ["keyId"] = true, ["limit"] = true, nil }
 
-function M.AssertGetUsagePlansRequest(struct)
+function asserts.AssertGetUsagePlansRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUsagePlansRequest to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["keyId"] then M.AssertString(struct["keyId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["keyId"] then asserts.AssertString(struct["keyId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUsagePlansRequest_keys[k], "GetUsagePlansRequest contains unknown key " .. tostring(k))
+		assert(keys.GetUsagePlansRequest[k], "GetUsagePlansRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUsagePlansRequest
 -- <p>The GET request to get all the usage plans of the caller's account.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param keyId [String] <p>The identifier of the API key associated with the usage plans.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
-function M.GetUsagePlansRequest(position, keyId, limit, ...)
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _keyId [String] <p>The identifier of the API key associated with the usage plans.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+function M.GetUsagePlansRequest(_position, _keyId, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUsagePlansRequest")
 	local t = { 
-		["position"] = position,
-		["keyId"] = keyId,
-		["limit"] = limit,
+		["position"] = _position,
+		["keyId"] = _keyId,
+		["limit"] = _limit,
 	}
-	M.AssertGetUsagePlansRequest(t)
+	asserts.AssertGetUsagePlansRequest(t)
 	return t
 end
 
-local GetSdkTypeRequest_keys = { "id" = true, nil }
+keys.GetSdkTypeRequest = { ["id"] = true, nil }
 
-function M.AssertGetSdkTypeRequest(struct)
+function asserts.AssertGetSdkTypeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSdkTypeRequest to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
-	if struct["id"] then M.AssertString(struct["id"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSdkTypeRequest_keys[k], "GetSdkTypeRequest contains unknown key " .. tostring(k))
+		assert(keys.GetSdkTypeRequest[k], "GetSdkTypeRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSdkTypeRequest
 -- <p>Get an <a>SdkType</a> instance.</p>
--- @param id [String] <p>The identifier of the queried <a>SdkType</a> instance.</p>
+-- @param _id [String] <p>The identifier of the queried <a>SdkType</a> instance.</p>
 -- Required parameter: id
-function M.GetSdkTypeRequest(id, ...)
+function M.GetSdkTypeRequest(_id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSdkTypeRequest")
 	local t = { 
-		["id"] = id,
+		["id"] = _id,
 	}
-	M.AssertGetSdkTypeRequest(t)
+	asserts.AssertGetSdkTypeRequest(t)
 	return t
 end
 
-local SdkConfigurationProperty_keys = { "friendlyName" = true, "defaultValue" = true, "required" = true, "name" = true, "description" = true, nil }
+keys.SdkConfigurationProperty = { ["friendlyName"] = true, ["defaultValue"] = true, ["required"] = true, ["name"] = true, ["description"] = true, nil }
 
-function M.AssertSdkConfigurationProperty(struct)
+function asserts.AssertSdkConfigurationProperty(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SdkConfigurationProperty to be of type 'table'")
-	if struct["friendlyName"] then M.AssertString(struct["friendlyName"]) end
-	if struct["defaultValue"] then M.AssertString(struct["defaultValue"]) end
-	if struct["required"] then M.AssertBoolean(struct["required"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["friendlyName"] then asserts.AssertString(struct["friendlyName"]) end
+	if struct["defaultValue"] then asserts.AssertString(struct["defaultValue"]) end
+	if struct["required"] then asserts.AssertBoolean(struct["required"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(SdkConfigurationProperty_keys[k], "SdkConfigurationProperty contains unknown key " .. tostring(k))
+		assert(keys.SdkConfigurationProperty[k], "SdkConfigurationProperty contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SdkConfigurationProperty
 -- <p>A configuration property of an SDK type.</p>
--- @param friendlyName [String] <p>The user-friendly name of an <a>SdkType</a> configuration property.</p>
--- @param defaultValue [String] <p>The default value of an <a>SdkType</a> configuration property.</p>
--- @param required [Boolean] <p>A boolean flag of an <a>SdkType</a> configuration property to indicate if the associated SDK configuration property is required (<code>true</code>) or not (<code>false</code>).</p>
--- @param name [String] <p>The name of a an <a>SdkType</a> configuration property.</p>
--- @param description [String] <p>The description of an <a>SdkType</a> configuration property.</p>
-function M.SdkConfigurationProperty(friendlyName, defaultValue, required, name, description, ...)
+-- @param _friendlyName [String] <p>The user-friendly name of an <a>SdkType</a> configuration property.</p>
+-- @param _defaultValue [String] <p>The default value of an <a>SdkType</a> configuration property.</p>
+-- @param _required [Boolean] <p>A boolean flag of an <a>SdkType</a> configuration property to indicate if the associated SDK configuration property is required (<code>true</code>) or not (<code>false</code>).</p>
+-- @param _name [String] <p>The name of a an <a>SdkType</a> configuration property.</p>
+-- @param _description [String] <p>The description of an <a>SdkType</a> configuration property.</p>
+function M.SdkConfigurationProperty(_friendlyName, _defaultValue, _required, _name, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SdkConfigurationProperty")
 	local t = { 
-		["friendlyName"] = friendlyName,
-		["defaultValue"] = defaultValue,
-		["required"] = required,
-		["name"] = name,
-		["description"] = description,
+		["friendlyName"] = _friendlyName,
+		["defaultValue"] = _defaultValue,
+		["required"] = _required,
+		["name"] = _name,
+		["description"] = _description,
 	}
-	M.AssertSdkConfigurationProperty(t)
+	asserts.AssertSdkConfigurationProperty(t)
 	return t
 end
 
-local ApiKey_keys = { "description" = true, "enabled" = true, "value" = true, "id" = true, "lastUpdatedDate" = true, "createdDate" = true, "stageKeys" = true, "customerId" = true, "name" = true, nil }
+keys.ApiKey = { ["description"] = true, ["enabled"] = true, ["value"] = true, ["id"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["stageKeys"] = true, ["customerId"] = true, ["name"] = true, nil }
 
-function M.AssertApiKey(struct)
+function asserts.AssertApiKey(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ApiKey to be of type 'table'")
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["enabled"] then M.AssertBoolean(struct["enabled"]) end
-	if struct["value"] then M.AssertString(struct["value"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["lastUpdatedDate"] then M.AssertTimestamp(struct["lastUpdatedDate"]) end
-	if struct["createdDate"] then M.AssertTimestamp(struct["createdDate"]) end
-	if struct["stageKeys"] then M.AssertListOfString(struct["stageKeys"]) end
-	if struct["customerId"] then M.AssertString(struct["customerId"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["enabled"] then asserts.AssertBoolean(struct["enabled"]) end
+	if struct["value"] then asserts.AssertString(struct["value"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["lastUpdatedDate"] then asserts.AssertTimestamp(struct["lastUpdatedDate"]) end
+	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["stageKeys"] then asserts.AssertListOfString(struct["stageKeys"]) end
+	if struct["customerId"] then asserts.AssertString(struct["customerId"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(ApiKey_keys[k], "ApiKey contains unknown key " .. tostring(k))
+		assert(keys.ApiKey[k], "ApiKey contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ApiKey
 -- <p>A resource that can be distributed to callers for executing <a>Method</a> resources that require an API key. API keys can be mapped to any <a>Stage</a> on any <a>RestApi</a>, which indicates that the callers with the API key can make requests to that stage.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
--- @param description [String] <p>The description of the API Key.</p>
--- @param enabled [Boolean] <p>Specifies whether the API Key can be used by callers.</p>
--- @param value [String] <p>The value of the API Key.</p>
--- @param id [String] <p>The identifier of the API Key.</p>
--- @param lastUpdatedDate [Timestamp] <p>The timestamp when the API Key was last updated.</p>
--- @param createdDate [Timestamp] <p>The timestamp when the API Key was created.</p>
--- @param stageKeys [ListOfString] <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p>
--- @param customerId [String] <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.</p>
--- @param name [String] <p>The name of the API Key.</p>
-function M.ApiKey(description, enabled, value, id, lastUpdatedDate, createdDate, stageKeys, customerId, name, ...)
+-- @param _description [String] <p>The description of the API Key.</p>
+-- @param _enabled [Boolean] <p>Specifies whether the API Key can be used by callers.</p>
+-- @param _value [String] <p>The value of the API Key.</p>
+-- @param _id [String] <p>The identifier of the API Key.</p>
+-- @param _lastUpdatedDate [Timestamp] <p>The timestamp when the API Key was last updated.</p>
+-- @param _createdDate [Timestamp] <p>The timestamp when the API Key was created.</p>
+-- @param _stageKeys [ListOfString] <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p>
+-- @param _customerId [String] <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.</p>
+-- @param _name [String] <p>The name of the API Key.</p>
+function M.ApiKey(_description, _enabled, _value, _id, _lastUpdatedDate, _createdDate, _stageKeys, _customerId, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApiKey")
 	local t = { 
-		["description"] = description,
-		["enabled"] = enabled,
-		["value"] = value,
-		["id"] = id,
-		["lastUpdatedDate"] = lastUpdatedDate,
-		["createdDate"] = createdDate,
-		["stageKeys"] = stageKeys,
-		["customerId"] = customerId,
-		["name"] = name,
+		["description"] = _description,
+		["enabled"] = _enabled,
+		["value"] = _value,
+		["id"] = _id,
+		["lastUpdatedDate"] = _lastUpdatedDate,
+		["createdDate"] = _createdDate,
+		["stageKeys"] = _stageKeys,
+		["customerId"] = _customerId,
+		["name"] = _name,
 	}
-	M.AssertApiKey(t)
+	asserts.AssertApiKey(t)
 	return t
 end
 
-local UpdateIntegrationResponseRequest_keys = { "resourceId" = true, "statusCode" = true, "restApiId" = true, "patchOperations" = true, "httpMethod" = true, nil }
+keys.UpdateIntegrationResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["patchOperations"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertUpdateIntegrationResponseRequest(struct)
+function asserts.AssertUpdateIntegrationResponseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateIntegrationResponseRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateIntegrationResponseRequest_keys[k], "UpdateIntegrationResponseRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateIntegrationResponseRequest[k], "UpdateIntegrationResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateIntegrationResponseRequest
 -- <p>Represents an update integration response request.</p>
--- @param resourceId [String] <p>Specifies an update integration response request's resource identifier.</p>
--- @param statusCode [StatusCode] <p>Specifies an update integration response request's status code.</p>
--- @param restApiId [String] <p>Specifies an update integration response request's API identifier.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- @param httpMethod [String] <p>Specifies an update integration response request's HTTP method.</p>
+-- @param _resourceId [String] <p>Specifies an update integration response request's resource identifier.</p>
+-- @param _statusCode [StatusCode] <p>Specifies an update integration response request's status code.</p>
+-- @param _restApiId [String] <p>Specifies an update integration response request's API identifier.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _httpMethod [String] <p>Specifies an update integration response request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: statusCode
-function M.UpdateIntegrationResponseRequest(resourceId, statusCode, restApiId, patchOperations, httpMethod, ...)
+function M.UpdateIntegrationResponseRequest(_resourceId, _statusCode, _restApiId, _patchOperations, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateIntegrationResponseRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["statusCode"] = statusCode,
-		["restApiId"] = restApiId,
-		["patchOperations"] = patchOperations,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["statusCode"] = _statusCode,
+		["restApiId"] = _restApiId,
+		["patchOperations"] = _patchOperations,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertUpdateIntegrationResponseRequest(t)
+	asserts.AssertUpdateIntegrationResponseRequest(t)
 	return t
 end
 
-local GetClientCertificatesRequest_keys = { "position" = true, "limit" = true, nil }
+keys.GetClientCertificatesRequest = { ["position"] = true, ["limit"] = true, nil }
 
-function M.AssertGetClientCertificatesRequest(struct)
+function asserts.AssertGetClientCertificatesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetClientCertificatesRequest to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetClientCertificatesRequest_keys[k], "GetClientCertificatesRequest contains unknown key " .. tostring(k))
+		assert(keys.GetClientCertificatesRequest[k], "GetClientCertificatesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetClientCertificatesRequest
 -- <p>A request to get information about a collection of <a>ClientCertificate</a> resources.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
-function M.GetClientCertificatesRequest(position, limit, ...)
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+function M.GetClientCertificatesRequest(_position, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetClientCertificatesRequest")
 	local t = { 
-		["position"] = position,
-		["limit"] = limit,
+		["position"] = _position,
+		["limit"] = _limit,
 	}
-	M.AssertGetClientCertificatesRequest(t)
+	asserts.AssertGetClientCertificatesRequest(t)
 	return t
 end
 
-local GetAuthorizersRequest_keys = { "position" = true, "restApiId" = true, "limit" = true, nil }
+keys.GetAuthorizersRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
 
-function M.AssertGetAuthorizersRequest(struct)
+function asserts.AssertGetAuthorizersRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAuthorizersRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetAuthorizersRequest_keys[k], "GetAuthorizersRequest contains unknown key " .. tostring(k))
+		assert(keys.GetAuthorizersRequest[k], "GetAuthorizersRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetAuthorizersRequest
 -- <p>Request to describe an existing <a>Authorizers</a> resource.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- Required parameter: restApiId
-function M.GetAuthorizersRequest(position, restApiId, limit, ...)
+function M.GetAuthorizersRequest(_position, _restApiId, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAuthorizersRequest")
 	local t = { 
-		["position"] = position,
-		["restApiId"] = restApiId,
-		["limit"] = limit,
+		["position"] = _position,
+		["restApiId"] = _restApiId,
+		["limit"] = _limit,
 	}
-	M.AssertGetAuthorizersRequest(t)
+	asserts.AssertGetAuthorizersRequest(t)
 	return t
 end
 
-local DeleteRestApiRequest_keys = { "restApiId" = true, nil }
+keys.DeleteRestApiRequest = { ["restApiId"] = true, nil }
 
-function M.AssertDeleteRestApiRequest(struct)
+function asserts.AssertDeleteRestApiRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteRestApiRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteRestApiRequest_keys[k], "DeleteRestApiRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteRestApiRequest[k], "DeleteRestApiRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteRestApiRequest
 -- <p>Request to delete the specified API from your collection.</p>
--- @param restApiId [String] <p>The ID of the <a>RestApi</a> you want to delete.</p>
+-- @param _restApiId [String] <p>The ID of the <a>RestApi</a> you want to delete.</p>
 -- Required parameter: restApiId
-function M.DeleteRestApiRequest(restApiId, ...)
+function M.DeleteRestApiRequest(_restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRestApiRequest")
 	local t = { 
-		["restApiId"] = restApiId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertDeleteRestApiRequest(t)
+	asserts.AssertDeleteRestApiRequest(t)
 	return t
 end
 
-local Deployment_keys = { "apiSummary" = true, "createdDate" = true, "id" = true, "description" = true, nil }
+keys.Deployment = { ["apiSummary"] = true, ["createdDate"] = true, ["id"] = true, ["description"] = true, nil }
 
-function M.AssertDeployment(struct)
+function asserts.AssertDeployment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Deployment to be of type 'table'")
-	if struct["apiSummary"] then M.AssertPathToMapOfMethodSnapshot(struct["apiSummary"]) end
-	if struct["createdDate"] then M.AssertTimestamp(struct["createdDate"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["apiSummary"] then asserts.AssertPathToMapOfMethodSnapshot(struct["apiSummary"]) end
+	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(Deployment_keys[k], "Deployment contains unknown key " .. tostring(k))
+		assert(keys.Deployment[k], "Deployment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Deployment
 -- <p>An immutable representation of a <a>RestApi</a> resource that can be called by users using <a>Stages</a>. A deployment must be associated with a <a>Stage</a> for it to be callable over the Internet.</p> <div class="remarks">To create a deployment, call <code>POST</code> on the <a>Deployments</a> resource of a <a>RestApi</a>. To view, update, or delete a deployment, call <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> on the specified deployment resource (<code>/restapis/{restapi_id}/deployments/{deployment_id}</code>).</div> <div class="seeAlso"><a>RestApi</a>, <a>Deployments</a>, <a>Stage</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
--- @param apiSummary [PathToMapOfMethodSnapshot] <p>A summary of the <a>RestApi</a> at the date and time that the deployment resource was created.</p>
--- @param createdDate [Timestamp] <p>The date and time that the deployment resource was created.</p>
--- @param id [String] <p>The identifier for the deployment resource.</p>
--- @param description [String] <p>The description for the deployment resource.</p>
-function M.Deployment(apiSummary, createdDate, id, description, ...)
+-- @param _apiSummary [PathToMapOfMethodSnapshot] <p>A summary of the <a>RestApi</a> at the date and time that the deployment resource was created.</p>
+-- @param _createdDate [Timestamp] <p>The date and time that the deployment resource was created.</p>
+-- @param _id [String] <p>The identifier for the deployment resource.</p>
+-- @param _description [String] <p>The description for the deployment resource.</p>
+function M.Deployment(_apiSummary, _createdDate, _id, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
 	local t = { 
-		["apiSummary"] = apiSummary,
-		["createdDate"] = createdDate,
-		["id"] = id,
-		["description"] = description,
+		["apiSummary"] = _apiSummary,
+		["createdDate"] = _createdDate,
+		["id"] = _id,
+		["description"] = _description,
 	}
-	M.AssertDeployment(t)
+	asserts.AssertDeployment(t)
 	return t
 end
 
-local GetResourceRequest_keys = { "resourceId" = true, "embed" = true, "restApiId" = true, nil }
+keys.GetResourceRequest = { ["resourceId"] = true, ["embed"] = true, ["restApiId"] = true, nil }
 
-function M.AssertGetResourceRequest(struct)
+function asserts.AssertGetResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetResourceRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["embed"] then M.AssertListOfString(struct["embed"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["embed"] then asserts.AssertListOfString(struct["embed"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetResourceRequest_keys[k], "GetResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.GetResourceRequest[k], "GetResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetResourceRequest
 -- <p>Request to list information about a resource.</p>
--- @param resourceId [String] <p>The identifier for the <a>Resource</a> resource.</p>
--- @param embed [ListOfString] <p>A query parameter to retrieve the specified resources embedded in the returned <a>Resource</a> representation in the response. This <code>embed</code> parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded <a>Method</a> resources this way. The query parameter value must be a single-valued list and contain the <code>"methods"</code> string. For example, <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the resource.</p>
+-- @param _resourceId [String] <p>The identifier for the <a>Resource</a> resource.</p>
+-- @param _embed [ListOfString] <p>A query parameter to retrieve the specified resources embedded in the returned <a>Resource</a> representation in the response. This <code>embed</code> parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded <a>Method</a> resources this way. The query parameter value must be a single-valued list and contain the <code>"methods"</code> string. For example, <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
-function M.GetResourceRequest(resourceId, embed, restApiId, ...)
+function M.GetResourceRequest(_resourceId, _embed, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetResourceRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["embed"] = embed,
-		["restApiId"] = restApiId,
+		["resourceId"] = _resourceId,
+		["embed"] = _embed,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertGetResourceRequest(t)
+	asserts.AssertGetResourceRequest(t)
 	return t
 end
 
-local DeleteResourceRequest_keys = { "resourceId" = true, "restApiId" = true, nil }
+keys.DeleteResourceRequest = { ["resourceId"] = true, ["restApiId"] = true, nil }
 
-function M.AssertDeleteResourceRequest(struct)
+function asserts.AssertDeleteResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteResourceRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteResourceRequest_keys[k], "DeleteResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteResourceRequest[k], "DeleteResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteResourceRequest
 -- <p>Request to delete a <a>Resource</a>.</p>
--- @param resourceId [String] <p>The identifier of the <a>Resource</a> resource.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
+-- @param _resourceId [String] <p>The identifier of the <a>Resource</a> resource.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
-function M.DeleteResourceRequest(resourceId, restApiId, ...)
+function M.DeleteResourceRequest(_resourceId, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteResourceRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["restApiId"] = restApiId,
+		["resourceId"] = _resourceId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertDeleteResourceRequest(t)
+	asserts.AssertDeleteResourceRequest(t)
 	return t
 end
 
-local PatchOperation_keys = { "path" = true, "from" = true, "value" = true, "op" = true, nil }
+keys.PatchOperation = { ["path"] = true, ["from"] = true, ["value"] = true, ["op"] = true, nil }
 
-function M.AssertPatchOperation(struct)
+function asserts.AssertPatchOperation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PatchOperation to be of type 'table'")
-	if struct["path"] then M.AssertString(struct["path"]) end
-	if struct["from"] then M.AssertString(struct["from"]) end
-	if struct["value"] then M.AssertString(struct["value"]) end
-	if struct["op"] then M.AssertOp(struct["op"]) end
+	if struct["path"] then asserts.AssertString(struct["path"]) end
+	if struct["from"] then asserts.AssertString(struct["from"]) end
+	if struct["value"] then asserts.AssertString(struct["value"]) end
+	if struct["op"] then asserts.AssertOp(struct["op"]) end
 	for k,_ in pairs(struct) do
-		assert(PatchOperation_keys[k], "PatchOperation contains unknown key " .. tostring(k))
+		assert(keys.PatchOperation[k], "PatchOperation contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PatchOperation
 -- A single patch operation to apply to the specified resource. Please refer to http://tools.ietf.org/html/rfc6902#section-4 for an explanation of how each operation is used.
--- @param path [String] <p>The <code>op</code> operation's target, as identified by a <a href="https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08">JSON Pointer</a> value that references a location within the targeted resource. For example, if the target resource has an updateable property of <code>{"name":"value"}</code>, the path for this property is <code>/name</code>. If the <code>name</code> property value is a JSON object (e.g., <code>{"name": {"child/name": "child-value"}}</code>), the path for the <code>child/name</code> property will be <code>/name/child~1name</code>. Any slash ("/") character appearing in path names must be escaped with "~1", as shown in the example above. Each <code>op</code> operation can have only one <code>path</code> associated with it.</p>
--- @param from [String] <p> Not supported.</p>
--- @param value [String] <p>The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for Parameters</a>.</p>
--- @param op [Op] <p>An update operation to be performed with this PATCH request. The valid value can be "add", "remove", or "replace". Not all valid operations are supported for a given resource. Support of the operations depends on specific operational contexts. Attempts to apply an unsupported operation on a resource will return an error message.</p>
-function M.PatchOperation(path, from, value, op, ...)
+-- @param _path [String] <p>The <code>op</code> operation's target, as identified by a <a href="https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08">JSON Pointer</a> value that references a location within the targeted resource. For example, if the target resource has an updateable property of <code>{"name":"value"}</code>, the path for this property is <code>/name</code>. If the <code>name</code> property value is a JSON object (e.g., <code>{"name": {"child/name": "child-value"}}</code>), the path for the <code>child/name</code> property will be <code>/name/child~1name</code>. Any slash ("/") character appearing in path names must be escaped with "~1", as shown in the example above. Each <code>op</code> operation can have only one <code>path</code> associated with it.</p>
+-- @param _from [String] <p> Not supported.</p>
+-- @param _value [String] <p>The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for Parameters</a>.</p>
+-- @param _op [Op] <p>An update operation to be performed with this PATCH request. The valid value can be "add", "remove", or "replace". Not all valid operations are supported for a given resource. Support of the operations depends on specific operational contexts. Attempts to apply an unsupported operation on a resource will return an error message.</p>
+function M.PatchOperation(_path, _from, _value, _op, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PatchOperation")
 	local t = { 
-		["path"] = path,
-		["from"] = from,
-		["value"] = value,
-		["op"] = op,
+		["path"] = _path,
+		["from"] = _from,
+		["value"] = _value,
+		["op"] = _op,
 	}
-	M.AssertPatchOperation(t)
+	asserts.AssertPatchOperation(t)
 	return t
 end
 
-local ApiStage_keys = { "apiId" = true, "stage" = true, nil }
+keys.ApiStage = { ["apiId"] = true, ["stage"] = true, nil }
 
-function M.AssertApiStage(struct)
+function asserts.AssertApiStage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ApiStage to be of type 'table'")
-	if struct["apiId"] then M.AssertString(struct["apiId"]) end
-	if struct["stage"] then M.AssertString(struct["stage"]) end
+	if struct["apiId"] then asserts.AssertString(struct["apiId"]) end
+	if struct["stage"] then asserts.AssertString(struct["stage"]) end
 	for k,_ in pairs(struct) do
-		assert(ApiStage_keys[k], "ApiStage contains unknown key " .. tostring(k))
+		assert(keys.ApiStage[k], "ApiStage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ApiStage
 -- <p>API stage name of the associated API stage in a usage plan.</p>
--- @param apiId [String] <p>API Id of the associated API stage in a usage plan.</p>
--- @param stage [String] <p>API stage name of the associated API stage in a usage plan.</p>
-function M.ApiStage(apiId, stage, ...)
+-- @param _apiId [String] <p>API Id of the associated API stage in a usage plan.</p>
+-- @param _stage [String] <p>API stage name of the associated API stage in a usage plan.</p>
+function M.ApiStage(_apiId, _stage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApiStage")
 	local t = { 
-		["apiId"] = apiId,
-		["stage"] = stage,
+		["apiId"] = _apiId,
+		["stage"] = _stage,
 	}
-	M.AssertApiStage(t)
+	asserts.AssertApiStage(t)
 	return t
 end
 
-local ImportApiKeysRequest_keys = { "body" = true, "failOnWarnings" = true, "format" = true, nil }
+keys.ImportApiKeysRequest = { ["body"] = true, ["failOnWarnings"] = true, ["format"] = true, nil }
 
-function M.AssertImportApiKeysRequest(struct)
+function asserts.AssertImportApiKeysRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ImportApiKeysRequest to be of type 'table'")
 	assert(struct["body"], "Expected key body to exist in table")
 	assert(struct["format"], "Expected key format to exist in table")
-	if struct["body"] then M.AssertBlob(struct["body"]) end
-	if struct["failOnWarnings"] then M.AssertBoolean(struct["failOnWarnings"]) end
-	if struct["format"] then M.AssertApiKeysFormat(struct["format"]) end
+	if struct["body"] then asserts.AssertBlob(struct["body"]) end
+	if struct["failOnWarnings"] then asserts.AssertBoolean(struct["failOnWarnings"]) end
+	if struct["format"] then asserts.AssertApiKeysFormat(struct["format"]) end
 	for k,_ in pairs(struct) do
-		assert(ImportApiKeysRequest_keys[k], "ImportApiKeysRequest contains unknown key " .. tostring(k))
+		assert(keys.ImportApiKeysRequest[k], "ImportApiKeysRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ImportApiKeysRequest
 -- <p>The POST request to import API keys from an external source, such as a CSV-formatted file.</p>
--- @param body [Blob] <p>The payload of the POST request to import API keys. For the payload format, see <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html">API Key File Format</a>.</p>
--- @param failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback <a>ApiKey</a> importation (<code>true</code>) or not (<code>false</code>) when error is encountered.</p>
--- @param format [ApiKeysFormat] <p>A query parameter to specify the input format to imported API keys. Currently, only the <code>csv</code> format is supported.</p>
+-- @param _body [Blob] <p>The payload of the POST request to import API keys. For the payload format, see <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html">API Key File Format</a>.</p>
+-- @param _failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback <a>ApiKey</a> importation (<code>true</code>) or not (<code>false</code>) when error is encountered.</p>
+-- @param _format [ApiKeysFormat] <p>A query parameter to specify the input format to imported API keys. Currently, only the <code>csv</code> format is supported.</p>
 -- Required parameter: body
 -- Required parameter: format
-function M.ImportApiKeysRequest(body, failOnWarnings, format, ...)
+function M.ImportApiKeysRequest(_body, _failOnWarnings, _format, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportApiKeysRequest")
 	local t = { 
-		["body"] = body,
-		["failOnWarnings"] = failOnWarnings,
-		["format"] = format,
+		["body"] = _body,
+		["failOnWarnings"] = _failOnWarnings,
+		["format"] = _format,
 	}
-	M.AssertImportApiKeysRequest(t)
+	asserts.AssertImportApiKeysRequest(t)
 	return t
 end
 
-local GetModelRequest_keys = { "modelName" = true, "restApiId" = true, "flatten" = true, nil }
+keys.GetModelRequest = { ["modelName"] = true, ["restApiId"] = true, ["flatten"] = true, nil }
 
-function M.AssertGetModelRequest(struct)
+function asserts.AssertGetModelRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetModelRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["modelName"], "Expected key modelName to exist in table")
-	if struct["modelName"] then M.AssertString(struct["modelName"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["flatten"] then M.AssertBoolean(struct["flatten"]) end
+	if struct["modelName"] then asserts.AssertString(struct["modelName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["flatten"] then asserts.AssertBoolean(struct["flatten"]) end
 	for k,_ in pairs(struct) do
-		assert(GetModelRequest_keys[k], "GetModelRequest contains unknown key " .. tostring(k))
+		assert(keys.GetModelRequest[k], "GetModelRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetModelRequest
 -- <p>Request to list information about a model in an existing <a>RestApi</a> resource.</p>
--- @param modelName [String] <p>The name of the model as an identifier.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Model</a> exists.</p>
--- @param flatten [Boolean] <p>A query parameter of a Boolean value to resolve (<code>true</code>) all external model references and returns a flattened model schema or not (<code>false</code>) The default is <code>false</code>.</p>
+-- @param _modelName [String] <p>The name of the model as an identifier.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Model</a> exists.</p>
+-- @param _flatten [Boolean] <p>A query parameter of a Boolean value to resolve (<code>true</code>) all external model references and returns a flattened model schema or not (<code>false</code>) The default is <code>false</code>.</p>
 -- Required parameter: restApiId
 -- Required parameter: modelName
-function M.GetModelRequest(modelName, restApiId, flatten, ...)
+function M.GetModelRequest(_modelName, _restApiId, _flatten, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetModelRequest")
 	local t = { 
-		["modelName"] = modelName,
-		["restApiId"] = restApiId,
-		["flatten"] = flatten,
+		["modelName"] = _modelName,
+		["restApiId"] = _restApiId,
+		["flatten"] = _flatten,
 	}
-	M.AssertGetModelRequest(t)
+	asserts.AssertGetModelRequest(t)
 	return t
 end
 
-local GetModelTemplateRequest_keys = { "modelName" = true, "restApiId" = true, nil }
+keys.GetModelTemplateRequest = { ["modelName"] = true, ["restApiId"] = true, nil }
 
-function M.AssertGetModelTemplateRequest(struct)
+function asserts.AssertGetModelTemplateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetModelTemplateRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["modelName"], "Expected key modelName to exist in table")
-	if struct["modelName"] then M.AssertString(struct["modelName"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["modelName"] then asserts.AssertString(struct["modelName"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetModelTemplateRequest_keys[k], "GetModelTemplateRequest contains unknown key " .. tostring(k))
+		assert(keys.GetModelTemplateRequest[k], "GetModelTemplateRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetModelTemplateRequest
 -- <p>Request to generate a sample mapping template used to transform the payload.</p>
--- @param modelName [String] <p>The name of the model for which to generate a template.</p>
--- @param restApiId [String] <p>The ID of the <a>RestApi</a> under which the model exists.</p>
+-- @param _modelName [String] <p>The name of the model for which to generate a template.</p>
+-- @param _restApiId [String] <p>The ID of the <a>RestApi</a> under which the model exists.</p>
 -- Required parameter: restApiId
 -- Required parameter: modelName
-function M.GetModelTemplateRequest(modelName, restApiId, ...)
+function M.GetModelTemplateRequest(_modelName, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetModelTemplateRequest")
 	local t = { 
-		["modelName"] = modelName,
-		["restApiId"] = restApiId,
+		["modelName"] = _modelName,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertGetModelTemplateRequest(t)
+	asserts.AssertGetModelTemplateRequest(t)
 	return t
 end
 
-local TestInvokeMethodResponse_keys = { "status" = true, "body" = true, "log" = true, "latency" = true, "headers" = true, nil }
+keys.TestInvokeMethodResponse = { ["status"] = true, ["body"] = true, ["log"] = true, ["latency"] = true, ["headers"] = true, nil }
 
-function M.AssertTestInvokeMethodResponse(struct)
+function asserts.AssertTestInvokeMethodResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TestInvokeMethodResponse to be of type 'table'")
-	if struct["status"] then M.AssertInteger(struct["status"]) end
-	if struct["body"] then M.AssertString(struct["body"]) end
-	if struct["log"] then M.AssertString(struct["log"]) end
-	if struct["latency"] then M.AssertLong(struct["latency"]) end
-	if struct["headers"] then M.AssertMapOfHeaderValues(struct["headers"]) end
+	if struct["status"] then asserts.AssertInteger(struct["status"]) end
+	if struct["body"] then asserts.AssertString(struct["body"]) end
+	if struct["log"] then asserts.AssertString(struct["log"]) end
+	if struct["latency"] then asserts.AssertLong(struct["latency"]) end
+	if struct["headers"] then asserts.AssertMapOfHeaderValues(struct["headers"]) end
 	for k,_ in pairs(struct) do
-		assert(TestInvokeMethodResponse_keys[k], "TestInvokeMethodResponse contains unknown key " .. tostring(k))
+		assert(keys.TestInvokeMethodResponse[k], "TestInvokeMethodResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TestInvokeMethodResponse
 -- <p>Represents the response of the test invoke request in the HTTP method.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console">Test API using the API Gateway console</a> </div>
--- @param status [Integer] <p>The HTTP status code.</p>
--- @param body [String] <p>The body of the HTTP response.</p>
--- @param log [String] <p>The Amazon API Gateway execution log for the test invoke request.</p>
--- @param latency [Long] <p>The execution latency of the test invoke request.</p>
--- @param headers [MapOfHeaderValues] <p>The headers of the HTTP response.</p>
-function M.TestInvokeMethodResponse(status, body, log, latency, headers, ...)
+-- @param _status [Integer] <p>The HTTP status code.</p>
+-- @param _body [String] <p>The body of the HTTP response.</p>
+-- @param _log [String] <p>The Amazon API Gateway execution log for the test invoke request.</p>
+-- @param _latency [Long] <p>The execution latency of the test invoke request.</p>
+-- @param _headers [MapOfHeaderValues] <p>The headers of the HTTP response.</p>
+function M.TestInvokeMethodResponse(_status, _body, _log, _latency, _headers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestInvokeMethodResponse")
 	local t = { 
-		["status"] = status,
-		["body"] = body,
-		["log"] = log,
-		["latency"] = latency,
-		["headers"] = headers,
+		["status"] = _status,
+		["body"] = _body,
+		["log"] = _log,
+		["latency"] = _latency,
+		["headers"] = _headers,
 	}
-	M.AssertTestInvokeMethodResponse(t)
+	asserts.AssertTestInvokeMethodResponse(t)
 	return t
 end
 
-local Authorizers_keys = { "position" = true, "items" = true, nil }
+keys.Authorizers = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertAuthorizers(struct)
+function asserts.AssertAuthorizers(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Authorizers to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfAuthorizer(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfAuthorizer(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(Authorizers_keys[k], "Authorizers contains unknown key " .. tostring(k))
+		assert(keys.Authorizers[k], "Authorizers contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Authorizers
 -- <p>Represents a collection of <a>Authorizer</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
--- @param position [String] <p>Represents a collection of <a>Authorizer</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
--- @param items [ListOfAuthorizer] <p>Gets the current list of <a>Authorizer</a> resources in the collection.</p>
-function M.Authorizers(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfAuthorizer] <p>Gets the current list of <a>Authorizer</a> resources in the collection.</p>
+function M.Authorizers(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Authorizers")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertAuthorizers(t)
+	asserts.AssertAuthorizers(t)
 	return t
 end
 
-local UsagePlanKeys_keys = { "position" = true, "items" = true, nil }
+keys.UsagePlanKeys = { ["position"] = true, ["items"] = true, nil }
 
-function M.AssertUsagePlanKeys(struct)
+function asserts.AssertUsagePlanKeys(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UsagePlanKeys to be of type 'table'")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["items"] then M.AssertListOfUsagePlanKey(struct["items"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["items"] then asserts.AssertListOfUsagePlanKey(struct["items"]) end
 	for k,_ in pairs(struct) do
-		assert(UsagePlanKeys_keys[k], "UsagePlanKeys contains unknown key " .. tostring(k))
+		assert(keys.UsagePlanKeys[k], "UsagePlanKeys contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UsagePlanKeys
 -- <p>Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
--- @param position [String] <p>Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
--- @param items [ListOfUsagePlanKey] <p>Gets the current item of the usage plan keys collection.</p>
-function M.UsagePlanKeys(position, items, ...)
+-- @param _position [String] 
+-- @param _items [ListOfUsagePlanKey] <p>Gets the current item of the usage plan keys collection.</p>
+function M.UsagePlanKeys(_position, _items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsagePlanKeys")
 	local t = { 
-		["position"] = position,
-		["items"] = items,
+		["position"] = _position,
+		["items"] = _items,
 	}
-	M.AssertUsagePlanKeys(t)
+	asserts.AssertUsagePlanKeys(t)
 	return t
 end
 
-local Model_keys = { "description" = true, "schema" = true, "contentType" = true, "id" = true, "name" = true, nil }
+keys.Model = { ["description"] = true, ["schema"] = true, ["contentType"] = true, ["id"] = true, ["name"] = true, nil }
 
-function M.AssertModel(struct)
+function asserts.AssertModel(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Model to be of type 'table'")
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["schema"] then M.AssertString(struct["schema"]) end
-	if struct["contentType"] then M.AssertString(struct["contentType"]) end
-	if struct["id"] then M.AssertString(struct["id"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["schema"] then asserts.AssertString(struct["schema"]) end
+	if struct["contentType"] then asserts.AssertString(struct["contentType"]) end
+	if struct["id"] then asserts.AssertString(struct["id"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(Model_keys[k], "Model contains unknown key " .. tostring(k))
+		assert(keys.Model[k], "Model contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Model
 -- <p>Represents the data structure of a method's request or response payload.</p> <div class="remarks"> <p>A request model defines the data structure of the client-supplied request payload. A response model defines the data structure of the response payload returned by the back end. Although not required, models are useful for mapping payloads between the front end and back end.</p> <p>A model is used for generating an API's SDK, validating the input request body, and creating a skeletal mapping template.</p> </div> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
--- @param description [String] <p>The description of the model.</p>
--- @param schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model. Do not include "\*/" characters in the description of any properties because such "\*/" characters may be interpreted as the closing marker for comments in some languages, such as Java or JavaScript, causing the installation of your API's SDK generated by API Gateway to fail.</p>
--- @param contentType [String] <p>The content-type for the model.</p>
--- @param id [String] <p>The identifier for the model resource.</p>
--- @param name [String] <p>The name of the model.</p>
-function M.Model(description, schema, contentType, id, name, ...)
+-- @param _description [String] <p>The description of the model.</p>
+-- @param _schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model. Do not include "\*/" characters in the description of any properties because such "\*/" characters may be interpreted as the closing marker for comments in some languages, such as Java or JavaScript, causing the installation of your API's SDK generated by API Gateway to fail.</p>
+-- @param _contentType [String] <p>The content-type for the model.</p>
+-- @param _id [String] <p>The identifier for the model resource.</p>
+-- @param _name [String] <p>The name of the model.</p>
+function M.Model(_description, _schema, _contentType, _id, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Model")
 	local t = { 
-		["description"] = description,
-		["schema"] = schema,
-		["contentType"] = contentType,
-		["id"] = id,
-		["name"] = name,
+		["description"] = _description,
+		["schema"] = _schema,
+		["contentType"] = _contentType,
+		["id"] = _id,
+		["name"] = _name,
 	}
-	M.AssertModel(t)
+	asserts.AssertModel(t)
 	return t
 end
 
-local UpdateMethodRequest_keys = { "resourceId" = true, "patchOperations" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.UpdateMethodRequest = { ["resourceId"] = true, ["patchOperations"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertUpdateMethodRequest(struct)
+function asserts.AssertUpdateMethodRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateMethodRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateMethodRequest_keys[k], "UpdateMethodRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateMethodRequest[k], "UpdateMethodRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateMethodRequest
 -- <p>Request to update an existing <a>Method</a> resource.</p>
--- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
--- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
--- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- @param _resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
+-- @param _httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
-function M.UpdateMethodRequest(resourceId, patchOperations, restApiId, httpMethod, ...)
+function M.UpdateMethodRequest(_resourceId, _patchOperations, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMethodRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["patchOperations"] = patchOperations,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["patchOperations"] = _patchOperations,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertUpdateMethodRequest(t)
+	asserts.AssertUpdateMethodRequest(t)
 	return t
 end
 
-local NotFoundException_keys = { "message" = true, nil }
+keys.NotFoundException = { ["message"] = true, nil }
 
-function M.AssertNotFoundException(struct)
+function asserts.AssertNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotFoundException_keys[k], "NotFoundException contains unknown key " .. tostring(k))
+		assert(keys.NotFoundException[k], "NotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotFoundException
 --  
--- @param message [String]  
-function M.NotFoundException(message, ...)
+-- @param _message [String] 
+function M.NotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertNotFoundException(t)
+	asserts.AssertNotFoundException(t)
 	return t
 end
 
-local GetRequestValidatorsRequest_keys = { "position" = true, "restApiId" = true, "limit" = true, nil }
+keys.GetRequestValidatorsRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
 
-function M.AssertGetRequestValidatorsRequest(struct)
+function asserts.AssertGetRequestValidatorsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetRequestValidatorsRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetRequestValidatorsRequest_keys[k], "GetRequestValidatorsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetRequestValidatorsRequest[k], "GetRequestValidatorsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetRequestValidatorsRequest
 -- <p>Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param restApiId [String] <p>[Required] The identifier of a <a>RestApi</a> to which the <a>RequestValidators</a> collection belongs.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of a <a>RestApi</a> to which the <a>RequestValidators</a> collection belongs.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- Required parameter: restApiId
-function M.GetRequestValidatorsRequest(position, restApiId, limit, ...)
+function M.GetRequestValidatorsRequest(_position, _restApiId, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRequestValidatorsRequest")
 	local t = { 
-		["position"] = position,
-		["restApiId"] = restApiId,
-		["limit"] = limit,
+		["position"] = _position,
+		["restApiId"] = _restApiId,
+		["limit"] = _limit,
 	}
-	M.AssertGetRequestValidatorsRequest(t)
+	asserts.AssertGetRequestValidatorsRequest(t)
 	return t
 end
 
-local DeleteIntegrationResponseRequest_keys = { "resourceId" = true, "statusCode" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.DeleteIntegrationResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertDeleteIntegrationResponseRequest(struct)
+function asserts.AssertDeleteIntegrationResponseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteIntegrationResponseRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteIntegrationResponseRequest_keys[k], "DeleteIntegrationResponseRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteIntegrationResponseRequest[k], "DeleteIntegrationResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteIntegrationResponseRequest
 -- <p>Represents a delete integration response request.</p>
--- @param resourceId [String] <p>Specifies a delete integration response request's resource identifier.</p>
--- @param statusCode [StatusCode] <p>Specifies a delete integration response request's status code.</p>
--- @param restApiId [String] <p>Specifies a delete integration response request's API identifier.</p>
--- @param httpMethod [String] <p>Specifies a delete integration response request's HTTP method.</p>
+-- @param _resourceId [String] <p>Specifies a delete integration response request's resource identifier.</p>
+-- @param _statusCode [StatusCode] <p>Specifies a delete integration response request's status code.</p>
+-- @param _restApiId [String] <p>Specifies a delete integration response request's API identifier.</p>
+-- @param _httpMethod [String] <p>Specifies a delete integration response request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: statusCode
-function M.DeleteIntegrationResponseRequest(resourceId, statusCode, restApiId, httpMethod, ...)
+function M.DeleteIntegrationResponseRequest(_resourceId, _statusCode, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIntegrationResponseRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["statusCode"] = statusCode,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["statusCode"] = _statusCode,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertDeleteIntegrationResponseRequest(t)
+	asserts.AssertDeleteIntegrationResponseRequest(t)
 	return t
 end
 
-local IntegrationResponse_keys = { "contentHandling" = true, "responseParameters" = true, "selectionPattern" = true, "responseTemplates" = true, "statusCode" = true, nil }
+keys.IntegrationResponse = { ["contentHandling"] = true, ["responseParameters"] = true, ["selectionPattern"] = true, ["responseTemplates"] = true, ["statusCode"] = true, nil }
 
-function M.AssertIntegrationResponse(struct)
+function asserts.AssertIntegrationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IntegrationResponse to be of type 'table'")
-	if struct["contentHandling"] then M.AssertContentHandlingStrategy(struct["contentHandling"]) end
-	if struct["responseParameters"] then M.AssertMapOfStringToString(struct["responseParameters"]) end
-	if struct["selectionPattern"] then M.AssertString(struct["selectionPattern"]) end
-	if struct["responseTemplates"] then M.AssertMapOfStringToString(struct["responseTemplates"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
+	if struct["contentHandling"] then asserts.AssertContentHandlingStrategy(struct["contentHandling"]) end
+	if struct["responseParameters"] then asserts.AssertMapOfStringToString(struct["responseParameters"]) end
+	if struct["selectionPattern"] then asserts.AssertString(struct["selectionPattern"]) end
+	if struct["responseTemplates"] then asserts.AssertMapOfStringToString(struct["responseTemplates"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(IntegrationResponse_keys[k], "IntegrationResponse contains unknown key " .. tostring(k))
+		assert(keys.IntegrationResponse[k], "IntegrationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IntegrationResponse
 -- <p>Represents an integration response. The status code must map to an existing <a>MethodResponse</a>, and parameters and templates can be used to transform the back-end response.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
--- @param contentHandling [ContentHandlingStrategy] <p>Specifies how to handle response payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a response payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a response payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.</p>
--- @param responseParameters [MapOfStringToString] <p>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The mapped non-static value must match the pattern of <code>integration.response.header.{name}</code> or <code>integration.response.body.{JSON-expression}</code>, where <code>name</code> is a valid and unique response header name and <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.</p>
--- @param selectionPattern [String] <p>Specifies the regular expression (regex) pattern used to choose an integration response based on the response from the back end. For example, if the success response returns nothing and the error response returns some string, you could use the <code>.+</code> regex to match error response. However, make sure that the error response does not contain any newline (<code>\n</code>) character in such cases. If the back end is an AWS Lambda function, the AWS Lambda function error header is matched. For all other HTTP and AWS back ends, the HTTP status code is matched.</p>
--- @param responseTemplates [MapOfStringToString] <p>Specifies the templates used to transform the integration response body. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.</p>
--- @param statusCode [StatusCode] <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
-function M.IntegrationResponse(contentHandling, responseParameters, selectionPattern, responseTemplates, statusCode, ...)
+-- @param _contentHandling [ContentHandlingStrategy] <p>Specifies how to handle response payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a response payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a response payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.</p>
+-- @param _responseParameters [MapOfStringToString] <p>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The mapped non-static value must match the pattern of <code>integration.response.header.{name}</code> or <code>integration.response.body.{JSON-expression}</code>, where <code>name</code> is a valid and unique response header name and <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.</p>
+-- @param _selectionPattern [String] <p>Specifies the regular expression (regex) pattern used to choose an integration response based on the response from the back end. For example, if the success response returns nothing and the error response returns some string, you could use the <code>.+</code> regex to match error response. However, make sure that the error response does not contain any newline (<code>\n</code>) character in such cases. If the back end is an AWS Lambda function, the AWS Lambda function error header is matched. For all other HTTP and AWS back ends, the HTTP status code is matched.</p>
+-- @param _responseTemplates [MapOfStringToString] <p>Specifies the templates used to transform the integration response body. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.</p>
+-- @param _statusCode [StatusCode] <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
+function M.IntegrationResponse(_contentHandling, _responseParameters, _selectionPattern, _responseTemplates, _statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IntegrationResponse")
 	local t = { 
-		["contentHandling"] = contentHandling,
-		["responseParameters"] = responseParameters,
-		["selectionPattern"] = selectionPattern,
-		["responseTemplates"] = responseTemplates,
-		["statusCode"] = statusCode,
+		["contentHandling"] = _contentHandling,
+		["responseParameters"] = _responseParameters,
+		["selectionPattern"] = _selectionPattern,
+		["responseTemplates"] = _responseTemplates,
+		["statusCode"] = _statusCode,
 	}
-	M.AssertIntegrationResponse(t)
+	asserts.AssertIntegrationResponse(t)
 	return t
 end
 
-local GetBasePathMappingRequest_keys = { "basePath" = true, "domainName" = true, nil }
+keys.GetBasePathMappingRequest = { ["basePath"] = true, ["domainName"] = true, nil }
 
-function M.AssertGetBasePathMappingRequest(struct)
+function asserts.AssertGetBasePathMappingRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetBasePathMappingRequest to be of type 'table'")
 	assert(struct["domainName"], "Expected key domainName to exist in table")
 	assert(struct["basePath"], "Expected key basePath to exist in table")
-	if struct["basePath"] then M.AssertString(struct["basePath"]) end
-	if struct["domainName"] then M.AssertString(struct["domainName"]) end
+	if struct["basePath"] then asserts.AssertString(struct["basePath"]) end
+	if struct["domainName"] then asserts.AssertString(struct["domainName"]) end
 	for k,_ in pairs(struct) do
-		assert(GetBasePathMappingRequest_keys[k], "GetBasePathMappingRequest contains unknown key " .. tostring(k))
+		assert(keys.GetBasePathMappingRequest[k], "GetBasePathMappingRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetBasePathMappingRequest
 -- <p>Request to describe a <a>BasePathMapping</a> resource.</p>
--- @param basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.</p>
--- @param domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to be described.</p>
+-- @param _basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.</p>
+-- @param _domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to be described.</p>
 -- Required parameter: domainName
 -- Required parameter: basePath
-function M.GetBasePathMappingRequest(basePath, domainName, ...)
+function M.GetBasePathMappingRequest(_basePath, _domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBasePathMappingRequest")
 	local t = { 
-		["basePath"] = basePath,
-		["domainName"] = domainName,
+		["basePath"] = _basePath,
+		["domainName"] = _domainName,
 	}
-	M.AssertGetBasePathMappingRequest(t)
+	asserts.AssertGetBasePathMappingRequest(t)
 	return t
 end
 
-local GetRequestValidatorRequest_keys = { "requestValidatorId" = true, "restApiId" = true, nil }
+keys.GetRequestValidatorRequest = { ["requestValidatorId"] = true, ["restApiId"] = true, nil }
 
-function M.AssertGetRequestValidatorRequest(struct)
+function asserts.AssertGetRequestValidatorRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetRequestValidatorRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["requestValidatorId"], "Expected key requestValidatorId to exist in table")
-	if struct["requestValidatorId"] then M.AssertString(struct["requestValidatorId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
+	if struct["requestValidatorId"] then asserts.AssertString(struct["requestValidatorId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetRequestValidatorRequest_keys[k], "GetRequestValidatorRequest contains unknown key " .. tostring(k))
+		assert(keys.GetRequestValidatorRequest[k], "GetRequestValidatorRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetRequestValidatorRequest
 -- <p>Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
--- @param requestValidatorId [String] <p>[Required] The identifier of the <a>RequestValidator</a> to be retrieved.</p>
--- @param restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> to which the specified <a>RequestValidator</a> belongs.</p>
+-- @param _requestValidatorId [String] <p>[Required] The identifier of the <a>RequestValidator</a> to be retrieved.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> to which the specified <a>RequestValidator</a> belongs.</p>
 -- Required parameter: restApiId
 -- Required parameter: requestValidatorId
-function M.GetRequestValidatorRequest(requestValidatorId, restApiId, ...)
+function M.GetRequestValidatorRequest(_requestValidatorId, _restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRequestValidatorRequest")
 	local t = { 
-		["requestValidatorId"] = requestValidatorId,
-		["restApiId"] = restApiId,
+		["requestValidatorId"] = _requestValidatorId,
+		["restApiId"] = _restApiId,
 	}
-	M.AssertGetRequestValidatorRequest(t)
+	asserts.AssertGetRequestValidatorRequest(t)
 	return t
 end
 
-local ClientCertificate_keys = { "pemEncodedCertificate" = true, "clientCertificateId" = true, "expirationDate" = true, "description" = true, "createdDate" = true, nil }
+keys.ClientCertificate = { ["pemEncodedCertificate"] = true, ["clientCertificateId"] = true, ["expirationDate"] = true, ["description"] = true, ["createdDate"] = true, nil }
 
-function M.AssertClientCertificate(struct)
+function asserts.AssertClientCertificate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ClientCertificate to be of type 'table'")
-	if struct["pemEncodedCertificate"] then M.AssertString(struct["pemEncodedCertificate"]) end
-	if struct["clientCertificateId"] then M.AssertString(struct["clientCertificateId"]) end
-	if struct["expirationDate"] then M.AssertTimestamp(struct["expirationDate"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
-	if struct["createdDate"] then M.AssertTimestamp(struct["createdDate"]) end
+	if struct["pemEncodedCertificate"] then asserts.AssertString(struct["pemEncodedCertificate"]) end
+	if struct["clientCertificateId"] then asserts.AssertString(struct["clientCertificateId"]) end
+	if struct["expirationDate"] then asserts.AssertTimestamp(struct["expirationDate"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
+	if struct["createdDate"] then asserts.AssertTimestamp(struct["createdDate"]) end
 	for k,_ in pairs(struct) do
-		assert(ClientCertificate_keys[k], "ClientCertificate contains unknown key " .. tostring(k))
+		assert(keys.ClientCertificate[k], "ClientCertificate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ClientCertificate
 -- <p>Represents a client certificate used to configure client-side SSL authentication while sending requests to the integration endpoint.</p> <div class="remarks">Client certificates are used authenticate an API by the back-end server. To authenticate an API client (or user), use a custom <a>Authorizer</a>.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
--- @param pemEncodedCertificate [String] <p>The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .</p>
--- @param clientCertificateId [String] <p>The identifier of the client certificate.</p>
--- @param expirationDate [Timestamp] <p>The timestamp when the client certificate will expire.</p>
--- @param description [String] <p>The description of the client certificate.</p>
--- @param createdDate [Timestamp] <p>The timestamp when the client certificate was created.</p>
-function M.ClientCertificate(pemEncodedCertificate, clientCertificateId, expirationDate, description, createdDate, ...)
+-- @param _pemEncodedCertificate [String] <p>The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .</p>
+-- @param _clientCertificateId [String] <p>The identifier of the client certificate.</p>
+-- @param _expirationDate [Timestamp] <p>The timestamp when the client certificate will expire.</p>
+-- @param _description [String] <p>The description of the client certificate.</p>
+-- @param _createdDate [Timestamp] <p>The timestamp when the client certificate was created.</p>
+function M.ClientCertificate(_pemEncodedCertificate, _clientCertificateId, _expirationDate, _description, _createdDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClientCertificate")
 	local t = { 
-		["pemEncodedCertificate"] = pemEncodedCertificate,
-		["clientCertificateId"] = clientCertificateId,
-		["expirationDate"] = expirationDate,
-		["description"] = description,
-		["createdDate"] = createdDate,
+		["pemEncodedCertificate"] = _pemEncodedCertificate,
+		["clientCertificateId"] = _clientCertificateId,
+		["expirationDate"] = _expirationDate,
+		["description"] = _description,
+		["createdDate"] = _createdDate,
 	}
-	M.AssertClientCertificate(t)
+	asserts.AssertClientCertificate(t)
 	return t
 end
 
-local CreateUsagePlanKeyRequest_keys = { "keyType" = true, "keyId" = true, "usagePlanId" = true, nil }
+keys.CreateUsagePlanKeyRequest = { ["keyType"] = true, ["keyId"] = true, ["usagePlanId"] = true, nil }
 
-function M.AssertCreateUsagePlanKeyRequest(struct)
+function asserts.AssertCreateUsagePlanKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUsagePlanKeyRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
 	assert(struct["keyId"], "Expected key keyId to exist in table")
 	assert(struct["keyType"], "Expected key keyType to exist in table")
-	if struct["keyType"] then M.AssertString(struct["keyType"]) end
-	if struct["keyId"] then M.AssertString(struct["keyId"]) end
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
+	if struct["keyType"] then asserts.AssertString(struct["keyType"]) end
+	if struct["keyId"] then asserts.AssertString(struct["keyId"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUsagePlanKeyRequest_keys[k], "CreateUsagePlanKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateUsagePlanKeyRequest[k], "CreateUsagePlanKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUsagePlanKeyRequest
 -- <p>The POST request to create a usage plan key for adding an existing API key to a usage plan.</p>
--- @param keyType [String] <p>The type of a <a>UsagePlanKey</a> resource for a plan customer.</p>
--- @param keyId [String] <p>The identifier of a <a>UsagePlanKey</a> resource for a plan customer.</p>
--- @param usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-created <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- @param _keyType [String] <p>The type of a <a>UsagePlanKey</a> resource for a plan customer.</p>
+-- @param _keyId [String] <p>The identifier of a <a>UsagePlanKey</a> resource for a plan customer.</p>
+-- @param _usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-created <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: keyId
 -- Required parameter: keyType
-function M.CreateUsagePlanKeyRequest(keyType, keyId, usagePlanId, ...)
+function M.CreateUsagePlanKeyRequest(_keyType, _keyId, _usagePlanId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUsagePlanKeyRequest")
 	local t = { 
-		["keyType"] = keyType,
-		["keyId"] = keyId,
-		["usagePlanId"] = usagePlanId,
+		["keyType"] = _keyType,
+		["keyId"] = _keyId,
+		["usagePlanId"] = _usagePlanId,
 	}
-	M.AssertCreateUsagePlanKeyRequest(t)
+	asserts.AssertCreateUsagePlanKeyRequest(t)
 	return t
 end
 
-local GetIntegrationResponseRequest_keys = { "resourceId" = true, "statusCode" = true, "restApiId" = true, "httpMethod" = true, nil }
+keys.GetIntegrationResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
 
-function M.AssertGetIntegrationResponseRequest(struct)
+function asserts.AssertGetIntegrationResponseRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIntegrationResponseRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["resourceId"], "Expected key resourceId to exist in table")
 	assert(struct["httpMethod"], "Expected key httpMethod to exist in table")
 	assert(struct["statusCode"], "Expected key statusCode to exist in table")
-	if struct["resourceId"] then M.AssertString(struct["resourceId"]) end
-	if struct["statusCode"] then M.AssertStatusCode(struct["statusCode"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["httpMethod"] then M.AssertString(struct["httpMethod"]) end
+	if struct["resourceId"] then asserts.AssertString(struct["resourceId"]) end
+	if struct["statusCode"] then asserts.AssertStatusCode(struct["statusCode"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["httpMethod"] then asserts.AssertString(struct["httpMethod"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIntegrationResponseRequest_keys[k], "GetIntegrationResponseRequest contains unknown key " .. tostring(k))
+		assert(keys.GetIntegrationResponseRequest[k], "GetIntegrationResponseRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIntegrationResponseRequest
 -- <p>Represents a get integration response request.</p>
--- @param resourceId [String] <p>Specifies a get integration response request's resource identifier.</p>
--- @param statusCode [StatusCode] <p>Specifies a get integration response request's status code.</p>
--- @param restApiId [String] <p>Specifies a get integration response request's API identifier.</p>
--- @param httpMethod [String] <p>Specifies a get integration response request's HTTP method.</p>
+-- @param _resourceId [String] <p>Specifies a get integration response request's resource identifier.</p>
+-- @param _statusCode [StatusCode] <p>Specifies a get integration response request's status code.</p>
+-- @param _restApiId [String] <p>Specifies a get integration response request's API identifier.</p>
+-- @param _httpMethod [String] <p>Specifies a get integration response request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
 -- Required parameter: statusCode
-function M.GetIntegrationResponseRequest(resourceId, statusCode, restApiId, httpMethod, ...)
+function M.GetIntegrationResponseRequest(_resourceId, _statusCode, _restApiId, _httpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIntegrationResponseRequest")
 	local t = { 
-		["resourceId"] = resourceId,
-		["statusCode"] = statusCode,
-		["restApiId"] = restApiId,
-		["httpMethod"] = httpMethod,
+		["resourceId"] = _resourceId,
+		["statusCode"] = _statusCode,
+		["restApiId"] = _restApiId,
+		["httpMethod"] = _httpMethod,
 	}
-	M.AssertGetIntegrationResponseRequest(t)
+	asserts.AssertGetIntegrationResponseRequest(t)
 	return t
 end
 
-local UpdateDocumentationPartRequest_keys = { "documentationPartId" = true, "restApiId" = true, "patchOperations" = true, nil }
+keys.UpdateDocumentationPartRequest = { ["documentationPartId"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateDocumentationPartRequest(struct)
+function asserts.AssertUpdateDocumentationPartRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDocumentationPartRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["documentationPartId"], "Expected key documentationPartId to exist in table")
-	if struct["documentationPartId"] then M.AssertString(struct["documentationPartId"]) end
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["documentationPartId"] then asserts.AssertString(struct["documentationPartId"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateDocumentationPartRequest_keys[k], "UpdateDocumentationPartRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateDocumentationPartRequest[k], "UpdateDocumentationPartRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateDocumentationPartRequest
 -- <p>Updates an existing documentation part of a given API.</p>
--- @param documentationPartId [String] <p>[Required] The identifier of the to-be-updated documentation part.</p>
--- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-updated documentation part.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _documentationPartId [String] <p>[Required] The identifier of the to-be-updated documentation part.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of an API of the to-be-updated documentation part.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationPartId
-function M.UpdateDocumentationPartRequest(documentationPartId, restApiId, patchOperations, ...)
+function M.UpdateDocumentationPartRequest(_documentationPartId, _restApiId, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentationPartRequest")
 	local t = { 
-		["documentationPartId"] = documentationPartId,
-		["restApiId"] = restApiId,
-		["patchOperations"] = patchOperations,
+		["documentationPartId"] = _documentationPartId,
+		["restApiId"] = _restApiId,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateDocumentationPartRequest(t)
+	asserts.AssertUpdateDocumentationPartRequest(t)
 	return t
 end
 
-local GetUsagePlanKeysRequest_keys = { "position" = true, "nameQuery" = true, "usagePlanId" = true, "limit" = true, nil }
+keys.GetUsagePlanKeysRequest = { ["position"] = true, ["nameQuery"] = true, ["usagePlanId"] = true, ["limit"] = true, nil }
 
-function M.AssertGetUsagePlanKeysRequest(struct)
+function asserts.AssertGetUsagePlanKeysRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetUsagePlanKeysRequest to be of type 'table'")
 	assert(struct["usagePlanId"], "Expected key usagePlanId to exist in table")
-	if struct["position"] then M.AssertString(struct["position"]) end
-	if struct["nameQuery"] then M.AssertString(struct["nameQuery"]) end
-	if struct["usagePlanId"] then M.AssertString(struct["usagePlanId"]) end
-	if struct["limit"] then M.AssertNullableInteger(struct["limit"]) end
+	if struct["position"] then asserts.AssertString(struct["position"]) end
+	if struct["nameQuery"] then asserts.AssertString(struct["nameQuery"]) end
+	if struct["usagePlanId"] then asserts.AssertString(struct["usagePlanId"]) end
+	if struct["limit"] then asserts.AssertNullableInteger(struct["limit"]) end
 	for k,_ in pairs(struct) do
-		assert(GetUsagePlanKeysRequest_keys[k], "GetUsagePlanKeysRequest contains unknown key " .. tostring(k))
+		assert(keys.GetUsagePlanKeysRequest[k], "GetUsagePlanKeysRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetUsagePlanKeysRequest
 -- <p>The GET request to get all the usage plan keys representing the API keys added to a specified usage plan.</p>
--- @param position [String] <p>The current pagination position in the paged result set.</p>
--- @param nameQuery [String] <p>A query parameter specifying the name of the to-be-returned usage plan keys.</p>
--- @param usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
--- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- @param _position [String] <p>The current pagination position in the paged result set.</p>
+-- @param _nameQuery [String] <p>A query parameter specifying the name of the to-be-returned usage plan keys.</p>
+-- @param _usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- @param _limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- Required parameter: usagePlanId
-function M.GetUsagePlanKeysRequest(position, nameQuery, usagePlanId, limit, ...)
+function M.GetUsagePlanKeysRequest(_position, _nameQuery, _usagePlanId, _limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUsagePlanKeysRequest")
 	local t = { 
-		["position"] = position,
-		["nameQuery"] = nameQuery,
-		["usagePlanId"] = usagePlanId,
-		["limit"] = limit,
+		["position"] = _position,
+		["nameQuery"] = _nameQuery,
+		["usagePlanId"] = _usagePlanId,
+		["limit"] = _limit,
 	}
-	M.AssertGetUsagePlanKeysRequest(t)
+	asserts.AssertGetUsagePlanKeysRequest(t)
 	return t
 end
 
-local DocumentationPartLocation_keys = { "path" = true, "type" = true, "method" = true, "name" = true, "statusCode" = true, nil }
+keys.DocumentationPartLocation = { ["path"] = true, ["type"] = true, ["method"] = true, ["name"] = true, ["statusCode"] = true, nil }
 
-function M.AssertDocumentationPartLocation(struct)
+function asserts.AssertDocumentationPartLocation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentationPartLocation to be of type 'table'")
 	assert(struct["type"], "Expected key type to exist in table")
-	if struct["path"] then M.AssertString(struct["path"]) end
-	if struct["type"] then M.AssertDocumentationPartType(struct["type"]) end
-	if struct["method"] then M.AssertString(struct["method"]) end
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["statusCode"] then M.AssertDocumentationPartLocationStatusCode(struct["statusCode"]) end
+	if struct["path"] then asserts.AssertString(struct["path"]) end
+	if struct["type"] then asserts.AssertDocumentationPartType(struct["type"]) end
+	if struct["method"] then asserts.AssertString(struct["method"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["statusCode"] then asserts.AssertDocumentationPartLocationStatusCode(struct["statusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentationPartLocation_keys[k], "DocumentationPartLocation contains unknown key " .. tostring(k))
+		assert(keys.DocumentationPartLocation[k], "DocumentationPartLocation contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentationPartLocation
 -- <p>Specifies the target API entity to which the documentation applies.</p>
--- @param path [String] <p>The URL path of the target. It is a valid field for the API entity types of <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root resource. When an applicable child entity inherits the content of another entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>path</code> attribute must match that of the parent entity as a prefix.</p>
--- @param type [DocumentationPartType] <p>The type of API entity to which the documentation content applies. It is a valid and required field for API entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.</p>
--- @param method [String] <p>The HTTP verb of a method. It is a valid field for the API entity types of <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>method</code> attribute must match that of the parent entity exactly.</p>
--- @param name [String] <p>The name of the targeted API entity. It is a valid and required field for the API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity type.</p>
--- @param statusCode [DocumentationPartLocationStatusCode] <p>The HTTP status code of a response. It is a valid field for the API entity types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status code. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>statusCode</code> attribute must match that of the parent entity exactly.</p>
+-- @param _path [String] <p>The URL path of the target. It is a valid field for the API entity types of <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root resource. When an applicable child entity inherits the content of another entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>path</code> attribute must match that of the parent entity as a prefix.</p>
+-- @param _type [DocumentationPartType] <p>The type of API entity to which the documentation content applies. It is a valid and required field for API entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.</p>
+-- @param _method [String] <p>The HTTP verb of a method. It is a valid field for the API entity types of <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>method</code> attribute must match that of the parent entity exactly.</p>
+-- @param _name [String] <p>The name of the targeted API entity. It is a valid and required field for the API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity type.</p>
+-- @param _statusCode [DocumentationPartLocationStatusCode] <p>The HTTP status code of a response. It is a valid field for the API entity types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status code. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>statusCode</code> attribute must match that of the parent entity exactly.</p>
 -- Required parameter: type
-function M.DocumentationPartLocation(path, type, method, name, statusCode, ...)
+function M.DocumentationPartLocation(_path, _type, _method, _name, _statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationPartLocation")
 	local t = { 
-		["path"] = path,
-		["type"] = type,
-		["method"] = method,
-		["name"] = name,
-		["statusCode"] = statusCode,
+		["path"] = _path,
+		["type"] = _type,
+		["method"] = _method,
+		["name"] = _name,
+		["statusCode"] = _statusCode,
 	}
-	M.AssertDocumentationPartLocation(t)
+	asserts.AssertDocumentationPartLocation(t)
 	return t
 end
 
-local UpdateDocumentationVersionRequest_keys = { "restApiId" = true, "documentationVersion" = true, "patchOperations" = true, nil }
+keys.UpdateDocumentationVersionRequest = { ["restApiId"] = true, ["documentationVersion"] = true, ["patchOperations"] = true, nil }
 
-function M.AssertUpdateDocumentationVersionRequest(struct)
+function asserts.AssertUpdateDocumentationVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDocumentationVersionRequest to be of type 'table'")
 	assert(struct["restApiId"], "Expected key restApiId to exist in table")
 	assert(struct["documentationVersion"], "Expected key documentationVersion to exist in table")
-	if struct["restApiId"] then M.AssertString(struct["restApiId"]) end
-	if struct["documentationVersion"] then M.AssertString(struct["documentationVersion"]) end
-	if struct["patchOperations"] then M.AssertListOfPatchOperation(struct["patchOperations"]) end
+	if struct["restApiId"] then asserts.AssertString(struct["restApiId"]) end
+	if struct["documentationVersion"] then asserts.AssertString(struct["documentationVersion"]) end
+	if struct["patchOperations"] then asserts.AssertListOfPatchOperation(struct["patchOperations"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateDocumentationVersionRequest_keys[k], "UpdateDocumentationVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateDocumentationVersionRequest[k], "UpdateDocumentationVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateDocumentationVersionRequest
 -- <p>Updates an existing documentation version of an API.</p>
--- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-updated documentation version.</p>
--- @param documentationVersion [String] <p>[Required] The version identifier of the to-be-updated documentation version.</p>
--- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param _restApiId [String] <p>[Required] The identifier of an API of the to-be-updated documentation version.</p>
+-- @param _documentationVersion [String] <p>[Required] The version identifier of the to-be-updated documentation version.</p>
+-- @param _patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationVersion
-function M.UpdateDocumentationVersionRequest(restApiId, documentationVersion, patchOperations, ...)
+function M.UpdateDocumentationVersionRequest(_restApiId, _documentationVersion, _patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentationVersionRequest")
 	local t = { 
-		["restApiId"] = restApiId,
-		["documentationVersion"] = documentationVersion,
-		["patchOperations"] = patchOperations,
+		["restApiId"] = _restApiId,
+		["documentationVersion"] = _documentationVersion,
+		["patchOperations"] = _patchOperations,
 	}
-	M.AssertUpdateDocumentationVersionRequest(t)
+	asserts.AssertUpdateDocumentationVersionRequest(t)
 	return t
 end
 
-local ExportResponse_keys = { "body" = true, "contentType" = true, "contentDisposition" = true, nil }
+keys.ExportResponse = { ["body"] = true, ["contentType"] = true, ["contentDisposition"] = true, nil }
 
-function M.AssertExportResponse(struct)
+function asserts.AssertExportResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExportResponse to be of type 'table'")
-	if struct["body"] then M.AssertBlob(struct["body"]) end
-	if struct["contentType"] then M.AssertString(struct["contentType"]) end
-	if struct["contentDisposition"] then M.AssertString(struct["contentDisposition"]) end
+	if struct["body"] then asserts.AssertBlob(struct["body"]) end
+	if struct["contentType"] then asserts.AssertString(struct["contentType"]) end
+	if struct["contentDisposition"] then asserts.AssertString(struct["contentDisposition"]) end
 	for k,_ in pairs(struct) do
-		assert(ExportResponse_keys[k], "ExportResponse contains unknown key " .. tostring(k))
+		assert(keys.ExportResponse[k], "ExportResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExportResponse
 -- <p>The binary blob response to <a>GetExport</a>, which contains the generated SDK.</p>
--- @param body [Blob] <p>The binary blob response to <a>GetExport</a>, which contains the export.</p>
--- @param contentType [String] <p>The content-type header value in the HTTP response. This will correspond to a valid 'accept' type in the request.</p>
--- @param contentDisposition [String] <p>The content-disposition header value in the HTTP response.</p>
-function M.ExportResponse(body, contentType, contentDisposition, ...)
+-- @param _body [Blob] <p>The binary blob response to <a>GetExport</a>, which contains the export.</p>
+-- @param _contentType [String] <p>The content-type header value in the HTTP response. This will correspond to a valid 'accept' type in the request.</p>
+-- @param _contentDisposition [String] <p>The content-disposition header value in the HTTP response.</p>
+function M.ExportResponse(_body, _contentType, _contentDisposition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExportResponse")
 	local t = { 
-		["body"] = body,
-		["contentType"] = contentType,
-		["contentDisposition"] = contentDisposition,
+		["body"] = _body,
+		["contentType"] = _contentType,
+		["contentDisposition"] = _contentDisposition,
 	}
-	M.AssertExportResponse(t)
+	asserts.AssertExportResponse(t)
 	return t
 end
 
-local CreateApiKeyRequest_keys = { "name" = true, "enabled" = true, "value" = true, "stageKeys" = true, "generateDistinctId" = true, "customerId" = true, "description" = true, nil }
+keys.CreateApiKeyRequest = { ["name"] = true, ["enabled"] = true, ["value"] = true, ["stageKeys"] = true, ["generateDistinctId"] = true, ["customerId"] = true, ["description"] = true, nil }
 
-function M.AssertCreateApiKeyRequest(struct)
+function asserts.AssertCreateApiKeyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateApiKeyRequest to be of type 'table'")
-	if struct["name"] then M.AssertString(struct["name"]) end
-	if struct["enabled"] then M.AssertBoolean(struct["enabled"]) end
-	if struct["value"] then M.AssertString(struct["value"]) end
-	if struct["stageKeys"] then M.AssertListOfStageKeys(struct["stageKeys"]) end
-	if struct["generateDistinctId"] then M.AssertBoolean(struct["generateDistinctId"]) end
-	if struct["customerId"] then M.AssertString(struct["customerId"]) end
-	if struct["description"] then M.AssertString(struct["description"]) end
+	if struct["name"] then asserts.AssertString(struct["name"]) end
+	if struct["enabled"] then asserts.AssertBoolean(struct["enabled"]) end
+	if struct["value"] then asserts.AssertString(struct["value"]) end
+	if struct["stageKeys"] then asserts.AssertListOfStageKeys(struct["stageKeys"]) end
+	if struct["generateDistinctId"] then asserts.AssertBoolean(struct["generateDistinctId"]) end
+	if struct["customerId"] then asserts.AssertString(struct["customerId"]) end
+	if struct["description"] then asserts.AssertString(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateApiKeyRequest_keys[k], "CreateApiKeyRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateApiKeyRequest[k], "CreateApiKeyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateApiKeyRequest
 -- <p>Request to create an <a>ApiKey</a> resource.</p>
--- @param name [String] <p>The name of the <a>ApiKey</a>.</p>
--- @param enabled [Boolean] <p>Specifies whether the <a>ApiKey</a> can be used by callers.</p>
--- @param value [String] <p>Specifies a value of the API key.</p>
--- @param stageKeys [ListOfStageKeys] <p>DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.</p>
--- @param generateDistinctId [Boolean] <p>Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the created API key value.</p>
--- @param customerId [String] <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.</p>
--- @param description [String] <p>The description of the <a>ApiKey</a>.</p>
-function M.CreateApiKeyRequest(name, enabled, value, stageKeys, generateDistinctId, customerId, description, ...)
+-- @param _name [String] <p>The name of the <a>ApiKey</a>.</p>
+-- @param _enabled [Boolean] <p>Specifies whether the <a>ApiKey</a> can be used by callers.</p>
+-- @param _value [String] <p>Specifies a value of the API key.</p>
+-- @param _stageKeys [ListOfStageKeys] <p>DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.</p>
+-- @param _generateDistinctId [Boolean] <p>Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the created API key value.</p>
+-- @param _customerId [String] <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.</p>
+-- @param _description [String] <p>The description of the <a>ApiKey</a>.</p>
+function M.CreateApiKeyRequest(_name, _enabled, _value, _stageKeys, _generateDistinctId, _customerId, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateApiKeyRequest")
 	local t = { 
-		["name"] = name,
-		["enabled"] = enabled,
-		["value"] = value,
-		["stageKeys"] = stageKeys,
-		["generateDistinctId"] = generateDistinctId,
-		["customerId"] = customerId,
-		["description"] = description,
+		["name"] = _name,
+		["enabled"] = _enabled,
+		["value"] = _value,
+		["stageKeys"] = _stageKeys,
+		["generateDistinctId"] = _generateDistinctId,
+		["customerId"] = _customerId,
+		["description"] = _description,
 	}
-	M.AssertCreateApiKeyRequest(t)
+	asserts.AssertCreateApiKeyRequest(t)
 	return t
 end
 
-function M.AssertDocumentationPartLocationStatusCode(str)
+function asserts.AssertDocumentationPartLocationStatusCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentationPartLocationStatusCode to be of type 'string'")
-	assert(str:match("^([1-5]%d%d|%*|%s*)$"), "Expected string to match pattern '^([1-5]%d%d|%*|%s*)$'")
 end
 
 --  
 function M.DocumentationPartLocationStatusCode(str)
-	M.AssertDocumentationPartLocationStatusCode(str)
+	asserts.AssertDocumentationPartLocationStatusCode(str)
 	return str
 end
 
-function M.AssertIntegrationType(str)
+function asserts.AssertIntegrationType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IntegrationType to be of type 'string'")
 end
 
 -- <p>The integration type. The valid value is <code>HTTP</code> for integrating with an HTTP back end, <code>AWS</code> for any AWS service endpoints, <code>MOCK</code> for testing without actually invoking the back end, <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration, or <code>AWS_PROXY</code> for integrating with the Lambda proxy integration type.</p>
 function M.IntegrationType(str)
-	M.AssertIntegrationType(str)
+	asserts.AssertIntegrationType(str)
 	return str
 end
 
-function M.AssertOp(str)
+function asserts.AssertOp(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Op to be of type 'string'")
 end
 
 --  
 function M.Op(str)
-	M.AssertOp(str)
+	asserts.AssertOp(str)
 	return str
 end
 
-function M.AssertUnauthorizedCacheControlHeaderStrategy(str)
+function asserts.AssertUnauthorizedCacheControlHeaderStrategy(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UnauthorizedCacheControlHeaderStrategy to be of type 'string'")
 end
 
 --  
 function M.UnauthorizedCacheControlHeaderStrategy(str)
-	M.AssertUnauthorizedCacheControlHeaderStrategy(str)
+	asserts.AssertUnauthorizedCacheControlHeaderStrategy(str)
 	return str
 end
 
-function M.AssertQuotaPeriodType(str)
+function asserts.AssertQuotaPeriodType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected QuotaPeriodType to be of type 'string'")
 end
 
 --  
 function M.QuotaPeriodType(str)
-	M.AssertQuotaPeriodType(str)
+	asserts.AssertQuotaPeriodType(str)
 	return str
 end
 
-function M.AssertAuthorizerType(str)
+function asserts.AssertAuthorizerType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AuthorizerType to be of type 'string'")
 end
 
 -- <p>The authorizer type. the current value is <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for an Amazon Cognito Your User Pool.</p>
 function M.AuthorizerType(str)
-	M.AssertAuthorizerType(str)
+	asserts.AssertAuthorizerType(str)
 	return str
 end
 
-function M.AssertCacheClusterStatus(str)
+function asserts.AssertCacheClusterStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CacheClusterStatus to be of type 'string'")
 end
 
 -- <p>Returns the status of the <b>CacheCluster</b>.</p>
 function M.CacheClusterStatus(str)
-	M.AssertCacheClusterStatus(str)
+	asserts.AssertCacheClusterStatus(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertDocumentationPartType(str)
+function asserts.AssertDocumentationPartType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentationPartType to be of type 'string'")
 end
 
 --  
 function M.DocumentationPartType(str)
-	M.AssertDocumentationPartType(str)
+	asserts.AssertDocumentationPartType(str)
 	return str
 end
 
-function M.AssertProviderARN(str)
+function asserts.AssertProviderARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProviderARN to be of type 'string'")
 end
 
 --  
 function M.ProviderARN(str)
-	M.AssertProviderARN(str)
+	asserts.AssertProviderARN(str)
 	return str
 end
 
-function M.AssertStatusCode(str)
+function asserts.AssertStatusCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StatusCode to be of type 'string'")
-	assert(str:match("[1-5]%d%d"), "Expected string to match pattern '[1-5]%d%d'")
 end
 
 -- <p>The status code.</p>
 function M.StatusCode(str)
-	M.AssertStatusCode(str)
+	asserts.AssertStatusCode(str)
 	return str
 end
 
-function M.AssertApiKeysFormat(str)
+function asserts.AssertApiKeysFormat(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ApiKeysFormat to be of type 'string'")
 end
 
 --  
 function M.ApiKeysFormat(str)
-	M.AssertApiKeysFormat(str)
+	asserts.AssertApiKeysFormat(str)
 	return str
 end
 
-function M.AssertPutMode(str)
+function asserts.AssertPutMode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PutMode to be of type 'string'")
 end
 
 --  
 function M.PutMode(str)
-	M.AssertPutMode(str)
+	asserts.AssertPutMode(str)
 	return str
 end
 
-function M.AssertCacheClusterSize(str)
+function asserts.AssertCacheClusterSize(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CacheClusterSize to be of type 'string'")
 end
 
 -- <p>Returns the size of the <b>CacheCluster</b>.</p>
 function M.CacheClusterSize(str)
-	M.AssertCacheClusterSize(str)
+	asserts.AssertCacheClusterSize(str)
 	return str
 end
 
-function M.AssertContentHandlingStrategy(str)
+function asserts.AssertContentHandlingStrategy(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ContentHandlingStrategy to be of type 'string'")
 end
 
 --  
 function M.ContentHandlingStrategy(str)
-	M.AssertContentHandlingStrategy(str)
+	asserts.AssertContentHandlingStrategy(str)
 	return str
 end
 
-function M.AssertDouble(double)
+function asserts.AssertDouble(double)
 	assert(double)
 	assert(type(double) == "number", "Expected Double to be of type 'number'")
 end
 
 function M.Double(double)
-	M.AssertDouble(double)
+	asserts.AssertDouble(double)
 	return double
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertNullableInteger(integer)
+function asserts.AssertNullableInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected NullableInteger to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.NullableInteger(integer)
-	M.AssertNullableInteger(integer)
+	asserts.AssertNullableInteger(integer)
 	return integer
 end
 
-function M.AssertNullableBoolean(boolean)
+function asserts.AssertNullableBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected NullableBoolean to be of type 'boolean'")
 end
 
 function M.NullableBoolean(boolean)
-	M.AssertNullableBoolean(boolean)
+	asserts.AssertNullableBoolean(boolean)
 	return boolean
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertMapOfStringToList(map)
+function asserts.AssertMapOfStringToList(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfStringToList to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertListOfString(v)
+		asserts.AssertString(k)
+		asserts.AssertListOfString(v)
 	end
 end
 
 function M.MapOfStringToList(map)
-	M.AssertMapOfStringToList(map)
+	asserts.AssertMapOfStringToList(map)
 	return map
 end
 
-function M.AssertMapOfIntegrationResponse(map)
+function asserts.AssertMapOfIntegrationResponse(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfIntegrationResponse to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertIntegrationResponse(v)
+		asserts.AssertString(k)
+		asserts.AssertIntegrationResponse(v)
 	end
 end
 
 function M.MapOfIntegrationResponse(map)
-	M.AssertMapOfIntegrationResponse(map)
+	asserts.AssertMapOfIntegrationResponse(map)
 	return map
 end
 
-function M.AssertMapOfMethodResponse(map)
+function asserts.AssertMapOfMethodResponse(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfMethodResponse to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertMethodResponse(v)
+		asserts.AssertString(k)
+		asserts.AssertMethodResponse(v)
 	end
 end
 
 function M.MapOfMethodResponse(map)
-	M.AssertMapOfMethodResponse(map)
+	asserts.AssertMapOfMethodResponse(map)
 	return map
 end
 
-function M.AssertMapOfKeyUsages(map)
+function asserts.AssertMapOfKeyUsages(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfKeyUsages to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertListOfUsage(v)
+		asserts.AssertString(k)
+		asserts.AssertListOfUsage(v)
 	end
 end
 
 function M.MapOfKeyUsages(map)
-	M.AssertMapOfKeyUsages(map)
+	asserts.AssertMapOfKeyUsages(map)
 	return map
 end
 
-function M.AssertMapOfHeaderValues(map)
+function asserts.AssertMapOfHeaderValues(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfHeaderValues to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertString(v)
+		asserts.AssertString(k)
+		asserts.AssertString(v)
 	end
 end
 
 function M.MapOfHeaderValues(map)
-	M.AssertMapOfHeaderValues(map)
+	asserts.AssertMapOfHeaderValues(map)
 	return map
 end
 
-function M.AssertPathToMapOfMethodSnapshot(map)
+function asserts.AssertPathToMapOfMethodSnapshot(map)
 	assert(map)
 	assert(type(map) == "table", "Expected PathToMapOfMethodSnapshot to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertMapOfMethodSnapshot(v)
+		asserts.AssertString(k)
+		asserts.AssertMapOfMethodSnapshot(v)
 	end
 end
 
 function M.PathToMapOfMethodSnapshot(map)
-	M.AssertPathToMapOfMethodSnapshot(map)
+	asserts.AssertPathToMapOfMethodSnapshot(map)
 	return map
 end
 
-function M.AssertMapOfMethodSnapshot(map)
+function asserts.AssertMapOfMethodSnapshot(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfMethodSnapshot to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertMethodSnapshot(v)
+		asserts.AssertString(k)
+		asserts.AssertMethodSnapshot(v)
 	end
 end
 
 function M.MapOfMethodSnapshot(map)
-	M.AssertMapOfMethodSnapshot(map)
+	asserts.AssertMapOfMethodSnapshot(map)
 	return map
 end
 
-function M.AssertMapOfMethodSettings(map)
+function asserts.AssertMapOfMethodSettings(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfMethodSettings to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertMethodSetting(v)
+		asserts.AssertString(k)
+		asserts.AssertMethodSetting(v)
 	end
 end
 
 function M.MapOfMethodSettings(map)
-	M.AssertMapOfMethodSettings(map)
+	asserts.AssertMapOfMethodSettings(map)
 	return map
 end
 
-function M.AssertMapOfStringToString(map)
+function asserts.AssertMapOfStringToString(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfStringToString to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertString(v)
+		asserts.AssertString(k)
+		asserts.AssertString(v)
 	end
 end
 
 function M.MapOfStringToString(map)
-	M.AssertMapOfStringToString(map)
+	asserts.AssertMapOfStringToString(map)
 	return map
 end
 
-function M.AssertMapOfMethod(map)
+function asserts.AssertMapOfMethod(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfMethod to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertMethod(v)
+		asserts.AssertString(k)
+		asserts.AssertMethod(v)
 	end
 end
 
 function M.MapOfMethod(map)
-	M.AssertMapOfMethod(map)
+	asserts.AssertMapOfMethod(map)
 	return map
 end
 
-function M.AssertMapOfStringToBoolean(map)
+function asserts.AssertMapOfStringToBoolean(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapOfStringToBoolean to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertNullableBoolean(v)
+		asserts.AssertString(k)
+		asserts.AssertNullableBoolean(v)
 	end
 end
 
 function M.MapOfStringToBoolean(map)
-	M.AssertMapOfStringToBoolean(map)
+	asserts.AssertMapOfStringToBoolean(map)
 	return map
 end
 
-function M.AssertTimestamp(timestamp)
+function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 function M.Timestamp(timestamp)
-	M.AssertTimestamp(timestamp)
+	asserts.AssertTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertBlob(blob)
+function asserts.AssertBlob(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected Blob to be of type 'string'")
 end
 
 function M.Blob(blob)
-	M.AssertBlob(blob)
+	asserts.AssertBlob(blob)
 	return blob
 end
 
-function M.AssertListOfModel(list)
+function asserts.AssertListOfModel(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfModel to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertModel(v)
+		asserts.AssertModel(v)
 	end
 end
 
 --  
 -- List of Model objects
 function M.ListOfModel(list)
-	M.AssertListOfModel(list)
+	asserts.AssertListOfModel(list)
 	return list
 end
 
-function M.AssertListOfApiStage(list)
+function asserts.AssertListOfApiStage(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfApiStage to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertApiStage(v)
+		asserts.AssertApiStage(v)
 	end
 end
 
 --  
 -- List of ApiStage objects
 function M.ListOfApiStage(list)
-	M.AssertListOfApiStage(list)
+	asserts.AssertListOfApiStage(list)
 	return list
 end
 
-function M.AssertListOfDeployment(list)
+function asserts.AssertListOfDeployment(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfDeployment to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDeployment(v)
+		asserts.AssertDeployment(v)
 	end
 end
 
 --  
 -- List of Deployment objects
 function M.ListOfDeployment(list)
-	M.AssertListOfDeployment(list)
+	asserts.AssertListOfDeployment(list)
 	return list
 end
 
-function M.AssertListOfSdkType(list)
+function asserts.AssertListOfSdkType(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfSdkType to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSdkType(v)
+		asserts.AssertSdkType(v)
 	end
 end
 
 --  
 -- List of SdkType objects
 function M.ListOfSdkType(list)
-	M.AssertListOfSdkType(list)
+	asserts.AssertListOfSdkType(list)
 	return list
 end
 
-function M.AssertListOfUsagePlan(list)
+function asserts.AssertListOfUsagePlan(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfUsagePlan to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUsagePlan(v)
+		asserts.AssertUsagePlan(v)
 	end
 end
 
 --  
 -- List of UsagePlan objects
 function M.ListOfUsagePlan(list)
-	M.AssertListOfUsagePlan(list)
+	asserts.AssertListOfUsagePlan(list)
 	return list
 end
 
-function M.AssertListOfDocumentationVersion(list)
+function asserts.AssertListOfDocumentationVersion(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfDocumentationVersion to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDocumentationVersion(v)
+		asserts.AssertDocumentationVersion(v)
 	end
 end
 
 --  
 -- List of DocumentationVersion objects
 function M.ListOfDocumentationVersion(list)
-	M.AssertListOfDocumentationVersion(list)
+	asserts.AssertListOfDocumentationVersion(list)
 	return list
 end
 
-function M.AssertListOfBasePathMapping(list)
+function asserts.AssertListOfBasePathMapping(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfBasePathMapping to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBasePathMapping(v)
+		asserts.AssertBasePathMapping(v)
 	end
 end
 
 --  
 -- List of BasePathMapping objects
 function M.ListOfBasePathMapping(list)
-	M.AssertListOfBasePathMapping(list)
+	asserts.AssertListOfBasePathMapping(list)
 	return list
 end
 
-function M.AssertListOfClientCertificate(list)
+function asserts.AssertListOfClientCertificate(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfClientCertificate to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertClientCertificate(v)
+		asserts.AssertClientCertificate(v)
 	end
 end
 
 --  
 -- List of ClientCertificate objects
 function M.ListOfClientCertificate(list)
-	M.AssertListOfClientCertificate(list)
+	asserts.AssertListOfClientCertificate(list)
 	return list
 end
 
-function M.AssertListOfLong(list)
+function asserts.AssertListOfLong(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfLong to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLong(v)
+		asserts.AssertLong(v)
 	end
 end
 
 --  
 -- List of Long objects
 function M.ListOfLong(list)
-	M.AssertListOfLong(list)
+	asserts.AssertListOfLong(list)
 	return list
 end
 
-function M.AssertListOfApiKey(list)
+function asserts.AssertListOfApiKey(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfApiKey to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertApiKey(v)
+		asserts.AssertApiKey(v)
 	end
 end
 
 --  
 -- List of ApiKey objects
 function M.ListOfApiKey(list)
-	M.AssertListOfApiKey(list)
+	asserts.AssertListOfApiKey(list)
 	return list
 end
 
-function M.AssertListOfUsagePlanKey(list)
+function asserts.AssertListOfUsagePlanKey(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfUsagePlanKey to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUsagePlanKey(v)
+		asserts.AssertUsagePlanKey(v)
 	end
 end
 
 --  
 -- List of UsagePlanKey objects
 function M.ListOfUsagePlanKey(list)
-	M.AssertListOfUsagePlanKey(list)
+	asserts.AssertListOfUsagePlanKey(list)
 	return list
 end
 
-function M.AssertListOfRestApi(list)
+function asserts.AssertListOfRestApi(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfRestApi to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRestApi(v)
+		asserts.AssertRestApi(v)
 	end
 end
 
 --  
 -- List of RestApi objects
 function M.ListOfRestApi(list)
-	M.AssertListOfRestApi(list)
+	asserts.AssertListOfRestApi(list)
 	return list
 end
 
-function M.AssertListOfString(list)
+function asserts.AssertListOfString(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfString to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.ListOfString(list)
-	M.AssertListOfString(list)
+	asserts.AssertListOfString(list)
 	return list
 end
 
-function M.AssertListOfStageKeys(list)
+function asserts.AssertListOfStageKeys(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfStageKeys to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStageKey(v)
+		asserts.AssertStageKey(v)
 	end
 end
 
 --  
 -- List of StageKey objects
 function M.ListOfStageKeys(list)
-	M.AssertListOfStageKeys(list)
+	asserts.AssertListOfStageKeys(list)
 	return list
 end
 
-function M.AssertListOfResource(list)
+function asserts.AssertListOfResource(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfResource to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResource(v)
+		asserts.AssertResource(v)
 	end
 end
 
 --  
 -- List of Resource objects
 function M.ListOfResource(list)
-	M.AssertListOfResource(list)
+	asserts.AssertListOfResource(list)
 	return list
 end
 
-function M.AssertListOfRequestValidator(list)
+function asserts.AssertListOfRequestValidator(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfRequestValidator to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRequestValidator(v)
+		asserts.AssertRequestValidator(v)
 	end
 end
 
 --  
 -- List of RequestValidator objects
 function M.ListOfRequestValidator(list)
-	M.AssertListOfRequestValidator(list)
+	asserts.AssertListOfRequestValidator(list)
 	return list
 end
 
-function M.AssertListOfDomainName(list)
+function asserts.AssertListOfDomainName(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfDomainName to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDomainName(v)
+		asserts.AssertDomainName(v)
 	end
 end
 
 --  
 -- List of DomainName objects
 function M.ListOfDomainName(list)
-	M.AssertListOfDomainName(list)
+	asserts.AssertListOfDomainName(list)
 	return list
 end
 
-function M.AssertListOfSdkConfigurationProperty(list)
+function asserts.AssertListOfSdkConfigurationProperty(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfSdkConfigurationProperty to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSdkConfigurationProperty(v)
+		asserts.AssertSdkConfigurationProperty(v)
 	end
 end
 
 --  
 -- List of SdkConfigurationProperty objects
 function M.ListOfSdkConfigurationProperty(list)
-	M.AssertListOfSdkConfigurationProperty(list)
+	asserts.AssertListOfSdkConfigurationProperty(list)
 	return list
 end
 
-function M.AssertListOfDocumentationPart(list)
+function asserts.AssertListOfDocumentationPart(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfDocumentationPart to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDocumentationPart(v)
+		asserts.AssertDocumentationPart(v)
 	end
 end
 
 --  
 -- List of DocumentationPart objects
 function M.ListOfDocumentationPart(list)
-	M.AssertListOfDocumentationPart(list)
+	asserts.AssertListOfDocumentationPart(list)
 	return list
 end
 
-function M.AssertListOfUsage(list)
+function asserts.AssertListOfUsage(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfUsage to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertListOfLong(v)
+		asserts.AssertListOfLong(v)
 	end
 end
 
 --  
 -- List of ListOfLong objects
 function M.ListOfUsage(list)
-	M.AssertListOfUsage(list)
+	asserts.AssertListOfUsage(list)
 	return list
 end
 
-function M.AssertListOfAuthorizer(list)
+function asserts.AssertListOfAuthorizer(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfAuthorizer to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAuthorizer(v)
+		asserts.AssertAuthorizer(v)
 	end
 end
 
 --  
 -- List of Authorizer objects
 function M.ListOfAuthorizer(list)
-	M.AssertListOfAuthorizer(list)
+	asserts.AssertListOfAuthorizer(list)
 	return list
 end
 
-function M.AssertListOfStage(list)
+function asserts.AssertListOfStage(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfStage to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStage(v)
+		asserts.AssertStage(v)
 	end
 end
 
 --  
 -- List of Stage objects
 function M.ListOfStage(list)
-	M.AssertListOfStage(list)
+	asserts.AssertListOfStage(list)
 	return list
 end
 
-function M.AssertListOfARNs(list)
+function asserts.AssertListOfARNs(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfARNs to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertProviderARN(v)
+		asserts.AssertProviderARN(v)
 	end
 end
 
 --  
 -- List of ProviderARN objects
 function M.ListOfARNs(list)
-	M.AssertListOfARNs(list)
+	asserts.AssertListOfARNs(list)
 	return list
 end
 
-function M.AssertListOfPatchOperation(list)
+function asserts.AssertListOfPatchOperation(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfPatchOperation to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPatchOperation(v)
+		asserts.AssertPatchOperation(v)
 	end
 end
 
 -- A list of operations describing the updates to apply to the specified resource. The patches are applied in the order specified in the list.
 -- List of PatchOperation objects
 function M.ListOfPatchOperation(list)
-	M.AssertListOfPatchOperation(list)
+	asserts.AssertListOfPatchOperation(list)
 	return list
 end
 

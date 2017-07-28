@@ -18,65 +18,68 @@ M.metadata = {
 	uid = "dms-2016-01-01",
 }
 
-local DescribeEventCategoriesMessage_keys = { "SourceType" = true, "Filters" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertDescribeEventCategoriesMessage(struct)
+keys.DescribeEventCategoriesMessage = { ["SourceType"] = true, ["Filters"] = true, nil }
+
+function asserts.AssertDescribeEventCategoriesMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventCategoriesMessage to be of type 'table'")
-	if struct["SourceType"] then M.AssertString(struct["SourceType"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
+	if struct["SourceType"] then asserts.AssertString(struct["SourceType"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventCategoriesMessage_keys[k], "DescribeEventCategoriesMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventCategoriesMessage[k], "DescribeEventCategoriesMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventCategoriesMessage
 -- <p/>
--- @param SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | migration-task</p>
--- @param Filters [FilterList] <p>Filters applied to the action.</p>
-function M.DescribeEventCategoriesMessage(SourceType, Filters, ...)
+-- @param _SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | migration-task</p>
+-- @param _Filters [FilterList] <p>Filters applied to the action.</p>
+function M.DescribeEventCategoriesMessage(_SourceType, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventCategoriesMessage")
 	local t = { 
-		["SourceType"] = SourceType,
-		["Filters"] = Filters,
+		["SourceType"] = _SourceType,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeEventCategoriesMessage(t)
+	asserts.AssertDescribeEventCategoriesMessage(t)
 	return t
 end
 
-local DescribeConnectionsResponse_keys = { "Marker" = true, "Connections" = true, nil }
+keys.DescribeConnectionsResponse = { ["Marker"] = true, ["Connections"] = true, nil }
 
-function M.AssertDescribeConnectionsResponse(struct)
+function asserts.AssertDescribeConnectionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeConnectionsResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["Connections"] then M.AssertConnectionList(struct["Connections"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["Connections"] then asserts.AssertConnectionList(struct["Connections"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeConnectionsResponse_keys[k], "DescribeConnectionsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeConnectionsResponse[k], "DescribeConnectionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeConnectionsResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param Connections [ConnectionList] <p>A description of the connections.</p>
-function M.DescribeConnectionsResponse(Marker, Connections, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _Connections [ConnectionList] <p>A description of the connections.</p>
+function M.DescribeConnectionsResponse(_Marker, _Connections, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["Connections"] = Connections,
+		["Marker"] = _Marker,
+		["Connections"] = _Connections,
 	}
-	M.AssertDescribeConnectionsResponse(t)
+	asserts.AssertDescribeConnectionsResponse(t)
 	return t
 end
 
-local DeleteReplicationSubnetGroupResponse_keys = { nil }
+keys.DeleteReplicationSubnetGroupResponse = { nil }
 
-function M.AssertDeleteReplicationSubnetGroupResponse(struct)
+function asserts.AssertDeleteReplicationSubnetGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteReplicationSubnetGroupResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteReplicationSubnetGroupResponse_keys[k], "DeleteReplicationSubnetGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteReplicationSubnetGroupResponse[k], "DeleteReplicationSubnetGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -86,447 +89,447 @@ function M.DeleteReplicationSubnetGroupResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationSubnetGroupResponse")
 	local t = { 
 	}
-	M.AssertDeleteReplicationSubnetGroupResponse(t)
+	asserts.AssertDeleteReplicationSubnetGroupResponse(t)
 	return t
 end
 
-local DescribeRefreshSchemasStatusResponse_keys = { "RefreshSchemasStatus" = true, nil }
+keys.DescribeRefreshSchemasStatusResponse = { ["RefreshSchemasStatus"] = true, nil }
 
-function M.AssertDescribeRefreshSchemasStatusResponse(struct)
+function asserts.AssertDescribeRefreshSchemasStatusResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRefreshSchemasStatusResponse to be of type 'table'")
-	if struct["RefreshSchemasStatus"] then M.AssertRefreshSchemasStatus(struct["RefreshSchemasStatus"]) end
+	if struct["RefreshSchemasStatus"] then asserts.AssertRefreshSchemasStatus(struct["RefreshSchemasStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRefreshSchemasStatusResponse_keys[k], "DescribeRefreshSchemasStatusResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeRefreshSchemasStatusResponse[k], "DescribeRefreshSchemasStatusResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRefreshSchemasStatusResponse
 -- <p/>
--- @param RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the schema.</p>
-function M.DescribeRefreshSchemasStatusResponse(RefreshSchemasStatus, ...)
+-- @param _RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the schema.</p>
+function M.DescribeRefreshSchemasStatusResponse(_RefreshSchemasStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRefreshSchemasStatusResponse")
 	local t = { 
-		["RefreshSchemasStatus"] = RefreshSchemasStatus,
+		["RefreshSchemasStatus"] = _RefreshSchemasStatus,
 	}
-	M.AssertDescribeRefreshSchemasStatusResponse(t)
+	asserts.AssertDescribeRefreshSchemasStatusResponse(t)
 	return t
 end
 
-local DescribeTableStatisticsResponse_keys = { "ReplicationTaskArn" = true, "Marker" = true, "TableStatistics" = true, nil }
+keys.DescribeTableStatisticsResponse = { ["ReplicationTaskArn"] = true, ["Marker"] = true, ["TableStatistics"] = true, nil }
 
-function M.AssertDescribeTableStatisticsResponse(struct)
+function asserts.AssertDescribeTableStatisticsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTableStatisticsResponse to be of type 'table'")
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["TableStatistics"] then M.AssertTableStatisticsList(struct["TableStatistics"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["TableStatistics"] then asserts.AssertTableStatisticsList(struct["TableStatistics"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTableStatisticsResponse_keys[k], "DescribeTableStatisticsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeTableStatisticsResponse[k], "DescribeTableStatisticsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTableStatisticsResponse
 -- <p/>
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param TableStatistics [TableStatisticsList] <p>The table statistics.</p>
-function M.DescribeTableStatisticsResponse(ReplicationTaskArn, Marker, TableStatistics, ...)
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _TableStatistics [TableStatisticsList] <p>The table statistics.</p>
+function M.DescribeTableStatisticsResponse(_ReplicationTaskArn, _Marker, _TableStatistics, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTableStatisticsResponse")
 	local t = { 
-		["ReplicationTaskArn"] = ReplicationTaskArn,
-		["Marker"] = Marker,
-		["TableStatistics"] = TableStatistics,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["Marker"] = _Marker,
+		["TableStatistics"] = _TableStatistics,
 	}
-	M.AssertDescribeTableStatisticsResponse(t)
+	asserts.AssertDescribeTableStatisticsResponse(t)
 	return t
 end
 
-local DeleteCertificateMessage_keys = { "CertificateArn" = true, nil }
+keys.DeleteCertificateMessage = { ["CertificateArn"] = true, nil }
 
-function M.AssertDeleteCertificateMessage(struct)
+function asserts.AssertDeleteCertificateMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteCertificateMessage to be of type 'table'")
 	assert(struct["CertificateArn"], "Expected key CertificateArn to exist in table")
-	if struct["CertificateArn"] then M.AssertString(struct["CertificateArn"]) end
+	if struct["CertificateArn"] then asserts.AssertString(struct["CertificateArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteCertificateMessage_keys[k], "DeleteCertificateMessage contains unknown key " .. tostring(k))
+		assert(keys.DeleteCertificateMessage[k], "DeleteCertificateMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteCertificateMessage
 --  
--- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) of the deleted certificate.</p>
+-- @param _CertificateArn [String] <p>The Amazon Resource Name (ARN) of the deleted certificate.</p>
 -- Required parameter: CertificateArn
-function M.DeleteCertificateMessage(CertificateArn, ...)
+function M.DeleteCertificateMessage(_CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateMessage")
 	local t = { 
-		["CertificateArn"] = CertificateArn,
+		["CertificateArn"] = _CertificateArn,
 	}
-	M.AssertDeleteCertificateMessage(t)
+	asserts.AssertDeleteCertificateMessage(t)
 	return t
 end
 
-local ModifyEventSubscriptionMessage_keys = { "EventCategories" = true, "Enabled" = true, "SourceType" = true, "SubscriptionName" = true, "SnsTopicArn" = true, nil }
+keys.ModifyEventSubscriptionMessage = { ["EventCategories"] = true, ["Enabled"] = true, ["SourceType"] = true, ["SubscriptionName"] = true, ["SnsTopicArn"] = true, nil }
 
-function M.AssertModifyEventSubscriptionMessage(struct)
+function asserts.AssertModifyEventSubscriptionMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyEventSubscriptionMessage to be of type 'table'")
 	assert(struct["SubscriptionName"], "Expected key SubscriptionName to exist in table")
-	if struct["EventCategories"] then M.AssertEventCategoriesList(struct["EventCategories"]) end
-	if struct["Enabled"] then M.AssertBooleanOptional(struct["Enabled"]) end
-	if struct["SourceType"] then M.AssertString(struct["SourceType"]) end
-	if struct["SubscriptionName"] then M.AssertString(struct["SubscriptionName"]) end
-	if struct["SnsTopicArn"] then M.AssertString(struct["SnsTopicArn"]) end
+	if struct["EventCategories"] then asserts.AssertEventCategoriesList(struct["EventCategories"]) end
+	if struct["Enabled"] then asserts.AssertBooleanOptional(struct["Enabled"]) end
+	if struct["SourceType"] then asserts.AssertString(struct["SourceType"]) end
+	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
+	if struct["SnsTopicArn"] then asserts.AssertString(struct["SnsTopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyEventSubscriptionMessage_keys[k], "ModifyEventSubscriptionMessage contains unknown key " .. tostring(k))
+		assert(keys.ModifyEventSubscriptionMessage[k], "ModifyEventSubscriptionMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyEventSubscriptionMessage
 -- <p/>
--- @param EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. Use the <code>DescribeEventCategories</code> action to see a list of event categories. </p>
--- @param Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription. </p>
--- @param SourceType [String] <p> The type of AWS DMS resource that generates the events you want to subscribe to. </p> <p>Valid values: replication-instance | migration-task</p>
--- @param SubscriptionName [String] <p>The name of the AWS DMS event notification subscription to be modified.</p>
--- @param SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.</p>
+-- @param _EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. Use the <code>DescribeEventCategories</code> action to see a list of event categories. </p>
+-- @param _Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription. </p>
+-- @param _SourceType [String] <p> The type of AWS DMS resource that generates the events you want to subscribe to. </p> <p>Valid values: replication-instance | migration-task</p>
+-- @param _SubscriptionName [String] <p>The name of the AWS DMS event notification subscription to be modified.</p>
+-- @param _SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.</p>
 -- Required parameter: SubscriptionName
-function M.ModifyEventSubscriptionMessage(EventCategories, Enabled, SourceType, SubscriptionName, SnsTopicArn, ...)
+function M.ModifyEventSubscriptionMessage(_EventCategories, _Enabled, _SourceType, _SubscriptionName, _SnsTopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEventSubscriptionMessage")
 	local t = { 
-		["EventCategories"] = EventCategories,
-		["Enabled"] = Enabled,
-		["SourceType"] = SourceType,
-		["SubscriptionName"] = SubscriptionName,
-		["SnsTopicArn"] = SnsTopicArn,
+		["EventCategories"] = _EventCategories,
+		["Enabled"] = _Enabled,
+		["SourceType"] = _SourceType,
+		["SubscriptionName"] = _SubscriptionName,
+		["SnsTopicArn"] = _SnsTopicArn,
 	}
-	M.AssertModifyEventSubscriptionMessage(t)
+	asserts.AssertModifyEventSubscriptionMessage(t)
 	return t
 end
 
-local AccountQuota_keys = { "Max" = true, "AccountQuotaName" = true, "Used" = true, nil }
+keys.AccountQuota = { ["Max"] = true, ["AccountQuotaName"] = true, ["Used"] = true, nil }
 
-function M.AssertAccountQuota(struct)
+function asserts.AssertAccountQuota(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccountQuota to be of type 'table'")
-	if struct["Max"] then M.AssertLong(struct["Max"]) end
-	if struct["AccountQuotaName"] then M.AssertString(struct["AccountQuotaName"]) end
-	if struct["Used"] then M.AssertLong(struct["Used"]) end
+	if struct["Max"] then asserts.AssertLong(struct["Max"]) end
+	if struct["AccountQuotaName"] then asserts.AssertString(struct["AccountQuotaName"]) end
+	if struct["Used"] then asserts.AssertLong(struct["Used"]) end
 	for k,_ in pairs(struct) do
-		assert(AccountQuota_keys[k], "AccountQuota contains unknown key " .. tostring(k))
+		assert(keys.AccountQuota[k], "AccountQuota contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AccountQuota
 -- <p>Describes a quota for an AWS account, for example, the number of replication instances allowed.</p>
--- @param Max [Long] <p>The maximum allowed value for the quota.</p>
--- @param AccountQuotaName [String] <p>The name of the AWS DMS quota for this AWS account.</p>
--- @param Used [Long] <p>The amount currently used toward the quota maximum.</p>
-function M.AccountQuota(Max, AccountQuotaName, Used, ...)
+-- @param _Max [Long] <p>The maximum allowed value for the quota.</p>
+-- @param _AccountQuotaName [String] <p>The name of the AWS DMS quota for this AWS account.</p>
+-- @param _Used [Long] <p>The amount currently used toward the quota maximum.</p>
+function M.AccountQuota(_Max, _AccountQuotaName, _Used, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountQuota")
 	local t = { 
-		["Max"] = Max,
-		["AccountQuotaName"] = AccountQuotaName,
-		["Used"] = Used,
+		["Max"] = _Max,
+		["AccountQuotaName"] = _AccountQuotaName,
+		["Used"] = _Used,
 	}
-	M.AssertAccountQuota(t)
+	asserts.AssertAccountQuota(t)
 	return t
 end
 
-local InvalidCertificateFault_keys = { "message" = true, nil }
+keys.InvalidCertificateFault = { ["message"] = true, nil }
 
-function M.AssertInvalidCertificateFault(struct)
+function asserts.AssertInvalidCertificateFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidCertificateFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidCertificateFault_keys[k], "InvalidCertificateFault contains unknown key " .. tostring(k))
+		assert(keys.InvalidCertificateFault[k], "InvalidCertificateFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidCertificateFault
 -- <p>The certificate was not valid.</p>
--- @param message [ExceptionMessage] <p>The certificate was not valid.</p>
-function M.InvalidCertificateFault(message, ...)
+-- @param _message [ExceptionMessage] 
+function M.InvalidCertificateFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCertificateFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidCertificateFault(t)
+	asserts.AssertInvalidCertificateFault(t)
 	return t
 end
 
-local MongoDbSettings_keys = { "Username" = true, "NestingLevel" = true, "AuthType" = true, "AuthSource" = true, "ServerName" = true, "AuthMechanism" = true, "DocsToInvestigate" = true, "DatabaseName" = true, "ExtractDocId" = true, "Password" = true, "Port" = true, nil }
+keys.MongoDbSettings = { ["Username"] = true, ["NestingLevel"] = true, ["AuthType"] = true, ["AuthSource"] = true, ["ServerName"] = true, ["AuthMechanism"] = true, ["DocsToInvestigate"] = true, ["DatabaseName"] = true, ["ExtractDocId"] = true, ["Password"] = true, ["Port"] = true, nil }
 
-function M.AssertMongoDbSettings(struct)
+function asserts.AssertMongoDbSettings(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MongoDbSettings to be of type 'table'")
-	if struct["Username"] then M.AssertString(struct["Username"]) end
-	if struct["NestingLevel"] then M.AssertNestingLevelValue(struct["NestingLevel"]) end
-	if struct["AuthType"] then M.AssertAuthTypeValue(struct["AuthType"]) end
-	if struct["AuthSource"] then M.AssertString(struct["AuthSource"]) end
-	if struct["ServerName"] then M.AssertString(struct["ServerName"]) end
-	if struct["AuthMechanism"] then M.AssertAuthMechanismValue(struct["AuthMechanism"]) end
-	if struct["DocsToInvestigate"] then M.AssertString(struct["DocsToInvestigate"]) end
-	if struct["DatabaseName"] then M.AssertString(struct["DatabaseName"]) end
-	if struct["ExtractDocId"] then M.AssertString(struct["ExtractDocId"]) end
-	if struct["Password"] then M.AssertSecretString(struct["Password"]) end
-	if struct["Port"] then M.AssertIntegerOptional(struct["Port"]) end
+	if struct["Username"] then asserts.AssertString(struct["Username"]) end
+	if struct["NestingLevel"] then asserts.AssertNestingLevelValue(struct["NestingLevel"]) end
+	if struct["AuthType"] then asserts.AssertAuthTypeValue(struct["AuthType"]) end
+	if struct["AuthSource"] then asserts.AssertString(struct["AuthSource"]) end
+	if struct["ServerName"] then asserts.AssertString(struct["ServerName"]) end
+	if struct["AuthMechanism"] then asserts.AssertAuthMechanismValue(struct["AuthMechanism"]) end
+	if struct["DocsToInvestigate"] then asserts.AssertString(struct["DocsToInvestigate"]) end
+	if struct["DatabaseName"] then asserts.AssertString(struct["DatabaseName"]) end
+	if struct["ExtractDocId"] then asserts.AssertString(struct["ExtractDocId"]) end
+	if struct["Password"] then asserts.AssertSecretString(struct["Password"]) end
+	if struct["Port"] then asserts.AssertIntegerOptional(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(MongoDbSettings_keys[k], "MongoDbSettings contains unknown key " .. tostring(k))
+		assert(keys.MongoDbSettings[k], "MongoDbSettings contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MongoDbSettings
 -- <p/>
--- @param Username [String] <p>The user name you use to access the MongoDB source endpoint. </p>
--- @param NestingLevel [NestingLevelValue] <p> Specifies either document or table mode. </p> <p>Valid values: NONE, ONE</p> <p>Default value is NONE. Specify NONE to use document mode. Specify ONE to use table mode.</p>
--- @param AuthType [AuthTypeValue] <p> The authentication type you use to access the MongoDB source endpoint.</p> <p>Valid values: NO, PASSWORD </p> <p>When NO is selected, user name and password parameters are not used and can be empty. </p>
--- @param AuthSource [String] <p> The MongoDB database name. This attribute is not used when <code>authType=NO</code>. </p> <p>The default is admin.</p>
--- @param ServerName [String] <p> The name of the server on the MongoDB source endpoint. </p>
--- @param AuthMechanism [AuthMechanismValue] <p> The authentication mechanism you use to access the MongoDB source endpoint.</p> <p>Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1 </p> <p>DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.</p>
--- @param DocsToInvestigate [String] <p> Indicates the number of documents to preview to determine the document organization. Use this attribute when <code>NestingLevel</code> is set to ONE. </p> <p>Must be a positive value greater than 0. Default value is 1000.</p>
--- @param DatabaseName [String] <p> The database name on the MongoDB source endpoint. </p>
--- @param ExtractDocId [String] <p> Specifies the document ID. Use this attribute when <code>NestingLevel</code> is set to NONE. </p> <p>Default value is false. </p>
--- @param Password [SecretString] <p> The password for the user account you use to access the MongoDB source endpoint. </p>
--- @param Port [IntegerOptional] <p> The port value for the MongoDB source endpoint. </p>
-function M.MongoDbSettings(Username, NestingLevel, AuthType, AuthSource, ServerName, AuthMechanism, DocsToInvestigate, DatabaseName, ExtractDocId, Password, Port, ...)
+-- @param _Username [String] <p>The user name you use to access the MongoDB source endpoint. </p>
+-- @param _NestingLevel [NestingLevelValue] <p> Specifies either document or table mode. </p> <p>Valid values: NONE, ONE</p> <p>Default value is NONE. Specify NONE to use document mode. Specify ONE to use table mode.</p>
+-- @param _AuthType [AuthTypeValue] <p> The authentication type you use to access the MongoDB source endpoint.</p> <p>Valid values: NO, PASSWORD </p> <p>When NO is selected, user name and password parameters are not used and can be empty. </p>
+-- @param _AuthSource [String] <p> The MongoDB database name. This attribute is not used when <code>authType=NO</code>. </p> <p>The default is admin.</p>
+-- @param _ServerName [String] <p> The name of the server on the MongoDB source endpoint. </p>
+-- @param _AuthMechanism [AuthMechanismValue] <p> The authentication mechanism you use to access the MongoDB source endpoint.</p> <p>Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1 </p> <p>DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.</p>
+-- @param _DocsToInvestigate [String] <p> Indicates the number of documents to preview to determine the document organization. Use this attribute when <code>NestingLevel</code> is set to ONE. </p> <p>Must be a positive value greater than 0. Default value is 1000.</p>
+-- @param _DatabaseName [String] <p> The database name on the MongoDB source endpoint. </p>
+-- @param _ExtractDocId [String] <p> Specifies the document ID. Use this attribute when <code>NestingLevel</code> is set to NONE. </p> <p>Default value is false. </p>
+-- @param _Password [SecretString] <p> The password for the user account you use to access the MongoDB source endpoint. </p>
+-- @param _Port [IntegerOptional] <p> The port value for the MongoDB source endpoint. </p>
+function M.MongoDbSettings(_Username, _NestingLevel, _AuthType, _AuthSource, _ServerName, _AuthMechanism, _DocsToInvestigate, _DatabaseName, _ExtractDocId, _Password, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MongoDbSettings")
 	local t = { 
-		["Username"] = Username,
-		["NestingLevel"] = NestingLevel,
-		["AuthType"] = AuthType,
-		["AuthSource"] = AuthSource,
-		["ServerName"] = ServerName,
-		["AuthMechanism"] = AuthMechanism,
-		["DocsToInvestigate"] = DocsToInvestigate,
-		["DatabaseName"] = DatabaseName,
-		["ExtractDocId"] = ExtractDocId,
-		["Password"] = Password,
-		["Port"] = Port,
+		["Username"] = _Username,
+		["NestingLevel"] = _NestingLevel,
+		["AuthType"] = _AuthType,
+		["AuthSource"] = _AuthSource,
+		["ServerName"] = _ServerName,
+		["AuthMechanism"] = _AuthMechanism,
+		["DocsToInvestigate"] = _DocsToInvestigate,
+		["DatabaseName"] = _DatabaseName,
+		["ExtractDocId"] = _ExtractDocId,
+		["Password"] = _Password,
+		["Port"] = _Port,
 	}
-	M.AssertMongoDbSettings(t)
+	asserts.AssertMongoDbSettings(t)
 	return t
 end
 
-local ModifyEventSubscriptionResponse_keys = { "EventSubscription" = true, nil }
+keys.ModifyEventSubscriptionResponse = { ["EventSubscription"] = true, nil }
 
-function M.AssertModifyEventSubscriptionResponse(struct)
+function asserts.AssertModifyEventSubscriptionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyEventSubscriptionResponse to be of type 'table'")
-	if struct["EventSubscription"] then M.AssertEventSubscription(struct["EventSubscription"]) end
+	if struct["EventSubscription"] then asserts.AssertEventSubscription(struct["EventSubscription"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyEventSubscriptionResponse_keys[k], "ModifyEventSubscriptionResponse contains unknown key " .. tostring(k))
+		assert(keys.ModifyEventSubscriptionResponse[k], "ModifyEventSubscriptionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyEventSubscriptionResponse
 -- <p/>
--- @param EventSubscription [EventSubscription] <p>The modified event subscription.</p>
-function M.ModifyEventSubscriptionResponse(EventSubscription, ...)
+-- @param _EventSubscription [EventSubscription] <p>The modified event subscription.</p>
+function M.ModifyEventSubscriptionResponse(_EventSubscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEventSubscriptionResponse")
 	local t = { 
-		["EventSubscription"] = EventSubscription,
+		["EventSubscription"] = _EventSubscription,
 	}
-	M.AssertModifyEventSubscriptionResponse(t)
+	asserts.AssertModifyEventSubscriptionResponse(t)
 	return t
 end
 
-local ReplicationTaskStats_keys = { "TablesLoading" = true, "TablesQueued" = true, "TablesErrored" = true, "FullLoadProgressPercent" = true, "TablesLoaded" = true, "ElapsedTimeMillis" = true, nil }
+keys.ReplicationTaskStats = { ["TablesLoading"] = true, ["TablesQueued"] = true, ["TablesErrored"] = true, ["FullLoadProgressPercent"] = true, ["TablesLoaded"] = true, ["ElapsedTimeMillis"] = true, nil }
 
-function M.AssertReplicationTaskStats(struct)
+function asserts.AssertReplicationTaskStats(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationTaskStats to be of type 'table'")
-	if struct["TablesLoading"] then M.AssertInteger(struct["TablesLoading"]) end
-	if struct["TablesQueued"] then M.AssertInteger(struct["TablesQueued"]) end
-	if struct["TablesErrored"] then M.AssertInteger(struct["TablesErrored"]) end
-	if struct["FullLoadProgressPercent"] then M.AssertInteger(struct["FullLoadProgressPercent"]) end
-	if struct["TablesLoaded"] then M.AssertInteger(struct["TablesLoaded"]) end
-	if struct["ElapsedTimeMillis"] then M.AssertLong(struct["ElapsedTimeMillis"]) end
+	if struct["TablesLoading"] then asserts.AssertInteger(struct["TablesLoading"]) end
+	if struct["TablesQueued"] then asserts.AssertInteger(struct["TablesQueued"]) end
+	if struct["TablesErrored"] then asserts.AssertInteger(struct["TablesErrored"]) end
+	if struct["FullLoadProgressPercent"] then asserts.AssertInteger(struct["FullLoadProgressPercent"]) end
+	if struct["TablesLoaded"] then asserts.AssertInteger(struct["TablesLoaded"]) end
+	if struct["ElapsedTimeMillis"] then asserts.AssertLong(struct["ElapsedTimeMillis"]) end
 	for k,_ in pairs(struct) do
-		assert(ReplicationTaskStats_keys[k], "ReplicationTaskStats contains unknown key " .. tostring(k))
+		assert(keys.ReplicationTaskStats[k], "ReplicationTaskStats contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReplicationTaskStats
 -- <p/>
--- @param TablesLoading [Integer] <p>The number of tables currently loading for this task.</p>
--- @param TablesQueued [Integer] <p>The number of tables queued for this task.</p>
--- @param TablesErrored [Integer] <p>The number of errors that have occurred during this task.</p>
--- @param FullLoadProgressPercent [Integer] <p>The percent complete for the full load migration task.</p>
--- @param TablesLoaded [Integer] <p>The number of tables loaded for this task.</p>
--- @param ElapsedTimeMillis [Long] <p>The elapsed time of the task, in milliseconds.</p>
-function M.ReplicationTaskStats(TablesLoading, TablesQueued, TablesErrored, FullLoadProgressPercent, TablesLoaded, ElapsedTimeMillis, ...)
+-- @param _TablesLoading [Integer] <p>The number of tables currently loading for this task.</p>
+-- @param _TablesQueued [Integer] <p>The number of tables queued for this task.</p>
+-- @param _TablesErrored [Integer] <p>The number of errors that have occurred during this task.</p>
+-- @param _FullLoadProgressPercent [Integer] <p>The percent complete for the full load migration task.</p>
+-- @param _TablesLoaded [Integer] <p>The number of tables loaded for this task.</p>
+-- @param _ElapsedTimeMillis [Long] <p>The elapsed time of the task, in milliseconds.</p>
+function M.ReplicationTaskStats(_TablesLoading, _TablesQueued, _TablesErrored, _FullLoadProgressPercent, _TablesLoaded, _ElapsedTimeMillis, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationTaskStats")
 	local t = { 
-		["TablesLoading"] = TablesLoading,
-		["TablesQueued"] = TablesQueued,
-		["TablesErrored"] = TablesErrored,
-		["FullLoadProgressPercent"] = FullLoadProgressPercent,
-		["TablesLoaded"] = TablesLoaded,
-		["ElapsedTimeMillis"] = ElapsedTimeMillis,
+		["TablesLoading"] = _TablesLoading,
+		["TablesQueued"] = _TablesQueued,
+		["TablesErrored"] = _TablesErrored,
+		["FullLoadProgressPercent"] = _FullLoadProgressPercent,
+		["TablesLoaded"] = _TablesLoaded,
+		["ElapsedTimeMillis"] = _ElapsedTimeMillis,
 	}
-	M.AssertReplicationTaskStats(t)
+	asserts.AssertReplicationTaskStats(t)
 	return t
 end
 
-local DynamoDbSettings_keys = { "ServiceAccessRoleArn" = true, nil }
+keys.DynamoDbSettings = { ["ServiceAccessRoleArn"] = true, nil }
 
-function M.AssertDynamoDbSettings(struct)
+function asserts.AssertDynamoDbSettings(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DynamoDbSettings to be of type 'table'")
 	assert(struct["ServiceAccessRoleArn"], "Expected key ServiceAccessRoleArn to exist in table")
-	if struct["ServiceAccessRoleArn"] then M.AssertString(struct["ServiceAccessRoleArn"]) end
+	if struct["ServiceAccessRoleArn"] then asserts.AssertString(struct["ServiceAccessRoleArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DynamoDbSettings_keys[k], "DynamoDbSettings contains unknown key " .. tostring(k))
+		assert(keys.DynamoDbSettings[k], "DynamoDbSettings contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DynamoDbSettings
 -- <p/>
--- @param ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
+-- @param _ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
 -- Required parameter: ServiceAccessRoleArn
-function M.DynamoDbSettings(ServiceAccessRoleArn, ...)
+function M.DynamoDbSettings(_ServiceAccessRoleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DynamoDbSettings")
 	local t = { 
-		["ServiceAccessRoleArn"] = ServiceAccessRoleArn,
+		["ServiceAccessRoleArn"] = _ServiceAccessRoleArn,
 	}
-	M.AssertDynamoDbSettings(t)
+	asserts.AssertDynamoDbSettings(t)
 	return t
 end
 
-local DeleteEndpointResponse_keys = { "Endpoint" = true, nil }
+keys.DeleteEndpointResponse = { ["Endpoint"] = true, nil }
 
-function M.AssertDeleteEndpointResponse(struct)
+function asserts.AssertDeleteEndpointResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteEndpointResponse to be of type 'table'")
-	if struct["Endpoint"] then M.AssertEndpoint(struct["Endpoint"]) end
+	if struct["Endpoint"] then asserts.AssertEndpoint(struct["Endpoint"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteEndpointResponse_keys[k], "DeleteEndpointResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteEndpointResponse[k], "DeleteEndpointResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteEndpointResponse
 -- <p/>
--- @param Endpoint [Endpoint] <p>The endpoint that was deleted.</p>
-function M.DeleteEndpointResponse(Endpoint, ...)
+-- @param _Endpoint [Endpoint] <p>The endpoint that was deleted.</p>
+function M.DeleteEndpointResponse(_Endpoint, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEndpointResponse")
 	local t = { 
-		["Endpoint"] = Endpoint,
+		["Endpoint"] = _Endpoint,
 	}
-	M.AssertDeleteEndpointResponse(t)
+	asserts.AssertDeleteEndpointResponse(t)
 	return t
 end
 
-local AccessDeniedFault_keys = { "message" = true, nil }
+keys.AccessDeniedFault = { ["message"] = true, nil }
 
-function M.AssertAccessDeniedFault(struct)
+function asserts.AssertAccessDeniedFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccessDeniedFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AccessDeniedFault_keys[k], "AccessDeniedFault contains unknown key " .. tostring(k))
+		assert(keys.AccessDeniedFault[k], "AccessDeniedFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AccessDeniedFault
 -- <p>AWS DMS was denied access to the endpoint.</p>
--- @param message [ExceptionMessage] <p/>
-function M.AccessDeniedFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.AccessDeniedFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAccessDeniedFault(t)
+	asserts.AssertAccessDeniedFault(t)
 	return t
 end
 
-local DescribeTableStatisticsMessage_keys = { "ReplicationTaskArn" = true, "Marker" = true, "MaxRecords" = true, nil }
+keys.DescribeTableStatisticsMessage = { ["ReplicationTaskArn"] = true, ["Marker"] = true, ["MaxRecords"] = true, nil }
 
-function M.AssertDescribeTableStatisticsMessage(struct)
+function asserts.AssertDescribeTableStatisticsMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTableStatisticsMessage to be of type 'table'")
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTableStatisticsMessage_keys[k], "DescribeTableStatisticsMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeTableStatisticsMessage[k], "DescribeTableStatisticsMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTableStatisticsMessage
 -- <p/>
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
 -- Required parameter: ReplicationTaskArn
-function M.DescribeTableStatisticsMessage(ReplicationTaskArn, Marker, MaxRecords, ...)
+function M.DescribeTableStatisticsMessage(_ReplicationTaskArn, _Marker, _MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTableStatisticsMessage")
 	local t = { 
-		["ReplicationTaskArn"] = ReplicationTaskArn,
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
 	}
-	M.AssertDescribeTableStatisticsMessage(t)
+	asserts.AssertDescribeTableStatisticsMessage(t)
 	return t
 end
 
-local InsufficientResourceCapacityFault_keys = { "message" = true, nil }
+keys.InsufficientResourceCapacityFault = { ["message"] = true, nil }
 
-function M.AssertInsufficientResourceCapacityFault(struct)
+function asserts.AssertInsufficientResourceCapacityFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InsufficientResourceCapacityFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InsufficientResourceCapacityFault_keys[k], "InsufficientResourceCapacityFault contains unknown key " .. tostring(k))
+		assert(keys.InsufficientResourceCapacityFault[k], "InsufficientResourceCapacityFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InsufficientResourceCapacityFault
 -- <p>There are not enough resources allocated to the database migration.</p>
--- @param message [ExceptionMessage] <p/>
-function M.InsufficientResourceCapacityFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.InsufficientResourceCapacityFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientResourceCapacityFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInsufficientResourceCapacityFault(t)
+	asserts.AssertInsufficientResourceCapacityFault(t)
 	return t
 end
 
-local DescribeReplicationInstancesMessage_keys = { "Marker" = true, "MaxRecords" = true, "Filters" = true, nil }
+keys.DescribeReplicationInstancesMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
 
-function M.AssertDescribeReplicationInstancesMessage(struct)
+function asserts.AssertDescribeReplicationInstancesMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeReplicationInstancesMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeReplicationInstancesMessage_keys[k], "DescribeReplicationInstancesMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeReplicationInstancesMessage[k], "DescribeReplicationInstancesMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeReplicationInstancesMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-instance-arn | replication-instance-id | replication-instance-class | engine-version</p>
-function M.DescribeReplicationInstancesMessage(Marker, MaxRecords, Filters, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-instance-arn | replication-instance-id | replication-instance-class | engine-version</p>
+function M.DescribeReplicationInstancesMessage(_Marker, _MaxRecords, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationInstancesMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["Filters"] = Filters,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeReplicationInstancesMessage(t)
+	asserts.AssertDescribeReplicationInstancesMessage(t)
 	return t
 end
 
-local CreateReplicationTaskMessage_keys = { "SourceEndpointArn" = true, "ReplicationTaskIdentifier" = true, "ReplicationInstanceArn" = true, "Tags" = true, "TableMappings" = true, "MigrationType" = true, "TargetEndpointArn" = true, "ReplicationTaskSettings" = true, "CdcStartTime" = true, nil }
+keys.CreateReplicationTaskMessage = { ["SourceEndpointArn"] = true, ["ReplicationTaskIdentifier"] = true, ["ReplicationInstanceArn"] = true, ["Tags"] = true, ["TableMappings"] = true, ["MigrationType"] = true, ["TargetEndpointArn"] = true, ["ReplicationTaskSettings"] = true, ["CdcStartTime"] = true, nil }
 
-function M.AssertCreateReplicationTaskMessage(struct)
+function asserts.AssertCreateReplicationTaskMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateReplicationTaskMessage to be of type 'table'")
 	assert(struct["ReplicationTaskIdentifier"], "Expected key ReplicationTaskIdentifier to exist in table")
@@ -535,473 +538,473 @@ function M.AssertCreateReplicationTaskMessage(struct)
 	assert(struct["ReplicationInstanceArn"], "Expected key ReplicationInstanceArn to exist in table")
 	assert(struct["MigrationType"], "Expected key MigrationType to exist in table")
 	assert(struct["TableMappings"], "Expected key TableMappings to exist in table")
-	if struct["SourceEndpointArn"] then M.AssertString(struct["SourceEndpointArn"]) end
-	if struct["ReplicationTaskIdentifier"] then M.AssertString(struct["ReplicationTaskIdentifier"]) end
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["TableMappings"] then M.AssertString(struct["TableMappings"]) end
-	if struct["MigrationType"] then M.AssertMigrationTypeValue(struct["MigrationType"]) end
-	if struct["TargetEndpointArn"] then M.AssertString(struct["TargetEndpointArn"]) end
-	if struct["ReplicationTaskSettings"] then M.AssertString(struct["ReplicationTaskSettings"]) end
-	if struct["CdcStartTime"] then M.AssertTStamp(struct["CdcStartTime"]) end
+	if struct["SourceEndpointArn"] then asserts.AssertString(struct["SourceEndpointArn"]) end
+	if struct["ReplicationTaskIdentifier"] then asserts.AssertString(struct["ReplicationTaskIdentifier"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["TableMappings"] then asserts.AssertString(struct["TableMappings"]) end
+	if struct["MigrationType"] then asserts.AssertMigrationTypeValue(struct["MigrationType"]) end
+	if struct["TargetEndpointArn"] then asserts.AssertString(struct["TargetEndpointArn"]) end
+	if struct["ReplicationTaskSettings"] then asserts.AssertString(struct["ReplicationTaskSettings"]) end
+	if struct["CdcStartTime"] then asserts.AssertTStamp(struct["CdcStartTime"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateReplicationTaskMessage_keys[k], "CreateReplicationTaskMessage contains unknown key " .. tostring(k))
+		assert(keys.CreateReplicationTaskMessage[k], "CreateReplicationTaskMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateReplicationTaskMessage
 -- <p/>
--- @param SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param Tags [TagList] <p>Tags to be added to the replication instance.</p>
--- @param TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
--- @param MigrationType [MigrationTypeValue] <p>The migration type.</p>
--- @param TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ReplicationTaskSettings [String] <p>Settings for the task, such as target metadata settings. For a complete list of task settings, see <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task Settings for AWS Database Migration Service Tasks</a>.</p>
--- @param CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- @param _SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param _Tags [TagList] <p>Tags to be added to the replication instance.</p>
+-- @param _TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
+-- @param _MigrationType [MigrationTypeValue] <p>The migration type.</p>
+-- @param _TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ReplicationTaskSettings [String] <p>Settings for the task, such as target metadata settings. For a complete list of task settings, see <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task Settings for AWS Database Migration Service Tasks</a>.</p>
+-- @param _CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
 -- Required parameter: ReplicationTaskIdentifier
 -- Required parameter: SourceEndpointArn
 -- Required parameter: TargetEndpointArn
 -- Required parameter: ReplicationInstanceArn
 -- Required parameter: MigrationType
 -- Required parameter: TableMappings
-function M.CreateReplicationTaskMessage(SourceEndpointArn, ReplicationTaskIdentifier, ReplicationInstanceArn, Tags, TableMappings, MigrationType, TargetEndpointArn, ReplicationTaskSettings, CdcStartTime, ...)
+function M.CreateReplicationTaskMessage(_SourceEndpointArn, _ReplicationTaskIdentifier, _ReplicationInstanceArn, _Tags, _TableMappings, _MigrationType, _TargetEndpointArn, _ReplicationTaskSettings, _CdcStartTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationTaskMessage")
 	local t = { 
-		["SourceEndpointArn"] = SourceEndpointArn,
-		["ReplicationTaskIdentifier"] = ReplicationTaskIdentifier,
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
-		["Tags"] = Tags,
-		["TableMappings"] = TableMappings,
-		["MigrationType"] = MigrationType,
-		["TargetEndpointArn"] = TargetEndpointArn,
-		["ReplicationTaskSettings"] = ReplicationTaskSettings,
-		["CdcStartTime"] = CdcStartTime,
+		["SourceEndpointArn"] = _SourceEndpointArn,
+		["ReplicationTaskIdentifier"] = _ReplicationTaskIdentifier,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["Tags"] = _Tags,
+		["TableMappings"] = _TableMappings,
+		["MigrationType"] = _MigrationType,
+		["TargetEndpointArn"] = _TargetEndpointArn,
+		["ReplicationTaskSettings"] = _ReplicationTaskSettings,
+		["CdcStartTime"] = _CdcStartTime,
 	}
-	M.AssertCreateReplicationTaskMessage(t)
+	asserts.AssertCreateReplicationTaskMessage(t)
 	return t
 end
 
-local InvalidResourceStateFault_keys = { "message" = true, nil }
+keys.InvalidResourceStateFault = { ["message"] = true, nil }
 
-function M.AssertInvalidResourceStateFault(struct)
+function asserts.AssertInvalidResourceStateFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidResourceStateFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidResourceStateFault_keys[k], "InvalidResourceStateFault contains unknown key " .. tostring(k))
+		assert(keys.InvalidResourceStateFault[k], "InvalidResourceStateFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidResourceStateFault
 -- <p>The resource is in a state that prevents it from being used for database migration.</p>
--- @param message [ExceptionMessage] <p/>
-function M.InvalidResourceStateFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.InvalidResourceStateFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceStateFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidResourceStateFault(t)
+	asserts.AssertInvalidResourceStateFault(t)
 	return t
 end
 
-local TestConnectionResponse_keys = { "Connection" = true, nil }
+keys.TestConnectionResponse = { ["Connection"] = true, nil }
 
-function M.AssertTestConnectionResponse(struct)
+function asserts.AssertTestConnectionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TestConnectionResponse to be of type 'table'")
-	if struct["Connection"] then M.AssertConnection(struct["Connection"]) end
+	if struct["Connection"] then asserts.AssertConnection(struct["Connection"]) end
 	for k,_ in pairs(struct) do
-		assert(TestConnectionResponse_keys[k], "TestConnectionResponse contains unknown key " .. tostring(k))
+		assert(keys.TestConnectionResponse[k], "TestConnectionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TestConnectionResponse
 -- <p/>
--- @param Connection [Connection] <p>The connection tested.</p>
-function M.TestConnectionResponse(Connection, ...)
+-- @param _Connection [Connection] <p>The connection tested.</p>
+function M.TestConnectionResponse(_Connection, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestConnectionResponse")
 	local t = { 
-		["Connection"] = Connection,
+		["Connection"] = _Connection,
 	}
-	M.AssertTestConnectionResponse(t)
+	asserts.AssertTestConnectionResponse(t)
 	return t
 end
 
-local DescribeEventsMessage_keys = { "EventCategories" = true, "SourceType" = true, "Marker" = true, "MaxRecords" = true, "StartTime" = true, "Duration" = true, "Filters" = true, "SourceIdentifier" = true, "EndTime" = true, nil }
+keys.DescribeEventsMessage = { ["EventCategories"] = true, ["SourceType"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["StartTime"] = true, ["Duration"] = true, ["Filters"] = true, ["SourceIdentifier"] = true, ["EndTime"] = true, nil }
 
-function M.AssertDescribeEventsMessage(struct)
+function asserts.AssertDescribeEventsMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventsMessage to be of type 'table'")
-	if struct["EventCategories"] then M.AssertEventCategoriesList(struct["EventCategories"]) end
-	if struct["SourceType"] then M.AssertSourceType(struct["SourceType"]) end
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["StartTime"] then M.AssertTStamp(struct["StartTime"]) end
-	if struct["Duration"] then M.AssertIntegerOptional(struct["Duration"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
-	if struct["SourceIdentifier"] then M.AssertString(struct["SourceIdentifier"]) end
-	if struct["EndTime"] then M.AssertTStamp(struct["EndTime"]) end
+	if struct["EventCategories"] then asserts.AssertEventCategoriesList(struct["EventCategories"]) end
+	if struct["SourceType"] then asserts.AssertSourceType(struct["SourceType"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["StartTime"] then asserts.AssertTStamp(struct["StartTime"]) end
+	if struct["Duration"] then asserts.AssertIntegerOptional(struct["Duration"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
+	if struct["SourceIdentifier"] then asserts.AssertString(struct["SourceIdentifier"]) end
+	if struct["EndTime"] then asserts.AssertTStamp(struct["EndTime"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventsMessage_keys[k], "DescribeEventsMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventsMessage[k], "DescribeEventsMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventsMessage
 -- <p/>
--- @param EventCategories [EventCategoriesList] <p>A list of event categories for a source type that you want to subscribe to.</p>
--- @param SourceType [SourceType] <p>The type of AWS DMS resource that generates events.</p> <p>Valid values: replication-instance | migration-task</p>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param StartTime [TStamp] <p>The start time for the events to be listed.</p>
--- @param Duration [IntegerOptional] <p>The duration of the events to be listed.</p>
--- @param Filters [FilterList] <p>Filters applied to the action.</p>
--- @param SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It cannot end with a hyphen or contain two consecutive hyphens. </p>
--- @param EndTime [TStamp] <p>The end time for the events to be listed.</p>
-function M.DescribeEventsMessage(EventCategories, SourceType, Marker, MaxRecords, StartTime, Duration, Filters, SourceIdentifier, EndTime, ...)
+-- @param _EventCategories [EventCategoriesList] <p>A list of event categories for a source type that you want to subscribe to.</p>
+-- @param _SourceType [SourceType] <p>The type of AWS DMS resource that generates events.</p> <p>Valid values: replication-instance | migration-task</p>
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _StartTime [TStamp] <p>The start time for the events to be listed.</p>
+-- @param _Duration [IntegerOptional] <p>The duration of the events to be listed.</p>
+-- @param _Filters [FilterList] <p>Filters applied to the action.</p>
+-- @param _SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It cannot end with a hyphen or contain two consecutive hyphens. </p>
+-- @param _EndTime [TStamp] <p>The end time for the events to be listed.</p>
+function M.DescribeEventsMessage(_EventCategories, _SourceType, _Marker, _MaxRecords, _StartTime, _Duration, _Filters, _SourceIdentifier, _EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsMessage")
 	local t = { 
-		["EventCategories"] = EventCategories,
-		["SourceType"] = SourceType,
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["StartTime"] = StartTime,
-		["Duration"] = Duration,
-		["Filters"] = Filters,
-		["SourceIdentifier"] = SourceIdentifier,
-		["EndTime"] = EndTime,
+		["EventCategories"] = _EventCategories,
+		["SourceType"] = _SourceType,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["StartTime"] = _StartTime,
+		["Duration"] = _Duration,
+		["Filters"] = _Filters,
+		["SourceIdentifier"] = _SourceIdentifier,
+		["EndTime"] = _EndTime,
 	}
-	M.AssertDescribeEventsMessage(t)
+	asserts.AssertDescribeEventsMessage(t)
 	return t
 end
 
-local CreateReplicationTaskResponse_keys = { "ReplicationTask" = true, nil }
+keys.CreateReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
 
-function M.AssertCreateReplicationTaskResponse(struct)
+function asserts.AssertCreateReplicationTaskResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateReplicationTaskResponse to be of type 'table'")
-	if struct["ReplicationTask"] then M.AssertReplicationTask(struct["ReplicationTask"]) end
+	if struct["ReplicationTask"] then asserts.AssertReplicationTask(struct["ReplicationTask"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateReplicationTaskResponse_keys[k], "CreateReplicationTaskResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateReplicationTaskResponse[k], "CreateReplicationTaskResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateReplicationTaskResponse
 -- <p/>
--- @param ReplicationTask [ReplicationTask] <p>The replication task that was created.</p>
-function M.CreateReplicationTaskResponse(ReplicationTask, ...)
+-- @param _ReplicationTask [ReplicationTask] <p>The replication task that was created.</p>
+function M.CreateReplicationTaskResponse(_ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = ReplicationTask,
+		["ReplicationTask"] = _ReplicationTask,
 	}
-	M.AssertCreateReplicationTaskResponse(t)
+	asserts.AssertCreateReplicationTaskResponse(t)
 	return t
 end
 
-local StorageQuotaExceededFault_keys = { "message" = true, nil }
+keys.StorageQuotaExceededFault = { ["message"] = true, nil }
 
-function M.AssertStorageQuotaExceededFault(struct)
+function asserts.AssertStorageQuotaExceededFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StorageQuotaExceededFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(StorageQuotaExceededFault_keys[k], "StorageQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.StorageQuotaExceededFault[k], "StorageQuotaExceededFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StorageQuotaExceededFault
 -- <p>The storage quota has been exceeded.</p>
--- @param message [ExceptionMessage] <p/>
-function M.StorageQuotaExceededFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.StorageQuotaExceededFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageQuotaExceededFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertStorageQuotaExceededFault(t)
+	asserts.AssertStorageQuotaExceededFault(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	if struct["Value"] then M.AssertString(struct["Value"]) end
-	if struct["Key"] then M.AssertString(struct["Key"]) end
+	if struct["Value"] then asserts.AssertString(struct["Value"]) end
+	if struct["Key"] then asserts.AssertString(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p/>
--- @param Value [String] <p>A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
--- @param Key [String] <p>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
-function M.Tag(Value, Key, ...)
+-- @param _Value [String] <p>A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+-- @param _Key [String] <p>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local AddTagsToResourceMessage_keys = { "ResourceArn" = true, "Tags" = true, nil }
+keys.AddTagsToResourceMessage = { ["ResourceArn"] = true, ["Tags"] = true, nil }
 
-function M.AssertAddTagsToResourceMessage(struct)
+function asserts.AssertAddTagsToResourceMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsToResourceMessage to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceArn"] then M.AssertString(struct["ResourceArn"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["ResourceArn"] then asserts.AssertString(struct["ResourceArn"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(AddTagsToResourceMessage_keys[k], "AddTagsToResourceMessage contains unknown key " .. tostring(k))
+		assert(keys.AddTagsToResourceMessage[k], "AddTagsToResourceMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddTagsToResourceMessage
 -- <p/>
--- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.</p>
--- @param Tags [TagList] <p>The tag to be assigned to the DMS resource.</p>
+-- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.</p>
+-- @param _Tags [TagList] <p>The tag to be assigned to the DMS resource.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: Tags
-function M.AddTagsToResourceMessage(ResourceArn, Tags, ...)
+function M.AddTagsToResourceMessage(_ResourceArn, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceMessage")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
-		["Tags"] = Tags,
+		["ResourceArn"] = _ResourceArn,
+		["Tags"] = _Tags,
 	}
-	M.AssertAddTagsToResourceMessage(t)
+	asserts.AssertAddTagsToResourceMessage(t)
 	return t
 end
 
-local Event_keys = { "Date" = true, "Message" = true, "SourceIdentifier" = true, "EventCategories" = true, "SourceType" = true, nil }
+keys.Event = { ["Date"] = true, ["Message"] = true, ["SourceIdentifier"] = true, ["EventCategories"] = true, ["SourceType"] = true, nil }
 
-function M.AssertEvent(struct)
+function asserts.AssertEvent(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Event to be of type 'table'")
-	if struct["Date"] then M.AssertTStamp(struct["Date"]) end
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["SourceIdentifier"] then M.AssertString(struct["SourceIdentifier"]) end
-	if struct["EventCategories"] then M.AssertEventCategoriesList(struct["EventCategories"]) end
-	if struct["SourceType"] then M.AssertSourceType(struct["SourceType"]) end
+	if struct["Date"] then asserts.AssertTStamp(struct["Date"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["SourceIdentifier"] then asserts.AssertString(struct["SourceIdentifier"]) end
+	if struct["EventCategories"] then asserts.AssertEventCategoriesList(struct["EventCategories"]) end
+	if struct["SourceType"] then asserts.AssertSourceType(struct["SourceType"]) end
 	for k,_ in pairs(struct) do
-		assert(Event_keys[k], "Event contains unknown key " .. tostring(k))
+		assert(keys.Event[k], "Event contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Event
 -- <p/>
--- @param Date [TStamp] <p>The date of the event.</p>
--- @param Message [String] <p>The event message.</p>
--- @param SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p> <p>Constraints:replication instance, endpoint, migration task</p>
--- @param EventCategories [EventCategoriesList] <p>The event categories available for the specified source type.</p>
--- @param SourceType [SourceType] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | endpoint | migration-task</p>
-function M.Event(Date, Message, SourceIdentifier, EventCategories, SourceType, ...)
+-- @param _Date [TStamp] <p>The date of the event.</p>
+-- @param _Message [String] <p>The event message.</p>
+-- @param _SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p> <p>Constraints:replication instance, endpoint, migration task</p>
+-- @param _EventCategories [EventCategoriesList] <p>The event categories available for the specified source type.</p>
+-- @param _SourceType [SourceType] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | endpoint | migration-task</p>
+function M.Event(_Date, _Message, _SourceIdentifier, _EventCategories, _SourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 
-		["Date"] = Date,
-		["Message"] = Message,
-		["SourceIdentifier"] = SourceIdentifier,
-		["EventCategories"] = EventCategories,
-		["SourceType"] = SourceType,
+		["Date"] = _Date,
+		["Message"] = _Message,
+		["SourceIdentifier"] = _SourceIdentifier,
+		["EventCategories"] = _EventCategories,
+		["SourceType"] = _SourceType,
 	}
-	M.AssertEvent(t)
+	asserts.AssertEvent(t)
 	return t
 end
 
-local DeleteReplicationSubnetGroupMessage_keys = { "ReplicationSubnetGroupIdentifier" = true, nil }
+keys.DeleteReplicationSubnetGroupMessage = { ["ReplicationSubnetGroupIdentifier"] = true, nil }
 
-function M.AssertDeleteReplicationSubnetGroupMessage(struct)
+function asserts.AssertDeleteReplicationSubnetGroupMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteReplicationSubnetGroupMessage to be of type 'table'")
 	assert(struct["ReplicationSubnetGroupIdentifier"], "Expected key ReplicationSubnetGroupIdentifier to exist in table")
-	if struct["ReplicationSubnetGroupIdentifier"] then M.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
+	if struct["ReplicationSubnetGroupIdentifier"] then asserts.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteReplicationSubnetGroupMessage_keys[k], "DeleteReplicationSubnetGroupMessage contains unknown key " .. tostring(k))
+		assert(keys.DeleteReplicationSubnetGroupMessage[k], "DeleteReplicationSubnetGroupMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteReplicationSubnetGroupMessage
 -- <p/>
--- @param ReplicationSubnetGroupIdentifier [String] <p>The subnet group name of the replication instance.</p>
+-- @param _ReplicationSubnetGroupIdentifier [String] <p>The subnet group name of the replication instance.</p>
 -- Required parameter: ReplicationSubnetGroupIdentifier
-function M.DeleteReplicationSubnetGroupMessage(ReplicationSubnetGroupIdentifier, ...)
+function M.DeleteReplicationSubnetGroupMessage(_ReplicationSubnetGroupIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationSubnetGroupMessage")
 	local t = { 
-		["ReplicationSubnetGroupIdentifier"] = ReplicationSubnetGroupIdentifier,
+		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
 	}
-	M.AssertDeleteReplicationSubnetGroupMessage(t)
+	asserts.AssertDeleteReplicationSubnetGroupMessage(t)
 	return t
 end
 
-local DescribeRefreshSchemasStatusMessage_keys = { "EndpointArn" = true, nil }
+keys.DescribeRefreshSchemasStatusMessage = { ["EndpointArn"] = true, nil }
 
-function M.AssertDescribeRefreshSchemasStatusMessage(struct)
+function asserts.AssertDescribeRefreshSchemasStatusMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRefreshSchemasStatusMessage to be of type 'table'")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRefreshSchemasStatusMessage_keys[k], "DescribeRefreshSchemasStatusMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeRefreshSchemasStatusMessage[k], "DescribeRefreshSchemasStatusMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRefreshSchemasStatusMessage
 -- <p/>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- Required parameter: EndpointArn
-function M.DescribeRefreshSchemasStatusMessage(EndpointArn, ...)
+function M.DescribeRefreshSchemasStatusMessage(_EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRefreshSchemasStatusMessage")
 	local t = { 
-		["EndpointArn"] = EndpointArn,
+		["EndpointArn"] = _EndpointArn,
 	}
-	M.AssertDescribeRefreshSchemasStatusMessage(t)
+	asserts.AssertDescribeRefreshSchemasStatusMessage(t)
 	return t
 end
 
-local TestConnectionMessage_keys = { "EndpointArn" = true, "ReplicationInstanceArn" = true, nil }
+keys.TestConnectionMessage = { ["EndpointArn"] = true, ["ReplicationInstanceArn"] = true, nil }
 
-function M.AssertTestConnectionMessage(struct)
+function asserts.AssertTestConnectionMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TestConnectionMessage to be of type 'table'")
 	assert(struct["ReplicationInstanceArn"], "Expected key ReplicationInstanceArn to exist in table")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(TestConnectionMessage_keys[k], "TestConnectionMessage contains unknown key " .. tostring(k))
+		assert(keys.TestConnectionMessage[k], "TestConnectionMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TestConnectionMessage
 -- <p/>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
 -- Required parameter: ReplicationInstanceArn
 -- Required parameter: EndpointArn
-function M.TestConnectionMessage(EndpointArn, ReplicationInstanceArn, ...)
+function M.TestConnectionMessage(_EndpointArn, _ReplicationInstanceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestConnectionMessage")
 	local t = { 
-		["EndpointArn"] = EndpointArn,
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
+		["EndpointArn"] = _EndpointArn,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
 	}
-	M.AssertTestConnectionMessage(t)
+	asserts.AssertTestConnectionMessage(t)
 	return t
 end
 
-local InvalidSubnet_keys = { "message" = true, nil }
+keys.InvalidSubnet = { ["message"] = true, nil }
 
-function M.AssertInvalidSubnet(struct)
+function asserts.AssertInvalidSubnet(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSubnet to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidSubnet_keys[k], "InvalidSubnet contains unknown key " .. tostring(k))
+		assert(keys.InvalidSubnet[k], "InvalidSubnet contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidSubnet
 -- <p>The subnet provided is invalid.</p>
--- @param message [ExceptionMessage] <p/>
-function M.InvalidSubnet(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.InvalidSubnet(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnet")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidSubnet(t)
+	asserts.AssertInvalidSubnet(t)
 	return t
 end
 
-local TableToReload_keys = { "SchemaName" = true, "TableName" = true, nil }
+keys.TableToReload = { ["SchemaName"] = true, ["TableName"] = true, nil }
 
-function M.AssertTableToReload(struct)
+function asserts.AssertTableToReload(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TableToReload to be of type 'table'")
-	if struct["SchemaName"] then M.AssertString(struct["SchemaName"]) end
-	if struct["TableName"] then M.AssertString(struct["TableName"]) end
+	if struct["SchemaName"] then asserts.AssertString(struct["SchemaName"]) end
+	if struct["TableName"] then asserts.AssertString(struct["TableName"]) end
 	for k,_ in pairs(struct) do
-		assert(TableToReload_keys[k], "TableToReload contains unknown key " .. tostring(k))
+		assert(keys.TableToReload[k], "TableToReload contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TableToReload
 -- <p/>
--- @param SchemaName [String] <p>The schema name of the table to be reloaded.</p>
--- @param TableName [String] <p>The table name of the table to be reloaded.</p>
-function M.TableToReload(SchemaName, TableName, ...)
+-- @param _SchemaName [String] <p>The schema name of the table to be reloaded.</p>
+-- @param _TableName [String] <p>The table name of the table to be reloaded.</p>
+function M.TableToReload(_SchemaName, _TableName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TableToReload")
 	local t = { 
-		["SchemaName"] = SchemaName,
-		["TableName"] = TableName,
+		["SchemaName"] = _SchemaName,
+		["TableName"] = _TableName,
 	}
-	M.AssertTableToReload(t)
+	asserts.AssertTableToReload(t)
 	return t
 end
 
-local ReloadTablesMessage_keys = { "ReplicationTaskArn" = true, "TablesToReload" = true, nil }
+keys.ReloadTablesMessage = { ["ReplicationTaskArn"] = true, ["TablesToReload"] = true, nil }
 
-function M.AssertReloadTablesMessage(struct)
+function asserts.AssertReloadTablesMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReloadTablesMessage to be of type 'table'")
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
 	assert(struct["TablesToReload"], "Expected key TablesToReload to exist in table")
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
-	if struct["TablesToReload"] then M.AssertTableListToReload(struct["TablesToReload"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["TablesToReload"] then asserts.AssertTableListToReload(struct["TablesToReload"]) end
 	for k,_ in pairs(struct) do
-		assert(ReloadTablesMessage_keys[k], "ReloadTablesMessage contains unknown key " .. tostring(k))
+		assert(keys.ReloadTablesMessage[k], "ReloadTablesMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReloadTablesMessage
 --  
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication instance. </p>
--- @param TablesToReload [TableListToReload] <p>The name and schema of the table to be reloaded. </p>
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication instance. </p>
+-- @param _TablesToReload [TableListToReload] <p>The name and schema of the table to be reloaded. </p>
 -- Required parameter: ReplicationTaskArn
 -- Required parameter: TablesToReload
-function M.ReloadTablesMessage(ReplicationTaskArn, TablesToReload, ...)
+function M.ReloadTablesMessage(_ReplicationTaskArn, _TablesToReload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReloadTablesMessage")
 	local t = { 
-		["ReplicationTaskArn"] = ReplicationTaskArn,
-		["TablesToReload"] = TablesToReload,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["TablesToReload"] = _TablesToReload,
 	}
-	M.AssertReloadTablesMessage(t)
+	asserts.AssertReloadTablesMessage(t)
 	return t
 end
 
-local ResourceNotFoundFault_keys = { "message" = true, nil }
+keys.ResourceNotFoundFault = { ["message"] = true, nil }
 
-function M.AssertResourceNotFoundFault(struct)
+function asserts.AssertResourceNotFoundFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundFault_keys[k], "ResourceNotFoundFault contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundFault[k], "ResourceNotFoundFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundFault
 -- <p>The resource could not be found.</p>
--- @param message [ExceptionMessage] <p/>
-function M.ResourceNotFoundFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.ResourceNotFoundFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundFault(t)
+	asserts.AssertResourceNotFoundFault(t)
 	return t
 end
 
-local RemoveTagsFromResourceResponse_keys = { nil }
+keys.RemoveTagsFromResourceResponse = { nil }
 
-function M.AssertRemoveTagsFromResourceResponse(struct)
+function asserts.AssertRemoveTagsFromResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsFromResourceResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsFromResourceResponse_keys[k], "RemoveTagsFromResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsFromResourceResponse[k], "RemoveTagsFromResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1011,2222 +1014,2222 @@ function M.RemoveTagsFromResourceResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceResponse")
 	local t = { 
 	}
-	M.AssertRemoveTagsFromResourceResponse(t)
+	asserts.AssertRemoveTagsFromResourceResponse(t)
 	return t
 end
 
-local DescribeReplicationSubnetGroupsResponse_keys = { "Marker" = true, "ReplicationSubnetGroups" = true, nil }
+keys.DescribeReplicationSubnetGroupsResponse = { ["Marker"] = true, ["ReplicationSubnetGroups"] = true, nil }
 
-function M.AssertDescribeReplicationSubnetGroupsResponse(struct)
+function asserts.AssertDescribeReplicationSubnetGroupsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeReplicationSubnetGroupsResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["ReplicationSubnetGroups"] then M.AssertReplicationSubnetGroups(struct["ReplicationSubnetGroups"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ReplicationSubnetGroups"] then asserts.AssertReplicationSubnetGroups(struct["ReplicationSubnetGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeReplicationSubnetGroupsResponse_keys[k], "DescribeReplicationSubnetGroupsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeReplicationSubnetGroupsResponse[k], "DescribeReplicationSubnetGroupsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeReplicationSubnetGroupsResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param ReplicationSubnetGroups [ReplicationSubnetGroups] <p>A description of the replication subnet groups.</p>
-function M.DescribeReplicationSubnetGroupsResponse(Marker, ReplicationSubnetGroups, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _ReplicationSubnetGroups [ReplicationSubnetGroups] <p>A description of the replication subnet groups.</p>
+function M.DescribeReplicationSubnetGroupsResponse(_Marker, _ReplicationSubnetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationSubnetGroupsResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["ReplicationSubnetGroups"] = ReplicationSubnetGroups,
+		["Marker"] = _Marker,
+		["ReplicationSubnetGroups"] = _ReplicationSubnetGroups,
 	}
-	M.AssertDescribeReplicationSubnetGroupsResponse(t)
+	asserts.AssertDescribeReplicationSubnetGroupsResponse(t)
 	return t
 end
 
-local CreateEventSubscriptionResponse_keys = { "EventSubscription" = true, nil }
+keys.CreateEventSubscriptionResponse = { ["EventSubscription"] = true, nil }
 
-function M.AssertCreateEventSubscriptionResponse(struct)
+function asserts.AssertCreateEventSubscriptionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateEventSubscriptionResponse to be of type 'table'")
-	if struct["EventSubscription"] then M.AssertEventSubscription(struct["EventSubscription"]) end
+	if struct["EventSubscription"] then asserts.AssertEventSubscription(struct["EventSubscription"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateEventSubscriptionResponse_keys[k], "CreateEventSubscriptionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateEventSubscriptionResponse[k], "CreateEventSubscriptionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateEventSubscriptionResponse
 -- <p/>
--- @param EventSubscription [EventSubscription] <p>The event subscription that was created.</p>
-function M.CreateEventSubscriptionResponse(EventSubscription, ...)
+-- @param _EventSubscription [EventSubscription] <p>The event subscription that was created.</p>
+function M.CreateEventSubscriptionResponse(_EventSubscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEventSubscriptionResponse")
 	local t = { 
-		["EventSubscription"] = EventSubscription,
+		["EventSubscription"] = _EventSubscription,
 	}
-	M.AssertCreateEventSubscriptionResponse(t)
+	asserts.AssertCreateEventSubscriptionResponse(t)
 	return t
 end
 
-local DescribeOrderableReplicationInstancesResponse_keys = { "Marker" = true, "OrderableReplicationInstances" = true, nil }
+keys.DescribeOrderableReplicationInstancesResponse = { ["Marker"] = true, ["OrderableReplicationInstances"] = true, nil }
 
-function M.AssertDescribeOrderableReplicationInstancesResponse(struct)
+function asserts.AssertDescribeOrderableReplicationInstancesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeOrderableReplicationInstancesResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["OrderableReplicationInstances"] then M.AssertOrderableReplicationInstanceList(struct["OrderableReplicationInstances"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["OrderableReplicationInstances"] then asserts.AssertOrderableReplicationInstanceList(struct["OrderableReplicationInstances"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeOrderableReplicationInstancesResponse_keys[k], "DescribeOrderableReplicationInstancesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeOrderableReplicationInstancesResponse[k], "DescribeOrderableReplicationInstancesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeOrderableReplicationInstancesResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param OrderableReplicationInstances [OrderableReplicationInstanceList] <p>The order-able replication instances available.</p>
-function M.DescribeOrderableReplicationInstancesResponse(Marker, OrderableReplicationInstances, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _OrderableReplicationInstances [OrderableReplicationInstanceList] <p>The order-able replication instances available.</p>
+function M.DescribeOrderableReplicationInstancesResponse(_Marker, _OrderableReplicationInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrderableReplicationInstancesResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["OrderableReplicationInstances"] = OrderableReplicationInstances,
+		["Marker"] = _Marker,
+		["OrderableReplicationInstances"] = _OrderableReplicationInstances,
 	}
-	M.AssertDescribeOrderableReplicationInstancesResponse(t)
+	asserts.AssertDescribeOrderableReplicationInstancesResponse(t)
 	return t
 end
 
-local ModifyReplicationTaskMessage_keys = { "ReplicationTaskIdentifier" = true, "ReplicationTaskArn" = true, "MigrationType" = true, "TableMappings" = true, "ReplicationTaskSettings" = true, "CdcStartTime" = true, nil }
+keys.ModifyReplicationTaskMessage = { ["ReplicationTaskIdentifier"] = true, ["ReplicationTaskArn"] = true, ["MigrationType"] = true, ["TableMappings"] = true, ["ReplicationTaskSettings"] = true, ["CdcStartTime"] = true, nil }
 
-function M.AssertModifyReplicationTaskMessage(struct)
+function asserts.AssertModifyReplicationTaskMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyReplicationTaskMessage to be of type 'table'")
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
-	if struct["ReplicationTaskIdentifier"] then M.AssertString(struct["ReplicationTaskIdentifier"]) end
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
-	if struct["MigrationType"] then M.AssertMigrationTypeValue(struct["MigrationType"]) end
-	if struct["TableMappings"] then M.AssertString(struct["TableMappings"]) end
-	if struct["ReplicationTaskSettings"] then M.AssertString(struct["ReplicationTaskSettings"]) end
-	if struct["CdcStartTime"] then M.AssertTStamp(struct["CdcStartTime"]) end
+	if struct["ReplicationTaskIdentifier"] then asserts.AssertString(struct["ReplicationTaskIdentifier"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["MigrationType"] then asserts.AssertMigrationTypeValue(struct["MigrationType"]) end
+	if struct["TableMappings"] then asserts.AssertString(struct["TableMappings"]) end
+	if struct["ReplicationTaskSettings"] then asserts.AssertString(struct["ReplicationTaskSettings"]) end
+	if struct["CdcStartTime"] then asserts.AssertTStamp(struct["CdcStartTime"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyReplicationTaskMessage_keys[k], "ModifyReplicationTaskMessage contains unknown key " .. tostring(k))
+		assert(keys.ModifyReplicationTaskMessage[k], "ModifyReplicationTaskMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyReplicationTaskMessage
 -- <p/>
--- @param ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
--- @param MigrationType [MigrationTypeValue] <p>The migration type.</p> <p>Valid values: full-load | cdc | full-load-and-cdc</p>
--- @param TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
--- @param ReplicationTaskSettings [String] <p>JSON file that contains settings for the task, such as target metadata settings.</p>
--- @param CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- @param _ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- @param _MigrationType [MigrationTypeValue] <p>The migration type.</p> <p>Valid values: full-load | cdc | full-load-and-cdc</p>
+-- @param _TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
+-- @param _ReplicationTaskSettings [String] <p>JSON file that contains settings for the task, such as target metadata settings.</p>
+-- @param _CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
 -- Required parameter: ReplicationTaskArn
-function M.ModifyReplicationTaskMessage(ReplicationTaskIdentifier, ReplicationTaskArn, MigrationType, TableMappings, ReplicationTaskSettings, CdcStartTime, ...)
+function M.ModifyReplicationTaskMessage(_ReplicationTaskIdentifier, _ReplicationTaskArn, _MigrationType, _TableMappings, _ReplicationTaskSettings, _CdcStartTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationTaskMessage")
 	local t = { 
-		["ReplicationTaskIdentifier"] = ReplicationTaskIdentifier,
-		["ReplicationTaskArn"] = ReplicationTaskArn,
-		["MigrationType"] = MigrationType,
-		["TableMappings"] = TableMappings,
-		["ReplicationTaskSettings"] = ReplicationTaskSettings,
-		["CdcStartTime"] = CdcStartTime,
+		["ReplicationTaskIdentifier"] = _ReplicationTaskIdentifier,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["MigrationType"] = _MigrationType,
+		["TableMappings"] = _TableMappings,
+		["ReplicationTaskSettings"] = _ReplicationTaskSettings,
+		["CdcStartTime"] = _CdcStartTime,
 	}
-	M.AssertModifyReplicationTaskMessage(t)
+	asserts.AssertModifyReplicationTaskMessage(t)
 	return t
 end
 
-local DescribeConnectionsMessage_keys = { "Marker" = true, "MaxRecords" = true, "Filters" = true, nil }
+keys.DescribeConnectionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
 
-function M.AssertDescribeConnectionsMessage(struct)
+function asserts.AssertDescribeConnectionsMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeConnectionsMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeConnectionsMessage_keys[k], "DescribeConnectionsMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeConnectionsMessage[k], "DescribeConnectionsMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeConnectionsMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param Filters [FilterList] <p>The filters applied to the connection.</p> <p>Valid filter names: endpoint-arn | replication-instance-arn</p>
-function M.DescribeConnectionsMessage(Marker, MaxRecords, Filters, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _Filters [FilterList] <p>The filters applied to the connection.</p> <p>Valid filter names: endpoint-arn | replication-instance-arn</p>
+function M.DescribeConnectionsMessage(_Marker, _MaxRecords, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["Filters"] = Filters,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeConnectionsMessage(t)
+	asserts.AssertDescribeConnectionsMessage(t)
 	return t
 end
 
-local DescribeReplicationInstancesResponse_keys = { "Marker" = true, "ReplicationInstances" = true, nil }
+keys.DescribeReplicationInstancesResponse = { ["Marker"] = true, ["ReplicationInstances"] = true, nil }
 
-function M.AssertDescribeReplicationInstancesResponse(struct)
+function asserts.AssertDescribeReplicationInstancesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeReplicationInstancesResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["ReplicationInstances"] then M.AssertReplicationInstanceList(struct["ReplicationInstances"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ReplicationInstances"] then asserts.AssertReplicationInstanceList(struct["ReplicationInstances"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeReplicationInstancesResponse_keys[k], "DescribeReplicationInstancesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeReplicationInstancesResponse[k], "DescribeReplicationInstancesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeReplicationInstancesResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param ReplicationInstances [ReplicationInstanceList] <p>The replication instances described.</p>
-function M.DescribeReplicationInstancesResponse(Marker, ReplicationInstances, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _ReplicationInstances [ReplicationInstanceList] <p>The replication instances described.</p>
+function M.DescribeReplicationInstancesResponse(_Marker, _ReplicationInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationInstancesResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["ReplicationInstances"] = ReplicationInstances,
+		["Marker"] = _Marker,
+		["ReplicationInstances"] = _ReplicationInstances,
 	}
-	M.AssertDescribeReplicationInstancesResponse(t)
+	asserts.AssertDescribeReplicationInstancesResponse(t)
 	return t
 end
 
-local DescribeSchemasResponse_keys = { "Marker" = true, "Schemas" = true, nil }
+keys.DescribeSchemasResponse = { ["Marker"] = true, ["Schemas"] = true, nil }
 
-function M.AssertDescribeSchemasResponse(struct)
+function asserts.AssertDescribeSchemasResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSchemasResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["Schemas"] then M.AssertSchemaList(struct["Schemas"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["Schemas"] then asserts.AssertSchemaList(struct["Schemas"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSchemasResponse_keys[k], "DescribeSchemasResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeSchemasResponse[k], "DescribeSchemasResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSchemasResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param Schemas [SchemaList] <p>The described schema.</p>
-function M.DescribeSchemasResponse(Marker, Schemas, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _Schemas [SchemaList] <p>The described schema.</p>
+function M.DescribeSchemasResponse(_Marker, _Schemas, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSchemasResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["Schemas"] = Schemas,
+		["Marker"] = _Marker,
+		["Schemas"] = _Schemas,
 	}
-	M.AssertDescribeSchemasResponse(t)
+	asserts.AssertDescribeSchemasResponse(t)
 	return t
 end
 
-local VpcSecurityGroupMembership_keys = { "Status" = true, "VpcSecurityGroupId" = true, nil }
+keys.VpcSecurityGroupMembership = { ["Status"] = true, ["VpcSecurityGroupId"] = true, nil }
 
-function M.AssertVpcSecurityGroupMembership(struct)
+function asserts.AssertVpcSecurityGroupMembership(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VpcSecurityGroupMembership to be of type 'table'")
-	if struct["Status"] then M.AssertString(struct["Status"]) end
-	if struct["VpcSecurityGroupId"] then M.AssertString(struct["VpcSecurityGroupId"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
+	if struct["VpcSecurityGroupId"] then asserts.AssertString(struct["VpcSecurityGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(VpcSecurityGroupMembership_keys[k], "VpcSecurityGroupMembership contains unknown key " .. tostring(k))
+		assert(keys.VpcSecurityGroupMembership[k], "VpcSecurityGroupMembership contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type VpcSecurityGroupMembership
 -- <p/>
--- @param Status [String] <p>The status of the VPC security group.</p>
--- @param VpcSecurityGroupId [String] <p>The VPC security group Id.</p>
-function M.VpcSecurityGroupMembership(Status, VpcSecurityGroupId, ...)
+-- @param _Status [String] <p>The status of the VPC security group.</p>
+-- @param _VpcSecurityGroupId [String] <p>The VPC security group Id.</p>
+function M.VpcSecurityGroupMembership(_Status, _VpcSecurityGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VpcSecurityGroupMembership")
 	local t = { 
-		["Status"] = Status,
-		["VpcSecurityGroupId"] = VpcSecurityGroupId,
+		["Status"] = _Status,
+		["VpcSecurityGroupId"] = _VpcSecurityGroupId,
 	}
-	M.AssertVpcSecurityGroupMembership(t)
+	asserts.AssertVpcSecurityGroupMembership(t)
 	return t
 end
 
-local S3Settings_keys = { "CompressionType" = true, "BucketFolder" = true, "CsvRowDelimiter" = true, "CsvDelimiter" = true, "ServiceAccessRoleArn" = true, "ExternalTableDefinition" = true, "BucketName" = true, nil }
+keys.S3Settings = { ["CompressionType"] = true, ["BucketFolder"] = true, ["CsvRowDelimiter"] = true, ["CsvDelimiter"] = true, ["ServiceAccessRoleArn"] = true, ["ExternalTableDefinition"] = true, ["BucketName"] = true, nil }
 
-function M.AssertS3Settings(struct)
+function asserts.AssertS3Settings(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected S3Settings to be of type 'table'")
-	if struct["CompressionType"] then M.AssertCompressionTypeValue(struct["CompressionType"]) end
-	if struct["BucketFolder"] then M.AssertString(struct["BucketFolder"]) end
-	if struct["CsvRowDelimiter"] then M.AssertString(struct["CsvRowDelimiter"]) end
-	if struct["CsvDelimiter"] then M.AssertString(struct["CsvDelimiter"]) end
-	if struct["ServiceAccessRoleArn"] then M.AssertString(struct["ServiceAccessRoleArn"]) end
-	if struct["ExternalTableDefinition"] then M.AssertString(struct["ExternalTableDefinition"]) end
-	if struct["BucketName"] then M.AssertString(struct["BucketName"]) end
+	if struct["CompressionType"] then asserts.AssertCompressionTypeValue(struct["CompressionType"]) end
+	if struct["BucketFolder"] then asserts.AssertString(struct["BucketFolder"]) end
+	if struct["CsvRowDelimiter"] then asserts.AssertString(struct["CsvRowDelimiter"]) end
+	if struct["CsvDelimiter"] then asserts.AssertString(struct["CsvDelimiter"]) end
+	if struct["ServiceAccessRoleArn"] then asserts.AssertString(struct["ServiceAccessRoleArn"]) end
+	if struct["ExternalTableDefinition"] then asserts.AssertString(struct["ExternalTableDefinition"]) end
+	if struct["BucketName"] then asserts.AssertString(struct["BucketName"]) end
 	for k,_ in pairs(struct) do
-		assert(S3Settings_keys[k], "S3Settings contains unknown key " .. tostring(k))
+		assert(keys.S3Settings[k], "S3Settings contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type S3Settings
 -- <p/>
--- @param CompressionType [CompressionTypeValue] <p> An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed. </p>
--- @param BucketFolder [String] <p> An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path &lt;bucketFolder&gt;/&lt;schema_name&gt;/&lt;table_name&gt;/. If this parameter is not specified, then the path used is &lt;schema_name&gt;/&lt;table_name&gt;/. </p>
--- @param CsvRowDelimiter [String] <p> The delimiter used to separate rows in the source files. The default is a carriage return (\n). </p>
--- @param CsvDelimiter [String] <p> The delimiter used to separate columns in the source files. The default is a comma. </p>
--- @param ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
--- @param ExternalTableDefinition [String] <p> </p>
--- @param BucketName [String] <p> The name of the S3 bucket. </p>
-function M.S3Settings(CompressionType, BucketFolder, CsvRowDelimiter, CsvDelimiter, ServiceAccessRoleArn, ExternalTableDefinition, BucketName, ...)
+-- @param _CompressionType [CompressionTypeValue] <p> An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed. </p>
+-- @param _BucketFolder [String] <p> An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path &lt;bucketFolder&gt;/&lt;schema_name&gt;/&lt;table_name&gt;/. If this parameter is not specified, then the path used is &lt;schema_name&gt;/&lt;table_name&gt;/. </p>
+-- @param _CsvRowDelimiter [String] <p> The delimiter used to separate rows in the source files. The default is a carriage return (\n). </p>
+-- @param _CsvDelimiter [String] <p> The delimiter used to separate columns in the source files. The default is a comma. </p>
+-- @param _ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
+-- @param _ExternalTableDefinition [String] <p> </p>
+-- @param _BucketName [String] <p> The name of the S3 bucket. </p>
+function M.S3Settings(_CompressionType, _BucketFolder, _CsvRowDelimiter, _CsvDelimiter, _ServiceAccessRoleArn, _ExternalTableDefinition, _BucketName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3Settings")
 	local t = { 
-		["CompressionType"] = CompressionType,
-		["BucketFolder"] = BucketFolder,
-		["CsvRowDelimiter"] = CsvRowDelimiter,
-		["CsvDelimiter"] = CsvDelimiter,
-		["ServiceAccessRoleArn"] = ServiceAccessRoleArn,
-		["ExternalTableDefinition"] = ExternalTableDefinition,
-		["BucketName"] = BucketName,
+		["CompressionType"] = _CompressionType,
+		["BucketFolder"] = _BucketFolder,
+		["CsvRowDelimiter"] = _CsvRowDelimiter,
+		["CsvDelimiter"] = _CsvDelimiter,
+		["ServiceAccessRoleArn"] = _ServiceAccessRoleArn,
+		["ExternalTableDefinition"] = _ExternalTableDefinition,
+		["BucketName"] = _BucketName,
 	}
-	M.AssertS3Settings(t)
+	asserts.AssertS3Settings(t)
 	return t
 end
 
-local DescribeEndpointsResponse_keys = { "Marker" = true, "Endpoints" = true, nil }
+keys.DescribeEndpointsResponse = { ["Marker"] = true, ["Endpoints"] = true, nil }
 
-function M.AssertDescribeEndpointsResponse(struct)
+function asserts.AssertDescribeEndpointsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEndpointsResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["Endpoints"] then M.AssertEndpointList(struct["Endpoints"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["Endpoints"] then asserts.AssertEndpointList(struct["Endpoints"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEndpointsResponse_keys[k], "DescribeEndpointsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEndpointsResponse[k], "DescribeEndpointsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEndpointsResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param Endpoints [EndpointList] <p>Endpoint description.</p>
-function M.DescribeEndpointsResponse(Marker, Endpoints, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _Endpoints [EndpointList] <p>Endpoint description.</p>
+function M.DescribeEndpointsResponse(_Marker, _Endpoints, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointsResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["Endpoints"] = Endpoints,
+		["Marker"] = _Marker,
+		["Endpoints"] = _Endpoints,
 	}
-	M.AssertDescribeEndpointsResponse(t)
+	asserts.AssertDescribeEndpointsResponse(t)
 	return t
 end
 
-local CreateEndpointResponse_keys = { "Endpoint" = true, nil }
+keys.CreateEndpointResponse = { ["Endpoint"] = true, nil }
 
-function M.AssertCreateEndpointResponse(struct)
+function asserts.AssertCreateEndpointResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateEndpointResponse to be of type 'table'")
-	if struct["Endpoint"] then M.AssertEndpoint(struct["Endpoint"]) end
+	if struct["Endpoint"] then asserts.AssertEndpoint(struct["Endpoint"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateEndpointResponse_keys[k], "CreateEndpointResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateEndpointResponse[k], "CreateEndpointResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateEndpointResponse
 -- <p/>
--- @param Endpoint [Endpoint] <p>The endpoint that was created.</p>
-function M.CreateEndpointResponse(Endpoint, ...)
+-- @param _Endpoint [Endpoint] <p>The endpoint that was created.</p>
+function M.CreateEndpointResponse(_Endpoint, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEndpointResponse")
 	local t = { 
-		["Endpoint"] = Endpoint,
+		["Endpoint"] = _Endpoint,
 	}
-	M.AssertCreateEndpointResponse(t)
+	asserts.AssertCreateEndpointResponse(t)
 	return t
 end
 
-local CreateReplicationSubnetGroupMessage_keys = { "ReplicationSubnetGroupDescription" = true, "SubnetIds" = true, "Tags" = true, "ReplicationSubnetGroupIdentifier" = true, nil }
+keys.CreateReplicationSubnetGroupMessage = { ["ReplicationSubnetGroupDescription"] = true, ["SubnetIds"] = true, ["Tags"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
 
-function M.AssertCreateReplicationSubnetGroupMessage(struct)
+function asserts.AssertCreateReplicationSubnetGroupMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateReplicationSubnetGroupMessage to be of type 'table'")
 	assert(struct["ReplicationSubnetGroupIdentifier"], "Expected key ReplicationSubnetGroupIdentifier to exist in table")
 	assert(struct["ReplicationSubnetGroupDescription"], "Expected key ReplicationSubnetGroupDescription to exist in table")
 	assert(struct["SubnetIds"], "Expected key SubnetIds to exist in table")
-	if struct["ReplicationSubnetGroupDescription"] then M.AssertString(struct["ReplicationSubnetGroupDescription"]) end
-	if struct["SubnetIds"] then M.AssertSubnetIdentifierList(struct["SubnetIds"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["ReplicationSubnetGroupIdentifier"] then M.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
+	if struct["ReplicationSubnetGroupDescription"] then asserts.AssertString(struct["ReplicationSubnetGroupDescription"]) end
+	if struct["SubnetIds"] then asserts.AssertSubnetIdentifierList(struct["SubnetIds"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["ReplicationSubnetGroupIdentifier"] then asserts.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateReplicationSubnetGroupMessage_keys[k], "CreateReplicationSubnetGroupMessage contains unknown key " .. tostring(k))
+		assert(keys.CreateReplicationSubnetGroupMessage[k], "CreateReplicationSubnetGroupMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateReplicationSubnetGroupMessage
 -- <p/>
--- @param ReplicationSubnetGroupDescription [String] <p>The description for the subnet group.</p>
--- @param SubnetIds [SubnetIdentifierList] <p>The EC2 subnet IDs for the subnet group.</p>
--- @param Tags [TagList] <p>The tag to be assigned to the subnet group.</p>
--- @param ReplicationSubnetGroupIdentifier [String] <p>The name for the replication subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default".</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param _ReplicationSubnetGroupDescription [String] <p>The description for the subnet group.</p>
+-- @param _SubnetIds [SubnetIdentifierList] <p>The EC2 subnet IDs for the subnet group.</p>
+-- @param _Tags [TagList] <p>The tag to be assigned to the subnet group.</p>
+-- @param _ReplicationSubnetGroupIdentifier [String] <p>The name for the replication subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default".</p> <p>Example: <code>mySubnetgroup</code> </p>
 -- Required parameter: ReplicationSubnetGroupIdentifier
 -- Required parameter: ReplicationSubnetGroupDescription
 -- Required parameter: SubnetIds
-function M.CreateReplicationSubnetGroupMessage(ReplicationSubnetGroupDescription, SubnetIds, Tags, ReplicationSubnetGroupIdentifier, ...)
+function M.CreateReplicationSubnetGroupMessage(_ReplicationSubnetGroupDescription, _SubnetIds, _Tags, _ReplicationSubnetGroupIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationSubnetGroupMessage")
 	local t = { 
-		["ReplicationSubnetGroupDescription"] = ReplicationSubnetGroupDescription,
-		["SubnetIds"] = SubnetIds,
-		["Tags"] = Tags,
-		["ReplicationSubnetGroupIdentifier"] = ReplicationSubnetGroupIdentifier,
+		["ReplicationSubnetGroupDescription"] = _ReplicationSubnetGroupDescription,
+		["SubnetIds"] = _SubnetIds,
+		["Tags"] = _Tags,
+		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
 	}
-	M.AssertCreateReplicationSubnetGroupMessage(t)
+	asserts.AssertCreateReplicationSubnetGroupMessage(t)
 	return t
 end
 
-local DescribeReplicationSubnetGroupsMessage_keys = { "Marker" = true, "MaxRecords" = true, "Filters" = true, nil }
+keys.DescribeReplicationSubnetGroupsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
 
-function M.AssertDescribeReplicationSubnetGroupsMessage(struct)
+function asserts.AssertDescribeReplicationSubnetGroupsMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeReplicationSubnetGroupsMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeReplicationSubnetGroupsMessage_keys[k], "DescribeReplicationSubnetGroupsMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeReplicationSubnetGroupsMessage[k], "DescribeReplicationSubnetGroupsMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeReplicationSubnetGroupsMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param Filters [FilterList] <p>Filters applied to the describe action.</p>
-function M.DescribeReplicationSubnetGroupsMessage(Marker, MaxRecords, Filters, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _Filters [FilterList] <p>Filters applied to the describe action.</p>
+function M.DescribeReplicationSubnetGroupsMessage(_Marker, _MaxRecords, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationSubnetGroupsMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["Filters"] = Filters,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeReplicationSubnetGroupsMessage(t)
+	asserts.AssertDescribeReplicationSubnetGroupsMessage(t)
 	return t
 end
 
-local ReplicationSubnetGroup_keys = { "ReplicationSubnetGroupDescription" = true, "Subnets" = true, "VpcId" = true, "SubnetGroupStatus" = true, "ReplicationSubnetGroupIdentifier" = true, nil }
+keys.ReplicationSubnetGroup = { ["ReplicationSubnetGroupDescription"] = true, ["Subnets"] = true, ["VpcId"] = true, ["SubnetGroupStatus"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
 
-function M.AssertReplicationSubnetGroup(struct)
+function asserts.AssertReplicationSubnetGroup(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationSubnetGroup to be of type 'table'")
-	if struct["ReplicationSubnetGroupDescription"] then M.AssertString(struct["ReplicationSubnetGroupDescription"]) end
-	if struct["Subnets"] then M.AssertSubnetList(struct["Subnets"]) end
-	if struct["VpcId"] then M.AssertString(struct["VpcId"]) end
-	if struct["SubnetGroupStatus"] then M.AssertString(struct["SubnetGroupStatus"]) end
-	if struct["ReplicationSubnetGroupIdentifier"] then M.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
+	if struct["ReplicationSubnetGroupDescription"] then asserts.AssertString(struct["ReplicationSubnetGroupDescription"]) end
+	if struct["Subnets"] then asserts.AssertSubnetList(struct["Subnets"]) end
+	if struct["VpcId"] then asserts.AssertString(struct["VpcId"]) end
+	if struct["SubnetGroupStatus"] then asserts.AssertString(struct["SubnetGroupStatus"]) end
+	if struct["ReplicationSubnetGroupIdentifier"] then asserts.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(ReplicationSubnetGroup_keys[k], "ReplicationSubnetGroup contains unknown key " .. tostring(k))
+		assert(keys.ReplicationSubnetGroup[k], "ReplicationSubnetGroup contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReplicationSubnetGroup
 -- <p/>
--- @param ReplicationSubnetGroupDescription [String] <p>The description of the replication subnet group.</p>
--- @param Subnets [SubnetList] <p>The subnets that are in the subnet group.</p>
--- @param VpcId [String] <p>The ID of the VPC.</p>
--- @param SubnetGroupStatus [String] <p>The status of the subnet group.</p>
--- @param ReplicationSubnetGroupIdentifier [String] <p>The identifier of the replication instance subnet group.</p>
-function M.ReplicationSubnetGroup(ReplicationSubnetGroupDescription, Subnets, VpcId, SubnetGroupStatus, ReplicationSubnetGroupIdentifier, ...)
+-- @param _ReplicationSubnetGroupDescription [String] <p>The description of the replication subnet group.</p>
+-- @param _Subnets [SubnetList] <p>The subnets that are in the subnet group.</p>
+-- @param _VpcId [String] <p>The ID of the VPC.</p>
+-- @param _SubnetGroupStatus [String] <p>The status of the subnet group.</p>
+-- @param _ReplicationSubnetGroupIdentifier [String] <p>The identifier of the replication instance subnet group.</p>
+function M.ReplicationSubnetGroup(_ReplicationSubnetGroupDescription, _Subnets, _VpcId, _SubnetGroupStatus, _ReplicationSubnetGroupIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationSubnetGroup")
 	local t = { 
-		["ReplicationSubnetGroupDescription"] = ReplicationSubnetGroupDescription,
-		["Subnets"] = Subnets,
-		["VpcId"] = VpcId,
-		["SubnetGroupStatus"] = SubnetGroupStatus,
-		["ReplicationSubnetGroupIdentifier"] = ReplicationSubnetGroupIdentifier,
+		["ReplicationSubnetGroupDescription"] = _ReplicationSubnetGroupDescription,
+		["Subnets"] = _Subnets,
+		["VpcId"] = _VpcId,
+		["SubnetGroupStatus"] = _SubnetGroupStatus,
+		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
 	}
-	M.AssertReplicationSubnetGroup(t)
+	asserts.AssertReplicationSubnetGroup(t)
 	return t
 end
 
-local ModifyReplicationInstanceResponse_keys = { "ReplicationInstance" = true, nil }
+keys.ModifyReplicationInstanceResponse = { ["ReplicationInstance"] = true, nil }
 
-function M.AssertModifyReplicationInstanceResponse(struct)
+function asserts.AssertModifyReplicationInstanceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyReplicationInstanceResponse to be of type 'table'")
-	if struct["ReplicationInstance"] then M.AssertReplicationInstance(struct["ReplicationInstance"]) end
+	if struct["ReplicationInstance"] then asserts.AssertReplicationInstance(struct["ReplicationInstance"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyReplicationInstanceResponse_keys[k], "ModifyReplicationInstanceResponse contains unknown key " .. tostring(k))
+		assert(keys.ModifyReplicationInstanceResponse[k], "ModifyReplicationInstanceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyReplicationInstanceResponse
 -- <p/>
--- @param ReplicationInstance [ReplicationInstance] <p>The modified replication instance.</p>
-function M.ModifyReplicationInstanceResponse(ReplicationInstance, ...)
+-- @param _ReplicationInstance [ReplicationInstance] <p>The modified replication instance.</p>
+function M.ModifyReplicationInstanceResponse(_ReplicationInstance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationInstanceResponse")
 	local t = { 
-		["ReplicationInstance"] = ReplicationInstance,
+		["ReplicationInstance"] = _ReplicationInstance,
 	}
-	M.AssertModifyReplicationInstanceResponse(t)
+	asserts.AssertModifyReplicationInstanceResponse(t)
 	return t
 end
 
-local RefreshSchemasResponse_keys = { "RefreshSchemasStatus" = true, nil }
+keys.RefreshSchemasResponse = { ["RefreshSchemasStatus"] = true, nil }
 
-function M.AssertRefreshSchemasResponse(struct)
+function asserts.AssertRefreshSchemasResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RefreshSchemasResponse to be of type 'table'")
-	if struct["RefreshSchemasStatus"] then M.AssertRefreshSchemasStatus(struct["RefreshSchemasStatus"]) end
+	if struct["RefreshSchemasStatus"] then asserts.AssertRefreshSchemasStatus(struct["RefreshSchemasStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(RefreshSchemasResponse_keys[k], "RefreshSchemasResponse contains unknown key " .. tostring(k))
+		assert(keys.RefreshSchemasResponse[k], "RefreshSchemasResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RefreshSchemasResponse
 -- <p/>
--- @param RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the refreshed schema.</p>
-function M.RefreshSchemasResponse(RefreshSchemasStatus, ...)
+-- @param _RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the refreshed schema.</p>
+function M.RefreshSchemasResponse(_RefreshSchemasStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshSchemasResponse")
 	local t = { 
-		["RefreshSchemasStatus"] = RefreshSchemasStatus,
+		["RefreshSchemasStatus"] = _RefreshSchemasStatus,
 	}
-	M.AssertRefreshSchemasResponse(t)
+	asserts.AssertRefreshSchemasResponse(t)
 	return t
 end
 
-local DescribeCertificatesResponse_keys = { "Marker" = true, "Certificates" = true, nil }
+keys.DescribeCertificatesResponse = { ["Marker"] = true, ["Certificates"] = true, nil }
 
-function M.AssertDescribeCertificatesResponse(struct)
+function asserts.AssertDescribeCertificatesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCertificatesResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["Certificates"] then M.AssertCertificateList(struct["Certificates"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["Certificates"] then asserts.AssertCertificateList(struct["Certificates"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCertificatesResponse_keys[k], "DescribeCertificatesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeCertificatesResponse[k], "DescribeCertificatesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCertificatesResponse
 --  
--- @param Marker [String] <p>The pagination token.</p>
--- @param Certificates [CertificateList] <p>The Secure Sockets Layer (SSL) certificates associated with the replication instance.</p>
-function M.DescribeCertificatesResponse(Marker, Certificates, ...)
+-- @param _Marker [String] <p>The pagination token.</p>
+-- @param _Certificates [CertificateList] <p>The Secure Sockets Layer (SSL) certificates associated with the replication instance.</p>
+function M.DescribeCertificatesResponse(_Marker, _Certificates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificatesResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["Certificates"] = Certificates,
+		["Marker"] = _Marker,
+		["Certificates"] = _Certificates,
 	}
-	M.AssertDescribeCertificatesResponse(t)
+	asserts.AssertDescribeCertificatesResponse(t)
 	return t
 end
 
-local StartReplicationTaskMessage_keys = { "ReplicationTaskArn" = true, "StartReplicationTaskType" = true, "CdcStartTime" = true, nil }
+keys.StartReplicationTaskMessage = { ["ReplicationTaskArn"] = true, ["StartReplicationTaskType"] = true, ["CdcStartTime"] = true, nil }
 
-function M.AssertStartReplicationTaskMessage(struct)
+function asserts.AssertStartReplicationTaskMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartReplicationTaskMessage to be of type 'table'")
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
 	assert(struct["StartReplicationTaskType"], "Expected key StartReplicationTaskType to exist in table")
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
-	if struct["StartReplicationTaskType"] then M.AssertStartReplicationTaskTypeValue(struct["StartReplicationTaskType"]) end
-	if struct["CdcStartTime"] then M.AssertTStamp(struct["CdcStartTime"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["StartReplicationTaskType"] then asserts.AssertStartReplicationTaskTypeValue(struct["StartReplicationTaskType"]) end
+	if struct["CdcStartTime"] then asserts.AssertTStamp(struct["CdcStartTime"]) end
 	for k,_ in pairs(struct) do
-		assert(StartReplicationTaskMessage_keys[k], "StartReplicationTaskMessage contains unknown key " .. tostring(k))
+		assert(keys.StartReplicationTaskMessage[k], "StartReplicationTaskMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartReplicationTaskMessage
 -- <p/>
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Number (ARN) of the replication task to be started.</p>
--- @param StartReplicationTaskType [StartReplicationTaskTypeValue] <p>The type of replication task.</p>
--- @param CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Number (ARN) of the replication task to be started.</p>
+-- @param _StartReplicationTaskType [StartReplicationTaskTypeValue] <p>The type of replication task.</p>
+-- @param _CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
 -- Required parameter: ReplicationTaskArn
 -- Required parameter: StartReplicationTaskType
-function M.StartReplicationTaskMessage(ReplicationTaskArn, StartReplicationTaskType, CdcStartTime, ...)
+function M.StartReplicationTaskMessage(_ReplicationTaskArn, _StartReplicationTaskType, _CdcStartTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartReplicationTaskMessage")
 	local t = { 
-		["ReplicationTaskArn"] = ReplicationTaskArn,
-		["StartReplicationTaskType"] = StartReplicationTaskType,
-		["CdcStartTime"] = CdcStartTime,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["StartReplicationTaskType"] = _StartReplicationTaskType,
+		["CdcStartTime"] = _CdcStartTime,
 	}
-	M.AssertStartReplicationTaskMessage(t)
+	asserts.AssertStartReplicationTaskMessage(t)
 	return t
 end
 
-local ResourceQuotaExceededFault_keys = { "message" = true, nil }
+keys.ResourceQuotaExceededFault = { ["message"] = true, nil }
 
-function M.AssertResourceQuotaExceededFault(struct)
+function asserts.AssertResourceQuotaExceededFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceQuotaExceededFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceQuotaExceededFault_keys[k], "ResourceQuotaExceededFault contains unknown key " .. tostring(k))
+		assert(keys.ResourceQuotaExceededFault[k], "ResourceQuotaExceededFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceQuotaExceededFault
 -- <p>The quota for this resource quota has been exceeded.</p>
--- @param message [ExceptionMessage] <p/>
-function M.ResourceQuotaExceededFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.ResourceQuotaExceededFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceQuotaExceededFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceQuotaExceededFault(t)
+	asserts.AssertResourceQuotaExceededFault(t)
 	return t
 end
 
-local StartReplicationTaskResponse_keys = { "ReplicationTask" = true, nil }
+keys.StartReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
 
-function M.AssertStartReplicationTaskResponse(struct)
+function asserts.AssertStartReplicationTaskResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartReplicationTaskResponse to be of type 'table'")
-	if struct["ReplicationTask"] then M.AssertReplicationTask(struct["ReplicationTask"]) end
+	if struct["ReplicationTask"] then asserts.AssertReplicationTask(struct["ReplicationTask"]) end
 	for k,_ in pairs(struct) do
-		assert(StartReplicationTaskResponse_keys[k], "StartReplicationTaskResponse contains unknown key " .. tostring(k))
+		assert(keys.StartReplicationTaskResponse[k], "StartReplicationTaskResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartReplicationTaskResponse
 -- <p/>
--- @param ReplicationTask [ReplicationTask] <p>The replication task started.</p>
-function M.StartReplicationTaskResponse(ReplicationTask, ...)
+-- @param _ReplicationTask [ReplicationTask] <p>The replication task started.</p>
+function M.StartReplicationTaskResponse(_ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = ReplicationTask,
+		["ReplicationTask"] = _ReplicationTask,
 	}
-	M.AssertStartReplicationTaskResponse(t)
+	asserts.AssertStartReplicationTaskResponse(t)
 	return t
 end
 
-local ModifyReplicationSubnetGroupMessage_keys = { "ReplicationSubnetGroupDescription" = true, "SubnetIds" = true, "ReplicationSubnetGroupIdentifier" = true, nil }
+keys.ModifyReplicationSubnetGroupMessage = { ["ReplicationSubnetGroupDescription"] = true, ["SubnetIds"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
 
-function M.AssertModifyReplicationSubnetGroupMessage(struct)
+function asserts.AssertModifyReplicationSubnetGroupMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyReplicationSubnetGroupMessage to be of type 'table'")
 	assert(struct["ReplicationSubnetGroupIdentifier"], "Expected key ReplicationSubnetGroupIdentifier to exist in table")
 	assert(struct["SubnetIds"], "Expected key SubnetIds to exist in table")
-	if struct["ReplicationSubnetGroupDescription"] then M.AssertString(struct["ReplicationSubnetGroupDescription"]) end
-	if struct["SubnetIds"] then M.AssertSubnetIdentifierList(struct["SubnetIds"]) end
-	if struct["ReplicationSubnetGroupIdentifier"] then M.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
+	if struct["ReplicationSubnetGroupDescription"] then asserts.AssertString(struct["ReplicationSubnetGroupDescription"]) end
+	if struct["SubnetIds"] then asserts.AssertSubnetIdentifierList(struct["SubnetIds"]) end
+	if struct["ReplicationSubnetGroupIdentifier"] then asserts.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyReplicationSubnetGroupMessage_keys[k], "ModifyReplicationSubnetGroupMessage contains unknown key " .. tostring(k))
+		assert(keys.ModifyReplicationSubnetGroupMessage[k], "ModifyReplicationSubnetGroupMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyReplicationSubnetGroupMessage
 -- <p/>
--- @param ReplicationSubnetGroupDescription [String] <p>The description of the replication instance subnet group.</p>
--- @param SubnetIds [SubnetIdentifierList] <p>A list of subnet IDs.</p>
--- @param ReplicationSubnetGroupIdentifier [String] <p>The name of the replication instance subnet group.</p>
+-- @param _ReplicationSubnetGroupDescription [String] <p>The description of the replication instance subnet group.</p>
+-- @param _SubnetIds [SubnetIdentifierList] <p>A list of subnet IDs.</p>
+-- @param _ReplicationSubnetGroupIdentifier [String] <p>The name of the replication instance subnet group.</p>
 -- Required parameter: ReplicationSubnetGroupIdentifier
 -- Required parameter: SubnetIds
-function M.ModifyReplicationSubnetGroupMessage(ReplicationSubnetGroupDescription, SubnetIds, ReplicationSubnetGroupIdentifier, ...)
+function M.ModifyReplicationSubnetGroupMessage(_ReplicationSubnetGroupDescription, _SubnetIds, _ReplicationSubnetGroupIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationSubnetGroupMessage")
 	local t = { 
-		["ReplicationSubnetGroupDescription"] = ReplicationSubnetGroupDescription,
-		["SubnetIds"] = SubnetIds,
-		["ReplicationSubnetGroupIdentifier"] = ReplicationSubnetGroupIdentifier,
+		["ReplicationSubnetGroupDescription"] = _ReplicationSubnetGroupDescription,
+		["SubnetIds"] = _SubnetIds,
+		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
 	}
-	M.AssertModifyReplicationSubnetGroupMessage(t)
+	asserts.AssertModifyReplicationSubnetGroupMessage(t)
 	return t
 end
 
-local AvailabilityZone_keys = { "Name" = true, nil }
+keys.AvailabilityZone = { ["Name"] = true, nil }
 
-function M.AssertAvailabilityZone(struct)
+function asserts.AssertAvailabilityZone(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AvailabilityZone to be of type 'table'")
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(AvailabilityZone_keys[k], "AvailabilityZone contains unknown key " .. tostring(k))
+		assert(keys.AvailabilityZone[k], "AvailabilityZone contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AvailabilityZone
 -- <p/>
--- @param Name [String] <p>The name of the availability zone.</p>
-function M.AvailabilityZone(Name, ...)
+-- @param _Name [String] <p>The name of the availability zone.</p>
+function M.AvailabilityZone(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertAvailabilityZone(t)
+	asserts.AssertAvailabilityZone(t)
 	return t
 end
 
-local TableStatistics_keys = { "Inserts" = true, "LastUpdateTime" = true, "FullLoadErrorRows" = true, "FullLoadCondtnlChkFailedRows" = true, "Ddls" = true, "TableName" = true, "Updates" = true, "FullLoadRows" = true, "TableState" = true, "SchemaName" = true, "Deletes" = true, nil }
+keys.TableStatistics = { ["Inserts"] = true, ["LastUpdateTime"] = true, ["FullLoadErrorRows"] = true, ["FullLoadCondtnlChkFailedRows"] = true, ["Ddls"] = true, ["TableName"] = true, ["Updates"] = true, ["FullLoadRows"] = true, ["TableState"] = true, ["SchemaName"] = true, ["Deletes"] = true, nil }
 
-function M.AssertTableStatistics(struct)
+function asserts.AssertTableStatistics(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TableStatistics to be of type 'table'")
-	if struct["Inserts"] then M.AssertLong(struct["Inserts"]) end
-	if struct["LastUpdateTime"] then M.AssertTStamp(struct["LastUpdateTime"]) end
-	if struct["FullLoadErrorRows"] then M.AssertLong(struct["FullLoadErrorRows"]) end
-	if struct["FullLoadCondtnlChkFailedRows"] then M.AssertLong(struct["FullLoadCondtnlChkFailedRows"]) end
-	if struct["Ddls"] then M.AssertLong(struct["Ddls"]) end
-	if struct["TableName"] then M.AssertString(struct["TableName"]) end
-	if struct["Updates"] then M.AssertLong(struct["Updates"]) end
-	if struct["FullLoadRows"] then M.AssertLong(struct["FullLoadRows"]) end
-	if struct["TableState"] then M.AssertString(struct["TableState"]) end
-	if struct["SchemaName"] then M.AssertString(struct["SchemaName"]) end
-	if struct["Deletes"] then M.AssertLong(struct["Deletes"]) end
+	if struct["Inserts"] then asserts.AssertLong(struct["Inserts"]) end
+	if struct["LastUpdateTime"] then asserts.AssertTStamp(struct["LastUpdateTime"]) end
+	if struct["FullLoadErrorRows"] then asserts.AssertLong(struct["FullLoadErrorRows"]) end
+	if struct["FullLoadCondtnlChkFailedRows"] then asserts.AssertLong(struct["FullLoadCondtnlChkFailedRows"]) end
+	if struct["Ddls"] then asserts.AssertLong(struct["Ddls"]) end
+	if struct["TableName"] then asserts.AssertString(struct["TableName"]) end
+	if struct["Updates"] then asserts.AssertLong(struct["Updates"]) end
+	if struct["FullLoadRows"] then asserts.AssertLong(struct["FullLoadRows"]) end
+	if struct["TableState"] then asserts.AssertString(struct["TableState"]) end
+	if struct["SchemaName"] then asserts.AssertString(struct["SchemaName"]) end
+	if struct["Deletes"] then asserts.AssertLong(struct["Deletes"]) end
 	for k,_ in pairs(struct) do
-		assert(TableStatistics_keys[k], "TableStatistics contains unknown key " .. tostring(k))
+		assert(keys.TableStatistics[k], "TableStatistics contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TableStatistics
 -- <p/>
--- @param Inserts [Long] <p>The number of insert actions performed on a table.</p>
--- @param LastUpdateTime [TStamp] <p>The last time the table was updated.</p>
--- @param FullLoadErrorRows [Long] <p>The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
--- @param FullLoadCondtnlChkFailedRows [Long] <p>The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
--- @param Ddls [Long] <p>The Data Definition Language (DDL) used to build and modify the structure of your tables.</p>
--- @param TableName [String] <p>The name of the table.</p>
--- @param Updates [Long] <p>The number of update actions performed on a table.</p>
--- @param FullLoadRows [Long] <p>The number of rows added during the Full Load operation.</p>
--- @param TableState [String] <p>The state of the table.</p>
--- @param SchemaName [String] <p>The schema name.</p>
--- @param Deletes [Long] <p>The number of delete actions performed on a table.</p>
-function M.TableStatistics(Inserts, LastUpdateTime, FullLoadErrorRows, FullLoadCondtnlChkFailedRows, Ddls, TableName, Updates, FullLoadRows, TableState, SchemaName, Deletes, ...)
+-- @param _Inserts [Long] <p>The number of insert actions performed on a table.</p>
+-- @param _LastUpdateTime [TStamp] <p>The last time the table was updated.</p>
+-- @param _FullLoadErrorRows [Long] <p>The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
+-- @param _FullLoadCondtnlChkFailedRows [Long] <p>The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
+-- @param _Ddls [Long] <p>The Data Definition Language (DDL) used to build and modify the structure of your tables.</p>
+-- @param _TableName [String] <p>The name of the table.</p>
+-- @param _Updates [Long] <p>The number of update actions performed on a table.</p>
+-- @param _FullLoadRows [Long] <p>The number of rows added during the Full Load operation.</p>
+-- @param _TableState [String] <p>The state of the table.</p>
+-- @param _SchemaName [String] <p>The schema name.</p>
+-- @param _Deletes [Long] <p>The number of delete actions performed on a table.</p>
+function M.TableStatistics(_Inserts, _LastUpdateTime, _FullLoadErrorRows, _FullLoadCondtnlChkFailedRows, _Ddls, _TableName, _Updates, _FullLoadRows, _TableState, _SchemaName, _Deletes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TableStatistics")
 	local t = { 
-		["Inserts"] = Inserts,
-		["LastUpdateTime"] = LastUpdateTime,
-		["FullLoadErrorRows"] = FullLoadErrorRows,
-		["FullLoadCondtnlChkFailedRows"] = FullLoadCondtnlChkFailedRows,
-		["Ddls"] = Ddls,
-		["TableName"] = TableName,
-		["Updates"] = Updates,
-		["FullLoadRows"] = FullLoadRows,
-		["TableState"] = TableState,
-		["SchemaName"] = SchemaName,
-		["Deletes"] = Deletes,
+		["Inserts"] = _Inserts,
+		["LastUpdateTime"] = _LastUpdateTime,
+		["FullLoadErrorRows"] = _FullLoadErrorRows,
+		["FullLoadCondtnlChkFailedRows"] = _FullLoadCondtnlChkFailedRows,
+		["Ddls"] = _Ddls,
+		["TableName"] = _TableName,
+		["Updates"] = _Updates,
+		["FullLoadRows"] = _FullLoadRows,
+		["TableState"] = _TableState,
+		["SchemaName"] = _SchemaName,
+		["Deletes"] = _Deletes,
 	}
-	M.AssertTableStatistics(t)
+	asserts.AssertTableStatistics(t)
 	return t
 end
 
-local ModifyReplicationInstanceMessage_keys = { "MultiAZ" = true, "AllowMajorVersionUpgrade" = true, "ReplicationInstanceArn" = true, "ReplicationInstanceClass" = true, "VpcSecurityGroupIds" = true, "ApplyImmediately" = true, "AutoMinorVersionUpgrade" = true, "AllocatedStorage" = true, "EngineVersion" = true, "ReplicationInstanceIdentifier" = true, "PreferredMaintenanceWindow" = true, nil }
+keys.ModifyReplicationInstanceMessage = { ["MultiAZ"] = true, ["AllowMajorVersionUpgrade"] = true, ["ReplicationInstanceArn"] = true, ["ReplicationInstanceClass"] = true, ["VpcSecurityGroupIds"] = true, ["ApplyImmediately"] = true, ["AutoMinorVersionUpgrade"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["ReplicationInstanceIdentifier"] = true, ["PreferredMaintenanceWindow"] = true, nil }
 
-function M.AssertModifyReplicationInstanceMessage(struct)
+function asserts.AssertModifyReplicationInstanceMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyReplicationInstanceMessage to be of type 'table'")
 	assert(struct["ReplicationInstanceArn"], "Expected key ReplicationInstanceArn to exist in table")
-	if struct["MultiAZ"] then M.AssertBooleanOptional(struct["MultiAZ"]) end
-	if struct["AllowMajorVersionUpgrade"] then M.AssertBoolean(struct["AllowMajorVersionUpgrade"]) end
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
-	if struct["ReplicationInstanceClass"] then M.AssertString(struct["ReplicationInstanceClass"]) end
-	if struct["VpcSecurityGroupIds"] then M.AssertVpcSecurityGroupIdList(struct["VpcSecurityGroupIds"]) end
-	if struct["ApplyImmediately"] then M.AssertBoolean(struct["ApplyImmediately"]) end
-	if struct["AutoMinorVersionUpgrade"] then M.AssertBooleanOptional(struct["AutoMinorVersionUpgrade"]) end
-	if struct["AllocatedStorage"] then M.AssertIntegerOptional(struct["AllocatedStorage"]) end
-	if struct["EngineVersion"] then M.AssertString(struct["EngineVersion"]) end
-	if struct["ReplicationInstanceIdentifier"] then M.AssertString(struct["ReplicationInstanceIdentifier"]) end
-	if struct["PreferredMaintenanceWindow"] then M.AssertString(struct["PreferredMaintenanceWindow"]) end
+	if struct["MultiAZ"] then asserts.AssertBooleanOptional(struct["MultiAZ"]) end
+	if struct["AllowMajorVersionUpgrade"] then asserts.AssertBoolean(struct["AllowMajorVersionUpgrade"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["ReplicationInstanceClass"] then asserts.AssertString(struct["ReplicationInstanceClass"]) end
+	if struct["VpcSecurityGroupIds"] then asserts.AssertVpcSecurityGroupIdList(struct["VpcSecurityGroupIds"]) end
+	if struct["ApplyImmediately"] then asserts.AssertBoolean(struct["ApplyImmediately"]) end
+	if struct["AutoMinorVersionUpgrade"] then asserts.AssertBooleanOptional(struct["AutoMinorVersionUpgrade"]) end
+	if struct["AllocatedStorage"] then asserts.AssertIntegerOptional(struct["AllocatedStorage"]) end
+	if struct["EngineVersion"] then asserts.AssertString(struct["EngineVersion"]) end
+	if struct["ReplicationInstanceIdentifier"] then asserts.AssertString(struct["ReplicationInstanceIdentifier"]) end
+	if struct["PreferredMaintenanceWindow"] then asserts.AssertString(struct["PreferredMaintenanceWindow"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyReplicationInstanceMessage_keys[k], "ModifyReplicationInstanceMessage contains unknown key " .. tostring(k))
+		assert(keys.ModifyReplicationInstanceMessage[k], "ModifyReplicationInstanceMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyReplicationInstanceMessage
 -- <p/>
--- @param MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
--- @param AllowMajorVersionUpgrade [Boolean] <p>Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.</p> <p>Constraints: This parameter must be set to true when specifying a value for the <code>EngineVersion</code> parameter that is a different major version than the replication instance's current version.</p>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
--- @param ApplyImmediately [Boolean] <p>Indicates whether the changes should be applied immediately or during the next maintenance window.</p>
--- @param AutoMinorVersionUpgrade [BooleanOptional] <p> Indicates that minor version upgrades will be applied automatically to the replication instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code> during the maintenance window, and a newer minor version is available, and AWS DMS has enabled auto patching for that engine version. </p>
--- @param AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be allocated for the replication instance.</p>
--- @param EngineVersion [String] <p>The engine version number of the replication instance.</p>
--- @param ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
--- @param PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.</p> <p>Default: Uses existing setting</p> <p>Format: ddd:hh24:mi-ddd:hh24:mi</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30 minutes</p>
+-- @param _MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- @param _AllowMajorVersionUpgrade [Boolean] <p>Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.</p> <p>Constraints: This parameter must be set to true when specifying a value for the <code>EngineVersion</code> parameter that is a different major version than the replication instance's current version.</p>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param _VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
+-- @param _ApplyImmediately [Boolean] <p>Indicates whether the changes should be applied immediately or during the next maintenance window.</p>
+-- @param _AutoMinorVersionUpgrade [BooleanOptional] <p> Indicates that minor version upgrades will be applied automatically to the replication instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code> during the maintenance window, and a newer minor version is available, and AWS DMS has enabled auto patching for that engine version. </p>
+-- @param _AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be allocated for the replication instance.</p>
+-- @param _EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- @param _ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
+-- @param _PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.</p> <p>Default: Uses existing setting</p> <p>Format: ddd:hh24:mi-ddd:hh24:mi</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30 minutes</p>
 -- Required parameter: ReplicationInstanceArn
-function M.ModifyReplicationInstanceMessage(MultiAZ, AllowMajorVersionUpgrade, ReplicationInstanceArn, ReplicationInstanceClass, VpcSecurityGroupIds, ApplyImmediately, AutoMinorVersionUpgrade, AllocatedStorage, EngineVersion, ReplicationInstanceIdentifier, PreferredMaintenanceWindow, ...)
+function M.ModifyReplicationInstanceMessage(_MultiAZ, _AllowMajorVersionUpgrade, _ReplicationInstanceArn, _ReplicationInstanceClass, _VpcSecurityGroupIds, _ApplyImmediately, _AutoMinorVersionUpgrade, _AllocatedStorage, _EngineVersion, _ReplicationInstanceIdentifier, _PreferredMaintenanceWindow, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationInstanceMessage")
 	local t = { 
-		["MultiAZ"] = MultiAZ,
-		["AllowMajorVersionUpgrade"] = AllowMajorVersionUpgrade,
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
-		["ReplicationInstanceClass"] = ReplicationInstanceClass,
-		["VpcSecurityGroupIds"] = VpcSecurityGroupIds,
-		["ApplyImmediately"] = ApplyImmediately,
-		["AutoMinorVersionUpgrade"] = AutoMinorVersionUpgrade,
-		["AllocatedStorage"] = AllocatedStorage,
-		["EngineVersion"] = EngineVersion,
-		["ReplicationInstanceIdentifier"] = ReplicationInstanceIdentifier,
-		["PreferredMaintenanceWindow"] = PreferredMaintenanceWindow,
+		["MultiAZ"] = _MultiAZ,
+		["AllowMajorVersionUpgrade"] = _AllowMajorVersionUpgrade,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
+		["VpcSecurityGroupIds"] = _VpcSecurityGroupIds,
+		["ApplyImmediately"] = _ApplyImmediately,
+		["AutoMinorVersionUpgrade"] = _AutoMinorVersionUpgrade,
+		["AllocatedStorage"] = _AllocatedStorage,
+		["EngineVersion"] = _EngineVersion,
+		["ReplicationInstanceIdentifier"] = _ReplicationInstanceIdentifier,
+		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
 	}
-	M.AssertModifyReplicationInstanceMessage(t)
+	asserts.AssertModifyReplicationInstanceMessage(t)
 	return t
 end
 
-local ModifyReplicationTaskResponse_keys = { "ReplicationTask" = true, nil }
+keys.ModifyReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
 
-function M.AssertModifyReplicationTaskResponse(struct)
+function asserts.AssertModifyReplicationTaskResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyReplicationTaskResponse to be of type 'table'")
-	if struct["ReplicationTask"] then M.AssertReplicationTask(struct["ReplicationTask"]) end
+	if struct["ReplicationTask"] then asserts.AssertReplicationTask(struct["ReplicationTask"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyReplicationTaskResponse_keys[k], "ModifyReplicationTaskResponse contains unknown key " .. tostring(k))
+		assert(keys.ModifyReplicationTaskResponse[k], "ModifyReplicationTaskResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyReplicationTaskResponse
 -- <p/>
--- @param ReplicationTask [ReplicationTask] <p>The replication task that was modified.</p>
-function M.ModifyReplicationTaskResponse(ReplicationTask, ...)
+-- @param _ReplicationTask [ReplicationTask] <p>The replication task that was modified.</p>
+function M.ModifyReplicationTaskResponse(_ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = ReplicationTask,
+		["ReplicationTask"] = _ReplicationTask,
 	}
-	M.AssertModifyReplicationTaskResponse(t)
+	asserts.AssertModifyReplicationTaskResponse(t)
 	return t
 end
 
-local Subnet_keys = { "SubnetStatus" = true, "SubnetIdentifier" = true, "SubnetAvailabilityZone" = true, nil }
+keys.Subnet = { ["SubnetStatus"] = true, ["SubnetIdentifier"] = true, ["SubnetAvailabilityZone"] = true, nil }
 
-function M.AssertSubnet(struct)
+function asserts.AssertSubnet(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Subnet to be of type 'table'")
-	if struct["SubnetStatus"] then M.AssertString(struct["SubnetStatus"]) end
-	if struct["SubnetIdentifier"] then M.AssertString(struct["SubnetIdentifier"]) end
-	if struct["SubnetAvailabilityZone"] then M.AssertAvailabilityZone(struct["SubnetAvailabilityZone"]) end
+	if struct["SubnetStatus"] then asserts.AssertString(struct["SubnetStatus"]) end
+	if struct["SubnetIdentifier"] then asserts.AssertString(struct["SubnetIdentifier"]) end
+	if struct["SubnetAvailabilityZone"] then asserts.AssertAvailabilityZone(struct["SubnetAvailabilityZone"]) end
 	for k,_ in pairs(struct) do
-		assert(Subnet_keys[k], "Subnet contains unknown key " .. tostring(k))
+		assert(keys.Subnet[k], "Subnet contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Subnet
 -- <p/>
--- @param SubnetStatus [String] <p>The status of the subnet.</p>
--- @param SubnetIdentifier [String] <p>The subnet identifier.</p>
--- @param SubnetAvailabilityZone [AvailabilityZone] <p>The Availability Zone of the subnet.</p>
-function M.Subnet(SubnetStatus, SubnetIdentifier, SubnetAvailabilityZone, ...)
+-- @param _SubnetStatus [String] <p>The status of the subnet.</p>
+-- @param _SubnetIdentifier [String] <p>The subnet identifier.</p>
+-- @param _SubnetAvailabilityZone [AvailabilityZone] <p>The Availability Zone of the subnet.</p>
+function M.Subnet(_SubnetStatus, _SubnetIdentifier, _SubnetAvailabilityZone, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subnet")
 	local t = { 
-		["SubnetStatus"] = SubnetStatus,
-		["SubnetIdentifier"] = SubnetIdentifier,
-		["SubnetAvailabilityZone"] = SubnetAvailabilityZone,
+		["SubnetStatus"] = _SubnetStatus,
+		["SubnetIdentifier"] = _SubnetIdentifier,
+		["SubnetAvailabilityZone"] = _SubnetAvailabilityZone,
 	}
-	M.AssertSubnet(t)
+	asserts.AssertSubnet(t)
 	return t
 end
 
-local DeleteReplicationTaskResponse_keys = { "ReplicationTask" = true, nil }
+keys.DeleteReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
 
-function M.AssertDeleteReplicationTaskResponse(struct)
+function asserts.AssertDeleteReplicationTaskResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteReplicationTaskResponse to be of type 'table'")
-	if struct["ReplicationTask"] then M.AssertReplicationTask(struct["ReplicationTask"]) end
+	if struct["ReplicationTask"] then asserts.AssertReplicationTask(struct["ReplicationTask"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteReplicationTaskResponse_keys[k], "DeleteReplicationTaskResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteReplicationTaskResponse[k], "DeleteReplicationTaskResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteReplicationTaskResponse
 -- <p/>
--- @param ReplicationTask [ReplicationTask] <p>The deleted replication task.</p>
-function M.DeleteReplicationTaskResponse(ReplicationTask, ...)
+-- @param _ReplicationTask [ReplicationTask] <p>The deleted replication task.</p>
+function M.DeleteReplicationTaskResponse(_ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = ReplicationTask,
+		["ReplicationTask"] = _ReplicationTask,
 	}
-	M.AssertDeleteReplicationTaskResponse(t)
+	asserts.AssertDeleteReplicationTaskResponse(t)
 	return t
 end
 
-local Certificate_keys = { "CertificateArn" = true, "CertificateCreationDate" = true, "CertificatePem" = true, "CertificateOwner" = true, "CertificateWallet" = true, "ValidToDate" = true, "KeyLength" = true, "CertificateIdentifier" = true, "SigningAlgorithm" = true, "ValidFromDate" = true, nil }
+keys.Certificate = { ["CertificateArn"] = true, ["CertificateCreationDate"] = true, ["CertificatePem"] = true, ["CertificateOwner"] = true, ["CertificateWallet"] = true, ["ValidToDate"] = true, ["KeyLength"] = true, ["CertificateIdentifier"] = true, ["SigningAlgorithm"] = true, ["ValidFromDate"] = true, nil }
 
-function M.AssertCertificate(struct)
+function asserts.AssertCertificate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Certificate to be of type 'table'")
-	if struct["CertificateArn"] then M.AssertString(struct["CertificateArn"]) end
-	if struct["CertificateCreationDate"] then M.AssertTStamp(struct["CertificateCreationDate"]) end
-	if struct["CertificatePem"] then M.AssertString(struct["CertificatePem"]) end
-	if struct["CertificateOwner"] then M.AssertString(struct["CertificateOwner"]) end
-	if struct["CertificateWallet"] then M.AssertCertificateWallet(struct["CertificateWallet"]) end
-	if struct["ValidToDate"] then M.AssertTStamp(struct["ValidToDate"]) end
-	if struct["KeyLength"] then M.AssertIntegerOptional(struct["KeyLength"]) end
-	if struct["CertificateIdentifier"] then M.AssertString(struct["CertificateIdentifier"]) end
-	if struct["SigningAlgorithm"] then M.AssertString(struct["SigningAlgorithm"]) end
-	if struct["ValidFromDate"] then M.AssertTStamp(struct["ValidFromDate"]) end
+	if struct["CertificateArn"] then asserts.AssertString(struct["CertificateArn"]) end
+	if struct["CertificateCreationDate"] then asserts.AssertTStamp(struct["CertificateCreationDate"]) end
+	if struct["CertificatePem"] then asserts.AssertString(struct["CertificatePem"]) end
+	if struct["CertificateOwner"] then asserts.AssertString(struct["CertificateOwner"]) end
+	if struct["CertificateWallet"] then asserts.AssertCertificateWallet(struct["CertificateWallet"]) end
+	if struct["ValidToDate"] then asserts.AssertTStamp(struct["ValidToDate"]) end
+	if struct["KeyLength"] then asserts.AssertIntegerOptional(struct["KeyLength"]) end
+	if struct["CertificateIdentifier"] then asserts.AssertString(struct["CertificateIdentifier"]) end
+	if struct["SigningAlgorithm"] then asserts.AssertString(struct["SigningAlgorithm"]) end
+	if struct["ValidFromDate"] then asserts.AssertTStamp(struct["ValidFromDate"]) end
 	for k,_ in pairs(struct) do
-		assert(Certificate_keys[k], "Certificate contains unknown key " .. tostring(k))
+		assert(keys.Certificate[k], "Certificate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Certificate
 -- <p>The SSL certificate that can be used to encrypt connections between the endpoints and the replication instance.</p>
--- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) for the certificate.</p>
--- @param CertificateCreationDate [TStamp] <p>The date that the certificate was created.</p>
--- @param CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
--- @param CertificateOwner [String] <p>The owner of the certificate.</p>
--- @param CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
--- @param ValidToDate [TStamp] <p>The final date that the certificate is valid.</p>
--- @param KeyLength [IntegerOptional] <p>The key length of the cryptographic algorithm being used.</p>
--- @param CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
--- @param SigningAlgorithm [String] <p>The signing algorithm for the certificate.</p>
--- @param ValidFromDate [TStamp] <p>The beginning date that the certificate is valid.</p>
-function M.Certificate(CertificateArn, CertificateCreationDate, CertificatePem, CertificateOwner, CertificateWallet, ValidToDate, KeyLength, CertificateIdentifier, SigningAlgorithm, ValidFromDate, ...)
+-- @param _CertificateArn [String] <p>The Amazon Resource Name (ARN) for the certificate.</p>
+-- @param _CertificateCreationDate [TStamp] <p>The date that the certificate was created.</p>
+-- @param _CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
+-- @param _CertificateOwner [String] <p>The owner of the certificate.</p>
+-- @param _CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
+-- @param _ValidToDate [TStamp] <p>The final date that the certificate is valid.</p>
+-- @param _KeyLength [IntegerOptional] <p>The key length of the cryptographic algorithm being used.</p>
+-- @param _CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
+-- @param _SigningAlgorithm [String] <p>The signing algorithm for the certificate.</p>
+-- @param _ValidFromDate [TStamp] <p>The beginning date that the certificate is valid.</p>
+function M.Certificate(_CertificateArn, _CertificateCreationDate, _CertificatePem, _CertificateOwner, _CertificateWallet, _ValidToDate, _KeyLength, _CertificateIdentifier, _SigningAlgorithm, _ValidFromDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
 	local t = { 
-		["CertificateArn"] = CertificateArn,
-		["CertificateCreationDate"] = CertificateCreationDate,
-		["CertificatePem"] = CertificatePem,
-		["CertificateOwner"] = CertificateOwner,
-		["CertificateWallet"] = CertificateWallet,
-		["ValidToDate"] = ValidToDate,
-		["KeyLength"] = KeyLength,
-		["CertificateIdentifier"] = CertificateIdentifier,
-		["SigningAlgorithm"] = SigningAlgorithm,
-		["ValidFromDate"] = ValidFromDate,
+		["CertificateArn"] = _CertificateArn,
+		["CertificateCreationDate"] = _CertificateCreationDate,
+		["CertificatePem"] = _CertificatePem,
+		["CertificateOwner"] = _CertificateOwner,
+		["CertificateWallet"] = _CertificateWallet,
+		["ValidToDate"] = _ValidToDate,
+		["KeyLength"] = _KeyLength,
+		["CertificateIdentifier"] = _CertificateIdentifier,
+		["SigningAlgorithm"] = _SigningAlgorithm,
+		["ValidFromDate"] = _ValidFromDate,
 	}
-	M.AssertCertificate(t)
+	asserts.AssertCertificate(t)
 	return t
 end
 
-local DescribeOrderableReplicationInstancesMessage_keys = { "Marker" = true, "MaxRecords" = true, nil }
+keys.DescribeOrderableReplicationInstancesMessage = { ["Marker"] = true, ["MaxRecords"] = true, nil }
 
-function M.AssertDescribeOrderableReplicationInstancesMessage(struct)
+function asserts.AssertDescribeOrderableReplicationInstancesMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeOrderableReplicationInstancesMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeOrderableReplicationInstancesMessage_keys[k], "DescribeOrderableReplicationInstancesMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeOrderableReplicationInstancesMessage[k], "DescribeOrderableReplicationInstancesMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeOrderableReplicationInstancesMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
-function M.DescribeOrderableReplicationInstancesMessage(Marker, MaxRecords, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+function M.DescribeOrderableReplicationInstancesMessage(_Marker, _MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrderableReplicationInstancesMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
 	}
-	M.AssertDescribeOrderableReplicationInstancesMessage(t)
+	asserts.AssertDescribeOrderableReplicationInstancesMessage(t)
 	return t
 end
 
-local DescribeEventSubscriptionsMessage_keys = { "Marker" = true, "MaxRecords" = true, "Filters" = true, "SubscriptionName" = true, nil }
+keys.DescribeEventSubscriptionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["SubscriptionName"] = true, nil }
 
-function M.AssertDescribeEventSubscriptionsMessage(struct)
+function asserts.AssertDescribeEventSubscriptionsMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventSubscriptionsMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
-	if struct["SubscriptionName"] then M.AssertString(struct["SubscriptionName"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
+	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventSubscriptionsMessage_keys[k], "DescribeEventSubscriptionsMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventSubscriptionsMessage[k], "DescribeEventSubscriptionsMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventSubscriptionsMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param Filters [FilterList] <p>Filters applied to the action.</p>
--- @param SubscriptionName [String] <p>The name of the AWS DMS event subscription to be described.</p>
-function M.DescribeEventSubscriptionsMessage(Marker, MaxRecords, Filters, SubscriptionName, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _Filters [FilterList] <p>Filters applied to the action.</p>
+-- @param _SubscriptionName [String] <p>The name of the AWS DMS event subscription to be described.</p>
+function M.DescribeEventSubscriptionsMessage(_Marker, _MaxRecords, _Filters, _SubscriptionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventSubscriptionsMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["Filters"] = Filters,
-		["SubscriptionName"] = SubscriptionName,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["Filters"] = _Filters,
+		["SubscriptionName"] = _SubscriptionName,
 	}
-	M.AssertDescribeEventSubscriptionsMessage(t)
+	asserts.AssertDescribeEventSubscriptionsMessage(t)
 	return t
 end
 
-local DescribeEventsResponse_keys = { "Marker" = true, "Events" = true, nil }
+keys.DescribeEventsResponse = { ["Marker"] = true, ["Events"] = true, nil }
 
-function M.AssertDescribeEventsResponse(struct)
+function asserts.AssertDescribeEventsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventsResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["Events"] then M.AssertEventList(struct["Events"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["Events"] then asserts.AssertEventList(struct["Events"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventsResponse_keys[k], "DescribeEventsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventsResponse[k], "DescribeEventsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventsResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param Events [EventList] <p>The events described.</p>
-function M.DescribeEventsResponse(Marker, Events, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _Events [EventList] <p>The events described.</p>
+function M.DescribeEventsResponse(_Marker, _Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["Events"] = Events,
+		["Marker"] = _Marker,
+		["Events"] = _Events,
 	}
-	M.AssertDescribeEventsResponse(t)
+	asserts.AssertDescribeEventsResponse(t)
 	return t
 end
 
-local DeleteReplicationInstanceMessage_keys = { "ReplicationInstanceArn" = true, nil }
+keys.DeleteReplicationInstanceMessage = { ["ReplicationInstanceArn"] = true, nil }
 
-function M.AssertDeleteReplicationInstanceMessage(struct)
+function asserts.AssertDeleteReplicationInstanceMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteReplicationInstanceMessage to be of type 'table'")
 	assert(struct["ReplicationInstanceArn"], "Expected key ReplicationInstanceArn to exist in table")
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteReplicationInstanceMessage_keys[k], "DeleteReplicationInstanceMessage contains unknown key " .. tostring(k))
+		assert(keys.DeleteReplicationInstanceMessage[k], "DeleteReplicationInstanceMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteReplicationInstanceMessage
 -- <p/>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance to be deleted.</p>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance to be deleted.</p>
 -- Required parameter: ReplicationInstanceArn
-function M.DeleteReplicationInstanceMessage(ReplicationInstanceArn, ...)
+function M.DeleteReplicationInstanceMessage(_ReplicationInstanceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationInstanceMessage")
 	local t = { 
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
 	}
-	M.AssertDeleteReplicationInstanceMessage(t)
+	asserts.AssertDeleteReplicationInstanceMessage(t)
 	return t
 end
 
-local DeleteEndpointMessage_keys = { "EndpointArn" = true, nil }
+keys.DeleteEndpointMessage = { ["EndpointArn"] = true, nil }
 
-function M.AssertDeleteEndpointMessage(struct)
+function asserts.AssertDeleteEndpointMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteEndpointMessage to be of type 'table'")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteEndpointMessage_keys[k], "DeleteEndpointMessage contains unknown key " .. tostring(k))
+		assert(keys.DeleteEndpointMessage[k], "DeleteEndpointMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteEndpointMessage
 -- <p/>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- Required parameter: EndpointArn
-function M.DeleteEndpointMessage(EndpointArn, ...)
+function M.DeleteEndpointMessage(_EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEndpointMessage")
 	local t = { 
-		["EndpointArn"] = EndpointArn,
+		["EndpointArn"] = _EndpointArn,
 	}
-	M.AssertDeleteEndpointMessage(t)
+	asserts.AssertDeleteEndpointMessage(t)
 	return t
 end
 
-local EventCategoryGroup_keys = { "EventCategories" = true, "SourceType" = true, nil }
+keys.EventCategoryGroup = { ["EventCategories"] = true, ["SourceType"] = true, nil }
 
-function M.AssertEventCategoryGroup(struct)
+function asserts.AssertEventCategoryGroup(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventCategoryGroup to be of type 'table'")
-	if struct["EventCategories"] then M.AssertEventCategoriesList(struct["EventCategories"]) end
-	if struct["SourceType"] then M.AssertString(struct["SourceType"]) end
+	if struct["EventCategories"] then asserts.AssertEventCategoriesList(struct["EventCategories"]) end
+	if struct["SourceType"] then asserts.AssertString(struct["SourceType"]) end
 	for k,_ in pairs(struct) do
-		assert(EventCategoryGroup_keys[k], "EventCategoryGroup contains unknown key " .. tostring(k))
+		assert(keys.EventCategoryGroup[k], "EventCategoryGroup contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventCategoryGroup
 -- <p/>
--- @param EventCategories [EventCategoriesList] <p> A list of event categories for a <code>SourceType</code> that you want to subscribe to. </p>
--- @param SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
-function M.EventCategoryGroup(EventCategories, SourceType, ...)
+-- @param _EventCategories [EventCategoriesList] <p> A list of event categories for a <code>SourceType</code> that you want to subscribe to. </p>
+-- @param _SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
+function M.EventCategoryGroup(_EventCategories, _SourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventCategoryGroup")
 	local t = { 
-		["EventCategories"] = EventCategories,
-		["SourceType"] = SourceType,
+		["EventCategories"] = _EventCategories,
+		["SourceType"] = _SourceType,
 	}
-	M.AssertEventCategoryGroup(t)
+	asserts.AssertEventCategoryGroup(t)
 	return t
 end
 
-local SupportedEndpointType_keys = { "EngineName" = true, "SupportsCDC" = true, "EndpointType" = true, nil }
+keys.SupportedEndpointType = { ["EngineName"] = true, ["SupportsCDC"] = true, ["EndpointType"] = true, nil }
 
-function M.AssertSupportedEndpointType(struct)
+function asserts.AssertSupportedEndpointType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SupportedEndpointType to be of type 'table'")
-	if struct["EngineName"] then M.AssertString(struct["EngineName"]) end
-	if struct["SupportsCDC"] then M.AssertBoolean(struct["SupportsCDC"]) end
-	if struct["EndpointType"] then M.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
+	if struct["EngineName"] then asserts.AssertString(struct["EngineName"]) end
+	if struct["SupportsCDC"] then asserts.AssertBoolean(struct["SupportsCDC"]) end
+	if struct["EndpointType"] then asserts.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
 	for k,_ in pairs(struct) do
-		assert(SupportedEndpointType_keys[k], "SupportedEndpointType contains unknown key " .. tostring(k))
+		assert(keys.SupportedEndpointType[k], "SupportedEndpointType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SupportedEndpointType
 -- <p/>
--- @param EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
--- @param SupportsCDC [Boolean] <p>Indicates if Change Data Capture (CDC) is supported.</p>
--- @param EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
-function M.SupportedEndpointType(EngineName, SupportsCDC, EndpointType, ...)
+-- @param _EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- @param _SupportsCDC [Boolean] <p>Indicates if Change Data Capture (CDC) is supported.</p>
+-- @param _EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+function M.SupportedEndpointType(_EngineName, _SupportsCDC, _EndpointType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SupportedEndpointType")
 	local t = { 
-		["EngineName"] = EngineName,
-		["SupportsCDC"] = SupportsCDC,
-		["EndpointType"] = EndpointType,
+		["EngineName"] = _EngineName,
+		["SupportsCDC"] = _SupportsCDC,
+		["EndpointType"] = _EndpointType,
 	}
-	M.AssertSupportedEndpointType(t)
+	asserts.AssertSupportedEndpointType(t)
 	return t
 end
 
-local DeleteCertificateResponse_keys = { "Certificate" = true, nil }
+keys.DeleteCertificateResponse = { ["Certificate"] = true, nil }
 
-function M.AssertDeleteCertificateResponse(struct)
+function asserts.AssertDeleteCertificateResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteCertificateResponse to be of type 'table'")
-	if struct["Certificate"] then M.AssertCertificate(struct["Certificate"]) end
+	if struct["Certificate"] then asserts.AssertCertificate(struct["Certificate"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteCertificateResponse_keys[k], "DeleteCertificateResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteCertificateResponse[k], "DeleteCertificateResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteCertificateResponse
 --  
--- @param Certificate [Certificate] <p>The Secure Sockets Layer (SSL) certificate.</p>
-function M.DeleteCertificateResponse(Certificate, ...)
+-- @param _Certificate [Certificate] <p>The Secure Sockets Layer (SSL) certificate.</p>
+function M.DeleteCertificateResponse(_Certificate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateResponse")
 	local t = { 
-		["Certificate"] = Certificate,
+		["Certificate"] = _Certificate,
 	}
-	M.AssertDeleteCertificateResponse(t)
+	asserts.AssertDeleteCertificateResponse(t)
 	return t
 end
 
-local DescribeEventCategoriesResponse_keys = { "EventCategoryGroupList" = true, nil }
+keys.DescribeEventCategoriesResponse = { ["EventCategoryGroupList"] = true, nil }
 
-function M.AssertDescribeEventCategoriesResponse(struct)
+function asserts.AssertDescribeEventCategoriesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventCategoriesResponse to be of type 'table'")
-	if struct["EventCategoryGroupList"] then M.AssertEventCategoryGroupList(struct["EventCategoryGroupList"]) end
+	if struct["EventCategoryGroupList"] then asserts.AssertEventCategoryGroupList(struct["EventCategoryGroupList"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventCategoriesResponse_keys[k], "DescribeEventCategoriesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventCategoriesResponse[k], "DescribeEventCategoriesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventCategoriesResponse
 -- <p/>
--- @param EventCategoryGroupList [EventCategoryGroupList] <p>A list of event categories.</p>
-function M.DescribeEventCategoriesResponse(EventCategoryGroupList, ...)
+-- @param _EventCategoryGroupList [EventCategoryGroupList] <p>A list of event categories.</p>
+function M.DescribeEventCategoriesResponse(_EventCategoryGroupList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventCategoriesResponse")
 	local t = { 
-		["EventCategoryGroupList"] = EventCategoryGroupList,
+		["EventCategoryGroupList"] = _EventCategoryGroupList,
 	}
-	M.AssertDescribeEventCategoriesResponse(t)
+	asserts.AssertDescribeEventCategoriesResponse(t)
 	return t
 end
 
-local DeleteReplicationInstanceResponse_keys = { "ReplicationInstance" = true, nil }
+keys.DeleteReplicationInstanceResponse = { ["ReplicationInstance"] = true, nil }
 
-function M.AssertDeleteReplicationInstanceResponse(struct)
+function asserts.AssertDeleteReplicationInstanceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteReplicationInstanceResponse to be of type 'table'")
-	if struct["ReplicationInstance"] then M.AssertReplicationInstance(struct["ReplicationInstance"]) end
+	if struct["ReplicationInstance"] then asserts.AssertReplicationInstance(struct["ReplicationInstance"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteReplicationInstanceResponse_keys[k], "DeleteReplicationInstanceResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteReplicationInstanceResponse[k], "DeleteReplicationInstanceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteReplicationInstanceResponse
 -- <p/>
--- @param ReplicationInstance [ReplicationInstance] <p>The replication instance that was deleted.</p>
-function M.DeleteReplicationInstanceResponse(ReplicationInstance, ...)
+-- @param _ReplicationInstance [ReplicationInstance] <p>The replication instance that was deleted.</p>
+function M.DeleteReplicationInstanceResponse(_ReplicationInstance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationInstanceResponse")
 	local t = { 
-		["ReplicationInstance"] = ReplicationInstance,
+		["ReplicationInstance"] = _ReplicationInstance,
 	}
-	M.AssertDeleteReplicationInstanceResponse(t)
+	asserts.AssertDeleteReplicationInstanceResponse(t)
 	return t
 end
 
-local ListTagsForResourceMessage_keys = { "ResourceArn" = true, nil }
+keys.ListTagsForResourceMessage = { ["ResourceArn"] = true, nil }
 
-function M.AssertListTagsForResourceMessage(struct)
+function asserts.AssertListTagsForResourceMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForResourceMessage to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
-	if struct["ResourceArn"] then M.AssertString(struct["ResourceArn"]) end
+	if struct["ResourceArn"] then asserts.AssertString(struct["ResourceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForResourceMessage_keys[k], "ListTagsForResourceMessage contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceMessage[k], "ListTagsForResourceMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForResourceMessage
 -- <p/>
--- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.</p>
+-- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.</p>
 -- Required parameter: ResourceArn
-function M.ListTagsForResourceMessage(ResourceArn, ...)
+function M.ListTagsForResourceMessage(_ResourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceMessage")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
+		["ResourceArn"] = _ResourceArn,
 	}
-	M.AssertListTagsForResourceMessage(t)
+	asserts.AssertListTagsForResourceMessage(t)
 	return t
 end
 
-local DeleteReplicationTaskMessage_keys = { "ReplicationTaskArn" = true, nil }
+keys.DeleteReplicationTaskMessage = { ["ReplicationTaskArn"] = true, nil }
 
-function M.AssertDeleteReplicationTaskMessage(struct)
+function asserts.AssertDeleteReplicationTaskMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteReplicationTaskMessage to be of type 'table'")
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteReplicationTaskMessage_keys[k], "DeleteReplicationTaskMessage contains unknown key " .. tostring(k))
+		assert(keys.DeleteReplicationTaskMessage[k], "DeleteReplicationTaskMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteReplicationTaskMessage
 -- <p/>
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task to be deleted.</p>
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task to be deleted.</p>
 -- Required parameter: ReplicationTaskArn
-function M.DeleteReplicationTaskMessage(ReplicationTaskArn, ...)
+function M.DeleteReplicationTaskMessage(_ReplicationTaskArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationTaskMessage")
 	local t = { 
-		["ReplicationTaskArn"] = ReplicationTaskArn,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
 	}
-	M.AssertDeleteReplicationTaskMessage(t)
+	asserts.AssertDeleteReplicationTaskMessage(t)
 	return t
 end
 
-local DescribeEndpointsMessage_keys = { "Marker" = true, "MaxRecords" = true, "Filters" = true, nil }
+keys.DescribeEndpointsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
 
-function M.AssertDescribeEndpointsMessage(struct)
+function asserts.AssertDescribeEndpointsMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEndpointsMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEndpointsMessage_keys[k], "DescribeEndpointsMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeEndpointsMessage[k], "DescribeEndpointsMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEndpointsMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: endpoint-arn | endpoint-type | endpoint-id | engine-name</p>
-function M.DescribeEndpointsMessage(Marker, MaxRecords, Filters, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: endpoint-arn | endpoint-type | endpoint-id | engine-name</p>
+function M.DescribeEndpointsMessage(_Marker, _MaxRecords, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointsMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["Filters"] = Filters,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeEndpointsMessage(t)
+	asserts.AssertDescribeEndpointsMessage(t)
 	return t
 end
 
-local Filter_keys = { "Values" = true, "Name" = true, nil }
+keys.Filter = { ["Values"] = true, ["Name"] = true, nil }
 
-function M.AssertFilter(struct)
+function asserts.AssertFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Filter to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Values"], "Expected key Values to exist in table")
-	if struct["Values"] then M.AssertFilterValueList(struct["Values"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Values"] then asserts.AssertFilterValueList(struct["Values"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(Filter_keys[k], "Filter contains unknown key " .. tostring(k))
+		assert(keys.Filter[k], "Filter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Filter
 -- <p/>
--- @param Values [FilterValueList] <p>The filter value.</p>
--- @param Name [String] <p>The name of the filter.</p>
+-- @param _Values [FilterValueList] <p>The filter value.</p>
+-- @param _Name [String] <p>The name of the filter.</p>
 -- Required parameter: Name
 -- Required parameter: Values
-function M.Filter(Values, Name, ...)
+function M.Filter(_Values, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Filter")
 	local t = { 
-		["Values"] = Values,
-		["Name"] = Name,
+		["Values"] = _Values,
+		["Name"] = _Name,
 	}
-	M.AssertFilter(t)
+	asserts.AssertFilter(t)
 	return t
 end
 
-local Connection_keys = { "Status" = true, "ReplicationInstanceArn" = true, "LastFailureMessage" = true, "EndpointArn" = true, "ReplicationInstanceIdentifier" = true, "EndpointIdentifier" = true, nil }
+keys.Connection = { ["Status"] = true, ["ReplicationInstanceArn"] = true, ["LastFailureMessage"] = true, ["EndpointArn"] = true, ["ReplicationInstanceIdentifier"] = true, ["EndpointIdentifier"] = true, nil }
 
-function M.AssertConnection(struct)
+function asserts.AssertConnection(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Connection to be of type 'table'")
-	if struct["Status"] then M.AssertString(struct["Status"]) end
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
-	if struct["LastFailureMessage"] then M.AssertString(struct["LastFailureMessage"]) end
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
-	if struct["ReplicationInstanceIdentifier"] then M.AssertString(struct["ReplicationInstanceIdentifier"]) end
-	if struct["EndpointIdentifier"] then M.AssertString(struct["EndpointIdentifier"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["LastFailureMessage"] then asserts.AssertString(struct["LastFailureMessage"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
+	if struct["ReplicationInstanceIdentifier"] then asserts.AssertString(struct["ReplicationInstanceIdentifier"]) end
+	if struct["EndpointIdentifier"] then asserts.AssertString(struct["EndpointIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(Connection_keys[k], "Connection contains unknown key " .. tostring(k))
+		assert(keys.Connection[k], "Connection contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Connection
 -- <p/>
--- @param Status [String] <p>The connection status.</p>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param LastFailureMessage [String] <p>The error message when the connection last failed.</p>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
--- @param EndpointIdentifier [String] <p>The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
-function M.Connection(Status, ReplicationInstanceArn, LastFailureMessage, EndpointArn, ReplicationInstanceIdentifier, EndpointIdentifier, ...)
+-- @param _Status [String] <p>The connection status.</p>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param _LastFailureMessage [String] <p>The error message when the connection last failed.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
+-- @param _EndpointIdentifier [String] <p>The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+function M.Connection(_Status, _ReplicationInstanceArn, _LastFailureMessage, _EndpointArn, _ReplicationInstanceIdentifier, _EndpointIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Connection")
 	local t = { 
-		["Status"] = Status,
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
-		["LastFailureMessage"] = LastFailureMessage,
-		["EndpointArn"] = EndpointArn,
-		["ReplicationInstanceIdentifier"] = ReplicationInstanceIdentifier,
-		["EndpointIdentifier"] = EndpointIdentifier,
+		["Status"] = _Status,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["LastFailureMessage"] = _LastFailureMessage,
+		["EndpointArn"] = _EndpointArn,
+		["ReplicationInstanceIdentifier"] = _ReplicationInstanceIdentifier,
+		["EndpointIdentifier"] = _EndpointIdentifier,
 	}
-	M.AssertConnection(t)
+	asserts.AssertConnection(t)
 	return t
 end
 
-local DescribeEndpointTypesResponse_keys = { "Marker" = true, "SupportedEndpointTypes" = true, nil }
+keys.DescribeEndpointTypesResponse = { ["Marker"] = true, ["SupportedEndpointTypes"] = true, nil }
 
-function M.AssertDescribeEndpointTypesResponse(struct)
+function asserts.AssertDescribeEndpointTypesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEndpointTypesResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["SupportedEndpointTypes"] then M.AssertSupportedEndpointTypeList(struct["SupportedEndpointTypes"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["SupportedEndpointTypes"] then asserts.AssertSupportedEndpointTypeList(struct["SupportedEndpointTypes"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEndpointTypesResponse_keys[k], "DescribeEndpointTypesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEndpointTypesResponse[k], "DescribeEndpointTypesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEndpointTypesResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param SupportedEndpointTypes [SupportedEndpointTypeList] <p>The type of endpoints that are supported.</p>
-function M.DescribeEndpointTypesResponse(Marker, SupportedEndpointTypes, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _SupportedEndpointTypes [SupportedEndpointTypeList] <p>The type of endpoints that are supported.</p>
+function M.DescribeEndpointTypesResponse(_Marker, _SupportedEndpointTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointTypesResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["SupportedEndpointTypes"] = SupportedEndpointTypes,
+		["Marker"] = _Marker,
+		["SupportedEndpointTypes"] = _SupportedEndpointTypes,
 	}
-	M.AssertDescribeEndpointTypesResponse(t)
+	asserts.AssertDescribeEndpointTypesResponse(t)
 	return t
 end
 
-local UpgradeDependencyFailureFault_keys = { "message" = true, nil }
+keys.UpgradeDependencyFailureFault = { ["message"] = true, nil }
 
-function M.AssertUpgradeDependencyFailureFault(struct)
+function asserts.AssertUpgradeDependencyFailureFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpgradeDependencyFailureFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UpgradeDependencyFailureFault_keys[k], "UpgradeDependencyFailureFault contains unknown key " .. tostring(k))
+		assert(keys.UpgradeDependencyFailureFault[k], "UpgradeDependencyFailureFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpgradeDependencyFailureFault
 -- <p>An upgrade dependency is preventing the database migration.</p>
--- @param message [ExceptionMessage] <p/>
-function M.UpgradeDependencyFailureFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.UpgradeDependencyFailureFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpgradeDependencyFailureFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUpgradeDependencyFailureFault(t)
+	asserts.AssertUpgradeDependencyFailureFault(t)
 	return t
 end
 
-local DescribeCertificatesMessage_keys = { "Marker" = true, "MaxRecords" = true, "Filters" = true, nil }
+keys.DescribeCertificatesMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
 
-function M.AssertDescribeCertificatesMessage(struct)
+function asserts.AssertDescribeCertificatesMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCertificatesMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCertificatesMessage_keys[k], "DescribeCertificatesMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeCertificatesMessage[k], "DescribeCertificatesMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCertificatesMessage
 --  
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 10</p>
--- @param Filters [FilterList] <p>Filters applied to the certificate described in the form of key-value pairs.</p>
-function M.DescribeCertificatesMessage(Marker, MaxRecords, Filters, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 10</p>
+-- @param _Filters [FilterList] <p>Filters applied to the certificate described in the form of key-value pairs.</p>
+function M.DescribeCertificatesMessage(_Marker, _MaxRecords, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificatesMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["Filters"] = Filters,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeCertificatesMessage(t)
+	asserts.AssertDescribeCertificatesMessage(t)
 	return t
 end
 
-local ReplicationPendingModifiedValues_keys = { "ReplicationInstanceClass" = true, "EngineVersion" = true, "AllocatedStorage" = true, "MultiAZ" = true, nil }
+keys.ReplicationPendingModifiedValues = { ["ReplicationInstanceClass"] = true, ["EngineVersion"] = true, ["AllocatedStorage"] = true, ["MultiAZ"] = true, nil }
 
-function M.AssertReplicationPendingModifiedValues(struct)
+function asserts.AssertReplicationPendingModifiedValues(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationPendingModifiedValues to be of type 'table'")
-	if struct["ReplicationInstanceClass"] then M.AssertString(struct["ReplicationInstanceClass"]) end
-	if struct["EngineVersion"] then M.AssertString(struct["EngineVersion"]) end
-	if struct["AllocatedStorage"] then M.AssertIntegerOptional(struct["AllocatedStorage"]) end
-	if struct["MultiAZ"] then M.AssertBooleanOptional(struct["MultiAZ"]) end
+	if struct["ReplicationInstanceClass"] then asserts.AssertString(struct["ReplicationInstanceClass"]) end
+	if struct["EngineVersion"] then asserts.AssertString(struct["EngineVersion"]) end
+	if struct["AllocatedStorage"] then asserts.AssertIntegerOptional(struct["AllocatedStorage"]) end
+	if struct["MultiAZ"] then asserts.AssertBooleanOptional(struct["MultiAZ"]) end
 	for k,_ in pairs(struct) do
-		assert(ReplicationPendingModifiedValues_keys[k], "ReplicationPendingModifiedValues contains unknown key " .. tostring(k))
+		assert(keys.ReplicationPendingModifiedValues[k], "ReplicationPendingModifiedValues contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReplicationPendingModifiedValues
 -- <p/>
--- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param EngineVersion [String] <p>The engine version number of the replication instance.</p>
--- @param AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- @param MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
-function M.ReplicationPendingModifiedValues(ReplicationInstanceClass, EngineVersion, AllocatedStorage, MultiAZ, ...)
+-- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param _EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- @param _AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- @param _MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+function M.ReplicationPendingModifiedValues(_ReplicationInstanceClass, _EngineVersion, _AllocatedStorage, _MultiAZ, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationPendingModifiedValues")
 	local t = { 
-		["ReplicationInstanceClass"] = ReplicationInstanceClass,
-		["EngineVersion"] = EngineVersion,
-		["AllocatedStorage"] = AllocatedStorage,
-		["MultiAZ"] = MultiAZ,
+		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
+		["EngineVersion"] = _EngineVersion,
+		["AllocatedStorage"] = _AllocatedStorage,
+		["MultiAZ"] = _MultiAZ,
 	}
-	M.AssertReplicationPendingModifiedValues(t)
+	asserts.AssertReplicationPendingModifiedValues(t)
 	return t
 end
 
-local DescribeReplicationTasksMessage_keys = { "Marker" = true, "MaxRecords" = true, "Filters" = true, nil }
+keys.DescribeReplicationTasksMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
 
-function M.AssertDescribeReplicationTasksMessage(struct)
+function asserts.AssertDescribeReplicationTasksMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeReplicationTasksMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeReplicationTasksMessage_keys[k], "DescribeReplicationTasksMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeReplicationTasksMessage[k], "DescribeReplicationTasksMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeReplicationTasksMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-task-arn | replication-task-id | migration-type | endpoint-arn | replication-instance-arn</p>
-function M.DescribeReplicationTasksMessage(Marker, MaxRecords, Filters, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-task-arn | replication-task-id | migration-type | endpoint-arn | replication-instance-arn</p>
+function M.DescribeReplicationTasksMessage(_Marker, _MaxRecords, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationTasksMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["Filters"] = Filters,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeReplicationTasksMessage(t)
+	asserts.AssertDescribeReplicationTasksMessage(t)
 	return t
 end
 
-local CreateReplicationInstanceMessage_keys = { "MultiAZ" = true, "AvailabilityZone" = true, "PubliclyAccessible" = true, "Tags" = true, "ReplicationInstanceClass" = true, "VpcSecurityGroupIds" = true, "AutoMinorVersionUpgrade" = true, "KmsKeyId" = true, "AllocatedStorage" = true, "EngineVersion" = true, "ReplicationInstanceIdentifier" = true, "PreferredMaintenanceWindow" = true, "ReplicationSubnetGroupIdentifier" = true, nil }
+keys.CreateReplicationInstanceMessage = { ["MultiAZ"] = true, ["AvailabilityZone"] = true, ["PubliclyAccessible"] = true, ["Tags"] = true, ["ReplicationInstanceClass"] = true, ["VpcSecurityGroupIds"] = true, ["AutoMinorVersionUpgrade"] = true, ["KmsKeyId"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["ReplicationInstanceIdentifier"] = true, ["PreferredMaintenanceWindow"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
 
-function M.AssertCreateReplicationInstanceMessage(struct)
+function asserts.AssertCreateReplicationInstanceMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateReplicationInstanceMessage to be of type 'table'")
 	assert(struct["ReplicationInstanceIdentifier"], "Expected key ReplicationInstanceIdentifier to exist in table")
 	assert(struct["ReplicationInstanceClass"], "Expected key ReplicationInstanceClass to exist in table")
-	if struct["MultiAZ"] then M.AssertBooleanOptional(struct["MultiAZ"]) end
-	if struct["AvailabilityZone"] then M.AssertString(struct["AvailabilityZone"]) end
-	if struct["PubliclyAccessible"] then M.AssertBooleanOptional(struct["PubliclyAccessible"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["ReplicationInstanceClass"] then M.AssertString(struct["ReplicationInstanceClass"]) end
-	if struct["VpcSecurityGroupIds"] then M.AssertVpcSecurityGroupIdList(struct["VpcSecurityGroupIds"]) end
-	if struct["AutoMinorVersionUpgrade"] then M.AssertBooleanOptional(struct["AutoMinorVersionUpgrade"]) end
-	if struct["KmsKeyId"] then M.AssertString(struct["KmsKeyId"]) end
-	if struct["AllocatedStorage"] then M.AssertIntegerOptional(struct["AllocatedStorage"]) end
-	if struct["EngineVersion"] then M.AssertString(struct["EngineVersion"]) end
-	if struct["ReplicationInstanceIdentifier"] then M.AssertString(struct["ReplicationInstanceIdentifier"]) end
-	if struct["PreferredMaintenanceWindow"] then M.AssertString(struct["PreferredMaintenanceWindow"]) end
-	if struct["ReplicationSubnetGroupIdentifier"] then M.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
+	if struct["MultiAZ"] then asserts.AssertBooleanOptional(struct["MultiAZ"]) end
+	if struct["AvailabilityZone"] then asserts.AssertString(struct["AvailabilityZone"]) end
+	if struct["PubliclyAccessible"] then asserts.AssertBooleanOptional(struct["PubliclyAccessible"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["ReplicationInstanceClass"] then asserts.AssertString(struct["ReplicationInstanceClass"]) end
+	if struct["VpcSecurityGroupIds"] then asserts.AssertVpcSecurityGroupIdList(struct["VpcSecurityGroupIds"]) end
+	if struct["AutoMinorVersionUpgrade"] then asserts.AssertBooleanOptional(struct["AutoMinorVersionUpgrade"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["AllocatedStorage"] then asserts.AssertIntegerOptional(struct["AllocatedStorage"]) end
+	if struct["EngineVersion"] then asserts.AssertString(struct["EngineVersion"]) end
+	if struct["ReplicationInstanceIdentifier"] then asserts.AssertString(struct["ReplicationInstanceIdentifier"]) end
+	if struct["PreferredMaintenanceWindow"] then asserts.AssertString(struct["PreferredMaintenanceWindow"]) end
+	if struct["ReplicationSubnetGroupIdentifier"] then asserts.AssertString(struct["ReplicationSubnetGroupIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateReplicationInstanceMessage_keys[k], "CreateReplicationInstanceMessage contains unknown key " .. tostring(k))
+		assert(keys.CreateReplicationInstanceMessage[k], "CreateReplicationInstanceMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateReplicationInstanceMessage
 -- <p/>
--- @param MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
--- @param AvailabilityZone [String] <p>The EC2 Availability Zone that the replication instance will be created in.</p> <p>Default: A random, system-chosen Availability Zone in the endpoint's region.</p> <p> Example: <code>us-east-1d</code> </p>
--- @param PubliclyAccessible [BooleanOptional] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
--- @param Tags [TagList] <p>Tags to be associated with the replication instance.</p>
--- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance as specified by the replication instance class.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
--- @param AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.</p> <p>Default: <code>true</code> </p>
--- @param KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
--- @param AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be initially allocated for the replication instance.</p>
--- @param EngineVersion [String] <p>The engine version number of the replication instance.</p>
--- @param ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
--- @param PreferredMaintenanceWindow [String] <p>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week.</p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
--- @param ReplicationSubnetGroupIdentifier [String] <p>A subnet group to associate with the replication instance.</p>
+-- @param _MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- @param _AvailabilityZone [String] <p>The EC2 Availability Zone that the replication instance will be created in.</p> <p>Default: A random, system-chosen Availability Zone in the endpoint's region.</p> <p> Example: <code>us-east-1d</code> </p>
+-- @param _PubliclyAccessible [BooleanOptional] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
+-- @param _Tags [TagList] <p>Tags to be associated with the replication instance.</p>
+-- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance as specified by the replication instance class.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param _VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
+-- @param _AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.</p> <p>Default: <code>true</code> </p>
+-- @param _KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param _AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be initially allocated for the replication instance.</p>
+-- @param _EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- @param _ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
+-- @param _PreferredMaintenanceWindow [String] <p>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week.</p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- @param _ReplicationSubnetGroupIdentifier [String] <p>A subnet group to associate with the replication instance.</p>
 -- Required parameter: ReplicationInstanceIdentifier
 -- Required parameter: ReplicationInstanceClass
-function M.CreateReplicationInstanceMessage(MultiAZ, AvailabilityZone, PubliclyAccessible, Tags, ReplicationInstanceClass, VpcSecurityGroupIds, AutoMinorVersionUpgrade, KmsKeyId, AllocatedStorage, EngineVersion, ReplicationInstanceIdentifier, PreferredMaintenanceWindow, ReplicationSubnetGroupIdentifier, ...)
+function M.CreateReplicationInstanceMessage(_MultiAZ, _AvailabilityZone, _PubliclyAccessible, _Tags, _ReplicationInstanceClass, _VpcSecurityGroupIds, _AutoMinorVersionUpgrade, _KmsKeyId, _AllocatedStorage, _EngineVersion, _ReplicationInstanceIdentifier, _PreferredMaintenanceWindow, _ReplicationSubnetGroupIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationInstanceMessage")
 	local t = { 
-		["MultiAZ"] = MultiAZ,
-		["AvailabilityZone"] = AvailabilityZone,
-		["PubliclyAccessible"] = PubliclyAccessible,
-		["Tags"] = Tags,
-		["ReplicationInstanceClass"] = ReplicationInstanceClass,
-		["VpcSecurityGroupIds"] = VpcSecurityGroupIds,
-		["AutoMinorVersionUpgrade"] = AutoMinorVersionUpgrade,
-		["KmsKeyId"] = KmsKeyId,
-		["AllocatedStorage"] = AllocatedStorage,
-		["EngineVersion"] = EngineVersion,
-		["ReplicationInstanceIdentifier"] = ReplicationInstanceIdentifier,
-		["PreferredMaintenanceWindow"] = PreferredMaintenanceWindow,
-		["ReplicationSubnetGroupIdentifier"] = ReplicationSubnetGroupIdentifier,
+		["MultiAZ"] = _MultiAZ,
+		["AvailabilityZone"] = _AvailabilityZone,
+		["PubliclyAccessible"] = _PubliclyAccessible,
+		["Tags"] = _Tags,
+		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
+		["VpcSecurityGroupIds"] = _VpcSecurityGroupIds,
+		["AutoMinorVersionUpgrade"] = _AutoMinorVersionUpgrade,
+		["KmsKeyId"] = _KmsKeyId,
+		["AllocatedStorage"] = _AllocatedStorage,
+		["EngineVersion"] = _EngineVersion,
+		["ReplicationInstanceIdentifier"] = _ReplicationInstanceIdentifier,
+		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
+		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
 	}
-	M.AssertCreateReplicationInstanceMessage(t)
+	asserts.AssertCreateReplicationInstanceMessage(t)
 	return t
 end
 
-local ModifyEndpointResponse_keys = { "Endpoint" = true, nil }
+keys.ModifyEndpointResponse = { ["Endpoint"] = true, nil }
 
-function M.AssertModifyEndpointResponse(struct)
+function asserts.AssertModifyEndpointResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyEndpointResponse to be of type 'table'")
-	if struct["Endpoint"] then M.AssertEndpoint(struct["Endpoint"]) end
+	if struct["Endpoint"] then asserts.AssertEndpoint(struct["Endpoint"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyEndpointResponse_keys[k], "ModifyEndpointResponse contains unknown key " .. tostring(k))
+		assert(keys.ModifyEndpointResponse[k], "ModifyEndpointResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyEndpointResponse
 -- <p/>
--- @param Endpoint [Endpoint] <p>The modified endpoint.</p>
-function M.ModifyEndpointResponse(Endpoint, ...)
+-- @param _Endpoint [Endpoint] <p>The modified endpoint.</p>
+function M.ModifyEndpointResponse(_Endpoint, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEndpointResponse")
 	local t = { 
-		["Endpoint"] = Endpoint,
+		["Endpoint"] = _Endpoint,
 	}
-	M.AssertModifyEndpointResponse(t)
+	asserts.AssertModifyEndpointResponse(t)
 	return t
 end
 
-local ModifyEndpointMessage_keys = { "Username" = true, "CertificateArn" = true, "MongoDbSettings" = true, "S3Settings" = true, "ServerName" = true, "EndpointType" = true, "EndpointArn" = true, "ExtraConnectionAttributes" = true, "DatabaseName" = true, "DynamoDbSettings" = true, "SslMode" = true, "EngineName" = true, "Password" = true, "EndpointIdentifier" = true, "Port" = true, nil }
+keys.ModifyEndpointMessage = { ["Username"] = true, ["CertificateArn"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["ServerName"] = true, ["EndpointType"] = true, ["EndpointArn"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["Password"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
 
-function M.AssertModifyEndpointMessage(struct)
+function asserts.AssertModifyEndpointMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyEndpointMessage to be of type 'table'")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
-	if struct["Username"] then M.AssertString(struct["Username"]) end
-	if struct["CertificateArn"] then M.AssertString(struct["CertificateArn"]) end
-	if struct["MongoDbSettings"] then M.AssertMongoDbSettings(struct["MongoDbSettings"]) end
-	if struct["S3Settings"] then M.AssertS3Settings(struct["S3Settings"]) end
-	if struct["ServerName"] then M.AssertString(struct["ServerName"]) end
-	if struct["EndpointType"] then M.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
-	if struct["ExtraConnectionAttributes"] then M.AssertString(struct["ExtraConnectionAttributes"]) end
-	if struct["DatabaseName"] then M.AssertString(struct["DatabaseName"]) end
-	if struct["DynamoDbSettings"] then M.AssertDynamoDbSettings(struct["DynamoDbSettings"]) end
-	if struct["SslMode"] then M.AssertDmsSslModeValue(struct["SslMode"]) end
-	if struct["EngineName"] then M.AssertString(struct["EngineName"]) end
-	if struct["Password"] then M.AssertSecretString(struct["Password"]) end
-	if struct["EndpointIdentifier"] then M.AssertString(struct["EndpointIdentifier"]) end
-	if struct["Port"] then M.AssertIntegerOptional(struct["Port"]) end
+	if struct["Username"] then asserts.AssertString(struct["Username"]) end
+	if struct["CertificateArn"] then asserts.AssertString(struct["CertificateArn"]) end
+	if struct["MongoDbSettings"] then asserts.AssertMongoDbSettings(struct["MongoDbSettings"]) end
+	if struct["S3Settings"] then asserts.AssertS3Settings(struct["S3Settings"]) end
+	if struct["ServerName"] then asserts.AssertString(struct["ServerName"]) end
+	if struct["EndpointType"] then asserts.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
+	if struct["ExtraConnectionAttributes"] then asserts.AssertString(struct["ExtraConnectionAttributes"]) end
+	if struct["DatabaseName"] then asserts.AssertString(struct["DatabaseName"]) end
+	if struct["DynamoDbSettings"] then asserts.AssertDynamoDbSettings(struct["DynamoDbSettings"]) end
+	if struct["SslMode"] then asserts.AssertDmsSslModeValue(struct["SslMode"]) end
+	if struct["EngineName"] then asserts.AssertString(struct["EngineName"]) end
+	if struct["Password"] then asserts.AssertSecretString(struct["Password"]) end
+	if struct["EndpointIdentifier"] then asserts.AssertString(struct["EndpointIdentifier"]) end
+	if struct["Port"] then asserts.AssertIntegerOptional(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyEndpointMessage_keys[k], "ModifyEndpointMessage contains unknown key " .. tostring(k))
+		assert(keys.ModifyEndpointMessage[k], "ModifyEndpointMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyEndpointMessage
 -- <p/>
--- @param Username [String] <p>The user name to be used to login to the endpoint database.</p>
--- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) of the certificate used for SSL connection.</p>
--- @param MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- @param S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- @param ServerName [String] <p>The name of the server where the endpoint database resides.</p>
--- @param EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
--- @param DatabaseName [String] <p>The name of the endpoint database.</p>
--- @param DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
--- @param SslMode [DmsSslModeValue] <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- @param EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.</p>
--- @param Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
--- @param EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
--- @param Port [IntegerOptional] <p>The port used by the endpoint database.</p>
+-- @param _Username [String] <p>The user name to be used to login to the endpoint database.</p>
+-- @param _CertificateArn [String] <p>The Amazon Resource Name (ARN) of the certificate used for SSL connection.</p>
+-- @param _MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- @param _S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- @param _ServerName [String] <p>The name of the server where the endpoint database resides.</p>
+-- @param _EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
+-- @param _DatabaseName [String] <p>The name of the endpoint database.</p>
+-- @param _DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
+-- @param _SslMode [DmsSslModeValue] <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- @param _EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.</p>
+-- @param _Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
+-- @param _EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- @param _Port [IntegerOptional] <p>The port used by the endpoint database.</p>
 -- Required parameter: EndpointArn
-function M.ModifyEndpointMessage(Username, CertificateArn, MongoDbSettings, S3Settings, ServerName, EndpointType, EndpointArn, ExtraConnectionAttributes, DatabaseName, DynamoDbSettings, SslMode, EngineName, Password, EndpointIdentifier, Port, ...)
+function M.ModifyEndpointMessage(_Username, _CertificateArn, _MongoDbSettings, _S3Settings, _ServerName, _EndpointType, _EndpointArn, _ExtraConnectionAttributes, _DatabaseName, _DynamoDbSettings, _SslMode, _EngineName, _Password, _EndpointIdentifier, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEndpointMessage")
 	local t = { 
-		["Username"] = Username,
-		["CertificateArn"] = CertificateArn,
-		["MongoDbSettings"] = MongoDbSettings,
-		["S3Settings"] = S3Settings,
-		["ServerName"] = ServerName,
-		["EndpointType"] = EndpointType,
-		["EndpointArn"] = EndpointArn,
-		["ExtraConnectionAttributes"] = ExtraConnectionAttributes,
-		["DatabaseName"] = DatabaseName,
-		["DynamoDbSettings"] = DynamoDbSettings,
-		["SslMode"] = SslMode,
-		["EngineName"] = EngineName,
-		["Password"] = Password,
-		["EndpointIdentifier"] = EndpointIdentifier,
-		["Port"] = Port,
+		["Username"] = _Username,
+		["CertificateArn"] = _CertificateArn,
+		["MongoDbSettings"] = _MongoDbSettings,
+		["S3Settings"] = _S3Settings,
+		["ServerName"] = _ServerName,
+		["EndpointType"] = _EndpointType,
+		["EndpointArn"] = _EndpointArn,
+		["ExtraConnectionAttributes"] = _ExtraConnectionAttributes,
+		["DatabaseName"] = _DatabaseName,
+		["DynamoDbSettings"] = _DynamoDbSettings,
+		["SslMode"] = _SslMode,
+		["EngineName"] = _EngineName,
+		["Password"] = _Password,
+		["EndpointIdentifier"] = _EndpointIdentifier,
+		["Port"] = _Port,
 	}
-	M.AssertModifyEndpointMessage(t)
+	asserts.AssertModifyEndpointMessage(t)
 	return t
 end
 
-local RefreshSchemasMessage_keys = { "EndpointArn" = true, "ReplicationInstanceArn" = true, nil }
+keys.RefreshSchemasMessage = { ["EndpointArn"] = true, ["ReplicationInstanceArn"] = true, nil }
 
-function M.AssertRefreshSchemasMessage(struct)
+function asserts.AssertRefreshSchemasMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RefreshSchemasMessage to be of type 'table'")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
 	assert(struct["ReplicationInstanceArn"], "Expected key ReplicationInstanceArn to exist in table")
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(RefreshSchemasMessage_keys[k], "RefreshSchemasMessage contains unknown key " .. tostring(k))
+		assert(keys.RefreshSchemasMessage[k], "RefreshSchemasMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RefreshSchemasMessage
 -- <p/>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
 -- Required parameter: EndpointArn
 -- Required parameter: ReplicationInstanceArn
-function M.RefreshSchemasMessage(EndpointArn, ReplicationInstanceArn, ...)
+function M.RefreshSchemasMessage(_EndpointArn, _ReplicationInstanceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshSchemasMessage")
 	local t = { 
-		["EndpointArn"] = EndpointArn,
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
+		["EndpointArn"] = _EndpointArn,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
 	}
-	M.AssertRefreshSchemasMessage(t)
+	asserts.AssertRefreshSchemasMessage(t)
 	return t
 end
 
-local StopReplicationTaskResponse_keys = { "ReplicationTask" = true, nil }
+keys.StopReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
 
-function M.AssertStopReplicationTaskResponse(struct)
+function asserts.AssertStopReplicationTaskResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopReplicationTaskResponse to be of type 'table'")
-	if struct["ReplicationTask"] then M.AssertReplicationTask(struct["ReplicationTask"]) end
+	if struct["ReplicationTask"] then asserts.AssertReplicationTask(struct["ReplicationTask"]) end
 	for k,_ in pairs(struct) do
-		assert(StopReplicationTaskResponse_keys[k], "StopReplicationTaskResponse contains unknown key " .. tostring(k))
+		assert(keys.StopReplicationTaskResponse[k], "StopReplicationTaskResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopReplicationTaskResponse
 -- <p/>
--- @param ReplicationTask [ReplicationTask] <p>The replication task stopped.</p>
-function M.StopReplicationTaskResponse(ReplicationTask, ...)
+-- @param _ReplicationTask [ReplicationTask] <p>The replication task stopped.</p>
+function M.StopReplicationTaskResponse(_ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = ReplicationTask,
+		["ReplicationTask"] = _ReplicationTask,
 	}
-	M.AssertStopReplicationTaskResponse(t)
+	asserts.AssertStopReplicationTaskResponse(t)
 	return t
 end
 
-local KMSKeyNotAccessibleFault_keys = { "message" = true, nil }
+keys.KMSKeyNotAccessibleFault = { ["message"] = true, nil }
 
-function M.AssertKMSKeyNotAccessibleFault(struct)
+function asserts.AssertKMSKeyNotAccessibleFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KMSKeyNotAccessibleFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(KMSKeyNotAccessibleFault_keys[k], "KMSKeyNotAccessibleFault contains unknown key " .. tostring(k))
+		assert(keys.KMSKeyNotAccessibleFault[k], "KMSKeyNotAccessibleFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KMSKeyNotAccessibleFault
 -- <p>AWS DMS cannot access the KMS key.</p>
--- @param message [ExceptionMessage] <p/>
-function M.KMSKeyNotAccessibleFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.KMSKeyNotAccessibleFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSKeyNotAccessibleFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertKMSKeyNotAccessibleFault(t)
+	asserts.AssertKMSKeyNotAccessibleFault(t)
 	return t
 end
 
-local DescribeAccountAttributesResponse_keys = { "AccountQuotas" = true, nil }
+keys.DescribeAccountAttributesResponse = { ["AccountQuotas"] = true, nil }
 
-function M.AssertDescribeAccountAttributesResponse(struct)
+function asserts.AssertDescribeAccountAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAccountAttributesResponse to be of type 'table'")
-	if struct["AccountQuotas"] then M.AssertAccountQuotaList(struct["AccountQuotas"]) end
+	if struct["AccountQuotas"] then asserts.AssertAccountQuotaList(struct["AccountQuotas"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAccountAttributesResponse_keys[k], "DescribeAccountAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeAccountAttributesResponse[k], "DescribeAccountAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAccountAttributesResponse
 -- <p/>
--- @param AccountQuotas [AccountQuotaList] <p>Account quota information.</p>
-function M.DescribeAccountAttributesResponse(AccountQuotas, ...)
+-- @param _AccountQuotas [AccountQuotaList] <p>Account quota information.</p>
+function M.DescribeAccountAttributesResponse(_AccountQuotas, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesResponse")
 	local t = { 
-		["AccountQuotas"] = AccountQuotas,
+		["AccountQuotas"] = _AccountQuotas,
 	}
-	M.AssertDescribeAccountAttributesResponse(t)
+	asserts.AssertDescribeAccountAttributesResponse(t)
 	return t
 end
 
-local DescribeSchemasMessage_keys = { "Marker" = true, "MaxRecords" = true, "EndpointArn" = true, nil }
+keys.DescribeSchemasMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["EndpointArn"] = true, nil }
 
-function M.AssertDescribeSchemasMessage(struct)
+function asserts.AssertDescribeSchemasMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSchemasMessage to be of type 'table'")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSchemasMessage_keys[k], "DescribeSchemasMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeSchemasMessage[k], "DescribeSchemasMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSchemasMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- Required parameter: EndpointArn
-function M.DescribeSchemasMessage(Marker, MaxRecords, EndpointArn, ...)
+function M.DescribeSchemasMessage(_Marker, _MaxRecords, _EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSchemasMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["EndpointArn"] = EndpointArn,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["EndpointArn"] = _EndpointArn,
 	}
-	M.AssertDescribeSchemasMessage(t)
+	asserts.AssertDescribeSchemasMessage(t)
 	return t
 end
 
-local ReloadTablesResponse_keys = { "ReplicationTaskArn" = true, nil }
+keys.ReloadTablesResponse = { ["ReplicationTaskArn"] = true, nil }
 
-function M.AssertReloadTablesResponse(struct)
+function asserts.AssertReloadTablesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReloadTablesResponse to be of type 'table'")
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ReloadTablesResponse_keys[k], "ReloadTablesResponse contains unknown key " .. tostring(k))
+		assert(keys.ReloadTablesResponse[k], "ReloadTablesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReloadTablesResponse
 --  
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task. </p>
-function M.ReloadTablesResponse(ReplicationTaskArn, ...)
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task. </p>
+function M.ReloadTablesResponse(_ReplicationTaskArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReloadTablesResponse")
 	local t = { 
-		["ReplicationTaskArn"] = ReplicationTaskArn,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
 	}
-	M.AssertReloadTablesResponse(t)
+	asserts.AssertReloadTablesResponse(t)
 	return t
 end
 
-local SNSNoAuthorizationFault_keys = { "message" = true, nil }
+keys.SNSNoAuthorizationFault = { ["message"] = true, nil }
 
-function M.AssertSNSNoAuthorizationFault(struct)
+function asserts.AssertSNSNoAuthorizationFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SNSNoAuthorizationFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(SNSNoAuthorizationFault_keys[k], "SNSNoAuthorizationFault contains unknown key " .. tostring(k))
+		assert(keys.SNSNoAuthorizationFault[k], "SNSNoAuthorizationFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SNSNoAuthorizationFault
 -- <p>You are not authorized for the SNS subscription.</p>
--- @param message [ExceptionMessage] <p/>
-function M.SNSNoAuthorizationFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.SNSNoAuthorizationFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSNoAuthorizationFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertSNSNoAuthorizationFault(t)
+	asserts.AssertSNSNoAuthorizationFault(t)
 	return t
 end
 
-local CreateReplicationInstanceResponse_keys = { "ReplicationInstance" = true, nil }
+keys.CreateReplicationInstanceResponse = { ["ReplicationInstance"] = true, nil }
 
-function M.AssertCreateReplicationInstanceResponse(struct)
+function asserts.AssertCreateReplicationInstanceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateReplicationInstanceResponse to be of type 'table'")
-	if struct["ReplicationInstance"] then M.AssertReplicationInstance(struct["ReplicationInstance"]) end
+	if struct["ReplicationInstance"] then asserts.AssertReplicationInstance(struct["ReplicationInstance"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateReplicationInstanceResponse_keys[k], "CreateReplicationInstanceResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateReplicationInstanceResponse[k], "CreateReplicationInstanceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateReplicationInstanceResponse
 -- <p/>
--- @param ReplicationInstance [ReplicationInstance] <p>The replication instance that was created.</p>
-function M.CreateReplicationInstanceResponse(ReplicationInstance, ...)
+-- @param _ReplicationInstance [ReplicationInstance] <p>The replication instance that was created.</p>
+function M.CreateReplicationInstanceResponse(_ReplicationInstance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationInstanceResponse")
 	local t = { 
-		["ReplicationInstance"] = ReplicationInstance,
+		["ReplicationInstance"] = _ReplicationInstance,
 	}
-	M.AssertCreateReplicationInstanceResponse(t)
+	asserts.AssertCreateReplicationInstanceResponse(t)
 	return t
 end
 
-local ListTagsForResourceResponse_keys = { "TagList" = true, nil }
+keys.ListTagsForResourceResponse = { ["TagList"] = true, nil }
 
-function M.AssertListTagsForResourceResponse(struct)
+function asserts.AssertListTagsForResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForResourceResponse to be of type 'table'")
-	if struct["TagList"] then M.AssertTagList(struct["TagList"]) end
+	if struct["TagList"] then asserts.AssertTagList(struct["TagList"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForResourceResponse_keys[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceResponse[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForResourceResponse
 -- <p/>
--- @param TagList [TagList] <p>A list of tags for the resource.</p>
-function M.ListTagsForResourceResponse(TagList, ...)
+-- @param _TagList [TagList] <p>A list of tags for the resource.</p>
+function M.ListTagsForResourceResponse(_TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
 	local t = { 
-		["TagList"] = TagList,
+		["TagList"] = _TagList,
 	}
-	M.AssertListTagsForResourceResponse(t)
+	asserts.AssertListTagsForResourceResponse(t)
 	return t
 end
 
-local DeleteEventSubscriptionMessage_keys = { "SubscriptionName" = true, nil }
+keys.DeleteEventSubscriptionMessage = { ["SubscriptionName"] = true, nil }
 
-function M.AssertDeleteEventSubscriptionMessage(struct)
+function asserts.AssertDeleteEventSubscriptionMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteEventSubscriptionMessage to be of type 'table'")
 	assert(struct["SubscriptionName"], "Expected key SubscriptionName to exist in table")
-	if struct["SubscriptionName"] then M.AssertString(struct["SubscriptionName"]) end
+	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteEventSubscriptionMessage_keys[k], "DeleteEventSubscriptionMessage contains unknown key " .. tostring(k))
+		assert(keys.DeleteEventSubscriptionMessage[k], "DeleteEventSubscriptionMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteEventSubscriptionMessage
 -- <p/>
--- @param SubscriptionName [String] <p>The name of the DMS event notification subscription to be deleted.</p>
+-- @param _SubscriptionName [String] <p>The name of the DMS event notification subscription to be deleted.</p>
 -- Required parameter: SubscriptionName
-function M.DeleteEventSubscriptionMessage(SubscriptionName, ...)
+function M.DeleteEventSubscriptionMessage(_SubscriptionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSubscriptionMessage")
 	local t = { 
-		["SubscriptionName"] = SubscriptionName,
+		["SubscriptionName"] = _SubscriptionName,
 	}
-	M.AssertDeleteEventSubscriptionMessage(t)
+	asserts.AssertDeleteEventSubscriptionMessage(t)
 	return t
 end
 
-local SNSInvalidTopicFault_keys = { "message" = true, nil }
+keys.SNSInvalidTopicFault = { ["message"] = true, nil }
 
-function M.AssertSNSInvalidTopicFault(struct)
+function asserts.AssertSNSInvalidTopicFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SNSInvalidTopicFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(SNSInvalidTopicFault_keys[k], "SNSInvalidTopicFault contains unknown key " .. tostring(k))
+		assert(keys.SNSInvalidTopicFault[k], "SNSInvalidTopicFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SNSInvalidTopicFault
 -- <p>The SNS topic is invalid.</p>
--- @param message [ExceptionMessage] <p/>
-function M.SNSInvalidTopicFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.SNSInvalidTopicFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSInvalidTopicFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertSNSInvalidTopicFault(t)
+	asserts.AssertSNSInvalidTopicFault(t)
 	return t
 end
 
-local ReplicationTask_keys = { "SourceEndpointArn" = true, "ReplicationTaskIdentifier" = true, "ReplicationInstanceArn" = true, "TableMappings" = true, "ReplicationTaskStartDate" = true, "ReplicationTaskStats" = true, "Status" = true, "ReplicationTaskArn" = true, "LastFailureMessage" = true, "StopReason" = true, "ReplicationTaskCreationDate" = true, "MigrationType" = true, "TargetEndpointArn" = true, "ReplicationTaskSettings" = true, nil }
+keys.ReplicationTask = { ["SourceEndpointArn"] = true, ["ReplicationTaskIdentifier"] = true, ["ReplicationInstanceArn"] = true, ["TableMappings"] = true, ["ReplicationTaskStartDate"] = true, ["ReplicationTaskStats"] = true, ["Status"] = true, ["ReplicationTaskArn"] = true, ["LastFailureMessage"] = true, ["StopReason"] = true, ["ReplicationTaskCreationDate"] = true, ["MigrationType"] = true, ["TargetEndpointArn"] = true, ["ReplicationTaskSettings"] = true, nil }
 
-function M.AssertReplicationTask(struct)
+function asserts.AssertReplicationTask(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationTask to be of type 'table'")
-	if struct["SourceEndpointArn"] then M.AssertString(struct["SourceEndpointArn"]) end
-	if struct["ReplicationTaskIdentifier"] then M.AssertString(struct["ReplicationTaskIdentifier"]) end
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
-	if struct["TableMappings"] then M.AssertString(struct["TableMappings"]) end
-	if struct["ReplicationTaskStartDate"] then M.AssertTStamp(struct["ReplicationTaskStartDate"]) end
-	if struct["ReplicationTaskStats"] then M.AssertReplicationTaskStats(struct["ReplicationTaskStats"]) end
-	if struct["Status"] then M.AssertString(struct["Status"]) end
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
-	if struct["LastFailureMessage"] then M.AssertString(struct["LastFailureMessage"]) end
-	if struct["StopReason"] then M.AssertString(struct["StopReason"]) end
-	if struct["ReplicationTaskCreationDate"] then M.AssertTStamp(struct["ReplicationTaskCreationDate"]) end
-	if struct["MigrationType"] then M.AssertMigrationTypeValue(struct["MigrationType"]) end
-	if struct["TargetEndpointArn"] then M.AssertString(struct["TargetEndpointArn"]) end
-	if struct["ReplicationTaskSettings"] then M.AssertString(struct["ReplicationTaskSettings"]) end
+	if struct["SourceEndpointArn"] then asserts.AssertString(struct["SourceEndpointArn"]) end
+	if struct["ReplicationTaskIdentifier"] then asserts.AssertString(struct["ReplicationTaskIdentifier"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["TableMappings"] then asserts.AssertString(struct["TableMappings"]) end
+	if struct["ReplicationTaskStartDate"] then asserts.AssertTStamp(struct["ReplicationTaskStartDate"]) end
+	if struct["ReplicationTaskStats"] then asserts.AssertReplicationTaskStats(struct["ReplicationTaskStats"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["LastFailureMessage"] then asserts.AssertString(struct["LastFailureMessage"]) end
+	if struct["StopReason"] then asserts.AssertString(struct["StopReason"]) end
+	if struct["ReplicationTaskCreationDate"] then asserts.AssertTStamp(struct["ReplicationTaskCreationDate"]) end
+	if struct["MigrationType"] then asserts.AssertMigrationTypeValue(struct["MigrationType"]) end
+	if struct["TargetEndpointArn"] then asserts.AssertString(struct["TargetEndpointArn"]) end
+	if struct["ReplicationTaskSettings"] then asserts.AssertString(struct["ReplicationTaskSettings"]) end
 	for k,_ in pairs(struct) do
-		assert(ReplicationTask_keys[k], "ReplicationTask contains unknown key " .. tostring(k))
+		assert(keys.ReplicationTask[k], "ReplicationTask contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReplicationTask
 -- <p/>
--- @param SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param TableMappings [String] <p>Table mappings specified in the task.</p>
--- @param ReplicationTaskStartDate [TStamp] <p>The date the replication task is scheduled to start.</p>
--- @param ReplicationTaskStats [ReplicationTaskStats] <p>The statistics for the task, including elapsed time, tables loaded, and table errors.</p>
--- @param Status [String] <p>The status of the replication task.</p>
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
--- @param LastFailureMessage [String] <p>The last error (failure) message generated for the replication instance.</p>
--- @param StopReason [String] <p>The reason the replication task was stopped.</p>
--- @param ReplicationTaskCreationDate [TStamp] <p>The date the replication task was created.</p>
--- @param MigrationType [MigrationTypeValue] <p>The type of migration.</p>
--- @param TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ReplicationTaskSettings [String] <p>The settings for the replication task.</p>
-function M.ReplicationTask(SourceEndpointArn, ReplicationTaskIdentifier, ReplicationInstanceArn, TableMappings, ReplicationTaskStartDate, ReplicationTaskStats, Status, ReplicationTaskArn, LastFailureMessage, StopReason, ReplicationTaskCreationDate, MigrationType, TargetEndpointArn, ReplicationTaskSettings, ...)
+-- @param _SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param _TableMappings [String] <p>Table mappings specified in the task.</p>
+-- @param _ReplicationTaskStartDate [TStamp] <p>The date the replication task is scheduled to start.</p>
+-- @param _ReplicationTaskStats [ReplicationTaskStats] <p>The statistics for the task, including elapsed time, tables loaded, and table errors.</p>
+-- @param _Status [String] <p>The status of the replication task.</p>
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- @param _LastFailureMessage [String] <p>The last error (failure) message generated for the replication instance.</p>
+-- @param _StopReason [String] <p>The reason the replication task was stopped.</p>
+-- @param _ReplicationTaskCreationDate [TStamp] <p>The date the replication task was created.</p>
+-- @param _MigrationType [MigrationTypeValue] <p>The type of migration.</p>
+-- @param _TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ReplicationTaskSettings [String] <p>The settings for the replication task.</p>
+function M.ReplicationTask(_SourceEndpointArn, _ReplicationTaskIdentifier, _ReplicationInstanceArn, _TableMappings, _ReplicationTaskStartDate, _ReplicationTaskStats, _Status, _ReplicationTaskArn, _LastFailureMessage, _StopReason, _ReplicationTaskCreationDate, _MigrationType, _TargetEndpointArn, _ReplicationTaskSettings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationTask")
 	local t = { 
-		["SourceEndpointArn"] = SourceEndpointArn,
-		["ReplicationTaskIdentifier"] = ReplicationTaskIdentifier,
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
-		["TableMappings"] = TableMappings,
-		["ReplicationTaskStartDate"] = ReplicationTaskStartDate,
-		["ReplicationTaskStats"] = ReplicationTaskStats,
-		["Status"] = Status,
-		["ReplicationTaskArn"] = ReplicationTaskArn,
-		["LastFailureMessage"] = LastFailureMessage,
-		["StopReason"] = StopReason,
-		["ReplicationTaskCreationDate"] = ReplicationTaskCreationDate,
-		["MigrationType"] = MigrationType,
-		["TargetEndpointArn"] = TargetEndpointArn,
-		["ReplicationTaskSettings"] = ReplicationTaskSettings,
+		["SourceEndpointArn"] = _SourceEndpointArn,
+		["ReplicationTaskIdentifier"] = _ReplicationTaskIdentifier,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["TableMappings"] = _TableMappings,
+		["ReplicationTaskStartDate"] = _ReplicationTaskStartDate,
+		["ReplicationTaskStats"] = _ReplicationTaskStats,
+		["Status"] = _Status,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["LastFailureMessage"] = _LastFailureMessage,
+		["StopReason"] = _StopReason,
+		["ReplicationTaskCreationDate"] = _ReplicationTaskCreationDate,
+		["MigrationType"] = _MigrationType,
+		["TargetEndpointArn"] = _TargetEndpointArn,
+		["ReplicationTaskSettings"] = _ReplicationTaskSettings,
 	}
-	M.AssertReplicationTask(t)
+	asserts.AssertReplicationTask(t)
 	return t
 end
 
-local Endpoint_keys = { "Username" = true, "Status" = true, "MongoDbSettings" = true, "S3Settings" = true, "EndpointArn" = true, "ServerName" = true, "CertificateArn" = true, "EndpointType" = true, "ExternalId" = true, "KmsKeyId" = true, "ExtraConnectionAttributes" = true, "DatabaseName" = true, "DynamoDbSettings" = true, "SslMode" = true, "EngineName" = true, "EndpointIdentifier" = true, "Port" = true, nil }
+keys.Endpoint = { ["Username"] = true, ["Status"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["EndpointArn"] = true, ["ServerName"] = true, ["CertificateArn"] = true, ["EndpointType"] = true, ["ExternalId"] = true, ["KmsKeyId"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
 
-function M.AssertEndpoint(struct)
+function asserts.AssertEndpoint(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Endpoint to be of type 'table'")
-	if struct["Username"] then M.AssertString(struct["Username"]) end
-	if struct["Status"] then M.AssertString(struct["Status"]) end
-	if struct["MongoDbSettings"] then M.AssertMongoDbSettings(struct["MongoDbSettings"]) end
-	if struct["S3Settings"] then M.AssertS3Settings(struct["S3Settings"]) end
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
-	if struct["ServerName"] then M.AssertString(struct["ServerName"]) end
-	if struct["CertificateArn"] then M.AssertString(struct["CertificateArn"]) end
-	if struct["EndpointType"] then M.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
-	if struct["ExternalId"] then M.AssertString(struct["ExternalId"]) end
-	if struct["KmsKeyId"] then M.AssertString(struct["KmsKeyId"]) end
-	if struct["ExtraConnectionAttributes"] then M.AssertString(struct["ExtraConnectionAttributes"]) end
-	if struct["DatabaseName"] then M.AssertString(struct["DatabaseName"]) end
-	if struct["DynamoDbSettings"] then M.AssertDynamoDbSettings(struct["DynamoDbSettings"]) end
-	if struct["SslMode"] then M.AssertDmsSslModeValue(struct["SslMode"]) end
-	if struct["EngineName"] then M.AssertString(struct["EngineName"]) end
-	if struct["EndpointIdentifier"] then M.AssertString(struct["EndpointIdentifier"]) end
-	if struct["Port"] then M.AssertIntegerOptional(struct["Port"]) end
+	if struct["Username"] then asserts.AssertString(struct["Username"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
+	if struct["MongoDbSettings"] then asserts.AssertMongoDbSettings(struct["MongoDbSettings"]) end
+	if struct["S3Settings"] then asserts.AssertS3Settings(struct["S3Settings"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
+	if struct["ServerName"] then asserts.AssertString(struct["ServerName"]) end
+	if struct["CertificateArn"] then asserts.AssertString(struct["CertificateArn"]) end
+	if struct["EndpointType"] then asserts.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
+	if struct["ExternalId"] then asserts.AssertString(struct["ExternalId"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["ExtraConnectionAttributes"] then asserts.AssertString(struct["ExtraConnectionAttributes"]) end
+	if struct["DatabaseName"] then asserts.AssertString(struct["DatabaseName"]) end
+	if struct["DynamoDbSettings"] then asserts.AssertDynamoDbSettings(struct["DynamoDbSettings"]) end
+	if struct["SslMode"] then asserts.AssertDmsSslModeValue(struct["SslMode"]) end
+	if struct["EngineName"] then asserts.AssertString(struct["EngineName"]) end
+	if struct["EndpointIdentifier"] then asserts.AssertString(struct["EndpointIdentifier"]) end
+	if struct["Port"] then asserts.AssertIntegerOptional(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(Endpoint_keys[k], "Endpoint contains unknown key " .. tostring(k))
+		assert(keys.Endpoint[k], "Endpoint contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Endpoint
 -- <p/>
--- @param Username [String] <p>The user name used to connect to the endpoint.</p>
--- @param Status [String] <p>The status of the endpoint.</p>
--- @param MongoDbSettings [MongoDbSettings] <p>The settings for the MongoDB source endpoint. For more information, see the <code>MongoDbSettings</code> structure.</p>
--- @param S3Settings [S3Settings] <p>The settings for the S3 target endpoint. For more information, see the <code>S3Settings</code> structure.</p>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ServerName [String] <p>The name of the server at the endpoint.</p>
--- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) used for SSL connection to the endpoint.</p>
--- @param EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
--- @param ExternalId [String] <p> Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account. </p>
--- @param KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
--- @param ExtraConnectionAttributes [String] <p>Additional connection attributes used to connect to the endpoint.</p>
--- @param DatabaseName [String] <p>The name of the database at the endpoint.</p>
--- @param DynamoDbSettings [DynamoDbSettings] <p>The settings for the target DynamoDB database. For more information, see the <code>DynamoDBSettings</code> structure.</p>
--- @param SslMode [DmsSslModeValue] <p>The SSL mode used to connect to the endpoint.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- @param EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
--- @param EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
--- @param Port [IntegerOptional] <p>The port value used to access the endpoint.</p>
-function M.Endpoint(Username, Status, MongoDbSettings, S3Settings, EndpointArn, ServerName, CertificateArn, EndpointType, ExternalId, KmsKeyId, ExtraConnectionAttributes, DatabaseName, DynamoDbSettings, SslMode, EngineName, EndpointIdentifier, Port, ...)
+-- @param _Username [String] <p>The user name used to connect to the endpoint.</p>
+-- @param _Status [String] <p>The status of the endpoint.</p>
+-- @param _MongoDbSettings [MongoDbSettings] <p>The settings for the MongoDB source endpoint. For more information, see the <code>MongoDbSettings</code> structure.</p>
+-- @param _S3Settings [S3Settings] <p>The settings for the S3 target endpoint. For more information, see the <code>S3Settings</code> structure.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ServerName [String] <p>The name of the server at the endpoint.</p>
+-- @param _CertificateArn [String] <p>The Amazon Resource Name (ARN) used for SSL connection to the endpoint.</p>
+-- @param _EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- @param _ExternalId [String] <p> Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account. </p>
+-- @param _KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param _ExtraConnectionAttributes [String] <p>Additional connection attributes used to connect to the endpoint.</p>
+-- @param _DatabaseName [String] <p>The name of the database at the endpoint.</p>
+-- @param _DynamoDbSettings [DynamoDbSettings] <p>The settings for the target DynamoDB database. For more information, see the <code>DynamoDBSettings</code> structure.</p>
+-- @param _SslMode [DmsSslModeValue] <p>The SSL mode used to connect to the endpoint.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- @param _EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- @param _EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- @param _Port [IntegerOptional] <p>The port value used to access the endpoint.</p>
+function M.Endpoint(_Username, _Status, _MongoDbSettings, _S3Settings, _EndpointArn, _ServerName, _CertificateArn, _EndpointType, _ExternalId, _KmsKeyId, _ExtraConnectionAttributes, _DatabaseName, _DynamoDbSettings, _SslMode, _EngineName, _EndpointIdentifier, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
 	local t = { 
-		["Username"] = Username,
-		["Status"] = Status,
-		["MongoDbSettings"] = MongoDbSettings,
-		["S3Settings"] = S3Settings,
-		["EndpointArn"] = EndpointArn,
-		["ServerName"] = ServerName,
-		["CertificateArn"] = CertificateArn,
-		["EndpointType"] = EndpointType,
-		["ExternalId"] = ExternalId,
-		["KmsKeyId"] = KmsKeyId,
-		["ExtraConnectionAttributes"] = ExtraConnectionAttributes,
-		["DatabaseName"] = DatabaseName,
-		["DynamoDbSettings"] = DynamoDbSettings,
-		["SslMode"] = SslMode,
-		["EngineName"] = EngineName,
-		["EndpointIdentifier"] = EndpointIdentifier,
-		["Port"] = Port,
+		["Username"] = _Username,
+		["Status"] = _Status,
+		["MongoDbSettings"] = _MongoDbSettings,
+		["S3Settings"] = _S3Settings,
+		["EndpointArn"] = _EndpointArn,
+		["ServerName"] = _ServerName,
+		["CertificateArn"] = _CertificateArn,
+		["EndpointType"] = _EndpointType,
+		["ExternalId"] = _ExternalId,
+		["KmsKeyId"] = _KmsKeyId,
+		["ExtraConnectionAttributes"] = _ExtraConnectionAttributes,
+		["DatabaseName"] = _DatabaseName,
+		["DynamoDbSettings"] = _DynamoDbSettings,
+		["SslMode"] = _SslMode,
+		["EngineName"] = _EngineName,
+		["EndpointIdentifier"] = _EndpointIdentifier,
+		["Port"] = _Port,
 	}
-	M.AssertEndpoint(t)
+	asserts.AssertEndpoint(t)
 	return t
 end
 
-local ImportCertificateResponse_keys = { "Certificate" = true, nil }
+keys.ImportCertificateResponse = { ["Certificate"] = true, nil }
 
-function M.AssertImportCertificateResponse(struct)
+function asserts.AssertImportCertificateResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ImportCertificateResponse to be of type 'table'")
-	if struct["Certificate"] then M.AssertCertificate(struct["Certificate"]) end
+	if struct["Certificate"] then asserts.AssertCertificate(struct["Certificate"]) end
 	for k,_ in pairs(struct) do
-		assert(ImportCertificateResponse_keys[k], "ImportCertificateResponse contains unknown key " .. tostring(k))
+		assert(keys.ImportCertificateResponse[k], "ImportCertificateResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ImportCertificateResponse
 --  
--- @param Certificate [Certificate] <p>The certificate to be uploaded.</p>
-function M.ImportCertificateResponse(Certificate, ...)
+-- @param _Certificate [Certificate] <p>The certificate to be uploaded.</p>
+function M.ImportCertificateResponse(_Certificate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportCertificateResponse")
 	local t = { 
-		["Certificate"] = Certificate,
+		["Certificate"] = _Certificate,
 	}
-	M.AssertImportCertificateResponse(t)
+	asserts.AssertImportCertificateResponse(t)
 	return t
 end
 
-local CreateEndpointMessage_keys = { "Username" = true, "CertificateArn" = true, "MongoDbSettings" = true, "S3Settings" = true, "Tags" = true, "ServerName" = true, "EndpointType" = true, "KmsKeyId" = true, "ExtraConnectionAttributes" = true, "DatabaseName" = true, "DynamoDbSettings" = true, "SslMode" = true, "EngineName" = true, "Password" = true, "EndpointIdentifier" = true, "Port" = true, nil }
+keys.CreateEndpointMessage = { ["Username"] = true, ["CertificateArn"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["Tags"] = true, ["ServerName"] = true, ["EndpointType"] = true, ["KmsKeyId"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["Password"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
 
-function M.AssertCreateEndpointMessage(struct)
+function asserts.AssertCreateEndpointMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateEndpointMessage to be of type 'table'")
 	assert(struct["EndpointIdentifier"], "Expected key EndpointIdentifier to exist in table")
 	assert(struct["EndpointType"], "Expected key EndpointType to exist in table")
 	assert(struct["EngineName"], "Expected key EngineName to exist in table")
-	if struct["Username"] then M.AssertString(struct["Username"]) end
-	if struct["CertificateArn"] then M.AssertString(struct["CertificateArn"]) end
-	if struct["MongoDbSettings"] then M.AssertMongoDbSettings(struct["MongoDbSettings"]) end
-	if struct["S3Settings"] then M.AssertS3Settings(struct["S3Settings"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["ServerName"] then M.AssertString(struct["ServerName"]) end
-	if struct["EndpointType"] then M.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
-	if struct["KmsKeyId"] then M.AssertString(struct["KmsKeyId"]) end
-	if struct["ExtraConnectionAttributes"] then M.AssertString(struct["ExtraConnectionAttributes"]) end
-	if struct["DatabaseName"] then M.AssertString(struct["DatabaseName"]) end
-	if struct["DynamoDbSettings"] then M.AssertDynamoDbSettings(struct["DynamoDbSettings"]) end
-	if struct["SslMode"] then M.AssertDmsSslModeValue(struct["SslMode"]) end
-	if struct["EngineName"] then M.AssertString(struct["EngineName"]) end
-	if struct["Password"] then M.AssertSecretString(struct["Password"]) end
-	if struct["EndpointIdentifier"] then M.AssertString(struct["EndpointIdentifier"]) end
-	if struct["Port"] then M.AssertIntegerOptional(struct["Port"]) end
+	if struct["Username"] then asserts.AssertString(struct["Username"]) end
+	if struct["CertificateArn"] then asserts.AssertString(struct["CertificateArn"]) end
+	if struct["MongoDbSettings"] then asserts.AssertMongoDbSettings(struct["MongoDbSettings"]) end
+	if struct["S3Settings"] then asserts.AssertS3Settings(struct["S3Settings"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["ServerName"] then asserts.AssertString(struct["ServerName"]) end
+	if struct["EndpointType"] then asserts.AssertReplicationEndpointTypeValue(struct["EndpointType"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["ExtraConnectionAttributes"] then asserts.AssertString(struct["ExtraConnectionAttributes"]) end
+	if struct["DatabaseName"] then asserts.AssertString(struct["DatabaseName"]) end
+	if struct["DynamoDbSettings"] then asserts.AssertDynamoDbSettings(struct["DynamoDbSettings"]) end
+	if struct["SslMode"] then asserts.AssertDmsSslModeValue(struct["SslMode"]) end
+	if struct["EngineName"] then asserts.AssertString(struct["EngineName"]) end
+	if struct["Password"] then asserts.AssertSecretString(struct["Password"]) end
+	if struct["EndpointIdentifier"] then asserts.AssertString(struct["EndpointIdentifier"]) end
+	if struct["Port"] then asserts.AssertIntegerOptional(struct["Port"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateEndpointMessage_keys[k], "CreateEndpointMessage contains unknown key " .. tostring(k))
+		assert(keys.CreateEndpointMessage[k], "CreateEndpointMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateEndpointMessage
 -- <p/>
--- @param Username [String] <p>The user name to be used to login to the endpoint database.</p>
--- @param CertificateArn [String] <p>The Amazon Resource Number (ARN) for the certificate.</p>
--- @param MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- @param S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- @param Tags [TagList] <p>Tags to be added to the endpoint.</p>
--- @param ServerName [String] <p>The name of the server where the endpoint database resides.</p>
--- @param EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
--- @param KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
--- @param ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
--- @param DatabaseName [String] <p>The name of the endpoint database.</p>
--- @param DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
--- @param SslMode [DmsSslModeValue] <p>The SSL mode to use for the SSL connection.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- @param EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
--- @param Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
--- @param EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
--- @param Port [IntegerOptional] <p>The port used by the endpoint database.</p>
+-- @param _Username [String] <p>The user name to be used to login to the endpoint database.</p>
+-- @param _CertificateArn [String] <p>The Amazon Resource Number (ARN) for the certificate.</p>
+-- @param _MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- @param _S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- @param _Tags [TagList] <p>Tags to be added to the endpoint.</p>
+-- @param _ServerName [String] <p>The name of the server where the endpoint database resides.</p>
+-- @param _EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- @param _KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param _ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
+-- @param _DatabaseName [String] <p>The name of the endpoint database.</p>
+-- @param _DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
+-- @param _SslMode [DmsSslModeValue] <p>The SSL mode to use for the SSL connection.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- @param _EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- @param _Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
+-- @param _EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- @param _Port [IntegerOptional] <p>The port used by the endpoint database.</p>
 -- Required parameter: EndpointIdentifier
 -- Required parameter: EndpointType
 -- Required parameter: EngineName
-function M.CreateEndpointMessage(Username, CertificateArn, MongoDbSettings, S3Settings, Tags, ServerName, EndpointType, KmsKeyId, ExtraConnectionAttributes, DatabaseName, DynamoDbSettings, SslMode, EngineName, Password, EndpointIdentifier, Port, ...)
+function M.CreateEndpointMessage(_Username, _CertificateArn, _MongoDbSettings, _S3Settings, _Tags, _ServerName, _EndpointType, _KmsKeyId, _ExtraConnectionAttributes, _DatabaseName, _DynamoDbSettings, _SslMode, _EngineName, _Password, _EndpointIdentifier, _Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEndpointMessage")
 	local t = { 
-		["Username"] = Username,
-		["CertificateArn"] = CertificateArn,
-		["MongoDbSettings"] = MongoDbSettings,
-		["S3Settings"] = S3Settings,
-		["Tags"] = Tags,
-		["ServerName"] = ServerName,
-		["EndpointType"] = EndpointType,
-		["KmsKeyId"] = KmsKeyId,
-		["ExtraConnectionAttributes"] = ExtraConnectionAttributes,
-		["DatabaseName"] = DatabaseName,
-		["DynamoDbSettings"] = DynamoDbSettings,
-		["SslMode"] = SslMode,
-		["EngineName"] = EngineName,
-		["Password"] = Password,
-		["EndpointIdentifier"] = EndpointIdentifier,
-		["Port"] = Port,
+		["Username"] = _Username,
+		["CertificateArn"] = _CertificateArn,
+		["MongoDbSettings"] = _MongoDbSettings,
+		["S3Settings"] = _S3Settings,
+		["Tags"] = _Tags,
+		["ServerName"] = _ServerName,
+		["EndpointType"] = _EndpointType,
+		["KmsKeyId"] = _KmsKeyId,
+		["ExtraConnectionAttributes"] = _ExtraConnectionAttributes,
+		["DatabaseName"] = _DatabaseName,
+		["DynamoDbSettings"] = _DynamoDbSettings,
+		["SslMode"] = _SslMode,
+		["EngineName"] = _EngineName,
+		["Password"] = _Password,
+		["EndpointIdentifier"] = _EndpointIdentifier,
+		["Port"] = _Port,
 	}
-	M.AssertCreateEndpointMessage(t)
+	asserts.AssertCreateEndpointMessage(t)
 	return t
 end
 
-local RemoveTagsFromResourceMessage_keys = { "ResourceArn" = true, "TagKeys" = true, nil }
+keys.RemoveTagsFromResourceMessage = { ["ResourceArn"] = true, ["TagKeys"] = true, nil }
 
-function M.AssertRemoveTagsFromResourceMessage(struct)
+function asserts.AssertRemoveTagsFromResourceMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsFromResourceMessage to be of type 'table'")
 	assert(struct["ResourceArn"], "Expected key ResourceArn to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["ResourceArn"] then M.AssertString(struct["ResourceArn"]) end
-	if struct["TagKeys"] then M.AssertKeyList(struct["TagKeys"]) end
+	if struct["ResourceArn"] then asserts.AssertString(struct["ResourceArn"]) end
+	if struct["TagKeys"] then asserts.AssertKeyList(struct["TagKeys"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsFromResourceMessage_keys[k], "RemoveTagsFromResourceMessage contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsFromResourceMessage[k], "RemoveTagsFromResourceMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsFromResourceMessage
 -- <p/>
--- @param ResourceArn [String] <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.</p>
--- @param TagKeys [KeyList] <p>The tag key (name) of the tag to be removed.</p>
+-- @param _ResourceArn [String] <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.</p>
+-- @param _TagKeys [KeyList] <p>The tag key (name) of the tag to be removed.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: TagKeys
-function M.RemoveTagsFromResourceMessage(ResourceArn, TagKeys, ...)
+function M.RemoveTagsFromResourceMessage(_ResourceArn, _TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceMessage")
 	local t = { 
-		["ResourceArn"] = ResourceArn,
-		["TagKeys"] = TagKeys,
+		["ResourceArn"] = _ResourceArn,
+		["TagKeys"] = _TagKeys,
 	}
-	M.AssertRemoveTagsFromResourceMessage(t)
+	asserts.AssertRemoveTagsFromResourceMessage(t)
 	return t
 end
 
-local OrderableReplicationInstance_keys = { "StorageType" = true, "ReplicationInstanceClass" = true, "EngineVersion" = true, "IncludedAllocatedStorage" = true, "DefaultAllocatedStorage" = true, "MinAllocatedStorage" = true, "MaxAllocatedStorage" = true, nil }
+keys.OrderableReplicationInstance = { ["StorageType"] = true, ["ReplicationInstanceClass"] = true, ["EngineVersion"] = true, ["IncludedAllocatedStorage"] = true, ["DefaultAllocatedStorage"] = true, ["MinAllocatedStorage"] = true, ["MaxAllocatedStorage"] = true, nil }
 
-function M.AssertOrderableReplicationInstance(struct)
+function asserts.AssertOrderableReplicationInstance(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OrderableReplicationInstance to be of type 'table'")
-	if struct["StorageType"] then M.AssertString(struct["StorageType"]) end
-	if struct["ReplicationInstanceClass"] then M.AssertString(struct["ReplicationInstanceClass"]) end
-	if struct["EngineVersion"] then M.AssertString(struct["EngineVersion"]) end
-	if struct["IncludedAllocatedStorage"] then M.AssertInteger(struct["IncludedAllocatedStorage"]) end
-	if struct["DefaultAllocatedStorage"] then M.AssertInteger(struct["DefaultAllocatedStorage"]) end
-	if struct["MinAllocatedStorage"] then M.AssertInteger(struct["MinAllocatedStorage"]) end
-	if struct["MaxAllocatedStorage"] then M.AssertInteger(struct["MaxAllocatedStorage"]) end
+	if struct["StorageType"] then asserts.AssertString(struct["StorageType"]) end
+	if struct["ReplicationInstanceClass"] then asserts.AssertString(struct["ReplicationInstanceClass"]) end
+	if struct["EngineVersion"] then asserts.AssertString(struct["EngineVersion"]) end
+	if struct["IncludedAllocatedStorage"] then asserts.AssertInteger(struct["IncludedAllocatedStorage"]) end
+	if struct["DefaultAllocatedStorage"] then asserts.AssertInteger(struct["DefaultAllocatedStorage"]) end
+	if struct["MinAllocatedStorage"] then asserts.AssertInteger(struct["MinAllocatedStorage"]) end
+	if struct["MaxAllocatedStorage"] then asserts.AssertInteger(struct["MaxAllocatedStorage"]) end
 	for k,_ in pairs(struct) do
-		assert(OrderableReplicationInstance_keys[k], "OrderableReplicationInstance contains unknown key " .. tostring(k))
+		assert(keys.OrderableReplicationInstance[k], "OrderableReplicationInstance contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type OrderableReplicationInstance
 -- <p/>
--- @param StorageType [String] <p>The type of storage used by the replication instance.</p>
--- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param EngineVersion [String] <p>The version of the replication engine.</p>
--- @param IncludedAllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- @param DefaultAllocatedStorage [Integer] <p>The default amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- @param MinAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
--- @param MaxAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
-function M.OrderableReplicationInstance(StorageType, ReplicationInstanceClass, EngineVersion, IncludedAllocatedStorage, DefaultAllocatedStorage, MinAllocatedStorage, MaxAllocatedStorage, ...)
+-- @param _StorageType [String] <p>The type of storage used by the replication instance.</p>
+-- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param _EngineVersion [String] <p>The version of the replication engine.</p>
+-- @param _IncludedAllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- @param _DefaultAllocatedStorage [Integer] <p>The default amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- @param _MinAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
+-- @param _MaxAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
+function M.OrderableReplicationInstance(_StorageType, _ReplicationInstanceClass, _EngineVersion, _IncludedAllocatedStorage, _DefaultAllocatedStorage, _MinAllocatedStorage, _MaxAllocatedStorage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrderableReplicationInstance")
 	local t = { 
-		["StorageType"] = StorageType,
-		["ReplicationInstanceClass"] = ReplicationInstanceClass,
-		["EngineVersion"] = EngineVersion,
-		["IncludedAllocatedStorage"] = IncludedAllocatedStorage,
-		["DefaultAllocatedStorage"] = DefaultAllocatedStorage,
-		["MinAllocatedStorage"] = MinAllocatedStorage,
-		["MaxAllocatedStorage"] = MaxAllocatedStorage,
+		["StorageType"] = _StorageType,
+		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
+		["EngineVersion"] = _EngineVersion,
+		["IncludedAllocatedStorage"] = _IncludedAllocatedStorage,
+		["DefaultAllocatedStorage"] = _DefaultAllocatedStorage,
+		["MinAllocatedStorage"] = _MinAllocatedStorage,
+		["MaxAllocatedStorage"] = _MaxAllocatedStorage,
 	}
-	M.AssertOrderableReplicationInstance(t)
+	asserts.AssertOrderableReplicationInstance(t)
 	return t
 end
 
-local ReplicationInstance_keys = { "MultiAZ" = true, "AvailabilityZone" = true, "ReplicationInstancePrivateIpAddress" = true, "ReplicationInstanceArn" = true, "ReplicationInstancePrivateIpAddresses" = true, "ReplicationInstanceClass" = true, "ReplicationSubnetGroup" = true, "AutoMinorVersionUpgrade" = true, "ReplicationInstanceStatus" = true, "VpcSecurityGroups" = true, "KmsKeyId" = true, "InstanceCreateTime" = true, "ReplicationInstancePublicIpAddress" = true, "AllocatedStorage" = true, "EngineVersion" = true, "ReplicationInstancePublicIpAddresses" = true, "SecondaryAvailabilityZone" = true, "ReplicationInstanceIdentifier" = true, "PubliclyAccessible" = true, "PreferredMaintenanceWindow" = true, "PendingModifiedValues" = true, nil }
+keys.ReplicationInstance = { ["MultiAZ"] = true, ["AvailabilityZone"] = true, ["ReplicationInstancePrivateIpAddress"] = true, ["ReplicationInstanceArn"] = true, ["ReplicationInstancePrivateIpAddresses"] = true, ["ReplicationInstanceClass"] = true, ["ReplicationSubnetGroup"] = true, ["AutoMinorVersionUpgrade"] = true, ["ReplicationInstanceStatus"] = true, ["VpcSecurityGroups"] = true, ["KmsKeyId"] = true, ["InstanceCreateTime"] = true, ["ReplicationInstancePublicIpAddress"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["ReplicationInstancePublicIpAddresses"] = true, ["SecondaryAvailabilityZone"] = true, ["ReplicationInstanceIdentifier"] = true, ["PubliclyAccessible"] = true, ["PreferredMaintenanceWindow"] = true, ["PendingModifiedValues"] = true, nil }
 
-function M.AssertReplicationInstance(struct)
+function asserts.AssertReplicationInstance(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationInstance to be of type 'table'")
-	if struct["MultiAZ"] then M.AssertBoolean(struct["MultiAZ"]) end
-	if struct["AvailabilityZone"] then M.AssertString(struct["AvailabilityZone"]) end
-	if struct["ReplicationInstancePrivateIpAddress"] then M.AssertString(struct["ReplicationInstancePrivateIpAddress"]) end
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
-	if struct["ReplicationInstancePrivateIpAddresses"] then M.AssertReplicationInstancePrivateIpAddressList(struct["ReplicationInstancePrivateIpAddresses"]) end
-	if struct["ReplicationInstanceClass"] then M.AssertString(struct["ReplicationInstanceClass"]) end
-	if struct["ReplicationSubnetGroup"] then M.AssertReplicationSubnetGroup(struct["ReplicationSubnetGroup"]) end
-	if struct["AutoMinorVersionUpgrade"] then M.AssertBoolean(struct["AutoMinorVersionUpgrade"]) end
-	if struct["ReplicationInstanceStatus"] then M.AssertString(struct["ReplicationInstanceStatus"]) end
-	if struct["VpcSecurityGroups"] then M.AssertVpcSecurityGroupMembershipList(struct["VpcSecurityGroups"]) end
-	if struct["KmsKeyId"] then M.AssertString(struct["KmsKeyId"]) end
-	if struct["InstanceCreateTime"] then M.AssertTStamp(struct["InstanceCreateTime"]) end
-	if struct["ReplicationInstancePublicIpAddress"] then M.AssertString(struct["ReplicationInstancePublicIpAddress"]) end
-	if struct["AllocatedStorage"] then M.AssertInteger(struct["AllocatedStorage"]) end
-	if struct["EngineVersion"] then M.AssertString(struct["EngineVersion"]) end
-	if struct["ReplicationInstancePublicIpAddresses"] then M.AssertReplicationInstancePublicIpAddressList(struct["ReplicationInstancePublicIpAddresses"]) end
-	if struct["SecondaryAvailabilityZone"] then M.AssertString(struct["SecondaryAvailabilityZone"]) end
-	if struct["ReplicationInstanceIdentifier"] then M.AssertString(struct["ReplicationInstanceIdentifier"]) end
-	if struct["PubliclyAccessible"] then M.AssertBoolean(struct["PubliclyAccessible"]) end
-	if struct["PreferredMaintenanceWindow"] then M.AssertString(struct["PreferredMaintenanceWindow"]) end
-	if struct["PendingModifiedValues"] then M.AssertReplicationPendingModifiedValues(struct["PendingModifiedValues"]) end
+	if struct["MultiAZ"] then asserts.AssertBoolean(struct["MultiAZ"]) end
+	if struct["AvailabilityZone"] then asserts.AssertString(struct["AvailabilityZone"]) end
+	if struct["ReplicationInstancePrivateIpAddress"] then asserts.AssertString(struct["ReplicationInstancePrivateIpAddress"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["ReplicationInstancePrivateIpAddresses"] then asserts.AssertReplicationInstancePrivateIpAddressList(struct["ReplicationInstancePrivateIpAddresses"]) end
+	if struct["ReplicationInstanceClass"] then asserts.AssertString(struct["ReplicationInstanceClass"]) end
+	if struct["ReplicationSubnetGroup"] then asserts.AssertReplicationSubnetGroup(struct["ReplicationSubnetGroup"]) end
+	if struct["AutoMinorVersionUpgrade"] then asserts.AssertBoolean(struct["AutoMinorVersionUpgrade"]) end
+	if struct["ReplicationInstanceStatus"] then asserts.AssertString(struct["ReplicationInstanceStatus"]) end
+	if struct["VpcSecurityGroups"] then asserts.AssertVpcSecurityGroupMembershipList(struct["VpcSecurityGroups"]) end
+	if struct["KmsKeyId"] then asserts.AssertString(struct["KmsKeyId"]) end
+	if struct["InstanceCreateTime"] then asserts.AssertTStamp(struct["InstanceCreateTime"]) end
+	if struct["ReplicationInstancePublicIpAddress"] then asserts.AssertString(struct["ReplicationInstancePublicIpAddress"]) end
+	if struct["AllocatedStorage"] then asserts.AssertInteger(struct["AllocatedStorage"]) end
+	if struct["EngineVersion"] then asserts.AssertString(struct["EngineVersion"]) end
+	if struct["ReplicationInstancePublicIpAddresses"] then asserts.AssertReplicationInstancePublicIpAddressList(struct["ReplicationInstancePublicIpAddresses"]) end
+	if struct["SecondaryAvailabilityZone"] then asserts.AssertString(struct["SecondaryAvailabilityZone"]) end
+	if struct["ReplicationInstanceIdentifier"] then asserts.AssertString(struct["ReplicationInstanceIdentifier"]) end
+	if struct["PubliclyAccessible"] then asserts.AssertBoolean(struct["PubliclyAccessible"]) end
+	if struct["PreferredMaintenanceWindow"] then asserts.AssertString(struct["PreferredMaintenanceWindow"]) end
+	if struct["PendingModifiedValues"] then asserts.AssertReplicationPendingModifiedValues(struct["PendingModifiedValues"]) end
 	for k,_ in pairs(struct) do
-		assert(ReplicationInstance_keys[k], "ReplicationInstance contains unknown key " .. tostring(k))
+		assert(keys.ReplicationInstance[k], "ReplicationInstance contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReplicationInstance
 -- <p/>
--- @param MultiAZ [Boolean] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
--- @param AvailabilityZone [String] <p>The Availability Zone for the instance.</p>
--- @param ReplicationInstancePrivateIpAddress [String] <p>The private IP address of the replication instance.</p>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param ReplicationInstancePrivateIpAddresses [ReplicationInstancePrivateIpAddressList] <p>The private IP address of the replication instance.</p>
--- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The subnet group for the replication instance.</p>
--- @param AutoMinorVersionUpgrade [Boolean] <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
--- @param ReplicationInstanceStatus [String] <p>The status of the replication instance.</p>
--- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>The VPC security group for the instance.</p>
--- @param KmsKeyId [String] <p>The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
--- @param InstanceCreateTime [TStamp] <p>The time the replication instance was created.</p>
--- @param ReplicationInstancePublicIpAddress [String] <p>The public IP address of the replication instance.</p>
--- @param AllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- @param EngineVersion [String] <p>The engine version number of the replication instance.</p>
--- @param ReplicationInstancePublicIpAddresses [ReplicationInstancePublicIpAddressList] <p>The public IP address of the replication instance.</p>
--- @param SecondaryAvailabilityZone [String] <p>The availability zone of the standby replication instance in a Multi-AZ deployment.</p>
--- @param ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
--- @param PubliclyAccessible [Boolean] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
--- @param PreferredMaintenanceWindow [String] <p>The maintenance window times for the replication instance.</p>
--- @param PendingModifiedValues [ReplicationPendingModifiedValues] <p>The pending modification values.</p>
-function M.ReplicationInstance(MultiAZ, AvailabilityZone, ReplicationInstancePrivateIpAddress, ReplicationInstanceArn, ReplicationInstancePrivateIpAddresses, ReplicationInstanceClass, ReplicationSubnetGroup, AutoMinorVersionUpgrade, ReplicationInstanceStatus, VpcSecurityGroups, KmsKeyId, InstanceCreateTime, ReplicationInstancePublicIpAddress, AllocatedStorage, EngineVersion, ReplicationInstancePublicIpAddresses, SecondaryAvailabilityZone, ReplicationInstanceIdentifier, PubliclyAccessible, PreferredMaintenanceWindow, PendingModifiedValues, ...)
+-- @param _MultiAZ [Boolean] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- @param _AvailabilityZone [String] <p>The Availability Zone for the instance.</p>
+-- @param _ReplicationInstancePrivateIpAddress [String] <p>The private IP address of the replication instance.</p>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param _ReplicationInstancePrivateIpAddresses [ReplicationInstancePrivateIpAddressList] <p>The private IP address of the replication instance.</p>
+-- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param _ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The subnet group for the replication instance.</p>
+-- @param _AutoMinorVersionUpgrade [Boolean] <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
+-- @param _ReplicationInstanceStatus [String] <p>The status of the replication instance.</p>
+-- @param _VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>The VPC security group for the instance.</p>
+-- @param _KmsKeyId [String] <p>The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param _InstanceCreateTime [TStamp] <p>The time the replication instance was created.</p>
+-- @param _ReplicationInstancePublicIpAddress [String] <p>The public IP address of the replication instance.</p>
+-- @param _AllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- @param _EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- @param _ReplicationInstancePublicIpAddresses [ReplicationInstancePublicIpAddressList] <p>The public IP address of the replication instance.</p>
+-- @param _SecondaryAvailabilityZone [String] <p>The availability zone of the standby replication instance in a Multi-AZ deployment.</p>
+-- @param _ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
+-- @param _PubliclyAccessible [Boolean] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
+-- @param _PreferredMaintenanceWindow [String] <p>The maintenance window times for the replication instance.</p>
+-- @param _PendingModifiedValues [ReplicationPendingModifiedValues] <p>The pending modification values.</p>
+function M.ReplicationInstance(_MultiAZ, _AvailabilityZone, _ReplicationInstancePrivateIpAddress, _ReplicationInstanceArn, _ReplicationInstancePrivateIpAddresses, _ReplicationInstanceClass, _ReplicationSubnetGroup, _AutoMinorVersionUpgrade, _ReplicationInstanceStatus, _VpcSecurityGroups, _KmsKeyId, _InstanceCreateTime, _ReplicationInstancePublicIpAddress, _AllocatedStorage, _EngineVersion, _ReplicationInstancePublicIpAddresses, _SecondaryAvailabilityZone, _ReplicationInstanceIdentifier, _PubliclyAccessible, _PreferredMaintenanceWindow, _PendingModifiedValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationInstance")
 	local t = { 
-		["MultiAZ"] = MultiAZ,
-		["AvailabilityZone"] = AvailabilityZone,
-		["ReplicationInstancePrivateIpAddress"] = ReplicationInstancePrivateIpAddress,
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
-		["ReplicationInstancePrivateIpAddresses"] = ReplicationInstancePrivateIpAddresses,
-		["ReplicationInstanceClass"] = ReplicationInstanceClass,
-		["ReplicationSubnetGroup"] = ReplicationSubnetGroup,
-		["AutoMinorVersionUpgrade"] = AutoMinorVersionUpgrade,
-		["ReplicationInstanceStatus"] = ReplicationInstanceStatus,
-		["VpcSecurityGroups"] = VpcSecurityGroups,
-		["KmsKeyId"] = KmsKeyId,
-		["InstanceCreateTime"] = InstanceCreateTime,
-		["ReplicationInstancePublicIpAddress"] = ReplicationInstancePublicIpAddress,
-		["AllocatedStorage"] = AllocatedStorage,
-		["EngineVersion"] = EngineVersion,
-		["ReplicationInstancePublicIpAddresses"] = ReplicationInstancePublicIpAddresses,
-		["SecondaryAvailabilityZone"] = SecondaryAvailabilityZone,
-		["ReplicationInstanceIdentifier"] = ReplicationInstanceIdentifier,
-		["PubliclyAccessible"] = PubliclyAccessible,
-		["PreferredMaintenanceWindow"] = PreferredMaintenanceWindow,
-		["PendingModifiedValues"] = PendingModifiedValues,
+		["MultiAZ"] = _MultiAZ,
+		["AvailabilityZone"] = _AvailabilityZone,
+		["ReplicationInstancePrivateIpAddress"] = _ReplicationInstancePrivateIpAddress,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["ReplicationInstancePrivateIpAddresses"] = _ReplicationInstancePrivateIpAddresses,
+		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
+		["ReplicationSubnetGroup"] = _ReplicationSubnetGroup,
+		["AutoMinorVersionUpgrade"] = _AutoMinorVersionUpgrade,
+		["ReplicationInstanceStatus"] = _ReplicationInstanceStatus,
+		["VpcSecurityGroups"] = _VpcSecurityGroups,
+		["KmsKeyId"] = _KmsKeyId,
+		["InstanceCreateTime"] = _InstanceCreateTime,
+		["ReplicationInstancePublicIpAddress"] = _ReplicationInstancePublicIpAddress,
+		["AllocatedStorage"] = _AllocatedStorage,
+		["EngineVersion"] = _EngineVersion,
+		["ReplicationInstancePublicIpAddresses"] = _ReplicationInstancePublicIpAddresses,
+		["SecondaryAvailabilityZone"] = _SecondaryAvailabilityZone,
+		["ReplicationInstanceIdentifier"] = _ReplicationInstanceIdentifier,
+		["PubliclyAccessible"] = _PubliclyAccessible,
+		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
+		["PendingModifiedValues"] = _PendingModifiedValues,
 	}
-	M.AssertReplicationInstance(t)
+	asserts.AssertReplicationInstance(t)
 	return t
 end
 
-local AddTagsToResourceResponse_keys = { nil }
+keys.AddTagsToResourceResponse = { nil }
 
-function M.AssertAddTagsToResourceResponse(struct)
+function asserts.AssertAddTagsToResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsToResourceResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AddTagsToResourceResponse_keys[k], "AddTagsToResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.AddTagsToResourceResponse[k], "AddTagsToResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3236,292 +3239,292 @@ function M.AddTagsToResourceResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceResponse")
 	local t = { 
 	}
-	M.AssertAddTagsToResourceResponse(t)
+	asserts.AssertAddTagsToResourceResponse(t)
 	return t
 end
 
-local ResourceAlreadyExistsFault_keys = { "message" = true, nil }
+keys.ResourceAlreadyExistsFault = { ["message"] = true, nil }
 
-function M.AssertResourceAlreadyExistsFault(struct)
+function asserts.AssertResourceAlreadyExistsFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceAlreadyExistsFault to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceAlreadyExistsFault_keys[k], "ResourceAlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.ResourceAlreadyExistsFault[k], "ResourceAlreadyExistsFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceAlreadyExistsFault
 -- <p>The resource you are attempting to create already exists.</p>
--- @param message [ExceptionMessage] <p/>
-function M.ResourceAlreadyExistsFault(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.ResourceAlreadyExistsFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceAlreadyExistsFault(t)
+	asserts.AssertResourceAlreadyExistsFault(t)
 	return t
 end
 
-local ReplicationSubnetGroupDoesNotCoverEnoughAZs_keys = { "message" = true, nil }
+keys.ReplicationSubnetGroupDoesNotCoverEnoughAZs = { ["message"] = true, nil }
 
-function M.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(struct)
+function asserts.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReplicationSubnetGroupDoesNotCoverEnoughAZs to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ReplicationSubnetGroupDoesNotCoverEnoughAZs_keys[k], "ReplicationSubnetGroupDoesNotCoverEnoughAZs contains unknown key " .. tostring(k))
+		assert(keys.ReplicationSubnetGroupDoesNotCoverEnoughAZs[k], "ReplicationSubnetGroupDoesNotCoverEnoughAZs contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReplicationSubnetGroupDoesNotCoverEnoughAZs
 -- <p>The replication subnet group does not cover enough Availability Zones (AZs). Edit the replication subnet group and add more AZs.</p>
--- @param message [ExceptionMessage] <p/>
-function M.ReplicationSubnetGroupDoesNotCoverEnoughAZs(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.ReplicationSubnetGroupDoesNotCoverEnoughAZs(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationSubnetGroupDoesNotCoverEnoughAZs")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(t)
+	asserts.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(t)
 	return t
 end
 
-local DescribeReplicationTasksResponse_keys = { "Marker" = true, "ReplicationTasks" = true, nil }
+keys.DescribeReplicationTasksResponse = { ["Marker"] = true, ["ReplicationTasks"] = true, nil }
 
-function M.AssertDescribeReplicationTasksResponse(struct)
+function asserts.AssertDescribeReplicationTasksResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeReplicationTasksResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["ReplicationTasks"] then M.AssertReplicationTaskList(struct["ReplicationTasks"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["ReplicationTasks"] then asserts.AssertReplicationTaskList(struct["ReplicationTasks"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeReplicationTasksResponse_keys[k], "DescribeReplicationTasksResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeReplicationTasksResponse[k], "DescribeReplicationTasksResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeReplicationTasksResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param ReplicationTasks [ReplicationTaskList] <p>A description of the replication tasks.</p>
-function M.DescribeReplicationTasksResponse(Marker, ReplicationTasks, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _ReplicationTasks [ReplicationTaskList] <p>A description of the replication tasks.</p>
+function M.DescribeReplicationTasksResponse(_Marker, _ReplicationTasks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationTasksResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["ReplicationTasks"] = ReplicationTasks,
+		["Marker"] = _Marker,
+		["ReplicationTasks"] = _ReplicationTasks,
 	}
-	M.AssertDescribeReplicationTasksResponse(t)
+	asserts.AssertDescribeReplicationTasksResponse(t)
 	return t
 end
 
-local ImportCertificateMessage_keys = { "CertificateIdentifier" = true, "Tags" = true, "CertificatePem" = true, "CertificateWallet" = true, nil }
+keys.ImportCertificateMessage = { ["CertificateIdentifier"] = true, ["Tags"] = true, ["CertificatePem"] = true, ["CertificateWallet"] = true, nil }
 
-function M.AssertImportCertificateMessage(struct)
+function asserts.AssertImportCertificateMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ImportCertificateMessage to be of type 'table'")
 	assert(struct["CertificateIdentifier"], "Expected key CertificateIdentifier to exist in table")
-	if struct["CertificateIdentifier"] then M.AssertString(struct["CertificateIdentifier"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["CertificatePem"] then M.AssertString(struct["CertificatePem"]) end
-	if struct["CertificateWallet"] then M.AssertCertificateWallet(struct["CertificateWallet"]) end
+	if struct["CertificateIdentifier"] then asserts.AssertString(struct["CertificateIdentifier"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["CertificatePem"] then asserts.AssertString(struct["CertificatePem"]) end
+	if struct["CertificateWallet"] then asserts.AssertCertificateWallet(struct["CertificateWallet"]) end
 	for k,_ in pairs(struct) do
-		assert(ImportCertificateMessage_keys[k], "ImportCertificateMessage contains unknown key " .. tostring(k))
+		assert(keys.ImportCertificateMessage[k], "ImportCertificateMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ImportCertificateMessage
 --  
--- @param CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
--- @param Tags [TagList] <p>The tags associated with the certificate.</p>
--- @param CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
--- @param CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
+-- @param _CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
+-- @param _Tags [TagList] <p>The tags associated with the certificate.</p>
+-- @param _CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
+-- @param _CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
 -- Required parameter: CertificateIdentifier
-function M.ImportCertificateMessage(CertificateIdentifier, Tags, CertificatePem, CertificateWallet, ...)
+function M.ImportCertificateMessage(_CertificateIdentifier, _Tags, _CertificatePem, _CertificateWallet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportCertificateMessage")
 	local t = { 
-		["CertificateIdentifier"] = CertificateIdentifier,
-		["Tags"] = Tags,
-		["CertificatePem"] = CertificatePem,
-		["CertificateWallet"] = CertificateWallet,
+		["CertificateIdentifier"] = _CertificateIdentifier,
+		["Tags"] = _Tags,
+		["CertificatePem"] = _CertificatePem,
+		["CertificateWallet"] = _CertificateWallet,
 	}
-	M.AssertImportCertificateMessage(t)
+	asserts.AssertImportCertificateMessage(t)
 	return t
 end
 
-local CreateReplicationSubnetGroupResponse_keys = { "ReplicationSubnetGroup" = true, nil }
+keys.CreateReplicationSubnetGroupResponse = { ["ReplicationSubnetGroup"] = true, nil }
 
-function M.AssertCreateReplicationSubnetGroupResponse(struct)
+function asserts.AssertCreateReplicationSubnetGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateReplicationSubnetGroupResponse to be of type 'table'")
-	if struct["ReplicationSubnetGroup"] then M.AssertReplicationSubnetGroup(struct["ReplicationSubnetGroup"]) end
+	if struct["ReplicationSubnetGroup"] then asserts.AssertReplicationSubnetGroup(struct["ReplicationSubnetGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateReplicationSubnetGroupResponse_keys[k], "CreateReplicationSubnetGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateReplicationSubnetGroupResponse[k], "CreateReplicationSubnetGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateReplicationSubnetGroupResponse
 -- <p/>
--- @param ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The replication subnet group that was created.</p>
-function M.CreateReplicationSubnetGroupResponse(ReplicationSubnetGroup, ...)
+-- @param _ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The replication subnet group that was created.</p>
+function M.CreateReplicationSubnetGroupResponse(_ReplicationSubnetGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationSubnetGroupResponse")
 	local t = { 
-		["ReplicationSubnetGroup"] = ReplicationSubnetGroup,
+		["ReplicationSubnetGroup"] = _ReplicationSubnetGroup,
 	}
-	M.AssertCreateReplicationSubnetGroupResponse(t)
+	asserts.AssertCreateReplicationSubnetGroupResponse(t)
 	return t
 end
 
-local DescribeEndpointTypesMessage_keys = { "Marker" = true, "MaxRecords" = true, "Filters" = true, nil }
+keys.DescribeEndpointTypesMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
 
-function M.AssertDescribeEndpointTypesMessage(struct)
+function asserts.AssertDescribeEndpointTypesMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEndpointTypesMessage to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxRecords"] then M.AssertIntegerOptional(struct["MaxRecords"]) end
-	if struct["Filters"] then M.AssertFilterList(struct["Filters"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxRecords"] then asserts.AssertIntegerOptional(struct["MaxRecords"]) end
+	if struct["Filters"] then asserts.AssertFilterList(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEndpointTypesMessage_keys[k], "DescribeEndpointTypesMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeEndpointTypesMessage[k], "DescribeEndpointTypesMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEndpointTypesMessage
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: engine-name | endpoint-type</p>
-function M.DescribeEndpointTypesMessage(Marker, MaxRecords, Filters, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param _Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: engine-name | endpoint-type</p>
+function M.DescribeEndpointTypesMessage(_Marker, _MaxRecords, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointTypesMessage")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxRecords"] = MaxRecords,
-		["Filters"] = Filters,
+		["Marker"] = _Marker,
+		["MaxRecords"] = _MaxRecords,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeEndpointTypesMessage(t)
+	asserts.AssertDescribeEndpointTypesMessage(t)
 	return t
 end
 
-local ModifyReplicationSubnetGroupResponse_keys = { "ReplicationSubnetGroup" = true, nil }
+keys.ModifyReplicationSubnetGroupResponse = { ["ReplicationSubnetGroup"] = true, nil }
 
-function M.AssertModifyReplicationSubnetGroupResponse(struct)
+function asserts.AssertModifyReplicationSubnetGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyReplicationSubnetGroupResponse to be of type 'table'")
-	if struct["ReplicationSubnetGroup"] then M.AssertReplicationSubnetGroup(struct["ReplicationSubnetGroup"]) end
+	if struct["ReplicationSubnetGroup"] then asserts.AssertReplicationSubnetGroup(struct["ReplicationSubnetGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyReplicationSubnetGroupResponse_keys[k], "ModifyReplicationSubnetGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.ModifyReplicationSubnetGroupResponse[k], "ModifyReplicationSubnetGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyReplicationSubnetGroupResponse
 -- <p/>
--- @param ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The modified replication subnet group.</p>
-function M.ModifyReplicationSubnetGroupResponse(ReplicationSubnetGroup, ...)
+-- @param _ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The modified replication subnet group.</p>
+function M.ModifyReplicationSubnetGroupResponse(_ReplicationSubnetGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationSubnetGroupResponse")
 	local t = { 
-		["ReplicationSubnetGroup"] = ReplicationSubnetGroup,
+		["ReplicationSubnetGroup"] = _ReplicationSubnetGroup,
 	}
-	M.AssertModifyReplicationSubnetGroupResponse(t)
+	asserts.AssertModifyReplicationSubnetGroupResponse(t)
 	return t
 end
 
-local DescribeEventSubscriptionsResponse_keys = { "Marker" = true, "EventSubscriptionsList" = true, nil }
+keys.DescribeEventSubscriptionsResponse = { ["Marker"] = true, ["EventSubscriptionsList"] = true, nil }
 
-function M.AssertDescribeEventSubscriptionsResponse(struct)
+function asserts.AssertDescribeEventSubscriptionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeEventSubscriptionsResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["EventSubscriptionsList"] then M.AssertEventSubscriptionsList(struct["EventSubscriptionsList"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["EventSubscriptionsList"] then asserts.AssertEventSubscriptionsList(struct["EventSubscriptionsList"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeEventSubscriptionsResponse_keys[k], "DescribeEventSubscriptionsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeEventSubscriptionsResponse[k], "DescribeEventSubscriptionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeEventSubscriptionsResponse
 -- <p/>
--- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param EventSubscriptionsList [EventSubscriptionsList] <p>A list of event subscriptions.</p>
-function M.DescribeEventSubscriptionsResponse(Marker, EventSubscriptionsList, ...)
+-- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param _EventSubscriptionsList [EventSubscriptionsList] <p>A list of event subscriptions.</p>
+function M.DescribeEventSubscriptionsResponse(_Marker, _EventSubscriptionsList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventSubscriptionsResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["EventSubscriptionsList"] = EventSubscriptionsList,
+		["Marker"] = _Marker,
+		["EventSubscriptionsList"] = _EventSubscriptionsList,
 	}
-	M.AssertDescribeEventSubscriptionsResponse(t)
+	asserts.AssertDescribeEventSubscriptionsResponse(t)
 	return t
 end
 
-local CreateEventSubscriptionMessage_keys = { "EventCategories" = true, "SourceType" = true, "Tags" = true, "Enabled" = true, "SnsTopicArn" = true, "SubscriptionName" = true, "SourceIds" = true, nil }
+keys.CreateEventSubscriptionMessage = { ["EventCategories"] = true, ["SourceType"] = true, ["Tags"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["SubscriptionName"] = true, ["SourceIds"] = true, nil }
 
-function M.AssertCreateEventSubscriptionMessage(struct)
+function asserts.AssertCreateEventSubscriptionMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateEventSubscriptionMessage to be of type 'table'")
 	assert(struct["SubscriptionName"], "Expected key SubscriptionName to exist in table")
 	assert(struct["SnsTopicArn"], "Expected key SnsTopicArn to exist in table")
-	if struct["EventCategories"] then M.AssertEventCategoriesList(struct["EventCategories"]) end
-	if struct["SourceType"] then M.AssertString(struct["SourceType"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["Enabled"] then M.AssertBooleanOptional(struct["Enabled"]) end
-	if struct["SnsTopicArn"] then M.AssertString(struct["SnsTopicArn"]) end
-	if struct["SubscriptionName"] then M.AssertString(struct["SubscriptionName"]) end
-	if struct["SourceIds"] then M.AssertSourceIdsList(struct["SourceIds"]) end
+	if struct["EventCategories"] then asserts.AssertEventCategoriesList(struct["EventCategories"]) end
+	if struct["SourceType"] then asserts.AssertString(struct["SourceType"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["Enabled"] then asserts.AssertBooleanOptional(struct["Enabled"]) end
+	if struct["SnsTopicArn"] then asserts.AssertString(struct["SnsTopicArn"]) end
+	if struct["SubscriptionName"] then asserts.AssertString(struct["SubscriptionName"]) end
+	if struct["SourceIds"] then asserts.AssertSourceIdsList(struct["SourceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateEventSubscriptionMessage_keys[k], "CreateEventSubscriptionMessage contains unknown key " .. tostring(k))
+		assert(keys.CreateEventSubscriptionMessage[k], "CreateEventSubscriptionMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateEventSubscriptionMessage
 -- <p/>
--- @param EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the <b>DescribeEventCategories</b> action or in the topic <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html"> Working with Events and Notifications</a> in the AWS Database Migration Service User Guide. </p>
--- @param SourceType [String] <p> The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to <code>replication-instance</code>. If this value is not specified, all events are returned. </p> <p>Valid values: replication-instance | migration-task</p>
--- @param Tags [TagList] <p>A tag to be attached to the event subscription.</p>
--- @param Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription, or set to <b>false</b> to create the subscription but not activate it. </p>
--- @param SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it. </p>
--- @param SubscriptionName [String] <p>The name of the DMS event notification subscription. </p> <p>Constraints: The name must be less than 255 characters. </p>
--- @param SourceIds [SourceIdsList] <p> The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
+-- @param _EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the <b>DescribeEventCategories</b> action or in the topic <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html"> Working with Events and Notifications</a> in the AWS Database Migration Service User Guide. </p>
+-- @param _SourceType [String] <p> The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to <code>replication-instance</code>. If this value is not specified, all events are returned. </p> <p>Valid values: replication-instance | migration-task</p>
+-- @param _Tags [TagList] <p>A tag to be attached to the event subscription.</p>
+-- @param _Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription, or set to <b>false</b> to create the subscription but not activate it. </p>
+-- @param _SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it. </p>
+-- @param _SubscriptionName [String] <p>The name of the DMS event notification subscription. </p> <p>Constraints: The name must be less than 255 characters. </p>
+-- @param _SourceIds [SourceIdsList] <p> The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
 -- Required parameter: SubscriptionName
 -- Required parameter: SnsTopicArn
-function M.CreateEventSubscriptionMessage(EventCategories, SourceType, Tags, Enabled, SnsTopicArn, SubscriptionName, SourceIds, ...)
+function M.CreateEventSubscriptionMessage(_EventCategories, _SourceType, _Tags, _Enabled, _SnsTopicArn, _SubscriptionName, _SourceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEventSubscriptionMessage")
 	local t = { 
-		["EventCategories"] = EventCategories,
-		["SourceType"] = SourceType,
-		["Tags"] = Tags,
-		["Enabled"] = Enabled,
-		["SnsTopicArn"] = SnsTopicArn,
-		["SubscriptionName"] = SubscriptionName,
-		["SourceIds"] = SourceIds,
+		["EventCategories"] = _EventCategories,
+		["SourceType"] = _SourceType,
+		["Tags"] = _Tags,
+		["Enabled"] = _Enabled,
+		["SnsTopicArn"] = _SnsTopicArn,
+		["SubscriptionName"] = _SubscriptionName,
+		["SourceIds"] = _SourceIds,
 	}
-	M.AssertCreateEventSubscriptionMessage(t)
+	asserts.AssertCreateEventSubscriptionMessage(t)
 	return t
 end
 
-local DeleteEventSubscriptionResponse_keys = { "EventSubscription" = true, nil }
+keys.DeleteEventSubscriptionResponse = { ["EventSubscription"] = true, nil }
 
-function M.AssertDeleteEventSubscriptionResponse(struct)
+function asserts.AssertDeleteEventSubscriptionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteEventSubscriptionResponse to be of type 'table'")
-	if struct["EventSubscription"] then M.AssertEventSubscription(struct["EventSubscription"]) end
+	if struct["EventSubscription"] then asserts.AssertEventSubscription(struct["EventSubscription"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteEventSubscriptionResponse_keys[k], "DeleteEventSubscriptionResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteEventSubscriptionResponse[k], "DeleteEventSubscriptionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteEventSubscriptionResponse
 -- <p/>
--- @param EventSubscription [EventSubscription] <p>The event subscription that was deleted.</p>
-function M.DeleteEventSubscriptionResponse(EventSubscription, ...)
+-- @param _EventSubscription [EventSubscription] <p>The event subscription that was deleted.</p>
+function M.DeleteEventSubscriptionResponse(_EventSubscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSubscriptionResponse")
 	local t = { 
-		["EventSubscription"] = EventSubscription,
+		["EventSubscription"] = _EventSubscription,
 	}
-	M.AssertDeleteEventSubscriptionResponse(t)
+	asserts.AssertDeleteEventSubscriptionResponse(t)
 	return t
 end
 
-local DescribeAccountAttributesMessage_keys = { nil }
+keys.DescribeAccountAttributesMessage = { nil }
 
-function M.AssertDescribeAccountAttributesMessage(struct)
+function asserts.AssertDescribeAccountAttributesMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAccountAttributesMessage to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DescribeAccountAttributesMessage_keys[k], "DescribeAccountAttributesMessage contains unknown key " .. tostring(k))
+		assert(keys.DescribeAccountAttributesMessage[k], "DescribeAccountAttributesMessage contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3531,758 +3534,758 @@ function M.DescribeAccountAttributesMessage(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesMessage")
 	local t = { 
 	}
-	M.AssertDescribeAccountAttributesMessage(t)
+	asserts.AssertDescribeAccountAttributesMessage(t)
 	return t
 end
 
-local RefreshSchemasStatus_keys = { "Status" = true, "LastFailureMessage" = true, "LastRefreshDate" = true, "EndpointArn" = true, "ReplicationInstanceArn" = true, nil }
+keys.RefreshSchemasStatus = { ["Status"] = true, ["LastFailureMessage"] = true, ["LastRefreshDate"] = true, ["EndpointArn"] = true, ["ReplicationInstanceArn"] = true, nil }
 
-function M.AssertRefreshSchemasStatus(struct)
+function asserts.AssertRefreshSchemasStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RefreshSchemasStatus to be of type 'table'")
-	if struct["Status"] then M.AssertRefreshSchemasStatusTypeValue(struct["Status"]) end
-	if struct["LastFailureMessage"] then M.AssertString(struct["LastFailureMessage"]) end
-	if struct["LastRefreshDate"] then M.AssertTStamp(struct["LastRefreshDate"]) end
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
-	if struct["ReplicationInstanceArn"] then M.AssertString(struct["ReplicationInstanceArn"]) end
+	if struct["Status"] then asserts.AssertRefreshSchemasStatusTypeValue(struct["Status"]) end
+	if struct["LastFailureMessage"] then asserts.AssertString(struct["LastFailureMessage"]) end
+	if struct["LastRefreshDate"] then asserts.AssertTStamp(struct["LastRefreshDate"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
+	if struct["ReplicationInstanceArn"] then asserts.AssertString(struct["ReplicationInstanceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(RefreshSchemasStatus_keys[k], "RefreshSchemasStatus contains unknown key " .. tostring(k))
+		assert(keys.RefreshSchemasStatus[k], "RefreshSchemasStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RefreshSchemasStatus
 -- <p/>
--- @param Status [RefreshSchemasStatusTypeValue] <p>The status of the schema.</p>
--- @param LastFailureMessage [String] <p>The last failure message for the schema.</p>
--- @param LastRefreshDate [TStamp] <p>The date the schema was last refreshed.</p>
--- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
-function M.RefreshSchemasStatus(Status, LastFailureMessage, LastRefreshDate, EndpointArn, ReplicationInstanceArn, ...)
+-- @param _Status [RefreshSchemasStatusTypeValue] <p>The status of the schema.</p>
+-- @param _LastFailureMessage [String] <p>The last failure message for the schema.</p>
+-- @param _LastRefreshDate [TStamp] <p>The date the schema was last refreshed.</p>
+-- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+function M.RefreshSchemasStatus(_Status, _LastFailureMessage, _LastRefreshDate, _EndpointArn, _ReplicationInstanceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshSchemasStatus")
 	local t = { 
-		["Status"] = Status,
-		["LastFailureMessage"] = LastFailureMessage,
-		["LastRefreshDate"] = LastRefreshDate,
-		["EndpointArn"] = EndpointArn,
-		["ReplicationInstanceArn"] = ReplicationInstanceArn,
+		["Status"] = _Status,
+		["LastFailureMessage"] = _LastFailureMessage,
+		["LastRefreshDate"] = _LastRefreshDate,
+		["EndpointArn"] = _EndpointArn,
+		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
 	}
-	M.AssertRefreshSchemasStatus(t)
+	asserts.AssertRefreshSchemasStatus(t)
 	return t
 end
 
-local EventSubscription_keys = { "Status" = true, "SubscriptionCreationTime" = true, "SourceType" = true, "EventCategoriesList" = true, "SourceIdsList" = true, "CustSubscriptionId" = true, "Enabled" = true, "SnsTopicArn" = true, "CustomerAwsId" = true, nil }
+keys.EventSubscription = { ["Status"] = true, ["SubscriptionCreationTime"] = true, ["SourceType"] = true, ["EventCategoriesList"] = true, ["SourceIdsList"] = true, ["CustSubscriptionId"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["CustomerAwsId"] = true, nil }
 
-function M.AssertEventSubscription(struct)
+function asserts.AssertEventSubscription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventSubscription to be of type 'table'")
-	if struct["Status"] then M.AssertString(struct["Status"]) end
-	if struct["SubscriptionCreationTime"] then M.AssertString(struct["SubscriptionCreationTime"]) end
-	if struct["SourceType"] then M.AssertString(struct["SourceType"]) end
-	if struct["EventCategoriesList"] then M.AssertEventCategoriesList(struct["EventCategoriesList"]) end
-	if struct["SourceIdsList"] then M.AssertSourceIdsList(struct["SourceIdsList"]) end
-	if struct["CustSubscriptionId"] then M.AssertString(struct["CustSubscriptionId"]) end
-	if struct["Enabled"] then M.AssertBoolean(struct["Enabled"]) end
-	if struct["SnsTopicArn"] then M.AssertString(struct["SnsTopicArn"]) end
-	if struct["CustomerAwsId"] then M.AssertString(struct["CustomerAwsId"]) end
+	if struct["Status"] then asserts.AssertString(struct["Status"]) end
+	if struct["SubscriptionCreationTime"] then asserts.AssertString(struct["SubscriptionCreationTime"]) end
+	if struct["SourceType"] then asserts.AssertString(struct["SourceType"]) end
+	if struct["EventCategoriesList"] then asserts.AssertEventCategoriesList(struct["EventCategoriesList"]) end
+	if struct["SourceIdsList"] then asserts.AssertSourceIdsList(struct["SourceIdsList"]) end
+	if struct["CustSubscriptionId"] then asserts.AssertString(struct["CustSubscriptionId"]) end
+	if struct["Enabled"] then asserts.AssertBoolean(struct["Enabled"]) end
+	if struct["SnsTopicArn"] then asserts.AssertString(struct["SnsTopicArn"]) end
+	if struct["CustomerAwsId"] then asserts.AssertString(struct["CustomerAwsId"]) end
 	for k,_ in pairs(struct) do
-		assert(EventSubscription_keys[k], "EventSubscription contains unknown key " .. tostring(k))
+		assert(keys.EventSubscription[k], "EventSubscription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventSubscription
 -- <p/>
--- @param Status [String] <p>The status of the AWS DMS event notification subscription.</p> <p>Constraints:</p> <p>Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist</p> <p>The status "no-permission" indicates that AWS DMS no longer has permission to post to the SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</p>
--- @param SubscriptionCreationTime [String] <p>The time the RDS event notification subscription was created.</p>
--- @param SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
--- @param EventCategoriesList [EventCategoriesList] <p>A lists of event categories.</p>
--- @param SourceIdsList [SourceIdsList] <p>A list of source Ids for the event subscription.</p>
--- @param CustSubscriptionId [String] <p>The AWS DMS event notification subscription Id.</p>
--- @param Enabled [Boolean] <p>Boolean value that indicates if the event subscription is enabled.</p>
--- @param SnsTopicArn [String] <p>The topic ARN of the AWS DMS event notification subscription.</p>
--- @param CustomerAwsId [String] <p>The AWS customer account associated with the AWS DMS event notification subscription.</p>
-function M.EventSubscription(Status, SubscriptionCreationTime, SourceType, EventCategoriesList, SourceIdsList, CustSubscriptionId, Enabled, SnsTopicArn, CustomerAwsId, ...)
+-- @param _Status [String] <p>The status of the AWS DMS event notification subscription.</p> <p>Constraints:</p> <p>Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist</p> <p>The status "no-permission" indicates that AWS DMS no longer has permission to post to the SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</p>
+-- @param _SubscriptionCreationTime [String] <p>The time the RDS event notification subscription was created.</p>
+-- @param _SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
+-- @param _EventCategoriesList [EventCategoriesList] <p>A lists of event categories.</p>
+-- @param _SourceIdsList [SourceIdsList] <p>A list of source Ids for the event subscription.</p>
+-- @param _CustSubscriptionId [String] <p>The AWS DMS event notification subscription Id.</p>
+-- @param _Enabled [Boolean] <p>Boolean value that indicates if the event subscription is enabled.</p>
+-- @param _SnsTopicArn [String] <p>The topic ARN of the AWS DMS event notification subscription.</p>
+-- @param _CustomerAwsId [String] <p>The AWS customer account associated with the AWS DMS event notification subscription.</p>
+function M.EventSubscription(_Status, _SubscriptionCreationTime, _SourceType, _EventCategoriesList, _SourceIdsList, _CustSubscriptionId, _Enabled, _SnsTopicArn, _CustomerAwsId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscription")
 	local t = { 
-		["Status"] = Status,
-		["SubscriptionCreationTime"] = SubscriptionCreationTime,
-		["SourceType"] = SourceType,
-		["EventCategoriesList"] = EventCategoriesList,
-		["SourceIdsList"] = SourceIdsList,
-		["CustSubscriptionId"] = CustSubscriptionId,
-		["Enabled"] = Enabled,
-		["SnsTopicArn"] = SnsTopicArn,
-		["CustomerAwsId"] = CustomerAwsId,
+		["Status"] = _Status,
+		["SubscriptionCreationTime"] = _SubscriptionCreationTime,
+		["SourceType"] = _SourceType,
+		["EventCategoriesList"] = _EventCategoriesList,
+		["SourceIdsList"] = _SourceIdsList,
+		["CustSubscriptionId"] = _CustSubscriptionId,
+		["Enabled"] = _Enabled,
+		["SnsTopicArn"] = _SnsTopicArn,
+		["CustomerAwsId"] = _CustomerAwsId,
 	}
-	M.AssertEventSubscription(t)
+	asserts.AssertEventSubscription(t)
 	return t
 end
 
-local SubnetAlreadyInUse_keys = { "message" = true, nil }
+keys.SubnetAlreadyInUse = { ["message"] = true, nil }
 
-function M.AssertSubnetAlreadyInUse(struct)
+function asserts.AssertSubnetAlreadyInUse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubnetAlreadyInUse to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(SubnetAlreadyInUse_keys[k], "SubnetAlreadyInUse contains unknown key " .. tostring(k))
+		assert(keys.SubnetAlreadyInUse[k], "SubnetAlreadyInUse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubnetAlreadyInUse
 -- <p>The specified subnet is already in use.</p>
--- @param message [ExceptionMessage] <p/>
-function M.SubnetAlreadyInUse(message, ...)
+-- @param _message [ExceptionMessage] <p/>
+function M.SubnetAlreadyInUse(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetAlreadyInUse")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertSubnetAlreadyInUse(t)
+	asserts.AssertSubnetAlreadyInUse(t)
 	return t
 end
 
-local StopReplicationTaskMessage_keys = { "ReplicationTaskArn" = true, nil }
+keys.StopReplicationTaskMessage = { ["ReplicationTaskArn"] = true, nil }
 
-function M.AssertStopReplicationTaskMessage(struct)
+function asserts.AssertStopReplicationTaskMessage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopReplicationTaskMessage to be of type 'table'")
 	assert(struct["ReplicationTaskArn"], "Expected key ReplicationTaskArn to exist in table")
-	if struct["ReplicationTaskArn"] then M.AssertString(struct["ReplicationTaskArn"]) end
+	if struct["ReplicationTaskArn"] then asserts.AssertString(struct["ReplicationTaskArn"]) end
 	for k,_ in pairs(struct) do
-		assert(StopReplicationTaskMessage_keys[k], "StopReplicationTaskMessage contains unknown key " .. tostring(k))
+		assert(keys.StopReplicationTaskMessage[k], "StopReplicationTaskMessage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopReplicationTaskMessage
 -- <p/>
--- @param ReplicationTaskArn [String] <p>The Amazon Resource Number(ARN) of the replication task to be stopped.</p>
+-- @param _ReplicationTaskArn [String] <p>The Amazon Resource Number(ARN) of the replication task to be stopped.</p>
 -- Required parameter: ReplicationTaskArn
-function M.StopReplicationTaskMessage(ReplicationTaskArn, ...)
+function M.StopReplicationTaskMessage(_ReplicationTaskArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopReplicationTaskMessage")
 	local t = { 
-		["ReplicationTaskArn"] = ReplicationTaskArn,
+		["ReplicationTaskArn"] = _ReplicationTaskArn,
 	}
-	M.AssertStopReplicationTaskMessage(t)
+	asserts.AssertStopReplicationTaskMessage(t)
 	return t
 end
 
-function M.AssertDmsSslModeValue(str)
+function asserts.AssertDmsSslModeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DmsSslModeValue to be of type 'string'")
 end
 
 --  
 function M.DmsSslModeValue(str)
-	M.AssertDmsSslModeValue(str)
+	asserts.AssertDmsSslModeValue(str)
 	return str
 end
 
-function M.AssertStartReplicationTaskTypeValue(str)
+function asserts.AssertStartReplicationTaskTypeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StartReplicationTaskTypeValue to be of type 'string'")
 end
 
 --  
 function M.StartReplicationTaskTypeValue(str)
-	M.AssertStartReplicationTaskTypeValue(str)
+	asserts.AssertStartReplicationTaskTypeValue(str)
 	return str
 end
 
-function M.AssertRefreshSchemasStatusTypeValue(str)
+function asserts.AssertRefreshSchemasStatusTypeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RefreshSchemasStatusTypeValue to be of type 'string'")
 end
 
 --  
 function M.RefreshSchemasStatusTypeValue(str)
-	M.AssertRefreshSchemasStatusTypeValue(str)
+	asserts.AssertRefreshSchemasStatusTypeValue(str)
 	return str
 end
 
-function M.AssertReplicationEndpointTypeValue(str)
+function asserts.AssertReplicationEndpointTypeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ReplicationEndpointTypeValue to be of type 'string'")
 end
 
 --  
 function M.ReplicationEndpointTypeValue(str)
-	M.AssertReplicationEndpointTypeValue(str)
+	asserts.AssertReplicationEndpointTypeValue(str)
 	return str
 end
 
-function M.AssertMigrationTypeValue(str)
+function asserts.AssertMigrationTypeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MigrationTypeValue to be of type 'string'")
 end
 
 --  
 function M.MigrationTypeValue(str)
-	M.AssertMigrationTypeValue(str)
+	asserts.AssertMigrationTypeValue(str)
 	return str
 end
 
-function M.AssertAuthTypeValue(str)
+function asserts.AssertAuthTypeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AuthTypeValue to be of type 'string'")
 end
 
 --  
 function M.AuthTypeValue(str)
-	M.AssertAuthTypeValue(str)
+	asserts.AssertAuthTypeValue(str)
 	return str
 end
 
-function M.AssertSourceType(str)
+function asserts.AssertSourceType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SourceType to be of type 'string'")
 end
 
 --  
 function M.SourceType(str)
-	M.AssertSourceType(str)
+	asserts.AssertSourceType(str)
 	return str
 end
 
-function M.AssertSecretString(str)
+function asserts.AssertSecretString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SecretString to be of type 'string'")
 end
 
 --  
 function M.SecretString(str)
-	M.AssertSecretString(str)
+	asserts.AssertSecretString(str)
 	return str
 end
 
-function M.AssertNestingLevelValue(str)
+function asserts.AssertNestingLevelValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NestingLevelValue to be of type 'string'")
 end
 
 --  
 function M.NestingLevelValue(str)
-	M.AssertNestingLevelValue(str)
+	asserts.AssertNestingLevelValue(str)
 	return str
 end
 
-function M.AssertExceptionMessage(str)
+function asserts.AssertExceptionMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
 end
 
 --  
 function M.ExceptionMessage(str)
-	M.AssertExceptionMessage(str)
+	asserts.AssertExceptionMessage(str)
 	return str
 end
 
-function M.AssertAuthMechanismValue(str)
+function asserts.AssertAuthMechanismValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AuthMechanismValue to be of type 'string'")
 end
 
 --  
 function M.AuthMechanismValue(str)
-	M.AssertAuthMechanismValue(str)
+	asserts.AssertAuthMechanismValue(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertCompressionTypeValue(str)
+function asserts.AssertCompressionTypeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CompressionTypeValue to be of type 'string'")
 end
 
 --  
 function M.CompressionTypeValue(str)
-	M.AssertCompressionTypeValue(str)
+	asserts.AssertCompressionTypeValue(str)
 	return str
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertIntegerOptional(integer)
+function asserts.AssertIntegerOptional(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected IntegerOptional to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.IntegerOptional(integer)
-	M.AssertIntegerOptional(integer)
+	asserts.AssertIntegerOptional(integer)
 	return integer
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertBooleanOptional(boolean)
+function asserts.AssertBooleanOptional(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanOptional to be of type 'boolean'")
 end
 
 function M.BooleanOptional(boolean)
-	M.AssertBooleanOptional(boolean)
+	asserts.AssertBooleanOptional(boolean)
 	return boolean
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertTStamp(timestamp)
+function asserts.AssertTStamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected TStamp to be of type 'string'")
 end
 
 function M.TStamp(timestamp)
-	M.AssertTStamp(timestamp)
+	asserts.AssertTStamp(timestamp)
 	return timestamp
 end
 
-function M.AssertCertificateWallet(blob)
+function asserts.AssertCertificateWallet(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected CertificateWallet to be of type 'string'")
 end
 
 function M.CertificateWallet(blob)
-	M.AssertCertificateWallet(blob)
+	asserts.AssertCertificateWallet(blob)
 	return blob
 end
 
-function M.AssertOrderableReplicationInstanceList(list)
+function asserts.AssertOrderableReplicationInstanceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected OrderableReplicationInstanceList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertOrderableReplicationInstance(v)
+		asserts.AssertOrderableReplicationInstance(v)
 	end
 end
 
 --  
 -- List of OrderableReplicationInstance objects
 function M.OrderableReplicationInstanceList(list)
-	M.AssertOrderableReplicationInstanceList(list)
+	asserts.AssertOrderableReplicationInstanceList(list)
 	return list
 end
 
-function M.AssertSupportedEndpointTypeList(list)
+function asserts.AssertSupportedEndpointTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SupportedEndpointTypeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSupportedEndpointType(v)
+		asserts.AssertSupportedEndpointType(v)
 	end
 end
 
 --  
 -- List of SupportedEndpointType objects
 function M.SupportedEndpointTypeList(list)
-	M.AssertSupportedEndpointTypeList(list)
+	asserts.AssertSupportedEndpointTypeList(list)
 	return list
 end
 
-function M.AssertEventCategoryGroupList(list)
+function asserts.AssertEventCategoryGroupList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventCategoryGroupList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEventCategoryGroup(v)
+		asserts.AssertEventCategoryGroup(v)
 	end
 end
 
 --  
 -- List of EventCategoryGroup objects
 function M.EventCategoryGroupList(list)
-	M.AssertEventCategoryGroupList(list)
+	asserts.AssertEventCategoryGroupList(list)
 	return list
 end
 
-function M.AssertVpcSecurityGroupIdList(list)
+function asserts.AssertVpcSecurityGroupIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected VpcSecurityGroupIdList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.VpcSecurityGroupIdList(list)
-	M.AssertVpcSecurityGroupIdList(list)
+	asserts.AssertVpcSecurityGroupIdList(list)
 	return list
 end
 
-function M.AssertConnectionList(list)
+function asserts.AssertConnectionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ConnectionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertConnection(v)
+		asserts.AssertConnection(v)
 	end
 end
 
 --  
 -- List of Connection objects
 function M.ConnectionList(list)
-	M.AssertConnectionList(list)
+	asserts.AssertConnectionList(list)
 	return list
 end
 
-function M.AssertFilterValueList(list)
+function asserts.AssertFilterValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FilterValueList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.FilterValueList(list)
-	M.AssertFilterValueList(list)
+	asserts.AssertFilterValueList(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 
-function M.AssertEventCategoriesList(list)
+function asserts.AssertEventCategoriesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventCategoriesList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.EventCategoriesList(list)
-	M.AssertEventCategoriesList(list)
+	asserts.AssertEventCategoriesList(list)
 	return list
 end
 
-function M.AssertEndpointList(list)
+function asserts.AssertEndpointList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EndpointList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEndpoint(v)
+		asserts.AssertEndpoint(v)
 	end
 end
 
 --  
 -- List of Endpoint objects
 function M.EndpointList(list)
-	M.AssertEndpointList(list)
+	asserts.AssertEndpointList(list)
 	return list
 end
 
-function M.AssertSubnetIdentifierList(list)
+function asserts.AssertSubnetIdentifierList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubnetIdentifierList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.SubnetIdentifierList(list)
-	M.AssertSubnetIdentifierList(list)
+	asserts.AssertSubnetIdentifierList(list)
 	return list
 end
 
-function M.AssertSubnetList(list)
+function asserts.AssertSubnetList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubnetList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSubnet(v)
+		asserts.AssertSubnet(v)
 	end
 end
 
 --  
 -- List of Subnet objects
 function M.SubnetList(list)
-	M.AssertSubnetList(list)
+	asserts.AssertSubnetList(list)
 	return list
 end
 
-function M.AssertEventList(list)
+function asserts.AssertEventList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEvent(v)
+		asserts.AssertEvent(v)
 	end
 end
 
 --  
 -- List of Event objects
 function M.EventList(list)
-	M.AssertEventList(list)
+	asserts.AssertEventList(list)
 	return list
 end
 
-function M.AssertReplicationInstanceList(list)
+function asserts.AssertReplicationInstanceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ReplicationInstanceList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertReplicationInstance(v)
+		asserts.AssertReplicationInstance(v)
 	end
 end
 
 --  
 -- List of ReplicationInstance objects
 function M.ReplicationInstanceList(list)
-	M.AssertReplicationInstanceList(list)
+	asserts.AssertReplicationInstanceList(list)
 	return list
 end
 
-function M.AssertReplicationInstancePrivateIpAddressList(list)
+function asserts.AssertReplicationInstancePrivateIpAddressList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ReplicationInstancePrivateIpAddressList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.ReplicationInstancePrivateIpAddressList(list)
-	M.AssertReplicationInstancePrivateIpAddressList(list)
+	asserts.AssertReplicationInstancePrivateIpAddressList(list)
 	return list
 end
 
-function M.AssertReplicationInstancePublicIpAddressList(list)
+function asserts.AssertReplicationInstancePublicIpAddressList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ReplicationInstancePublicIpAddressList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.ReplicationInstancePublicIpAddressList(list)
-	M.AssertReplicationInstancePublicIpAddressList(list)
+	asserts.AssertReplicationInstancePublicIpAddressList(list)
 	return list
 end
 
-function M.AssertReplicationTaskList(list)
+function asserts.AssertReplicationTaskList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ReplicationTaskList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertReplicationTask(v)
+		asserts.AssertReplicationTask(v)
 	end
 end
 
 --  
 -- List of ReplicationTask objects
 function M.ReplicationTaskList(list)
-	M.AssertReplicationTaskList(list)
+	asserts.AssertReplicationTaskList(list)
 	return list
 end
 
-function M.AssertSchemaList(list)
+function asserts.AssertSchemaList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SchemaList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.SchemaList(list)
-	M.AssertSchemaList(list)
+	asserts.AssertSchemaList(list)
 	return list
 end
 
-function M.AssertAccountQuotaList(list)
+function asserts.AssertAccountQuotaList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AccountQuotaList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAccountQuota(v)
+		asserts.AssertAccountQuota(v)
 	end
 end
 
 --  
 -- List of AccountQuota objects
 function M.AccountQuotaList(list)
-	M.AssertAccountQuotaList(list)
+	asserts.AssertAccountQuotaList(list)
 	return list
 end
 
-function M.AssertTableStatisticsList(list)
+function asserts.AssertTableStatisticsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TableStatisticsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTableStatistics(v)
+		asserts.AssertTableStatistics(v)
 	end
 end
 
 --  
 -- List of TableStatistics objects
 function M.TableStatisticsList(list)
-	M.AssertTableStatisticsList(list)
+	asserts.AssertTableStatisticsList(list)
 	return list
 end
 
-function M.AssertTableListToReload(list)
+function asserts.AssertTableListToReload(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TableListToReload to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTableToReload(v)
+		asserts.AssertTableToReload(v)
 	end
 end
 
 --  
 -- List of TableToReload objects
 function M.TableListToReload(list)
-	M.AssertTableListToReload(list)
+	asserts.AssertTableListToReload(list)
 	return list
 end
 
-function M.AssertReplicationSubnetGroups(list)
+function asserts.AssertReplicationSubnetGroups(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ReplicationSubnetGroups to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertReplicationSubnetGroup(v)
+		asserts.AssertReplicationSubnetGroup(v)
 	end
 end
 
 --  
 -- List of ReplicationSubnetGroup objects
 function M.ReplicationSubnetGroups(list)
-	M.AssertReplicationSubnetGroups(list)
+	asserts.AssertReplicationSubnetGroups(list)
 	return list
 end
 
-function M.AssertKeyList(list)
+function asserts.AssertKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected KeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.KeyList(list)
-	M.AssertKeyList(list)
+	asserts.AssertKeyList(list)
 	return list
 end
 
-function M.AssertCertificateList(list)
+function asserts.AssertCertificateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CertificateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCertificate(v)
+		asserts.AssertCertificate(v)
 	end
 end
 
 --  
 -- List of Certificate objects
 function M.CertificateList(list)
-	M.AssertCertificateList(list)
+	asserts.AssertCertificateList(list)
 	return list
 end
 
-function M.AssertVpcSecurityGroupMembershipList(list)
+function asserts.AssertVpcSecurityGroupMembershipList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected VpcSecurityGroupMembershipList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertVpcSecurityGroupMembership(v)
+		asserts.AssertVpcSecurityGroupMembership(v)
 	end
 end
 
 --  
 -- List of VpcSecurityGroupMembership objects
 function M.VpcSecurityGroupMembershipList(list)
-	M.AssertVpcSecurityGroupMembershipList(list)
+	asserts.AssertVpcSecurityGroupMembershipList(list)
 	return list
 end
 
-function M.AssertEventSubscriptionsList(list)
+function asserts.AssertEventSubscriptionsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventSubscriptionsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEventSubscription(v)
+		asserts.AssertEventSubscription(v)
 	end
 end
 
 --  
 -- List of EventSubscription objects
 function M.EventSubscriptionsList(list)
-	M.AssertEventSubscriptionsList(list)
+	asserts.AssertEventSubscriptionsList(list)
 	return list
 end
 
-function M.AssertSourceIdsList(list)
+function asserts.AssertSourceIdsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SourceIdsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.SourceIdsList(list)
-	M.AssertSourceIdsList(list)
+	asserts.AssertSourceIdsList(list)
 	return list
 end
 
-function M.AssertFilterList(list)
+function asserts.AssertFilterList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FilterList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFilter(v)
+		asserts.AssertFilter(v)
 	end
 end
 
 --  
 -- List of Filter objects
 function M.FilterList(list)
-	M.AssertFilterList(list)
+	asserts.AssertFilterList(list)
 	return list
 end
 

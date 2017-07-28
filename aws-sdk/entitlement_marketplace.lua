@@ -18,203 +18,206 @@ M.metadata = {
 	uid = "entitlement.marketplace-2017-01-11",
 }
 
-local EntitlementValue_keys = { "StringValue" = true, "BooleanValue" = true, "IntegerValue" = true, "DoubleValue" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertEntitlementValue(struct)
+keys.EntitlementValue = { ["StringValue"] = true, ["BooleanValue"] = true, ["IntegerValue"] = true, ["DoubleValue"] = true, nil }
+
+function asserts.AssertEntitlementValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EntitlementValue to be of type 'table'")
-	if struct["StringValue"] then M.AssertString(struct["StringValue"]) end
-	if struct["BooleanValue"] then M.AssertBoolean(struct["BooleanValue"]) end
-	if struct["IntegerValue"] then M.AssertInteger(struct["IntegerValue"]) end
-	if struct["DoubleValue"] then M.AssertDouble(struct["DoubleValue"]) end
+	if struct["StringValue"] then asserts.AssertString(struct["StringValue"]) end
+	if struct["BooleanValue"] then asserts.AssertBoolean(struct["BooleanValue"]) end
+	if struct["IntegerValue"] then asserts.AssertInteger(struct["IntegerValue"]) end
+	if struct["DoubleValue"] then asserts.AssertDouble(struct["DoubleValue"]) end
 	for k,_ in pairs(struct) do
-		assert(EntitlementValue_keys[k], "EntitlementValue contains unknown key " .. tostring(k))
+		assert(keys.EntitlementValue[k], "EntitlementValue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EntitlementValue
 -- <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
--- @param StringValue [String] <p>The StringValue field will be populated with a string value when the entitlement is a string type. Otherwise, the field will not be set.</p>
--- @param BooleanValue [Boolean] <p>The BooleanValue field will be populated with a boolean value when the entitlement is a boolean type. Otherwise, the field will not be set.</p>
--- @param IntegerValue [Integer] <p>The IntegerValue field will be populated with an integer value when the entitlement is an integer type. Otherwise, the field will not be set.</p>
--- @param DoubleValue [Double] <p>The DoubleValue field will be populated with a double value when the entitlement is a double type. Otherwise, the field will not be set.</p>
-function M.EntitlementValue(StringValue, BooleanValue, IntegerValue, DoubleValue, ...)
+-- @param _StringValue [String] <p>The StringValue field will be populated with a string value when the entitlement is a string type. Otherwise, the field will not be set.</p>
+-- @param _BooleanValue [Boolean] <p>The BooleanValue field will be populated with a boolean value when the entitlement is a boolean type. Otherwise, the field will not be set.</p>
+-- @param _IntegerValue [Integer] <p>The IntegerValue field will be populated with an integer value when the entitlement is an integer type. Otherwise, the field will not be set.</p>
+-- @param _DoubleValue [Double] <p>The DoubleValue field will be populated with a double value when the entitlement is a double type. Otherwise, the field will not be set.</p>
+function M.EntitlementValue(_StringValue, _BooleanValue, _IntegerValue, _DoubleValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntitlementValue")
 	local t = { 
-		["StringValue"] = StringValue,
-		["BooleanValue"] = BooleanValue,
-		["IntegerValue"] = IntegerValue,
-		["DoubleValue"] = DoubleValue,
+		["StringValue"] = _StringValue,
+		["BooleanValue"] = _BooleanValue,
+		["IntegerValue"] = _IntegerValue,
+		["DoubleValue"] = _DoubleValue,
 	}
-	M.AssertEntitlementValue(t)
+	asserts.AssertEntitlementValue(t)
 	return t
 end
 
-local GetEntitlementsRequest_keys = { "Filter" = true, "ProductCode" = true, "NextToken" = true, "MaxResults" = true, nil }
+keys.GetEntitlementsRequest = { ["Filter"] = true, ["ProductCode"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertGetEntitlementsRequest(struct)
+function asserts.AssertGetEntitlementsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetEntitlementsRequest to be of type 'table'")
 	assert(struct["ProductCode"], "Expected key ProductCode to exist in table")
-	if struct["Filter"] then M.AssertGetEntitlementFilters(struct["Filter"]) end
-	if struct["ProductCode"] then M.AssertProductCode(struct["ProductCode"]) end
-	if struct["NextToken"] then M.AssertNonEmptyString(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertInteger(struct["MaxResults"]) end
+	if struct["Filter"] then asserts.AssertGetEntitlementFilters(struct["Filter"]) end
+	if struct["ProductCode"] then asserts.AssertProductCode(struct["ProductCode"]) end
+	if struct["NextToken"] then asserts.AssertNonEmptyString(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertInteger(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(GetEntitlementsRequest_keys[k], "GetEntitlementsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetEntitlementsRequest[k], "GetEntitlementsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetEntitlementsRequest
 -- <p>The GetEntitlementsRequest contains parameters for the GetEntitlements operation.</p>
--- @param Filter [GetEntitlementFilters] <p>Filter is used to return entitlements for a specific customer or for a specific dimension. Filters are described as keys mapped to a lists of values. Filtered requests are <i>unioned</i> for each value in the value list, and then <i>intersected</i> for each filter key.</p>
--- @param ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.</p>
--- @param NextToken [NonEmptyString] <p>For paginated calls to GetEntitlements, pass the NextToken from the previous GetEntitlementsResult.</p>
--- @param MaxResults [Integer] <p>The maximum number of items to retrieve from the GetEntitlements operation. For pagination, use the NextToken field in subsequent calls to GetEntitlements.</p>
+-- @param _Filter [GetEntitlementFilters] <p>Filter is used to return entitlements for a specific customer or for a specific dimension. Filters are described as keys mapped to a lists of values. Filtered requests are <i>unioned</i> for each value in the value list, and then <i>intersected</i> for each filter key.</p>
+-- @param _ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.</p>
+-- @param _NextToken [NonEmptyString] <p>For paginated calls to GetEntitlements, pass the NextToken from the previous GetEntitlementsResult.</p>
+-- @param _MaxResults [Integer] <p>The maximum number of items to retrieve from the GetEntitlements operation. For pagination, use the NextToken field in subsequent calls to GetEntitlements.</p>
 -- Required parameter: ProductCode
-function M.GetEntitlementsRequest(Filter, ProductCode, NextToken, MaxResults, ...)
+function M.GetEntitlementsRequest(_Filter, _ProductCode, _NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEntitlementsRequest")
 	local t = { 
-		["Filter"] = Filter,
-		["ProductCode"] = ProductCode,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["Filter"] = _Filter,
+		["ProductCode"] = _ProductCode,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertGetEntitlementsRequest(t)
+	asserts.AssertGetEntitlementsRequest(t)
 	return t
 end
 
-local Entitlement_keys = { "ProductCode" = true, "CustomerIdentifier" = true, "Dimension" = true, "Value" = true, "ExpirationDate" = true, nil }
+keys.Entitlement = { ["ProductCode"] = true, ["CustomerIdentifier"] = true, ["Dimension"] = true, ["Value"] = true, ["ExpirationDate"] = true, nil }
 
-function M.AssertEntitlement(struct)
+function asserts.AssertEntitlement(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Entitlement to be of type 'table'")
-	if struct["ProductCode"] then M.AssertProductCode(struct["ProductCode"]) end
-	if struct["CustomerIdentifier"] then M.AssertNonEmptyString(struct["CustomerIdentifier"]) end
-	if struct["Dimension"] then M.AssertNonEmptyString(struct["Dimension"]) end
-	if struct["Value"] then M.AssertEntitlementValue(struct["Value"]) end
-	if struct["ExpirationDate"] then M.AssertTimestamp(struct["ExpirationDate"]) end
+	if struct["ProductCode"] then asserts.AssertProductCode(struct["ProductCode"]) end
+	if struct["CustomerIdentifier"] then asserts.AssertNonEmptyString(struct["CustomerIdentifier"]) end
+	if struct["Dimension"] then asserts.AssertNonEmptyString(struct["Dimension"]) end
+	if struct["Value"] then asserts.AssertEntitlementValue(struct["Value"]) end
+	if struct["ExpirationDate"] then asserts.AssertTimestamp(struct["ExpirationDate"]) end
 	for k,_ in pairs(struct) do
-		assert(Entitlement_keys[k], "Entitlement contains unknown key " .. tostring(k))
+		assert(keys.Entitlement[k], "Entitlement contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Entitlement
 -- <p>An entitlement represents capacity in a product owned by the customer. For example, a customer might own some number of users or seats in an SaaS application or some amount of data capacity in a multi-tenant database.</p>
--- @param ProductCode [ProductCode] <p>The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created.</p>
--- @param CustomerIdentifier [NonEmptyString] <p>The customer identifier is a handle to each unique customer in an application. Customer identifiers are obtained through the ResolveCustomer operation in AWS Marketplace Metering Service.</p>
--- @param Dimension [NonEmptyString] <p>The dimension for which the given entitlement applies. Dimensions represent categories of capacity in a product and are specified when the product is listed in AWS Marketplace.</p>
--- @param Value [EntitlementValue] <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
--- @param ExpirationDate [Timestamp] <p>The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date.</p>
-function M.Entitlement(ProductCode, CustomerIdentifier, Dimension, Value, ExpirationDate, ...)
+-- @param _ProductCode [ProductCode] <p>The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created.</p>
+-- @param _CustomerIdentifier [NonEmptyString] <p>The customer identifier is a handle to each unique customer in an application. Customer identifiers are obtained through the ResolveCustomer operation in AWS Marketplace Metering Service.</p>
+-- @param _Dimension [NonEmptyString] <p>The dimension for which the given entitlement applies. Dimensions represent categories of capacity in a product and are specified when the product is listed in AWS Marketplace.</p>
+-- @param _Value [EntitlementValue] <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
+-- @param _ExpirationDate [Timestamp] <p>The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date.</p>
+function M.Entitlement(_ProductCode, _CustomerIdentifier, _Dimension, _Value, _ExpirationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Entitlement")
 	local t = { 
-		["ProductCode"] = ProductCode,
-		["CustomerIdentifier"] = CustomerIdentifier,
-		["Dimension"] = Dimension,
-		["Value"] = Value,
-		["ExpirationDate"] = ExpirationDate,
+		["ProductCode"] = _ProductCode,
+		["CustomerIdentifier"] = _CustomerIdentifier,
+		["Dimension"] = _Dimension,
+		["Value"] = _Value,
+		["ExpirationDate"] = _ExpirationDate,
 	}
-	M.AssertEntitlement(t)
+	asserts.AssertEntitlement(t)
 	return t
 end
 
-local GetEntitlementsResult_keys = { "Entitlements" = true, "NextToken" = true, nil }
+keys.GetEntitlementsResult = { ["Entitlements"] = true, ["NextToken"] = true, nil }
 
-function M.AssertGetEntitlementsResult(struct)
+function asserts.AssertGetEntitlementsResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetEntitlementsResult to be of type 'table'")
-	if struct["Entitlements"] then M.AssertEntitlementList(struct["Entitlements"]) end
-	if struct["NextToken"] then M.AssertNonEmptyString(struct["NextToken"]) end
+	if struct["Entitlements"] then asserts.AssertEntitlementList(struct["Entitlements"]) end
+	if struct["NextToken"] then asserts.AssertNonEmptyString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(GetEntitlementsResult_keys[k], "GetEntitlementsResult contains unknown key " .. tostring(k))
+		assert(keys.GetEntitlementsResult[k], "GetEntitlementsResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetEntitlementsResult
 -- <p>The GetEntitlementsRequest contains results from the GetEntitlements operation.</p>
--- @param Entitlements [EntitlementList] <p>The set of entitlements found through the GetEntitlements operation. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
--- @param NextToken [NonEmptyString] <p>For paginated results, use NextToken in subsequent calls to GetEntitlements. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
-function M.GetEntitlementsResult(Entitlements, NextToken, ...)
+-- @param _Entitlements [EntitlementList] <p>The set of entitlements found through the GetEntitlements operation. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
+-- @param _NextToken [NonEmptyString] <p>For paginated results, use NextToken in subsequent calls to GetEntitlements. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
+function M.GetEntitlementsResult(_Entitlements, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEntitlementsResult")
 	local t = { 
-		["Entitlements"] = Entitlements,
-		["NextToken"] = NextToken,
+		["Entitlements"] = _Entitlements,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertGetEntitlementsResult(t)
+	asserts.AssertGetEntitlementsResult(t)
 	return t
 end
 
-local InvalidParameterException_keys = { "message" = true, nil }
+keys.InvalidParameterException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterException(struct)
+function asserts.AssertInvalidParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterException_keys[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterException
 -- <p>One or more parameters in your request was invalid.</p>
--- @param message [ErrorMessage] <p>One or more parameters in your request was invalid.</p>
-function M.InvalidParameterException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InvalidParameterException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterException(t)
+	asserts.AssertInvalidParameterException(t)
 	return t
 end
 
-local InternalServiceErrorException_keys = { "message" = true, nil }
+keys.InternalServiceErrorException = { ["message"] = true, nil }
 
-function M.AssertInternalServiceErrorException(struct)
+function asserts.AssertInternalServiceErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServiceErrorException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServiceErrorException_keys[k], "InternalServiceErrorException contains unknown key " .. tostring(k))
+		assert(keys.InternalServiceErrorException[k], "InternalServiceErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServiceErrorException
 -- <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
--- @param message [ErrorMessage] <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
-function M.InternalServiceErrorException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.InternalServiceErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalServiceErrorException(t)
+	asserts.AssertInternalServiceErrorException(t)
 	return t
 end
 
-local ThrottlingException_keys = { "message" = true, nil }
+keys.ThrottlingException = { ["message"] = true, nil }
 
-function M.AssertThrottlingException(struct)
+function asserts.AssertThrottlingException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ThrottlingException to be of type 'table'")
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ThrottlingException_keys[k], "ThrottlingException contains unknown key " .. tostring(k))
+		assert(keys.ThrottlingException[k], "ThrottlingException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ThrottlingException
 -- <p>The calls to the GetEntitlements API are throttled.</p>
--- @param message [ErrorMessage] <p>The calls to the GetEntitlements API are throttled.</p>
-function M.ThrottlingException(message, ...)
+-- @param _message [ErrorMessage] 
+function M.ThrottlingException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertThrottlingException(t)
+	asserts.AssertThrottlingException(t)
 	return t
 end
 
-function M.AssertProductCode(str)
+function asserts.AssertProductCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProductCode to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -223,149 +226,148 @@ end
 
 --  
 function M.ProductCode(str)
-	M.AssertProductCode(str)
+	asserts.AssertProductCode(str)
 	return str
 end
 
-function M.AssertFilterValue(str)
+function asserts.AssertFilterValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FilterValue to be of type 'string'")
 end
 
 --  
 function M.FilterValue(str)
-	M.AssertFilterValue(str)
+	asserts.AssertFilterValue(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertNonEmptyString(str)
+function asserts.AssertNonEmptyString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NonEmptyString to be of type 'string'")
-	assert(str:match("%S+"), "Expected string to match pattern '%S+'")
 end
 
 --  
 function M.NonEmptyString(str)
-	M.AssertNonEmptyString(str)
+	asserts.AssertNonEmptyString(str)
 	return str
 end
 
-function M.AssertGetEntitlementFilterName(str)
+function asserts.AssertGetEntitlementFilterName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GetEntitlementFilterName to be of type 'string'")
 end
 
 --  
 function M.GetEntitlementFilterName(str)
-	M.AssertGetEntitlementFilterName(str)
+	asserts.AssertGetEntitlementFilterName(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertDouble(double)
+function asserts.AssertDouble(double)
 	assert(double)
 	assert(type(double) == "number", "Expected Double to be of type 'number'")
 end
 
 function M.Double(double)
-	M.AssertDouble(double)
+	asserts.AssertDouble(double)
 	return double
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertGetEntitlementFilters(map)
+function asserts.AssertGetEntitlementFilters(map)
 	assert(map)
 	assert(type(map) == "table", "Expected GetEntitlementFilters to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertGetEntitlementFilterName(k)
-		M.AssertFilterValueList(v)
+		asserts.AssertGetEntitlementFilterName(k)
+		asserts.AssertFilterValueList(v)
 	end
 end
 
 function M.GetEntitlementFilters(map)
-	M.AssertGetEntitlementFilters(map)
+	asserts.AssertGetEntitlementFilters(map)
 	return map
 end
 
-function M.AssertTimestamp(timestamp)
+function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 function M.Timestamp(timestamp)
-	M.AssertTimestamp(timestamp)
+	asserts.AssertTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertEntitlementList(list)
+function asserts.AssertEntitlementList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EntitlementList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEntitlement(v)
+		asserts.AssertEntitlement(v)
 	end
 end
 
 --  
 -- List of Entitlement objects
 function M.EntitlementList(list)
-	M.AssertEntitlementList(list)
+	asserts.AssertEntitlementList(list)
 	return list
 end
 
-function M.AssertFilterValueList(list)
+function asserts.AssertFilterValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FilterValueList to be of type ''table")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertFilterValue(v)
+		asserts.AssertFilterValue(v)
 	end
 end
 
 --  
 -- List of FilterValue objects
 function M.FilterValueList(list)
-	M.AssertFilterValueList(list)
+	asserts.AssertFilterValueList(list)
 	return list
 end
 

@@ -18,276 +18,279 @@ M.metadata = {
 	uid = "inspector-2016-02-16",
 }
 
-local AssessmentRunFilter_keys = { "startTimeRange" = true, "durationRange" = true, "rulesPackageArns" = true, "states" = true, "namePattern" = true, "completionTimeRange" = true, "stateChangeTimeRange" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertAssessmentRunFilter(struct)
+keys.AssessmentRunFilter = { ["startTimeRange"] = true, ["durationRange"] = true, ["rulesPackageArns"] = true, ["states"] = true, ["namePattern"] = true, ["completionTimeRange"] = true, ["stateChangeTimeRange"] = true, nil }
+
+function asserts.AssertAssessmentRunFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentRunFilter to be of type 'table'")
-	if struct["startTimeRange"] then M.AssertTimestampRange(struct["startTimeRange"]) end
-	if struct["durationRange"] then M.AssertDurationRange(struct["durationRange"]) end
-	if struct["rulesPackageArns"] then M.AssertFilterRulesPackageArnList(struct["rulesPackageArns"]) end
-	if struct["states"] then M.AssertAssessmentRunStateList(struct["states"]) end
-	if struct["namePattern"] then M.AssertNamePattern(struct["namePattern"]) end
-	if struct["completionTimeRange"] then M.AssertTimestampRange(struct["completionTimeRange"]) end
-	if struct["stateChangeTimeRange"] then M.AssertTimestampRange(struct["stateChangeTimeRange"]) end
+	if struct["startTimeRange"] then asserts.AssertTimestampRange(struct["startTimeRange"]) end
+	if struct["durationRange"] then asserts.AssertDurationRange(struct["durationRange"]) end
+	if struct["rulesPackageArns"] then asserts.AssertFilterRulesPackageArnList(struct["rulesPackageArns"]) end
+	if struct["states"] then asserts.AssertAssessmentRunStateList(struct["states"]) end
+	if struct["namePattern"] then asserts.AssertNamePattern(struct["namePattern"]) end
+	if struct["completionTimeRange"] then asserts.AssertTimestampRange(struct["completionTimeRange"]) end
+	if struct["stateChangeTimeRange"] then asserts.AssertTimestampRange(struct["stateChangeTimeRange"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentRunFilter_keys[k], "AssessmentRunFilter contains unknown key " .. tostring(k))
+		assert(keys.AssessmentRunFilter[k], "AssessmentRunFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentRunFilter
 -- <p>Used as the request parameter in the <a>ListAssessmentRuns</a> action.</p>
--- @param startTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>startTime</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param durationRange [DurationRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>rulesPackages</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param states [AssessmentRunStateList] <p>For a record to match a filter, one of the values specified for this data type property must be the exact match of the value of the <b>assessmentRunState</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string containing a wildcard that is specified for this data type property must match the value of the <b>assessmentRunName</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param completionTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>completedAt</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param stateChangeTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must match the <b>stateChangedAt</b> property of the <a>AssessmentRun</a> data type.</p>
-function M.AssessmentRunFilter(startTimeRange, durationRange, rulesPackageArns, states, namePattern, completionTimeRange, stateChangeTimeRange, ...)
+-- @param _startTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>startTime</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param _durationRange [DurationRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param _rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>rulesPackages</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param _states [AssessmentRunStateList] <p>For a record to match a filter, one of the values specified for this data type property must be the exact match of the value of the <b>assessmentRunState</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param _namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string containing a wildcard that is specified for this data type property must match the value of the <b>assessmentRunName</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param _completionTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>completedAt</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param _stateChangeTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must match the <b>stateChangedAt</b> property of the <a>AssessmentRun</a> data type.</p>
+function M.AssessmentRunFilter(_startTimeRange, _durationRange, _rulesPackageArns, _states, _namePattern, _completionTimeRange, _stateChangeTimeRange, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunFilter")
 	local t = { 
-		["startTimeRange"] = startTimeRange,
-		["durationRange"] = durationRange,
-		["rulesPackageArns"] = rulesPackageArns,
-		["states"] = states,
-		["namePattern"] = namePattern,
-		["completionTimeRange"] = completionTimeRange,
-		["stateChangeTimeRange"] = stateChangeTimeRange,
+		["startTimeRange"] = _startTimeRange,
+		["durationRange"] = _durationRange,
+		["rulesPackageArns"] = _rulesPackageArns,
+		["states"] = _states,
+		["namePattern"] = _namePattern,
+		["completionTimeRange"] = _completionTimeRange,
+		["stateChangeTimeRange"] = _stateChangeTimeRange,
 	}
-	M.AssertAssessmentRunFilter(t)
+	asserts.AssertAssessmentRunFilter(t)
 	return t
 end
 
-local TelemetryMetadata_keys = { "count" = true, "dataSize" = true, "messageType" = true, nil }
+keys.TelemetryMetadata = { ["count"] = true, ["dataSize"] = true, ["messageType"] = true, nil }
 
-function M.AssertTelemetryMetadata(struct)
+function asserts.AssertTelemetryMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TelemetryMetadata to be of type 'table'")
 	assert(struct["messageType"], "Expected key messageType to exist in table")
 	assert(struct["count"], "Expected key count to exist in table")
-	if struct["count"] then M.AssertLong(struct["count"]) end
-	if struct["dataSize"] then M.AssertLong(struct["dataSize"]) end
-	if struct["messageType"] then M.AssertMessageType(struct["messageType"]) end
+	if struct["count"] then asserts.AssertLong(struct["count"]) end
+	if struct["dataSize"] then asserts.AssertLong(struct["dataSize"]) end
+	if struct["messageType"] then asserts.AssertMessageType(struct["messageType"]) end
 	for k,_ in pairs(struct) do
-		assert(TelemetryMetadata_keys[k], "TelemetryMetadata contains unknown key " .. tostring(k))
+		assert(keys.TelemetryMetadata[k], "TelemetryMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TelemetryMetadata
 -- <p>The metadata about the Amazon Inspector application data metrics collected by the agent. This data type is used as the response element in the <a>GetTelemetryMetadata</a> action.</p>
--- @param count [Long] <p>The count of messages that the agent sends to the Amazon Inspector service.</p>
--- @param dataSize [Long] <p>The data size of messages that the agent sends to the Amazon Inspector service.</p>
--- @param messageType [MessageType] <p>A specific type of behavioral data that is collected by the agent.</p>
+-- @param _count [Long] <p>The count of messages that the agent sends to the Amazon Inspector service.</p>
+-- @param _dataSize [Long] <p>The data size of messages that the agent sends to the Amazon Inspector service.</p>
+-- @param _messageType [MessageType] <p>A specific type of behavioral data that is collected by the agent.</p>
 -- Required parameter: messageType
 -- Required parameter: count
-function M.TelemetryMetadata(count, dataSize, messageType, ...)
+function M.TelemetryMetadata(_count, _dataSize, _messageType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TelemetryMetadata")
 	local t = { 
-		["count"] = count,
-		["dataSize"] = dataSize,
-		["messageType"] = messageType,
+		["count"] = _count,
+		["dataSize"] = _dataSize,
+		["messageType"] = _messageType,
 	}
-	M.AssertTelemetryMetadata(t)
+	asserts.AssertTelemetryMetadata(t)
 	return t
 end
 
-local AgentsAlreadyRunningAssessmentException_keys = { "canRetry" = true, "message" = true, "agents" = true, "agentsTruncated" = true, nil }
+keys.AgentsAlreadyRunningAssessmentException = { ["canRetry"] = true, ["message"] = true, ["agents"] = true, ["agentsTruncated"] = true, nil }
 
-function M.AssertAgentsAlreadyRunningAssessmentException(struct)
+function asserts.AssertAgentsAlreadyRunningAssessmentException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AgentsAlreadyRunningAssessmentException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["agents"], "Expected key agents to exist in table")
 	assert(struct["agentsTruncated"], "Expected key agentsTruncated to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
-	if struct["agents"] then M.AssertAgentAlreadyRunningAssessmentList(struct["agents"]) end
-	if struct["agentsTruncated"] then M.AssertBool(struct["agentsTruncated"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	if struct["agents"] then asserts.AssertAgentAlreadyRunningAssessmentList(struct["agents"]) end
+	if struct["agentsTruncated"] then asserts.AssertBool(struct["agentsTruncated"]) end
 	for k,_ in pairs(struct) do
-		assert(AgentsAlreadyRunningAssessmentException_keys[k], "AgentsAlreadyRunningAssessmentException contains unknown key " .. tostring(k))
+		assert(keys.AgentsAlreadyRunningAssessmentException[k], "AgentsAlreadyRunningAssessmentException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AgentsAlreadyRunningAssessmentException
 -- <p>You started an assessment run, but one of the instances is already participating in another assessment run.</p>
--- @param canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param message [ErrorMessage] <p>Details of the exception error.</p>
--- @param agents [AgentAlreadyRunningAssessmentList] <p/>
--- @param agentsTruncated [Bool] <p/>
+-- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param _message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param _agents [AgentAlreadyRunningAssessmentList] <p/>
+-- @param _agentsTruncated [Bool] <p/>
 -- Required parameter: message
 -- Required parameter: agents
 -- Required parameter: agentsTruncated
 -- Required parameter: canRetry
-function M.AgentsAlreadyRunningAssessmentException(canRetry, message, agents, agentsTruncated, ...)
+function M.AgentsAlreadyRunningAssessmentException(_canRetry, _message, _agents, _agentsTruncated, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentsAlreadyRunningAssessmentException")
 	local t = { 
-		["canRetry"] = canRetry,
-		["message"] = message,
-		["agents"] = agents,
-		["agentsTruncated"] = agentsTruncated,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
+		["agents"] = _agents,
+		["agentsTruncated"] = _agentsTruncated,
 	}
-	M.AssertAgentsAlreadyRunningAssessmentException(t)
+	asserts.AssertAgentsAlreadyRunningAssessmentException(t)
 	return t
 end
 
-local FailedItemDetails_keys = { "retryable" = true, "failureCode" = true, nil }
+keys.FailedItemDetails = { ["retryable"] = true, ["failureCode"] = true, nil }
 
-function M.AssertFailedItemDetails(struct)
+function asserts.AssertFailedItemDetails(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FailedItemDetails to be of type 'table'")
 	assert(struct["failureCode"], "Expected key failureCode to exist in table")
 	assert(struct["retryable"], "Expected key retryable to exist in table")
-	if struct["retryable"] then M.AssertBool(struct["retryable"]) end
-	if struct["failureCode"] then M.AssertFailedItemErrorCode(struct["failureCode"]) end
+	if struct["retryable"] then asserts.AssertBool(struct["retryable"]) end
+	if struct["failureCode"] then asserts.AssertFailedItemErrorCode(struct["failureCode"]) end
 	for k,_ in pairs(struct) do
-		assert(FailedItemDetails_keys[k], "FailedItemDetails contains unknown key " .. tostring(k))
+		assert(keys.FailedItemDetails[k], "FailedItemDetails contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FailedItemDetails
 -- <p>Includes details about the failed items.</p>
--- @param retryable [Bool] <p>Indicates whether you can immediately retry a request for this item for a specified resource.</p>
--- @param failureCode [FailedItemErrorCode] <p>The status code of a failed item.</p>
+-- @param _retryable [Bool] <p>Indicates whether you can immediately retry a request for this item for a specified resource.</p>
+-- @param _failureCode [FailedItemErrorCode] <p>The status code of a failed item.</p>
 -- Required parameter: failureCode
 -- Required parameter: retryable
-function M.FailedItemDetails(retryable, failureCode, ...)
+function M.FailedItemDetails(_retryable, _failureCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailedItemDetails")
 	local t = { 
-		["retryable"] = retryable,
-		["failureCode"] = failureCode,
+		["retryable"] = _retryable,
+		["failureCode"] = _failureCode,
 	}
-	M.AssertFailedItemDetails(t)
+	asserts.AssertFailedItemDetails(t)
 	return t
 end
 
-local PreviewAgentsResponse_keys = { "nextToken" = true, "agentPreviews" = true, nil }
+keys.PreviewAgentsResponse = { ["nextToken"] = true, ["agentPreviews"] = true, nil }
 
-function M.AssertPreviewAgentsResponse(struct)
+function asserts.AssertPreviewAgentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PreviewAgentsResponse to be of type 'table'")
 	assert(struct["agentPreviews"], "Expected key agentPreviews to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["agentPreviews"] then M.AssertAgentPreviewList(struct["agentPreviews"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["agentPreviews"] then asserts.AssertAgentPreviewList(struct["agentPreviews"]) end
 	for k,_ in pairs(struct) do
-		assert(PreviewAgentsResponse_keys[k], "PreviewAgentsResponse contains unknown key " .. tostring(k))
+		assert(keys.PreviewAgentsResponse[k], "PreviewAgentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PreviewAgentsResponse
 --  
--- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param agentPreviews [AgentPreviewList] <p>The resulting list of agents.</p>
+-- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param _agentPreviews [AgentPreviewList] <p>The resulting list of agents.</p>
 -- Required parameter: agentPreviews
-function M.PreviewAgentsResponse(nextToken, agentPreviews, ...)
+function M.PreviewAgentsResponse(_nextToken, _agentPreviews, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PreviewAgentsResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["agentPreviews"] = agentPreviews,
+		["nextToken"] = _nextToken,
+		["agentPreviews"] = _agentPreviews,
 	}
-	M.AssertPreviewAgentsResponse(t)
+	asserts.AssertPreviewAgentsResponse(t)
 	return t
 end
 
-local GetAssessmentReportRequest_keys = { "assessmentRunArn" = true, "reportType" = true, "reportFileFormat" = true, nil }
+keys.GetAssessmentReportRequest = { ["assessmentRunArn"] = true, ["reportType"] = true, ["reportFileFormat"] = true, nil }
 
-function M.AssertGetAssessmentReportRequest(struct)
+function asserts.AssertGetAssessmentReportRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAssessmentReportRequest to be of type 'table'")
 	assert(struct["assessmentRunArn"], "Expected key assessmentRunArn to exist in table")
 	assert(struct["reportFileFormat"], "Expected key reportFileFormat to exist in table")
 	assert(struct["reportType"], "Expected key reportType to exist in table")
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
-	if struct["reportType"] then M.AssertReportType(struct["reportType"]) end
-	if struct["reportFileFormat"] then M.AssertReportFileFormat(struct["reportFileFormat"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
+	if struct["reportType"] then asserts.AssertReportType(struct["reportType"]) end
+	if struct["reportFileFormat"] then asserts.AssertReportFileFormat(struct["reportFileFormat"]) end
 	for k,_ in pairs(struct) do
-		assert(GetAssessmentReportRequest_keys[k], "GetAssessmentReportRequest contains unknown key " .. tostring(k))
+		assert(keys.GetAssessmentReportRequest[k], "GetAssessmentReportRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetAssessmentReportRequest
 --  
--- @param assessmentRunArn [Arn] <p>The ARN that specifies the assessment run for which you want to generate a report.</p>
--- @param reportType [ReportType] <p>Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <a href="http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html">Assessment Reports</a>. </p>
--- @param reportFileFormat [ReportFileFormat] <p>Specifies the file format (html or pdf) of the assessment report that you want to generate.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN that specifies the assessment run for which you want to generate a report.</p>
+-- @param _reportType [ReportType] <p>Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <a href="http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html">Assessment Reports</a>. </p>
+-- @param _reportFileFormat [ReportFileFormat] <p>Specifies the file format (html or pdf) of the assessment report that you want to generate.</p>
 -- Required parameter: assessmentRunArn
 -- Required parameter: reportFileFormat
 -- Required parameter: reportType
-function M.GetAssessmentReportRequest(assessmentRunArn, reportType, reportFileFormat, ...)
+function M.GetAssessmentReportRequest(_assessmentRunArn, _reportType, _reportFileFormat, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAssessmentReportRequest")
 	local t = { 
-		["assessmentRunArn"] = assessmentRunArn,
-		["reportType"] = reportType,
-		["reportFileFormat"] = reportFileFormat,
+		["assessmentRunArn"] = _assessmentRunArn,
+		["reportType"] = _reportType,
+		["reportFileFormat"] = _reportFileFormat,
 	}
-	M.AssertGetAssessmentReportRequest(t)
+	asserts.AssertGetAssessmentReportRequest(t)
 	return t
 end
 
-local SubscribeToEventRequest_keys = { "resourceArn" = true, "event" = true, "topicArn" = true, nil }
+keys.SubscribeToEventRequest = { ["resourceArn"] = true, ["event"] = true, ["topicArn"] = true, nil }
 
-function M.AssertSubscribeToEventRequest(struct)
+function asserts.AssertSubscribeToEventRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubscribeToEventRequest to be of type 'table'")
 	assert(struct["resourceArn"], "Expected key resourceArn to exist in table")
 	assert(struct["event"], "Expected key event to exist in table")
 	assert(struct["topicArn"], "Expected key topicArn to exist in table")
-	if struct["resourceArn"] then M.AssertArn(struct["resourceArn"]) end
-	if struct["event"] then M.AssertInspectorEvent(struct["event"]) end
-	if struct["topicArn"] then M.AssertArn(struct["topicArn"]) end
+	if struct["resourceArn"] then asserts.AssertArn(struct["resourceArn"]) end
+	if struct["event"] then asserts.AssertInspectorEvent(struct["event"]) end
+	if struct["topicArn"] then asserts.AssertArn(struct["topicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SubscribeToEventRequest_keys[k], "SubscribeToEventRequest contains unknown key " .. tostring(k))
+		assert(keys.SubscribeToEventRequest[k], "SubscribeToEventRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubscribeToEventRequest
 --  
--- @param resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.</p>
--- @param event [InspectorEvent] <p>The event for which you want to receive SNS notifications.</p>
--- @param topicArn [Arn] <p>The ARN of the SNS topic to which the SNS notifications are sent.</p>
+-- @param _resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.</p>
+-- @param _event [InspectorEvent] <p>The event for which you want to receive SNS notifications.</p>
+-- @param _topicArn [Arn] <p>The ARN of the SNS topic to which the SNS notifications are sent.</p>
 -- Required parameter: resourceArn
 -- Required parameter: event
 -- Required parameter: topicArn
-function M.SubscribeToEventRequest(resourceArn, event, topicArn, ...)
+function M.SubscribeToEventRequest(_resourceArn, _event, _topicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeToEventRequest")
 	local t = { 
-		["resourceArn"] = resourceArn,
-		["event"] = event,
-		["topicArn"] = topicArn,
+		["resourceArn"] = _resourceArn,
+		["event"] = _event,
+		["topicArn"] = _topicArn,
 	}
-	M.AssertSubscribeToEventRequest(t)
+	asserts.AssertSubscribeToEventRequest(t)
 	return t
 end
 
-local RemoveAttributesFromFindingsResponse_keys = { "failedItems" = true, nil }
+keys.RemoveAttributesFromFindingsResponse = { ["failedItems"] = true, nil }
 
-function M.AssertRemoveAttributesFromFindingsResponse(struct)
+function asserts.AssertRemoveAttributesFromFindingsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveAttributesFromFindingsResponse to be of type 'table'")
 	assert(struct["failedItems"], "Expected key failedItems to exist in table")
-	if struct["failedItems"] then M.AssertFailedItems(struct["failedItems"]) end
+	if struct["failedItems"] then asserts.AssertFailedItems(struct["failedItems"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveAttributesFromFindingsResponse_keys[k], "RemoveAttributesFromFindingsResponse contains unknown key " .. tostring(k))
+		assert(keys.RemoveAttributesFromFindingsResponse[k], "RemoveAttributesFromFindingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveAttributesFromFindingsResponse
 --  
--- @param failedItems [FailedItems] <p>Attributes details that cannot be described. An error code is provided for each failed item.</p>
+-- @param _failedItems [FailedItems] <p>Attributes details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: failedItems
-function M.RemoveAttributesFromFindingsResponse(failedItems, ...)
+function M.RemoveAttributesFromFindingsResponse(_failedItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAttributesFromFindingsResponse")
 	local t = { 
-		["failedItems"] = failedItems,
+		["failedItems"] = _failedItems,
 	}
-	M.AssertRemoveAttributesFromFindingsResponse(t)
+	asserts.AssertRemoveAttributesFromFindingsResponse(t)
 	return t
 end
 
-local AssessmentRunAgent_keys = { "assessmentRunArn" = true, "agentHealthCode" = true, "agentHealth" = true, "autoScalingGroup" = true, "agentHealthDetails" = true, "telemetryMetadata" = true, "agentId" = true, nil }
+keys.AssessmentRunAgent = { ["assessmentRunArn"] = true, ["agentHealthCode"] = true, ["agentHealth"] = true, ["autoScalingGroup"] = true, ["agentHealthDetails"] = true, ["telemetryMetadata"] = true, ["agentId"] = true, nil }
 
-function M.AssertAssessmentRunAgent(struct)
+function asserts.AssertAssessmentRunAgent(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentRunAgent to be of type 'table'")
 	assert(struct["agentId"], "Expected key agentId to exist in table")
@@ -295,437 +298,437 @@ function M.AssertAssessmentRunAgent(struct)
 	assert(struct["agentHealth"], "Expected key agentHealth to exist in table")
 	assert(struct["agentHealthCode"], "Expected key agentHealthCode to exist in table")
 	assert(struct["telemetryMetadata"], "Expected key telemetryMetadata to exist in table")
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
-	if struct["agentHealthCode"] then M.AssertAgentHealthCode(struct["agentHealthCode"]) end
-	if struct["agentHealth"] then M.AssertAgentHealth(struct["agentHealth"]) end
-	if struct["autoScalingGroup"] then M.AssertAutoScalingGroup(struct["autoScalingGroup"]) end
-	if struct["agentHealthDetails"] then M.AssertMessage(struct["agentHealthDetails"]) end
-	if struct["telemetryMetadata"] then M.AssertTelemetryMetadataList(struct["telemetryMetadata"]) end
-	if struct["agentId"] then M.AssertAgentId(struct["agentId"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
+	if struct["agentHealthCode"] then asserts.AssertAgentHealthCode(struct["agentHealthCode"]) end
+	if struct["agentHealth"] then asserts.AssertAgentHealth(struct["agentHealth"]) end
+	if struct["autoScalingGroup"] then asserts.AssertAutoScalingGroup(struct["autoScalingGroup"]) end
+	if struct["agentHealthDetails"] then asserts.AssertMessage(struct["agentHealthDetails"]) end
+	if struct["telemetryMetadata"] then asserts.AssertTelemetryMetadataList(struct["telemetryMetadata"]) end
+	if struct["agentId"] then asserts.AssertAgentId(struct["agentId"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentRunAgent_keys[k], "AssessmentRunAgent contains unknown key " .. tostring(k))
+		assert(keys.AssessmentRunAgent[k], "AssessmentRunAgent contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentRunAgent
 -- <p>Contains information about an Amazon Inspector agent. This data type is used as a response element in the <a>ListAssessmentRunAgents</a> action.</p>
--- @param assessmentRunArn [Arn] <p>The ARN of the assessment run that is associated with the agent.</p>
--- @param agentHealthCode [AgentHealthCode] <p>The detailed health state of the agent.</p>
--- @param agentHealth [AgentHealth] <p>The current health state of the agent.</p>
--- @param autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance that is specified by the agent ID.</p>
--- @param agentHealthDetails [Message] <p>The description for the agent health code.</p>
--- @param telemetryMetadata [TelemetryMetadataList] <p>The Amazon Inspector application data metrics that are collected by the agent.</p>
--- @param agentId [AgentId] <p>The AWS account of the EC2 instance where the agent is installed.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run that is associated with the agent.</p>
+-- @param _agentHealthCode [AgentHealthCode] <p>The detailed health state of the agent.</p>
+-- @param _agentHealth [AgentHealth] <p>The current health state of the agent.</p>
+-- @param _autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance that is specified by the agent ID.</p>
+-- @param _agentHealthDetails [Message] <p>The description for the agent health code.</p>
+-- @param _telemetryMetadata [TelemetryMetadataList] <p>The Amazon Inspector application data metrics that are collected by the agent.</p>
+-- @param _agentId [AgentId] <p>The AWS account of the EC2 instance where the agent is installed.</p>
 -- Required parameter: agentId
 -- Required parameter: assessmentRunArn
 -- Required parameter: agentHealth
 -- Required parameter: agentHealthCode
 -- Required parameter: telemetryMetadata
-function M.AssessmentRunAgent(assessmentRunArn, agentHealthCode, agentHealth, autoScalingGroup, agentHealthDetails, telemetryMetadata, agentId, ...)
+function M.AssessmentRunAgent(_assessmentRunArn, _agentHealthCode, _agentHealth, _autoScalingGroup, _agentHealthDetails, _telemetryMetadata, _agentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunAgent")
 	local t = { 
-		["assessmentRunArn"] = assessmentRunArn,
-		["agentHealthCode"] = agentHealthCode,
-		["agentHealth"] = agentHealth,
-		["autoScalingGroup"] = autoScalingGroup,
-		["agentHealthDetails"] = agentHealthDetails,
-		["telemetryMetadata"] = telemetryMetadata,
-		["agentId"] = agentId,
+		["assessmentRunArn"] = _assessmentRunArn,
+		["agentHealthCode"] = _agentHealthCode,
+		["agentHealth"] = _agentHealth,
+		["autoScalingGroup"] = _autoScalingGroup,
+		["agentHealthDetails"] = _agentHealthDetails,
+		["telemetryMetadata"] = _telemetryMetadata,
+		["agentId"] = _agentId,
 	}
-	M.AssertAssessmentRunAgent(t)
+	asserts.AssertAssessmentRunAgent(t)
 	return t
 end
 
-local DescribeResourceGroupsRequest_keys = { "resourceGroupArns" = true, nil }
+keys.DescribeResourceGroupsRequest = { ["resourceGroupArns"] = true, nil }
 
-function M.AssertDescribeResourceGroupsRequest(struct)
+function asserts.AssertDescribeResourceGroupsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeResourceGroupsRequest to be of type 'table'")
 	assert(struct["resourceGroupArns"], "Expected key resourceGroupArns to exist in table")
-	if struct["resourceGroupArns"] then M.AssertBatchDescribeArnList(struct["resourceGroupArns"]) end
+	if struct["resourceGroupArns"] then asserts.AssertBatchDescribeArnList(struct["resourceGroupArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeResourceGroupsRequest_keys[k], "DescribeResourceGroupsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeResourceGroupsRequest[k], "DescribeResourceGroupsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeResourceGroupsRequest
 --  
--- @param resourceGroupArns [BatchDescribeArnList] <p>The ARN that specifies the resource group that you want to describe.</p>
+-- @param _resourceGroupArns [BatchDescribeArnList] <p>The ARN that specifies the resource group that you want to describe.</p>
 -- Required parameter: resourceGroupArns
-function M.DescribeResourceGroupsRequest(resourceGroupArns, ...)
+function M.DescribeResourceGroupsRequest(_resourceGroupArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourceGroupsRequest")
 	local t = { 
-		["resourceGroupArns"] = resourceGroupArns,
+		["resourceGroupArns"] = _resourceGroupArns,
 	}
-	M.AssertDescribeResourceGroupsRequest(t)
+	asserts.AssertDescribeResourceGroupsRequest(t)
 	return t
 end
 
-local ListAssessmentTargetsRequest_keys = { "filter" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.ListAssessmentTargetsRequest = { ["filter"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListAssessmentTargetsRequest(struct)
+function asserts.AssertListAssessmentTargetsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssessmentTargetsRequest to be of type 'table'")
-	if struct["filter"] then M.AssertAssessmentTargetFilter(struct["filter"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertListMaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertAssessmentTargetFilter(struct["filter"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertListMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssessmentTargetsRequest_keys[k], "ListAssessmentTargetsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAssessmentTargetsRequest[k], "ListAssessmentTargetsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssessmentTargetsRequest
 --  
--- @param filter [AssessmentTargetFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTargets</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListAssessmentTargetsRequest(filter, nextToken, maxResults, ...)
+-- @param _filter [AssessmentTargetFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTargets</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+function M.ListAssessmentTargetsRequest(_filter, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTargetsRequest")
 	local t = { 
-		["filter"] = filter,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["filter"] = _filter,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListAssessmentTargetsRequest(t)
+	asserts.AssertListAssessmentTargetsRequest(t)
 	return t
 end
 
-local AssessmentRunNotification_keys = { "snsPublishStatusCode" = true, "snsTopicArn" = true, "error" = true, "date" = true, "message" = true, "event" = true, nil }
+keys.AssessmentRunNotification = { ["snsPublishStatusCode"] = true, ["snsTopicArn"] = true, ["error"] = true, ["date"] = true, ["message"] = true, ["event"] = true, nil }
 
-function M.AssertAssessmentRunNotification(struct)
+function asserts.AssertAssessmentRunNotification(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentRunNotification to be of type 'table'")
 	assert(struct["date"], "Expected key date to exist in table")
 	assert(struct["event"], "Expected key event to exist in table")
 	assert(struct["error"], "Expected key error to exist in table")
-	if struct["snsPublishStatusCode"] then M.AssertAssessmentRunNotificationSnsStatusCode(struct["snsPublishStatusCode"]) end
-	if struct["snsTopicArn"] then M.AssertArn(struct["snsTopicArn"]) end
-	if struct["error"] then M.AssertBool(struct["error"]) end
-	if struct["date"] then M.AssertTimestamp(struct["date"]) end
-	if struct["message"] then M.AssertMessage(struct["message"]) end
-	if struct["event"] then M.AssertInspectorEvent(struct["event"]) end
+	if struct["snsPublishStatusCode"] then asserts.AssertAssessmentRunNotificationSnsStatusCode(struct["snsPublishStatusCode"]) end
+	if struct["snsTopicArn"] then asserts.AssertArn(struct["snsTopicArn"]) end
+	if struct["error"] then asserts.AssertBool(struct["error"]) end
+	if struct["date"] then asserts.AssertTimestamp(struct["date"]) end
+	if struct["message"] then asserts.AssertMessage(struct["message"]) end
+	if struct["event"] then asserts.AssertInspectorEvent(struct["event"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentRunNotification_keys[k], "AssessmentRunNotification contains unknown key " .. tostring(k))
+		assert(keys.AssessmentRunNotification[k], "AssessmentRunNotification contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentRunNotification
 -- <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
--- @param snsPublishStatusCode [AssessmentRunNotificationSnsStatusCode] <p>The status code of the SNS notification.</p>
--- @param snsTopicArn [Arn] <p>The SNS topic to which the SNS notification is sent.</p>
--- @param error [Bool] <p>The Boolean value that specifies whether the notification represents an error.</p>
--- @param date [Timestamp] <p>The date of the notification.</p>
--- @param message [Message] <p>The message included in the notification.</p>
--- @param event [InspectorEvent] <p>The event for which a notification is sent.</p>
+-- @param _snsPublishStatusCode [AssessmentRunNotificationSnsStatusCode] <p>The status code of the SNS notification.</p>
+-- @param _snsTopicArn [Arn] <p>The SNS topic to which the SNS notification is sent.</p>
+-- @param _error [Bool] <p>The Boolean value that specifies whether the notification represents an error.</p>
+-- @param _date [Timestamp] <p>The date of the notification.</p>
+-- @param _message [Message] <p>The message included in the notification.</p>
+-- @param _event [InspectorEvent] <p>The event for which a notification is sent.</p>
 -- Required parameter: date
 -- Required parameter: event
 -- Required parameter: error
-function M.AssessmentRunNotification(snsPublishStatusCode, snsTopicArn, error, date, message, event, ...)
+function M.AssessmentRunNotification(_snsPublishStatusCode, _snsTopicArn, _error, _date, _message, _event, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunNotification")
 	local t = { 
-		["snsPublishStatusCode"] = snsPublishStatusCode,
-		["snsTopicArn"] = snsTopicArn,
-		["error"] = error,
-		["date"] = date,
-		["message"] = message,
-		["event"] = event,
+		["snsPublishStatusCode"] = _snsPublishStatusCode,
+		["snsTopicArn"] = _snsTopicArn,
+		["error"] = _error,
+		["date"] = _date,
+		["message"] = _message,
+		["event"] = _event,
 	}
-	M.AssertAssessmentRunNotification(t)
+	asserts.AssertAssessmentRunNotification(t)
 	return t
 end
 
-local ListEventSubscriptionsRequest_keys = { "resourceArn" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.ListEventSubscriptionsRequest = { ["resourceArn"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListEventSubscriptionsRequest(struct)
+function asserts.AssertListEventSubscriptionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListEventSubscriptionsRequest to be of type 'table'")
-	if struct["resourceArn"] then M.AssertArn(struct["resourceArn"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertListEventSubscriptionsMaxResults(struct["maxResults"]) end
+	if struct["resourceArn"] then asserts.AssertArn(struct["resourceArn"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertListEventSubscriptionsMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListEventSubscriptionsRequest_keys[k], "ListEventSubscriptionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListEventSubscriptionsRequest[k], "ListEventSubscriptionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListEventSubscriptionsRequest
 --  
--- @param resourceArn [Arn] <p>The ARN of the assessment template for which you want to list the existing event subscriptions.</p>
--- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListEventSubscriptions</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param maxResults [ListEventSubscriptionsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListEventSubscriptionsRequest(resourceArn, nextToken, maxResults, ...)
+-- @param _resourceArn [Arn] <p>The ARN of the assessment template for which you want to list the existing event subscriptions.</p>
+-- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListEventSubscriptions</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param _maxResults [ListEventSubscriptionsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+function M.ListEventSubscriptionsRequest(_resourceArn, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSubscriptionsRequest")
 	local t = { 
-		["resourceArn"] = resourceArn,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["resourceArn"] = _resourceArn,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListEventSubscriptionsRequest(t)
+	asserts.AssertListEventSubscriptionsRequest(t)
 	return t
 end
 
-local AgentFilter_keys = { "agentHealthCodes" = true, "agentHealths" = true, nil }
+keys.AgentFilter = { ["agentHealthCodes"] = true, ["agentHealths"] = true, nil }
 
-function M.AssertAgentFilter(struct)
+function asserts.AssertAgentFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AgentFilter to be of type 'table'")
 	assert(struct["agentHealths"], "Expected key agentHealths to exist in table")
 	assert(struct["agentHealthCodes"], "Expected key agentHealthCodes to exist in table")
-	if struct["agentHealthCodes"] then M.AssertAgentHealthCodeList(struct["agentHealthCodes"]) end
-	if struct["agentHealths"] then M.AssertAgentHealthList(struct["agentHealths"]) end
+	if struct["agentHealthCodes"] then asserts.AssertAgentHealthCodeList(struct["agentHealthCodes"]) end
+	if struct["agentHealths"] then asserts.AssertAgentHealthList(struct["agentHealths"]) end
 	for k,_ in pairs(struct) do
-		assert(AgentFilter_keys[k], "AgentFilter contains unknown key " .. tostring(k))
+		assert(keys.AgentFilter[k], "AgentFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AgentFilter
 -- <p>Contains information about an Amazon Inspector agent. This data type is used as a request parameter in the <a>ListAssessmentRunAgents</a> action.</p>
--- @param agentHealthCodes [AgentHealthCodeList] <p>The detailed health state of the agent. Values can be set to <b>IDLE</b>, <b>RUNNING</b>, <b>SHUTDOWN</b>, <b>UNHEALTHY</b>, <b>THROTTLED</b>, and <b>UNKNOWN</b>. </p>
--- @param agentHealths [AgentHealthList] <p>The current health state of the agent. Values can be set to <b>HEALTHY</b> or <b>UNHEALTHY</b>.</p>
+-- @param _agentHealthCodes [AgentHealthCodeList] <p>The detailed health state of the agent. Values can be set to <b>IDLE</b>, <b>RUNNING</b>, <b>SHUTDOWN</b>, <b>UNHEALTHY</b>, <b>THROTTLED</b>, and <b>UNKNOWN</b>. </p>
+-- @param _agentHealths [AgentHealthList] <p>The current health state of the agent. Values can be set to <b>HEALTHY</b> or <b>UNHEALTHY</b>.</p>
 -- Required parameter: agentHealths
 -- Required parameter: agentHealthCodes
-function M.AgentFilter(agentHealthCodes, agentHealths, ...)
+function M.AgentFilter(_agentHealthCodes, _agentHealths, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentFilter")
 	local t = { 
-		["agentHealthCodes"] = agentHealthCodes,
-		["agentHealths"] = agentHealths,
+		["agentHealthCodes"] = _agentHealthCodes,
+		["agentHealths"] = _agentHealths,
 	}
-	M.AssertAgentFilter(t)
+	asserts.AssertAgentFilter(t)
 	return t
 end
 
-local DescribeAssessmentRunsResponse_keys = { "failedItems" = true, "assessmentRuns" = true, nil }
+keys.DescribeAssessmentRunsResponse = { ["failedItems"] = true, ["assessmentRuns"] = true, nil }
 
-function M.AssertDescribeAssessmentRunsResponse(struct)
+function asserts.AssertDescribeAssessmentRunsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAssessmentRunsResponse to be of type 'table'")
 	assert(struct["assessmentRuns"], "Expected key assessmentRuns to exist in table")
 	assert(struct["failedItems"], "Expected key failedItems to exist in table")
-	if struct["failedItems"] then M.AssertFailedItems(struct["failedItems"]) end
-	if struct["assessmentRuns"] then M.AssertAssessmentRunList(struct["assessmentRuns"]) end
+	if struct["failedItems"] then asserts.AssertFailedItems(struct["failedItems"]) end
+	if struct["assessmentRuns"] then asserts.AssertAssessmentRunList(struct["assessmentRuns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAssessmentRunsResponse_keys[k], "DescribeAssessmentRunsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeAssessmentRunsResponse[k], "DescribeAssessmentRunsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAssessmentRunsResponse
 --  
--- @param failedItems [FailedItems] <p>Assessment run details that cannot be described. An error code is provided for each failed item.</p>
--- @param assessmentRuns [AssessmentRunList] <p>Information about the assessment run.</p>
+-- @param _failedItems [FailedItems] <p>Assessment run details that cannot be described. An error code is provided for each failed item.</p>
+-- @param _assessmentRuns [AssessmentRunList] <p>Information about the assessment run.</p>
 -- Required parameter: assessmentRuns
 -- Required parameter: failedItems
-function M.DescribeAssessmentRunsResponse(failedItems, assessmentRuns, ...)
+function M.DescribeAssessmentRunsResponse(_failedItems, _assessmentRuns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentRunsResponse")
 	local t = { 
-		["failedItems"] = failedItems,
-		["assessmentRuns"] = assessmentRuns,
+		["failedItems"] = _failedItems,
+		["assessmentRuns"] = _assessmentRuns,
 	}
-	M.AssertDescribeAssessmentRunsResponse(t)
+	asserts.AssertDescribeAssessmentRunsResponse(t)
 	return t
 end
 
-local Subscription_keys = { "eventSubscriptions" = true, "resourceArn" = true, "topicArn" = true, nil }
+keys.Subscription = { ["eventSubscriptions"] = true, ["resourceArn"] = true, ["topicArn"] = true, nil }
 
-function M.AssertSubscription(struct)
+function asserts.AssertSubscription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Subscription to be of type 'table'")
 	assert(struct["resourceArn"], "Expected key resourceArn to exist in table")
 	assert(struct["topicArn"], "Expected key topicArn to exist in table")
 	assert(struct["eventSubscriptions"], "Expected key eventSubscriptions to exist in table")
-	if struct["eventSubscriptions"] then M.AssertEventSubscriptionList(struct["eventSubscriptions"]) end
-	if struct["resourceArn"] then M.AssertArn(struct["resourceArn"]) end
-	if struct["topicArn"] then M.AssertArn(struct["topicArn"]) end
+	if struct["eventSubscriptions"] then asserts.AssertEventSubscriptionList(struct["eventSubscriptions"]) end
+	if struct["resourceArn"] then asserts.AssertArn(struct["resourceArn"]) end
+	if struct["topicArn"] then asserts.AssertArn(struct["topicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(Subscription_keys[k], "Subscription contains unknown key " .. tostring(k))
+		assert(keys.Subscription[k], "Subscription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Subscription
 -- <p>This data type is used as a response element in the <a>ListEventSubscriptions</a> action.</p>
--- @param eventSubscriptions [EventSubscriptionList] <p>The list of existing event subscriptions.</p>
--- @param resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which the SNS notification is sent.</p>
--- @param topicArn [Arn] <p>The ARN of the Amazon Simple Notification Service (SNS) topic to which the SNS notifications are sent.</p>
+-- @param _eventSubscriptions [EventSubscriptionList] <p>The list of existing event subscriptions.</p>
+-- @param _resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which the SNS notification is sent.</p>
+-- @param _topicArn [Arn] <p>The ARN of the Amazon Simple Notification Service (SNS) topic to which the SNS notifications are sent.</p>
 -- Required parameter: resourceArn
 -- Required parameter: topicArn
 -- Required parameter: eventSubscriptions
-function M.Subscription(eventSubscriptions, resourceArn, topicArn, ...)
+function M.Subscription(_eventSubscriptions, _resourceArn, _topicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
 	local t = { 
-		["eventSubscriptions"] = eventSubscriptions,
-		["resourceArn"] = resourceArn,
-		["topicArn"] = topicArn,
+		["eventSubscriptions"] = _eventSubscriptions,
+		["resourceArn"] = _resourceArn,
+		["topicArn"] = _topicArn,
 	}
-	M.AssertSubscription(t)
+	asserts.AssertSubscription(t)
 	return t
 end
 
-local GetTelemetryMetadataResponse_keys = { "telemetryMetadata" = true, nil }
+keys.GetTelemetryMetadataResponse = { ["telemetryMetadata"] = true, nil }
 
-function M.AssertGetTelemetryMetadataResponse(struct)
+function asserts.AssertGetTelemetryMetadataResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTelemetryMetadataResponse to be of type 'table'")
 	assert(struct["telemetryMetadata"], "Expected key telemetryMetadata to exist in table")
-	if struct["telemetryMetadata"] then M.AssertTelemetryMetadataList(struct["telemetryMetadata"]) end
+	if struct["telemetryMetadata"] then asserts.AssertTelemetryMetadataList(struct["telemetryMetadata"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTelemetryMetadataResponse_keys[k], "GetTelemetryMetadataResponse contains unknown key " .. tostring(k))
+		assert(keys.GetTelemetryMetadataResponse[k], "GetTelemetryMetadataResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTelemetryMetadataResponse
 --  
--- @param telemetryMetadata [TelemetryMetadataList] <p>Telemetry details.</p>
+-- @param _telemetryMetadata [TelemetryMetadataList] <p>Telemetry details.</p>
 -- Required parameter: telemetryMetadata
-function M.GetTelemetryMetadataResponse(telemetryMetadata, ...)
+function M.GetTelemetryMetadataResponse(_telemetryMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTelemetryMetadataResponse")
 	local t = { 
-		["telemetryMetadata"] = telemetryMetadata,
+		["telemetryMetadata"] = _telemetryMetadata,
 	}
-	M.AssertGetTelemetryMetadataResponse(t)
+	asserts.AssertGetTelemetryMetadataResponse(t)
 	return t
 end
 
-local RulesPackage_keys = { "description" = true, "version" = true, "name" = true, "arn" = true, "provider" = true, nil }
+keys.RulesPackage = { ["description"] = true, ["version"] = true, ["name"] = true, ["arn"] = true, ["provider"] = true, nil }
 
-function M.AssertRulesPackage(struct)
+function asserts.AssertRulesPackage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RulesPackage to be of type 'table'")
 	assert(struct["arn"], "Expected key arn to exist in table")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["version"], "Expected key version to exist in table")
 	assert(struct["provider"], "Expected key provider to exist in table")
-	if struct["description"] then M.AssertText(struct["description"]) end
-	if struct["version"] then M.AssertVersion(struct["version"]) end
-	if struct["name"] then M.AssertRulesPackageName(struct["name"]) end
-	if struct["arn"] then M.AssertArn(struct["arn"]) end
-	if struct["provider"] then M.AssertProviderName(struct["provider"]) end
+	if struct["description"] then asserts.AssertText(struct["description"]) end
+	if struct["version"] then asserts.AssertVersion(struct["version"]) end
+	if struct["name"] then asserts.AssertRulesPackageName(struct["name"]) end
+	if struct["arn"] then asserts.AssertArn(struct["arn"]) end
+	if struct["provider"] then asserts.AssertProviderName(struct["provider"]) end
 	for k,_ in pairs(struct) do
-		assert(RulesPackage_keys[k], "RulesPackage contains unknown key " .. tostring(k))
+		assert(keys.RulesPackage[k], "RulesPackage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RulesPackage
 -- <p>Contains information about an Amazon Inspector rules package. This data type is used as the response element in the <a>DescribeRulesPackages</a> action.</p>
--- @param description [Text] <p>The description of the rules package.</p>
--- @param version [Version] <p>The version ID of the rules package.</p>
--- @param name [RulesPackageName] <p>The name of the rules package.</p>
--- @param arn [Arn] <p>The ARN of the rules package.</p>
--- @param provider [ProviderName] <p>The provider of the rules package.</p>
+-- @param _description [Text] <p>The description of the rules package.</p>
+-- @param _version [Version] <p>The version ID of the rules package.</p>
+-- @param _name [RulesPackageName] <p>The name of the rules package.</p>
+-- @param _arn [Arn] <p>The ARN of the rules package.</p>
+-- @param _provider [ProviderName] <p>The provider of the rules package.</p>
 -- Required parameter: arn
 -- Required parameter: name
 -- Required parameter: version
 -- Required parameter: provider
-function M.RulesPackage(description, version, name, arn, provider, ...)
+function M.RulesPackage(_description, _version, _name, _arn, _provider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RulesPackage")
 	local t = { 
-		["description"] = description,
-		["version"] = version,
-		["name"] = name,
-		["arn"] = arn,
-		["provider"] = provider,
+		["description"] = _description,
+		["version"] = _version,
+		["name"] = _name,
+		["arn"] = _arn,
+		["provider"] = _provider,
 	}
-	M.AssertRulesPackage(t)
+	asserts.AssertRulesPackage(t)
 	return t
 end
 
-local AssessmentRunInProgressException_keys = { "canRetry" = true, "message" = true, "assessmentRunArnsTruncated" = true, "assessmentRunArns" = true, nil }
+keys.AssessmentRunInProgressException = { ["canRetry"] = true, ["message"] = true, ["assessmentRunArnsTruncated"] = true, ["assessmentRunArns"] = true, nil }
 
-function M.AssertAssessmentRunInProgressException(struct)
+function asserts.AssertAssessmentRunInProgressException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentRunInProgressException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["assessmentRunArns"], "Expected key assessmentRunArns to exist in table")
 	assert(struct["assessmentRunArnsTruncated"], "Expected key assessmentRunArnsTruncated to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
-	if struct["assessmentRunArnsTruncated"] then M.AssertBool(struct["assessmentRunArnsTruncated"]) end
-	if struct["assessmentRunArns"] then M.AssertAssessmentRunInProgressArnList(struct["assessmentRunArns"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
+	if struct["assessmentRunArnsTruncated"] then asserts.AssertBool(struct["assessmentRunArnsTruncated"]) end
+	if struct["assessmentRunArns"] then asserts.AssertAssessmentRunInProgressArnList(struct["assessmentRunArns"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentRunInProgressException_keys[k], "AssessmentRunInProgressException contains unknown key " .. tostring(k))
+		assert(keys.AssessmentRunInProgressException[k], "AssessmentRunInProgressException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentRunInProgressException
 -- <p>You cannot perform a specified action if an assessment run is currently in progress.</p>
--- @param canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param message [ErrorMessage] <p>Details of the exception error.</p>
--- @param assessmentRunArnsTruncated [Bool] <p>Boolean value that indicates whether the ARN list of the assessment runs is truncated.</p>
--- @param assessmentRunArns [AssessmentRunInProgressArnList] <p>The ARNs of the assessment runs that are currently in progress.</p>
+-- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param _message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param _assessmentRunArnsTruncated [Bool] <p>Boolean value that indicates whether the ARN list of the assessment runs is truncated.</p>
+-- @param _assessmentRunArns [AssessmentRunInProgressArnList] <p>The ARNs of the assessment runs that are currently in progress.</p>
 -- Required parameter: message
 -- Required parameter: assessmentRunArns
 -- Required parameter: assessmentRunArnsTruncated
 -- Required parameter: canRetry
-function M.AssessmentRunInProgressException(canRetry, message, assessmentRunArnsTruncated, assessmentRunArns, ...)
+function M.AssessmentRunInProgressException(_canRetry, _message, _assessmentRunArnsTruncated, _assessmentRunArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunInProgressException")
 	local t = { 
-		["canRetry"] = canRetry,
-		["message"] = message,
-		["assessmentRunArnsTruncated"] = assessmentRunArnsTruncated,
-		["assessmentRunArns"] = assessmentRunArns,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
+		["assessmentRunArnsTruncated"] = _assessmentRunArnsTruncated,
+		["assessmentRunArns"] = _assessmentRunArns,
 	}
-	M.AssertAssessmentRunInProgressException(t)
+	asserts.AssertAssessmentRunInProgressException(t)
 	return t
 end
 
-local CreateResourceGroupResponse_keys = { "resourceGroupArn" = true, nil }
+keys.CreateResourceGroupResponse = { ["resourceGroupArn"] = true, nil }
 
-function M.AssertCreateResourceGroupResponse(struct)
+function asserts.AssertCreateResourceGroupResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateResourceGroupResponse to be of type 'table'")
 	assert(struct["resourceGroupArn"], "Expected key resourceGroupArn to exist in table")
-	if struct["resourceGroupArn"] then M.AssertArn(struct["resourceGroupArn"]) end
+	if struct["resourceGroupArn"] then asserts.AssertArn(struct["resourceGroupArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateResourceGroupResponse_keys[k], "CreateResourceGroupResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateResourceGroupResponse[k], "CreateResourceGroupResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateResourceGroupResponse
 --  
--- @param resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is created.</p>
+-- @param _resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is created.</p>
 -- Required parameter: resourceGroupArn
-function M.CreateResourceGroupResponse(resourceGroupArn, ...)
+function M.CreateResourceGroupResponse(_resourceGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateResourceGroupResponse")
 	local t = { 
-		["resourceGroupArn"] = resourceGroupArn,
+		["resourceGroupArn"] = _resourceGroupArn,
 	}
-	M.AssertCreateResourceGroupResponse(t)
+	asserts.AssertCreateResourceGroupResponse(t)
 	return t
 end
 
-local ListFindingsRequest_keys = { "filter" = true, "nextToken" = true, "assessmentRunArns" = true, "maxResults" = true, nil }
+keys.ListFindingsRequest = { ["filter"] = true, ["nextToken"] = true, ["assessmentRunArns"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListFindingsRequest(struct)
+function asserts.AssertListFindingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFindingsRequest to be of type 'table'")
-	if struct["filter"] then M.AssertFindingFilter(struct["filter"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["assessmentRunArns"] then M.AssertListParentArnList(struct["assessmentRunArns"]) end
-	if struct["maxResults"] then M.AssertListMaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertFindingFilter(struct["filter"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["assessmentRunArns"] then asserts.AssertListParentArnList(struct["assessmentRunArns"]) end
+	if struct["maxResults"] then asserts.AssertListMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFindingsRequest_keys[k], "ListFindingsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListFindingsRequest[k], "ListFindingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFindingsRequest
 --  
--- @param filter [FindingFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListFindings</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param assessmentRunArns [ListParentArnList] <p>The ARNs of the assessment runs that generate the findings that you want to list.</p>
--- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListFindingsRequest(filter, nextToken, assessmentRunArns, maxResults, ...)
+-- @param _filter [FindingFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListFindings</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param _assessmentRunArns [ListParentArnList] <p>The ARNs of the assessment runs that generate the findings that you want to list.</p>
+-- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+function M.ListFindingsRequest(_filter, _nextToken, _assessmentRunArns, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFindingsRequest")
 	local t = { 
-		["filter"] = filter,
-		["nextToken"] = nextToken,
-		["assessmentRunArns"] = assessmentRunArns,
-		["maxResults"] = maxResults,
+		["filter"] = _filter,
+		["nextToken"] = _nextToken,
+		["assessmentRunArns"] = _assessmentRunArns,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListFindingsRequest(t)
+	asserts.AssertListFindingsRequest(t)
 	return t
 end
 
-local AssessmentRun_keys = { "dataCollected" = true, "name" = true, "completedAt" = true, "userAttributesForFindings" = true, "stateChanges" = true, "createdAt" = true, "findingCounts" = true, "notifications" = true, "state" = true, "stateChangedAt" = true, "durationInSeconds" = true, "rulesPackageArns" = true, "startedAt" = true, "assessmentTemplateArn" = true, "arn" = true, nil }
+keys.AssessmentRun = { ["dataCollected"] = true, ["name"] = true, ["completedAt"] = true, ["userAttributesForFindings"] = true, ["stateChanges"] = true, ["createdAt"] = true, ["findingCounts"] = true, ["notifications"] = true, ["state"] = true, ["stateChangedAt"] = true, ["durationInSeconds"] = true, ["rulesPackageArns"] = true, ["startedAt"] = true, ["assessmentTemplateArn"] = true, ["arn"] = true, nil }
 
-function M.AssertAssessmentRun(struct)
+function asserts.AssertAssessmentRun(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentRun to be of type 'table'")
 	assert(struct["arn"], "Expected key arn to exist in table")
@@ -741,43 +744,43 @@ function M.AssertAssessmentRun(struct)
 	assert(struct["stateChanges"], "Expected key stateChanges to exist in table")
 	assert(struct["notifications"], "Expected key notifications to exist in table")
 	assert(struct["findingCounts"], "Expected key findingCounts to exist in table")
-	if struct["dataCollected"] then M.AssertBool(struct["dataCollected"]) end
-	if struct["name"] then M.AssertAssessmentRunName(struct["name"]) end
-	if struct["completedAt"] then M.AssertTimestamp(struct["completedAt"]) end
-	if struct["userAttributesForFindings"] then M.AssertUserAttributeList(struct["userAttributesForFindings"]) end
-	if struct["stateChanges"] then M.AssertAssessmentRunStateChangeList(struct["stateChanges"]) end
-	if struct["createdAt"] then M.AssertTimestamp(struct["createdAt"]) end
-	if struct["findingCounts"] then M.AssertAssessmentRunFindingCounts(struct["findingCounts"]) end
-	if struct["notifications"] then M.AssertAssessmentRunNotificationList(struct["notifications"]) end
-	if struct["state"] then M.AssertAssessmentRunState(struct["state"]) end
-	if struct["stateChangedAt"] then M.AssertTimestamp(struct["stateChangedAt"]) end
-	if struct["durationInSeconds"] then M.AssertAssessmentRunDuration(struct["durationInSeconds"]) end
-	if struct["rulesPackageArns"] then M.AssertAssessmentRulesPackageArnList(struct["rulesPackageArns"]) end
-	if struct["startedAt"] then M.AssertTimestamp(struct["startedAt"]) end
-	if struct["assessmentTemplateArn"] then M.AssertArn(struct["assessmentTemplateArn"]) end
-	if struct["arn"] then M.AssertArn(struct["arn"]) end
+	if struct["dataCollected"] then asserts.AssertBool(struct["dataCollected"]) end
+	if struct["name"] then asserts.AssertAssessmentRunName(struct["name"]) end
+	if struct["completedAt"] then asserts.AssertTimestamp(struct["completedAt"]) end
+	if struct["userAttributesForFindings"] then asserts.AssertUserAttributeList(struct["userAttributesForFindings"]) end
+	if struct["stateChanges"] then asserts.AssertAssessmentRunStateChangeList(struct["stateChanges"]) end
+	if struct["createdAt"] then asserts.AssertTimestamp(struct["createdAt"]) end
+	if struct["findingCounts"] then asserts.AssertAssessmentRunFindingCounts(struct["findingCounts"]) end
+	if struct["notifications"] then asserts.AssertAssessmentRunNotificationList(struct["notifications"]) end
+	if struct["state"] then asserts.AssertAssessmentRunState(struct["state"]) end
+	if struct["stateChangedAt"] then asserts.AssertTimestamp(struct["stateChangedAt"]) end
+	if struct["durationInSeconds"] then asserts.AssertAssessmentRunDuration(struct["durationInSeconds"]) end
+	if struct["rulesPackageArns"] then asserts.AssertAssessmentRulesPackageArnList(struct["rulesPackageArns"]) end
+	if struct["startedAt"] then asserts.AssertTimestamp(struct["startedAt"]) end
+	if struct["assessmentTemplateArn"] then asserts.AssertArn(struct["assessmentTemplateArn"]) end
+	if struct["arn"] then asserts.AssertArn(struct["arn"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentRun_keys[k], "AssessmentRun contains unknown key " .. tostring(k))
+		assert(keys.AssessmentRun[k], "AssessmentRun contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentRun
 -- <p>A snapshot of an Amazon Inspector assessment run that contains the findings of the assessment run .</p> <p>Used as the response element in the <a>DescribeAssessmentRuns</a> action.</p>
--- @param dataCollected [Bool] <p>A Boolean value (true or false) that specifies whether the process of collecting data from the agents is completed.</p>
--- @param name [AssessmentRunName] <p>The auto-generated name for the assessment run.</p>
--- @param completedAt [Timestamp] <p>The assessment run completion time that corresponds to the rules packages evaluation completion time or failure.</p>
--- @param userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding.</p>
--- @param stateChanges [AssessmentRunStateChangeList] <p>A list of the assessment run state changes.</p>
--- @param createdAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
--- @param findingCounts [AssessmentRunFindingCounts] <p>Provides a total count of generated findings per severity.</p>
--- @param notifications [AssessmentRunNotificationList] <p>A list of notifications for the event subscriptions. A notification about a particular generated finding is added to this list only once.</p>
--- @param state [AssessmentRunState] <p>The state of the assessment run.</p>
--- @param stateChangedAt [Timestamp] <p>The last time when the assessment run's state changed.</p>
--- @param durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run.</p>
--- @param rulesPackageArns [AssessmentRulesPackageArnList] <p>The rules packages selected for the assessment run.</p>
--- @param startedAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
--- @param assessmentTemplateArn [Arn] <p>The ARN of the assessment template that is associated with the assessment run.</p>
--- @param arn [Arn] <p>The ARN of the assessment run.</p>
+-- @param _dataCollected [Bool] <p>A Boolean value (true or false) that specifies whether the process of collecting data from the agents is completed.</p>
+-- @param _name [AssessmentRunName] <p>The auto-generated name for the assessment run.</p>
+-- @param _completedAt [Timestamp] <p>The assessment run completion time that corresponds to the rules packages evaluation completion time or failure.</p>
+-- @param _userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding.</p>
+-- @param _stateChanges [AssessmentRunStateChangeList] <p>A list of the assessment run state changes.</p>
+-- @param _createdAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
+-- @param _findingCounts [AssessmentRunFindingCounts] <p>Provides a total count of generated findings per severity.</p>
+-- @param _notifications [AssessmentRunNotificationList] <p>A list of notifications for the event subscriptions. A notification about a particular generated finding is added to this list only once.</p>
+-- @param _state [AssessmentRunState] <p>The state of the assessment run.</p>
+-- @param _stateChangedAt [Timestamp] <p>The last time when the assessment run's state changed.</p>
+-- @param _durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run.</p>
+-- @param _rulesPackageArns [AssessmentRulesPackageArnList] <p>The rules packages selected for the assessment run.</p>
+-- @param _startedAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
+-- @param _assessmentTemplateArn [Arn] <p>The ARN of the assessment template that is associated with the assessment run.</p>
+-- @param _arn [Arn] <p>The ARN of the assessment run.</p>
 -- Required parameter: arn
 -- Required parameter: name
 -- Required parameter: assessmentTemplateArn
@@ -791,32 +794,32 @@ end
 -- Required parameter: stateChanges
 -- Required parameter: notifications
 -- Required parameter: findingCounts
-function M.AssessmentRun(dataCollected, name, completedAt, userAttributesForFindings, stateChanges, createdAt, findingCounts, notifications, state, stateChangedAt, durationInSeconds, rulesPackageArns, startedAt, assessmentTemplateArn, arn, ...)
+function M.AssessmentRun(_dataCollected, _name, _completedAt, _userAttributesForFindings, _stateChanges, _createdAt, _findingCounts, _notifications, _state, _stateChangedAt, _durationInSeconds, _rulesPackageArns, _startedAt, _assessmentTemplateArn, _arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRun")
 	local t = { 
-		["dataCollected"] = dataCollected,
-		["name"] = name,
-		["completedAt"] = completedAt,
-		["userAttributesForFindings"] = userAttributesForFindings,
-		["stateChanges"] = stateChanges,
-		["createdAt"] = createdAt,
-		["findingCounts"] = findingCounts,
-		["notifications"] = notifications,
-		["state"] = state,
-		["stateChangedAt"] = stateChangedAt,
-		["durationInSeconds"] = durationInSeconds,
-		["rulesPackageArns"] = rulesPackageArns,
-		["startedAt"] = startedAt,
-		["assessmentTemplateArn"] = assessmentTemplateArn,
-		["arn"] = arn,
+		["dataCollected"] = _dataCollected,
+		["name"] = _name,
+		["completedAt"] = _completedAt,
+		["userAttributesForFindings"] = _userAttributesForFindings,
+		["stateChanges"] = _stateChanges,
+		["createdAt"] = _createdAt,
+		["findingCounts"] = _findingCounts,
+		["notifications"] = _notifications,
+		["state"] = _state,
+		["stateChangedAt"] = _stateChangedAt,
+		["durationInSeconds"] = _durationInSeconds,
+		["rulesPackageArns"] = _rulesPackageArns,
+		["startedAt"] = _startedAt,
+		["assessmentTemplateArn"] = _assessmentTemplateArn,
+		["arn"] = _arn,
 	}
-	M.AssertAssessmentRun(t)
+	asserts.AssertAssessmentRun(t)
 	return t
 end
 
-local AssessmentTemplate_keys = { "assessmentTargetArn" = true, "name" = true, "createdAt" = true, "durationInSeconds" = true, "rulesPackageArns" = true, "userAttributesForFindings" = true, "arn" = true, nil }
+keys.AssessmentTemplate = { ["assessmentTargetArn"] = true, ["name"] = true, ["createdAt"] = true, ["durationInSeconds"] = true, ["rulesPackageArns"] = true, ["userAttributesForFindings"] = true, ["arn"] = true, nil }
 
-function M.AssertAssessmentTemplate(struct)
+function asserts.AssertAssessmentTemplate(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentTemplate to be of type 'table'")
 	assert(struct["arn"], "Expected key arn to exist in table")
@@ -826,27 +829,27 @@ function M.AssertAssessmentTemplate(struct)
 	assert(struct["rulesPackageArns"], "Expected key rulesPackageArns to exist in table")
 	assert(struct["userAttributesForFindings"], "Expected key userAttributesForFindings to exist in table")
 	assert(struct["createdAt"], "Expected key createdAt to exist in table")
-	if struct["assessmentTargetArn"] then M.AssertArn(struct["assessmentTargetArn"]) end
-	if struct["name"] then M.AssertAssessmentTemplateName(struct["name"]) end
-	if struct["createdAt"] then M.AssertTimestamp(struct["createdAt"]) end
-	if struct["durationInSeconds"] then M.AssertAssessmentRunDuration(struct["durationInSeconds"]) end
-	if struct["rulesPackageArns"] then M.AssertAssessmentTemplateRulesPackageArnList(struct["rulesPackageArns"]) end
-	if struct["userAttributesForFindings"] then M.AssertUserAttributeList(struct["userAttributesForFindings"]) end
-	if struct["arn"] then M.AssertArn(struct["arn"]) end
+	if struct["assessmentTargetArn"] then asserts.AssertArn(struct["assessmentTargetArn"]) end
+	if struct["name"] then asserts.AssertAssessmentTemplateName(struct["name"]) end
+	if struct["createdAt"] then asserts.AssertTimestamp(struct["createdAt"]) end
+	if struct["durationInSeconds"] then asserts.AssertAssessmentRunDuration(struct["durationInSeconds"]) end
+	if struct["rulesPackageArns"] then asserts.AssertAssessmentTemplateRulesPackageArnList(struct["rulesPackageArns"]) end
+	if struct["userAttributesForFindings"] then asserts.AssertUserAttributeList(struct["userAttributesForFindings"]) end
+	if struct["arn"] then asserts.AssertArn(struct["arn"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentTemplate_keys[k], "AssessmentTemplate contains unknown key " .. tostring(k))
+		assert(keys.AssessmentTemplate[k], "AssessmentTemplate contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentTemplate
 -- <p>Contains information about an Amazon Inspector assessment template. This data type is used as the response element in the <a>DescribeAssessmentTemplates</a> action.</p>
--- @param assessmentTargetArn [Arn] <p>The ARN of the assessment target that corresponds to this assessment template.</p>
--- @param name [AssessmentTemplateName] <p>The name of the assessment template.</p>
--- @param createdAt [Timestamp] <p>The time at which the assessment template is created.</p>
--- @param durationInSeconds [AssessmentRunDuration] <p>The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).</p>
--- @param rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The rules packages that are specified for this assessment template.</p>
--- @param userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding from the assessment run that uses this assessment template.</p>
--- @param arn [Arn] <p>The ARN of the assessment template.</p>
+-- @param _assessmentTargetArn [Arn] <p>The ARN of the assessment target that corresponds to this assessment template.</p>
+-- @param _name [AssessmentTemplateName] <p>The name of the assessment template.</p>
+-- @param _createdAt [Timestamp] <p>The time at which the assessment template is created.</p>
+-- @param _durationInSeconds [AssessmentRunDuration] <p>The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).</p>
+-- @param _rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The rules packages that are specified for this assessment template.</p>
+-- @param _userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding from the assessment run that uses this assessment template.</p>
+-- @param _arn [Arn] <p>The ARN of the assessment template.</p>
 -- Required parameter: arn
 -- Required parameter: name
 -- Required parameter: assessmentTargetArn
@@ -854,329 +857,329 @@ end
 -- Required parameter: rulesPackageArns
 -- Required parameter: userAttributesForFindings
 -- Required parameter: createdAt
-function M.AssessmentTemplate(assessmentTargetArn, name, createdAt, durationInSeconds, rulesPackageArns, userAttributesForFindings, arn, ...)
+function M.AssessmentTemplate(_assessmentTargetArn, _name, _createdAt, _durationInSeconds, _rulesPackageArns, _userAttributesForFindings, _arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTemplate")
 	local t = { 
-		["assessmentTargetArn"] = assessmentTargetArn,
-		["name"] = name,
-		["createdAt"] = createdAt,
-		["durationInSeconds"] = durationInSeconds,
-		["rulesPackageArns"] = rulesPackageArns,
-		["userAttributesForFindings"] = userAttributesForFindings,
-		["arn"] = arn,
+		["assessmentTargetArn"] = _assessmentTargetArn,
+		["name"] = _name,
+		["createdAt"] = _createdAt,
+		["durationInSeconds"] = _durationInSeconds,
+		["rulesPackageArns"] = _rulesPackageArns,
+		["userAttributesForFindings"] = _userAttributesForFindings,
+		["arn"] = _arn,
 	}
-	M.AssertAssessmentTemplate(t)
+	asserts.AssertAssessmentTemplate(t)
 	return t
 end
 
-local Tag_keys = { "value" = true, "key" = true, nil }
+keys.Tag = { ["value"] = true, ["key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["key"], "Expected key key to exist in table")
-	if struct["value"] then M.AssertTagValue(struct["value"]) end
-	if struct["key"] then M.AssertTagKey(struct["key"]) end
+	if struct["value"] then asserts.AssertTagValue(struct["value"]) end
+	if struct["key"] then asserts.AssertTagKey(struct["key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>A key and value pair. This data type is used as a request parameter in the <a>SetTagsForResource</a> action and a response element in the <a>ListTagsForResource</a> action.</p>
--- @param value [TagValue] <p>A value assigned to a tag key.</p>
--- @param key [TagKey] <p>A tag key.</p>
+-- @param _value [TagValue] <p>A value assigned to a tag key.</p>
+-- @param _key [TagKey] <p>A tag key.</p>
 -- Required parameter: key
-function M.Tag(value, key, ...)
+function M.Tag(_value, _key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["value"] = value,
-		["key"] = key,
+		["value"] = _value,
+		["key"] = _key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local Attribute_keys = { "value" = true, "key" = true, nil }
+keys.Attribute = { ["value"] = true, ["key"] = true, nil }
 
-function M.AssertAttribute(struct)
+function asserts.AssertAttribute(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Attribute to be of type 'table'")
 	assert(struct["key"], "Expected key key to exist in table")
-	if struct["value"] then M.AssertAttributeValue(struct["value"]) end
-	if struct["key"] then M.AssertAttributeKey(struct["key"]) end
+	if struct["value"] then asserts.AssertAttributeValue(struct["value"]) end
+	if struct["key"] then asserts.AssertAttributeKey(struct["key"]) end
 	for k,_ in pairs(struct) do
-		assert(Attribute_keys[k], "Attribute contains unknown key " .. tostring(k))
+		assert(keys.Attribute[k], "Attribute contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Attribute
 -- <p>This data type is used as a request parameter in the <a>AddAttributesToFindings</a> and <a>CreateAssessmentTemplate</a> actions.</p>
--- @param value [AttributeValue] <p>The value assigned to the attribute key.</p>
--- @param key [AttributeKey] <p>The attribute key.</p>
+-- @param _value [AttributeValue] <p>The value assigned to the attribute key.</p>
+-- @param _key [AttributeKey] <p>The attribute key.</p>
 -- Required parameter: key
-function M.Attribute(value, key, ...)
+function M.Attribute(_value, _key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Attribute")
 	local t = { 
-		["value"] = value,
-		["key"] = key,
+		["value"] = _value,
+		["key"] = _key,
 	}
-	M.AssertAttribute(t)
+	asserts.AssertAttribute(t)
 	return t
 end
 
-local UpdateAssessmentTargetRequest_keys = { "assessmentTargetArn" = true, "assessmentTargetName" = true, "resourceGroupArn" = true, nil }
+keys.UpdateAssessmentTargetRequest = { ["assessmentTargetArn"] = true, ["assessmentTargetName"] = true, ["resourceGroupArn"] = true, nil }
 
-function M.AssertUpdateAssessmentTargetRequest(struct)
+function asserts.AssertUpdateAssessmentTargetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateAssessmentTargetRequest to be of type 'table'")
 	assert(struct["assessmentTargetArn"], "Expected key assessmentTargetArn to exist in table")
 	assert(struct["assessmentTargetName"], "Expected key assessmentTargetName to exist in table")
 	assert(struct["resourceGroupArn"], "Expected key resourceGroupArn to exist in table")
-	if struct["assessmentTargetArn"] then M.AssertArn(struct["assessmentTargetArn"]) end
-	if struct["assessmentTargetName"] then M.AssertAssessmentTargetName(struct["assessmentTargetName"]) end
-	if struct["resourceGroupArn"] then M.AssertArn(struct["resourceGroupArn"]) end
+	if struct["assessmentTargetArn"] then asserts.AssertArn(struct["assessmentTargetArn"]) end
+	if struct["assessmentTargetName"] then asserts.AssertAssessmentTargetName(struct["assessmentTargetName"]) end
+	if struct["resourceGroupArn"] then asserts.AssertArn(struct["resourceGroupArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateAssessmentTargetRequest_keys[k], "UpdateAssessmentTargetRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateAssessmentTargetRequest[k], "UpdateAssessmentTargetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateAssessmentTargetRequest
 --  
--- @param assessmentTargetArn [Arn] <p>The ARN of the assessment target that you want to update.</p>
--- @param assessmentTargetName [AssessmentTargetName] <p>The name of the assessment target that you want to update.</p>
--- @param resourceGroupArn [Arn] <p>The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.</p>
+-- @param _assessmentTargetArn [Arn] <p>The ARN of the assessment target that you want to update.</p>
+-- @param _assessmentTargetName [AssessmentTargetName] <p>The name of the assessment target that you want to update.</p>
+-- @param _resourceGroupArn [Arn] <p>The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.</p>
 -- Required parameter: assessmentTargetArn
 -- Required parameter: assessmentTargetName
 -- Required parameter: resourceGroupArn
-function M.UpdateAssessmentTargetRequest(assessmentTargetArn, assessmentTargetName, resourceGroupArn, ...)
+function M.UpdateAssessmentTargetRequest(_assessmentTargetArn, _assessmentTargetName, _resourceGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssessmentTargetRequest")
 	local t = { 
-		["assessmentTargetArn"] = assessmentTargetArn,
-		["assessmentTargetName"] = assessmentTargetName,
-		["resourceGroupArn"] = resourceGroupArn,
+		["assessmentTargetArn"] = _assessmentTargetArn,
+		["assessmentTargetName"] = _assessmentTargetName,
+		["resourceGroupArn"] = _resourceGroupArn,
 	}
-	M.AssertUpdateAssessmentTargetRequest(t)
+	asserts.AssertUpdateAssessmentTargetRequest(t)
 	return t
 end
 
-local GetAssessmentReportResponse_keys = { "status" = true, "url" = true, nil }
+keys.GetAssessmentReportResponse = { ["status"] = true, ["url"] = true, nil }
 
-function M.AssertGetAssessmentReportResponse(struct)
+function asserts.AssertGetAssessmentReportResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAssessmentReportResponse to be of type 'table'")
 	assert(struct["status"], "Expected key status to exist in table")
-	if struct["status"] then M.AssertReportStatus(struct["status"]) end
-	if struct["url"] then M.AssertUrl(struct["url"]) end
+	if struct["status"] then asserts.AssertReportStatus(struct["status"]) end
+	if struct["url"] then asserts.AssertUrl(struct["url"]) end
 	for k,_ in pairs(struct) do
-		assert(GetAssessmentReportResponse_keys[k], "GetAssessmentReportResponse contains unknown key " .. tostring(k))
+		assert(keys.GetAssessmentReportResponse[k], "GetAssessmentReportResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetAssessmentReportResponse
 --  
--- @param status [ReportStatus] <p>Specifies the status of the request to generate an assessment report. </p>
--- @param url [Url] <p>Specifies the URL where you can find the generated assessment report. This parameter is only returned if the report is successfully generated.</p>
+-- @param _status [ReportStatus] <p>Specifies the status of the request to generate an assessment report. </p>
+-- @param _url [Url] <p>Specifies the URL where you can find the generated assessment report. This parameter is only returned if the report is successfully generated.</p>
 -- Required parameter: status
-function M.GetAssessmentReportResponse(status, url, ...)
+function M.GetAssessmentReportResponse(_status, _url, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAssessmentReportResponse")
 	local t = { 
-		["status"] = status,
-		["url"] = url,
+		["status"] = _status,
+		["url"] = _url,
 	}
-	M.AssertGetAssessmentReportResponse(t)
+	asserts.AssertGetAssessmentReportResponse(t)
 	return t
 end
 
-local InvalidInputException_keys = { "errorCode" = true, "canRetry" = true, "message" = true, nil }
+keys.InvalidInputException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
 
-function M.AssertInvalidInputException(struct)
+function asserts.AssertInvalidInputException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidInputException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["errorCode"], "Expected key errorCode to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["errorCode"] then M.AssertInvalidInputErrorCode(struct["errorCode"]) end
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["errorCode"] then asserts.AssertInvalidInputErrorCode(struct["errorCode"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidInputException_keys[k], "InvalidInputException contains unknown key " .. tostring(k))
+		assert(keys.InvalidInputException[k], "InvalidInputException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidInputException
 -- <p>The request was rejected because an invalid or out-of-range value was supplied for an input parameter.</p>
--- @param errorCode [InvalidInputErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param _errorCode [InvalidInputErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param _message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
-function M.InvalidInputException(errorCode, canRetry, message, ...)
+function M.InvalidInputException(_errorCode, _canRetry, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
 	local t = { 
-		["errorCode"] = errorCode,
-		["canRetry"] = canRetry,
-		["message"] = message,
+		["errorCode"] = _errorCode,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
 	}
-	M.AssertInvalidInputException(t)
+	asserts.AssertInvalidInputException(t)
 	return t
 end
 
-local DescribeRulesPackagesResponse_keys = { "rulesPackages" = true, "failedItems" = true, nil }
+keys.DescribeRulesPackagesResponse = { ["rulesPackages"] = true, ["failedItems"] = true, nil }
 
-function M.AssertDescribeRulesPackagesResponse(struct)
+function asserts.AssertDescribeRulesPackagesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRulesPackagesResponse to be of type 'table'")
 	assert(struct["rulesPackages"], "Expected key rulesPackages to exist in table")
 	assert(struct["failedItems"], "Expected key failedItems to exist in table")
-	if struct["rulesPackages"] then M.AssertRulesPackageList(struct["rulesPackages"]) end
-	if struct["failedItems"] then M.AssertFailedItems(struct["failedItems"]) end
+	if struct["rulesPackages"] then asserts.AssertRulesPackageList(struct["rulesPackages"]) end
+	if struct["failedItems"] then asserts.AssertFailedItems(struct["failedItems"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRulesPackagesResponse_keys[k], "DescribeRulesPackagesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeRulesPackagesResponse[k], "DescribeRulesPackagesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRulesPackagesResponse
 --  
--- @param rulesPackages [RulesPackageList] <p>Information about the rules package.</p>
--- @param failedItems [FailedItems] <p>Rules package details that cannot be described. An error code is provided for each failed item.</p>
+-- @param _rulesPackages [RulesPackageList] <p>Information about the rules package.</p>
+-- @param _failedItems [FailedItems] <p>Rules package details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: rulesPackages
 -- Required parameter: failedItems
-function M.DescribeRulesPackagesResponse(rulesPackages, failedItems, ...)
+function M.DescribeRulesPackagesResponse(_rulesPackages, _failedItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesPackagesResponse")
 	local t = { 
-		["rulesPackages"] = rulesPackages,
-		["failedItems"] = failedItems,
+		["rulesPackages"] = _rulesPackages,
+		["failedItems"] = _failedItems,
 	}
-	M.AssertDescribeRulesPackagesResponse(t)
+	asserts.AssertDescribeRulesPackagesResponse(t)
 	return t
 end
 
-local LimitExceededException_keys = { "errorCode" = true, "canRetry" = true, "message" = true, nil }
+keys.LimitExceededException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["errorCode"], "Expected key errorCode to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["errorCode"] then M.AssertLimitExceededErrorCode(struct["errorCode"]) end
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["errorCode"] then asserts.AssertLimitExceededErrorCode(struct["errorCode"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>The request was rejected because it attempted to create resources beyond the current AWS account limits. The error code describes the limit exceeded.</p>
--- @param errorCode [LimitExceededErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param _errorCode [LimitExceededErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param _message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
-function M.LimitExceededException(errorCode, canRetry, message, ...)
+function M.LimitExceededException(_errorCode, _canRetry, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["errorCode"] = errorCode,
-		["canRetry"] = canRetry,
-		["message"] = message,
+		["errorCode"] = _errorCode,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local NoSuchEntityException_keys = { "errorCode" = true, "canRetry" = true, "message" = true, nil }
+keys.NoSuchEntityException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
 
-function M.AssertNoSuchEntityException(struct)
+function asserts.AssertNoSuchEntityException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NoSuchEntityException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["errorCode"], "Expected key errorCode to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["errorCode"] then M.AssertNoSuchEntityErrorCode(struct["errorCode"]) end
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["errorCode"] then asserts.AssertNoSuchEntityErrorCode(struct["errorCode"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(NoSuchEntityException_keys[k], "NoSuchEntityException contains unknown key " .. tostring(k))
+		assert(keys.NoSuchEntityException[k], "NoSuchEntityException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NoSuchEntityException
 -- <p>The request was rejected because it referenced an entity that does not exist. The error code describes the entity.</p>
--- @param errorCode [NoSuchEntityErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param _errorCode [NoSuchEntityErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param _message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
-function M.NoSuchEntityException(errorCode, canRetry, message, ...)
+function M.NoSuchEntityException(_errorCode, _canRetry, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchEntityException")
 	local t = { 
-		["errorCode"] = errorCode,
-		["canRetry"] = canRetry,
-		["message"] = message,
+		["errorCode"] = _errorCode,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
 	}
-	M.AssertNoSuchEntityException(t)
+	asserts.AssertNoSuchEntityException(t)
 	return t
 end
 
-local AssessmentTargetFilter_keys = { "assessmentTargetNamePattern" = true, nil }
+keys.AssessmentTargetFilter = { ["assessmentTargetNamePattern"] = true, nil }
 
-function M.AssertAssessmentTargetFilter(struct)
+function asserts.AssertAssessmentTargetFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentTargetFilter to be of type 'table'")
-	if struct["assessmentTargetNamePattern"] then M.AssertNamePattern(struct["assessmentTargetNamePattern"]) end
+	if struct["assessmentTargetNamePattern"] then asserts.AssertNamePattern(struct["assessmentTargetNamePattern"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentTargetFilter_keys[k], "AssessmentTargetFilter contains unknown key " .. tostring(k))
+		assert(keys.AssessmentTargetFilter[k], "AssessmentTargetFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentTargetFilter
 -- <p>Used as the request parameter in the <a>ListAssessmentTargets</a> action.</p>
--- @param assessmentTargetNamePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTargetName</b> property of the <a>AssessmentTarget</a> data type.</p>
-function M.AssessmentTargetFilter(assessmentTargetNamePattern, ...)
+-- @param _assessmentTargetNamePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTargetName</b> property of the <a>AssessmentTarget</a> data type.</p>
+function M.AssessmentTargetFilter(_assessmentTargetNamePattern, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTargetFilter")
 	local t = { 
-		["assessmentTargetNamePattern"] = assessmentTargetNamePattern,
+		["assessmentTargetNamePattern"] = _assessmentTargetNamePattern,
 	}
-	M.AssertAssessmentTargetFilter(t)
+	asserts.AssertAssessmentTargetFilter(t)
 	return t
 end
 
-local ListRulesPackagesResponse_keys = { "nextToken" = true, "rulesPackageArns" = true, nil }
+keys.ListRulesPackagesResponse = { ["nextToken"] = true, ["rulesPackageArns"] = true, nil }
 
-function M.AssertListRulesPackagesResponse(struct)
+function asserts.AssertListRulesPackagesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListRulesPackagesResponse to be of type 'table'")
 	assert(struct["rulesPackageArns"], "Expected key rulesPackageArns to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["rulesPackageArns"] then M.AssertListReturnedArnList(struct["rulesPackageArns"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["rulesPackageArns"] then asserts.AssertListReturnedArnList(struct["rulesPackageArns"]) end
 	for k,_ in pairs(struct) do
-		assert(ListRulesPackagesResponse_keys[k], "ListRulesPackagesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListRulesPackagesResponse[k], "ListRulesPackagesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListRulesPackagesResponse
 --  
--- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param rulesPackageArns [ListReturnedArnList] <p>The list of ARNs that specifies the rules packages returned by the action.</p>
+-- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param _rulesPackageArns [ListReturnedArnList] <p>The list of ARNs that specifies the rules packages returned by the action.</p>
 -- Required parameter: rulesPackageArns
-function M.ListRulesPackagesResponse(nextToken, rulesPackageArns, ...)
+function M.ListRulesPackagesResponse(_nextToken, _rulesPackageArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesPackagesResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["rulesPackageArns"] = rulesPackageArns,
+		["nextToken"] = _nextToken,
+		["rulesPackageArns"] = _rulesPackageArns,
 	}
-	M.AssertListRulesPackagesResponse(t)
+	asserts.AssertListRulesPackagesResponse(t)
 	return t
 end
 
-local Finding_keys = { "assetType" = true, "confidence" = true, "numericSeverity" = true, "description" = true, "service" = true, "title" = true, "indicatorOfCompromise" = true, "assetAttributes" = true, "userAttributes" = true, "createdAt" = true, "recommendation" = true, "updatedAt" = true, "attributes" = true, "schemaVersion" = true, "serviceAttributes" = true, "id" = true, "arn" = true, "severity" = true, nil }
+keys.Finding = { ["assetType"] = true, ["confidence"] = true, ["numericSeverity"] = true, ["description"] = true, ["service"] = true, ["title"] = true, ["indicatorOfCompromise"] = true, ["assetAttributes"] = true, ["userAttributes"] = true, ["createdAt"] = true, ["recommendation"] = true, ["updatedAt"] = true, ["attributes"] = true, ["schemaVersion"] = true, ["serviceAttributes"] = true, ["id"] = true, ["arn"] = true, ["severity"] = true, nil }
 
-function M.AssertFinding(struct)
+function asserts.AssertFinding(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Finding to be of type 'table'")
 	assert(struct["arn"], "Expected key arn to exist in table")
@@ -1184,482 +1187,482 @@ function M.AssertFinding(struct)
 	assert(struct["userAttributes"], "Expected key userAttributes to exist in table")
 	assert(struct["createdAt"], "Expected key createdAt to exist in table")
 	assert(struct["updatedAt"], "Expected key updatedAt to exist in table")
-	if struct["assetType"] then M.AssertAssetType(struct["assetType"]) end
-	if struct["confidence"] then M.AssertIocConfidence(struct["confidence"]) end
-	if struct["numericSeverity"] then M.AssertNumericSeverity(struct["numericSeverity"]) end
-	if struct["description"] then M.AssertText(struct["description"]) end
-	if struct["service"] then M.AssertServiceName(struct["service"]) end
-	if struct["title"] then M.AssertText(struct["title"]) end
-	if struct["indicatorOfCompromise"] then M.AssertBool(struct["indicatorOfCompromise"]) end
-	if struct["assetAttributes"] then M.AssertAssetAttributes(struct["assetAttributes"]) end
-	if struct["userAttributes"] then M.AssertUserAttributeList(struct["userAttributes"]) end
-	if struct["createdAt"] then M.AssertTimestamp(struct["createdAt"]) end
-	if struct["recommendation"] then M.AssertText(struct["recommendation"]) end
-	if struct["updatedAt"] then M.AssertTimestamp(struct["updatedAt"]) end
-	if struct["attributes"] then M.AssertAttributeList(struct["attributes"]) end
-	if struct["schemaVersion"] then M.AssertNumericVersion(struct["schemaVersion"]) end
-	if struct["serviceAttributes"] then M.AssertInspectorServiceAttributes(struct["serviceAttributes"]) end
-	if struct["id"] then M.AssertFindingId(struct["id"]) end
-	if struct["arn"] then M.AssertArn(struct["arn"]) end
-	if struct["severity"] then M.AssertSeverity(struct["severity"]) end
+	if struct["assetType"] then asserts.AssertAssetType(struct["assetType"]) end
+	if struct["confidence"] then asserts.AssertIocConfidence(struct["confidence"]) end
+	if struct["numericSeverity"] then asserts.AssertNumericSeverity(struct["numericSeverity"]) end
+	if struct["description"] then asserts.AssertText(struct["description"]) end
+	if struct["service"] then asserts.AssertServiceName(struct["service"]) end
+	if struct["title"] then asserts.AssertText(struct["title"]) end
+	if struct["indicatorOfCompromise"] then asserts.AssertBool(struct["indicatorOfCompromise"]) end
+	if struct["assetAttributes"] then asserts.AssertAssetAttributes(struct["assetAttributes"]) end
+	if struct["userAttributes"] then asserts.AssertUserAttributeList(struct["userAttributes"]) end
+	if struct["createdAt"] then asserts.AssertTimestamp(struct["createdAt"]) end
+	if struct["recommendation"] then asserts.AssertText(struct["recommendation"]) end
+	if struct["updatedAt"] then asserts.AssertTimestamp(struct["updatedAt"]) end
+	if struct["attributes"] then asserts.AssertAttributeList(struct["attributes"]) end
+	if struct["schemaVersion"] then asserts.AssertNumericVersion(struct["schemaVersion"]) end
+	if struct["serviceAttributes"] then asserts.AssertInspectorServiceAttributes(struct["serviceAttributes"]) end
+	if struct["id"] then asserts.AssertFindingId(struct["id"]) end
+	if struct["arn"] then asserts.AssertArn(struct["arn"]) end
+	if struct["severity"] then asserts.AssertSeverity(struct["severity"]) end
 	for k,_ in pairs(struct) do
-		assert(Finding_keys[k], "Finding contains unknown key " .. tostring(k))
+		assert(keys.Finding[k], "Finding contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Finding
 -- <p>Contains information about an Amazon Inspector finding. This data type is used as the response element in the <a>DescribeFindings</a> action.</p>
--- @param assetType [AssetType] <p>The type of the host from which the finding is generated.</p>
--- @param confidence [IocConfidence] <p>This data element is currently not used.</p>
--- @param numericSeverity [NumericSeverity] <p>The numeric value of the finding severity.</p>
--- @param description [Text] <p>The description of the finding.</p>
--- @param service [ServiceName] <p>The data element is set to "Inspector".</p>
--- @param title [Text] <p>The name of the finding.</p>
--- @param indicatorOfCompromise [Bool] <p>This data element is currently not used.</p>
--- @param assetAttributes [AssetAttributes] <p>A collection of attributes of the host from which the finding is generated.</p>
--- @param userAttributes [UserAttributeList] <p>The user-defined attributes that are assigned to the finding.</p>
--- @param createdAt [Timestamp] <p>The time when the finding was generated.</p>
--- @param recommendation [Text] <p>The recommendation for the finding.</p>
--- @param updatedAt [Timestamp] <p>The time when <a>AddAttributesToFindings</a> is called.</p>
--- @param attributes [AttributeList] <p>The system-defined attributes for the finding.</p>
--- @param schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
--- @param serviceAttributes [InspectorServiceAttributes] <p>This data type is used in the <a>Finding</a> data type.</p>
--- @param id [FindingId] <p>The ID of the finding.</p>
--- @param arn [Arn] <p>The ARN that specifies the finding.</p>
--- @param severity [Severity] <p>The finding severity. Values can be set to High, Medium, Low, and Informational.</p>
+-- @param _assetType [AssetType] <p>The type of the host from which the finding is generated.</p>
+-- @param _confidence [IocConfidence] <p>This data element is currently not used.</p>
+-- @param _numericSeverity [NumericSeverity] <p>The numeric value of the finding severity.</p>
+-- @param _description [Text] <p>The description of the finding.</p>
+-- @param _service [ServiceName] <p>The data element is set to "Inspector".</p>
+-- @param _title [Text] <p>The name of the finding.</p>
+-- @param _indicatorOfCompromise [Bool] <p>This data element is currently not used.</p>
+-- @param _assetAttributes [AssetAttributes] <p>A collection of attributes of the host from which the finding is generated.</p>
+-- @param _userAttributes [UserAttributeList] <p>The user-defined attributes that are assigned to the finding.</p>
+-- @param _createdAt [Timestamp] <p>The time when the finding was generated.</p>
+-- @param _recommendation [Text] <p>The recommendation for the finding.</p>
+-- @param _updatedAt [Timestamp] <p>The time when <a>AddAttributesToFindings</a> is called.</p>
+-- @param _attributes [AttributeList] <p>The system-defined attributes for the finding.</p>
+-- @param _schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- @param _serviceAttributes [InspectorServiceAttributes] <p>This data type is used in the <a>Finding</a> data type.</p>
+-- @param _id [FindingId] <p>The ID of the finding.</p>
+-- @param _arn [Arn] <p>The ARN that specifies the finding.</p>
+-- @param _severity [Severity] <p>The finding severity. Values can be set to High, Medium, Low, and Informational.</p>
 -- Required parameter: arn
 -- Required parameter: attributes
 -- Required parameter: userAttributes
 -- Required parameter: createdAt
 -- Required parameter: updatedAt
-function M.Finding(assetType, confidence, numericSeverity, description, service, title, indicatorOfCompromise, assetAttributes, userAttributes, createdAt, recommendation, updatedAt, attributes, schemaVersion, serviceAttributes, id, arn, severity, ...)
+function M.Finding(_assetType, _confidence, _numericSeverity, _description, _service, _title, _indicatorOfCompromise, _assetAttributes, _userAttributes, _createdAt, _recommendation, _updatedAt, _attributes, _schemaVersion, _serviceAttributes, _id, _arn, _severity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Finding")
 	local t = { 
-		["assetType"] = assetType,
-		["confidence"] = confidence,
-		["numericSeverity"] = numericSeverity,
-		["description"] = description,
-		["service"] = service,
-		["title"] = title,
-		["indicatorOfCompromise"] = indicatorOfCompromise,
-		["assetAttributes"] = assetAttributes,
-		["userAttributes"] = userAttributes,
-		["createdAt"] = createdAt,
-		["recommendation"] = recommendation,
-		["updatedAt"] = updatedAt,
-		["attributes"] = attributes,
-		["schemaVersion"] = schemaVersion,
-		["serviceAttributes"] = serviceAttributes,
-		["id"] = id,
-		["arn"] = arn,
-		["severity"] = severity,
+		["assetType"] = _assetType,
+		["confidence"] = _confidence,
+		["numericSeverity"] = _numericSeverity,
+		["description"] = _description,
+		["service"] = _service,
+		["title"] = _title,
+		["indicatorOfCompromise"] = _indicatorOfCompromise,
+		["assetAttributes"] = _assetAttributes,
+		["userAttributes"] = _userAttributes,
+		["createdAt"] = _createdAt,
+		["recommendation"] = _recommendation,
+		["updatedAt"] = _updatedAt,
+		["attributes"] = _attributes,
+		["schemaVersion"] = _schemaVersion,
+		["serviceAttributes"] = _serviceAttributes,
+		["id"] = _id,
+		["arn"] = _arn,
+		["severity"] = _severity,
 	}
-	M.AssertFinding(t)
+	asserts.AssertFinding(t)
 	return t
 end
 
-local ListFindingsResponse_keys = { "nextToken" = true, "findingArns" = true, nil }
+keys.ListFindingsResponse = { ["nextToken"] = true, ["findingArns"] = true, nil }
 
-function M.AssertListFindingsResponse(struct)
+function asserts.AssertListFindingsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFindingsResponse to be of type 'table'")
 	assert(struct["findingArns"], "Expected key findingArns to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["findingArns"] then M.AssertListReturnedArnList(struct["findingArns"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["findingArns"] then asserts.AssertListReturnedArnList(struct["findingArns"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFindingsResponse_keys[k], "ListFindingsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListFindingsResponse[k], "ListFindingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFindingsResponse
 --  
--- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param findingArns [ListReturnedArnList] <p>A list of ARNs that specifies the findings returned by the action.</p>
+-- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param _findingArns [ListReturnedArnList] <p>A list of ARNs that specifies the findings returned by the action.</p>
 -- Required parameter: findingArns
-function M.ListFindingsResponse(nextToken, findingArns, ...)
+function M.ListFindingsResponse(_nextToken, _findingArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFindingsResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["findingArns"] = findingArns,
+		["nextToken"] = _nextToken,
+		["findingArns"] = _findingArns,
 	}
-	M.AssertListFindingsResponse(t)
+	asserts.AssertListFindingsResponse(t)
 	return t
 end
 
-local AgentPreview_keys = { "autoScalingGroup" = true, "agentId" = true, nil }
+keys.AgentPreview = { ["autoScalingGroup"] = true, ["agentId"] = true, nil }
 
-function M.AssertAgentPreview(struct)
+function asserts.AssertAgentPreview(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AgentPreview to be of type 'table'")
 	assert(struct["agentId"], "Expected key agentId to exist in table")
-	if struct["autoScalingGroup"] then M.AssertAutoScalingGroup(struct["autoScalingGroup"]) end
-	if struct["agentId"] then M.AssertAgentId(struct["agentId"]) end
+	if struct["autoScalingGroup"] then asserts.AssertAutoScalingGroup(struct["autoScalingGroup"]) end
+	if struct["agentId"] then asserts.AssertAgentId(struct["agentId"]) end
 	for k,_ in pairs(struct) do
-		assert(AgentPreview_keys[k], "AgentPreview contains unknown key " .. tostring(k))
+		assert(keys.AgentPreview[k], "AgentPreview contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AgentPreview
 -- <p>Used as a response element in the <a>PreviewAgents</a> action.</p>
--- @param autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group for the EC2 instance where the agent is installed.</p>
--- @param agentId [AgentId] <p>The ID of the EC2 instance where the agent is installed.</p>
+-- @param _autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group for the EC2 instance where the agent is installed.</p>
+-- @param _agentId [AgentId] <p>The ID of the EC2 instance where the agent is installed.</p>
 -- Required parameter: agentId
-function M.AgentPreview(autoScalingGroup, agentId, ...)
+function M.AgentPreview(_autoScalingGroup, _agentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentPreview")
 	local t = { 
-		["autoScalingGroup"] = autoScalingGroup,
-		["agentId"] = agentId,
+		["autoScalingGroup"] = _autoScalingGroup,
+		["agentId"] = _agentId,
 	}
-	M.AssertAgentPreview(t)
+	asserts.AssertAgentPreview(t)
 	return t
 end
 
-local CreateAssessmentTargetResponse_keys = { "assessmentTargetArn" = true, nil }
+keys.CreateAssessmentTargetResponse = { ["assessmentTargetArn"] = true, nil }
 
-function M.AssertCreateAssessmentTargetResponse(struct)
+function asserts.AssertCreateAssessmentTargetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAssessmentTargetResponse to be of type 'table'")
 	assert(struct["assessmentTargetArn"], "Expected key assessmentTargetArn to exist in table")
-	if struct["assessmentTargetArn"] then M.AssertArn(struct["assessmentTargetArn"]) end
+	if struct["assessmentTargetArn"] then asserts.AssertArn(struct["assessmentTargetArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAssessmentTargetResponse_keys[k], "CreateAssessmentTargetResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateAssessmentTargetResponse[k], "CreateAssessmentTargetResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAssessmentTargetResponse
 --  
--- @param assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that is created.</p>
+-- @param _assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that is created.</p>
 -- Required parameter: assessmentTargetArn
-function M.CreateAssessmentTargetResponse(assessmentTargetArn, ...)
+function M.CreateAssessmentTargetResponse(_assessmentTargetArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTargetResponse")
 	local t = { 
-		["assessmentTargetArn"] = assessmentTargetArn,
+		["assessmentTargetArn"] = _assessmentTargetArn,
 	}
-	M.AssertCreateAssessmentTargetResponse(t)
+	asserts.AssertCreateAssessmentTargetResponse(t)
 	return t
 end
 
-local ListAssessmentTemplatesResponse_keys = { "nextToken" = true, "assessmentTemplateArns" = true, nil }
+keys.ListAssessmentTemplatesResponse = { ["nextToken"] = true, ["assessmentTemplateArns"] = true, nil }
 
-function M.AssertListAssessmentTemplatesResponse(struct)
+function asserts.AssertListAssessmentTemplatesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssessmentTemplatesResponse to be of type 'table'")
 	assert(struct["assessmentTemplateArns"], "Expected key assessmentTemplateArns to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["assessmentTemplateArns"] then M.AssertListReturnedArnList(struct["assessmentTemplateArns"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["assessmentTemplateArns"] then asserts.AssertListReturnedArnList(struct["assessmentTemplateArns"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssessmentTemplatesResponse_keys[k], "ListAssessmentTemplatesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAssessmentTemplatesResponse[k], "ListAssessmentTemplatesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssessmentTemplatesResponse
 --  
--- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param assessmentTemplateArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment templates returned by the action.</p>
+-- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param _assessmentTemplateArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment templates returned by the action.</p>
 -- Required parameter: assessmentTemplateArns
-function M.ListAssessmentTemplatesResponse(nextToken, assessmentTemplateArns, ...)
+function M.ListAssessmentTemplatesResponse(_nextToken, _assessmentTemplateArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTemplatesResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["assessmentTemplateArns"] = assessmentTemplateArns,
+		["nextToken"] = _nextToken,
+		["assessmentTemplateArns"] = _assessmentTemplateArns,
 	}
-	M.AssertListAssessmentTemplatesResponse(t)
+	asserts.AssertListAssessmentTemplatesResponse(t)
 	return t
 end
 
-local AddAttributesToFindingsResponse_keys = { "failedItems" = true, nil }
+keys.AddAttributesToFindingsResponse = { ["failedItems"] = true, nil }
 
-function M.AssertAddAttributesToFindingsResponse(struct)
+function asserts.AssertAddAttributesToFindingsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddAttributesToFindingsResponse to be of type 'table'")
 	assert(struct["failedItems"], "Expected key failedItems to exist in table")
-	if struct["failedItems"] then M.AssertFailedItems(struct["failedItems"]) end
+	if struct["failedItems"] then asserts.AssertFailedItems(struct["failedItems"]) end
 	for k,_ in pairs(struct) do
-		assert(AddAttributesToFindingsResponse_keys[k], "AddAttributesToFindingsResponse contains unknown key " .. tostring(k))
+		assert(keys.AddAttributesToFindingsResponse[k], "AddAttributesToFindingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddAttributesToFindingsResponse
 --  
--- @param failedItems [FailedItems] <p>Attribute details that cannot be described. An error code is provided for each failed item.</p>
+-- @param _failedItems [FailedItems] <p>Attribute details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: failedItems
-function M.AddAttributesToFindingsResponse(failedItems, ...)
+function M.AddAttributesToFindingsResponse(_failedItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddAttributesToFindingsResponse")
 	local t = { 
-		["failedItems"] = failedItems,
+		["failedItems"] = _failedItems,
 	}
-	M.AssertAddAttributesToFindingsResponse(t)
+	asserts.AssertAddAttributesToFindingsResponse(t)
 	return t
 end
 
-local DescribeAssessmentRunsRequest_keys = { "assessmentRunArns" = true, nil }
+keys.DescribeAssessmentRunsRequest = { ["assessmentRunArns"] = true, nil }
 
-function M.AssertDescribeAssessmentRunsRequest(struct)
+function asserts.AssertDescribeAssessmentRunsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAssessmentRunsRequest to be of type 'table'")
 	assert(struct["assessmentRunArns"], "Expected key assessmentRunArns to exist in table")
-	if struct["assessmentRunArns"] then M.AssertBatchDescribeArnList(struct["assessmentRunArns"]) end
+	if struct["assessmentRunArns"] then asserts.AssertBatchDescribeArnList(struct["assessmentRunArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAssessmentRunsRequest_keys[k], "DescribeAssessmentRunsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeAssessmentRunsRequest[k], "DescribeAssessmentRunsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAssessmentRunsRequest
 --  
--- @param assessmentRunArns [BatchDescribeArnList] <p>The ARN that specifies the assessment run that you want to describe.</p>
+-- @param _assessmentRunArns [BatchDescribeArnList] <p>The ARN that specifies the assessment run that you want to describe.</p>
 -- Required parameter: assessmentRunArns
-function M.DescribeAssessmentRunsRequest(assessmentRunArns, ...)
+function M.DescribeAssessmentRunsRequest(_assessmentRunArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentRunsRequest")
 	local t = { 
-		["assessmentRunArns"] = assessmentRunArns,
+		["assessmentRunArns"] = _assessmentRunArns,
 	}
-	M.AssertDescribeAssessmentRunsRequest(t)
+	asserts.AssertDescribeAssessmentRunsRequest(t)
 	return t
 end
 
-local CreateAssessmentTargetRequest_keys = { "assessmentTargetName" = true, "resourceGroupArn" = true, nil }
+keys.CreateAssessmentTargetRequest = { ["assessmentTargetName"] = true, ["resourceGroupArn"] = true, nil }
 
-function M.AssertCreateAssessmentTargetRequest(struct)
+function asserts.AssertCreateAssessmentTargetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAssessmentTargetRequest to be of type 'table'")
 	assert(struct["assessmentTargetName"], "Expected key assessmentTargetName to exist in table")
 	assert(struct["resourceGroupArn"], "Expected key resourceGroupArn to exist in table")
-	if struct["assessmentTargetName"] then M.AssertAssessmentTargetName(struct["assessmentTargetName"]) end
-	if struct["resourceGroupArn"] then M.AssertArn(struct["resourceGroupArn"]) end
+	if struct["assessmentTargetName"] then asserts.AssertAssessmentTargetName(struct["assessmentTargetName"]) end
+	if struct["resourceGroupArn"] then asserts.AssertArn(struct["resourceGroupArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAssessmentTargetRequest_keys[k], "CreateAssessmentTargetRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateAssessmentTargetRequest[k], "CreateAssessmentTargetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAssessmentTargetRequest
 --  
--- @param assessmentTargetName [AssessmentTargetName] <p>The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.</p>
--- @param resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is used to create the assessment target.</p>
+-- @param _assessmentTargetName [AssessmentTargetName] <p>The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.</p>
+-- @param _resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is used to create the assessment target.</p>
 -- Required parameter: assessmentTargetName
 -- Required parameter: resourceGroupArn
-function M.CreateAssessmentTargetRequest(assessmentTargetName, resourceGroupArn, ...)
+function M.CreateAssessmentTargetRequest(_assessmentTargetName, _resourceGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTargetRequest")
 	local t = { 
-		["assessmentTargetName"] = assessmentTargetName,
-		["resourceGroupArn"] = resourceGroupArn,
+		["assessmentTargetName"] = _assessmentTargetName,
+		["resourceGroupArn"] = _resourceGroupArn,
 	}
-	M.AssertCreateAssessmentTargetRequest(t)
+	asserts.AssertCreateAssessmentTargetRequest(t)
 	return t
 end
 
-local AccessDeniedException_keys = { "errorCode" = true, "canRetry" = true, "message" = true, nil }
+keys.AccessDeniedException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
 
-function M.AssertAccessDeniedException(struct)
+function asserts.AssertAccessDeniedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccessDeniedException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["errorCode"], "Expected key errorCode to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["errorCode"] then M.AssertAccessDeniedErrorCode(struct["errorCode"]) end
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["errorCode"] then asserts.AssertAccessDeniedErrorCode(struct["errorCode"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AccessDeniedException_keys[k], "AccessDeniedException contains unknown key " .. tostring(k))
+		assert(keys.AccessDeniedException[k], "AccessDeniedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AccessDeniedException
 -- <p>You do not have required permissions to access the requested resource.</p>
--- @param errorCode [AccessDeniedErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param _errorCode [AccessDeniedErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param _message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
-function M.AccessDeniedException(errorCode, canRetry, message, ...)
+function M.AccessDeniedException(_errorCode, _canRetry, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
 	local t = { 
-		["errorCode"] = errorCode,
-		["canRetry"] = canRetry,
-		["message"] = message,
+		["errorCode"] = _errorCode,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
 	}
-	M.AssertAccessDeniedException(t)
+	asserts.AssertAccessDeniedException(t)
 	return t
 end
 
-local DeleteAssessmentTemplateRequest_keys = { "assessmentTemplateArn" = true, nil }
+keys.DeleteAssessmentTemplateRequest = { ["assessmentTemplateArn"] = true, nil }
 
-function M.AssertDeleteAssessmentTemplateRequest(struct)
+function asserts.AssertDeleteAssessmentTemplateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteAssessmentTemplateRequest to be of type 'table'")
 	assert(struct["assessmentTemplateArn"], "Expected key assessmentTemplateArn to exist in table")
-	if struct["assessmentTemplateArn"] then M.AssertArn(struct["assessmentTemplateArn"]) end
+	if struct["assessmentTemplateArn"] then asserts.AssertArn(struct["assessmentTemplateArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteAssessmentTemplateRequest_keys[k], "DeleteAssessmentTemplateRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteAssessmentTemplateRequest[k], "DeleteAssessmentTemplateRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteAssessmentTemplateRequest
 --  
--- @param assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that you want to delete.</p>
+-- @param _assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that you want to delete.</p>
 -- Required parameter: assessmentTemplateArn
-function M.DeleteAssessmentTemplateRequest(assessmentTemplateArn, ...)
+function M.DeleteAssessmentTemplateRequest(_assessmentTemplateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentTemplateRequest")
 	local t = { 
-		["assessmentTemplateArn"] = assessmentTemplateArn,
+		["assessmentTemplateArn"] = _assessmentTemplateArn,
 	}
-	M.AssertDeleteAssessmentTemplateRequest(t)
+	asserts.AssertDeleteAssessmentTemplateRequest(t)
 	return t
 end
 
-local FindingFilter_keys = { "autoScalingGroups" = true, "creationTimeRange" = true, "ruleNames" = true, "severities" = true, "userAttributes" = true, "rulesPackageArns" = true, "attributes" = true, "agentIds" = true, nil }
+keys.FindingFilter = { ["autoScalingGroups"] = true, ["creationTimeRange"] = true, ["ruleNames"] = true, ["severities"] = true, ["userAttributes"] = true, ["rulesPackageArns"] = true, ["attributes"] = true, ["agentIds"] = true, nil }
 
-function M.AssertFindingFilter(struct)
+function asserts.AssertFindingFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FindingFilter to be of type 'table'")
-	if struct["autoScalingGroups"] then M.AssertAutoScalingGroupList(struct["autoScalingGroups"]) end
-	if struct["creationTimeRange"] then M.AssertTimestampRange(struct["creationTimeRange"]) end
-	if struct["ruleNames"] then M.AssertRuleNameList(struct["ruleNames"]) end
-	if struct["severities"] then M.AssertSeverityList(struct["severities"]) end
-	if struct["userAttributes"] then M.AssertAttributeList(struct["userAttributes"]) end
-	if struct["rulesPackageArns"] then M.AssertFilterRulesPackageArnList(struct["rulesPackageArns"]) end
-	if struct["attributes"] then M.AssertAttributeList(struct["attributes"]) end
-	if struct["agentIds"] then M.AssertAgentIdList(struct["agentIds"]) end
+	if struct["autoScalingGroups"] then asserts.AssertAutoScalingGroupList(struct["autoScalingGroups"]) end
+	if struct["creationTimeRange"] then asserts.AssertTimestampRange(struct["creationTimeRange"]) end
+	if struct["ruleNames"] then asserts.AssertRuleNameList(struct["ruleNames"]) end
+	if struct["severities"] then asserts.AssertSeverityList(struct["severities"]) end
+	if struct["userAttributes"] then asserts.AssertAttributeList(struct["userAttributes"]) end
+	if struct["rulesPackageArns"] then asserts.AssertFilterRulesPackageArnList(struct["rulesPackageArns"]) end
+	if struct["attributes"] then asserts.AssertAttributeList(struct["attributes"]) end
+	if struct["agentIds"] then asserts.AssertAgentIdList(struct["agentIds"]) end
 	for k,_ in pairs(struct) do
-		assert(FindingFilter_keys[k], "FindingFilter contains unknown key " .. tostring(k))
+		assert(keys.FindingFilter[k], "FindingFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FindingFilter
 -- <p>This data type is used as a request parameter in the <a>ListFindings</a> action.</p>
--- @param autoScalingGroups [AutoScalingGroupList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>autoScalingGroup</b> property of the <a>Finding</a> data type.</p>
--- @param creationTimeRange [TimestampRange] <p>The time range during which the finding is generated.</p>
--- @param ruleNames [RuleNameList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>ruleName</b> property of the <a>Finding</a> data type.</p>
--- @param severities [SeverityList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>severity</b> property of the <a>Finding</a> data type.</p>
--- @param userAttributes [AttributeList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>userAttributes</b> property of the <a>Finding</a> data type.</p>
--- @param rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>rulesPackageArn</b> property of the <a>Finding</a> data type.</p>
--- @param attributes [AttributeList] <p>For a record to match a filter, the list of values that are specified for this data type property must be contained in the list of values of the <b>attributes</b> property of the <a>Finding</a> data type.</p>
--- @param agentIds [AgentIdList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>agentId</b> property of the <a>Finding</a> data type.</p>
-function M.FindingFilter(autoScalingGroups, creationTimeRange, ruleNames, severities, userAttributes, rulesPackageArns, attributes, agentIds, ...)
+-- @param _autoScalingGroups [AutoScalingGroupList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>autoScalingGroup</b> property of the <a>Finding</a> data type.</p>
+-- @param _creationTimeRange [TimestampRange] <p>The time range during which the finding is generated.</p>
+-- @param _ruleNames [RuleNameList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>ruleName</b> property of the <a>Finding</a> data type.</p>
+-- @param _severities [SeverityList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>severity</b> property of the <a>Finding</a> data type.</p>
+-- @param _userAttributes [AttributeList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>userAttributes</b> property of the <a>Finding</a> data type.</p>
+-- @param _rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>rulesPackageArn</b> property of the <a>Finding</a> data type.</p>
+-- @param _attributes [AttributeList] <p>For a record to match a filter, the list of values that are specified for this data type property must be contained in the list of values of the <b>attributes</b> property of the <a>Finding</a> data type.</p>
+-- @param _agentIds [AgentIdList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>agentId</b> property of the <a>Finding</a> data type.</p>
+function M.FindingFilter(_autoScalingGroups, _creationTimeRange, _ruleNames, _severities, _userAttributes, _rulesPackageArns, _attributes, _agentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FindingFilter")
 	local t = { 
-		["autoScalingGroups"] = autoScalingGroups,
-		["creationTimeRange"] = creationTimeRange,
-		["ruleNames"] = ruleNames,
-		["severities"] = severities,
-		["userAttributes"] = userAttributes,
-		["rulesPackageArns"] = rulesPackageArns,
-		["attributes"] = attributes,
-		["agentIds"] = agentIds,
+		["autoScalingGroups"] = _autoScalingGroups,
+		["creationTimeRange"] = _creationTimeRange,
+		["ruleNames"] = _ruleNames,
+		["severities"] = _severities,
+		["userAttributes"] = _userAttributes,
+		["rulesPackageArns"] = _rulesPackageArns,
+		["attributes"] = _attributes,
+		["agentIds"] = _agentIds,
 	}
-	M.AssertFindingFilter(t)
+	asserts.AssertFindingFilter(t)
 	return t
 end
 
-local ListAssessmentTargetsResponse_keys = { "assessmentTargetArns" = true, "nextToken" = true, nil }
+keys.ListAssessmentTargetsResponse = { ["assessmentTargetArns"] = true, ["nextToken"] = true, nil }
 
-function M.AssertListAssessmentTargetsResponse(struct)
+function asserts.AssertListAssessmentTargetsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssessmentTargetsResponse to be of type 'table'")
 	assert(struct["assessmentTargetArns"], "Expected key assessmentTargetArns to exist in table")
-	if struct["assessmentTargetArns"] then M.AssertListReturnedArnList(struct["assessmentTargetArns"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
+	if struct["assessmentTargetArns"] then asserts.AssertListReturnedArnList(struct["assessmentTargetArns"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssessmentTargetsResponse_keys[k], "ListAssessmentTargetsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAssessmentTargetsResponse[k], "ListAssessmentTargetsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssessmentTargetsResponse
 --  
--- @param assessmentTargetArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment targets that are returned by the action.</p>
--- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param _assessmentTargetArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment targets that are returned by the action.</p>
+-- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
 -- Required parameter: assessmentTargetArns
-function M.ListAssessmentTargetsResponse(assessmentTargetArns, nextToken, ...)
+function M.ListAssessmentTargetsResponse(_assessmentTargetArns, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTargetsResponse")
 	local t = { 
-		["assessmentTargetArns"] = assessmentTargetArns,
-		["nextToken"] = nextToken,
+		["assessmentTargetArns"] = _assessmentTargetArns,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertListAssessmentTargetsResponse(t)
+	asserts.AssertListAssessmentTargetsResponse(t)
 	return t
 end
 
-local SetTagsForResourceRequest_keys = { "resourceArn" = true, "tags" = true, nil }
+keys.SetTagsForResourceRequest = { ["resourceArn"] = true, ["tags"] = true, nil }
 
-function M.AssertSetTagsForResourceRequest(struct)
+function asserts.AssertSetTagsForResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetTagsForResourceRequest to be of type 'table'")
 	assert(struct["resourceArn"], "Expected key resourceArn to exist in table")
-	if struct["resourceArn"] then M.AssertArn(struct["resourceArn"]) end
-	if struct["tags"] then M.AssertTagList(struct["tags"]) end
+	if struct["resourceArn"] then asserts.AssertArn(struct["resourceArn"]) end
+	if struct["tags"] then asserts.AssertTagList(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(SetTagsForResourceRequest_keys[k], "SetTagsForResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.SetTagsForResourceRequest[k], "SetTagsForResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetTagsForResourceRequest
 --  
--- @param resourceArn [Arn] <p>The ARN of the assessment template that you want to set tags to.</p>
--- @param tags [TagList] <p>A collection of key and value pairs that you want to set to the assessment template.</p>
+-- @param _resourceArn [Arn] <p>The ARN of the assessment template that you want to set tags to.</p>
+-- @param _tags [TagList] <p>A collection of key and value pairs that you want to set to the assessment template.</p>
 -- Required parameter: resourceArn
-function M.SetTagsForResourceRequest(resourceArn, tags, ...)
+function M.SetTagsForResourceRequest(_resourceArn, _tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetTagsForResourceRequest")
 	local t = { 
-		["resourceArn"] = resourceArn,
-		["tags"] = tags,
+		["resourceArn"] = _resourceArn,
+		["tags"] = _tags,
 	}
-	M.AssertSetTagsForResourceRequest(t)
+	asserts.AssertSetTagsForResourceRequest(t)
 	return t
 end
 
-local DeleteAssessmentTargetRequest_keys = { "assessmentTargetArn" = true, nil }
+keys.DeleteAssessmentTargetRequest = { ["assessmentTargetArn"] = true, nil }
 
-function M.AssertDeleteAssessmentTargetRequest(struct)
+function asserts.AssertDeleteAssessmentTargetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteAssessmentTargetRequest to be of type 'table'")
 	assert(struct["assessmentTargetArn"], "Expected key assessmentTargetArn to exist in table")
-	if struct["assessmentTargetArn"] then M.AssertArn(struct["assessmentTargetArn"]) end
+	if struct["assessmentTargetArn"] then asserts.AssertArn(struct["assessmentTargetArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteAssessmentTargetRequest_keys[k], "DeleteAssessmentTargetRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteAssessmentTargetRequest[k], "DeleteAssessmentTargetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteAssessmentTargetRequest
 --  
--- @param assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that you want to delete.</p>
+-- @param _assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that you want to delete.</p>
 -- Required parameter: assessmentTargetArn
-function M.DeleteAssessmentTargetRequest(assessmentTargetArn, ...)
+function M.DeleteAssessmentTargetRequest(_assessmentTargetArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentTargetRequest")
 	local t = { 
-		["assessmentTargetArn"] = assessmentTargetArn,
+		["assessmentTargetArn"] = _assessmentTargetArn,
 	}
-	M.AssertDeleteAssessmentTargetRequest(t)
+	asserts.AssertDeleteAssessmentTargetRequest(t)
 	return t
 end
 
-local StartAssessmentRunResponse_keys = { "assessmentRunArn" = true, nil }
+keys.StartAssessmentRunResponse = { ["assessmentRunArn"] = true, nil }
 
-function M.AssertStartAssessmentRunResponse(struct)
+function asserts.AssertStartAssessmentRunResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartAssessmentRunResponse to be of type 'table'")
 	assert(struct["assessmentRunArn"], "Expected key assessmentRunArn to exist in table")
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
 	for k,_ in pairs(struct) do
-		assert(StartAssessmentRunResponse_keys[k], "StartAssessmentRunResponse contains unknown key " .. tostring(k))
+		assert(keys.StartAssessmentRunResponse[k], "StartAssessmentRunResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartAssessmentRunResponse
 --  
--- @param assessmentRunArn [Arn] <p>The ARN of the assessment run that has been started.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run that has been started.</p>
 -- Required parameter: assessmentRunArn
-function M.StartAssessmentRunResponse(assessmentRunArn, ...)
+function M.StartAssessmentRunResponse(_assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartAssessmentRunResponse")
 	local t = { 
-		["assessmentRunArn"] = assessmentRunArn,
+		["assessmentRunArn"] = _assessmentRunArn,
 	}
-	M.AssertStartAssessmentRunResponse(t)
+	asserts.AssertStartAssessmentRunResponse(t)
 	return t
 end
 
-local AssessmentTarget_keys = { "resourceGroupArn" = true, "createdAt" = true, "name" = true, "arn" = true, "updatedAt" = true, nil }
+keys.AssessmentTarget = { ["resourceGroupArn"] = true, ["createdAt"] = true, ["name"] = true, ["arn"] = true, ["updatedAt"] = true, nil }
 
-function M.AssertAssessmentTarget(struct)
+function asserts.AssertAssessmentTarget(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentTarget to be of type 'table'")
 	assert(struct["arn"], "Expected key arn to exist in table")
@@ -1667,1319 +1670,1319 @@ function M.AssertAssessmentTarget(struct)
 	assert(struct["resourceGroupArn"], "Expected key resourceGroupArn to exist in table")
 	assert(struct["createdAt"], "Expected key createdAt to exist in table")
 	assert(struct["updatedAt"], "Expected key updatedAt to exist in table")
-	if struct["resourceGroupArn"] then M.AssertArn(struct["resourceGroupArn"]) end
-	if struct["createdAt"] then M.AssertTimestamp(struct["createdAt"]) end
-	if struct["name"] then M.AssertAssessmentTargetName(struct["name"]) end
-	if struct["arn"] then M.AssertArn(struct["arn"]) end
-	if struct["updatedAt"] then M.AssertTimestamp(struct["updatedAt"]) end
+	if struct["resourceGroupArn"] then asserts.AssertArn(struct["resourceGroupArn"]) end
+	if struct["createdAt"] then asserts.AssertTimestamp(struct["createdAt"]) end
+	if struct["name"] then asserts.AssertAssessmentTargetName(struct["name"]) end
+	if struct["arn"] then asserts.AssertArn(struct["arn"]) end
+	if struct["updatedAt"] then asserts.AssertTimestamp(struct["updatedAt"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentTarget_keys[k], "AssessmentTarget contains unknown key " .. tostring(k))
+		assert(keys.AssessmentTarget[k], "AssessmentTarget contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentTarget
 -- <p>Contains information about an Amazon Inspector application. This data type is used as the response element in the <a>DescribeAssessmentTargets</a> action.</p>
--- @param resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is associated with the assessment target.</p>
--- @param createdAt [Timestamp] <p>The time at which the assessment target is created.</p>
--- @param name [AssessmentTargetName] <p>The name of the Amazon Inspector assessment target.</p>
--- @param arn [Arn] <p>The ARN that specifies the Amazon Inspector assessment target.</p>
--- @param updatedAt [Timestamp] <p>The time at which <a>UpdateAssessmentTarget</a> is called.</p>
+-- @param _resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is associated with the assessment target.</p>
+-- @param _createdAt [Timestamp] <p>The time at which the assessment target is created.</p>
+-- @param _name [AssessmentTargetName] <p>The name of the Amazon Inspector assessment target.</p>
+-- @param _arn [Arn] <p>The ARN that specifies the Amazon Inspector assessment target.</p>
+-- @param _updatedAt [Timestamp] <p>The time at which <a>UpdateAssessmentTarget</a> is called.</p>
 -- Required parameter: arn
 -- Required parameter: name
 -- Required parameter: resourceGroupArn
 -- Required parameter: createdAt
 -- Required parameter: updatedAt
-function M.AssessmentTarget(resourceGroupArn, createdAt, name, arn, updatedAt, ...)
+function M.AssessmentTarget(_resourceGroupArn, _createdAt, _name, _arn, _updatedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTarget")
 	local t = { 
-		["resourceGroupArn"] = resourceGroupArn,
-		["createdAt"] = createdAt,
-		["name"] = name,
-		["arn"] = arn,
-		["updatedAt"] = updatedAt,
+		["resourceGroupArn"] = _resourceGroupArn,
+		["createdAt"] = _createdAt,
+		["name"] = _name,
+		["arn"] = _arn,
+		["updatedAt"] = _updatedAt,
 	}
-	M.AssertAssessmentTarget(t)
+	asserts.AssertAssessmentTarget(t)
 	return t
 end
 
-local DescribeAssessmentTemplatesRequest_keys = { "assessmentTemplateArns" = true, nil }
+keys.DescribeAssessmentTemplatesRequest = { ["assessmentTemplateArns"] = true, nil }
 
-function M.AssertDescribeAssessmentTemplatesRequest(struct)
+function asserts.AssertDescribeAssessmentTemplatesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAssessmentTemplatesRequest to be of type 'table'")
 	assert(struct["assessmentTemplateArns"], "Expected key assessmentTemplateArns to exist in table")
-	if struct["assessmentTemplateArns"] then M.AssertBatchDescribeArnList(struct["assessmentTemplateArns"]) end
+	if struct["assessmentTemplateArns"] then asserts.AssertBatchDescribeArnList(struct["assessmentTemplateArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAssessmentTemplatesRequest_keys[k], "DescribeAssessmentTemplatesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeAssessmentTemplatesRequest[k], "DescribeAssessmentTemplatesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAssessmentTemplatesRequest
 --  
--- @param assessmentTemplateArns [BatchDescribeArnList]  
+-- @param _assessmentTemplateArns [BatchDescribeArnList] 
 -- Required parameter: assessmentTemplateArns
-function M.DescribeAssessmentTemplatesRequest(assessmentTemplateArns, ...)
+function M.DescribeAssessmentTemplatesRequest(_assessmentTemplateArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTemplatesRequest")
 	local t = { 
-		["assessmentTemplateArns"] = assessmentTemplateArns,
+		["assessmentTemplateArns"] = _assessmentTemplateArns,
 	}
-	M.AssertDescribeAssessmentTemplatesRequest(t)
+	asserts.AssertDescribeAssessmentTemplatesRequest(t)
 	return t
 end
 
-local StartAssessmentRunRequest_keys = { "assessmentRunName" = true, "assessmentTemplateArn" = true, nil }
+keys.StartAssessmentRunRequest = { ["assessmentRunName"] = true, ["assessmentTemplateArn"] = true, nil }
 
-function M.AssertStartAssessmentRunRequest(struct)
+function asserts.AssertStartAssessmentRunRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartAssessmentRunRequest to be of type 'table'")
 	assert(struct["assessmentTemplateArn"], "Expected key assessmentTemplateArn to exist in table")
-	if struct["assessmentRunName"] then M.AssertAssessmentRunName(struct["assessmentRunName"]) end
-	if struct["assessmentTemplateArn"] then M.AssertArn(struct["assessmentTemplateArn"]) end
+	if struct["assessmentRunName"] then asserts.AssertAssessmentRunName(struct["assessmentRunName"]) end
+	if struct["assessmentTemplateArn"] then asserts.AssertArn(struct["assessmentTemplateArn"]) end
 	for k,_ in pairs(struct) do
-		assert(StartAssessmentRunRequest_keys[k], "StartAssessmentRunRequest contains unknown key " .. tostring(k))
+		assert(keys.StartAssessmentRunRequest[k], "StartAssessmentRunRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartAssessmentRunRequest
 --  
--- @param assessmentRunName [AssessmentRunName] <p>You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.</p>
--- @param assessmentTemplateArn [Arn] <p>The ARN of the assessment template of the assessment run that you want to start.</p>
+-- @param _assessmentRunName [AssessmentRunName] <p>You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.</p>
+-- @param _assessmentTemplateArn [Arn] <p>The ARN of the assessment template of the assessment run that you want to start.</p>
 -- Required parameter: assessmentTemplateArn
-function M.StartAssessmentRunRequest(assessmentRunName, assessmentTemplateArn, ...)
+function M.StartAssessmentRunRequest(_assessmentRunName, _assessmentTemplateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartAssessmentRunRequest")
 	local t = { 
-		["assessmentRunName"] = assessmentRunName,
-		["assessmentTemplateArn"] = assessmentTemplateArn,
+		["assessmentRunName"] = _assessmentRunName,
+		["assessmentTemplateArn"] = _assessmentTemplateArn,
 	}
-	M.AssertStartAssessmentRunRequest(t)
+	asserts.AssertStartAssessmentRunRequest(t)
 	return t
 end
 
-local DescribeAssessmentTargetsResponse_keys = { "assessmentTargets" = true, "failedItems" = true, nil }
+keys.DescribeAssessmentTargetsResponse = { ["assessmentTargets"] = true, ["failedItems"] = true, nil }
 
-function M.AssertDescribeAssessmentTargetsResponse(struct)
+function asserts.AssertDescribeAssessmentTargetsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAssessmentTargetsResponse to be of type 'table'")
 	assert(struct["assessmentTargets"], "Expected key assessmentTargets to exist in table")
 	assert(struct["failedItems"], "Expected key failedItems to exist in table")
-	if struct["assessmentTargets"] then M.AssertAssessmentTargetList(struct["assessmentTargets"]) end
-	if struct["failedItems"] then M.AssertFailedItems(struct["failedItems"]) end
+	if struct["assessmentTargets"] then asserts.AssertAssessmentTargetList(struct["assessmentTargets"]) end
+	if struct["failedItems"] then asserts.AssertFailedItems(struct["failedItems"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAssessmentTargetsResponse_keys[k], "DescribeAssessmentTargetsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeAssessmentTargetsResponse[k], "DescribeAssessmentTargetsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAssessmentTargetsResponse
 --  
--- @param assessmentTargets [AssessmentTargetList] <p>Information about the assessment targets.</p>
--- @param failedItems [FailedItems] <p>Assessment target details that cannot be described. An error code is provided for each failed item.</p>
+-- @param _assessmentTargets [AssessmentTargetList] <p>Information about the assessment targets.</p>
+-- @param _failedItems [FailedItems] <p>Assessment target details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: assessmentTargets
 -- Required parameter: failedItems
-function M.DescribeAssessmentTargetsResponse(assessmentTargets, failedItems, ...)
+function M.DescribeAssessmentTargetsResponse(_assessmentTargets, _failedItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTargetsResponse")
 	local t = { 
-		["assessmentTargets"] = assessmentTargets,
-		["failedItems"] = failedItems,
+		["assessmentTargets"] = _assessmentTargets,
+		["failedItems"] = _failedItems,
 	}
-	M.AssertDescribeAssessmentTargetsResponse(t)
+	asserts.AssertDescribeAssessmentTargetsResponse(t)
 	return t
 end
 
-local ListEventSubscriptionsResponse_keys = { "nextToken" = true, "subscriptions" = true, nil }
+keys.ListEventSubscriptionsResponse = { ["nextToken"] = true, ["subscriptions"] = true, nil }
 
-function M.AssertListEventSubscriptionsResponse(struct)
+function asserts.AssertListEventSubscriptionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListEventSubscriptionsResponse to be of type 'table'")
 	assert(struct["subscriptions"], "Expected key subscriptions to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["subscriptions"] then M.AssertSubscriptionList(struct["subscriptions"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["subscriptions"] then asserts.AssertSubscriptionList(struct["subscriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListEventSubscriptionsResponse_keys[k], "ListEventSubscriptionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListEventSubscriptionsResponse[k], "ListEventSubscriptionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListEventSubscriptionsResponse
 --  
--- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param subscriptions [SubscriptionList] <p>Details of the returned event subscriptions.</p>
+-- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param _subscriptions [SubscriptionList] <p>Details of the returned event subscriptions.</p>
 -- Required parameter: subscriptions
-function M.ListEventSubscriptionsResponse(nextToken, subscriptions, ...)
+function M.ListEventSubscriptionsResponse(_nextToken, _subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSubscriptionsResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["subscriptions"] = subscriptions,
+		["nextToken"] = _nextToken,
+		["subscriptions"] = _subscriptions,
 	}
-	M.AssertListEventSubscriptionsResponse(t)
+	asserts.AssertListEventSubscriptionsResponse(t)
 	return t
 end
 
-local DescribeAssessmentTemplatesResponse_keys = { "assessmentTemplates" = true, "failedItems" = true, nil }
+keys.DescribeAssessmentTemplatesResponse = { ["assessmentTemplates"] = true, ["failedItems"] = true, nil }
 
-function M.AssertDescribeAssessmentTemplatesResponse(struct)
+function asserts.AssertDescribeAssessmentTemplatesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAssessmentTemplatesResponse to be of type 'table'")
 	assert(struct["assessmentTemplates"], "Expected key assessmentTemplates to exist in table")
 	assert(struct["failedItems"], "Expected key failedItems to exist in table")
-	if struct["assessmentTemplates"] then M.AssertAssessmentTemplateList(struct["assessmentTemplates"]) end
-	if struct["failedItems"] then M.AssertFailedItems(struct["failedItems"]) end
+	if struct["assessmentTemplates"] then asserts.AssertAssessmentTemplateList(struct["assessmentTemplates"]) end
+	if struct["failedItems"] then asserts.AssertFailedItems(struct["failedItems"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAssessmentTemplatesResponse_keys[k], "DescribeAssessmentTemplatesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeAssessmentTemplatesResponse[k], "DescribeAssessmentTemplatesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAssessmentTemplatesResponse
 --  
--- @param assessmentTemplates [AssessmentTemplateList] <p>Information about the assessment templates.</p>
--- @param failedItems [FailedItems] <p>Assessment template details that cannot be described. An error code is provided for each failed item.</p>
+-- @param _assessmentTemplates [AssessmentTemplateList] <p>Information about the assessment templates.</p>
+-- @param _failedItems [FailedItems] <p>Assessment template details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: assessmentTemplates
 -- Required parameter: failedItems
-function M.DescribeAssessmentTemplatesResponse(assessmentTemplates, failedItems, ...)
+function M.DescribeAssessmentTemplatesResponse(_assessmentTemplates, _failedItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTemplatesResponse")
 	local t = { 
-		["assessmentTemplates"] = assessmentTemplates,
-		["failedItems"] = failedItems,
+		["assessmentTemplates"] = _assessmentTemplates,
+		["failedItems"] = _failedItems,
 	}
-	M.AssertDescribeAssessmentTemplatesResponse(t)
+	asserts.AssertDescribeAssessmentTemplatesResponse(t)
 	return t
 end
 
-local DurationRange_keys = { "minSeconds" = true, "maxSeconds" = true, nil }
+keys.DurationRange = { ["minSeconds"] = true, ["maxSeconds"] = true, nil }
 
-function M.AssertDurationRange(struct)
+function asserts.AssertDurationRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DurationRange to be of type 'table'")
-	if struct["minSeconds"] then M.AssertAssessmentRunDuration(struct["minSeconds"]) end
-	if struct["maxSeconds"] then M.AssertAssessmentRunDuration(struct["maxSeconds"]) end
+	if struct["minSeconds"] then asserts.AssertAssessmentRunDuration(struct["minSeconds"]) end
+	if struct["maxSeconds"] then asserts.AssertAssessmentRunDuration(struct["maxSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(DurationRange_keys[k], "DurationRange contains unknown key " .. tostring(k))
+		assert(keys.DurationRange[k], "DurationRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DurationRange
 -- <p>This data type is used in the <a>AssessmentTemplateFilter</a> data type.</p>
--- @param minSeconds [AssessmentRunDuration] <p>The minimum value of the duration range. Must be greater than zero.</p>
--- @param maxSeconds [AssessmentRunDuration] <p>The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).</p>
-function M.DurationRange(minSeconds, maxSeconds, ...)
+-- @param _minSeconds [AssessmentRunDuration] <p>The minimum value of the duration range. Must be greater than zero.</p>
+-- @param _maxSeconds [AssessmentRunDuration] <p>The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).</p>
+function M.DurationRange(_minSeconds, _maxSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DurationRange")
 	local t = { 
-		["minSeconds"] = minSeconds,
-		["maxSeconds"] = maxSeconds,
+		["minSeconds"] = _minSeconds,
+		["maxSeconds"] = _maxSeconds,
 	}
-	M.AssertDurationRange(t)
+	asserts.AssertDurationRange(t)
 	return t
 end
 
-local GetTelemetryMetadataRequest_keys = { "assessmentRunArn" = true, nil }
+keys.GetTelemetryMetadataRequest = { ["assessmentRunArn"] = true, nil }
 
-function M.AssertGetTelemetryMetadataRequest(struct)
+function asserts.AssertGetTelemetryMetadataRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTelemetryMetadataRequest to be of type 'table'")
 	assert(struct["assessmentRunArn"], "Expected key assessmentRunArn to exist in table")
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTelemetryMetadataRequest_keys[k], "GetTelemetryMetadataRequest contains unknown key " .. tostring(k))
+		assert(keys.GetTelemetryMetadataRequest[k], "GetTelemetryMetadataRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTelemetryMetadataRequest
 --  
--- @param assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that has the telemetry data that you want to obtain.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that has the telemetry data that you want to obtain.</p>
 -- Required parameter: assessmentRunArn
-function M.GetTelemetryMetadataRequest(assessmentRunArn, ...)
+function M.GetTelemetryMetadataRequest(_assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTelemetryMetadataRequest")
 	local t = { 
-		["assessmentRunArn"] = assessmentRunArn,
+		["assessmentRunArn"] = _assessmentRunArn,
 	}
-	M.AssertGetTelemetryMetadataRequest(t)
+	asserts.AssertGetTelemetryMetadataRequest(t)
 	return t
 end
 
-local ListTagsForResourceRequest_keys = { "resourceArn" = true, nil }
+keys.ListTagsForResourceRequest = { ["resourceArn"] = true, nil }
 
-function M.AssertListTagsForResourceRequest(struct)
+function asserts.AssertListTagsForResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForResourceRequest to be of type 'table'")
 	assert(struct["resourceArn"], "Expected key resourceArn to exist in table")
-	if struct["resourceArn"] then M.AssertArn(struct["resourceArn"]) end
+	if struct["resourceArn"] then asserts.AssertArn(struct["resourceArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForResourceRequest_keys[k], "ListTagsForResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceRequest[k], "ListTagsForResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param resourceArn [Arn] <p>The ARN that specifies the assessment template whose tags you want to list.</p>
+-- @param _resourceArn [Arn] <p>The ARN that specifies the assessment template whose tags you want to list.</p>
 -- Required parameter: resourceArn
-function M.ListTagsForResourceRequest(resourceArn, ...)
+function M.ListTagsForResourceRequest(_resourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
 	local t = { 
-		["resourceArn"] = resourceArn,
+		["resourceArn"] = _resourceArn,
 	}
-	M.AssertListTagsForResourceRequest(t)
+	asserts.AssertListTagsForResourceRequest(t)
 	return t
 end
 
-local ListAssessmentRunAgentsResponse_keys = { "assessmentRunAgents" = true, "nextToken" = true, nil }
+keys.ListAssessmentRunAgentsResponse = { ["assessmentRunAgents"] = true, ["nextToken"] = true, nil }
 
-function M.AssertListAssessmentRunAgentsResponse(struct)
+function asserts.AssertListAssessmentRunAgentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssessmentRunAgentsResponse to be of type 'table'")
 	assert(struct["assessmentRunAgents"], "Expected key assessmentRunAgents to exist in table")
-	if struct["assessmentRunAgents"] then M.AssertAssessmentRunAgentList(struct["assessmentRunAgents"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
+	if struct["assessmentRunAgents"] then asserts.AssertAssessmentRunAgentList(struct["assessmentRunAgents"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssessmentRunAgentsResponse_keys[k], "ListAssessmentRunAgentsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAssessmentRunAgentsResponse[k], "ListAssessmentRunAgentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssessmentRunAgentsResponse
 --  
--- @param assessmentRunAgents [AssessmentRunAgentList] <p>A list of ARNs that specifies the agents returned by the action.</p>
--- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param _assessmentRunAgents [AssessmentRunAgentList] <p>A list of ARNs that specifies the agents returned by the action.</p>
+-- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
 -- Required parameter: assessmentRunAgents
-function M.ListAssessmentRunAgentsResponse(assessmentRunAgents, nextToken, ...)
+function M.ListAssessmentRunAgentsResponse(_assessmentRunAgents, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunAgentsResponse")
 	local t = { 
-		["assessmentRunAgents"] = assessmentRunAgents,
-		["nextToken"] = nextToken,
+		["assessmentRunAgents"] = _assessmentRunAgents,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertListAssessmentRunAgentsResponse(t)
+	asserts.AssertListAssessmentRunAgentsResponse(t)
 	return t
 end
 
-local UnsupportedFeatureException_keys = { "canRetry" = true, "message" = true, nil }
+keys.UnsupportedFeatureException = { ["canRetry"] = true, ["message"] = true, nil }
 
-function M.AssertUnsupportedFeatureException(struct)
+function asserts.AssertUnsupportedFeatureException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedFeatureException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedFeatureException_keys[k], "UnsupportedFeatureException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedFeatureException[k], "UnsupportedFeatureException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedFeatureException
 -- <p>Used by the <a>GetAssessmentReport</a> API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.</p>
--- @param canRetry [Bool] <p>Used by the <a>GetAssessmentReport</a> API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.</p>
--- @param message [ErrorMessage] <p>Used by the <a>GetAssessmentReport</a> API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.</p>
+-- @param _canRetry [Bool] 
+-- @param _message [ErrorMessage] 
 -- Required parameter: message
 -- Required parameter: canRetry
-function M.UnsupportedFeatureException(canRetry, message, ...)
+function M.UnsupportedFeatureException(_canRetry, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedFeatureException")
 	local t = { 
-		["canRetry"] = canRetry,
-		["message"] = message,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedFeatureException(t)
+	asserts.AssertUnsupportedFeatureException(t)
 	return t
 end
 
-local InspectorServiceAttributes_keys = { "schemaVersion" = true, "rulesPackageArn" = true, "assessmentRunArn" = true, nil }
+keys.InspectorServiceAttributes = { ["schemaVersion"] = true, ["rulesPackageArn"] = true, ["assessmentRunArn"] = true, nil }
 
-function M.AssertInspectorServiceAttributes(struct)
+function asserts.AssertInspectorServiceAttributes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InspectorServiceAttributes to be of type 'table'")
 	assert(struct["schemaVersion"], "Expected key schemaVersion to exist in table")
-	if struct["schemaVersion"] then M.AssertNumericVersion(struct["schemaVersion"]) end
-	if struct["rulesPackageArn"] then M.AssertArn(struct["rulesPackageArn"]) end
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
+	if struct["schemaVersion"] then asserts.AssertNumericVersion(struct["schemaVersion"]) end
+	if struct["rulesPackageArn"] then asserts.AssertArn(struct["rulesPackageArn"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
 	for k,_ in pairs(struct) do
-		assert(InspectorServiceAttributes_keys[k], "InspectorServiceAttributes contains unknown key " .. tostring(k))
+		assert(keys.InspectorServiceAttributes[k], "InspectorServiceAttributes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InspectorServiceAttributes
 -- <p>This data type is used in the <a>Finding</a> data type.</p>
--- @param schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
--- @param rulesPackageArn [Arn] <p>The ARN of the rules package that is used to generate the finding.</p>
--- @param assessmentRunArn [Arn] <p>The ARN of the assessment run during which the finding is generated.</p>
+-- @param _schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- @param _rulesPackageArn [Arn] <p>The ARN of the rules package that is used to generate the finding.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run during which the finding is generated.</p>
 -- Required parameter: schemaVersion
-function M.InspectorServiceAttributes(schemaVersion, rulesPackageArn, assessmentRunArn, ...)
+function M.InspectorServiceAttributes(_schemaVersion, _rulesPackageArn, _assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InspectorServiceAttributes")
 	local t = { 
-		["schemaVersion"] = schemaVersion,
-		["rulesPackageArn"] = rulesPackageArn,
-		["assessmentRunArn"] = assessmentRunArn,
+		["schemaVersion"] = _schemaVersion,
+		["rulesPackageArn"] = _rulesPackageArn,
+		["assessmentRunArn"] = _assessmentRunArn,
 	}
-	M.AssertInspectorServiceAttributes(t)
+	asserts.AssertInspectorServiceAttributes(t)
 	return t
 end
 
-local ResourceGroup_keys = { "createdAt" = true, "arn" = true, "tags" = true, nil }
+keys.ResourceGroup = { ["createdAt"] = true, ["arn"] = true, ["tags"] = true, nil }
 
-function M.AssertResourceGroup(struct)
+function asserts.AssertResourceGroup(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceGroup to be of type 'table'")
 	assert(struct["arn"], "Expected key arn to exist in table")
 	assert(struct["tags"], "Expected key tags to exist in table")
 	assert(struct["createdAt"], "Expected key createdAt to exist in table")
-	if struct["createdAt"] then M.AssertTimestamp(struct["createdAt"]) end
-	if struct["arn"] then M.AssertArn(struct["arn"]) end
-	if struct["tags"] then M.AssertResourceGroupTags(struct["tags"]) end
+	if struct["createdAt"] then asserts.AssertTimestamp(struct["createdAt"]) end
+	if struct["arn"] then asserts.AssertArn(struct["arn"]) end
+	if struct["tags"] then asserts.AssertResourceGroupTags(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceGroup_keys[k], "ResourceGroup contains unknown key " .. tostring(k))
+		assert(keys.ResourceGroup[k], "ResourceGroup contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceGroup
 -- <p>Contains information about a resource group. The resource group defines a set of tags that, when queried, identify the AWS resources that make up the assessment target. This data type is used as the response element in the <a>DescribeResourceGroups</a> action.</p>
--- @param createdAt [Timestamp] <p>The time at which resource group is created.</p>
--- @param arn [Arn] <p>The ARN of the resource group.</p>
--- @param tags [ResourceGroupTags] <p>The tags (key and value pairs) of the resource group. This data type property is used in the <a>CreateResourceGroup</a> action.</p>
+-- @param _createdAt [Timestamp] <p>The time at which resource group is created.</p>
+-- @param _arn [Arn] <p>The ARN of the resource group.</p>
+-- @param _tags [ResourceGroupTags] <p>The tags (key and value pairs) of the resource group. This data type property is used in the <a>CreateResourceGroup</a> action.</p>
 -- Required parameter: arn
 -- Required parameter: tags
 -- Required parameter: createdAt
-function M.ResourceGroup(createdAt, arn, tags, ...)
+function M.ResourceGroup(_createdAt, _arn, _tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceGroup")
 	local t = { 
-		["createdAt"] = createdAt,
-		["arn"] = arn,
-		["tags"] = tags,
+		["createdAt"] = _createdAt,
+		["arn"] = _arn,
+		["tags"] = _tags,
 	}
-	M.AssertResourceGroup(t)
+	asserts.AssertResourceGroup(t)
 	return t
 end
 
-local UnsubscribeFromEventRequest_keys = { "resourceArn" = true, "event" = true, "topicArn" = true, nil }
+keys.UnsubscribeFromEventRequest = { ["resourceArn"] = true, ["event"] = true, ["topicArn"] = true, nil }
 
-function M.AssertUnsubscribeFromEventRequest(struct)
+function asserts.AssertUnsubscribeFromEventRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsubscribeFromEventRequest to be of type 'table'")
 	assert(struct["resourceArn"], "Expected key resourceArn to exist in table")
 	assert(struct["event"], "Expected key event to exist in table")
 	assert(struct["topicArn"], "Expected key topicArn to exist in table")
-	if struct["resourceArn"] then M.AssertArn(struct["resourceArn"]) end
-	if struct["event"] then M.AssertInspectorEvent(struct["event"]) end
-	if struct["topicArn"] then M.AssertArn(struct["topicArn"]) end
+	if struct["resourceArn"] then asserts.AssertArn(struct["resourceArn"]) end
+	if struct["event"] then asserts.AssertInspectorEvent(struct["event"]) end
+	if struct["topicArn"] then asserts.AssertArn(struct["topicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsubscribeFromEventRequest_keys[k], "UnsubscribeFromEventRequest contains unknown key " .. tostring(k))
+		assert(keys.UnsubscribeFromEventRequest[k], "UnsubscribeFromEventRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsubscribeFromEventRequest
 --  
--- @param resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.</p>
--- @param event [InspectorEvent] <p>The event for which you want to stop receiving SNS notifications.</p>
--- @param topicArn [Arn] <p>The ARN of the SNS topic to which SNS notifications are sent.</p>
+-- @param _resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.</p>
+-- @param _event [InspectorEvent] <p>The event for which you want to stop receiving SNS notifications.</p>
+-- @param _topicArn [Arn] <p>The ARN of the SNS topic to which SNS notifications are sent.</p>
 -- Required parameter: resourceArn
 -- Required parameter: event
 -- Required parameter: topicArn
-function M.UnsubscribeFromEventRequest(resourceArn, event, topicArn, ...)
+function M.UnsubscribeFromEventRequest(_resourceArn, _event, _topicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeFromEventRequest")
 	local t = { 
-		["resourceArn"] = resourceArn,
-		["event"] = event,
-		["topicArn"] = topicArn,
+		["resourceArn"] = _resourceArn,
+		["event"] = _event,
+		["topicArn"] = _topicArn,
 	}
-	M.AssertUnsubscribeFromEventRequest(t)
+	asserts.AssertUnsubscribeFromEventRequest(t)
 	return t
 end
 
-local ResourceGroupTag_keys = { "value" = true, "key" = true, nil }
+keys.ResourceGroupTag = { ["value"] = true, ["key"] = true, nil }
 
-function M.AssertResourceGroupTag(struct)
+function asserts.AssertResourceGroupTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceGroupTag to be of type 'table'")
 	assert(struct["key"], "Expected key key to exist in table")
-	if struct["value"] then M.AssertTagValue(struct["value"]) end
-	if struct["key"] then M.AssertTagKey(struct["key"]) end
+	if struct["value"] then asserts.AssertTagValue(struct["value"]) end
+	if struct["key"] then asserts.AssertTagKey(struct["key"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceGroupTag_keys[k], "ResourceGroupTag contains unknown key " .. tostring(k))
+		assert(keys.ResourceGroupTag[k], "ResourceGroupTag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceGroupTag
 -- <p>This data type is used as one of the elements of the <a>ResourceGroup</a> data type.</p>
--- @param value [TagValue] <p>The value assigned to a tag key.</p>
--- @param key [TagKey] <p>A tag key.</p>
+-- @param _value [TagValue] <p>The value assigned to a tag key.</p>
+-- @param _key [TagKey] <p>A tag key.</p>
 -- Required parameter: key
-function M.ResourceGroupTag(value, key, ...)
+function M.ResourceGroupTag(_value, _key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceGroupTag")
 	local t = { 
-		["value"] = value,
-		["key"] = key,
+		["value"] = _value,
+		["key"] = _key,
 	}
-	M.AssertResourceGroupTag(t)
+	asserts.AssertResourceGroupTag(t)
 	return t
 end
 
-local DescribeRulesPackagesRequest_keys = { "locale" = true, "rulesPackageArns" = true, nil }
+keys.DescribeRulesPackagesRequest = { ["locale"] = true, ["rulesPackageArns"] = true, nil }
 
-function M.AssertDescribeRulesPackagesRequest(struct)
+function asserts.AssertDescribeRulesPackagesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRulesPackagesRequest to be of type 'table'")
 	assert(struct["rulesPackageArns"], "Expected key rulesPackageArns to exist in table")
-	if struct["locale"] then M.AssertLocale(struct["locale"]) end
-	if struct["rulesPackageArns"] then M.AssertBatchDescribeArnList(struct["rulesPackageArns"]) end
+	if struct["locale"] then asserts.AssertLocale(struct["locale"]) end
+	if struct["rulesPackageArns"] then asserts.AssertBatchDescribeArnList(struct["rulesPackageArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRulesPackagesRequest_keys[k], "DescribeRulesPackagesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeRulesPackagesRequest[k], "DescribeRulesPackagesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRulesPackagesRequest
 --  
--- @param locale [Locale] <p>The locale that you want to translate a rules package description into.</p>
--- @param rulesPackageArns [BatchDescribeArnList] <p>The ARN that specifies the rules package that you want to describe.</p>
+-- @param _locale [Locale] <p>The locale that you want to translate a rules package description into.</p>
+-- @param _rulesPackageArns [BatchDescribeArnList] <p>The ARN that specifies the rules package that you want to describe.</p>
 -- Required parameter: rulesPackageArns
-function M.DescribeRulesPackagesRequest(locale, rulesPackageArns, ...)
+function M.DescribeRulesPackagesRequest(_locale, _rulesPackageArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesPackagesRequest")
 	local t = { 
-		["locale"] = locale,
-		["rulesPackageArns"] = rulesPackageArns,
+		["locale"] = _locale,
+		["rulesPackageArns"] = _rulesPackageArns,
 	}
-	M.AssertDescribeRulesPackagesRequest(t)
+	asserts.AssertDescribeRulesPackagesRequest(t)
 	return t
 end
 
-local AssetAttributes_keys = { "amiId" = true, "hostname" = true, "autoScalingGroup" = true, "ipv4Addresses" = true, "schemaVersion" = true, "agentId" = true, nil }
+keys.AssetAttributes = { ["amiId"] = true, ["hostname"] = true, ["autoScalingGroup"] = true, ["ipv4Addresses"] = true, ["schemaVersion"] = true, ["agentId"] = true, nil }
 
-function M.AssertAssetAttributes(struct)
+function asserts.AssertAssetAttributes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssetAttributes to be of type 'table'")
 	assert(struct["schemaVersion"], "Expected key schemaVersion to exist in table")
-	if struct["amiId"] then M.AssertAmiId(struct["amiId"]) end
-	if struct["hostname"] then M.AssertHostname(struct["hostname"]) end
-	if struct["autoScalingGroup"] then M.AssertAutoScalingGroup(struct["autoScalingGroup"]) end
-	if struct["ipv4Addresses"] then M.AssertIpv4AddressList(struct["ipv4Addresses"]) end
-	if struct["schemaVersion"] then M.AssertNumericVersion(struct["schemaVersion"]) end
-	if struct["agentId"] then M.AssertAgentId(struct["agentId"]) end
+	if struct["amiId"] then asserts.AssertAmiId(struct["amiId"]) end
+	if struct["hostname"] then asserts.AssertHostname(struct["hostname"]) end
+	if struct["autoScalingGroup"] then asserts.AssertAutoScalingGroup(struct["autoScalingGroup"]) end
+	if struct["ipv4Addresses"] then asserts.AssertIpv4AddressList(struct["ipv4Addresses"]) end
+	if struct["schemaVersion"] then asserts.AssertNumericVersion(struct["schemaVersion"]) end
+	if struct["agentId"] then asserts.AssertAgentId(struct["agentId"]) end
 	for k,_ in pairs(struct) do
-		assert(AssetAttributes_keys[k], "AssetAttributes contains unknown key " .. tostring(k))
+		assert(keys.AssetAttributes[k], "AssetAttributes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssetAttributes
 -- <p>A collection of attributes of the host from which the finding is generated.</p>
--- @param amiId [AmiId] <p>The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.</p>
--- @param hostname [Hostname] <p>The hostname of the EC2 instance where the finding is generated.</p>
--- @param autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance where the finding is generated.</p>
--- @param ipv4Addresses [Ipv4AddressList] <p>The list of IP v4 addresses of the EC2 instance where the finding is generated.</p>
--- @param schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
--- @param agentId [AgentId] <p>The ID of the agent that is installed on the EC2 instance where the finding is generated.</p>
+-- @param _amiId [AmiId] <p>The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.</p>
+-- @param _hostname [Hostname] <p>The hostname of the EC2 instance where the finding is generated.</p>
+-- @param _autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance where the finding is generated.</p>
+-- @param _ipv4Addresses [Ipv4AddressList] <p>The list of IP v4 addresses of the EC2 instance where the finding is generated.</p>
+-- @param _schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- @param _agentId [AgentId] <p>The ID of the agent that is installed on the EC2 instance where the finding is generated.</p>
 -- Required parameter: schemaVersion
-function M.AssetAttributes(amiId, hostname, autoScalingGroup, ipv4Addresses, schemaVersion, agentId, ...)
+function M.AssetAttributes(_amiId, _hostname, _autoScalingGroup, _ipv4Addresses, _schemaVersion, _agentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssetAttributes")
 	local t = { 
-		["amiId"] = amiId,
-		["hostname"] = hostname,
-		["autoScalingGroup"] = autoScalingGroup,
-		["ipv4Addresses"] = ipv4Addresses,
-		["schemaVersion"] = schemaVersion,
-		["agentId"] = agentId,
+		["amiId"] = _amiId,
+		["hostname"] = _hostname,
+		["autoScalingGroup"] = _autoScalingGroup,
+		["ipv4Addresses"] = _ipv4Addresses,
+		["schemaVersion"] = _schemaVersion,
+		["agentId"] = _agentId,
 	}
-	M.AssertAssetAttributes(t)
+	asserts.AssertAssetAttributes(t)
 	return t
 end
 
-local DescribeFindingsResponse_keys = { "failedItems" = true, "findings" = true, nil }
+keys.DescribeFindingsResponse = { ["failedItems"] = true, ["findings"] = true, nil }
 
-function M.AssertDescribeFindingsResponse(struct)
+function asserts.AssertDescribeFindingsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFindingsResponse to be of type 'table'")
 	assert(struct["findings"], "Expected key findings to exist in table")
 	assert(struct["failedItems"], "Expected key failedItems to exist in table")
-	if struct["failedItems"] then M.AssertFailedItems(struct["failedItems"]) end
-	if struct["findings"] then M.AssertFindingList(struct["findings"]) end
+	if struct["failedItems"] then asserts.AssertFailedItems(struct["failedItems"]) end
+	if struct["findings"] then asserts.AssertFindingList(struct["findings"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFindingsResponse_keys[k], "DescribeFindingsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeFindingsResponse[k], "DescribeFindingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFindingsResponse
 --  
--- @param failedItems [FailedItems] <p>Finding details that cannot be described. An error code is provided for each failed item.</p>
--- @param findings [FindingList] <p>Information about the finding.</p>
+-- @param _failedItems [FailedItems] <p>Finding details that cannot be described. An error code is provided for each failed item.</p>
+-- @param _findings [FindingList] <p>Information about the finding.</p>
 -- Required parameter: findings
 -- Required parameter: failedItems
-function M.DescribeFindingsResponse(failedItems, findings, ...)
+function M.DescribeFindingsResponse(_failedItems, _findings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFindingsResponse")
 	local t = { 
-		["failedItems"] = failedItems,
-		["findings"] = findings,
+		["failedItems"] = _failedItems,
+		["findings"] = _findings,
 	}
-	M.AssertDescribeFindingsResponse(t)
+	asserts.AssertDescribeFindingsResponse(t)
 	return t
 end
 
-local AgentAlreadyRunningAssessment_keys = { "assessmentRunArn" = true, "agentId" = true, nil }
+keys.AgentAlreadyRunningAssessment = { ["assessmentRunArn"] = true, ["agentId"] = true, nil }
 
-function M.AssertAgentAlreadyRunningAssessment(struct)
+function asserts.AssertAgentAlreadyRunningAssessment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AgentAlreadyRunningAssessment to be of type 'table'")
 	assert(struct["agentId"], "Expected key agentId to exist in table")
 	assert(struct["assessmentRunArn"], "Expected key assessmentRunArn to exist in table")
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
-	if struct["agentId"] then M.AssertAgentId(struct["agentId"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
+	if struct["agentId"] then asserts.AssertAgentId(struct["agentId"]) end
 	for k,_ in pairs(struct) do
-		assert(AgentAlreadyRunningAssessment_keys[k], "AgentAlreadyRunningAssessment contains unknown key " .. tostring(k))
+		assert(keys.AgentAlreadyRunningAssessment[k], "AgentAlreadyRunningAssessment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AgentAlreadyRunningAssessment
 -- <p>Used in the exception error that is thrown if you start an assessment run for an assessment target that includes an EC2 instance that is already participating in another started assessment run.</p>
--- @param assessmentRunArn [Arn] <p>The ARN of the assessment run that has already been started.</p>
--- @param agentId [AgentId] <p>ID of the agent that is running on an EC2 instance that is already participating in another started assessment run.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run that has already been started.</p>
+-- @param _agentId [AgentId] <p>ID of the agent that is running on an EC2 instance that is already participating in another started assessment run.</p>
 -- Required parameter: agentId
 -- Required parameter: assessmentRunArn
-function M.AgentAlreadyRunningAssessment(assessmentRunArn, agentId, ...)
+function M.AgentAlreadyRunningAssessment(_assessmentRunArn, _agentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentAlreadyRunningAssessment")
 	local t = { 
-		["assessmentRunArn"] = assessmentRunArn,
-		["agentId"] = agentId,
+		["assessmentRunArn"] = _assessmentRunArn,
+		["agentId"] = _agentId,
 	}
-	M.AssertAgentAlreadyRunningAssessment(t)
+	asserts.AssertAgentAlreadyRunningAssessment(t)
 	return t
 end
 
-local AddAttributesToFindingsRequest_keys = { "attributes" = true, "findingArns" = true, nil }
+keys.AddAttributesToFindingsRequest = { ["attributes"] = true, ["findingArns"] = true, nil }
 
-function M.AssertAddAttributesToFindingsRequest(struct)
+function asserts.AssertAddAttributesToFindingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddAttributesToFindingsRequest to be of type 'table'")
 	assert(struct["findingArns"], "Expected key findingArns to exist in table")
 	assert(struct["attributes"], "Expected key attributes to exist in table")
-	if struct["attributes"] then M.AssertUserAttributeList(struct["attributes"]) end
-	if struct["findingArns"] then M.AssertAddRemoveAttributesFindingArnList(struct["findingArns"]) end
+	if struct["attributes"] then asserts.AssertUserAttributeList(struct["attributes"]) end
+	if struct["findingArns"] then asserts.AssertAddRemoveAttributesFindingArnList(struct["findingArns"]) end
 	for k,_ in pairs(struct) do
-		assert(AddAttributesToFindingsRequest_keys[k], "AddAttributesToFindingsRequest contains unknown key " .. tostring(k))
+		assert(keys.AddAttributesToFindingsRequest[k], "AddAttributesToFindingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddAttributesToFindingsRequest
 --  
--- @param attributes [UserAttributeList] <p>The array of attributes that you want to assign to specified findings.</p>
--- @param findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to assign attributes to.</p>
+-- @param _attributes [UserAttributeList] <p>The array of attributes that you want to assign to specified findings.</p>
+-- @param _findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to assign attributes to.</p>
 -- Required parameter: findingArns
 -- Required parameter: attributes
-function M.AddAttributesToFindingsRequest(attributes, findingArns, ...)
+function M.AddAttributesToFindingsRequest(_attributes, _findingArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddAttributesToFindingsRequest")
 	local t = { 
-		["attributes"] = attributes,
-		["findingArns"] = findingArns,
+		["attributes"] = _attributes,
+		["findingArns"] = _findingArns,
 	}
-	M.AssertAddAttributesToFindingsRequest(t)
+	asserts.AssertAddAttributesToFindingsRequest(t)
 	return t
 end
 
-local StopAssessmentRunRequest_keys = { "assessmentRunArn" = true, nil }
+keys.StopAssessmentRunRequest = { ["assessmentRunArn"] = true, nil }
 
-function M.AssertStopAssessmentRunRequest(struct)
+function asserts.AssertStopAssessmentRunRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopAssessmentRunRequest to be of type 'table'")
 	assert(struct["assessmentRunArn"], "Expected key assessmentRunArn to exist in table")
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
 	for k,_ in pairs(struct) do
-		assert(StopAssessmentRunRequest_keys[k], "StopAssessmentRunRequest contains unknown key " .. tostring(k))
+		assert(keys.StopAssessmentRunRequest[k], "StopAssessmentRunRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopAssessmentRunRequest
 --  
--- @param assessmentRunArn [Arn] <p>The ARN of the assessment run that you want to stop.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run that you want to stop.</p>
 -- Required parameter: assessmentRunArn
-function M.StopAssessmentRunRequest(assessmentRunArn, ...)
+function M.StopAssessmentRunRequest(_assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopAssessmentRunRequest")
 	local t = { 
-		["assessmentRunArn"] = assessmentRunArn,
+		["assessmentRunArn"] = _assessmentRunArn,
 	}
-	M.AssertStopAssessmentRunRequest(t)
+	asserts.AssertStopAssessmentRunRequest(t)
 	return t
 end
 
-local RemoveAttributesFromFindingsRequest_keys = { "attributeKeys" = true, "findingArns" = true, nil }
+keys.RemoveAttributesFromFindingsRequest = { ["attributeKeys"] = true, ["findingArns"] = true, nil }
 
-function M.AssertRemoveAttributesFromFindingsRequest(struct)
+function asserts.AssertRemoveAttributesFromFindingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveAttributesFromFindingsRequest to be of type 'table'")
 	assert(struct["findingArns"], "Expected key findingArns to exist in table")
 	assert(struct["attributeKeys"], "Expected key attributeKeys to exist in table")
-	if struct["attributeKeys"] then M.AssertUserAttributeKeyList(struct["attributeKeys"]) end
-	if struct["findingArns"] then M.AssertAddRemoveAttributesFindingArnList(struct["findingArns"]) end
+	if struct["attributeKeys"] then asserts.AssertUserAttributeKeyList(struct["attributeKeys"]) end
+	if struct["findingArns"] then asserts.AssertAddRemoveAttributesFindingArnList(struct["findingArns"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveAttributesFromFindingsRequest_keys[k], "RemoveAttributesFromFindingsRequest contains unknown key " .. tostring(k))
+		assert(keys.RemoveAttributesFromFindingsRequest[k], "RemoveAttributesFromFindingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveAttributesFromFindingsRequest
 --  
--- @param attributeKeys [UserAttributeKeyList] <p>The array of attribute keys that you want to remove from specified findings.</p>
--- @param findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to remove attributes from.</p>
+-- @param _attributeKeys [UserAttributeKeyList] <p>The array of attribute keys that you want to remove from specified findings.</p>
+-- @param _findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to remove attributes from.</p>
 -- Required parameter: findingArns
 -- Required parameter: attributeKeys
-function M.RemoveAttributesFromFindingsRequest(attributeKeys, findingArns, ...)
+function M.RemoveAttributesFromFindingsRequest(_attributeKeys, _findingArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAttributesFromFindingsRequest")
 	local t = { 
-		["attributeKeys"] = attributeKeys,
-		["findingArns"] = findingArns,
+		["attributeKeys"] = _attributeKeys,
+		["findingArns"] = _findingArns,
 	}
-	M.AssertRemoveAttributesFromFindingsRequest(t)
+	asserts.AssertRemoveAttributesFromFindingsRequest(t)
 	return t
 end
 
-local ListAssessmentTemplatesRequest_keys = { "filter" = true, "assessmentTargetArns" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.ListAssessmentTemplatesRequest = { ["filter"] = true, ["assessmentTargetArns"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListAssessmentTemplatesRequest(struct)
+function asserts.AssertListAssessmentTemplatesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssessmentTemplatesRequest to be of type 'table'")
-	if struct["filter"] then M.AssertAssessmentTemplateFilter(struct["filter"]) end
-	if struct["assessmentTargetArns"] then M.AssertListParentArnList(struct["assessmentTargetArns"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertListMaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertAssessmentTemplateFilter(struct["filter"]) end
+	if struct["assessmentTargetArns"] then asserts.AssertListParentArnList(struct["assessmentTargetArns"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertListMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssessmentTemplatesRequest_keys[k], "ListAssessmentTemplatesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAssessmentTemplatesRequest[k], "ListAssessmentTemplatesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssessmentTemplatesRequest
 --  
--- @param filter [AssessmentTemplateFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param assessmentTargetArns [ListParentArnList] <p>A list of ARNs that specifies the assessment targets whose assessment templates you want to list.</p>
--- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTemplates</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListAssessmentTemplatesRequest(filter, assessmentTargetArns, nextToken, maxResults, ...)
+-- @param _filter [AssessmentTemplateFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param _assessmentTargetArns [ListParentArnList] <p>A list of ARNs that specifies the assessment targets whose assessment templates you want to list.</p>
+-- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTemplates</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+function M.ListAssessmentTemplatesRequest(_filter, _assessmentTargetArns, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTemplatesRequest")
 	local t = { 
-		["filter"] = filter,
-		["assessmentTargetArns"] = assessmentTargetArns,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["filter"] = _filter,
+		["assessmentTargetArns"] = _assessmentTargetArns,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListAssessmentTemplatesRequest(t)
+	asserts.AssertListAssessmentTemplatesRequest(t)
 	return t
 end
 
-local InvalidCrossAccountRoleException_keys = { "errorCode" = true, "canRetry" = true, "message" = true, nil }
+keys.InvalidCrossAccountRoleException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
 
-function M.AssertInvalidCrossAccountRoleException(struct)
+function asserts.AssertInvalidCrossAccountRoleException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidCrossAccountRoleException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["errorCode"], "Expected key errorCode to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["errorCode"] then M.AssertInvalidCrossAccountRoleErrorCode(struct["errorCode"]) end
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["errorCode"] then asserts.AssertInvalidCrossAccountRoleErrorCode(struct["errorCode"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidCrossAccountRoleException_keys[k], "InvalidCrossAccountRoleException contains unknown key " .. tostring(k))
+		assert(keys.InvalidCrossAccountRoleException[k], "InvalidCrossAccountRoleException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidCrossAccountRoleException
 -- <p>Amazon Inspector cannot assume the cross-account role that it needs to list your EC2 instances during the assessment run.</p>
--- @param errorCode [InvalidCrossAccountRoleErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param _errorCode [InvalidCrossAccountRoleErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param _message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
-function M.InvalidCrossAccountRoleException(errorCode, canRetry, message, ...)
+function M.InvalidCrossAccountRoleException(_errorCode, _canRetry, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCrossAccountRoleException")
 	local t = { 
-		["errorCode"] = errorCode,
-		["canRetry"] = canRetry,
-		["message"] = message,
+		["errorCode"] = _errorCode,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
 	}
-	M.AssertInvalidCrossAccountRoleException(t)
+	asserts.AssertInvalidCrossAccountRoleException(t)
 	return t
 end
 
-local DescribeResourceGroupsResponse_keys = { "resourceGroups" = true, "failedItems" = true, nil }
+keys.DescribeResourceGroupsResponse = { ["resourceGroups"] = true, ["failedItems"] = true, nil }
 
-function M.AssertDescribeResourceGroupsResponse(struct)
+function asserts.AssertDescribeResourceGroupsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeResourceGroupsResponse to be of type 'table'")
 	assert(struct["resourceGroups"], "Expected key resourceGroups to exist in table")
 	assert(struct["failedItems"], "Expected key failedItems to exist in table")
-	if struct["resourceGroups"] then M.AssertResourceGroupList(struct["resourceGroups"]) end
-	if struct["failedItems"] then M.AssertFailedItems(struct["failedItems"]) end
+	if struct["resourceGroups"] then asserts.AssertResourceGroupList(struct["resourceGroups"]) end
+	if struct["failedItems"] then asserts.AssertFailedItems(struct["failedItems"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeResourceGroupsResponse_keys[k], "DescribeResourceGroupsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeResourceGroupsResponse[k], "DescribeResourceGroupsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeResourceGroupsResponse
 --  
--- @param resourceGroups [ResourceGroupList] <p>Information about a resource group.</p>
--- @param failedItems [FailedItems] <p>Resource group details that cannot be described. An error code is provided for each failed item.</p>
+-- @param _resourceGroups [ResourceGroupList] <p>Information about a resource group.</p>
+-- @param _failedItems [FailedItems] <p>Resource group details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: resourceGroups
 -- Required parameter: failedItems
-function M.DescribeResourceGroupsResponse(resourceGroups, failedItems, ...)
+function M.DescribeResourceGroupsResponse(_resourceGroups, _failedItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourceGroupsResponse")
 	local t = { 
-		["resourceGroups"] = resourceGroups,
-		["failedItems"] = failedItems,
+		["resourceGroups"] = _resourceGroups,
+		["failedItems"] = _failedItems,
 	}
-	M.AssertDescribeResourceGroupsResponse(t)
+	asserts.AssertDescribeResourceGroupsResponse(t)
 	return t
 end
 
-local DescribeFindingsRequest_keys = { "locale" = true, "findingArns" = true, nil }
+keys.DescribeFindingsRequest = { ["locale"] = true, ["findingArns"] = true, nil }
 
-function M.AssertDescribeFindingsRequest(struct)
+function asserts.AssertDescribeFindingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFindingsRequest to be of type 'table'")
 	assert(struct["findingArns"], "Expected key findingArns to exist in table")
-	if struct["locale"] then M.AssertLocale(struct["locale"]) end
-	if struct["findingArns"] then M.AssertBatchDescribeArnList(struct["findingArns"]) end
+	if struct["locale"] then asserts.AssertLocale(struct["locale"]) end
+	if struct["findingArns"] then asserts.AssertBatchDescribeArnList(struct["findingArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFindingsRequest_keys[k], "DescribeFindingsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeFindingsRequest[k], "DescribeFindingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFindingsRequest
 --  
--- @param locale [Locale] <p>The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.</p>
--- @param findingArns [BatchDescribeArnList] <p>The ARN that specifies the finding that you want to describe.</p>
+-- @param _locale [Locale] <p>The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.</p>
+-- @param _findingArns [BatchDescribeArnList] <p>The ARN that specifies the finding that you want to describe.</p>
 -- Required parameter: findingArns
-function M.DescribeFindingsRequest(locale, findingArns, ...)
+function M.DescribeFindingsRequest(_locale, _findingArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFindingsRequest")
 	local t = { 
-		["locale"] = locale,
-		["findingArns"] = findingArns,
+		["locale"] = _locale,
+		["findingArns"] = _findingArns,
 	}
-	M.AssertDescribeFindingsRequest(t)
+	asserts.AssertDescribeFindingsRequest(t)
 	return t
 end
 
-local ListTagsForResourceResponse_keys = { "tags" = true, nil }
+keys.ListTagsForResourceResponse = { ["tags"] = true, nil }
 
-function M.AssertListTagsForResourceResponse(struct)
+function asserts.AssertListTagsForResourceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsForResourceResponse to be of type 'table'")
 	assert(struct["tags"], "Expected key tags to exist in table")
-	if struct["tags"] then M.AssertTagList(struct["tags"]) end
+	if struct["tags"] then asserts.AssertTagList(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsForResourceResponse_keys[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTagsForResourceResponse[k], "ListTagsForResourceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsForResourceResponse
 --  
--- @param tags [TagList] <p>A collection of key and value pairs.</p>
+-- @param _tags [TagList] <p>A collection of key and value pairs.</p>
 -- Required parameter: tags
-function M.ListTagsForResourceResponse(tags, ...)
+function M.ListTagsForResourceResponse(_tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
 	local t = { 
-		["tags"] = tags,
+		["tags"] = _tags,
 	}
-	M.AssertListTagsForResourceResponse(t)
+	asserts.AssertListTagsForResourceResponse(t)
 	return t
 end
 
-local RegisterCrossAccountAccessRoleRequest_keys = { "roleArn" = true, nil }
+keys.RegisterCrossAccountAccessRoleRequest = { ["roleArn"] = true, nil }
 
-function M.AssertRegisterCrossAccountAccessRoleRequest(struct)
+function asserts.AssertRegisterCrossAccountAccessRoleRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RegisterCrossAccountAccessRoleRequest to be of type 'table'")
 	assert(struct["roleArn"], "Expected key roleArn to exist in table")
-	if struct["roleArn"] then M.AssertArn(struct["roleArn"]) end
+	if struct["roleArn"] then asserts.AssertArn(struct["roleArn"]) end
 	for k,_ in pairs(struct) do
-		assert(RegisterCrossAccountAccessRoleRequest_keys[k], "RegisterCrossAccountAccessRoleRequest contains unknown key " .. tostring(k))
+		assert(keys.RegisterCrossAccountAccessRoleRequest[k], "RegisterCrossAccountAccessRoleRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RegisterCrossAccountAccessRoleRequest
 --  
--- @param roleArn [Arn] <p>The ARN of the IAM role that Amazon Inspector uses to list your EC2 instances during the assessment run or when you call the <a>PreviewAgents</a> action. </p>
+-- @param _roleArn [Arn] <p>The ARN of the IAM role that Amazon Inspector uses to list your EC2 instances during the assessment run or when you call the <a>PreviewAgents</a> action. </p>
 -- Required parameter: roleArn
-function M.RegisterCrossAccountAccessRoleRequest(roleArn, ...)
+function M.RegisterCrossAccountAccessRoleRequest(_roleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCrossAccountAccessRoleRequest")
 	local t = { 
-		["roleArn"] = roleArn,
+		["roleArn"] = _roleArn,
 	}
-	M.AssertRegisterCrossAccountAccessRoleRequest(t)
+	asserts.AssertRegisterCrossAccountAccessRoleRequest(t)
 	return t
 end
 
-local InternalException_keys = { "canRetry" = true, "message" = true, nil }
+keys.InternalException = { ["canRetry"] = true, ["message"] = true, nil }
 
-function M.AssertInternalException(struct)
+function asserts.AssertInternalException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
 	assert(struct["canRetry"], "Expected key canRetry to exist in table")
-	if struct["canRetry"] then M.AssertBool(struct["canRetry"]) end
-	if struct["message"] then M.AssertErrorMessage(struct["message"]) end
+	if struct["canRetry"] then asserts.AssertBool(struct["canRetry"]) end
+	if struct["message"] then asserts.AssertErrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalException_keys[k], "InternalException contains unknown key " .. tostring(k))
+		assert(keys.InternalException[k], "InternalException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalException
 -- <p>Internal server error.</p>
--- @param canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param _message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: canRetry
-function M.InternalException(canRetry, message, ...)
+function M.InternalException(_canRetry, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
 	local t = { 
-		["canRetry"] = canRetry,
-		["message"] = message,
+		["canRetry"] = _canRetry,
+		["message"] = _message,
 	}
-	M.AssertInternalException(t)
+	asserts.AssertInternalException(t)
 	return t
 end
 
-local TimestampRange_keys = { "beginDate" = true, "endDate" = true, nil }
+keys.TimestampRange = { ["beginDate"] = true, ["endDate"] = true, nil }
 
-function M.AssertTimestampRange(struct)
+function asserts.AssertTimestampRange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TimestampRange to be of type 'table'")
-	if struct["beginDate"] then M.AssertTimestamp(struct["beginDate"]) end
-	if struct["endDate"] then M.AssertTimestamp(struct["endDate"]) end
+	if struct["beginDate"] then asserts.AssertTimestamp(struct["beginDate"]) end
+	if struct["endDate"] then asserts.AssertTimestamp(struct["endDate"]) end
 	for k,_ in pairs(struct) do
-		assert(TimestampRange_keys[k], "TimestampRange contains unknown key " .. tostring(k))
+		assert(keys.TimestampRange[k], "TimestampRange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TimestampRange
 -- <p>This data type is used in the <a>AssessmentRunFilter</a> data type.</p>
--- @param beginDate [Timestamp] <p>The minimum value of the timestamp range.</p>
--- @param endDate [Timestamp] <p>The maximum value of the timestamp range.</p>
-function M.TimestampRange(beginDate, endDate, ...)
+-- @param _beginDate [Timestamp] <p>The minimum value of the timestamp range.</p>
+-- @param _endDate [Timestamp] <p>The maximum value of the timestamp range.</p>
+function M.TimestampRange(_beginDate, _endDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TimestampRange")
 	local t = { 
-		["beginDate"] = beginDate,
-		["endDate"] = endDate,
+		["beginDate"] = _beginDate,
+		["endDate"] = _endDate,
 	}
-	M.AssertTimestampRange(t)
+	asserts.AssertTimestampRange(t)
 	return t
 end
 
-local AssessmentTemplateFilter_keys = { "namePattern" = true, "durationRange" = true, "rulesPackageArns" = true, nil }
+keys.AssessmentTemplateFilter = { ["namePattern"] = true, ["durationRange"] = true, ["rulesPackageArns"] = true, nil }
 
-function M.AssertAssessmentTemplateFilter(struct)
+function asserts.AssertAssessmentTemplateFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentTemplateFilter to be of type 'table'")
-	if struct["namePattern"] then M.AssertNamePattern(struct["namePattern"]) end
-	if struct["durationRange"] then M.AssertDurationRange(struct["durationRange"]) end
-	if struct["rulesPackageArns"] then M.AssertFilterRulesPackageArnList(struct["rulesPackageArns"]) end
+	if struct["namePattern"] then asserts.AssertNamePattern(struct["namePattern"]) end
+	if struct["durationRange"] then asserts.AssertDurationRange(struct["durationRange"]) end
+	if struct["rulesPackageArns"] then asserts.AssertFilterRulesPackageArnList(struct["rulesPackageArns"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentTemplateFilter_keys[k], "AssessmentTemplateFilter contains unknown key " .. tostring(k))
+		assert(keys.AssessmentTemplateFilter[k], "AssessmentTemplateFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentTemplateFilter
 -- <p>Used as the request parameter in the <a>ListAssessmentTemplates</a> action.</p>
--- @param namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data type.</p>
--- @param durationRange [DurationRange] <p>For a record to match a filter, the value specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentTemplate</a> data type.</p>
--- @param rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-function M.AssessmentTemplateFilter(namePattern, durationRange, rulesPackageArns, ...)
+-- @param _namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data type.</p>
+-- @param _durationRange [DurationRange] <p>For a record to match a filter, the value specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentTemplate</a> data type.</p>
+-- @param _rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
+function M.AssessmentTemplateFilter(_namePattern, _durationRange, _rulesPackageArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTemplateFilter")
 	local t = { 
-		["namePattern"] = namePattern,
-		["durationRange"] = durationRange,
-		["rulesPackageArns"] = rulesPackageArns,
+		["namePattern"] = _namePattern,
+		["durationRange"] = _durationRange,
+		["rulesPackageArns"] = _rulesPackageArns,
 	}
-	M.AssertAssessmentTemplateFilter(t)
+	asserts.AssertAssessmentTemplateFilter(t)
 	return t
 end
 
-local ListAssessmentRunsResponse_keys = { "nextToken" = true, "assessmentRunArns" = true, nil }
+keys.ListAssessmentRunsResponse = { ["nextToken"] = true, ["assessmentRunArns"] = true, nil }
 
-function M.AssertListAssessmentRunsResponse(struct)
+function asserts.AssertListAssessmentRunsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssessmentRunsResponse to be of type 'table'")
 	assert(struct["assessmentRunArns"], "Expected key assessmentRunArns to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["assessmentRunArns"] then M.AssertListReturnedArnList(struct["assessmentRunArns"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["assessmentRunArns"] then asserts.AssertListReturnedArnList(struct["assessmentRunArns"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssessmentRunsResponse_keys[k], "ListAssessmentRunsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAssessmentRunsResponse[k], "ListAssessmentRunsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssessmentRunsResponse
 --  
--- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param assessmentRunArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment runs that are returned by the action.</p>
+-- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param _assessmentRunArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment runs that are returned by the action.</p>
 -- Required parameter: assessmentRunArns
-function M.ListAssessmentRunsResponse(nextToken, assessmentRunArns, ...)
+function M.ListAssessmentRunsResponse(_nextToken, _assessmentRunArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunsResponse")
 	local t = { 
-		["nextToken"] = nextToken,
-		["assessmentRunArns"] = assessmentRunArns,
+		["nextToken"] = _nextToken,
+		["assessmentRunArns"] = _assessmentRunArns,
 	}
-	M.AssertListAssessmentRunsResponse(t)
+	asserts.AssertListAssessmentRunsResponse(t)
 	return t
 end
 
-local DescribeCrossAccountAccessRoleResponse_keys = { "roleArn" = true, "valid" = true, "registeredAt" = true, nil }
+keys.DescribeCrossAccountAccessRoleResponse = { ["roleArn"] = true, ["valid"] = true, ["registeredAt"] = true, nil }
 
-function M.AssertDescribeCrossAccountAccessRoleResponse(struct)
+function asserts.AssertDescribeCrossAccountAccessRoleResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCrossAccountAccessRoleResponse to be of type 'table'")
 	assert(struct["roleArn"], "Expected key roleArn to exist in table")
 	assert(struct["valid"], "Expected key valid to exist in table")
 	assert(struct["registeredAt"], "Expected key registeredAt to exist in table")
-	if struct["roleArn"] then M.AssertArn(struct["roleArn"]) end
-	if struct["valid"] then M.AssertBool(struct["valid"]) end
-	if struct["registeredAt"] then M.AssertTimestamp(struct["registeredAt"]) end
+	if struct["roleArn"] then asserts.AssertArn(struct["roleArn"]) end
+	if struct["valid"] then asserts.AssertBool(struct["valid"]) end
+	if struct["registeredAt"] then asserts.AssertTimestamp(struct["registeredAt"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCrossAccountAccessRoleResponse_keys[k], "DescribeCrossAccountAccessRoleResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeCrossAccountAccessRoleResponse[k], "DescribeCrossAccountAccessRoleResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCrossAccountAccessRoleResponse
 --  
--- @param roleArn [Arn] <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.</p>
--- @param valid [Bool] <p>A Boolean value that specifies whether the IAM role has the necessary policies attached to enable Amazon Inspector to access your AWS account.</p>
--- @param registeredAt [Timestamp] <p>The date when the cross-account access role was registered.</p>
+-- @param _roleArn [Arn] <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.</p>
+-- @param _valid [Bool] <p>A Boolean value that specifies whether the IAM role has the necessary policies attached to enable Amazon Inspector to access your AWS account.</p>
+-- @param _registeredAt [Timestamp] <p>The date when the cross-account access role was registered.</p>
 -- Required parameter: roleArn
 -- Required parameter: valid
 -- Required parameter: registeredAt
-function M.DescribeCrossAccountAccessRoleResponse(roleArn, valid, registeredAt, ...)
+function M.DescribeCrossAccountAccessRoleResponse(_roleArn, _valid, _registeredAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCrossAccountAccessRoleResponse")
 	local t = { 
-		["roleArn"] = roleArn,
-		["valid"] = valid,
-		["registeredAt"] = registeredAt,
+		["roleArn"] = _roleArn,
+		["valid"] = _valid,
+		["registeredAt"] = _registeredAt,
 	}
-	M.AssertDescribeCrossAccountAccessRoleResponse(t)
+	asserts.AssertDescribeCrossAccountAccessRoleResponse(t)
 	return t
 end
 
-local ListRulesPackagesRequest_keys = { "nextToken" = true, "maxResults" = true, nil }
+keys.ListRulesPackagesRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListRulesPackagesRequest(struct)
+function asserts.AssertListRulesPackagesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListRulesPackagesRequest to be of type 'table'")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertListMaxResults(struct["maxResults"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertListMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListRulesPackagesRequest_keys[k], "ListRulesPackagesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListRulesPackagesRequest[k], "ListRulesPackagesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListRulesPackagesRequest
 --  
--- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListRulesPackages</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListRulesPackagesRequest(nextToken, maxResults, ...)
+-- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListRulesPackages</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+function M.ListRulesPackagesRequest(_nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesPackagesRequest")
 	local t = { 
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListRulesPackagesRequest(t)
+	asserts.AssertListRulesPackagesRequest(t)
 	return t
 end
 
-local CreateResourceGroupRequest_keys = { "resourceGroupTags" = true, nil }
+keys.CreateResourceGroupRequest = { ["resourceGroupTags"] = true, nil }
 
-function M.AssertCreateResourceGroupRequest(struct)
+function asserts.AssertCreateResourceGroupRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateResourceGroupRequest to be of type 'table'")
 	assert(struct["resourceGroupTags"], "Expected key resourceGroupTags to exist in table")
-	if struct["resourceGroupTags"] then M.AssertResourceGroupTags(struct["resourceGroupTags"]) end
+	if struct["resourceGroupTags"] then asserts.AssertResourceGroupTags(struct["resourceGroupTags"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateResourceGroupRequest_keys[k], "CreateResourceGroupRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateResourceGroupRequest[k], "CreateResourceGroupRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateResourceGroupRequest
 --  
--- @param resourceGroupTags [ResourceGroupTags] <p>A collection of keys and an array of possible values, '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'.</p> <p>For example,'[{"key":"Name","values":["TestEC2Instance"]}]'.</p>
+-- @param _resourceGroupTags [ResourceGroupTags] <p>A collection of keys and an array of possible values, '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'.</p> <p>For example,'[{"key":"Name","values":["TestEC2Instance"]}]'.</p>
 -- Required parameter: resourceGroupTags
-function M.CreateResourceGroupRequest(resourceGroupTags, ...)
+function M.CreateResourceGroupRequest(_resourceGroupTags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateResourceGroupRequest")
 	local t = { 
-		["resourceGroupTags"] = resourceGroupTags,
+		["resourceGroupTags"] = _resourceGroupTags,
 	}
-	M.AssertCreateResourceGroupRequest(t)
+	asserts.AssertCreateResourceGroupRequest(t)
 	return t
 end
 
-local AssessmentRunStateChange_keys = { "state" = true, "stateChangedAt" = true, nil }
+keys.AssessmentRunStateChange = { ["state"] = true, ["stateChangedAt"] = true, nil }
 
-function M.AssertAssessmentRunStateChange(struct)
+function asserts.AssertAssessmentRunStateChange(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssessmentRunStateChange to be of type 'table'")
 	assert(struct["stateChangedAt"], "Expected key stateChangedAt to exist in table")
 	assert(struct["state"], "Expected key state to exist in table")
-	if struct["state"] then M.AssertAssessmentRunState(struct["state"]) end
-	if struct["stateChangedAt"] then M.AssertTimestamp(struct["stateChangedAt"]) end
+	if struct["state"] then asserts.AssertAssessmentRunState(struct["state"]) end
+	if struct["stateChangedAt"] then asserts.AssertTimestamp(struct["stateChangedAt"]) end
 	for k,_ in pairs(struct) do
-		assert(AssessmentRunStateChange_keys[k], "AssessmentRunStateChange contains unknown key " .. tostring(k))
+		assert(keys.AssessmentRunStateChange[k], "AssessmentRunStateChange contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssessmentRunStateChange
 -- <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
--- @param state [AssessmentRunState] <p>The assessment run state.</p>
--- @param stateChangedAt [Timestamp] <p>The last time the assessment run state changed.</p>
+-- @param _state [AssessmentRunState] <p>The assessment run state.</p>
+-- @param _stateChangedAt [Timestamp] <p>The last time the assessment run state changed.</p>
 -- Required parameter: stateChangedAt
 -- Required parameter: state
-function M.AssessmentRunStateChange(state, stateChangedAt, ...)
+function M.AssessmentRunStateChange(_state, _stateChangedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunStateChange")
 	local t = { 
-		["state"] = state,
-		["stateChangedAt"] = stateChangedAt,
+		["state"] = _state,
+		["stateChangedAt"] = _stateChangedAt,
 	}
-	M.AssertAssessmentRunStateChange(t)
+	asserts.AssertAssessmentRunStateChange(t)
 	return t
 end
 
-local DeleteAssessmentRunRequest_keys = { "assessmentRunArn" = true, nil }
+keys.DeleteAssessmentRunRequest = { ["assessmentRunArn"] = true, nil }
 
-function M.AssertDeleteAssessmentRunRequest(struct)
+function asserts.AssertDeleteAssessmentRunRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteAssessmentRunRequest to be of type 'table'")
 	assert(struct["assessmentRunArn"], "Expected key assessmentRunArn to exist in table")
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteAssessmentRunRequest_keys[k], "DeleteAssessmentRunRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteAssessmentRunRequest[k], "DeleteAssessmentRunRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteAssessmentRunRequest
 --  
--- @param assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that you want to delete.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that you want to delete.</p>
 -- Required parameter: assessmentRunArn
-function M.DeleteAssessmentRunRequest(assessmentRunArn, ...)
+function M.DeleteAssessmentRunRequest(_assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentRunRequest")
 	local t = { 
-		["assessmentRunArn"] = assessmentRunArn,
+		["assessmentRunArn"] = _assessmentRunArn,
 	}
-	M.AssertDeleteAssessmentRunRequest(t)
+	asserts.AssertDeleteAssessmentRunRequest(t)
 	return t
 end
 
-local PreviewAgentsRequest_keys = { "nextToken" = true, "maxResults" = true, "previewAgentsArn" = true, nil }
+keys.PreviewAgentsRequest = { ["nextToken"] = true, ["maxResults"] = true, ["previewAgentsArn"] = true, nil }
 
-function M.AssertPreviewAgentsRequest(struct)
+function asserts.AssertPreviewAgentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PreviewAgentsRequest to be of type 'table'")
 	assert(struct["previewAgentsArn"], "Expected key previewAgentsArn to exist in table")
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertPreviewAgentsMaxResults(struct["maxResults"]) end
-	if struct["previewAgentsArn"] then M.AssertArn(struct["previewAgentsArn"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertPreviewAgentsMaxResults(struct["maxResults"]) end
+	if struct["previewAgentsArn"] then asserts.AssertArn(struct["previewAgentsArn"]) end
 	for k,_ in pairs(struct) do
-		assert(PreviewAgentsRequest_keys[k], "PreviewAgentsRequest contains unknown key " .. tostring(k))
+		assert(keys.PreviewAgentsRequest[k], "PreviewAgentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PreviewAgentsRequest
 --  
--- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>PreviewAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param maxResults [PreviewAgentsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
--- @param previewAgentsArn [Arn] <p>The ARN of the assessment target whose agents you want to preview.</p>
+-- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>PreviewAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param _maxResults [PreviewAgentsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @param _previewAgentsArn [Arn] <p>The ARN of the assessment target whose agents you want to preview.</p>
 -- Required parameter: previewAgentsArn
-function M.PreviewAgentsRequest(nextToken, maxResults, previewAgentsArn, ...)
+function M.PreviewAgentsRequest(_nextToken, _maxResults, _previewAgentsArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PreviewAgentsRequest")
 	local t = { 
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
-		["previewAgentsArn"] = previewAgentsArn,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
+		["previewAgentsArn"] = _previewAgentsArn,
 	}
-	M.AssertPreviewAgentsRequest(t)
+	asserts.AssertPreviewAgentsRequest(t)
 	return t
 end
 
-local CreateAssessmentTemplateRequest_keys = { "assessmentTargetArn" = true, "assessmentTemplateName" = true, "userAttributesForFindings" = true, "durationInSeconds" = true, "rulesPackageArns" = true, nil }
+keys.CreateAssessmentTemplateRequest = { ["assessmentTargetArn"] = true, ["assessmentTemplateName"] = true, ["userAttributesForFindings"] = true, ["durationInSeconds"] = true, ["rulesPackageArns"] = true, nil }
 
-function M.AssertCreateAssessmentTemplateRequest(struct)
+function asserts.AssertCreateAssessmentTemplateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAssessmentTemplateRequest to be of type 'table'")
 	assert(struct["assessmentTargetArn"], "Expected key assessmentTargetArn to exist in table")
 	assert(struct["assessmentTemplateName"], "Expected key assessmentTemplateName to exist in table")
 	assert(struct["durationInSeconds"], "Expected key durationInSeconds to exist in table")
 	assert(struct["rulesPackageArns"], "Expected key rulesPackageArns to exist in table")
-	if struct["assessmentTargetArn"] then M.AssertArn(struct["assessmentTargetArn"]) end
-	if struct["assessmentTemplateName"] then M.AssertAssessmentTemplateName(struct["assessmentTemplateName"]) end
-	if struct["userAttributesForFindings"] then M.AssertUserAttributeList(struct["userAttributesForFindings"]) end
-	if struct["durationInSeconds"] then M.AssertAssessmentRunDuration(struct["durationInSeconds"]) end
-	if struct["rulesPackageArns"] then M.AssertAssessmentTemplateRulesPackageArnList(struct["rulesPackageArns"]) end
+	if struct["assessmentTargetArn"] then asserts.AssertArn(struct["assessmentTargetArn"]) end
+	if struct["assessmentTemplateName"] then asserts.AssertAssessmentTemplateName(struct["assessmentTemplateName"]) end
+	if struct["userAttributesForFindings"] then asserts.AssertUserAttributeList(struct["userAttributesForFindings"]) end
+	if struct["durationInSeconds"] then asserts.AssertAssessmentRunDuration(struct["durationInSeconds"]) end
+	if struct["rulesPackageArns"] then asserts.AssertAssessmentTemplateRulesPackageArnList(struct["rulesPackageArns"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAssessmentTemplateRequest_keys[k], "CreateAssessmentTemplateRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateAssessmentTemplateRequest[k], "CreateAssessmentTemplateRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAssessmentTemplateRequest
 --  
--- @param assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target for which you want to create the assessment template.</p>
--- @param assessmentTemplateName [AssessmentTemplateName] <p>The user-defined name that identifies the assessment template that you want to create. You can create several assessment templates for an assessment target. The names of the assessment templates that correspond to a particular assessment target must be unique.</p>
--- @param userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every finding that is generated by the assessment run that uses this assessment template.</p>
--- @param durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run in seconds. The default value is 3600 seconds (one hour).</p>
--- @param rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The ARNs that specify the rules packages that you want to attach to the assessment template.</p>
+-- @param _assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target for which you want to create the assessment template.</p>
+-- @param _assessmentTemplateName [AssessmentTemplateName] <p>The user-defined name that identifies the assessment template that you want to create. You can create several assessment templates for an assessment target. The names of the assessment templates that correspond to a particular assessment target must be unique.</p>
+-- @param _userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every finding that is generated by the assessment run that uses this assessment template.</p>
+-- @param _durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run in seconds. The default value is 3600 seconds (one hour).</p>
+-- @param _rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The ARNs that specify the rules packages that you want to attach to the assessment template.</p>
 -- Required parameter: assessmentTargetArn
 -- Required parameter: assessmentTemplateName
 -- Required parameter: durationInSeconds
 -- Required parameter: rulesPackageArns
-function M.CreateAssessmentTemplateRequest(assessmentTargetArn, assessmentTemplateName, userAttributesForFindings, durationInSeconds, rulesPackageArns, ...)
+function M.CreateAssessmentTemplateRequest(_assessmentTargetArn, _assessmentTemplateName, _userAttributesForFindings, _durationInSeconds, _rulesPackageArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTemplateRequest")
 	local t = { 
-		["assessmentTargetArn"] = assessmentTargetArn,
-		["assessmentTemplateName"] = assessmentTemplateName,
-		["userAttributesForFindings"] = userAttributesForFindings,
-		["durationInSeconds"] = durationInSeconds,
-		["rulesPackageArns"] = rulesPackageArns,
+		["assessmentTargetArn"] = _assessmentTargetArn,
+		["assessmentTemplateName"] = _assessmentTemplateName,
+		["userAttributesForFindings"] = _userAttributesForFindings,
+		["durationInSeconds"] = _durationInSeconds,
+		["rulesPackageArns"] = _rulesPackageArns,
 	}
-	M.AssertCreateAssessmentTemplateRequest(t)
+	asserts.AssertCreateAssessmentTemplateRequest(t)
 	return t
 end
 
-local CreateAssessmentTemplateResponse_keys = { "assessmentTemplateArn" = true, nil }
+keys.CreateAssessmentTemplateResponse = { ["assessmentTemplateArn"] = true, nil }
 
-function M.AssertCreateAssessmentTemplateResponse(struct)
+function asserts.AssertCreateAssessmentTemplateResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAssessmentTemplateResponse to be of type 'table'")
 	assert(struct["assessmentTemplateArn"], "Expected key assessmentTemplateArn to exist in table")
-	if struct["assessmentTemplateArn"] then M.AssertArn(struct["assessmentTemplateArn"]) end
+	if struct["assessmentTemplateArn"] then asserts.AssertArn(struct["assessmentTemplateArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAssessmentTemplateResponse_keys[k], "CreateAssessmentTemplateResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateAssessmentTemplateResponse[k], "CreateAssessmentTemplateResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAssessmentTemplateResponse
 --  
--- @param assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that is created.</p>
+-- @param _assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that is created.</p>
 -- Required parameter: assessmentTemplateArn
-function M.CreateAssessmentTemplateResponse(assessmentTemplateArn, ...)
+function M.CreateAssessmentTemplateResponse(_assessmentTemplateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTemplateResponse")
 	local t = { 
-		["assessmentTemplateArn"] = assessmentTemplateArn,
+		["assessmentTemplateArn"] = _assessmentTemplateArn,
 	}
-	M.AssertCreateAssessmentTemplateResponse(t)
+	asserts.AssertCreateAssessmentTemplateResponse(t)
 	return t
 end
 
-local DescribeAssessmentTargetsRequest_keys = { "assessmentTargetArns" = true, nil }
+keys.DescribeAssessmentTargetsRequest = { ["assessmentTargetArns"] = true, nil }
 
-function M.AssertDescribeAssessmentTargetsRequest(struct)
+function asserts.AssertDescribeAssessmentTargetsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAssessmentTargetsRequest to be of type 'table'")
 	assert(struct["assessmentTargetArns"], "Expected key assessmentTargetArns to exist in table")
-	if struct["assessmentTargetArns"] then M.AssertBatchDescribeArnList(struct["assessmentTargetArns"]) end
+	if struct["assessmentTargetArns"] then asserts.AssertBatchDescribeArnList(struct["assessmentTargetArns"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAssessmentTargetsRequest_keys[k], "DescribeAssessmentTargetsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeAssessmentTargetsRequest[k], "DescribeAssessmentTargetsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAssessmentTargetsRequest
 --  
--- @param assessmentTargetArns [BatchDescribeArnList] <p>The ARNs that specifies the assessment targets that you want to describe.</p>
+-- @param _assessmentTargetArns [BatchDescribeArnList] <p>The ARNs that specifies the assessment targets that you want to describe.</p>
 -- Required parameter: assessmentTargetArns
-function M.DescribeAssessmentTargetsRequest(assessmentTargetArns, ...)
+function M.DescribeAssessmentTargetsRequest(_assessmentTargetArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTargetsRequest")
 	local t = { 
-		["assessmentTargetArns"] = assessmentTargetArns,
+		["assessmentTargetArns"] = _assessmentTargetArns,
 	}
-	M.AssertDescribeAssessmentTargetsRequest(t)
+	asserts.AssertDescribeAssessmentTargetsRequest(t)
 	return t
 end
 
-local EventSubscription_keys = { "event" = true, "subscribedAt" = true, nil }
+keys.EventSubscription = { ["event"] = true, ["subscribedAt"] = true, nil }
 
-function M.AssertEventSubscription(struct)
+function asserts.AssertEventSubscription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventSubscription to be of type 'table'")
 	assert(struct["event"], "Expected key event to exist in table")
 	assert(struct["subscribedAt"], "Expected key subscribedAt to exist in table")
-	if struct["event"] then M.AssertInspectorEvent(struct["event"]) end
-	if struct["subscribedAt"] then M.AssertTimestamp(struct["subscribedAt"]) end
+	if struct["event"] then asserts.AssertInspectorEvent(struct["event"]) end
+	if struct["subscribedAt"] then asserts.AssertTimestamp(struct["subscribedAt"]) end
 	for k,_ in pairs(struct) do
-		assert(EventSubscription_keys[k], "EventSubscription contains unknown key " .. tostring(k))
+		assert(keys.EventSubscription[k], "EventSubscription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventSubscription
 -- <p>This data type is used in the <a>Subscription</a> data type.</p>
--- @param event [InspectorEvent] <p>The event for which Amazon Simple Notification Service (SNS) notifications are sent.</p>
--- @param subscribedAt [Timestamp] <p>The time at which <a>SubscribeToEvent</a> is called.</p>
+-- @param _event [InspectorEvent] <p>The event for which Amazon Simple Notification Service (SNS) notifications are sent.</p>
+-- @param _subscribedAt [Timestamp] <p>The time at which <a>SubscribeToEvent</a> is called.</p>
 -- Required parameter: event
 -- Required parameter: subscribedAt
-function M.EventSubscription(event, subscribedAt, ...)
+function M.EventSubscription(_event, _subscribedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscription")
 	local t = { 
-		["event"] = event,
-		["subscribedAt"] = subscribedAt,
+		["event"] = _event,
+		["subscribedAt"] = _subscribedAt,
 	}
-	M.AssertEventSubscription(t)
+	asserts.AssertEventSubscription(t)
 	return t
 end
 
-local ListAssessmentRunAgentsRequest_keys = { "filter" = true, "assessmentRunArn" = true, "nextToken" = true, "maxResults" = true, nil }
+keys.ListAssessmentRunAgentsRequest = { ["filter"] = true, ["assessmentRunArn"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
 
-function M.AssertListAssessmentRunAgentsRequest(struct)
+function asserts.AssertListAssessmentRunAgentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssessmentRunAgentsRequest to be of type 'table'")
 	assert(struct["assessmentRunArn"], "Expected key assessmentRunArn to exist in table")
-	if struct["filter"] then M.AssertAgentFilter(struct["filter"]) end
-	if struct["assessmentRunArn"] then M.AssertArn(struct["assessmentRunArn"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertListMaxResults(struct["maxResults"]) end
+	if struct["filter"] then asserts.AssertAgentFilter(struct["filter"]) end
+	if struct["assessmentRunArn"] then asserts.AssertArn(struct["assessmentRunArn"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertListMaxResults(struct["maxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssessmentRunAgentsRequest_keys[k], "ListAssessmentRunAgentsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAssessmentRunAgentsRequest[k], "ListAssessmentRunAgentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssessmentRunAgentsRequest
 --  
--- @param filter [AgentFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param assessmentRunArn [Arn] <p>The ARN that specifies the assessment run whose agents you want to list.</p>
--- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRunAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @param _filter [AgentFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param _assessmentRunArn [Arn] <p>The ARN that specifies the assessment run whose agents you want to list.</p>
+-- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRunAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
 -- Required parameter: assessmentRunArn
-function M.ListAssessmentRunAgentsRequest(filter, assessmentRunArn, nextToken, maxResults, ...)
+function M.ListAssessmentRunAgentsRequest(_filter, _assessmentRunArn, _nextToken, _maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunAgentsRequest")
 	local t = { 
-		["filter"] = filter,
-		["assessmentRunArn"] = assessmentRunArn,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
+		["filter"] = _filter,
+		["assessmentRunArn"] = _assessmentRunArn,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
 	}
-	M.AssertListAssessmentRunAgentsRequest(t)
+	asserts.AssertListAssessmentRunAgentsRequest(t)
 	return t
 end
 
-local ListAssessmentRunsRequest_keys = { "filter" = true, "nextToken" = true, "maxResults" = true, "assessmentTemplateArns" = true, nil }
+keys.ListAssessmentRunsRequest = { ["filter"] = true, ["nextToken"] = true, ["maxResults"] = true, ["assessmentTemplateArns"] = true, nil }
 
-function M.AssertListAssessmentRunsRequest(struct)
+function asserts.AssertListAssessmentRunsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssessmentRunsRequest to be of type 'table'")
-	if struct["filter"] then M.AssertAssessmentRunFilter(struct["filter"]) end
-	if struct["nextToken"] then M.AssertPaginationToken(struct["nextToken"]) end
-	if struct["maxResults"] then M.AssertListMaxResults(struct["maxResults"]) end
-	if struct["assessmentTemplateArns"] then M.AssertListParentArnList(struct["assessmentTemplateArns"]) end
+	if struct["filter"] then asserts.AssertAssessmentRunFilter(struct["filter"]) end
+	if struct["nextToken"] then asserts.AssertPaginationToken(struct["nextToken"]) end
+	if struct["maxResults"] then asserts.AssertListMaxResults(struct["maxResults"]) end
+	if struct["assessmentTemplateArns"] then asserts.AssertListParentArnList(struct["assessmentTemplateArns"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssessmentRunsRequest_keys[k], "ListAssessmentRunsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAssessmentRunsRequest[k], "ListAssessmentRunsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssessmentRunsRequest
 --  
--- @param filter [AssessmentRunFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRuns</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
--- @param assessmentTemplateArns [ListParentArnList] <p>The ARNs that specify the assessment templates whose assessment runs you want to list.</p>
-function M.ListAssessmentRunsRequest(filter, nextToken, maxResults, assessmentTemplateArns, ...)
+-- @param _filter [AssessmentRunFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRuns</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @param _assessmentTemplateArns [ListParentArnList] <p>The ARNs that specify the assessment templates whose assessment runs you want to list.</p>
+function M.ListAssessmentRunsRequest(_filter, _nextToken, _maxResults, _assessmentTemplateArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunsRequest")
 	local t = { 
-		["filter"] = filter,
-		["nextToken"] = nextToken,
-		["maxResults"] = maxResults,
-		["assessmentTemplateArns"] = assessmentTemplateArns,
+		["filter"] = _filter,
+		["nextToken"] = _nextToken,
+		["maxResults"] = _maxResults,
+		["assessmentTemplateArns"] = _assessmentTemplateArns,
 	}
-	M.AssertListAssessmentRunsRequest(t)
+	asserts.AssertListAssessmentRunsRequest(t)
 	return t
 end
 
-function M.AssertSeverity(str)
+function asserts.AssertSeverity(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Severity to be of type 'string'")
 end
 
 --  
 function M.Severity(str)
-	M.AssertSeverity(str)
+	asserts.AssertSeverity(str)
 	return str
 end
 
-function M.AssertFindingId(str)
+function asserts.AssertFindingId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FindingId to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -2987,11 +2990,11 @@ end
 
 --  
 function M.FindingId(str)
-	M.AssertFindingId(str)
+	asserts.AssertFindingId(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -3000,22 +3003,22 @@ end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertLimitExceededErrorCode(str)
+function asserts.AssertLimitExceededErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LimitExceededErrorCode to be of type 'string'")
 end
 
 --  
 function M.LimitExceededErrorCode(str)
-	M.AssertLimitExceededErrorCode(str)
+	asserts.AssertLimitExceededErrorCode(str)
 	return str
 end
 
-function M.AssertMessageType(str)
+function asserts.AssertMessageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MessageType to be of type 'string'")
 	assert(#str <= 300, "Expected string to be max 300 characters")
@@ -3024,44 +3027,44 @@ end
 
 --  
 function M.MessageType(str)
-	M.AssertMessageType(str)
+	asserts.AssertMessageType(str)
 	return str
 end
 
-function M.AssertAgentHealthCode(str)
+function asserts.AssertAgentHealthCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AgentHealthCode to be of type 'string'")
 end
 
 --  
 function M.AgentHealthCode(str)
-	M.AssertAgentHealthCode(str)
+	asserts.AssertAgentHealthCode(str)
 	return str
 end
 
-function M.AssertNoSuchEntityErrorCode(str)
+function asserts.AssertNoSuchEntityErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NoSuchEntityErrorCode to be of type 'string'")
 end
 
 --  
 function M.NoSuchEntityErrorCode(str)
-	M.AssertNoSuchEntityErrorCode(str)
+	asserts.AssertNoSuchEntityErrorCode(str)
 	return str
 end
 
-function M.AssertAssessmentRunState(str)
+function asserts.AssertAssessmentRunState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AssessmentRunState to be of type 'string'")
 end
 
 --  
 function M.AssessmentRunState(str)
-	M.AssertAssessmentRunState(str)
+	asserts.AssertAssessmentRunState(str)
 	return str
 end
 
-function M.AssertAttributeKey(str)
+function asserts.AssertAttributeKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttributeKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -3070,11 +3073,11 @@ end
 
 --  
 function M.AttributeKey(str)
-	M.AssertAttributeKey(str)
+	asserts.AssertAttributeKey(str)
 	return str
 end
 
-function M.AssertAttributeValue(str)
+function asserts.AssertAttributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AttributeValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -3083,11 +3086,11 @@ end
 
 --  
 function M.AttributeValue(str)
-	M.AssertAttributeValue(str)
+	asserts.AssertAttributeValue(str)
 	return str
 end
 
-function M.AssertArn(str)
+function asserts.AssertArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Arn to be of type 'string'")
 	assert(#str <= 300, "Expected string to be max 300 characters")
@@ -3096,22 +3099,22 @@ end
 
 --  
 function M.Arn(str)
-	M.AssertArn(str)
+	asserts.AssertArn(str)
 	return str
 end
 
-function M.AssertInspectorEvent(str)
+function asserts.AssertInspectorEvent(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InspectorEvent to be of type 'string'")
 end
 
 --  
 function M.InspectorEvent(str)
-	M.AssertInspectorEvent(str)
+	asserts.AssertInspectorEvent(str)
 	return str
 end
 
-function M.AssertPaginationToken(str)
+function asserts.AssertPaginationToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationToken to be of type 'string'")
 	assert(#str <= 300, "Expected string to be max 300 characters")
@@ -3120,11 +3123,11 @@ end
 
 --  
 function M.PaginationToken(str)
-	M.AssertPaginationToken(str)
+	asserts.AssertPaginationToken(str)
 	return str
 end
 
-function M.AssertAutoScalingGroup(str)
+function asserts.AssertAutoScalingGroup(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AutoScalingGroup to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -3133,22 +3136,22 @@ end
 
 --  
 function M.AutoScalingGroup(str)
-	M.AssertAutoScalingGroup(str)
+	asserts.AssertAutoScalingGroup(str)
 	return str
 end
 
-function M.AssertFailedItemErrorCode(str)
+function asserts.AssertFailedItemErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FailedItemErrorCode to be of type 'string'")
 end
 
 --  
 function M.FailedItemErrorCode(str)
-	M.AssertFailedItemErrorCode(str)
+	asserts.AssertFailedItemErrorCode(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -3157,11 +3160,11 @@ end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertAgentId(str)
+function asserts.AssertAgentId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AgentId to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -3170,11 +3173,11 @@ end
 
 --  
 function M.AgentId(str)
-	M.AssertAgentId(str)
+	asserts.AssertAgentId(str)
 	return str
 end
 
-function M.AssertText(str)
+function asserts.AssertText(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Text to be of type 'string'")
 	assert(#str <= 20000, "Expected string to be max 20000 characters")
@@ -3182,22 +3185,22 @@ end
 
 --  
 function M.Text(str)
-	M.AssertText(str)
+	asserts.AssertText(str)
 	return str
 end
 
-function M.AssertAssetType(str)
+function asserts.AssertAssetType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AssetType to be of type 'string'")
 end
 
 --  
 function M.AssetType(str)
-	M.AssertAssetType(str)
+	asserts.AssertAssetType(str)
 	return str
 end
 
-function M.AssertServiceName(str)
+function asserts.AssertServiceName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ServiceName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -3205,22 +3208,22 @@ end
 
 --  
 function M.ServiceName(str)
-	M.AssertServiceName(str)
+	asserts.AssertServiceName(str)
 	return str
 end
 
-function M.AssertReportType(str)
+function asserts.AssertReportType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ReportType to be of type 'string'")
 end
 
 --  
 function M.ReportType(str)
-	M.AssertReportType(str)
+	asserts.AssertReportType(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 	assert(#str <= 1000, "Expected string to be max 1000 characters")
@@ -3228,11 +3231,11 @@ end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertNamePattern(str)
+function asserts.AssertNamePattern(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NamePattern to be of type 'string'")
 	assert(#str <= 140, "Expected string to be max 140 characters")
@@ -3241,11 +3244,11 @@ end
 
 --  
 function M.NamePattern(str)
-	M.AssertNamePattern(str)
+	asserts.AssertNamePattern(str)
 	return str
 end
 
-function M.AssertMessage(str)
+function asserts.AssertMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Message to be of type 'string'")
 	assert(#str <= 1000, "Expected string to be max 1000 characters")
@@ -3253,11 +3256,11 @@ end
 
 --  
 function M.Message(str)
-	M.AssertMessage(str)
+	asserts.AssertMessage(str)
 	return str
 end
 
-function M.AssertHostname(str)
+function asserts.AssertHostname(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Hostname to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -3265,11 +3268,11 @@ end
 
 --  
 function M.Hostname(str)
-	M.AssertHostname(str)
+	asserts.AssertHostname(str)
 	return str
 end
 
-function M.AssertAssessmentTemplateName(str)
+function asserts.AssertAssessmentTemplateName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AssessmentTemplateName to be of type 'string'")
 	assert(#str <= 140, "Expected string to be max 140 characters")
@@ -3278,11 +3281,11 @@ end
 
 --  
 function M.AssessmentTemplateName(str)
-	M.AssertAssessmentTemplateName(str)
+	asserts.AssertAssessmentTemplateName(str)
 	return str
 end
 
-function M.AssertIpv4Address(str)
+function asserts.AssertIpv4Address(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Ipv4Address to be of type 'string'")
 	assert(#str <= 15, "Expected string to be max 15 characters")
@@ -3291,11 +3294,11 @@ end
 
 --  
 function M.Ipv4Address(str)
-	M.AssertIpv4Address(str)
+	asserts.AssertIpv4Address(str)
 	return str
 end
 
-function M.AssertAmiId(str)
+function asserts.AssertAmiId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AmiId to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -3303,11 +3306,11 @@ end
 
 --  
 function M.AmiId(str)
-	M.AssertAmiId(str)
+	asserts.AssertAmiId(str)
 	return str
 end
 
-function M.AssertAssessmentRunName(str)
+function asserts.AssertAssessmentRunName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AssessmentRunName to be of type 'string'")
 	assert(#str <= 140, "Expected string to be max 140 characters")
@@ -3316,22 +3319,22 @@ end
 
 --  
 function M.AssessmentRunName(str)
-	M.AssertAssessmentRunName(str)
+	asserts.AssertAssessmentRunName(str)
 	return str
 end
 
-function M.AssertInvalidInputErrorCode(str)
+function asserts.AssertInvalidInputErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InvalidInputErrorCode to be of type 'string'")
 end
 
 --  
 function M.InvalidInputErrorCode(str)
-	M.AssertInvalidInputErrorCode(str)
+	asserts.AssertInvalidInputErrorCode(str)
 	return str
 end
 
-function M.AssertVersion(str)
+function asserts.AssertVersion(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Version to be of type 'string'")
 	assert(#str <= 1000, "Expected string to be max 1000 characters")
@@ -3339,22 +3342,22 @@ end
 
 --  
 function M.Version(str)
-	M.AssertVersion(str)
+	asserts.AssertVersion(str)
 	return str
 end
 
-function M.AssertAgentHealth(str)
+function asserts.AssertAgentHealth(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AgentHealth to be of type 'string'")
 end
 
 --  
 function M.AgentHealth(str)
-	M.AssertAgentHealth(str)
+	asserts.AssertAgentHealth(str)
 	return str
 end
 
-function M.AssertProviderName(str)
+function asserts.AssertProviderName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProviderName to be of type 'string'")
 	assert(#str <= 1000, "Expected string to be max 1000 characters")
@@ -3362,55 +3365,55 @@ end
 
 --  
 function M.ProviderName(str)
-	M.AssertProviderName(str)
+	asserts.AssertProviderName(str)
 	return str
 end
 
-function M.AssertAccessDeniedErrorCode(str)
+function asserts.AssertAccessDeniedErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AccessDeniedErrorCode to be of type 'string'")
 end
 
 --  
 function M.AccessDeniedErrorCode(str)
-	M.AssertAccessDeniedErrorCode(str)
+	asserts.AssertAccessDeniedErrorCode(str)
 	return str
 end
 
-function M.AssertInvalidCrossAccountRoleErrorCode(str)
+function asserts.AssertInvalidCrossAccountRoleErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InvalidCrossAccountRoleErrorCode to be of type 'string'")
 end
 
 --  
 function M.InvalidCrossAccountRoleErrorCode(str)
-	M.AssertInvalidCrossAccountRoleErrorCode(str)
+	asserts.AssertInvalidCrossAccountRoleErrorCode(str)
 	return str
 end
 
-function M.AssertReportStatus(str)
+function asserts.AssertReportStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ReportStatus to be of type 'string'")
 end
 
 --  
 function M.ReportStatus(str)
-	M.AssertReportStatus(str)
+	asserts.AssertReportStatus(str)
 	return str
 end
 
-function M.AssertReportFileFormat(str)
+function asserts.AssertReportFileFormat(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ReportFileFormat to be of type 'string'")
 end
 
 --  
 function M.ReportFileFormat(str)
-	M.AssertReportFileFormat(str)
+	asserts.AssertReportFileFormat(str)
 	return str
 end
 
-function M.AssertUrl(str)
+function asserts.AssertUrl(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Url to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -3418,11 +3421,11 @@ end
 
 --  
 function M.Url(str)
-	M.AssertUrl(str)
+	asserts.AssertUrl(str)
 	return str
 end
 
-function M.AssertRulesPackageName(str)
+function asserts.AssertRulesPackageName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RulesPackageName to be of type 'string'")
 	assert(#str <= 1000, "Expected string to be max 1000 characters")
@@ -3430,22 +3433,22 @@ end
 
 --  
 function M.RulesPackageName(str)
-	M.AssertRulesPackageName(str)
+	asserts.AssertRulesPackageName(str)
 	return str
 end
 
-function M.AssertLocale(str)
+function asserts.AssertLocale(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Locale to be of type 'string'")
 end
 
 --  
 function M.Locale(str)
-	M.AssertLocale(str)
+	asserts.AssertLocale(str)
 	return str
 end
 
-function M.AssertAssessmentTargetName(str)
+function asserts.AssertAssessmentTargetName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AssessmentTargetName to be of type 'string'")
 	assert(#str <= 140, "Expected string to be max 140 characters")
@@ -3454,22 +3457,22 @@ end
 
 --  
 function M.AssessmentTargetName(str)
-	M.AssertAssessmentTargetName(str)
+	asserts.AssertAssessmentTargetName(str)
 	return str
 end
 
-function M.AssertAssessmentRunNotificationSnsStatusCode(str)
+function asserts.AssertAssessmentRunNotificationSnsStatusCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AssessmentRunNotificationSnsStatusCode to be of type 'string'")
 end
 
 --  
 function M.AssessmentRunNotificationSnsStatusCode(str)
-	M.AssertAssessmentRunNotificationSnsStatusCode(str)
+	asserts.AssertAssessmentRunNotificationSnsStatusCode(str)
 	return str
 end
 
-function M.AssertRuleName(str)
+function asserts.AssertRuleName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RuleName to be of type 'string'")
 	assert(#str <= 1000, "Expected string to be max 1000 characters")
@@ -3477,65 +3480,65 @@ end
 
 --  
 function M.RuleName(str)
-	M.AssertRuleName(str)
+	asserts.AssertRuleName(str)
 	return str
 end
 
-function M.AssertNumericSeverity(double)
+function asserts.AssertNumericSeverity(double)
 	assert(double)
 	assert(type(double) == "number", "Expected NumericSeverity to be of type 'number'")
 end
 
 function M.NumericSeverity(double)
-	M.AssertNumericSeverity(double)
+	asserts.AssertNumericSeverity(double)
 	return double
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertPreviewAgentsMaxResults(integer)
+function asserts.AssertPreviewAgentsMaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PreviewAgentsMaxResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.PreviewAgentsMaxResults(integer)
-	M.AssertPreviewAgentsMaxResults(integer)
+	asserts.AssertPreviewAgentsMaxResults(integer)
 	return integer
 end
 
-function M.AssertFindingCount(integer)
+function asserts.AssertFindingCount(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected FindingCount to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.FindingCount(integer)
-	M.AssertFindingCount(integer)
+	asserts.AssertFindingCount(integer)
 	return integer
 end
 
-function M.AssertListMaxResults(integer)
+function asserts.AssertListMaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected ListMaxResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.ListMaxResults(integer)
-	M.AssertListMaxResults(integer)
+	asserts.AssertListMaxResults(integer)
 	return integer
 end
 
-function M.AssertAssessmentRunDuration(integer)
+function asserts.AssertAssessmentRunDuration(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected AssessmentRunDuration to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3544,33 +3547,33 @@ function M.AssertAssessmentRunDuration(integer)
 end
 
 function M.AssessmentRunDuration(integer)
-	M.AssertAssessmentRunDuration(integer)
+	asserts.AssertAssessmentRunDuration(integer)
 	return integer
 end
 
-function M.AssertListEventSubscriptionsMaxResults(integer)
+function asserts.AssertListEventSubscriptionsMaxResults(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected ListEventSubscriptionsMaxResults to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.ListEventSubscriptionsMaxResults(integer)
-	M.AssertListEventSubscriptionsMaxResults(integer)
+	asserts.AssertListEventSubscriptionsMaxResults(integer)
 	return integer
 end
 
-function M.AssertNumericVersion(integer)
+function asserts.AssertNumericVersion(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected NumericVersion to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.NumericVersion(integer)
-	M.AssertNumericVersion(integer)
+	asserts.AssertNumericVersion(integer)
 	return integer
 end
 
-function M.AssertIocConfidence(integer)
+function asserts.AssertIocConfidence(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected IocConfidence to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3578,622 +3581,622 @@ function M.AssertIocConfidence(integer)
 end
 
 function M.IocConfidence(integer)
-	M.AssertIocConfidence(integer)
+	asserts.AssertIocConfidence(integer)
 	return integer
 end
 
-function M.AssertBool(boolean)
+function asserts.AssertBool(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Bool to be of type 'boolean'")
 end
 
 function M.Bool(boolean)
-	M.AssertBool(boolean)
+	asserts.AssertBool(boolean)
 	return boolean
 end
 
-function M.AssertFailedItems(map)
+function asserts.AssertFailedItems(map)
 	assert(map)
 	assert(type(map) == "table", "Expected FailedItems to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertArn(k)
-		M.AssertFailedItemDetails(v)
+		asserts.AssertArn(k)
+		asserts.AssertFailedItemDetails(v)
 	end
 end
 
 function M.FailedItems(map)
-	M.AssertFailedItems(map)
+	asserts.AssertFailedItems(map)
 	return map
 end
 
-function M.AssertAssessmentRunFindingCounts(map)
+function asserts.AssertAssessmentRunFindingCounts(map)
 	assert(map)
 	assert(type(map) == "table", "Expected AssessmentRunFindingCounts to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertSeverity(k)
-		M.AssertFindingCount(v)
+		asserts.AssertSeverity(k)
+		asserts.AssertFindingCount(v)
 	end
 end
 
 function M.AssessmentRunFindingCounts(map)
-	M.AssertAssessmentRunFindingCounts(map)
+	asserts.AssertAssessmentRunFindingCounts(map)
 	return map
 end
 
-function M.AssertTimestamp(timestamp)
+function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 function M.Timestamp(timestamp)
-	M.AssertTimestamp(timestamp)
+	asserts.AssertTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertIpv4AddressList(list)
+function asserts.AssertIpv4AddressList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Ipv4AddressList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertIpv4Address(v)
+		asserts.AssertIpv4Address(v)
 	end
 end
 
 --  
 -- List of Ipv4Address objects
 function M.Ipv4AddressList(list)
-	M.AssertIpv4AddressList(list)
+	asserts.AssertIpv4AddressList(list)
 	return list
 end
 
-function M.AssertAssessmentRulesPackageArnList(list)
+function asserts.AssertAssessmentRulesPackageArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentRulesPackageArnList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.AssessmentRulesPackageArnList(list)
-	M.AssertAssessmentRulesPackageArnList(list)
+	asserts.AssertAssessmentRulesPackageArnList(list)
 	return list
 end
 
-function M.AssertAgentAlreadyRunningAssessmentList(list)
+function asserts.AssertAgentAlreadyRunningAssessmentList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentAlreadyRunningAssessmentList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertAgentAlreadyRunningAssessment(v)
+		asserts.AssertAgentAlreadyRunningAssessment(v)
 	end
 end
 
 --  
 -- List of AgentAlreadyRunningAssessment objects
 function M.AgentAlreadyRunningAssessmentList(list)
-	M.AssertAgentAlreadyRunningAssessmentList(list)
+	asserts.AssertAgentAlreadyRunningAssessmentList(list)
 	return list
 end
 
-function M.AssertAssessmentRunStateList(list)
+function asserts.AssertAssessmentRunStateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentRunStateList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertAssessmentRunState(v)
+		asserts.AssertAssessmentRunState(v)
 	end
 end
 
 --  
 -- List of AssessmentRunState objects
 function M.AssessmentRunStateList(list)
-	M.AssertAssessmentRunStateList(list)
+	asserts.AssertAssessmentRunStateList(list)
 	return list
 end
 
-function M.AssertAutoScalingGroupList(list)
+function asserts.AssertAutoScalingGroupList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AutoScalingGroupList to be of type ''table")
 	assert(#list <= 20, "Expected list to be contain 20 elements")
 	for _,v in ipairs(list) do
-		M.AssertAutoScalingGroup(v)
+		asserts.AssertAutoScalingGroup(v)
 	end
 end
 
 --  
 -- List of AutoScalingGroup objects
 function M.AutoScalingGroupList(list)
-	M.AssertAutoScalingGroupList(list)
+	asserts.AssertAutoScalingGroupList(list)
 	return list
 end
 
-function M.AssertAttributeList(list)
+function asserts.AssertAttributeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AttributeList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertAttribute(v)
+		asserts.AssertAttribute(v)
 	end
 end
 
 --  
 -- List of Attribute objects
 function M.AttributeList(list)
-	M.AssertAttributeList(list)
+	asserts.AssertAttributeList(list)
 	return list
 end
 
-function M.AssertEventSubscriptionList(list)
+function asserts.AssertEventSubscriptionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventSubscriptionList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertEventSubscription(v)
+		asserts.AssertEventSubscription(v)
 	end
 end
 
 --  
 -- List of EventSubscription objects
 function M.EventSubscriptionList(list)
-	M.AssertEventSubscriptionList(list)
+	asserts.AssertEventSubscriptionList(list)
 	return list
 end
 
-function M.AssertRuleNameList(list)
+function asserts.AssertRuleNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RuleNameList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertRuleName(v)
+		asserts.AssertRuleName(v)
 	end
 end
 
 --  
 -- List of RuleName objects
 function M.RuleNameList(list)
-	M.AssertRuleNameList(list)
+	asserts.AssertRuleNameList(list)
 	return list
 end
 
-function M.AssertResourceGroupList(list)
+function asserts.AssertResourceGroupList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourceGroupList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertResourceGroup(v)
+		asserts.AssertResourceGroup(v)
 	end
 end
 
 --  
 -- List of ResourceGroup objects
 function M.ResourceGroupList(list)
-	M.AssertResourceGroupList(list)
+	asserts.AssertResourceGroupList(list)
 	return list
 end
 
-function M.AssertAssessmentRunList(list)
+function asserts.AssertAssessmentRunList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentRunList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertAssessmentRun(v)
+		asserts.AssertAssessmentRun(v)
 	end
 end
 
 --  
 -- List of AssessmentRun objects
 function M.AssessmentRunList(list)
-	M.AssertAssessmentRunList(list)
+	asserts.AssertAssessmentRunList(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 
-function M.AssertRulesPackageList(list)
+function asserts.AssertRulesPackageList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RulesPackageList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertRulesPackage(v)
+		asserts.AssertRulesPackage(v)
 	end
 end
 
 --  
 -- List of RulesPackage objects
 function M.RulesPackageList(list)
-	M.AssertRulesPackageList(list)
+	asserts.AssertRulesPackageList(list)
 	return list
 end
 
-function M.AssertSeverityList(list)
+function asserts.AssertSeverityList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SeverityList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertSeverity(v)
+		asserts.AssertSeverity(v)
 	end
 end
 
 --  
 -- List of Severity objects
 function M.SeverityList(list)
-	M.AssertSeverityList(list)
+	asserts.AssertSeverityList(list)
 	return list
 end
 
-function M.AssertAssessmentTemplateList(list)
+function asserts.AssertAssessmentTemplateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentTemplateList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertAssessmentTemplate(v)
+		asserts.AssertAssessmentTemplate(v)
 	end
 end
 
 --  
 -- List of AssessmentTemplate objects
 function M.AssessmentTemplateList(list)
-	M.AssertAssessmentTemplateList(list)
+	asserts.AssertAssessmentTemplateList(list)
 	return list
 end
 
-function M.AssertAssessmentRunInProgressArnList(list)
+function asserts.AssertAssessmentRunInProgressArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentRunInProgressArnList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.AssessmentRunInProgressArnList(list)
-	M.AssertAssessmentRunInProgressArnList(list)
+	asserts.AssertAssessmentRunInProgressArnList(list)
 	return list
 end
 
-function M.AssertListReturnedArnList(list)
+function asserts.AssertListReturnedArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListReturnedArnList to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.ListReturnedArnList(list)
-	M.AssertListReturnedArnList(list)
+	asserts.AssertListReturnedArnList(list)
 	return list
 end
 
-function M.AssertAddRemoveAttributesFindingArnList(list)
+function asserts.AssertAddRemoveAttributesFindingArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AddRemoveAttributesFindingArnList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.AddRemoveAttributesFindingArnList(list)
-	M.AssertAddRemoveAttributesFindingArnList(list)
+	asserts.AssertAddRemoveAttributesFindingArnList(list)
 	return list
 end
 
-function M.AssertFindingList(list)
+function asserts.AssertFindingList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FindingList to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	for _,v in ipairs(list) do
-		M.AssertFinding(v)
+		asserts.AssertFinding(v)
 	end
 end
 
 --  
 -- List of Finding objects
 function M.FindingList(list)
-	M.AssertFindingList(list)
+	asserts.AssertFindingList(list)
 	return list
 end
 
-function M.AssertAgentHealthCodeList(list)
+function asserts.AssertAgentHealthCodeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentHealthCodeList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertAgentHealthCode(v)
+		asserts.AssertAgentHealthCode(v)
 	end
 end
 
 --  
 -- List of AgentHealthCode objects
 function M.AgentHealthCodeList(list)
-	M.AssertAgentHealthCodeList(list)
+	asserts.AssertAgentHealthCodeList(list)
 	return list
 end
 
-function M.AssertAgentHealthList(list)
+function asserts.AssertAgentHealthList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentHealthList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertAgentHealth(v)
+		asserts.AssertAgentHealth(v)
 	end
 end
 
 --  
 -- List of AgentHealth objects
 function M.AgentHealthList(list)
-	M.AssertAgentHealthList(list)
+	asserts.AssertAgentHealthList(list)
 	return list
 end
 
-function M.AssertAgentIdList(list)
+function asserts.AssertAgentIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentIdList to be of type ''table")
 	assert(#list <= 500, "Expected list to be contain 500 elements")
 	for _,v in ipairs(list) do
-		M.AssertAgentId(v)
+		asserts.AssertAgentId(v)
 	end
 end
 
 --  
 -- List of AgentId objects
 function M.AgentIdList(list)
-	M.AssertAgentIdList(list)
+	asserts.AssertAgentIdList(list)
 	return list
 end
 
-function M.AssertFilterRulesPackageArnList(list)
+function asserts.AssertFilterRulesPackageArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FilterRulesPackageArnList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.FilterRulesPackageArnList(list)
-	M.AssertFilterRulesPackageArnList(list)
+	asserts.AssertFilterRulesPackageArnList(list)
 	return list
 end
 
-function M.AssertAssessmentRunStateChangeList(list)
+function asserts.AssertAssessmentRunStateChangeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentRunStateChangeList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertAssessmentRunStateChange(v)
+		asserts.AssertAssessmentRunStateChange(v)
 	end
 end
 
 --  
 -- List of AssessmentRunStateChange objects
 function M.AssessmentRunStateChangeList(list)
-	M.AssertAssessmentRunStateChangeList(list)
+	asserts.AssertAssessmentRunStateChangeList(list)
 	return list
 end
 
-function M.AssertTelemetryMetadataList(list)
+function asserts.AssertTelemetryMetadataList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TelemetryMetadataList to be of type ''table")
 	assert(#list <= 5000, "Expected list to be contain 5000 elements")
 	for _,v in ipairs(list) do
-		M.AssertTelemetryMetadata(v)
+		asserts.AssertTelemetryMetadata(v)
 	end
 end
 
 --  
 -- List of TelemetryMetadata objects
 function M.TelemetryMetadataList(list)
-	M.AssertTelemetryMetadataList(list)
+	asserts.AssertTelemetryMetadataList(list)
 	return list
 end
 
-function M.AssertAssessmentRunNotificationList(list)
+function asserts.AssertAssessmentRunNotificationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentRunNotificationList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertAssessmentRunNotification(v)
+		asserts.AssertAssessmentRunNotification(v)
 	end
 end
 
 --  
 -- List of AssessmentRunNotification objects
 function M.AssessmentRunNotificationList(list)
-	M.AssertAssessmentRunNotificationList(list)
+	asserts.AssertAssessmentRunNotificationList(list)
 	return list
 end
 
-function M.AssertAssessmentRunAgentList(list)
+function asserts.AssertAssessmentRunAgentList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentRunAgentList to be of type ''table")
 	assert(#list <= 500, "Expected list to be contain 500 elements")
 	for _,v in ipairs(list) do
-		M.AssertAssessmentRunAgent(v)
+		asserts.AssertAssessmentRunAgent(v)
 	end
 end
 
 --  
 -- List of AssessmentRunAgent objects
 function M.AssessmentRunAgentList(list)
-	M.AssertAssessmentRunAgentList(list)
+	asserts.AssertAssessmentRunAgentList(list)
 	return list
 end
 
-function M.AssertBatchDescribeArnList(list)
+function asserts.AssertBatchDescribeArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BatchDescribeArnList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.BatchDescribeArnList(list)
-	M.AssertBatchDescribeArnList(list)
+	asserts.AssertBatchDescribeArnList(list)
 	return list
 end
 
-function M.AssertListParentArnList(list)
+function asserts.AssertListParentArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListParentArnList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.ListParentArnList(list)
-	M.AssertListParentArnList(list)
+	asserts.AssertListParentArnList(list)
 	return list
 end
 
-function M.AssertAssessmentTemplateRulesPackageArnList(list)
+function asserts.AssertAssessmentTemplateRulesPackageArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentTemplateRulesPackageArnList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertArn(v)
+		asserts.AssertArn(v)
 	end
 end
 
 --  
 -- List of Arn objects
 function M.AssessmentTemplateRulesPackageArnList(list)
-	M.AssertAssessmentTemplateRulesPackageArnList(list)
+	asserts.AssertAssessmentTemplateRulesPackageArnList(list)
 	return list
 end
 
-function M.AssertSubscriptionList(list)
+function asserts.AssertSubscriptionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubscriptionList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertSubscription(v)
+		asserts.AssertSubscription(v)
 	end
 end
 
 --  
 -- List of Subscription objects
 function M.SubscriptionList(list)
-	M.AssertSubscriptionList(list)
+	asserts.AssertSubscriptionList(list)
 	return list
 end
 
-function M.AssertUserAttributeKeyList(list)
+function asserts.AssertUserAttributeKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UserAttributeKeyList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertAttributeKey(v)
+		asserts.AssertAttributeKey(v)
 	end
 end
 
 --  
 -- List of AttributeKey objects
 function M.UserAttributeKeyList(list)
-	M.AssertUserAttributeKeyList(list)
+	asserts.AssertUserAttributeKeyList(list)
 	return list
 end
 
-function M.AssertAgentPreviewList(list)
+function asserts.AssertAgentPreviewList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AgentPreviewList to be of type ''table")
 	assert(#list <= 100, "Expected list to be contain 100 elements")
 	for _,v in ipairs(list) do
-		M.AssertAgentPreview(v)
+		asserts.AssertAgentPreview(v)
 	end
 end
 
 --  
 -- List of AgentPreview objects
 function M.AgentPreviewList(list)
-	M.AssertAgentPreviewList(list)
+	asserts.AssertAgentPreviewList(list)
 	return list
 end
 
-function M.AssertUserAttributeList(list)
+function asserts.AssertUserAttributeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UserAttributeList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertAttribute(v)
+		asserts.AssertAttribute(v)
 	end
 end
 
 --  
 -- List of Attribute objects
 function M.UserAttributeList(list)
-	M.AssertUserAttributeList(list)
+	asserts.AssertUserAttributeList(list)
 	return list
 end
 
-function M.AssertAssessmentTargetList(list)
+function asserts.AssertAssessmentTargetList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AssessmentTargetList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertAssessmentTarget(v)
+		asserts.AssertAssessmentTarget(v)
 	end
 end
 
 --  
 -- List of AssessmentTarget objects
 function M.AssessmentTargetList(list)
-	M.AssertAssessmentTargetList(list)
+	asserts.AssertAssessmentTargetList(list)
 	return list
 end
 
-function M.AssertResourceGroupTags(list)
+function asserts.AssertResourceGroupTags(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourceGroupTags to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertResourceGroupTag(v)
+		asserts.AssertResourceGroupTag(v)
 	end
 end
 
 --  
 -- List of ResourceGroupTag objects
 function M.ResourceGroupTags(list)
-	M.AssertResourceGroupTags(list)
+	asserts.AssertResourceGroupTags(list)
 	return list
 end
 
@@ -4344,10 +4347,8 @@ function M.StartAssessmentRunAsync(StartAssessmentRunRequest, cb)
 end
 
 --- DescribeCrossAccountAccessRole
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeCrossAccountAccessRoleAsync(, cb)
-	assert(, "You must provide a ")
+function M.DescribeCrossAccountAccessRoleAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeCrossAccountAccessRole",
@@ -4355,7 +4356,7 @@ function M.DescribeCrossAccountAccessRoleAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
+		request_handler(uri .. "/", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end

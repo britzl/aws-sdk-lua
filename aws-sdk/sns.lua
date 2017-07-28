@@ -18,765 +18,768 @@ M.metadata = {
 	uid = "sns-2010-03-31",
 }
 
-local SubscriptionLimitExceededException_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertSubscriptionLimitExceededException(struct)
+keys.SubscriptionLimitExceededException = { ["message"] = true, nil }
+
+function asserts.AssertSubscriptionLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubscriptionLimitExceededException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(SubscriptionLimitExceededException_keys[k], "SubscriptionLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.SubscriptionLimitExceededException[k], "SubscriptionLimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubscriptionLimitExceededException
 -- <p>Indicates that the customer already owns the maximum allowed number of subscriptions.</p>
--- @param message [string] <p>Indicates that the customer already owns the maximum allowed number of subscriptions.</p>
-function M.SubscriptionLimitExceededException(message, ...)
+-- @param _message [string] 
+function M.SubscriptionLimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionLimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertSubscriptionLimitExceededException(t)
+	asserts.AssertSubscriptionLimitExceededException(t)
 	return t
 end
 
-local CheckIfPhoneNumberIsOptedOutInput_keys = { "phoneNumber" = true, nil }
+keys.CheckIfPhoneNumberIsOptedOutInput = { ["phoneNumber"] = true, nil }
 
-function M.AssertCheckIfPhoneNumberIsOptedOutInput(struct)
+function asserts.AssertCheckIfPhoneNumberIsOptedOutInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CheckIfPhoneNumberIsOptedOutInput to be of type 'table'")
 	assert(struct["phoneNumber"], "Expected key phoneNumber to exist in table")
-	if struct["phoneNumber"] then M.AssertPhoneNumber(struct["phoneNumber"]) end
+	if struct["phoneNumber"] then asserts.AssertPhoneNumber(struct["phoneNumber"]) end
 	for k,_ in pairs(struct) do
-		assert(CheckIfPhoneNumberIsOptedOutInput_keys[k], "CheckIfPhoneNumberIsOptedOutInput contains unknown key " .. tostring(k))
+		assert(keys.CheckIfPhoneNumberIsOptedOutInput[k], "CheckIfPhoneNumberIsOptedOutInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CheckIfPhoneNumberIsOptedOutInput
 -- <p>The input for the <code>CheckIfPhoneNumberIsOptedOut</code> action.</p>
--- @param phoneNumber [PhoneNumber] <p>The phone number for which you want to check the opt out status.</p>
+-- @param _phoneNumber [PhoneNumber] <p>The phone number for which you want to check the opt out status.</p>
 -- Required parameter: phoneNumber
-function M.CheckIfPhoneNumberIsOptedOutInput(phoneNumber, ...)
+function M.CheckIfPhoneNumberIsOptedOutInput(_phoneNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CheckIfPhoneNumberIsOptedOutInput")
 	local t = { 
-		["phoneNumber"] = phoneNumber,
+		["phoneNumber"] = _phoneNumber,
 	}
-	M.AssertCheckIfPhoneNumberIsOptedOutInput(t)
+	asserts.AssertCheckIfPhoneNumberIsOptedOutInput(t)
 	return t
 end
 
-local GetEndpointAttributesResponse_keys = { "Attributes" = true, nil }
+keys.GetEndpointAttributesResponse = { ["Attributes"] = true, nil }
 
-function M.AssertGetEndpointAttributesResponse(struct)
+function asserts.AssertGetEndpointAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetEndpointAttributesResponse to be of type 'table'")
-	if struct["Attributes"] then M.AssertMapStringToString(struct["Attributes"]) end
+	if struct["Attributes"] then asserts.AssertMapStringToString(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(GetEndpointAttributesResponse_keys[k], "GetEndpointAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.GetEndpointAttributesResponse[k], "GetEndpointAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetEndpointAttributesResponse
 -- <p>Response from GetEndpointAttributes of the EndpointArn.</p>
--- @param Attributes [MapStringToString] <p>Attributes include the following:</p> <ul> <li> <p> <code>CustomUserData</code> -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p> </li> <li> <p> <code>Enabled</code> -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.</p> </li> <li> <p> <code>Token</code> -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.</p> </li> </ul>
-function M.GetEndpointAttributesResponse(Attributes, ...)
+-- @param _Attributes [MapStringToString] <p>Attributes include the following:</p> <ul> <li> <p> <code>CustomUserData</code> -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p> </li> <li> <p> <code>Enabled</code> -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.</p> </li> <li> <p> <code>Token</code> -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.</p> </li> </ul>
+function M.GetEndpointAttributesResponse(_Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEndpointAttributesResponse")
 	local t = { 
-		["Attributes"] = Attributes,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertGetEndpointAttributesResponse(t)
+	asserts.AssertGetEndpointAttributesResponse(t)
 	return t
 end
 
-local GetEndpointAttributesInput_keys = { "EndpointArn" = true, nil }
+keys.GetEndpointAttributesInput = { ["EndpointArn"] = true, nil }
 
-function M.AssertGetEndpointAttributesInput(struct)
+function asserts.AssertGetEndpointAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetEndpointAttributesInput to be of type 'table'")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetEndpointAttributesInput_keys[k], "GetEndpointAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.GetEndpointAttributesInput[k], "GetEndpointAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetEndpointAttributesInput
 -- <p>Input for GetEndpointAttributes action.</p>
--- @param EndpointArn [String] <p>EndpointArn for GetEndpointAttributes input.</p>
+-- @param _EndpointArn [String] <p>EndpointArn for GetEndpointAttributes input.</p>
 -- Required parameter: EndpointArn
-function M.GetEndpointAttributesInput(EndpointArn, ...)
+function M.GetEndpointAttributesInput(_EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEndpointAttributesInput")
 	local t = { 
-		["EndpointArn"] = EndpointArn,
+		["EndpointArn"] = _EndpointArn,
 	}
-	M.AssertGetEndpointAttributesInput(t)
+	asserts.AssertGetEndpointAttributesInput(t)
 	return t
 end
 
-local SetTopicAttributesInput_keys = { "AttributeName" = true, "AttributeValue" = true, "TopicArn" = true, nil }
+keys.SetTopicAttributesInput = { ["AttributeName"] = true, ["AttributeValue"] = true, ["TopicArn"] = true, nil }
 
-function M.AssertSetTopicAttributesInput(struct)
+function asserts.AssertSetTopicAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetTopicAttributesInput to be of type 'table'")
 	assert(struct["TopicArn"], "Expected key TopicArn to exist in table")
 	assert(struct["AttributeName"], "Expected key AttributeName to exist in table")
-	if struct["AttributeName"] then M.AssertattributeName(struct["AttributeName"]) end
-	if struct["AttributeValue"] then M.AssertattributeValue(struct["AttributeValue"]) end
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
+	if struct["AttributeName"] then asserts.AssertattributeName(struct["AttributeName"]) end
+	if struct["AttributeValue"] then asserts.AssertattributeValue(struct["AttributeValue"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SetTopicAttributesInput_keys[k], "SetTopicAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.SetTopicAttributesInput[k], "SetTopicAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetTopicAttributesInput
 -- <p>Input for SetTopicAttributes action.</p>
--- @param AttributeName [attributeName] <p>The name of the attribute you want to set. Only a subset of the topic's attributes are mutable.</p> <p>Valid values: <code>Policy</code> | <code>DisplayName</code> | <code>DeliveryPolicy</code> </p>
--- @param AttributeValue [attributeValue] <p>The new value for the attribute.</p>
--- @param TopicArn [topicARN] <p>The ARN of the topic to modify.</p>
+-- @param _AttributeName [attributeName] <p>The name of the attribute you want to set. Only a subset of the topic's attributes are mutable.</p> <p>Valid values: <code>Policy</code> | <code>DisplayName</code> | <code>DeliveryPolicy</code> </p>
+-- @param _AttributeValue [attributeValue] <p>The new value for the attribute.</p>
+-- @param _TopicArn [topicARN] <p>The ARN of the topic to modify.</p>
 -- Required parameter: TopicArn
 -- Required parameter: AttributeName
-function M.SetTopicAttributesInput(AttributeName, AttributeValue, TopicArn, ...)
+function M.SetTopicAttributesInput(_AttributeName, _AttributeValue, _TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetTopicAttributesInput")
 	local t = { 
-		["AttributeName"] = AttributeName,
-		["AttributeValue"] = AttributeValue,
-		["TopicArn"] = TopicArn,
+		["AttributeName"] = _AttributeName,
+		["AttributeValue"] = _AttributeValue,
+		["TopicArn"] = _TopicArn,
 	}
-	M.AssertSetTopicAttributesInput(t)
+	asserts.AssertSetTopicAttributesInput(t)
 	return t
 end
 
-local CreatePlatformApplicationInput_keys = { "Platform" = true, "Name" = true, "Attributes" = true, nil }
+keys.CreatePlatformApplicationInput = { ["Platform"] = true, ["Name"] = true, ["Attributes"] = true, nil }
 
-function M.AssertCreatePlatformApplicationInput(struct)
+function asserts.AssertCreatePlatformApplicationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePlatformApplicationInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Platform"], "Expected key Platform to exist in table")
 	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["Platform"] then M.AssertString(struct["Platform"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["Attributes"] then M.AssertMapStringToString(struct["Attributes"]) end
+	if struct["Platform"] then asserts.AssertString(struct["Platform"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["Attributes"] then asserts.AssertMapStringToString(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePlatformApplicationInput_keys[k], "CreatePlatformApplicationInput contains unknown key " .. tostring(k))
+		assert(keys.CreatePlatformApplicationInput[k], "CreatePlatformApplicationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePlatformApplicationInput
 -- <p>Input for CreatePlatformApplication action.</p>
--- @param Platform [String] <p>The following platforms are supported: ADM (Amazon Device Messaging), APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Google Cloud Messaging).</p>
--- @param Name [String] <p>Application names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long.</p>
--- @param Attributes [MapStringToString] <p>For a list of attributes, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html">SetPlatformApplicationAttributes</a> </p>
+-- @param _Platform [String] <p>The following platforms are supported: ADM (Amazon Device Messaging), APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Google Cloud Messaging).</p>
+-- @param _Name [String] <p>Application names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long.</p>
+-- @param _Attributes [MapStringToString] <p>For a list of attributes, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html">SetPlatformApplicationAttributes</a> </p>
 -- Required parameter: Name
 -- Required parameter: Platform
 -- Required parameter: Attributes
-function M.CreatePlatformApplicationInput(Platform, Name, Attributes, ...)
+function M.CreatePlatformApplicationInput(_Platform, _Name, _Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlatformApplicationInput")
 	local t = { 
-		["Platform"] = Platform,
-		["Name"] = Name,
-		["Attributes"] = Attributes,
+		["Platform"] = _Platform,
+		["Name"] = _Name,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertCreatePlatformApplicationInput(t)
+	asserts.AssertCreatePlatformApplicationInput(t)
 	return t
 end
 
-local CreatePlatformEndpointInput_keys = { "Attributes" = true, "Token" = true, "PlatformApplicationArn" = true, "CustomUserData" = true, nil }
+keys.CreatePlatformEndpointInput = { ["Attributes"] = true, ["Token"] = true, ["PlatformApplicationArn"] = true, ["CustomUserData"] = true, nil }
 
-function M.AssertCreatePlatformEndpointInput(struct)
+function asserts.AssertCreatePlatformEndpointInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePlatformEndpointInput to be of type 'table'")
 	assert(struct["PlatformApplicationArn"], "Expected key PlatformApplicationArn to exist in table")
 	assert(struct["Token"], "Expected key Token to exist in table")
-	if struct["Attributes"] then M.AssertMapStringToString(struct["Attributes"]) end
-	if struct["Token"] then M.AssertString(struct["Token"]) end
-	if struct["PlatformApplicationArn"] then M.AssertString(struct["PlatformApplicationArn"]) end
-	if struct["CustomUserData"] then M.AssertString(struct["CustomUserData"]) end
+	if struct["Attributes"] then asserts.AssertMapStringToString(struct["Attributes"]) end
+	if struct["Token"] then asserts.AssertString(struct["Token"]) end
+	if struct["PlatformApplicationArn"] then asserts.AssertString(struct["PlatformApplicationArn"]) end
+	if struct["CustomUserData"] then asserts.AssertString(struct["CustomUserData"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePlatformEndpointInput_keys[k], "CreatePlatformEndpointInput contains unknown key " .. tostring(k))
+		assert(keys.CreatePlatformEndpointInput[k], "CreatePlatformEndpointInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePlatformEndpointInput
 -- <p>Input for CreatePlatformEndpoint action.</p>
--- @param Attributes [MapStringToString] <p>For a list of attributes, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html">SetEndpointAttributes</a>.</p>
--- @param Token [String] <p>Unique identifier created by the notification service for an app on a device. The specific name for Token will vary, depending on which notification service is being used. For example, when using APNS as the notification service, you need the device token. Alternatively, when using GCM or ADM, the device token equivalent is called the registration ID.</p>
--- @param PlatformApplicationArn [String] <p>PlatformApplicationArn returned from CreatePlatformApplication is used to create a an endpoint.</p>
--- @param CustomUserData [String] <p>Arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p>
+-- @param _Attributes [MapStringToString] <p>For a list of attributes, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html">SetEndpointAttributes</a>.</p>
+-- @param _Token [String] <p>Unique identifier created by the notification service for an app on a device. The specific name for Token will vary, depending on which notification service is being used. For example, when using APNS as the notification service, you need the device token. Alternatively, when using GCM or ADM, the device token equivalent is called the registration ID.</p>
+-- @param _PlatformApplicationArn [String] <p>PlatformApplicationArn returned from CreatePlatformApplication is used to create a an endpoint.</p>
+-- @param _CustomUserData [String] <p>Arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p>
 -- Required parameter: PlatformApplicationArn
 -- Required parameter: Token
-function M.CreatePlatformEndpointInput(Attributes, Token, PlatformApplicationArn, CustomUserData, ...)
+function M.CreatePlatformEndpointInput(_Attributes, _Token, _PlatformApplicationArn, _CustomUserData, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlatformEndpointInput")
 	local t = { 
-		["Attributes"] = Attributes,
-		["Token"] = Token,
-		["PlatformApplicationArn"] = PlatformApplicationArn,
-		["CustomUserData"] = CustomUserData,
+		["Attributes"] = _Attributes,
+		["Token"] = _Token,
+		["PlatformApplicationArn"] = _PlatformApplicationArn,
+		["CustomUserData"] = _CustomUserData,
 	}
-	M.AssertCreatePlatformEndpointInput(t)
+	asserts.AssertCreatePlatformEndpointInput(t)
 	return t
 end
 
-local ConfirmSubscriptionInput_keys = { "Token" = true, "AuthenticateOnUnsubscribe" = true, "TopicArn" = true, nil }
+keys.ConfirmSubscriptionInput = { ["Token"] = true, ["AuthenticateOnUnsubscribe"] = true, ["TopicArn"] = true, nil }
 
-function M.AssertConfirmSubscriptionInput(struct)
+function asserts.AssertConfirmSubscriptionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmSubscriptionInput to be of type 'table'")
 	assert(struct["TopicArn"], "Expected key TopicArn to exist in table")
 	assert(struct["Token"], "Expected key Token to exist in table")
-	if struct["Token"] then M.Asserttoken(struct["Token"]) end
-	if struct["AuthenticateOnUnsubscribe"] then M.AssertauthenticateOnUnsubscribe(struct["AuthenticateOnUnsubscribe"]) end
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
+	if struct["Token"] then asserts.Asserttoken(struct["Token"]) end
+	if struct["AuthenticateOnUnsubscribe"] then asserts.AssertauthenticateOnUnsubscribe(struct["AuthenticateOnUnsubscribe"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ConfirmSubscriptionInput_keys[k], "ConfirmSubscriptionInput contains unknown key " .. tostring(k))
+		assert(keys.ConfirmSubscriptionInput[k], "ConfirmSubscriptionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConfirmSubscriptionInput
 -- <p>Input for ConfirmSubscription action.</p>
--- @param Token [token] <p>Short-lived token sent to an endpoint during the <code>Subscribe</code> action.</p>
--- @param AuthenticateOnUnsubscribe [authenticateOnUnsubscribe] <p>Disallows unauthenticated unsubscribes of the subscription. If the value of this parameter is <code>true</code> and the request has an AWS signature, then only the topic owner and the subscription owner can unsubscribe the endpoint. The unsubscribe action requires AWS authentication. </p>
--- @param TopicArn [topicARN] <p>The ARN of the topic for which you wish to confirm a subscription.</p>
+-- @param _Token [token] <p>Short-lived token sent to an endpoint during the <code>Subscribe</code> action.</p>
+-- @param _AuthenticateOnUnsubscribe [authenticateOnUnsubscribe] <p>Disallows unauthenticated unsubscribes of the subscription. If the value of this parameter is <code>true</code> and the request has an AWS signature, then only the topic owner and the subscription owner can unsubscribe the endpoint. The unsubscribe action requires AWS authentication. </p>
+-- @param _TopicArn [topicARN] <p>The ARN of the topic for which you wish to confirm a subscription.</p>
 -- Required parameter: TopicArn
 -- Required parameter: Token
-function M.ConfirmSubscriptionInput(Token, AuthenticateOnUnsubscribe, TopicArn, ...)
+function M.ConfirmSubscriptionInput(_Token, _AuthenticateOnUnsubscribe, _TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmSubscriptionInput")
 	local t = { 
-		["Token"] = Token,
-		["AuthenticateOnUnsubscribe"] = AuthenticateOnUnsubscribe,
-		["TopicArn"] = TopicArn,
+		["Token"] = _Token,
+		["AuthenticateOnUnsubscribe"] = _AuthenticateOnUnsubscribe,
+		["TopicArn"] = _TopicArn,
 	}
-	M.AssertConfirmSubscriptionInput(t)
+	asserts.AssertConfirmSubscriptionInput(t)
 	return t
 end
 
-local ListSubscriptionsByTopicInput_keys = { "NextToken" = true, "TopicArn" = true, nil }
+keys.ListSubscriptionsByTopicInput = { ["NextToken"] = true, ["TopicArn"] = true, nil }
 
-function M.AssertListSubscriptionsByTopicInput(struct)
+function asserts.AssertListSubscriptionsByTopicInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionsByTopicInput to be of type 'table'")
 	assert(struct["TopicArn"], "Expected key TopicArn to exist in table")
-	if struct["NextToken"] then M.AssertnextToken(struct["NextToken"]) end
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
+	if struct["NextToken"] then asserts.AssertnextToken(struct["NextToken"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSubscriptionsByTopicInput_keys[k], "ListSubscriptionsByTopicInput contains unknown key " .. tostring(k))
+		assert(keys.ListSubscriptionsByTopicInput[k], "ListSubscriptionsByTopicInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSubscriptionsByTopicInput
 -- <p>Input for ListSubscriptionsByTopic action.</p>
--- @param NextToken [nextToken] <p>Token returned by the previous <code>ListSubscriptionsByTopic</code> request.</p>
--- @param TopicArn [topicARN] <p>The ARN of the topic for which you wish to find subscriptions.</p>
+-- @param _NextToken [nextToken] <p>Token returned by the previous <code>ListSubscriptionsByTopic</code> request.</p>
+-- @param _TopicArn [topicARN] <p>The ARN of the topic for which you wish to find subscriptions.</p>
 -- Required parameter: TopicArn
-function M.ListSubscriptionsByTopicInput(NextToken, TopicArn, ...)
+function M.ListSubscriptionsByTopicInput(_NextToken, _TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionsByTopicInput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["TopicArn"] = TopicArn,
+		["NextToken"] = _NextToken,
+		["TopicArn"] = _TopicArn,
 	}
-	M.AssertListSubscriptionsByTopicInput(t)
+	asserts.AssertListSubscriptionsByTopicInput(t)
 	return t
 end
 
-local PlatformApplication_keys = { "Attributes" = true, "PlatformApplicationArn" = true, nil }
+keys.PlatformApplication = { ["Attributes"] = true, ["PlatformApplicationArn"] = true, nil }
 
-function M.AssertPlatformApplication(struct)
+function asserts.AssertPlatformApplication(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PlatformApplication to be of type 'table'")
-	if struct["Attributes"] then M.AssertMapStringToString(struct["Attributes"]) end
-	if struct["PlatformApplicationArn"] then M.AssertString(struct["PlatformApplicationArn"]) end
+	if struct["Attributes"] then asserts.AssertMapStringToString(struct["Attributes"]) end
+	if struct["PlatformApplicationArn"] then asserts.AssertString(struct["PlatformApplicationArn"]) end
 	for k,_ in pairs(struct) do
-		assert(PlatformApplication_keys[k], "PlatformApplication contains unknown key " .. tostring(k))
+		assert(keys.PlatformApplication[k], "PlatformApplication contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PlatformApplication
 -- <p>Platform application object.</p>
--- @param Attributes [MapStringToString] <p>Attributes for platform application object.</p>
--- @param PlatformApplicationArn [String] <p>PlatformApplicationArn for platform application object.</p>
-function M.PlatformApplication(Attributes, PlatformApplicationArn, ...)
+-- @param _Attributes [MapStringToString] <p>Attributes for platform application object.</p>
+-- @param _PlatformApplicationArn [String] <p>PlatformApplicationArn for platform application object.</p>
+function M.PlatformApplication(_Attributes, _PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformApplication")
 	local t = { 
-		["Attributes"] = Attributes,
-		["PlatformApplicationArn"] = PlatformApplicationArn,
+		["Attributes"] = _Attributes,
+		["PlatformApplicationArn"] = _PlatformApplicationArn,
 	}
-	M.AssertPlatformApplication(t)
+	asserts.AssertPlatformApplication(t)
 	return t
 end
 
-local EndpointDisabledException_keys = { "message" = true, nil }
+keys.EndpointDisabledException = { ["message"] = true, nil }
 
-function M.AssertEndpointDisabledException(struct)
+function asserts.AssertEndpointDisabledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EndpointDisabledException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(EndpointDisabledException_keys[k], "EndpointDisabledException contains unknown key " .. tostring(k))
+		assert(keys.EndpointDisabledException[k], "EndpointDisabledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EndpointDisabledException
 -- <p>Exception error indicating endpoint disabled.</p>
--- @param message [string] <p>Message for endpoint disabled.</p>
-function M.EndpointDisabledException(message, ...)
+-- @param _message [string] <p>Message for endpoint disabled.</p>
+function M.EndpointDisabledException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EndpointDisabledException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertEndpointDisabledException(t)
+	asserts.AssertEndpointDisabledException(t)
 	return t
 end
 
-local GetSMSAttributesResponse_keys = { "attributes" = true, nil }
+keys.GetSMSAttributesResponse = { ["attributes"] = true, nil }
 
-function M.AssertGetSMSAttributesResponse(struct)
+function asserts.AssertGetSMSAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSMSAttributesResponse to be of type 'table'")
-	if struct["attributes"] then M.AssertMapStringToString(struct["attributes"]) end
+	if struct["attributes"] then asserts.AssertMapStringToString(struct["attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSMSAttributesResponse_keys[k], "GetSMSAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.GetSMSAttributesResponse[k], "GetSMSAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSMSAttributesResponse
 -- <p>The response from the <code>GetSMSAttributes</code> request.</p>
--- @param attributes [MapStringToString] <p>The SMS attribute names and their values.</p>
-function M.GetSMSAttributesResponse(attributes, ...)
+-- @param _attributes [MapStringToString] <p>The SMS attribute names and their values.</p>
+function M.GetSMSAttributesResponse(_attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSMSAttributesResponse")
 	local t = { 
-		["attributes"] = attributes,
+		["attributes"] = _attributes,
 	}
-	M.AssertGetSMSAttributesResponse(t)
+	asserts.AssertGetSMSAttributesResponse(t)
 	return t
 end
 
-local Topic_keys = { "TopicArn" = true, nil }
+keys.Topic = { ["TopicArn"] = true, nil }
 
-function M.AssertTopic(struct)
+function asserts.AssertTopic(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Topic to be of type 'table'")
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(Topic_keys[k], "Topic contains unknown key " .. tostring(k))
+		assert(keys.Topic[k], "Topic contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Topic
 -- <p>A wrapper type for the topic's Amazon Resource Name (ARN). To retrieve a topic's attributes, use <code>GetTopicAttributes</code>.</p>
--- @param TopicArn [topicARN] <p>The topic's ARN.</p>
-function M.Topic(TopicArn, ...)
+-- @param _TopicArn [topicARN] <p>The topic's ARN.</p>
+function M.Topic(_TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Topic")
 	local t = { 
-		["TopicArn"] = TopicArn,
+		["TopicArn"] = _TopicArn,
 	}
-	M.AssertTopic(t)
+	asserts.AssertTopic(t)
 	return t
 end
 
-local ListPhoneNumbersOptedOutInput_keys = { "nextToken" = true, nil }
+keys.ListPhoneNumbersOptedOutInput = { ["nextToken"] = true, nil }
 
-function M.AssertListPhoneNumbersOptedOutInput(struct)
+function asserts.AssertListPhoneNumbersOptedOutInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPhoneNumbersOptedOutInput to be of type 'table'")
-	if struct["nextToken"] then M.Assertstring(struct["nextToken"]) end
+	if struct["nextToken"] then asserts.Assertstring(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPhoneNumbersOptedOutInput_keys[k], "ListPhoneNumbersOptedOutInput contains unknown key " .. tostring(k))
+		assert(keys.ListPhoneNumbersOptedOutInput[k], "ListPhoneNumbersOptedOutInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPhoneNumbersOptedOutInput
 -- <p>The input for the <code>ListPhoneNumbersOptedOut</code> action.</p>
--- @param nextToken [string] <p>A <code>NextToken</code> string is used when you call the <code>ListPhoneNumbersOptedOut</code> action to retrieve additional records that are available after the first page of results.</p>
-function M.ListPhoneNumbersOptedOutInput(nextToken, ...)
+-- @param _nextToken [string] <p>A <code>NextToken</code> string is used when you call the <code>ListPhoneNumbersOptedOut</code> action to retrieve additional records that are available after the first page of results.</p>
+function M.ListPhoneNumbersOptedOutInput(_nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPhoneNumbersOptedOutInput")
 	local t = { 
-		["nextToken"] = nextToken,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertListPhoneNumbersOptedOutInput(t)
+	asserts.AssertListPhoneNumbersOptedOutInput(t)
 	return t
 end
 
-local Subscription_keys = { "Owner" = true, "Endpoint" = true, "Protocol" = true, "TopicArn" = true, "SubscriptionArn" = true, nil }
+keys.Subscription = { ["Owner"] = true, ["Endpoint"] = true, ["Protocol"] = true, ["TopicArn"] = true, ["SubscriptionArn"] = true, nil }
 
-function M.AssertSubscription(struct)
+function asserts.AssertSubscription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Subscription to be of type 'table'")
-	if struct["Owner"] then M.Assertaccount(struct["Owner"]) end
-	if struct["Endpoint"] then M.Assertendpoint(struct["Endpoint"]) end
-	if struct["Protocol"] then M.Assertprotocol(struct["Protocol"]) end
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
-	if struct["SubscriptionArn"] then M.AssertsubscriptionARN(struct["SubscriptionArn"]) end
+	if struct["Owner"] then asserts.Assertaccount(struct["Owner"]) end
+	if struct["Endpoint"] then asserts.Assertendpoint(struct["Endpoint"]) end
+	if struct["Protocol"] then asserts.Assertprotocol(struct["Protocol"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
+	if struct["SubscriptionArn"] then asserts.AssertsubscriptionARN(struct["SubscriptionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(Subscription_keys[k], "Subscription contains unknown key " .. tostring(k))
+		assert(keys.Subscription[k], "Subscription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Subscription
 -- <p>A wrapper type for the attributes of an Amazon SNS subscription.</p>
--- @param Owner [account] <p>The subscription's owner.</p>
--- @param Endpoint [endpoint] <p>The subscription's endpoint (format depends on the protocol).</p>
--- @param Protocol [protocol] <p>The subscription's protocol.</p>
--- @param TopicArn [topicARN] <p>The ARN of the subscription's topic.</p>
--- @param SubscriptionArn [subscriptionARN] <p>The subscription's ARN.</p>
-function M.Subscription(Owner, Endpoint, Protocol, TopicArn, SubscriptionArn, ...)
+-- @param _Owner [account] <p>The subscription's owner.</p>
+-- @param _Endpoint [endpoint] <p>The subscription's endpoint (format depends on the protocol).</p>
+-- @param _Protocol [protocol] <p>The subscription's protocol.</p>
+-- @param _TopicArn [topicARN] <p>The ARN of the subscription's topic.</p>
+-- @param _SubscriptionArn [subscriptionARN] <p>The subscription's ARN.</p>
+function M.Subscription(_Owner, _Endpoint, _Protocol, _TopicArn, _SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
 	local t = { 
-		["Owner"] = Owner,
-		["Endpoint"] = Endpoint,
-		["Protocol"] = Protocol,
-		["TopicArn"] = TopicArn,
-		["SubscriptionArn"] = SubscriptionArn,
+		["Owner"] = _Owner,
+		["Endpoint"] = _Endpoint,
+		["Protocol"] = _Protocol,
+		["TopicArn"] = _TopicArn,
+		["SubscriptionArn"] = _SubscriptionArn,
 	}
-	M.AssertSubscription(t)
+	asserts.AssertSubscription(t)
 	return t
 end
 
-local ListSubscriptionsResponse_keys = { "NextToken" = true, "Subscriptions" = true, nil }
+keys.ListSubscriptionsResponse = { ["NextToken"] = true, ["Subscriptions"] = true, nil }
 
-function M.AssertListSubscriptionsResponse(struct)
+function asserts.AssertListSubscriptionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertnextToken(struct["NextToken"]) end
-	if struct["Subscriptions"] then M.AssertSubscriptionsList(struct["Subscriptions"]) end
+	if struct["NextToken"] then asserts.AssertnextToken(struct["NextToken"]) end
+	if struct["Subscriptions"] then asserts.AssertSubscriptionsList(struct["Subscriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSubscriptionsResponse_keys[k], "ListSubscriptionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListSubscriptionsResponse[k], "ListSubscriptionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSubscriptionsResponse
 -- <p>Response for ListSubscriptions action</p>
--- @param NextToken [nextToken] <p>Token to pass along to the next <code>ListSubscriptions</code> request. This element is returned if there are more subscriptions to retrieve.</p>
--- @param Subscriptions [SubscriptionsList] <p>A list of subscriptions.</p>
-function M.ListSubscriptionsResponse(NextToken, Subscriptions, ...)
+-- @param _NextToken [nextToken] <p>Token to pass along to the next <code>ListSubscriptions</code> request. This element is returned if there are more subscriptions to retrieve.</p>
+-- @param _Subscriptions [SubscriptionsList] <p>A list of subscriptions.</p>
+function M.ListSubscriptionsResponse(_NextToken, _Subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Subscriptions"] = Subscriptions,
+		["NextToken"] = _NextToken,
+		["Subscriptions"] = _Subscriptions,
 	}
-	M.AssertListSubscriptionsResponse(t)
+	asserts.AssertListSubscriptionsResponse(t)
 	return t
 end
 
-local ListTopicsResponse_keys = { "Topics" = true, "NextToken" = true, nil }
+keys.ListTopicsResponse = { ["Topics"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListTopicsResponse(struct)
+function asserts.AssertListTopicsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTopicsResponse to be of type 'table'")
-	if struct["Topics"] then M.AssertTopicsList(struct["Topics"]) end
-	if struct["NextToken"] then M.AssertnextToken(struct["NextToken"]) end
+	if struct["Topics"] then asserts.AssertTopicsList(struct["Topics"]) end
+	if struct["NextToken"] then asserts.AssertnextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTopicsResponse_keys[k], "ListTopicsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTopicsResponse[k], "ListTopicsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTopicsResponse
 -- <p>Response for ListTopics action.</p>
--- @param Topics [TopicsList] <p>A list of topic ARNs.</p>
--- @param NextToken [nextToken] <p>Token to pass along to the next <code>ListTopics</code> request. This element is returned if there are additional topics to retrieve.</p>
-function M.ListTopicsResponse(Topics, NextToken, ...)
+-- @param _Topics [TopicsList] <p>A list of topic ARNs.</p>
+-- @param _NextToken [nextToken] <p>Token to pass along to the next <code>ListTopics</code> request. This element is returned if there are additional topics to retrieve.</p>
+function M.ListTopicsResponse(_Topics, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTopicsResponse")
 	local t = { 
-		["Topics"] = Topics,
-		["NextToken"] = NextToken,
+		["Topics"] = _Topics,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListTopicsResponse(t)
+	asserts.AssertListTopicsResponse(t)
 	return t
 end
 
-local OptInPhoneNumberInput_keys = { "phoneNumber" = true, nil }
+keys.OptInPhoneNumberInput = { ["phoneNumber"] = true, nil }
 
-function M.AssertOptInPhoneNumberInput(struct)
+function asserts.AssertOptInPhoneNumberInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OptInPhoneNumberInput to be of type 'table'")
 	assert(struct["phoneNumber"], "Expected key phoneNumber to exist in table")
-	if struct["phoneNumber"] then M.AssertPhoneNumber(struct["phoneNumber"]) end
+	if struct["phoneNumber"] then asserts.AssertPhoneNumber(struct["phoneNumber"]) end
 	for k,_ in pairs(struct) do
-		assert(OptInPhoneNumberInput_keys[k], "OptInPhoneNumberInput contains unknown key " .. tostring(k))
+		assert(keys.OptInPhoneNumberInput[k], "OptInPhoneNumberInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type OptInPhoneNumberInput
 -- <p>Input for the OptInPhoneNumber action.</p>
--- @param phoneNumber [PhoneNumber] <p>The phone number to opt in.</p>
+-- @param _phoneNumber [PhoneNumber] <p>The phone number to opt in.</p>
 -- Required parameter: phoneNumber
-function M.OptInPhoneNumberInput(phoneNumber, ...)
+function M.OptInPhoneNumberInput(_phoneNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptInPhoneNumberInput")
 	local t = { 
-		["phoneNumber"] = phoneNumber,
+		["phoneNumber"] = _phoneNumber,
 	}
-	M.AssertOptInPhoneNumberInput(t)
+	asserts.AssertOptInPhoneNumberInput(t)
 	return t
 end
 
-local ListPlatformApplicationsInput_keys = { "NextToken" = true, nil }
+keys.ListPlatformApplicationsInput = { ["NextToken"] = true, nil }
 
-function M.AssertListPlatformApplicationsInput(struct)
+function asserts.AssertListPlatformApplicationsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPlatformApplicationsInput to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPlatformApplicationsInput_keys[k], "ListPlatformApplicationsInput contains unknown key " .. tostring(k))
+		assert(keys.ListPlatformApplicationsInput[k], "ListPlatformApplicationsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPlatformApplicationsInput
 -- <p>Input for ListPlatformApplications action.</p>
--- @param NextToken [String] <p>NextToken string is used when calling ListPlatformApplications action to retrieve additional records that are available after the first page results.</p>
-function M.ListPlatformApplicationsInput(NextToken, ...)
+-- @param _NextToken [String] <p>NextToken string is used when calling ListPlatformApplications action to retrieve additional records that are available after the first page results.</p>
+function M.ListPlatformApplicationsInput(_NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPlatformApplicationsInput")
 	local t = { 
-		["NextToken"] = NextToken,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListPlatformApplicationsInput(t)
+	asserts.AssertListPlatformApplicationsInput(t)
 	return t
 end
 
-local GetSubscriptionAttributesInput_keys = { "SubscriptionArn" = true, nil }
+keys.GetSubscriptionAttributesInput = { ["SubscriptionArn"] = true, nil }
 
-function M.AssertGetSubscriptionAttributesInput(struct)
+function asserts.AssertGetSubscriptionAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSubscriptionAttributesInput to be of type 'table'")
 	assert(struct["SubscriptionArn"], "Expected key SubscriptionArn to exist in table")
-	if struct["SubscriptionArn"] then M.AssertsubscriptionARN(struct["SubscriptionArn"]) end
+	if struct["SubscriptionArn"] then asserts.AssertsubscriptionARN(struct["SubscriptionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSubscriptionAttributesInput_keys[k], "GetSubscriptionAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.GetSubscriptionAttributesInput[k], "GetSubscriptionAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSubscriptionAttributesInput
 -- <p>Input for GetSubscriptionAttributes.</p>
--- @param SubscriptionArn [subscriptionARN] <p>The ARN of the subscription whose properties you want to get.</p>
+-- @param _SubscriptionArn [subscriptionARN] <p>The ARN of the subscription whose properties you want to get.</p>
 -- Required parameter: SubscriptionArn
-function M.GetSubscriptionAttributesInput(SubscriptionArn, ...)
+function M.GetSubscriptionAttributesInput(_SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionAttributesInput")
 	local t = { 
-		["SubscriptionArn"] = SubscriptionArn,
+		["SubscriptionArn"] = _SubscriptionArn,
 	}
-	M.AssertGetSubscriptionAttributesInput(t)
+	asserts.AssertGetSubscriptionAttributesInput(t)
 	return t
 end
 
-local CreateEndpointResponse_keys = { "EndpointArn" = true, nil }
+keys.CreateEndpointResponse = { ["EndpointArn"] = true, nil }
 
-function M.AssertCreateEndpointResponse(struct)
+function asserts.AssertCreateEndpointResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateEndpointResponse to be of type 'table'")
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateEndpointResponse_keys[k], "CreateEndpointResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateEndpointResponse[k], "CreateEndpointResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateEndpointResponse
 -- <p>Response from CreateEndpoint action.</p>
--- @param EndpointArn [String] <p>EndpointArn returned from CreateEndpoint action.</p>
-function M.CreateEndpointResponse(EndpointArn, ...)
+-- @param _EndpointArn [String] <p>EndpointArn returned from CreateEndpoint action.</p>
+function M.CreateEndpointResponse(_EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEndpointResponse")
 	local t = { 
-		["EndpointArn"] = EndpointArn,
+		["EndpointArn"] = _EndpointArn,
 	}
-	M.AssertCreateEndpointResponse(t)
+	asserts.AssertCreateEndpointResponse(t)
 	return t
 end
 
-local NotFoundException_keys = { "message" = true, nil }
+keys.NotFoundException = { ["message"] = true, nil }
 
-function M.AssertNotFoundException(struct)
+function asserts.AssertNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotFoundException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotFoundException_keys[k], "NotFoundException contains unknown key " .. tostring(k))
+		assert(keys.NotFoundException[k], "NotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotFoundException
 -- <p>Indicates that the requested resource does not exist.</p>
--- @param message [string] <p>Indicates that the requested resource does not exist.</p>
-function M.NotFoundException(message, ...)
+-- @param _message [string] 
+function M.NotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertNotFoundException(t)
+	asserts.AssertNotFoundException(t)
 	return t
 end
 
-local GetPlatformApplicationAttributesInput_keys = { "PlatformApplicationArn" = true, nil }
+keys.GetPlatformApplicationAttributesInput = { ["PlatformApplicationArn"] = true, nil }
 
-function M.AssertGetPlatformApplicationAttributesInput(struct)
+function asserts.AssertGetPlatformApplicationAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetPlatformApplicationAttributesInput to be of type 'table'")
 	assert(struct["PlatformApplicationArn"], "Expected key PlatformApplicationArn to exist in table")
-	if struct["PlatformApplicationArn"] then M.AssertString(struct["PlatformApplicationArn"]) end
+	if struct["PlatformApplicationArn"] then asserts.AssertString(struct["PlatformApplicationArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetPlatformApplicationAttributesInput_keys[k], "GetPlatformApplicationAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.GetPlatformApplicationAttributesInput[k], "GetPlatformApplicationAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetPlatformApplicationAttributesInput
 -- <p>Input for GetPlatformApplicationAttributes action.</p>
--- @param PlatformApplicationArn [String] <p>PlatformApplicationArn for GetPlatformApplicationAttributesInput.</p>
+-- @param _PlatformApplicationArn [String] <p>PlatformApplicationArn for GetPlatformApplicationAttributesInput.</p>
 -- Required parameter: PlatformApplicationArn
-function M.GetPlatformApplicationAttributesInput(PlatformApplicationArn, ...)
+function M.GetPlatformApplicationAttributesInput(_PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPlatformApplicationAttributesInput")
 	local t = { 
-		["PlatformApplicationArn"] = PlatformApplicationArn,
+		["PlatformApplicationArn"] = _PlatformApplicationArn,
 	}
-	M.AssertGetPlatformApplicationAttributesInput(t)
+	asserts.AssertGetPlatformApplicationAttributesInput(t)
 	return t
 end
 
-local GetSMSAttributesInput_keys = { "attributes" = true, nil }
+keys.GetSMSAttributesInput = { ["attributes"] = true, nil }
 
-function M.AssertGetSMSAttributesInput(struct)
+function asserts.AssertGetSMSAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSMSAttributesInput to be of type 'table'")
-	if struct["attributes"] then M.AssertListString(struct["attributes"]) end
+	if struct["attributes"] then asserts.AssertListString(struct["attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSMSAttributesInput_keys[k], "GetSMSAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.GetSMSAttributesInput[k], "GetSMSAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSMSAttributesInput
 -- <p>The input for the <code>GetSMSAttributes</code> request.</p>
--- @param attributes [ListString] <p>A list of the individual attribute names, such as <code>MonthlySpendLimit</code>, for which you want values.</p> <p>For all attribute names, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html">SetSMSAttributes</a>.</p> <p>If you don't use this parameter, Amazon SNS returns all SMS attributes.</p>
-function M.GetSMSAttributesInput(attributes, ...)
+-- @param _attributes [ListString] <p>A list of the individual attribute names, such as <code>MonthlySpendLimit</code>, for which you want values.</p> <p>For all attribute names, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html">SetSMSAttributes</a>.</p> <p>If you don't use this parameter, Amazon SNS returns all SMS attributes.</p>
+function M.GetSMSAttributesInput(_attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSMSAttributesInput")
 	local t = { 
-		["attributes"] = attributes,
+		["attributes"] = _attributes,
 	}
-	M.AssertGetSMSAttributesInput(t)
+	asserts.AssertGetSMSAttributesInput(t)
 	return t
 end
 
-local ConfirmSubscriptionResponse_keys = { "SubscriptionArn" = true, nil }
+keys.ConfirmSubscriptionResponse = { ["SubscriptionArn"] = true, nil }
 
-function M.AssertConfirmSubscriptionResponse(struct)
+function asserts.AssertConfirmSubscriptionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConfirmSubscriptionResponse to be of type 'table'")
-	if struct["SubscriptionArn"] then M.AssertsubscriptionARN(struct["SubscriptionArn"]) end
+	if struct["SubscriptionArn"] then asserts.AssertsubscriptionARN(struct["SubscriptionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ConfirmSubscriptionResponse_keys[k], "ConfirmSubscriptionResponse contains unknown key " .. tostring(k))
+		assert(keys.ConfirmSubscriptionResponse[k], "ConfirmSubscriptionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConfirmSubscriptionResponse
 -- <p>Response for ConfirmSubscriptions action.</p>
--- @param SubscriptionArn [subscriptionARN] <p>The ARN of the created subscription.</p>
-function M.ConfirmSubscriptionResponse(SubscriptionArn, ...)
+-- @param _SubscriptionArn [subscriptionARN] <p>The ARN of the created subscription.</p>
+function M.ConfirmSubscriptionResponse(_SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmSubscriptionResponse")
 	local t = { 
-		["SubscriptionArn"] = SubscriptionArn,
+		["SubscriptionArn"] = _SubscriptionArn,
 	}
-	M.AssertConfirmSubscriptionResponse(t)
+	asserts.AssertConfirmSubscriptionResponse(t)
 	return t
 end
 
-local DeleteTopicInput_keys = { "TopicArn" = true, nil }
+keys.DeleteTopicInput = { ["TopicArn"] = true, nil }
 
-function M.AssertDeleteTopicInput(struct)
+function asserts.AssertDeleteTopicInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTopicInput to be of type 'table'")
 	assert(struct["TopicArn"], "Expected key TopicArn to exist in table")
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteTopicInput_keys[k], "DeleteTopicInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteTopicInput[k], "DeleteTopicInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteTopicInput
 --  
--- @param TopicArn [topicARN] <p>The ARN of the topic you want to delete.</p>
+-- @param _TopicArn [topicARN] <p>The ARN of the topic you want to delete.</p>
 -- Required parameter: TopicArn
-function M.DeleteTopicInput(TopicArn, ...)
+function M.DeleteTopicInput(_TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTopicInput")
 	local t = { 
-		["TopicArn"] = TopicArn,
+		["TopicArn"] = _TopicArn,
 	}
-	M.AssertDeleteTopicInput(t)
+	asserts.AssertDeleteTopicInput(t)
 	return t
 end
 
-local TopicLimitExceededException_keys = { "message" = true, nil }
+keys.TopicLimitExceededException = { ["message"] = true, nil }
 
-function M.AssertTopicLimitExceededException(struct)
+function asserts.AssertTopicLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TopicLimitExceededException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TopicLimitExceededException_keys[k], "TopicLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.TopicLimitExceededException[k], "TopicLimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TopicLimitExceededException
 -- <p>Indicates that the customer already owns the maximum allowed number of topics.</p>
--- @param message [string] <p>Indicates that the customer already owns the maximum allowed number of topics.</p>
-function M.TopicLimitExceededException(message, ...)
+-- @param _message [string] 
+function M.TopicLimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TopicLimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTopicLimitExceededException(t)
+	asserts.AssertTopicLimitExceededException(t)
 	return t
 end
 
-local SetSMSAttributesInput_keys = { "attributes" = true, nil }
+keys.SetSMSAttributesInput = { ["attributes"] = true, nil }
 
-function M.AssertSetSMSAttributesInput(struct)
+function asserts.AssertSetSMSAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetSMSAttributesInput to be of type 'table'")
 	assert(struct["attributes"], "Expected key attributes to exist in table")
-	if struct["attributes"] then M.AssertMapStringToString(struct["attributes"]) end
+	if struct["attributes"] then asserts.AssertMapStringToString(struct["attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(SetSMSAttributesInput_keys[k], "SetSMSAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.SetSMSAttributesInput[k], "SetSMSAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetSMSAttributesInput
 -- <p>The input for the SetSMSAttributes action.</p>
--- @param attributes [MapStringToString] <p>The default settings for sending SMS messages from your account. You can set values for the following attribute names:</p> <p> <code>MonthlySpendLimit</code> – The maximum amount in USD that you are willing to spend each month to send SMS messages. When Amazon SNS determines that sending an SMS message would incur a cost that exceeds this limit, it stops sending SMS messages within minutes.</p> <important> <p>Amazon SNS stops sending SMS messages within minutes of the limit being crossed. During that interval, if you continue to send SMS messages, you will incur costs that exceed your limit.</p> </important> <p>By default, the spend limit is set to the maximum allowed by Amazon SNS. If you want to exceed the maximum, contact <a href="https://aws.amazon.com/premiumsupport/">AWS Support</a> or your AWS sales representative for a service limit increase.</p> <p> <code>DeliveryStatusIAMRole</code> – The ARN of the IAM role that allows Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For each SMS message that you send, Amazon SNS writes a log that includes the message price, the success or failure status, the reason for failure (if the message failed), the message dwell time, and other information.</p> <p> <code>DeliveryStatusSuccessSamplingRate</code> – The percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs. The value can be an integer from 0 - 100. For example, to write logs only for failed deliveries, set this value to <code>0</code>. To write logs for 10% of your successful deliveries, set it to <code>10</code>.</p> <p> <code>DefaultSenderID</code> – A string, such as your business brand, that is displayed as the sender on the receiving device. Support for sender IDs varies by country. The sender ID can be 1 - 11 alphanumeric characters, and it must contain at least one letter.</p> <p> <code>DefaultSMSType</code> – The type of SMS message that you will send by default. You can assign the following values:</p> <ul> <li> <p> <code>Promotional</code> – (Default) Noncritical messages, such as marketing messages. Amazon SNS optimizes the message delivery to incur the lowest cost.</p> </li> <li> <p> <code>Transactional</code> – Critical messages that support customer transactions, such as one-time passcodes for multi-factor authentication. Amazon SNS optimizes the message delivery to achieve the highest reliability.</p> </li> </ul> <p> <code>UsageReportS3Bucket</code> – The name of the Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS. Each day, Amazon SNS will deliver a usage report as a CSV file to the bucket. The report includes the following information for each SMS message that was successfully delivered by your account:</p> <ul> <li> <p>Time that the message was published (in UTC)</p> </li> <li> <p>Message ID</p> </li> <li> <p>Destination phone number</p> </li> <li> <p>Message type</p> </li> <li> <p>Delivery status</p> </li> <li> <p>Message price (in USD)</p> </li> <li> <p>Part number (a message is split into multiple parts if it is too long for a single message)</p> </li> <li> <p>Total number of parts</p> </li> </ul> <p>To receive the report, the bucket must have a policy that allows the Amazon SNS service principle to perform the <code>s3:PutObject</code> and <code>s3:GetBucketLocation</code> actions.</p> <p>For an example bucket policy and usage report, see <a href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
+-- @param _attributes [MapStringToString] <p>The default settings for sending SMS messages from your account. You can set values for the following attribute names:</p> <p> <code>MonthlySpendLimit</code> – The maximum amount in USD that you are willing to spend each month to send SMS messages. When Amazon SNS determines that sending an SMS message would incur a cost that exceeds this limit, it stops sending SMS messages within minutes.</p> <important> <p>Amazon SNS stops sending SMS messages within minutes of the limit being crossed. During that interval, if you continue to send SMS messages, you will incur costs that exceed your limit.</p> </important> <p>By default, the spend limit is set to the maximum allowed by Amazon SNS. If you want to exceed the maximum, contact <a href="https://aws.amazon.com/premiumsupport/">AWS Support</a> or your AWS sales representative for a service limit increase.</p> <p> <code>DeliveryStatusIAMRole</code> – The ARN of the IAM role that allows Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For each SMS message that you send, Amazon SNS writes a log that includes the message price, the success or failure status, the reason for failure (if the message failed), the message dwell time, and other information.</p> <p> <code>DeliveryStatusSuccessSamplingRate</code> – The percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs. The value can be an integer from 0 - 100. For example, to write logs only for failed deliveries, set this value to <code>0</code>. To write logs for 10% of your successful deliveries, set it to <code>10</code>.</p> <p> <code>DefaultSenderID</code> – A string, such as your business brand, that is displayed as the sender on the receiving device. Support for sender IDs varies by country. The sender ID can be 1 - 11 alphanumeric characters, and it must contain at least one letter.</p> <p> <code>DefaultSMSType</code> – The type of SMS message that you will send by default. You can assign the following values:</p> <ul> <li> <p> <code>Promotional</code> – (Default) Noncritical messages, such as marketing messages. Amazon SNS optimizes the message delivery to incur the lowest cost.</p> </li> <li> <p> <code>Transactional</code> – Critical messages that support customer transactions, such as one-time passcodes for multi-factor authentication. Amazon SNS optimizes the message delivery to achieve the highest reliability.</p> </li> </ul> <p> <code>UsageReportS3Bucket</code> – The name of the Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS. Each day, Amazon SNS will deliver a usage report as a CSV file to the bucket. The report includes the following information for each SMS message that was successfully delivered by your account:</p> <ul> <li> <p>Time that the message was published (in UTC)</p> </li> <li> <p>Message ID</p> </li> <li> <p>Destination phone number</p> </li> <li> <p>Message type</p> </li> <li> <p>Delivery status</p> </li> <li> <p>Message price (in USD)</p> </li> <li> <p>Part number (a message is split into multiple parts if it is too long for a single message)</p> </li> <li> <p>Total number of parts</p> </li> </ul> <p>To receive the report, the bucket must have a policy that allows the Amazon SNS service principle to perform the <code>s3:PutObject</code> and <code>s3:GetBucketLocation</code> actions.</p> <p>For an example bucket policy and usage report, see <a href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
 -- Required parameter: attributes
-function M.SetSMSAttributesInput(attributes, ...)
+function M.SetSMSAttributesInput(_attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSMSAttributesInput")
 	local t = { 
-		["attributes"] = attributes,
+		["attributes"] = _attributes,
 	}
-	M.AssertSetSMSAttributesInput(t)
+	asserts.AssertSetSMSAttributesInput(t)
 	return t
 end
 
-local ThrottledException_keys = { "message" = true, nil }
+keys.ThrottledException = { ["message"] = true, nil }
 
-function M.AssertThrottledException(struct)
+function asserts.AssertThrottledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ThrottledException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ThrottledException_keys[k], "ThrottledException contains unknown key " .. tostring(k))
+		assert(keys.ThrottledException[k], "ThrottledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ThrottledException
 -- <p>Indicates that the rate at which requests have been submitted for this action exceeds the limit for your account.</p>
--- @param message [string] <p>Throttled request.</p>
-function M.ThrottledException(message, ...)
+-- @param _message [string] <p>Throttled request.</p>
+function M.ThrottledException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottledException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertThrottledException(t)
+	asserts.AssertThrottledException(t)
 	return t
 end
 
-local OptInPhoneNumberResponse_keys = { nil }
+keys.OptInPhoneNumberResponse = { nil }
 
-function M.AssertOptInPhoneNumberResponse(struct)
+function asserts.AssertOptInPhoneNumberResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OptInPhoneNumberResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(OptInPhoneNumberResponse_keys[k], "OptInPhoneNumberResponse contains unknown key " .. tostring(k))
+		assert(keys.OptInPhoneNumberResponse[k], "OptInPhoneNumberResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -786,550 +789,550 @@ function M.OptInPhoneNumberResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptInPhoneNumberResponse")
 	local t = { 
 	}
-	M.AssertOptInPhoneNumberResponse(t)
+	asserts.AssertOptInPhoneNumberResponse(t)
 	return t
 end
 
-local ListSubscriptionsByTopicResponse_keys = { "NextToken" = true, "Subscriptions" = true, nil }
+keys.ListSubscriptionsByTopicResponse = { ["NextToken"] = true, ["Subscriptions"] = true, nil }
 
-function M.AssertListSubscriptionsByTopicResponse(struct)
+function asserts.AssertListSubscriptionsByTopicResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionsByTopicResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertnextToken(struct["NextToken"]) end
-	if struct["Subscriptions"] then M.AssertSubscriptionsList(struct["Subscriptions"]) end
+	if struct["NextToken"] then asserts.AssertnextToken(struct["NextToken"]) end
+	if struct["Subscriptions"] then asserts.AssertSubscriptionsList(struct["Subscriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSubscriptionsByTopicResponse_keys[k], "ListSubscriptionsByTopicResponse contains unknown key " .. tostring(k))
+		assert(keys.ListSubscriptionsByTopicResponse[k], "ListSubscriptionsByTopicResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSubscriptionsByTopicResponse
 -- <p>Response for ListSubscriptionsByTopic action.</p>
--- @param NextToken [nextToken] <p>Token to pass along to the next <code>ListSubscriptionsByTopic</code> request. This element is returned if there are more subscriptions to retrieve.</p>
--- @param Subscriptions [SubscriptionsList] <p>A list of subscriptions.</p>
-function M.ListSubscriptionsByTopicResponse(NextToken, Subscriptions, ...)
+-- @param _NextToken [nextToken] <p>Token to pass along to the next <code>ListSubscriptionsByTopic</code> request. This element is returned if there are more subscriptions to retrieve.</p>
+-- @param _Subscriptions [SubscriptionsList] <p>A list of subscriptions.</p>
+function M.ListSubscriptionsByTopicResponse(_NextToken, _Subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionsByTopicResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Subscriptions"] = Subscriptions,
+		["NextToken"] = _NextToken,
+		["Subscriptions"] = _Subscriptions,
 	}
-	M.AssertListSubscriptionsByTopicResponse(t)
+	asserts.AssertListSubscriptionsByTopicResponse(t)
 	return t
 end
 
-local PublishInput_keys = { "MessageStructure" = true, "PhoneNumber" = true, "TargetArn" = true, "Message" = true, "MessageAttributes" = true, "TopicArn" = true, "Subject" = true, nil }
+keys.PublishInput = { ["MessageStructure"] = true, ["PhoneNumber"] = true, ["TargetArn"] = true, ["Message"] = true, ["MessageAttributes"] = true, ["TopicArn"] = true, ["Subject"] = true, nil }
 
-function M.AssertPublishInput(struct)
+function asserts.AssertPublishInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PublishInput to be of type 'table'")
 	assert(struct["Message"], "Expected key Message to exist in table")
-	if struct["MessageStructure"] then M.AssertmessageStructure(struct["MessageStructure"]) end
-	if struct["PhoneNumber"] then M.AssertString(struct["PhoneNumber"]) end
-	if struct["TargetArn"] then M.AssertString(struct["TargetArn"]) end
-	if struct["Message"] then M.Assertmessage(struct["Message"]) end
-	if struct["MessageAttributes"] then M.AssertMessageAttributeMap(struct["MessageAttributes"]) end
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
-	if struct["Subject"] then M.Assertsubject(struct["Subject"]) end
+	if struct["MessageStructure"] then asserts.AssertmessageStructure(struct["MessageStructure"]) end
+	if struct["PhoneNumber"] then asserts.AssertString(struct["PhoneNumber"]) end
+	if struct["TargetArn"] then asserts.AssertString(struct["TargetArn"]) end
+	if struct["Message"] then asserts.Assertmessage(struct["Message"]) end
+	if struct["MessageAttributes"] then asserts.AssertMessageAttributeMap(struct["MessageAttributes"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
+	if struct["Subject"] then asserts.Assertsubject(struct["Subject"]) end
 	for k,_ in pairs(struct) do
-		assert(PublishInput_keys[k], "PublishInput contains unknown key " .. tostring(k))
+		assert(keys.PublishInput[k], "PublishInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PublishInput
 -- <p>Input for Publish action.</p>
--- @param MessageStructure [messageStructure] <p>Set <code>MessageStructure</code> to <code>json</code> if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set <code>MessageStructure</code> to <code>json</code>, the value of the <code>Message</code> parameter must: </p> <ul> <li> <p>be a syntactically valid JSON object; and</p> </li> <li> <p>contain at least a top-level JSON key of "default" with a value that is a string.</p> </li> </ul> <p>You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http").</p> <p>For information about sending different messages for each protocol using the AWS Management Console, go to <a href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create Different Messages for Each Protocol</a> in the <i>Amazon Simple Notification Service Getting Started Guide</i>. </p> <p>Valid value: <code>json</code> </p>
--- @param PhoneNumber [String] <p>The phone number to which you want to deliver an SMS message. Use E.164 format.</p> <p>If you don't specify a value for the <code>PhoneNumber</code> parameter, you must specify a value for the <code>TargetArn</code> or <code>TopicArn</code> parameters.</p>
--- @param TargetArn [String] <p>Either TopicArn or EndpointArn, but not both.</p> <p>If you don't specify a value for the <code>TargetArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TopicArn</code> parameters.</p>
--- @param Message [message] <p>The message you want to send to the topic.</p> <p>If you want to send the same message to all transport protocols, include the text of the message as a String value.</p> <p>If you want to send different messages for each transport protocol, set the value of the <code>MessageStructure</code> parameter to <code>json</code> and use a JSON object for the <code>Message</code> parameter. </p> <p>Constraints: Messages must be UTF-8 encoded strings at most 256 KB in size (262144 bytes, not 262144 characters).</p> <p>JSON-specific constraints:</p> <ul> <li> <p>Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values.</p> </li> <li> <p>The values will be parsed (unescaped) before they are used in outgoing messages.</p> </li> <li> <p>Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending).</p> </li> <li> <p>Values have a minimum length of 0 (the empty string, "", is allowed).</p> </li> <li> <p>Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes).</p> </li> <li> <p>Non-string values will cause the key to be ignored.</p> </li> <li> <p>Keys that do not correspond to supported transport protocols are ignored.</p> </li> <li> <p>Duplicate keys are not allowed.</p> </li> <li> <p>Failure to parse or validate any key or value in the message will cause the <code>Publish</code> call to return an error (no partial delivery).</p> </li> </ul>
--- @param MessageAttributes [MessageAttributeMap] <p>Message attributes for Publish action.</p>
--- @param TopicArn [topicARN] <p>The topic you want to publish to.</p> <p>If you don't specify a value for the <code>TopicArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TargetArn</code> parameters.</p>
--- @param Subject [subject] <p>Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints.</p> <p>Constraints: Subjects must be ASCII text that begins with a letter, number, or punctuation mark; must not include line breaks or control characters; and must be less than 100 characters long.</p>
+-- @param _MessageStructure [messageStructure] <p>Set <code>MessageStructure</code> to <code>json</code> if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set <code>MessageStructure</code> to <code>json</code>, the value of the <code>Message</code> parameter must: </p> <ul> <li> <p>be a syntactically valid JSON object; and</p> </li> <li> <p>contain at least a top-level JSON key of "default" with a value that is a string.</p> </li> </ul> <p>You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http").</p> <p>For information about sending different messages for each protocol using the AWS Management Console, go to <a href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create Different Messages for Each Protocol</a> in the <i>Amazon Simple Notification Service Getting Started Guide</i>. </p> <p>Valid value: <code>json</code> </p>
+-- @param _PhoneNumber [String] <p>The phone number to which you want to deliver an SMS message. Use E.164 format.</p> <p>If you don't specify a value for the <code>PhoneNumber</code> parameter, you must specify a value for the <code>TargetArn</code> or <code>TopicArn</code> parameters.</p>
+-- @param _TargetArn [String] <p>Either TopicArn or EndpointArn, but not both.</p> <p>If you don't specify a value for the <code>TargetArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TopicArn</code> parameters.</p>
+-- @param _Message [message] <p>The message you want to send to the topic.</p> <p>If you want to send the same message to all transport protocols, include the text of the message as a String value.</p> <p>If you want to send different messages for each transport protocol, set the value of the <code>MessageStructure</code> parameter to <code>json</code> and use a JSON object for the <code>Message</code> parameter. </p> <p>Constraints: Messages must be UTF-8 encoded strings at most 256 KB in size (262144 bytes, not 262144 characters).</p> <p>JSON-specific constraints:</p> <ul> <li> <p>Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values.</p> </li> <li> <p>The values will be parsed (unescaped) before they are used in outgoing messages.</p> </li> <li> <p>Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending).</p> </li> <li> <p>Values have a minimum length of 0 (the empty string, "", is allowed).</p> </li> <li> <p>Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes).</p> </li> <li> <p>Non-string values will cause the key to be ignored.</p> </li> <li> <p>Keys that do not correspond to supported transport protocols are ignored.</p> </li> <li> <p>Duplicate keys are not allowed.</p> </li> <li> <p>Failure to parse or validate any key or value in the message will cause the <code>Publish</code> call to return an error (no partial delivery).</p> </li> </ul>
+-- @param _MessageAttributes [MessageAttributeMap] <p>Message attributes for Publish action.</p>
+-- @param _TopicArn [topicARN] <p>The topic you want to publish to.</p> <p>If you don't specify a value for the <code>TopicArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TargetArn</code> parameters.</p>
+-- @param _Subject [subject] <p>Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints.</p> <p>Constraints: Subjects must be ASCII text that begins with a letter, number, or punctuation mark; must not include line breaks or control characters; and must be less than 100 characters long.</p>
 -- Required parameter: Message
-function M.PublishInput(MessageStructure, PhoneNumber, TargetArn, Message, MessageAttributes, TopicArn, Subject, ...)
+function M.PublishInput(_MessageStructure, _PhoneNumber, _TargetArn, _Message, _MessageAttributes, _TopicArn, _Subject, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishInput")
 	local t = { 
-		["MessageStructure"] = MessageStructure,
-		["PhoneNumber"] = PhoneNumber,
-		["TargetArn"] = TargetArn,
-		["Message"] = Message,
-		["MessageAttributes"] = MessageAttributes,
-		["TopicArn"] = TopicArn,
-		["Subject"] = Subject,
+		["MessageStructure"] = _MessageStructure,
+		["PhoneNumber"] = _PhoneNumber,
+		["TargetArn"] = _TargetArn,
+		["Message"] = _Message,
+		["MessageAttributes"] = _MessageAttributes,
+		["TopicArn"] = _TopicArn,
+		["Subject"] = _Subject,
 	}
-	M.AssertPublishInput(t)
+	asserts.AssertPublishInput(t)
 	return t
 end
 
-local SetSubscriptionAttributesInput_keys = { "AttributeName" = true, "AttributeValue" = true, "SubscriptionArn" = true, nil }
+keys.SetSubscriptionAttributesInput = { ["AttributeName"] = true, ["AttributeValue"] = true, ["SubscriptionArn"] = true, nil }
 
-function M.AssertSetSubscriptionAttributesInput(struct)
+function asserts.AssertSetSubscriptionAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetSubscriptionAttributesInput to be of type 'table'")
 	assert(struct["SubscriptionArn"], "Expected key SubscriptionArn to exist in table")
 	assert(struct["AttributeName"], "Expected key AttributeName to exist in table")
-	if struct["AttributeName"] then M.AssertattributeName(struct["AttributeName"]) end
-	if struct["AttributeValue"] then M.AssertattributeValue(struct["AttributeValue"]) end
-	if struct["SubscriptionArn"] then M.AssertsubscriptionARN(struct["SubscriptionArn"]) end
+	if struct["AttributeName"] then asserts.AssertattributeName(struct["AttributeName"]) end
+	if struct["AttributeValue"] then asserts.AssertattributeValue(struct["AttributeValue"]) end
+	if struct["SubscriptionArn"] then asserts.AssertsubscriptionARN(struct["SubscriptionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SetSubscriptionAttributesInput_keys[k], "SetSubscriptionAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.SetSubscriptionAttributesInput[k], "SetSubscriptionAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetSubscriptionAttributesInput
 -- <p>Input for SetSubscriptionAttributes action.</p>
--- @param AttributeName [attributeName] <p>The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable.</p> <p>Valid values: <code>DeliveryPolicy</code> | <code>RawMessageDelivery</code> </p>
--- @param AttributeValue [attributeValue] <p>The new value for the attribute in JSON format.</p>
--- @param SubscriptionArn [subscriptionARN] <p>The ARN of the subscription to modify.</p>
+-- @param _AttributeName [attributeName] <p>The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable.</p> <p>Valid values: <code>DeliveryPolicy</code> | <code>RawMessageDelivery</code> </p>
+-- @param _AttributeValue [attributeValue] <p>The new value for the attribute in JSON format.</p>
+-- @param _SubscriptionArn [subscriptionARN] <p>The ARN of the subscription to modify.</p>
 -- Required parameter: SubscriptionArn
 -- Required parameter: AttributeName
-function M.SetSubscriptionAttributesInput(AttributeName, AttributeValue, SubscriptionArn, ...)
+function M.SetSubscriptionAttributesInput(_AttributeName, _AttributeValue, _SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSubscriptionAttributesInput")
 	local t = { 
-		["AttributeName"] = AttributeName,
-		["AttributeValue"] = AttributeValue,
-		["SubscriptionArn"] = SubscriptionArn,
+		["AttributeName"] = _AttributeName,
+		["AttributeValue"] = _AttributeValue,
+		["SubscriptionArn"] = _SubscriptionArn,
 	}
-	M.AssertSetSubscriptionAttributesInput(t)
+	asserts.AssertSetSubscriptionAttributesInput(t)
 	return t
 end
 
-local GetSubscriptionAttributesResponse_keys = { "Attributes" = true, nil }
+keys.GetSubscriptionAttributesResponse = { ["Attributes"] = true, nil }
 
-function M.AssertGetSubscriptionAttributesResponse(struct)
+function asserts.AssertGetSubscriptionAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetSubscriptionAttributesResponse to be of type 'table'")
-	if struct["Attributes"] then M.AssertSubscriptionAttributesMap(struct["Attributes"]) end
+	if struct["Attributes"] then asserts.AssertSubscriptionAttributesMap(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(GetSubscriptionAttributesResponse_keys[k], "GetSubscriptionAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.GetSubscriptionAttributesResponse[k], "GetSubscriptionAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetSubscriptionAttributesResponse
 -- <p>Response for GetSubscriptionAttributes action.</p>
--- @param Attributes [SubscriptionAttributesMap] <p>A map of the subscription's attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>SubscriptionArn</code> -- the subscription's ARN</p> </li> <li> <p> <code>TopicArn</code> -- the topic ARN that the subscription is associated with</p> </li> <li> <p> <code>Owner</code> -- the AWS account ID of the subscription's owner</p> </li> <li> <p> <code>ConfirmationWasAuthenticated</code> -- true if the subscription confirmation request was authenticated</p> </li> <li> <p> <code>DeliveryPolicy</code> -- the JSON serialization of the subscription's delivery policy</p> </li> <li> <p> <code>EffectiveDeliveryPolicy</code> -- the JSON serialization of the effective delivery policy that takes into account the topic delivery policy and account system defaults</p> </li> </ul>
-function M.GetSubscriptionAttributesResponse(Attributes, ...)
+-- @param _Attributes [SubscriptionAttributesMap] <p>A map of the subscription's attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>SubscriptionArn</code> -- the subscription's ARN</p> </li> <li> <p> <code>TopicArn</code> -- the topic ARN that the subscription is associated with</p> </li> <li> <p> <code>Owner</code> -- the AWS account ID of the subscription's owner</p> </li> <li> <p> <code>ConfirmationWasAuthenticated</code> -- true if the subscription confirmation request was authenticated</p> </li> <li> <p> <code>DeliveryPolicy</code> -- the JSON serialization of the subscription's delivery policy</p> </li> <li> <p> <code>EffectiveDeliveryPolicy</code> -- the JSON serialization of the effective delivery policy that takes into account the topic delivery policy and account system defaults</p> </li> </ul>
+function M.GetSubscriptionAttributesResponse(_Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionAttributesResponse")
 	local t = { 
-		["Attributes"] = Attributes,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertGetSubscriptionAttributesResponse(t)
+	asserts.AssertGetSubscriptionAttributesResponse(t)
 	return t
 end
 
-local CreateTopicResponse_keys = { "TopicArn" = true, nil }
+keys.CreateTopicResponse = { ["TopicArn"] = true, nil }
 
-function M.AssertCreateTopicResponse(struct)
+function asserts.AssertCreateTopicResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTopicResponse to be of type 'table'")
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateTopicResponse_keys[k], "CreateTopicResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateTopicResponse[k], "CreateTopicResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateTopicResponse
 -- <p>Response from CreateTopic action.</p>
--- @param TopicArn [topicARN] <p>The Amazon Resource Name (ARN) assigned to the created topic.</p>
-function M.CreateTopicResponse(TopicArn, ...)
+-- @param _TopicArn [topicARN] <p>The Amazon Resource Name (ARN) assigned to the created topic.</p>
+function M.CreateTopicResponse(_TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTopicResponse")
 	local t = { 
-		["TopicArn"] = TopicArn,
+		["TopicArn"] = _TopicArn,
 	}
-	M.AssertCreateTopicResponse(t)
+	asserts.AssertCreateTopicResponse(t)
 	return t
 end
 
-local InternalErrorException_keys = { "message" = true, nil }
+keys.InternalErrorException = { ["message"] = true, nil }
 
-function M.AssertInternalErrorException(struct)
+function asserts.AssertInternalErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalErrorException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalErrorException_keys[k], "InternalErrorException contains unknown key " .. tostring(k))
+		assert(keys.InternalErrorException[k], "InternalErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalErrorException
 -- <p>Indicates an internal service error.</p>
--- @param message [string] <p>Indicates an internal service error.</p>
-function M.InternalErrorException(message, ...)
+-- @param _message [string] 
+function M.InternalErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalErrorException(t)
+	asserts.AssertInternalErrorException(t)
 	return t
 end
 
-local GetTopicAttributesResponse_keys = { "Attributes" = true, nil }
+keys.GetTopicAttributesResponse = { ["Attributes"] = true, nil }
 
-function M.AssertGetTopicAttributesResponse(struct)
+function asserts.AssertGetTopicAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTopicAttributesResponse to be of type 'table'")
-	if struct["Attributes"] then M.AssertTopicAttributesMap(struct["Attributes"]) end
+	if struct["Attributes"] then asserts.AssertTopicAttributesMap(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTopicAttributesResponse_keys[k], "GetTopicAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.GetTopicAttributesResponse[k], "GetTopicAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTopicAttributesResponse
 -- <p>Response for GetTopicAttributes action.</p>
--- @param Attributes [TopicAttributesMap] <p>A map of the topic's attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>TopicArn</code> -- the topic's ARN</p> </li> <li> <p> <code>Owner</code> -- the AWS account ID of the topic's owner</p> </li> <li> <p> <code>Policy</code> -- the JSON serialization of the topic's access control policy</p> </li> <li> <p> <code>DisplayName</code> -- the human-readable name used in the "From" field for notifications to email and email-json endpoints</p> </li> <li> <p> <code>SubscriptionsPending</code> -- the number of subscriptions pending confirmation on this topic</p> </li> <li> <p> <code>SubscriptionsConfirmed</code> -- the number of confirmed subscriptions on this topic</p> </li> <li> <p> <code>SubscriptionsDeleted</code> -- the number of deleted subscriptions on this topic</p> </li> <li> <p> <code>DeliveryPolicy</code> -- the JSON serialization of the topic's delivery policy</p> </li> <li> <p> <code>EffectiveDeliveryPolicy</code> -- the JSON serialization of the effective delivery policy that takes into account system defaults</p> </li> </ul>
-function M.GetTopicAttributesResponse(Attributes, ...)
+-- @param _Attributes [TopicAttributesMap] <p>A map of the topic's attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>TopicArn</code> -- the topic's ARN</p> </li> <li> <p> <code>Owner</code> -- the AWS account ID of the topic's owner</p> </li> <li> <p> <code>Policy</code> -- the JSON serialization of the topic's access control policy</p> </li> <li> <p> <code>DisplayName</code> -- the human-readable name used in the "From" field for notifications to email and email-json endpoints</p> </li> <li> <p> <code>SubscriptionsPending</code> -- the number of subscriptions pending confirmation on this topic</p> </li> <li> <p> <code>SubscriptionsConfirmed</code> -- the number of confirmed subscriptions on this topic</p> </li> <li> <p> <code>SubscriptionsDeleted</code> -- the number of deleted subscriptions on this topic</p> </li> <li> <p> <code>DeliveryPolicy</code> -- the JSON serialization of the topic's delivery policy</p> </li> <li> <p> <code>EffectiveDeliveryPolicy</code> -- the JSON serialization of the effective delivery policy that takes into account system defaults</p> </li> </ul>
+function M.GetTopicAttributesResponse(_Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTopicAttributesResponse")
 	local t = { 
-		["Attributes"] = Attributes,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertGetTopicAttributesResponse(t)
+	asserts.AssertGetTopicAttributesResponse(t)
 	return t
 end
 
-local ListPhoneNumbersOptedOutResponse_keys = { "phoneNumbers" = true, "nextToken" = true, nil }
+keys.ListPhoneNumbersOptedOutResponse = { ["phoneNumbers"] = true, ["nextToken"] = true, nil }
 
-function M.AssertListPhoneNumbersOptedOutResponse(struct)
+function asserts.AssertListPhoneNumbersOptedOutResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPhoneNumbersOptedOutResponse to be of type 'table'")
-	if struct["phoneNumbers"] then M.AssertPhoneNumberList(struct["phoneNumbers"]) end
-	if struct["nextToken"] then M.Assertstring(struct["nextToken"]) end
+	if struct["phoneNumbers"] then asserts.AssertPhoneNumberList(struct["phoneNumbers"]) end
+	if struct["nextToken"] then asserts.Assertstring(struct["nextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPhoneNumbersOptedOutResponse_keys[k], "ListPhoneNumbersOptedOutResponse contains unknown key " .. tostring(k))
+		assert(keys.ListPhoneNumbersOptedOutResponse[k], "ListPhoneNumbersOptedOutResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPhoneNumbersOptedOutResponse
 -- <p>The response from the <code>ListPhoneNumbersOptedOut</code> action.</p>
--- @param phoneNumbers [PhoneNumberList] <p>A list of phone numbers that are opted out of receiving SMS messages. The list is paginated, and each page can contain up to 100 phone numbers.</p>
--- @param nextToken [string] <p>A <code>NextToken</code> string is returned when you call the <code>ListPhoneNumbersOptedOut</code> action if additional records are available after the first page of results.</p>
-function M.ListPhoneNumbersOptedOutResponse(phoneNumbers, nextToken, ...)
+-- @param _phoneNumbers [PhoneNumberList] <p>A list of phone numbers that are opted out of receiving SMS messages. The list is paginated, and each page can contain up to 100 phone numbers.</p>
+-- @param _nextToken [string] <p>A <code>NextToken</code> string is returned when you call the <code>ListPhoneNumbersOptedOut</code> action if additional records are available after the first page of results.</p>
+function M.ListPhoneNumbersOptedOutResponse(_phoneNumbers, _nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPhoneNumbersOptedOutResponse")
 	local t = { 
-		["phoneNumbers"] = phoneNumbers,
-		["nextToken"] = nextToken,
+		["phoneNumbers"] = _phoneNumbers,
+		["nextToken"] = _nextToken,
 	}
-	M.AssertListPhoneNumbersOptedOutResponse(t)
+	asserts.AssertListPhoneNumbersOptedOutResponse(t)
 	return t
 end
 
-local CreatePlatformApplicationResponse_keys = { "PlatformApplicationArn" = true, nil }
+keys.CreatePlatformApplicationResponse = { ["PlatformApplicationArn"] = true, nil }
 
-function M.AssertCreatePlatformApplicationResponse(struct)
+function asserts.AssertCreatePlatformApplicationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePlatformApplicationResponse to be of type 'table'")
-	if struct["PlatformApplicationArn"] then M.AssertString(struct["PlatformApplicationArn"]) end
+	if struct["PlatformApplicationArn"] then asserts.AssertString(struct["PlatformApplicationArn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePlatformApplicationResponse_keys[k], "CreatePlatformApplicationResponse contains unknown key " .. tostring(k))
+		assert(keys.CreatePlatformApplicationResponse[k], "CreatePlatformApplicationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePlatformApplicationResponse
 -- <p>Response from CreatePlatformApplication action.</p>
--- @param PlatformApplicationArn [String] <p>PlatformApplicationArn is returned.</p>
-function M.CreatePlatformApplicationResponse(PlatformApplicationArn, ...)
+-- @param _PlatformApplicationArn [String] <p>PlatformApplicationArn is returned.</p>
+function M.CreatePlatformApplicationResponse(_PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlatformApplicationResponse")
 	local t = { 
-		["PlatformApplicationArn"] = PlatformApplicationArn,
+		["PlatformApplicationArn"] = _PlatformApplicationArn,
 	}
-	M.AssertCreatePlatformApplicationResponse(t)
+	asserts.AssertCreatePlatformApplicationResponse(t)
 	return t
 end
 
-local AuthorizationErrorException_keys = { "message" = true, nil }
+keys.AuthorizationErrorException = { ["message"] = true, nil }
 
-function M.AssertAuthorizationErrorException(struct)
+function asserts.AssertAuthorizationErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AuthorizationErrorException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AuthorizationErrorException_keys[k], "AuthorizationErrorException contains unknown key " .. tostring(k))
+		assert(keys.AuthorizationErrorException[k], "AuthorizationErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AuthorizationErrorException
 -- <p>Indicates that the user has been denied access to the requested resource.</p>
--- @param message [string] <p>Indicates that the user has been denied access to the requested resource.</p>
-function M.AuthorizationErrorException(message, ...)
+-- @param _message [string] 
+function M.AuthorizationErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAuthorizationErrorException(t)
+	asserts.AssertAuthorizationErrorException(t)
 	return t
 end
 
-local SetPlatformApplicationAttributesInput_keys = { "Attributes" = true, "PlatformApplicationArn" = true, nil }
+keys.SetPlatformApplicationAttributesInput = { ["Attributes"] = true, ["PlatformApplicationArn"] = true, nil }
 
-function M.AssertSetPlatformApplicationAttributesInput(struct)
+function asserts.AssertSetPlatformApplicationAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetPlatformApplicationAttributesInput to be of type 'table'")
 	assert(struct["PlatformApplicationArn"], "Expected key PlatformApplicationArn to exist in table")
 	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["Attributes"] then M.AssertMapStringToString(struct["Attributes"]) end
-	if struct["PlatformApplicationArn"] then M.AssertString(struct["PlatformApplicationArn"]) end
+	if struct["Attributes"] then asserts.AssertMapStringToString(struct["Attributes"]) end
+	if struct["PlatformApplicationArn"] then asserts.AssertString(struct["PlatformApplicationArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SetPlatformApplicationAttributesInput_keys[k], "SetPlatformApplicationAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.SetPlatformApplicationAttributesInput[k], "SetPlatformApplicationAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetPlatformApplicationAttributesInput
 -- <p>Input for SetPlatformApplicationAttributes action.</p>
--- @param Attributes [MapStringToString] <p>A map of the platform application attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>PlatformCredential</code> -- The credential received from the notification service. For APNS/APNS_SANDBOX, PlatformCredential is private key. For GCM, PlatformCredential is "API key". For ADM, PlatformCredential is "client secret".</p> </li> <li> <p> <code>PlatformPrincipal</code> -- The principal received from the notification service. For APNS/APNS_SANDBOX, PlatformPrincipal is SSL certificate. For GCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is "client id".</p> </li> <li> <p> <code>EventEndpointCreated</code> -- Topic ARN to which EndpointCreated event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointDeleted</code> -- Topic ARN to which EndpointDeleted event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointUpdated</code> -- Topic ARN to which EndpointUpdate event notifications should be sent.</p> </li> <li> <p> <code>EventDeliveryFailure</code> -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.</p> </li> <li> <p> <code>SuccessFeedbackRoleArn</code> -- IAM role ARN used to give Amazon SNS write access to use CloudWatch Logs on your behalf.</p> </li> <li> <p> <code>FailureFeedbackRoleArn</code> -- IAM role ARN used to give Amazon SNS write access to use CloudWatch Logs on your behalf.</p> </li> <li> <p> <code>SuccessFeedbackSampleRate</code> -- Sample rate percentage (0-100) of successfully delivered messages.</p> </li> </ul>
--- @param PlatformApplicationArn [String] <p>PlatformApplicationArn for SetPlatformApplicationAttributes action.</p>
+-- @param _Attributes [MapStringToString] <p>A map of the platform application attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>PlatformCredential</code> -- The credential received from the notification service. For APNS/APNS_SANDBOX, PlatformCredential is private key. For GCM, PlatformCredential is "API key". For ADM, PlatformCredential is "client secret".</p> </li> <li> <p> <code>PlatformPrincipal</code> -- The principal received from the notification service. For APNS/APNS_SANDBOX, PlatformPrincipal is SSL certificate. For GCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is "client id".</p> </li> <li> <p> <code>EventEndpointCreated</code> -- Topic ARN to which EndpointCreated event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointDeleted</code> -- Topic ARN to which EndpointDeleted event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointUpdated</code> -- Topic ARN to which EndpointUpdate event notifications should be sent.</p> </li> <li> <p> <code>EventDeliveryFailure</code> -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.</p> </li> <li> <p> <code>SuccessFeedbackRoleArn</code> -- IAM role ARN used to give Amazon SNS write access to use CloudWatch Logs on your behalf.</p> </li> <li> <p> <code>FailureFeedbackRoleArn</code> -- IAM role ARN used to give Amazon SNS write access to use CloudWatch Logs on your behalf.</p> </li> <li> <p> <code>SuccessFeedbackSampleRate</code> -- Sample rate percentage (0-100) of successfully delivered messages.</p> </li> </ul>
+-- @param _PlatformApplicationArn [String] <p>PlatformApplicationArn for SetPlatformApplicationAttributes action.</p>
 -- Required parameter: PlatformApplicationArn
 -- Required parameter: Attributes
-function M.SetPlatformApplicationAttributesInput(Attributes, PlatformApplicationArn, ...)
+function M.SetPlatformApplicationAttributesInput(_Attributes, _PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetPlatformApplicationAttributesInput")
 	local t = { 
-		["Attributes"] = Attributes,
-		["PlatformApplicationArn"] = PlatformApplicationArn,
+		["Attributes"] = _Attributes,
+		["PlatformApplicationArn"] = _PlatformApplicationArn,
 	}
-	M.AssertSetPlatformApplicationAttributesInput(t)
+	asserts.AssertSetPlatformApplicationAttributesInput(t)
 	return t
 end
 
-local UnsubscribeInput_keys = { "SubscriptionArn" = true, nil }
+keys.UnsubscribeInput = { ["SubscriptionArn"] = true, nil }
 
-function M.AssertUnsubscribeInput(struct)
+function asserts.AssertUnsubscribeInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsubscribeInput to be of type 'table'")
 	assert(struct["SubscriptionArn"], "Expected key SubscriptionArn to exist in table")
-	if struct["SubscriptionArn"] then M.AssertsubscriptionARN(struct["SubscriptionArn"]) end
+	if struct["SubscriptionArn"] then asserts.AssertsubscriptionARN(struct["SubscriptionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsubscribeInput_keys[k], "UnsubscribeInput contains unknown key " .. tostring(k))
+		assert(keys.UnsubscribeInput[k], "UnsubscribeInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsubscribeInput
 -- <p>Input for Unsubscribe action.</p>
--- @param SubscriptionArn [subscriptionARN] <p>The ARN of the subscription to be deleted.</p>
+-- @param _SubscriptionArn [subscriptionARN] <p>The ARN of the subscription to be deleted.</p>
 -- Required parameter: SubscriptionArn
-function M.UnsubscribeInput(SubscriptionArn, ...)
+function M.UnsubscribeInput(_SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeInput")
 	local t = { 
-		["SubscriptionArn"] = SubscriptionArn,
+		["SubscriptionArn"] = _SubscriptionArn,
 	}
-	M.AssertUnsubscribeInput(t)
+	asserts.AssertUnsubscribeInput(t)
 	return t
 end
 
-local InvalidParameterValueException_keys = { "message" = true, nil }
+keys.InvalidParameterValueException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterValueException(struct)
+function asserts.AssertInvalidParameterValueException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterValueException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterValueException_keys[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterValueException[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>Indicates that a request parameter does not comply with the associated constraints.</p>
--- @param message [string] <p>The parameter value is invalid.</p>
-function M.InvalidParameterValueException(message, ...)
+-- @param _message [string] <p>The parameter value is invalid.</p>
+function M.InvalidParameterValueException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterValueException(t)
+	asserts.AssertInvalidParameterValueException(t)
 	return t
 end
 
-local ListEndpointsByPlatformApplicationResponse_keys = { "Endpoints" = true, "NextToken" = true, nil }
+keys.ListEndpointsByPlatformApplicationResponse = { ["Endpoints"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListEndpointsByPlatformApplicationResponse(struct)
+function asserts.AssertListEndpointsByPlatformApplicationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListEndpointsByPlatformApplicationResponse to be of type 'table'")
-	if struct["Endpoints"] then M.AssertListOfEndpoints(struct["Endpoints"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
+	if struct["Endpoints"] then asserts.AssertListOfEndpoints(struct["Endpoints"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListEndpointsByPlatformApplicationResponse_keys[k], "ListEndpointsByPlatformApplicationResponse contains unknown key " .. tostring(k))
+		assert(keys.ListEndpointsByPlatformApplicationResponse[k], "ListEndpointsByPlatformApplicationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListEndpointsByPlatformApplicationResponse
 -- <p>Response for ListEndpointsByPlatformApplication action.</p>
--- @param Endpoints [ListOfEndpoints] <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
--- @param NextToken [String] <p>NextToken string is returned when calling ListEndpointsByPlatformApplication action if additional records are available after the first page results.</p>
-function M.ListEndpointsByPlatformApplicationResponse(Endpoints, NextToken, ...)
+-- @param _Endpoints [ListOfEndpoints] <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
+-- @param _NextToken [String] <p>NextToken string is returned when calling ListEndpointsByPlatformApplication action if additional records are available after the first page results.</p>
+function M.ListEndpointsByPlatformApplicationResponse(_Endpoints, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEndpointsByPlatformApplicationResponse")
 	local t = { 
-		["Endpoints"] = Endpoints,
-		["NextToken"] = NextToken,
+		["Endpoints"] = _Endpoints,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListEndpointsByPlatformApplicationResponse(t)
+	asserts.AssertListEndpointsByPlatformApplicationResponse(t)
 	return t
 end
 
-local SubscribeInput_keys = { "Endpoint" = true, "Protocol" = true, "TopicArn" = true, nil }
+keys.SubscribeInput = { ["Endpoint"] = true, ["Protocol"] = true, ["TopicArn"] = true, nil }
 
-function M.AssertSubscribeInput(struct)
+function asserts.AssertSubscribeInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubscribeInput to be of type 'table'")
 	assert(struct["TopicArn"], "Expected key TopicArn to exist in table")
 	assert(struct["Protocol"], "Expected key Protocol to exist in table")
-	if struct["Endpoint"] then M.Assertendpoint(struct["Endpoint"]) end
-	if struct["Protocol"] then M.Assertprotocol(struct["Protocol"]) end
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
+	if struct["Endpoint"] then asserts.Assertendpoint(struct["Endpoint"]) end
+	if struct["Protocol"] then asserts.Assertprotocol(struct["Protocol"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SubscribeInput_keys[k], "SubscribeInput contains unknown key " .. tostring(k))
+		assert(keys.SubscribeInput[k], "SubscribeInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubscribeInput
 -- <p>Input for Subscribe action.</p>
--- @param Endpoint [endpoint] <p>The endpoint that you want to receive notifications. Endpoints vary by protocol:</p> <ul> <li> <p>For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"</p> </li> <li> <p>For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"</p> </li> <li> <p>For the <code>email</code> protocol, the endpoint is an email address</p> </li> <li> <p>For the <code>email-json</code> protocol, the endpoint is an email address</p> </li> <li> <p>For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device</p> </li> <li> <p>For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue</p> </li> <li> <p>For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.</p> </li> <li> <p>For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.</p> </li> </ul>
--- @param Protocol [protocol] <p>The protocol you want to use. Supported protocols include:</p> <ul> <li> <p> <code>http</code> -- delivery of JSON-encoded message via HTTP POST</p> </li> <li> <p> <code>https</code> -- delivery of JSON-encoded message via HTTPS POST</p> </li> <li> <p> <code>email</code> -- delivery of message via SMTP</p> </li> <li> <p> <code>email-json</code> -- delivery of JSON-encoded message via SMTP</p> </li> <li> <p> <code>sms</code> -- delivery of message via SMS</p> </li> <li> <p> <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue</p> </li> <li> <p> <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and device.</p> </li> <li> <p> <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.</p> </li> </ul>
--- @param TopicArn [topicARN] <p>The ARN of the topic you want to subscribe to.</p>
+-- @param _Endpoint [endpoint] <p>The endpoint that you want to receive notifications. Endpoints vary by protocol:</p> <ul> <li> <p>For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"</p> </li> <li> <p>For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"</p> </li> <li> <p>For the <code>email</code> protocol, the endpoint is an email address</p> </li> <li> <p>For the <code>email-json</code> protocol, the endpoint is an email address</p> </li> <li> <p>For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device</p> </li> <li> <p>For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue</p> </li> <li> <p>For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.</p> </li> <li> <p>For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.</p> </li> </ul>
+-- @param _Protocol [protocol] <p>The protocol you want to use. Supported protocols include:</p> <ul> <li> <p> <code>http</code> -- delivery of JSON-encoded message via HTTP POST</p> </li> <li> <p> <code>https</code> -- delivery of JSON-encoded message via HTTPS POST</p> </li> <li> <p> <code>email</code> -- delivery of message via SMTP</p> </li> <li> <p> <code>email-json</code> -- delivery of JSON-encoded message via SMTP</p> </li> <li> <p> <code>sms</code> -- delivery of message via SMS</p> </li> <li> <p> <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue</p> </li> <li> <p> <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and device.</p> </li> <li> <p> <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.</p> </li> </ul>
+-- @param _TopicArn [topicARN] <p>The ARN of the topic you want to subscribe to.</p>
 -- Required parameter: TopicArn
 -- Required parameter: Protocol
-function M.SubscribeInput(Endpoint, Protocol, TopicArn, ...)
+function M.SubscribeInput(_Endpoint, _Protocol, _TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeInput")
 	local t = { 
-		["Endpoint"] = Endpoint,
-		["Protocol"] = Protocol,
-		["TopicArn"] = TopicArn,
+		["Endpoint"] = _Endpoint,
+		["Protocol"] = _Protocol,
+		["TopicArn"] = _TopicArn,
 	}
-	M.AssertSubscribeInput(t)
+	asserts.AssertSubscribeInput(t)
 	return t
 end
 
-local DeletePlatformApplicationInput_keys = { "PlatformApplicationArn" = true, nil }
+keys.DeletePlatformApplicationInput = { ["PlatformApplicationArn"] = true, nil }
 
-function M.AssertDeletePlatformApplicationInput(struct)
+function asserts.AssertDeletePlatformApplicationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeletePlatformApplicationInput to be of type 'table'")
 	assert(struct["PlatformApplicationArn"], "Expected key PlatformApplicationArn to exist in table")
-	if struct["PlatformApplicationArn"] then M.AssertString(struct["PlatformApplicationArn"]) end
+	if struct["PlatformApplicationArn"] then asserts.AssertString(struct["PlatformApplicationArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeletePlatformApplicationInput_keys[k], "DeletePlatformApplicationInput contains unknown key " .. tostring(k))
+		assert(keys.DeletePlatformApplicationInput[k], "DeletePlatformApplicationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeletePlatformApplicationInput
 -- <p>Input for DeletePlatformApplication action.</p>
--- @param PlatformApplicationArn [String] <p>PlatformApplicationArn of platform application object to delete.</p>
+-- @param _PlatformApplicationArn [String] <p>PlatformApplicationArn of platform application object to delete.</p>
 -- Required parameter: PlatformApplicationArn
-function M.DeletePlatformApplicationInput(PlatformApplicationArn, ...)
+function M.DeletePlatformApplicationInput(_PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePlatformApplicationInput")
 	local t = { 
-		["PlatformApplicationArn"] = PlatformApplicationArn,
+		["PlatformApplicationArn"] = _PlatformApplicationArn,
 	}
-	M.AssertDeletePlatformApplicationInput(t)
+	asserts.AssertDeletePlatformApplicationInput(t)
 	return t
 end
 
-local PublishResponse_keys = { "MessageId" = true, nil }
+keys.PublishResponse = { ["MessageId"] = true, nil }
 
-function M.AssertPublishResponse(struct)
+function asserts.AssertPublishResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PublishResponse to be of type 'table'")
-	if struct["MessageId"] then M.AssertmessageId(struct["MessageId"]) end
+	if struct["MessageId"] then asserts.AssertmessageId(struct["MessageId"]) end
 	for k,_ in pairs(struct) do
-		assert(PublishResponse_keys[k], "PublishResponse contains unknown key " .. tostring(k))
+		assert(keys.PublishResponse[k], "PublishResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PublishResponse
 -- <p>Response for Publish action.</p>
--- @param MessageId [messageId] <p>Unique identifier assigned to the published message.</p> <p>Length Constraint: Maximum 100 characters</p>
-function M.PublishResponse(MessageId, ...)
+-- @param _MessageId [messageId] <p>Unique identifier assigned to the published message.</p> <p>Length Constraint: Maximum 100 characters</p>
+function M.PublishResponse(_MessageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishResponse")
 	local t = { 
-		["MessageId"] = MessageId,
+		["MessageId"] = _MessageId,
 	}
-	M.AssertPublishResponse(t)
+	asserts.AssertPublishResponse(t)
 	return t
 end
 
-local MessageAttributeValue_keys = { "DataType" = true, "StringValue" = true, "BinaryValue" = true, nil }
+keys.MessageAttributeValue = { ["DataType"] = true, ["StringValue"] = true, ["BinaryValue"] = true, nil }
 
-function M.AssertMessageAttributeValue(struct)
+function asserts.AssertMessageAttributeValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MessageAttributeValue to be of type 'table'")
 	assert(struct["DataType"], "Expected key DataType to exist in table")
-	if struct["DataType"] then M.AssertString(struct["DataType"]) end
-	if struct["StringValue"] then M.AssertString(struct["StringValue"]) end
-	if struct["BinaryValue"] then M.AssertBinary(struct["BinaryValue"]) end
+	if struct["DataType"] then asserts.AssertString(struct["DataType"]) end
+	if struct["StringValue"] then asserts.AssertString(struct["StringValue"]) end
+	if struct["BinaryValue"] then asserts.AssertBinary(struct["BinaryValue"]) end
 	for k,_ in pairs(struct) do
-		assert(MessageAttributeValue_keys[k], "MessageAttributeValue contains unknown key " .. tostring(k))
+		assert(keys.MessageAttributeValue[k], "MessageAttributeValue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MessageAttributeValue
 -- <p>The user-specified message attribute value. For string data types, the value attribute has the same restrictions on the content as the message body. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_Publish.html">Publish</a>.</p> <p>Name, type, and value must not be empty or null. In addition, the message body should not be empty or null. All parts of the message attribute, including name, type, and value, are included in the message size restriction, which is currently 256 KB (262,144 bytes). For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html">Using Amazon SNS Message Attributes</a>.</p>
--- @param DataType [String] <p>Amazon SNS supports the following logical data types: String, Number, and Binary. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html#SNSMessageAttributes.DataTypes">Message Attribute Data Types</a>.</p>
--- @param StringValue [String] <p>Strings are Unicode with UTF8 binary encoding. For a list of code values, see <a href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.</p>
--- @param BinaryValue [Binary] <p>Binary type attributes can store any binary data, for example, compressed data, encrypted data, or images.</p>
+-- @param _DataType [String] <p>Amazon SNS supports the following logical data types: String, Number, and Binary. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html#SNSMessageAttributes.DataTypes">Message Attribute Data Types</a>.</p>
+-- @param _StringValue [String] <p>Strings are Unicode with UTF8 binary encoding. For a list of code values, see <a href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.</p>
+-- @param _BinaryValue [Binary] <p>Binary type attributes can store any binary data, for example, compressed data, encrypted data, or images.</p>
 -- Required parameter: DataType
-function M.MessageAttributeValue(DataType, StringValue, BinaryValue, ...)
+function M.MessageAttributeValue(_DataType, _StringValue, _BinaryValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MessageAttributeValue")
 	local t = { 
-		["DataType"] = DataType,
-		["StringValue"] = StringValue,
-		["BinaryValue"] = BinaryValue,
+		["DataType"] = _DataType,
+		["StringValue"] = _StringValue,
+		["BinaryValue"] = _BinaryValue,
 	}
-	M.AssertMessageAttributeValue(t)
+	asserts.AssertMessageAttributeValue(t)
 	return t
 end
 
-local CheckIfPhoneNumberIsOptedOutResponse_keys = { "isOptedOut" = true, nil }
+keys.CheckIfPhoneNumberIsOptedOutResponse = { ["isOptedOut"] = true, nil }
 
-function M.AssertCheckIfPhoneNumberIsOptedOutResponse(struct)
+function asserts.AssertCheckIfPhoneNumberIsOptedOutResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CheckIfPhoneNumberIsOptedOutResponse to be of type 'table'")
-	if struct["isOptedOut"] then M.Assertboolean(struct["isOptedOut"]) end
+	if struct["isOptedOut"] then asserts.Assertboolean(struct["isOptedOut"]) end
 	for k,_ in pairs(struct) do
-		assert(CheckIfPhoneNumberIsOptedOutResponse_keys[k], "CheckIfPhoneNumberIsOptedOutResponse contains unknown key " .. tostring(k))
+		assert(keys.CheckIfPhoneNumberIsOptedOutResponse[k], "CheckIfPhoneNumberIsOptedOutResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CheckIfPhoneNumberIsOptedOutResponse
 -- <p>The response from the <code>CheckIfPhoneNumberIsOptedOut</code> action.</p>
--- @param isOptedOut [boolean] <p>Indicates whether the phone number is opted out:</p> <ul> <li> <p> <code>true</code> – The phone number is opted out, meaning you cannot publish SMS messages to it.</p> </li> <li> <p> <code>false</code> – The phone number is opted in, meaning you can publish SMS messages to it.</p> </li> </ul>
-function M.CheckIfPhoneNumberIsOptedOutResponse(isOptedOut, ...)
+-- @param _isOptedOut [boolean] <p>Indicates whether the phone number is opted out:</p> <ul> <li> <p> <code>true</code> – The phone number is opted out, meaning you cannot publish SMS messages to it.</p> </li> <li> <p> <code>false</code> – The phone number is opted in, meaning you can publish SMS messages to it.</p> </li> </ul>
+function M.CheckIfPhoneNumberIsOptedOutResponse(_isOptedOut, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CheckIfPhoneNumberIsOptedOutResponse")
 	local t = { 
-		["isOptedOut"] = isOptedOut,
+		["isOptedOut"] = _isOptedOut,
 	}
-	M.AssertCheckIfPhoneNumberIsOptedOutResponse(t)
+	asserts.AssertCheckIfPhoneNumberIsOptedOutResponse(t)
 	return t
 end
 
-local ListEndpointsByPlatformApplicationInput_keys = { "NextToken" = true, "PlatformApplicationArn" = true, nil }
+keys.ListEndpointsByPlatformApplicationInput = { ["NextToken"] = true, ["PlatformApplicationArn"] = true, nil }
 
-function M.AssertListEndpointsByPlatformApplicationInput(struct)
+function asserts.AssertListEndpointsByPlatformApplicationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListEndpointsByPlatformApplicationInput to be of type 'table'")
 	assert(struct["PlatformApplicationArn"], "Expected key PlatformApplicationArn to exist in table")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["PlatformApplicationArn"] then M.AssertString(struct["PlatformApplicationArn"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["PlatformApplicationArn"] then asserts.AssertString(struct["PlatformApplicationArn"]) end
 	for k,_ in pairs(struct) do
-		assert(ListEndpointsByPlatformApplicationInput_keys[k], "ListEndpointsByPlatformApplicationInput contains unknown key " .. tostring(k))
+		assert(keys.ListEndpointsByPlatformApplicationInput[k], "ListEndpointsByPlatformApplicationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListEndpointsByPlatformApplicationInput
 -- <p>Input for ListEndpointsByPlatformApplication action.</p>
--- @param NextToken [String] <p>NextToken string is used when calling ListEndpointsByPlatformApplication action to retrieve additional records that are available after the first page results.</p>
--- @param PlatformApplicationArn [String] <p>PlatformApplicationArn for ListEndpointsByPlatformApplicationInput action.</p>
+-- @param _NextToken [String] <p>NextToken string is used when calling ListEndpointsByPlatformApplication action to retrieve additional records that are available after the first page results.</p>
+-- @param _PlatformApplicationArn [String] <p>PlatformApplicationArn for ListEndpointsByPlatformApplicationInput action.</p>
 -- Required parameter: PlatformApplicationArn
-function M.ListEndpointsByPlatformApplicationInput(NextToken, PlatformApplicationArn, ...)
+function M.ListEndpointsByPlatformApplicationInput(_NextToken, _PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEndpointsByPlatformApplicationInput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["PlatformApplicationArn"] = PlatformApplicationArn,
+		["NextToken"] = _NextToken,
+		["PlatformApplicationArn"] = _PlatformApplicationArn,
 	}
-	M.AssertListEndpointsByPlatformApplicationInput(t)
+	asserts.AssertListEndpointsByPlatformApplicationInput(t)
 	return t
 end
 
-local SetSMSAttributesResponse_keys = { nil }
+keys.SetSMSAttributesResponse = { nil }
 
-function M.AssertSetSMSAttributesResponse(struct)
+function asserts.AssertSetSMSAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetSMSAttributesResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(SetSMSAttributesResponse_keys[k], "SetSMSAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.SetSMSAttributesResponse[k], "SetSMSAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1339,799 +1342,799 @@ function M.SetSMSAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSMSAttributesResponse")
 	local t = { 
 	}
-	M.AssertSetSMSAttributesResponse(t)
+	asserts.AssertSetSMSAttributesResponse(t)
 	return t
 end
 
-local RemovePermissionInput_keys = { "TopicArn" = true, "Label" = true, nil }
+keys.RemovePermissionInput = { ["TopicArn"] = true, ["Label"] = true, nil }
 
-function M.AssertRemovePermissionInput(struct)
+function asserts.AssertRemovePermissionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemovePermissionInput to be of type 'table'")
 	assert(struct["TopicArn"], "Expected key TopicArn to exist in table")
 	assert(struct["Label"], "Expected key Label to exist in table")
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
-	if struct["Label"] then M.Assertlabel(struct["Label"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
+	if struct["Label"] then asserts.Assertlabel(struct["Label"]) end
 	for k,_ in pairs(struct) do
-		assert(RemovePermissionInput_keys[k], "RemovePermissionInput contains unknown key " .. tostring(k))
+		assert(keys.RemovePermissionInput[k], "RemovePermissionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemovePermissionInput
 -- <p>Input for RemovePermission action.</p>
--- @param TopicArn [topicARN] <p>The ARN of the topic whose access control policy you wish to modify.</p>
--- @param Label [label] <p>The unique label of the statement you want to remove.</p>
+-- @param _TopicArn [topicARN] <p>The ARN of the topic whose access control policy you wish to modify.</p>
+-- @param _Label [label] <p>The unique label of the statement you want to remove.</p>
 -- Required parameter: TopicArn
 -- Required parameter: Label
-function M.RemovePermissionInput(TopicArn, Label, ...)
+function M.RemovePermissionInput(_TopicArn, _Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemovePermissionInput")
 	local t = { 
-		["TopicArn"] = TopicArn,
-		["Label"] = Label,
+		["TopicArn"] = _TopicArn,
+		["Label"] = _Label,
 	}
-	M.AssertRemovePermissionInput(t)
+	asserts.AssertRemovePermissionInput(t)
 	return t
 end
 
-local InvalidParameterException_keys = { "message" = true, nil }
+keys.InvalidParameterException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterException(struct)
+function asserts.AssertInvalidParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterException_keys[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterException
 -- <p>Indicates that a request parameter does not comply with the associated constraints.</p>
--- @param message [string] <p>Indicates that a request parameter does not comply with the associated constraints.</p>
-function M.InvalidParameterException(message, ...)
+-- @param _message [string] 
+function M.InvalidParameterException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterException(t)
+	asserts.AssertInvalidParameterException(t)
 	return t
 end
 
-local CreateTopicInput_keys = { "Name" = true, nil }
+keys.CreateTopicInput = { ["Name"] = true, nil }
 
-function M.AssertCreateTopicInput(struct)
+function asserts.AssertCreateTopicInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTopicInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AsserttopicName(struct["Name"]) end
+	if struct["Name"] then asserts.AsserttopicName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateTopicInput_keys[k], "CreateTopicInput contains unknown key " .. tostring(k))
+		assert(keys.CreateTopicInput[k], "CreateTopicInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateTopicInput
 -- <p>Input for CreateTopic action.</p>
--- @param Name [topicName] <p>The name of the topic you want to create.</p> <p>Constraints: Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long.</p>
+-- @param _Name [topicName] <p>The name of the topic you want to create.</p> <p>Constraints: Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long.</p>
 -- Required parameter: Name
-function M.CreateTopicInput(Name, ...)
+function M.CreateTopicInput(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTopicInput")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertCreateTopicInput(t)
+	asserts.AssertCreateTopicInput(t)
 	return t
 end
 
-local DeleteEndpointInput_keys = { "EndpointArn" = true, nil }
+keys.DeleteEndpointInput = { ["EndpointArn"] = true, nil }
 
-function M.AssertDeleteEndpointInput(struct)
+function asserts.AssertDeleteEndpointInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteEndpointInput to be of type 'table'")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteEndpointInput_keys[k], "DeleteEndpointInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteEndpointInput[k], "DeleteEndpointInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteEndpointInput
 -- <p>Input for DeleteEndpoint action.</p>
--- @param EndpointArn [String] <p>EndpointArn of endpoint to delete.</p>
+-- @param _EndpointArn [String] <p>EndpointArn of endpoint to delete.</p>
 -- Required parameter: EndpointArn
-function M.DeleteEndpointInput(EndpointArn, ...)
+function M.DeleteEndpointInput(_EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEndpointInput")
 	local t = { 
-		["EndpointArn"] = EndpointArn,
+		["EndpointArn"] = _EndpointArn,
 	}
-	M.AssertDeleteEndpointInput(t)
+	asserts.AssertDeleteEndpointInput(t)
 	return t
 end
 
-local SetEndpointAttributesInput_keys = { "Attributes" = true, "EndpointArn" = true, nil }
+keys.SetEndpointAttributesInput = { ["Attributes"] = true, ["EndpointArn"] = true, nil }
 
-function M.AssertSetEndpointAttributesInput(struct)
+function asserts.AssertSetEndpointAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetEndpointAttributesInput to be of type 'table'")
 	assert(struct["EndpointArn"], "Expected key EndpointArn to exist in table")
 	assert(struct["Attributes"], "Expected key Attributes to exist in table")
-	if struct["Attributes"] then M.AssertMapStringToString(struct["Attributes"]) end
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
+	if struct["Attributes"] then asserts.AssertMapStringToString(struct["Attributes"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SetEndpointAttributesInput_keys[k], "SetEndpointAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.SetEndpointAttributesInput[k], "SetEndpointAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetEndpointAttributesInput
 -- <p>Input for SetEndpointAttributes action.</p>
--- @param Attributes [MapStringToString] <p>A map of the endpoint attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>CustomUserData</code> -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p> </li> <li> <p> <code>Enabled</code> -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.</p> </li> <li> <p> <code>Token</code> -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.</p> </li> </ul>
--- @param EndpointArn [String] <p>EndpointArn used for SetEndpointAttributes action.</p>
+-- @param _Attributes [MapStringToString] <p>A map of the endpoint attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>CustomUserData</code> -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p> </li> <li> <p> <code>Enabled</code> -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.</p> </li> <li> <p> <code>Token</code> -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.</p> </li> </ul>
+-- @param _EndpointArn [String] <p>EndpointArn used for SetEndpointAttributes action.</p>
 -- Required parameter: EndpointArn
 -- Required parameter: Attributes
-function M.SetEndpointAttributesInput(Attributes, EndpointArn, ...)
+function M.SetEndpointAttributesInput(_Attributes, _EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetEndpointAttributesInput")
 	local t = { 
-		["Attributes"] = Attributes,
-		["EndpointArn"] = EndpointArn,
+		["Attributes"] = _Attributes,
+		["EndpointArn"] = _EndpointArn,
 	}
-	M.AssertSetEndpointAttributesInput(t)
+	asserts.AssertSetEndpointAttributesInput(t)
 	return t
 end
 
-local Endpoint_keys = { "Attributes" = true, "EndpointArn" = true, nil }
+keys.Endpoint = { ["Attributes"] = true, ["EndpointArn"] = true, nil }
 
-function M.AssertEndpoint(struct)
+function asserts.AssertEndpoint(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Endpoint to be of type 'table'")
-	if struct["Attributes"] then M.AssertMapStringToString(struct["Attributes"]) end
-	if struct["EndpointArn"] then M.AssertString(struct["EndpointArn"]) end
+	if struct["Attributes"] then asserts.AssertMapStringToString(struct["Attributes"]) end
+	if struct["EndpointArn"] then asserts.AssertString(struct["EndpointArn"]) end
 	for k,_ in pairs(struct) do
-		assert(Endpoint_keys[k], "Endpoint contains unknown key " .. tostring(k))
+		assert(keys.Endpoint[k], "Endpoint contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Endpoint
 -- <p>Endpoint for mobile app and device.</p>
--- @param Attributes [MapStringToString] <p>Attributes for endpoint.</p>
--- @param EndpointArn [String] <p>EndpointArn for mobile app and device.</p>
-function M.Endpoint(Attributes, EndpointArn, ...)
+-- @param _Attributes [MapStringToString] <p>Attributes for endpoint.</p>
+-- @param _EndpointArn [String] <p>EndpointArn for mobile app and device.</p>
+function M.Endpoint(_Attributes, _EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
 	local t = { 
-		["Attributes"] = Attributes,
-		["EndpointArn"] = EndpointArn,
+		["Attributes"] = _Attributes,
+		["EndpointArn"] = _EndpointArn,
 	}
-	M.AssertEndpoint(t)
+	asserts.AssertEndpoint(t)
 	return t
 end
 
-local ListTopicsInput_keys = { "NextToken" = true, nil }
+keys.ListTopicsInput = { ["NextToken"] = true, nil }
 
-function M.AssertListTopicsInput(struct)
+function asserts.AssertListTopicsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTopicsInput to be of type 'table'")
-	if struct["NextToken"] then M.AssertnextToken(struct["NextToken"]) end
+	if struct["NextToken"] then asserts.AssertnextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTopicsInput_keys[k], "ListTopicsInput contains unknown key " .. tostring(k))
+		assert(keys.ListTopicsInput[k], "ListTopicsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTopicsInput
 --  
--- @param NextToken [nextToken] <p>Token returned by the previous <code>ListTopics</code> request.</p>
-function M.ListTopicsInput(NextToken, ...)
+-- @param _NextToken [nextToken] <p>Token returned by the previous <code>ListTopics</code> request.</p>
+function M.ListTopicsInput(_NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTopicsInput")
 	local t = { 
-		["NextToken"] = NextToken,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListTopicsInput(t)
+	asserts.AssertListTopicsInput(t)
 	return t
 end
 
-local ListSubscriptionsInput_keys = { "NextToken" = true, nil }
+keys.ListSubscriptionsInput = { ["NextToken"] = true, nil }
 
-function M.AssertListSubscriptionsInput(struct)
+function asserts.AssertListSubscriptionsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSubscriptionsInput to be of type 'table'")
-	if struct["NextToken"] then M.AssertnextToken(struct["NextToken"]) end
+	if struct["NextToken"] then asserts.AssertnextToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSubscriptionsInput_keys[k], "ListSubscriptionsInput contains unknown key " .. tostring(k))
+		assert(keys.ListSubscriptionsInput[k], "ListSubscriptionsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSubscriptionsInput
 -- <p>Input for ListSubscriptions action.</p>
--- @param NextToken [nextToken] <p>Token returned by the previous <code>ListSubscriptions</code> request.</p>
-function M.ListSubscriptionsInput(NextToken, ...)
+-- @param _NextToken [nextToken] <p>Token returned by the previous <code>ListSubscriptions</code> request.</p>
+function M.ListSubscriptionsInput(_NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionsInput")
 	local t = { 
-		["NextToken"] = NextToken,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListSubscriptionsInput(t)
+	asserts.AssertListSubscriptionsInput(t)
 	return t
 end
 
-local SubscribeResponse_keys = { "SubscriptionArn" = true, nil }
+keys.SubscribeResponse = { ["SubscriptionArn"] = true, nil }
 
-function M.AssertSubscribeResponse(struct)
+function asserts.AssertSubscribeResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubscribeResponse to be of type 'table'")
-	if struct["SubscriptionArn"] then M.AssertsubscriptionARN(struct["SubscriptionArn"]) end
+	if struct["SubscriptionArn"] then asserts.AssertsubscriptionARN(struct["SubscriptionArn"]) end
 	for k,_ in pairs(struct) do
-		assert(SubscribeResponse_keys[k], "SubscribeResponse contains unknown key " .. tostring(k))
+		assert(keys.SubscribeResponse[k], "SubscribeResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubscribeResponse
 -- <p>Response for Subscribe action.</p>
--- @param SubscriptionArn [subscriptionARN] <p>The ARN of the subscription, if the service was able to create a subscription immediately (without requiring endpoint owner confirmation).</p>
-function M.SubscribeResponse(SubscriptionArn, ...)
+-- @param _SubscriptionArn [subscriptionARN] <p>The ARN of the subscription, if the service was able to create a subscription immediately (without requiring endpoint owner confirmation).</p>
+function M.SubscribeResponse(_SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeResponse")
 	local t = { 
-		["SubscriptionArn"] = SubscriptionArn,
+		["SubscriptionArn"] = _SubscriptionArn,
 	}
-	M.AssertSubscribeResponse(t)
+	asserts.AssertSubscribeResponse(t)
 	return t
 end
 
-local ListPlatformApplicationsResponse_keys = { "NextToken" = true, "PlatformApplications" = true, nil }
+keys.ListPlatformApplicationsResponse = { ["NextToken"] = true, ["PlatformApplications"] = true, nil }
 
-function M.AssertListPlatformApplicationsResponse(struct)
+function asserts.AssertListPlatformApplicationsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPlatformApplicationsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["PlatformApplications"] then M.AssertListOfPlatformApplications(struct["PlatformApplications"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["PlatformApplications"] then asserts.AssertListOfPlatformApplications(struct["PlatformApplications"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPlatformApplicationsResponse_keys[k], "ListPlatformApplicationsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListPlatformApplicationsResponse[k], "ListPlatformApplicationsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPlatformApplicationsResponse
 -- <p>Response for ListPlatformApplications action.</p>
--- @param NextToken [String] <p>NextToken string is returned when calling ListPlatformApplications action if additional records are available after the first page results.</p>
--- @param PlatformApplications [ListOfPlatformApplications] <p>Platform applications returned when calling ListPlatformApplications action.</p>
-function M.ListPlatformApplicationsResponse(NextToken, PlatformApplications, ...)
+-- @param _NextToken [String] <p>NextToken string is returned when calling ListPlatformApplications action if additional records are available after the first page results.</p>
+-- @param _PlatformApplications [ListOfPlatformApplications] <p>Platform applications returned when calling ListPlatformApplications action.</p>
+function M.ListPlatformApplicationsResponse(_NextToken, _PlatformApplications, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPlatformApplicationsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["PlatformApplications"] = PlatformApplications,
+		["NextToken"] = _NextToken,
+		["PlatformApplications"] = _PlatformApplications,
 	}
-	M.AssertListPlatformApplicationsResponse(t)
+	asserts.AssertListPlatformApplicationsResponse(t)
 	return t
 end
 
-local GetTopicAttributesInput_keys = { "TopicArn" = true, nil }
+keys.GetTopicAttributesInput = { ["TopicArn"] = true, nil }
 
-function M.AssertGetTopicAttributesInput(struct)
+function asserts.AssertGetTopicAttributesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTopicAttributesInput to be of type 'table'")
 	assert(struct["TopicArn"], "Expected key TopicArn to exist in table")
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTopicAttributesInput_keys[k], "GetTopicAttributesInput contains unknown key " .. tostring(k))
+		assert(keys.GetTopicAttributesInput[k], "GetTopicAttributesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTopicAttributesInput
 -- <p>Input for GetTopicAttributes action.</p>
--- @param TopicArn [topicARN] <p>The ARN of the topic whose properties you want to get.</p>
+-- @param _TopicArn [topicARN] <p>The ARN of the topic whose properties you want to get.</p>
 -- Required parameter: TopicArn
-function M.GetTopicAttributesInput(TopicArn, ...)
+function M.GetTopicAttributesInput(_TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTopicAttributesInput")
 	local t = { 
-		["TopicArn"] = TopicArn,
+		["TopicArn"] = _TopicArn,
 	}
-	M.AssertGetTopicAttributesInput(t)
+	asserts.AssertGetTopicAttributesInput(t)
 	return t
 end
 
-local AddPermissionInput_keys = { "ActionName" = true, "AWSAccountId" = true, "TopicArn" = true, "Label" = true, nil }
+keys.AddPermissionInput = { ["ActionName"] = true, ["AWSAccountId"] = true, ["TopicArn"] = true, ["Label"] = true, nil }
 
-function M.AssertAddPermissionInput(struct)
+function asserts.AssertAddPermissionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddPermissionInput to be of type 'table'")
 	assert(struct["TopicArn"], "Expected key TopicArn to exist in table")
 	assert(struct["Label"], "Expected key Label to exist in table")
 	assert(struct["AWSAccountId"], "Expected key AWSAccountId to exist in table")
 	assert(struct["ActionName"], "Expected key ActionName to exist in table")
-	if struct["ActionName"] then M.AssertActionsList(struct["ActionName"]) end
-	if struct["AWSAccountId"] then M.AssertDelegatesList(struct["AWSAccountId"]) end
-	if struct["TopicArn"] then M.AsserttopicARN(struct["TopicArn"]) end
-	if struct["Label"] then M.Assertlabel(struct["Label"]) end
+	if struct["ActionName"] then asserts.AssertActionsList(struct["ActionName"]) end
+	if struct["AWSAccountId"] then asserts.AssertDelegatesList(struct["AWSAccountId"]) end
+	if struct["TopicArn"] then asserts.AsserttopicARN(struct["TopicArn"]) end
+	if struct["Label"] then asserts.Assertlabel(struct["Label"]) end
 	for k,_ in pairs(struct) do
-		assert(AddPermissionInput_keys[k], "AddPermissionInput contains unknown key " .. tostring(k))
+		assert(keys.AddPermissionInput[k], "AddPermissionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddPermissionInput
 --  
--- @param ActionName [ActionsList] <p>The action you want to allow for the specified principal(s).</p> <p>Valid values: any Amazon SNS action name.</p>
--- @param AWSAccountId [DelegatesList] <p>The AWS account IDs of the users (principals) who will be given access to the specified actions. The users must have AWS accounts, but do not need to be signed up for this service.</p>
--- @param TopicArn [topicARN] <p>The ARN of the topic whose access control policy you wish to modify.</p>
--- @param Label [label] <p>A unique identifier for the new policy statement.</p>
+-- @param _ActionName [ActionsList] <p>The action you want to allow for the specified principal(s).</p> <p>Valid values: any Amazon SNS action name.</p>
+-- @param _AWSAccountId [DelegatesList] <p>The AWS account IDs of the users (principals) who will be given access to the specified actions. The users must have AWS accounts, but do not need to be signed up for this service.</p>
+-- @param _TopicArn [topicARN] <p>The ARN of the topic whose access control policy you wish to modify.</p>
+-- @param _Label [label] <p>A unique identifier for the new policy statement.</p>
 -- Required parameter: TopicArn
 -- Required parameter: Label
 -- Required parameter: AWSAccountId
 -- Required parameter: ActionName
-function M.AddPermissionInput(ActionName, AWSAccountId, TopicArn, Label, ...)
+function M.AddPermissionInput(_ActionName, _AWSAccountId, _TopicArn, _Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddPermissionInput")
 	local t = { 
-		["ActionName"] = ActionName,
-		["AWSAccountId"] = AWSAccountId,
-		["TopicArn"] = TopicArn,
-		["Label"] = Label,
+		["ActionName"] = _ActionName,
+		["AWSAccountId"] = _AWSAccountId,
+		["TopicArn"] = _TopicArn,
+		["Label"] = _Label,
 	}
-	M.AssertAddPermissionInput(t)
+	asserts.AssertAddPermissionInput(t)
 	return t
 end
 
-local GetPlatformApplicationAttributesResponse_keys = { "Attributes" = true, nil }
+keys.GetPlatformApplicationAttributesResponse = { ["Attributes"] = true, nil }
 
-function M.AssertGetPlatformApplicationAttributesResponse(struct)
+function asserts.AssertGetPlatformApplicationAttributesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetPlatformApplicationAttributesResponse to be of type 'table'")
-	if struct["Attributes"] then M.AssertMapStringToString(struct["Attributes"]) end
+	if struct["Attributes"] then asserts.AssertMapStringToString(struct["Attributes"]) end
 	for k,_ in pairs(struct) do
-		assert(GetPlatformApplicationAttributesResponse_keys[k], "GetPlatformApplicationAttributesResponse contains unknown key " .. tostring(k))
+		assert(keys.GetPlatformApplicationAttributesResponse[k], "GetPlatformApplicationAttributesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetPlatformApplicationAttributesResponse
 -- <p>Response for GetPlatformApplicationAttributes action.</p>
--- @param Attributes [MapStringToString] <p>Attributes include the following:</p> <ul> <li> <p> <code>EventEndpointCreated</code> -- Topic ARN to which EndpointCreated event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointDeleted</code> -- Topic ARN to which EndpointDeleted event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointUpdated</code> -- Topic ARN to which EndpointUpdate event notifications should be sent.</p> </li> <li> <p> <code>EventDeliveryFailure</code> -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.</p> </li> </ul>
-function M.GetPlatformApplicationAttributesResponse(Attributes, ...)
+-- @param _Attributes [MapStringToString] <p>Attributes include the following:</p> <ul> <li> <p> <code>EventEndpointCreated</code> -- Topic ARN to which EndpointCreated event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointDeleted</code> -- Topic ARN to which EndpointDeleted event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointUpdated</code> -- Topic ARN to which EndpointUpdate event notifications should be sent.</p> </li> <li> <p> <code>EventDeliveryFailure</code> -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.</p> </li> </ul>
+function M.GetPlatformApplicationAttributesResponse(_Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPlatformApplicationAttributesResponse")
 	local t = { 
-		["Attributes"] = Attributes,
+		["Attributes"] = _Attributes,
 	}
-	M.AssertGetPlatformApplicationAttributesResponse(t)
+	asserts.AssertGetPlatformApplicationAttributesResponse(t)
 	return t
 end
 
-local PlatformApplicationDisabledException_keys = { "message" = true, nil }
+keys.PlatformApplicationDisabledException = { ["message"] = true, nil }
 
-function M.AssertPlatformApplicationDisabledException(struct)
+function asserts.AssertPlatformApplicationDisabledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PlatformApplicationDisabledException to be of type 'table'")
-	if struct["message"] then M.Assertstring(struct["message"]) end
+	if struct["message"] then asserts.Assertstring(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(PlatformApplicationDisabledException_keys[k], "PlatformApplicationDisabledException contains unknown key " .. tostring(k))
+		assert(keys.PlatformApplicationDisabledException[k], "PlatformApplicationDisabledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PlatformApplicationDisabledException
 -- <p>Exception error indicating platform application disabled.</p>
--- @param message [string] <p>Message for platform application disabled.</p>
-function M.PlatformApplicationDisabledException(message, ...)
+-- @param _message [string] <p>Message for platform application disabled.</p>
+function M.PlatformApplicationDisabledException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformApplicationDisabledException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertPlatformApplicationDisabledException(t)
+	asserts.AssertPlatformApplicationDisabledException(t)
 	return t
 end
 
-function M.Assertprotocol(str)
+function asserts.Assertprotocol(str)
 	assert(str)
 	assert(type(str) == "string", "Expected protocol to be of type 'string'")
 end
 
 --  
 function M.protocol(str)
-	M.Assertprotocol(str)
+	asserts.Assertprotocol(str)
 	return str
 end
 
-function M.Assertstring(str)
+function asserts.Assertstring(str)
 	assert(str)
 	assert(type(str) == "string", "Expected string to be of type 'string'")
 end
 
 --  
 function M.string(str)
-	M.Assertstring(str)
+	asserts.Assertstring(str)
 	return str
 end
 
-function M.AssertattributeName(str)
+function asserts.AssertattributeName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected attributeName to be of type 'string'")
 end
 
 --  
 function M.attributeName(str)
-	M.AssertattributeName(str)
+	asserts.AssertattributeName(str)
 	return str
 end
 
-function M.AssertPhoneNumber(str)
+function asserts.AssertPhoneNumber(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PhoneNumber to be of type 'string'")
 end
 
 --  
 function M.PhoneNumber(str)
-	M.AssertPhoneNumber(str)
+	asserts.AssertPhoneNumber(str)
 	return str
 end
 
-function M.AsserttopicName(str)
+function asserts.AsserttopicName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected topicName to be of type 'string'")
 end
 
 --  
 function M.topicName(str)
-	M.AsserttopicName(str)
+	asserts.AsserttopicName(str)
 	return str
 end
 
-function M.Asserttoken(str)
+function asserts.Asserttoken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected token to be of type 'string'")
 end
 
 --  
 function M.token(str)
-	M.Asserttoken(str)
+	asserts.Asserttoken(str)
 	return str
 end
 
-function M.Assertdelegate(str)
+function asserts.Assertdelegate(str)
 	assert(str)
 	assert(type(str) == "string", "Expected delegate to be of type 'string'")
 end
 
 --  
 function M.delegate(str)
-	M.Assertdelegate(str)
+	asserts.Assertdelegate(str)
 	return str
 end
 
-function M.AssertmessageId(str)
+function asserts.AssertmessageId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected messageId to be of type 'string'")
 end
 
 --  
 function M.messageId(str)
-	M.AssertmessageId(str)
+	asserts.AssertmessageId(str)
 	return str
 end
 
-function M.Assertsubject(str)
+function asserts.Assertsubject(str)
 	assert(str)
 	assert(type(str) == "string", "Expected subject to be of type 'string'")
 end
 
 --  
 function M.subject(str)
-	M.Assertsubject(str)
+	asserts.Assertsubject(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.Assertlabel(str)
+function asserts.Assertlabel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected label to be of type 'string'")
 end
 
 --  
 function M.label(str)
-	M.Assertlabel(str)
+	asserts.Assertlabel(str)
 	return str
 end
 
-function M.Assertaction(str)
+function asserts.Assertaction(str)
 	assert(str)
 	assert(type(str) == "string", "Expected action to be of type 'string'")
 end
 
 --  
 function M.action(str)
-	M.Assertaction(str)
+	asserts.Assertaction(str)
 	return str
 end
 
-function M.AsserttopicARN(str)
+function asserts.AsserttopicARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected topicARN to be of type 'string'")
 end
 
 --  
 function M.topicARN(str)
-	M.AsserttopicARN(str)
+	asserts.AsserttopicARN(str)
 	return str
 end
 
-function M.Assertmessage(str)
+function asserts.Assertmessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected message to be of type 'string'")
 end
 
 --  
 function M.message(str)
-	M.Assertmessage(str)
+	asserts.Assertmessage(str)
 	return str
 end
 
-function M.Assertaccount(str)
+function asserts.Assertaccount(str)
 	assert(str)
 	assert(type(str) == "string", "Expected account to be of type 'string'")
 end
 
 --  
 function M.account(str)
-	M.Assertaccount(str)
+	asserts.Assertaccount(str)
 	return str
 end
 
-function M.Assertendpoint(str)
+function asserts.Assertendpoint(str)
 	assert(str)
 	assert(type(str) == "string", "Expected endpoint to be of type 'string'")
 end
 
 --  
 function M.endpoint(str)
-	M.Assertendpoint(str)
+	asserts.Assertendpoint(str)
 	return str
 end
 
-function M.AssertnextToken(str)
+function asserts.AssertnextToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected nextToken to be of type 'string'")
 end
 
 --  
 function M.nextToken(str)
-	M.AssertnextToken(str)
+	asserts.AssertnextToken(str)
 	return str
 end
 
-function M.AssertauthenticateOnUnsubscribe(str)
+function asserts.AssertauthenticateOnUnsubscribe(str)
 	assert(str)
 	assert(type(str) == "string", "Expected authenticateOnUnsubscribe to be of type 'string'")
 end
 
 --  
 function M.authenticateOnUnsubscribe(str)
-	M.AssertauthenticateOnUnsubscribe(str)
+	asserts.AssertauthenticateOnUnsubscribe(str)
 	return str
 end
 
-function M.AssertsubscriptionARN(str)
+function asserts.AssertsubscriptionARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected subscriptionARN to be of type 'string'")
 end
 
 --  
 function M.subscriptionARN(str)
-	M.AssertsubscriptionARN(str)
+	asserts.AssertsubscriptionARN(str)
 	return str
 end
 
-function M.AssertattributeValue(str)
+function asserts.AssertattributeValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected attributeValue to be of type 'string'")
 end
 
 --  
 function M.attributeValue(str)
-	M.AssertattributeValue(str)
+	asserts.AssertattributeValue(str)
 	return str
 end
 
-function M.AssertmessageStructure(str)
+function asserts.AssertmessageStructure(str)
 	assert(str)
 	assert(type(str) == "string", "Expected messageStructure to be of type 'string'")
 end
 
 --  
 function M.messageStructure(str)
-	M.AssertmessageStructure(str)
+	asserts.AssertmessageStructure(str)
 	return str
 end
 
-function M.Assertboolean(boolean)
+function asserts.Assertboolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected boolean to be of type 'boolean'")
 end
 
 function M.boolean(boolean)
-	M.Assertboolean(boolean)
+	asserts.Assertboolean(boolean)
 	return boolean
 end
 
-function M.AssertSubscriptionAttributesMap(map)
+function asserts.AssertSubscriptionAttributesMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected SubscriptionAttributesMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertattributeName(k)
-		M.AssertattributeValue(v)
+		asserts.AssertattributeName(k)
+		asserts.AssertattributeValue(v)
 	end
 end
 
 function M.SubscriptionAttributesMap(map)
-	M.AssertSubscriptionAttributesMap(map)
+	asserts.AssertSubscriptionAttributesMap(map)
 	return map
 end
 
-function M.AssertMessageAttributeMap(map)
+function asserts.AssertMessageAttributeMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MessageAttributeMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertMessageAttributeValue(v)
+		asserts.AssertString(k)
+		asserts.AssertMessageAttributeValue(v)
 	end
 end
 
 function M.MessageAttributeMap(map)
-	M.AssertMessageAttributeMap(map)
+	asserts.AssertMessageAttributeMap(map)
 	return map
 end
 
-function M.AssertMapStringToString(map)
+function asserts.AssertMapStringToString(map)
 	assert(map)
 	assert(type(map) == "table", "Expected MapStringToString to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertString(v)
+		asserts.AssertString(k)
+		asserts.AssertString(v)
 	end
 end
 
 function M.MapStringToString(map)
-	M.AssertMapStringToString(map)
+	asserts.AssertMapStringToString(map)
 	return map
 end
 
-function M.AssertTopicAttributesMap(map)
+function asserts.AssertTopicAttributesMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected TopicAttributesMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertattributeName(k)
-		M.AssertattributeValue(v)
+		asserts.AssertattributeName(k)
+		asserts.AssertattributeValue(v)
 	end
 end
 
 function M.TopicAttributesMap(map)
-	M.AssertTopicAttributesMap(map)
+	asserts.AssertTopicAttributesMap(map)
 	return map
 end
 
-function M.AssertBinary(blob)
+function asserts.AssertBinary(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected Binary to be of type 'string'")
 end
 
 function M.Binary(blob)
-	M.AssertBinary(blob)
+	asserts.AssertBinary(blob)
 	return blob
 end
 
-function M.AssertSubscriptionsList(list)
+function asserts.AssertSubscriptionsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubscriptionsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSubscription(v)
+		asserts.AssertSubscription(v)
 	end
 end
 
 --  
 -- List of Subscription objects
 function M.SubscriptionsList(list)
-	M.AssertSubscriptionsList(list)
+	asserts.AssertSubscriptionsList(list)
 	return list
 end
 
-function M.AssertActionsList(list)
+function asserts.AssertActionsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ActionsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.Assertaction(v)
+		asserts.Assertaction(v)
 	end
 end
 
 --  
 -- List of action objects
 function M.ActionsList(list)
-	M.AssertActionsList(list)
+	asserts.AssertActionsList(list)
 	return list
 end
 
-function M.AssertTopicsList(list)
+function asserts.AssertTopicsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TopicsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTopic(v)
+		asserts.AssertTopic(v)
 	end
 end
 
 --  
 -- List of Topic objects
 function M.TopicsList(list)
-	M.AssertTopicsList(list)
+	asserts.AssertTopicsList(list)
 	return list
 end
 
-function M.AssertDelegatesList(list)
+function asserts.AssertDelegatesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DelegatesList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.Assertdelegate(v)
+		asserts.Assertdelegate(v)
 	end
 end
 
 --  
 -- List of delegate objects
 function M.DelegatesList(list)
-	M.AssertDelegatesList(list)
+	asserts.AssertDelegatesList(list)
 	return list
 end
 
-function M.AssertPhoneNumberList(list)
+function asserts.AssertPhoneNumberList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PhoneNumberList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPhoneNumber(v)
+		asserts.AssertPhoneNumber(v)
 	end
 end
 
 --  
 -- List of PhoneNumber objects
 function M.PhoneNumberList(list)
-	M.AssertPhoneNumberList(list)
+	asserts.AssertPhoneNumberList(list)
 	return list
 end
 
-function M.AssertListOfPlatformApplications(list)
+function asserts.AssertListOfPlatformApplications(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfPlatformApplications to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPlatformApplication(v)
+		asserts.AssertPlatformApplication(v)
 	end
 end
 
 --  
 -- List of PlatformApplication objects
 function M.ListOfPlatformApplications(list)
-	M.AssertListOfPlatformApplications(list)
+	asserts.AssertListOfPlatformApplications(list)
 	return list
 end
 
-function M.AssertListString(list)
+function asserts.AssertListString(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListString to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.ListString(list)
-	M.AssertListString(list)
+	asserts.AssertListString(list)
 	return list
 end
 
-function M.AssertListOfEndpoints(list)
+function asserts.AssertListOfEndpoints(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ListOfEndpoints to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEndpoint(v)
+		asserts.AssertEndpoint(v)
 	end
 end
 
 --  
 -- List of Endpoint objects
 function M.ListOfEndpoints(list)
-	M.AssertListOfEndpoints(list)
+	asserts.AssertListOfEndpoints(list)
 	return list
 end
 

@@ -18,164 +18,167 @@ M.metadata = {
 	uid = "workdocs-2016-05-01",
 }
 
-local ResourceMetadata_keys = { "Name" = true, "Owner" = true, "VersionId" = true, "ParentId" = true, "OriginalName" = true, "Type" = true, "Id" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertResourceMetadata(struct)
+keys.ResourceMetadata = { ["Name"] = true, ["Owner"] = true, ["VersionId"] = true, ["ParentId"] = true, ["OriginalName"] = true, ["Type"] = true, ["Id"] = true, nil }
+
+function asserts.AssertResourceMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceMetadata to be of type 'table'")
-	if struct["Name"] then M.AssertResourceNameType(struct["Name"]) end
-	if struct["Owner"] then M.AssertUserMetadata(struct["Owner"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["ParentId"] then M.AssertResourceIdType(struct["ParentId"]) end
-	if struct["OriginalName"] then M.AssertResourceNameType(struct["OriginalName"]) end
-	if struct["Type"] then M.AssertResourceType(struct["Type"]) end
-	if struct["Id"] then M.AssertResourceIdType(struct["Id"]) end
+	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
+	if struct["Owner"] then asserts.AssertUserMetadata(struct["Owner"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["ParentId"] then asserts.AssertResourceIdType(struct["ParentId"]) end
+	if struct["OriginalName"] then asserts.AssertResourceNameType(struct["OriginalName"]) end
+	if struct["Type"] then asserts.AssertResourceType(struct["Type"]) end
+	if struct["Id"] then asserts.AssertResourceIdType(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceMetadata_keys[k], "ResourceMetadata contains unknown key " .. tostring(k))
+		assert(keys.ResourceMetadata[k], "ResourceMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceMetadata
 -- <p>Describes the metadata of a resource.</p>
--- @param Name [ResourceNameType] <p>The name of the resource.</p>
--- @param Owner [UserMetadata] <p>The owner of the resource.</p>
--- @param VersionId [DocumentVersionIdType] <p>The version ID of the resource. This is an optional field and is filled for action on document version.</p>
--- @param ParentId [ResourceIdType] <p>The parent ID of the resource before a rename operation.</p>
--- @param OriginalName [ResourceNameType] <p>The original name of the resource prior to a rename operation.</p>
--- @param Type [ResourceType] <p>The type of resource.</p>
--- @param Id [ResourceIdType] <p>The ID of the resource.</p>
-function M.ResourceMetadata(Name, Owner, VersionId, ParentId, OriginalName, Type, Id, ...)
+-- @param _Name [ResourceNameType] <p>The name of the resource.</p>
+-- @param _Owner [UserMetadata] <p>The owner of the resource.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The version ID of the resource. This is an optional field and is filled for action on document version.</p>
+-- @param _ParentId [ResourceIdType] <p>The parent ID of the resource before a rename operation.</p>
+-- @param _OriginalName [ResourceNameType] <p>The original name of the resource prior to a rename operation.</p>
+-- @param _Type [ResourceType] <p>The type of resource.</p>
+-- @param _Id [ResourceIdType] <p>The ID of the resource.</p>
+function M.ResourceMetadata(_Name, _Owner, _VersionId, _ParentId, _OriginalName, _Type, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceMetadata")
 	local t = { 
-		["Name"] = Name,
-		["Owner"] = Owner,
-		["VersionId"] = VersionId,
-		["ParentId"] = ParentId,
-		["OriginalName"] = OriginalName,
-		["Type"] = Type,
-		["Id"] = Id,
+		["Name"] = _Name,
+		["Owner"] = _Owner,
+		["VersionId"] = _VersionId,
+		["ParentId"] = _ParentId,
+		["OriginalName"] = _OriginalName,
+		["Type"] = _Type,
+		["Id"] = _Id,
 	}
-	M.AssertResourceMetadata(t)
+	asserts.AssertResourceMetadata(t)
 	return t
 end
 
-local ServiceUnavailableException_keys = { "Message" = true, nil }
+keys.ServiceUnavailableException = { ["Message"] = true, nil }
 
-function M.AssertServiceUnavailableException(struct)
+function asserts.AssertServiceUnavailableException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ServiceUnavailableException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ServiceUnavailableException_keys[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
+		assert(keys.ServiceUnavailableException[k], "ServiceUnavailableException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ServiceUnavailableException
 -- <p>One or more of the dependencies is unavailable.</p>
--- @param Message [ErrorMessageType] <p>One or more of the dependencies is unavailable.</p>
-function M.ServiceUnavailableException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.ServiceUnavailableException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertServiceUnavailableException(t)
+	asserts.AssertServiceUnavailableException(t)
 	return t
 end
 
-local GetCurrentUserRequest_keys = { "AuthenticationToken" = true, nil }
+keys.GetCurrentUserRequest = { ["AuthenticationToken"] = true, nil }
 
-function M.AssertGetCurrentUserRequest(struct)
+function asserts.AssertGetCurrentUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCurrentUserRequest to be of type 'table'")
 	assert(struct["AuthenticationToken"], "Expected key AuthenticationToken to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCurrentUserRequest_keys[k], "GetCurrentUserRequest contains unknown key " .. tostring(k))
+		assert(keys.GetCurrentUserRequest[k], "GetCurrentUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCurrentUserRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token.</p>
 -- Required parameter: AuthenticationToken
-function M.GetCurrentUserRequest(AuthenticationToken, ...)
+function M.GetCurrentUserRequest(_AuthenticationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCurrentUserRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
+		["AuthenticationToken"] = _AuthenticationToken,
 	}
-	M.AssertGetCurrentUserRequest(t)
+	asserts.AssertGetCurrentUserRequest(t)
 	return t
 end
 
-local RemoveAllResourcePermissionsRequest_keys = { "AuthenticationToken" = true, "ResourceId" = true, nil }
+keys.RemoveAllResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, nil }
 
-function M.AssertRemoveAllResourcePermissionsRequest(struct)
+function asserts.AssertRemoveAllResourcePermissionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveAllResourcePermissionsRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceId"] then M.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveAllResourcePermissionsRequest_keys[k], "RemoveAllResourcePermissionsRequest contains unknown key " .. tostring(k))
+		assert(keys.RemoveAllResourcePermissionsRequest[k], "RemoveAllResourcePermissionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveAllResourcePermissionsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
 -- Required parameter: ResourceId
-function M.RemoveAllResourcePermissionsRequest(AuthenticationToken, ResourceId, ...)
+function M.RemoveAllResourcePermissionsRequest(_AuthenticationToken, _ResourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAllResourcePermissionsRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceId"] = ResourceId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceId"] = _ResourceId,
 	}
-	M.AssertRemoveAllResourcePermissionsRequest(t)
+	asserts.AssertRemoveAllResourcePermissionsRequest(t)
 	return t
 end
 
-local DescribeResourcePermissionsRequest_keys = { "AuthenticationToken" = true, "ResourceId" = true, "Marker" = true, "Limit" = true, nil }
+keys.DescribeResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Marker"] = true, ["Limit"] = true, nil }
 
-function M.AssertDescribeResourcePermissionsRequest(struct)
+function asserts.AssertDescribeResourcePermissionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeResourcePermissionsRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceId"] then M.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeResourcePermissionsRequest_keys[k], "DescribeResourcePermissionsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeResourcePermissionsRequest[k], "DescribeResourcePermissionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeResourcePermissionsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call)</p>
--- @param Limit [LimitType] <p>The maximum number of items to return with this call.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call)</p>
+-- @param _Limit [LimitType] <p>The maximum number of items to return with this call.</p>
 -- Required parameter: ResourceId
-function M.DescribeResourcePermissionsRequest(AuthenticationToken, ResourceId, Marker, Limit, ...)
+function M.DescribeResourcePermissionsRequest(_AuthenticationToken, _ResourceId, _Marker, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourcePermissionsRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceId"] = ResourceId,
-		["Marker"] = Marker,
-		["Limit"] = Limit,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceId"] = _ResourceId,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
 	}
-	M.AssertDescribeResourcePermissionsRequest(t)
+	asserts.AssertDescribeResourcePermissionsRequest(t)
 	return t
 end
 
-local CreateLabelsResponse_keys = { nil }
+keys.CreateLabelsResponse = { nil }
 
-function M.AssertCreateLabelsResponse(struct)
+function asserts.AssertCreateLabelsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLabelsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CreateLabelsResponse_keys[k], "CreateLabelsResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateLabelsResponse[k], "CreateLabelsResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -185,1149 +188,1149 @@ function M.CreateLabelsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLabelsResponse")
 	local t = { 
 	}
-	M.AssertCreateLabelsResponse(t)
+	asserts.AssertCreateLabelsResponse(t)
 	return t
 end
 
-local DescribeRootFoldersResponse_keys = { "Folders" = true, "Marker" = true, nil }
+keys.DescribeRootFoldersResponse = { ["Folders"] = true, ["Marker"] = true, nil }
 
-function M.AssertDescribeRootFoldersResponse(struct)
+function asserts.AssertDescribeRootFoldersResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRootFoldersResponse to be of type 'table'")
-	if struct["Folders"] then M.AssertFolderMetadataList(struct["Folders"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Folders"] then asserts.AssertFolderMetadataList(struct["Folders"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRootFoldersResponse_keys[k], "DescribeRootFoldersResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeRootFoldersResponse[k], "DescribeRootFoldersResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRootFoldersResponse
 --  
--- @param Folders [FolderMetadataList] <p>The user's special folders.</p>
--- @param Marker [PageMarkerType] <p>The marker for the next set of results.</p>
-function M.DescribeRootFoldersResponse(Folders, Marker, ...)
+-- @param _Folders [FolderMetadataList] <p>The user's special folders.</p>
+-- @param _Marker [PageMarkerType] <p>The marker for the next set of results.</p>
+function M.DescribeRootFoldersResponse(_Folders, _Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRootFoldersResponse")
 	local t = { 
-		["Folders"] = Folders,
-		["Marker"] = Marker,
+		["Folders"] = _Folders,
+		["Marker"] = _Marker,
 	}
-	M.AssertDescribeRootFoldersResponse(t)
+	asserts.AssertDescribeRootFoldersResponse(t)
 	return t
 end
 
-local GetDocumentVersionResponse_keys = { "CustomMetadata" = true, "Metadata" = true, nil }
+keys.GetDocumentVersionResponse = { ["CustomMetadata"] = true, ["Metadata"] = true, nil }
 
-function M.AssertGetDocumentVersionResponse(struct)
+function asserts.AssertGetDocumentVersionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentVersionResponse to be of type 'table'")
-	if struct["CustomMetadata"] then M.AssertCustomMetadataMap(struct["CustomMetadata"]) end
-	if struct["Metadata"] then M.AssertDocumentVersionMetadata(struct["Metadata"]) end
+	if struct["CustomMetadata"] then asserts.AssertCustomMetadataMap(struct["CustomMetadata"]) end
+	if struct["Metadata"] then asserts.AssertDocumentVersionMetadata(struct["Metadata"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentVersionResponse_keys[k], "GetDocumentVersionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentVersionResponse[k], "GetDocumentVersionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentVersionResponse
 --  
--- @param CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document version.</p>
--- @param Metadata [DocumentVersionMetadata] <p>The version metadata.</p>
-function M.GetDocumentVersionResponse(CustomMetadata, Metadata, ...)
+-- @param _CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document version.</p>
+-- @param _Metadata [DocumentVersionMetadata] <p>The version metadata.</p>
+function M.GetDocumentVersionResponse(_CustomMetadata, _Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentVersionResponse")
 	local t = { 
-		["CustomMetadata"] = CustomMetadata,
-		["Metadata"] = Metadata,
+		["CustomMetadata"] = _CustomMetadata,
+		["Metadata"] = _Metadata,
 	}
-	M.AssertGetDocumentVersionResponse(t)
+	asserts.AssertGetDocumentVersionResponse(t)
 	return t
 end
 
-local ProhibitedStateException_keys = { "Message" = true, nil }
+keys.ProhibitedStateException = { ["Message"] = true, nil }
 
-function M.AssertProhibitedStateException(struct)
+function asserts.AssertProhibitedStateException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProhibitedStateException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ProhibitedStateException_keys[k], "ProhibitedStateException contains unknown key " .. tostring(k))
+		assert(keys.ProhibitedStateException[k], "ProhibitedStateException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ProhibitedStateException
 -- <p>The specified document version is not in the INITIALIZED state.</p>
--- @param Message [ErrorMessageType] <p>The specified document version is not in the INITIALIZED state.</p>
-function M.ProhibitedStateException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.ProhibitedStateException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProhibitedStateException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertProhibitedStateException(t)
+	asserts.AssertProhibitedStateException(t)
 	return t
 end
 
-local InitiateDocumentVersionUploadRequest_keys = { "ContentType" = true, "Name" = true, "ParentFolderId" = true, "ContentCreatedTimestamp" = true, "DocumentSizeInBytes" = true, "ContentModifiedTimestamp" = true, "AuthenticationToken" = true, "Id" = true, nil }
+keys.InitiateDocumentVersionUploadRequest = { ["ContentType"] = true, ["Name"] = true, ["ParentFolderId"] = true, ["ContentCreatedTimestamp"] = true, ["DocumentSizeInBytes"] = true, ["ContentModifiedTimestamp"] = true, ["AuthenticationToken"] = true, ["Id"] = true, nil }
 
-function M.AssertInitiateDocumentVersionUploadRequest(struct)
+function asserts.AssertInitiateDocumentVersionUploadRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InitiateDocumentVersionUploadRequest to be of type 'table'")
 	assert(struct["ParentFolderId"], "Expected key ParentFolderId to exist in table")
-	if struct["ContentType"] then M.AssertDocumentContentType(struct["ContentType"]) end
-	if struct["Name"] then M.AssertResourceNameType(struct["Name"]) end
-	if struct["ParentFolderId"] then M.AssertResourceIdType(struct["ParentFolderId"]) end
-	if struct["ContentCreatedTimestamp"] then M.AssertTimestampType(struct["ContentCreatedTimestamp"]) end
-	if struct["DocumentSizeInBytes"] then M.AssertSizeType(struct["DocumentSizeInBytes"]) end
-	if struct["ContentModifiedTimestamp"] then M.AssertTimestampType(struct["ContentModifiedTimestamp"]) end
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Id"] then M.AssertResourceIdType(struct["Id"]) end
+	if struct["ContentType"] then asserts.AssertDocumentContentType(struct["ContentType"]) end
+	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
+	if struct["ParentFolderId"] then asserts.AssertResourceIdType(struct["ParentFolderId"]) end
+	if struct["ContentCreatedTimestamp"] then asserts.AssertTimestampType(struct["ContentCreatedTimestamp"]) end
+	if struct["DocumentSizeInBytes"] then asserts.AssertSizeType(struct["DocumentSizeInBytes"]) end
+	if struct["ContentModifiedTimestamp"] then asserts.AssertTimestampType(struct["ContentModifiedTimestamp"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Id"] then asserts.AssertResourceIdType(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(InitiateDocumentVersionUploadRequest_keys[k], "InitiateDocumentVersionUploadRequest contains unknown key " .. tostring(k))
+		assert(keys.InitiateDocumentVersionUploadRequest[k], "InitiateDocumentVersionUploadRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InitiateDocumentVersionUploadRequest
 --  
--- @param ContentType [DocumentContentType] <p>The content type of the document.</p>
--- @param Name [ResourceNameType] <p>The name of the document.</p>
--- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- @param ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
--- @param DocumentSizeInBytes [SizeType] <p>The size of the document, in bytes.</p>
--- @param ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Id [ResourceIdType] <p>The ID of the document.</p>
+-- @param _ContentType [DocumentContentType] <p>The content type of the document.</p>
+-- @param _Name [ResourceNameType] <p>The name of the document.</p>
+-- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param _ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
+-- @param _DocumentSizeInBytes [SizeType] <p>The size of the document, in bytes.</p>
+-- @param _ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Id [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: ParentFolderId
-function M.InitiateDocumentVersionUploadRequest(ContentType, Name, ParentFolderId, ContentCreatedTimestamp, DocumentSizeInBytes, ContentModifiedTimestamp, AuthenticationToken, Id, ...)
+function M.InitiateDocumentVersionUploadRequest(_ContentType, _Name, _ParentFolderId, _ContentCreatedTimestamp, _DocumentSizeInBytes, _ContentModifiedTimestamp, _AuthenticationToken, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateDocumentVersionUploadRequest")
 	local t = { 
-		["ContentType"] = ContentType,
-		["Name"] = Name,
-		["ParentFolderId"] = ParentFolderId,
-		["ContentCreatedTimestamp"] = ContentCreatedTimestamp,
-		["DocumentSizeInBytes"] = DocumentSizeInBytes,
-		["ContentModifiedTimestamp"] = ContentModifiedTimestamp,
-		["AuthenticationToken"] = AuthenticationToken,
-		["Id"] = Id,
+		["ContentType"] = _ContentType,
+		["Name"] = _Name,
+		["ParentFolderId"] = _ParentFolderId,
+		["ContentCreatedTimestamp"] = _ContentCreatedTimestamp,
+		["DocumentSizeInBytes"] = _DocumentSizeInBytes,
+		["ContentModifiedTimestamp"] = _ContentModifiedTimestamp,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Id"] = _Id,
 	}
-	M.AssertInitiateDocumentVersionUploadRequest(t)
+	asserts.AssertInitiateDocumentVersionUploadRequest(t)
 	return t
 end
 
-local DescribeFolderContentsResponse_keys = { "Folders" = true, "Marker" = true, "Documents" = true, nil }
+keys.DescribeFolderContentsResponse = { ["Folders"] = true, ["Marker"] = true, ["Documents"] = true, nil }
 
-function M.AssertDescribeFolderContentsResponse(struct)
+function asserts.AssertDescribeFolderContentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFolderContentsResponse to be of type 'table'")
-	if struct["Folders"] then M.AssertFolderMetadataList(struct["Folders"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Documents"] then M.AssertDocumentMetadataList(struct["Documents"]) end
+	if struct["Folders"] then asserts.AssertFolderMetadataList(struct["Folders"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Documents"] then asserts.AssertDocumentMetadataList(struct["Documents"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFolderContentsResponse_keys[k], "DescribeFolderContentsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeFolderContentsResponse[k], "DescribeFolderContentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFolderContentsResponse
 --  
--- @param Folders [FolderMetadataList] <p>The subfolders in the specified folder.</p>
--- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param Documents [DocumentMetadataList] <p>The documents in the specified folder.</p>
-function M.DescribeFolderContentsResponse(Folders, Marker, Documents, ...)
+-- @param _Folders [FolderMetadataList] <p>The subfolders in the specified folder.</p>
+-- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param _Documents [DocumentMetadataList] <p>The documents in the specified folder.</p>
+function M.DescribeFolderContentsResponse(_Folders, _Marker, _Documents, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFolderContentsResponse")
 	local t = { 
-		["Folders"] = Folders,
-		["Marker"] = Marker,
-		["Documents"] = Documents,
+		["Folders"] = _Folders,
+		["Marker"] = _Marker,
+		["Documents"] = _Documents,
 	}
-	M.AssertDescribeFolderContentsResponse(t)
+	asserts.AssertDescribeFolderContentsResponse(t)
 	return t
 end
 
-local UserMetadata_keys = { "Username" = true, "EmailAddress" = true, "GivenName" = true, "Surname" = true, "Id" = true, nil }
+keys.UserMetadata = { ["Username"] = true, ["EmailAddress"] = true, ["GivenName"] = true, ["Surname"] = true, ["Id"] = true, nil }
 
-function M.AssertUserMetadata(struct)
+function asserts.AssertUserMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserMetadata to be of type 'table'")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["EmailAddress"] then M.AssertEmailAddressType(struct["EmailAddress"]) end
-	if struct["GivenName"] then M.AssertUserAttributeValueType(struct["GivenName"]) end
-	if struct["Surname"] then M.AssertUserAttributeValueType(struct["Surname"]) end
-	if struct["Id"] then M.AssertIdType(struct["Id"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["EmailAddress"] then asserts.AssertEmailAddressType(struct["EmailAddress"]) end
+	if struct["GivenName"] then asserts.AssertUserAttributeValueType(struct["GivenName"]) end
+	if struct["Surname"] then asserts.AssertUserAttributeValueType(struct["Surname"]) end
+	if struct["Id"] then asserts.AssertIdType(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(UserMetadata_keys[k], "UserMetadata contains unknown key " .. tostring(k))
+		assert(keys.UserMetadata[k], "UserMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserMetadata
 -- <p>Describes the metadata of the user.</p>
--- @param Username [UsernameType] <p>The username of the user.</p>
--- @param EmailAddress [EmailAddressType] <p>The email address of the user.</p>
--- @param GivenName [UserAttributeValueType] <p>The given name of the user before a rename operation.</p>
--- @param Surname [UserAttributeValueType] <p>The surname of the user.</p>
--- @param Id [IdType] <p>The ID of the user.</p>
-function M.UserMetadata(Username, EmailAddress, GivenName, Surname, Id, ...)
+-- @param _Username [UsernameType] <p>The username of the user.</p>
+-- @param _EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- @param _GivenName [UserAttributeValueType] <p>The given name of the user before a rename operation.</p>
+-- @param _Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- @param _Id [IdType] <p>The ID of the user.</p>
+function M.UserMetadata(_Username, _EmailAddress, _GivenName, _Surname, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserMetadata")
 	local t = { 
-		["Username"] = Username,
-		["EmailAddress"] = EmailAddress,
-		["GivenName"] = GivenName,
-		["Surname"] = Surname,
-		["Id"] = Id,
+		["Username"] = _Username,
+		["EmailAddress"] = _EmailAddress,
+		["GivenName"] = _GivenName,
+		["Surname"] = _Surname,
+		["Id"] = _Id,
 	}
-	M.AssertUserMetadata(t)
+	asserts.AssertUserMetadata(t)
 	return t
 end
 
-local DeleteFolderContentsRequest_keys = { "AuthenticationToken" = true, "FolderId" = true, nil }
+keys.DeleteFolderContentsRequest = { ["AuthenticationToken"] = true, ["FolderId"] = true, nil }
 
-function M.AssertDeleteFolderContentsRequest(struct)
+function asserts.AssertDeleteFolderContentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFolderContentsRequest to be of type 'table'")
 	assert(struct["FolderId"], "Expected key FolderId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["FolderId"] then M.AssertResourceIdType(struct["FolderId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["FolderId"] then asserts.AssertResourceIdType(struct["FolderId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteFolderContentsRequest_keys[k], "DeleteFolderContentsRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteFolderContentsRequest[k], "DeleteFolderContentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteFolderContentsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required parameter: FolderId
-function M.DeleteFolderContentsRequest(AuthenticationToken, FolderId, ...)
+function M.DeleteFolderContentsRequest(_AuthenticationToken, _FolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFolderContentsRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["FolderId"] = FolderId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["FolderId"] = _FolderId,
 	}
-	M.AssertDeleteFolderContentsRequest(t)
+	asserts.AssertDeleteFolderContentsRequest(t)
 	return t
 end
 
-local ActivateUserResponse_keys = { "User" = true, nil }
+keys.ActivateUserResponse = { ["User"] = true, nil }
 
-function M.AssertActivateUserResponse(struct)
+function asserts.AssertActivateUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ActivateUserResponse to be of type 'table'")
-	if struct["User"] then M.AssertUser(struct["User"]) end
+	if struct["User"] then asserts.AssertUser(struct["User"]) end
 	for k,_ in pairs(struct) do
-		assert(ActivateUserResponse_keys[k], "ActivateUserResponse contains unknown key " .. tostring(k))
+		assert(keys.ActivateUserResponse[k], "ActivateUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ActivateUserResponse
 --  
--- @param User [User] <p>The user information.</p>
-function M.ActivateUserResponse(User, ...)
+-- @param _User [User] <p>The user information.</p>
+function M.ActivateUserResponse(_User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivateUserResponse")
 	local t = { 
-		["User"] = User,
+		["User"] = _User,
 	}
-	M.AssertActivateUserResponse(t)
+	asserts.AssertActivateUserResponse(t)
 	return t
 end
 
-local TooManyLabelsException_keys = { "Message" = true, nil }
+keys.TooManyLabelsException = { ["Message"] = true, nil }
 
-function M.AssertTooManyLabelsException(struct)
+function asserts.AssertTooManyLabelsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyLabelsException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(TooManyLabelsException_keys[k], "TooManyLabelsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyLabelsException[k], "TooManyLabelsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TooManyLabelsException
 -- <p>The limit has been reached on the number of labels for the specified resource.</p>
--- @param Message [ErrorMessageType] <p>The limit has been reached on the number of labels for the specified resource.</p>
-function M.TooManyLabelsException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.TooManyLabelsException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyLabelsException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertTooManyLabelsException(t)
+	asserts.AssertTooManyLabelsException(t)
 	return t
 end
 
-local SharePrincipal_keys = { "Role" = true, "Type" = true, "Id" = true, nil }
+keys.SharePrincipal = { ["Role"] = true, ["Type"] = true, ["Id"] = true, nil }
 
-function M.AssertSharePrincipal(struct)
+function asserts.AssertSharePrincipal(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SharePrincipal to be of type 'table'")
 	assert(struct["Id"], "Expected key Id to exist in table")
 	assert(struct["Type"], "Expected key Type to exist in table")
 	assert(struct["Role"], "Expected key Role to exist in table")
-	if struct["Role"] then M.AssertRoleType(struct["Role"]) end
-	if struct["Type"] then M.AssertPrincipalType(struct["Type"]) end
-	if struct["Id"] then M.AssertIdType(struct["Id"]) end
+	if struct["Role"] then asserts.AssertRoleType(struct["Role"]) end
+	if struct["Type"] then asserts.AssertPrincipalType(struct["Type"]) end
+	if struct["Id"] then asserts.AssertIdType(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(SharePrincipal_keys[k], "SharePrincipal contains unknown key " .. tostring(k))
+		assert(keys.SharePrincipal[k], "SharePrincipal contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SharePrincipal
 -- <p>Describes the recipient type and ID, if available.</p>
--- @param Role [RoleType] <p>The role of the recipient.</p>
--- @param Type [PrincipalType] <p>The type of the recipient.</p>
--- @param Id [IdType] <p>The ID of the recipient.</p>
+-- @param _Role [RoleType] <p>The role of the recipient.</p>
+-- @param _Type [PrincipalType] <p>The type of the recipient.</p>
+-- @param _Id [IdType] <p>The ID of the recipient.</p>
 -- Required parameter: Id
 -- Required parameter: Type
 -- Required parameter: Role
-function M.SharePrincipal(Role, Type, Id, ...)
+function M.SharePrincipal(_Role, _Type, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SharePrincipal")
 	local t = { 
-		["Role"] = Role,
-		["Type"] = Type,
-		["Id"] = Id,
+		["Role"] = _Role,
+		["Type"] = _Type,
+		["Id"] = _Id,
 	}
-	M.AssertSharePrincipal(t)
+	asserts.AssertSharePrincipal(t)
 	return t
 end
 
-local DeleteCustomMetadataRequest_keys = { "AuthenticationToken" = true, "ResourceId" = true, "VersionId" = true, "DeleteAll" = true, "Keys" = true, nil }
+keys.DeleteCustomMetadataRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["VersionId"] = true, ["DeleteAll"] = true, ["Keys"] = true, nil }
 
-function M.AssertDeleteCustomMetadataRequest(struct)
+function asserts.AssertDeleteCustomMetadataRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteCustomMetadataRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceId"] then M.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["DeleteAll"] then M.AssertBooleanType(struct["DeleteAll"]) end
-	if struct["Keys"] then M.AssertCustomMetadataKeyList(struct["Keys"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["DeleteAll"] then asserts.AssertBooleanType(struct["DeleteAll"]) end
+	if struct["Keys"] then asserts.AssertCustomMetadataKeyList(struct["Keys"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteCustomMetadataRequest_keys[k], "DeleteCustomMetadataRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteCustomMetadataRequest[k], "DeleteCustomMetadataRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteCustomMetadataRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceId [ResourceIdType] <p>The ID of the resource, either a document or folder.</p>
--- @param VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being deleted from a document version.</p>
--- @param DeleteAll [BooleanType] <p>Flag to indicate removal of all custom metadata properties from the specified resource.</p>
--- @param Keys [CustomMetadataKeyList] <p>List of properties to remove.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceId [ResourceIdType] <p>The ID of the resource, either a document or folder.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being deleted from a document version.</p>
+-- @param _DeleteAll [BooleanType] <p>Flag to indicate removal of all custom metadata properties from the specified resource.</p>
+-- @param _Keys [CustomMetadataKeyList] <p>List of properties to remove.</p>
 -- Required parameter: ResourceId
-function M.DeleteCustomMetadataRequest(AuthenticationToken, ResourceId, VersionId, DeleteAll, Keys, ...)
+function M.DeleteCustomMetadataRequest(_AuthenticationToken, _ResourceId, _VersionId, _DeleteAll, _Keys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCustomMetadataRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceId"] = ResourceId,
-		["VersionId"] = VersionId,
-		["DeleteAll"] = DeleteAll,
-		["Keys"] = Keys,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceId"] = _ResourceId,
+		["VersionId"] = _VersionId,
+		["DeleteAll"] = _DeleteAll,
+		["Keys"] = _Keys,
 	}
-	M.AssertDeleteCustomMetadataRequest(t)
+	asserts.AssertDeleteCustomMetadataRequest(t)
 	return t
 end
 
-local CreateLabelsRequest_keys = { "AuthenticationToken" = true, "ResourceId" = true, "Labels" = true, nil }
+keys.CreateLabelsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Labels"] = true, nil }
 
-function M.AssertCreateLabelsRequest(struct)
+function asserts.AssertCreateLabelsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLabelsRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	assert(struct["Labels"], "Expected key Labels to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceId"] then M.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["Labels"] then M.AssertLabels(struct["Labels"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["Labels"] then asserts.AssertLabels(struct["Labels"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLabelsRequest_keys[k], "CreateLabelsRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateLabelsRequest[k], "CreateLabelsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLabelsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param Labels [Labels] <p>List of labels to add to the resource.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param _Labels [Labels] <p>List of labels to add to the resource.</p>
 -- Required parameter: ResourceId
 -- Required parameter: Labels
-function M.CreateLabelsRequest(AuthenticationToken, ResourceId, Labels, ...)
+function M.CreateLabelsRequest(_AuthenticationToken, _ResourceId, _Labels, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLabelsRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceId"] = ResourceId,
-		["Labels"] = Labels,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceId"] = _ResourceId,
+		["Labels"] = _Labels,
 	}
-	M.AssertCreateLabelsRequest(t)
+	asserts.AssertCreateLabelsRequest(t)
 	return t
 end
 
-local DeleteNotificationSubscriptionRequest_keys = { "OrganizationId" = true, "SubscriptionId" = true, nil }
+keys.DeleteNotificationSubscriptionRequest = { ["OrganizationId"] = true, ["SubscriptionId"] = true, nil }
 
-function M.AssertDeleteNotificationSubscriptionRequest(struct)
+function asserts.AssertDeleteNotificationSubscriptionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteNotificationSubscriptionRequest to be of type 'table'")
 	assert(struct["SubscriptionId"], "Expected key SubscriptionId to exist in table")
 	assert(struct["OrganizationId"], "Expected key OrganizationId to exist in table")
-	if struct["OrganizationId"] then M.AssertIdType(struct["OrganizationId"]) end
-	if struct["SubscriptionId"] then M.AssertIdType(struct["SubscriptionId"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["SubscriptionId"] then asserts.AssertIdType(struct["SubscriptionId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteNotificationSubscriptionRequest_keys[k], "DeleteNotificationSubscriptionRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteNotificationSubscriptionRequest[k], "DeleteNotificationSubscriptionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteNotificationSubscriptionRequest
 --  
--- @param OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param SubscriptionId [IdType] <p>The ID of the subscription.</p>
+-- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param _SubscriptionId [IdType] <p>The ID of the subscription.</p>
 -- Required parameter: SubscriptionId
 -- Required parameter: OrganizationId
-function M.DeleteNotificationSubscriptionRequest(OrganizationId, SubscriptionId, ...)
+function M.DeleteNotificationSubscriptionRequest(_OrganizationId, _SubscriptionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteNotificationSubscriptionRequest")
 	local t = { 
-		["OrganizationId"] = OrganizationId,
-		["SubscriptionId"] = SubscriptionId,
+		["OrganizationId"] = _OrganizationId,
+		["SubscriptionId"] = _SubscriptionId,
 	}
-	M.AssertDeleteNotificationSubscriptionRequest(t)
+	asserts.AssertDeleteNotificationSubscriptionRequest(t)
 	return t
 end
 
-local CreateNotificationSubscriptionRequest_keys = { "OrganizationId" = true, "SubscriptionType" = true, "Endpoint" = true, "Protocol" = true, nil }
+keys.CreateNotificationSubscriptionRequest = { ["OrganizationId"] = true, ["SubscriptionType"] = true, ["Endpoint"] = true, ["Protocol"] = true, nil }
 
-function M.AssertCreateNotificationSubscriptionRequest(struct)
+function asserts.AssertCreateNotificationSubscriptionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateNotificationSubscriptionRequest to be of type 'table'")
 	assert(struct["OrganizationId"], "Expected key OrganizationId to exist in table")
 	assert(struct["Endpoint"], "Expected key Endpoint to exist in table")
 	assert(struct["Protocol"], "Expected key Protocol to exist in table")
 	assert(struct["SubscriptionType"], "Expected key SubscriptionType to exist in table")
-	if struct["OrganizationId"] then M.AssertIdType(struct["OrganizationId"]) end
-	if struct["SubscriptionType"] then M.AssertSubscriptionType(struct["SubscriptionType"]) end
-	if struct["Endpoint"] then M.AssertSubscriptionEndPointType(struct["Endpoint"]) end
-	if struct["Protocol"] then M.AssertSubscriptionProtocolType(struct["Protocol"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["SubscriptionType"] then asserts.AssertSubscriptionType(struct["SubscriptionType"]) end
+	if struct["Endpoint"] then asserts.AssertSubscriptionEndPointType(struct["Endpoint"]) end
+	if struct["Protocol"] then asserts.AssertSubscriptionProtocolType(struct["Protocol"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateNotificationSubscriptionRequest_keys[k], "CreateNotificationSubscriptionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateNotificationSubscriptionRequest[k], "CreateNotificationSubscriptionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateNotificationSubscriptionRequest
 --  
--- @param OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param SubscriptionType [SubscriptionType] <p>The notification type.</p>
--- @param Endpoint [SubscriptionEndPointType] <p>The endpoint to receive the notifications. If the protocol is HTTPS, the endpoint is a URL that begins with "https://".</p>
--- @param Protocol [SubscriptionProtocolType] <p>The protocol to use. The supported value is https, which delivers JSON-encoded messasges using HTTPS POST.</p>
+-- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param _SubscriptionType [SubscriptionType] <p>The notification type.</p>
+-- @param _Endpoint [SubscriptionEndPointType] <p>The endpoint to receive the notifications. If the protocol is HTTPS, the endpoint is a URL that begins with "https://".</p>
+-- @param _Protocol [SubscriptionProtocolType] <p>The protocol to use. The supported value is https, which delivers JSON-encoded messasges using HTTPS POST.</p>
 -- Required parameter: OrganizationId
 -- Required parameter: Endpoint
 -- Required parameter: Protocol
 -- Required parameter: SubscriptionType
-function M.CreateNotificationSubscriptionRequest(OrganizationId, SubscriptionType, Endpoint, Protocol, ...)
+function M.CreateNotificationSubscriptionRequest(_OrganizationId, _SubscriptionType, _Endpoint, _Protocol, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateNotificationSubscriptionRequest")
 	local t = { 
-		["OrganizationId"] = OrganizationId,
-		["SubscriptionType"] = SubscriptionType,
-		["Endpoint"] = Endpoint,
-		["Protocol"] = Protocol,
+		["OrganizationId"] = _OrganizationId,
+		["SubscriptionType"] = _SubscriptionType,
+		["Endpoint"] = _Endpoint,
+		["Protocol"] = _Protocol,
 	}
-	M.AssertCreateNotificationSubscriptionRequest(t)
+	asserts.AssertCreateNotificationSubscriptionRequest(t)
 	return t
 end
 
-local DocumentVersionMetadata_keys = { "Status" = true, "ContentType" = true, "Name" = true, "ModifiedTimestamp" = true, "Thumbnail" = true, "CreatedTimestamp" = true, "Source" = true, "CreatorId" = true, "ContentCreatedTimestamp" = true, "ContentModifiedTimestamp" = true, "Signature" = true, "Id" = true, "Size" = true, nil }
+keys.DocumentVersionMetadata = { ["Status"] = true, ["ContentType"] = true, ["Name"] = true, ["ModifiedTimestamp"] = true, ["Thumbnail"] = true, ["CreatedTimestamp"] = true, ["Source"] = true, ["CreatorId"] = true, ["ContentCreatedTimestamp"] = true, ["ContentModifiedTimestamp"] = true, ["Signature"] = true, ["Id"] = true, ["Size"] = true, nil }
 
-function M.AssertDocumentVersionMetadata(struct)
+function asserts.AssertDocumentVersionMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentVersionMetadata to be of type 'table'")
-	if struct["Status"] then M.AssertDocumentStatusType(struct["Status"]) end
-	if struct["ContentType"] then M.AssertDocumentContentType(struct["ContentType"]) end
-	if struct["Name"] then M.AssertResourceNameType(struct["Name"]) end
-	if struct["ModifiedTimestamp"] then M.AssertTimestampType(struct["ModifiedTimestamp"]) end
-	if struct["Thumbnail"] then M.AssertDocumentThumbnailUrlMap(struct["Thumbnail"]) end
-	if struct["CreatedTimestamp"] then M.AssertTimestampType(struct["CreatedTimestamp"]) end
-	if struct["Source"] then M.AssertDocumentSourceUrlMap(struct["Source"]) end
-	if struct["CreatorId"] then M.AssertIdType(struct["CreatorId"]) end
-	if struct["ContentCreatedTimestamp"] then M.AssertTimestampType(struct["ContentCreatedTimestamp"]) end
-	if struct["ContentModifiedTimestamp"] then M.AssertTimestampType(struct["ContentModifiedTimestamp"]) end
-	if struct["Signature"] then M.AssertHashType(struct["Signature"]) end
-	if struct["Id"] then M.AssertDocumentVersionIdType(struct["Id"]) end
-	if struct["Size"] then M.AssertSizeType(struct["Size"]) end
+	if struct["Status"] then asserts.AssertDocumentStatusType(struct["Status"]) end
+	if struct["ContentType"] then asserts.AssertDocumentContentType(struct["ContentType"]) end
+	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
+	if struct["ModifiedTimestamp"] then asserts.AssertTimestampType(struct["ModifiedTimestamp"]) end
+	if struct["Thumbnail"] then asserts.AssertDocumentThumbnailUrlMap(struct["Thumbnail"]) end
+	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
+	if struct["Source"] then asserts.AssertDocumentSourceUrlMap(struct["Source"]) end
+	if struct["CreatorId"] then asserts.AssertIdType(struct["CreatorId"]) end
+	if struct["ContentCreatedTimestamp"] then asserts.AssertTimestampType(struct["ContentCreatedTimestamp"]) end
+	if struct["ContentModifiedTimestamp"] then asserts.AssertTimestampType(struct["ContentModifiedTimestamp"]) end
+	if struct["Signature"] then asserts.AssertHashType(struct["Signature"]) end
+	if struct["Id"] then asserts.AssertDocumentVersionIdType(struct["Id"]) end
+	if struct["Size"] then asserts.AssertSizeType(struct["Size"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentVersionMetadata_keys[k], "DocumentVersionMetadata contains unknown key " .. tostring(k))
+		assert(keys.DocumentVersionMetadata[k], "DocumentVersionMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentVersionMetadata
 -- <p>Describes a version of a document.</p>
--- @param Status [DocumentStatusType] <p>The status of the document.</p>
--- @param ContentType [DocumentContentType] <p>The content type of the document.</p>
--- @param Name [ResourceNameType] <p>The name of the version.</p>
--- @param ModifiedTimestamp [TimestampType] <p>The time stamp when the document was last uploaded.</p>
--- @param Thumbnail [DocumentThumbnailUrlMap] <p>The thumbnail of the document.</p>
--- @param CreatedTimestamp [TimestampType] <p>The time stamp when the document was first uploaded.</p>
--- @param Source [DocumentSourceUrlMap] <p>The source of the document.</p>
--- @param CreatorId [IdType] <p>The ID of the creator.</p>
--- @param ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
--- @param ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
--- @param Signature [HashType] <p>The signature of the document.</p>
--- @param Id [DocumentVersionIdType] <p>The ID of the version.</p>
--- @param Size [SizeType] <p>The size of the document, in bytes.</p>
-function M.DocumentVersionMetadata(Status, ContentType, Name, ModifiedTimestamp, Thumbnail, CreatedTimestamp, Source, CreatorId, ContentCreatedTimestamp, ContentModifiedTimestamp, Signature, Id, Size, ...)
+-- @param _Status [DocumentStatusType] <p>The status of the document.</p>
+-- @param _ContentType [DocumentContentType] <p>The content type of the document.</p>
+-- @param _Name [ResourceNameType] <p>The name of the version.</p>
+-- @param _ModifiedTimestamp [TimestampType] <p>The time stamp when the document was last uploaded.</p>
+-- @param _Thumbnail [DocumentThumbnailUrlMap] <p>The thumbnail of the document.</p>
+-- @param _CreatedTimestamp [TimestampType] <p>The time stamp when the document was first uploaded.</p>
+-- @param _Source [DocumentSourceUrlMap] <p>The source of the document.</p>
+-- @param _CreatorId [IdType] <p>The ID of the creator.</p>
+-- @param _ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
+-- @param _ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
+-- @param _Signature [HashType] <p>The signature of the document.</p>
+-- @param _Id [DocumentVersionIdType] <p>The ID of the version.</p>
+-- @param _Size [SizeType] <p>The size of the document, in bytes.</p>
+function M.DocumentVersionMetadata(_Status, _ContentType, _Name, _ModifiedTimestamp, _Thumbnail, _CreatedTimestamp, _Source, _CreatorId, _ContentCreatedTimestamp, _ContentModifiedTimestamp, _Signature, _Id, _Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentVersionMetadata")
 	local t = { 
-		["Status"] = Status,
-		["ContentType"] = ContentType,
-		["Name"] = Name,
-		["ModifiedTimestamp"] = ModifiedTimestamp,
-		["Thumbnail"] = Thumbnail,
-		["CreatedTimestamp"] = CreatedTimestamp,
-		["Source"] = Source,
-		["CreatorId"] = CreatorId,
-		["ContentCreatedTimestamp"] = ContentCreatedTimestamp,
-		["ContentModifiedTimestamp"] = ContentModifiedTimestamp,
-		["Signature"] = Signature,
-		["Id"] = Id,
-		["Size"] = Size,
+		["Status"] = _Status,
+		["ContentType"] = _ContentType,
+		["Name"] = _Name,
+		["ModifiedTimestamp"] = _ModifiedTimestamp,
+		["Thumbnail"] = _Thumbnail,
+		["CreatedTimestamp"] = _CreatedTimestamp,
+		["Source"] = _Source,
+		["CreatorId"] = _CreatorId,
+		["ContentCreatedTimestamp"] = _ContentCreatedTimestamp,
+		["ContentModifiedTimestamp"] = _ContentModifiedTimestamp,
+		["Signature"] = _Signature,
+		["Id"] = _Id,
+		["Size"] = _Size,
 	}
-	M.AssertDocumentVersionMetadata(t)
+	asserts.AssertDocumentVersionMetadata(t)
 	return t
 end
 
-local InitiateDocumentVersionUploadResponse_keys = { "UploadMetadata" = true, "Metadata" = true, nil }
+keys.InitiateDocumentVersionUploadResponse = { ["UploadMetadata"] = true, ["Metadata"] = true, nil }
 
-function M.AssertInitiateDocumentVersionUploadResponse(struct)
+function asserts.AssertInitiateDocumentVersionUploadResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InitiateDocumentVersionUploadResponse to be of type 'table'")
-	if struct["UploadMetadata"] then M.AssertUploadMetadata(struct["UploadMetadata"]) end
-	if struct["Metadata"] then M.AssertDocumentMetadata(struct["Metadata"]) end
+	if struct["UploadMetadata"] then asserts.AssertUploadMetadata(struct["UploadMetadata"]) end
+	if struct["Metadata"] then asserts.AssertDocumentMetadata(struct["Metadata"]) end
 	for k,_ in pairs(struct) do
-		assert(InitiateDocumentVersionUploadResponse_keys[k], "InitiateDocumentVersionUploadResponse contains unknown key " .. tostring(k))
+		assert(keys.InitiateDocumentVersionUploadResponse[k], "InitiateDocumentVersionUploadResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InitiateDocumentVersionUploadResponse
 --  
--- @param UploadMetadata [UploadMetadata] <p>The upload metadata.</p>
--- @param Metadata [DocumentMetadata] <p>The document metadata.</p>
-function M.InitiateDocumentVersionUploadResponse(UploadMetadata, Metadata, ...)
+-- @param _UploadMetadata [UploadMetadata] <p>The upload metadata.</p>
+-- @param _Metadata [DocumentMetadata] <p>The document metadata.</p>
+function M.InitiateDocumentVersionUploadResponse(_UploadMetadata, _Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateDocumentVersionUploadResponse")
 	local t = { 
-		["UploadMetadata"] = UploadMetadata,
-		["Metadata"] = Metadata,
+		["UploadMetadata"] = _UploadMetadata,
+		["Metadata"] = _Metadata,
 	}
-	M.AssertInitiateDocumentVersionUploadResponse(t)
+	asserts.AssertInitiateDocumentVersionUploadResponse(t)
 	return t
 end
 
-local DeleteUserRequest_keys = { "AuthenticationToken" = true, "UserId" = true, nil }
+keys.DeleteUserRequest = { ["AuthenticationToken"] = true, ["UserId"] = true, nil }
 
-function M.AssertDeleteUserRequest(struct)
+function asserts.AssertDeleteUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteUserRequest to be of type 'table'")
 	assert(struct["UserId"], "Expected key UserId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["UserId"] then M.AssertIdType(struct["UserId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["UserId"] then asserts.AssertIdType(struct["UserId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteUserRequest_keys[k], "DeleteUserRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteUserRequest[k], "DeleteUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteUserRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param UserId [IdType] <p>The ID of the user.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _UserId [IdType] <p>The ID of the user.</p>
 -- Required parameter: UserId
-function M.DeleteUserRequest(AuthenticationToken, UserId, ...)
+function M.DeleteUserRequest(_AuthenticationToken, _UserId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["UserId"] = UserId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["UserId"] = _UserId,
 	}
-	M.AssertDeleteUserRequest(t)
+	asserts.AssertDeleteUserRequest(t)
 	return t
 end
 
-local DeleteLabelsRequest_keys = { "AuthenticationToken" = true, "ResourceId" = true, "Labels" = true, "DeleteAll" = true, nil }
+keys.DeleteLabelsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Labels"] = true, ["DeleteAll"] = true, nil }
 
-function M.AssertDeleteLabelsRequest(struct)
+function asserts.AssertDeleteLabelsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLabelsRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceId"] then M.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["Labels"] then M.AssertLabels(struct["Labels"]) end
-	if struct["DeleteAll"] then M.AssertBooleanType(struct["DeleteAll"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["Labels"] then asserts.AssertLabels(struct["Labels"]) end
+	if struct["DeleteAll"] then asserts.AssertBooleanType(struct["DeleteAll"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteLabelsRequest_keys[k], "DeleteLabelsRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteLabelsRequest[k], "DeleteLabelsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteLabelsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param Labels [Labels] <p>List of labels to delete from the resource.</p>
--- @param DeleteAll [BooleanType] <p>Flag to request removal of all labels from the specified resource.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param _Labels [Labels] <p>List of labels to delete from the resource.</p>
+-- @param _DeleteAll [BooleanType] <p>Flag to request removal of all labels from the specified resource.</p>
 -- Required parameter: ResourceId
-function M.DeleteLabelsRequest(AuthenticationToken, ResourceId, Labels, DeleteAll, ...)
+function M.DeleteLabelsRequest(_AuthenticationToken, _ResourceId, _Labels, _DeleteAll, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLabelsRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceId"] = ResourceId,
-		["Labels"] = Labels,
-		["DeleteAll"] = DeleteAll,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceId"] = _ResourceId,
+		["Labels"] = _Labels,
+		["DeleteAll"] = _DeleteAll,
 	}
-	M.AssertDeleteLabelsRequest(t)
+	asserts.AssertDeleteLabelsRequest(t)
 	return t
 end
 
-local UpdateUserResponse_keys = { "User" = true, nil }
+keys.UpdateUserResponse = { ["User"] = true, nil }
 
-function M.AssertUpdateUserResponse(struct)
+function asserts.AssertUpdateUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserResponse to be of type 'table'")
-	if struct["User"] then M.AssertUser(struct["User"]) end
+	if struct["User"] then asserts.AssertUser(struct["User"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserResponse_keys[k], "UpdateUserResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserResponse[k], "UpdateUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserResponse
 --  
--- @param User [User] <p>The user information.</p>
-function M.UpdateUserResponse(User, ...)
+-- @param _User [User] <p>The user information.</p>
+function M.UpdateUserResponse(_User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserResponse")
 	local t = { 
-		["User"] = User,
+		["User"] = _User,
 	}
-	M.AssertUpdateUserResponse(t)
+	asserts.AssertUpdateUserResponse(t)
 	return t
 end
 
-local GetDocumentPathRequest_keys = { "AuthenticationToken" = true, "Fields" = true, "Marker" = true, "Limit" = true, "DocumentId" = true, nil }
+keys.GetDocumentPathRequest = { ["AuthenticationToken"] = true, ["Fields"] = true, ["Marker"] = true, ["Limit"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertGetDocumentPathRequest(struct)
+function asserts.AssertGetDocumentPathRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentPathRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Fields"] then M.AssertFieldNamesType(struct["Fields"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
-	if struct["DocumentId"] then M.AssertIdType(struct["DocumentId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Fields"] then asserts.AssertFieldNamesType(struct["Fields"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["DocumentId"] then asserts.AssertIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentPathRequest_keys[k], "GetDocumentPathRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentPathRequest[k], "GetDocumentPathRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentPathRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Fields [FieldNamesType] <p>A comma-separated list of values. Specify <code>NAME</code> to include the names of the parent folders.</p>
--- @param Marker [PageMarkerType] <p>This value is not supported.</p>
--- @param Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
--- @param DocumentId [IdType] <p>The ID of the document.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Fields [FieldNamesType] <p>A comma-separated list of values. Specify <code>NAME</code> to include the names of the parent folders.</p>
+-- @param _Marker [PageMarkerType] <p>This value is not supported.</p>
+-- @param _Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
+-- @param _DocumentId [IdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
-function M.GetDocumentPathRequest(AuthenticationToken, Fields, Marker, Limit, DocumentId, ...)
+function M.GetDocumentPathRequest(_AuthenticationToken, _Fields, _Marker, _Limit, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentPathRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["Fields"] = Fields,
-		["Marker"] = Marker,
-		["Limit"] = Limit,
-		["DocumentId"] = DocumentId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Fields"] = _Fields,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertGetDocumentPathRequest(t)
+	asserts.AssertGetDocumentPathRequest(t)
 	return t
 end
 
-local UnauthorizedResourceAccessException_keys = { "Message" = true, nil }
+keys.UnauthorizedResourceAccessException = { ["Message"] = true, nil }
 
-function M.AssertUnauthorizedResourceAccessException(struct)
+function asserts.AssertUnauthorizedResourceAccessException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnauthorizedResourceAccessException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnauthorizedResourceAccessException_keys[k], "UnauthorizedResourceAccessException contains unknown key " .. tostring(k))
+		assert(keys.UnauthorizedResourceAccessException[k], "UnauthorizedResourceAccessException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnauthorizedResourceAccessException
 -- <p>The caller does not have access to perform the action on the resource.</p>
--- @param Message [ErrorMessageType] <p>The caller does not have access to perform the action on the resource.</p>
-function M.UnauthorizedResourceAccessException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.UnauthorizedResourceAccessException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedResourceAccessException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertUnauthorizedResourceAccessException(t)
+	asserts.AssertUnauthorizedResourceAccessException(t)
 	return t
 end
 
-local ConcurrentModificationException_keys = { "Message" = true, nil }
+keys.ConcurrentModificationException = { ["Message"] = true, nil }
 
-function M.AssertConcurrentModificationException(struct)
+function asserts.AssertConcurrentModificationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConcurrentModificationException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ConcurrentModificationException_keys[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
+		assert(keys.ConcurrentModificationException[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>The resource hierarchy is changing.</p>
--- @param Message [ErrorMessageType] <p>The resource hierarchy is changing.</p>
-function M.ConcurrentModificationException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.ConcurrentModificationException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertConcurrentModificationException(t)
+	asserts.AssertConcurrentModificationException(t)
 	return t
 end
 
-local ActivateUserRequest_keys = { "AuthenticationToken" = true, "UserId" = true, nil }
+keys.ActivateUserRequest = { ["AuthenticationToken"] = true, ["UserId"] = true, nil }
 
-function M.AssertActivateUserRequest(struct)
+function asserts.AssertActivateUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ActivateUserRequest to be of type 'table'")
 	assert(struct["UserId"], "Expected key UserId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["UserId"] then M.AssertIdType(struct["UserId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["UserId"] then asserts.AssertIdType(struct["UserId"]) end
 	for k,_ in pairs(struct) do
-		assert(ActivateUserRequest_keys[k], "ActivateUserRequest contains unknown key " .. tostring(k))
+		assert(keys.ActivateUserRequest[k], "ActivateUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ActivateUserRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param UserId [IdType] <p>The ID of the user.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _UserId [IdType] <p>The ID of the user.</p>
 -- Required parameter: UserId
-function M.ActivateUserRequest(AuthenticationToken, UserId, ...)
+function M.ActivateUserRequest(_AuthenticationToken, _UserId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivateUserRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["UserId"] = UserId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["UserId"] = _UserId,
 	}
-	M.AssertActivateUserRequest(t)
+	asserts.AssertActivateUserRequest(t)
 	return t
 end
 
-local DescribeActivitiesRequest_keys = { "OrganizationId" = true, "UserId" = true, "Marker" = true, "Limit" = true, "StartTime" = true, "AuthenticationToken" = true, "EndTime" = true, nil }
+keys.DescribeActivitiesRequest = { ["OrganizationId"] = true, ["UserId"] = true, ["Marker"] = true, ["Limit"] = true, ["StartTime"] = true, ["AuthenticationToken"] = true, ["EndTime"] = true, nil }
 
-function M.AssertDescribeActivitiesRequest(struct)
+function asserts.AssertDescribeActivitiesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeActivitiesRequest to be of type 'table'")
-	if struct["OrganizationId"] then M.AssertIdType(struct["OrganizationId"]) end
-	if struct["UserId"] then M.AssertIdType(struct["UserId"]) end
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
-	if struct["StartTime"] then M.AssertTimestampType(struct["StartTime"]) end
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["EndTime"] then M.AssertTimestampType(struct["EndTime"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["UserId"] then asserts.AssertIdType(struct["UserId"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["StartTime"] then asserts.AssertTimestampType(struct["StartTime"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["EndTime"] then asserts.AssertTimestampType(struct["EndTime"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeActivitiesRequest_keys[k], "DescribeActivitiesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeActivitiesRequest[k], "DescribeActivitiesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeActivitiesRequest
 --  
--- @param OrganizationId [IdType] <p>The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.</p>
--- @param UserId [IdType] <p>The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.</p>
--- @param Marker [MarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param Limit [LimitType] <p>The maximum number of items to return.</p>
--- @param StartTime [TimestampType] <p>The timestamp that determines the starting time of the activities; the response includes the activities performed after the specified timestamp.</p>
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param EndTime [TimestampType] <p>The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.</p>
-function M.DescribeActivitiesRequest(OrganizationId, UserId, Marker, Limit, StartTime, AuthenticationToken, EndTime, ...)
+-- @param _OrganizationId [IdType] <p>The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.</p>
+-- @param _UserId [IdType] <p>The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.</p>
+-- @param _Marker [MarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _Limit [LimitType] <p>The maximum number of items to return.</p>
+-- @param _StartTime [TimestampType] <p>The timestamp that determines the starting time of the activities; the response includes the activities performed after the specified timestamp.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _EndTime [TimestampType] <p>The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.</p>
+function M.DescribeActivitiesRequest(_OrganizationId, _UserId, _Marker, _Limit, _StartTime, _AuthenticationToken, _EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivitiesRequest")
 	local t = { 
-		["OrganizationId"] = OrganizationId,
-		["UserId"] = UserId,
-		["Marker"] = Marker,
-		["Limit"] = Limit,
-		["StartTime"] = StartTime,
-		["AuthenticationToken"] = AuthenticationToken,
-		["EndTime"] = EndTime,
+		["OrganizationId"] = _OrganizationId,
+		["UserId"] = _UserId,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
+		["StartTime"] = _StartTime,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["EndTime"] = _EndTime,
 	}
-	M.AssertDescribeActivitiesRequest(t)
+	asserts.AssertDescribeActivitiesRequest(t)
 	return t
 end
 
-local DescribeNotificationSubscriptionsResponse_keys = { "Marker" = true, "Subscriptions" = true, nil }
+keys.DescribeNotificationSubscriptionsResponse = { ["Marker"] = true, ["Subscriptions"] = true, nil }
 
-function M.AssertDescribeNotificationSubscriptionsResponse(struct)
+function asserts.AssertDescribeNotificationSubscriptionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeNotificationSubscriptionsResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Subscriptions"] then M.AssertSubscriptionList(struct["Subscriptions"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Subscriptions"] then asserts.AssertSubscriptionList(struct["Subscriptions"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeNotificationSubscriptionsResponse_keys[k], "DescribeNotificationSubscriptionsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeNotificationSubscriptionsResponse[k], "DescribeNotificationSubscriptionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeNotificationSubscriptionsResponse
 --  
--- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param Subscriptions [SubscriptionList] <p>The subscriptions.</p>
-function M.DescribeNotificationSubscriptionsResponse(Marker, Subscriptions, ...)
+-- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param _Subscriptions [SubscriptionList] <p>The subscriptions.</p>
+function M.DescribeNotificationSubscriptionsResponse(_Marker, _Subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationSubscriptionsResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["Subscriptions"] = Subscriptions,
+		["Marker"] = _Marker,
+		["Subscriptions"] = _Subscriptions,
 	}
-	M.AssertDescribeNotificationSubscriptionsResponse(t)
+	asserts.AssertDescribeNotificationSubscriptionsResponse(t)
 	return t
 end
 
-local CreateCommentRequest_keys = { "Text" = true, "ParentId" = true, "Visibility" = true, "NotifyCollaborators" = true, "VersionId" = true, "ThreadId" = true, "AuthenticationToken" = true, "DocumentId" = true, nil }
+keys.CreateCommentRequest = { ["Text"] = true, ["ParentId"] = true, ["Visibility"] = true, ["NotifyCollaborators"] = true, ["VersionId"] = true, ["ThreadId"] = true, ["AuthenticationToken"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertCreateCommentRequest(struct)
+function asserts.AssertCreateCommentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCommentRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
 	assert(struct["VersionId"], "Expected key VersionId to exist in table")
 	assert(struct["Text"], "Expected key Text to exist in table")
-	if struct["Text"] then M.AssertCommentTextType(struct["Text"]) end
-	if struct["ParentId"] then M.AssertCommentIdType(struct["ParentId"]) end
-	if struct["Visibility"] then M.AssertCommentVisibilityType(struct["Visibility"]) end
-	if struct["NotifyCollaborators"] then M.AssertBooleanType(struct["NotifyCollaborators"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["ThreadId"] then M.AssertCommentIdType(struct["ThreadId"]) end
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["Text"] then asserts.AssertCommentTextType(struct["Text"]) end
+	if struct["ParentId"] then asserts.AssertCommentIdType(struct["ParentId"]) end
+	if struct["Visibility"] then asserts.AssertCommentVisibilityType(struct["Visibility"]) end
+	if struct["NotifyCollaborators"] then asserts.AssertBooleanType(struct["NotifyCollaborators"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["ThreadId"] then asserts.AssertCommentIdType(struct["ThreadId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCommentRequest_keys[k], "CreateCommentRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateCommentRequest[k], "CreateCommentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCommentRequest
 --  
--- @param Text [CommentTextType] <p>The text of the comment.</p>
--- @param ParentId [CommentIdType] <p>The ID of the parent comment.</p>
--- @param Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
--- @param NotifyCollaborators [BooleanType] <p>Set this parameter to TRUE to send an email out to the document collaborators after the comment is created.</p>
--- @param VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
--- @param ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _Text [CommentTextType] <p>The text of the comment.</p>
+-- @param _ParentId [CommentIdType] <p>The ID of the parent comment.</p>
+-- @param _Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
+-- @param _NotifyCollaborators [BooleanType] <p>Set this parameter to TRUE to send an email out to the document collaborators after the comment is created.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- @param _ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
 -- Required parameter: Text
-function M.CreateCommentRequest(Text, ParentId, Visibility, NotifyCollaborators, VersionId, ThreadId, AuthenticationToken, DocumentId, ...)
+function M.CreateCommentRequest(_Text, _ParentId, _Visibility, _NotifyCollaborators, _VersionId, _ThreadId, _AuthenticationToken, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCommentRequest")
 	local t = { 
-		["Text"] = Text,
-		["ParentId"] = ParentId,
-		["Visibility"] = Visibility,
-		["NotifyCollaborators"] = NotifyCollaborators,
-		["VersionId"] = VersionId,
-		["ThreadId"] = ThreadId,
-		["AuthenticationToken"] = AuthenticationToken,
-		["DocumentId"] = DocumentId,
+		["Text"] = _Text,
+		["ParentId"] = _ParentId,
+		["Visibility"] = _Visibility,
+		["NotifyCollaborators"] = _NotifyCollaborators,
+		["VersionId"] = _VersionId,
+		["ThreadId"] = _ThreadId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertCreateCommentRequest(t)
+	asserts.AssertCreateCommentRequest(t)
 	return t
 end
 
-local CreateFolderRequest_keys = { "AuthenticationToken" = true, "Name" = true, "ParentFolderId" = true, nil }
+keys.CreateFolderRequest = { ["AuthenticationToken"] = true, ["Name"] = true, ["ParentFolderId"] = true, nil }
 
-function M.AssertCreateFolderRequest(struct)
+function asserts.AssertCreateFolderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFolderRequest to be of type 'table'")
 	assert(struct["ParentFolderId"], "Expected key ParentFolderId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Name"] then M.AssertResourceNameType(struct["Name"]) end
-	if struct["ParentFolderId"] then M.AssertResourceIdType(struct["ParentFolderId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
+	if struct["ParentFolderId"] then asserts.AssertResourceIdType(struct["ParentFolderId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFolderRequest_keys[k], "CreateFolderRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateFolderRequest[k], "CreateFolderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFolderRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Name [ResourceNameType] <p>The name of the new folder.</p>
--- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Name [ResourceNameType] <p>The name of the new folder.</p>
+-- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
 -- Required parameter: ParentFolderId
-function M.CreateFolderRequest(AuthenticationToken, Name, ParentFolderId, ...)
+function M.CreateFolderRequest(_AuthenticationToken, _Name, _ParentFolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFolderRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["Name"] = Name,
-		["ParentFolderId"] = ParentFolderId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Name"] = _Name,
+		["ParentFolderId"] = _ParentFolderId,
 	}
-	M.AssertCreateFolderRequest(t)
+	asserts.AssertCreateFolderRequest(t)
 	return t
 end
 
-local CreateUserResponse_keys = { "User" = true, nil }
+keys.CreateUserResponse = { ["User"] = true, nil }
 
-function M.AssertCreateUserResponse(struct)
+function asserts.AssertCreateUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserResponse to be of type 'table'")
-	if struct["User"] then M.AssertUser(struct["User"]) end
+	if struct["User"] then asserts.AssertUser(struct["User"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserResponse_keys[k], "CreateUserResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateUserResponse[k], "CreateUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserResponse
 --  
--- @param User [User] <p>The user information.</p>
-function M.CreateUserResponse(User, ...)
+-- @param _User [User] <p>The user information.</p>
+function M.CreateUserResponse(_User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserResponse")
 	local t = { 
-		["User"] = User,
+		["User"] = _User,
 	}
-	M.AssertCreateUserResponse(t)
+	asserts.AssertCreateUserResponse(t)
 	return t
 end
 
-local DescribeCommentsResponse_keys = { "Marker" = true, "Comments" = true, nil }
+keys.DescribeCommentsResponse = { ["Marker"] = true, ["Comments"] = true, nil }
 
-function M.AssertDescribeCommentsResponse(struct)
+function asserts.AssertDescribeCommentsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCommentsResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["Comments"] then M.AssertCommentList(struct["Comments"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["Comments"] then asserts.AssertCommentList(struct["Comments"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCommentsResponse_keys[k], "DescribeCommentsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeCommentsResponse[k], "DescribeCommentsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCommentsResponse
 --  
--- @param Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
--- @param Comments [CommentList] <p>The list of comments for the specified document version.</p>
-function M.DescribeCommentsResponse(Marker, Comments, ...)
+-- @param _Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- @param _Comments [CommentList] <p>The list of comments for the specified document version.</p>
+function M.DescribeCommentsResponse(_Marker, _Comments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommentsResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["Comments"] = Comments,
+		["Marker"] = _Marker,
+		["Comments"] = _Comments,
 	}
-	M.AssertDescribeCommentsResponse(t)
+	asserts.AssertDescribeCommentsResponse(t)
 	return t
 end
 
-local GetFolderPathResponse_keys = { "Path" = true, nil }
+keys.GetFolderPathResponse = { ["Path"] = true, nil }
 
-function M.AssertGetFolderPathResponse(struct)
+function asserts.AssertGetFolderPathResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFolderPathResponse to be of type 'table'")
-	if struct["Path"] then M.AssertResourcePath(struct["Path"]) end
+	if struct["Path"] then asserts.AssertResourcePath(struct["Path"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFolderPathResponse_keys[k], "GetFolderPathResponse contains unknown key " .. tostring(k))
+		assert(keys.GetFolderPathResponse[k], "GetFolderPathResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFolderPathResponse
 --  
--- @param Path [ResourcePath] <p>The path information.</p>
-function M.GetFolderPathResponse(Path, ...)
+-- @param _Path [ResourcePath] <p>The path information.</p>
+function M.GetFolderPathResponse(_Path, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderPathResponse")
 	local t = { 
-		["Path"] = Path,
+		["Path"] = _Path,
 	}
-	M.AssertGetFolderPathResponse(t)
+	asserts.AssertGetFolderPathResponse(t)
 	return t
 end
 
-local DeleteFolderRequest_keys = { "AuthenticationToken" = true, "FolderId" = true, nil }
+keys.DeleteFolderRequest = { ["AuthenticationToken"] = true, ["FolderId"] = true, nil }
 
-function M.AssertDeleteFolderRequest(struct)
+function asserts.AssertDeleteFolderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFolderRequest to be of type 'table'")
 	assert(struct["FolderId"], "Expected key FolderId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["FolderId"] then M.AssertResourceIdType(struct["FolderId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["FolderId"] then asserts.AssertResourceIdType(struct["FolderId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteFolderRequest_keys[k], "DeleteFolderRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteFolderRequest[k], "DeleteFolderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteFolderRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required parameter: FolderId
-function M.DeleteFolderRequest(AuthenticationToken, FolderId, ...)
+function M.DeleteFolderRequest(_AuthenticationToken, _FolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFolderRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["FolderId"] = FolderId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["FolderId"] = _FolderId,
 	}
-	M.AssertDeleteFolderRequest(t)
+	asserts.AssertDeleteFolderRequest(t)
 	return t
 end
 
-local DocumentMetadata_keys = { "ResourceState" = true, "Labels" = true, "ModifiedTimestamp" = true, "ParentFolderId" = true, "CreatedTimestamp" = true, "LatestVersionMetadata" = true, "CreatorId" = true, "Id" = true, nil }
+keys.DocumentMetadata = { ["ResourceState"] = true, ["Labels"] = true, ["ModifiedTimestamp"] = true, ["ParentFolderId"] = true, ["CreatedTimestamp"] = true, ["LatestVersionMetadata"] = true, ["CreatorId"] = true, ["Id"] = true, nil }
 
-function M.AssertDocumentMetadata(struct)
+function asserts.AssertDocumentMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentMetadata to be of type 'table'")
-	if struct["ResourceState"] then M.AssertResourceStateType(struct["ResourceState"]) end
-	if struct["Labels"] then M.AssertLabels(struct["Labels"]) end
-	if struct["ModifiedTimestamp"] then M.AssertTimestampType(struct["ModifiedTimestamp"]) end
-	if struct["ParentFolderId"] then M.AssertResourceIdType(struct["ParentFolderId"]) end
-	if struct["CreatedTimestamp"] then M.AssertTimestampType(struct["CreatedTimestamp"]) end
-	if struct["LatestVersionMetadata"] then M.AssertDocumentVersionMetadata(struct["LatestVersionMetadata"]) end
-	if struct["CreatorId"] then M.AssertIdType(struct["CreatorId"]) end
-	if struct["Id"] then M.AssertResourceIdType(struct["Id"]) end
+	if struct["ResourceState"] then asserts.AssertResourceStateType(struct["ResourceState"]) end
+	if struct["Labels"] then asserts.AssertLabels(struct["Labels"]) end
+	if struct["ModifiedTimestamp"] then asserts.AssertTimestampType(struct["ModifiedTimestamp"]) end
+	if struct["ParentFolderId"] then asserts.AssertResourceIdType(struct["ParentFolderId"]) end
+	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
+	if struct["LatestVersionMetadata"] then asserts.AssertDocumentVersionMetadata(struct["LatestVersionMetadata"]) end
+	if struct["CreatorId"] then asserts.AssertIdType(struct["CreatorId"]) end
+	if struct["Id"] then asserts.AssertResourceIdType(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentMetadata_keys[k], "DocumentMetadata contains unknown key " .. tostring(k))
+		assert(keys.DocumentMetadata[k], "DocumentMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentMetadata
 -- <p>Describes the document.</p>
--- @param ResourceState [ResourceStateType] <p>The resource state.</p>
--- @param Labels [Labels] <p>List of labels on the document.</p>
--- @param ModifiedTimestamp [TimestampType] <p>The time when the document was updated.</p>
--- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- @param CreatedTimestamp [TimestampType] <p>The time when the document was created.</p>
--- @param LatestVersionMetadata [DocumentVersionMetadata] <p>The latest version of the document.</p>
--- @param CreatorId [IdType] <p>The ID of the creator.</p>
--- @param Id [ResourceIdType] <p>The ID of the document.</p>
-function M.DocumentMetadata(ResourceState, Labels, ModifiedTimestamp, ParentFolderId, CreatedTimestamp, LatestVersionMetadata, CreatorId, Id, ...)
+-- @param _ResourceState [ResourceStateType] <p>The resource state.</p>
+-- @param _Labels [Labels] <p>List of labels on the document.</p>
+-- @param _ModifiedTimestamp [TimestampType] <p>The time when the document was updated.</p>
+-- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param _CreatedTimestamp [TimestampType] <p>The time when the document was created.</p>
+-- @param _LatestVersionMetadata [DocumentVersionMetadata] <p>The latest version of the document.</p>
+-- @param _CreatorId [IdType] <p>The ID of the creator.</p>
+-- @param _Id [ResourceIdType] <p>The ID of the document.</p>
+function M.DocumentMetadata(_ResourceState, _Labels, _ModifiedTimestamp, _ParentFolderId, _CreatedTimestamp, _LatestVersionMetadata, _CreatorId, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentMetadata")
 	local t = { 
-		["ResourceState"] = ResourceState,
-		["Labels"] = Labels,
-		["ModifiedTimestamp"] = ModifiedTimestamp,
-		["ParentFolderId"] = ParentFolderId,
-		["CreatedTimestamp"] = CreatedTimestamp,
-		["LatestVersionMetadata"] = LatestVersionMetadata,
-		["CreatorId"] = CreatorId,
-		["Id"] = Id,
+		["ResourceState"] = _ResourceState,
+		["Labels"] = _Labels,
+		["ModifiedTimestamp"] = _ModifiedTimestamp,
+		["ParentFolderId"] = _ParentFolderId,
+		["CreatedTimestamp"] = _CreatedTimestamp,
+		["LatestVersionMetadata"] = _LatestVersionMetadata,
+		["CreatorId"] = _CreatorId,
+		["Id"] = _Id,
 	}
-	M.AssertDocumentMetadata(t)
+	asserts.AssertDocumentMetadata(t)
 	return t
 end
 
-local DocumentLockedForCommentsException_keys = { "Message" = true, nil }
+keys.DocumentLockedForCommentsException = { ["Message"] = true, nil }
 
-function M.AssertDocumentLockedForCommentsException(struct)
+function asserts.AssertDocumentLockedForCommentsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DocumentLockedForCommentsException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(DocumentLockedForCommentsException_keys[k], "DocumentLockedForCommentsException contains unknown key " .. tostring(k))
+		assert(keys.DocumentLockedForCommentsException[k], "DocumentLockedForCommentsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DocumentLockedForCommentsException
 -- <p>This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.</p>
--- @param Message [ErrorMessageType] <p>This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.</p>
-function M.DocumentLockedForCommentsException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.DocumentLockedForCommentsException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentLockedForCommentsException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertDocumentLockedForCommentsException(t)
+	asserts.AssertDocumentLockedForCommentsException(t)
 	return t
 end
 
-local UpdateDocumentRequest_keys = { "AuthenticationToken" = true, "ResourceState" = true, "Name" = true, "DocumentId" = true, "ParentFolderId" = true, nil }
+keys.UpdateDocumentRequest = { ["AuthenticationToken"] = true, ["ResourceState"] = true, ["Name"] = true, ["DocumentId"] = true, ["ParentFolderId"] = true, nil }
 
-function M.AssertUpdateDocumentRequest(struct)
+function asserts.AssertUpdateDocumentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDocumentRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceState"] then M.AssertResourceStateType(struct["ResourceState"]) end
-	if struct["Name"] then M.AssertResourceNameType(struct["Name"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
-	if struct["ParentFolderId"] then M.AssertResourceIdType(struct["ParentFolderId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceState"] then asserts.AssertResourceStateType(struct["ResourceState"]) end
+	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["ParentFolderId"] then asserts.AssertResourceIdType(struct["ParentFolderId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateDocumentRequest_keys[k], "UpdateDocumentRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateDocumentRequest[k], "UpdateDocumentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateDocumentRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceState [ResourceStateType] <p>The resource state of the document. Note that only ACTIVE and RECYCLED are supported.</p>
--- @param Name [ResourceNameType] <p>The name of the document.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceState [ResourceStateType] <p>The resource state of the document. Note that only ACTIVE and RECYCLED are supported.</p>
+-- @param _Name [ResourceNameType] <p>The name of the document.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
 -- Required parameter: DocumentId
-function M.UpdateDocumentRequest(AuthenticationToken, ResourceState, Name, DocumentId, ParentFolderId, ...)
+function M.UpdateDocumentRequest(_AuthenticationToken, _ResourceState, _Name, _DocumentId, _ParentFolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceState"] = ResourceState,
-		["Name"] = Name,
-		["DocumentId"] = DocumentId,
-		["ParentFolderId"] = ParentFolderId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceState"] = _ResourceState,
+		["Name"] = _Name,
+		["DocumentId"] = _DocumentId,
+		["ParentFolderId"] = _ParentFolderId,
 	}
-	M.AssertUpdateDocumentRequest(t)
+	asserts.AssertUpdateDocumentRequest(t)
 	return t
 end
 
-local DescribeResourcePermissionsResponse_keys = { "Marker" = true, "Principals" = true, nil }
+keys.DescribeResourcePermissionsResponse = { ["Marker"] = true, ["Principals"] = true, nil }
 
-function M.AssertDescribeResourcePermissionsResponse(struct)
+function asserts.AssertDescribeResourcePermissionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeResourcePermissionsResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Principals"] then M.AssertPrincipalList(struct["Principals"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Principals"] then asserts.AssertPrincipalList(struct["Principals"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeResourcePermissionsResponse_keys[k], "DescribeResourcePermissionsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeResourcePermissionsResponse[k], "DescribeResourcePermissionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeResourcePermissionsResponse
 --  
--- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param Principals [PrincipalList] <p>The principals.</p>
-function M.DescribeResourcePermissionsResponse(Marker, Principals, ...)
+-- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param _Principals [PrincipalList] <p>The principals.</p>
+function M.DescribeResourcePermissionsResponse(_Marker, _Principals, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourcePermissionsResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["Principals"] = Principals,
+		["Marker"] = _Marker,
+		["Principals"] = _Principals,
 	}
-	M.AssertDescribeResourcePermissionsResponse(t)
+	asserts.AssertDescribeResourcePermissionsResponse(t)
 	return t
 end
 
-local GetDocumentVersionRequest_keys = { "AuthenticationToken" = true, "Fields" = true, "VersionId" = true, "IncludeCustomMetadata" = true, "DocumentId" = true, nil }
+keys.GetDocumentVersionRequest = { ["AuthenticationToken"] = true, ["Fields"] = true, ["VersionId"] = true, ["IncludeCustomMetadata"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertGetDocumentVersionRequest(struct)
+function asserts.AssertGetDocumentVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentVersionRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
 	assert(struct["VersionId"], "Expected key VersionId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Fields"] then M.AssertFieldNamesType(struct["Fields"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["IncludeCustomMetadata"] then M.AssertBooleanType(struct["IncludeCustomMetadata"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Fields"] then asserts.AssertFieldNamesType(struct["Fields"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["IncludeCustomMetadata"] then asserts.AssertBooleanType(struct["IncludeCustomMetadata"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentVersionRequest_keys[k], "GetDocumentVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentVersionRequest[k], "GetDocumentVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentVersionRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Fields [FieldNamesType] <p>A comma-separated list of values. Specify "SOURCE" to include a URL for the source document.</p>
--- @param VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
--- @param IncludeCustomMetadata [BooleanType] <p>Set this to TRUE to include custom metadata in the response.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Fields [FieldNamesType] <p>A comma-separated list of values. Specify "SOURCE" to include a URL for the source document.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
+-- @param _IncludeCustomMetadata [BooleanType] <p>Set this to TRUE to include custom metadata in the response.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
-function M.GetDocumentVersionRequest(AuthenticationToken, Fields, VersionId, IncludeCustomMetadata, DocumentId, ...)
+function M.GetDocumentVersionRequest(_AuthenticationToken, _Fields, _VersionId, _IncludeCustomMetadata, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentVersionRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["Fields"] = Fields,
-		["VersionId"] = VersionId,
-		["IncludeCustomMetadata"] = IncludeCustomMetadata,
-		["DocumentId"] = DocumentId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Fields"] = _Fields,
+		["VersionId"] = _VersionId,
+		["IncludeCustomMetadata"] = _IncludeCustomMetadata,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertGetDocumentVersionRequest(t)
+	asserts.AssertGetDocumentVersionRequest(t)
 	return t
 end
 
-local DeactivatingLastSystemUserException_keys = { nil }
+keys.DeactivatingLastSystemUserException = { nil }
 
-function M.AssertDeactivatingLastSystemUserException(struct)
+function asserts.AssertDeactivatingLastSystemUserException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeactivatingLastSystemUserException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeactivatingLastSystemUserException_keys[k], "DeactivatingLastSystemUserException contains unknown key " .. tostring(k))
+		assert(keys.DeactivatingLastSystemUserException[k], "DeactivatingLastSystemUserException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1337,293 +1340,293 @@ function M.DeactivatingLastSystemUserException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeactivatingLastSystemUserException")
 	local t = { 
 	}
-	M.AssertDeactivatingLastSystemUserException(t)
+	asserts.AssertDeactivatingLastSystemUserException(t)
 	return t
 end
 
-local ShareResult_keys = { "Status" = true, "StatusMessage" = true, "Role" = true, "ShareId" = true, "PrincipalId" = true, nil }
+keys.ShareResult = { ["Status"] = true, ["StatusMessage"] = true, ["Role"] = true, ["ShareId"] = true, ["PrincipalId"] = true, nil }
 
-function M.AssertShareResult(struct)
+function asserts.AssertShareResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ShareResult to be of type 'table'")
-	if struct["Status"] then M.AssertShareStatusType(struct["Status"]) end
-	if struct["StatusMessage"] then M.AssertMessageType(struct["StatusMessage"]) end
-	if struct["Role"] then M.AssertRoleType(struct["Role"]) end
-	if struct["ShareId"] then M.AssertResourceIdType(struct["ShareId"]) end
-	if struct["PrincipalId"] then M.AssertIdType(struct["PrincipalId"]) end
+	if struct["Status"] then asserts.AssertShareStatusType(struct["Status"]) end
+	if struct["StatusMessage"] then asserts.AssertMessageType(struct["StatusMessage"]) end
+	if struct["Role"] then asserts.AssertRoleType(struct["Role"]) end
+	if struct["ShareId"] then asserts.AssertResourceIdType(struct["ShareId"]) end
+	if struct["PrincipalId"] then asserts.AssertIdType(struct["PrincipalId"]) end
 	for k,_ in pairs(struct) do
-		assert(ShareResult_keys[k], "ShareResult contains unknown key " .. tostring(k))
+		assert(keys.ShareResult[k], "ShareResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ShareResult
 -- <p>Describes the share results of a resource.</p>
--- @param Status [ShareStatusType] <p>The status.</p>
--- @param StatusMessage [MessageType] <p>The status message.</p>
--- @param Role [RoleType] <p>The role.</p>
--- @param ShareId [ResourceIdType] <p>The ID of the resource that was shared.</p>
--- @param PrincipalId [IdType] <p>The ID of the principal.</p>
-function M.ShareResult(Status, StatusMessage, Role, ShareId, PrincipalId, ...)
+-- @param _Status [ShareStatusType] <p>The status.</p>
+-- @param _StatusMessage [MessageType] <p>The status message.</p>
+-- @param _Role [RoleType] <p>The role.</p>
+-- @param _ShareId [ResourceIdType] <p>The ID of the resource that was shared.</p>
+-- @param _PrincipalId [IdType] <p>The ID of the principal.</p>
+function M.ShareResult(_Status, _StatusMessage, _Role, _ShareId, _PrincipalId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ShareResult")
 	local t = { 
-		["Status"] = Status,
-		["StatusMessage"] = StatusMessage,
-		["Role"] = Role,
-		["ShareId"] = ShareId,
-		["PrincipalId"] = PrincipalId,
+		["Status"] = _Status,
+		["StatusMessage"] = _StatusMessage,
+		["Role"] = _Role,
+		["ShareId"] = _ShareId,
+		["PrincipalId"] = _PrincipalId,
 	}
-	M.AssertShareResult(t)
+	asserts.AssertShareResult(t)
 	return t
 end
 
-local GetDocumentResponse_keys = { "CustomMetadata" = true, "Metadata" = true, nil }
+keys.GetDocumentResponse = { ["CustomMetadata"] = true, ["Metadata"] = true, nil }
 
-function M.AssertGetDocumentResponse(struct)
+function asserts.AssertGetDocumentResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentResponse to be of type 'table'")
-	if struct["CustomMetadata"] then M.AssertCustomMetadataMap(struct["CustomMetadata"]) end
-	if struct["Metadata"] then M.AssertDocumentMetadata(struct["Metadata"]) end
+	if struct["CustomMetadata"] then asserts.AssertCustomMetadataMap(struct["CustomMetadata"]) end
+	if struct["Metadata"] then asserts.AssertDocumentMetadata(struct["Metadata"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentResponse_keys[k], "GetDocumentResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentResponse[k], "GetDocumentResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentResponse
 --  
--- @param CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document.</p>
--- @param Metadata [DocumentMetadata] <p>The metadata details of the document.</p>
-function M.GetDocumentResponse(CustomMetadata, Metadata, ...)
+-- @param _CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document.</p>
+-- @param _Metadata [DocumentMetadata] <p>The metadata details of the document.</p>
+function M.GetDocumentResponse(_CustomMetadata, _Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentResponse")
 	local t = { 
-		["CustomMetadata"] = CustomMetadata,
-		["Metadata"] = Metadata,
+		["CustomMetadata"] = _CustomMetadata,
+		["Metadata"] = _Metadata,
 	}
-	M.AssertGetDocumentResponse(t)
+	asserts.AssertGetDocumentResponse(t)
 	return t
 end
 
-local GetFolderPathRequest_keys = { "AuthenticationToken" = true, "Fields" = true, "FolderId" = true, "Limit" = true, "Marker" = true, nil }
+keys.GetFolderPathRequest = { ["AuthenticationToken"] = true, ["Fields"] = true, ["FolderId"] = true, ["Limit"] = true, ["Marker"] = true, nil }
 
-function M.AssertGetFolderPathRequest(struct)
+function asserts.AssertGetFolderPathRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFolderPathRequest to be of type 'table'")
 	assert(struct["FolderId"], "Expected key FolderId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Fields"] then M.AssertFieldNamesType(struct["Fields"]) end
-	if struct["FolderId"] then M.AssertIdType(struct["FolderId"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Fields"] then asserts.AssertFieldNamesType(struct["Fields"]) end
+	if struct["FolderId"] then asserts.AssertIdType(struct["FolderId"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFolderPathRequest_keys[k], "GetFolderPathRequest contains unknown key " .. tostring(k))
+		assert(keys.GetFolderPathRequest[k], "GetFolderPathRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFolderPathRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Fields [FieldNamesType] <p>A comma-separated list of values. Specify "NAME" to include the names of the parent folders.</p>
--- @param FolderId [IdType] <p>The ID of the folder.</p>
--- @param Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
--- @param Marker [PageMarkerType] <p>This value is not supported.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Fields [FieldNamesType] <p>A comma-separated list of values. Specify "NAME" to include the names of the parent folders.</p>
+-- @param _FolderId [IdType] <p>The ID of the folder.</p>
+-- @param _Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
+-- @param _Marker [PageMarkerType] <p>This value is not supported.</p>
 -- Required parameter: FolderId
-function M.GetFolderPathRequest(AuthenticationToken, Fields, FolderId, Limit, Marker, ...)
+function M.GetFolderPathRequest(_AuthenticationToken, _Fields, _FolderId, _Limit, _Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderPathRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["Fields"] = Fields,
-		["FolderId"] = FolderId,
-		["Limit"] = Limit,
-		["Marker"] = Marker,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Fields"] = _Fields,
+		["FolderId"] = _FolderId,
+		["Limit"] = _Limit,
+		["Marker"] = _Marker,
 	}
-	M.AssertGetFolderPathRequest(t)
+	asserts.AssertGetFolderPathRequest(t)
 	return t
 end
 
-local AddResourcePermissionsResponse_keys = { "ShareResults" = true, nil }
+keys.AddResourcePermissionsResponse = { ["ShareResults"] = true, nil }
 
-function M.AssertAddResourcePermissionsResponse(struct)
+function asserts.AssertAddResourcePermissionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddResourcePermissionsResponse to be of type 'table'")
-	if struct["ShareResults"] then M.AssertShareResultsList(struct["ShareResults"]) end
+	if struct["ShareResults"] then asserts.AssertShareResultsList(struct["ShareResults"]) end
 	for k,_ in pairs(struct) do
-		assert(AddResourcePermissionsResponse_keys[k], "AddResourcePermissionsResponse contains unknown key " .. tostring(k))
+		assert(keys.AddResourcePermissionsResponse[k], "AddResourcePermissionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddResourcePermissionsResponse
 --  
--- @param ShareResults [ShareResultsList] <p>The share results.</p>
-function M.AddResourcePermissionsResponse(ShareResults, ...)
+-- @param _ShareResults [ShareResultsList] <p>The share results.</p>
+function M.AddResourcePermissionsResponse(_ShareResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddResourcePermissionsResponse")
 	local t = { 
-		["ShareResults"] = ShareResults,
+		["ShareResults"] = _ShareResults,
 	}
-	M.AssertAddResourcePermissionsResponse(t)
+	asserts.AssertAddResourcePermissionsResponse(t)
 	return t
 end
 
-local GetFolderResponse_keys = { "CustomMetadata" = true, "Metadata" = true, nil }
+keys.GetFolderResponse = { ["CustomMetadata"] = true, ["Metadata"] = true, nil }
 
-function M.AssertGetFolderResponse(struct)
+function asserts.AssertGetFolderResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFolderResponse to be of type 'table'")
-	if struct["CustomMetadata"] then M.AssertCustomMetadataMap(struct["CustomMetadata"]) end
-	if struct["Metadata"] then M.AssertFolderMetadata(struct["Metadata"]) end
+	if struct["CustomMetadata"] then asserts.AssertCustomMetadataMap(struct["CustomMetadata"]) end
+	if struct["Metadata"] then asserts.AssertFolderMetadata(struct["Metadata"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFolderResponse_keys[k], "GetFolderResponse contains unknown key " .. tostring(k))
+		assert(keys.GetFolderResponse[k], "GetFolderResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFolderResponse
 --  
--- @param CustomMetadata [CustomMetadataMap] <p>The custom metadata on the folder.</p>
--- @param Metadata [FolderMetadata] <p>The metadata of the folder.</p>
-function M.GetFolderResponse(CustomMetadata, Metadata, ...)
+-- @param _CustomMetadata [CustomMetadataMap] <p>The custom metadata on the folder.</p>
+-- @param _Metadata [FolderMetadata] <p>The metadata of the folder.</p>
+function M.GetFolderResponse(_CustomMetadata, _Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderResponse")
 	local t = { 
-		["CustomMetadata"] = CustomMetadata,
-		["Metadata"] = Metadata,
+		["CustomMetadata"] = _CustomMetadata,
+		["Metadata"] = _Metadata,
 	}
-	M.AssertGetFolderResponse(t)
+	asserts.AssertGetFolderResponse(t)
 	return t
 end
 
-local Subscription_keys = { "SubscriptionId" = true, "EndPoint" = true, "Protocol" = true, nil }
+keys.Subscription = { ["SubscriptionId"] = true, ["EndPoint"] = true, ["Protocol"] = true, nil }
 
-function M.AssertSubscription(struct)
+function asserts.AssertSubscription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Subscription to be of type 'table'")
-	if struct["SubscriptionId"] then M.AssertIdType(struct["SubscriptionId"]) end
-	if struct["EndPoint"] then M.AssertSubscriptionEndPointType(struct["EndPoint"]) end
-	if struct["Protocol"] then M.AssertSubscriptionProtocolType(struct["Protocol"]) end
+	if struct["SubscriptionId"] then asserts.AssertIdType(struct["SubscriptionId"]) end
+	if struct["EndPoint"] then asserts.AssertSubscriptionEndPointType(struct["EndPoint"]) end
+	if struct["Protocol"] then asserts.AssertSubscriptionProtocolType(struct["Protocol"]) end
 	for k,_ in pairs(struct) do
-		assert(Subscription_keys[k], "Subscription contains unknown key " .. tostring(k))
+		assert(keys.Subscription[k], "Subscription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Subscription
 -- <p>Describes a subscription.</p>
--- @param SubscriptionId [IdType] <p>The ID of the subscription.</p>
--- @param EndPoint [SubscriptionEndPointType] <p>The endpoint of the subscription.</p>
--- @param Protocol [SubscriptionProtocolType] <p>The protocol of the subscription.</p>
-function M.Subscription(SubscriptionId, EndPoint, Protocol, ...)
+-- @param _SubscriptionId [IdType] <p>The ID of the subscription.</p>
+-- @param _EndPoint [SubscriptionEndPointType] <p>The endpoint of the subscription.</p>
+-- @param _Protocol [SubscriptionProtocolType] <p>The protocol of the subscription.</p>
+function M.Subscription(_SubscriptionId, _EndPoint, _Protocol, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
 	local t = { 
-		["SubscriptionId"] = SubscriptionId,
-		["EndPoint"] = EndPoint,
-		["Protocol"] = Protocol,
+		["SubscriptionId"] = _SubscriptionId,
+		["EndPoint"] = _EndPoint,
+		["Protocol"] = _Protocol,
 	}
-	M.AssertSubscription(t)
+	asserts.AssertSubscription(t)
 	return t
 end
 
-local LimitExceededException_keys = { "Message" = true, nil }
+keys.LimitExceededException = { ["Message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>The maximum of 100,000 folders under the parent folder has been exceeded.</p>
--- @param Message [ErrorMessageType] <p>The maximum of 100,000 folders under the parent folder has been exceeded.</p>
-function M.LimitExceededException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.LimitExceededException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local ResourcePathComponent_keys = { "Id" = true, "Name" = true, nil }
+keys.ResourcePathComponent = { ["Id"] = true, ["Name"] = true, nil }
 
-function M.AssertResourcePathComponent(struct)
+function asserts.AssertResourcePathComponent(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourcePathComponent to be of type 'table'")
-	if struct["Id"] then M.AssertIdType(struct["Id"]) end
-	if struct["Name"] then M.AssertResourceNameType(struct["Name"]) end
+	if struct["Id"] then asserts.AssertIdType(struct["Id"]) end
+	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourcePathComponent_keys[k], "ResourcePathComponent contains unknown key " .. tostring(k))
+		assert(keys.ResourcePathComponent[k], "ResourcePathComponent contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourcePathComponent
 -- <p>Describes the resource path.</p>
--- @param Id [IdType] <p>The ID of the resource path.</p>
--- @param Name [ResourceNameType] <p>The name of the resource path.</p>
-function M.ResourcePathComponent(Id, Name, ...)
+-- @param _Id [IdType] <p>The ID of the resource path.</p>
+-- @param _Name [ResourceNameType] <p>The name of the resource path.</p>
+function M.ResourcePathComponent(_Id, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourcePathComponent")
 	local t = { 
-		["Id"] = Id,
-		["Name"] = Name,
+		["Id"] = _Id,
+		["Name"] = _Name,
 	}
-	M.AssertResourcePathComponent(t)
+	asserts.AssertResourcePathComponent(t)
 	return t
 end
 
-local DeactivateUserRequest_keys = { "AuthenticationToken" = true, "UserId" = true, nil }
+keys.DeactivateUserRequest = { ["AuthenticationToken"] = true, ["UserId"] = true, nil }
 
-function M.AssertDeactivateUserRequest(struct)
+function asserts.AssertDeactivateUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeactivateUserRequest to be of type 'table'")
 	assert(struct["UserId"], "Expected key UserId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["UserId"] then M.AssertIdType(struct["UserId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["UserId"] then asserts.AssertIdType(struct["UserId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeactivateUserRequest_keys[k], "DeactivateUserRequest contains unknown key " .. tostring(k))
+		assert(keys.DeactivateUserRequest[k], "DeactivateUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeactivateUserRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param UserId [IdType] <p>The ID of the user.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _UserId [IdType] <p>The ID of the user.</p>
 -- Required parameter: UserId
-function M.DeactivateUserRequest(AuthenticationToken, UserId, ...)
+function M.DeactivateUserRequest(_AuthenticationToken, _UserId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeactivateUserRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["UserId"] = UserId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["UserId"] = _UserId,
 	}
-	M.AssertDeactivateUserRequest(t)
+	asserts.AssertDeactivateUserRequest(t)
 	return t
 end
 
-local CreateFolderResponse_keys = { "Metadata" = true, nil }
+keys.CreateFolderResponse = { ["Metadata"] = true, nil }
 
-function M.AssertCreateFolderResponse(struct)
+function asserts.AssertCreateFolderResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFolderResponse to be of type 'table'")
-	if struct["Metadata"] then M.AssertFolderMetadata(struct["Metadata"]) end
+	if struct["Metadata"] then asserts.AssertFolderMetadata(struct["Metadata"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFolderResponse_keys[k], "CreateFolderResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateFolderResponse[k], "CreateFolderResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFolderResponse
 --  
--- @param Metadata [FolderMetadata] <p>The metadata of the folder.</p>
-function M.CreateFolderResponse(Metadata, ...)
+-- @param _Metadata [FolderMetadata] <p>The metadata of the folder.</p>
+function M.CreateFolderResponse(_Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFolderResponse")
 	local t = { 
-		["Metadata"] = Metadata,
+		["Metadata"] = _Metadata,
 	}
-	M.AssertCreateFolderResponse(t)
+	asserts.AssertCreateFolderResponse(t)
 	return t
 end
 
-local UnauthorizedOperationException_keys = { nil }
+keys.UnauthorizedOperationException = { nil }
 
-function M.AssertUnauthorizedOperationException(struct)
+function asserts.AssertUnauthorizedOperationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnauthorizedOperationException to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UnauthorizedOperationException_keys[k], "UnauthorizedOperationException contains unknown key " .. tostring(k))
+		assert(keys.UnauthorizedOperationException[k], "UnauthorizedOperationException contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1633,614 +1636,614 @@ function M.UnauthorizedOperationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedOperationException")
 	local t = { 
 	}
-	M.AssertUnauthorizedOperationException(t)
+	asserts.AssertUnauthorizedOperationException(t)
 	return t
 end
 
-local DescribeUsersRequest_keys = { "Sort" = true, "OrganizationId" = true, "Fields" = true, "UserIds" = true, "Marker" = true, "Limit" = true, "AuthenticationToken" = true, "Query" = true, "Include" = true, "Order" = true, nil }
+keys.DescribeUsersRequest = { ["Sort"] = true, ["OrganizationId"] = true, ["Fields"] = true, ["UserIds"] = true, ["Marker"] = true, ["Limit"] = true, ["AuthenticationToken"] = true, ["Query"] = true, ["Include"] = true, ["Order"] = true, nil }
 
-function M.AssertDescribeUsersRequest(struct)
+function asserts.AssertDescribeUsersRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUsersRequest to be of type 'table'")
-	if struct["Sort"] then M.AssertUserSortType(struct["Sort"]) end
-	if struct["OrganizationId"] then M.AssertIdType(struct["OrganizationId"]) end
-	if struct["Fields"] then M.AssertFieldNamesType(struct["Fields"]) end
-	if struct["UserIds"] then M.AssertUserIdsType(struct["UserIds"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Query"] then M.AssertSearchQueryType(struct["Query"]) end
-	if struct["Include"] then M.AssertUserFilterType(struct["Include"]) end
-	if struct["Order"] then M.AssertOrderType(struct["Order"]) end
+	if struct["Sort"] then asserts.AssertUserSortType(struct["Sort"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["Fields"] then asserts.AssertFieldNamesType(struct["Fields"]) end
+	if struct["UserIds"] then asserts.AssertUserIdsType(struct["UserIds"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Query"] then asserts.AssertSearchQueryType(struct["Query"]) end
+	if struct["Include"] then asserts.AssertUserFilterType(struct["Include"]) end
+	if struct["Order"] then asserts.AssertOrderType(struct["Order"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUsersRequest_keys[k], "DescribeUsersRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeUsersRequest[k], "DescribeUsersRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUsersRequest
 --  
--- @param Sort [UserSortType] <p>The sorting criteria.</p>
--- @param OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param Fields [FieldNamesType] <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the user storage quota and utilization information.</p>
--- @param UserIds [UserIdsType] <p>The IDs of the users.</p>
--- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param Limit [LimitType] <p>The maximum number of items to return.</p>
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Query [SearchQueryType] <p>A query to filter users by user name.</p>
--- @param Include [UserFilterType] <p>The state of the users. Specify "ALL" to include inactive users.</p>
--- @param Order [OrderType] <p>The order for the results.</p>
-function M.DescribeUsersRequest(Sort, OrganizationId, Fields, UserIds, Marker, Limit, AuthenticationToken, Query, Include, Order, ...)
+-- @param _Sort [UserSortType] <p>The sorting criteria.</p>
+-- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param _Fields [FieldNamesType] <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the user storage quota and utilization information.</p>
+-- @param _UserIds [UserIdsType] <p>The IDs of the users.</p>
+-- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _Limit [LimitType] <p>The maximum number of items to return.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Query [SearchQueryType] <p>A query to filter users by user name.</p>
+-- @param _Include [UserFilterType] <p>The state of the users. Specify "ALL" to include inactive users.</p>
+-- @param _Order [OrderType] <p>The order for the results.</p>
+function M.DescribeUsersRequest(_Sort, _OrganizationId, _Fields, _UserIds, _Marker, _Limit, _AuthenticationToken, _Query, _Include, _Order, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUsersRequest")
 	local t = { 
-		["Sort"] = Sort,
-		["OrganizationId"] = OrganizationId,
-		["Fields"] = Fields,
-		["UserIds"] = UserIds,
-		["Marker"] = Marker,
-		["Limit"] = Limit,
-		["AuthenticationToken"] = AuthenticationToken,
-		["Query"] = Query,
-		["Include"] = Include,
-		["Order"] = Order,
+		["Sort"] = _Sort,
+		["OrganizationId"] = _OrganizationId,
+		["Fields"] = _Fields,
+		["UserIds"] = _UserIds,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Query"] = _Query,
+		["Include"] = _Include,
+		["Order"] = _Order,
 	}
-	M.AssertDescribeUsersRequest(t)
+	asserts.AssertDescribeUsersRequest(t)
 	return t
 end
 
-local RemoveResourcePermissionRequest_keys = { "AuthenticationToken" = true, "ResourceId" = true, "PrincipalType" = true, "PrincipalId" = true, nil }
+keys.RemoveResourcePermissionRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["PrincipalType"] = true, ["PrincipalId"] = true, nil }
 
-function M.AssertRemoveResourcePermissionRequest(struct)
+function asserts.AssertRemoveResourcePermissionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveResourcePermissionRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	assert(struct["PrincipalId"], "Expected key PrincipalId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceId"] then M.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["PrincipalType"] then M.AssertPrincipalType(struct["PrincipalType"]) end
-	if struct["PrincipalId"] then M.AssertIdType(struct["PrincipalId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["PrincipalType"] then asserts.AssertPrincipalType(struct["PrincipalType"]) end
+	if struct["PrincipalId"] then asserts.AssertIdType(struct["PrincipalId"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveResourcePermissionRequest_keys[k], "RemoveResourcePermissionRequest contains unknown key " .. tostring(k))
+		assert(keys.RemoveResourcePermissionRequest[k], "RemoveResourcePermissionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveResourcePermissionRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param PrincipalType [PrincipalType] <p>The principal type of the resource.</p>
--- @param PrincipalId [IdType] <p>The principal ID of the resource.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param _PrincipalType [PrincipalType] <p>The principal type of the resource.</p>
+-- @param _PrincipalId [IdType] <p>The principal ID of the resource.</p>
 -- Required parameter: ResourceId
 -- Required parameter: PrincipalId
-function M.RemoveResourcePermissionRequest(AuthenticationToken, ResourceId, PrincipalType, PrincipalId, ...)
+function M.RemoveResourcePermissionRequest(_AuthenticationToken, _ResourceId, _PrincipalType, _PrincipalId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveResourcePermissionRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceId"] = ResourceId,
-		["PrincipalType"] = PrincipalType,
-		["PrincipalId"] = PrincipalId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceId"] = _ResourceId,
+		["PrincipalType"] = _PrincipalType,
+		["PrincipalId"] = _PrincipalId,
 	}
-	M.AssertRemoveResourcePermissionRequest(t)
+	asserts.AssertRemoveResourcePermissionRequest(t)
 	return t
 end
 
-local ResourcePath_keys = { "Components" = true, nil }
+keys.ResourcePath = { ["Components"] = true, nil }
 
-function M.AssertResourcePath(struct)
+function asserts.AssertResourcePath(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourcePath to be of type 'table'")
-	if struct["Components"] then M.AssertResourcePathComponentList(struct["Components"]) end
+	if struct["Components"] then asserts.AssertResourcePathComponentList(struct["Components"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourcePath_keys[k], "ResourcePath contains unknown key " .. tostring(k))
+		assert(keys.ResourcePath[k], "ResourcePath contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourcePath
 -- <p>Describes the path information of a resource.</p>
--- @param Components [ResourcePathComponentList] <p>The components of the resource path.</p>
-function M.ResourcePath(Components, ...)
+-- @param _Components [ResourcePathComponentList] <p>The components of the resource path.</p>
+function M.ResourcePath(_Components, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourcePath")
 	local t = { 
-		["Components"] = Components,
+		["Components"] = _Components,
 	}
-	M.AssertResourcePath(t)
+	asserts.AssertResourcePath(t)
 	return t
 end
 
-local IllegalUserStateException_keys = { "Message" = true, nil }
+keys.IllegalUserStateException = { ["Message"] = true, nil }
 
-function M.AssertIllegalUserStateException(struct)
+function asserts.AssertIllegalUserStateException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IllegalUserStateException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(IllegalUserStateException_keys[k], "IllegalUserStateException contains unknown key " .. tostring(k))
+		assert(keys.IllegalUserStateException[k], "IllegalUserStateException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IllegalUserStateException
 -- <p>The user is undergoing transfer of ownership.</p>
--- @param Message [ErrorMessageType] <p>The user is undergoing transfer of ownership.</p>
-function M.IllegalUserStateException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.IllegalUserStateException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IllegalUserStateException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertIllegalUserStateException(t)
+	asserts.AssertIllegalUserStateException(t)
 	return t
 end
 
-local DescribeFolderContentsRequest_keys = { "Sort" = true, "Include" = true, "Marker" = true, "Limit" = true, "AuthenticationToken" = true, "FolderId" = true, "Type" = true, "Order" = true, nil }
+keys.DescribeFolderContentsRequest = { ["Sort"] = true, ["Include"] = true, ["Marker"] = true, ["Limit"] = true, ["AuthenticationToken"] = true, ["FolderId"] = true, ["Type"] = true, ["Order"] = true, nil }
 
-function M.AssertDescribeFolderContentsRequest(struct)
+function asserts.AssertDescribeFolderContentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFolderContentsRequest to be of type 'table'")
 	assert(struct["FolderId"], "Expected key FolderId to exist in table")
-	if struct["Sort"] then M.AssertResourceSortType(struct["Sort"]) end
-	if struct["Include"] then M.AssertFieldNamesType(struct["Include"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["FolderId"] then M.AssertResourceIdType(struct["FolderId"]) end
-	if struct["Type"] then M.AssertFolderContentType(struct["Type"]) end
-	if struct["Order"] then M.AssertOrderType(struct["Order"]) end
+	if struct["Sort"] then asserts.AssertResourceSortType(struct["Sort"]) end
+	if struct["Include"] then asserts.AssertFieldNamesType(struct["Include"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["FolderId"] then asserts.AssertResourceIdType(struct["FolderId"]) end
+	if struct["Type"] then asserts.AssertFolderContentType(struct["Type"]) end
+	if struct["Order"] then asserts.AssertOrderType(struct["Order"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFolderContentsRequest_keys[k], "DescribeFolderContentsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeFolderContentsRequest[k], "DescribeFolderContentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFolderContentsRequest
 --  
--- @param Sort [ResourceSortType] <p>The sorting criteria.</p>
--- @param Include [FieldNamesType] <p>The contents to include. Specify "INITIALIZED" to include initialized documents.</p>
--- @param Marker [PageMarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
--- @param Limit [LimitType] <p>The maximum number of items to return with this call.</p>
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
--- @param Type [FolderContentType] <p>The type of items.</p>
--- @param Order [OrderType] <p>The order for the contents of the folder.</p>
+-- @param _Sort [ResourceSortType] <p>The sorting criteria.</p>
+-- @param _Include [FieldNamesType] <p>The contents to include. Specify "INITIALIZED" to include initialized documents.</p>
+-- @param _Marker [PageMarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- @param _Limit [LimitType] <p>The maximum number of items to return with this call.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- @param _Type [FolderContentType] <p>The type of items.</p>
+-- @param _Order [OrderType] <p>The order for the contents of the folder.</p>
 -- Required parameter: FolderId
-function M.DescribeFolderContentsRequest(Sort, Include, Marker, Limit, AuthenticationToken, FolderId, Type, Order, ...)
+function M.DescribeFolderContentsRequest(_Sort, _Include, _Marker, _Limit, _AuthenticationToken, _FolderId, _Type, _Order, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFolderContentsRequest")
 	local t = { 
-		["Sort"] = Sort,
-		["Include"] = Include,
-		["Marker"] = Marker,
-		["Limit"] = Limit,
-		["AuthenticationToken"] = AuthenticationToken,
-		["FolderId"] = FolderId,
-		["Type"] = Type,
-		["Order"] = Order,
+		["Sort"] = _Sort,
+		["Include"] = _Include,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["FolderId"] = _FolderId,
+		["Type"] = _Type,
+		["Order"] = _Order,
 	}
-	M.AssertDescribeFolderContentsRequest(t)
+	asserts.AssertDescribeFolderContentsRequest(t)
 	return t
 end
 
-local ResourceAlreadyCheckedOutException_keys = { "Message" = true, nil }
+keys.ResourceAlreadyCheckedOutException = { ["Message"] = true, nil }
 
-function M.AssertResourceAlreadyCheckedOutException(struct)
+function asserts.AssertResourceAlreadyCheckedOutException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceAlreadyCheckedOutException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceAlreadyCheckedOutException_keys[k], "ResourceAlreadyCheckedOutException contains unknown key " .. tostring(k))
+		assert(keys.ResourceAlreadyCheckedOutException[k], "ResourceAlreadyCheckedOutException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceAlreadyCheckedOutException
 -- <p>The resource is already checked out.</p>
--- @param Message [ErrorMessageType] <p>The resource is already checked out.</p>
-function M.ResourceAlreadyCheckedOutException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.ResourceAlreadyCheckedOutException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyCheckedOutException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertResourceAlreadyCheckedOutException(t)
+	asserts.AssertResourceAlreadyCheckedOutException(t)
 	return t
 end
 
-local GetDocumentPathResponse_keys = { "Path" = true, nil }
+keys.GetDocumentPathResponse = { ["Path"] = true, nil }
 
-function M.AssertGetDocumentPathResponse(struct)
+function asserts.AssertGetDocumentPathResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentPathResponse to be of type 'table'")
-	if struct["Path"] then M.AssertResourcePath(struct["Path"]) end
+	if struct["Path"] then asserts.AssertResourcePath(struct["Path"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentPathResponse_keys[k], "GetDocumentPathResponse contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentPathResponse[k], "GetDocumentPathResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentPathResponse
 --  
--- @param Path [ResourcePath] <p>The path information.</p>
-function M.GetDocumentPathResponse(Path, ...)
+-- @param _Path [ResourcePath] <p>The path information.</p>
+function M.GetDocumentPathResponse(_Path, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentPathResponse")
 	local t = { 
-		["Path"] = Path,
+		["Path"] = _Path,
 	}
-	M.AssertGetDocumentPathResponse(t)
+	asserts.AssertGetDocumentPathResponse(t)
 	return t
 end
 
-local UpdateUserRequest_keys = { "TimeZoneId" = true, "Surname" = true, "Locale" = true, "UserId" = true, "StorageRule" = true, "AuthenticationToken" = true, "GivenName" = true, "Type" = true, nil }
+keys.UpdateUserRequest = { ["TimeZoneId"] = true, ["Surname"] = true, ["Locale"] = true, ["UserId"] = true, ["StorageRule"] = true, ["AuthenticationToken"] = true, ["GivenName"] = true, ["Type"] = true, nil }
 
-function M.AssertUpdateUserRequest(struct)
+function asserts.AssertUpdateUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateUserRequest to be of type 'table'")
 	assert(struct["UserId"], "Expected key UserId to exist in table")
-	if struct["TimeZoneId"] then M.AssertTimeZoneIdType(struct["TimeZoneId"]) end
-	if struct["Surname"] then M.AssertUserAttributeValueType(struct["Surname"]) end
-	if struct["Locale"] then M.AssertLocaleType(struct["Locale"]) end
-	if struct["UserId"] then M.AssertIdType(struct["UserId"]) end
-	if struct["StorageRule"] then M.AssertStorageRuleType(struct["StorageRule"]) end
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["GivenName"] then M.AssertUserAttributeValueType(struct["GivenName"]) end
-	if struct["Type"] then M.AssertUserType(struct["Type"]) end
+	if struct["TimeZoneId"] then asserts.AssertTimeZoneIdType(struct["TimeZoneId"]) end
+	if struct["Surname"] then asserts.AssertUserAttributeValueType(struct["Surname"]) end
+	if struct["Locale"] then asserts.AssertLocaleType(struct["Locale"]) end
+	if struct["UserId"] then asserts.AssertIdType(struct["UserId"]) end
+	if struct["StorageRule"] then asserts.AssertStorageRuleType(struct["StorageRule"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["GivenName"] then asserts.AssertUserAttributeValueType(struct["GivenName"]) end
+	if struct["Type"] then asserts.AssertUserType(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateUserRequest_keys[k], "UpdateUserRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateUserRequest[k], "UpdateUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateUserRequest
 --  
--- @param TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
--- @param Surname [UserAttributeValueType] <p>The surname of the user.</p>
--- @param Locale [LocaleType] <p>The locale of the user.</p>
--- @param UserId [IdType] <p>The ID of the user.</p>
--- @param StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param GivenName [UserAttributeValueType] <p>The given name of the user.</p>
--- @param Type [UserType] <p>The type of the user.</p>
+-- @param _TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- @param _Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- @param _Locale [LocaleType] <p>The locale of the user.</p>
+-- @param _UserId [IdType] <p>The ID of the user.</p>
+-- @param _StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _GivenName [UserAttributeValueType] <p>The given name of the user.</p>
+-- @param _Type [UserType] <p>The type of the user.</p>
 -- Required parameter: UserId
-function M.UpdateUserRequest(TimeZoneId, Surname, Locale, UserId, StorageRule, AuthenticationToken, GivenName, Type, ...)
+function M.UpdateUserRequest(_TimeZoneId, _Surname, _Locale, _UserId, _StorageRule, _AuthenticationToken, _GivenName, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserRequest")
 	local t = { 
-		["TimeZoneId"] = TimeZoneId,
-		["Surname"] = Surname,
-		["Locale"] = Locale,
-		["UserId"] = UserId,
-		["StorageRule"] = StorageRule,
-		["AuthenticationToken"] = AuthenticationToken,
-		["GivenName"] = GivenName,
-		["Type"] = Type,
+		["TimeZoneId"] = _TimeZoneId,
+		["Surname"] = _Surname,
+		["Locale"] = _Locale,
+		["UserId"] = _UserId,
+		["StorageRule"] = _StorageRule,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["GivenName"] = _GivenName,
+		["Type"] = _Type,
 	}
-	M.AssertUpdateUserRequest(t)
+	asserts.AssertUpdateUserRequest(t)
 	return t
 end
 
-local AddResourcePermissionsRequest_keys = { "AuthenticationToken" = true, "ResourceId" = true, "Principals" = true, nil }
+keys.AddResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Principals"] = true, nil }
 
-function M.AssertAddResourcePermissionsRequest(struct)
+function asserts.AssertAddResourcePermissionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddResourcePermissionsRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	assert(struct["Principals"], "Expected key Principals to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceId"] then M.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["Principals"] then M.AssertSharePrincipalList(struct["Principals"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["Principals"] then asserts.AssertSharePrincipalList(struct["Principals"]) end
 	for k,_ in pairs(struct) do
-		assert(AddResourcePermissionsRequest_keys[k], "AddResourcePermissionsRequest contains unknown key " .. tostring(k))
+		assert(keys.AddResourcePermissionsRequest[k], "AddResourcePermissionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddResourcePermissionsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param Principals [SharePrincipalList] <p>The users, groups, or organization being granted permission.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param _Principals [SharePrincipalList] <p>The users, groups, or organization being granted permission.</p>
 -- Required parameter: ResourceId
 -- Required parameter: Principals
-function M.AddResourcePermissionsRequest(AuthenticationToken, ResourceId, Principals, ...)
+function M.AddResourcePermissionsRequest(_AuthenticationToken, _ResourceId, _Principals, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddResourcePermissionsRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceId"] = ResourceId,
-		["Principals"] = Principals,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceId"] = _ResourceId,
+		["Principals"] = _Principals,
 	}
-	M.AssertAddResourcePermissionsRequest(t)
+	asserts.AssertAddResourcePermissionsRequest(t)
 	return t
 end
 
-local Participants_keys = { "Users" = true, "Groups" = true, nil }
+keys.Participants = { ["Users"] = true, ["Groups"] = true, nil }
 
-function M.AssertParticipants(struct)
+function asserts.AssertParticipants(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Participants to be of type 'table'")
-	if struct["Users"] then M.AssertUserMetadataList(struct["Users"]) end
-	if struct["Groups"] then M.AssertGroupMetadataList(struct["Groups"]) end
+	if struct["Users"] then asserts.AssertUserMetadataList(struct["Users"]) end
+	if struct["Groups"] then asserts.AssertGroupMetadataList(struct["Groups"]) end
 	for k,_ in pairs(struct) do
-		assert(Participants_keys[k], "Participants contains unknown key " .. tostring(k))
+		assert(keys.Participants[k], "Participants contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Participants
 -- <p>Describes the users and/or user groups.</p>
--- @param Users [UserMetadataList] <p>The list of users.</p>
--- @param Groups [GroupMetadataList] <p>The list of user groups.</p>
-function M.Participants(Users, Groups, ...)
+-- @param _Users [UserMetadataList] <p>The list of users.</p>
+-- @param _Groups [GroupMetadataList] <p>The list of user groups.</p>
+function M.Participants(_Users, _Groups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Participants")
 	local t = { 
-		["Users"] = Users,
-		["Groups"] = Groups,
+		["Users"] = _Users,
+		["Groups"] = _Groups,
 	}
-	M.AssertParticipants(t)
+	asserts.AssertParticipants(t)
 	return t
 end
 
-local DescribeActivitiesResponse_keys = { "UserActivities" = true, "Marker" = true, nil }
+keys.DescribeActivitiesResponse = { ["UserActivities"] = true, ["Marker"] = true, nil }
 
-function M.AssertDescribeActivitiesResponse(struct)
+function asserts.AssertDescribeActivitiesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeActivitiesResponse to be of type 'table'")
-	if struct["UserActivities"] then M.AssertUserActivities(struct["UserActivities"]) end
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
+	if struct["UserActivities"] then asserts.AssertUserActivities(struct["UserActivities"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeActivitiesResponse_keys[k], "DescribeActivitiesResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeActivitiesResponse[k], "DescribeActivitiesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeActivitiesResponse
 --  
--- @param UserActivities [UserActivities] <p>The list of activities for the specified user and time period.</p>
--- @param Marker [MarkerType] <p>The marker for the next set of results.</p>
-function M.DescribeActivitiesResponse(UserActivities, Marker, ...)
+-- @param _UserActivities [UserActivities] <p>The list of activities for the specified user and time period.</p>
+-- @param _Marker [MarkerType] <p>The marker for the next set of results.</p>
+function M.DescribeActivitiesResponse(_UserActivities, _Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivitiesResponse")
 	local t = { 
-		["UserActivities"] = UserActivities,
-		["Marker"] = Marker,
+		["UserActivities"] = _UserActivities,
+		["Marker"] = _Marker,
 	}
-	M.AssertDescribeActivitiesResponse(t)
+	asserts.AssertDescribeActivitiesResponse(t)
 	return t
 end
 
-local UserStorageMetadata_keys = { "StorageRule" = true, "StorageUtilizedInBytes" = true, nil }
+keys.UserStorageMetadata = { ["StorageRule"] = true, ["StorageUtilizedInBytes"] = true, nil }
 
-function M.AssertUserStorageMetadata(struct)
+function asserts.AssertUserStorageMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserStorageMetadata to be of type 'table'")
-	if struct["StorageRule"] then M.AssertStorageRuleType(struct["StorageRule"]) end
-	if struct["StorageUtilizedInBytes"] then M.AssertSizeType(struct["StorageUtilizedInBytes"]) end
+	if struct["StorageRule"] then asserts.AssertStorageRuleType(struct["StorageRule"]) end
+	if struct["StorageUtilizedInBytes"] then asserts.AssertSizeType(struct["StorageUtilizedInBytes"]) end
 	for k,_ in pairs(struct) do
-		assert(UserStorageMetadata_keys[k], "UserStorageMetadata contains unknown key " .. tostring(k))
+		assert(keys.UserStorageMetadata[k], "UserStorageMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserStorageMetadata
 -- <p>Describes the storage for a user.</p>
--- @param StorageRule [StorageRuleType] <p>The storage for a user.</p>
--- @param StorageUtilizedInBytes [SizeType] <p>The amount of storage utilized, in bytes.</p>
-function M.UserStorageMetadata(StorageRule, StorageUtilizedInBytes, ...)
+-- @param _StorageRule [StorageRuleType] <p>The storage for a user.</p>
+-- @param _StorageUtilizedInBytes [SizeType] <p>The amount of storage utilized, in bytes.</p>
+function M.UserStorageMetadata(_StorageRule, _StorageUtilizedInBytes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserStorageMetadata")
 	local t = { 
-		["StorageRule"] = StorageRule,
-		["StorageUtilizedInBytes"] = StorageUtilizedInBytes,
+		["StorageRule"] = _StorageRule,
+		["StorageUtilizedInBytes"] = _StorageUtilizedInBytes,
 	}
-	M.AssertUserStorageMetadata(t)
+	asserts.AssertUserStorageMetadata(t)
 	return t
 end
 
-local FolderMetadata_keys = { "Name" = true, "LatestVersionSize" = true, "Labels" = true, "ModifiedTimestamp" = true, "Id" = true, "CreatedTimestamp" = true, "ResourceState" = true, "CreatorId" = true, "Signature" = true, "ParentFolderId" = true, "Size" = true, nil }
+keys.FolderMetadata = { ["Name"] = true, ["LatestVersionSize"] = true, ["Labels"] = true, ["ModifiedTimestamp"] = true, ["Id"] = true, ["CreatedTimestamp"] = true, ["ResourceState"] = true, ["CreatorId"] = true, ["Signature"] = true, ["ParentFolderId"] = true, ["Size"] = true, nil }
 
-function M.AssertFolderMetadata(struct)
+function asserts.AssertFolderMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FolderMetadata to be of type 'table'")
-	if struct["Name"] then M.AssertResourceNameType(struct["Name"]) end
-	if struct["LatestVersionSize"] then M.AssertSizeType(struct["LatestVersionSize"]) end
-	if struct["Labels"] then M.AssertLabels(struct["Labels"]) end
-	if struct["ModifiedTimestamp"] then M.AssertTimestampType(struct["ModifiedTimestamp"]) end
-	if struct["Id"] then M.AssertResourceIdType(struct["Id"]) end
-	if struct["CreatedTimestamp"] then M.AssertTimestampType(struct["CreatedTimestamp"]) end
-	if struct["ResourceState"] then M.AssertResourceStateType(struct["ResourceState"]) end
-	if struct["CreatorId"] then M.AssertIdType(struct["CreatorId"]) end
-	if struct["Signature"] then M.AssertHashType(struct["Signature"]) end
-	if struct["ParentFolderId"] then M.AssertResourceIdType(struct["ParentFolderId"]) end
-	if struct["Size"] then M.AssertSizeType(struct["Size"]) end
+	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
+	if struct["LatestVersionSize"] then asserts.AssertSizeType(struct["LatestVersionSize"]) end
+	if struct["Labels"] then asserts.AssertLabels(struct["Labels"]) end
+	if struct["ModifiedTimestamp"] then asserts.AssertTimestampType(struct["ModifiedTimestamp"]) end
+	if struct["Id"] then asserts.AssertResourceIdType(struct["Id"]) end
+	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
+	if struct["ResourceState"] then asserts.AssertResourceStateType(struct["ResourceState"]) end
+	if struct["CreatorId"] then asserts.AssertIdType(struct["CreatorId"]) end
+	if struct["Signature"] then asserts.AssertHashType(struct["Signature"]) end
+	if struct["ParentFolderId"] then asserts.AssertResourceIdType(struct["ParentFolderId"]) end
+	if struct["Size"] then asserts.AssertSizeType(struct["Size"]) end
 	for k,_ in pairs(struct) do
-		assert(FolderMetadata_keys[k], "FolderMetadata contains unknown key " .. tostring(k))
+		assert(keys.FolderMetadata[k], "FolderMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FolderMetadata
 -- <p>Describes a folder.</p>
--- @param Name [ResourceNameType] <p>The name of the folder.</p>
--- @param LatestVersionSize [SizeType] <p>The size of the latest version of the folder metadata.</p>
--- @param Labels [Labels] <p>List of labels on the folder.</p>
--- @param ModifiedTimestamp [TimestampType] <p>The time when the folder was updated.</p>
--- @param Id [ResourceIdType] <p>The ID of the folder.</p>
--- @param CreatedTimestamp [TimestampType] <p>The time when the folder was created.</p>
--- @param ResourceState [ResourceStateType] <p>The resource state of the folder.</p>
--- @param CreatorId [IdType] <p>The ID of the creator.</p>
--- @param Signature [HashType] <p>The unique identifier created from the subfolders and documents of the folder.</p>
--- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- @param Size [SizeType] <p>The size of the folder metadata.</p>
-function M.FolderMetadata(Name, LatestVersionSize, Labels, ModifiedTimestamp, Id, CreatedTimestamp, ResourceState, CreatorId, Signature, ParentFolderId, Size, ...)
+-- @param _Name [ResourceNameType] <p>The name of the folder.</p>
+-- @param _LatestVersionSize [SizeType] <p>The size of the latest version of the folder metadata.</p>
+-- @param _Labels [Labels] <p>List of labels on the folder.</p>
+-- @param _ModifiedTimestamp [TimestampType] <p>The time when the folder was updated.</p>
+-- @param _Id [ResourceIdType] <p>The ID of the folder.</p>
+-- @param _CreatedTimestamp [TimestampType] <p>The time when the folder was created.</p>
+-- @param _ResourceState [ResourceStateType] <p>The resource state of the folder.</p>
+-- @param _CreatorId [IdType] <p>The ID of the creator.</p>
+-- @param _Signature [HashType] <p>The unique identifier created from the subfolders and documents of the folder.</p>
+-- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param _Size [SizeType] <p>The size of the folder metadata.</p>
+function M.FolderMetadata(_Name, _LatestVersionSize, _Labels, _ModifiedTimestamp, _Id, _CreatedTimestamp, _ResourceState, _CreatorId, _Signature, _ParentFolderId, _Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FolderMetadata")
 	local t = { 
-		["Name"] = Name,
-		["LatestVersionSize"] = LatestVersionSize,
-		["Labels"] = Labels,
-		["ModifiedTimestamp"] = ModifiedTimestamp,
-		["Id"] = Id,
-		["CreatedTimestamp"] = CreatedTimestamp,
-		["ResourceState"] = ResourceState,
-		["CreatorId"] = CreatorId,
-		["Signature"] = Signature,
-		["ParentFolderId"] = ParentFolderId,
-		["Size"] = Size,
+		["Name"] = _Name,
+		["LatestVersionSize"] = _LatestVersionSize,
+		["Labels"] = _Labels,
+		["ModifiedTimestamp"] = _ModifiedTimestamp,
+		["Id"] = _Id,
+		["CreatedTimestamp"] = _CreatedTimestamp,
+		["ResourceState"] = _ResourceState,
+		["CreatorId"] = _CreatorId,
+		["Signature"] = _Signature,
+		["ParentFolderId"] = _ParentFolderId,
+		["Size"] = _Size,
 	}
-	M.AssertFolderMetadata(t)
+	asserts.AssertFolderMetadata(t)
 	return t
 end
 
-local GroupMetadata_keys = { "Id" = true, "Name" = true, nil }
+keys.GroupMetadata = { ["Id"] = true, ["Name"] = true, nil }
 
-function M.AssertGroupMetadata(struct)
+function asserts.AssertGroupMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GroupMetadata to be of type 'table'")
-	if struct["Id"] then M.AssertIdType(struct["Id"]) end
-	if struct["Name"] then M.AssertGroupNameType(struct["Name"]) end
+	if struct["Id"] then asserts.AssertIdType(struct["Id"]) end
+	if struct["Name"] then asserts.AssertGroupNameType(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(GroupMetadata_keys[k], "GroupMetadata contains unknown key " .. tostring(k))
+		assert(keys.GroupMetadata[k], "GroupMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GroupMetadata
 -- <p>Describes the metadata of a user group.</p>
--- @param Id [IdType] <p>The ID of the user group.</p>
--- @param Name [GroupNameType] <p>The name of the group.</p>
-function M.GroupMetadata(Id, Name, ...)
+-- @param _Id [IdType] <p>The ID of the user group.</p>
+-- @param _Name [GroupNameType] <p>The name of the group.</p>
+function M.GroupMetadata(_Id, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupMetadata")
 	local t = { 
-		["Id"] = Id,
-		["Name"] = Name,
+		["Id"] = _Id,
+		["Name"] = _Name,
 	}
-	M.AssertGroupMetadata(t)
+	asserts.AssertGroupMetadata(t)
 	return t
 end
 
-local UploadMetadata_keys = { "SignedHeaders" = true, "UploadUrl" = true, nil }
+keys.UploadMetadata = { ["SignedHeaders"] = true, ["UploadUrl"] = true, nil }
 
-function M.AssertUploadMetadata(struct)
+function asserts.AssertUploadMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UploadMetadata to be of type 'table'")
-	if struct["SignedHeaders"] then M.AssertSignedHeaderMap(struct["SignedHeaders"]) end
-	if struct["UploadUrl"] then M.AssertUrlType(struct["UploadUrl"]) end
+	if struct["SignedHeaders"] then asserts.AssertSignedHeaderMap(struct["SignedHeaders"]) end
+	if struct["UploadUrl"] then asserts.AssertUrlType(struct["UploadUrl"]) end
 	for k,_ in pairs(struct) do
-		assert(UploadMetadata_keys[k], "UploadMetadata contains unknown key " .. tostring(k))
+		assert(keys.UploadMetadata[k], "UploadMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UploadMetadata
 -- <p>Describes the upload.</p>
--- @param SignedHeaders [SignedHeaderMap] <p>The signed headers.</p>
--- @param UploadUrl [UrlType] <p>The URL of the upload.</p>
-function M.UploadMetadata(SignedHeaders, UploadUrl, ...)
+-- @param _SignedHeaders [SignedHeaderMap] <p>The signed headers.</p>
+-- @param _UploadUrl [UrlType] <p>The URL of the upload.</p>
+function M.UploadMetadata(_SignedHeaders, _UploadUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UploadMetadata")
 	local t = { 
-		["SignedHeaders"] = SignedHeaders,
-		["UploadUrl"] = UploadUrl,
+		["SignedHeaders"] = _SignedHeaders,
+		["UploadUrl"] = _UploadUrl,
 	}
-	M.AssertUploadMetadata(t)
+	asserts.AssertUploadMetadata(t)
 	return t
 end
 
-local CustomMetadataLimitExceededException_keys = { "Message" = true, nil }
+keys.CustomMetadataLimitExceededException = { ["Message"] = true, nil }
 
-function M.AssertCustomMetadataLimitExceededException(struct)
+function asserts.AssertCustomMetadataLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CustomMetadataLimitExceededException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(CustomMetadataLimitExceededException_keys[k], "CustomMetadataLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.CustomMetadataLimitExceededException[k], "CustomMetadataLimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CustomMetadataLimitExceededException
 -- <p>The limit has been reached on the number of custom properties for the specified resource.</p>
--- @param Message [ErrorMessageType] <p>The limit has been reached on the number of custom properties for the specified resource.</p>
-function M.CustomMetadataLimitExceededException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.CustomMetadataLimitExceededException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomMetadataLimitExceededException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertCustomMetadataLimitExceededException(t)
+	asserts.AssertCustomMetadataLimitExceededException(t)
 	return t
 end
 
-local User_keys = { "Username" = true, "Status" = true, "Surname" = true, "OrganizationId" = true, "Storage" = true, "RecycleBinFolderId" = true, "TimeZoneId" = true, "ModifiedTimestamp" = true, "CreatedTimestamp" = true, "Locale" = true, "EmailAddress" = true, "RootFolderId" = true, "GivenName" = true, "Type" = true, "Id" = true, nil }
+keys.User = { ["Username"] = true, ["Status"] = true, ["Surname"] = true, ["OrganizationId"] = true, ["Storage"] = true, ["RecycleBinFolderId"] = true, ["TimeZoneId"] = true, ["ModifiedTimestamp"] = true, ["CreatedTimestamp"] = true, ["Locale"] = true, ["EmailAddress"] = true, ["RootFolderId"] = true, ["GivenName"] = true, ["Type"] = true, ["Id"] = true, nil }
 
-function M.AssertUser(struct)
+function asserts.AssertUser(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected User to be of type 'table'")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["Status"] then M.AssertUserStatusType(struct["Status"]) end
-	if struct["Surname"] then M.AssertUserAttributeValueType(struct["Surname"]) end
-	if struct["OrganizationId"] then M.AssertIdType(struct["OrganizationId"]) end
-	if struct["Storage"] then M.AssertUserStorageMetadata(struct["Storage"]) end
-	if struct["RecycleBinFolderId"] then M.AssertResourceIdType(struct["RecycleBinFolderId"]) end
-	if struct["TimeZoneId"] then M.AssertTimeZoneIdType(struct["TimeZoneId"]) end
-	if struct["ModifiedTimestamp"] then M.AssertTimestampType(struct["ModifiedTimestamp"]) end
-	if struct["CreatedTimestamp"] then M.AssertTimestampType(struct["CreatedTimestamp"]) end
-	if struct["Locale"] then M.AssertLocaleType(struct["Locale"]) end
-	if struct["EmailAddress"] then M.AssertEmailAddressType(struct["EmailAddress"]) end
-	if struct["RootFolderId"] then M.AssertResourceIdType(struct["RootFolderId"]) end
-	if struct["GivenName"] then M.AssertUserAttributeValueType(struct["GivenName"]) end
-	if struct["Type"] then M.AssertUserType(struct["Type"]) end
-	if struct["Id"] then M.AssertIdType(struct["Id"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["Status"] then asserts.AssertUserStatusType(struct["Status"]) end
+	if struct["Surname"] then asserts.AssertUserAttributeValueType(struct["Surname"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["Storage"] then asserts.AssertUserStorageMetadata(struct["Storage"]) end
+	if struct["RecycleBinFolderId"] then asserts.AssertResourceIdType(struct["RecycleBinFolderId"]) end
+	if struct["TimeZoneId"] then asserts.AssertTimeZoneIdType(struct["TimeZoneId"]) end
+	if struct["ModifiedTimestamp"] then asserts.AssertTimestampType(struct["ModifiedTimestamp"]) end
+	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
+	if struct["Locale"] then asserts.AssertLocaleType(struct["Locale"]) end
+	if struct["EmailAddress"] then asserts.AssertEmailAddressType(struct["EmailAddress"]) end
+	if struct["RootFolderId"] then asserts.AssertResourceIdType(struct["RootFolderId"]) end
+	if struct["GivenName"] then asserts.AssertUserAttributeValueType(struct["GivenName"]) end
+	if struct["Type"] then asserts.AssertUserType(struct["Type"]) end
+	if struct["Id"] then asserts.AssertIdType(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(User_keys[k], "User contains unknown key " .. tostring(k))
+		assert(keys.User[k], "User contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type User
 -- <p>Describes a user.</p>
--- @param Username [UsernameType] <p>The login name of the user.</p>
--- @param Status [UserStatusType] <p>The status of the user.</p>
--- @param Surname [UserAttributeValueType] <p>The surname of the user.</p>
--- @param OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param Storage [UserStorageMetadata] <p>The storage for the user.</p>
--- @param RecycleBinFolderId [ResourceIdType] <p>The ID of the recycle bin folder.</p>
--- @param TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
--- @param ModifiedTimestamp [TimestampType] <p>The time when the user was modified.</p>
--- @param CreatedTimestamp [TimestampType] <p>The time when the user was created.</p>
--- @param Locale [LocaleType] <p>The locale of the user.</p>
--- @param EmailAddress [EmailAddressType] <p>The email address of the user.</p>
--- @param RootFolderId [ResourceIdType] <p>The ID of the root folder.</p>
--- @param GivenName [UserAttributeValueType] <p>The given name of the user.</p>
--- @param Type [UserType] <p>The type of user.</p>
--- @param Id [IdType] <p>The ID of the user.</p>
-function M.User(Username, Status, Surname, OrganizationId, Storage, RecycleBinFolderId, TimeZoneId, ModifiedTimestamp, CreatedTimestamp, Locale, EmailAddress, RootFolderId, GivenName, Type, Id, ...)
+-- @param _Username [UsernameType] <p>The login name of the user.</p>
+-- @param _Status [UserStatusType] <p>The status of the user.</p>
+-- @param _Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param _Storage [UserStorageMetadata] <p>The storage for the user.</p>
+-- @param _RecycleBinFolderId [ResourceIdType] <p>The ID of the recycle bin folder.</p>
+-- @param _TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- @param _ModifiedTimestamp [TimestampType] <p>The time when the user was modified.</p>
+-- @param _CreatedTimestamp [TimestampType] <p>The time when the user was created.</p>
+-- @param _Locale [LocaleType] <p>The locale of the user.</p>
+-- @param _EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- @param _RootFolderId [ResourceIdType] <p>The ID of the root folder.</p>
+-- @param _GivenName [UserAttributeValueType] <p>The given name of the user.</p>
+-- @param _Type [UserType] <p>The type of user.</p>
+-- @param _Id [IdType] <p>The ID of the user.</p>
+function M.User(_Username, _Status, _Surname, _OrganizationId, _Storage, _RecycleBinFolderId, _TimeZoneId, _ModifiedTimestamp, _CreatedTimestamp, _Locale, _EmailAddress, _RootFolderId, _GivenName, _Type, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating User")
 	local t = { 
-		["Username"] = Username,
-		["Status"] = Status,
-		["Surname"] = Surname,
-		["OrganizationId"] = OrganizationId,
-		["Storage"] = Storage,
-		["RecycleBinFolderId"] = RecycleBinFolderId,
-		["TimeZoneId"] = TimeZoneId,
-		["ModifiedTimestamp"] = ModifiedTimestamp,
-		["CreatedTimestamp"] = CreatedTimestamp,
-		["Locale"] = Locale,
-		["EmailAddress"] = EmailAddress,
-		["RootFolderId"] = RootFolderId,
-		["GivenName"] = GivenName,
-		["Type"] = Type,
-		["Id"] = Id,
+		["Username"] = _Username,
+		["Status"] = _Status,
+		["Surname"] = _Surname,
+		["OrganizationId"] = _OrganizationId,
+		["Storage"] = _Storage,
+		["RecycleBinFolderId"] = _RecycleBinFolderId,
+		["TimeZoneId"] = _TimeZoneId,
+		["ModifiedTimestamp"] = _ModifiedTimestamp,
+		["CreatedTimestamp"] = _CreatedTimestamp,
+		["Locale"] = _Locale,
+		["EmailAddress"] = _EmailAddress,
+		["RootFolderId"] = _RootFolderId,
+		["GivenName"] = _GivenName,
+		["Type"] = _Type,
+		["Id"] = _Id,
 	}
-	M.AssertUser(t)
+	asserts.AssertUser(t)
 	return t
 end
 
-local InvalidOperationException_keys = { "Message" = true, nil }
+keys.InvalidOperationException = { ["Message"] = true, nil }
 
-function M.AssertInvalidOperationException(struct)
+function asserts.AssertInvalidOperationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidOperationException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidOperationException_keys[k], "InvalidOperationException contains unknown key " .. tostring(k))
+		assert(keys.InvalidOperationException[k], "InvalidOperationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidOperationException
 -- <p>The operation is invalid.</p>
--- @param Message [ErrorMessageType] <p>The operation is invalid.</p>
-function M.InvalidOperationException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.InvalidOperationException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOperationException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidOperationException(t)
+	asserts.AssertInvalidOperationException(t)
 	return t
 end
 
-local CreateCustomMetadataResponse_keys = { nil }
+keys.CreateCustomMetadataResponse = { nil }
 
-function M.AssertCreateCustomMetadataResponse(struct)
+function asserts.AssertCreateCustomMetadataResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCustomMetadataResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CreateCustomMetadataResponse_keys[k], "CreateCustomMetadataResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateCustomMetadataResponse[k], "CreateCustomMetadataResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2250,52 +2253,52 @@ function M.CreateCustomMetadataResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCustomMetadataResponse")
 	local t = { 
 	}
-	M.AssertCreateCustomMetadataResponse(t)
+	asserts.AssertCreateCustomMetadataResponse(t)
 	return t
 end
 
-local CommentMetadata_keys = { "Contributor" = true, "CommentId" = true, "CreatedTimestamp" = true, "RecipientId" = true, "CommentStatus" = true, nil }
+keys.CommentMetadata = { ["Contributor"] = true, ["CommentId"] = true, ["CreatedTimestamp"] = true, ["RecipientId"] = true, ["CommentStatus"] = true, nil }
 
-function M.AssertCommentMetadata(struct)
+function asserts.AssertCommentMetadata(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CommentMetadata to be of type 'table'")
-	if struct["Contributor"] then M.AssertUser(struct["Contributor"]) end
-	if struct["CommentId"] then M.AssertCommentIdType(struct["CommentId"]) end
-	if struct["CreatedTimestamp"] then M.AssertTimestampType(struct["CreatedTimestamp"]) end
-	if struct["RecipientId"] then M.AssertIdType(struct["RecipientId"]) end
-	if struct["CommentStatus"] then M.AssertCommentStatusType(struct["CommentStatus"]) end
+	if struct["Contributor"] then asserts.AssertUser(struct["Contributor"]) end
+	if struct["CommentId"] then asserts.AssertCommentIdType(struct["CommentId"]) end
+	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
+	if struct["RecipientId"] then asserts.AssertIdType(struct["RecipientId"]) end
+	if struct["CommentStatus"] then asserts.AssertCommentStatusType(struct["CommentStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(CommentMetadata_keys[k], "CommentMetadata contains unknown key " .. tostring(k))
+		assert(keys.CommentMetadata[k], "CommentMetadata contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CommentMetadata
 -- <p>Describes the metadata of a comment.</p>
--- @param Contributor [User] <p>The user who made the comment.</p>
--- @param CommentId [CommentIdType] <p>The ID of the comment.</p>
--- @param CreatedTimestamp [TimestampType] <p>Describes the metadata of a comment.</p>
--- @param RecipientId [IdType] <p>The ID of the user being replied to.</p>
--- @param CommentStatus [CommentStatusType] <p>Describes the metadata of a comment.</p>
-function M.CommentMetadata(Contributor, CommentId, CreatedTimestamp, RecipientId, CommentStatus, ...)
+-- @param _Contributor [User] <p>The user who made the comment.</p>
+-- @param _CommentId [CommentIdType] <p>The ID of the comment.</p>
+-- @param _CreatedTimestamp [TimestampType] 
+-- @param _RecipientId [IdType] <p>The ID of the user being replied to.</p>
+-- @param _CommentStatus [CommentStatusType] 
+function M.CommentMetadata(_Contributor, _CommentId, _CreatedTimestamp, _RecipientId, _CommentStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CommentMetadata")
 	local t = { 
-		["Contributor"] = Contributor,
-		["CommentId"] = CommentId,
-		["CreatedTimestamp"] = CreatedTimestamp,
-		["RecipientId"] = RecipientId,
-		["CommentStatus"] = CommentStatus,
+		["Contributor"] = _Contributor,
+		["CommentId"] = _CommentId,
+		["CreatedTimestamp"] = _CreatedTimestamp,
+		["RecipientId"] = _RecipientId,
+		["CommentStatus"] = _CommentStatus,
 	}
-	M.AssertCommentMetadata(t)
+	asserts.AssertCommentMetadata(t)
 	return t
 end
 
-local DeleteLabelsResponse_keys = { nil }
+keys.DeleteLabelsResponse = { nil }
 
-function M.AssertDeleteLabelsResponse(struct)
+function asserts.AssertDeleteLabelsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLabelsResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteLabelsResponse_keys[k], "DeleteLabelsResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteLabelsResponse[k], "DeleteLabelsResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2305,781 +2308,781 @@ function M.DeleteLabelsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLabelsResponse")
 	local t = { 
 	}
-	M.AssertDeleteLabelsResponse(t)
+	asserts.AssertDeleteLabelsResponse(t)
 	return t
 end
 
-local DeleteCommentRequest_keys = { "AuthenticationToken" = true, "CommentId" = true, "VersionId" = true, "DocumentId" = true, nil }
+keys.DeleteCommentRequest = { ["AuthenticationToken"] = true, ["CommentId"] = true, ["VersionId"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertDeleteCommentRequest(struct)
+function asserts.AssertDeleteCommentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteCommentRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
 	assert(struct["VersionId"], "Expected key VersionId to exist in table")
 	assert(struct["CommentId"], "Expected key CommentId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["CommentId"] then M.AssertCommentIdType(struct["CommentId"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["CommentId"] then asserts.AssertCommentIdType(struct["CommentId"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteCommentRequest_keys[k], "DeleteCommentRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteCommentRequest[k], "DeleteCommentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteCommentRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param CommentId [CommentIdType] <p>The ID of the comment.</p>
--- @param VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _CommentId [CommentIdType] <p>The ID of the comment.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
 -- Required parameter: CommentId
-function M.DeleteCommentRequest(AuthenticationToken, CommentId, VersionId, DocumentId, ...)
+function M.DeleteCommentRequest(_AuthenticationToken, _CommentId, _VersionId, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCommentRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["CommentId"] = CommentId,
-		["VersionId"] = VersionId,
-		["DocumentId"] = DocumentId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["CommentId"] = _CommentId,
+		["VersionId"] = _VersionId,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertDeleteCommentRequest(t)
+	asserts.AssertDeleteCommentRequest(t)
 	return t
 end
 
-local DeleteDocumentRequest_keys = { "AuthenticationToken" = true, "DocumentId" = true, nil }
+keys.DeleteDocumentRequest = { ["AuthenticationToken"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertDeleteDocumentRequest(struct)
+function asserts.AssertDeleteDocumentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDocumentRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDocumentRequest_keys[k], "DeleteDocumentRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteDocumentRequest[k], "DeleteDocumentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDocumentRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
-function M.DeleteDocumentRequest(AuthenticationToken, DocumentId, ...)
+function M.DeleteDocumentRequest(_AuthenticationToken, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDocumentRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["DocumentId"] = DocumentId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertDeleteDocumentRequest(t)
+	asserts.AssertDeleteDocumentRequest(t)
 	return t
 end
 
-local DescribeCommentsRequest_keys = { "AuthenticationToken" = true, "Marker" = true, "VersionId" = true, "Limit" = true, "DocumentId" = true, nil }
+keys.DescribeCommentsRequest = { ["AuthenticationToken"] = true, ["Marker"] = true, ["VersionId"] = true, ["Limit"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertDescribeCommentsRequest(struct)
+function asserts.AssertDescribeCommentsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeCommentsRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
 	assert(struct["VersionId"], "Expected key VersionId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Marker"] then M.AssertMarkerType(struct["Marker"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Marker"] then asserts.AssertMarkerType(struct["Marker"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeCommentsRequest_keys[k], "DescribeCommentsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeCommentsRequest[k], "DescribeCommentsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeCommentsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
--- @param VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
--- @param Limit [LimitType] <p>The maximum number of items to return.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- @param _Limit [LimitType] <p>The maximum number of items to return.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
-function M.DescribeCommentsRequest(AuthenticationToken, Marker, VersionId, Limit, DocumentId, ...)
+function M.DescribeCommentsRequest(_AuthenticationToken, _Marker, _VersionId, _Limit, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommentsRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["Marker"] = Marker,
-		["VersionId"] = VersionId,
-		["Limit"] = Limit,
-		["DocumentId"] = DocumentId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Marker"] = _Marker,
+		["VersionId"] = _VersionId,
+		["Limit"] = _Limit,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertDescribeCommentsRequest(t)
+	asserts.AssertDescribeCommentsRequest(t)
 	return t
 end
 
-local DescribeUsersResponse_keys = { "Marker" = true, "TotalNumberOfUsers" = true, "Users" = true, nil }
+keys.DescribeUsersResponse = { ["Marker"] = true, ["TotalNumberOfUsers"] = true, ["Users"] = true, nil }
 
-function M.AssertDescribeUsersResponse(struct)
+function asserts.AssertDescribeUsersResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeUsersResponse to be of type 'table'")
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["TotalNumberOfUsers"] then M.AssertSizeType(struct["TotalNumberOfUsers"]) end
-	if struct["Users"] then M.AssertOrganizationUserList(struct["Users"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["TotalNumberOfUsers"] then asserts.AssertSizeType(struct["TotalNumberOfUsers"]) end
+	if struct["Users"] then asserts.AssertOrganizationUserList(struct["Users"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeUsersResponse_keys[k], "DescribeUsersResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeUsersResponse[k], "DescribeUsersResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeUsersResponse
 --  
--- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param TotalNumberOfUsers [SizeType] <p>The total number of users included in the results.</p>
--- @param Users [OrganizationUserList] <p>The users.</p>
-function M.DescribeUsersResponse(Marker, TotalNumberOfUsers, Users, ...)
+-- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param _TotalNumberOfUsers [SizeType] <p>The total number of users included in the results.</p>
+-- @param _Users [OrganizationUserList] <p>The users.</p>
+function M.DescribeUsersResponse(_Marker, _TotalNumberOfUsers, _Users, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUsersResponse")
 	local t = { 
-		["Marker"] = Marker,
-		["TotalNumberOfUsers"] = TotalNumberOfUsers,
-		["Users"] = Users,
+		["Marker"] = _Marker,
+		["TotalNumberOfUsers"] = _TotalNumberOfUsers,
+		["Users"] = _Users,
 	}
-	M.AssertDescribeUsersResponse(t)
+	asserts.AssertDescribeUsersResponse(t)
 	return t
 end
 
-local CreateUserRequest_keys = { "Username" = true, "TimeZoneId" = true, "Password" = true, "Surname" = true, "OrganizationId" = true, "EmailAddress" = true, "StorageRule" = true, "AuthenticationToken" = true, "GivenName" = true, nil }
+keys.CreateUserRequest = { ["Username"] = true, ["TimeZoneId"] = true, ["Password"] = true, ["Surname"] = true, ["OrganizationId"] = true, ["EmailAddress"] = true, ["StorageRule"] = true, ["AuthenticationToken"] = true, ["GivenName"] = true, nil }
 
-function M.AssertCreateUserRequest(struct)
+function asserts.AssertCreateUserRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateUserRequest to be of type 'table'")
 	assert(struct["Username"], "Expected key Username to exist in table")
 	assert(struct["GivenName"], "Expected key GivenName to exist in table")
 	assert(struct["Surname"], "Expected key Surname to exist in table")
 	assert(struct["Password"], "Expected key Password to exist in table")
-	if struct["Username"] then M.AssertUsernameType(struct["Username"]) end
-	if struct["TimeZoneId"] then M.AssertTimeZoneIdType(struct["TimeZoneId"]) end
-	if struct["Password"] then M.AssertPasswordType(struct["Password"]) end
-	if struct["Surname"] then M.AssertUserAttributeValueType(struct["Surname"]) end
-	if struct["OrganizationId"] then M.AssertIdType(struct["OrganizationId"]) end
-	if struct["EmailAddress"] then M.AssertEmailAddressType(struct["EmailAddress"]) end
-	if struct["StorageRule"] then M.AssertStorageRuleType(struct["StorageRule"]) end
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["GivenName"] then M.AssertUserAttributeValueType(struct["GivenName"]) end
+	if struct["Username"] then asserts.AssertUsernameType(struct["Username"]) end
+	if struct["TimeZoneId"] then asserts.AssertTimeZoneIdType(struct["TimeZoneId"]) end
+	if struct["Password"] then asserts.AssertPasswordType(struct["Password"]) end
+	if struct["Surname"] then asserts.AssertUserAttributeValueType(struct["Surname"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["EmailAddress"] then asserts.AssertEmailAddressType(struct["EmailAddress"]) end
+	if struct["StorageRule"] then asserts.AssertStorageRuleType(struct["StorageRule"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["GivenName"] then asserts.AssertUserAttributeValueType(struct["GivenName"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateUserRequest_keys[k], "CreateUserRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateUserRequest[k], "CreateUserRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateUserRequest
 --  
--- @param Username [UsernameType] <p>The login name of the user.</p>
--- @param TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
--- @param Password [PasswordType] <p>The password of the user.</p>
--- @param Surname [UserAttributeValueType] <p>The surname of the user.</p>
--- @param OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param EmailAddress [EmailAddressType] <p>The email address of the user.</p>
--- @param StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param GivenName [UserAttributeValueType] <p>The given name of the user.</p>
+-- @param _Username [UsernameType] <p>The login name of the user.</p>
+-- @param _TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- @param _Password [PasswordType] <p>The password of the user.</p>
+-- @param _Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param _EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- @param _StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _GivenName [UserAttributeValueType] <p>The given name of the user.</p>
 -- Required parameter: Username
 -- Required parameter: GivenName
 -- Required parameter: Surname
 -- Required parameter: Password
-function M.CreateUserRequest(Username, TimeZoneId, Password, Surname, OrganizationId, EmailAddress, StorageRule, AuthenticationToken, GivenName, ...)
+function M.CreateUserRequest(_Username, _TimeZoneId, _Password, _Surname, _OrganizationId, _EmailAddress, _StorageRule, _AuthenticationToken, _GivenName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserRequest")
 	local t = { 
-		["Username"] = Username,
-		["TimeZoneId"] = TimeZoneId,
-		["Password"] = Password,
-		["Surname"] = Surname,
-		["OrganizationId"] = OrganizationId,
-		["EmailAddress"] = EmailAddress,
-		["StorageRule"] = StorageRule,
-		["AuthenticationToken"] = AuthenticationToken,
-		["GivenName"] = GivenName,
+		["Username"] = _Username,
+		["TimeZoneId"] = _TimeZoneId,
+		["Password"] = _Password,
+		["Surname"] = _Surname,
+		["OrganizationId"] = _OrganizationId,
+		["EmailAddress"] = _EmailAddress,
+		["StorageRule"] = _StorageRule,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["GivenName"] = _GivenName,
 	}
-	M.AssertCreateUserRequest(t)
+	asserts.AssertCreateUserRequest(t)
 	return t
 end
 
-local CreateCommentResponse_keys = { "Comment" = true, nil }
+keys.CreateCommentResponse = { ["Comment"] = true, nil }
 
-function M.AssertCreateCommentResponse(struct)
+function asserts.AssertCreateCommentResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCommentResponse to be of type 'table'")
-	if struct["Comment"] then M.AssertComment(struct["Comment"]) end
+	if struct["Comment"] then asserts.AssertComment(struct["Comment"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCommentResponse_keys[k], "CreateCommentResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateCommentResponse[k], "CreateCommentResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCommentResponse
 --  
--- @param Comment [Comment] <p>The comment that has been created.</p>
-function M.CreateCommentResponse(Comment, ...)
+-- @param _Comment [Comment] <p>The comment that has been created.</p>
+function M.CreateCommentResponse(_Comment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCommentResponse")
 	local t = { 
-		["Comment"] = Comment,
+		["Comment"] = _Comment,
 	}
-	M.AssertCreateCommentResponse(t)
+	asserts.AssertCreateCommentResponse(t)
 	return t
 end
 
-local CreateCustomMetadataRequest_keys = { "AuthenticationToken" = true, "ResourceId" = true, "VersionId" = true, "CustomMetadata" = true, nil }
+keys.CreateCustomMetadataRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["VersionId"] = true, ["CustomMetadata"] = true, nil }
 
-function M.AssertCreateCustomMetadataRequest(struct)
+function asserts.AssertCreateCustomMetadataRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateCustomMetadataRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	assert(struct["CustomMetadata"], "Expected key CustomMetadata to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["ResourceId"] then M.AssertResourceIdType(struct["ResourceId"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["CustomMetadata"] then M.AssertCustomMetadataMap(struct["CustomMetadata"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["ResourceId"] then asserts.AssertResourceIdType(struct["ResourceId"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["CustomMetadata"] then asserts.AssertCustomMetadataMap(struct["CustomMetadata"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateCustomMetadataRequest_keys[k], "CreateCustomMetadataRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateCustomMetadataRequest[k], "CreateCustomMetadataRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateCustomMetadataRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being added to a document version.</p>
--- @param CustomMetadata [CustomMetadataMap] <p>Custom metadata in the form of name-value pairs.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being added to a document version.</p>
+-- @param _CustomMetadata [CustomMetadataMap] <p>Custom metadata in the form of name-value pairs.</p>
 -- Required parameter: ResourceId
 -- Required parameter: CustomMetadata
-function M.CreateCustomMetadataRequest(AuthenticationToken, ResourceId, VersionId, CustomMetadata, ...)
+function M.CreateCustomMetadataRequest(_AuthenticationToken, _ResourceId, _VersionId, _CustomMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCustomMetadataRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["ResourceId"] = ResourceId,
-		["VersionId"] = VersionId,
-		["CustomMetadata"] = CustomMetadata,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["ResourceId"] = _ResourceId,
+		["VersionId"] = _VersionId,
+		["CustomMetadata"] = _CustomMetadata,
 	}
-	M.AssertCreateCustomMetadataRequest(t)
+	asserts.AssertCreateCustomMetadataRequest(t)
 	return t
 end
 
-local GetFolderRequest_keys = { "AuthenticationToken" = true, "IncludeCustomMetadata" = true, "FolderId" = true, nil }
+keys.GetFolderRequest = { ["AuthenticationToken"] = true, ["IncludeCustomMetadata"] = true, ["FolderId"] = true, nil }
 
-function M.AssertGetFolderRequest(struct)
+function asserts.AssertGetFolderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFolderRequest to be of type 'table'")
 	assert(struct["FolderId"], "Expected key FolderId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["IncludeCustomMetadata"] then M.AssertBooleanType(struct["IncludeCustomMetadata"]) end
-	if struct["FolderId"] then M.AssertResourceIdType(struct["FolderId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["IncludeCustomMetadata"] then asserts.AssertBooleanType(struct["IncludeCustomMetadata"]) end
+	if struct["FolderId"] then asserts.AssertResourceIdType(struct["FolderId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFolderRequest_keys[k], "GetFolderRequest contains unknown key " .. tostring(k))
+		assert(keys.GetFolderRequest[k], "GetFolderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFolderRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param IncludeCustomMetadata [BooleanType] <p>Set to TRUE to include custom metadata in the response.</p>
--- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _IncludeCustomMetadata [BooleanType] <p>Set to TRUE to include custom metadata in the response.</p>
+-- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required parameter: FolderId
-function M.GetFolderRequest(AuthenticationToken, IncludeCustomMetadata, FolderId, ...)
+function M.GetFolderRequest(_AuthenticationToken, _IncludeCustomMetadata, _FolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["IncludeCustomMetadata"] = IncludeCustomMetadata,
-		["FolderId"] = FolderId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["IncludeCustomMetadata"] = _IncludeCustomMetadata,
+		["FolderId"] = _FolderId,
 	}
-	M.AssertGetFolderRequest(t)
+	asserts.AssertGetFolderRequest(t)
 	return t
 end
 
-local CreateNotificationSubscriptionResponse_keys = { "Subscription" = true, nil }
+keys.CreateNotificationSubscriptionResponse = { ["Subscription"] = true, nil }
 
-function M.AssertCreateNotificationSubscriptionResponse(struct)
+function asserts.AssertCreateNotificationSubscriptionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateNotificationSubscriptionResponse to be of type 'table'")
-	if struct["Subscription"] then M.AssertSubscription(struct["Subscription"]) end
+	if struct["Subscription"] then asserts.AssertSubscription(struct["Subscription"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateNotificationSubscriptionResponse_keys[k], "CreateNotificationSubscriptionResponse contains unknown key " .. tostring(k))
+		assert(keys.CreateNotificationSubscriptionResponse[k], "CreateNotificationSubscriptionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateNotificationSubscriptionResponse
 --  
--- @param Subscription [Subscription] <p>The subscription.</p>
-function M.CreateNotificationSubscriptionResponse(Subscription, ...)
+-- @param _Subscription [Subscription] <p>The subscription.</p>
+function M.CreateNotificationSubscriptionResponse(_Subscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateNotificationSubscriptionResponse")
 	local t = { 
-		["Subscription"] = Subscription,
+		["Subscription"] = _Subscription,
 	}
-	M.AssertCreateNotificationSubscriptionResponse(t)
+	asserts.AssertCreateNotificationSubscriptionResponse(t)
 	return t
 end
 
-local DescribeNotificationSubscriptionsRequest_keys = { "OrganizationId" = true, "Marker" = true, "Limit" = true, nil }
+keys.DescribeNotificationSubscriptionsRequest = { ["OrganizationId"] = true, ["Marker"] = true, ["Limit"] = true, nil }
 
-function M.AssertDescribeNotificationSubscriptionsRequest(struct)
+function asserts.AssertDescribeNotificationSubscriptionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeNotificationSubscriptionsRequest to be of type 'table'")
 	assert(struct["OrganizationId"], "Expected key OrganizationId to exist in table")
-	if struct["OrganizationId"] then M.AssertIdType(struct["OrganizationId"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeNotificationSubscriptionsRequest_keys[k], "DescribeNotificationSubscriptionsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeNotificationSubscriptionsRequest[k], "DescribeNotificationSubscriptionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeNotificationSubscriptionsRequest
 --  
--- @param OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param Limit [LimitType] <p>The maximum number of items to return with this call.</p>
+-- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _Limit [LimitType] <p>The maximum number of items to return with this call.</p>
 -- Required parameter: OrganizationId
-function M.DescribeNotificationSubscriptionsRequest(OrganizationId, Marker, Limit, ...)
+function M.DescribeNotificationSubscriptionsRequest(_OrganizationId, _Marker, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationSubscriptionsRequest")
 	local t = { 
-		["OrganizationId"] = OrganizationId,
-		["Marker"] = Marker,
-		["Limit"] = Limit,
+		["OrganizationId"] = _OrganizationId,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
 	}
-	M.AssertDescribeNotificationSubscriptionsRequest(t)
+	asserts.AssertDescribeNotificationSubscriptionsRequest(t)
 	return t
 end
 
-local StorageLimitExceededException_keys = { "Message" = true, nil }
+keys.StorageLimitExceededException = { ["Message"] = true, nil }
 
-function M.AssertStorageLimitExceededException(struct)
+function asserts.AssertStorageLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StorageLimitExceededException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(StorageLimitExceededException_keys[k], "StorageLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.StorageLimitExceededException[k], "StorageLimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StorageLimitExceededException
 -- <p>The storage limit has been exceeded.</p>
--- @param Message [ErrorMessageType] <p>The storage limit has been exceeded.</p>
-function M.StorageLimitExceededException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.StorageLimitExceededException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageLimitExceededException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertStorageLimitExceededException(t)
+	asserts.AssertStorageLimitExceededException(t)
 	return t
 end
 
-local TooManySubscriptionsException_keys = { "Message" = true, nil }
+keys.TooManySubscriptionsException = { ["Message"] = true, nil }
 
-function M.AssertTooManySubscriptionsException(struct)
+function asserts.AssertTooManySubscriptionsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManySubscriptionsException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(TooManySubscriptionsException_keys[k], "TooManySubscriptionsException contains unknown key " .. tostring(k))
+		assert(keys.TooManySubscriptionsException[k], "TooManySubscriptionsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TooManySubscriptionsException
 -- <p>You've reached the limit on the number of subscriptions for the WorkDocs instance.</p>
--- @param Message [ErrorMessageType] <p>You've reached the limit on the number of subscriptions for the WorkDocs instance.</p>
-function M.TooManySubscriptionsException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.TooManySubscriptionsException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManySubscriptionsException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertTooManySubscriptionsException(t)
+	asserts.AssertTooManySubscriptionsException(t)
 	return t
 end
 
-local UpdateDocumentVersionRequest_keys = { "AuthenticationToken" = true, "VersionId" = true, "DocumentId" = true, "VersionStatus" = true, nil }
+keys.UpdateDocumentVersionRequest = { ["AuthenticationToken"] = true, ["VersionId"] = true, ["DocumentId"] = true, ["VersionStatus"] = true, nil }
 
-function M.AssertUpdateDocumentVersionRequest(struct)
+function asserts.AssertUpdateDocumentVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateDocumentVersionRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
 	assert(struct["VersionId"], "Expected key VersionId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
-	if struct["VersionStatus"] then M.AssertDocumentVersionStatus(struct["VersionStatus"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["VersionStatus"] then asserts.AssertDocumentVersionStatus(struct["VersionStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateDocumentVersionRequest_keys[k], "UpdateDocumentVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateDocumentVersionRequest[k], "UpdateDocumentVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateDocumentVersionRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- @param VersionStatus [DocumentVersionStatus] <p>The status of the version.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _VersionStatus [DocumentVersionStatus] <p>The status of the version.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
-function M.UpdateDocumentVersionRequest(AuthenticationToken, VersionId, DocumentId, VersionStatus, ...)
+function M.UpdateDocumentVersionRequest(_AuthenticationToken, _VersionId, _DocumentId, _VersionStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentVersionRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["VersionId"] = VersionId,
-		["DocumentId"] = DocumentId,
-		["VersionStatus"] = VersionStatus,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["VersionId"] = _VersionId,
+		["DocumentId"] = _DocumentId,
+		["VersionStatus"] = _VersionStatus,
 	}
-	M.AssertUpdateDocumentVersionRequest(t)
+	asserts.AssertUpdateDocumentVersionRequest(t)
 	return t
 end
 
-local EntityNotExistsException_keys = { "Message" = true, "EntityIds" = true, nil }
+keys.EntityNotExistsException = { ["Message"] = true, ["EntityIds"] = true, nil }
 
-function M.AssertEntityNotExistsException(struct)
+function asserts.AssertEntityNotExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EntityNotExistsException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
-	if struct["EntityIds"] then M.AssertEntityIdList(struct["EntityIds"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
+	if struct["EntityIds"] then asserts.AssertEntityIdList(struct["EntityIds"]) end
 	for k,_ in pairs(struct) do
-		assert(EntityNotExistsException_keys[k], "EntityNotExistsException contains unknown key " .. tostring(k))
+		assert(keys.EntityNotExistsException[k], "EntityNotExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EntityNotExistsException
 -- <p>The resource does not exist.</p>
--- @param Message [ErrorMessageType] <p>The resource does not exist.</p>
--- @param EntityIds [EntityIdList] <p>The resource does not exist.</p>
-function M.EntityNotExistsException(Message, EntityIds, ...)
+-- @param _Message [ErrorMessageType] 
+-- @param _EntityIds [EntityIdList] 
+function M.EntityNotExistsException(_Message, _EntityIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityNotExistsException")
 	local t = { 
-		["Message"] = Message,
-		["EntityIds"] = EntityIds,
+		["Message"] = _Message,
+		["EntityIds"] = _EntityIds,
 	}
-	M.AssertEntityNotExistsException(t)
+	asserts.AssertEntityNotExistsException(t)
 	return t
 end
 
-local AbortDocumentVersionUploadRequest_keys = { "AuthenticationToken" = true, "VersionId" = true, "DocumentId" = true, nil }
+keys.AbortDocumentVersionUploadRequest = { ["AuthenticationToken"] = true, ["VersionId"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertAbortDocumentVersionUploadRequest(struct)
+function asserts.AssertAbortDocumentVersionUploadRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AbortDocumentVersionUploadRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
 	assert(struct["VersionId"], "Expected key VersionId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["VersionId"] then M.AssertDocumentVersionIdType(struct["VersionId"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["VersionId"] then asserts.AssertDocumentVersionIdType(struct["VersionId"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(AbortDocumentVersionUploadRequest_keys[k], "AbortDocumentVersionUploadRequest contains unknown key " .. tostring(k))
+		assert(keys.AbortDocumentVersionUploadRequest[k], "AbortDocumentVersionUploadRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AbortDocumentVersionUploadRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param VersionId [DocumentVersionIdType] <p>The ID of the version.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _VersionId [DocumentVersionIdType] <p>The ID of the version.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
-function M.AbortDocumentVersionUploadRequest(AuthenticationToken, VersionId, DocumentId, ...)
+function M.AbortDocumentVersionUploadRequest(_AuthenticationToken, _VersionId, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AbortDocumentVersionUploadRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["VersionId"] = VersionId,
-		["DocumentId"] = DocumentId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["VersionId"] = _VersionId,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertAbortDocumentVersionUploadRequest(t)
+	asserts.AssertAbortDocumentVersionUploadRequest(t)
 	return t
 end
 
-local PermissionInfo_keys = { "Type" = true, "Role" = true, nil }
+keys.PermissionInfo = { ["Type"] = true, ["Role"] = true, nil }
 
-function M.AssertPermissionInfo(struct)
+function asserts.AssertPermissionInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PermissionInfo to be of type 'table'")
-	if struct["Type"] then M.AssertRolePermissionType(struct["Type"]) end
-	if struct["Role"] then M.AssertRoleType(struct["Role"]) end
+	if struct["Type"] then asserts.AssertRolePermissionType(struct["Type"]) end
+	if struct["Role"] then asserts.AssertRoleType(struct["Role"]) end
 	for k,_ in pairs(struct) do
-		assert(PermissionInfo_keys[k], "PermissionInfo contains unknown key " .. tostring(k))
+		assert(keys.PermissionInfo[k], "PermissionInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PermissionInfo
 -- <p>Describes the permissions.</p>
--- @param Type [RolePermissionType] <p>The type of permissions.</p>
--- @param Role [RoleType] <p>The role of the user.</p>
-function M.PermissionInfo(Type, Role, ...)
+-- @param _Type [RolePermissionType] <p>The type of permissions.</p>
+-- @param _Role [RoleType] <p>The role of the user.</p>
+function M.PermissionInfo(_Type, _Role, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PermissionInfo")
 	local t = { 
-		["Type"] = Type,
-		["Role"] = Role,
+		["Type"] = _Type,
+		["Role"] = _Role,
 	}
-	M.AssertPermissionInfo(t)
+	asserts.AssertPermissionInfo(t)
 	return t
 end
 
-local UpdateFolderRequest_keys = { "AuthenticationToken" = true, "FolderId" = true, "Name" = true, "ResourceState" = true, "ParentFolderId" = true, nil }
+keys.UpdateFolderRequest = { ["AuthenticationToken"] = true, ["FolderId"] = true, ["Name"] = true, ["ResourceState"] = true, ["ParentFolderId"] = true, nil }
 
-function M.AssertUpdateFolderRequest(struct)
+function asserts.AssertUpdateFolderRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFolderRequest to be of type 'table'")
 	assert(struct["FolderId"], "Expected key FolderId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["FolderId"] then M.AssertResourceIdType(struct["FolderId"]) end
-	if struct["Name"] then M.AssertResourceNameType(struct["Name"]) end
-	if struct["ResourceState"] then M.AssertResourceStateType(struct["ResourceState"]) end
-	if struct["ParentFolderId"] then M.AssertResourceIdType(struct["ParentFolderId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["FolderId"] then asserts.AssertResourceIdType(struct["FolderId"]) end
+	if struct["Name"] then asserts.AssertResourceNameType(struct["Name"]) end
+	if struct["ResourceState"] then asserts.AssertResourceStateType(struct["ResourceState"]) end
+	if struct["ParentFolderId"] then asserts.AssertResourceIdType(struct["ParentFolderId"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFolderRequest_keys[k], "UpdateFolderRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateFolderRequest[k], "UpdateFolderRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFolderRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
--- @param Name [ResourceNameType] <p>The name of the folder.</p>
--- @param ResourceState [ResourceStateType] <p>The resource state of the folder. Note that only ACTIVE and RECYCLED are accepted values from the API.</p>
--- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- @param _Name [ResourceNameType] <p>The name of the folder.</p>
+-- @param _ResourceState [ResourceStateType] <p>The resource state of the folder. Note that only ACTIVE and RECYCLED are accepted values from the API.</p>
+-- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
 -- Required parameter: FolderId
-function M.UpdateFolderRequest(AuthenticationToken, FolderId, Name, ResourceState, ParentFolderId, ...)
+function M.UpdateFolderRequest(_AuthenticationToken, _FolderId, _Name, _ResourceState, _ParentFolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFolderRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["FolderId"] = FolderId,
-		["Name"] = Name,
-		["ResourceState"] = ResourceState,
-		["ParentFolderId"] = ParentFolderId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["FolderId"] = _FolderId,
+		["Name"] = _Name,
+		["ResourceState"] = _ResourceState,
+		["ParentFolderId"] = _ParentFolderId,
 	}
-	M.AssertUpdateFolderRequest(t)
+	asserts.AssertUpdateFolderRequest(t)
 	return t
 end
 
-local DescribeRootFoldersRequest_keys = { "AuthenticationToken" = true, "Marker" = true, "Limit" = true, nil }
+keys.DescribeRootFoldersRequest = { ["AuthenticationToken"] = true, ["Marker"] = true, ["Limit"] = true, nil }
 
-function M.AssertDescribeRootFoldersRequest(struct)
+function asserts.AssertDescribeRootFoldersRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeRootFoldersRequest to be of type 'table'")
 	assert(struct["AuthenticationToken"], "Expected key AuthenticationToken to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeRootFoldersRequest_keys[k], "DescribeRootFoldersRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeRootFoldersRequest[k], "DescribeRootFoldersRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeRootFoldersRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param Limit [LimitType] <p>The maximum number of items to return.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _Limit [LimitType] <p>The maximum number of items to return.</p>
 -- Required parameter: AuthenticationToken
-function M.DescribeRootFoldersRequest(AuthenticationToken, Marker, Limit, ...)
+function M.DescribeRootFoldersRequest(_AuthenticationToken, _Marker, _Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRootFoldersRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["Marker"] = Marker,
-		["Limit"] = Limit,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
 	}
-	M.AssertDescribeRootFoldersRequest(t)
+	asserts.AssertDescribeRootFoldersRequest(t)
 	return t
 end
 
-local GetDocumentRequest_keys = { "AuthenticationToken" = true, "IncludeCustomMetadata" = true, "DocumentId" = true, nil }
+keys.GetDocumentRequest = { ["AuthenticationToken"] = true, ["IncludeCustomMetadata"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertGetDocumentRequest(struct)
+function asserts.AssertGetDocumentRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetDocumentRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["IncludeCustomMetadata"] then M.AssertBooleanType(struct["IncludeCustomMetadata"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["IncludeCustomMetadata"] then asserts.AssertBooleanType(struct["IncludeCustomMetadata"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetDocumentRequest_keys[k], "GetDocumentRequest contains unknown key " .. tostring(k))
+		assert(keys.GetDocumentRequest[k], "GetDocumentRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetDocumentRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param IncludeCustomMetadata [BooleanType] <p>Set this to <code>TRUE</code> to include custom metadata in the response.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _IncludeCustomMetadata [BooleanType] <p>Set this to <code>TRUE</code> to include custom metadata in the response.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
-function M.GetDocumentRequest(AuthenticationToken, IncludeCustomMetadata, DocumentId, ...)
+function M.GetDocumentRequest(_AuthenticationToken, _IncludeCustomMetadata, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentRequest")
 	local t = { 
-		["AuthenticationToken"] = AuthenticationToken,
-		["IncludeCustomMetadata"] = IncludeCustomMetadata,
-		["DocumentId"] = DocumentId,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["IncludeCustomMetadata"] = _IncludeCustomMetadata,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertGetDocumentRequest(t)
+	asserts.AssertGetDocumentRequest(t)
 	return t
 end
 
-local DraftUploadOutOfSyncException_keys = { "Message" = true, nil }
+keys.DraftUploadOutOfSyncException = { ["Message"] = true, nil }
 
-function M.AssertDraftUploadOutOfSyncException(struct)
+function asserts.AssertDraftUploadOutOfSyncException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DraftUploadOutOfSyncException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(DraftUploadOutOfSyncException_keys[k], "DraftUploadOutOfSyncException contains unknown key " .. tostring(k))
+		assert(keys.DraftUploadOutOfSyncException[k], "DraftUploadOutOfSyncException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DraftUploadOutOfSyncException
 -- <p>This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.</p>
--- @param Message [ErrorMessageType] <p>This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.</p>
-function M.DraftUploadOutOfSyncException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.DraftUploadOutOfSyncException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DraftUploadOutOfSyncException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertDraftUploadOutOfSyncException(t)
+	asserts.AssertDraftUploadOutOfSyncException(t)
 	return t
 end
 
-local StorageLimitWillExceedException_keys = { "Message" = true, nil }
+keys.StorageLimitWillExceedException = { ["Message"] = true, nil }
 
-function M.AssertStorageLimitWillExceedException(struct)
+function asserts.AssertStorageLimitWillExceedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StorageLimitWillExceedException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(StorageLimitWillExceedException_keys[k], "StorageLimitWillExceedException contains unknown key " .. tostring(k))
+		assert(keys.StorageLimitWillExceedException[k], "StorageLimitWillExceedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StorageLimitWillExceedException
 -- <p>The storage limit will be exceeded.</p>
--- @param Message [ErrorMessageType] <p>The storage limit will be exceeded.</p>
-function M.StorageLimitWillExceedException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.StorageLimitWillExceedException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageLimitWillExceedException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertStorageLimitWillExceedException(t)
+	asserts.AssertStorageLimitWillExceedException(t)
 	return t
 end
 
-local DescribeDocumentVersionsResponse_keys = { "DocumentVersions" = true, "Marker" = true, nil }
+keys.DescribeDocumentVersionsResponse = { ["DocumentVersions"] = true, ["Marker"] = true, nil }
 
-function M.AssertDescribeDocumentVersionsResponse(struct)
+function asserts.AssertDescribeDocumentVersionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeDocumentVersionsResponse to be of type 'table'")
-	if struct["DocumentVersions"] then M.AssertDocumentVersionMetadataList(struct["DocumentVersions"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
+	if struct["DocumentVersions"] then asserts.AssertDocumentVersionMetadataList(struct["DocumentVersions"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeDocumentVersionsResponse_keys[k], "DescribeDocumentVersionsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeDocumentVersionsResponse[k], "DescribeDocumentVersionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeDocumentVersionsResponse
 --  
--- @param DocumentVersions [DocumentVersionMetadataList] <p>The document versions.</p>
--- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
-function M.DescribeDocumentVersionsResponse(DocumentVersions, Marker, ...)
+-- @param _DocumentVersions [DocumentVersionMetadataList] <p>The document versions.</p>
+-- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+function M.DescribeDocumentVersionsResponse(_DocumentVersions, _Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentVersionsResponse")
 	local t = { 
-		["DocumentVersions"] = DocumentVersions,
-		["Marker"] = Marker,
+		["DocumentVersions"] = _DocumentVersions,
+		["Marker"] = _Marker,
 	}
-	M.AssertDescribeDocumentVersionsResponse(t)
+	asserts.AssertDescribeDocumentVersionsResponse(t)
 	return t
 end
 
-local StorageRuleType_keys = { "StorageType" = true, "StorageAllocatedInBytes" = true, nil }
+keys.StorageRuleType = { ["StorageType"] = true, ["StorageAllocatedInBytes"] = true, nil }
 
-function M.AssertStorageRuleType(struct)
+function asserts.AssertStorageRuleType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StorageRuleType to be of type 'table'")
-	if struct["StorageType"] then M.AssertStorageType(struct["StorageType"]) end
-	if struct["StorageAllocatedInBytes"] then M.AssertPositiveSizeType(struct["StorageAllocatedInBytes"]) end
+	if struct["StorageType"] then asserts.AssertStorageType(struct["StorageType"]) end
+	if struct["StorageAllocatedInBytes"] then asserts.AssertPositiveSizeType(struct["StorageAllocatedInBytes"]) end
 	for k,_ in pairs(struct) do
-		assert(StorageRuleType_keys[k], "StorageRuleType contains unknown key " .. tostring(k))
+		assert(keys.StorageRuleType[k], "StorageRuleType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StorageRuleType
 -- <p>Describes the storage for a user.</p>
--- @param StorageType [StorageType] <p>The type of storage.</p>
--- @param StorageAllocatedInBytes [PositiveSizeType] <p>The amount of storage allocated, in bytes.</p>
-function M.StorageRuleType(StorageType, StorageAllocatedInBytes, ...)
+-- @param _StorageType [StorageType] <p>The type of storage.</p>
+-- @param _StorageAllocatedInBytes [PositiveSizeType] <p>The amount of storage allocated, in bytes.</p>
+function M.StorageRuleType(_StorageType, _StorageAllocatedInBytes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageRuleType")
 	local t = { 
-		["StorageType"] = StorageType,
-		["StorageAllocatedInBytes"] = StorageAllocatedInBytes,
+		["StorageType"] = _StorageType,
+		["StorageAllocatedInBytes"] = _StorageAllocatedInBytes,
 	}
-	M.AssertStorageRuleType(t)
+	asserts.AssertStorageRuleType(t)
 	return t
 end
 
-local Activity_keys = { "Initiator" = true, "OriginalParent" = true, "OrganizationId" = true, "TimeStamp" = true, "ResourceMetadata" = true, "Participants" = true, "Type" = true, "CommentMetadata" = true, nil }
+keys.Activity = { ["Initiator"] = true, ["OriginalParent"] = true, ["OrganizationId"] = true, ["TimeStamp"] = true, ["ResourceMetadata"] = true, ["Participants"] = true, ["Type"] = true, ["CommentMetadata"] = true, nil }
 
-function M.AssertActivity(struct)
+function asserts.AssertActivity(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Activity to be of type 'table'")
-	if struct["Initiator"] then M.AssertUserMetadata(struct["Initiator"]) end
-	if struct["OriginalParent"] then M.AssertResourceMetadata(struct["OriginalParent"]) end
-	if struct["OrganizationId"] then M.AssertIdType(struct["OrganizationId"]) end
-	if struct["TimeStamp"] then M.AssertTimestampType(struct["TimeStamp"]) end
-	if struct["ResourceMetadata"] then M.AssertResourceMetadata(struct["ResourceMetadata"]) end
-	if struct["Participants"] then M.AssertParticipants(struct["Participants"]) end
-	if struct["Type"] then M.AssertActivityType(struct["Type"]) end
-	if struct["CommentMetadata"] then M.AssertCommentMetadata(struct["CommentMetadata"]) end
+	if struct["Initiator"] then asserts.AssertUserMetadata(struct["Initiator"]) end
+	if struct["OriginalParent"] then asserts.AssertResourceMetadata(struct["OriginalParent"]) end
+	if struct["OrganizationId"] then asserts.AssertIdType(struct["OrganizationId"]) end
+	if struct["TimeStamp"] then asserts.AssertTimestampType(struct["TimeStamp"]) end
+	if struct["ResourceMetadata"] then asserts.AssertResourceMetadata(struct["ResourceMetadata"]) end
+	if struct["Participants"] then asserts.AssertParticipants(struct["Participants"]) end
+	if struct["Type"] then asserts.AssertActivityType(struct["Type"]) end
+	if struct["CommentMetadata"] then asserts.AssertCommentMetadata(struct["CommentMetadata"]) end
 	for k,_ in pairs(struct) do
-		assert(Activity_keys[k], "Activity contains unknown key " .. tostring(k))
+		assert(keys.Activity[k], "Activity contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Activity
 -- <p>Describes the activity information.</p>
--- @param Initiator [UserMetadata] <p>The user who performed the action.</p>
--- @param OriginalParent [ResourceMetadata] <p>The original parent of the resource. This is an optional field and is filled for move activities.</p>
--- @param OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param TimeStamp [TimestampType] <p>The timestamp when the action was performed.</p>
--- @param ResourceMetadata [ResourceMetadata] <p>The metadata of the resource involved in the user action.</p>
--- @param Participants [Participants] <p>The list of users or groups impacted by this action. This is an optional field and is filled for the following sharing activities: DOCUMENT_SHARED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, FOLDER_SHARED, FOLDER_UNSHARED.</p>
--- @param Type [ActivityType] <p>The activity type.</p>
--- @param CommentMetadata [CommentMetadata] <p>Metadata of the commenting activity. This is an optional field and is filled for commenting activities.</p>
-function M.Activity(Initiator, OriginalParent, OrganizationId, TimeStamp, ResourceMetadata, Participants, Type, CommentMetadata, ...)
+-- @param _Initiator [UserMetadata] <p>The user who performed the action.</p>
+-- @param _OriginalParent [ResourceMetadata] <p>The original parent of the resource. This is an optional field and is filled for move activities.</p>
+-- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param _TimeStamp [TimestampType] <p>The timestamp when the action was performed.</p>
+-- @param _ResourceMetadata [ResourceMetadata] <p>The metadata of the resource involved in the user action.</p>
+-- @param _Participants [Participants] <p>The list of users or groups impacted by this action. This is an optional field and is filled for the following sharing activities: DOCUMENT_SHARED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, FOLDER_SHARED, FOLDER_UNSHARED.</p>
+-- @param _Type [ActivityType] <p>The activity type.</p>
+-- @param _CommentMetadata [CommentMetadata] <p>Metadata of the commenting activity. This is an optional field and is filled for commenting activities.</p>
+function M.Activity(_Initiator, _OriginalParent, _OrganizationId, _TimeStamp, _ResourceMetadata, _Participants, _Type, _CommentMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Activity")
 	local t = { 
-		["Initiator"] = Initiator,
-		["OriginalParent"] = OriginalParent,
-		["OrganizationId"] = OrganizationId,
-		["TimeStamp"] = TimeStamp,
-		["ResourceMetadata"] = ResourceMetadata,
-		["Participants"] = Participants,
-		["Type"] = Type,
-		["CommentMetadata"] = CommentMetadata,
+		["Initiator"] = _Initiator,
+		["OriginalParent"] = _OriginalParent,
+		["OrganizationId"] = _OrganizationId,
+		["TimeStamp"] = _TimeStamp,
+		["ResourceMetadata"] = _ResourceMetadata,
+		["Participants"] = _Participants,
+		["Type"] = _Type,
+		["CommentMetadata"] = _CommentMetadata,
 	}
-	M.AssertActivity(t)
+	asserts.AssertActivity(t)
 	return t
 end
 
-local InvalidArgumentException_keys = { "Message" = true, nil }
+keys.InvalidArgumentException = { ["Message"] = true, nil }
 
-function M.AssertInvalidArgumentException(struct)
+function asserts.AssertInvalidArgumentException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidArgumentException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidArgumentException_keys[k], "InvalidArgumentException contains unknown key " .. tostring(k))
+		assert(keys.InvalidArgumentException[k], "InvalidArgumentException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidArgumentException
 -- <p>The pagination marker and/or limit fields are not valid.</p>
--- @param Message [ErrorMessageType] <p>The pagination marker and/or limit fields are not valid.</p>
-function M.InvalidArgumentException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.InvalidArgumentException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArgumentException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidArgumentException(t)
+	asserts.AssertInvalidArgumentException(t)
 	return t
 end
 
-local DeleteCustomMetadataResponse_keys = { nil }
+keys.DeleteCustomMetadataResponse = { nil }
 
-function M.AssertDeleteCustomMetadataResponse(struct)
+function asserts.AssertDeleteCustomMetadataResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteCustomMetadataResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteCustomMetadataResponse_keys[k], "DeleteCustomMetadataResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteCustomMetadataResponse[k], "DeleteCustomMetadataResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3089,209 +3092,209 @@ function M.DeleteCustomMetadataResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCustomMetadataResponse")
 	local t = { 
 	}
-	M.AssertDeleteCustomMetadataResponse(t)
+	asserts.AssertDeleteCustomMetadataResponse(t)
 	return t
 end
 
-local DescribeDocumentVersionsRequest_keys = { "Fields" = true, "Marker" = true, "Limit" = true, "AuthenticationToken" = true, "Include" = true, "DocumentId" = true, nil }
+keys.DescribeDocumentVersionsRequest = { ["Fields"] = true, ["Marker"] = true, ["Limit"] = true, ["AuthenticationToken"] = true, ["Include"] = true, ["DocumentId"] = true, nil }
 
-function M.AssertDescribeDocumentVersionsRequest(struct)
+function asserts.AssertDescribeDocumentVersionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeDocumentVersionsRequest to be of type 'table'")
 	assert(struct["DocumentId"], "Expected key DocumentId to exist in table")
-	if struct["Fields"] then M.AssertFieldNamesType(struct["Fields"]) end
-	if struct["Marker"] then M.AssertPageMarkerType(struct["Marker"]) end
-	if struct["Limit"] then M.AssertLimitType(struct["Limit"]) end
-	if struct["AuthenticationToken"] then M.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
-	if struct["Include"] then M.AssertFieldNamesType(struct["Include"]) end
-	if struct["DocumentId"] then M.AssertResourceIdType(struct["DocumentId"]) end
+	if struct["Fields"] then asserts.AssertFieldNamesType(struct["Fields"]) end
+	if struct["Marker"] then asserts.AssertPageMarkerType(struct["Marker"]) end
+	if struct["Limit"] then asserts.AssertLimitType(struct["Limit"]) end
+	if struct["AuthenticationToken"] then asserts.AssertAuthenticationHeaderType(struct["AuthenticationToken"]) end
+	if struct["Include"] then asserts.AssertFieldNamesType(struct["Include"]) end
+	if struct["DocumentId"] then asserts.AssertResourceIdType(struct["DocumentId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeDocumentVersionsRequest_keys[k], "DescribeDocumentVersionsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeDocumentVersionsRequest[k], "DescribeDocumentVersionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeDocumentVersionsRequest
 --  
--- @param Fields [FieldNamesType] <p>Specify "SOURCE" to include initialized versions and a URL for the source document.</p>
--- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param Limit [LimitType] <p>The maximum number of versions to return with this call.</p>
--- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param Include [FieldNamesType] <p>A comma-separated list of values. Specify "INITIALIZED" to include incomplete versions.</p>
--- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param _Fields [FieldNamesType] <p>Specify "SOURCE" to include initialized versions and a URL for the source document.</p>
+-- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param _Limit [LimitType] <p>The maximum number of versions to return with this call.</p>
+-- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param _Include [FieldNamesType] <p>A comma-separated list of values. Specify "INITIALIZED" to include incomplete versions.</p>
+-- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
-function M.DescribeDocumentVersionsRequest(Fields, Marker, Limit, AuthenticationToken, Include, DocumentId, ...)
+function M.DescribeDocumentVersionsRequest(_Fields, _Marker, _Limit, _AuthenticationToken, _Include, _DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentVersionsRequest")
 	local t = { 
-		["Fields"] = Fields,
-		["Marker"] = Marker,
-		["Limit"] = Limit,
-		["AuthenticationToken"] = AuthenticationToken,
-		["Include"] = Include,
-		["DocumentId"] = DocumentId,
+		["Fields"] = _Fields,
+		["Marker"] = _Marker,
+		["Limit"] = _Limit,
+		["AuthenticationToken"] = _AuthenticationToken,
+		["Include"] = _Include,
+		["DocumentId"] = _DocumentId,
 	}
-	M.AssertDescribeDocumentVersionsRequest(t)
+	asserts.AssertDescribeDocumentVersionsRequest(t)
 	return t
 end
 
-local GetCurrentUserResponse_keys = { "User" = true, nil }
+keys.GetCurrentUserResponse = { ["User"] = true, nil }
 
-function M.AssertGetCurrentUserResponse(struct)
+function asserts.AssertGetCurrentUserResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCurrentUserResponse to be of type 'table'")
-	if struct["User"] then M.AssertUser(struct["User"]) end
+	if struct["User"] then asserts.AssertUser(struct["User"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCurrentUserResponse_keys[k], "GetCurrentUserResponse contains unknown key " .. tostring(k))
+		assert(keys.GetCurrentUserResponse[k], "GetCurrentUserResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCurrentUserResponse
 --  
--- @param User [User] <p>Metadata of the user.</p>
-function M.GetCurrentUserResponse(User, ...)
+-- @param _User [User] <p>Metadata of the user.</p>
+function M.GetCurrentUserResponse(_User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCurrentUserResponse")
 	local t = { 
-		["User"] = User,
+		["User"] = _User,
 	}
-	M.AssertGetCurrentUserResponse(t)
+	asserts.AssertGetCurrentUserResponse(t)
 	return t
 end
 
-local EntityAlreadyExistsException_keys = { "Message" = true, nil }
+keys.EntityAlreadyExistsException = { ["Message"] = true, nil }
 
-function M.AssertEntityAlreadyExistsException(struct)
+function asserts.AssertEntityAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EntityAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(EntityAlreadyExistsException_keys[k], "EntityAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.EntityAlreadyExistsException[k], "EntityAlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EntityAlreadyExistsException
 -- <p>The resource already exists.</p>
--- @param Message [ErrorMessageType] <p>The resource already exists.</p>
-function M.EntityAlreadyExistsException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.EntityAlreadyExistsException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityAlreadyExistsException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertEntityAlreadyExistsException(t)
+	asserts.AssertEntityAlreadyExistsException(t)
 	return t
 end
 
-local Comment_keys = { "Status" = true, "Text" = true, "ParentId" = true, "RecipientId" = true, "Visibility" = true, "CreatedTimestamp" = true, "ThreadId" = true, "Contributor" = true, "CommentId" = true, nil }
+keys.Comment = { ["Status"] = true, ["Text"] = true, ["ParentId"] = true, ["RecipientId"] = true, ["Visibility"] = true, ["CreatedTimestamp"] = true, ["ThreadId"] = true, ["Contributor"] = true, ["CommentId"] = true, nil }
 
-function M.AssertComment(struct)
+function asserts.AssertComment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Comment to be of type 'table'")
 	assert(struct["CommentId"], "Expected key CommentId to exist in table")
-	if struct["Status"] then M.AssertCommentStatusType(struct["Status"]) end
-	if struct["Text"] then M.AssertCommentTextType(struct["Text"]) end
-	if struct["ParentId"] then M.AssertCommentIdType(struct["ParentId"]) end
-	if struct["RecipientId"] then M.AssertIdType(struct["RecipientId"]) end
-	if struct["Visibility"] then M.AssertCommentVisibilityType(struct["Visibility"]) end
-	if struct["CreatedTimestamp"] then M.AssertTimestampType(struct["CreatedTimestamp"]) end
-	if struct["ThreadId"] then M.AssertCommentIdType(struct["ThreadId"]) end
-	if struct["Contributor"] then M.AssertUser(struct["Contributor"]) end
-	if struct["CommentId"] then M.AssertCommentIdType(struct["CommentId"]) end
+	if struct["Status"] then asserts.AssertCommentStatusType(struct["Status"]) end
+	if struct["Text"] then asserts.AssertCommentTextType(struct["Text"]) end
+	if struct["ParentId"] then asserts.AssertCommentIdType(struct["ParentId"]) end
+	if struct["RecipientId"] then asserts.AssertIdType(struct["RecipientId"]) end
+	if struct["Visibility"] then asserts.AssertCommentVisibilityType(struct["Visibility"]) end
+	if struct["CreatedTimestamp"] then asserts.AssertTimestampType(struct["CreatedTimestamp"]) end
+	if struct["ThreadId"] then asserts.AssertCommentIdType(struct["ThreadId"]) end
+	if struct["Contributor"] then asserts.AssertUser(struct["Contributor"]) end
+	if struct["CommentId"] then asserts.AssertCommentIdType(struct["CommentId"]) end
 	for k,_ in pairs(struct) do
-		assert(Comment_keys[k], "Comment contains unknown key " .. tostring(k))
+		assert(keys.Comment[k], "Comment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Comment
 -- <p>Describes a comment.</p>
--- @param Status [CommentStatusType] <p>The status of the comment.</p>
--- @param Text [CommentTextType] <p>The text of the comment.</p>
--- @param ParentId [CommentIdType] <p>The ID of the parent comment.</p>
--- @param RecipientId [IdType] <p>If the comment is a reply to another user's comment, this field contains the user ID of the user being replied to.</p>
--- @param Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
--- @param CreatedTimestamp [TimestampType] <p>The time that the comment was created.</p>
--- @param ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
--- @param Contributor [User] <p>The details of the user who made the comment.</p>
--- @param CommentId [CommentIdType] <p>The ID of the comment.</p>
+-- @param _Status [CommentStatusType] <p>The status of the comment.</p>
+-- @param _Text [CommentTextType] <p>The text of the comment.</p>
+-- @param _ParentId [CommentIdType] <p>The ID of the parent comment.</p>
+-- @param _RecipientId [IdType] <p>If the comment is a reply to another user's comment, this field contains the user ID of the user being replied to.</p>
+-- @param _Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
+-- @param _CreatedTimestamp [TimestampType] <p>The time that the comment was created.</p>
+-- @param _ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
+-- @param _Contributor [User] <p>The details of the user who made the comment.</p>
+-- @param _CommentId [CommentIdType] <p>The ID of the comment.</p>
 -- Required parameter: CommentId
-function M.Comment(Status, Text, ParentId, RecipientId, Visibility, CreatedTimestamp, ThreadId, Contributor, CommentId, ...)
+function M.Comment(_Status, _Text, _ParentId, _RecipientId, _Visibility, _CreatedTimestamp, _ThreadId, _Contributor, _CommentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Comment")
 	local t = { 
-		["Status"] = Status,
-		["Text"] = Text,
-		["ParentId"] = ParentId,
-		["RecipientId"] = RecipientId,
-		["Visibility"] = Visibility,
-		["CreatedTimestamp"] = CreatedTimestamp,
-		["ThreadId"] = ThreadId,
-		["Contributor"] = Contributor,
-		["CommentId"] = CommentId,
+		["Status"] = _Status,
+		["Text"] = _Text,
+		["ParentId"] = _ParentId,
+		["RecipientId"] = _RecipientId,
+		["Visibility"] = _Visibility,
+		["CreatedTimestamp"] = _CreatedTimestamp,
+		["ThreadId"] = _ThreadId,
+		["Contributor"] = _Contributor,
+		["CommentId"] = _CommentId,
 	}
-	M.AssertComment(t)
+	asserts.AssertComment(t)
 	return t
 end
 
-local FailedDependencyException_keys = { "Message" = true, nil }
+keys.FailedDependencyException = { ["Message"] = true, nil }
 
-function M.AssertFailedDependencyException(struct)
+function asserts.AssertFailedDependencyException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FailedDependencyException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessageType(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessageType(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(FailedDependencyException_keys[k], "FailedDependencyException contains unknown key " .. tostring(k))
+		assert(keys.FailedDependencyException[k], "FailedDependencyException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FailedDependencyException
 -- <p>The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected active directory.</p>
--- @param Message [ErrorMessageType] <p>The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected active directory.</p>
-function M.FailedDependencyException(Message, ...)
+-- @param _Message [ErrorMessageType] 
+function M.FailedDependencyException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailedDependencyException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertFailedDependencyException(t)
+	asserts.AssertFailedDependencyException(t)
 	return t
 end
 
-local Principal_keys = { "Type" = true, "Id" = true, "Roles" = true, nil }
+keys.Principal = { ["Type"] = true, ["Id"] = true, ["Roles"] = true, nil }
 
-function M.AssertPrincipal(struct)
+function asserts.AssertPrincipal(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Principal to be of type 'table'")
-	if struct["Type"] then M.AssertPrincipalType(struct["Type"]) end
-	if struct["Id"] then M.AssertIdType(struct["Id"]) end
-	if struct["Roles"] then M.AssertPermissionInfoList(struct["Roles"]) end
+	if struct["Type"] then asserts.AssertPrincipalType(struct["Type"]) end
+	if struct["Id"] then asserts.AssertIdType(struct["Id"]) end
+	if struct["Roles"] then asserts.AssertPermissionInfoList(struct["Roles"]) end
 	for k,_ in pairs(struct) do
-		assert(Principal_keys[k], "Principal contains unknown key " .. tostring(k))
+		assert(keys.Principal[k], "Principal contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Principal
 -- <p>Describes a resource.</p>
--- @param Type [PrincipalType] <p>The type of resource.</p>
--- @param Id [IdType] <p>The ID of the resource.</p>
--- @param Roles [PermissionInfoList] <p>The permission information for the resource.</p>
-function M.Principal(Type, Id, Roles, ...)
+-- @param _Type [PrincipalType] <p>The type of resource.</p>
+-- @param _Id [IdType] <p>The ID of the resource.</p>
+-- @param _Roles [PermissionInfoList] <p>The permission information for the resource.</p>
+function M.Principal(_Type, _Id, _Roles, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Principal")
 	local t = { 
-		["Type"] = Type,
-		["Id"] = Id,
-		["Roles"] = Roles,
+		["Type"] = _Type,
+		["Id"] = _Id,
+		["Roles"] = _Roles,
 	}
-	M.AssertPrincipal(t)
+	asserts.AssertPrincipal(t)
 	return t
 end
 
-function M.AssertUserFilterType(str)
+function asserts.AssertUserFilterType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserFilterType to be of type 'string'")
 end
 
 --  
 function M.UserFilterType(str)
-	M.AssertUserFilterType(str)
+	asserts.AssertUserFilterType(str)
 	return str
 end
 
-function M.AssertPageMarkerType(str)
+function asserts.AssertPageMarkerType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PageMarkerType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -3300,33 +3303,33 @@ end
 
 --  
 function M.PageMarkerType(str)
-	M.AssertPageMarkerType(str)
+	asserts.AssertPageMarkerType(str)
 	return str
 end
 
-function M.AssertUserType(str)
+function asserts.AssertUserType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserType to be of type 'string'")
 end
 
 --  
 function M.UserType(str)
-	M.AssertUserType(str)
+	asserts.AssertUserType(str)
 	return str
 end
 
-function M.AssertActivityType(str)
+function asserts.AssertActivityType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ActivityType to be of type 'string'")
 end
 
 --  
 function M.ActivityType(str)
-	M.AssertActivityType(str)
+	asserts.AssertActivityType(str)
 	return str
 end
 
-function M.AssertMessageType(str)
+function asserts.AssertMessageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MessageType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -3334,53 +3337,50 @@ end
 
 --  
 function M.MessageType(str)
-	M.AssertMessageType(str)
+	asserts.AssertMessageType(str)
 	return str
 end
 
-function M.AssertEmailAddressType(str)
+function asserts.AssertEmailAddressType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EmailAddressType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+%.[a-zA-Z]{2,}"), "Expected string to match pattern '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+%.[a-zA-Z]{2,}'")
 end
 
 --  
 function M.EmailAddressType(str)
-	M.AssertEmailAddressType(str)
+	asserts.AssertEmailAddressType(str)
 	return str
 end
 
-function M.AssertCustomMetadataValueType(str)
+function asserts.AssertCustomMetadataValueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CustomMetadataValueType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"), "Expected string to match pattern '[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*'")
 end
 
 --  
 function M.CustomMetadataValueType(str)
-	M.AssertCustomMetadataValueType(str)
+	asserts.AssertCustomMetadataValueType(str)
 	return str
 end
 
-function M.AssertHeaderNameType(str)
+function asserts.AssertHeaderNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HeaderNameType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w-]+"), "Expected string to match pattern '[%w-]+'")
 end
 
 --  
 function M.HeaderNameType(str)
-	M.AssertHeaderNameType(str)
+	asserts.AssertHeaderNameType(str)
 	return str
 end
 
-function M.AssertAuthenticationHeaderType(str)
+function asserts.AssertAuthenticationHeaderType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AuthenticationHeaderType to be of type 'string'")
 	assert(#str <= 8199, "Expected string to be max 8199 characters")
@@ -3389,22 +3389,22 @@ end
 
 --  
 function M.AuthenticationHeaderType(str)
-	M.AssertAuthenticationHeaderType(str)
+	asserts.AssertAuthenticationHeaderType(str)
 	return str
 end
 
-function M.AssertResourceStateType(str)
+function asserts.AssertResourceStateType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceStateType to be of type 'string'")
 end
 
 --  
 function M.ResourceStateType(str)
-	M.AssertResourceStateType(str)
+	asserts.AssertResourceStateType(str)
 	return str
 end
 
-function M.AssertTimeZoneIdType(str)
+function asserts.AssertTimeZoneIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TimeZoneIdType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -3413,50 +3413,48 @@ end
 
 --  
 function M.TimeZoneIdType(str)
-	M.AssertTimeZoneIdType(str)
+	asserts.AssertTimeZoneIdType(str)
 	return str
 end
 
-function M.AssertUsernameType(str)
+function asserts.AssertUsernameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UsernameType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w%-+.]+(@[a-zA-Z0-9.%-]+%.[a-zA-Z]+)?"), "Expected string to match pattern '[%w%-+.]+(@[a-zA-Z0-9.%-]+%.[a-zA-Z]+)?'")
 end
 
 --  
 function M.UsernameType(str)
-	M.AssertUsernameType(str)
+	asserts.AssertUsernameType(str)
 	return str
 end
 
-function M.AssertDocumentStatusType(str)
+function asserts.AssertDocumentStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentStatusType to be of type 'string'")
 end
 
 --  
 function M.DocumentStatusType(str)
-	M.AssertDocumentStatusType(str)
+	asserts.AssertDocumentStatusType(str)
 	return str
 end
 
-function M.AssertCommentIdType(str)
+function asserts.AssertCommentIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CommentIdType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w+-.@]+"), "Expected string to match pattern '[%w+-.@]+'")
 end
 
 --  
 function M.CommentIdType(str)
-	M.AssertCommentIdType(str)
+	asserts.AssertCommentIdType(str)
 	return str
 end
 
-function M.AssertSubscriptionEndPointType(str)
+function asserts.AssertSubscriptionEndPointType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubscriptionEndPointType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -3465,133 +3463,129 @@ end
 
 --  
 function M.SubscriptionEndPointType(str)
-	M.AssertSubscriptionEndPointType(str)
+	asserts.AssertSubscriptionEndPointType(str)
 	return str
 end
 
-function M.AssertLabel(str)
+function asserts.AssertLabel(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Label to be of type 'string'")
 	assert(#str <= 32, "Expected string to be max 32 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"), "Expected string to match pattern '[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*'")
 end
 
 --  
 function M.Label(str)
-	M.AssertLabel(str)
+	asserts.AssertLabel(str)
 	return str
 end
 
-function M.AssertPasswordType(str)
+function asserts.AssertPasswordType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PasswordType to be of type 'string'")
 	assert(#str <= 32, "Expected string to be max 32 characters")
 	assert(#str >= 4, "Expected string to be min 4 characters")
-	assert(str:match("[%u0020-%u00FF]+"), "Expected string to match pattern '[%u0020-%u00FF]+'")
 end
 
 --  
 function M.PasswordType(str)
-	M.AssertPasswordType(str)
+	asserts.AssertPasswordType(str)
 	return str
 end
 
-function M.AssertDocumentVersionStatus(str)
+function asserts.AssertDocumentVersionStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentVersionStatus to be of type 'string'")
 end
 
 --  
 function M.DocumentVersionStatus(str)
-	M.AssertDocumentVersionStatus(str)
+	asserts.AssertDocumentVersionStatus(str)
 	return str
 end
 
-function M.AssertCustomMetadataKeyType(str)
+function asserts.AssertCustomMetadataKeyType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CustomMetadataKeyType to be of type 'string'")
 	assert(#str <= 56, "Expected string to be max 56 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"), "Expected string to match pattern '[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*'")
 end
 
 --  
 function M.CustomMetadataKeyType(str)
-	M.AssertCustomMetadataKeyType(str)
+	asserts.AssertCustomMetadataKeyType(str)
 	return str
 end
 
-function M.AssertRolePermissionType(str)
+function asserts.AssertRolePermissionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RolePermissionType to be of type 'string'")
 end
 
 --  
 function M.RolePermissionType(str)
-	M.AssertRolePermissionType(str)
+	asserts.AssertRolePermissionType(str)
 	return str
 end
 
-function M.AssertCommentVisibilityType(str)
+function asserts.AssertCommentVisibilityType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CommentVisibilityType to be of type 'string'")
 end
 
 --  
 function M.CommentVisibilityType(str)
-	M.AssertCommentVisibilityType(str)
+	asserts.AssertCommentVisibilityType(str)
 	return str
 end
 
-function M.AssertRoleType(str)
+function asserts.AssertRoleType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RoleType to be of type 'string'")
 end
 
 --  
 function M.RoleType(str)
-	M.AssertRoleType(str)
+	asserts.AssertRoleType(str)
 	return str
 end
 
-function M.AssertStorageType(str)
+function asserts.AssertStorageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StorageType to be of type 'string'")
 end
 
 --  
 function M.StorageType(str)
-	M.AssertStorageType(str)
+	asserts.AssertStorageType(str)
 	return str
 end
 
-function M.AssertDocumentVersionIdType(str)
+function asserts.AssertDocumentVersionIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentVersionIdType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w+-.@]+"), "Expected string to match pattern '[%w+-.@]+'")
 end
 
 --  
 function M.DocumentVersionIdType(str)
-	M.AssertDocumentVersionIdType(str)
+	asserts.AssertDocumentVersionIdType(str)
 	return str
 end
 
-function M.AssertCommentStatusType(str)
+function asserts.AssertCommentStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CommentStatusType to be of type 'string'")
 end
 
 --  
 function M.CommentStatusType(str)
-	M.AssertCommentStatusType(str)
+	asserts.AssertCommentStatusType(str)
 	return str
 end
 
-function M.AssertUrlType(str)
+function asserts.AssertUrlType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UrlType to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -3600,183 +3594,177 @@ end
 
 --  
 function M.UrlType(str)
-	M.AssertUrlType(str)
+	asserts.AssertUrlType(str)
 	return str
 end
 
-function M.AssertResourceSortType(str)
+function asserts.AssertResourceSortType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceSortType to be of type 'string'")
 end
 
 --  
 function M.ResourceSortType(str)
-	M.AssertResourceSortType(str)
+	asserts.AssertResourceSortType(str)
 	return str
 end
 
-function M.AssertShareStatusType(str)
+function asserts.AssertShareStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ShareStatusType to be of type 'string'")
 end
 
 --  
 function M.ShareStatusType(str)
-	M.AssertShareStatusType(str)
+	asserts.AssertShareStatusType(str)
 	return str
 end
 
-function M.AssertOrderType(str)
+function asserts.AssertOrderType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OrderType to be of type 'string'")
 end
 
 --  
 function M.OrderType(str)
-	M.AssertOrderType(str)
+	asserts.AssertOrderType(str)
 	return str
 end
 
-function M.AssertResourceNameType(str)
+function asserts.AssertResourceNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceNameType to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%u202D%u202F-%uFFFF]+"), "Expected string to match pattern '[%u0020-%u202D%u202F-%uFFFF]+'")
 end
 
 --  
 function M.ResourceNameType(str)
-	M.AssertResourceNameType(str)
+	asserts.AssertResourceNameType(str)
 	return str
 end
 
-function M.AssertFieldNamesType(str)
+function asserts.AssertFieldNamesType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FieldNamesType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w,]+"), "Expected string to match pattern '[%w,]+'")
 end
 
 --  
 function M.FieldNamesType(str)
-	M.AssertFieldNamesType(str)
+	asserts.AssertFieldNamesType(str)
 	return str
 end
 
-function M.AssertDocumentSourceType(str)
+function asserts.AssertDocumentSourceType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentSourceType to be of type 'string'")
 end
 
 --  
 function M.DocumentSourceType(str)
-	M.AssertDocumentSourceType(str)
+	asserts.AssertDocumentSourceType(str)
 	return str
 end
 
-function M.AssertUserIdsType(str)
+function asserts.AssertUserIdsType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserIdsType to be of type 'string'")
 	assert(#str <= 2000, "Expected string to be max 2000 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[&%w+-.@, ]+"), "Expected string to match pattern '[&%w+-.@, ]+'")
 end
 
 --  
 function M.UserIdsType(str)
-	M.AssertUserIdsType(str)
+	asserts.AssertUserIdsType(str)
 	return str
 end
 
-function M.AssertIdType(str)
+function asserts.AssertIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[&%w+-.@]+"), "Expected string to match pattern '[&%w+-.@]+'")
 end
 
 --  
 function M.IdType(str)
-	M.AssertIdType(str)
+	asserts.AssertIdType(str)
 	return str
 end
 
-function M.AssertSubscriptionProtocolType(str)
+function asserts.AssertSubscriptionProtocolType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubscriptionProtocolType to be of type 'string'")
 end
 
 --  
 function M.SubscriptionProtocolType(str)
-	M.AssertSubscriptionProtocolType(str)
+	asserts.AssertSubscriptionProtocolType(str)
 	return str
 end
 
-function M.AssertSubscriptionType(str)
+function asserts.AssertSubscriptionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubscriptionType to be of type 'string'")
 end
 
 --  
 function M.SubscriptionType(str)
-	M.AssertSubscriptionType(str)
+	asserts.AssertSubscriptionType(str)
 	return str
 end
 
-function M.AssertErrorMessageType(str)
+function asserts.AssertErrorMessageType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessageType to be of type 'string'")
 end
 
 --  
 function M.ErrorMessageType(str)
-	M.AssertErrorMessageType(str)
+	asserts.AssertErrorMessageType(str)
 	return str
 end
 
-function M.AssertMarkerType(str)
+function asserts.AssertMarkerType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MarkerType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0000-%u00FF]+"), "Expected string to match pattern '[%u0000-%u00FF]+'")
 end
 
 --  
 function M.MarkerType(str)
-	M.AssertMarkerType(str)
+	asserts.AssertMarkerType(str)
 	return str
 end
 
-function M.AssertResourceIdType(str)
+function asserts.AssertResourceIdType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceIdType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w+-.@]+"), "Expected string to match pattern '[%w+-.@]+'")
 end
 
 --  
 function M.ResourceIdType(str)
-	M.AssertResourceIdType(str)
+	asserts.AssertResourceIdType(str)
 	return str
 end
 
-function M.AssertUserStatusType(str)
+function asserts.AssertUserStatusType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserStatusType to be of type 'string'")
 end
 
 --  
 function M.UserStatusType(str)
-	M.AssertUserStatusType(str)
+	asserts.AssertUserStatusType(str)
 	return str
 end
 
-function M.AssertUserAttributeValueType(str)
+function asserts.AssertUserAttributeValueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserAttributeValueType to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
@@ -3785,11 +3773,11 @@ end
 
 --  
 function M.UserAttributeValueType(str)
-	M.AssertUserAttributeValueType(str)
+	asserts.AssertUserAttributeValueType(str)
 	return str
 end
 
-function M.AssertHeaderValueType(str)
+function asserts.AssertHeaderValueType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HeaderValueType to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -3798,91 +3786,90 @@ end
 
 --  
 function M.HeaderValueType(str)
-	M.AssertHeaderValueType(str)
+	asserts.AssertHeaderValueType(str)
 	return str
 end
 
-function M.AssertUserSortType(str)
+function asserts.AssertUserSortType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserSortType to be of type 'string'")
 end
 
 --  
 function M.UserSortType(str)
-	M.AssertUserSortType(str)
+	asserts.AssertUserSortType(str)
 	return str
 end
 
-function M.AssertGroupNameType(str)
+function asserts.AssertGroupNameType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected GroupNameType to be of type 'string'")
 end
 
 --  
 function M.GroupNameType(str)
-	M.AssertGroupNameType(str)
+	asserts.AssertGroupNameType(str)
 	return str
 end
 
-function M.AssertResourceType(str)
+function asserts.AssertResourceType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceType to be of type 'string'")
 end
 
 --  
 function M.ResourceType(str)
-	M.AssertResourceType(str)
+	asserts.AssertResourceType(str)
 	return str
 end
 
-function M.AssertLocaleType(str)
+function asserts.AssertLocaleType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LocaleType to be of type 'string'")
 end
 
 --  
 function M.LocaleType(str)
-	M.AssertLocaleType(str)
+	asserts.AssertLocaleType(str)
 	return str
 end
 
-function M.AssertPrincipalType(str)
+function asserts.AssertPrincipalType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PrincipalType to be of type 'string'")
 end
 
 --  
 function M.PrincipalType(str)
-	M.AssertPrincipalType(str)
+	asserts.AssertPrincipalType(str)
 	return str
 end
 
-function M.AssertSearchQueryType(str)
+function asserts.AssertSearchQueryType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SearchQueryType to be of type 'string'")
 	assert(#str <= 512, "Expected string to be max 512 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uFFFF]+"), "Expected string to match pattern '[%u0020-%uFFFF]+'")
 end
 
 --  
 function M.SearchQueryType(str)
-	M.AssertSearchQueryType(str)
+	asserts.AssertSearchQueryType(str)
 	return str
 end
 
-function M.AssertDocumentThumbnailType(str)
+function asserts.AssertDocumentThumbnailType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentThumbnailType to be of type 'string'")
 end
 
 --  
 function M.DocumentThumbnailType(str)
-	M.AssertDocumentThumbnailType(str)
+	asserts.AssertDocumentThumbnailType(str)
 	return str
 end
 
-function M.AssertCommentTextType(str)
+function asserts.AssertCommentTextType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CommentTextType to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -3891,11 +3878,11 @@ end
 
 --  
 function M.CommentTextType(str)
-	M.AssertCommentTextType(str)
+	asserts.AssertCommentTextType(str)
 	return str
 end
 
-function M.AssertDocumentContentType(str)
+function asserts.AssertDocumentContentType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DocumentContentType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -3904,57 +3891,56 @@ end
 
 --  
 function M.DocumentContentType(str)
-	M.AssertDocumentContentType(str)
+	asserts.AssertDocumentContentType(str)
 	return str
 end
 
-function M.AssertHashType(str)
+function asserts.AssertHashType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HashType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(str:match("[&%w+-.@]+"), "Expected string to match pattern '[&%w+-.@]+'")
 end
 
 --  
 function M.HashType(str)
-	M.AssertHashType(str)
+	asserts.AssertHashType(str)
 	return str
 end
 
-function M.AssertFolderContentType(str)
+function asserts.AssertFolderContentType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FolderContentType to be of type 'string'")
 end
 
 --  
 function M.FolderContentType(str)
-	M.AssertFolderContentType(str)
+	asserts.AssertFolderContentType(str)
 	return str
 end
 
-function M.AssertSizeType(long)
+function asserts.AssertSizeType(long)
 	assert(long)
 	assert(type(long) == "number", "Expected SizeType to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.SizeType(long)
-	M.AssertSizeType(long)
+	asserts.AssertSizeType(long)
 	return long
 end
 
-function M.AssertPositiveSizeType(long)
+function asserts.AssertPositiveSizeType(long)
 	assert(long)
 	assert(type(long) == "number", "Expected PositiveSizeType to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.PositiveSizeType(long)
-	M.AssertPositiveSizeType(long)
+	asserts.AssertPositiveSizeType(long)
 	return long
 end
 
-function M.AssertLimitType(integer)
+function asserts.AssertLimitType(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected LimitType to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3963,341 +3949,341 @@ function M.AssertLimitType(integer)
 end
 
 function M.LimitType(integer)
-	M.AssertLimitType(integer)
+	asserts.AssertLimitType(integer)
 	return integer
 end
 
-function M.AssertBooleanType(boolean)
+function asserts.AssertBooleanType(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanType to be of type 'boolean'")
 end
 
 function M.BooleanType(boolean)
-	M.AssertBooleanType(boolean)
+	asserts.AssertBooleanType(boolean)
 	return boolean
 end
 
-function M.AssertDocumentThumbnailUrlMap(map)
+function asserts.AssertDocumentThumbnailUrlMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected DocumentThumbnailUrlMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertDocumentThumbnailType(k)
-		M.AssertUrlType(v)
+		asserts.AssertDocumentThumbnailType(k)
+		asserts.AssertUrlType(v)
 	end
 end
 
 function M.DocumentThumbnailUrlMap(map)
-	M.AssertDocumentThumbnailUrlMap(map)
+	asserts.AssertDocumentThumbnailUrlMap(map)
 	return map
 end
 
-function M.AssertCustomMetadataMap(map)
+function asserts.AssertCustomMetadataMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected CustomMetadataMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertCustomMetadataKeyType(k)
-		M.AssertCustomMetadataValueType(v)
+		asserts.AssertCustomMetadataKeyType(k)
+		asserts.AssertCustomMetadataValueType(v)
 	end
 end
 
 function M.CustomMetadataMap(map)
-	M.AssertCustomMetadataMap(map)
+	asserts.AssertCustomMetadataMap(map)
 	return map
 end
 
-function M.AssertDocumentSourceUrlMap(map)
+function asserts.AssertDocumentSourceUrlMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected DocumentSourceUrlMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertDocumentSourceType(k)
-		M.AssertUrlType(v)
+		asserts.AssertDocumentSourceType(k)
+		asserts.AssertUrlType(v)
 	end
 end
 
 function M.DocumentSourceUrlMap(map)
-	M.AssertDocumentSourceUrlMap(map)
+	asserts.AssertDocumentSourceUrlMap(map)
 	return map
 end
 
-function M.AssertSignedHeaderMap(map)
+function asserts.AssertSignedHeaderMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected SignedHeaderMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertHeaderNameType(k)
-		M.AssertHeaderValueType(v)
+		asserts.AssertHeaderNameType(k)
+		asserts.AssertHeaderValueType(v)
 	end
 end
 
 function M.SignedHeaderMap(map)
-	M.AssertSignedHeaderMap(map)
+	asserts.AssertSignedHeaderMap(map)
 	return map
 end
 
-function M.AssertTimestampType(timestamp)
+function asserts.AssertTimestampType(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected TimestampType to be of type 'string'")
 end
 
 function M.TimestampType(timestamp)
-	M.AssertTimestampType(timestamp)
+	asserts.AssertTimestampType(timestamp)
 	return timestamp
 end
 
-function M.AssertDocumentMetadataList(list)
+function asserts.AssertDocumentMetadataList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DocumentMetadataList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDocumentMetadata(v)
+		asserts.AssertDocumentMetadata(v)
 	end
 end
 
 --  
 -- List of DocumentMetadata objects
 function M.DocumentMetadataList(list)
-	M.AssertDocumentMetadataList(list)
+	asserts.AssertDocumentMetadataList(list)
 	return list
 end
 
-function M.AssertPrincipalList(list)
+function asserts.AssertPrincipalList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PrincipalList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPrincipal(v)
+		asserts.AssertPrincipal(v)
 	end
 end
 
 --  
 -- List of Principal objects
 function M.PrincipalList(list)
-	M.AssertPrincipalList(list)
+	asserts.AssertPrincipalList(list)
 	return list
 end
 
-function M.AssertLabels(list)
+function asserts.AssertLabels(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Labels to be of type ''table")
 	assert(#list <= 20, "Expected list to be contain 20 elements")
 	for _,v in ipairs(list) do
-		M.AssertLabel(v)
+		asserts.AssertLabel(v)
 	end
 end
 
 --  
 -- List of Label objects
 function M.Labels(list)
-	M.AssertLabels(list)
+	asserts.AssertLabels(list)
 	return list
 end
 
-function M.AssertGroupMetadataList(list)
+function asserts.AssertGroupMetadataList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected GroupMetadataList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertGroupMetadata(v)
+		asserts.AssertGroupMetadata(v)
 	end
 end
 
 --  
 -- List of GroupMetadata objects
 function M.GroupMetadataList(list)
-	M.AssertGroupMetadataList(list)
+	asserts.AssertGroupMetadataList(list)
 	return list
 end
 
-function M.AssertSharePrincipalList(list)
+function asserts.AssertSharePrincipalList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SharePrincipalList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSharePrincipal(v)
+		asserts.AssertSharePrincipal(v)
 	end
 end
 
 --  
 -- List of SharePrincipal objects
 function M.SharePrincipalList(list)
-	M.AssertSharePrincipalList(list)
+	asserts.AssertSharePrincipalList(list)
 	return list
 end
 
-function M.AssertShareResultsList(list)
+function asserts.AssertShareResultsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ShareResultsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertShareResult(v)
+		asserts.AssertShareResult(v)
 	end
 end
 
 --  
 -- List of ShareResult objects
 function M.ShareResultsList(list)
-	M.AssertShareResultsList(list)
+	asserts.AssertShareResultsList(list)
 	return list
 end
 
-function M.AssertCommentList(list)
+function asserts.AssertCommentList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CommentList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertComment(v)
+		asserts.AssertComment(v)
 	end
 end
 
 --  
 -- List of Comment objects
 function M.CommentList(list)
-	M.AssertCommentList(list)
+	asserts.AssertCommentList(list)
 	return list
 end
 
-function M.AssertUserMetadataList(list)
+function asserts.AssertUserMetadataList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UserMetadataList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUserMetadata(v)
+		asserts.AssertUserMetadata(v)
 	end
 end
 
 --  
 -- List of UserMetadata objects
 function M.UserMetadataList(list)
-	M.AssertUserMetadataList(list)
+	asserts.AssertUserMetadataList(list)
 	return list
 end
 
-function M.AssertEntityIdList(list)
+function asserts.AssertEntityIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EntityIdList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertIdType(v)
+		asserts.AssertIdType(v)
 	end
 end
 
 --  
 -- List of IdType objects
 function M.EntityIdList(list)
-	M.AssertEntityIdList(list)
+	asserts.AssertEntityIdList(list)
 	return list
 end
 
-function M.AssertFolderMetadataList(list)
+function asserts.AssertFolderMetadataList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FolderMetadataList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFolderMetadata(v)
+		asserts.AssertFolderMetadata(v)
 	end
 end
 
 --  
 -- List of FolderMetadata objects
 function M.FolderMetadataList(list)
-	M.AssertFolderMetadataList(list)
+	asserts.AssertFolderMetadataList(list)
 	return list
 end
 
-function M.AssertOrganizationUserList(list)
+function asserts.AssertOrganizationUserList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected OrganizationUserList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUser(v)
+		asserts.AssertUser(v)
 	end
 end
 
 --  
 -- List of User objects
 function M.OrganizationUserList(list)
-	M.AssertOrganizationUserList(list)
+	asserts.AssertOrganizationUserList(list)
 	return list
 end
 
-function M.AssertResourcePathComponentList(list)
+function asserts.AssertResourcePathComponentList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourcePathComponentList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResourcePathComponent(v)
+		asserts.AssertResourcePathComponent(v)
 	end
 end
 
 --  
 -- List of ResourcePathComponent objects
 function M.ResourcePathComponentList(list)
-	M.AssertResourcePathComponentList(list)
+	asserts.AssertResourcePathComponentList(list)
 	return list
 end
 
-function M.AssertDocumentVersionMetadataList(list)
+function asserts.AssertDocumentVersionMetadataList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DocumentVersionMetadataList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDocumentVersionMetadata(v)
+		asserts.AssertDocumentVersionMetadata(v)
 	end
 end
 
 --  
 -- List of DocumentVersionMetadata objects
 function M.DocumentVersionMetadataList(list)
-	M.AssertDocumentVersionMetadataList(list)
+	asserts.AssertDocumentVersionMetadataList(list)
 	return list
 end
 
-function M.AssertCustomMetadataKeyList(list)
+function asserts.AssertCustomMetadataKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CustomMetadataKeyList to be of type ''table")
 	assert(#list <= 8, "Expected list to be contain 8 elements")
 	for _,v in ipairs(list) do
-		M.AssertCustomMetadataKeyType(v)
+		asserts.AssertCustomMetadataKeyType(v)
 	end
 end
 
 --  
 -- List of CustomMetadataKeyType objects
 function M.CustomMetadataKeyList(list)
-	M.AssertCustomMetadataKeyList(list)
+	asserts.AssertCustomMetadataKeyList(list)
 	return list
 end
 
-function M.AssertSubscriptionList(list)
+function asserts.AssertSubscriptionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubscriptionList to be of type ''table")
 	assert(#list <= 256, "Expected list to be contain 256 elements")
 	for _,v in ipairs(list) do
-		M.AssertSubscription(v)
+		asserts.AssertSubscription(v)
 	end
 end
 
 --  
 -- List of Subscription objects
 function M.SubscriptionList(list)
-	M.AssertSubscriptionList(list)
+	asserts.AssertSubscriptionList(list)
 	return list
 end
 
-function M.AssertPermissionInfoList(list)
+function asserts.AssertPermissionInfoList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PermissionInfoList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPermissionInfo(v)
+		asserts.AssertPermissionInfo(v)
 	end
 end
 
 --  
 -- List of PermissionInfo objects
 function M.PermissionInfoList(list)
-	M.AssertPermissionInfoList(list)
+	asserts.AssertPermissionInfoList(list)
 	return list
 end
 
-function M.AssertUserActivities(list)
+function asserts.AssertUserActivities(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UserActivities to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertActivity(v)
+		asserts.AssertActivity(v)
 	end
 end
 
 --  
 -- List of Activity objects
 function M.UserActivities(list)
-	M.AssertUserActivities(list)
+	asserts.AssertUserActivities(list)
 	return list
 end
 

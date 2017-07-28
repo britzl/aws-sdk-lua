@@ -19,9 +19,15 @@ def generate():
 
             operations = []
             for op_name, operation in j["operations"].iteritems():
-                doc = operation.get("documentation", " ")
-                operation.update({"documentation": doc})
-                operations.append(operation)
+                if operation.get("deprecated") is not True:
+                    doc = operation.get("documentation", " ")
+                    operation.update({"documentation": doc})
+                    inp = operation.get("input")
+                    if inp:
+                        operation.update({"input_shape_or_empty": inp})
+                    else:
+                        operation.update({"input_shape_or_empty": {"shape": "{}"}})
+                    operations.append(operation)
 
             shapes = {
                 "string": [],
@@ -41,14 +47,15 @@ def generate():
                 shape["name"] = shape_name
                 # ensure empty documentation if none exists (otherwise mustache will start searching recursively)
                 shape.update({"documentation": shape.get("documentation", " ")})
-                # change to lua pattern matching syntax
+                # remove patterns
                 if shape.get("pattern"):
-                    shape.update({"pattern": shape.get("pattern").replace("\\", "%")})
+                    shape.pop("pattern", None)
 
                 if shape_type == "structure":
                     members = []
                     for member_name, member in shape["members"].iteritems():
                         member["name"] = member_name
+                        member["documentation"] = member.get("documentation", "").replace("\n", "")
                         members.append(member)
                     shape["member_names"] = ",".join(shape["members"].keys())
                     shape["members"] = members

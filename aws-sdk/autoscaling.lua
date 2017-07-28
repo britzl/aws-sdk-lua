@@ -18,83 +18,86 @@ M.metadata = {
 	uid = "autoscaling-2011-01-01",
 }
 
-local ExecutePolicyType_keys = { "MetricValue" = true, "PolicyName" = true, "AutoScalingGroupName" = true, "HonorCooldown" = true, "BreachThreshold" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertExecutePolicyType(struct)
+keys.ExecutePolicyType = { ["MetricValue"] = true, ["PolicyName"] = true, ["AutoScalingGroupName"] = true, ["HonorCooldown"] = true, ["BreachThreshold"] = true, nil }
+
+function asserts.AssertExecutePolicyType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExecutePolicyType to be of type 'table'")
 	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
-	if struct["MetricValue"] then M.AssertMetricScale(struct["MetricValue"]) end
-	if struct["PolicyName"] then M.AssertResourceName(struct["PolicyName"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["HonorCooldown"] then M.AssertHonorCooldown(struct["HonorCooldown"]) end
-	if struct["BreachThreshold"] then M.AssertMetricScale(struct["BreachThreshold"]) end
+	if struct["MetricValue"] then asserts.AssertMetricScale(struct["MetricValue"]) end
+	if struct["PolicyName"] then asserts.AssertResourceName(struct["PolicyName"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["HonorCooldown"] then asserts.AssertHonorCooldown(struct["HonorCooldown"]) end
+	if struct["BreachThreshold"] then asserts.AssertMetricScale(struct["BreachThreshold"]) end
 	for k,_ in pairs(struct) do
-		assert(ExecutePolicyType_keys[k], "ExecutePolicyType contains unknown key " .. tostring(k))
+		assert(keys.ExecutePolicyType[k], "ExecutePolicyType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExecutePolicyType
 --  
--- @param MetricValue [MetricScale] <p>The metric value to compare to <code>BreachThreshold</code>. This enables you to execute a policy of type <code>StepScaling</code> and determine which step adjustment to use. For example, if the breach threshold is 50 and you want to use a step adjustment with a lower bound of 0 and an upper bound of 10, you can set the metric value to 59.</p> <p>If you specify a metric value that doesn't correspond to a step adjustment for the policy, the call returns an error.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
--- @param PolicyName [ResourceName] <p>The name or ARN of the policy.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
--- @param HonorCooldown [HonorCooldown] <p>If this parameter is true, Auto Scaling waits for the cooldown period to complete before executing the policy. Otherwise, Auto Scaling executes the policy without waiting for the cooldown period to complete.</p> <p>This parameter is not supported if the policy type is <code>StepScaling</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param BreachThreshold [MetricScale] <p>The breach threshold for the alarm.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
+-- @param _MetricValue [MetricScale] <p>The metric value to compare to <code>BreachThreshold</code>. This enables you to execute a policy of type <code>StepScaling</code> and determine which step adjustment to use. For example, if the breach threshold is 50 and you want to use a step adjustment with a lower bound of 0 and an upper bound of 10, you can set the metric value to 59.</p> <p>If you specify a metric value that doesn't correspond to a step adjustment for the policy, the call returns an error.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
+-- @param _PolicyName [ResourceName] <p>The name or ARN of the policy.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
+-- @param _HonorCooldown [HonorCooldown] <p>If this parameter is true, Auto Scaling waits for the cooldown period to complete before executing the policy. Otherwise, Auto Scaling executes the policy without waiting for the cooldown period to complete.</p> <p>This parameter is not supported if the policy type is <code>StepScaling</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _BreachThreshold [MetricScale] <p>The breach threshold for the alarm.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
 -- Required parameter: PolicyName
-function M.ExecutePolicyType(MetricValue, PolicyName, AutoScalingGroupName, HonorCooldown, BreachThreshold, ...)
+function M.ExecutePolicyType(_MetricValue, _PolicyName, _AutoScalingGroupName, _HonorCooldown, _BreachThreshold, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutePolicyType")
 	local t = { 
-		["MetricValue"] = MetricValue,
-		["PolicyName"] = PolicyName,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["HonorCooldown"] = HonorCooldown,
-		["BreachThreshold"] = BreachThreshold,
+		["MetricValue"] = _MetricValue,
+		["PolicyName"] = _PolicyName,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["HonorCooldown"] = _HonorCooldown,
+		["BreachThreshold"] = _BreachThreshold,
 	}
-	M.AssertExecutePolicyType(t)
+	asserts.AssertExecutePolicyType(t)
 	return t
 end
 
-local DetachInstancesQuery_keys = { "ShouldDecrementDesiredCapacity" = true, "AutoScalingGroupName" = true, "InstanceIds" = true, nil }
+keys.DetachInstancesQuery = { ["ShouldDecrementDesiredCapacity"] = true, ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
 
-function M.AssertDetachInstancesQuery(struct)
+function asserts.AssertDetachInstancesQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachInstancesQuery to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["ShouldDecrementDesiredCapacity"], "Expected key ShouldDecrementDesiredCapacity to exist in table")
-	if struct["ShouldDecrementDesiredCapacity"] then M.AssertShouldDecrementDesiredCapacity(struct["ShouldDecrementDesiredCapacity"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["InstanceIds"] then M.AssertInstanceIds(struct["InstanceIds"]) end
+	if struct["ShouldDecrementDesiredCapacity"] then asserts.AssertShouldDecrementDesiredCapacity(struct["ShouldDecrementDesiredCapacity"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["InstanceIds"] then asserts.AssertInstanceIds(struct["InstanceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachInstancesQuery_keys[k], "DetachInstancesQuery contains unknown key " .. tostring(k))
+		assert(keys.DetachInstancesQuery[k], "DetachInstancesQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachInstancesQuery
 --  
--- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>If <code>True</code>, the Auto Scaling group decrements the desired capacity value by the number of instances detached.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
--- @param InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
+-- @param _ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>If <code>True</code>, the Auto Scaling group decrements the desired capacity value by the number of instances detached.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ShouldDecrementDesiredCapacity
-function M.DetachInstancesQuery(ShouldDecrementDesiredCapacity, AutoScalingGroupName, InstanceIds, ...)
+function M.DetachInstancesQuery(_ShouldDecrementDesiredCapacity, _AutoScalingGroupName, _InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachInstancesQuery")
 	local t = { 
-		["ShouldDecrementDesiredCapacity"] = ShouldDecrementDesiredCapacity,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["InstanceIds"] = InstanceIds,
+		["ShouldDecrementDesiredCapacity"] = _ShouldDecrementDesiredCapacity,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["InstanceIds"] = _InstanceIds,
 	}
-	M.AssertDetachInstancesQuery(t)
+	asserts.AssertDetachInstancesQuery(t)
 	return t
 end
 
-local AttachLoadBalancerTargetGroupsResultType_keys = { nil }
+keys.AttachLoadBalancerTargetGroupsResultType = { nil }
 
-function M.AssertAttachLoadBalancerTargetGroupsResultType(struct)
+function asserts.AssertAttachLoadBalancerTargetGroupsResultType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachLoadBalancerTargetGroupsResultType to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AttachLoadBalancerTargetGroupsResultType_keys[k], "AttachLoadBalancerTargetGroupsResultType contains unknown key " .. tostring(k))
+		assert(keys.AttachLoadBalancerTargetGroupsResultType[k], "AttachLoadBalancerTargetGroupsResultType contains unknown key " .. tostring(k))
 	end
 end
 
@@ -104,179 +107,179 @@ function M.AttachLoadBalancerTargetGroupsResultType(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachLoadBalancerTargetGroupsResultType")
 	local t = { 
 	}
-	M.AssertAttachLoadBalancerTargetGroupsResultType(t)
+	asserts.AssertAttachLoadBalancerTargetGroupsResultType(t)
 	return t
 end
 
-local TerminateInstanceInAutoScalingGroupType_keys = { "InstanceId" = true, "ShouldDecrementDesiredCapacity" = true, nil }
+keys.TerminateInstanceInAutoScalingGroupType = { ["InstanceId"] = true, ["ShouldDecrementDesiredCapacity"] = true, nil }
 
-function M.AssertTerminateInstanceInAutoScalingGroupType(struct)
+function asserts.AssertTerminateInstanceInAutoScalingGroupType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TerminateInstanceInAutoScalingGroupType to be of type 'table'")
 	assert(struct["InstanceId"], "Expected key InstanceId to exist in table")
 	assert(struct["ShouldDecrementDesiredCapacity"], "Expected key ShouldDecrementDesiredCapacity to exist in table")
-	if struct["InstanceId"] then M.AssertXmlStringMaxLen19(struct["InstanceId"]) end
-	if struct["ShouldDecrementDesiredCapacity"] then M.AssertShouldDecrementDesiredCapacity(struct["ShouldDecrementDesiredCapacity"]) end
+	if struct["InstanceId"] then asserts.AssertXmlStringMaxLen19(struct["InstanceId"]) end
+	if struct["ShouldDecrementDesiredCapacity"] then asserts.AssertShouldDecrementDesiredCapacity(struct["ShouldDecrementDesiredCapacity"]) end
 	for k,_ in pairs(struct) do
-		assert(TerminateInstanceInAutoScalingGroupType_keys[k], "TerminateInstanceInAutoScalingGroupType contains unknown key " .. tostring(k))
+		assert(keys.TerminateInstanceInAutoScalingGroupType[k], "TerminateInstanceInAutoScalingGroupType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TerminateInstanceInAutoScalingGroupType
 --  
--- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
--- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>If <code>true</code>, terminating the instance also decrements the size of the Auto Scaling group.</p>
+-- @param _InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param _ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>If <code>true</code>, terminating the instance also decrements the size of the Auto Scaling group.</p>
 -- Required parameter: InstanceId
 -- Required parameter: ShouldDecrementDesiredCapacity
-function M.TerminateInstanceInAutoScalingGroupType(InstanceId, ShouldDecrementDesiredCapacity, ...)
+function M.TerminateInstanceInAutoScalingGroupType(_InstanceId, _ShouldDecrementDesiredCapacity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateInstanceInAutoScalingGroupType")
 	local t = { 
-		["InstanceId"] = InstanceId,
-		["ShouldDecrementDesiredCapacity"] = ShouldDecrementDesiredCapacity,
+		["InstanceId"] = _InstanceId,
+		["ShouldDecrementDesiredCapacity"] = _ShouldDecrementDesiredCapacity,
 	}
-	M.AssertTerminateInstanceInAutoScalingGroupType(t)
+	asserts.AssertTerminateInstanceInAutoScalingGroupType(t)
 	return t
 end
 
-local ScalingActivityInProgressFault_keys = { "message" = true, nil }
+keys.ScalingActivityInProgressFault = { ["message"] = true, nil }
 
-function M.AssertScalingActivityInProgressFault(struct)
+function asserts.AssertScalingActivityInProgressFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScalingActivityInProgressFault to be of type 'table'")
-	if struct["message"] then M.AssertXmlStringMaxLen255(struct["message"]) end
+	if struct["message"] then asserts.AssertXmlStringMaxLen255(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ScalingActivityInProgressFault_keys[k], "ScalingActivityInProgressFault contains unknown key " .. tostring(k))
+		assert(keys.ScalingActivityInProgressFault[k], "ScalingActivityInProgressFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScalingActivityInProgressFault
 -- <p>The operation can't be performed because there are scaling activities in progress.</p>
--- @param message [XmlStringMaxLen255] <p/>
-function M.ScalingActivityInProgressFault(message, ...)
+-- @param _message [XmlStringMaxLen255] <p/>
+function M.ScalingActivityInProgressFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingActivityInProgressFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertScalingActivityInProgressFault(t)
+	asserts.AssertScalingActivityInProgressFault(t)
 	return t
 end
 
-local AttachInstancesQuery_keys = { "AutoScalingGroupName" = true, "InstanceIds" = true, nil }
+keys.AttachInstancesQuery = { ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
 
-function M.AssertAttachInstancesQuery(struct)
+function asserts.AssertAttachInstancesQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachInstancesQuery to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["InstanceIds"] then M.AssertInstanceIds(struct["InstanceIds"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["InstanceIds"] then asserts.AssertInstanceIds(struct["InstanceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachInstancesQuery_keys[k], "AttachInstancesQuery contains unknown key " .. tostring(k))
+		assert(keys.AttachInstancesQuery[k], "AttachInstancesQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachInstancesQuery
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
--- @param InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
 -- Required parameter: AutoScalingGroupName
-function M.AttachInstancesQuery(AutoScalingGroupName, InstanceIds, ...)
+function M.AttachInstancesQuery(_AutoScalingGroupName, _InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachInstancesQuery")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["InstanceIds"] = InstanceIds,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["InstanceIds"] = _InstanceIds,
 	}
-	M.AssertAttachInstancesQuery(t)
+	asserts.AssertAttachInstancesQuery(t)
 	return t
 end
 
-local ActivityType_keys = { "Activity" = true, nil }
+keys.ActivityType = { ["Activity"] = true, nil }
 
-function M.AssertActivityType(struct)
+function asserts.AssertActivityType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ActivityType to be of type 'table'")
-	if struct["Activity"] then M.AssertActivity(struct["Activity"]) end
+	if struct["Activity"] then asserts.AssertActivity(struct["Activity"]) end
 	for k,_ in pairs(struct) do
-		assert(ActivityType_keys[k], "ActivityType contains unknown key " .. tostring(k))
+		assert(keys.ActivityType[k], "ActivityType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ActivityType
 --  
--- @param Activity [Activity] <p>A scaling activity.</p>
-function M.ActivityType(Activity, ...)
+-- @param _Activity [Activity] <p>A scaling activity.</p>
+function M.ActivityType(_Activity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityType")
 	local t = { 
-		["Activity"] = Activity,
+		["Activity"] = _Activity,
 	}
-	M.AssertActivityType(t)
+	asserts.AssertActivityType(t)
 	return t
 end
 
-local DescribeScalingActivitiesType_keys = { "ActivityIds" = true, "MaxRecords" = true, "NextToken" = true, "AutoScalingGroupName" = true, nil }
+keys.DescribeScalingActivitiesType = { ["ActivityIds"] = true, ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDescribeScalingActivitiesType(struct)
+function asserts.AssertDescribeScalingActivitiesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeScalingActivitiesType to be of type 'table'")
-	if struct["ActivityIds"] then M.AssertActivityIds(struct["ActivityIds"]) end
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["ActivityIds"] then asserts.AssertActivityIds(struct["ActivityIds"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeScalingActivitiesType_keys[k], "DescribeScalingActivitiesType contains unknown key " .. tostring(k))
+		assert(keys.DescribeScalingActivitiesType[k], "DescribeScalingActivitiesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeScalingActivitiesType
 --  
--- @param ActivityIds [ActivityIds] <p>The activity IDs of the desired scaling activities. If you omit this parameter, all activities for the past six weeks are described. If you specify an Auto Scaling group, the results are limited to that group. The list of requested activities cannot contain more than 50 items. If unknown activities are requested, they are ignored with no error.</p>
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 100.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
-function M.DescribeScalingActivitiesType(ActivityIds, MaxRecords, NextToken, AutoScalingGroupName, ...)
+-- @param _ActivityIds [ActivityIds] <p>The activity IDs of the desired scaling activities. If you omit this parameter, all activities for the past six weeks are described. If you specify an Auto Scaling group, the results are limited to that group. The list of requested activities cannot contain more than 50 items. If unknown activities are requested, they are ignored with no error.</p>
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 100.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+function M.DescribeScalingActivitiesType(_ActivityIds, _MaxRecords, _NextToken, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingActivitiesType")
 	local t = { 
-		["ActivityIds"] = ActivityIds,
-		["MaxRecords"] = MaxRecords,
-		["NextToken"] = NextToken,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["ActivityIds"] = _ActivityIds,
+		["MaxRecords"] = _MaxRecords,
+		["NextToken"] = _NextToken,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDescribeScalingActivitiesType(t)
+	asserts.AssertDescribeScalingActivitiesType(t)
 	return t
 end
 
-local PoliciesType_keys = { "ScalingPolicies" = true, "NextToken" = true, nil }
+keys.PoliciesType = { ["ScalingPolicies"] = true, ["NextToken"] = true, nil }
 
-function M.AssertPoliciesType(struct)
+function asserts.AssertPoliciesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PoliciesType to be of type 'table'")
-	if struct["ScalingPolicies"] then M.AssertScalingPolicies(struct["ScalingPolicies"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
+	if struct["ScalingPolicies"] then asserts.AssertScalingPolicies(struct["ScalingPolicies"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(PoliciesType_keys[k], "PoliciesType contains unknown key " .. tostring(k))
+		assert(keys.PoliciesType[k], "PoliciesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PoliciesType
 --  
--- @param ScalingPolicies [ScalingPolicies] <p>The scaling policies.</p>
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.PoliciesType(ScalingPolicies, NextToken, ...)
+-- @param _ScalingPolicies [ScalingPolicies] <p>The scaling policies.</p>
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+function M.PoliciesType(_ScalingPolicies, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PoliciesType")
 	local t = { 
-		["ScalingPolicies"] = ScalingPolicies,
-		["NextToken"] = NextToken,
+		["ScalingPolicies"] = _ScalingPolicies,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertPoliciesType(t)
+	asserts.AssertPoliciesType(t)
 	return t
 end
 
-local AttachLoadBalancersResultType_keys = { nil }
+keys.AttachLoadBalancersResultType = { nil }
 
-function M.AssertAttachLoadBalancersResultType(struct)
+function asserts.AssertAttachLoadBalancersResultType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachLoadBalancersResultType to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AttachLoadBalancersResultType_keys[k], "AttachLoadBalancersResultType contains unknown key " .. tostring(k))
+		assert(keys.AttachLoadBalancersResultType[k], "AttachLoadBalancersResultType contains unknown key " .. tostring(k))
 	end
 end
 
@@ -286,122 +289,122 @@ function M.AttachLoadBalancersResultType(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachLoadBalancersResultType")
 	local t = { 
 	}
-	M.AssertAttachLoadBalancersResultType(t)
+	asserts.AssertAttachLoadBalancersResultType(t)
 	return t
 end
 
-local ScheduledActionsType_keys = { "NextToken" = true, "ScheduledUpdateGroupActions" = true, nil }
+keys.ScheduledActionsType = { ["NextToken"] = true, ["ScheduledUpdateGroupActions"] = true, nil }
 
-function M.AssertScheduledActionsType(struct)
+function asserts.AssertScheduledActionsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScheduledActionsType to be of type 'table'")
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["ScheduledUpdateGroupActions"] then M.AssertScheduledUpdateGroupActions(struct["ScheduledUpdateGroupActions"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["ScheduledUpdateGroupActions"] then asserts.AssertScheduledUpdateGroupActions(struct["ScheduledUpdateGroupActions"]) end
 	for k,_ in pairs(struct) do
-		assert(ScheduledActionsType_keys[k], "ScheduledActionsType contains unknown key " .. tostring(k))
+		assert(keys.ScheduledActionsType[k], "ScheduledActionsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScheduledActionsType
 --  
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param ScheduledUpdateGroupActions [ScheduledUpdateGroupActions] <p>The scheduled actions.</p>
-function M.ScheduledActionsType(NextToken, ScheduledUpdateGroupActions, ...)
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param _ScheduledUpdateGroupActions [ScheduledUpdateGroupActions] <p>The scheduled actions.</p>
+function M.ScheduledActionsType(_NextToken, _ScheduledUpdateGroupActions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScheduledActionsType")
 	local t = { 
-		["NextToken"] = NextToken,
-		["ScheduledUpdateGroupActions"] = ScheduledUpdateGroupActions,
+		["NextToken"] = _NextToken,
+		["ScheduledUpdateGroupActions"] = _ScheduledUpdateGroupActions,
 	}
-	M.AssertScheduledActionsType(t)
+	asserts.AssertScheduledActionsType(t)
 	return t
 end
 
-local ResourceInUseFault_keys = { "message" = true, nil }
+keys.ResourceInUseFault = { ["message"] = true, nil }
 
-function M.AssertResourceInUseFault(struct)
+function asserts.AssertResourceInUseFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceInUseFault to be of type 'table'")
-	if struct["message"] then M.AssertXmlStringMaxLen255(struct["message"]) end
+	if struct["message"] then asserts.AssertXmlStringMaxLen255(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceInUseFault_keys[k], "ResourceInUseFault contains unknown key " .. tostring(k))
+		assert(keys.ResourceInUseFault[k], "ResourceInUseFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceInUseFault
 -- <p>The operation can't be performed because the resource is in use.</p>
--- @param message [XmlStringMaxLen255] <p/>
-function M.ResourceInUseFault(message, ...)
+-- @param _message [XmlStringMaxLen255] <p/>
+function M.ResourceInUseFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceInUseFault(t)
+	asserts.AssertResourceInUseFault(t)
 	return t
 end
 
-local LaunchConfigurationNameType_keys = { "LaunchConfigurationName" = true, nil }
+keys.LaunchConfigurationNameType = { ["LaunchConfigurationName"] = true, nil }
 
-function M.AssertLaunchConfigurationNameType(struct)
+function asserts.AssertLaunchConfigurationNameType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LaunchConfigurationNameType to be of type 'table'")
 	assert(struct["LaunchConfigurationName"], "Expected key LaunchConfigurationName to exist in table")
-	if struct["LaunchConfigurationName"] then M.AssertResourceName(struct["LaunchConfigurationName"]) end
+	if struct["LaunchConfigurationName"] then asserts.AssertResourceName(struct["LaunchConfigurationName"]) end
 	for k,_ in pairs(struct) do
-		assert(LaunchConfigurationNameType_keys[k], "LaunchConfigurationNameType contains unknown key " .. tostring(k))
+		assert(keys.LaunchConfigurationNameType[k], "LaunchConfigurationNameType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LaunchConfigurationNameType
 --  
--- @param LaunchConfigurationName [ResourceName] <p>The name of the launch configuration.</p>
+-- @param _LaunchConfigurationName [ResourceName] <p>The name of the launch configuration.</p>
 -- Required parameter: LaunchConfigurationName
-function M.LaunchConfigurationNameType(LaunchConfigurationName, ...)
+function M.LaunchConfigurationNameType(_LaunchConfigurationName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfigurationNameType")
 	local t = { 
-		["LaunchConfigurationName"] = LaunchConfigurationName,
+		["LaunchConfigurationName"] = _LaunchConfigurationName,
 	}
-	M.AssertLaunchConfigurationNameType(t)
+	asserts.AssertLaunchConfigurationNameType(t)
 	return t
 end
 
-local StepAdjustment_keys = { "ScalingAdjustment" = true, "MetricIntervalLowerBound" = true, "MetricIntervalUpperBound" = true, nil }
+keys.StepAdjustment = { ["ScalingAdjustment"] = true, ["MetricIntervalLowerBound"] = true, ["MetricIntervalUpperBound"] = true, nil }
 
-function M.AssertStepAdjustment(struct)
+function asserts.AssertStepAdjustment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StepAdjustment to be of type 'table'")
 	assert(struct["ScalingAdjustment"], "Expected key ScalingAdjustment to exist in table")
-	if struct["ScalingAdjustment"] then M.AssertPolicyIncrement(struct["ScalingAdjustment"]) end
-	if struct["MetricIntervalLowerBound"] then M.AssertMetricScale(struct["MetricIntervalLowerBound"]) end
-	if struct["MetricIntervalUpperBound"] then M.AssertMetricScale(struct["MetricIntervalUpperBound"]) end
+	if struct["ScalingAdjustment"] then asserts.AssertPolicyIncrement(struct["ScalingAdjustment"]) end
+	if struct["MetricIntervalLowerBound"] then asserts.AssertMetricScale(struct["MetricIntervalLowerBound"]) end
+	if struct["MetricIntervalUpperBound"] then asserts.AssertMetricScale(struct["MetricIntervalUpperBound"]) end
 	for k,_ in pairs(struct) do
-		assert(StepAdjustment_keys[k], "StepAdjustment contains unknown key " .. tostring(k))
+		assert(keys.StepAdjustment[k], "StepAdjustment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StepAdjustment
 -- <p>Describes an adjustment based on the difference between the value of the aggregated CloudWatch metric and the breach threshold that you've defined for the alarm.</p> <p>For the following examples, suppose that you have an alarm with a breach threshold of 50:</p> <ul> <li> <p>If you want the adjustment to be triggered when the metric is greater than or equal to 50 and less than 60, specify a lower bound of 0 and an upper bound of 10.</p> </li> <li> <p>If you want the adjustment to be triggered when the metric is greater than 40 and less than or equal to 50, specify a lower bound of -10 and an upper bound of 0.</p> </li> </ul> <p>There are a few rules for the step adjustments for your step policy:</p> <ul> <li> <p>The ranges of your step adjustments can't overlap or have a gap.</p> </li> <li> <p>At most one step adjustment can have a null lower bound. If one step adjustment has a negative lower bound, then there must be a step adjustment with a null lower bound.</p> </li> <li> <p>At most one step adjustment can have a null upper bound. If one step adjustment has a positive upper bound, then there must be a step adjustment with a null upper bound.</p> </li> <li> <p>The upper and lower bound can't be null in the same step adjustment.</p> </li> </ul>
--- @param ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p>
--- @param MetricIntervalLowerBound [MetricScale] <p>The lower bound for the difference between the alarm threshold and the CloudWatch metric. If the metric value is above the breach threshold, the lower bound is inclusive (the metric must be greater than or equal to the threshold plus the lower bound). Otherwise, it is exclusive (the metric must be greater than the threshold plus the lower bound). A null value indicates negative infinity.</p>
--- @param MetricIntervalUpperBound [MetricScale] <p>The upper bound for the difference between the alarm threshold and the CloudWatch metric. If the metric value is above the breach threshold, the upper bound is exclusive (the metric must be less than the threshold plus the upper bound). Otherwise, it is inclusive (the metric must be less than or equal to the threshold plus the upper bound). A null value indicates positive infinity.</p> <p>The upper bound must be greater than the lower bound.</p>
+-- @param _ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p>
+-- @param _MetricIntervalLowerBound [MetricScale] <p>The lower bound for the difference between the alarm threshold and the CloudWatch metric. If the metric value is above the breach threshold, the lower bound is inclusive (the metric must be greater than or equal to the threshold plus the lower bound). Otherwise, it is exclusive (the metric must be greater than the threshold plus the lower bound). A null value indicates negative infinity.</p>
+-- @param _MetricIntervalUpperBound [MetricScale] <p>The upper bound for the difference between the alarm threshold and the CloudWatch metric. If the metric value is above the breach threshold, the upper bound is exclusive (the metric must be less than the threshold plus the upper bound). Otherwise, it is inclusive (the metric must be less than or equal to the threshold plus the upper bound). A null value indicates positive infinity.</p> <p>The upper bound must be greater than the lower bound.</p>
 -- Required parameter: ScalingAdjustment
-function M.StepAdjustment(ScalingAdjustment, MetricIntervalLowerBound, MetricIntervalUpperBound, ...)
+function M.StepAdjustment(_ScalingAdjustment, _MetricIntervalLowerBound, _MetricIntervalUpperBound, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepAdjustment")
 	local t = { 
-		["ScalingAdjustment"] = ScalingAdjustment,
-		["MetricIntervalLowerBound"] = MetricIntervalLowerBound,
-		["MetricIntervalUpperBound"] = MetricIntervalUpperBound,
+		["ScalingAdjustment"] = _ScalingAdjustment,
+		["MetricIntervalLowerBound"] = _MetricIntervalLowerBound,
+		["MetricIntervalUpperBound"] = _MetricIntervalUpperBound,
 	}
-	M.AssertStepAdjustment(t)
+	asserts.AssertStepAdjustment(t)
 	return t
 end
 
-local DeleteLifecycleHookAnswer_keys = { nil }
+keys.DeleteLifecycleHookAnswer = { nil }
 
-function M.AssertDeleteLifecycleHookAnswer(struct)
+function asserts.AssertDeleteLifecycleHookAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLifecycleHookAnswer to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteLifecycleHookAnswer_keys[k], "DeleteLifecycleHookAnswer contains unknown key " .. tostring(k))
+		assert(keys.DeleteLifecycleHookAnswer[k], "DeleteLifecycleHookAnswer contains unknown key " .. tostring(k))
 	end
 end
 
@@ -411,395 +414,395 @@ function M.DeleteLifecycleHookAnswer(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLifecycleHookAnswer")
 	local t = { 
 	}
-	M.AssertDeleteLifecycleHookAnswer(t)
+	asserts.AssertDeleteLifecycleHookAnswer(t)
 	return t
 end
 
-local LaunchConfiguration_keys = { "UserData" = true, "IamInstanceProfile" = true, "ClassicLinkVPCId" = true, "EbsOptimized" = true, "PlacementTenancy" = true, "LaunchConfigurationARN" = true, "InstanceMonitoring" = true, "ImageId" = true, "CreatedTime" = true, "BlockDeviceMappings" = true, "KeyName" = true, "SecurityGroups" = true, "AssociatePublicIpAddress" = true, "LaunchConfigurationName" = true, "KernelId" = true, "RamdiskId" = true, "ClassicLinkVPCSecurityGroups" = true, "InstanceType" = true, "SpotPrice" = true, nil }
+keys.LaunchConfiguration = { ["UserData"] = true, ["IamInstanceProfile"] = true, ["ClassicLinkVPCId"] = true, ["EbsOptimized"] = true, ["PlacementTenancy"] = true, ["LaunchConfigurationARN"] = true, ["InstanceMonitoring"] = true, ["ImageId"] = true, ["CreatedTime"] = true, ["BlockDeviceMappings"] = true, ["KeyName"] = true, ["SecurityGroups"] = true, ["AssociatePublicIpAddress"] = true, ["LaunchConfigurationName"] = true, ["KernelId"] = true, ["RamdiskId"] = true, ["ClassicLinkVPCSecurityGroups"] = true, ["InstanceType"] = true, ["SpotPrice"] = true, nil }
 
-function M.AssertLaunchConfiguration(struct)
+function asserts.AssertLaunchConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LaunchConfiguration to be of type 'table'")
 	assert(struct["LaunchConfigurationName"], "Expected key LaunchConfigurationName to exist in table")
 	assert(struct["ImageId"], "Expected key ImageId to exist in table")
 	assert(struct["InstanceType"], "Expected key InstanceType to exist in table")
 	assert(struct["CreatedTime"], "Expected key CreatedTime to exist in table")
-	if struct["UserData"] then M.AssertXmlStringUserData(struct["UserData"]) end
-	if struct["IamInstanceProfile"] then M.AssertXmlStringMaxLen1600(struct["IamInstanceProfile"]) end
-	if struct["ClassicLinkVPCId"] then M.AssertXmlStringMaxLen255(struct["ClassicLinkVPCId"]) end
-	if struct["EbsOptimized"] then M.AssertEbsOptimized(struct["EbsOptimized"]) end
-	if struct["PlacementTenancy"] then M.AssertXmlStringMaxLen64(struct["PlacementTenancy"]) end
-	if struct["LaunchConfigurationARN"] then M.AssertResourceName(struct["LaunchConfigurationARN"]) end
-	if struct["InstanceMonitoring"] then M.AssertInstanceMonitoring(struct["InstanceMonitoring"]) end
-	if struct["ImageId"] then M.AssertXmlStringMaxLen255(struct["ImageId"]) end
-	if struct["CreatedTime"] then M.AssertTimestampType(struct["CreatedTime"]) end
-	if struct["BlockDeviceMappings"] then M.AssertBlockDeviceMappings(struct["BlockDeviceMappings"]) end
-	if struct["KeyName"] then M.AssertXmlStringMaxLen255(struct["KeyName"]) end
-	if struct["SecurityGroups"] then M.AssertSecurityGroups(struct["SecurityGroups"]) end
-	if struct["AssociatePublicIpAddress"] then M.AssertAssociatePublicIpAddress(struct["AssociatePublicIpAddress"]) end
-	if struct["LaunchConfigurationName"] then M.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
-	if struct["KernelId"] then M.AssertXmlStringMaxLen255(struct["KernelId"]) end
-	if struct["RamdiskId"] then M.AssertXmlStringMaxLen255(struct["RamdiskId"]) end
-	if struct["ClassicLinkVPCSecurityGroups"] then M.AssertClassicLinkVPCSecurityGroups(struct["ClassicLinkVPCSecurityGroups"]) end
-	if struct["InstanceType"] then M.AssertXmlStringMaxLen255(struct["InstanceType"]) end
-	if struct["SpotPrice"] then M.AssertSpotPrice(struct["SpotPrice"]) end
+	if struct["UserData"] then asserts.AssertXmlStringUserData(struct["UserData"]) end
+	if struct["IamInstanceProfile"] then asserts.AssertXmlStringMaxLen1600(struct["IamInstanceProfile"]) end
+	if struct["ClassicLinkVPCId"] then asserts.AssertXmlStringMaxLen255(struct["ClassicLinkVPCId"]) end
+	if struct["EbsOptimized"] then asserts.AssertEbsOptimized(struct["EbsOptimized"]) end
+	if struct["PlacementTenancy"] then asserts.AssertXmlStringMaxLen64(struct["PlacementTenancy"]) end
+	if struct["LaunchConfigurationARN"] then asserts.AssertResourceName(struct["LaunchConfigurationARN"]) end
+	if struct["InstanceMonitoring"] then asserts.AssertInstanceMonitoring(struct["InstanceMonitoring"]) end
+	if struct["ImageId"] then asserts.AssertXmlStringMaxLen255(struct["ImageId"]) end
+	if struct["CreatedTime"] then asserts.AssertTimestampType(struct["CreatedTime"]) end
+	if struct["BlockDeviceMappings"] then asserts.AssertBlockDeviceMappings(struct["BlockDeviceMappings"]) end
+	if struct["KeyName"] then asserts.AssertXmlStringMaxLen255(struct["KeyName"]) end
+	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
+	if struct["AssociatePublicIpAddress"] then asserts.AssertAssociatePublicIpAddress(struct["AssociatePublicIpAddress"]) end
+	if struct["LaunchConfigurationName"] then asserts.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
+	if struct["KernelId"] then asserts.AssertXmlStringMaxLen255(struct["KernelId"]) end
+	if struct["RamdiskId"] then asserts.AssertXmlStringMaxLen255(struct["RamdiskId"]) end
+	if struct["ClassicLinkVPCSecurityGroups"] then asserts.AssertClassicLinkVPCSecurityGroups(struct["ClassicLinkVPCSecurityGroups"]) end
+	if struct["InstanceType"] then asserts.AssertXmlStringMaxLen255(struct["InstanceType"]) end
+	if struct["SpotPrice"] then asserts.AssertSpotPrice(struct["SpotPrice"]) end
 	for k,_ in pairs(struct) do
-		assert(LaunchConfiguration_keys[k], "LaunchConfiguration contains unknown key " .. tostring(k))
+		assert(keys.LaunchConfiguration[k], "LaunchConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LaunchConfiguration
 -- <p>Describes a launch configuration.</p>
--- @param UserData [XmlStringUserData] <p>The user data available to the instances.</p>
--- @param IamInstanceProfile [XmlStringMaxLen1600] <p>The name or Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.</p>
--- @param ClassicLinkVPCId [XmlStringMaxLen255] <p>The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter can only be used if you are launching EC2-Classic instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param EbsOptimized [EbsOptimized] <p>Controls whether the instance is optimized for EBS I/O (<code>true</code>) or not (<code>false</code>).</p>
--- @param PlacementTenancy [XmlStringMaxLen64] <p>The tenancy of the instance, either <code>default</code> or <code>dedicated</code>. An instance with <code>dedicated</code> tenancy runs in an isolated, single-tenant hardware and can only be launched into a VPC.</p>
--- @param LaunchConfigurationARN [ResourceName] <p>The Amazon Resource Name (ARN) of the launch configuration.</p>
--- @param InstanceMonitoring [InstanceMonitoring] <p>Controls whether instances in this group are launched with detailed (<code>true</code>) or basic (<code>false</code>) monitoring.</p>
--- @param ImageId [XmlStringMaxLen255] <p>The ID of the Amazon Machine Image (AMI).</p>
--- @param CreatedTime [TimestampType] <p>The creation date and time for the launch configuration.</p>
--- @param BlockDeviceMappings [BlockDeviceMappings] <p>A block device mapping, which specifies the block devices for the instance.</p>
--- @param KeyName [XmlStringMaxLen255] <p>The name of the key pair.</p>
--- @param SecurityGroups [SecurityGroups] <p>The security groups to associate with the instances.</p>
--- @param AssociatePublicIpAddress [AssociatePublicIpAddress] <p>[EC2-VPC] Indicates whether to assign a public IP address to each instance.</p>
--- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the launch configuration.</p>
--- @param KernelId [XmlStringMaxLen255] <p>The ID of the kernel associated with the AMI.</p>
--- @param RamdiskId [XmlStringMaxLen255] <p>The ID of the RAM disk associated with the AMI.</p>
--- @param ClassicLinkVPCSecurityGroups [ClassicLinkVPCSecurityGroups] <p>The IDs of one or more security groups for the VPC specified in <code>ClassicLinkVPCId</code>. This parameter is required if you specify a ClassicLink-enabled VPC, and cannot be used otherwise. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param InstanceType [XmlStringMaxLen255] <p>The instance type for the instances.</p>
--- @param SpotPrice [SpotPrice] <p>The price to bid when launching Spot Instances.</p>
+-- @param _UserData [XmlStringUserData] <p>The user data available to the instances.</p>
+-- @param _IamInstanceProfile [XmlStringMaxLen1600] <p>The name or Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.</p>
+-- @param _ClassicLinkVPCId [XmlStringMaxLen255] <p>The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter can only be used if you are launching EC2-Classic instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _EbsOptimized [EbsOptimized] <p>Controls whether the instance is optimized for EBS I/O (<code>true</code>) or not (<code>false</code>).</p>
+-- @param _PlacementTenancy [XmlStringMaxLen64] <p>The tenancy of the instance, either <code>default</code> or <code>dedicated</code>. An instance with <code>dedicated</code> tenancy runs in an isolated, single-tenant hardware and can only be launched into a VPC.</p>
+-- @param _LaunchConfigurationARN [ResourceName] <p>The Amazon Resource Name (ARN) of the launch configuration.</p>
+-- @param _InstanceMonitoring [InstanceMonitoring] <p>Controls whether instances in this group are launched with detailed (<code>true</code>) or basic (<code>false</code>) monitoring.</p>
+-- @param _ImageId [XmlStringMaxLen255] <p>The ID of the Amazon Machine Image (AMI).</p>
+-- @param _CreatedTime [TimestampType] <p>The creation date and time for the launch configuration.</p>
+-- @param _BlockDeviceMappings [BlockDeviceMappings] <p>A block device mapping, which specifies the block devices for the instance.</p>
+-- @param _KeyName [XmlStringMaxLen255] <p>The name of the key pair.</p>
+-- @param _SecurityGroups [SecurityGroups] <p>The security groups to associate with the instances.</p>
+-- @param _AssociatePublicIpAddress [AssociatePublicIpAddress] <p>[EC2-VPC] Indicates whether to assign a public IP address to each instance.</p>
+-- @param _LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the launch configuration.</p>
+-- @param _KernelId [XmlStringMaxLen255] <p>The ID of the kernel associated with the AMI.</p>
+-- @param _RamdiskId [XmlStringMaxLen255] <p>The ID of the RAM disk associated with the AMI.</p>
+-- @param _ClassicLinkVPCSecurityGroups [ClassicLinkVPCSecurityGroups] <p>The IDs of one or more security groups for the VPC specified in <code>ClassicLinkVPCId</code>. This parameter is required if you specify a ClassicLink-enabled VPC, and cannot be used otherwise. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _InstanceType [XmlStringMaxLen255] <p>The instance type for the instances.</p>
+-- @param _SpotPrice [SpotPrice] <p>The price to bid when launching Spot Instances.</p>
 -- Required parameter: LaunchConfigurationName
 -- Required parameter: ImageId
 -- Required parameter: InstanceType
 -- Required parameter: CreatedTime
-function M.LaunchConfiguration(UserData, IamInstanceProfile, ClassicLinkVPCId, EbsOptimized, PlacementTenancy, LaunchConfigurationARN, InstanceMonitoring, ImageId, CreatedTime, BlockDeviceMappings, KeyName, SecurityGroups, AssociatePublicIpAddress, LaunchConfigurationName, KernelId, RamdiskId, ClassicLinkVPCSecurityGroups, InstanceType, SpotPrice, ...)
+function M.LaunchConfiguration(_UserData, _IamInstanceProfile, _ClassicLinkVPCId, _EbsOptimized, _PlacementTenancy, _LaunchConfigurationARN, _InstanceMonitoring, _ImageId, _CreatedTime, _BlockDeviceMappings, _KeyName, _SecurityGroups, _AssociatePublicIpAddress, _LaunchConfigurationName, _KernelId, _RamdiskId, _ClassicLinkVPCSecurityGroups, _InstanceType, _SpotPrice, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfiguration")
 	local t = { 
-		["UserData"] = UserData,
-		["IamInstanceProfile"] = IamInstanceProfile,
-		["ClassicLinkVPCId"] = ClassicLinkVPCId,
-		["EbsOptimized"] = EbsOptimized,
-		["PlacementTenancy"] = PlacementTenancy,
-		["LaunchConfigurationARN"] = LaunchConfigurationARN,
-		["InstanceMonitoring"] = InstanceMonitoring,
-		["ImageId"] = ImageId,
-		["CreatedTime"] = CreatedTime,
-		["BlockDeviceMappings"] = BlockDeviceMappings,
-		["KeyName"] = KeyName,
-		["SecurityGroups"] = SecurityGroups,
-		["AssociatePublicIpAddress"] = AssociatePublicIpAddress,
-		["LaunchConfigurationName"] = LaunchConfigurationName,
-		["KernelId"] = KernelId,
-		["RamdiskId"] = RamdiskId,
-		["ClassicLinkVPCSecurityGroups"] = ClassicLinkVPCSecurityGroups,
-		["InstanceType"] = InstanceType,
-		["SpotPrice"] = SpotPrice,
+		["UserData"] = _UserData,
+		["IamInstanceProfile"] = _IamInstanceProfile,
+		["ClassicLinkVPCId"] = _ClassicLinkVPCId,
+		["EbsOptimized"] = _EbsOptimized,
+		["PlacementTenancy"] = _PlacementTenancy,
+		["LaunchConfigurationARN"] = _LaunchConfigurationARN,
+		["InstanceMonitoring"] = _InstanceMonitoring,
+		["ImageId"] = _ImageId,
+		["CreatedTime"] = _CreatedTime,
+		["BlockDeviceMappings"] = _BlockDeviceMappings,
+		["KeyName"] = _KeyName,
+		["SecurityGroups"] = _SecurityGroups,
+		["AssociatePublicIpAddress"] = _AssociatePublicIpAddress,
+		["LaunchConfigurationName"] = _LaunchConfigurationName,
+		["KernelId"] = _KernelId,
+		["RamdiskId"] = _RamdiskId,
+		["ClassicLinkVPCSecurityGroups"] = _ClassicLinkVPCSecurityGroups,
+		["InstanceType"] = _InstanceType,
+		["SpotPrice"] = _SpotPrice,
 	}
-	M.AssertLaunchConfiguration(t)
+	asserts.AssertLaunchConfiguration(t)
 	return t
 end
 
-local ScalingProcessQuery_keys = { "AutoScalingGroupName" = true, "ScalingProcesses" = true, nil }
+keys.ScalingProcessQuery = { ["AutoScalingGroupName"] = true, ["ScalingProcesses"] = true, nil }
 
-function M.AssertScalingProcessQuery(struct)
+function asserts.AssertScalingProcessQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScalingProcessQuery to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["ScalingProcesses"] then M.AssertProcessNames(struct["ScalingProcesses"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["ScalingProcesses"] then asserts.AssertProcessNames(struct["ScalingProcesses"]) end
 	for k,_ in pairs(struct) do
-		assert(ScalingProcessQuery_keys[k], "ScalingProcessQuery contains unknown key " .. tostring(k))
+		assert(keys.ScalingProcessQuery[k], "ScalingProcessQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScalingProcessQuery
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
--- @param ScalingProcesses [ProcessNames] <p>One or more of the following processes. If you omit this parameter, all processes are specified.</p> <ul> <li> <p> <code>Launch</code> </p> </li> <li> <p> <code>Terminate</code> </p> </li> <li> <p> <code>HealthCheck</code> </p> </li> <li> <p> <code>ReplaceUnhealthy</code> </p> </li> <li> <p> <code>AZRebalance</code> </p> </li> <li> <p> <code>AlarmNotification</code> </p> </li> <li> <p> <code>ScheduledActions</code> </p> </li> <li> <p> <code>AddToLoadBalancer</code> </p> </li> </ul>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
+-- @param _ScalingProcesses [ProcessNames] <p>One or more of the following processes. If you omit this parameter, all processes are specified.</p> <ul> <li> <p> <code>Launch</code> </p> </li> <li> <p> <code>Terminate</code> </p> </li> <li> <p> <code>HealthCheck</code> </p> </li> <li> <p> <code>ReplaceUnhealthy</code> </p> </li> <li> <p> <code>AZRebalance</code> </p> </li> <li> <p> <code>AlarmNotification</code> </p> </li> <li> <p> <code>ScheduledActions</code> </p> </li> <li> <p> <code>AddToLoadBalancer</code> </p> </li> </ul>
 -- Required parameter: AutoScalingGroupName
-function M.ScalingProcessQuery(AutoScalingGroupName, ScalingProcesses, ...)
+function M.ScalingProcessQuery(_AutoScalingGroupName, _ScalingProcesses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingProcessQuery")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["ScalingProcesses"] = ScalingProcesses,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["ScalingProcesses"] = _ScalingProcesses,
 	}
-	M.AssertScalingProcessQuery(t)
+	asserts.AssertScalingProcessQuery(t)
 	return t
 end
 
-local DescribeAccountLimitsAnswer_keys = { "NumberOfLaunchConfigurations" = true, "MaxNumberOfLaunchConfigurations" = true, "NumberOfAutoScalingGroups" = true, "MaxNumberOfAutoScalingGroups" = true, nil }
+keys.DescribeAccountLimitsAnswer = { ["NumberOfLaunchConfigurations"] = true, ["MaxNumberOfLaunchConfigurations"] = true, ["NumberOfAutoScalingGroups"] = true, ["MaxNumberOfAutoScalingGroups"] = true, nil }
 
-function M.AssertDescribeAccountLimitsAnswer(struct)
+function asserts.AssertDescribeAccountLimitsAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAccountLimitsAnswer to be of type 'table'")
-	if struct["NumberOfLaunchConfigurations"] then M.AssertNumberOfLaunchConfigurations(struct["NumberOfLaunchConfigurations"]) end
-	if struct["MaxNumberOfLaunchConfigurations"] then M.AssertMaxNumberOfLaunchConfigurations(struct["MaxNumberOfLaunchConfigurations"]) end
-	if struct["NumberOfAutoScalingGroups"] then M.AssertNumberOfAutoScalingGroups(struct["NumberOfAutoScalingGroups"]) end
-	if struct["MaxNumberOfAutoScalingGroups"] then M.AssertMaxNumberOfAutoScalingGroups(struct["MaxNumberOfAutoScalingGroups"]) end
+	if struct["NumberOfLaunchConfigurations"] then asserts.AssertNumberOfLaunchConfigurations(struct["NumberOfLaunchConfigurations"]) end
+	if struct["MaxNumberOfLaunchConfigurations"] then asserts.AssertMaxNumberOfLaunchConfigurations(struct["MaxNumberOfLaunchConfigurations"]) end
+	if struct["NumberOfAutoScalingGroups"] then asserts.AssertNumberOfAutoScalingGroups(struct["NumberOfAutoScalingGroups"]) end
+	if struct["MaxNumberOfAutoScalingGroups"] then asserts.AssertMaxNumberOfAutoScalingGroups(struct["MaxNumberOfAutoScalingGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAccountLimitsAnswer_keys[k], "DescribeAccountLimitsAnswer contains unknown key " .. tostring(k))
+		assert(keys.DescribeAccountLimitsAnswer[k], "DescribeAccountLimitsAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAccountLimitsAnswer
 --  
--- @param NumberOfLaunchConfigurations [NumberOfLaunchConfigurations] <p>The current number of launch configurations for your AWS account.</p>
--- @param MaxNumberOfLaunchConfigurations [MaxNumberOfLaunchConfigurations] <p>The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per region.</p>
--- @param NumberOfAutoScalingGroups [NumberOfAutoScalingGroups] <p>The current number of groups for your AWS account.</p>
--- @param MaxNumberOfAutoScalingGroups [MaxNumberOfAutoScalingGroups] <p>The maximum number of groups allowed for your AWS account. The default limit is 20 per region.</p>
-function M.DescribeAccountLimitsAnswer(NumberOfLaunchConfigurations, MaxNumberOfLaunchConfigurations, NumberOfAutoScalingGroups, MaxNumberOfAutoScalingGroups, ...)
+-- @param _NumberOfLaunchConfigurations [NumberOfLaunchConfigurations] <p>The current number of launch configurations for your AWS account.</p>
+-- @param _MaxNumberOfLaunchConfigurations [MaxNumberOfLaunchConfigurations] <p>The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per region.</p>
+-- @param _NumberOfAutoScalingGroups [NumberOfAutoScalingGroups] <p>The current number of groups for your AWS account.</p>
+-- @param _MaxNumberOfAutoScalingGroups [MaxNumberOfAutoScalingGroups] <p>The maximum number of groups allowed for your AWS account. The default limit is 20 per region.</p>
+function M.DescribeAccountLimitsAnswer(_NumberOfLaunchConfigurations, _MaxNumberOfLaunchConfigurations, _NumberOfAutoScalingGroups, _MaxNumberOfAutoScalingGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsAnswer")
 	local t = { 
-		["NumberOfLaunchConfigurations"] = NumberOfLaunchConfigurations,
-		["MaxNumberOfLaunchConfigurations"] = MaxNumberOfLaunchConfigurations,
-		["NumberOfAutoScalingGroups"] = NumberOfAutoScalingGroups,
-		["MaxNumberOfAutoScalingGroups"] = MaxNumberOfAutoScalingGroups,
+		["NumberOfLaunchConfigurations"] = _NumberOfLaunchConfigurations,
+		["MaxNumberOfLaunchConfigurations"] = _MaxNumberOfLaunchConfigurations,
+		["NumberOfAutoScalingGroups"] = _NumberOfAutoScalingGroups,
+		["MaxNumberOfAutoScalingGroups"] = _MaxNumberOfAutoScalingGroups,
 	}
-	M.AssertDescribeAccountLimitsAnswer(t)
+	asserts.AssertDescribeAccountLimitsAnswer(t)
 	return t
 end
 
-local TagDescription_keys = { "ResourceType" = true, "ResourceId" = true, "PropagateAtLaunch" = true, "Value" = true, "Key" = true, nil }
+keys.TagDescription = { ["ResourceType"] = true, ["ResourceId"] = true, ["PropagateAtLaunch"] = true, ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTagDescription(struct)
+function asserts.AssertTagDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagDescription to be of type 'table'")
-	if struct["ResourceType"] then M.AssertXmlString(struct["ResourceType"]) end
-	if struct["ResourceId"] then M.AssertXmlString(struct["ResourceId"]) end
-	if struct["PropagateAtLaunch"] then M.AssertPropagateAtLaunch(struct["PropagateAtLaunch"]) end
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["ResourceType"] then asserts.AssertXmlString(struct["ResourceType"]) end
+	if struct["ResourceId"] then asserts.AssertXmlString(struct["ResourceId"]) end
+	if struct["PropagateAtLaunch"] then asserts.AssertPropagateAtLaunch(struct["PropagateAtLaunch"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(TagDescription_keys[k], "TagDescription contains unknown key " .. tostring(k))
+		assert(keys.TagDescription[k], "TagDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagDescription
 -- <p>Describes a tag for an Auto Scaling group.</p>
--- @param ResourceType [XmlString] <p>The type of resource. The only supported value is <code>auto-scaling-group</code>.</p>
--- @param ResourceId [XmlString] <p>The name of the group.</p>
--- @param PropagateAtLaunch [PropagateAtLaunch] <p>Determines whether the tag is added to new instances as they are launched in the group.</p>
--- @param Value [TagValue] <p>The tag value.</p>
--- @param Key [TagKey] <p>The tag key.</p>
-function M.TagDescription(ResourceType, ResourceId, PropagateAtLaunch, Value, Key, ...)
+-- @param _ResourceType [XmlString] <p>The type of resource. The only supported value is <code>auto-scaling-group</code>.</p>
+-- @param _ResourceId [XmlString] <p>The name of the group.</p>
+-- @param _PropagateAtLaunch [PropagateAtLaunch] <p>Determines whether the tag is added to new instances as they are launched in the group.</p>
+-- @param _Value [TagValue] <p>The tag value.</p>
+-- @param _Key [TagKey] <p>The tag key.</p>
+function M.TagDescription(_ResourceType, _ResourceId, _PropagateAtLaunch, _Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagDescription")
 	local t = { 
-		["ResourceType"] = ResourceType,
-		["ResourceId"] = ResourceId,
-		["PropagateAtLaunch"] = PropagateAtLaunch,
-		["Value"] = Value,
-		["Key"] = Key,
+		["ResourceType"] = _ResourceType,
+		["ResourceId"] = _ResourceId,
+		["PropagateAtLaunch"] = _PropagateAtLaunch,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTagDescription(t)
+	asserts.AssertTagDescription(t)
 	return t
 end
 
-local Tag_keys = { "ResourceType" = true, "ResourceId" = true, "PropagateAtLaunch" = true, "Value" = true, "Key" = true, nil }
+keys.Tag = { ["ResourceType"] = true, ["ResourceId"] = true, ["PropagateAtLaunch"] = true, ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
-	if struct["ResourceType"] then M.AssertXmlString(struct["ResourceType"]) end
-	if struct["ResourceId"] then M.AssertXmlString(struct["ResourceId"]) end
-	if struct["PropagateAtLaunch"] then M.AssertPropagateAtLaunch(struct["PropagateAtLaunch"]) end
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["ResourceType"] then asserts.AssertXmlString(struct["ResourceType"]) end
+	if struct["ResourceId"] then asserts.AssertXmlString(struct["ResourceId"]) end
+	if struct["PropagateAtLaunch"] then asserts.AssertPropagateAtLaunch(struct["PropagateAtLaunch"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>Describes a tag for an Auto Scaling group.</p>
--- @param ResourceType [XmlString] <p>The type of resource. The only supported value is <code>auto-scaling-group</code>.</p>
--- @param ResourceId [XmlString] <p>The name of the group.</p>
--- @param PropagateAtLaunch [PropagateAtLaunch] <p>Determines whether the tag is added to new instances as they are launched in the group.</p>
--- @param Value [TagValue] <p>The tag value.</p>
--- @param Key [TagKey] <p>The tag key.</p>
+-- @param _ResourceType [XmlString] <p>The type of resource. The only supported value is <code>auto-scaling-group</code>.</p>
+-- @param _ResourceId [XmlString] <p>The name of the group.</p>
+-- @param _PropagateAtLaunch [PropagateAtLaunch] <p>Determines whether the tag is added to new instances as they are launched in the group.</p>
+-- @param _Value [TagValue] <p>The tag value.</p>
+-- @param _Key [TagKey] <p>The tag key.</p>
 -- Required parameter: Key
-function M.Tag(ResourceType, ResourceId, PropagateAtLaunch, Value, Key, ...)
+function M.Tag(_ResourceType, _ResourceId, _PropagateAtLaunch, _Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["ResourceType"] = ResourceType,
-		["ResourceId"] = ResourceId,
-		["PropagateAtLaunch"] = PropagateAtLaunch,
-		["Value"] = Value,
-		["Key"] = Key,
+		["ResourceType"] = _ResourceType,
+		["ResourceId"] = _ResourceId,
+		["PropagateAtLaunch"] = _PropagateAtLaunch,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local CreateOrUpdateTagsType_keys = { "Tags" = true, nil }
+keys.CreateOrUpdateTagsType = { ["Tags"] = true, nil }
 
-function M.AssertCreateOrUpdateTagsType(struct)
+function asserts.AssertCreateOrUpdateTagsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateOrUpdateTagsType to be of type 'table'")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["Tags"] then M.AssertTags(struct["Tags"]) end
+	if struct["Tags"] then asserts.AssertTags(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateOrUpdateTagsType_keys[k], "CreateOrUpdateTagsType contains unknown key " .. tostring(k))
+		assert(keys.CreateOrUpdateTagsType[k], "CreateOrUpdateTagsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateOrUpdateTagsType
 --  
--- @param Tags [Tags] <p>One or more tags.</p>
+-- @param _Tags [Tags] <p>One or more tags.</p>
 -- Required parameter: Tags
-function M.CreateOrUpdateTagsType(Tags, ...)
+function M.CreateOrUpdateTagsType(_Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateOrUpdateTagsType")
 	local t = { 
-		["Tags"] = Tags,
+		["Tags"] = _Tags,
 	}
-	M.AssertCreateOrUpdateTagsType(t)
+	asserts.AssertCreateOrUpdateTagsType(t)
 	return t
 end
 
-local Ebs_keys = { "VolumeSize" = true, "Encrypted" = true, "VolumeType" = true, "DeleteOnTermination" = true, "SnapshotId" = true, "Iops" = true, nil }
+keys.Ebs = { ["VolumeSize"] = true, ["Encrypted"] = true, ["VolumeType"] = true, ["DeleteOnTermination"] = true, ["SnapshotId"] = true, ["Iops"] = true, nil }
 
-function M.AssertEbs(struct)
+function asserts.AssertEbs(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Ebs to be of type 'table'")
-	if struct["VolumeSize"] then M.AssertBlockDeviceEbsVolumeSize(struct["VolumeSize"]) end
-	if struct["Encrypted"] then M.AssertBlockDeviceEbsEncrypted(struct["Encrypted"]) end
-	if struct["VolumeType"] then M.AssertBlockDeviceEbsVolumeType(struct["VolumeType"]) end
-	if struct["DeleteOnTermination"] then M.AssertBlockDeviceEbsDeleteOnTermination(struct["DeleteOnTermination"]) end
-	if struct["SnapshotId"] then M.AssertXmlStringMaxLen255(struct["SnapshotId"]) end
-	if struct["Iops"] then M.AssertBlockDeviceEbsIops(struct["Iops"]) end
+	if struct["VolumeSize"] then asserts.AssertBlockDeviceEbsVolumeSize(struct["VolumeSize"]) end
+	if struct["Encrypted"] then asserts.AssertBlockDeviceEbsEncrypted(struct["Encrypted"]) end
+	if struct["VolumeType"] then asserts.AssertBlockDeviceEbsVolumeType(struct["VolumeType"]) end
+	if struct["DeleteOnTermination"] then asserts.AssertBlockDeviceEbsDeleteOnTermination(struct["DeleteOnTermination"]) end
+	if struct["SnapshotId"] then asserts.AssertXmlStringMaxLen255(struct["SnapshotId"]) end
+	if struct["Iops"] then asserts.AssertBlockDeviceEbsIops(struct["Iops"]) end
 	for k,_ in pairs(struct) do
-		assert(Ebs_keys[k], "Ebs contains unknown key " .. tostring(k))
+		assert(keys.Ebs[k], "Ebs contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Ebs
 -- <p>Describes an Amazon EBS volume.</p>
--- @param VolumeSize [BlockDeviceEbsVolumeSize] <p>The volume size, in GiB. For <code>standard</code> volumes, specify a value from 1 to 1,024. For <code>io1</code> volumes, specify a value from 4 to 16,384. For <code>gp2</code> volumes, specify a value from 1 to 16,384. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.</p> <p>Default: If you create a volume from a snapshot and you don't specify a volume size, the default is the snapshot size.</p>
--- @param Encrypted [BlockDeviceEbsEncrypted] <p>Indicates whether the volume should be encrypted. Encrypted EBS volumes must be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or an unencrypted volume from an encrypted snapshot. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param VolumeType [BlockDeviceEbsVolumeType] <p>The volume type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon EBS Volume Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>Valid values: <code>standard</code> | <code>io1</code> | <code>gp2</code> </p> <p>Default: <code>standard</code> </p>
--- @param DeleteOnTermination [BlockDeviceEbsDeleteOnTermination] <p>Indicates whether the volume is deleted on instance termination.</p> <p>Default: <code>true</code> </p>
--- @param SnapshotId [XmlStringMaxLen255] <p>The ID of the snapshot.</p>
--- @param Iops [BlockDeviceEbsIops] <p>The number of I/O operations per second (IOPS) to provision for the volume.</p> <p>Constraint: Required when the volume type is <code>io1</code>.</p>
-function M.Ebs(VolumeSize, Encrypted, VolumeType, DeleteOnTermination, SnapshotId, Iops, ...)
+-- @param _VolumeSize [BlockDeviceEbsVolumeSize] <p>The volume size, in GiB. For <code>standard</code> volumes, specify a value from 1 to 1,024. For <code>io1</code> volumes, specify a value from 4 to 16,384. For <code>gp2</code> volumes, specify a value from 1 to 16,384. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.</p> <p>Default: If you create a volume from a snapshot and you don't specify a volume size, the default is the snapshot size.</p>
+-- @param _Encrypted [BlockDeviceEbsEncrypted] <p>Indicates whether the volume should be encrypted. Encrypted EBS volumes must be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or an unencrypted volume from an encrypted snapshot. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _VolumeType [BlockDeviceEbsVolumeType] <p>The volume type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon EBS Volume Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>Valid values: <code>standard</code> | <code>io1</code> | <code>gp2</code> </p> <p>Default: <code>standard</code> </p>
+-- @param _DeleteOnTermination [BlockDeviceEbsDeleteOnTermination] <p>Indicates whether the volume is deleted on instance termination.</p> <p>Default: <code>true</code> </p>
+-- @param _SnapshotId [XmlStringMaxLen255] <p>The ID of the snapshot.</p>
+-- @param _Iops [BlockDeviceEbsIops] <p>The number of I/O operations per second (IOPS) to provision for the volume.</p> <p>Constraint: Required when the volume type is <code>io1</code>.</p>
+function M.Ebs(_VolumeSize, _Encrypted, _VolumeType, _DeleteOnTermination, _SnapshotId, _Iops, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Ebs")
 	local t = { 
-		["VolumeSize"] = VolumeSize,
-		["Encrypted"] = Encrypted,
-		["VolumeType"] = VolumeType,
-		["DeleteOnTermination"] = DeleteOnTermination,
-		["SnapshotId"] = SnapshotId,
-		["Iops"] = Iops,
+		["VolumeSize"] = _VolumeSize,
+		["Encrypted"] = _Encrypted,
+		["VolumeType"] = _VolumeType,
+		["DeleteOnTermination"] = _DeleteOnTermination,
+		["SnapshotId"] = _SnapshotId,
+		["Iops"] = _Iops,
 	}
-	M.AssertEbs(t)
+	asserts.AssertEbs(t)
 	return t
 end
 
-local ExitStandbyQuery_keys = { "AutoScalingGroupName" = true, "InstanceIds" = true, nil }
+keys.ExitStandbyQuery = { ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
 
-function M.AssertExitStandbyQuery(struct)
+function asserts.AssertExitStandbyQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExitStandbyQuery to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["InstanceIds"] then M.AssertInstanceIds(struct["InstanceIds"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["InstanceIds"] then asserts.AssertInstanceIds(struct["InstanceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(ExitStandbyQuery_keys[k], "ExitStandbyQuery contains unknown key " .. tostring(k))
+		assert(keys.ExitStandbyQuery[k], "ExitStandbyQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExitStandbyQuery
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
--- @param InstanceIds [InstanceIds] <p>One or more instance IDs. You must specify at least one instance ID.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _InstanceIds [InstanceIds] <p>One or more instance IDs. You must specify at least one instance ID.</p>
 -- Required parameter: AutoScalingGroupName
-function M.ExitStandbyQuery(AutoScalingGroupName, InstanceIds, ...)
+function M.ExitStandbyQuery(_AutoScalingGroupName, _InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExitStandbyQuery")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["InstanceIds"] = InstanceIds,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["InstanceIds"] = _InstanceIds,
 	}
-	M.AssertExitStandbyQuery(t)
+	asserts.AssertExitStandbyQuery(t)
 	return t
 end
 
-local DescribeMetricCollectionTypesAnswer_keys = { "Metrics" = true, "Granularities" = true, nil }
+keys.DescribeMetricCollectionTypesAnswer = { ["Metrics"] = true, ["Granularities"] = true, nil }
 
-function M.AssertDescribeMetricCollectionTypesAnswer(struct)
+function asserts.AssertDescribeMetricCollectionTypesAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeMetricCollectionTypesAnswer to be of type 'table'")
-	if struct["Metrics"] then M.AssertMetricCollectionTypes(struct["Metrics"]) end
-	if struct["Granularities"] then M.AssertMetricGranularityTypes(struct["Granularities"]) end
+	if struct["Metrics"] then asserts.AssertMetricCollectionTypes(struct["Metrics"]) end
+	if struct["Granularities"] then asserts.AssertMetricGranularityTypes(struct["Granularities"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeMetricCollectionTypesAnswer_keys[k], "DescribeMetricCollectionTypesAnswer contains unknown key " .. tostring(k))
+		assert(keys.DescribeMetricCollectionTypesAnswer[k], "DescribeMetricCollectionTypesAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeMetricCollectionTypesAnswer
 --  
--- @param Metrics [MetricCollectionTypes] <p>One or more metrics.</p>
--- @param Granularities [MetricGranularityTypes] <p>The granularities for the metrics.</p>
-function M.DescribeMetricCollectionTypesAnswer(Metrics, Granularities, ...)
+-- @param _Metrics [MetricCollectionTypes] <p>One or more metrics.</p>
+-- @param _Granularities [MetricGranularityTypes] <p>The granularities for the metrics.</p>
+function M.DescribeMetricCollectionTypesAnswer(_Metrics, _Granularities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMetricCollectionTypesAnswer")
 	local t = { 
-		["Metrics"] = Metrics,
-		["Granularities"] = Granularities,
+		["Metrics"] = _Metrics,
+		["Granularities"] = _Granularities,
 	}
-	M.AssertDescribeMetricCollectionTypesAnswer(t)
+	asserts.AssertDescribeMetricCollectionTypesAnswer(t)
 	return t
 end
 
-local DeleteTagsType_keys = { "Tags" = true, nil }
+keys.DeleteTagsType = { ["Tags"] = true, nil }
 
-function M.AssertDeleteTagsType(struct)
+function asserts.AssertDeleteTagsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTagsType to be of type 'table'")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["Tags"] then M.AssertTags(struct["Tags"]) end
+	if struct["Tags"] then asserts.AssertTags(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteTagsType_keys[k], "DeleteTagsType contains unknown key " .. tostring(k))
+		assert(keys.DeleteTagsType[k], "DeleteTagsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteTagsType
 --  
--- @param Tags [Tags] <p>One or more tags.</p>
+-- @param _Tags [Tags] <p>One or more tags.</p>
 -- Required parameter: Tags
-function M.DeleteTagsType(Tags, ...)
+function M.DeleteTagsType(_Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsType")
 	local t = { 
-		["Tags"] = Tags,
+		["Tags"] = _Tags,
 	}
-	M.AssertDeleteTagsType(t)
+	asserts.AssertDeleteTagsType(t)
 	return t
 end
 
-local AlreadyExistsFault_keys = { "message" = true, nil }
+keys.AlreadyExistsFault = { ["message"] = true, nil }
 
-function M.AssertAlreadyExistsFault(struct)
+function asserts.AssertAlreadyExistsFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AlreadyExistsFault to be of type 'table'")
-	if struct["message"] then M.AssertXmlStringMaxLen255(struct["message"]) end
+	if struct["message"] then asserts.AssertXmlStringMaxLen255(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AlreadyExistsFault_keys[k], "AlreadyExistsFault contains unknown key " .. tostring(k))
+		assert(keys.AlreadyExistsFault[k], "AlreadyExistsFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AlreadyExistsFault
 -- <p>You already have an Auto Scaling group or launch configuration with this name.</p>
--- @param message [XmlStringMaxLen255] <p/>
-function M.AlreadyExistsFault(message, ...)
+-- @param _message [XmlStringMaxLen255] <p/>
+function M.AlreadyExistsFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyExistsFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAlreadyExistsFault(t)
+	asserts.AssertAlreadyExistsFault(t)
 	return t
 end
 
-local AutoScalingGroup_keys = { "PlacementGroup" = true, "VPCZoneIdentifier" = true, "LoadBalancerNames" = true, "CreatedTime" = true, "Status" = true, "AutoScalingGroupARN" = true, "SuspendedProcesses" = true, "Tags" = true, "MaxSize" = true, "TerminationPolicies" = true, "TargetGroupARNs" = true, "HealthCheckType" = true, "AutoScalingGroupName" = true, "MinSize" = true, "LaunchConfigurationName" = true, "HealthCheckGracePeriod" = true, "DesiredCapacity" = true, "EnabledMetrics" = true, "DefaultCooldown" = true, "Instances" = true, "AvailabilityZones" = true, "NewInstancesProtectedFromScaleIn" = true, nil }
+keys.AutoScalingGroup = { ["PlacementGroup"] = true, ["VPCZoneIdentifier"] = true, ["LoadBalancerNames"] = true, ["CreatedTime"] = true, ["Status"] = true, ["AutoScalingGroupARN"] = true, ["SuspendedProcesses"] = true, ["Tags"] = true, ["MaxSize"] = true, ["TerminationPolicies"] = true, ["TargetGroupARNs"] = true, ["HealthCheckType"] = true, ["AutoScalingGroupName"] = true, ["MinSize"] = true, ["LaunchConfigurationName"] = true, ["HealthCheckGracePeriod"] = true, ["DesiredCapacity"] = true, ["EnabledMetrics"] = true, ["DefaultCooldown"] = true, ["Instances"] = true, ["AvailabilityZones"] = true, ["NewInstancesProtectedFromScaleIn"] = true, nil }
 
-function M.AssertAutoScalingGroup(struct)
+function asserts.AssertAutoScalingGroup(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingGroup to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
@@ -810,57 +813,57 @@ function M.AssertAutoScalingGroup(struct)
 	assert(struct["AvailabilityZones"], "Expected key AvailabilityZones to exist in table")
 	assert(struct["HealthCheckType"], "Expected key HealthCheckType to exist in table")
 	assert(struct["CreatedTime"], "Expected key CreatedTime to exist in table")
-	if struct["PlacementGroup"] then M.AssertXmlStringMaxLen255(struct["PlacementGroup"]) end
-	if struct["VPCZoneIdentifier"] then M.AssertXmlStringMaxLen2047(struct["VPCZoneIdentifier"]) end
-	if struct["LoadBalancerNames"] then M.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
-	if struct["CreatedTime"] then M.AssertTimestampType(struct["CreatedTime"]) end
-	if struct["Status"] then M.AssertXmlStringMaxLen255(struct["Status"]) end
-	if struct["AutoScalingGroupARN"] then M.AssertResourceName(struct["AutoScalingGroupARN"]) end
-	if struct["SuspendedProcesses"] then M.AssertSuspendedProcesses(struct["SuspendedProcesses"]) end
-	if struct["Tags"] then M.AssertTagDescriptionList(struct["Tags"]) end
-	if struct["MaxSize"] then M.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
-	if struct["TerminationPolicies"] then M.AssertTerminationPolicies(struct["TerminationPolicies"]) end
-	if struct["TargetGroupARNs"] then M.AssertTargetGroupARNs(struct["TargetGroupARNs"]) end
-	if struct["HealthCheckType"] then M.AssertXmlStringMaxLen32(struct["HealthCheckType"]) end
-	if struct["AutoScalingGroupName"] then M.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
-	if struct["MinSize"] then M.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
-	if struct["LaunchConfigurationName"] then M.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
-	if struct["HealthCheckGracePeriod"] then M.AssertHealthCheckGracePeriod(struct["HealthCheckGracePeriod"]) end
-	if struct["DesiredCapacity"] then M.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
-	if struct["EnabledMetrics"] then M.AssertEnabledMetrics(struct["EnabledMetrics"]) end
-	if struct["DefaultCooldown"] then M.AssertCooldown(struct["DefaultCooldown"]) end
-	if struct["Instances"] then M.AssertInstances(struct["Instances"]) end
-	if struct["AvailabilityZones"] then M.AssertAvailabilityZones(struct["AvailabilityZones"]) end
-	if struct["NewInstancesProtectedFromScaleIn"] then M.AssertInstanceProtected(struct["NewInstancesProtectedFromScaleIn"]) end
+	if struct["PlacementGroup"] then asserts.AssertXmlStringMaxLen255(struct["PlacementGroup"]) end
+	if struct["VPCZoneIdentifier"] then asserts.AssertXmlStringMaxLen2047(struct["VPCZoneIdentifier"]) end
+	if struct["LoadBalancerNames"] then asserts.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
+	if struct["CreatedTime"] then asserts.AssertTimestampType(struct["CreatedTime"]) end
+	if struct["Status"] then asserts.AssertXmlStringMaxLen255(struct["Status"]) end
+	if struct["AutoScalingGroupARN"] then asserts.AssertResourceName(struct["AutoScalingGroupARN"]) end
+	if struct["SuspendedProcesses"] then asserts.AssertSuspendedProcesses(struct["SuspendedProcesses"]) end
+	if struct["Tags"] then asserts.AssertTagDescriptionList(struct["Tags"]) end
+	if struct["MaxSize"] then asserts.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
+	if struct["TerminationPolicies"] then asserts.AssertTerminationPolicies(struct["TerminationPolicies"]) end
+	if struct["TargetGroupARNs"] then asserts.AssertTargetGroupARNs(struct["TargetGroupARNs"]) end
+	if struct["HealthCheckType"] then asserts.AssertXmlStringMaxLen32(struct["HealthCheckType"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
+	if struct["MinSize"] then asserts.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
+	if struct["LaunchConfigurationName"] then asserts.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
+	if struct["HealthCheckGracePeriod"] then asserts.AssertHealthCheckGracePeriod(struct["HealthCheckGracePeriod"]) end
+	if struct["DesiredCapacity"] then asserts.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
+	if struct["EnabledMetrics"] then asserts.AssertEnabledMetrics(struct["EnabledMetrics"]) end
+	if struct["DefaultCooldown"] then asserts.AssertCooldown(struct["DefaultCooldown"]) end
+	if struct["Instances"] then asserts.AssertInstances(struct["Instances"]) end
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	if struct["NewInstancesProtectedFromScaleIn"] then asserts.AssertInstanceProtected(struct["NewInstancesProtectedFromScaleIn"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingGroup_keys[k], "AutoScalingGroup contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingGroup[k], "AutoScalingGroup contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingGroup
 -- <p>Describes an Auto Scaling group.</p>
--- @param PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param VPCZoneIdentifier [XmlStringMaxLen2047] <p>One or more subnet IDs, if applicable, separated by commas.</p> <p>If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the Availability Zones of the subnets match the values for <code>AvailabilityZones</code>.</p>
--- @param LoadBalancerNames [LoadBalancerNames] <p>One or more load balancers associated with the group.</p>
--- @param CreatedTime [TimestampType] <p>The date and time the group was created.</p>
--- @param Status [XmlStringMaxLen255] <p>The current state of the group when <a>DeleteAutoScalingGroup</a> is in progress.</p>
--- @param AutoScalingGroupARN [ResourceName] <p>The Amazon Resource Name (ARN) of the group.</p>
--- @param SuspendedProcesses [SuspendedProcesses] <p>The suspended processes associated with the group.</p>
--- @param Tags [TagDescriptionList] <p>The tags for the group.</p>
--- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
--- @param TerminationPolicies [TerminationPolicies] <p>The termination policies for the group.</p>
--- @param TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups for your load balancer.</p>
--- @param HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p>
--- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group.</p>
--- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
--- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the associated launch configuration.</p>
--- @param HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service.</p>
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The desired size of the group.</p>
--- @param EnabledMetrics [EnabledMetrics] <p>The metrics enabled for the group.</p>
--- @param DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.</p>
--- @param Instances [Instances] <p>The EC2 instances associated with the group.</p>
--- @param AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group.</p>
--- @param NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
+-- @param _PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _VPCZoneIdentifier [XmlStringMaxLen2047] <p>One or more subnet IDs, if applicable, separated by commas.</p> <p>If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the Availability Zones of the subnets match the values for <code>AvailabilityZones</code>.</p>
+-- @param _LoadBalancerNames [LoadBalancerNames] <p>One or more load balancers associated with the group.</p>
+-- @param _CreatedTime [TimestampType] <p>The date and time the group was created.</p>
+-- @param _Status [XmlStringMaxLen255] <p>The current state of the group when <a>DeleteAutoScalingGroup</a> is in progress.</p>
+-- @param _AutoScalingGroupARN [ResourceName] <p>The Amazon Resource Name (ARN) of the group.</p>
+-- @param _SuspendedProcesses [SuspendedProcesses] <p>The suspended processes associated with the group.</p>
+-- @param _Tags [TagDescriptionList] <p>The tags for the group.</p>
+-- @param _MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
+-- @param _TerminationPolicies [TerminationPolicies] <p>The termination policies for the group.</p>
+-- @param _TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups for your load balancer.</p>
+-- @param _HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p>
+-- @param _AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group.</p>
+-- @param _MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
+-- @param _LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the associated launch configuration.</p>
+-- @param _HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service.</p>
+-- @param _DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The desired size of the group.</p>
+-- @param _EnabledMetrics [EnabledMetrics] <p>The metrics enabled for the group.</p>
+-- @param _DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.</p>
+-- @param _Instances [Instances] <p>The EC2 instances associated with the group.</p>
+-- @param _AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group.</p>
+-- @param _NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: MinSize
 -- Required parameter: MaxSize
@@ -869,125 +872,125 @@ end
 -- Required parameter: AvailabilityZones
 -- Required parameter: HealthCheckType
 -- Required parameter: CreatedTime
-function M.AutoScalingGroup(PlacementGroup, VPCZoneIdentifier, LoadBalancerNames, CreatedTime, Status, AutoScalingGroupARN, SuspendedProcesses, Tags, MaxSize, TerminationPolicies, TargetGroupARNs, HealthCheckType, AutoScalingGroupName, MinSize, LaunchConfigurationName, HealthCheckGracePeriod, DesiredCapacity, EnabledMetrics, DefaultCooldown, Instances, AvailabilityZones, NewInstancesProtectedFromScaleIn, ...)
+function M.AutoScalingGroup(_PlacementGroup, _VPCZoneIdentifier, _LoadBalancerNames, _CreatedTime, _Status, _AutoScalingGroupARN, _SuspendedProcesses, _Tags, _MaxSize, _TerminationPolicies, _TargetGroupARNs, _HealthCheckType, _AutoScalingGroupName, _MinSize, _LaunchConfigurationName, _HealthCheckGracePeriod, _DesiredCapacity, _EnabledMetrics, _DefaultCooldown, _Instances, _AvailabilityZones, _NewInstancesProtectedFromScaleIn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingGroup")
 	local t = { 
-		["PlacementGroup"] = PlacementGroup,
-		["VPCZoneIdentifier"] = VPCZoneIdentifier,
-		["LoadBalancerNames"] = LoadBalancerNames,
-		["CreatedTime"] = CreatedTime,
-		["Status"] = Status,
-		["AutoScalingGroupARN"] = AutoScalingGroupARN,
-		["SuspendedProcesses"] = SuspendedProcesses,
-		["Tags"] = Tags,
-		["MaxSize"] = MaxSize,
-		["TerminationPolicies"] = TerminationPolicies,
-		["TargetGroupARNs"] = TargetGroupARNs,
-		["HealthCheckType"] = HealthCheckType,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["MinSize"] = MinSize,
-		["LaunchConfigurationName"] = LaunchConfigurationName,
-		["HealthCheckGracePeriod"] = HealthCheckGracePeriod,
-		["DesiredCapacity"] = DesiredCapacity,
-		["EnabledMetrics"] = EnabledMetrics,
-		["DefaultCooldown"] = DefaultCooldown,
-		["Instances"] = Instances,
-		["AvailabilityZones"] = AvailabilityZones,
-		["NewInstancesProtectedFromScaleIn"] = NewInstancesProtectedFromScaleIn,
+		["PlacementGroup"] = _PlacementGroup,
+		["VPCZoneIdentifier"] = _VPCZoneIdentifier,
+		["LoadBalancerNames"] = _LoadBalancerNames,
+		["CreatedTime"] = _CreatedTime,
+		["Status"] = _Status,
+		["AutoScalingGroupARN"] = _AutoScalingGroupARN,
+		["SuspendedProcesses"] = _SuspendedProcesses,
+		["Tags"] = _Tags,
+		["MaxSize"] = _MaxSize,
+		["TerminationPolicies"] = _TerminationPolicies,
+		["TargetGroupARNs"] = _TargetGroupARNs,
+		["HealthCheckType"] = _HealthCheckType,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["MinSize"] = _MinSize,
+		["LaunchConfigurationName"] = _LaunchConfigurationName,
+		["HealthCheckGracePeriod"] = _HealthCheckGracePeriod,
+		["DesiredCapacity"] = _DesiredCapacity,
+		["EnabledMetrics"] = _EnabledMetrics,
+		["DefaultCooldown"] = _DefaultCooldown,
+		["Instances"] = _Instances,
+		["AvailabilityZones"] = _AvailabilityZones,
+		["NewInstancesProtectedFromScaleIn"] = _NewInstancesProtectedFromScaleIn,
 	}
-	M.AssertAutoScalingGroup(t)
+	asserts.AssertAutoScalingGroup(t)
 	return t
 end
 
-local DetachInstancesAnswer_keys = { "Activities" = true, nil }
+keys.DetachInstancesAnswer = { ["Activities"] = true, nil }
 
-function M.AssertDetachInstancesAnswer(struct)
+function asserts.AssertDetachInstancesAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachInstancesAnswer to be of type 'table'")
-	if struct["Activities"] then M.AssertActivities(struct["Activities"]) end
+	if struct["Activities"] then asserts.AssertActivities(struct["Activities"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachInstancesAnswer_keys[k], "DetachInstancesAnswer contains unknown key " .. tostring(k))
+		assert(keys.DetachInstancesAnswer[k], "DetachInstancesAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachInstancesAnswer
 --  
--- @param Activities [Activities] <p>The activities related to detaching the instances from the Auto Scaling group.</p>
-function M.DetachInstancesAnswer(Activities, ...)
+-- @param _Activities [Activities] <p>The activities related to detaching the instances from the Auto Scaling group.</p>
+function M.DetachInstancesAnswer(_Activities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachInstancesAnswer")
 	local t = { 
-		["Activities"] = Activities,
+		["Activities"] = _Activities,
 	}
-	M.AssertDetachInstancesAnswer(t)
+	asserts.AssertDetachInstancesAnswer(t)
 	return t
 end
 
-local ScalingPolicy_keys = { "PolicyName" = true, "EstimatedInstanceWarmup" = true, "MinAdjustmentStep" = true, "MinAdjustmentMagnitude" = true, "MetricAggregationType" = true, "AutoScalingGroupName" = true, "PolicyARN" = true, "Cooldown" = true, "PolicyType" = true, "StepAdjustments" = true, "AdjustmentType" = true, "Alarms" = true, "ScalingAdjustment" = true, nil }
+keys.ScalingPolicy = { ["PolicyName"] = true, ["EstimatedInstanceWarmup"] = true, ["MinAdjustmentStep"] = true, ["MinAdjustmentMagnitude"] = true, ["MetricAggregationType"] = true, ["AutoScalingGroupName"] = true, ["PolicyARN"] = true, ["Cooldown"] = true, ["PolicyType"] = true, ["StepAdjustments"] = true, ["AdjustmentType"] = true, ["Alarms"] = true, ["ScalingAdjustment"] = true, nil }
 
-function M.AssertScalingPolicy(struct)
+function asserts.AssertScalingPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScalingPolicy to be of type 'table'")
-	if struct["PolicyName"] then M.AssertXmlStringMaxLen255(struct["PolicyName"]) end
-	if struct["EstimatedInstanceWarmup"] then M.AssertEstimatedInstanceWarmup(struct["EstimatedInstanceWarmup"]) end
-	if struct["MinAdjustmentStep"] then M.AssertMinAdjustmentStep(struct["MinAdjustmentStep"]) end
-	if struct["MinAdjustmentMagnitude"] then M.AssertMinAdjustmentMagnitude(struct["MinAdjustmentMagnitude"]) end
-	if struct["MetricAggregationType"] then M.AssertXmlStringMaxLen32(struct["MetricAggregationType"]) end
-	if struct["AutoScalingGroupName"] then M.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
-	if struct["PolicyARN"] then M.AssertResourceName(struct["PolicyARN"]) end
-	if struct["Cooldown"] then M.AssertCooldown(struct["Cooldown"]) end
-	if struct["PolicyType"] then M.AssertXmlStringMaxLen64(struct["PolicyType"]) end
-	if struct["StepAdjustments"] then M.AssertStepAdjustments(struct["StepAdjustments"]) end
-	if struct["AdjustmentType"] then M.AssertXmlStringMaxLen255(struct["AdjustmentType"]) end
-	if struct["Alarms"] then M.AssertAlarms(struct["Alarms"]) end
-	if struct["ScalingAdjustment"] then M.AssertPolicyIncrement(struct["ScalingAdjustment"]) end
+	if struct["PolicyName"] then asserts.AssertXmlStringMaxLen255(struct["PolicyName"]) end
+	if struct["EstimatedInstanceWarmup"] then asserts.AssertEstimatedInstanceWarmup(struct["EstimatedInstanceWarmup"]) end
+	if struct["MinAdjustmentStep"] then asserts.AssertMinAdjustmentStep(struct["MinAdjustmentStep"]) end
+	if struct["MinAdjustmentMagnitude"] then asserts.AssertMinAdjustmentMagnitude(struct["MinAdjustmentMagnitude"]) end
+	if struct["MetricAggregationType"] then asserts.AssertXmlStringMaxLen32(struct["MetricAggregationType"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
+	if struct["PolicyARN"] then asserts.AssertResourceName(struct["PolicyARN"]) end
+	if struct["Cooldown"] then asserts.AssertCooldown(struct["Cooldown"]) end
+	if struct["PolicyType"] then asserts.AssertXmlStringMaxLen64(struct["PolicyType"]) end
+	if struct["StepAdjustments"] then asserts.AssertStepAdjustments(struct["StepAdjustments"]) end
+	if struct["AdjustmentType"] then asserts.AssertXmlStringMaxLen255(struct["AdjustmentType"]) end
+	if struct["Alarms"] then asserts.AssertAlarms(struct["Alarms"]) end
+	if struct["ScalingAdjustment"] then asserts.AssertPolicyIncrement(struct["ScalingAdjustment"]) end
 	for k,_ in pairs(struct) do
-		assert(ScalingPolicy_keys[k], "ScalingPolicy contains unknown key " .. tostring(k))
+		assert(keys.ScalingPolicy[k], "ScalingPolicy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScalingPolicy
 -- <p>Describes a scaling policy.</p>
--- @param PolicyName [XmlStringMaxLen255] <p>The name of the scaling policy.</p>
--- @param EstimatedInstanceWarmup [EstimatedInstanceWarmup] <p>The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.</p>
--- @param MinAdjustmentStep [MinAdjustmentStep] <p>Available for backward compatibility. Use <code>MinAdjustmentMagnitude</code> instead.</p>
--- @param MinAdjustmentMagnitude [MinAdjustmentMagnitude] <p>The minimum number of instances to scale. If the value of <code>AdjustmentType</code> is <code>PercentChangeInCapacity</code>, the scaling policy changes the <code>DesiredCapacity</code> of the Auto Scaling group by at least this many instances. Otherwise, the error is <code>ValidationError</code>.</p>
--- @param MetricAggregationType [XmlStringMaxLen32] <p>The aggregation type for the CloudWatch metrics. Valid values are <code>Minimum</code>, <code>Maximum</code>, and <code>Average</code>.</p>
--- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group associated with this scaling policy.</p>
--- @param PolicyARN [ResourceName] <p>The Amazon Resource Name (ARN) of the policy.</p>
--- @param Cooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before any further dynamic scaling activities can start.</p>
--- @param PolicyType [XmlStringMaxLen64] <p>The policy type. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>.</p>
--- @param StepAdjustments [StepAdjustments] <p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p>
--- @param AdjustmentType [XmlStringMaxLen255] <p>The adjustment type, which specifies how <code>ScalingAdjustment</code> is interpreted. Valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p>
--- @param Alarms [Alarms] <p>The CloudWatch alarms related to the policy.</p>
--- @param ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p>
-function M.ScalingPolicy(PolicyName, EstimatedInstanceWarmup, MinAdjustmentStep, MinAdjustmentMagnitude, MetricAggregationType, AutoScalingGroupName, PolicyARN, Cooldown, PolicyType, StepAdjustments, AdjustmentType, Alarms, ScalingAdjustment, ...)
+-- @param _PolicyName [XmlStringMaxLen255] <p>The name of the scaling policy.</p>
+-- @param _EstimatedInstanceWarmup [EstimatedInstanceWarmup] <p>The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.</p>
+-- @param _MinAdjustmentStep [MinAdjustmentStep] <p>Available for backward compatibility. Use <code>MinAdjustmentMagnitude</code> instead.</p>
+-- @param _MinAdjustmentMagnitude [MinAdjustmentMagnitude] <p>The minimum number of instances to scale. If the value of <code>AdjustmentType</code> is <code>PercentChangeInCapacity</code>, the scaling policy changes the <code>DesiredCapacity</code> of the Auto Scaling group by at least this many instances. Otherwise, the error is <code>ValidationError</code>.</p>
+-- @param _MetricAggregationType [XmlStringMaxLen32] <p>The aggregation type for the CloudWatch metrics. Valid values are <code>Minimum</code>, <code>Maximum</code>, and <code>Average</code>.</p>
+-- @param _AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group associated with this scaling policy.</p>
+-- @param _PolicyARN [ResourceName] <p>The Amazon Resource Name (ARN) of the policy.</p>
+-- @param _Cooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before any further dynamic scaling activities can start.</p>
+-- @param _PolicyType [XmlStringMaxLen64] <p>The policy type. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>.</p>
+-- @param _StepAdjustments [StepAdjustments] <p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p>
+-- @param _AdjustmentType [XmlStringMaxLen255] <p>The adjustment type, which specifies how <code>ScalingAdjustment</code> is interpreted. Valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p>
+-- @param _Alarms [Alarms] <p>The CloudWatch alarms related to the policy.</p>
+-- @param _ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p>
+function M.ScalingPolicy(_PolicyName, _EstimatedInstanceWarmup, _MinAdjustmentStep, _MinAdjustmentMagnitude, _MetricAggregationType, _AutoScalingGroupName, _PolicyARN, _Cooldown, _PolicyType, _StepAdjustments, _AdjustmentType, _Alarms, _ScalingAdjustment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingPolicy")
 	local t = { 
-		["PolicyName"] = PolicyName,
-		["EstimatedInstanceWarmup"] = EstimatedInstanceWarmup,
-		["MinAdjustmentStep"] = MinAdjustmentStep,
-		["MinAdjustmentMagnitude"] = MinAdjustmentMagnitude,
-		["MetricAggregationType"] = MetricAggregationType,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["PolicyARN"] = PolicyARN,
-		["Cooldown"] = Cooldown,
-		["PolicyType"] = PolicyType,
-		["StepAdjustments"] = StepAdjustments,
-		["AdjustmentType"] = AdjustmentType,
-		["Alarms"] = Alarms,
-		["ScalingAdjustment"] = ScalingAdjustment,
+		["PolicyName"] = _PolicyName,
+		["EstimatedInstanceWarmup"] = _EstimatedInstanceWarmup,
+		["MinAdjustmentStep"] = _MinAdjustmentStep,
+		["MinAdjustmentMagnitude"] = _MinAdjustmentMagnitude,
+		["MetricAggregationType"] = _MetricAggregationType,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["PolicyARN"] = _PolicyARN,
+		["Cooldown"] = _Cooldown,
+		["PolicyType"] = _PolicyType,
+		["StepAdjustments"] = _StepAdjustments,
+		["AdjustmentType"] = _AdjustmentType,
+		["Alarms"] = _Alarms,
+		["ScalingAdjustment"] = _ScalingAdjustment,
 	}
-	M.AssertScalingPolicy(t)
+	asserts.AssertScalingPolicy(t)
 	return t
 end
 
-local RecordLifecycleActionHeartbeatAnswer_keys = { nil }
+keys.RecordLifecycleActionHeartbeatAnswer = { nil }
 
-function M.AssertRecordLifecycleActionHeartbeatAnswer(struct)
+function asserts.AssertRecordLifecycleActionHeartbeatAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RecordLifecycleActionHeartbeatAnswer to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RecordLifecycleActionHeartbeatAnswer_keys[k], "RecordLifecycleActionHeartbeatAnswer contains unknown key " .. tostring(k))
+		assert(keys.RecordLifecycleActionHeartbeatAnswer[k], "RecordLifecycleActionHeartbeatAnswer contains unknown key " .. tostring(k))
 	end
 end
 
@@ -997,633 +1000,633 @@ function M.RecordLifecycleActionHeartbeatAnswer(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecordLifecycleActionHeartbeatAnswer")
 	local t = { 
 	}
-	M.AssertRecordLifecycleActionHeartbeatAnswer(t)
+	asserts.AssertRecordLifecycleActionHeartbeatAnswer(t)
 	return t
 end
 
-local DeleteScheduledActionType_keys = { "AutoScalingGroupName" = true, "ScheduledActionName" = true, nil }
+keys.DeleteScheduledActionType = { ["AutoScalingGroupName"] = true, ["ScheduledActionName"] = true, nil }
 
-function M.AssertDeleteScheduledActionType(struct)
+function asserts.AssertDeleteScheduledActionType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteScheduledActionType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["ScheduledActionName"], "Expected key ScheduledActionName to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["ScheduledActionName"] then M.AssertResourceName(struct["ScheduledActionName"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["ScheduledActionName"] then asserts.AssertResourceName(struct["ScheduledActionName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteScheduledActionType_keys[k], "DeleteScheduledActionType contains unknown key " .. tostring(k))
+		assert(keys.DeleteScheduledActionType[k], "DeleteScheduledActionType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteScheduledActionType
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
--- @param ScheduledActionName [ResourceName] <p>The name of the action to delete.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _ScheduledActionName [ResourceName] <p>The name of the action to delete.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ScheduledActionName
-function M.DeleteScheduledActionType(AutoScalingGroupName, ScheduledActionName, ...)
+function M.DeleteScheduledActionType(_AutoScalingGroupName, _ScheduledActionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteScheduledActionType")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["ScheduledActionName"] = ScheduledActionName,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["ScheduledActionName"] = _ScheduledActionName,
 	}
-	M.AssertDeleteScheduledActionType(t)
+	asserts.AssertDeleteScheduledActionType(t)
 	return t
 end
 
-local DescribeNotificationConfigurationsType_keys = { "MaxRecords" = true, "NextToken" = true, "AutoScalingGroupNames" = true, nil }
+keys.DescribeNotificationConfigurationsType = { ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupNames"] = true, nil }
 
-function M.AssertDescribeNotificationConfigurationsType(struct)
+function asserts.AssertDescribeNotificationConfigurationsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeNotificationConfigurationsType to be of type 'table'")
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["AutoScalingGroupNames"] then M.AssertAutoScalingGroupNames(struct["AutoScalingGroupNames"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["AutoScalingGroupNames"] then asserts.AssertAutoScalingGroupNames(struct["AutoScalingGroupNames"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeNotificationConfigurationsType_keys[k], "DescribeNotificationConfigurationsType contains unknown key " .. tostring(k))
+		assert(keys.DescribeNotificationConfigurationsType[k], "DescribeNotificationConfigurationsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeNotificationConfigurationsType
 --  
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param AutoScalingGroupNames [AutoScalingGroupNames] <p>The name of the group.</p>
-function M.DescribeNotificationConfigurationsType(MaxRecords, NextToken, AutoScalingGroupNames, ...)
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param _AutoScalingGroupNames [AutoScalingGroupNames] <p>The name of the group.</p>
+function M.DescribeNotificationConfigurationsType(_MaxRecords, _NextToken, _AutoScalingGroupNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationConfigurationsType")
 	local t = { 
-		["MaxRecords"] = MaxRecords,
-		["NextToken"] = NextToken,
-		["AutoScalingGroupNames"] = AutoScalingGroupNames,
+		["MaxRecords"] = _MaxRecords,
+		["NextToken"] = _NextToken,
+		["AutoScalingGroupNames"] = _AutoScalingGroupNames,
 	}
-	M.AssertDescribeNotificationConfigurationsType(t)
+	asserts.AssertDescribeNotificationConfigurationsType(t)
 	return t
 end
 
-local MetricGranularityType_keys = { "Granularity" = true, nil }
+keys.MetricGranularityType = { ["Granularity"] = true, nil }
 
-function M.AssertMetricGranularityType(struct)
+function asserts.AssertMetricGranularityType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MetricGranularityType to be of type 'table'")
-	if struct["Granularity"] then M.AssertXmlStringMaxLen255(struct["Granularity"]) end
+	if struct["Granularity"] then asserts.AssertXmlStringMaxLen255(struct["Granularity"]) end
 	for k,_ in pairs(struct) do
-		assert(MetricGranularityType_keys[k], "MetricGranularityType contains unknown key " .. tostring(k))
+		assert(keys.MetricGranularityType[k], "MetricGranularityType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MetricGranularityType
 -- <p>Describes a granularity of a metric.</p>
--- @param Granularity [XmlStringMaxLen255] <p>The granularity. The only valid value is <code>1Minute</code>.</p>
-function M.MetricGranularityType(Granularity, ...)
+-- @param _Granularity [XmlStringMaxLen255] <p>The granularity. The only valid value is <code>1Minute</code>.</p>
+function M.MetricGranularityType(_Granularity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricGranularityType")
 	local t = { 
-		["Granularity"] = Granularity,
+		["Granularity"] = _Granularity,
 	}
-	M.AssertMetricGranularityType(t)
+	asserts.AssertMetricGranularityType(t)
 	return t
 end
 
-local DescribeScheduledActionsType_keys = { "EndTime" = true, "AutoScalingGroupName" = true, "MaxRecords" = true, "ScheduledActionNames" = true, "StartTime" = true, "NextToken" = true, nil }
+keys.DescribeScheduledActionsType = { ["EndTime"] = true, ["AutoScalingGroupName"] = true, ["MaxRecords"] = true, ["ScheduledActionNames"] = true, ["StartTime"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeScheduledActionsType(struct)
+function asserts.AssertDescribeScheduledActionsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeScheduledActionsType to be of type 'table'")
-	if struct["EndTime"] then M.AssertTimestampType(struct["EndTime"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["ScheduledActionNames"] then M.AssertScheduledActionNames(struct["ScheduledActionNames"]) end
-	if struct["StartTime"] then M.AssertTimestampType(struct["StartTime"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
+	if struct["EndTime"] then asserts.AssertTimestampType(struct["EndTime"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["ScheduledActionNames"] then asserts.AssertScheduledActionNames(struct["ScheduledActionNames"]) end
+	if struct["StartTime"] then asserts.AssertTimestampType(struct["StartTime"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeScheduledActionsType_keys[k], "DescribeScheduledActionsType contains unknown key " .. tostring(k))
+		assert(keys.DescribeScheduledActionsType[k], "DescribeScheduledActionsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeScheduledActionsType
 --  
--- @param EndTime [TimestampType] <p>The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
--- @param ScheduledActionNames [ScheduledActionNames] <p>Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you specify an unknown scheduled action, it is ignored with no error.</p> <p>You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call returns a token. To get the next set of items, repeat the call with the returned token.</p>
--- @param StartTime [TimestampType] <p>The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
-function M.DescribeScheduledActionsType(EndTime, AutoScalingGroupName, MaxRecords, ScheduledActionNames, StartTime, NextToken, ...)
+-- @param _EndTime [TimestampType] <p>The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param _ScheduledActionNames [ScheduledActionNames] <p>Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you specify an unknown scheduled action, it is ignored with no error.</p> <p>You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call returns a token. To get the next set of items, repeat the call with the returned token.</p>
+-- @param _StartTime [TimestampType] <p>The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+function M.DescribeScheduledActionsType(_EndTime, _AutoScalingGroupName, _MaxRecords, _ScheduledActionNames, _StartTime, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScheduledActionsType")
 	local t = { 
-		["EndTime"] = EndTime,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["MaxRecords"] = MaxRecords,
-		["ScheduledActionNames"] = ScheduledActionNames,
-		["StartTime"] = StartTime,
-		["NextToken"] = NextToken,
+		["EndTime"] = _EndTime,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["MaxRecords"] = _MaxRecords,
+		["ScheduledActionNames"] = _ScheduledActionNames,
+		["StartTime"] = _StartTime,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeScheduledActionsType(t)
+	asserts.AssertDescribeScheduledActionsType(t)
 	return t
 end
 
-local ResourceContentionFault_keys = { "message" = true, nil }
+keys.ResourceContentionFault = { ["message"] = true, nil }
 
-function M.AssertResourceContentionFault(struct)
+function asserts.AssertResourceContentionFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceContentionFault to be of type 'table'")
-	if struct["message"] then M.AssertXmlStringMaxLen255(struct["message"]) end
+	if struct["message"] then asserts.AssertXmlStringMaxLen255(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceContentionFault_keys[k], "ResourceContentionFault contains unknown key " .. tostring(k))
+		assert(keys.ResourceContentionFault[k], "ResourceContentionFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceContentionFault
 -- <p>You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load balancer).</p>
--- @param message [XmlStringMaxLen255] <p/>
-function M.ResourceContentionFault(message, ...)
+-- @param _message [XmlStringMaxLen255] <p/>
+function M.ResourceContentionFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceContentionFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceContentionFault(t)
+	asserts.AssertResourceContentionFault(t)
 	return t
 end
 
-local ScheduledUpdateGroupAction_keys = { "MinSize" = true, "DesiredCapacity" = true, "AutoScalingGroupName" = true, "MaxSize" = true, "Recurrence" = true, "ScheduledActionARN" = true, "ScheduledActionName" = true, "StartTime" = true, "Time" = true, "EndTime" = true, nil }
+keys.ScheduledUpdateGroupAction = { ["MinSize"] = true, ["DesiredCapacity"] = true, ["AutoScalingGroupName"] = true, ["MaxSize"] = true, ["Recurrence"] = true, ["ScheduledActionARN"] = true, ["ScheduledActionName"] = true, ["StartTime"] = true, ["Time"] = true, ["EndTime"] = true, nil }
 
-function M.AssertScheduledUpdateGroupAction(struct)
+function asserts.AssertScheduledUpdateGroupAction(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScheduledUpdateGroupAction to be of type 'table'")
-	if struct["MinSize"] then M.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
-	if struct["DesiredCapacity"] then M.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
-	if struct["AutoScalingGroupName"] then M.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
-	if struct["MaxSize"] then M.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
-	if struct["Recurrence"] then M.AssertXmlStringMaxLen255(struct["Recurrence"]) end
-	if struct["ScheduledActionARN"] then M.AssertResourceName(struct["ScheduledActionARN"]) end
-	if struct["ScheduledActionName"] then M.AssertXmlStringMaxLen255(struct["ScheduledActionName"]) end
-	if struct["StartTime"] then M.AssertTimestampType(struct["StartTime"]) end
-	if struct["Time"] then M.AssertTimestampType(struct["Time"]) end
-	if struct["EndTime"] then M.AssertTimestampType(struct["EndTime"]) end
+	if struct["MinSize"] then asserts.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
+	if struct["DesiredCapacity"] then asserts.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
+	if struct["MaxSize"] then asserts.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
+	if struct["Recurrence"] then asserts.AssertXmlStringMaxLen255(struct["Recurrence"]) end
+	if struct["ScheduledActionARN"] then asserts.AssertResourceName(struct["ScheduledActionARN"]) end
+	if struct["ScheduledActionName"] then asserts.AssertXmlStringMaxLen255(struct["ScheduledActionName"]) end
+	if struct["StartTime"] then asserts.AssertTimestampType(struct["StartTime"]) end
+	if struct["Time"] then asserts.AssertTimestampType(struct["Time"]) end
+	if struct["EndTime"] then asserts.AssertTimestampType(struct["EndTime"]) end
 	for k,_ in pairs(struct) do
-		assert(ScheduledUpdateGroupAction_keys[k], "ScheduledUpdateGroupAction contains unknown key " .. tostring(k))
+		assert(keys.ScheduledUpdateGroupAction[k], "ScheduledUpdateGroupAction contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScheduledUpdateGroupAction
 -- <p>Describes a scheduled update to an Auto Scaling group.</p>
--- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of instances you prefer to maintain in the group.</p>
--- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group.</p>
--- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
--- @param Recurrence [XmlStringMaxLen255] <p>The recurring schedule for the action.</p>
--- @param ScheduledActionARN [ResourceName] <p>The Amazon Resource Name (ARN) of the scheduled action.</p>
--- @param ScheduledActionName [XmlStringMaxLen255] <p>The name of the scheduled action.</p>
--- @param StartTime [TimestampType] <p>The date and time that the action is scheduled to begin. This date and time can be up to one month in the future.</p> <p>When <code>StartTime</code> and <code>EndTime</code> are specified with <code>Recurrence</code>, they form the boundaries of when the recurring action will start and stop.</p>
--- @param Time [TimestampType] <p>This parameter is deprecated.</p>
--- @param EndTime [TimestampType] <p>The date and time that the action is scheduled to end. This date and time can be up to one month in the future.</p>
-function M.ScheduledUpdateGroupAction(MinSize, DesiredCapacity, AutoScalingGroupName, MaxSize, Recurrence, ScheduledActionARN, ScheduledActionName, StartTime, Time, EndTime, ...)
+-- @param _MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
+-- @param _DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of instances you prefer to maintain in the group.</p>
+-- @param _AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group.</p>
+-- @param _MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
+-- @param _Recurrence [XmlStringMaxLen255] <p>The recurring schedule for the action.</p>
+-- @param _ScheduledActionARN [ResourceName] <p>The Amazon Resource Name (ARN) of the scheduled action.</p>
+-- @param _ScheduledActionName [XmlStringMaxLen255] <p>The name of the scheduled action.</p>
+-- @param _StartTime [TimestampType] <p>The date and time that the action is scheduled to begin. This date and time can be up to one month in the future.</p> <p>When <code>StartTime</code> and <code>EndTime</code> are specified with <code>Recurrence</code>, they form the boundaries of when the recurring action will start and stop.</p>
+-- @param _Time [TimestampType] <p>This parameter is deprecated.</p>
+-- @param _EndTime [TimestampType] <p>The date and time that the action is scheduled to end. This date and time can be up to one month in the future.</p>
+function M.ScheduledUpdateGroupAction(_MinSize, _DesiredCapacity, _AutoScalingGroupName, _MaxSize, _Recurrence, _ScheduledActionARN, _ScheduledActionName, _StartTime, _Time, _EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScheduledUpdateGroupAction")
 	local t = { 
-		["MinSize"] = MinSize,
-		["DesiredCapacity"] = DesiredCapacity,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["MaxSize"] = MaxSize,
-		["Recurrence"] = Recurrence,
-		["ScheduledActionARN"] = ScheduledActionARN,
-		["ScheduledActionName"] = ScheduledActionName,
-		["StartTime"] = StartTime,
-		["Time"] = Time,
-		["EndTime"] = EndTime,
+		["MinSize"] = _MinSize,
+		["DesiredCapacity"] = _DesiredCapacity,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["MaxSize"] = _MaxSize,
+		["Recurrence"] = _Recurrence,
+		["ScheduledActionARN"] = _ScheduledActionARN,
+		["ScheduledActionName"] = _ScheduledActionName,
+		["StartTime"] = _StartTime,
+		["Time"] = _Time,
+		["EndTime"] = _EndTime,
 	}
-	M.AssertScheduledUpdateGroupAction(t)
+	asserts.AssertScheduledUpdateGroupAction(t)
 	return t
 end
 
-local EnabledMetric_keys = { "Metric" = true, "Granularity" = true, nil }
+keys.EnabledMetric = { ["Metric"] = true, ["Granularity"] = true, nil }
 
-function M.AssertEnabledMetric(struct)
+function asserts.AssertEnabledMetric(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnabledMetric to be of type 'table'")
-	if struct["Metric"] then M.AssertXmlStringMaxLen255(struct["Metric"]) end
-	if struct["Granularity"] then M.AssertXmlStringMaxLen255(struct["Granularity"]) end
+	if struct["Metric"] then asserts.AssertXmlStringMaxLen255(struct["Metric"]) end
+	if struct["Granularity"] then asserts.AssertXmlStringMaxLen255(struct["Granularity"]) end
 	for k,_ in pairs(struct) do
-		assert(EnabledMetric_keys[k], "EnabledMetric contains unknown key " .. tostring(k))
+		assert(keys.EnabledMetric[k], "EnabledMetric contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnabledMetric
 -- <p>Describes an enabled metric.</p>
--- @param Metric [XmlStringMaxLen255] <p>One of the following metrics:</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
--- @param Granularity [XmlStringMaxLen255] <p>The granularity of the metric. The only valid value is <code>1Minute</code>.</p>
-function M.EnabledMetric(Metric, Granularity, ...)
+-- @param _Metric [XmlStringMaxLen255] <p>One of the following metrics:</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
+-- @param _Granularity [XmlStringMaxLen255] <p>The granularity of the metric. The only valid value is <code>1Minute</code>.</p>
+function M.EnabledMetric(_Metric, _Granularity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnabledMetric")
 	local t = { 
-		["Metric"] = Metric,
-		["Granularity"] = Granularity,
+		["Metric"] = _Metric,
+		["Granularity"] = _Granularity,
 	}
-	M.AssertEnabledMetric(t)
+	asserts.AssertEnabledMetric(t)
 	return t
 end
 
-local DeletePolicyType_keys = { "PolicyName" = true, "AutoScalingGroupName" = true, nil }
+keys.DeletePolicyType = { ["PolicyName"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDeletePolicyType(struct)
+function asserts.AssertDeletePolicyType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeletePolicyType to be of type 'table'")
 	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
-	if struct["PolicyName"] then M.AssertResourceName(struct["PolicyName"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["PolicyName"] then asserts.AssertResourceName(struct["PolicyName"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeletePolicyType_keys[k], "DeletePolicyType contains unknown key " .. tostring(k))
+		assert(keys.DeletePolicyType[k], "DeletePolicyType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeletePolicyType
 --  
--- @param PolicyName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the policy.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _PolicyName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the policy.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
 -- Required parameter: PolicyName
-function M.DeletePolicyType(PolicyName, AutoScalingGroupName, ...)
+function M.DeletePolicyType(_PolicyName, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePolicyType")
 	local t = { 
-		["PolicyName"] = PolicyName,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["PolicyName"] = _PolicyName,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDeletePolicyType(t)
+	asserts.AssertDeletePolicyType(t)
 	return t
 end
 
-local DeleteLifecycleHookType_keys = { "LifecycleHookName" = true, "AutoScalingGroupName" = true, nil }
+keys.DeleteLifecycleHookType = { ["LifecycleHookName"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDeleteLifecycleHookType(struct)
+function asserts.AssertDeleteLifecycleHookType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteLifecycleHookType to be of type 'table'")
 	assert(struct["LifecycleHookName"], "Expected key LifecycleHookName to exist in table")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["LifecycleHookName"] then M.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["LifecycleHookName"] then asserts.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteLifecycleHookType_keys[k], "DeleteLifecycleHookType contains unknown key " .. tostring(k))
+		assert(keys.DeleteLifecycleHookType[k], "DeleteLifecycleHookType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteLifecycleHookType
 --  
--- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the lifecycle hook.</p>
+-- @param _LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the lifecycle hook.</p>
 -- Required parameter: LifecycleHookName
 -- Required parameter: AutoScalingGroupName
-function M.DeleteLifecycleHookType(LifecycleHookName, AutoScalingGroupName, ...)
+function M.DeleteLifecycleHookType(_LifecycleHookName, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLifecycleHookType")
 	local t = { 
-		["LifecycleHookName"] = LifecycleHookName,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["LifecycleHookName"] = _LifecycleHookName,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDeleteLifecycleHookType(t)
+	asserts.AssertDeleteLifecycleHookType(t)
 	return t
 end
 
-local ProcessType_keys = { "ProcessName" = true, nil }
+keys.ProcessType = { ["ProcessName"] = true, nil }
 
-function M.AssertProcessType(struct)
+function asserts.AssertProcessType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProcessType to be of type 'table'")
 	assert(struct["ProcessName"], "Expected key ProcessName to exist in table")
-	if struct["ProcessName"] then M.AssertXmlStringMaxLen255(struct["ProcessName"]) end
+	if struct["ProcessName"] then asserts.AssertXmlStringMaxLen255(struct["ProcessName"]) end
 	for k,_ in pairs(struct) do
-		assert(ProcessType_keys[k], "ProcessType contains unknown key " .. tostring(k))
+		assert(keys.ProcessType[k], "ProcessType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ProcessType
 -- <p>Describes a process type.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html#process-types">Auto Scaling Processes</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param ProcessName [XmlStringMaxLen255] <p>One of the following processes:</p> <ul> <li> <p> <code>Launch</code> </p> </li> <li> <p> <code>Terminate</code> </p> </li> <li> <p> <code>AddToLoadBalancer</code> </p> </li> <li> <p> <code>AlarmNotification</code> </p> </li> <li> <p> <code>AZRebalance</code> </p> </li> <li> <p> <code>HealthCheck</code> </p> </li> <li> <p> <code>ReplaceUnhealthy</code> </p> </li> <li> <p> <code>ScheduledActions</code> </p> </li> </ul>
+-- @param _ProcessName [XmlStringMaxLen255] <p>One of the following processes:</p> <ul> <li> <p> <code>Launch</code> </p> </li> <li> <p> <code>Terminate</code> </p> </li> <li> <p> <code>AddToLoadBalancer</code> </p> </li> <li> <p> <code>AlarmNotification</code> </p> </li> <li> <p> <code>AZRebalance</code> </p> </li> <li> <p> <code>HealthCheck</code> </p> </li> <li> <p> <code>ReplaceUnhealthy</code> </p> </li> <li> <p> <code>ScheduledActions</code> </p> </li> </ul>
 -- Required parameter: ProcessName
-function M.ProcessType(ProcessName, ...)
+function M.ProcessType(_ProcessName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProcessType")
 	local t = { 
-		["ProcessName"] = ProcessName,
+		["ProcessName"] = _ProcessName,
 	}
-	M.AssertProcessType(t)
+	asserts.AssertProcessType(t)
 	return t
 end
 
-local ProcessesType_keys = { "Processes" = true, nil }
+keys.ProcessesType = { ["Processes"] = true, nil }
 
-function M.AssertProcessesType(struct)
+function asserts.AssertProcessesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ProcessesType to be of type 'table'")
-	if struct["Processes"] then M.AssertProcesses(struct["Processes"]) end
+	if struct["Processes"] then asserts.AssertProcesses(struct["Processes"]) end
 	for k,_ in pairs(struct) do
-		assert(ProcessesType_keys[k], "ProcessesType contains unknown key " .. tostring(k))
+		assert(keys.ProcessesType[k], "ProcessesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ProcessesType
 --  
--- @param Processes [Processes] <p>The names of the process types.</p>
-function M.ProcessesType(Processes, ...)
+-- @param _Processes [Processes] <p>The names of the process types.</p>
+function M.ProcessesType(_Processes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProcessesType")
 	local t = { 
-		["Processes"] = Processes,
+		["Processes"] = _Processes,
 	}
-	M.AssertProcessesType(t)
+	asserts.AssertProcessesType(t)
 	return t
 end
 
-local PutNotificationConfigurationType_keys = { "AutoScalingGroupName" = true, "NotificationTypes" = true, "TopicARN" = true, nil }
+keys.PutNotificationConfigurationType = { ["AutoScalingGroupName"] = true, ["NotificationTypes"] = true, ["TopicARN"] = true, nil }
 
-function M.AssertPutNotificationConfigurationType(struct)
+function asserts.AssertPutNotificationConfigurationType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutNotificationConfigurationType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["TopicARN"], "Expected key TopicARN to exist in table")
 	assert(struct["NotificationTypes"], "Expected key NotificationTypes to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["NotificationTypes"] then M.AssertAutoScalingNotificationTypes(struct["NotificationTypes"]) end
-	if struct["TopicARN"] then M.AssertResourceName(struct["TopicARN"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["NotificationTypes"] then asserts.AssertAutoScalingNotificationTypes(struct["NotificationTypes"]) end
+	if struct["TopicARN"] then asserts.AssertResourceName(struct["TopicARN"]) end
 	for k,_ in pairs(struct) do
-		assert(PutNotificationConfigurationType_keys[k], "PutNotificationConfigurationType contains unknown key " .. tostring(k))
+		assert(keys.PutNotificationConfigurationType[k], "PutNotificationConfigurationType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutNotificationConfigurationType
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
--- @param NotificationTypes [AutoScalingNotificationTypes] <p>The type of event that will cause the notification to be sent. For details about notification types supported by Auto Scaling, see <a>DescribeAutoScalingNotificationTypes</a>.</p>
--- @param TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _NotificationTypes [AutoScalingNotificationTypes] <p>The type of event that will cause the notification to be sent. For details about notification types supported by Auto Scaling, see <a>DescribeAutoScalingNotificationTypes</a>.</p>
+-- @param _TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: TopicARN
 -- Required parameter: NotificationTypes
-function M.PutNotificationConfigurationType(AutoScalingGroupName, NotificationTypes, TopicARN, ...)
+function M.PutNotificationConfigurationType(_AutoScalingGroupName, _NotificationTypes, _TopicARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutNotificationConfigurationType")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["NotificationTypes"] = NotificationTypes,
-		["TopicARN"] = TopicARN,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["NotificationTypes"] = _NotificationTypes,
+		["TopicARN"] = _TopicARN,
 	}
-	M.AssertPutNotificationConfigurationType(t)
+	asserts.AssertPutNotificationConfigurationType(t)
 	return t
 end
 
-local EnterStandbyAnswer_keys = { "Activities" = true, nil }
+keys.EnterStandbyAnswer = { ["Activities"] = true, nil }
 
-function M.AssertEnterStandbyAnswer(struct)
+function asserts.AssertEnterStandbyAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnterStandbyAnswer to be of type 'table'")
-	if struct["Activities"] then M.AssertActivities(struct["Activities"]) end
+	if struct["Activities"] then asserts.AssertActivities(struct["Activities"]) end
 	for k,_ in pairs(struct) do
-		assert(EnterStandbyAnswer_keys[k], "EnterStandbyAnswer contains unknown key " .. tostring(k))
+		assert(keys.EnterStandbyAnswer[k], "EnterStandbyAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnterStandbyAnswer
 --  
--- @param Activities [Activities] <p>The activities related to moving instances into <code>Standby</code> mode.</p>
-function M.EnterStandbyAnswer(Activities, ...)
+-- @param _Activities [Activities] <p>The activities related to moving instances into <code>Standby</code> mode.</p>
+function M.EnterStandbyAnswer(_Activities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnterStandbyAnswer")
 	local t = { 
-		["Activities"] = Activities,
+		["Activities"] = _Activities,
 	}
-	M.AssertEnterStandbyAnswer(t)
+	asserts.AssertEnterStandbyAnswer(t)
 	return t
 end
 
-local ExitStandbyAnswer_keys = { "Activities" = true, nil }
+keys.ExitStandbyAnswer = { ["Activities"] = true, nil }
 
-function M.AssertExitStandbyAnswer(struct)
+function asserts.AssertExitStandbyAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExitStandbyAnswer to be of type 'table'")
-	if struct["Activities"] then M.AssertActivities(struct["Activities"]) end
+	if struct["Activities"] then asserts.AssertActivities(struct["Activities"]) end
 	for k,_ in pairs(struct) do
-		assert(ExitStandbyAnswer_keys[k], "ExitStandbyAnswer contains unknown key " .. tostring(k))
+		assert(keys.ExitStandbyAnswer[k], "ExitStandbyAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExitStandbyAnswer
 --  
--- @param Activities [Activities] <p>The activities related to moving instances out of <code>Standby</code> mode.</p>
-function M.ExitStandbyAnswer(Activities, ...)
+-- @param _Activities [Activities] <p>The activities related to moving instances out of <code>Standby</code> mode.</p>
+function M.ExitStandbyAnswer(_Activities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExitStandbyAnswer")
 	local t = { 
-		["Activities"] = Activities,
+		["Activities"] = _Activities,
 	}
-	M.AssertExitStandbyAnswer(t)
+	asserts.AssertExitStandbyAnswer(t)
 	return t
 end
 
-local DescribeAdjustmentTypesAnswer_keys = { "AdjustmentTypes" = true, nil }
+keys.DescribeAdjustmentTypesAnswer = { ["AdjustmentTypes"] = true, nil }
 
-function M.AssertDescribeAdjustmentTypesAnswer(struct)
+function asserts.AssertDescribeAdjustmentTypesAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAdjustmentTypesAnswer to be of type 'table'")
-	if struct["AdjustmentTypes"] then M.AssertAdjustmentTypes(struct["AdjustmentTypes"]) end
+	if struct["AdjustmentTypes"] then asserts.AssertAdjustmentTypes(struct["AdjustmentTypes"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAdjustmentTypesAnswer_keys[k], "DescribeAdjustmentTypesAnswer contains unknown key " .. tostring(k))
+		assert(keys.DescribeAdjustmentTypesAnswer[k], "DescribeAdjustmentTypesAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAdjustmentTypesAnswer
 --  
--- @param AdjustmentTypes [AdjustmentTypes] <p>The policy adjustment types.</p>
-function M.DescribeAdjustmentTypesAnswer(AdjustmentTypes, ...)
+-- @param _AdjustmentTypes [AdjustmentTypes] <p>The policy adjustment types.</p>
+function M.DescribeAdjustmentTypesAnswer(_AdjustmentTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAdjustmentTypesAnswer")
 	local t = { 
-		["AdjustmentTypes"] = AdjustmentTypes,
+		["AdjustmentTypes"] = _AdjustmentTypes,
 	}
-	M.AssertDescribeAdjustmentTypesAnswer(t)
+	asserts.AssertDescribeAdjustmentTypesAnswer(t)
 	return t
 end
 
-local AdjustmentType_keys = { "AdjustmentType" = true, nil }
+keys.AdjustmentType = { ["AdjustmentType"] = true, nil }
 
-function M.AssertAdjustmentType(struct)
+function asserts.AssertAdjustmentType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AdjustmentType to be of type 'table'")
-	if struct["AdjustmentType"] then M.AssertXmlStringMaxLen255(struct["AdjustmentType"]) end
+	if struct["AdjustmentType"] then asserts.AssertXmlStringMaxLen255(struct["AdjustmentType"]) end
 	for k,_ in pairs(struct) do
-		assert(AdjustmentType_keys[k], "AdjustmentType contains unknown key " .. tostring(k))
+		assert(keys.AdjustmentType[k], "AdjustmentType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AdjustmentType
 -- <p>Describes a policy adjustment type.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param AdjustmentType [XmlStringMaxLen255] <p>The policy adjustment type. The valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p>
-function M.AdjustmentType(AdjustmentType, ...)
+-- @param _AdjustmentType [XmlStringMaxLen255] <p>The policy adjustment type. The valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p>
+function M.AdjustmentType(_AdjustmentType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdjustmentType")
 	local t = { 
-		["AdjustmentType"] = AdjustmentType,
+		["AdjustmentType"] = _AdjustmentType,
 	}
-	M.AssertAdjustmentType(t)
+	asserts.AssertAdjustmentType(t)
 	return t
 end
 
-local DisableMetricsCollectionQuery_keys = { "Metrics" = true, "AutoScalingGroupName" = true, nil }
+keys.DisableMetricsCollectionQuery = { ["Metrics"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDisableMetricsCollectionQuery(struct)
+function asserts.AssertDisableMetricsCollectionQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisableMetricsCollectionQuery to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["Metrics"] then M.AssertMetrics(struct["Metrics"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["Metrics"] then asserts.AssertMetrics(struct["Metrics"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DisableMetricsCollectionQuery_keys[k], "DisableMetricsCollectionQuery contains unknown key " .. tostring(k))
+		assert(keys.DisableMetricsCollectionQuery[k], "DisableMetricsCollectionQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisableMetricsCollectionQuery
 --  
--- @param Metrics [Metrics] <p>One or more of the following metrics. If you omit this parameter, all metrics are disabled.</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
--- @param AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the group.</p>
+-- @param _Metrics [Metrics] <p>One or more of the following metrics. If you omit this parameter, all metrics are disabled.</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the group.</p>
 -- Required parameter: AutoScalingGroupName
-function M.DisableMetricsCollectionQuery(Metrics, AutoScalingGroupName, ...)
+function M.DisableMetricsCollectionQuery(_Metrics, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableMetricsCollectionQuery")
 	local t = { 
-		["Metrics"] = Metrics,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["Metrics"] = _Metrics,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDisableMetricsCollectionQuery(t)
+	asserts.AssertDisableMetricsCollectionQuery(t)
 	return t
 end
 
-local NotificationConfiguration_keys = { "AutoScalingGroupName" = true, "NotificationType" = true, "TopicARN" = true, nil }
+keys.NotificationConfiguration = { ["AutoScalingGroupName"] = true, ["NotificationType"] = true, ["TopicARN"] = true, nil }
 
-function M.AssertNotificationConfiguration(struct)
+function asserts.AssertNotificationConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotificationConfiguration to be of type 'table'")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["NotificationType"] then M.AssertXmlStringMaxLen255(struct["NotificationType"]) end
-	if struct["TopicARN"] then M.AssertResourceName(struct["TopicARN"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["NotificationType"] then asserts.AssertXmlStringMaxLen255(struct["NotificationType"]) end
+	if struct["TopicARN"] then asserts.AssertResourceName(struct["TopicARN"]) end
 	for k,_ in pairs(struct) do
-		assert(NotificationConfiguration_keys[k], "NotificationConfiguration contains unknown key " .. tostring(k))
+		assert(keys.NotificationConfiguration[k], "NotificationConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotificationConfiguration
 -- <p>Describes a notification.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
--- @param NotificationType [XmlStringMaxLen255] <p>One of the following event notification types:</p> <ul> <li> <p> <code>autoscaling:EC2_INSTANCE_LAUNCH</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_TERMINATE</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code> </p> </li> <li> <p> <code>autoscaling:TEST_NOTIFICATION</code> </p> </li> </ul>
--- @param TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
-function M.NotificationConfiguration(AutoScalingGroupName, NotificationType, TopicARN, ...)
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _NotificationType [XmlStringMaxLen255] <p>One of the following event notification types:</p> <ul> <li> <p> <code>autoscaling:EC2_INSTANCE_LAUNCH</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_TERMINATE</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code> </p> </li> <li> <p> <code>autoscaling:TEST_NOTIFICATION</code> </p> </li> </ul>
+-- @param _TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
+function M.NotificationConfiguration(_AutoScalingGroupName, _NotificationType, _TopicARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfiguration")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["NotificationType"] = NotificationType,
-		["TopicARN"] = TopicARN,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["NotificationType"] = _NotificationType,
+		["TopicARN"] = _TopicARN,
 	}
-	M.AssertNotificationConfiguration(t)
+	asserts.AssertNotificationConfiguration(t)
 	return t
 end
 
-local LaunchConfigurationNamesType_keys = { "MaxRecords" = true, "LaunchConfigurationNames" = true, "NextToken" = true, nil }
+keys.LaunchConfigurationNamesType = { ["MaxRecords"] = true, ["LaunchConfigurationNames"] = true, ["NextToken"] = true, nil }
 
-function M.AssertLaunchConfigurationNamesType(struct)
+function asserts.AssertLaunchConfigurationNamesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LaunchConfigurationNamesType to be of type 'table'")
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["LaunchConfigurationNames"] then M.AssertLaunchConfigurationNames(struct["LaunchConfigurationNames"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["LaunchConfigurationNames"] then asserts.AssertLaunchConfigurationNames(struct["LaunchConfigurationNames"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(LaunchConfigurationNamesType_keys[k], "LaunchConfigurationNamesType contains unknown key " .. tostring(k))
+		assert(keys.LaunchConfigurationNamesType[k], "LaunchConfigurationNamesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LaunchConfigurationNamesType
 --  
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
--- @param LaunchConfigurationNames [LaunchConfigurationNames] <p>The launch configuration names. If you omit this parameter, all launch configurations are described.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
-function M.LaunchConfigurationNamesType(MaxRecords, LaunchConfigurationNames, NextToken, ...)
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param _LaunchConfigurationNames [LaunchConfigurationNames] <p>The launch configuration names. If you omit this parameter, all launch configurations are described.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+function M.LaunchConfigurationNamesType(_MaxRecords, _LaunchConfigurationNames, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfigurationNamesType")
 	local t = { 
-		["MaxRecords"] = MaxRecords,
-		["LaunchConfigurationNames"] = LaunchConfigurationNames,
-		["NextToken"] = NextToken,
+		["MaxRecords"] = _MaxRecords,
+		["LaunchConfigurationNames"] = _LaunchConfigurationNames,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertLaunchConfigurationNamesType(t)
+	asserts.AssertLaunchConfigurationNamesType(t)
 	return t
 end
 
-local PutScalingPolicyType_keys = { "PolicyName" = true, "EstimatedInstanceWarmup" = true, "MinAdjustmentStep" = true, "MinAdjustmentMagnitude" = true, "MetricAggregationType" = true, "AutoScalingGroupName" = true, "Cooldown" = true, "PolicyType" = true, "StepAdjustments" = true, "AdjustmentType" = true, "ScalingAdjustment" = true, nil }
+keys.PutScalingPolicyType = { ["PolicyName"] = true, ["EstimatedInstanceWarmup"] = true, ["MinAdjustmentStep"] = true, ["MinAdjustmentMagnitude"] = true, ["MetricAggregationType"] = true, ["AutoScalingGroupName"] = true, ["Cooldown"] = true, ["PolicyType"] = true, ["StepAdjustments"] = true, ["AdjustmentType"] = true, ["ScalingAdjustment"] = true, nil }
 
-function M.AssertPutScalingPolicyType(struct)
+function asserts.AssertPutScalingPolicyType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutScalingPolicyType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["PolicyName"], "Expected key PolicyName to exist in table")
 	assert(struct["AdjustmentType"], "Expected key AdjustmentType to exist in table")
-	if struct["PolicyName"] then M.AssertXmlStringMaxLen255(struct["PolicyName"]) end
-	if struct["EstimatedInstanceWarmup"] then M.AssertEstimatedInstanceWarmup(struct["EstimatedInstanceWarmup"]) end
-	if struct["MinAdjustmentStep"] then M.AssertMinAdjustmentStep(struct["MinAdjustmentStep"]) end
-	if struct["MinAdjustmentMagnitude"] then M.AssertMinAdjustmentMagnitude(struct["MinAdjustmentMagnitude"]) end
-	if struct["MetricAggregationType"] then M.AssertXmlStringMaxLen32(struct["MetricAggregationType"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["Cooldown"] then M.AssertCooldown(struct["Cooldown"]) end
-	if struct["PolicyType"] then M.AssertXmlStringMaxLen64(struct["PolicyType"]) end
-	if struct["StepAdjustments"] then M.AssertStepAdjustments(struct["StepAdjustments"]) end
-	if struct["AdjustmentType"] then M.AssertXmlStringMaxLen255(struct["AdjustmentType"]) end
-	if struct["ScalingAdjustment"] then M.AssertPolicyIncrement(struct["ScalingAdjustment"]) end
+	if struct["PolicyName"] then asserts.AssertXmlStringMaxLen255(struct["PolicyName"]) end
+	if struct["EstimatedInstanceWarmup"] then asserts.AssertEstimatedInstanceWarmup(struct["EstimatedInstanceWarmup"]) end
+	if struct["MinAdjustmentStep"] then asserts.AssertMinAdjustmentStep(struct["MinAdjustmentStep"]) end
+	if struct["MinAdjustmentMagnitude"] then asserts.AssertMinAdjustmentMagnitude(struct["MinAdjustmentMagnitude"]) end
+	if struct["MetricAggregationType"] then asserts.AssertXmlStringMaxLen32(struct["MetricAggregationType"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["Cooldown"] then asserts.AssertCooldown(struct["Cooldown"]) end
+	if struct["PolicyType"] then asserts.AssertXmlStringMaxLen64(struct["PolicyType"]) end
+	if struct["StepAdjustments"] then asserts.AssertStepAdjustments(struct["StepAdjustments"]) end
+	if struct["AdjustmentType"] then asserts.AssertXmlStringMaxLen255(struct["AdjustmentType"]) end
+	if struct["ScalingAdjustment"] then asserts.AssertPolicyIncrement(struct["ScalingAdjustment"]) end
 	for k,_ in pairs(struct) do
-		assert(PutScalingPolicyType_keys[k], "PutScalingPolicyType contains unknown key " .. tostring(k))
+		assert(keys.PutScalingPolicyType[k], "PutScalingPolicyType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutScalingPolicyType
 --  
--- @param PolicyName [XmlStringMaxLen255] <p>The name of the policy.</p>
--- @param EstimatedInstanceWarmup [EstimatedInstanceWarmup] <p>The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics. The default is to use the value specified for the default cooldown period for the group.</p> <p>This parameter is not supported if the policy type is <code>SimpleScaling</code>.</p>
--- @param MinAdjustmentStep [MinAdjustmentStep] <p>Available for backward compatibility. Use <code>MinAdjustmentMagnitude</code> instead.</p>
--- @param MinAdjustmentMagnitude [MinAdjustmentMagnitude] <p>The minimum number of instances to scale. If the value of <code>AdjustmentType</code> is <code>PercentChangeInCapacity</code>, the scaling policy changes the <code>DesiredCapacity</code> of the Auto Scaling group by at least this many instances. Otherwise, the error is <code>ValidationError</code>.</p>
--- @param MetricAggregationType [XmlStringMaxLen32] <p>The aggregation type for the CloudWatch metrics. Valid values are <code>Minimum</code>, <code>Maximum</code>, and <code>Average</code>. If the aggregation type is null, the value is treated as <code>Average</code>.</p> <p>This parameter is not supported if the policy type is <code>SimpleScaling</code>.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name or ARN of the group.</p>
--- @param Cooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.</p> <p>This parameter is not supported unless the policy type is <code>SimpleScaling</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param PolicyType [XmlStringMaxLen64] <p>The policy type. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>. If the policy type is null, the value is treated as <code>SimpleScaling</code>.</p>
--- @param StepAdjustments [StepAdjustments] <p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
--- @param AdjustmentType [XmlStringMaxLen255] <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p> <p>This parameter is required if the policy type is <code>SimpleScaling</code> and not supported otherwise.</p>
+-- @param _PolicyName [XmlStringMaxLen255] <p>The name of the policy.</p>
+-- @param _EstimatedInstanceWarmup [EstimatedInstanceWarmup] <p>The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics. The default is to use the value specified for the default cooldown period for the group.</p> <p>This parameter is not supported if the policy type is <code>SimpleScaling</code>.</p>
+-- @param _MinAdjustmentStep [MinAdjustmentStep] <p>Available for backward compatibility. Use <code>MinAdjustmentMagnitude</code> instead.</p>
+-- @param _MinAdjustmentMagnitude [MinAdjustmentMagnitude] <p>The minimum number of instances to scale. If the value of <code>AdjustmentType</code> is <code>PercentChangeInCapacity</code>, the scaling policy changes the <code>DesiredCapacity</code> of the Auto Scaling group by at least this many instances. Otherwise, the error is <code>ValidationError</code>.</p>
+-- @param _MetricAggregationType [XmlStringMaxLen32] <p>The aggregation type for the CloudWatch metrics. Valid values are <code>Minimum</code>, <code>Maximum</code>, and <code>Average</code>. If the aggregation type is null, the value is treated as <code>Average</code>.</p> <p>This parameter is not supported if the policy type is <code>SimpleScaling</code>.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name or ARN of the group.</p>
+-- @param _Cooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.</p> <p>This parameter is not supported unless the policy type is <code>SimpleScaling</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _PolicyType [XmlStringMaxLen64] <p>The policy type. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>. If the policy type is null, the value is treated as <code>SimpleScaling</code>.</p>
+-- @param _StepAdjustments [StepAdjustments] <p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
+-- @param _AdjustmentType [XmlStringMaxLen255] <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p> <p>This parameter is required if the policy type is <code>SimpleScaling</code> and not supported otherwise.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: PolicyName
 -- Required parameter: AdjustmentType
-function M.PutScalingPolicyType(PolicyName, EstimatedInstanceWarmup, MinAdjustmentStep, MinAdjustmentMagnitude, MetricAggregationType, AutoScalingGroupName, Cooldown, PolicyType, StepAdjustments, AdjustmentType, ScalingAdjustment, ...)
+function M.PutScalingPolicyType(_PolicyName, _EstimatedInstanceWarmup, _MinAdjustmentStep, _MinAdjustmentMagnitude, _MetricAggregationType, _AutoScalingGroupName, _Cooldown, _PolicyType, _StepAdjustments, _AdjustmentType, _ScalingAdjustment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutScalingPolicyType")
 	local t = { 
-		["PolicyName"] = PolicyName,
-		["EstimatedInstanceWarmup"] = EstimatedInstanceWarmup,
-		["MinAdjustmentStep"] = MinAdjustmentStep,
-		["MinAdjustmentMagnitude"] = MinAdjustmentMagnitude,
-		["MetricAggregationType"] = MetricAggregationType,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["Cooldown"] = Cooldown,
-		["PolicyType"] = PolicyType,
-		["StepAdjustments"] = StepAdjustments,
-		["AdjustmentType"] = AdjustmentType,
-		["ScalingAdjustment"] = ScalingAdjustment,
+		["PolicyName"] = _PolicyName,
+		["EstimatedInstanceWarmup"] = _EstimatedInstanceWarmup,
+		["MinAdjustmentStep"] = _MinAdjustmentStep,
+		["MinAdjustmentMagnitude"] = _MinAdjustmentMagnitude,
+		["MetricAggregationType"] = _MetricAggregationType,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["Cooldown"] = _Cooldown,
+		["PolicyType"] = _PolicyType,
+		["StepAdjustments"] = _StepAdjustments,
+		["AdjustmentType"] = _AdjustmentType,
+		["ScalingAdjustment"] = _ScalingAdjustment,
 	}
-	M.AssertPutScalingPolicyType(t)
+	asserts.AssertPutScalingPolicyType(t)
 	return t
 end
 
-local InstanceMonitoring_keys = { "Enabled" = true, nil }
+keys.InstanceMonitoring = { ["Enabled"] = true, nil }
 
-function M.AssertInstanceMonitoring(struct)
+function asserts.AssertInstanceMonitoring(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceMonitoring to be of type 'table'")
-	if struct["Enabled"] then M.AssertMonitoringEnabled(struct["Enabled"]) end
+	if struct["Enabled"] then asserts.AssertMonitoringEnabled(struct["Enabled"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceMonitoring_keys[k], "InstanceMonitoring contains unknown key " .. tostring(k))
+		assert(keys.InstanceMonitoring[k], "InstanceMonitoring contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceMonitoring
 -- <p>Describes whether detailed monitoring is enabled for the Auto Scaling instances.</p>
--- @param Enabled [MonitoringEnabled] <p>If <code>true</code>, detailed monitoring is enabled. Otherwise, basic monitoring is enabled.</p>
-function M.InstanceMonitoring(Enabled, ...)
+-- @param _Enabled [MonitoringEnabled] <p>If <code>true</code>, detailed monitoring is enabled. Otherwise, basic monitoring is enabled.</p>
+function M.InstanceMonitoring(_Enabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceMonitoring")
 	local t = { 
-		["Enabled"] = Enabled,
+		["Enabled"] = _Enabled,
 	}
-	M.AssertInstanceMonitoring(t)
+	asserts.AssertInstanceMonitoring(t)
 	return t
 end
 
-local Instance_keys = { "ProtectedFromScaleIn" = true, "AvailabilityZone" = true, "InstanceId" = true, "HealthStatus" = true, "LifecycleState" = true, "LaunchConfigurationName" = true, nil }
+keys.Instance = { ["ProtectedFromScaleIn"] = true, ["AvailabilityZone"] = true, ["InstanceId"] = true, ["HealthStatus"] = true, ["LifecycleState"] = true, ["LaunchConfigurationName"] = true, nil }
 
-function M.AssertInstance(struct)
+function asserts.AssertInstance(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Instance to be of type 'table'")
 	assert(struct["InstanceId"], "Expected key InstanceId to exist in table")
@@ -1632,903 +1635,903 @@ function M.AssertInstance(struct)
 	assert(struct["HealthStatus"], "Expected key HealthStatus to exist in table")
 	assert(struct["LaunchConfigurationName"], "Expected key LaunchConfigurationName to exist in table")
 	assert(struct["ProtectedFromScaleIn"], "Expected key ProtectedFromScaleIn to exist in table")
-	if struct["ProtectedFromScaleIn"] then M.AssertInstanceProtected(struct["ProtectedFromScaleIn"]) end
-	if struct["AvailabilityZone"] then M.AssertXmlStringMaxLen255(struct["AvailabilityZone"]) end
-	if struct["InstanceId"] then M.AssertXmlStringMaxLen19(struct["InstanceId"]) end
-	if struct["HealthStatus"] then M.AssertXmlStringMaxLen32(struct["HealthStatus"]) end
-	if struct["LifecycleState"] then M.AssertLifecycleState(struct["LifecycleState"]) end
-	if struct["LaunchConfigurationName"] then M.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
+	if struct["ProtectedFromScaleIn"] then asserts.AssertInstanceProtected(struct["ProtectedFromScaleIn"]) end
+	if struct["AvailabilityZone"] then asserts.AssertXmlStringMaxLen255(struct["AvailabilityZone"]) end
+	if struct["InstanceId"] then asserts.AssertXmlStringMaxLen19(struct["InstanceId"]) end
+	if struct["HealthStatus"] then asserts.AssertXmlStringMaxLen32(struct["HealthStatus"]) end
+	if struct["LifecycleState"] then asserts.AssertLifecycleState(struct["LifecycleState"]) end
+	if struct["LaunchConfigurationName"] then asserts.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
 	for k,_ in pairs(struct) do
-		assert(Instance_keys[k], "Instance contains unknown key " .. tostring(k))
+		assert(keys.Instance[k], "Instance contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Instance
 -- <p>Describes an EC2 instance.</p>
--- @param ProtectedFromScaleIn [InstanceProtected] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
--- @param AvailabilityZone [XmlStringMaxLen255] <p>The Availability Zone in which the instance is running.</p>
--- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
--- @param HealthStatus [XmlStringMaxLen32] <p>The last reported health status of the instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.</p>
--- @param LifecycleState [LifecycleState] <p>A description of the current lifecycle state. Note that the <code>Quarantined</code> state is not used.</p>
--- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The launch configuration associated with the instance.</p>
+-- @param _ProtectedFromScaleIn [InstanceProtected] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
+-- @param _AvailabilityZone [XmlStringMaxLen255] <p>The Availability Zone in which the instance is running.</p>
+-- @param _InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param _HealthStatus [XmlStringMaxLen32] <p>The last reported health status of the instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.</p>
+-- @param _LifecycleState [LifecycleState] <p>A description of the current lifecycle state. Note that the <code>Quarantined</code> state is not used.</p>
+-- @param _LaunchConfigurationName [XmlStringMaxLen255] <p>The launch configuration associated with the instance.</p>
 -- Required parameter: InstanceId
 -- Required parameter: AvailabilityZone
 -- Required parameter: LifecycleState
 -- Required parameter: HealthStatus
 -- Required parameter: LaunchConfigurationName
 -- Required parameter: ProtectedFromScaleIn
-function M.Instance(ProtectedFromScaleIn, AvailabilityZone, InstanceId, HealthStatus, LifecycleState, LaunchConfigurationName, ...)
+function M.Instance(_ProtectedFromScaleIn, _AvailabilityZone, _InstanceId, _HealthStatus, _LifecycleState, _LaunchConfigurationName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
 	local t = { 
-		["ProtectedFromScaleIn"] = ProtectedFromScaleIn,
-		["AvailabilityZone"] = AvailabilityZone,
-		["InstanceId"] = InstanceId,
-		["HealthStatus"] = HealthStatus,
-		["LifecycleState"] = LifecycleState,
-		["LaunchConfigurationName"] = LaunchConfigurationName,
+		["ProtectedFromScaleIn"] = _ProtectedFromScaleIn,
+		["AvailabilityZone"] = _AvailabilityZone,
+		["InstanceId"] = _InstanceId,
+		["HealthStatus"] = _HealthStatus,
+		["LifecycleState"] = _LifecycleState,
+		["LaunchConfigurationName"] = _LaunchConfigurationName,
 	}
-	M.AssertInstance(t)
+	asserts.AssertInstance(t)
 	return t
 end
 
-local DetachLoadBalancersType_keys = { "AutoScalingGroupName" = true, "LoadBalancerNames" = true, nil }
+keys.DetachLoadBalancersType = { ["AutoScalingGroupName"] = true, ["LoadBalancerNames"] = true, nil }
 
-function M.AssertDetachLoadBalancersType(struct)
+function asserts.AssertDetachLoadBalancersType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachLoadBalancersType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["LoadBalancerNames"], "Expected key LoadBalancerNames to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["LoadBalancerNames"] then M.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["LoadBalancerNames"] then asserts.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachLoadBalancersType_keys[k], "DetachLoadBalancersType contains unknown key " .. tostring(k))
+		assert(keys.DetachLoadBalancersType[k], "DetachLoadBalancersType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachLoadBalancersType
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
--- @param LoadBalancerNames [LoadBalancerNames] <p>One or more load balancer names.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _LoadBalancerNames [LoadBalancerNames] <p>One or more load balancer names.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: LoadBalancerNames
-function M.DetachLoadBalancersType(AutoScalingGroupName, LoadBalancerNames, ...)
+function M.DetachLoadBalancersType(_AutoScalingGroupName, _LoadBalancerNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachLoadBalancersType")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["LoadBalancerNames"] = LoadBalancerNames,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["LoadBalancerNames"] = _LoadBalancerNames,
 	}
-	M.AssertDetachLoadBalancersType(t)
+	asserts.AssertDetachLoadBalancersType(t)
 	return t
 end
 
-local SetInstanceProtectionQuery_keys = { "ProtectedFromScaleIn" = true, "AutoScalingGroupName" = true, "InstanceIds" = true, nil }
+keys.SetInstanceProtectionQuery = { ["ProtectedFromScaleIn"] = true, ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
 
-function M.AssertSetInstanceProtectionQuery(struct)
+function asserts.AssertSetInstanceProtectionQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetInstanceProtectionQuery to be of type 'table'")
 	assert(struct["InstanceIds"], "Expected key InstanceIds to exist in table")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["ProtectedFromScaleIn"], "Expected key ProtectedFromScaleIn to exist in table")
-	if struct["ProtectedFromScaleIn"] then M.AssertProtectedFromScaleIn(struct["ProtectedFromScaleIn"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["InstanceIds"] then M.AssertInstanceIds(struct["InstanceIds"]) end
+	if struct["ProtectedFromScaleIn"] then asserts.AssertProtectedFromScaleIn(struct["ProtectedFromScaleIn"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["InstanceIds"] then asserts.AssertInstanceIds(struct["InstanceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(SetInstanceProtectionQuery_keys[k], "SetInstanceProtectionQuery contains unknown key " .. tostring(k))
+		assert(keys.SetInstanceProtectionQuery[k], "SetInstanceProtectionQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetInstanceProtectionQuery
 --  
--- @param ProtectedFromScaleIn [ProtectedFromScaleIn] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
--- @param InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
+-- @param _ProtectedFromScaleIn [ProtectedFromScaleIn] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
 -- Required parameter: InstanceIds
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ProtectedFromScaleIn
-function M.SetInstanceProtectionQuery(ProtectedFromScaleIn, AutoScalingGroupName, InstanceIds, ...)
+function M.SetInstanceProtectionQuery(_ProtectedFromScaleIn, _AutoScalingGroupName, _InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetInstanceProtectionQuery")
 	local t = { 
-		["ProtectedFromScaleIn"] = ProtectedFromScaleIn,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["InstanceIds"] = InstanceIds,
+		["ProtectedFromScaleIn"] = _ProtectedFromScaleIn,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["InstanceIds"] = _InstanceIds,
 	}
-	M.AssertSetInstanceProtectionQuery(t)
+	asserts.AssertSetInstanceProtectionQuery(t)
 	return t
 end
 
-local TagsType_keys = { "NextToken" = true, "Tags" = true, nil }
+keys.TagsType = { ["NextToken"] = true, ["Tags"] = true, nil }
 
-function M.AssertTagsType(struct)
+function asserts.AssertTagsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagsType to be of type 'table'")
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["Tags"] then M.AssertTagDescriptionList(struct["Tags"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["Tags"] then asserts.AssertTagDescriptionList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(TagsType_keys[k], "TagsType contains unknown key " .. tostring(k))
+		assert(keys.TagsType[k], "TagsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagsType
 --  
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param Tags [TagDescriptionList] <p>One or more tags.</p>
-function M.TagsType(NextToken, Tags, ...)
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param _Tags [TagDescriptionList] <p>One or more tags.</p>
+function M.TagsType(_NextToken, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagsType")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Tags"] = Tags,
+		["NextToken"] = _NextToken,
+		["Tags"] = _Tags,
 	}
-	M.AssertTagsType(t)
+	asserts.AssertTagsType(t)
 	return t
 end
 
-local LaunchConfigurationsType_keys = { "NextToken" = true, "LaunchConfigurations" = true, nil }
+keys.LaunchConfigurationsType = { ["NextToken"] = true, ["LaunchConfigurations"] = true, nil }
 
-function M.AssertLaunchConfigurationsType(struct)
+function asserts.AssertLaunchConfigurationsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LaunchConfigurationsType to be of type 'table'")
 	assert(struct["LaunchConfigurations"], "Expected key LaunchConfigurations to exist in table")
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["LaunchConfigurations"] then M.AssertLaunchConfigurations(struct["LaunchConfigurations"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["LaunchConfigurations"] then asserts.AssertLaunchConfigurations(struct["LaunchConfigurations"]) end
 	for k,_ in pairs(struct) do
-		assert(LaunchConfigurationsType_keys[k], "LaunchConfigurationsType contains unknown key " .. tostring(k))
+		assert(keys.LaunchConfigurationsType[k], "LaunchConfigurationsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LaunchConfigurationsType
 --  
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param LaunchConfigurations [LaunchConfigurations] <p>The launch configurations.</p>
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param _LaunchConfigurations [LaunchConfigurations] <p>The launch configurations.</p>
 -- Required parameter: LaunchConfigurations
-function M.LaunchConfigurationsType(NextToken, LaunchConfigurations, ...)
+function M.LaunchConfigurationsType(_NextToken, _LaunchConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfigurationsType")
 	local t = { 
-		["NextToken"] = NextToken,
-		["LaunchConfigurations"] = LaunchConfigurations,
+		["NextToken"] = _NextToken,
+		["LaunchConfigurations"] = _LaunchConfigurations,
 	}
-	M.AssertLaunchConfigurationsType(t)
+	asserts.AssertLaunchConfigurationsType(t)
 	return t
 end
 
-local LimitExceededFault_keys = { "message" = true, nil }
+keys.LimitExceededFault = { ["message"] = true, nil }
 
-function M.AssertLimitExceededFault(struct)
+function asserts.AssertLimitExceededFault(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededFault to be of type 'table'")
-	if struct["message"] then M.AssertXmlStringMaxLen255(struct["message"]) end
+	if struct["message"] then asserts.AssertXmlStringMaxLen255(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededFault_keys[k], "LimitExceededFault contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededFault[k], "LimitExceededFault contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededFault
 -- <p>You have already reached a limit for your Auto Scaling resources (for example, groups, launch configurations, or lifecycle hooks). For more information, see <a>DescribeAccountLimits</a>.</p>
--- @param message [XmlStringMaxLen255] <p/>
-function M.LimitExceededFault(message, ...)
+-- @param _message [XmlStringMaxLen255] <p/>
+function M.LimitExceededFault(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededFault")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLimitExceededFault(t)
+	asserts.AssertLimitExceededFault(t)
 	return t
 end
 
-local CreateLaunchConfigurationType_keys = { "UserData" = true, "IamInstanceProfile" = true, "ClassicLinkVPCId" = true, "InstanceId" = true, "PlacementTenancy" = true, "AssociatePublicIpAddress" = true, "InstanceMonitoring" = true, "ClassicLinkVPCSecurityGroups" = true, "BlockDeviceMappings" = true, "KeyName" = true, "SecurityGroups" = true, "EbsOptimized" = true, "LaunchConfigurationName" = true, "KernelId" = true, "RamdiskId" = true, "ImageId" = true, "InstanceType" = true, "SpotPrice" = true, nil }
+keys.CreateLaunchConfigurationType = { ["UserData"] = true, ["IamInstanceProfile"] = true, ["ClassicLinkVPCId"] = true, ["InstanceId"] = true, ["PlacementTenancy"] = true, ["AssociatePublicIpAddress"] = true, ["InstanceMonitoring"] = true, ["ClassicLinkVPCSecurityGroups"] = true, ["BlockDeviceMappings"] = true, ["KeyName"] = true, ["SecurityGroups"] = true, ["EbsOptimized"] = true, ["LaunchConfigurationName"] = true, ["KernelId"] = true, ["RamdiskId"] = true, ["ImageId"] = true, ["InstanceType"] = true, ["SpotPrice"] = true, nil }
 
-function M.AssertCreateLaunchConfigurationType(struct)
+function asserts.AssertCreateLaunchConfigurationType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateLaunchConfigurationType to be of type 'table'")
 	assert(struct["LaunchConfigurationName"], "Expected key LaunchConfigurationName to exist in table")
-	if struct["UserData"] then M.AssertXmlStringUserData(struct["UserData"]) end
-	if struct["IamInstanceProfile"] then M.AssertXmlStringMaxLen1600(struct["IamInstanceProfile"]) end
-	if struct["ClassicLinkVPCId"] then M.AssertXmlStringMaxLen255(struct["ClassicLinkVPCId"]) end
-	if struct["InstanceId"] then M.AssertXmlStringMaxLen19(struct["InstanceId"]) end
-	if struct["PlacementTenancy"] then M.AssertXmlStringMaxLen64(struct["PlacementTenancy"]) end
-	if struct["AssociatePublicIpAddress"] then M.AssertAssociatePublicIpAddress(struct["AssociatePublicIpAddress"]) end
-	if struct["InstanceMonitoring"] then M.AssertInstanceMonitoring(struct["InstanceMonitoring"]) end
-	if struct["ClassicLinkVPCSecurityGroups"] then M.AssertClassicLinkVPCSecurityGroups(struct["ClassicLinkVPCSecurityGroups"]) end
-	if struct["BlockDeviceMappings"] then M.AssertBlockDeviceMappings(struct["BlockDeviceMappings"]) end
-	if struct["KeyName"] then M.AssertXmlStringMaxLen255(struct["KeyName"]) end
-	if struct["SecurityGroups"] then M.AssertSecurityGroups(struct["SecurityGroups"]) end
-	if struct["EbsOptimized"] then M.AssertEbsOptimized(struct["EbsOptimized"]) end
-	if struct["LaunchConfigurationName"] then M.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
-	if struct["KernelId"] then M.AssertXmlStringMaxLen255(struct["KernelId"]) end
-	if struct["RamdiskId"] then M.AssertXmlStringMaxLen255(struct["RamdiskId"]) end
-	if struct["ImageId"] then M.AssertXmlStringMaxLen255(struct["ImageId"]) end
-	if struct["InstanceType"] then M.AssertXmlStringMaxLen255(struct["InstanceType"]) end
-	if struct["SpotPrice"] then M.AssertSpotPrice(struct["SpotPrice"]) end
+	if struct["UserData"] then asserts.AssertXmlStringUserData(struct["UserData"]) end
+	if struct["IamInstanceProfile"] then asserts.AssertXmlStringMaxLen1600(struct["IamInstanceProfile"]) end
+	if struct["ClassicLinkVPCId"] then asserts.AssertXmlStringMaxLen255(struct["ClassicLinkVPCId"]) end
+	if struct["InstanceId"] then asserts.AssertXmlStringMaxLen19(struct["InstanceId"]) end
+	if struct["PlacementTenancy"] then asserts.AssertXmlStringMaxLen64(struct["PlacementTenancy"]) end
+	if struct["AssociatePublicIpAddress"] then asserts.AssertAssociatePublicIpAddress(struct["AssociatePublicIpAddress"]) end
+	if struct["InstanceMonitoring"] then asserts.AssertInstanceMonitoring(struct["InstanceMonitoring"]) end
+	if struct["ClassicLinkVPCSecurityGroups"] then asserts.AssertClassicLinkVPCSecurityGroups(struct["ClassicLinkVPCSecurityGroups"]) end
+	if struct["BlockDeviceMappings"] then asserts.AssertBlockDeviceMappings(struct["BlockDeviceMappings"]) end
+	if struct["KeyName"] then asserts.AssertXmlStringMaxLen255(struct["KeyName"]) end
+	if struct["SecurityGroups"] then asserts.AssertSecurityGroups(struct["SecurityGroups"]) end
+	if struct["EbsOptimized"] then asserts.AssertEbsOptimized(struct["EbsOptimized"]) end
+	if struct["LaunchConfigurationName"] then asserts.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
+	if struct["KernelId"] then asserts.AssertXmlStringMaxLen255(struct["KernelId"]) end
+	if struct["RamdiskId"] then asserts.AssertXmlStringMaxLen255(struct["RamdiskId"]) end
+	if struct["ImageId"] then asserts.AssertXmlStringMaxLen255(struct["ImageId"]) end
+	if struct["InstanceType"] then asserts.AssertXmlStringMaxLen255(struct["InstanceType"]) end
+	if struct["SpotPrice"] then asserts.AssertSpotPrice(struct["SpotPrice"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateLaunchConfigurationType_keys[k], "CreateLaunchConfigurationType contains unknown key " .. tostring(k))
+		assert(keys.CreateLaunchConfigurationType[k], "CreateLaunchConfigurationType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateLaunchConfigurationType
 --  
--- @param UserData [XmlStringUserData] <p>The user data to make available to the launched EC2 instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata and User Data</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param IamInstanceProfile [XmlStringMaxLen1600] <p>The name or the Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.</p> <p>EC2 instances launched with an IAM role will automatically have AWS security credentials available. You can use IAM roles with Auto Scaling to automatically enable applications running on your EC2 instances to securely access other AWS resources. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param ClassicLinkVPCId [XmlStringMaxLen255] <p>The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter is supported only if you are launching EC2-Classic instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, with the exception of the block device mapping.</p> <p>If you do not specify <code>InstanceId</code>, you must specify both <code>ImageId</code> and <code>InstanceType</code>.</p> <p>To create a launch configuration with a block device mapping or override any other instance attributes, specify them as part of the same request.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param PlacementTenancy [XmlStringMaxLen64] <p>The tenancy of the instance. An instance with a tenancy of <code>dedicated</code> runs on single-tenant hardware and can only be launched into a VPC.</p> <p>You must set the value of this parameter to <code>dedicated</code> if want to launch Dedicated Instances into a shared tenancy VPC (VPC with instance placement tenancy attribute set to <code>default</code>).</p> <p>If you specify this parameter, be sure to specify at least one subnet when you create your group.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p> <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
--- @param AssociatePublicIpAddress [AssociatePublicIpAddress] <p>Used for groups that launch instances into a virtual private cloud (VPC). Specifies whether to assign a public IP address to each instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you specify this parameter, be sure to specify at least one subnet when you create your group.</p> <p>Default: If the instance is launched into a default subnet, the default is <code>true</code>. If the instance is launched into a nondefault subnet, the default is <code>false</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param InstanceMonitoring [InstanceMonitoring] <p>Enables detailed monitoring (<code>true</code>) or basic monitoring (<code>false</code>) for the Auto Scaling instances. The default is <code>true</code>.</p>
--- @param ClassicLinkVPCSecurityGroups [ClassicLinkVPCSecurityGroups] <p>The IDs of one or more security groups for the specified ClassicLink-enabled VPC. This parameter is required if you specify a ClassicLink-enabled VPC, and is not supported otherwise. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param BlockDeviceMappings [BlockDeviceMappings] <p>One or more mappings that specify how block devices are exposed to the instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block Device Mapping</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param KeyName [XmlStringMaxLen255] <p>The name of the key pair. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon EC2 Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param SecurityGroups [SecurityGroups] <p>One or more security groups with which to associate the instances.</p> <p>If your instances are launched in EC2-Classic, you can either specify security group names or the security group IDs. For more information about security groups for EC2-Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon EC2 Security Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>If your instances are launched into a VPC, specify security group IDs. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
--- @param EbsOptimized [EbsOptimized] <p>Indicates whether the instance is optimized for Amazon EBS I/O. By default, the instance is not optimized for EBS I/O. The optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization is not available with all instance types. Additional usage charges apply. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html">Amazon EBS-Optimized Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the launch configuration. This name must be unique within the scope of your AWS account.</p>
--- @param KernelId [XmlStringMaxLen255] <p>The ID of the kernel associated with the AMI.</p>
--- @param RamdiskId [XmlStringMaxLen255] <p>The ID of the RAM disk associated with the AMI.</p>
--- @param ImageId [XmlStringMaxLen255] <p>The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances.</p> <p>If you do not specify <code>InstanceId</code>, you must specify <code>ImageId</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding an AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param InstanceType [XmlStringMaxLen255] <p>The instance type of the EC2 instance.</p> <p>If you do not specify <code>InstanceId</code>, you must specify <code>InstanceType</code>.</p> <p>For information about available instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes">Available Instance Types</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> </p>
--- @param SpotPrice [SpotPrice] <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill the request. Spot Instances are launched when the price you specify exceeds the current Spot market price. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _UserData [XmlStringUserData] <p>The user data to make available to the launched EC2 instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata and User Data</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _IamInstanceProfile [XmlStringMaxLen1600] <p>The name or the Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.</p> <p>EC2 instances launched with an IAM role will automatically have AWS security credentials available. You can use IAM roles with Auto Scaling to automatically enable applications running on your EC2 instances to securely access other AWS resources. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _ClassicLinkVPCId [XmlStringMaxLen255] <p>The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter is supported only if you are launching EC2-Classic instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _InstanceId [XmlStringMaxLen19] <p>The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, with the exception of the block device mapping.</p> <p>If you do not specify <code>InstanceId</code>, you must specify both <code>ImageId</code> and <code>InstanceType</code>.</p> <p>To create a launch configuration with a block device mapping or override any other instance attributes, specify them as part of the same request.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _PlacementTenancy [XmlStringMaxLen64] <p>The tenancy of the instance. An instance with a tenancy of <code>dedicated</code> runs on single-tenant hardware and can only be launched into a VPC.</p> <p>You must set the value of this parameter to <code>dedicated</code> if want to launch Dedicated Instances into a shared tenancy VPC (VPC with instance placement tenancy attribute set to <code>default</code>).</p> <p>If you specify this parameter, be sure to specify at least one subnet when you create your group.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p> <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
+-- @param _AssociatePublicIpAddress [AssociatePublicIpAddress] <p>Used for groups that launch instances into a virtual private cloud (VPC). Specifies whether to assign a public IP address to each instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you specify this parameter, be sure to specify at least one subnet when you create your group.</p> <p>Default: If the instance is launched into a default subnet, the default is <code>true</code>. If the instance is launched into a nondefault subnet, the default is <code>false</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _InstanceMonitoring [InstanceMonitoring] <p>Enables detailed monitoring (<code>true</code>) or basic monitoring (<code>false</code>) for the Auto Scaling instances. The default is <code>true</code>.</p>
+-- @param _ClassicLinkVPCSecurityGroups [ClassicLinkVPCSecurityGroups] <p>The IDs of one or more security groups for the specified ClassicLink-enabled VPC. This parameter is required if you specify a ClassicLink-enabled VPC, and is not supported otherwise. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _BlockDeviceMappings [BlockDeviceMappings] <p>One or more mappings that specify how block devices are exposed to the instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block Device Mapping</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _KeyName [XmlStringMaxLen255] <p>The name of the key pair. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon EC2 Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _SecurityGroups [SecurityGroups] <p>One or more security groups with which to associate the instances.</p> <p>If your instances are launched in EC2-Classic, you can either specify security group names or the security group IDs. For more information about security groups for EC2-Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon EC2 Security Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>If your instances are launched into a VPC, specify security group IDs. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+-- @param _EbsOptimized [EbsOptimized] <p>Indicates whether the instance is optimized for Amazon EBS I/O. By default, the instance is not optimized for EBS I/O. The optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization is not available with all instance types. Additional usage charges apply. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html">Amazon EBS-Optimized Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the launch configuration. This name must be unique within the scope of your AWS account.</p>
+-- @param _KernelId [XmlStringMaxLen255] <p>The ID of the kernel associated with the AMI.</p>
+-- @param _RamdiskId [XmlStringMaxLen255] <p>The ID of the RAM disk associated with the AMI.</p>
+-- @param _ImageId [XmlStringMaxLen255] <p>The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances.</p> <p>If you do not specify <code>InstanceId</code>, you must specify <code>ImageId</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding an AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _InstanceType [XmlStringMaxLen255] <p>The instance type of the EC2 instance.</p> <p>If you do not specify <code>InstanceId</code>, you must specify <code>InstanceType</code>.</p> <p>For information about available instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes">Available Instance Types</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> </p>
+-- @param _SpotPrice [SpotPrice] <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill the request. Spot Instances are launched when the price you specify exceeds the current Spot market price. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.</p>
 -- Required parameter: LaunchConfigurationName
-function M.CreateLaunchConfigurationType(UserData, IamInstanceProfile, ClassicLinkVPCId, InstanceId, PlacementTenancy, AssociatePublicIpAddress, InstanceMonitoring, ClassicLinkVPCSecurityGroups, BlockDeviceMappings, KeyName, SecurityGroups, EbsOptimized, LaunchConfigurationName, KernelId, RamdiskId, ImageId, InstanceType, SpotPrice, ...)
+function M.CreateLaunchConfigurationType(_UserData, _IamInstanceProfile, _ClassicLinkVPCId, _InstanceId, _PlacementTenancy, _AssociatePublicIpAddress, _InstanceMonitoring, _ClassicLinkVPCSecurityGroups, _BlockDeviceMappings, _KeyName, _SecurityGroups, _EbsOptimized, _LaunchConfigurationName, _KernelId, _RamdiskId, _ImageId, _InstanceType, _SpotPrice, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLaunchConfigurationType")
 	local t = { 
-		["UserData"] = UserData,
-		["IamInstanceProfile"] = IamInstanceProfile,
-		["ClassicLinkVPCId"] = ClassicLinkVPCId,
-		["InstanceId"] = InstanceId,
-		["PlacementTenancy"] = PlacementTenancy,
-		["AssociatePublicIpAddress"] = AssociatePublicIpAddress,
-		["InstanceMonitoring"] = InstanceMonitoring,
-		["ClassicLinkVPCSecurityGroups"] = ClassicLinkVPCSecurityGroups,
-		["BlockDeviceMappings"] = BlockDeviceMappings,
-		["KeyName"] = KeyName,
-		["SecurityGroups"] = SecurityGroups,
-		["EbsOptimized"] = EbsOptimized,
-		["LaunchConfigurationName"] = LaunchConfigurationName,
-		["KernelId"] = KernelId,
-		["RamdiskId"] = RamdiskId,
-		["ImageId"] = ImageId,
-		["InstanceType"] = InstanceType,
-		["SpotPrice"] = SpotPrice,
+		["UserData"] = _UserData,
+		["IamInstanceProfile"] = _IamInstanceProfile,
+		["ClassicLinkVPCId"] = _ClassicLinkVPCId,
+		["InstanceId"] = _InstanceId,
+		["PlacementTenancy"] = _PlacementTenancy,
+		["AssociatePublicIpAddress"] = _AssociatePublicIpAddress,
+		["InstanceMonitoring"] = _InstanceMonitoring,
+		["ClassicLinkVPCSecurityGroups"] = _ClassicLinkVPCSecurityGroups,
+		["BlockDeviceMappings"] = _BlockDeviceMappings,
+		["KeyName"] = _KeyName,
+		["SecurityGroups"] = _SecurityGroups,
+		["EbsOptimized"] = _EbsOptimized,
+		["LaunchConfigurationName"] = _LaunchConfigurationName,
+		["KernelId"] = _KernelId,
+		["RamdiskId"] = _RamdiskId,
+		["ImageId"] = _ImageId,
+		["InstanceType"] = _InstanceType,
+		["SpotPrice"] = _SpotPrice,
 	}
-	M.AssertCreateLaunchConfigurationType(t)
+	asserts.AssertCreateLaunchConfigurationType(t)
 	return t
 end
 
-local PolicyARNType_keys = { "PolicyARN" = true, nil }
+keys.PolicyARNType = { ["PolicyARN"] = true, nil }
 
-function M.AssertPolicyARNType(struct)
+function asserts.AssertPolicyARNType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PolicyARNType to be of type 'table'")
-	if struct["PolicyARN"] then M.AssertResourceName(struct["PolicyARN"]) end
+	if struct["PolicyARN"] then asserts.AssertResourceName(struct["PolicyARN"]) end
 	for k,_ in pairs(struct) do
-		assert(PolicyARNType_keys[k], "PolicyARNType contains unknown key " .. tostring(k))
+		assert(keys.PolicyARNType[k], "PolicyARNType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PolicyARNType
 --  
--- @param PolicyARN [ResourceName] <p>The Amazon Resource Name (ARN) of the policy.</p>
-function M.PolicyARNType(PolicyARN, ...)
+-- @param _PolicyARN [ResourceName] <p>The Amazon Resource Name (ARN) of the policy.</p>
+function M.PolicyARNType(_PolicyARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyARNType")
 	local t = { 
-		["PolicyARN"] = PolicyARN,
+		["PolicyARN"] = _PolicyARN,
 	}
-	M.AssertPolicyARNType(t)
+	asserts.AssertPolicyARNType(t)
 	return t
 end
 
-local AutoScalingInstancesType_keys = { "NextToken" = true, "AutoScalingInstances" = true, nil }
+keys.AutoScalingInstancesType = { ["NextToken"] = true, ["AutoScalingInstances"] = true, nil }
 
-function M.AssertAutoScalingInstancesType(struct)
+function asserts.AssertAutoScalingInstancesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingInstancesType to be of type 'table'")
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["AutoScalingInstances"] then M.AssertAutoScalingInstances(struct["AutoScalingInstances"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["AutoScalingInstances"] then asserts.AssertAutoScalingInstances(struct["AutoScalingInstances"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingInstancesType_keys[k], "AutoScalingInstancesType contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingInstancesType[k], "AutoScalingInstancesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingInstancesType
 --  
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param AutoScalingInstances [AutoScalingInstances] <p>The instances.</p>
-function M.AutoScalingInstancesType(NextToken, AutoScalingInstances, ...)
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param _AutoScalingInstances [AutoScalingInstances] <p>The instances.</p>
+function M.AutoScalingInstancesType(_NextToken, _AutoScalingInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingInstancesType")
 	local t = { 
-		["NextToken"] = NextToken,
-		["AutoScalingInstances"] = AutoScalingInstances,
+		["NextToken"] = _NextToken,
+		["AutoScalingInstances"] = _AutoScalingInstances,
 	}
-	M.AssertAutoScalingInstancesType(t)
+	asserts.AssertAutoScalingInstancesType(t)
 	return t
 end
 
-local SetDesiredCapacityType_keys = { "AutoScalingGroupName" = true, "DesiredCapacity" = true, "HonorCooldown" = true, nil }
+keys.SetDesiredCapacityType = { ["AutoScalingGroupName"] = true, ["DesiredCapacity"] = true, ["HonorCooldown"] = true, nil }
 
-function M.AssertSetDesiredCapacityType(struct)
+function asserts.AssertSetDesiredCapacityType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetDesiredCapacityType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["DesiredCapacity"], "Expected key DesiredCapacity to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["DesiredCapacity"] then M.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
-	if struct["HonorCooldown"] then M.AssertHonorCooldown(struct["HonorCooldown"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["DesiredCapacity"] then asserts.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
+	if struct["HonorCooldown"] then asserts.AssertHonorCooldown(struct["HonorCooldown"]) end
 	for k,_ in pairs(struct) do
-		assert(SetDesiredCapacityType_keys[k], "SetDesiredCapacityType contains unknown key " .. tostring(k))
+		assert(keys.SetDesiredCapacityType[k], "SetDesiredCapacityType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetDesiredCapacityType
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the Auto Scaling group.</p>
--- @param HonorCooldown [HonorCooldown] <p>By default, <code>SetDesiredCapacity</code> overrides any cooldown period associated with the Auto Scaling group. Specify <code>True</code> to make Auto Scaling to wait for the cool-down period associated with the Auto Scaling group to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the Auto Scaling group.</p>
+-- @param _HonorCooldown [HonorCooldown] <p>By default, <code>SetDesiredCapacity</code> overrides any cooldown period associated with the Auto Scaling group. Specify <code>True</code> to make Auto Scaling to wait for the cool-down period associated with the Auto Scaling group to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: DesiredCapacity
-function M.SetDesiredCapacityType(AutoScalingGroupName, DesiredCapacity, HonorCooldown, ...)
+function M.SetDesiredCapacityType(_AutoScalingGroupName, _DesiredCapacity, _HonorCooldown, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetDesiredCapacityType")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["DesiredCapacity"] = DesiredCapacity,
-		["HonorCooldown"] = HonorCooldown,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["DesiredCapacity"] = _DesiredCapacity,
+		["HonorCooldown"] = _HonorCooldown,
 	}
-	M.AssertSetDesiredCapacityType(t)
+	asserts.AssertSetDesiredCapacityType(t)
 	return t
 end
 
-local AutoScalingGroupsType_keys = { "AutoScalingGroups" = true, "NextToken" = true, nil }
+keys.AutoScalingGroupsType = { ["AutoScalingGroups"] = true, ["NextToken"] = true, nil }
 
-function M.AssertAutoScalingGroupsType(struct)
+function asserts.AssertAutoScalingGroupsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingGroupsType to be of type 'table'")
 	assert(struct["AutoScalingGroups"], "Expected key AutoScalingGroups to exist in table")
-	if struct["AutoScalingGroups"] then M.AssertAutoScalingGroups(struct["AutoScalingGroups"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
+	if struct["AutoScalingGroups"] then asserts.AssertAutoScalingGroups(struct["AutoScalingGroups"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingGroupsType_keys[k], "AutoScalingGroupsType contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingGroupsType[k], "AutoScalingGroupsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingGroupsType
 --  
--- @param AutoScalingGroups [AutoScalingGroups] <p>The groups.</p>
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param _AutoScalingGroups [AutoScalingGroups] <p>The groups.</p>
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- Required parameter: AutoScalingGroups
-function M.AutoScalingGroupsType(AutoScalingGroups, NextToken, ...)
+function M.AutoScalingGroupsType(_AutoScalingGroups, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingGroupsType")
 	local t = { 
-		["AutoScalingGroups"] = AutoScalingGroups,
-		["NextToken"] = NextToken,
+		["AutoScalingGroups"] = _AutoScalingGroups,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertAutoScalingGroupsType(t)
+	asserts.AssertAutoScalingGroupsType(t)
 	return t
 end
 
-local BlockDeviceMapping_keys = { "DeviceName" = true, "VirtualName" = true, "NoDevice" = true, "Ebs" = true, nil }
+keys.BlockDeviceMapping = { ["DeviceName"] = true, ["VirtualName"] = true, ["NoDevice"] = true, ["Ebs"] = true, nil }
 
-function M.AssertBlockDeviceMapping(struct)
+function asserts.AssertBlockDeviceMapping(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BlockDeviceMapping to be of type 'table'")
 	assert(struct["DeviceName"], "Expected key DeviceName to exist in table")
-	if struct["DeviceName"] then M.AssertXmlStringMaxLen255(struct["DeviceName"]) end
-	if struct["VirtualName"] then M.AssertXmlStringMaxLen255(struct["VirtualName"]) end
-	if struct["NoDevice"] then M.AssertNoDevice(struct["NoDevice"]) end
-	if struct["Ebs"] then M.AssertEbs(struct["Ebs"]) end
+	if struct["DeviceName"] then asserts.AssertXmlStringMaxLen255(struct["DeviceName"]) end
+	if struct["VirtualName"] then asserts.AssertXmlStringMaxLen255(struct["VirtualName"]) end
+	if struct["NoDevice"] then asserts.AssertNoDevice(struct["NoDevice"]) end
+	if struct["Ebs"] then asserts.AssertEbs(struct["Ebs"]) end
 	for k,_ in pairs(struct) do
-		assert(BlockDeviceMapping_keys[k], "BlockDeviceMapping contains unknown key " .. tostring(k))
+		assert(keys.BlockDeviceMapping[k], "BlockDeviceMapping contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BlockDeviceMapping
 -- <p>Describes a block device mapping.</p>
--- @param DeviceName [XmlStringMaxLen255] <p>The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).</p>
--- @param VirtualName [XmlStringMaxLen255] <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
--- @param NoDevice [NoDevice] <p>Suppresses a device mapping.</p> <p>If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling launches a replacement instance if the instance fails the health check.</p>
--- @param Ebs [Ebs] <p>The information about the Amazon EBS volume.</p>
+-- @param _DeviceName [XmlStringMaxLen255] <p>The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).</p>
+-- @param _VirtualName [XmlStringMaxLen255] <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
+-- @param _NoDevice [NoDevice] <p>Suppresses a device mapping.</p> <p>If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling launches a replacement instance if the instance fails the health check.</p>
+-- @param _Ebs [Ebs] <p>The information about the Amazon EBS volume.</p>
 -- Required parameter: DeviceName
-function M.BlockDeviceMapping(DeviceName, VirtualName, NoDevice, Ebs, ...)
+function M.BlockDeviceMapping(_DeviceName, _VirtualName, _NoDevice, _Ebs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BlockDeviceMapping")
 	local t = { 
-		["DeviceName"] = DeviceName,
-		["VirtualName"] = VirtualName,
-		["NoDevice"] = NoDevice,
-		["Ebs"] = Ebs,
+		["DeviceName"] = _DeviceName,
+		["VirtualName"] = _VirtualName,
+		["NoDevice"] = _NoDevice,
+		["Ebs"] = _Ebs,
 	}
-	M.AssertBlockDeviceMapping(t)
+	asserts.AssertBlockDeviceMapping(t)
 	return t
 end
 
-local Filter_keys = { "Values" = true, "Name" = true, nil }
+keys.Filter = { ["Values"] = true, ["Name"] = true, nil }
 
-function M.AssertFilter(struct)
+function asserts.AssertFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Filter to be of type 'table'")
-	if struct["Values"] then M.AssertValues(struct["Values"]) end
-	if struct["Name"] then M.AssertXmlString(struct["Name"]) end
+	if struct["Values"] then asserts.AssertValues(struct["Values"]) end
+	if struct["Name"] then asserts.AssertXmlString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(Filter_keys[k], "Filter contains unknown key " .. tostring(k))
+		assert(keys.Filter[k], "Filter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Filter
 -- <p>Describes a filter.</p>
--- @param Values [Values] <p>The value of the filter.</p>
--- @param Name [XmlString] <p>The name of the filter. The valid values are: <code>"auto-scaling-group"</code>, <code>"key"</code>, <code>"value"</code>, and <code>"propagate-at-launch"</code>.</p>
-function M.Filter(Values, Name, ...)
+-- @param _Values [Values] <p>The value of the filter.</p>
+-- @param _Name [XmlString] <p>The name of the filter. The valid values are: <code>"auto-scaling-group"</code>, <code>"key"</code>, <code>"value"</code>, and <code>"propagate-at-launch"</code>.</p>
+function M.Filter(_Values, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Filter")
 	local t = { 
-		["Values"] = Values,
-		["Name"] = Name,
+		["Values"] = _Values,
+		["Name"] = _Name,
 	}
-	M.AssertFilter(t)
+	asserts.AssertFilter(t)
 	return t
 end
 
-local PutScheduledUpdateGroupActionType_keys = { "MinSize" = true, "DesiredCapacity" = true, "AutoScalingGroupName" = true, "Recurrence" = true, "MaxSize" = true, "ScheduledActionName" = true, "StartTime" = true, "Time" = true, "EndTime" = true, nil }
+keys.PutScheduledUpdateGroupActionType = { ["MinSize"] = true, ["DesiredCapacity"] = true, ["AutoScalingGroupName"] = true, ["Recurrence"] = true, ["MaxSize"] = true, ["ScheduledActionName"] = true, ["StartTime"] = true, ["Time"] = true, ["EndTime"] = true, nil }
 
-function M.AssertPutScheduledUpdateGroupActionType(struct)
+function asserts.AssertPutScheduledUpdateGroupActionType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutScheduledUpdateGroupActionType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["ScheduledActionName"], "Expected key ScheduledActionName to exist in table")
-	if struct["MinSize"] then M.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
-	if struct["DesiredCapacity"] then M.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["Recurrence"] then M.AssertXmlStringMaxLen255(struct["Recurrence"]) end
-	if struct["MaxSize"] then M.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
-	if struct["ScheduledActionName"] then M.AssertXmlStringMaxLen255(struct["ScheduledActionName"]) end
-	if struct["StartTime"] then M.AssertTimestampType(struct["StartTime"]) end
-	if struct["Time"] then M.AssertTimestampType(struct["Time"]) end
-	if struct["EndTime"] then M.AssertTimestampType(struct["EndTime"]) end
+	if struct["MinSize"] then asserts.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
+	if struct["DesiredCapacity"] then asserts.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["Recurrence"] then asserts.AssertXmlStringMaxLen255(struct["Recurrence"]) end
+	if struct["MaxSize"] then asserts.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
+	if struct["ScheduledActionName"] then asserts.AssertXmlStringMaxLen255(struct["ScheduledActionName"]) end
+	if struct["StartTime"] then asserts.AssertTimestampType(struct["StartTime"]) end
+	if struct["Time"] then asserts.AssertTimestampType(struct["Time"]) end
+	if struct["EndTime"] then asserts.AssertTimestampType(struct["EndTime"]) end
 	for k,_ in pairs(struct) do
-		assert(PutScheduledUpdateGroupActionType_keys[k], "PutScheduledUpdateGroupActionType contains unknown key " .. tostring(k))
+		assert(keys.PutScheduledUpdateGroupActionType[k], "PutScheduledUpdateGroupActionType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutScheduledUpdateGroupActionType
 --  
--- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size for the Auto Scaling group.</p>
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the group.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
--- @param Recurrence [XmlStringMaxLen255] <p>The recurring schedule for this action, in Unix cron syntax format. For more information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p>
--- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size for the Auto Scaling group.</p>
--- @param ScheduledActionName [XmlStringMaxLen255] <p>The name of this scaling action.</p>
--- @param StartTime [TimestampType] <p>The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you specify <code>Recurrence</code> and <code>StartTime</code>, Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence.</p> <p>If you try to schedule your action in the past, Auto Scaling returns an error message.</p>
--- @param Time [TimestampType] <p>This parameter is deprecated.</p>
--- @param EndTime [TimestampType] <p>The time for the recurring schedule to end. Auto Scaling does not perform the action after this time.</p>
+-- @param _MinSize [AutoScalingGroupMinSize] <p>The minimum size for the Auto Scaling group.</p>
+-- @param _DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the group.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
+-- @param _Recurrence [XmlStringMaxLen255] <p>The recurring schedule for this action, in Unix cron syntax format. For more information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p>
+-- @param _MaxSize [AutoScalingGroupMaxSize] <p>The maximum size for the Auto Scaling group.</p>
+-- @param _ScheduledActionName [XmlStringMaxLen255] <p>The name of this scaling action.</p>
+-- @param _StartTime [TimestampType] <p>The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you specify <code>Recurrence</code> and <code>StartTime</code>, Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence.</p> <p>If you try to schedule your action in the past, Auto Scaling returns an error message.</p>
+-- @param _Time [TimestampType] <p>This parameter is deprecated.</p>
+-- @param _EndTime [TimestampType] <p>The time for the recurring schedule to end. Auto Scaling does not perform the action after this time.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ScheduledActionName
-function M.PutScheduledUpdateGroupActionType(MinSize, DesiredCapacity, AutoScalingGroupName, Recurrence, MaxSize, ScheduledActionName, StartTime, Time, EndTime, ...)
+function M.PutScheduledUpdateGroupActionType(_MinSize, _DesiredCapacity, _AutoScalingGroupName, _Recurrence, _MaxSize, _ScheduledActionName, _StartTime, _Time, _EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutScheduledUpdateGroupActionType")
 	local t = { 
-		["MinSize"] = MinSize,
-		["DesiredCapacity"] = DesiredCapacity,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["Recurrence"] = Recurrence,
-		["MaxSize"] = MaxSize,
-		["ScheduledActionName"] = ScheduledActionName,
-		["StartTime"] = StartTime,
-		["Time"] = Time,
-		["EndTime"] = EndTime,
+		["MinSize"] = _MinSize,
+		["DesiredCapacity"] = _DesiredCapacity,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["Recurrence"] = _Recurrence,
+		["MaxSize"] = _MaxSize,
+		["ScheduledActionName"] = _ScheduledActionName,
+		["StartTime"] = _StartTime,
+		["Time"] = _Time,
+		["EndTime"] = _EndTime,
 	}
-	M.AssertPutScheduledUpdateGroupActionType(t)
+	asserts.AssertPutScheduledUpdateGroupActionType(t)
 	return t
 end
 
-local DescribeTagsType_keys = { "MaxRecords" = true, "NextToken" = true, "Filters" = true, nil }
+keys.DescribeTagsType = { ["MaxRecords"] = true, ["NextToken"] = true, ["Filters"] = true, nil }
 
-function M.AssertDescribeTagsType(struct)
+function asserts.AssertDescribeTagsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTagsType to be of type 'table'")
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["Filters"] then M.AssertFilters(struct["Filters"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["Filters"] then asserts.AssertFilters(struct["Filters"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTagsType_keys[k], "DescribeTagsType contains unknown key " .. tostring(k))
+		assert(keys.DescribeTagsType[k], "DescribeTagsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTagsType
 --  
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param Filters [Filters] <p>A filter used to scope the tags to return.</p>
-function M.DescribeTagsType(MaxRecords, NextToken, Filters, ...)
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param _Filters [Filters] <p>A filter used to scope the tags to return.</p>
+function M.DescribeTagsType(_MaxRecords, _NextToken, _Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsType")
 	local t = { 
-		["MaxRecords"] = MaxRecords,
-		["NextToken"] = NextToken,
-		["Filters"] = Filters,
+		["MaxRecords"] = _MaxRecords,
+		["NextToken"] = _NextToken,
+		["Filters"] = _Filters,
 	}
-	M.AssertDescribeTagsType(t)
+	asserts.AssertDescribeTagsType(t)
 	return t
 end
 
-local EnterStandbyQuery_keys = { "ShouldDecrementDesiredCapacity" = true, "AutoScalingGroupName" = true, "InstanceIds" = true, nil }
+keys.EnterStandbyQuery = { ["ShouldDecrementDesiredCapacity"] = true, ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
 
-function M.AssertEnterStandbyQuery(struct)
+function asserts.AssertEnterStandbyQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnterStandbyQuery to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["ShouldDecrementDesiredCapacity"], "Expected key ShouldDecrementDesiredCapacity to exist in table")
-	if struct["ShouldDecrementDesiredCapacity"] then M.AssertShouldDecrementDesiredCapacity(struct["ShouldDecrementDesiredCapacity"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["InstanceIds"] then M.AssertInstanceIds(struct["InstanceIds"]) end
+	if struct["ShouldDecrementDesiredCapacity"] then asserts.AssertShouldDecrementDesiredCapacity(struct["ShouldDecrementDesiredCapacity"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["InstanceIds"] then asserts.AssertInstanceIds(struct["InstanceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(EnterStandbyQuery_keys[k], "EnterStandbyQuery contains unknown key " .. tostring(k))
+		assert(keys.EnterStandbyQuery[k], "EnterStandbyQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnterStandbyQuery
 --  
--- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>Specifies whether the instances moved to <code>Standby</code> mode count as part of the Auto Scaling group's desired capacity. If set, the desired capacity for the Auto Scaling group decrements by the number of instances moved to <code>Standby</code> mode.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
--- @param InstanceIds [InstanceIds] <p>One or more instances to move into <code>Standby</code> mode. You must specify at least one instance ID.</p>
+-- @param _ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>Specifies whether the instances moved to <code>Standby</code> mode count as part of the Auto Scaling group's desired capacity. If set, the desired capacity for the Auto Scaling group decrements by the number of instances moved to <code>Standby</code> mode.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _InstanceIds [InstanceIds] <p>One or more instances to move into <code>Standby</code> mode. You must specify at least one instance ID.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ShouldDecrementDesiredCapacity
-function M.EnterStandbyQuery(ShouldDecrementDesiredCapacity, AutoScalingGroupName, InstanceIds, ...)
+function M.EnterStandbyQuery(_ShouldDecrementDesiredCapacity, _AutoScalingGroupName, _InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnterStandbyQuery")
 	local t = { 
-		["ShouldDecrementDesiredCapacity"] = ShouldDecrementDesiredCapacity,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["InstanceIds"] = InstanceIds,
+		["ShouldDecrementDesiredCapacity"] = _ShouldDecrementDesiredCapacity,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["InstanceIds"] = _InstanceIds,
 	}
-	M.AssertEnterStandbyQuery(t)
+	asserts.AssertEnterStandbyQuery(t)
 	return t
 end
 
-local InvalidNextToken_keys = { "message" = true, nil }
+keys.InvalidNextToken = { ["message"] = true, nil }
 
-function M.AssertInvalidNextToken(struct)
+function asserts.AssertInvalidNextToken(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidNextToken to be of type 'table'")
-	if struct["message"] then M.AssertXmlStringMaxLen255(struct["message"]) end
+	if struct["message"] then asserts.AssertXmlStringMaxLen255(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidNextToken_keys[k], "InvalidNextToken contains unknown key " .. tostring(k))
+		assert(keys.InvalidNextToken[k], "InvalidNextToken contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidNextToken
 -- <p>The <code>NextToken</code> value is not valid.</p>
--- @param message [XmlStringMaxLen255] <p/>
-function M.InvalidNextToken(message, ...)
+-- @param _message [XmlStringMaxLen255] <p/>
+function M.InvalidNextToken(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextToken")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidNextToken(t)
+	asserts.AssertInvalidNextToken(t)
 	return t
 end
 
-local DescribeLoadBalancersRequest_keys = { "MaxRecords" = true, "NextToken" = true, "AutoScalingGroupName" = true, nil }
+keys.DescribeLoadBalancersRequest = { ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDescribeLoadBalancersRequest(struct)
+function asserts.AssertDescribeLoadBalancersRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancersRequest to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLoadBalancersRequest_keys[k], "DescribeLoadBalancersRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancersRequest[k], "DescribeLoadBalancersRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancersRequest
 --  
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
 -- Required parameter: AutoScalingGroupName
-function M.DescribeLoadBalancersRequest(MaxRecords, NextToken, AutoScalingGroupName, ...)
+function M.DescribeLoadBalancersRequest(_MaxRecords, _NextToken, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersRequest")
 	local t = { 
-		["MaxRecords"] = MaxRecords,
-		["NextToken"] = NextToken,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["MaxRecords"] = _MaxRecords,
+		["NextToken"] = _NextToken,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDescribeLoadBalancersRequest(t)
+	asserts.AssertDescribeLoadBalancersRequest(t)
 	return t
 end
 
-local RecordLifecycleActionHeartbeatType_keys = { "InstanceId" = true, "LifecycleHookName" = true, "AutoScalingGroupName" = true, "LifecycleActionToken" = true, nil }
+keys.RecordLifecycleActionHeartbeatType = { ["InstanceId"] = true, ["LifecycleHookName"] = true, ["AutoScalingGroupName"] = true, ["LifecycleActionToken"] = true, nil }
 
-function M.AssertRecordLifecycleActionHeartbeatType(struct)
+function asserts.AssertRecordLifecycleActionHeartbeatType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RecordLifecycleActionHeartbeatType to be of type 'table'")
 	assert(struct["LifecycleHookName"], "Expected key LifecycleHookName to exist in table")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["InstanceId"] then M.AssertXmlStringMaxLen19(struct["InstanceId"]) end
-	if struct["LifecycleHookName"] then M.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["LifecycleActionToken"] then M.AssertLifecycleActionToken(struct["LifecycleActionToken"]) end
+	if struct["InstanceId"] then asserts.AssertXmlStringMaxLen19(struct["InstanceId"]) end
+	if struct["LifecycleHookName"] then asserts.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["LifecycleActionToken"] then asserts.AssertLifecycleActionToken(struct["LifecycleActionToken"]) end
 	for k,_ in pairs(struct) do
-		assert(RecordLifecycleActionHeartbeatType_keys[k], "RecordLifecycleActionHeartbeatType contains unknown key " .. tostring(k))
+		assert(keys.RecordLifecycleActionHeartbeatType[k], "RecordLifecycleActionHeartbeatType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RecordLifecycleActionHeartbeatType
 --  
--- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
--- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the hook.</p>
--- @param LifecycleActionToken [LifecycleActionToken] <p>A token that uniquely identifies a specific lifecycle action associated with an instance. Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.</p>
+-- @param _InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param _LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the hook.</p>
+-- @param _LifecycleActionToken [LifecycleActionToken] <p>A token that uniquely identifies a specific lifecycle action associated with an instance. Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.</p>
 -- Required parameter: LifecycleHookName
 -- Required parameter: AutoScalingGroupName
-function M.RecordLifecycleActionHeartbeatType(InstanceId, LifecycleHookName, AutoScalingGroupName, LifecycleActionToken, ...)
+function M.RecordLifecycleActionHeartbeatType(_InstanceId, _LifecycleHookName, _AutoScalingGroupName, _LifecycleActionToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecordLifecycleActionHeartbeatType")
 	local t = { 
-		["InstanceId"] = InstanceId,
-		["LifecycleHookName"] = LifecycleHookName,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["LifecycleActionToken"] = LifecycleActionToken,
+		["InstanceId"] = _InstanceId,
+		["LifecycleHookName"] = _LifecycleHookName,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["LifecycleActionToken"] = _LifecycleActionToken,
 	}
-	M.AssertRecordLifecycleActionHeartbeatType(t)
+	asserts.AssertRecordLifecycleActionHeartbeatType(t)
 	return t
 end
 
-local DetachLoadBalancerTargetGroupsType_keys = { "TargetGroupARNs" = true, "AutoScalingGroupName" = true, nil }
+keys.DetachLoadBalancerTargetGroupsType = { ["TargetGroupARNs"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDetachLoadBalancerTargetGroupsType(struct)
+function asserts.AssertDetachLoadBalancerTargetGroupsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachLoadBalancerTargetGroupsType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["TargetGroupARNs"], "Expected key TargetGroupARNs to exist in table")
-	if struct["TargetGroupARNs"] then M.AssertTargetGroupARNs(struct["TargetGroupARNs"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["TargetGroupARNs"] then asserts.AssertTargetGroupARNs(struct["TargetGroupARNs"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DetachLoadBalancerTargetGroupsType_keys[k], "DetachLoadBalancerTargetGroupsType contains unknown key " .. tostring(k))
+		assert(keys.DetachLoadBalancerTargetGroupsType[k], "DetachLoadBalancerTargetGroupsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DetachLoadBalancerTargetGroupsType
 --  
--- @param TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: TargetGroupARNs
-function M.DetachLoadBalancerTargetGroupsType(TargetGroupARNs, AutoScalingGroupName, ...)
+function M.DetachLoadBalancerTargetGroupsType(_TargetGroupARNs, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachLoadBalancerTargetGroupsType")
 	local t = { 
-		["TargetGroupARNs"] = TargetGroupARNs,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["TargetGroupARNs"] = _TargetGroupARNs,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDetachLoadBalancerTargetGroupsType(t)
+	asserts.AssertDetachLoadBalancerTargetGroupsType(t)
 	return t
 end
 
-local DescribeLoadBalancerTargetGroupsResponse_keys = { "NextToken" = true, "LoadBalancerTargetGroups" = true, nil }
+keys.DescribeLoadBalancerTargetGroupsResponse = { ["NextToken"] = true, ["LoadBalancerTargetGroups"] = true, nil }
 
-function M.AssertDescribeLoadBalancerTargetGroupsResponse(struct)
+function asserts.AssertDescribeLoadBalancerTargetGroupsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancerTargetGroupsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["LoadBalancerTargetGroups"] then M.AssertLoadBalancerTargetGroupStates(struct["LoadBalancerTargetGroups"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["LoadBalancerTargetGroups"] then asserts.AssertLoadBalancerTargetGroupStates(struct["LoadBalancerTargetGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLoadBalancerTargetGroupsResponse_keys[k], "DescribeLoadBalancerTargetGroupsResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancerTargetGroupsResponse[k], "DescribeLoadBalancerTargetGroupsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancerTargetGroupsResponse
 --  
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param LoadBalancerTargetGroups [LoadBalancerTargetGroupStates] <p>Information about the target groups.</p>
-function M.DescribeLoadBalancerTargetGroupsResponse(NextToken, LoadBalancerTargetGroups, ...)
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param _LoadBalancerTargetGroups [LoadBalancerTargetGroupStates] <p>Information about the target groups.</p>
+function M.DescribeLoadBalancerTargetGroupsResponse(_NextToken, _LoadBalancerTargetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerTargetGroupsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["LoadBalancerTargetGroups"] = LoadBalancerTargetGroups,
+		["NextToken"] = _NextToken,
+		["LoadBalancerTargetGroups"] = _LoadBalancerTargetGroups,
 	}
-	M.AssertDescribeLoadBalancerTargetGroupsResponse(t)
+	asserts.AssertDescribeLoadBalancerTargetGroupsResponse(t)
 	return t
 end
 
-local DescribeNotificationConfigurationsAnswer_keys = { "NextToken" = true, "NotificationConfigurations" = true, nil }
+keys.DescribeNotificationConfigurationsAnswer = { ["NextToken"] = true, ["NotificationConfigurations"] = true, nil }
 
-function M.AssertDescribeNotificationConfigurationsAnswer(struct)
+function asserts.AssertDescribeNotificationConfigurationsAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeNotificationConfigurationsAnswer to be of type 'table'")
 	assert(struct["NotificationConfigurations"], "Expected key NotificationConfigurations to exist in table")
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["NotificationConfigurations"] then M.AssertNotificationConfigurations(struct["NotificationConfigurations"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["NotificationConfigurations"] then asserts.AssertNotificationConfigurations(struct["NotificationConfigurations"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeNotificationConfigurationsAnswer_keys[k], "DescribeNotificationConfigurationsAnswer contains unknown key " .. tostring(k))
+		assert(keys.DescribeNotificationConfigurationsAnswer[k], "DescribeNotificationConfigurationsAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeNotificationConfigurationsAnswer
 --  
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param NotificationConfigurations [NotificationConfigurations] <p>The notification configurations.</p>
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param _NotificationConfigurations [NotificationConfigurations] <p>The notification configurations.</p>
 -- Required parameter: NotificationConfigurations
-function M.DescribeNotificationConfigurationsAnswer(NextToken, NotificationConfigurations, ...)
+function M.DescribeNotificationConfigurationsAnswer(_NextToken, _NotificationConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationConfigurationsAnswer")
 	local t = { 
-		["NextToken"] = NextToken,
-		["NotificationConfigurations"] = NotificationConfigurations,
+		["NextToken"] = _NextToken,
+		["NotificationConfigurations"] = _NotificationConfigurations,
 	}
-	M.AssertDescribeNotificationConfigurationsAnswer(t)
+	asserts.AssertDescribeNotificationConfigurationsAnswer(t)
 	return t
 end
 
-local CreateAutoScalingGroupType_keys = { "HealthCheckGracePeriod" = true, "TargetGroupARNs" = true, "PlacementGroup" = true, "DesiredCapacity" = true, "Tags" = true, "InstanceId" = true, "LoadBalancerNames" = true, "AutoScalingGroupName" = true, "DefaultCooldown" = true, "MinSize" = true, "MaxSize" = true, "VPCZoneIdentifier" = true, "TerminationPolicies" = true, "LaunchConfigurationName" = true, "AvailabilityZones" = true, "HealthCheckType" = true, "NewInstancesProtectedFromScaleIn" = true, nil }
+keys.CreateAutoScalingGroupType = { ["HealthCheckGracePeriod"] = true, ["TargetGroupARNs"] = true, ["PlacementGroup"] = true, ["DesiredCapacity"] = true, ["Tags"] = true, ["InstanceId"] = true, ["LoadBalancerNames"] = true, ["AutoScalingGroupName"] = true, ["DefaultCooldown"] = true, ["MinSize"] = true, ["MaxSize"] = true, ["VPCZoneIdentifier"] = true, ["TerminationPolicies"] = true, ["LaunchConfigurationName"] = true, ["AvailabilityZones"] = true, ["HealthCheckType"] = true, ["NewInstancesProtectedFromScaleIn"] = true, nil }
 
-function M.AssertCreateAutoScalingGroupType(struct)
+function asserts.AssertCreateAutoScalingGroupType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAutoScalingGroupType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["MinSize"], "Expected key MinSize to exist in table")
 	assert(struct["MaxSize"], "Expected key MaxSize to exist in table")
-	if struct["HealthCheckGracePeriod"] then M.AssertHealthCheckGracePeriod(struct["HealthCheckGracePeriod"]) end
-	if struct["TargetGroupARNs"] then M.AssertTargetGroupARNs(struct["TargetGroupARNs"]) end
-	if struct["PlacementGroup"] then M.AssertXmlStringMaxLen255(struct["PlacementGroup"]) end
-	if struct["DesiredCapacity"] then M.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
-	if struct["Tags"] then M.AssertTags(struct["Tags"]) end
-	if struct["InstanceId"] then M.AssertXmlStringMaxLen19(struct["InstanceId"]) end
-	if struct["LoadBalancerNames"] then M.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
-	if struct["AutoScalingGroupName"] then M.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
-	if struct["DefaultCooldown"] then M.AssertCooldown(struct["DefaultCooldown"]) end
-	if struct["MinSize"] then M.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
-	if struct["MaxSize"] then M.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
-	if struct["VPCZoneIdentifier"] then M.AssertXmlStringMaxLen2047(struct["VPCZoneIdentifier"]) end
-	if struct["TerminationPolicies"] then M.AssertTerminationPolicies(struct["TerminationPolicies"]) end
-	if struct["LaunchConfigurationName"] then M.AssertResourceName(struct["LaunchConfigurationName"]) end
-	if struct["AvailabilityZones"] then M.AssertAvailabilityZones(struct["AvailabilityZones"]) end
-	if struct["HealthCheckType"] then M.AssertXmlStringMaxLen32(struct["HealthCheckType"]) end
-	if struct["NewInstancesProtectedFromScaleIn"] then M.AssertInstanceProtected(struct["NewInstancesProtectedFromScaleIn"]) end
+	if struct["HealthCheckGracePeriod"] then asserts.AssertHealthCheckGracePeriod(struct["HealthCheckGracePeriod"]) end
+	if struct["TargetGroupARNs"] then asserts.AssertTargetGroupARNs(struct["TargetGroupARNs"]) end
+	if struct["PlacementGroup"] then asserts.AssertXmlStringMaxLen255(struct["PlacementGroup"]) end
+	if struct["DesiredCapacity"] then asserts.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
+	if struct["Tags"] then asserts.AssertTags(struct["Tags"]) end
+	if struct["InstanceId"] then asserts.AssertXmlStringMaxLen19(struct["InstanceId"]) end
+	if struct["LoadBalancerNames"] then asserts.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
+	if struct["DefaultCooldown"] then asserts.AssertCooldown(struct["DefaultCooldown"]) end
+	if struct["MinSize"] then asserts.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
+	if struct["MaxSize"] then asserts.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
+	if struct["VPCZoneIdentifier"] then asserts.AssertXmlStringMaxLen2047(struct["VPCZoneIdentifier"]) end
+	if struct["TerminationPolicies"] then asserts.AssertTerminationPolicies(struct["TerminationPolicies"]) end
+	if struct["LaunchConfigurationName"] then asserts.AssertResourceName(struct["LaunchConfigurationName"]) end
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	if struct["HealthCheckType"] then asserts.AssertXmlStringMaxLen32(struct["HealthCheckType"]) end
+	if struct["NewInstancesProtectedFromScaleIn"] then asserts.AssertInstanceProtected(struct["NewInstancesProtectedFromScaleIn"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAutoScalingGroupType_keys[k], "CreateAutoScalingGroupType contains unknown key " .. tostring(k))
+		assert(keys.CreateAutoScalingGroupType[k], "CreateAutoScalingGroupType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAutoScalingGroupType
 --  
--- @param HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service. During this time, any health check failures for the instance are ignored. The default is 0.</p> <p>This parameter is required if you are adding an <code>ELB</code> health check.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
--- @param PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group. If you do not specify a desired capacity, the default is the minimum size of the group.</p>
--- @param Tags [Tags] <p>One or more tags.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html">Tagging Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance used to create a launch configuration for the group. Alternatively, specify a launch configuration instead of an EC2 instance.</p> <p>When you specify an ID of an instance, Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, with the exception of the block device mapping.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html">Create an Auto Scaling Group Using an EC2 Instance</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param LoadBalancerNames [LoadBalancerNames] <p>One or more Classic Load Balancers. To specify an Application Load Balancer, use <code>TargetGroupARNs</code> instead.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html">Using a Load Balancer With an Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group. This name must be unique within the scope of your AWS account.</p>
--- @param DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
--- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
--- @param VPCZoneIdentifier [XmlStringMaxLen2047] <p>A comma-separated list of subnet identifiers for your virtual private cloud (VPC).</p> <p>If you specify subnets and Availability Zones with this call, ensure that the subnets' Availability Zones match the Availability Zones specified.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param TerminationPolicies [TerminationPolicies] <p>One or more termination policies used to select the instance to terminate. These policies are executed in the order that they are listed.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html">Controlling Which Instances Auto Scaling Terminates During Scale In</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param LaunchConfigurationName [ResourceName] <p>The name of the launch configuration. Alternatively, specify an EC2 instance instead of a launch configuration.</p>
--- @param AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group. This parameter is optional if you specify one or more subnets.</p>
--- @param HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p> <p>By default, health checks use Amazon EC2 instance status checks to determine the health of an instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
+-- @param _HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service. During this time, any health check failures for the instance are ignored. The default is 0.</p> <p>This parameter is required if you are adding an <code>ELB</code> health check.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- @param _PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group. If you do not specify a desired capacity, the default is the minimum size of the group.</p>
+-- @param _Tags [Tags] <p>One or more tags.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html">Tagging Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _InstanceId [XmlStringMaxLen19] <p>The ID of the instance used to create a launch configuration for the group. Alternatively, specify a launch configuration instead of an EC2 instance.</p> <p>When you specify an ID of an instance, Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, with the exception of the block device mapping.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html">Create an Auto Scaling Group Using an EC2 Instance</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _LoadBalancerNames [LoadBalancerNames] <p>One or more Classic Load Balancers. To specify an Application Load Balancer, use <code>TargetGroupARNs</code> instead.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html">Using a Load Balancer With an Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group. This name must be unique within the scope of your AWS account.</p>
+-- @param _DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
+-- @param _MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
+-- @param _VPCZoneIdentifier [XmlStringMaxLen2047] <p>A comma-separated list of subnet identifiers for your virtual private cloud (VPC).</p> <p>If you specify subnets and Availability Zones with this call, ensure that the subnets' Availability Zones match the Availability Zones specified.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _TerminationPolicies [TerminationPolicies] <p>One or more termination policies used to select the instance to terminate. These policies are executed in the order that they are listed.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html">Controlling Which Instances Auto Scaling Terminates During Scale In</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _LaunchConfigurationName [ResourceName] <p>The name of the launch configuration. Alternatively, specify an EC2 instance instead of a launch configuration.</p>
+-- @param _AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group. This parameter is optional if you specify one or more subnets.</p>
+-- @param _HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p> <p>By default, health checks use Amazon EC2 instance status checks to determine the health of an instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: MinSize
 -- Required parameter: MaxSize
-function M.CreateAutoScalingGroupType(HealthCheckGracePeriod, TargetGroupARNs, PlacementGroup, DesiredCapacity, Tags, InstanceId, LoadBalancerNames, AutoScalingGroupName, DefaultCooldown, MinSize, MaxSize, VPCZoneIdentifier, TerminationPolicies, LaunchConfigurationName, AvailabilityZones, HealthCheckType, NewInstancesProtectedFromScaleIn, ...)
+function M.CreateAutoScalingGroupType(_HealthCheckGracePeriod, _TargetGroupARNs, _PlacementGroup, _DesiredCapacity, _Tags, _InstanceId, _LoadBalancerNames, _AutoScalingGroupName, _DefaultCooldown, _MinSize, _MaxSize, _VPCZoneIdentifier, _TerminationPolicies, _LaunchConfigurationName, _AvailabilityZones, _HealthCheckType, _NewInstancesProtectedFromScaleIn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAutoScalingGroupType")
 	local t = { 
-		["HealthCheckGracePeriod"] = HealthCheckGracePeriod,
-		["TargetGroupARNs"] = TargetGroupARNs,
-		["PlacementGroup"] = PlacementGroup,
-		["DesiredCapacity"] = DesiredCapacity,
-		["Tags"] = Tags,
-		["InstanceId"] = InstanceId,
-		["LoadBalancerNames"] = LoadBalancerNames,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["DefaultCooldown"] = DefaultCooldown,
-		["MinSize"] = MinSize,
-		["MaxSize"] = MaxSize,
-		["VPCZoneIdentifier"] = VPCZoneIdentifier,
-		["TerminationPolicies"] = TerminationPolicies,
-		["LaunchConfigurationName"] = LaunchConfigurationName,
-		["AvailabilityZones"] = AvailabilityZones,
-		["HealthCheckType"] = HealthCheckType,
-		["NewInstancesProtectedFromScaleIn"] = NewInstancesProtectedFromScaleIn,
+		["HealthCheckGracePeriod"] = _HealthCheckGracePeriod,
+		["TargetGroupARNs"] = _TargetGroupARNs,
+		["PlacementGroup"] = _PlacementGroup,
+		["DesiredCapacity"] = _DesiredCapacity,
+		["Tags"] = _Tags,
+		["InstanceId"] = _InstanceId,
+		["LoadBalancerNames"] = _LoadBalancerNames,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["DefaultCooldown"] = _DefaultCooldown,
+		["MinSize"] = _MinSize,
+		["MaxSize"] = _MaxSize,
+		["VPCZoneIdentifier"] = _VPCZoneIdentifier,
+		["TerminationPolicies"] = _TerminationPolicies,
+		["LaunchConfigurationName"] = _LaunchConfigurationName,
+		["AvailabilityZones"] = _AvailabilityZones,
+		["HealthCheckType"] = _HealthCheckType,
+		["NewInstancesProtectedFromScaleIn"] = _NewInstancesProtectedFromScaleIn,
 	}
-	M.AssertCreateAutoScalingGroupType(t)
+	asserts.AssertCreateAutoScalingGroupType(t)
 	return t
 end
 
-local CompleteLifecycleActionType_keys = { "LifecycleActionResult" = true, "LifecycleHookName" = true, "InstanceId" = true, "AutoScalingGroupName" = true, "LifecycleActionToken" = true, nil }
+keys.CompleteLifecycleActionType = { ["LifecycleActionResult"] = true, ["LifecycleHookName"] = true, ["InstanceId"] = true, ["AutoScalingGroupName"] = true, ["LifecycleActionToken"] = true, nil }
 
-function M.AssertCompleteLifecycleActionType(struct)
+function asserts.AssertCompleteLifecycleActionType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CompleteLifecycleActionType to be of type 'table'")
 	assert(struct["LifecycleHookName"], "Expected key LifecycleHookName to exist in table")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["LifecycleActionResult"], "Expected key LifecycleActionResult to exist in table")
-	if struct["LifecycleActionResult"] then M.AssertLifecycleActionResult(struct["LifecycleActionResult"]) end
-	if struct["LifecycleHookName"] then M.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
-	if struct["InstanceId"] then M.AssertXmlStringMaxLen19(struct["InstanceId"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["LifecycleActionToken"] then M.AssertLifecycleActionToken(struct["LifecycleActionToken"]) end
+	if struct["LifecycleActionResult"] then asserts.AssertLifecycleActionResult(struct["LifecycleActionResult"]) end
+	if struct["LifecycleHookName"] then asserts.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
+	if struct["InstanceId"] then asserts.AssertXmlStringMaxLen19(struct["InstanceId"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["LifecycleActionToken"] then asserts.AssertLifecycleActionToken(struct["LifecycleActionToken"]) end
 	for k,_ in pairs(struct) do
-		assert(CompleteLifecycleActionType_keys[k], "CompleteLifecycleActionType contains unknown key " .. tostring(k))
+		assert(keys.CompleteLifecycleActionType[k], "CompleteLifecycleActionType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CompleteLifecycleActionType
 --  
--- @param LifecycleActionResult [LifecycleActionResult] <p>The action for the group to take. This parameter can be either <code>CONTINUE</code> or <code>ABANDON</code>.</p>
--- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
--- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group for the lifecycle hook.</p>
--- @param LifecycleActionToken [LifecycleActionToken] <p>A universally unique identifier (UUID) that identifies a specific lifecycle action associated with an instance. Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.</p>
+-- @param _LifecycleActionResult [LifecycleActionResult] <p>The action for the group to take. This parameter can be either <code>CONTINUE</code> or <code>ABANDON</code>.</p>
+-- @param _LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param _InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group for the lifecycle hook.</p>
+-- @param _LifecycleActionToken [LifecycleActionToken] <p>A universally unique identifier (UUID) that identifies a specific lifecycle action associated with an instance. Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.</p>
 -- Required parameter: LifecycleHookName
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: LifecycleActionResult
-function M.CompleteLifecycleActionType(LifecycleActionResult, LifecycleHookName, InstanceId, AutoScalingGroupName, LifecycleActionToken, ...)
+function M.CompleteLifecycleActionType(_LifecycleActionResult, _LifecycleHookName, _InstanceId, _AutoScalingGroupName, _LifecycleActionToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CompleteLifecycleActionType")
 	local t = { 
-		["LifecycleActionResult"] = LifecycleActionResult,
-		["LifecycleHookName"] = LifecycleHookName,
-		["InstanceId"] = InstanceId,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["LifecycleActionToken"] = LifecycleActionToken,
+		["LifecycleActionResult"] = _LifecycleActionResult,
+		["LifecycleHookName"] = _LifecycleHookName,
+		["InstanceId"] = _InstanceId,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["LifecycleActionToken"] = _LifecycleActionToken,
 	}
-	M.AssertCompleteLifecycleActionType(t)
+	asserts.AssertCompleteLifecycleActionType(t)
 	return t
 end
 
-local DescribePoliciesType_keys = { "PolicyNames" = true, "PolicyTypes" = true, "NextToken" = true, "AutoScalingGroupName" = true, "MaxRecords" = true, nil }
+keys.DescribePoliciesType = { ["PolicyNames"] = true, ["PolicyTypes"] = true, ["NextToken"] = true, ["AutoScalingGroupName"] = true, ["MaxRecords"] = true, nil }
 
-function M.AssertDescribePoliciesType(struct)
+function asserts.AssertDescribePoliciesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribePoliciesType to be of type 'table'")
-	if struct["PolicyNames"] then M.AssertPolicyNames(struct["PolicyNames"]) end
-	if struct["PolicyTypes"] then M.AssertPolicyTypes(struct["PolicyTypes"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["PolicyNames"] then asserts.AssertPolicyNames(struct["PolicyNames"]) end
+	if struct["PolicyTypes"] then asserts.AssertPolicyTypes(struct["PolicyTypes"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribePoliciesType_keys[k], "DescribePoliciesType contains unknown key " .. tostring(k))
+		assert(keys.DescribePoliciesType[k], "DescribePoliciesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribePoliciesType
 --  
--- @param PolicyNames [PolicyNames] <p>One or more policy names or policy ARNs to be described. If you omit this parameter, all policy names are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.</p>
--- @param PolicyTypes [PolicyTypes] <p>One or more policy types. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to be returned with each call. The default value is 50 and the maximum value is 100.</p>
-function M.DescribePoliciesType(PolicyNames, PolicyTypes, NextToken, AutoScalingGroupName, MaxRecords, ...)
+-- @param _PolicyNames [PolicyNames] <p>One or more policy names or policy ARNs to be described. If you omit this parameter, all policy names are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.</p>
+-- @param _PolicyTypes [PolicyTypes] <p>One or more policy types. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to be returned with each call. The default value is 50 and the maximum value is 100.</p>
+function M.DescribePoliciesType(_PolicyNames, _PolicyTypes, _NextToken, _AutoScalingGroupName, _MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePoliciesType")
 	local t = { 
-		["PolicyNames"] = PolicyNames,
-		["PolicyTypes"] = PolicyTypes,
-		["NextToken"] = NextToken,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["MaxRecords"] = MaxRecords,
+		["PolicyNames"] = _PolicyNames,
+		["PolicyTypes"] = _PolicyTypes,
+		["NextToken"] = _NextToken,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["MaxRecords"] = _MaxRecords,
 	}
-	M.AssertDescribePoliciesType(t)
+	asserts.AssertDescribePoliciesType(t)
 	return t
 end
 
-local DescribeLifecycleHooksAnswer_keys = { "LifecycleHooks" = true, nil }
+keys.DescribeLifecycleHooksAnswer = { ["LifecycleHooks"] = true, nil }
 
-function M.AssertDescribeLifecycleHooksAnswer(struct)
+function asserts.AssertDescribeLifecycleHooksAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLifecycleHooksAnswer to be of type 'table'")
-	if struct["LifecycleHooks"] then M.AssertLifecycleHooks(struct["LifecycleHooks"]) end
+	if struct["LifecycleHooks"] then asserts.AssertLifecycleHooks(struct["LifecycleHooks"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLifecycleHooksAnswer_keys[k], "DescribeLifecycleHooksAnswer contains unknown key " .. tostring(k))
+		assert(keys.DescribeLifecycleHooksAnswer[k], "DescribeLifecycleHooksAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLifecycleHooksAnswer
 --  
--- @param LifecycleHooks [LifecycleHooks] <p>The lifecycle hooks for the specified group.</p>
-function M.DescribeLifecycleHooksAnswer(LifecycleHooks, ...)
+-- @param _LifecycleHooks [LifecycleHooks] <p>The lifecycle hooks for the specified group.</p>
+function M.DescribeLifecycleHooksAnswer(_LifecycleHooks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLifecycleHooksAnswer")
 	local t = { 
-		["LifecycleHooks"] = LifecycleHooks,
+		["LifecycleHooks"] = _LifecycleHooks,
 	}
-	M.AssertDescribeLifecycleHooksAnswer(t)
+	asserts.AssertDescribeLifecycleHooksAnswer(t)
 	return t
 end
 
-local DetachLoadBalancersResultType_keys = { nil }
+keys.DetachLoadBalancersResultType = { nil }
 
-function M.AssertDetachLoadBalancersResultType(struct)
+function asserts.AssertDetachLoadBalancersResultType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachLoadBalancersResultType to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DetachLoadBalancersResultType_keys[k], "DetachLoadBalancersResultType contains unknown key " .. tostring(k))
+		assert(keys.DetachLoadBalancersResultType[k], "DetachLoadBalancersResultType contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2538,17 +2541,17 @@ function M.DetachLoadBalancersResultType(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachLoadBalancersResultType")
 	local t = { 
 	}
-	M.AssertDetachLoadBalancersResultType(t)
+	asserts.AssertDetachLoadBalancersResultType(t)
 	return t
 end
 
-local SetInstanceProtectionAnswer_keys = { nil }
+keys.SetInstanceProtectionAnswer = { nil }
 
-function M.AssertSetInstanceProtectionAnswer(struct)
+function asserts.AssertSetInstanceProtectionAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetInstanceProtectionAnswer to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(SetInstanceProtectionAnswer_keys[k], "SetInstanceProtectionAnswer contains unknown key " .. tostring(k))
+		assert(keys.SetInstanceProtectionAnswer[k], "SetInstanceProtectionAnswer contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2558,13 +2561,13 @@ function M.SetInstanceProtectionAnswer(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetInstanceProtectionAnswer")
 	local t = { 
 	}
-	M.AssertSetInstanceProtectionAnswer(t)
+	asserts.AssertSetInstanceProtectionAnswer(t)
 	return t
 end
 
-local AutoScalingInstanceDetails_keys = { "ProtectedFromScaleIn" = true, "AvailabilityZone" = true, "InstanceId" = true, "AutoScalingGroupName" = true, "HealthStatus" = true, "LifecycleState" = true, "LaunchConfigurationName" = true, nil }
+keys.AutoScalingInstanceDetails = { ["ProtectedFromScaleIn"] = true, ["AvailabilityZone"] = true, ["InstanceId"] = true, ["AutoScalingGroupName"] = true, ["HealthStatus"] = true, ["LifecycleState"] = true, ["LaunchConfigurationName"] = true, nil }
 
-function M.AssertAutoScalingInstanceDetails(struct)
+function asserts.AssertAutoScalingInstanceDetails(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingInstanceDetails to be of type 'table'")
 	assert(struct["InstanceId"], "Expected key InstanceId to exist in table")
@@ -2574,27 +2577,27 @@ function M.AssertAutoScalingInstanceDetails(struct)
 	assert(struct["HealthStatus"], "Expected key HealthStatus to exist in table")
 	assert(struct["LaunchConfigurationName"], "Expected key LaunchConfigurationName to exist in table")
 	assert(struct["ProtectedFromScaleIn"], "Expected key ProtectedFromScaleIn to exist in table")
-	if struct["ProtectedFromScaleIn"] then M.AssertInstanceProtected(struct["ProtectedFromScaleIn"]) end
-	if struct["AvailabilityZone"] then M.AssertXmlStringMaxLen255(struct["AvailabilityZone"]) end
-	if struct["InstanceId"] then M.AssertXmlStringMaxLen19(struct["InstanceId"]) end
-	if struct["AutoScalingGroupName"] then M.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
-	if struct["HealthStatus"] then M.AssertXmlStringMaxLen32(struct["HealthStatus"]) end
-	if struct["LifecycleState"] then M.AssertXmlStringMaxLen32(struct["LifecycleState"]) end
-	if struct["LaunchConfigurationName"] then M.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
+	if struct["ProtectedFromScaleIn"] then asserts.AssertInstanceProtected(struct["ProtectedFromScaleIn"]) end
+	if struct["AvailabilityZone"] then asserts.AssertXmlStringMaxLen255(struct["AvailabilityZone"]) end
+	if struct["InstanceId"] then asserts.AssertXmlStringMaxLen19(struct["InstanceId"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
+	if struct["HealthStatus"] then asserts.AssertXmlStringMaxLen32(struct["HealthStatus"]) end
+	if struct["LifecycleState"] then asserts.AssertXmlStringMaxLen32(struct["LifecycleState"]) end
+	if struct["LaunchConfigurationName"] then asserts.AssertXmlStringMaxLen255(struct["LaunchConfigurationName"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingInstanceDetails_keys[k], "AutoScalingInstanceDetails contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingInstanceDetails[k], "AutoScalingInstanceDetails contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingInstanceDetails
 -- <p>Describes an EC2 instance associated with an Auto Scaling group.</p>
--- @param ProtectedFromScaleIn [InstanceProtected] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
--- @param AvailabilityZone [XmlStringMaxLen255] <p>The Availability Zone for the instance.</p>
--- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
--- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group associated with the instance.</p>
--- @param HealthStatus [XmlStringMaxLen32] <p>The last reported health status of this instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.</p>
--- @param LifecycleState [XmlStringMaxLen32] <p>The lifecycle state for the instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The launch configuration used to launch the instance. This value is not available if you attached the instance to the Auto Scaling group.</p>
+-- @param _ProtectedFromScaleIn [InstanceProtected] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
+-- @param _AvailabilityZone [XmlStringMaxLen255] <p>The Availability Zone for the instance.</p>
+-- @param _InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param _AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group associated with the instance.</p>
+-- @param _HealthStatus [XmlStringMaxLen32] <p>The last reported health status of this instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.</p>
+-- @param _LifecycleState [XmlStringMaxLen32] <p>The lifecycle state for the instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _LaunchConfigurationName [XmlStringMaxLen255] <p>The launch configuration used to launch the instance. This value is not available if you attached the instance to the Auto Scaling group.</p>
 -- Required parameter: InstanceId
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: AvailabilityZone
@@ -2602,107 +2605,107 @@ end
 -- Required parameter: HealthStatus
 -- Required parameter: LaunchConfigurationName
 -- Required parameter: ProtectedFromScaleIn
-function M.AutoScalingInstanceDetails(ProtectedFromScaleIn, AvailabilityZone, InstanceId, AutoScalingGroupName, HealthStatus, LifecycleState, LaunchConfigurationName, ...)
+function M.AutoScalingInstanceDetails(_ProtectedFromScaleIn, _AvailabilityZone, _InstanceId, _AutoScalingGroupName, _HealthStatus, _LifecycleState, _LaunchConfigurationName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingInstanceDetails")
 	local t = { 
-		["ProtectedFromScaleIn"] = ProtectedFromScaleIn,
-		["AvailabilityZone"] = AvailabilityZone,
-		["InstanceId"] = InstanceId,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["HealthStatus"] = HealthStatus,
-		["LifecycleState"] = LifecycleState,
-		["LaunchConfigurationName"] = LaunchConfigurationName,
+		["ProtectedFromScaleIn"] = _ProtectedFromScaleIn,
+		["AvailabilityZone"] = _AvailabilityZone,
+		["InstanceId"] = _InstanceId,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["HealthStatus"] = _HealthStatus,
+		["LifecycleState"] = _LifecycleState,
+		["LaunchConfigurationName"] = _LaunchConfigurationName,
 	}
-	M.AssertAutoScalingInstanceDetails(t)
+	asserts.AssertAutoScalingInstanceDetails(t)
 	return t
 end
 
-local DeleteAutoScalingGroupType_keys = { "ForceDelete" = true, "AutoScalingGroupName" = true, nil }
+keys.DeleteAutoScalingGroupType = { ["ForceDelete"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDeleteAutoScalingGroupType(struct)
+function asserts.AssertDeleteAutoScalingGroupType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteAutoScalingGroupType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["ForceDelete"] then M.AssertForceDelete(struct["ForceDelete"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["ForceDelete"] then asserts.AssertForceDelete(struct["ForceDelete"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteAutoScalingGroupType_keys[k], "DeleteAutoScalingGroupType contains unknown key " .. tostring(k))
+		assert(keys.DeleteAutoScalingGroupType[k], "DeleteAutoScalingGroupType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteAutoScalingGroupType
 --  
--- @param ForceDelete [ForceDelete] <p>Specifies that the group will be deleted along with all instances associated with the group, without waiting for all instances to be terminated. This parameter also deletes any lifecycle actions associated with the group.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group to delete.</p>
+-- @param _ForceDelete [ForceDelete] <p>Specifies that the group will be deleted along with all instances associated with the group, without waiting for all instances to be terminated. This parameter also deletes any lifecycle actions associated with the group.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group to delete.</p>
 -- Required parameter: AutoScalingGroupName
-function M.DeleteAutoScalingGroupType(ForceDelete, AutoScalingGroupName, ...)
+function M.DeleteAutoScalingGroupType(_ForceDelete, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAutoScalingGroupType")
 	local t = { 
-		["ForceDelete"] = ForceDelete,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["ForceDelete"] = _ForceDelete,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDeleteAutoScalingGroupType(t)
+	asserts.AssertDeleteAutoScalingGroupType(t)
 	return t
 end
 
-local DescribeLifecycleHooksType_keys = { "LifecycleHookNames" = true, "AutoScalingGroupName" = true, nil }
+keys.DescribeLifecycleHooksType = { ["LifecycleHookNames"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDescribeLifecycleHooksType(struct)
+function asserts.AssertDescribeLifecycleHooksType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLifecycleHooksType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["LifecycleHookNames"] then M.AssertLifecycleHookNames(struct["LifecycleHookNames"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["LifecycleHookNames"] then asserts.AssertLifecycleHookNames(struct["LifecycleHookNames"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLifecycleHooksType_keys[k], "DescribeLifecycleHooksType contains unknown key " .. tostring(k))
+		assert(keys.DescribeLifecycleHooksType[k], "DescribeLifecycleHooksType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLifecycleHooksType
 --  
--- @param LifecycleHookNames [LifecycleHookNames] <p>The names of one or more lifecycle hooks. If you omit this parameter, all lifecycle hooks are described.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _LifecycleHookNames [LifecycleHookNames] <p>The names of one or more lifecycle hooks. If you omit this parameter, all lifecycle hooks are described.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
 -- Required parameter: AutoScalingGroupName
-function M.DescribeLifecycleHooksType(LifecycleHookNames, AutoScalingGroupName, ...)
+function M.DescribeLifecycleHooksType(_LifecycleHookNames, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLifecycleHooksType")
 	local t = { 
-		["LifecycleHookNames"] = LifecycleHookNames,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["LifecycleHookNames"] = _LifecycleHookNames,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDescribeLifecycleHooksType(t)
+	asserts.AssertDescribeLifecycleHooksType(t)
 	return t
 end
 
-local DescribeAutoScalingNotificationTypesAnswer_keys = { "AutoScalingNotificationTypes" = true, nil }
+keys.DescribeAutoScalingNotificationTypesAnswer = { ["AutoScalingNotificationTypes"] = true, nil }
 
-function M.AssertDescribeAutoScalingNotificationTypesAnswer(struct)
+function asserts.AssertDescribeAutoScalingNotificationTypesAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAutoScalingNotificationTypesAnswer to be of type 'table'")
-	if struct["AutoScalingNotificationTypes"] then M.AssertAutoScalingNotificationTypes(struct["AutoScalingNotificationTypes"]) end
+	if struct["AutoScalingNotificationTypes"] then asserts.AssertAutoScalingNotificationTypes(struct["AutoScalingNotificationTypes"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAutoScalingNotificationTypesAnswer_keys[k], "DescribeAutoScalingNotificationTypesAnswer contains unknown key " .. tostring(k))
+		assert(keys.DescribeAutoScalingNotificationTypesAnswer[k], "DescribeAutoScalingNotificationTypesAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAutoScalingNotificationTypesAnswer
 --  
--- @param AutoScalingNotificationTypes [AutoScalingNotificationTypes] <p>The notification types.</p>
-function M.DescribeAutoScalingNotificationTypesAnswer(AutoScalingNotificationTypes, ...)
+-- @param _AutoScalingNotificationTypes [AutoScalingNotificationTypes] <p>The notification types.</p>
+function M.DescribeAutoScalingNotificationTypesAnswer(_AutoScalingNotificationTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAutoScalingNotificationTypesAnswer")
 	local t = { 
-		["AutoScalingNotificationTypes"] = AutoScalingNotificationTypes,
+		["AutoScalingNotificationTypes"] = _AutoScalingNotificationTypes,
 	}
-	M.AssertDescribeAutoScalingNotificationTypesAnswer(t)
+	asserts.AssertDescribeAutoScalingNotificationTypesAnswer(t)
 	return t
 end
 
-local CompleteLifecycleActionAnswer_keys = { nil }
+keys.CompleteLifecycleActionAnswer = { nil }
 
-function M.AssertCompleteLifecycleActionAnswer(struct)
+function asserts.AssertCompleteLifecycleActionAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CompleteLifecycleActionAnswer to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CompleteLifecycleActionAnswer_keys[k], "CompleteLifecycleActionAnswer contains unknown key " .. tostring(k))
+		assert(keys.CompleteLifecycleActionAnswer[k], "CompleteLifecycleActionAnswer contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2712,17 +2715,17 @@ function M.CompleteLifecycleActionAnswer(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CompleteLifecycleActionAnswer")
 	local t = { 
 	}
-	M.AssertCompleteLifecycleActionAnswer(t)
+	asserts.AssertCompleteLifecycleActionAnswer(t)
 	return t
 end
 
-local DetachLoadBalancerTargetGroupsResultType_keys = { nil }
+keys.DetachLoadBalancerTargetGroupsResultType = { nil }
 
-function M.AssertDetachLoadBalancerTargetGroupsResultType(struct)
+function asserts.AssertDetachLoadBalancerTargetGroupsResultType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DetachLoadBalancerTargetGroupsResultType to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DetachLoadBalancerTargetGroupsResultType_keys[k], "DetachLoadBalancerTargetGroupsResultType contains unknown key " .. tostring(k))
+		assert(keys.DetachLoadBalancerTargetGroupsResultType[k], "DetachLoadBalancerTargetGroupsResultType contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2732,413 +2735,413 @@ function M.DetachLoadBalancerTargetGroupsResultType(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachLoadBalancerTargetGroupsResultType")
 	local t = { 
 	}
-	M.AssertDetachLoadBalancerTargetGroupsResultType(t)
+	asserts.AssertDetachLoadBalancerTargetGroupsResultType(t)
 	return t
 end
 
-local LifecycleHook_keys = { "GlobalTimeout" = true, "HeartbeatTimeout" = true, "RoleARN" = true, "AutoScalingGroupName" = true, "LifecycleHookName" = true, "NotificationMetadata" = true, "DefaultResult" = true, "NotificationTargetARN" = true, "LifecycleTransition" = true, nil }
+keys.LifecycleHook = { ["GlobalTimeout"] = true, ["HeartbeatTimeout"] = true, ["RoleARN"] = true, ["AutoScalingGroupName"] = true, ["LifecycleHookName"] = true, ["NotificationMetadata"] = true, ["DefaultResult"] = true, ["NotificationTargetARN"] = true, ["LifecycleTransition"] = true, nil }
 
-function M.AssertLifecycleHook(struct)
+function asserts.AssertLifecycleHook(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LifecycleHook to be of type 'table'")
-	if struct["GlobalTimeout"] then M.AssertGlobalTimeout(struct["GlobalTimeout"]) end
-	if struct["HeartbeatTimeout"] then M.AssertHeartbeatTimeout(struct["HeartbeatTimeout"]) end
-	if struct["RoleARN"] then M.AssertResourceName(struct["RoleARN"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["LifecycleHookName"] then M.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
-	if struct["NotificationMetadata"] then M.AssertXmlStringMaxLen1023(struct["NotificationMetadata"]) end
-	if struct["DefaultResult"] then M.AssertLifecycleActionResult(struct["DefaultResult"]) end
-	if struct["NotificationTargetARN"] then M.AssertResourceName(struct["NotificationTargetARN"]) end
-	if struct["LifecycleTransition"] then M.AssertLifecycleTransition(struct["LifecycleTransition"]) end
+	if struct["GlobalTimeout"] then asserts.AssertGlobalTimeout(struct["GlobalTimeout"]) end
+	if struct["HeartbeatTimeout"] then asserts.AssertHeartbeatTimeout(struct["HeartbeatTimeout"]) end
+	if struct["RoleARN"] then asserts.AssertResourceName(struct["RoleARN"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["LifecycleHookName"] then asserts.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
+	if struct["NotificationMetadata"] then asserts.AssertXmlStringMaxLen1023(struct["NotificationMetadata"]) end
+	if struct["DefaultResult"] then asserts.AssertLifecycleActionResult(struct["DefaultResult"]) end
+	if struct["NotificationTargetARN"] then asserts.AssertResourceName(struct["NotificationTargetARN"]) end
+	if struct["LifecycleTransition"] then asserts.AssertLifecycleTransition(struct["LifecycleTransition"]) end
 	for k,_ in pairs(struct) do
-		assert(LifecycleHook_keys[k], "LifecycleHook contains unknown key " .. tostring(k))
+		assert(keys.LifecycleHook[k], "LifecycleHook contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LifecycleHook
 -- <p>Describes a lifecycle hook, which tells Auto Scaling that you want to perform an action when an instance launches or terminates. When you have a lifecycle hook in place, the Auto Scaling group will either:</p> <ul> <li> <p>Pause the instance after it launches, but before it is put into service</p> </li> <li> <p>Pause the instance as it terminates, but before it is fully terminated</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param GlobalTimeout [GlobalTimeout] <p>The maximum time, in seconds, that an instance can remain in a <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The maximum is 172800 seconds (48 hours) or 100 times <code>HeartbeatTimeout</code>, whichever is smaller.</p>
--- @param HeartbeatTimeout [HeartbeatTimeout] <p>The maximum time, in seconds, that can elapse before the lifecycle hook times out. The default is 3600 seconds (1 hour). When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling <a>RecordLifecycleActionHeartbeat</a>.</p>
--- @param RoleARN [ResourceName] <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the lifecycle hook.</p>
--- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
--- @param NotificationMetadata [XmlStringMaxLen1023] <p>Additional information that you want to include any time Auto Scaling sends a message to the notification target.</p>
--- @param DefaultResult [LifecycleActionResult] <p>Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The valid values are <code>CONTINUE</code> and <code>ABANDON</code>. The default value is <code>CONTINUE</code>.</p>
--- @param NotificationTargetARN [ResourceName] <p>The ARN of the notification target that Auto Scaling uses to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic. The notification message sent to the target includes the following:</p> <ul> <li> <p>Lifecycle action token</p> </li> <li> <p>User account ID</p> </li> <li> <p>Name of the Auto Scaling group</p> </li> <li> <p>Lifecycle hook name</p> </li> <li> <p>EC2 instance ID</p> </li> <li> <p>Lifecycle transition</p> </li> <li> <p>Notification metadata</p> </li> </ul>
--- @param LifecycleTransition [LifecycleTransition] <p>The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p>
-function M.LifecycleHook(GlobalTimeout, HeartbeatTimeout, RoleARN, AutoScalingGroupName, LifecycleHookName, NotificationMetadata, DefaultResult, NotificationTargetARN, LifecycleTransition, ...)
+-- @param _GlobalTimeout [GlobalTimeout] <p>The maximum time, in seconds, that an instance can remain in a <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The maximum is 172800 seconds (48 hours) or 100 times <code>HeartbeatTimeout</code>, whichever is smaller.</p>
+-- @param _HeartbeatTimeout [HeartbeatTimeout] <p>The maximum time, in seconds, that can elapse before the lifecycle hook times out. The default is 3600 seconds (1 hour). When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling <a>RecordLifecycleActionHeartbeat</a>.</p>
+-- @param _RoleARN [ResourceName] <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the lifecycle hook.</p>
+-- @param _LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param _NotificationMetadata [XmlStringMaxLen1023] <p>Additional information that you want to include any time Auto Scaling sends a message to the notification target.</p>
+-- @param _DefaultResult [LifecycleActionResult] <p>Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The valid values are <code>CONTINUE</code> and <code>ABANDON</code>. The default value is <code>CONTINUE</code>.</p>
+-- @param _NotificationTargetARN [ResourceName] <p>The ARN of the notification target that Auto Scaling uses to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic. The notification message sent to the target includes the following:</p> <ul> <li> <p>Lifecycle action token</p> </li> <li> <p>User account ID</p> </li> <li> <p>Name of the Auto Scaling group</p> </li> <li> <p>Lifecycle hook name</p> </li> <li> <p>EC2 instance ID</p> </li> <li> <p>Lifecycle transition</p> </li> <li> <p>Notification metadata</p> </li> </ul>
+-- @param _LifecycleTransition [LifecycleTransition] <p>The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p>
+function M.LifecycleHook(_GlobalTimeout, _HeartbeatTimeout, _RoleARN, _AutoScalingGroupName, _LifecycleHookName, _NotificationMetadata, _DefaultResult, _NotificationTargetARN, _LifecycleTransition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleHook")
 	local t = { 
-		["GlobalTimeout"] = GlobalTimeout,
-		["HeartbeatTimeout"] = HeartbeatTimeout,
-		["RoleARN"] = RoleARN,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["LifecycleHookName"] = LifecycleHookName,
-		["NotificationMetadata"] = NotificationMetadata,
-		["DefaultResult"] = DefaultResult,
-		["NotificationTargetARN"] = NotificationTargetARN,
-		["LifecycleTransition"] = LifecycleTransition,
+		["GlobalTimeout"] = _GlobalTimeout,
+		["HeartbeatTimeout"] = _HeartbeatTimeout,
+		["RoleARN"] = _RoleARN,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["LifecycleHookName"] = _LifecycleHookName,
+		["NotificationMetadata"] = _NotificationMetadata,
+		["DefaultResult"] = _DefaultResult,
+		["NotificationTargetARN"] = _NotificationTargetARN,
+		["LifecycleTransition"] = _LifecycleTransition,
 	}
-	M.AssertLifecycleHook(t)
+	asserts.AssertLifecycleHook(t)
 	return t
 end
 
-local DescribeLifecycleHookTypesAnswer_keys = { "LifecycleHookTypes" = true, nil }
+keys.DescribeLifecycleHookTypesAnswer = { ["LifecycleHookTypes"] = true, nil }
 
-function M.AssertDescribeLifecycleHookTypesAnswer(struct)
+function asserts.AssertDescribeLifecycleHookTypesAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLifecycleHookTypesAnswer to be of type 'table'")
-	if struct["LifecycleHookTypes"] then M.AssertAutoScalingNotificationTypes(struct["LifecycleHookTypes"]) end
+	if struct["LifecycleHookTypes"] then asserts.AssertAutoScalingNotificationTypes(struct["LifecycleHookTypes"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLifecycleHookTypesAnswer_keys[k], "DescribeLifecycleHookTypesAnswer contains unknown key " .. tostring(k))
+		assert(keys.DescribeLifecycleHookTypesAnswer[k], "DescribeLifecycleHookTypesAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLifecycleHookTypesAnswer
 --  
--- @param LifecycleHookTypes [AutoScalingNotificationTypes] <p>The lifecycle hook types.</p>
-function M.DescribeLifecycleHookTypesAnswer(LifecycleHookTypes, ...)
+-- @param _LifecycleHookTypes [AutoScalingNotificationTypes] <p>The lifecycle hook types.</p>
+function M.DescribeLifecycleHookTypesAnswer(_LifecycleHookTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLifecycleHookTypesAnswer")
 	local t = { 
-		["LifecycleHookTypes"] = LifecycleHookTypes,
+		["LifecycleHookTypes"] = _LifecycleHookTypes,
 	}
-	M.AssertDescribeLifecycleHookTypesAnswer(t)
+	asserts.AssertDescribeLifecycleHookTypesAnswer(t)
 	return t
 end
 
-local DescribeTerminationPolicyTypesAnswer_keys = { "TerminationPolicyTypes" = true, nil }
+keys.DescribeTerminationPolicyTypesAnswer = { ["TerminationPolicyTypes"] = true, nil }
 
-function M.AssertDescribeTerminationPolicyTypesAnswer(struct)
+function asserts.AssertDescribeTerminationPolicyTypesAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTerminationPolicyTypesAnswer to be of type 'table'")
-	if struct["TerminationPolicyTypes"] then M.AssertTerminationPolicies(struct["TerminationPolicyTypes"]) end
+	if struct["TerminationPolicyTypes"] then asserts.AssertTerminationPolicies(struct["TerminationPolicyTypes"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTerminationPolicyTypesAnswer_keys[k], "DescribeTerminationPolicyTypesAnswer contains unknown key " .. tostring(k))
+		assert(keys.DescribeTerminationPolicyTypesAnswer[k], "DescribeTerminationPolicyTypesAnswer contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTerminationPolicyTypesAnswer
 --  
--- @param TerminationPolicyTypes [TerminationPolicies] <p>The termination policies supported by Auto Scaling (<code>OldestInstance</code>, <code>OldestLaunchConfiguration</code>, <code>NewestInstance</code>, <code>ClosestToNextInstanceHour</code>, and <code>Default</code>).</p>
-function M.DescribeTerminationPolicyTypesAnswer(TerminationPolicyTypes, ...)
+-- @param _TerminationPolicyTypes [TerminationPolicies] <p>The termination policies supported by Auto Scaling (<code>OldestInstance</code>, <code>OldestLaunchConfiguration</code>, <code>NewestInstance</code>, <code>ClosestToNextInstanceHour</code>, and <code>Default</code>).</p>
+function M.DescribeTerminationPolicyTypesAnswer(_TerminationPolicyTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTerminationPolicyTypesAnswer")
 	local t = { 
-		["TerminationPolicyTypes"] = TerminationPolicyTypes,
+		["TerminationPolicyTypes"] = _TerminationPolicyTypes,
 	}
-	M.AssertDescribeTerminationPolicyTypesAnswer(t)
+	asserts.AssertDescribeTerminationPolicyTypesAnswer(t)
 	return t
 end
 
-local DeleteNotificationConfigurationType_keys = { "AutoScalingGroupName" = true, "TopicARN" = true, nil }
+keys.DeleteNotificationConfigurationType = { ["AutoScalingGroupName"] = true, ["TopicARN"] = true, nil }
 
-function M.AssertDeleteNotificationConfigurationType(struct)
+function asserts.AssertDeleteNotificationConfigurationType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteNotificationConfigurationType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["TopicARN"], "Expected key TopicARN to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["TopicARN"] then M.AssertResourceName(struct["TopicARN"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["TopicARN"] then asserts.AssertResourceName(struct["TopicARN"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteNotificationConfigurationType_keys[k], "DeleteNotificationConfigurationType contains unknown key " .. tostring(k))
+		assert(keys.DeleteNotificationConfigurationType[k], "DeleteNotificationConfigurationType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteNotificationConfigurationType
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
--- @param TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: TopicARN
-function M.DeleteNotificationConfigurationType(AutoScalingGroupName, TopicARN, ...)
+function M.DeleteNotificationConfigurationType(_AutoScalingGroupName, _TopicARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteNotificationConfigurationType")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["TopicARN"] = TopicARN,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["TopicARN"] = _TopicARN,
 	}
-	M.AssertDeleteNotificationConfigurationType(t)
+	asserts.AssertDeleteNotificationConfigurationType(t)
 	return t
 end
 
-local LoadBalancerTargetGroupState_keys = { "LoadBalancerTargetGroupARN" = true, "State" = true, nil }
+keys.LoadBalancerTargetGroupState = { ["LoadBalancerTargetGroupARN"] = true, ["State"] = true, nil }
 
-function M.AssertLoadBalancerTargetGroupState(struct)
+function asserts.AssertLoadBalancerTargetGroupState(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LoadBalancerTargetGroupState to be of type 'table'")
-	if struct["LoadBalancerTargetGroupARN"] then M.AssertXmlStringMaxLen511(struct["LoadBalancerTargetGroupARN"]) end
-	if struct["State"] then M.AssertXmlStringMaxLen255(struct["State"]) end
+	if struct["LoadBalancerTargetGroupARN"] then asserts.AssertXmlStringMaxLen511(struct["LoadBalancerTargetGroupARN"]) end
+	if struct["State"] then asserts.AssertXmlStringMaxLen255(struct["State"]) end
 	for k,_ in pairs(struct) do
-		assert(LoadBalancerTargetGroupState_keys[k], "LoadBalancerTargetGroupState contains unknown key " .. tostring(k))
+		assert(keys.LoadBalancerTargetGroupState[k], "LoadBalancerTargetGroupState contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LoadBalancerTargetGroupState
 -- <p>Describes the state of a target group.</p> <p>If you attach a target group to an existing Auto Scaling group, the initial state is <code>Adding</code>. The state transitions to <code>Added</code> after all Auto Scaling instances are registered with the target group. If ELB health checks are enabled, the state transitions to <code>InService</code> after at least one Auto Scaling instance passes the health check. If EC2 health checks are enabled instead, the target group remains in the <code>Added</code> state.</p>
--- @param LoadBalancerTargetGroupARN [XmlStringMaxLen511] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param State [XmlStringMaxLen255] <p>The state of the target group.</p> <ul> <li> <p> <code>Adding</code> - The Auto Scaling instances are being registered with the target group.</p> </li> <li> <p> <code>Added</code> - All Auto Scaling instances are registered with the target group.</p> </li> <li> <p> <code>InService</code> - At least one Auto Scaling instance passed an ELB health check.</p> </li> <li> <p> <code>Removing</code> - The Auto Scaling instances are being deregistered from the target group. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.</p> </li> <li> <p> <code>Removed</code> - All Auto Scaling instances are deregistered from the target group.</p> </li> </ul>
-function M.LoadBalancerTargetGroupState(LoadBalancerTargetGroupARN, State, ...)
+-- @param _LoadBalancerTargetGroupARN [XmlStringMaxLen511] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param _State [XmlStringMaxLen255] <p>The state of the target group.</p> <ul> <li> <p> <code>Adding</code> - The Auto Scaling instances are being registered with the target group.</p> </li> <li> <p> <code>Added</code> - All Auto Scaling instances are registered with the target group.</p> </li> <li> <p> <code>InService</code> - At least one Auto Scaling instance passed an ELB health check.</p> </li> <li> <p> <code>Removing</code> - The Auto Scaling instances are being deregistered from the target group. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.</p> </li> <li> <p> <code>Removed</code> - All Auto Scaling instances are deregistered from the target group.</p> </li> </ul>
+function M.LoadBalancerTargetGroupState(_LoadBalancerTargetGroupARN, _State, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerTargetGroupState")
 	local t = { 
-		["LoadBalancerTargetGroupARN"] = LoadBalancerTargetGroupARN,
-		["State"] = State,
+		["LoadBalancerTargetGroupARN"] = _LoadBalancerTargetGroupARN,
+		["State"] = _State,
 	}
-	M.AssertLoadBalancerTargetGroupState(t)
+	asserts.AssertLoadBalancerTargetGroupState(t)
 	return t
 end
 
-local EnableMetricsCollectionQuery_keys = { "Metrics" = true, "AutoScalingGroupName" = true, "Granularity" = true, nil }
+keys.EnableMetricsCollectionQuery = { ["Metrics"] = true, ["AutoScalingGroupName"] = true, ["Granularity"] = true, nil }
 
-function M.AssertEnableMetricsCollectionQuery(struct)
+function asserts.AssertEnableMetricsCollectionQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnableMetricsCollectionQuery to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["Granularity"], "Expected key Granularity to exist in table")
-	if struct["Metrics"] then M.AssertMetrics(struct["Metrics"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["Granularity"] then M.AssertXmlStringMaxLen255(struct["Granularity"]) end
+	if struct["Metrics"] then asserts.AssertMetrics(struct["Metrics"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["Granularity"] then asserts.AssertXmlStringMaxLen255(struct["Granularity"]) end
 	for k,_ in pairs(struct) do
-		assert(EnableMetricsCollectionQuery_keys[k], "EnableMetricsCollectionQuery contains unknown key " .. tostring(k))
+		assert(keys.EnableMetricsCollectionQuery[k], "EnableMetricsCollectionQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnableMetricsCollectionQuery
 --  
--- @param Metrics [Metrics] <p>One or more of the following metrics. If you omit this parameter, all metrics are enabled.</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
--- @param AutoScalingGroupName [ResourceName] <p>The name or ARN of the Auto Scaling group.</p>
--- @param Granularity [XmlStringMaxLen255] <p>The granularity to associate with the metrics to collect. The only valid value is <code>1Minute</code>.</p>
+-- @param _Metrics [Metrics] <p>One or more of the following metrics. If you omit this parameter, all metrics are enabled.</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name or ARN of the Auto Scaling group.</p>
+-- @param _Granularity [XmlStringMaxLen255] <p>The granularity to associate with the metrics to collect. The only valid value is <code>1Minute</code>.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: Granularity
-function M.EnableMetricsCollectionQuery(Metrics, AutoScalingGroupName, Granularity, ...)
+function M.EnableMetricsCollectionQuery(_Metrics, _AutoScalingGroupName, _Granularity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableMetricsCollectionQuery")
 	local t = { 
-		["Metrics"] = Metrics,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["Granularity"] = Granularity,
+		["Metrics"] = _Metrics,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["Granularity"] = _Granularity,
 	}
-	M.AssertEnableMetricsCollectionQuery(t)
+	asserts.AssertEnableMetricsCollectionQuery(t)
 	return t
 end
 
-local LoadBalancerState_keys = { "State" = true, "LoadBalancerName" = true, nil }
+keys.LoadBalancerState = { ["State"] = true, ["LoadBalancerName"] = true, nil }
 
-function M.AssertLoadBalancerState(struct)
+function asserts.AssertLoadBalancerState(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LoadBalancerState to be of type 'table'")
-	if struct["State"] then M.AssertXmlStringMaxLen255(struct["State"]) end
-	if struct["LoadBalancerName"] then M.AssertXmlStringMaxLen255(struct["LoadBalancerName"]) end
+	if struct["State"] then asserts.AssertXmlStringMaxLen255(struct["State"]) end
+	if struct["LoadBalancerName"] then asserts.AssertXmlStringMaxLen255(struct["LoadBalancerName"]) end
 	for k,_ in pairs(struct) do
-		assert(LoadBalancerState_keys[k], "LoadBalancerState contains unknown key " .. tostring(k))
+		assert(keys.LoadBalancerState[k], "LoadBalancerState contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LoadBalancerState
 -- <p>Describes the state of a Classic Load Balancer.</p> <p>If you specify a load balancer when creating the Auto Scaling group, the state of the load balancer is <code>InService</code>.</p> <p>If you attach a load balancer to an existing Auto Scaling group, the initial state is <code>Adding</code>. The state transitions to <code>Added</code> after all instances in the group are registered with the load balancer. If ELB health checks are enabled for the load balancer, the state transitions to <code>InService</code> after at least one instance in the group passes the health check. If EC2 health checks are enabled instead, the load balancer remains in the <code>Added</code> state.</p>
--- @param State [XmlStringMaxLen255] <p>One of the following load balancer states:</p> <ul> <li> <p> <code>Adding</code> - The instances in the group are being registered with the load balancer.</p> </li> <li> <p> <code>Added</code> - All instances in the group are registered with the load balancer.</p> </li> <li> <p> <code>InService</code> - At least one instance in the group passed an ELB health check.</p> </li> <li> <p> <code>Removing</code> - The instances in the group are being deregistered from the load balancer. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.</p> </li> <li> <p> <code>Removed</code> - All instances in the group are deregistered from the load balancer.</p> </li> </ul>
--- @param LoadBalancerName [XmlStringMaxLen255] <p>The name of the load balancer.</p>
-function M.LoadBalancerState(State, LoadBalancerName, ...)
+-- @param _State [XmlStringMaxLen255] <p>One of the following load balancer states:</p> <ul> <li> <p> <code>Adding</code> - The instances in the group are being registered with the load balancer.</p> </li> <li> <p> <code>Added</code> - All instances in the group are registered with the load balancer.</p> </li> <li> <p> <code>InService</code> - At least one instance in the group passed an ELB health check.</p> </li> <li> <p> <code>Removing</code> - The instances in the group are being deregistered from the load balancer. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.</p> </li> <li> <p> <code>Removed</code> - All instances in the group are deregistered from the load balancer.</p> </li> </ul>
+-- @param _LoadBalancerName [XmlStringMaxLen255] <p>The name of the load balancer.</p>
+function M.LoadBalancerState(_State, _LoadBalancerName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerState")
 	local t = { 
-		["State"] = State,
-		["LoadBalancerName"] = LoadBalancerName,
+		["State"] = _State,
+		["LoadBalancerName"] = _LoadBalancerName,
 	}
-	M.AssertLoadBalancerState(t)
+	asserts.AssertLoadBalancerState(t)
 	return t
 end
 
-local SuspendedProcess_keys = { "ProcessName" = true, "SuspensionReason" = true, nil }
+keys.SuspendedProcess = { ["ProcessName"] = true, ["SuspensionReason"] = true, nil }
 
-function M.AssertSuspendedProcess(struct)
+function asserts.AssertSuspendedProcess(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SuspendedProcess to be of type 'table'")
-	if struct["ProcessName"] then M.AssertXmlStringMaxLen255(struct["ProcessName"]) end
-	if struct["SuspensionReason"] then M.AssertXmlStringMaxLen255(struct["SuspensionReason"]) end
+	if struct["ProcessName"] then asserts.AssertXmlStringMaxLen255(struct["ProcessName"]) end
+	if struct["SuspensionReason"] then asserts.AssertXmlStringMaxLen255(struct["SuspensionReason"]) end
 	for k,_ in pairs(struct) do
-		assert(SuspendedProcess_keys[k], "SuspendedProcess contains unknown key " .. tostring(k))
+		assert(keys.SuspendedProcess[k], "SuspendedProcess contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SuspendedProcess
 -- <p>Describes an Auto Scaling process that has been suspended. For more information, see <a>ProcessType</a>.</p>
--- @param ProcessName [XmlStringMaxLen255] <p>The name of the suspended process.</p>
--- @param SuspensionReason [XmlStringMaxLen255] <p>The reason that the process was suspended.</p>
-function M.SuspendedProcess(ProcessName, SuspensionReason, ...)
+-- @param _ProcessName [XmlStringMaxLen255] <p>The name of the suspended process.</p>
+-- @param _SuspensionReason [XmlStringMaxLen255] <p>The reason that the process was suspended.</p>
+function M.SuspendedProcess(_ProcessName, _SuspensionReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SuspendedProcess")
 	local t = { 
-		["ProcessName"] = ProcessName,
-		["SuspensionReason"] = SuspensionReason,
+		["ProcessName"] = _ProcessName,
+		["SuspensionReason"] = _SuspensionReason,
 	}
-	M.AssertSuspendedProcess(t)
+	asserts.AssertSuspendedProcess(t)
 	return t
 end
 
-local Alarm_keys = { "AlarmName" = true, "AlarmARN" = true, nil }
+keys.Alarm = { ["AlarmName"] = true, ["AlarmARN"] = true, nil }
 
-function M.AssertAlarm(struct)
+function asserts.AssertAlarm(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Alarm to be of type 'table'")
-	if struct["AlarmName"] then M.AssertXmlStringMaxLen255(struct["AlarmName"]) end
-	if struct["AlarmARN"] then M.AssertResourceName(struct["AlarmARN"]) end
+	if struct["AlarmName"] then asserts.AssertXmlStringMaxLen255(struct["AlarmName"]) end
+	if struct["AlarmARN"] then asserts.AssertResourceName(struct["AlarmARN"]) end
 	for k,_ in pairs(struct) do
-		assert(Alarm_keys[k], "Alarm contains unknown key " .. tostring(k))
+		assert(keys.Alarm[k], "Alarm contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Alarm
 -- <p>Describes an alarm.</p>
--- @param AlarmName [XmlStringMaxLen255] <p>The name of the alarm.</p>
--- @param AlarmARN [ResourceName] <p>The Amazon Resource Name (ARN) of the alarm.</p>
-function M.Alarm(AlarmName, AlarmARN, ...)
+-- @param _AlarmName [XmlStringMaxLen255] <p>The name of the alarm.</p>
+-- @param _AlarmARN [ResourceName] <p>The Amazon Resource Name (ARN) of the alarm.</p>
+function M.Alarm(_AlarmName, _AlarmARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Alarm")
 	local t = { 
-		["AlarmName"] = AlarmName,
-		["AlarmARN"] = AlarmARN,
+		["AlarmName"] = _AlarmName,
+		["AlarmARN"] = _AlarmARN,
 	}
-	M.AssertAlarm(t)
+	asserts.AssertAlarm(t)
 	return t
 end
 
-local AttachLoadBalancersType_keys = { "AutoScalingGroupName" = true, "LoadBalancerNames" = true, nil }
+keys.AttachLoadBalancersType = { ["AutoScalingGroupName"] = true, ["LoadBalancerNames"] = true, nil }
 
-function M.AssertAttachLoadBalancersType(struct)
+function asserts.AssertAttachLoadBalancersType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachLoadBalancersType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["LoadBalancerNames"], "Expected key LoadBalancerNames to exist in table")
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["LoadBalancerNames"] then M.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["LoadBalancerNames"] then asserts.AssertLoadBalancerNames(struct["LoadBalancerNames"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachLoadBalancersType_keys[k], "AttachLoadBalancersType contains unknown key " .. tostring(k))
+		assert(keys.AttachLoadBalancersType[k], "AttachLoadBalancersType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachLoadBalancersType
 --  
--- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
--- @param LoadBalancerNames [LoadBalancerNames] <p>One or more load balancer names.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param _LoadBalancerNames [LoadBalancerNames] <p>One or more load balancer names.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: LoadBalancerNames
-function M.AttachLoadBalancersType(AutoScalingGroupName, LoadBalancerNames, ...)
+function M.AttachLoadBalancersType(_AutoScalingGroupName, _LoadBalancerNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachLoadBalancersType")
 	local t = { 
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["LoadBalancerNames"] = LoadBalancerNames,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["LoadBalancerNames"] = _LoadBalancerNames,
 	}
-	M.AssertAttachLoadBalancersType(t)
+	asserts.AssertAttachLoadBalancersType(t)
 	return t
 end
 
-local AttachLoadBalancerTargetGroupsType_keys = { "TargetGroupARNs" = true, "AutoScalingGroupName" = true, nil }
+keys.AttachLoadBalancerTargetGroupsType = { ["TargetGroupARNs"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertAttachLoadBalancerTargetGroupsType(struct)
+function asserts.AssertAttachLoadBalancerTargetGroupsType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AttachLoadBalancerTargetGroupsType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
 	assert(struct["TargetGroupARNs"], "Expected key TargetGroupARNs to exist in table")
-	if struct["TargetGroupARNs"] then M.AssertTargetGroupARNs(struct["TargetGroupARNs"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["TargetGroupARNs"] then asserts.AssertTargetGroupARNs(struct["TargetGroupARNs"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(AttachLoadBalancerTargetGroupsType_keys[k], "AttachLoadBalancerTargetGroupsType contains unknown key " .. tostring(k))
+		assert(keys.AttachLoadBalancerTargetGroupsType[k], "AttachLoadBalancerTargetGroupsType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AttachLoadBalancerTargetGroupsType
 --  
--- @param TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: TargetGroupARNs
-function M.AttachLoadBalancerTargetGroupsType(TargetGroupARNs, AutoScalingGroupName, ...)
+function M.AttachLoadBalancerTargetGroupsType(_TargetGroupARNs, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachLoadBalancerTargetGroupsType")
 	local t = { 
-		["TargetGroupARNs"] = TargetGroupARNs,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["TargetGroupARNs"] = _TargetGroupARNs,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertAttachLoadBalancerTargetGroupsType(t)
+	asserts.AssertAttachLoadBalancerTargetGroupsType(t)
 	return t
 end
 
-local ActivitiesType_keys = { "Activities" = true, "NextToken" = true, nil }
+keys.ActivitiesType = { ["Activities"] = true, ["NextToken"] = true, nil }
 
-function M.AssertActivitiesType(struct)
+function asserts.AssertActivitiesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ActivitiesType to be of type 'table'")
 	assert(struct["Activities"], "Expected key Activities to exist in table")
-	if struct["Activities"] then M.AssertActivities(struct["Activities"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
+	if struct["Activities"] then asserts.AssertActivities(struct["Activities"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ActivitiesType_keys[k], "ActivitiesType contains unknown key " .. tostring(k))
+		assert(keys.ActivitiesType[k], "ActivitiesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ActivitiesType
 --  
--- @param Activities [Activities] <p>The scaling activities. Activities are sorted by start time. Activities still in progress are described first.</p>
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param _Activities [Activities] <p>The scaling activities. Activities are sorted by start time. Activities still in progress are described first.</p>
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- Required parameter: Activities
-function M.ActivitiesType(Activities, NextToken, ...)
+function M.ActivitiesType(_Activities, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivitiesType")
 	local t = { 
-		["Activities"] = Activities,
-		["NextToken"] = NextToken,
+		["Activities"] = _Activities,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertActivitiesType(t)
+	asserts.AssertActivitiesType(t)
 	return t
 end
 
-local PutLifecycleHookType_keys = { "HeartbeatTimeout" = true, "RoleARN" = true, "AutoScalingGroupName" = true, "LifecycleHookName" = true, "NotificationMetadata" = true, "DefaultResult" = true, "NotificationTargetARN" = true, "LifecycleTransition" = true, nil }
+keys.PutLifecycleHookType = { ["HeartbeatTimeout"] = true, ["RoleARN"] = true, ["AutoScalingGroupName"] = true, ["LifecycleHookName"] = true, ["NotificationMetadata"] = true, ["DefaultResult"] = true, ["NotificationTargetARN"] = true, ["LifecycleTransition"] = true, nil }
 
-function M.AssertPutLifecycleHookType(struct)
+function asserts.AssertPutLifecycleHookType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutLifecycleHookType to be of type 'table'")
 	assert(struct["LifecycleHookName"], "Expected key LifecycleHookName to exist in table")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["HeartbeatTimeout"] then M.AssertHeartbeatTimeout(struct["HeartbeatTimeout"]) end
-	if struct["RoleARN"] then M.AssertResourceName(struct["RoleARN"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["LifecycleHookName"] then M.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
-	if struct["NotificationMetadata"] then M.AssertXmlStringMaxLen1023(struct["NotificationMetadata"]) end
-	if struct["DefaultResult"] then M.AssertLifecycleActionResult(struct["DefaultResult"]) end
-	if struct["NotificationTargetARN"] then M.AssertNotificationTargetResourceName(struct["NotificationTargetARN"]) end
-	if struct["LifecycleTransition"] then M.AssertLifecycleTransition(struct["LifecycleTransition"]) end
+	if struct["HeartbeatTimeout"] then asserts.AssertHeartbeatTimeout(struct["HeartbeatTimeout"]) end
+	if struct["RoleARN"] then asserts.AssertResourceName(struct["RoleARN"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["LifecycleHookName"] then asserts.AssertAsciiStringMaxLen255(struct["LifecycleHookName"]) end
+	if struct["NotificationMetadata"] then asserts.AssertXmlStringMaxLen1023(struct["NotificationMetadata"]) end
+	if struct["DefaultResult"] then asserts.AssertLifecycleActionResult(struct["DefaultResult"]) end
+	if struct["NotificationTargetARN"] then asserts.AssertNotificationTargetResourceName(struct["NotificationTargetARN"]) end
+	if struct["LifecycleTransition"] then asserts.AssertLifecycleTransition(struct["LifecycleTransition"]) end
 	for k,_ in pairs(struct) do
-		assert(PutLifecycleHookType_keys[k], "PutLifecycleHookType contains unknown key " .. tostring(k))
+		assert(keys.PutLifecycleHookType[k], "PutLifecycleHookType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutLifecycleHookType
 --  
--- @param HeartbeatTimeout [HeartbeatTimeout] <p>The amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling <a>RecordLifecycleActionHeartbeat</a>. The default is 3600 seconds (1 hour).</p>
--- @param RoleARN [ResourceName] <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.</p> <p>This parameter is required for new lifecycle hooks, but optional when updating existing hooks.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group to which you want to assign the lifecycle hook.</p>
--- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
--- @param NotificationMetadata [XmlStringMaxLen1023] <p>Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.</p>
--- @param DefaultResult [LifecycleActionResult] <p>Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. This parameter can be either <code>CONTINUE</code> or <code>ABANDON</code>. The default value is <code>ABANDON</code>.</p>
--- @param NotificationTargetARN [NotificationTargetResourceName] <p>The ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This target can be either an SQS queue or an SNS topic. If you specify an empty string, this overrides the current ARN.</p> <p>This operation uses the JSON format when sending notifications to an Amazon SQS queue, and an email key/value pair format when sending notifications to an Amazon SNS topic.</p> <p>When you specify a notification target, Auto Scaling sends it a test message. Test messages contains the following additional key/value pair: <code>"Event": "autoscaling:TEST_NOTIFICATION"</code>.</p>
--- @param LifecycleTransition [LifecycleTransition] <p>The instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p> <p>This parameter is required for new lifecycle hooks, but optional when updating existing hooks.</p>
+-- @param _HeartbeatTimeout [HeartbeatTimeout] <p>The amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling <a>RecordLifecycleActionHeartbeat</a>. The default is 3600 seconds (1 hour).</p>
+-- @param _RoleARN [ResourceName] <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.</p> <p>This parameter is required for new lifecycle hooks, but optional when updating existing hooks.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group to which you want to assign the lifecycle hook.</p>
+-- @param _LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param _NotificationMetadata [XmlStringMaxLen1023] <p>Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.</p>
+-- @param _DefaultResult [LifecycleActionResult] <p>Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. This parameter can be either <code>CONTINUE</code> or <code>ABANDON</code>. The default value is <code>ABANDON</code>.</p>
+-- @param _NotificationTargetARN [NotificationTargetResourceName] <p>The ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This target can be either an SQS queue or an SNS topic. If you specify an empty string, this overrides the current ARN.</p> <p>This operation uses the JSON format when sending notifications to an Amazon SQS queue, and an email key/value pair format when sending notifications to an Amazon SNS topic.</p> <p>When you specify a notification target, Auto Scaling sends it a test message. Test messages contains the following additional key/value pair: <code>"Event": "autoscaling:TEST_NOTIFICATION"</code>.</p>
+-- @param _LifecycleTransition [LifecycleTransition] <p>The instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p> <p>This parameter is required for new lifecycle hooks, but optional when updating existing hooks.</p>
 -- Required parameter: LifecycleHookName
 -- Required parameter: AutoScalingGroupName
-function M.PutLifecycleHookType(HeartbeatTimeout, RoleARN, AutoScalingGroupName, LifecycleHookName, NotificationMetadata, DefaultResult, NotificationTargetARN, LifecycleTransition, ...)
+function M.PutLifecycleHookType(_HeartbeatTimeout, _RoleARN, _AutoScalingGroupName, _LifecycleHookName, _NotificationMetadata, _DefaultResult, _NotificationTargetARN, _LifecycleTransition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutLifecycleHookType")
 	local t = { 
-		["HeartbeatTimeout"] = HeartbeatTimeout,
-		["RoleARN"] = RoleARN,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["LifecycleHookName"] = LifecycleHookName,
-		["NotificationMetadata"] = NotificationMetadata,
-		["DefaultResult"] = DefaultResult,
-		["NotificationTargetARN"] = NotificationTargetARN,
-		["LifecycleTransition"] = LifecycleTransition,
+		["HeartbeatTimeout"] = _HeartbeatTimeout,
+		["RoleARN"] = _RoleARN,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["LifecycleHookName"] = _LifecycleHookName,
+		["NotificationMetadata"] = _NotificationMetadata,
+		["DefaultResult"] = _DefaultResult,
+		["NotificationTargetARN"] = _NotificationTargetARN,
+		["LifecycleTransition"] = _LifecycleTransition,
 	}
-	M.AssertPutLifecycleHookType(t)
+	asserts.AssertPutLifecycleHookType(t)
 	return t
 end
 
-local PutLifecycleHookAnswer_keys = { nil }
+keys.PutLifecycleHookAnswer = { nil }
 
-function M.AssertPutLifecycleHookAnswer(struct)
+function asserts.AssertPutLifecycleHookAnswer(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutLifecycleHookAnswer to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(PutLifecycleHookAnswer_keys[k], "PutLifecycleHookAnswer contains unknown key " .. tostring(k))
+		assert(keys.PutLifecycleHookAnswer[k], "PutLifecycleHookAnswer contains unknown key " .. tostring(k))
 	end
 end
 
@@ -3148,13 +3151,13 @@ function M.PutLifecycleHookAnswer(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutLifecycleHookAnswer")
 	local t = { 
 	}
-	M.AssertPutLifecycleHookAnswer(t)
+	asserts.AssertPutLifecycleHookAnswer(t)
 	return t
 end
 
-local Activity_keys = { "Description" = true, "AutoScalingGroupName" = true, "ActivityId" = true, "Details" = true, "StartTime" = true, "Progress" = true, "EndTime" = true, "Cause" = true, "StatusMessage" = true, "StatusCode" = true, nil }
+keys.Activity = { ["Description"] = true, ["AutoScalingGroupName"] = true, ["ActivityId"] = true, ["Details"] = true, ["StartTime"] = true, ["Progress"] = true, ["EndTime"] = true, ["Cause"] = true, ["StatusMessage"] = true, ["StatusCode"] = true, nil }
 
-function M.AssertActivity(struct)
+function asserts.AssertActivity(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Activity to be of type 'table'")
 	assert(struct["ActivityId"], "Expected key ActivityId to exist in table")
@@ -3162,458 +3165,448 @@ function M.AssertActivity(struct)
 	assert(struct["Cause"], "Expected key Cause to exist in table")
 	assert(struct["StartTime"], "Expected key StartTime to exist in table")
 	assert(struct["StatusCode"], "Expected key StatusCode to exist in table")
-	if struct["Description"] then M.AssertXmlString(struct["Description"]) end
-	if struct["AutoScalingGroupName"] then M.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
-	if struct["ActivityId"] then M.AssertXmlString(struct["ActivityId"]) end
-	if struct["Details"] then M.AssertXmlString(struct["Details"]) end
-	if struct["StartTime"] then M.AssertTimestampType(struct["StartTime"]) end
-	if struct["Progress"] then M.AssertProgress(struct["Progress"]) end
-	if struct["EndTime"] then M.AssertTimestampType(struct["EndTime"]) end
-	if struct["Cause"] then M.AssertXmlStringMaxLen1023(struct["Cause"]) end
-	if struct["StatusMessage"] then M.AssertXmlStringMaxLen255(struct["StatusMessage"]) end
-	if struct["StatusCode"] then M.AssertScalingActivityStatusCode(struct["StatusCode"]) end
+	if struct["Description"] then asserts.AssertXmlString(struct["Description"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertXmlStringMaxLen255(struct["AutoScalingGroupName"]) end
+	if struct["ActivityId"] then asserts.AssertXmlString(struct["ActivityId"]) end
+	if struct["Details"] then asserts.AssertXmlString(struct["Details"]) end
+	if struct["StartTime"] then asserts.AssertTimestampType(struct["StartTime"]) end
+	if struct["Progress"] then asserts.AssertProgress(struct["Progress"]) end
+	if struct["EndTime"] then asserts.AssertTimestampType(struct["EndTime"]) end
+	if struct["Cause"] then asserts.AssertXmlStringMaxLen1023(struct["Cause"]) end
+	if struct["StatusMessage"] then asserts.AssertXmlStringMaxLen255(struct["StatusMessage"]) end
+	if struct["StatusCode"] then asserts.AssertScalingActivityStatusCode(struct["StatusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(Activity_keys[k], "Activity contains unknown key " .. tostring(k))
+		assert(keys.Activity[k], "Activity contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Activity
 -- <p>Describes scaling activity, which is a long-running process that represents a change to your Auto Scaling group, such as changing its size or replacing an instance.</p>
--- @param Description [XmlString] <p>A friendly, more verbose description of the activity.</p>
--- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group.</p>
--- @param ActivityId [XmlString] <p>The ID of the activity.</p>
--- @param Details [XmlString] <p>The details about the activity.</p>
--- @param StartTime [TimestampType] <p>The start time of the activity.</p>
--- @param Progress [Progress] <p>A value between 0 and 100 that indicates the progress of the activity.</p>
--- @param EndTime [TimestampType] <p>The end time of the activity.</p>
--- @param Cause [XmlStringMaxLen1023] <p>The reason the activity began.</p>
--- @param StatusMessage [XmlStringMaxLen255] <p>A friendly, more verbose description of the activity status.</p>
--- @param StatusCode [ScalingActivityStatusCode] <p>The current status of the activity.</p>
+-- @param _Description [XmlString] <p>A friendly, more verbose description of the activity.</p>
+-- @param _AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group.</p>
+-- @param _ActivityId [XmlString] <p>The ID of the activity.</p>
+-- @param _Details [XmlString] <p>The details about the activity.</p>
+-- @param _StartTime [TimestampType] <p>The start time of the activity.</p>
+-- @param _Progress [Progress] <p>A value between 0 and 100 that indicates the progress of the activity.</p>
+-- @param _EndTime [TimestampType] <p>The end time of the activity.</p>
+-- @param _Cause [XmlStringMaxLen1023] <p>The reason the activity began.</p>
+-- @param _StatusMessage [XmlStringMaxLen255] <p>A friendly, more verbose description of the activity status.</p>
+-- @param _StatusCode [ScalingActivityStatusCode] <p>The current status of the activity.</p>
 -- Required parameter: ActivityId
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: Cause
 -- Required parameter: StartTime
 -- Required parameter: StatusCode
-function M.Activity(Description, AutoScalingGroupName, ActivityId, Details, StartTime, Progress, EndTime, Cause, StatusMessage, StatusCode, ...)
+function M.Activity(_Description, _AutoScalingGroupName, _ActivityId, _Details, _StartTime, _Progress, _EndTime, _Cause, _StatusMessage, _StatusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Activity")
 	local t = { 
-		["Description"] = Description,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["ActivityId"] = ActivityId,
-		["Details"] = Details,
-		["StartTime"] = StartTime,
-		["Progress"] = Progress,
-		["EndTime"] = EndTime,
-		["Cause"] = Cause,
-		["StatusMessage"] = StatusMessage,
-		["StatusCode"] = StatusCode,
+		["Description"] = _Description,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["ActivityId"] = _ActivityId,
+		["Details"] = _Details,
+		["StartTime"] = _StartTime,
+		["Progress"] = _Progress,
+		["EndTime"] = _EndTime,
+		["Cause"] = _Cause,
+		["StatusMessage"] = _StatusMessage,
+		["StatusCode"] = _StatusCode,
 	}
-	M.AssertActivity(t)
+	asserts.AssertActivity(t)
 	return t
 end
 
-local MetricCollectionType_keys = { "Metric" = true, nil }
+keys.MetricCollectionType = { ["Metric"] = true, nil }
 
-function M.AssertMetricCollectionType(struct)
+function asserts.AssertMetricCollectionType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MetricCollectionType to be of type 'table'")
-	if struct["Metric"] then M.AssertXmlStringMaxLen255(struct["Metric"]) end
+	if struct["Metric"] then asserts.AssertXmlStringMaxLen255(struct["Metric"]) end
 	for k,_ in pairs(struct) do
-		assert(MetricCollectionType_keys[k], "MetricCollectionType contains unknown key " .. tostring(k))
+		assert(keys.MetricCollectionType[k], "MetricCollectionType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MetricCollectionType
 -- <p>Describes a metric.</p>
--- @param Metric [XmlStringMaxLen255] <p>One of the following metrics:</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
-function M.MetricCollectionType(Metric, ...)
+-- @param _Metric [XmlStringMaxLen255] <p>One of the following metrics:</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
+function M.MetricCollectionType(_Metric, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricCollectionType")
 	local t = { 
-		["Metric"] = Metric,
+		["Metric"] = _Metric,
 	}
-	M.AssertMetricCollectionType(t)
+	asserts.AssertMetricCollectionType(t)
 	return t
 end
 
-local DescribeAutoScalingInstancesType_keys = { "MaxRecords" = true, "NextToken" = true, "InstanceIds" = true, nil }
+keys.DescribeAutoScalingInstancesType = { ["MaxRecords"] = true, ["NextToken"] = true, ["InstanceIds"] = true, nil }
 
-function M.AssertDescribeAutoScalingInstancesType(struct)
+function asserts.AssertDescribeAutoScalingInstancesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeAutoScalingInstancesType to be of type 'table'")
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["InstanceIds"] then M.AssertInstanceIds(struct["InstanceIds"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["InstanceIds"] then asserts.AssertInstanceIds(struct["InstanceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeAutoScalingInstancesType_keys[k], "DescribeAutoScalingInstancesType contains unknown key " .. tostring(k))
+		assert(keys.DescribeAutoScalingInstancesType[k], "DescribeAutoScalingInstancesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeAutoScalingInstancesType
 --  
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param InstanceIds [InstanceIds] <p>The instances to describe; up to 50 instance IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.</p>
-function M.DescribeAutoScalingInstancesType(MaxRecords, NextToken, InstanceIds, ...)
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param _InstanceIds [InstanceIds] <p>The instances to describe; up to 50 instance IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.</p>
+function M.DescribeAutoScalingInstancesType(_MaxRecords, _NextToken, _InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAutoScalingInstancesType")
 	local t = { 
-		["MaxRecords"] = MaxRecords,
-		["NextToken"] = NextToken,
-		["InstanceIds"] = InstanceIds,
+		["MaxRecords"] = _MaxRecords,
+		["NextToken"] = _NextToken,
+		["InstanceIds"] = _InstanceIds,
 	}
-	M.AssertDescribeAutoScalingInstancesType(t)
+	asserts.AssertDescribeAutoScalingInstancesType(t)
 	return t
 end
 
-local DescribeLoadBalancerTargetGroupsRequest_keys = { "MaxRecords" = true, "NextToken" = true, "AutoScalingGroupName" = true, nil }
+keys.DescribeLoadBalancerTargetGroupsRequest = { ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupName"] = true, nil }
 
-function M.AssertDescribeLoadBalancerTargetGroupsRequest(struct)
+function asserts.AssertDescribeLoadBalancerTargetGroupsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancerTargetGroupsRequest to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLoadBalancerTargetGroupsRequest_keys[k], "DescribeLoadBalancerTargetGroupsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancerTargetGroupsRequest[k], "DescribeLoadBalancerTargetGroupsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancerTargetGroupsRequest
 --  
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
 -- Required parameter: AutoScalingGroupName
-function M.DescribeLoadBalancerTargetGroupsRequest(MaxRecords, NextToken, AutoScalingGroupName, ...)
+function M.DescribeLoadBalancerTargetGroupsRequest(_MaxRecords, _NextToken, _AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerTargetGroupsRequest")
 	local t = { 
-		["MaxRecords"] = MaxRecords,
-		["NextToken"] = NextToken,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
+		["MaxRecords"] = _MaxRecords,
+		["NextToken"] = _NextToken,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
 	}
-	M.AssertDescribeLoadBalancerTargetGroupsRequest(t)
+	asserts.AssertDescribeLoadBalancerTargetGroupsRequest(t)
 	return t
 end
 
-local SetInstanceHealthQuery_keys = { "InstanceId" = true, "ShouldRespectGracePeriod" = true, "HealthStatus" = true, nil }
+keys.SetInstanceHealthQuery = { ["InstanceId"] = true, ["ShouldRespectGracePeriod"] = true, ["HealthStatus"] = true, nil }
 
-function M.AssertSetInstanceHealthQuery(struct)
+function asserts.AssertSetInstanceHealthQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetInstanceHealthQuery to be of type 'table'")
 	assert(struct["InstanceId"], "Expected key InstanceId to exist in table")
 	assert(struct["HealthStatus"], "Expected key HealthStatus to exist in table")
-	if struct["InstanceId"] then M.AssertXmlStringMaxLen19(struct["InstanceId"]) end
-	if struct["ShouldRespectGracePeriod"] then M.AssertShouldRespectGracePeriod(struct["ShouldRespectGracePeriod"]) end
-	if struct["HealthStatus"] then M.AssertXmlStringMaxLen32(struct["HealthStatus"]) end
+	if struct["InstanceId"] then asserts.AssertXmlStringMaxLen19(struct["InstanceId"]) end
+	if struct["ShouldRespectGracePeriod"] then asserts.AssertShouldRespectGracePeriod(struct["ShouldRespectGracePeriod"]) end
+	if struct["HealthStatus"] then asserts.AssertXmlStringMaxLen32(struct["HealthStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(SetInstanceHealthQuery_keys[k], "SetInstanceHealthQuery contains unknown key " .. tostring(k))
+		assert(keys.SetInstanceHealthQuery[k], "SetInstanceHealthQuery contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetInstanceHealthQuery
 --  
--- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
--- @param ShouldRespectGracePeriod [ShouldRespectGracePeriod] <p>If the Auto Scaling group of the specified instance has a <code>HealthCheckGracePeriod</code> specified for the group, by default, this call will respect the grace period. Set this to <code>False</code>, if you do not want the call to respect the grace period associated with the group.</p> <p>For more information, see the description of the health check grace period for <a>CreateAutoScalingGroup</a>.</p>
--- @param HealthStatus [XmlStringMaxLen32] <p>The health status of the instance. Set to <code>Healthy</code> if you want the instance to remain in service. Set to <code>Unhealthy</code> if you want the instance to be out of service. Auto Scaling will terminate and replace the unhealthy instance.</p>
+-- @param _InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param _ShouldRespectGracePeriod [ShouldRespectGracePeriod] <p>If the Auto Scaling group of the specified instance has a <code>HealthCheckGracePeriod</code> specified for the group, by default, this call will respect the grace period. Set this to <code>False</code>, if you do not want the call to respect the grace period associated with the group.</p> <p>For more information, see the description of the health check grace period for <a>CreateAutoScalingGroup</a>.</p>
+-- @param _HealthStatus [XmlStringMaxLen32] <p>The health status of the instance. Set to <code>Healthy</code> if you want the instance to remain in service. Set to <code>Unhealthy</code> if you want the instance to be out of service. Auto Scaling will terminate and replace the unhealthy instance.</p>
 -- Required parameter: InstanceId
 -- Required parameter: HealthStatus
-function M.SetInstanceHealthQuery(InstanceId, ShouldRespectGracePeriod, HealthStatus, ...)
+function M.SetInstanceHealthQuery(_InstanceId, _ShouldRespectGracePeriod, _HealthStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetInstanceHealthQuery")
 	local t = { 
-		["InstanceId"] = InstanceId,
-		["ShouldRespectGracePeriod"] = ShouldRespectGracePeriod,
-		["HealthStatus"] = HealthStatus,
+		["InstanceId"] = _InstanceId,
+		["ShouldRespectGracePeriod"] = _ShouldRespectGracePeriod,
+		["HealthStatus"] = _HealthStatus,
 	}
-	M.AssertSetInstanceHealthQuery(t)
+	asserts.AssertSetInstanceHealthQuery(t)
 	return t
 end
 
-local DescribeLoadBalancersResponse_keys = { "LoadBalancers" = true, "NextToken" = true, nil }
+keys.DescribeLoadBalancersResponse = { ["LoadBalancers"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeLoadBalancersResponse(struct)
+function asserts.AssertDescribeLoadBalancersResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeLoadBalancersResponse to be of type 'table'")
-	if struct["LoadBalancers"] then M.AssertLoadBalancerStates(struct["LoadBalancers"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
+	if struct["LoadBalancers"] then asserts.AssertLoadBalancerStates(struct["LoadBalancers"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeLoadBalancersResponse_keys[k], "DescribeLoadBalancersResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeLoadBalancersResponse[k], "DescribeLoadBalancersResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeLoadBalancersResponse
 --  
--- @param LoadBalancers [LoadBalancerStates] <p>The load balancers.</p>
--- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeLoadBalancersResponse(LoadBalancers, NextToken, ...)
+-- @param _LoadBalancers [LoadBalancerStates] <p>The load balancers.</p>
+-- @param _NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+function M.DescribeLoadBalancersResponse(_LoadBalancers, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersResponse")
 	local t = { 
-		["LoadBalancers"] = LoadBalancers,
-		["NextToken"] = NextToken,
+		["LoadBalancers"] = _LoadBalancers,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeLoadBalancersResponse(t)
+	asserts.AssertDescribeLoadBalancersResponse(t)
 	return t
 end
 
-local UpdateAutoScalingGroupType_keys = { "HealthCheckGracePeriod" = true, "PlacementGroup" = true, "DesiredCapacity" = true, "TerminationPolicies" = true, "AutoScalingGroupName" = true, "DefaultCooldown" = true, "MinSize" = true, "MaxSize" = true, "VPCZoneIdentifier" = true, "LaunchConfigurationName" = true, "AvailabilityZones" = true, "HealthCheckType" = true, "NewInstancesProtectedFromScaleIn" = true, nil }
+keys.UpdateAutoScalingGroupType = { ["HealthCheckGracePeriod"] = true, ["PlacementGroup"] = true, ["DesiredCapacity"] = true, ["TerminationPolicies"] = true, ["AutoScalingGroupName"] = true, ["DefaultCooldown"] = true, ["MinSize"] = true, ["MaxSize"] = true, ["VPCZoneIdentifier"] = true, ["LaunchConfigurationName"] = true, ["AvailabilityZones"] = true, ["HealthCheckType"] = true, ["NewInstancesProtectedFromScaleIn"] = true, nil }
 
-function M.AssertUpdateAutoScalingGroupType(struct)
+function asserts.AssertUpdateAutoScalingGroupType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateAutoScalingGroupType to be of type 'table'")
 	assert(struct["AutoScalingGroupName"], "Expected key AutoScalingGroupName to exist in table")
-	if struct["HealthCheckGracePeriod"] then M.AssertHealthCheckGracePeriod(struct["HealthCheckGracePeriod"]) end
-	if struct["PlacementGroup"] then M.AssertXmlStringMaxLen255(struct["PlacementGroup"]) end
-	if struct["DesiredCapacity"] then M.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
-	if struct["TerminationPolicies"] then M.AssertTerminationPolicies(struct["TerminationPolicies"]) end
-	if struct["AutoScalingGroupName"] then M.AssertResourceName(struct["AutoScalingGroupName"]) end
-	if struct["DefaultCooldown"] then M.AssertCooldown(struct["DefaultCooldown"]) end
-	if struct["MinSize"] then M.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
-	if struct["MaxSize"] then M.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
-	if struct["VPCZoneIdentifier"] then M.AssertXmlStringMaxLen2047(struct["VPCZoneIdentifier"]) end
-	if struct["LaunchConfigurationName"] then M.AssertResourceName(struct["LaunchConfigurationName"]) end
-	if struct["AvailabilityZones"] then M.AssertAvailabilityZones(struct["AvailabilityZones"]) end
-	if struct["HealthCheckType"] then M.AssertXmlStringMaxLen32(struct["HealthCheckType"]) end
-	if struct["NewInstancesProtectedFromScaleIn"] then M.AssertInstanceProtected(struct["NewInstancesProtectedFromScaleIn"]) end
+	if struct["HealthCheckGracePeriod"] then asserts.AssertHealthCheckGracePeriod(struct["HealthCheckGracePeriod"]) end
+	if struct["PlacementGroup"] then asserts.AssertXmlStringMaxLen255(struct["PlacementGroup"]) end
+	if struct["DesiredCapacity"] then asserts.AssertAutoScalingGroupDesiredCapacity(struct["DesiredCapacity"]) end
+	if struct["TerminationPolicies"] then asserts.AssertTerminationPolicies(struct["TerminationPolicies"]) end
+	if struct["AutoScalingGroupName"] then asserts.AssertResourceName(struct["AutoScalingGroupName"]) end
+	if struct["DefaultCooldown"] then asserts.AssertCooldown(struct["DefaultCooldown"]) end
+	if struct["MinSize"] then asserts.AssertAutoScalingGroupMinSize(struct["MinSize"]) end
+	if struct["MaxSize"] then asserts.AssertAutoScalingGroupMaxSize(struct["MaxSize"]) end
+	if struct["VPCZoneIdentifier"] then asserts.AssertXmlStringMaxLen2047(struct["VPCZoneIdentifier"]) end
+	if struct["LaunchConfigurationName"] then asserts.AssertResourceName(struct["LaunchConfigurationName"]) end
+	if struct["AvailabilityZones"] then asserts.AssertAvailabilityZones(struct["AvailabilityZones"]) end
+	if struct["HealthCheckType"] then asserts.AssertXmlStringMaxLen32(struct["HealthCheckType"]) end
+	if struct["NewInstancesProtectedFromScaleIn"] then asserts.AssertInstanceProtected(struct["NewInstancesProtectedFromScaleIn"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateAutoScalingGroupType_keys[k], "UpdateAutoScalingGroupType contains unknown key " .. tostring(k))
+		assert(keys.UpdateAutoScalingGroupType[k], "UpdateAutoScalingGroupType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateAutoScalingGroupType
 --  
--- @param HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service. The default is 0.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the Auto Scaling group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group.</p>
--- @param TerminationPolicies [TerminationPolicies] <p>A standalone termination policy or a list of termination policies used to select the instance to terminate. The policies are executed in the order that they are listed.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html">Controlling Which Instances Auto Scaling Terminates During Scale In</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
--- @param DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size of the Auto Scaling group.</p>
--- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the Auto Scaling group.</p>
--- @param VPCZoneIdentifier [XmlStringMaxLen2047] <p>The ID of the subnet, if you are launching into a VPC. You can specify several subnets in a comma-separated list.</p> <p>When you specify <code>VPCZoneIdentifier</code> with <code>AvailabilityZones</code>, ensure that the subnets' Availability Zones match the values you specify for <code>AvailabilityZones</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
--- @param LaunchConfigurationName [ResourceName] <p>The name of the launch configuration.</p>
--- @param AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group.</p>
--- @param HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p>
--- @param NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
+-- @param _HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service. The default is 0.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param _DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the Auto Scaling group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group.</p>
+-- @param _TerminationPolicies [TerminationPolicies] <p>A standalone termination policy or a list of termination policies used to select the instance to terminate. The policies are executed in the order that they are listed.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html">Controlling Which Instances Auto Scaling Terminates During Scale In</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param _DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _MinSize [AutoScalingGroupMinSize] <p>The minimum size of the Auto Scaling group.</p>
+-- @param _MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the Auto Scaling group.</p>
+-- @param _VPCZoneIdentifier [XmlStringMaxLen2047] <p>The ID of the subnet, if you are launching into a VPC. You can specify several subnets in a comma-separated list.</p> <p>When you specify <code>VPCZoneIdentifier</code> with <code>AvailabilityZones</code>, ensure that the subnets' Availability Zones match the values you specify for <code>AvailabilityZones</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param _LaunchConfigurationName [ResourceName] <p>The name of the launch configuration.</p>
+-- @param _AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group.</p>
+-- @param _HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p>
+-- @param _NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
 -- Required parameter: AutoScalingGroupName
-function M.UpdateAutoScalingGroupType(HealthCheckGracePeriod, PlacementGroup, DesiredCapacity, TerminationPolicies, AutoScalingGroupName, DefaultCooldown, MinSize, MaxSize, VPCZoneIdentifier, LaunchConfigurationName, AvailabilityZones, HealthCheckType, NewInstancesProtectedFromScaleIn, ...)
+function M.UpdateAutoScalingGroupType(_HealthCheckGracePeriod, _PlacementGroup, _DesiredCapacity, _TerminationPolicies, _AutoScalingGroupName, _DefaultCooldown, _MinSize, _MaxSize, _VPCZoneIdentifier, _LaunchConfigurationName, _AvailabilityZones, _HealthCheckType, _NewInstancesProtectedFromScaleIn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAutoScalingGroupType")
 	local t = { 
-		["HealthCheckGracePeriod"] = HealthCheckGracePeriod,
-		["PlacementGroup"] = PlacementGroup,
-		["DesiredCapacity"] = DesiredCapacity,
-		["TerminationPolicies"] = TerminationPolicies,
-		["AutoScalingGroupName"] = AutoScalingGroupName,
-		["DefaultCooldown"] = DefaultCooldown,
-		["MinSize"] = MinSize,
-		["MaxSize"] = MaxSize,
-		["VPCZoneIdentifier"] = VPCZoneIdentifier,
-		["LaunchConfigurationName"] = LaunchConfigurationName,
-		["AvailabilityZones"] = AvailabilityZones,
-		["HealthCheckType"] = HealthCheckType,
-		["NewInstancesProtectedFromScaleIn"] = NewInstancesProtectedFromScaleIn,
+		["HealthCheckGracePeriod"] = _HealthCheckGracePeriod,
+		["PlacementGroup"] = _PlacementGroup,
+		["DesiredCapacity"] = _DesiredCapacity,
+		["TerminationPolicies"] = _TerminationPolicies,
+		["AutoScalingGroupName"] = _AutoScalingGroupName,
+		["DefaultCooldown"] = _DefaultCooldown,
+		["MinSize"] = _MinSize,
+		["MaxSize"] = _MaxSize,
+		["VPCZoneIdentifier"] = _VPCZoneIdentifier,
+		["LaunchConfigurationName"] = _LaunchConfigurationName,
+		["AvailabilityZones"] = _AvailabilityZones,
+		["HealthCheckType"] = _HealthCheckType,
+		["NewInstancesProtectedFromScaleIn"] = _NewInstancesProtectedFromScaleIn,
 	}
-	M.AssertUpdateAutoScalingGroupType(t)
+	asserts.AssertUpdateAutoScalingGroupType(t)
 	return t
 end
 
-local AutoScalingGroupNamesType_keys = { "MaxRecords" = true, "NextToken" = true, "AutoScalingGroupNames" = true, nil }
+keys.AutoScalingGroupNamesType = { ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupNames"] = true, nil }
 
-function M.AssertAutoScalingGroupNamesType(struct)
+function asserts.AssertAutoScalingGroupNamesType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingGroupNamesType to be of type 'table'")
-	if struct["MaxRecords"] then M.AssertMaxRecords(struct["MaxRecords"]) end
-	if struct["NextToken"] then M.AssertXmlString(struct["NextToken"]) end
-	if struct["AutoScalingGroupNames"] then M.AssertAutoScalingGroupNames(struct["AutoScalingGroupNames"]) end
+	if struct["MaxRecords"] then asserts.AssertMaxRecords(struct["MaxRecords"]) end
+	if struct["NextToken"] then asserts.AssertXmlString(struct["NextToken"]) end
+	if struct["AutoScalingGroupNames"] then asserts.AssertAutoScalingGroupNames(struct["AutoScalingGroupNames"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingGroupNamesType_keys[k], "AutoScalingGroupNamesType contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingGroupNamesType[k], "AutoScalingGroupNamesType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingGroupNamesType
 --  
--- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
--- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param AutoScalingGroupNames [AutoScalingGroupNames] <p>The group names. If you omit this parameter, all Auto Scaling groups are described.</p>
-function M.AutoScalingGroupNamesType(MaxRecords, NextToken, AutoScalingGroupNames, ...)
+-- @param _MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param _NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param _AutoScalingGroupNames [AutoScalingGroupNames] <p>The group names. If you omit this parameter, all Auto Scaling groups are described.</p>
+function M.AutoScalingGroupNamesType(_MaxRecords, _NextToken, _AutoScalingGroupNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingGroupNamesType")
 	local t = { 
-		["MaxRecords"] = MaxRecords,
-		["NextToken"] = NextToken,
-		["AutoScalingGroupNames"] = AutoScalingGroupNames,
+		["MaxRecords"] = _MaxRecords,
+		["NextToken"] = _NextToken,
+		["AutoScalingGroupNames"] = _AutoScalingGroupNames,
 	}
-	M.AssertAutoScalingGroupNamesType(t)
+	asserts.AssertAutoScalingGroupNamesType(t)
 	return t
 end
 
-function M.AssertXmlStringMaxLen19(str)
+function asserts.AssertXmlStringMaxLen19(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen19 to be of type 'string'")
 	assert(#str <= 19, "Expected string to be max 19 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen19(str)
-	M.AssertXmlStringMaxLen19(str)
+	asserts.AssertXmlStringMaxLen19(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertXmlStringMaxLen255(str)
+function asserts.AssertXmlStringMaxLen255(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen255 to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen255(str)
-	M.AssertXmlStringMaxLen255(str)
+	asserts.AssertXmlStringMaxLen255(str)
 	return str
 end
 
-function M.AssertXmlStringMaxLen511(str)
+function asserts.AssertXmlStringMaxLen511(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen511 to be of type 'string'")
 	assert(#str <= 511, "Expected string to be max 511 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen511(str)
-	M.AssertXmlStringMaxLen511(str)
+	asserts.AssertXmlStringMaxLen511(str)
 	return str
 end
 
-function M.AssertXmlStringMaxLen1600(str)
+function asserts.AssertXmlStringMaxLen1600(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen1600 to be of type 'string'")
 	assert(#str <= 1600, "Expected string to be max 1600 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen1600(str)
-	M.AssertXmlStringMaxLen1600(str)
+	asserts.AssertXmlStringMaxLen1600(str)
 	return str
 end
 
-function M.AssertXmlStringMaxLen32(str)
+function asserts.AssertXmlStringMaxLen32(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen32 to be of type 'string'")
 	assert(#str <= 32, "Expected string to be max 32 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen32(str)
-	M.AssertXmlStringMaxLen32(str)
+	asserts.AssertXmlStringMaxLen32(str)
 	return str
 end
 
-function M.AssertScalingActivityStatusCode(str)
+function asserts.AssertScalingActivityStatusCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ScalingActivityStatusCode to be of type 'string'")
 end
 
 --  
 function M.ScalingActivityStatusCode(str)
-	M.AssertScalingActivityStatusCode(str)
+	asserts.AssertScalingActivityStatusCode(str)
 	return str
 end
 
-function M.AssertXmlString(str)
+function asserts.AssertXmlString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlString to be of type 'string'")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlString(str)
-	M.AssertXmlString(str)
+	asserts.AssertXmlString(str)
 	return str
 end
 
-function M.AssertLifecycleActionResult(str)
+function asserts.AssertLifecycleActionResult(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LifecycleActionResult to be of type 'string'")
 end
 
 --  
 function M.LifecycleActionResult(str)
-	M.AssertLifecycleActionResult(str)
+	asserts.AssertLifecycleActionResult(str)
 	return str
 end
 
-function M.AssertAsciiStringMaxLen255(str)
+function asserts.AssertAsciiStringMaxLen255(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AsciiStringMaxLen255 to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[A-Za-z0-9%-_%/]+"), "Expected string to match pattern '[A-Za-z0-9%-_%/]+'")
 end
 
 --  
 function M.AsciiStringMaxLen255(str)
-	M.AssertAsciiStringMaxLen255(str)
+	asserts.AssertAsciiStringMaxLen255(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertLifecycleTransition(str)
+function asserts.AssertLifecycleTransition(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LifecycleTransition to be of type 'string'")
 end
 
 --  
 function M.LifecycleTransition(str)
-	M.AssertLifecycleTransition(str)
+	asserts.AssertLifecycleTransition(str)
 	return str
 end
 
-function M.AssertNotificationTargetResourceName(str)
+function asserts.AssertNotificationTargetResourceName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NotificationTargetResourceName to be of type 'string'")
 	assert(#str <= 1600, "Expected string to be max 1600 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.NotificationTargetResourceName(str)
-	M.AssertNotificationTargetResourceName(str)
+	asserts.AssertNotificationTargetResourceName(str)
 	return str
 end
 
-function M.AssertLifecycleActionToken(str)
+function asserts.AssertLifecycleActionToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LifecycleActionToken to be of type 'string'")
 	assert(#str <= 36, "Expected string to be max 36 characters")
@@ -3622,24 +3615,23 @@ end
 
 --  
 function M.LifecycleActionToken(str)
-	M.AssertLifecycleActionToken(str)
+	asserts.AssertLifecycleActionToken(str)
 	return str
 end
 
-function M.AssertXmlStringUserData(str)
+function asserts.AssertXmlStringUserData(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringUserData to be of type 'string'")
 	assert(#str <= 21847, "Expected string to be max 21847 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringUserData(str)
-	M.AssertXmlStringUserData(str)
+	asserts.AssertXmlStringUserData(str)
 	return str
 end
 
-function M.AssertBlockDeviceEbsVolumeType(str)
+function asserts.AssertBlockDeviceEbsVolumeType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BlockDeviceEbsVolumeType to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -3648,25 +3640,24 @@ end
 
 --  
 function M.BlockDeviceEbsVolumeType(str)
-	M.AssertBlockDeviceEbsVolumeType(str)
+	asserts.AssertBlockDeviceEbsVolumeType(str)
 	return str
 end
 
-function M.AssertResourceName(str)
+function asserts.AssertResourceName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceName to be of type 'string'")
 	assert(#str <= 1600, "Expected string to be max 1600 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.ResourceName(str)
-	M.AssertResourceName(str)
+	asserts.AssertResourceName(str)
 	return str
 end
 
-function M.AssertSpotPrice(str)
+function asserts.AssertSpotPrice(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SpotPrice to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -3675,107 +3666,104 @@ end
 
 --  
 function M.SpotPrice(str)
-	M.AssertSpotPrice(str)
+	asserts.AssertSpotPrice(str)
 	return str
 end
 
-function M.AssertXmlStringMaxLen2047(str)
+function asserts.AssertXmlStringMaxLen2047(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen2047 to be of type 'string'")
 	assert(#str <= 2047, "Expected string to be max 2047 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen2047(str)
-	M.AssertXmlStringMaxLen2047(str)
+	asserts.AssertXmlStringMaxLen2047(str)
 	return str
 end
 
-function M.AssertXmlStringMaxLen1023(str)
+function asserts.AssertXmlStringMaxLen1023(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen1023 to be of type 'string'")
 	assert(#str <= 1023, "Expected string to be max 1023 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen1023(str)
-	M.AssertXmlStringMaxLen1023(str)
+	asserts.AssertXmlStringMaxLen1023(str)
 	return str
 end
 
-function M.AssertXmlStringMaxLen64(str)
+function asserts.AssertXmlStringMaxLen64(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen64 to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen64(str)
-	M.AssertXmlStringMaxLen64(str)
+	asserts.AssertXmlStringMaxLen64(str)
 	return str
 end
 
-function M.AssertLifecycleState(str)
+function asserts.AssertLifecycleState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LifecycleState to be of type 'string'")
 end
 
 --  
 function M.LifecycleState(str)
-	M.AssertLifecycleState(str)
+	asserts.AssertLifecycleState(str)
 	return str
 end
 
-function M.AssertMetricScale(double)
+function asserts.AssertMetricScale(double)
 	assert(double)
 	assert(type(double) == "number", "Expected MetricScale to be of type 'number'")
 end
 
 function M.MetricScale(double)
-	M.AssertMetricScale(double)
+	asserts.AssertMetricScale(double)
 	return double
 end
 
-function M.AssertMinAdjustmentMagnitude(integer)
+function asserts.AssertMinAdjustmentMagnitude(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MinAdjustmentMagnitude to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.MinAdjustmentMagnitude(integer)
-	M.AssertMinAdjustmentMagnitude(integer)
+	asserts.AssertMinAdjustmentMagnitude(integer)
 	return integer
 end
 
-function M.AssertNumberOfAutoScalingGroups(integer)
+function asserts.AssertNumberOfAutoScalingGroups(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected NumberOfAutoScalingGroups to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.NumberOfAutoScalingGroups(integer)
-	M.AssertNumberOfAutoScalingGroups(integer)
+	asserts.AssertNumberOfAutoScalingGroups(integer)
 	return integer
 end
 
-function M.AssertProgress(integer)
+function asserts.AssertProgress(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Progress to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Progress(integer)
-	M.AssertProgress(integer)
+	asserts.AssertProgress(integer)
 	return integer
 end
 
-function M.AssertBlockDeviceEbsVolumeSize(integer)
+function asserts.AssertBlockDeviceEbsVolumeSize(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected BlockDeviceEbsVolumeSize to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3784,121 +3772,121 @@ function M.AssertBlockDeviceEbsVolumeSize(integer)
 end
 
 function M.BlockDeviceEbsVolumeSize(integer)
-	M.AssertBlockDeviceEbsVolumeSize(integer)
+	asserts.AssertBlockDeviceEbsVolumeSize(integer)
 	return integer
 end
 
-function M.AssertHealthCheckGracePeriod(integer)
+function asserts.AssertHealthCheckGracePeriod(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected HealthCheckGracePeriod to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.HealthCheckGracePeriod(integer)
-	M.AssertHealthCheckGracePeriod(integer)
+	asserts.AssertHealthCheckGracePeriod(integer)
 	return integer
 end
 
-function M.AssertAutoScalingGroupDesiredCapacity(integer)
+function asserts.AssertAutoScalingGroupDesiredCapacity(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected AutoScalingGroupDesiredCapacity to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.AutoScalingGroupDesiredCapacity(integer)
-	M.AssertAutoScalingGroupDesiredCapacity(integer)
+	asserts.AssertAutoScalingGroupDesiredCapacity(integer)
 	return integer
 end
 
-function M.AssertMaxNumberOfLaunchConfigurations(integer)
+function asserts.AssertMaxNumberOfLaunchConfigurations(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxNumberOfLaunchConfigurations to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.MaxNumberOfLaunchConfigurations(integer)
-	M.AssertMaxNumberOfLaunchConfigurations(integer)
+	asserts.AssertMaxNumberOfLaunchConfigurations(integer)
 	return integer
 end
 
-function M.AssertGlobalTimeout(integer)
+function asserts.AssertGlobalTimeout(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected GlobalTimeout to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.GlobalTimeout(integer)
-	M.AssertGlobalTimeout(integer)
+	asserts.AssertGlobalTimeout(integer)
 	return integer
 end
 
-function M.AssertNumberOfLaunchConfigurations(integer)
+function asserts.AssertNumberOfLaunchConfigurations(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected NumberOfLaunchConfigurations to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.NumberOfLaunchConfigurations(integer)
-	M.AssertNumberOfLaunchConfigurations(integer)
+	asserts.AssertNumberOfLaunchConfigurations(integer)
 	return integer
 end
 
-function M.AssertEstimatedInstanceWarmup(integer)
+function asserts.AssertEstimatedInstanceWarmup(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected EstimatedInstanceWarmup to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.EstimatedInstanceWarmup(integer)
-	M.AssertEstimatedInstanceWarmup(integer)
+	asserts.AssertEstimatedInstanceWarmup(integer)
 	return integer
 end
 
-function M.AssertMaxNumberOfAutoScalingGroups(integer)
+function asserts.AssertMaxNumberOfAutoScalingGroups(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxNumberOfAutoScalingGroups to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.MaxNumberOfAutoScalingGroups(integer)
-	M.AssertMaxNumberOfAutoScalingGroups(integer)
+	asserts.AssertMaxNumberOfAutoScalingGroups(integer)
 	return integer
 end
 
-function M.AssertMinAdjustmentStep(integer)
+function asserts.AssertMinAdjustmentStep(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MinAdjustmentStep to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.MinAdjustmentStep(integer)
-	M.AssertMinAdjustmentStep(integer)
+	asserts.AssertMinAdjustmentStep(integer)
 	return integer
 end
 
-function M.AssertHeartbeatTimeout(integer)
+function asserts.AssertHeartbeatTimeout(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected HeartbeatTimeout to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.HeartbeatTimeout(integer)
-	M.AssertHeartbeatTimeout(integer)
+	asserts.AssertHeartbeatTimeout(integer)
 	return integer
 end
 
-function M.AssertAutoScalingGroupMaxSize(integer)
+function asserts.AssertAutoScalingGroupMaxSize(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected AutoScalingGroupMaxSize to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.AutoScalingGroupMaxSize(integer)
-	M.AssertAutoScalingGroupMaxSize(integer)
+	asserts.AssertAutoScalingGroupMaxSize(integer)
 	return integer
 end
 
-function M.AssertBlockDeviceEbsIops(integer)
+function asserts.AssertBlockDeviceEbsIops(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected BlockDeviceEbsIops to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -3907,807 +3895,807 @@ function M.AssertBlockDeviceEbsIops(integer)
 end
 
 function M.BlockDeviceEbsIops(integer)
-	M.AssertBlockDeviceEbsIops(integer)
+	asserts.AssertBlockDeviceEbsIops(integer)
 	return integer
 end
 
-function M.AssertCooldown(integer)
+function asserts.AssertCooldown(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Cooldown to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Cooldown(integer)
-	M.AssertCooldown(integer)
+	asserts.AssertCooldown(integer)
 	return integer
 end
 
-function M.AssertPolicyIncrement(integer)
+function asserts.AssertPolicyIncrement(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected PolicyIncrement to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.PolicyIncrement(integer)
-	M.AssertPolicyIncrement(integer)
+	asserts.AssertPolicyIncrement(integer)
 	return integer
 end
 
-function M.AssertMaxRecords(integer)
+function asserts.AssertMaxRecords(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxRecords to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.MaxRecords(integer)
-	M.AssertMaxRecords(integer)
+	asserts.AssertMaxRecords(integer)
 	return integer
 end
 
-function M.AssertAutoScalingGroupMinSize(integer)
+function asserts.AssertAutoScalingGroupMinSize(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected AutoScalingGroupMinSize to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.AutoScalingGroupMinSize(integer)
-	M.AssertAutoScalingGroupMinSize(integer)
+	asserts.AssertAutoScalingGroupMinSize(integer)
 	return integer
 end
 
-function M.AssertShouldRespectGracePeriod(boolean)
+function asserts.AssertShouldRespectGracePeriod(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected ShouldRespectGracePeriod to be of type 'boolean'")
 end
 
 function M.ShouldRespectGracePeriod(boolean)
-	M.AssertShouldRespectGracePeriod(boolean)
+	asserts.AssertShouldRespectGracePeriod(boolean)
 	return boolean
 end
 
-function M.AssertPropagateAtLaunch(boolean)
+function asserts.AssertPropagateAtLaunch(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected PropagateAtLaunch to be of type 'boolean'")
 end
 
 function M.PropagateAtLaunch(boolean)
-	M.AssertPropagateAtLaunch(boolean)
+	asserts.AssertPropagateAtLaunch(boolean)
 	return boolean
 end
 
-function M.AssertForceDelete(boolean)
+function asserts.AssertForceDelete(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected ForceDelete to be of type 'boolean'")
 end
 
 function M.ForceDelete(boolean)
-	M.AssertForceDelete(boolean)
+	asserts.AssertForceDelete(boolean)
 	return boolean
 end
 
-function M.AssertAssociatePublicIpAddress(boolean)
+function asserts.AssertAssociatePublicIpAddress(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected AssociatePublicIpAddress to be of type 'boolean'")
 end
 
 function M.AssociatePublicIpAddress(boolean)
-	M.AssertAssociatePublicIpAddress(boolean)
+	asserts.AssertAssociatePublicIpAddress(boolean)
 	return boolean
 end
 
-function M.AssertHonorCooldown(boolean)
+function asserts.AssertHonorCooldown(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected HonorCooldown to be of type 'boolean'")
 end
 
 function M.HonorCooldown(boolean)
-	M.AssertHonorCooldown(boolean)
+	asserts.AssertHonorCooldown(boolean)
 	return boolean
 end
 
-function M.AssertBlockDeviceEbsEncrypted(boolean)
+function asserts.AssertBlockDeviceEbsEncrypted(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BlockDeviceEbsEncrypted to be of type 'boolean'")
 end
 
 function M.BlockDeviceEbsEncrypted(boolean)
-	M.AssertBlockDeviceEbsEncrypted(boolean)
+	asserts.AssertBlockDeviceEbsEncrypted(boolean)
 	return boolean
 end
 
-function M.AssertInstanceProtected(boolean)
+function asserts.AssertInstanceProtected(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected InstanceProtected to be of type 'boolean'")
 end
 
 function M.InstanceProtected(boolean)
-	M.AssertInstanceProtected(boolean)
+	asserts.AssertInstanceProtected(boolean)
 	return boolean
 end
 
-function M.AssertEbsOptimized(boolean)
+function asserts.AssertEbsOptimized(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected EbsOptimized to be of type 'boolean'")
 end
 
 function M.EbsOptimized(boolean)
-	M.AssertEbsOptimized(boolean)
+	asserts.AssertEbsOptimized(boolean)
 	return boolean
 end
 
-function M.AssertProtectedFromScaleIn(boolean)
+function asserts.AssertProtectedFromScaleIn(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected ProtectedFromScaleIn to be of type 'boolean'")
 end
 
 function M.ProtectedFromScaleIn(boolean)
-	M.AssertProtectedFromScaleIn(boolean)
+	asserts.AssertProtectedFromScaleIn(boolean)
 	return boolean
 end
 
-function M.AssertBlockDeviceEbsDeleteOnTermination(boolean)
+function asserts.AssertBlockDeviceEbsDeleteOnTermination(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BlockDeviceEbsDeleteOnTermination to be of type 'boolean'")
 end
 
 function M.BlockDeviceEbsDeleteOnTermination(boolean)
-	M.AssertBlockDeviceEbsDeleteOnTermination(boolean)
+	asserts.AssertBlockDeviceEbsDeleteOnTermination(boolean)
 	return boolean
 end
 
-function M.AssertMonitoringEnabled(boolean)
+function asserts.AssertMonitoringEnabled(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected MonitoringEnabled to be of type 'boolean'")
 end
 
 function M.MonitoringEnabled(boolean)
-	M.AssertMonitoringEnabled(boolean)
+	asserts.AssertMonitoringEnabled(boolean)
 	return boolean
 end
 
-function M.AssertNoDevice(boolean)
+function asserts.AssertNoDevice(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected NoDevice to be of type 'boolean'")
 end
 
 function M.NoDevice(boolean)
-	M.AssertNoDevice(boolean)
+	asserts.AssertNoDevice(boolean)
 	return boolean
 end
 
-function M.AssertShouldDecrementDesiredCapacity(boolean)
+function asserts.AssertShouldDecrementDesiredCapacity(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected ShouldDecrementDesiredCapacity to be of type 'boolean'")
 end
 
 function M.ShouldDecrementDesiredCapacity(boolean)
-	M.AssertShouldDecrementDesiredCapacity(boolean)
+	asserts.AssertShouldDecrementDesiredCapacity(boolean)
 	return boolean
 end
 
-function M.AssertTimestampType(timestamp)
+function asserts.AssertTimestampType(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected TimestampType to be of type 'string'")
 end
 
 function M.TimestampType(timestamp)
-	M.AssertTimestampType(timestamp)
+	asserts.AssertTimestampType(timestamp)
 	return timestamp
 end
 
-function M.AssertNotificationConfigurations(list)
+function asserts.AssertNotificationConfigurations(list)
 	assert(list)
 	assert(type(list) == "table", "Expected NotificationConfigurations to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertNotificationConfiguration(v)
+		asserts.AssertNotificationConfiguration(v)
 	end
 end
 
 --  
 -- List of NotificationConfiguration objects
 function M.NotificationConfigurations(list)
-	M.AssertNotificationConfigurations(list)
+	asserts.AssertNotificationConfigurations(list)
 	return list
 end
 
-function M.AssertAutoScalingNotificationTypes(list)
+function asserts.AssertAutoScalingNotificationTypes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AutoScalingNotificationTypes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen255(v)
+		asserts.AssertXmlStringMaxLen255(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen255 objects
 function M.AutoScalingNotificationTypes(list)
-	M.AssertAutoScalingNotificationTypes(list)
+	asserts.AssertAutoScalingNotificationTypes(list)
 	return list
 end
 
-function M.AssertSecurityGroups(list)
+function asserts.AssertSecurityGroups(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SecurityGroups to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlString(v)
+		asserts.AssertXmlString(v)
 	end
 end
 
 --  
 -- List of XmlString objects
 function M.SecurityGroups(list)
-	M.AssertSecurityGroups(list)
+	asserts.AssertSecurityGroups(list)
 	return list
 end
 
-function M.AssertLifecycleHookNames(list)
+function asserts.AssertLifecycleHookNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LifecycleHookNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAsciiStringMaxLen255(v)
+		asserts.AssertAsciiStringMaxLen255(v)
 	end
 end
 
 --  
 -- List of AsciiStringMaxLen255 objects
 function M.LifecycleHookNames(list)
-	M.AssertLifecycleHookNames(list)
+	asserts.AssertLifecycleHookNames(list)
 	return list
 end
 
-function M.AssertScalingPolicies(list)
+function asserts.AssertScalingPolicies(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ScalingPolicies to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertScalingPolicy(v)
+		asserts.AssertScalingPolicy(v)
 	end
 end
 
 --  
 -- List of ScalingPolicy objects
 function M.ScalingPolicies(list)
-	M.AssertScalingPolicies(list)
+	asserts.AssertScalingPolicies(list)
 	return list
 end
 
-function M.AssertBlockDeviceMappings(list)
+function asserts.AssertBlockDeviceMappings(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BlockDeviceMappings to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBlockDeviceMapping(v)
+		asserts.AssertBlockDeviceMapping(v)
 	end
 end
 
 --  
 -- List of BlockDeviceMapping objects
 function M.BlockDeviceMappings(list)
-	M.AssertBlockDeviceMappings(list)
+	asserts.AssertBlockDeviceMappings(list)
 	return list
 end
 
-function M.AssertTargetGroupARNs(list)
+function asserts.AssertTargetGroupARNs(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TargetGroupARNs to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen511(v)
+		asserts.AssertXmlStringMaxLen511(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen511 objects
 function M.TargetGroupARNs(list)
-	M.AssertTargetGroupARNs(list)
+	asserts.AssertTargetGroupARNs(list)
 	return list
 end
 
-function M.AssertEnabledMetrics(list)
+function asserts.AssertEnabledMetrics(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EnabledMetrics to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEnabledMetric(v)
+		asserts.AssertEnabledMetric(v)
 	end
 end
 
 --  
 -- List of EnabledMetric objects
 function M.EnabledMetrics(list)
-	M.AssertEnabledMetrics(list)
+	asserts.AssertEnabledMetrics(list)
 	return list
 end
 
-function M.AssertAutoScalingInstances(list)
+function asserts.AssertAutoScalingInstances(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AutoScalingInstances to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAutoScalingInstanceDetails(v)
+		asserts.AssertAutoScalingInstanceDetails(v)
 	end
 end
 
 --  
 -- List of AutoScalingInstanceDetails objects
 function M.AutoScalingInstances(list)
-	M.AssertAutoScalingInstances(list)
+	asserts.AssertAutoScalingInstances(list)
 	return list
 end
 
-function M.AssertAutoScalingGroupNames(list)
+function asserts.AssertAutoScalingGroupNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AutoScalingGroupNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResourceName(v)
+		asserts.AssertResourceName(v)
 	end
 end
 
 --  
 -- List of ResourceName objects
 function M.AutoScalingGroupNames(list)
-	M.AssertAutoScalingGroupNames(list)
+	asserts.AssertAutoScalingGroupNames(list)
 	return list
 end
 
-function M.AssertLoadBalancerNames(list)
+function asserts.AssertLoadBalancerNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoadBalancerNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen255(v)
+		asserts.AssertXmlStringMaxLen255(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen255 objects
 function M.LoadBalancerNames(list)
-	M.AssertLoadBalancerNames(list)
+	asserts.AssertLoadBalancerNames(list)
 	return list
 end
 
-function M.AssertProcessNames(list)
+function asserts.AssertProcessNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ProcessNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen255(v)
+		asserts.AssertXmlStringMaxLen255(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen255 objects
 function M.ProcessNames(list)
-	M.AssertProcessNames(list)
+	asserts.AssertProcessNames(list)
 	return list
 end
 
-function M.AssertSuspendedProcesses(list)
+function asserts.AssertSuspendedProcesses(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SuspendedProcesses to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSuspendedProcess(v)
+		asserts.AssertSuspendedProcess(v)
 	end
 end
 
 --  
 -- List of SuspendedProcess objects
 function M.SuspendedProcesses(list)
-	M.AssertSuspendedProcesses(list)
+	asserts.AssertSuspendedProcesses(list)
 	return list
 end
 
-function M.AssertStepAdjustments(list)
+function asserts.AssertStepAdjustments(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StepAdjustments to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStepAdjustment(v)
+		asserts.AssertStepAdjustment(v)
 	end
 end
 
 --  
 -- List of StepAdjustment objects
 function M.StepAdjustments(list)
-	M.AssertStepAdjustments(list)
+	asserts.AssertStepAdjustments(list)
 	return list
 end
 
-function M.AssertLaunchConfigurations(list)
+function asserts.AssertLaunchConfigurations(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LaunchConfigurations to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLaunchConfiguration(v)
+		asserts.AssertLaunchConfiguration(v)
 	end
 end
 
 --  
 -- List of LaunchConfiguration objects
 function M.LaunchConfigurations(list)
-	M.AssertLaunchConfigurations(list)
+	asserts.AssertLaunchConfigurations(list)
 	return list
 end
 
-function M.AssertValues(list)
+function asserts.AssertValues(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Values to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlString(v)
+		asserts.AssertXmlString(v)
 	end
 end
 
 --  
 -- List of XmlString objects
 function M.Values(list)
-	M.AssertValues(list)
+	asserts.AssertValues(list)
 	return list
 end
 
-function M.AssertLaunchConfigurationNames(list)
+function asserts.AssertLaunchConfigurationNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LaunchConfigurationNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResourceName(v)
+		asserts.AssertResourceName(v)
 	end
 end
 
 --  
 -- List of ResourceName objects
 function M.LaunchConfigurationNames(list)
-	M.AssertLaunchConfigurationNames(list)
+	asserts.AssertLaunchConfigurationNames(list)
 	return list
 end
 
-function M.AssertClassicLinkVPCSecurityGroups(list)
+function asserts.AssertClassicLinkVPCSecurityGroups(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ClassicLinkVPCSecurityGroups to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen255(v)
+		asserts.AssertXmlStringMaxLen255(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen255 objects
 function M.ClassicLinkVPCSecurityGroups(list)
-	M.AssertClassicLinkVPCSecurityGroups(list)
+	asserts.AssertClassicLinkVPCSecurityGroups(list)
 	return list
 end
 
-function M.AssertPolicyNames(list)
+function asserts.AssertPolicyNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PolicyNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResourceName(v)
+		asserts.AssertResourceName(v)
 	end
 end
 
 --  
 -- List of ResourceName objects
 function M.PolicyNames(list)
-	M.AssertPolicyNames(list)
+	asserts.AssertPolicyNames(list)
 	return list
 end
 
-function M.AssertLoadBalancerStates(list)
+function asserts.AssertLoadBalancerStates(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoadBalancerStates to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLoadBalancerState(v)
+		asserts.AssertLoadBalancerState(v)
 	end
 end
 
 --  
 -- List of LoadBalancerState objects
 function M.LoadBalancerStates(list)
-	M.AssertLoadBalancerStates(list)
+	asserts.AssertLoadBalancerStates(list)
 	return list
 end
 
-function M.AssertInstanceIds(list)
+function asserts.AssertInstanceIds(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceIds to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen19(v)
+		asserts.AssertXmlStringMaxLen19(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen19 objects
 function M.InstanceIds(list)
-	M.AssertInstanceIds(list)
+	asserts.AssertInstanceIds(list)
 	return list
 end
 
-function M.AssertTags(list)
+function asserts.AssertTags(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Tags to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.Tags(list)
-	M.AssertTags(list)
+	asserts.AssertTags(list)
 	return list
 end
 
-function M.AssertTagDescriptionList(list)
+function asserts.AssertTagDescriptionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagDescriptionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagDescription(v)
+		asserts.AssertTagDescription(v)
 	end
 end
 
 --  
 -- List of TagDescription objects
 function M.TagDescriptionList(list)
-	M.AssertTagDescriptionList(list)
+	asserts.AssertTagDescriptionList(list)
 	return list
 end
 
-function M.AssertProcesses(list)
+function asserts.AssertProcesses(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Processes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertProcessType(v)
+		asserts.AssertProcessType(v)
 	end
 end
 
 --  
 -- List of ProcessType objects
 function M.Processes(list)
-	M.AssertProcesses(list)
+	asserts.AssertProcesses(list)
 	return list
 end
 
-function M.AssertMetricGranularityTypes(list)
+function asserts.AssertMetricGranularityTypes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MetricGranularityTypes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertMetricGranularityType(v)
+		asserts.AssertMetricGranularityType(v)
 	end
 end
 
 --  
 -- List of MetricGranularityType objects
 function M.MetricGranularityTypes(list)
-	M.AssertMetricGranularityTypes(list)
+	asserts.AssertMetricGranularityTypes(list)
 	return list
 end
 
-function M.AssertLifecycleHooks(list)
+function asserts.AssertLifecycleHooks(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LifecycleHooks to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLifecycleHook(v)
+		asserts.AssertLifecycleHook(v)
 	end
 end
 
 --  
 -- List of LifecycleHook objects
 function M.LifecycleHooks(list)
-	M.AssertLifecycleHooks(list)
+	asserts.AssertLifecycleHooks(list)
 	return list
 end
 
-function M.AssertAdjustmentTypes(list)
+function asserts.AssertAdjustmentTypes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AdjustmentTypes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAdjustmentType(v)
+		asserts.AssertAdjustmentType(v)
 	end
 end
 
 --  
 -- List of AdjustmentType objects
 function M.AdjustmentTypes(list)
-	M.AssertAdjustmentTypes(list)
+	asserts.AssertAdjustmentTypes(list)
 	return list
 end
 
-function M.AssertAlarms(list)
+function asserts.AssertAlarms(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Alarms to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAlarm(v)
+		asserts.AssertAlarm(v)
 	end
 end
 
 --  
 -- List of Alarm objects
 function M.Alarms(list)
-	M.AssertAlarms(list)
+	asserts.AssertAlarms(list)
 	return list
 end
 
-function M.AssertLoadBalancerTargetGroupStates(list)
+function asserts.AssertLoadBalancerTargetGroupStates(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoadBalancerTargetGroupStates to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertLoadBalancerTargetGroupState(v)
+		asserts.AssertLoadBalancerTargetGroupState(v)
 	end
 end
 
 --  
 -- List of LoadBalancerTargetGroupState objects
 function M.LoadBalancerTargetGroupStates(list)
-	M.AssertLoadBalancerTargetGroupStates(list)
+	asserts.AssertLoadBalancerTargetGroupStates(list)
 	return list
 end
 
-function M.AssertActivityIds(list)
+function asserts.AssertActivityIds(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ActivityIds to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlString(v)
+		asserts.AssertXmlString(v)
 	end
 end
 
 --  
 -- List of XmlString objects
 function M.ActivityIds(list)
-	M.AssertActivityIds(list)
+	asserts.AssertActivityIds(list)
 	return list
 end
 
-function M.AssertMetricCollectionTypes(list)
+function asserts.AssertMetricCollectionTypes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MetricCollectionTypes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertMetricCollectionType(v)
+		asserts.AssertMetricCollectionType(v)
 	end
 end
 
 --  
 -- List of MetricCollectionType objects
 function M.MetricCollectionTypes(list)
-	M.AssertMetricCollectionTypes(list)
+	asserts.AssertMetricCollectionTypes(list)
 	return list
 end
 
-function M.AssertPolicyTypes(list)
+function asserts.AssertPolicyTypes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PolicyTypes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen64(v)
+		asserts.AssertXmlStringMaxLen64(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen64 objects
 function M.PolicyTypes(list)
-	M.AssertPolicyTypes(list)
+	asserts.AssertPolicyTypes(list)
 	return list
 end
 
-function M.AssertActivities(list)
+function asserts.AssertActivities(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Activities to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertActivity(v)
+		asserts.AssertActivity(v)
 	end
 end
 
 --  
 -- List of Activity objects
 function M.Activities(list)
-	M.AssertActivities(list)
+	asserts.AssertActivities(list)
 	return list
 end
 
-function M.AssertMetrics(list)
+function asserts.AssertMetrics(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Metrics to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen255(v)
+		asserts.AssertXmlStringMaxLen255(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen255 objects
 function M.Metrics(list)
-	M.AssertMetrics(list)
+	asserts.AssertMetrics(list)
 	return list
 end
 
-function M.AssertTerminationPolicies(list)
+function asserts.AssertTerminationPolicies(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TerminationPolicies to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen1600(v)
+		asserts.AssertXmlStringMaxLen1600(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen1600 objects
 function M.TerminationPolicies(list)
-	M.AssertTerminationPolicies(list)
+	asserts.AssertTerminationPolicies(list)
 	return list
 end
 
-function M.AssertScheduledUpdateGroupActions(list)
+function asserts.AssertScheduledUpdateGroupActions(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ScheduledUpdateGroupActions to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertScheduledUpdateGroupAction(v)
+		asserts.AssertScheduledUpdateGroupAction(v)
 	end
 end
 
 --  
 -- List of ScheduledUpdateGroupAction objects
 function M.ScheduledUpdateGroupActions(list)
-	M.AssertScheduledUpdateGroupActions(list)
+	asserts.AssertScheduledUpdateGroupActions(list)
 	return list
 end
 
-function M.AssertAutoScalingGroups(list)
+function asserts.AssertAutoScalingGroups(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AutoScalingGroups to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAutoScalingGroup(v)
+		asserts.AssertAutoScalingGroup(v)
 	end
 end
 
 --  
 -- List of AutoScalingGroup objects
 function M.AutoScalingGroups(list)
-	M.AssertAutoScalingGroups(list)
+	asserts.AssertAutoScalingGroups(list)
 	return list
 end
 
-function M.AssertScheduledActionNames(list)
+function asserts.AssertScheduledActionNames(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ScheduledActionNames to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResourceName(v)
+		asserts.AssertResourceName(v)
 	end
 end
 
 --  
 -- List of ResourceName objects
 function M.ScheduledActionNames(list)
-	M.AssertScheduledActionNames(list)
+	asserts.AssertScheduledActionNames(list)
 	return list
 end
 
-function M.AssertInstances(list)
+function asserts.AssertInstances(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Instances to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstance(v)
+		asserts.AssertInstance(v)
 	end
 end
 
 --  
 -- List of Instance objects
 function M.Instances(list)
-	M.AssertInstances(list)
+	asserts.AssertInstances(list)
 	return list
 end
 
-function M.AssertFilters(list)
+function asserts.AssertFilters(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Filters to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFilter(v)
+		asserts.AssertFilter(v)
 	end
 end
 
 --  
 -- List of Filter objects
 function M.Filters(list)
-	M.AssertFilters(list)
+	asserts.AssertFilters(list)
 	return list
 end
 
-function M.AssertAvailabilityZones(list)
+function asserts.AssertAvailabilityZones(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AvailabilityZones to be of type ''table")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen255(v)
+		asserts.AssertXmlStringMaxLen255(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen255 objects
 function M.AvailabilityZones(list)
-	M.AssertAvailabilityZones(list)
+	asserts.AssertAvailabilityZones(list)
 	return list
 end
 
@@ -4966,10 +4954,8 @@ function M.CreateOrUpdateTagsAsync(CreateOrUpdateTagsType, cb)
 end
 
 --- DescribeScalingProcessTypes
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeScalingProcessTypesAsync(, cb)
-	assert(, "You must provide a ")
+function M.DescribeScalingProcessTypesAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = ".DescribeScalingProcessTypes",
@@ -4977,7 +4963,7 @@ function M.DescribeScalingProcessTypesAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
+		request_handler(uri .. "/", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end
@@ -5128,10 +5114,8 @@ function M.DetachInstancesAsync(DetachInstancesQuery, cb)
 end
 
 --- DescribeAdjustmentTypes
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeAdjustmentTypesAsync(, cb)
-	assert(, "You must provide a ")
+function M.DescribeAdjustmentTypesAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = ".DescribeAdjustmentTypes",
@@ -5139,7 +5123,7 @@ function M.DescribeAdjustmentTypesAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
+		request_handler(uri .. "/", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end
@@ -5218,10 +5202,8 @@ function M.CompleteLifecycleActionAsync(CompleteLifecycleActionType, cb)
 end
 
 --- DescribeMetricCollectionTypes
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeMetricCollectionTypesAsync(, cb)
-	assert(, "You must provide a ")
+function M.DescribeMetricCollectionTypesAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = ".DescribeMetricCollectionTypes",
@@ -5229,7 +5211,7 @@ function M.DescribeMetricCollectionTypesAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
+		request_handler(uri .. "/", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end
@@ -5326,10 +5308,8 @@ function M.CreateLaunchConfigurationAsync(CreateLaunchConfigurationType, cb)
 end
 
 --- DescribeLifecycleHookTypes
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeLifecycleHookTypesAsync(, cb)
-	assert(, "You must provide a ")
+function M.DescribeLifecycleHookTypesAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = ".DescribeLifecycleHookTypes",
@@ -5337,7 +5317,7 @@ function M.DescribeLifecycleHookTypesAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
+		request_handler(uri .. "/", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end
@@ -5380,10 +5360,8 @@ function M.DescribeTagsAsync(DescribeTagsType, cb)
 end
 
 --- DescribeTerminationPolicyTypes
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeTerminationPolicyTypesAsync(, cb)
-	assert(, "You must provide a ")
+function M.DescribeTerminationPolicyTypesAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = ".DescribeTerminationPolicyTypes",
@@ -5391,7 +5369,7 @@ function M.DescribeTerminationPolicyTypesAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
+		request_handler(uri .. "/", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end
@@ -5632,10 +5610,8 @@ function M.DeleteNotificationConfigurationAsync(DeleteNotificationConfigurationT
 end
 
 --- DescribeAutoScalingNotificationTypes
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeAutoScalingNotificationTypesAsync(, cb)
-	assert(, "You must provide a ")
+function M.DescribeAutoScalingNotificationTypesAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingNotificationTypes",
@@ -5643,7 +5619,7 @@ function M.DescribeAutoScalingNotificationTypesAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
+		request_handler(uri .. "/", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end
@@ -5668,10 +5644,8 @@ function M.SuspendProcessesAsync(ScalingProcessQuery, cb)
 end
 
 --- DescribeAccountLimits
--- @param 
 -- @param cb Callback function accepting two args: response, error_message
-function M.DescribeAccountLimitsAsync(, cb)
-	assert(, "You must provide a ")
+function M.DescribeAccountLimitsAsync(cb)
 	local headers = {
 		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
@@ -5679,7 +5653,7 @@ function M.DescribeAccountLimitsAsync(, cb)
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", , headers, M.metadata, cb)
+		request_handler(uri .. "/", {}, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end

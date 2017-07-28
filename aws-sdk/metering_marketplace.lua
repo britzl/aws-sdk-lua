@@ -18,178 +18,181 @@ M.metadata = {
 	uid = "meteringmarketplace-2016-01-14",
 }
 
-local ExpiredTokenException_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertExpiredTokenException(struct)
+keys.ExpiredTokenException = { ["message"] = true, nil }
+
+function asserts.AssertExpiredTokenException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExpiredTokenException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ExpiredTokenException_keys[k], "ExpiredTokenException contains unknown key " .. tostring(k))
+		assert(keys.ExpiredTokenException[k], "ExpiredTokenException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExpiredTokenException
 -- <p>The submitted registration token has expired. This can happen if the buyer's browser takes too long to redirect to your page, the buyer has resubmitted the registration token, or your application has held on to the registration token for too long. Your SaaS registration website should redeem this token as soon as it is submitted by the buyer's browser.</p>
--- @param message [errorMessage] <p>The submitted registration token has expired. This can happen if the buyer's browser takes too long to redirect to your page, the buyer has resubmitted the registration token, or your application has held on to the registration token for too long. Your SaaS registration website should redeem this token as soon as it is submitted by the buyer's browser.</p>
-function M.ExpiredTokenException(message, ...)
+-- @param _message [errorMessage] 
+function M.ExpiredTokenException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredTokenException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertExpiredTokenException(t)
+	asserts.AssertExpiredTokenException(t)
 	return t
 end
 
-local ResolveCustomerRequest_keys = { "RegistrationToken" = true, nil }
+keys.ResolveCustomerRequest = { ["RegistrationToken"] = true, nil }
 
-function M.AssertResolveCustomerRequest(struct)
+function asserts.AssertResolveCustomerRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResolveCustomerRequest to be of type 'table'")
 	assert(struct["RegistrationToken"], "Expected key RegistrationToken to exist in table")
-	if struct["RegistrationToken"] then M.AssertNonEmptyString(struct["RegistrationToken"]) end
+	if struct["RegistrationToken"] then asserts.AssertNonEmptyString(struct["RegistrationToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ResolveCustomerRequest_keys[k], "ResolveCustomerRequest contains unknown key " .. tostring(k))
+		assert(keys.ResolveCustomerRequest[k], "ResolveCustomerRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResolveCustomerRequest
 -- <p>Contains input to the ResolveCustomer operation.</p>
--- @param RegistrationToken [NonEmptyString] <p>When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a CustomerIdentifier and product code.</p>
+-- @param _RegistrationToken [NonEmptyString] <p>When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a CustomerIdentifier and product code.</p>
 -- Required parameter: RegistrationToken
-function M.ResolveCustomerRequest(RegistrationToken, ...)
+function M.ResolveCustomerRequest(_RegistrationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCustomerRequest")
 	local t = { 
-		["RegistrationToken"] = RegistrationToken,
+		["RegistrationToken"] = _RegistrationToken,
 	}
-	M.AssertResolveCustomerRequest(t)
+	asserts.AssertResolveCustomerRequest(t)
 	return t
 end
 
-local ResolveCustomerResult_keys = { "ProductCode" = true, "CustomerIdentifier" = true, nil }
+keys.ResolveCustomerResult = { ["ProductCode"] = true, ["CustomerIdentifier"] = true, nil }
 
-function M.AssertResolveCustomerResult(struct)
+function asserts.AssertResolveCustomerResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResolveCustomerResult to be of type 'table'")
-	if struct["ProductCode"] then M.AssertProductCode(struct["ProductCode"]) end
-	if struct["CustomerIdentifier"] then M.AssertCustomerIdentifier(struct["CustomerIdentifier"]) end
+	if struct["ProductCode"] then asserts.AssertProductCode(struct["ProductCode"]) end
+	if struct["CustomerIdentifier"] then asserts.AssertCustomerIdentifier(struct["CustomerIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(ResolveCustomerResult_keys[k], "ResolveCustomerResult contains unknown key " .. tostring(k))
+		assert(keys.ResolveCustomerResult[k], "ResolveCustomerResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResolveCustomerResult
 -- <p>The result of the ResolveCustomer operation. Contains the CustomerIdentifier and product code.</p>
--- @param ProductCode [ProductCode] <p>The product code is returned to confirm that the buyer is registering for your product. Subsequent BatchMeterUsage calls should be made using this product code.</p>
--- @param CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is used to identify an individual customer in your application. Calls to BatchMeterUsage require CustomerIdentifiers for each UsageRecord.</p>
-function M.ResolveCustomerResult(ProductCode, CustomerIdentifier, ...)
+-- @param _ProductCode [ProductCode] <p>The product code is returned to confirm that the buyer is registering for your product. Subsequent BatchMeterUsage calls should be made using this product code.</p>
+-- @param _CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is used to identify an individual customer in your application. Calls to BatchMeterUsage require CustomerIdentifiers for each UsageRecord.</p>
+function M.ResolveCustomerResult(_ProductCode, _CustomerIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCustomerResult")
 	local t = { 
-		["ProductCode"] = ProductCode,
-		["CustomerIdentifier"] = CustomerIdentifier,
+		["ProductCode"] = _ProductCode,
+		["CustomerIdentifier"] = _CustomerIdentifier,
 	}
-	M.AssertResolveCustomerResult(t)
+	asserts.AssertResolveCustomerResult(t)
 	return t
 end
 
-local TimestampOutOfBoundsException_keys = { "message" = true, nil }
+keys.TimestampOutOfBoundsException = { ["message"] = true, nil }
 
-function M.AssertTimestampOutOfBoundsException(struct)
+function asserts.AssertTimestampOutOfBoundsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TimestampOutOfBoundsException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TimestampOutOfBoundsException_keys[k], "TimestampOutOfBoundsException contains unknown key " .. tostring(k))
+		assert(keys.TimestampOutOfBoundsException[k], "TimestampOutOfBoundsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TimestampOutOfBoundsException
 -- <p>The timestamp value passed in the meterUsage() is out of allowed range.</p>
--- @param message [errorMessage] <p>The timestamp value passed in the meterUsage() is out of allowed range.</p>
-function M.TimestampOutOfBoundsException(message, ...)
+-- @param _message [errorMessage] 
+function M.TimestampOutOfBoundsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TimestampOutOfBoundsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTimestampOutOfBoundsException(t)
+	asserts.AssertTimestampOutOfBoundsException(t)
 	return t
 end
 
-local BatchMeterUsageResult_keys = { "UnprocessedRecords" = true, "Results" = true, nil }
+keys.BatchMeterUsageResult = { ["UnprocessedRecords"] = true, ["Results"] = true, nil }
 
-function M.AssertBatchMeterUsageResult(struct)
+function asserts.AssertBatchMeterUsageResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchMeterUsageResult to be of type 'table'")
-	if struct["UnprocessedRecords"] then M.AssertUsageRecordList(struct["UnprocessedRecords"]) end
-	if struct["Results"] then M.AssertUsageRecordResultList(struct["Results"]) end
+	if struct["UnprocessedRecords"] then asserts.AssertUsageRecordList(struct["UnprocessedRecords"]) end
+	if struct["Results"] then asserts.AssertUsageRecordResultList(struct["Results"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchMeterUsageResult_keys[k], "BatchMeterUsageResult contains unknown key " .. tostring(k))
+		assert(keys.BatchMeterUsageResult[k], "BatchMeterUsageResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchMeterUsageResult
 -- <p>Contains the UsageRecords processed by BatchMeterUsage and any records that have failed due to transient error.</p>
--- @param UnprocessedRecords [UsageRecordList] <p>Contains all UsageRecords that were not processed by BatchMeterUsage. This is a list of UsageRecords. You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest.</p>
--- @param Results [UsageRecordResultList] <p>Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid.</p>
-function M.BatchMeterUsageResult(UnprocessedRecords, Results, ...)
+-- @param _UnprocessedRecords [UsageRecordList] <p>Contains all UsageRecords that were not processed by BatchMeterUsage. This is a list of UsageRecords. You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest.</p>
+-- @param _Results [UsageRecordResultList] <p>Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid.</p>
+function M.BatchMeterUsageResult(_UnprocessedRecords, _Results, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchMeterUsageResult")
 	local t = { 
-		["UnprocessedRecords"] = UnprocessedRecords,
-		["Results"] = Results,
+		["UnprocessedRecords"] = _UnprocessedRecords,
+		["Results"] = _Results,
 	}
-	M.AssertBatchMeterUsageResult(t)
+	asserts.AssertBatchMeterUsageResult(t)
 	return t
 end
 
-local InvalidTokenException_keys = { "message" = true, nil }
+keys.InvalidTokenException = { ["message"] = true, nil }
 
-function M.AssertInvalidTokenException(struct)
+function asserts.AssertInvalidTokenException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidTokenException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidTokenException_keys[k], "InvalidTokenException contains unknown key " .. tostring(k))
+		assert(keys.InvalidTokenException[k], "InvalidTokenException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidTokenException
 --  
--- @param message [errorMessage]  
-function M.InvalidTokenException(message, ...)
+-- @param _message [errorMessage] 
+function M.InvalidTokenException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTokenException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidTokenException(t)
+	asserts.AssertInvalidTokenException(t)
 	return t
 end
 
-local InvalidCustomerIdentifierException_keys = { "message" = true, nil }
+keys.InvalidCustomerIdentifierException = { ["message"] = true, nil }
 
-function M.AssertInvalidCustomerIdentifierException(struct)
+function asserts.AssertInvalidCustomerIdentifierException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidCustomerIdentifierException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidCustomerIdentifierException_keys[k], "InvalidCustomerIdentifierException contains unknown key " .. tostring(k))
+		assert(keys.InvalidCustomerIdentifierException[k], "InvalidCustomerIdentifierException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidCustomerIdentifierException
 -- <p>You have metered usage for a CustomerIdentifier that does not exist.</p>
--- @param message [errorMessage] <p>You have metered usage for a CustomerIdentifier that does not exist.</p>
-function M.InvalidCustomerIdentifierException(message, ...)
+-- @param _message [errorMessage] 
+function M.InvalidCustomerIdentifierException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCustomerIdentifierException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidCustomerIdentifierException(t)
+	asserts.AssertInvalidCustomerIdentifierException(t)
 	return t
 end
 
-local MeterUsageRequest_keys = { "ProductCode" = true, "UsageQuantity" = true, "DryRun" = true, "UsageDimension" = true, "Timestamp" = true, nil }
+keys.MeterUsageRequest = { ["ProductCode"] = true, ["UsageQuantity"] = true, ["DryRun"] = true, ["UsageDimension"] = true, ["Timestamp"] = true, nil }
 
-function M.AssertMeterUsageRequest(struct)
+function asserts.AssertMeterUsageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MeterUsageRequest to be of type 'table'")
 	assert(struct["ProductCode"], "Expected key ProductCode to exist in table")
@@ -197,314 +200,313 @@ function M.AssertMeterUsageRequest(struct)
 	assert(struct["UsageDimension"], "Expected key UsageDimension to exist in table")
 	assert(struct["UsageQuantity"], "Expected key UsageQuantity to exist in table")
 	assert(struct["DryRun"], "Expected key DryRun to exist in table")
-	if struct["ProductCode"] then M.AssertProductCode(struct["ProductCode"]) end
-	if struct["UsageQuantity"] then M.AssertUsageQuantity(struct["UsageQuantity"]) end
-	if struct["DryRun"] then M.AssertBoolean(struct["DryRun"]) end
-	if struct["UsageDimension"] then M.AssertUsageDimension(struct["UsageDimension"]) end
-	if struct["Timestamp"] then M.AssertTimestamp(struct["Timestamp"]) end
+	if struct["ProductCode"] then asserts.AssertProductCode(struct["ProductCode"]) end
+	if struct["UsageQuantity"] then asserts.AssertUsageQuantity(struct["UsageQuantity"]) end
+	if struct["DryRun"] then asserts.AssertBoolean(struct["DryRun"]) end
+	if struct["UsageDimension"] then asserts.AssertUsageDimension(struct["UsageDimension"]) end
+	if struct["Timestamp"] then asserts.AssertTimestamp(struct["Timestamp"]) end
 	for k,_ in pairs(struct) do
-		assert(MeterUsageRequest_keys[k], "MeterUsageRequest contains unknown key " .. tostring(k))
+		assert(keys.MeterUsageRequest[k], "MeterUsageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MeterUsageRequest
 --  
--- @param ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
--- @param UsageQuantity [UsageQuantity] <p>Consumption value for the hour.</p>
--- @param DryRun [Boolean] <p>Checks whether you have the permissions required for the action, but does not make the request. If you have the permissions, the request returns DryRunOperation; otherwise, it returns UnauthorizedException.</p>
--- @param UsageDimension [UsageDimension] <p>It will be one of the fcp dimension name provided during the publishing of the product.</p>
--- @param Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p>
+-- @param _ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
+-- @param _UsageQuantity [UsageQuantity] <p>Consumption value for the hour.</p>
+-- @param _DryRun [Boolean] <p>Checks whether you have the permissions required for the action, but does not make the request. If you have the permissions, the request returns DryRunOperation; otherwise, it returns UnauthorizedException.</p>
+-- @param _UsageDimension [UsageDimension] <p>It will be one of the fcp dimension name provided during the publishing of the product.</p>
+-- @param _Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p>
 -- Required parameter: ProductCode
 -- Required parameter: Timestamp
 -- Required parameter: UsageDimension
 -- Required parameter: UsageQuantity
 -- Required parameter: DryRun
-function M.MeterUsageRequest(ProductCode, UsageQuantity, DryRun, UsageDimension, Timestamp, ...)
+function M.MeterUsageRequest(_ProductCode, _UsageQuantity, _DryRun, _UsageDimension, _Timestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MeterUsageRequest")
 	local t = { 
-		["ProductCode"] = ProductCode,
-		["UsageQuantity"] = UsageQuantity,
-		["DryRun"] = DryRun,
-		["UsageDimension"] = UsageDimension,
-		["Timestamp"] = Timestamp,
+		["ProductCode"] = _ProductCode,
+		["UsageQuantity"] = _UsageQuantity,
+		["DryRun"] = _DryRun,
+		["UsageDimension"] = _UsageDimension,
+		["Timestamp"] = _Timestamp,
 	}
-	M.AssertMeterUsageRequest(t)
+	asserts.AssertMeterUsageRequest(t)
 	return t
 end
 
-local MeterUsageResult_keys = { "MeteringRecordId" = true, nil }
+keys.MeterUsageResult = { ["MeteringRecordId"] = true, nil }
 
-function M.AssertMeterUsageResult(struct)
+function asserts.AssertMeterUsageResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MeterUsageResult to be of type 'table'")
-	if struct["MeteringRecordId"] then M.AssertString(struct["MeteringRecordId"]) end
+	if struct["MeteringRecordId"] then asserts.AssertString(struct["MeteringRecordId"]) end
 	for k,_ in pairs(struct) do
-		assert(MeterUsageResult_keys[k], "MeterUsageResult contains unknown key " .. tostring(k))
+		assert(keys.MeterUsageResult[k], "MeterUsageResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MeterUsageResult
 --  
--- @param MeteringRecordId [String]  
-function M.MeterUsageResult(MeteringRecordId, ...)
+-- @param _MeteringRecordId [String] 
+function M.MeterUsageResult(_MeteringRecordId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MeterUsageResult")
 	local t = { 
-		["MeteringRecordId"] = MeteringRecordId,
+		["MeteringRecordId"] = _MeteringRecordId,
 	}
-	M.AssertMeterUsageResult(t)
+	asserts.AssertMeterUsageResult(t)
 	return t
 end
 
-local InvalidProductCodeException_keys = { "message" = true, nil }
+keys.InvalidProductCodeException = { ["message"] = true, nil }
 
-function M.AssertInvalidProductCodeException(struct)
+function asserts.AssertInvalidProductCodeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidProductCodeException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidProductCodeException_keys[k], "InvalidProductCodeException contains unknown key " .. tostring(k))
+		assert(keys.InvalidProductCodeException[k], "InvalidProductCodeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidProductCodeException
 -- <p>The product code passed does not match the product code used for publishing the product.</p>
--- @param message [errorMessage] <p>The product code passed does not match the product code used for publishing the product.</p>
-function M.InvalidProductCodeException(message, ...)
+-- @param _message [errorMessage] 
+function M.InvalidProductCodeException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidProductCodeException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidProductCodeException(t)
+	asserts.AssertInvalidProductCodeException(t)
 	return t
 end
 
-local InternalServiceErrorException_keys = { "message" = true, nil }
+keys.InternalServiceErrorException = { ["message"] = true, nil }
 
-function M.AssertInternalServiceErrorException(struct)
+function asserts.AssertInternalServiceErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServiceErrorException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServiceErrorException_keys[k], "InternalServiceErrorException contains unknown key " .. tostring(k))
+		assert(keys.InternalServiceErrorException[k], "InternalServiceErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServiceErrorException
 -- <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
--- @param message [errorMessage] <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
-function M.InternalServiceErrorException(message, ...)
+-- @param _message [errorMessage] 
+function M.InternalServiceErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalServiceErrorException(t)
+	asserts.AssertInternalServiceErrorException(t)
 	return t
 end
 
-local InvalidEndpointRegionException_keys = { "message" = true, nil }
+keys.InvalidEndpointRegionException = { ["message"] = true, nil }
 
-function M.AssertInvalidEndpointRegionException(struct)
+function asserts.AssertInvalidEndpointRegionException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidEndpointRegionException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidEndpointRegionException_keys[k], "InvalidEndpointRegionException contains unknown key " .. tostring(k))
+		assert(keys.InvalidEndpointRegionException[k], "InvalidEndpointRegionException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidEndpointRegionException
 -- <p>The endpoint being called is in a region different from your EC2 instance. The region of the Metering service endpoint and the region of the EC2 instance must match.</p>
--- @param message [errorMessage] <p>The endpoint being called is in a region different from your EC2 instance. The region of the Metering service endpoint and the region of the EC2 instance must match.</p>
-function M.InvalidEndpointRegionException(message, ...)
+-- @param _message [errorMessage] 
+function M.InvalidEndpointRegionException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEndpointRegionException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidEndpointRegionException(t)
+	asserts.AssertInvalidEndpointRegionException(t)
 	return t
 end
 
-local UsageRecordResult_keys = { "Status" = true, "UsageRecord" = true, "MeteringRecordId" = true, nil }
+keys.UsageRecordResult = { ["Status"] = true, ["UsageRecord"] = true, ["MeteringRecordId"] = true, nil }
 
-function M.AssertUsageRecordResult(struct)
+function asserts.AssertUsageRecordResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UsageRecordResult to be of type 'table'")
-	if struct["Status"] then M.AssertUsageRecordResultStatus(struct["Status"]) end
-	if struct["UsageRecord"] then M.AssertUsageRecord(struct["UsageRecord"]) end
-	if struct["MeteringRecordId"] then M.AssertString(struct["MeteringRecordId"]) end
+	if struct["Status"] then asserts.AssertUsageRecordResultStatus(struct["Status"]) end
+	if struct["UsageRecord"] then asserts.AssertUsageRecord(struct["UsageRecord"]) end
+	if struct["MeteringRecordId"] then asserts.AssertString(struct["MeteringRecordId"]) end
 	for k,_ in pairs(struct) do
-		assert(UsageRecordResult_keys[k], "UsageRecordResult contains unknown key " .. tostring(k))
+		assert(keys.UsageRecordResult[k], "UsageRecordResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UsageRecordResult
 -- <p>A UsageRecordResult indicates the status of a given UsageRecord processed by BatchMeterUsage.</p>
--- @param Status [UsageRecordResultStatus] <p>The UsageRecordResult Status indicates the status of an individual UsageRecord processed by BatchMeterUsage.</p> <ul> <li> <p> <i>Success</i>- The UsageRecord was accepted and honored by BatchMeterUsage.</p> </li> <li> <p> <i>CustomerNotSubscribed</i>- The CustomerIdentifier specified is not subscribed to your product. The UsageRecord was not honored. Future UsageRecords for this customer will fail until the customer subscribes to your product.</p> </li> <li> <p> <i>DuplicateRecord</i>- Indicates that the UsageRecord was invalid and not honored. A previously metered UsageRecord had the same customer, dimension, and time, but a different quantity.</p> </li> </ul>
--- @param UsageRecord [UsageRecord] <p>The UsageRecord that was part of the BatchMeterUsage request.</p>
--- @param MeteringRecordId [String] <p>The MeteringRecordId is a unique identifier for this metering event.</p>
-function M.UsageRecordResult(Status, UsageRecord, MeteringRecordId, ...)
+-- @param _Status [UsageRecordResultStatus] <p>The UsageRecordResult Status indicates the status of an individual UsageRecord processed by BatchMeterUsage.</p> <ul> <li> <p> <i>Success</i>- The UsageRecord was accepted and honored by BatchMeterUsage.</p> </li> <li> <p> <i>CustomerNotSubscribed</i>- The CustomerIdentifier specified is not subscribed to your product. The UsageRecord was not honored. Future UsageRecords for this customer will fail until the customer subscribes to your product.</p> </li> <li> <p> <i>DuplicateRecord</i>- Indicates that the UsageRecord was invalid and not honored. A previously metered UsageRecord had the same customer, dimension, and time, but a different quantity.</p> </li> </ul>
+-- @param _UsageRecord [UsageRecord] <p>The UsageRecord that was part of the BatchMeterUsage request.</p>
+-- @param _MeteringRecordId [String] <p>The MeteringRecordId is a unique identifier for this metering event.</p>
+function M.UsageRecordResult(_Status, _UsageRecord, _MeteringRecordId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsageRecordResult")
 	local t = { 
-		["Status"] = Status,
-		["UsageRecord"] = UsageRecord,
-		["MeteringRecordId"] = MeteringRecordId,
+		["Status"] = _Status,
+		["UsageRecord"] = _UsageRecord,
+		["MeteringRecordId"] = _MeteringRecordId,
 	}
-	M.AssertUsageRecordResult(t)
+	asserts.AssertUsageRecordResult(t)
 	return t
 end
 
-local BatchMeterUsageRequest_keys = { "UsageRecords" = true, "ProductCode" = true, nil }
+keys.BatchMeterUsageRequest = { ["UsageRecords"] = true, ["ProductCode"] = true, nil }
 
-function M.AssertBatchMeterUsageRequest(struct)
+function asserts.AssertBatchMeterUsageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BatchMeterUsageRequest to be of type 'table'")
 	assert(struct["UsageRecords"], "Expected key UsageRecords to exist in table")
 	assert(struct["ProductCode"], "Expected key ProductCode to exist in table")
-	if struct["UsageRecords"] then M.AssertUsageRecordList(struct["UsageRecords"]) end
-	if struct["ProductCode"] then M.AssertProductCode(struct["ProductCode"]) end
+	if struct["UsageRecords"] then asserts.AssertUsageRecordList(struct["UsageRecords"]) end
+	if struct["ProductCode"] then asserts.AssertProductCode(struct["ProductCode"]) end
 	for k,_ in pairs(struct) do
-		assert(BatchMeterUsageRequest_keys[k], "BatchMeterUsageRequest contains unknown key " .. tostring(k))
+		assert(keys.BatchMeterUsageRequest[k], "BatchMeterUsageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BatchMeterUsageRequest
 -- <p>A BatchMeterUsageRequest contains UsageRecords, which indicate quantities of usage within your application.</p>
--- @param UsageRecords [UsageRecordList] <p>The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.</p>
--- @param ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
+-- @param _UsageRecords [UsageRecordList] <p>The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.</p>
+-- @param _ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
 -- Required parameter: UsageRecords
 -- Required parameter: ProductCode
-function M.BatchMeterUsageRequest(UsageRecords, ProductCode, ...)
+function M.BatchMeterUsageRequest(_UsageRecords, _ProductCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchMeterUsageRequest")
 	local t = { 
-		["UsageRecords"] = UsageRecords,
-		["ProductCode"] = ProductCode,
+		["UsageRecords"] = _UsageRecords,
+		["ProductCode"] = _ProductCode,
 	}
-	M.AssertBatchMeterUsageRequest(t)
+	asserts.AssertBatchMeterUsageRequest(t)
 	return t
 end
 
-local InvalidUsageDimensionException_keys = { "message" = true, nil }
+keys.InvalidUsageDimensionException = { ["message"] = true, nil }
 
-function M.AssertInvalidUsageDimensionException(struct)
+function asserts.AssertInvalidUsageDimensionException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidUsageDimensionException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidUsageDimensionException_keys[k], "InvalidUsageDimensionException contains unknown key " .. tostring(k))
+		assert(keys.InvalidUsageDimensionException[k], "InvalidUsageDimensionException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidUsageDimensionException
 -- <p>The usage dimension does not match one of the UsageDimensions associated with products.</p>
--- @param message [errorMessage] <p>The usage dimension does not match one of the UsageDimensions associated with products.</p>
-function M.InvalidUsageDimensionException(message, ...)
+-- @param _message [errorMessage] 
+function M.InvalidUsageDimensionException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidUsageDimensionException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidUsageDimensionException(t)
+	asserts.AssertInvalidUsageDimensionException(t)
 	return t
 end
 
-local UsageRecord_keys = { "Timestamp" = true, "CustomerIdentifier" = true, "Dimension" = true, "Quantity" = true, nil }
+keys.UsageRecord = { ["Timestamp"] = true, ["CustomerIdentifier"] = true, ["Dimension"] = true, ["Quantity"] = true, nil }
 
-function M.AssertUsageRecord(struct)
+function asserts.AssertUsageRecord(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UsageRecord to be of type 'table'")
 	assert(struct["Timestamp"], "Expected key Timestamp to exist in table")
 	assert(struct["CustomerIdentifier"], "Expected key CustomerIdentifier to exist in table")
 	assert(struct["Dimension"], "Expected key Dimension to exist in table")
 	assert(struct["Quantity"], "Expected key Quantity to exist in table")
-	if struct["Timestamp"] then M.AssertTimestamp(struct["Timestamp"]) end
-	if struct["CustomerIdentifier"] then M.AssertCustomerIdentifier(struct["CustomerIdentifier"]) end
-	if struct["Dimension"] then M.AssertUsageDimension(struct["Dimension"]) end
-	if struct["Quantity"] then M.AssertUsageQuantity(struct["Quantity"]) end
+	if struct["Timestamp"] then asserts.AssertTimestamp(struct["Timestamp"]) end
+	if struct["CustomerIdentifier"] then asserts.AssertCustomerIdentifier(struct["CustomerIdentifier"]) end
+	if struct["Dimension"] then asserts.AssertUsageDimension(struct["Dimension"]) end
+	if struct["Quantity"] then asserts.AssertUsageQuantity(struct["Quantity"]) end
 	for k,_ in pairs(struct) do
-		assert(UsageRecord_keys[k], "UsageRecord contains unknown key " .. tostring(k))
+		assert(keys.UsageRecord[k], "UsageRecord contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UsageRecord
 -- <p>A UsageRecord indicates a quantity of usage for a given product, customer, dimension and time.</p> <p>Multiple requests with the same UsageRecords as input will be deduplicated to prevent double charges.</p>
--- @param Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p> <p>Your application can meter usage for up to one hour in the past.</p>
--- @param CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is obtained through the ResolveCustomer operation and represents an individual buyer in your application.</p>
--- @param Dimension [UsageDimension] <p>During the process of registering a product on AWS Marketplace, up to eight dimensions are specified. These represent different units of value in your application.</p>
--- @param Quantity [UsageQuantity] <p>The quantity of usage consumed by the customer for the given dimension and time.</p>
+-- @param _Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p> <p>Your application can meter usage for up to one hour in the past.</p>
+-- @param _CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is obtained through the ResolveCustomer operation and represents an individual buyer in your application.</p>
+-- @param _Dimension [UsageDimension] <p>During the process of registering a product on AWS Marketplace, up to eight dimensions are specified. These represent different units of value in your application.</p>
+-- @param _Quantity [UsageQuantity] <p>The quantity of usage consumed by the customer for the given dimension and time.</p>
 -- Required parameter: Timestamp
 -- Required parameter: CustomerIdentifier
 -- Required parameter: Dimension
 -- Required parameter: Quantity
-function M.UsageRecord(Timestamp, CustomerIdentifier, Dimension, Quantity, ...)
+function M.UsageRecord(_Timestamp, _CustomerIdentifier, _Dimension, _Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsageRecord")
 	local t = { 
-		["Timestamp"] = Timestamp,
-		["CustomerIdentifier"] = CustomerIdentifier,
-		["Dimension"] = Dimension,
-		["Quantity"] = Quantity,
+		["Timestamp"] = _Timestamp,
+		["CustomerIdentifier"] = _CustomerIdentifier,
+		["Dimension"] = _Dimension,
+		["Quantity"] = _Quantity,
 	}
-	M.AssertUsageRecord(t)
+	asserts.AssertUsageRecord(t)
 	return t
 end
 
-local ThrottlingException_keys = { "message" = true, nil }
+keys.ThrottlingException = { ["message"] = true, nil }
 
-function M.AssertThrottlingException(struct)
+function asserts.AssertThrottlingException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ThrottlingException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ThrottlingException_keys[k], "ThrottlingException contains unknown key " .. tostring(k))
+		assert(keys.ThrottlingException[k], "ThrottlingException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ThrottlingException
 -- <p>The calls to the MeterUsage API are throttled.</p>
--- @param message [errorMessage] <p>The calls to the MeterUsage API are throttled.</p>
-function M.ThrottlingException(message, ...)
+-- @param _message [errorMessage] 
+function M.ThrottlingException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertThrottlingException(t)
+	asserts.AssertThrottlingException(t)
 	return t
 end
 
-local DuplicateRequestException_keys = { "message" = true, nil }
+keys.DuplicateRequestException = { ["message"] = true, nil }
 
-function M.AssertDuplicateRequestException(struct)
+function asserts.AssertDuplicateRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DuplicateRequestException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(DuplicateRequestException_keys[k], "DuplicateRequestException contains unknown key " .. tostring(k))
+		assert(keys.DuplicateRequestException[k], "DuplicateRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DuplicateRequestException
 -- <p>A metering record has already been emitted by the same EC2 instance for the given {usageDimension, timestamp} with a different usageQuantity.</p>
--- @param message [errorMessage] <p>A metering record has already been emitted by the same EC2 instance for the given {usageDimension, timestamp} with a different usageQuantity.</p>
-function M.DuplicateRequestException(message, ...)
+-- @param _message [errorMessage] 
+function M.DuplicateRequestException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateRequestException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertDuplicateRequestException(t)
+	asserts.AssertDuplicateRequestException(t)
 	return t
 end
 
-function M.AssertNonEmptyString(str)
+function asserts.AssertNonEmptyString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NonEmptyString to be of type 'string'")
-	assert(str:match("%S+"), "Expected string to match pattern '%S+'")
 end
 
 --  
 function M.NonEmptyString(str)
-	M.AssertNonEmptyString(str)
+	asserts.AssertNonEmptyString(str)
 	return str
 end
 
-function M.AssertCustomerIdentifier(str)
+function asserts.AssertCustomerIdentifier(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CustomerIdentifier to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -513,11 +515,11 @@ end
 
 --  
 function M.CustomerIdentifier(str)
-	M.AssertCustomerIdentifier(str)
+	asserts.AssertCustomerIdentifier(str)
 	return str
 end
 
-function M.AssertProductCode(str)
+function asserts.AssertProductCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ProductCode to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -526,44 +528,44 @@ end
 
 --  
 function M.ProductCode(str)
-	M.AssertProductCode(str)
+	asserts.AssertProductCode(str)
 	return str
 end
 
-function M.AssertUsageRecordResultStatus(str)
+function asserts.AssertUsageRecordResultStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UsageRecordResultStatus to be of type 'string'")
 end
 
 --  
 function M.UsageRecordResultStatus(str)
-	M.AssertUsageRecordResultStatus(str)
+	asserts.AssertUsageRecordResultStatus(str)
 	return str
 end
 
-function M.AsserterrorMessage(str)
+function asserts.AsserterrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected errorMessage to be of type 'string'")
 end
 
 --  
 function M.errorMessage(str)
-	M.AsserterrorMessage(str)
+	asserts.AsserterrorMessage(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertUsageDimension(str)
+function asserts.AssertUsageDimension(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UsageDimension to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -572,11 +574,11 @@ end
 
 --  
 function M.UsageDimension(str)
-	M.AssertUsageDimension(str)
+	asserts.AssertUsageDimension(str)
 	return str
 end
 
-function M.AssertUsageQuantity(integer)
+function asserts.AssertUsageQuantity(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected UsageQuantity to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -584,58 +586,58 @@ function M.AssertUsageQuantity(integer)
 end
 
 function M.UsageQuantity(integer)
-	M.AssertUsageQuantity(integer)
+	asserts.AssertUsageQuantity(integer)
 	return integer
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertTimestamp(timestamp)
+function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 function M.Timestamp(timestamp)
-	M.AssertTimestamp(timestamp)
+	asserts.AssertTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertUsageRecordList(list)
+function asserts.AssertUsageRecordList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UsageRecordList to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	for _,v in ipairs(list) do
-		M.AssertUsageRecord(v)
+		asserts.AssertUsageRecord(v)
 	end
 end
 
 --  
 -- List of UsageRecord objects
 function M.UsageRecordList(list)
-	M.AssertUsageRecordList(list)
+	asserts.AssertUsageRecordList(list)
 	return list
 end
 
-function M.AssertUsageRecordResultList(list)
+function asserts.AssertUsageRecordResultList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UsageRecordResultList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertUsageRecordResult(v)
+		asserts.AssertUsageRecordResult(v)
 	end
 end
 
 --  
 -- List of UsageRecordResult objects
 function M.UsageRecordResultList(list)
-	M.AssertUsageRecordResultList(list)
+	asserts.AssertUsageRecordResultList(list)
 	return list
 end
 

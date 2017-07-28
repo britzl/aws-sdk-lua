@@ -18,992 +18,995 @@ M.metadata = {
 	uid = "lambda-2015-03-31",
 }
 
-local ListTagsRequest_keys = { "Resource" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertListTagsRequest(struct)
+keys.ListTagsRequest = { ["Resource"] = true, nil }
+
+function asserts.AssertListTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsRequest to be of type 'table'")
 	assert(struct["Resource"], "Expected key Resource to exist in table")
-	if struct["Resource"] then M.AssertFunctionArn(struct["Resource"]) end
+	if struct["Resource"] then asserts.AssertFunctionArn(struct["Resource"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsRequest_keys[k], "ListTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListTagsRequest[k], "ListTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsRequest
 --  
--- @param Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the function.</p>
+-- @param _Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the function.</p>
 -- Required parameter: Resource
-function M.ListTagsRequest(Resource, ...)
+function M.ListTagsRequest(_Resource, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
 	local t = { 
-		["Resource"] = Resource,
+		["Resource"] = _Resource,
 	}
-	M.AssertListTagsRequest(t)
+	asserts.AssertListTagsRequest(t)
 	return t
 end
 
-local ListAliasesResponse_keys = { "NextMarker" = true, "Aliases" = true, nil }
+keys.ListAliasesResponse = { ["NextMarker"] = true, ["Aliases"] = true, nil }
 
-function M.AssertListAliasesResponse(struct)
+function asserts.AssertListAliasesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAliasesResponse to be of type 'table'")
-	if struct["NextMarker"] then M.AssertString(struct["NextMarker"]) end
-	if struct["Aliases"] then M.AssertAliasList(struct["Aliases"]) end
+	if struct["NextMarker"] then asserts.AssertString(struct["NextMarker"]) end
+	if struct["Aliases"] then asserts.AssertAliasList(struct["Aliases"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAliasesResponse_keys[k], "ListAliasesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListAliasesResponse[k], "ListAliasesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAliasesResponse
 --  
--- @param NextMarker [String] <p>A string, present if there are more aliases.</p>
--- @param Aliases [AliasList] <p>A list of aliases.</p>
-function M.ListAliasesResponse(NextMarker, Aliases, ...)
+-- @param _NextMarker [String] <p>A string, present if there are more aliases.</p>
+-- @param _Aliases [AliasList] <p>A list of aliases.</p>
+function M.ListAliasesResponse(_NextMarker, _Aliases, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesResponse")
 	local t = { 
-		["NextMarker"] = NextMarker,
-		["Aliases"] = Aliases,
+		["NextMarker"] = _NextMarker,
+		["Aliases"] = _Aliases,
 	}
-	M.AssertListAliasesResponse(t)
+	asserts.AssertListAliasesResponse(t)
 	return t
 end
 
-local ListVersionsByFunctionRequest_keys = { "Marker" = true, "FunctionName" = true, "MaxItems" = true, nil }
+keys.ListVersionsByFunctionRequest = { ["Marker"] = true, ["FunctionName"] = true, ["MaxItems"] = true, nil }
 
-function M.AssertListVersionsByFunctionRequest(struct)
+function asserts.AssertListVersionsByFunctionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListVersionsByFunctionRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["MaxItems"] then M.AssertMaxListItems(struct["MaxItems"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["MaxItems"] then asserts.AssertMaxListItems(struct["MaxItems"]) end
 	for k,_ in pairs(struct) do
-		assert(ListVersionsByFunctionRequest_keys[k], "ListVersionsByFunctionRequest contains unknown key " .. tostring(k))
+		assert(keys.ListVersionsByFunctionRequest[k], "ListVersionsByFunctionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListVersionsByFunctionRequest
 -- <p/>
--- @param Marker [String] <p> Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code> operation. If present, indicates where to continue the listing. </p>
--- @param FunctionName [FunctionName] <p>Function name whose versions to list. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This parameter value must be greater than 0.</p>
+-- @param _Marker [String] <p> Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code> operation. If present, indicates where to continue the listing. </p>
+-- @param _FunctionName [FunctionName] <p>Function name whose versions to list. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This parameter value must be greater than 0.</p>
 -- Required parameter: FunctionName
-function M.ListVersionsByFunctionRequest(Marker, FunctionName, MaxItems, ...)
+function M.ListVersionsByFunctionRequest(_Marker, _FunctionName, _MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListVersionsByFunctionRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["FunctionName"] = FunctionName,
-		["MaxItems"] = MaxItems,
+		["Marker"] = _Marker,
+		["FunctionName"] = _FunctionName,
+		["MaxItems"] = _MaxItems,
 	}
-	M.AssertListVersionsByFunctionRequest(t)
+	asserts.AssertListVersionsByFunctionRequest(t)
 	return t
 end
 
-local TracingConfig_keys = { "Mode" = true, nil }
+keys.TracingConfig = { ["Mode"] = true, nil }
 
-function M.AssertTracingConfig(struct)
+function asserts.AssertTracingConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TracingConfig to be of type 'table'")
-	if struct["Mode"] then M.AssertTracingMode(struct["Mode"]) end
+	if struct["Mode"] then asserts.AssertTracingMode(struct["Mode"]) end
 	for k,_ in pairs(struct) do
-		assert(TracingConfig_keys[k], "TracingConfig contains unknown key " .. tostring(k))
+		assert(keys.TracingConfig[k], "TracingConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TracingConfig
 -- <p>The parent object that contains your function's tracing settings.</p>
--- @param Mode [TracingMode] <p>Can be either PassThrough or Active. If PassThrough, Lambda will only trace the request from an upstream service if it contains a tracing header with "sampled=1". If Active, Lambda will respect any tracing header it receives from an upstream service. If no tracing header is received, Lambda will call X-Ray for a tracing decision.</p>
-function M.TracingConfig(Mode, ...)
+-- @param _Mode [TracingMode] <p>Can be either PassThrough or Active. If PassThrough, Lambda will only trace the request from an upstream service if it contains a tracing header with "sampled=1". If Active, Lambda will respect any tracing header it receives from an upstream service. If no tracing header is received, Lambda will call X-Ray for a tracing decision.</p>
+function M.TracingConfig(_Mode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TracingConfig")
 	local t = { 
-		["Mode"] = Mode,
+		["Mode"] = _Mode,
 	}
-	M.AssertTracingConfig(t)
+	asserts.AssertTracingConfig(t)
 	return t
 end
 
-local UpdateAliasRequest_keys = { "Description" = true, "FunctionVersion" = true, "FunctionName" = true, "Name" = true, nil }
+keys.UpdateAliasRequest = { ["Description"] = true, ["FunctionVersion"] = true, ["FunctionName"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateAliasRequest(struct)
+function asserts.AssertUpdateAliasRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateAliasRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
-	if struct["FunctionVersion"] then M.AssertVersion(struct["FunctionVersion"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Name"] then M.AssertAlias(struct["Name"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["FunctionVersion"] then asserts.AssertVersion(struct["FunctionVersion"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Name"] then asserts.AssertAlias(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateAliasRequest_keys[k], "UpdateAliasRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateAliasRequest[k], "UpdateAliasRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateAliasRequest
 --  
--- @param Description [Description] <p>You can change the description of the alias using this parameter.</p>
--- @param FunctionVersion [Version] <p>Using this parameter you can change the Lambda function version to which the alias points.</p>
--- @param FunctionName [FunctionName] <p>The function name for which the alias is created. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param Name [Alias] <p>The alias name.</p>
+-- @param _Description [Description] <p>You can change the description of the alias using this parameter.</p>
+-- @param _FunctionVersion [Version] <p>Using this parameter you can change the Lambda function version to which the alias points.</p>
+-- @param _FunctionName [FunctionName] <p>The function name for which the alias is created. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- @param _Name [Alias] <p>The alias name.</p>
 -- Required parameter: FunctionName
 -- Required parameter: Name
-function M.UpdateAliasRequest(Description, FunctionVersion, FunctionName, Name, ...)
+function M.UpdateAliasRequest(_Description, _FunctionVersion, _FunctionName, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAliasRequest")
 	local t = { 
-		["Description"] = Description,
-		["FunctionVersion"] = FunctionVersion,
-		["FunctionName"] = FunctionName,
-		["Name"] = Name,
+		["Description"] = _Description,
+		["FunctionVersion"] = _FunctionVersion,
+		["FunctionName"] = _FunctionName,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateAliasRequest(t)
+	asserts.AssertUpdateAliasRequest(t)
 	return t
 end
 
-local KMSInvalidStateException_keys = { "Message" = true, "Type" = true, nil }
+keys.KMSInvalidStateException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertKMSInvalidStateException(struct)
+function asserts.AssertKMSInvalidStateException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KMSInvalidStateException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(KMSInvalidStateException_keys[k], "KMSInvalidStateException contains unknown key " .. tostring(k))
+		assert(keys.KMSInvalidStateException[k], "KMSInvalidStateException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KMSInvalidStateException
 -- <p>Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.</p>
--- @param Message [String] <p>Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.</p>
--- @param Type [String] <p>Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.</p>
-function M.KMSInvalidStateException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.KMSInvalidStateException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSInvalidStateException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertKMSInvalidStateException(t)
+	asserts.AssertKMSInvalidStateException(t)
 	return t
 end
 
-local InvokeAsyncRequest_keys = { "FunctionName" = true, "InvokeArgs" = true, nil }
+keys.InvokeAsyncRequest = { ["FunctionName"] = true, ["InvokeArgs"] = true, nil }
 
-function M.AssertInvokeAsyncRequest(struct)
+function asserts.AssertInvokeAsyncRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvokeAsyncRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
 	assert(struct["InvokeArgs"], "Expected key InvokeArgs to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["InvokeArgs"] then M.AssertBlobStream(struct["InvokeArgs"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["InvokeArgs"] then asserts.AssertBlobStream(struct["InvokeArgs"]) end
 	for k,_ in pairs(struct) do
-		assert(InvokeAsyncRequest_keys[k], "InvokeAsyncRequest contains unknown key " .. tostring(k))
+		assert(keys.InvokeAsyncRequest[k], "InvokeAsyncRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvokeAsyncRequest
 -- <p/>
--- @param FunctionName [FunctionName] <p>The Lambda function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param InvokeArgs [BlobStream] <p>JSON that you want to provide to your Lambda function as input.</p>
+-- @param _FunctionName [FunctionName] <p>The Lambda function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- @param _InvokeArgs [BlobStream] <p>JSON that you want to provide to your Lambda function as input.</p>
 -- Required parameter: FunctionName
 -- Required parameter: InvokeArgs
-function M.InvokeAsyncRequest(FunctionName, InvokeArgs, ...)
+function M.InvokeAsyncRequest(_FunctionName, _InvokeArgs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvokeAsyncRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["InvokeArgs"] = InvokeArgs,
+		["FunctionName"] = _FunctionName,
+		["InvokeArgs"] = _InvokeArgs,
 	}
-	M.AssertInvokeAsyncRequest(t)
+	asserts.AssertInvokeAsyncRequest(t)
 	return t
 end
 
-local Environment_keys = { "Variables" = true, nil }
+keys.Environment = { ["Variables"] = true, nil }
 
-function M.AssertEnvironment(struct)
+function asserts.AssertEnvironment(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Environment to be of type 'table'")
-	if struct["Variables"] then M.AssertEnvironmentVariables(struct["Variables"]) end
+	if struct["Variables"] then asserts.AssertEnvironmentVariables(struct["Variables"]) end
 	for k,_ in pairs(struct) do
-		assert(Environment_keys[k], "Environment contains unknown key " .. tostring(k))
+		assert(keys.Environment[k], "Environment contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Environment
 -- <p>The parent object that contains your environment's configuration settings.</p>
--- @param Variables [EnvironmentVariables] <p>The key-value pairs that represent your environment's configuration settings.</p>
-function M.Environment(Variables, ...)
+-- @param _Variables [EnvironmentVariables] <p>The key-value pairs that represent your environment's configuration settings.</p>
+function M.Environment(_Variables, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Environment")
 	local t = { 
-		["Variables"] = Variables,
+		["Variables"] = _Variables,
 	}
-	M.AssertEnvironment(t)
+	asserts.AssertEnvironment(t)
 	return t
 end
 
-local ListVersionsByFunctionResponse_keys = { "NextMarker" = true, "Versions" = true, nil }
+keys.ListVersionsByFunctionResponse = { ["NextMarker"] = true, ["Versions"] = true, nil }
 
-function M.AssertListVersionsByFunctionResponse(struct)
+function asserts.AssertListVersionsByFunctionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListVersionsByFunctionResponse to be of type 'table'")
-	if struct["NextMarker"] then M.AssertString(struct["NextMarker"]) end
-	if struct["Versions"] then M.AssertFunctionList(struct["Versions"]) end
+	if struct["NextMarker"] then asserts.AssertString(struct["NextMarker"]) end
+	if struct["Versions"] then asserts.AssertFunctionList(struct["Versions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListVersionsByFunctionResponse_keys[k], "ListVersionsByFunctionResponse contains unknown key " .. tostring(k))
+		assert(keys.ListVersionsByFunctionResponse[k], "ListVersionsByFunctionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListVersionsByFunctionResponse
 -- <p/>
--- @param NextMarker [String] <p>A string, present if there are more function versions.</p>
--- @param Versions [FunctionList] <p>A list of Lambda function versions.</p>
-function M.ListVersionsByFunctionResponse(NextMarker, Versions, ...)
+-- @param _NextMarker [String] <p>A string, present if there are more function versions.</p>
+-- @param _Versions [FunctionList] <p>A list of Lambda function versions.</p>
+function M.ListVersionsByFunctionResponse(_NextMarker, _Versions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListVersionsByFunctionResponse")
 	local t = { 
-		["NextMarker"] = NextMarker,
-		["Versions"] = Versions,
+		["NextMarker"] = _NextMarker,
+		["Versions"] = _Versions,
 	}
-	M.AssertListVersionsByFunctionResponse(t)
+	asserts.AssertListVersionsByFunctionResponse(t)
 	return t
 end
 
-local ListEventSourceMappingsRequest_keys = { "Marker" = true, "EventSourceArn" = true, "FunctionName" = true, "MaxItems" = true, nil }
+keys.ListEventSourceMappingsRequest = { ["Marker"] = true, ["EventSourceArn"] = true, ["FunctionName"] = true, ["MaxItems"] = true, nil }
 
-function M.AssertListEventSourceMappingsRequest(struct)
+function asserts.AssertListEventSourceMappingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListEventSourceMappingsRequest to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["EventSourceArn"] then M.AssertArn(struct["EventSourceArn"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["MaxItems"] then M.AssertMaxListItems(struct["MaxItems"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["EventSourceArn"] then asserts.AssertArn(struct["EventSourceArn"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["MaxItems"] then asserts.AssertMaxListItems(struct["MaxItems"]) end
 	for k,_ in pairs(struct) do
-		assert(ListEventSourceMappingsRequest_keys[k], "ListEventSourceMappingsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListEventSourceMappingsRequest[k], "ListEventSourceMappingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListEventSourceMappingsRequest
 -- <p/>
--- @param Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListEventSourceMappings</code> operation. If present, specifies to continue the list from where the returning call left off. </p>
--- @param EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter is optional.)</p>
--- @param FunctionName [FunctionName] <p>The name of the Lambda function.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.</p>
-function M.ListEventSourceMappingsRequest(Marker, EventSourceArn, FunctionName, MaxItems, ...)
+-- @param _Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListEventSourceMappings</code> operation. If present, specifies to continue the list from where the returning call left off. </p>
+-- @param _EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter is optional.)</p>
+-- @param _FunctionName [FunctionName] <p>The name of the Lambda function.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.</p>
+function M.ListEventSourceMappingsRequest(_Marker, _EventSourceArn, _FunctionName, _MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSourceMappingsRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["EventSourceArn"] = EventSourceArn,
-		["FunctionName"] = FunctionName,
-		["MaxItems"] = MaxItems,
+		["Marker"] = _Marker,
+		["EventSourceArn"] = _EventSourceArn,
+		["FunctionName"] = _FunctionName,
+		["MaxItems"] = _MaxItems,
 	}
-	M.AssertListEventSourceMappingsRequest(t)
+	asserts.AssertListEventSourceMappingsRequest(t)
 	return t
 end
 
-local AccountUsage_keys = { "FunctionCount" = true, "TotalCodeSize" = true, nil }
+keys.AccountUsage = { ["FunctionCount"] = true, ["TotalCodeSize"] = true, nil }
 
-function M.AssertAccountUsage(struct)
+function asserts.AssertAccountUsage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccountUsage to be of type 'table'")
-	if struct["FunctionCount"] then M.AssertLong(struct["FunctionCount"]) end
-	if struct["TotalCodeSize"] then M.AssertLong(struct["TotalCodeSize"]) end
+	if struct["FunctionCount"] then asserts.AssertLong(struct["FunctionCount"]) end
+	if struct["TotalCodeSize"] then asserts.AssertLong(struct["TotalCodeSize"]) end
 	for k,_ in pairs(struct) do
-		assert(AccountUsage_keys[k], "AccountUsage contains unknown key " .. tostring(k))
+		assert(keys.AccountUsage[k], "AccountUsage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AccountUsage
 -- <p>Provides code size usage and function count associated with the current account and region.</p>
--- @param FunctionCount [Long] <p>The number of your account's existing functions per region.</p>
--- @param TotalCodeSize [Long] <p>Total size, in bytes, of the account's deployment packages per region.</p>
-function M.AccountUsage(FunctionCount, TotalCodeSize, ...)
+-- @param _FunctionCount [Long] <p>The number of your account's existing functions per region.</p>
+-- @param _TotalCodeSize [Long] <p>Total size, in bytes, of the account's deployment packages per region.</p>
+function M.AccountUsage(_FunctionCount, _TotalCodeSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountUsage")
 	local t = { 
-		["FunctionCount"] = FunctionCount,
-		["TotalCodeSize"] = TotalCodeSize,
+		["FunctionCount"] = _FunctionCount,
+		["TotalCodeSize"] = _TotalCodeSize,
 	}
-	M.AssertAccountUsage(t)
+	asserts.AssertAccountUsage(t)
 	return t
 end
 
-local KMSNotFoundException_keys = { "Message" = true, "Type" = true, nil }
+keys.KMSNotFoundException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertKMSNotFoundException(struct)
+function asserts.AssertKMSNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KMSNotFoundException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(KMSNotFoundException_keys[k], "KMSNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.KMSNotFoundException[k], "KMSNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KMSNotFoundException
 -- <p>Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings. </p>
--- @param Message [String] <p>Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings. </p>
--- @param Type [String] <p>Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings. </p>
-function M.KMSNotFoundException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.KMSNotFoundException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSNotFoundException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertKMSNotFoundException(t)
+	asserts.AssertKMSNotFoundException(t)
 	return t
 end
 
-local DeleteFunctionRequest_keys = { "FunctionName" = true, "Qualifier" = true, nil }
+keys.DeleteFunctionRequest = { ["FunctionName"] = true, ["Qualifier"] = true, nil }
 
-function M.AssertDeleteFunctionRequest(struct)
+function asserts.AssertDeleteFunctionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFunctionRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Qualifier"] then M.AssertQualifier(struct["Qualifier"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Qualifier"] then asserts.AssertQualifier(struct["Qualifier"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteFunctionRequest_keys[k], "DeleteFunctionRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteFunctionRequest[k], "DeleteFunctionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteFunctionRequest
 --  
--- @param FunctionName [FunctionName] <p>The Lambda function to delete.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param Qualifier [Qualifier] <p>Using this optional parameter you can specify a function version (but not the <code>$LATEST</code> version) to direct AWS Lambda to delete a specific function version. If the function version has one or more aliases pointing to it, you will get an error because you cannot have aliases pointing to it. You can delete any function version but not the <code>$LATEST</code>, that is, you cannot specify <code>$LATEST</code> as the value of this parameter. The <code>$LATEST</code> version can be deleted only when you want to delete all the function versions and aliases.</p> <p>You can only specify a function version, not an alias name, using this parameter. You cannot delete a function version using its alias.</p> <p>If you don't specify this parameter, AWS Lambda will delete the function, including all of its versions and aliases.</p>
+-- @param _FunctionName [FunctionName] <p>The Lambda function to delete.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _Qualifier [Qualifier] <p>Using this optional parameter you can specify a function version (but not the <code>$LATEST</code> version) to direct AWS Lambda to delete a specific function version. If the function version has one or more aliases pointing to it, you will get an error because you cannot have aliases pointing to it. You can delete any function version but not the <code>$LATEST</code>, that is, you cannot specify <code>$LATEST</code> as the value of this parameter. The <code>$LATEST</code> version can be deleted only when you want to delete all the function versions and aliases.</p> <p>You can only specify a function version, not an alias name, using this parameter. You cannot delete a function version using its alias.</p> <p>If you don't specify this parameter, AWS Lambda will delete the function, including all of its versions and aliases.</p>
 -- Required parameter: FunctionName
-function M.DeleteFunctionRequest(FunctionName, Qualifier, ...)
+function M.DeleteFunctionRequest(_FunctionName, _Qualifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFunctionRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["Qualifier"] = Qualifier,
+		["FunctionName"] = _FunctionName,
+		["Qualifier"] = _Qualifier,
 	}
-	M.AssertDeleteFunctionRequest(t)
+	asserts.AssertDeleteFunctionRequest(t)
 	return t
 end
 
-local GetFunctionRequest_keys = { "FunctionName" = true, "Qualifier" = true, nil }
+keys.GetFunctionRequest = { ["FunctionName"] = true, ["Qualifier"] = true, nil }
 
-function M.AssertGetFunctionRequest(struct)
+function asserts.AssertGetFunctionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFunctionRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Qualifier"] then M.AssertQualifier(struct["Qualifier"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Qualifier"] then asserts.AssertQualifier(struct["Qualifier"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFunctionRequest_keys[k], "GetFunctionRequest contains unknown key " .. tostring(k))
+		assert(keys.GetFunctionRequest[k], "GetFunctionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFunctionRequest
 -- <p/>
--- @param FunctionName [FunctionName] <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param Qualifier [Qualifier] <p>Using this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the <code>$LATEST</code> version of the Lambda function.</p>
+-- @param _FunctionName [FunctionName] <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _Qualifier [Qualifier] <p>Using this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the <code>$LATEST</code> version of the Lambda function.</p>
 -- Required parameter: FunctionName
-function M.GetFunctionRequest(FunctionName, Qualifier, ...)
+function M.GetFunctionRequest(_FunctionName, _Qualifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["Qualifier"] = Qualifier,
+		["FunctionName"] = _FunctionName,
+		["Qualifier"] = _Qualifier,
 	}
-	M.AssertGetFunctionRequest(t)
+	asserts.AssertGetFunctionRequest(t)
 	return t
 end
 
-local PublishVersionRequest_keys = { "CodeSha256" = true, "FunctionName" = true, "Description" = true, nil }
+keys.PublishVersionRequest = { ["CodeSha256"] = true, ["FunctionName"] = true, ["Description"] = true, nil }
 
-function M.AssertPublishVersionRequest(struct)
+function asserts.AssertPublishVersionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PublishVersionRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["CodeSha256"] then M.AssertString(struct["CodeSha256"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
+	if struct["CodeSha256"] then asserts.AssertString(struct["CodeSha256"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(PublishVersionRequest_keys[k], "PublishVersionRequest contains unknown key " .. tostring(k))
+		assert(keys.PublishVersionRequest[k], "PublishVersionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PublishVersionRequest
 -- <p/>
--- @param CodeSha256 [String] <p>The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter value must match the SHA256 of the $LATEST version for the publication to succeed.</p>
--- @param FunctionName [FunctionName] <p>The Lambda function name. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param Description [Description] <p>The description for the version you are publishing. If not provided, AWS Lambda copies the description from the $LATEST version.</p>
+-- @param _CodeSha256 [String] <p>The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter value must match the SHA256 of the $LATEST version for the publication to succeed.</p>
+-- @param _FunctionName [FunctionName] <p>The Lambda function name. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _Description [Description] <p>The description for the version you are publishing. If not provided, AWS Lambda copies the description from the $LATEST version.</p>
 -- Required parameter: FunctionName
-function M.PublishVersionRequest(CodeSha256, FunctionName, Description, ...)
+function M.PublishVersionRequest(_CodeSha256, _FunctionName, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishVersionRequest")
 	local t = { 
-		["CodeSha256"] = CodeSha256,
-		["FunctionName"] = FunctionName,
-		["Description"] = Description,
+		["CodeSha256"] = _CodeSha256,
+		["FunctionName"] = _FunctionName,
+		["Description"] = _Description,
 	}
-	M.AssertPublishVersionRequest(t)
+	asserts.AssertPublishVersionRequest(t)
 	return t
 end
 
-local DeleteAliasRequest_keys = { "FunctionName" = true, "Name" = true, nil }
+keys.DeleteAliasRequest = { ["FunctionName"] = true, ["Name"] = true, nil }
 
-function M.AssertDeleteAliasRequest(struct)
+function asserts.AssertDeleteAliasRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteAliasRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Name"] then M.AssertAlias(struct["Name"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Name"] then asserts.AssertAlias(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteAliasRequest_keys[k], "DeleteAliasRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteAliasRequest[k], "DeleteAliasRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteAliasRequest
 --  
--- @param FunctionName [FunctionName] <p>The Lambda function name for which the alias is created. Deleting an alias does not delete the function version to which it is pointing. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param Name [Alias] <p>Name of the alias to delete.</p>
+-- @param _FunctionName [FunctionName] <p>The Lambda function name for which the alias is created. Deleting an alias does not delete the function version to which it is pointing. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- @param _Name [Alias] <p>Name of the alias to delete.</p>
 -- Required parameter: FunctionName
 -- Required parameter: Name
-function M.DeleteAliasRequest(FunctionName, Name, ...)
+function M.DeleteAliasRequest(_FunctionName, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAliasRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["Name"] = Name,
+		["FunctionName"] = _FunctionName,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteAliasRequest(t)
+	asserts.AssertDeleteAliasRequest(t)
 	return t
 end
 
-local InvocationRequest_keys = { "FunctionName" = true, "InvocationType" = true, "LogType" = true, "ClientContext" = true, "Payload" = true, "Qualifier" = true, nil }
+keys.InvocationRequest = { ["FunctionName"] = true, ["InvocationType"] = true, ["LogType"] = true, ["ClientContext"] = true, ["Payload"] = true, ["Qualifier"] = true, nil }
 
-function M.AssertInvocationRequest(struct)
+function asserts.AssertInvocationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvocationRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["InvocationType"] then M.AssertInvocationType(struct["InvocationType"]) end
-	if struct["LogType"] then M.AssertLogType(struct["LogType"]) end
-	if struct["ClientContext"] then M.AssertString(struct["ClientContext"]) end
-	if struct["Payload"] then M.AssertBlob(struct["Payload"]) end
-	if struct["Qualifier"] then M.AssertQualifier(struct["Qualifier"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["InvocationType"] then asserts.AssertInvocationType(struct["InvocationType"]) end
+	if struct["LogType"] then asserts.AssertLogType(struct["LogType"]) end
+	if struct["ClientContext"] then asserts.AssertString(struct["ClientContext"]) end
+	if struct["Payload"] then asserts.AssertBlob(struct["Payload"]) end
+	if struct["Qualifier"] then asserts.AssertQualifier(struct["Qualifier"]) end
 	for k,_ in pairs(struct) do
-		assert(InvocationRequest_keys[k], "InvocationRequest contains unknown key " .. tostring(k))
+		assert(keys.InvocationRequest[k], "InvocationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvocationRequest
 -- <p/>
--- @param FunctionName [FunctionName] <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param InvocationType [InvocationType] <p>By default, the <code>Invoke</code> API assumes <code>RequestResponse</code> invocation type. You can optionally request asynchronous execution by specifying <code>Event</code> as the <code>InvocationType</code>. You can also use this parameter to request AWS Lambda to not execute the function but do some verification, such as if the caller is authorized to invoke the function and if the inputs are valid. You request this by specifying <code>DryRun</code> as the <code>InvocationType</code>. This is useful in a cross-account scenario when you want to verify access to a function without running it. </p>
--- @param LogType [LogType] <p>You can set this optional parameter to <code>Tail</code> in the request only if you specify the <code>InvocationType</code> parameter with value <code>RequestResponse</code>. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the <code>x-amz-log-result</code> header. </p>
--- @param ClientContext [String] <p>Using the <code>ClientContext</code> you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a <code>ClientContext</code> JSON, see <a href="http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html">PutEvents</a> in the <i>Amazon Mobile Analytics API Reference and User Guide</i>.</p> <p>The ClientContext JSON must be base64-encoded.</p>
--- @param Payload [Blob] <p>JSON that you want to provide to your Lambda function as input.</p>
--- @param Qualifier [Qualifier] <p>You can use this optional parameter to specify a Lambda function version or alias name. If you specify a function version, the API uses the qualified function ARN to invoke a specific Lambda function. If you specify an alias name, the API uses the alias ARN to invoke the Lambda function version to which the alias points.</p> <p>If you don't provide this parameter, then the API uses unqualified function ARN which results in invocation of the <code>$LATEST</code> version.</p>
+-- @param _FunctionName [FunctionName] <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _InvocationType [InvocationType] <p>By default, the <code>Invoke</code> API assumes <code>RequestResponse</code> invocation type. You can optionally request asynchronous execution by specifying <code>Event</code> as the <code>InvocationType</code>. You can also use this parameter to request AWS Lambda to not execute the function but do some verification, such as if the caller is authorized to invoke the function and if the inputs are valid. You request this by specifying <code>DryRun</code> as the <code>InvocationType</code>. This is useful in a cross-account scenario when you want to verify access to a function without running it. </p>
+-- @param _LogType [LogType] <p>You can set this optional parameter to <code>Tail</code> in the request only if you specify the <code>InvocationType</code> parameter with value <code>RequestResponse</code>. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the <code>x-amz-log-result</code> header. </p>
+-- @param _ClientContext [String] <p>Using the <code>ClientContext</code> you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a <code>ClientContext</code> JSON, see <a href="http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html">PutEvents</a> in the <i>Amazon Mobile Analytics API Reference and User Guide</i>.</p> <p>The ClientContext JSON must be base64-encoded.</p>
+-- @param _Payload [Blob] <p>JSON that you want to provide to your Lambda function as input.</p>
+-- @param _Qualifier [Qualifier] <p>You can use this optional parameter to specify a Lambda function version or alias name. If you specify a function version, the API uses the qualified function ARN to invoke a specific Lambda function. If you specify an alias name, the API uses the alias ARN to invoke the Lambda function version to which the alias points.</p> <p>If you don't provide this parameter, then the API uses unqualified function ARN which results in invocation of the <code>$LATEST</code> version.</p>
 -- Required parameter: FunctionName
-function M.InvocationRequest(FunctionName, InvocationType, LogType, ClientContext, Payload, Qualifier, ...)
+function M.InvocationRequest(_FunctionName, _InvocationType, _LogType, _ClientContext, _Payload, _Qualifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvocationRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["InvocationType"] = InvocationType,
-		["LogType"] = LogType,
-		["ClientContext"] = ClientContext,
-		["Payload"] = Payload,
-		["Qualifier"] = Qualifier,
+		["FunctionName"] = _FunctionName,
+		["InvocationType"] = _InvocationType,
+		["LogType"] = _LogType,
+		["ClientContext"] = _ClientContext,
+		["Payload"] = _Payload,
+		["Qualifier"] = _Qualifier,
 	}
-	M.AssertInvocationRequest(t)
+	asserts.AssertInvocationRequest(t)
 	return t
 end
 
-local GetAliasRequest_keys = { "FunctionName" = true, "Name" = true, nil }
+keys.GetAliasRequest = { ["FunctionName"] = true, ["Name"] = true, nil }
 
-function M.AssertGetAliasRequest(struct)
+function asserts.AssertGetAliasRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAliasRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Name"] then M.AssertAlias(struct["Name"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Name"] then asserts.AssertAlias(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(GetAliasRequest_keys[k], "GetAliasRequest contains unknown key " .. tostring(k))
+		assert(keys.GetAliasRequest[k], "GetAliasRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetAliasRequest
 --  
--- @param FunctionName [FunctionName] <p>Function name for which the alias is created. An alias is a subresource that exists only in the context of an existing Lambda function so you must specify the function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param Name [Alias] <p>Name of the alias for which you want to retrieve information.</p>
+-- @param _FunctionName [FunctionName] <p>Function name for which the alias is created. An alias is a subresource that exists only in the context of an existing Lambda function so you must specify the function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- @param _Name [Alias] <p>Name of the alias for which you want to retrieve information.</p>
 -- Required parameter: FunctionName
 -- Required parameter: Name
-function M.GetAliasRequest(FunctionName, Name, ...)
+function M.GetAliasRequest(_FunctionName, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAliasRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["Name"] = Name,
+		["FunctionName"] = _FunctionName,
+		["Name"] = _Name,
 	}
-	M.AssertGetAliasRequest(t)
+	asserts.AssertGetAliasRequest(t)
 	return t
 end
 
-local UpdateFunctionCodeRequest_keys = { "DryRun" = true, "FunctionName" = true, "ZipFile" = true, "Publish" = true, "S3Bucket" = true, "S3Key" = true, "S3ObjectVersion" = true, nil }
+keys.UpdateFunctionCodeRequest = { ["DryRun"] = true, ["FunctionName"] = true, ["ZipFile"] = true, ["Publish"] = true, ["S3Bucket"] = true, ["S3Key"] = true, ["S3ObjectVersion"] = true, nil }
 
-function M.AssertUpdateFunctionCodeRequest(struct)
+function asserts.AssertUpdateFunctionCodeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFunctionCodeRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["DryRun"] then M.AssertBoolean(struct["DryRun"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["ZipFile"] then M.AssertBlob(struct["ZipFile"]) end
-	if struct["Publish"] then M.AssertBoolean(struct["Publish"]) end
-	if struct["S3Bucket"] then M.AssertS3Bucket(struct["S3Bucket"]) end
-	if struct["S3Key"] then M.AssertS3Key(struct["S3Key"]) end
-	if struct["S3ObjectVersion"] then M.AssertS3ObjectVersion(struct["S3ObjectVersion"]) end
+	if struct["DryRun"] then asserts.AssertBoolean(struct["DryRun"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["ZipFile"] then asserts.AssertBlob(struct["ZipFile"]) end
+	if struct["Publish"] then asserts.AssertBoolean(struct["Publish"]) end
+	if struct["S3Bucket"] then asserts.AssertS3Bucket(struct["S3Bucket"]) end
+	if struct["S3Key"] then asserts.AssertS3Key(struct["S3Key"]) end
+	if struct["S3ObjectVersion"] then asserts.AssertS3ObjectVersion(struct["S3ObjectVersion"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFunctionCodeRequest_keys[k], "UpdateFunctionCodeRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateFunctionCodeRequest[k], "UpdateFunctionCodeRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFunctionCodeRequest
 -- <p/>
--- @param DryRun [Boolean] <p>This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the <code>CodeSha256</code> hash value the provided code will also be computed and returned in the response.</p>
--- @param FunctionName [FunctionName] <p>The existing Lambda function name whose code you want to replace.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param ZipFile [Blob] <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
--- @param Publish [Boolean] <p>This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.</p>
--- @param S3Bucket [S3Bucket] <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS Region where you are creating the Lambda function.</p>
--- @param S3Key [S3Key] <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
--- @param S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+-- @param _DryRun [Boolean] <p>This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the <code>CodeSha256</code> hash value the provided code will also be computed and returned in the response.</p>
+-- @param _FunctionName [FunctionName] <p>The existing Lambda function name whose code you want to replace.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _ZipFile [Blob] <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+-- @param _Publish [Boolean] <p>This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.</p>
+-- @param _S3Bucket [S3Bucket] <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS Region where you are creating the Lambda function.</p>
+-- @param _S3Key [S3Key] <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
+-- @param _S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
 -- Required parameter: FunctionName
-function M.UpdateFunctionCodeRequest(DryRun, FunctionName, ZipFile, Publish, S3Bucket, S3Key, S3ObjectVersion, ...)
+function M.UpdateFunctionCodeRequest(_DryRun, _FunctionName, _ZipFile, _Publish, _S3Bucket, _S3Key, _S3ObjectVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFunctionCodeRequest")
 	local t = { 
-		["DryRun"] = DryRun,
-		["FunctionName"] = FunctionName,
-		["ZipFile"] = ZipFile,
-		["Publish"] = Publish,
-		["S3Bucket"] = S3Bucket,
-		["S3Key"] = S3Key,
-		["S3ObjectVersion"] = S3ObjectVersion,
+		["DryRun"] = _DryRun,
+		["FunctionName"] = _FunctionName,
+		["ZipFile"] = _ZipFile,
+		["Publish"] = _Publish,
+		["S3Bucket"] = _S3Bucket,
+		["S3Key"] = _S3Key,
+		["S3ObjectVersion"] = _S3ObjectVersion,
 	}
-	M.AssertUpdateFunctionCodeRequest(t)
+	asserts.AssertUpdateFunctionCodeRequest(t)
 	return t
 end
 
-local UpdateFunctionConfigurationRequest_keys = { "TracingConfig" = true, "DeadLetterConfig" = true, "FunctionName" = true, "VpcConfig" = true, "KMSKeyArn" = true, "MemorySize" = true, "Environment" = true, "Handler" = true, "Role" = true, "Timeout" = true, "Runtime" = true, "Description" = true, nil }
+keys.UpdateFunctionConfigurationRequest = { ["TracingConfig"] = true, ["DeadLetterConfig"] = true, ["FunctionName"] = true, ["VpcConfig"] = true, ["KMSKeyArn"] = true, ["MemorySize"] = true, ["Environment"] = true, ["Handler"] = true, ["Role"] = true, ["Timeout"] = true, ["Runtime"] = true, ["Description"] = true, nil }
 
-function M.AssertUpdateFunctionConfigurationRequest(struct)
+function asserts.AssertUpdateFunctionConfigurationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFunctionConfigurationRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["TracingConfig"] then M.AssertTracingConfig(struct["TracingConfig"]) end
-	if struct["DeadLetterConfig"] then M.AssertDeadLetterConfig(struct["DeadLetterConfig"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["VpcConfig"] then M.AssertVpcConfig(struct["VpcConfig"]) end
-	if struct["KMSKeyArn"] then M.AssertKMSKeyArn(struct["KMSKeyArn"]) end
-	if struct["MemorySize"] then M.AssertMemorySize(struct["MemorySize"]) end
-	if struct["Environment"] then M.AssertEnvironment(struct["Environment"]) end
-	if struct["Handler"] then M.AssertHandler(struct["Handler"]) end
-	if struct["Role"] then M.AssertRoleArn(struct["Role"]) end
-	if struct["Timeout"] then M.AssertTimeout(struct["Timeout"]) end
-	if struct["Runtime"] then M.AssertRuntime(struct["Runtime"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
+	if struct["TracingConfig"] then asserts.AssertTracingConfig(struct["TracingConfig"]) end
+	if struct["DeadLetterConfig"] then asserts.AssertDeadLetterConfig(struct["DeadLetterConfig"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["VpcConfig"] then asserts.AssertVpcConfig(struct["VpcConfig"]) end
+	if struct["KMSKeyArn"] then asserts.AssertKMSKeyArn(struct["KMSKeyArn"]) end
+	if struct["MemorySize"] then asserts.AssertMemorySize(struct["MemorySize"]) end
+	if struct["Environment"] then asserts.AssertEnvironment(struct["Environment"]) end
+	if struct["Handler"] then asserts.AssertHandler(struct["Handler"]) end
+	if struct["Role"] then asserts.AssertRoleArn(struct["Role"]) end
+	if struct["Timeout"] then asserts.AssertTimeout(struct["Timeout"]) end
+	if struct["Runtime"] then asserts.AssertRuntime(struct["Runtime"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFunctionConfigurationRequest_keys[k], "UpdateFunctionConfigurationRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateFunctionConfigurationRequest[k], "UpdateFunctionConfigurationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFunctionConfigurationRequest
 -- <p/>
--- @param TracingConfig [TracingConfig] <p>The parent object that contains your function's tracing settings.</p>
--- @param DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
--- @param FunctionName [FunctionName] <p>The name of the Lambda function.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
--- @param VpcConfig [VpcConfig] <p/>
--- @param KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.</p>
--- @param MemorySize [MemorySize] <p>The amount of memory, in MB, your Lambda function is given. AWS Lambda uses this memory size to infer the amount of CPU allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
--- @param Environment [Environment] <p>The parent object that contains your environment's configuration settings.</p>
--- @param Handler [Handler] <p>The function that Lambda calls to begin executing your function. For Node.js, it is the <code>module-name.export</code> value in your function. </p>
--- @param Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda will assume when it executes your function.</p>
--- @param Timeout [Timeout] <p>The function execution time at which AWS Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
--- @param Runtime [Runtime] <p>The runtime environment for the Lambda function.</p> <p>To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7".</p> <note> <p>Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parameter value error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.</p> </note>
--- @param Description [Description] <p>A short user-defined function description. AWS Lambda does not use this value. Assign a meaningful description as you see fit.</p>
+-- @param _TracingConfig [TracingConfig] <p>The parent object that contains your function's tracing settings.</p>
+-- @param _DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
+-- @param _FunctionName [FunctionName] <p>The name of the Lambda function.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+-- @param _VpcConfig [VpcConfig] 
+-- @param _KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.</p>
+-- @param _MemorySize [MemorySize] <p>The amount of memory, in MB, your Lambda function is given. AWS Lambda uses this memory size to infer the amount of CPU allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
+-- @param _Environment [Environment] <p>The parent object that contains your environment's configuration settings.</p>
+-- @param _Handler [Handler] <p>The function that Lambda calls to begin executing your function. For Node.js, it is the <code>module-name.export</code> value in your function. </p>
+-- @param _Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda will assume when it executes your function.</p>
+-- @param _Timeout [Timeout] <p>The function execution time at which AWS Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
+-- @param _Runtime [Runtime] <p>The runtime environment for the Lambda function.</p> <p>To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7".</p> <note> <p>Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parameter value error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.</p> </note>
+-- @param _Description [Description] <p>A short user-defined function description. AWS Lambda does not use this value. Assign a meaningful description as you see fit.</p>
 -- Required parameter: FunctionName
-function M.UpdateFunctionConfigurationRequest(TracingConfig, DeadLetterConfig, FunctionName, VpcConfig, KMSKeyArn, MemorySize, Environment, Handler, Role, Timeout, Runtime, Description, ...)
+function M.UpdateFunctionConfigurationRequest(_TracingConfig, _DeadLetterConfig, _FunctionName, _VpcConfig, _KMSKeyArn, _MemorySize, _Environment, _Handler, _Role, _Timeout, _Runtime, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFunctionConfigurationRequest")
 	local t = { 
-		["TracingConfig"] = TracingConfig,
-		["DeadLetterConfig"] = DeadLetterConfig,
-		["FunctionName"] = FunctionName,
-		["VpcConfig"] = VpcConfig,
-		["KMSKeyArn"] = KMSKeyArn,
-		["MemorySize"] = MemorySize,
-		["Environment"] = Environment,
-		["Handler"] = Handler,
-		["Role"] = Role,
-		["Timeout"] = Timeout,
-		["Runtime"] = Runtime,
-		["Description"] = Description,
+		["TracingConfig"] = _TracingConfig,
+		["DeadLetterConfig"] = _DeadLetterConfig,
+		["FunctionName"] = _FunctionName,
+		["VpcConfig"] = _VpcConfig,
+		["KMSKeyArn"] = _KMSKeyArn,
+		["MemorySize"] = _MemorySize,
+		["Environment"] = _Environment,
+		["Handler"] = _Handler,
+		["Role"] = _Role,
+		["Timeout"] = _Timeout,
+		["Runtime"] = _Runtime,
+		["Description"] = _Description,
 	}
-	M.AssertUpdateFunctionConfigurationRequest(t)
+	asserts.AssertUpdateFunctionConfigurationRequest(t)
 	return t
 end
 
-local AliasConfiguration_keys = { "AliasArn" = true, "FunctionVersion" = true, "Name" = true, "Description" = true, nil }
+keys.AliasConfiguration = { ["AliasArn"] = true, ["FunctionVersion"] = true, ["Name"] = true, ["Description"] = true, nil }
 
-function M.AssertAliasConfiguration(struct)
+function asserts.AssertAliasConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AliasConfiguration to be of type 'table'")
-	if struct["AliasArn"] then M.AssertFunctionArn(struct["AliasArn"]) end
-	if struct["FunctionVersion"] then M.AssertVersion(struct["FunctionVersion"]) end
-	if struct["Name"] then M.AssertAlias(struct["Name"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
+	if struct["AliasArn"] then asserts.AssertFunctionArn(struct["AliasArn"]) end
+	if struct["FunctionVersion"] then asserts.AssertVersion(struct["FunctionVersion"]) end
+	if struct["Name"] then asserts.AssertAlias(struct["Name"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(AliasConfiguration_keys[k], "AliasConfiguration contains unknown key " .. tostring(k))
+		assert(keys.AliasConfiguration[k], "AliasConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AliasConfiguration
 -- <p>Provides configuration information about a Lambda function version alias.</p>
--- @param AliasArn [FunctionArn] <p>Lambda function ARN that is qualified using the alias name as the suffix. For example, if you create an alias called <code>BETA</code> that points to a helloworld function version, the ARN is <code>arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA</code>.</p>
--- @param FunctionVersion [Version] <p>Function version to which the alias points.</p>
--- @param Name [Alias] <p>Alias name.</p>
--- @param Description [Description] <p>Alias description.</p>
-function M.AliasConfiguration(AliasArn, FunctionVersion, Name, Description, ...)
+-- @param _AliasArn [FunctionArn] <p>Lambda function ARN that is qualified using the alias name as the suffix. For example, if you create an alias called <code>BETA</code> that points to a helloworld function version, the ARN is <code>arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA</code>.</p>
+-- @param _FunctionVersion [Version] <p>Function version to which the alias points.</p>
+-- @param _Name [Alias] <p>Alias name.</p>
+-- @param _Description [Description] <p>Alias description.</p>
+function M.AliasConfiguration(_AliasArn, _FunctionVersion, _Name, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AliasConfiguration")
 	local t = { 
-		["AliasArn"] = AliasArn,
-		["FunctionVersion"] = FunctionVersion,
-		["Name"] = Name,
-		["Description"] = Description,
+		["AliasArn"] = _AliasArn,
+		["FunctionVersion"] = _FunctionVersion,
+		["Name"] = _Name,
+		["Description"] = _Description,
 	}
-	M.AssertAliasConfiguration(t)
+	asserts.AssertAliasConfiguration(t)
 	return t
 end
 
-local GetAccountSettingsResponse_keys = { "AccountLimit" = true, "AccountUsage" = true, nil }
+keys.GetAccountSettingsResponse = { ["AccountLimit"] = true, ["AccountUsage"] = true, nil }
 
-function M.AssertGetAccountSettingsResponse(struct)
+function asserts.AssertGetAccountSettingsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAccountSettingsResponse to be of type 'table'")
-	if struct["AccountLimit"] then M.AssertAccountLimit(struct["AccountLimit"]) end
-	if struct["AccountUsage"] then M.AssertAccountUsage(struct["AccountUsage"]) end
+	if struct["AccountLimit"] then asserts.AssertAccountLimit(struct["AccountLimit"]) end
+	if struct["AccountUsage"] then asserts.AssertAccountUsage(struct["AccountUsage"]) end
 	for k,_ in pairs(struct) do
-		assert(GetAccountSettingsResponse_keys[k], "GetAccountSettingsResponse contains unknown key " .. tostring(k))
+		assert(keys.GetAccountSettingsResponse[k], "GetAccountSettingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetAccountSettingsResponse
 --  
--- @param AccountLimit [AccountLimit]  
--- @param AccountUsage [AccountUsage]  
-function M.GetAccountSettingsResponse(AccountLimit, AccountUsage, ...)
+-- @param _AccountLimit [AccountLimit] 
+-- @param _AccountUsage [AccountUsage] 
+function M.GetAccountSettingsResponse(_AccountLimit, _AccountUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountSettingsResponse")
 	local t = { 
-		["AccountLimit"] = AccountLimit,
-		["AccountUsage"] = AccountUsage,
+		["AccountLimit"] = _AccountLimit,
+		["AccountUsage"] = _AccountUsage,
 	}
-	M.AssertGetAccountSettingsResponse(t)
+	asserts.AssertGetAccountSettingsResponse(t)
 	return t
 end
 
-local VpcConfigResponse_keys = { "SubnetIds" = true, "VpcId" = true, "SecurityGroupIds" = true, nil }
+keys.VpcConfigResponse = { ["SubnetIds"] = true, ["VpcId"] = true, ["SecurityGroupIds"] = true, nil }
 
-function M.AssertVpcConfigResponse(struct)
+function asserts.AssertVpcConfigResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VpcConfigResponse to be of type 'table'")
-	if struct["SubnetIds"] then M.AssertSubnetIds(struct["SubnetIds"]) end
-	if struct["VpcId"] then M.AssertVpcId(struct["VpcId"]) end
-	if struct["SecurityGroupIds"] then M.AssertSecurityGroupIds(struct["SecurityGroupIds"]) end
+	if struct["SubnetIds"] then asserts.AssertSubnetIds(struct["SubnetIds"]) end
+	if struct["VpcId"] then asserts.AssertVpcId(struct["VpcId"]) end
+	if struct["SecurityGroupIds"] then asserts.AssertSecurityGroupIds(struct["SecurityGroupIds"]) end
 	for k,_ in pairs(struct) do
-		assert(VpcConfigResponse_keys[k], "VpcConfigResponse contains unknown key " .. tostring(k))
+		assert(keys.VpcConfigResponse[k], "VpcConfigResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type VpcConfigResponse
 -- <p>VPC configuration associated with your Lambda function.</p>
--- @param SubnetIds [SubnetIds] <p>A list of subnet IDs associated with the Lambda function.</p>
--- @param VpcId [VpcId] <p>The VPC ID associated with you Lambda function.</p>
--- @param SecurityGroupIds [SecurityGroupIds] <p>A list of security group IDs associated with the Lambda function.</p>
-function M.VpcConfigResponse(SubnetIds, VpcId, SecurityGroupIds, ...)
+-- @param _SubnetIds [SubnetIds] <p>A list of subnet IDs associated with the Lambda function.</p>
+-- @param _VpcId [VpcId] <p>The VPC ID associated with you Lambda function.</p>
+-- @param _SecurityGroupIds [SecurityGroupIds] <p>A list of security group IDs associated with the Lambda function.</p>
+function M.VpcConfigResponse(_SubnetIds, _VpcId, _SecurityGroupIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VpcConfigResponse")
 	local t = { 
-		["SubnetIds"] = SubnetIds,
-		["VpcId"] = VpcId,
-		["SecurityGroupIds"] = SecurityGroupIds,
+		["SubnetIds"] = _SubnetIds,
+		["VpcId"] = _VpcId,
+		["SecurityGroupIds"] = _SecurityGroupIds,
 	}
-	M.AssertVpcConfigResponse(t)
+	asserts.AssertVpcConfigResponse(t)
 	return t
 end
 
-local InvocationResponse_keys = { "LogResult" = true, "FunctionError" = true, "Payload" = true, "StatusCode" = true, nil }
+keys.InvocationResponse = { ["LogResult"] = true, ["FunctionError"] = true, ["Payload"] = true, ["StatusCode"] = true, nil }
 
-function M.AssertInvocationResponse(struct)
+function asserts.AssertInvocationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvocationResponse to be of type 'table'")
-	if struct["LogResult"] then M.AssertString(struct["LogResult"]) end
-	if struct["FunctionError"] then M.AssertString(struct["FunctionError"]) end
-	if struct["Payload"] then M.AssertBlob(struct["Payload"]) end
-	if struct["StatusCode"] then M.AssertInteger(struct["StatusCode"]) end
+	if struct["LogResult"] then asserts.AssertString(struct["LogResult"]) end
+	if struct["FunctionError"] then asserts.AssertString(struct["FunctionError"]) end
+	if struct["Payload"] then asserts.AssertBlob(struct["Payload"]) end
+	if struct["StatusCode"] then asserts.AssertInteger(struct["StatusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(InvocationResponse_keys[k], "InvocationResponse contains unknown key " .. tostring(k))
+		assert(keys.InvocationResponse[k], "InvocationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvocationResponse
 -- <p>Upon success, returns an empty response. Otherwise, throws an exception.</p>
--- @param LogResult [String] <p> It is the base64-encoded logs for the Lambda function invocation. This is present only if the invocation type is <code>RequestResponse</code> and the logs were requested. </p>
--- @param FunctionError [String] <p>Indicates whether an error occurred while executing the Lambda function. If an error occurred this field will have one of two values; <code>Handled</code> or <code>Unhandled</code>. <code>Handled</code> errors are errors that are reported by the function while the <code>Unhandled</code> errors are those detected and reported by AWS Lambda. Unhandled errors include out of memory errors and function timeouts. For information about how to report an <code>Handled</code> error, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html">Programming Model</a>. </p>
--- @param Payload [Blob] <p> It is the JSON representation of the object returned by the Lambda function. This is present only if the invocation type is <code>RequestResponse</code>. </p> <p>In the event of a function error this field contains a message describing the error. For the <code>Handled</code> errors the Lambda function will report this message. For <code>Unhandled</code> errors AWS Lambda reports the message. </p>
--- @param StatusCode [Integer] <p>The HTTP status code will be in the 200 range for successful request. For the <code>RequestResponse</code> invocation type this status code will be 200. For the <code>Event</code> invocation type this status code will be 202. For the <code>DryRun</code> invocation type the status code will be 204. </p>
-function M.InvocationResponse(LogResult, FunctionError, Payload, StatusCode, ...)
+-- @param _LogResult [String] <p> It is the base64-encoded logs for the Lambda function invocation. This is present only if the invocation type is <code>RequestResponse</code> and the logs were requested. </p>
+-- @param _FunctionError [String] <p>Indicates whether an error occurred while executing the Lambda function. If an error occurred this field will have one of two values; <code>Handled</code> or <code>Unhandled</code>. <code>Handled</code> errors are errors that are reported by the function while the <code>Unhandled</code> errors are those detected and reported by AWS Lambda. Unhandled errors include out of memory errors and function timeouts. For information about how to report an <code>Handled</code> error, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html">Programming Model</a>. </p>
+-- @param _Payload [Blob] <p> It is the JSON representation of the object returned by the Lambda function. This is present only if the invocation type is <code>RequestResponse</code>. </p> <p>In the event of a function error this field contains a message describing the error. For the <code>Handled</code> errors the Lambda function will report this message. For <code>Unhandled</code> errors AWS Lambda reports the message. </p>
+-- @param _StatusCode [Integer] <p>The HTTP status code will be in the 200 range for successful request. For the <code>RequestResponse</code> invocation type this status code will be 200. For the <code>Event</code> invocation type this status code will be 202. For the <code>DryRun</code> invocation type the status code will be 204. </p>
+function M.InvocationResponse(_LogResult, _FunctionError, _Payload, _StatusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvocationResponse")
 	local t = { 
-		["LogResult"] = LogResult,
-		["FunctionError"] = FunctionError,
-		["Payload"] = Payload,
-		["StatusCode"] = StatusCode,
+		["LogResult"] = _LogResult,
+		["FunctionError"] = _FunctionError,
+		["Payload"] = _Payload,
+		["StatusCode"] = _StatusCode,
 	}
-	M.AssertInvocationResponse(t)
+	asserts.AssertInvocationResponse(t)
 	return t
 end
 
-local CodeStorageExceededException_keys = { "message" = true, "Type" = true, nil }
+keys.CodeStorageExceededException = { ["message"] = true, ["Type"] = true, nil }
 
-function M.AssertCodeStorageExceededException(struct)
+function asserts.AssertCodeStorageExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CodeStorageExceededException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(CodeStorageExceededException_keys[k], "CodeStorageExceededException contains unknown key " .. tostring(k))
+		assert(keys.CodeStorageExceededException[k], "CodeStorageExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CodeStorageExceededException
 -- <p>You have exceeded your maximum total code size per account. <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a> </p>
--- @param message [String] <p>You have exceeded your maximum total code size per account. <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a> </p>
--- @param Type [String] <p/>
-function M.CodeStorageExceededException(message, Type, ...)
+-- @param _message [String] 
+-- @param _Type [String] <p/>
+function M.CodeStorageExceededException(_message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CodeStorageExceededException")
 	local t = { 
-		["message"] = message,
-		["Type"] = Type,
+		["message"] = _message,
+		["Type"] = _Type,
 	}
-	M.AssertCodeStorageExceededException(t)
+	asserts.AssertCodeStorageExceededException(t)
 	return t
 end
 
-local TooManyRequestsException_keys = { "message" = true, "Type" = true, "Reason" = true, "retryAfterSeconds" = true, nil }
+keys.TooManyRequestsException = { ["message"] = true, ["Type"] = true, ["Reason"] = true, ["retryAfterSeconds"] = true, nil }
 
-function M.AssertTooManyRequestsException(struct)
+function asserts.AssertTooManyRequestsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyRequestsException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
-	if struct["Reason"] then M.AssertThrottleReason(struct["Reason"]) end
-	if struct["retryAfterSeconds"] then M.AssertString(struct["retryAfterSeconds"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
+	if struct["Reason"] then asserts.AssertThrottleReason(struct["Reason"]) end
+	if struct["retryAfterSeconds"] then asserts.AssertString(struct["retryAfterSeconds"]) end
 	for k,_ in pairs(struct) do
-		assert(TooManyRequestsException_keys[k], "TooManyRequestsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyRequestsException[k], "TooManyRequestsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TooManyRequestsException
 -- <p/>
--- @param message [String] <p/>
--- @param Type [String] <p/>
--- @param Reason [ThrottleReason] <p/>
--- @param retryAfterSeconds [String] <p>The number of seconds the caller should wait before retrying.</p>
-function M.TooManyRequestsException(message, Type, Reason, retryAfterSeconds, ...)
+-- @param _message [String] 
+-- @param _Type [String] 
+-- @param _Reason [ThrottleReason] 
+-- @param _retryAfterSeconds [String] <p>The number of seconds the caller should wait before retrying.</p>
+function M.TooManyRequestsException(_message, _Type, _Reason, _retryAfterSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
-		["message"] = message,
-		["Type"] = Type,
-		["Reason"] = Reason,
-		["retryAfterSeconds"] = retryAfterSeconds,
+		["message"] = _message,
+		["Type"] = _Type,
+		["Reason"] = _Reason,
+		["retryAfterSeconds"] = _retryAfterSeconds,
 	}
-	M.AssertTooManyRequestsException(t)
+	asserts.AssertTooManyRequestsException(t)
 	return t
 end
 
-local ENILimitReachedException_keys = { "Message" = true, "Type" = true, nil }
+keys.ENILimitReachedException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertENILimitReachedException(struct)
+function asserts.AssertENILimitReachedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ENILimitReachedException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(ENILimitReachedException_keys[k], "ENILimitReachedException contains unknown key " .. tostring(k))
+		assert(keys.ENILimitReachedException[k], "ENILimitReachedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ENILimitReachedException
 -- <p>AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.</p>
--- @param Message [String] <p>AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.</p>
--- @param Type [String] <p>AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.</p>
-function M.ENILimitReachedException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.ENILimitReachedException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ENILimitReachedException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertENILimitReachedException(t)
+	asserts.AssertENILimitReachedException(t)
 	return t
 end
 
-local CreateEventSourceMappingRequest_keys = { "FunctionName" = true, "StartingPositionTimestamp" = true, "BatchSize" = true, "Enabled" = true, "EventSourceArn" = true, "StartingPosition" = true, nil }
+keys.CreateEventSourceMappingRequest = { ["FunctionName"] = true, ["StartingPositionTimestamp"] = true, ["BatchSize"] = true, ["Enabled"] = true, ["EventSourceArn"] = true, ["StartingPosition"] = true, nil }
 
-function M.AssertCreateEventSourceMappingRequest(struct)
+function asserts.AssertCreateEventSourceMappingRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateEventSourceMappingRequest to be of type 'table'")
 	assert(struct["EventSourceArn"], "Expected key EventSourceArn to exist in table")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
 	assert(struct["StartingPosition"], "Expected key StartingPosition to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["StartingPositionTimestamp"] then M.AssertDate(struct["StartingPositionTimestamp"]) end
-	if struct["BatchSize"] then M.AssertBatchSize(struct["BatchSize"]) end
-	if struct["Enabled"] then M.AssertEnabled(struct["Enabled"]) end
-	if struct["EventSourceArn"] then M.AssertArn(struct["EventSourceArn"]) end
-	if struct["StartingPosition"] then M.AssertEventSourcePosition(struct["StartingPosition"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["StartingPositionTimestamp"] then asserts.AssertDate(struct["StartingPositionTimestamp"]) end
+	if struct["BatchSize"] then asserts.AssertBatchSize(struct["BatchSize"]) end
+	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
+	if struct["EventSourceArn"] then asserts.AssertArn(struct["EventSourceArn"]) end
+	if struct["StartingPosition"] then asserts.AssertEventSourcePosition(struct["StartingPosition"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateEventSourceMappingRequest_keys[k], "CreateEventSourceMappingRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateEventSourceMappingRequest[k], "CreateEventSourceMappingRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateEventSourceMappingRequest
 -- <p/>
--- @param FunctionName [FunctionName] <p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p> If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param StartingPositionTimestamp [Date] <p>The timestamp of the data record from which to start reading. Used with <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
--- @param BatchSize [BatchSize] <p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default is 100 records.</p>
--- @param Enabled [Enabled] <p>Indicates whether AWS Lambda should begin polling the event source. By default, <code>Enabled</code> is true. </p>
--- @param EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB stream that is the event source. Any record added to this stream could cause AWS Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>. AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda function as JSON.</p>
--- @param StartingPosition [EventSourcePosition] <p>The position in the stream where AWS Lambda should start reading. Valid only for Kinesis streams. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a> in the <i>Amazon Kinesis API Reference</i>. </p>
+-- @param _FunctionName [FunctionName] <p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p> If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- @param _StartingPositionTimestamp [Date] <p>The timestamp of the data record from which to start reading. Used with <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
+-- @param _BatchSize [BatchSize] <p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default is 100 records.</p>
+-- @param _Enabled [Enabled] <p>Indicates whether AWS Lambda should begin polling the event source. By default, <code>Enabled</code> is true. </p>
+-- @param _EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB stream that is the event source. Any record added to this stream could cause AWS Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>. AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda function as JSON.</p>
+-- @param _StartingPosition [EventSourcePosition] <p>The position in the stream where AWS Lambda should start reading. Valid only for Kinesis streams. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a> in the <i>Amazon Kinesis API Reference</i>. </p>
 -- Required parameter: EventSourceArn
 -- Required parameter: FunctionName
 -- Required parameter: StartingPosition
-function M.CreateEventSourceMappingRequest(FunctionName, StartingPositionTimestamp, BatchSize, Enabled, EventSourceArn, StartingPosition, ...)
+function M.CreateEventSourceMappingRequest(_FunctionName, _StartingPositionTimestamp, _BatchSize, _Enabled, _EventSourceArn, _StartingPosition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEventSourceMappingRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["StartingPositionTimestamp"] = StartingPositionTimestamp,
-		["BatchSize"] = BatchSize,
-		["Enabled"] = Enabled,
-		["EventSourceArn"] = EventSourceArn,
-		["StartingPosition"] = StartingPosition,
+		["FunctionName"] = _FunctionName,
+		["StartingPositionTimestamp"] = _StartingPositionTimestamp,
+		["BatchSize"] = _BatchSize,
+		["Enabled"] = _Enabled,
+		["EventSourceArn"] = _EventSourceArn,
+		["StartingPosition"] = _StartingPosition,
 	}
-	M.AssertCreateEventSourceMappingRequest(t)
+	asserts.AssertCreateEventSourceMappingRequest(t)
 	return t
 end
 
-local RemovePermissionRequest_keys = { "StatementId" = true, "FunctionName" = true, "Qualifier" = true, nil }
+keys.RemovePermissionRequest = { ["StatementId"] = true, ["FunctionName"] = true, ["Qualifier"] = true, nil }
 
-function M.AssertRemovePermissionRequest(struct)
+function asserts.AssertRemovePermissionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemovePermissionRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
 	assert(struct["StatementId"], "Expected key StatementId to exist in table")
-	if struct["StatementId"] then M.AssertStatementId(struct["StatementId"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Qualifier"] then M.AssertQualifier(struct["Qualifier"]) end
+	if struct["StatementId"] then asserts.AssertStatementId(struct["StatementId"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Qualifier"] then asserts.AssertQualifier(struct["Qualifier"]) end
 	for k,_ in pairs(struct) do
-		assert(RemovePermissionRequest_keys[k], "RemovePermissionRequest contains unknown key " .. tostring(k))
+		assert(keys.RemovePermissionRequest[k], "RemovePermissionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemovePermissionRequest
 -- <p/>
--- @param StatementId [StatementId] <p>Statement ID of the permission to remove.</p>
--- @param FunctionName [FunctionName] <p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param Qualifier [Qualifier] <p>You can specify this optional parameter to remove permission associated with a specific function version or function alias. If you don't specify this parameter, the API removes permission associated with the unqualified function ARN.</p>
+-- @param _StatementId [StatementId] <p>Statement ID of the permission to remove.</p>
+-- @param _FunctionName [FunctionName] <p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _Qualifier [Qualifier] <p>You can specify this optional parameter to remove permission associated with a specific function version or function alias. If you don't specify this parameter, the API removes permission associated with the unqualified function ARN.</p>
 -- Required parameter: FunctionName
 -- Required parameter: StatementId
-function M.RemovePermissionRequest(StatementId, FunctionName, Qualifier, ...)
+function M.RemovePermissionRequest(_StatementId, _FunctionName, _Qualifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemovePermissionRequest")
 	local t = { 
-		["StatementId"] = StatementId,
-		["FunctionName"] = FunctionName,
-		["Qualifier"] = Qualifier,
+		["StatementId"] = _StatementId,
+		["FunctionName"] = _FunctionName,
+		["Qualifier"] = _Qualifier,
 	}
-	M.AssertRemovePermissionRequest(t)
+	asserts.AssertRemovePermissionRequest(t)
 	return t
 end
 
-local ListFunctionsRequest_keys = { "Marker" = true, "MaxItems" = true, nil }
+keys.ListFunctionsRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
 
-function M.AssertListFunctionsRequest(struct)
+function asserts.AssertListFunctionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFunctionsRequest to be of type 'table'")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["MaxItems"] then M.AssertMaxListItems(struct["MaxItems"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["MaxItems"] then asserts.AssertMaxListItems(struct["MaxItems"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFunctionsRequest_keys[k], "ListFunctionsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListFunctionsRequest[k], "ListFunctionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFunctionsRequest
 -- <p/>
--- @param Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListFunctions</code> operation. If present, indicates where to continue the listing. </p>
--- @param MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0.</p>
-function M.ListFunctionsRequest(Marker, MaxItems, ...)
+-- @param _Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListFunctions</code> operation. If present, indicates where to continue the listing. </p>
+-- @param _MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0.</p>
+function M.ListFunctionsRequest(_Marker, _MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionsRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["MaxItems"] = MaxItems,
+		["Marker"] = _Marker,
+		["MaxItems"] = _MaxItems,
 	}
-	M.AssertListFunctionsRequest(t)
+	asserts.AssertListFunctionsRequest(t)
 	return t
 end
 
-local EC2UnexpectedException_keys = { "Message" = true, "Type" = true, "EC2ErrorCode" = true, nil }
+keys.EC2UnexpectedException = { ["Message"] = true, ["Type"] = true, ["EC2ErrorCode"] = true, nil }
 
-function M.AssertEC2UnexpectedException(struct)
+function asserts.AssertEC2UnexpectedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EC2UnexpectedException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
-	if struct["EC2ErrorCode"] then M.AssertString(struct["EC2ErrorCode"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
+	if struct["EC2ErrorCode"] then asserts.AssertString(struct["EC2ErrorCode"]) end
 	for k,_ in pairs(struct) do
-		assert(EC2UnexpectedException_keys[k], "EC2UnexpectedException contains unknown key " .. tostring(k))
+		assert(keys.EC2UnexpectedException[k], "EC2UnexpectedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EC2UnexpectedException
 -- <p>AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.</p>
--- @param Message [String] <p>AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.</p>
--- @param Type [String] <p>AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.</p>
--- @param EC2ErrorCode [String] <p>AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.</p>
-function M.EC2UnexpectedException(Message, Type, EC2ErrorCode, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+-- @param _EC2ErrorCode [String] 
+function M.EC2UnexpectedException(_Message, _Type, _EC2ErrorCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EC2UnexpectedException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
-		["EC2ErrorCode"] = EC2ErrorCode,
+		["Message"] = _Message,
+		["Type"] = _Type,
+		["EC2ErrorCode"] = _EC2ErrorCode,
 	}
-	M.AssertEC2UnexpectedException(t)
+	asserts.AssertEC2UnexpectedException(t)
 	return t
 end
 
-local UntagResourceRequest_keys = { "TagKeys" = true, "Resource" = true, nil }
+keys.UntagResourceRequest = { ["TagKeys"] = true, ["Resource"] = true, nil }
 
-function M.AssertUntagResourceRequest(struct)
+function asserts.AssertUntagResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UntagResourceRequest to be of type 'table'")
 	assert(struct["Resource"], "Expected key Resource to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["TagKeys"] then M.AssertTagKeyList(struct["TagKeys"]) end
-	if struct["Resource"] then M.AssertFunctionArn(struct["Resource"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
+	if struct["Resource"] then asserts.AssertFunctionArn(struct["Resource"]) end
 	for k,_ in pairs(struct) do
-		assert(UntagResourceRequest_keys[k], "UntagResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.UntagResourceRequest[k], "UntagResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param TagKeys [TagKeyList] <p>The list of tag keys to be deleted from the function.</p>
--- @param Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the function.</p>
+-- @param _TagKeys [TagKeyList] <p>The list of tag keys to be deleted from the function.</p>
+-- @param _Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the function.</p>
 -- Required parameter: Resource
 -- Required parameter: TagKeys
-function M.UntagResourceRequest(TagKeys, Resource, ...)
+function M.UntagResourceRequest(_TagKeys, _Resource, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceRequest")
 	local t = { 
-		["TagKeys"] = TagKeys,
-		["Resource"] = Resource,
+		["TagKeys"] = _TagKeys,
+		["Resource"] = _Resource,
 	}
-	M.AssertUntagResourceRequest(t)
+	asserts.AssertUntagResourceRequest(t)
 	return t
 end
 
-local CreateFunctionRequest_keys = { "TracingConfig" = true, "Code" = true, "DeadLetterConfig" = true, "FunctionName" = true, "VpcConfig" = true, "Tags" = true, "KMSKeyArn" = true, "MemorySize" = true, "Publish" = true, "Environment" = true, "Handler" = true, "Role" = true, "Timeout" = true, "Runtime" = true, "Description" = true, nil }
+keys.CreateFunctionRequest = { ["TracingConfig"] = true, ["Code"] = true, ["DeadLetterConfig"] = true, ["FunctionName"] = true, ["VpcConfig"] = true, ["Tags"] = true, ["KMSKeyArn"] = true, ["MemorySize"] = true, ["Publish"] = true, ["Environment"] = true, ["Handler"] = true, ["Role"] = true, ["Timeout"] = true, ["Runtime"] = true, ["Description"] = true, nil }
 
-function M.AssertCreateFunctionRequest(struct)
+function asserts.AssertCreateFunctionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFunctionRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
@@ -1011,477 +1014,477 @@ function M.AssertCreateFunctionRequest(struct)
 	assert(struct["Role"], "Expected key Role to exist in table")
 	assert(struct["Handler"], "Expected key Handler to exist in table")
 	assert(struct["Code"], "Expected key Code to exist in table")
-	if struct["TracingConfig"] then M.AssertTracingConfig(struct["TracingConfig"]) end
-	if struct["Code"] then M.AssertFunctionCode(struct["Code"]) end
-	if struct["DeadLetterConfig"] then M.AssertDeadLetterConfig(struct["DeadLetterConfig"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["VpcConfig"] then M.AssertVpcConfig(struct["VpcConfig"]) end
-	if struct["Tags"] then M.AssertTags(struct["Tags"]) end
-	if struct["KMSKeyArn"] then M.AssertKMSKeyArn(struct["KMSKeyArn"]) end
-	if struct["MemorySize"] then M.AssertMemorySize(struct["MemorySize"]) end
-	if struct["Publish"] then M.AssertBoolean(struct["Publish"]) end
-	if struct["Environment"] then M.AssertEnvironment(struct["Environment"]) end
-	if struct["Handler"] then M.AssertHandler(struct["Handler"]) end
-	if struct["Role"] then M.AssertRoleArn(struct["Role"]) end
-	if struct["Timeout"] then M.AssertTimeout(struct["Timeout"]) end
-	if struct["Runtime"] then M.AssertRuntime(struct["Runtime"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
+	if struct["TracingConfig"] then asserts.AssertTracingConfig(struct["TracingConfig"]) end
+	if struct["Code"] then asserts.AssertFunctionCode(struct["Code"]) end
+	if struct["DeadLetterConfig"] then asserts.AssertDeadLetterConfig(struct["DeadLetterConfig"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["VpcConfig"] then asserts.AssertVpcConfig(struct["VpcConfig"]) end
+	if struct["Tags"] then asserts.AssertTags(struct["Tags"]) end
+	if struct["KMSKeyArn"] then asserts.AssertKMSKeyArn(struct["KMSKeyArn"]) end
+	if struct["MemorySize"] then asserts.AssertMemorySize(struct["MemorySize"]) end
+	if struct["Publish"] then asserts.AssertBoolean(struct["Publish"]) end
+	if struct["Environment"] then asserts.AssertEnvironment(struct["Environment"]) end
+	if struct["Handler"] then asserts.AssertHandler(struct["Handler"]) end
+	if struct["Role"] then asserts.AssertRoleArn(struct["Role"]) end
+	if struct["Timeout"] then asserts.AssertTimeout(struct["Timeout"]) end
+	if struct["Runtime"] then asserts.AssertRuntime(struct["Runtime"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFunctionRequest_keys[k], "CreateFunctionRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateFunctionRequest[k], "CreateFunctionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFunctionRequest
 -- <p/>
--- @param TracingConfig [TracingConfig] <p>The parent object that contains your function's tracing settings.</p>
--- @param Code [FunctionCode] <p>The code for the Lambda function.</p>
--- @param DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic. </p>
--- @param FunctionName [FunctionName] <p>The name you want to assign to the function you are uploading. The function names appear in the console and are returned in the <a>ListFunctions</a> API. Function names are used to specify functions to other AWS Lambda API operations, such as <a>Invoke</a>. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param VpcConfig [VpcConfig] <p>If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.</p>
--- @param Tags [Tags] <p>The list of tags (key-value pairs) assigned to the new function.</p>
--- @param KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If not provided, AWS Lambda will use a default service key.</p>
--- @param MemorySize [MemorySize] <p>The amount of memory, in MB, your Lambda function is given. Lambda uses this memory size to infer the amount of CPU and memory allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
--- @param Publish [Boolean] <p>This boolean parameter can be used to request AWS Lambda to create the Lambda function and publish a version as an atomic operation.</p>
--- @param Environment [Environment] <p/>
--- @param Handler [Handler] <p>The function within your code that Lambda calls to begin execution. For Node.js, it is the <i>module-name</i>.<i>export</i> value in your function. For Java, it can be <code>package.class-name::handler</code> or <code>package.class-name</code>. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-handler-types.html">Lambda Function Handler (Java)</a>. </p>
--- @param Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a>. </p>
--- @param Timeout [Timeout] <p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
--- @param Runtime [Runtime] <p>The runtime environment for the Lambda function you are uploading.</p> <p>To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3".</p> <note> <p>Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parmaeter error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.</p> </note>
--- @param Description [Description] <p>A short, user-defined function description. Lambda does not use this value. Assign a meaningful description as you see fit.</p>
+-- @param _TracingConfig [TracingConfig] <p>The parent object that contains your function's tracing settings.</p>
+-- @param _Code [FunctionCode] <p>The code for the Lambda function.</p>
+-- @param _DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic. </p>
+-- @param _FunctionName [FunctionName] <p>The name you want to assign to the function you are uploading. The function names appear in the console and are returned in the <a>ListFunctions</a> API. Function names are used to specify functions to other AWS Lambda API operations, such as <a>Invoke</a>. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _VpcConfig [VpcConfig] <p>If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.</p>
+-- @param _Tags [Tags] <p>The list of tags (key-value pairs) assigned to the new function.</p>
+-- @param _KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If not provided, AWS Lambda will use a default service key.</p>
+-- @param _MemorySize [MemorySize] <p>The amount of memory, in MB, your Lambda function is given. Lambda uses this memory size to infer the amount of CPU and memory allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
+-- @param _Publish [Boolean] <p>This boolean parameter can be used to request AWS Lambda to create the Lambda function and publish a version as an atomic operation.</p>
+-- @param _Environment [Environment] 
+-- @param _Handler [Handler] <p>The function within your code that Lambda calls to begin execution. For Node.js, it is the <i>module-name</i>.<i>export</i> value in your function. For Java, it can be <code>package.class-name::handler</code> or <code>package.class-name</code>. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-handler-types.html">Lambda Function Handler (Java)</a>. </p>
+-- @param _Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a>. </p>
+-- @param _Timeout [Timeout] <p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
+-- @param _Runtime [Runtime] <p>The runtime environment for the Lambda function you are uploading.</p> <p>To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3".</p> <note> <p>Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parmaeter error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.</p> </note>
+-- @param _Description [Description] <p>A short, user-defined function description. Lambda does not use this value. Assign a meaningful description as you see fit.</p>
 -- Required parameter: FunctionName
 -- Required parameter: Runtime
 -- Required parameter: Role
 -- Required parameter: Handler
 -- Required parameter: Code
-function M.CreateFunctionRequest(TracingConfig, Code, DeadLetterConfig, FunctionName, VpcConfig, Tags, KMSKeyArn, MemorySize, Publish, Environment, Handler, Role, Timeout, Runtime, Description, ...)
+function M.CreateFunctionRequest(_TracingConfig, _Code, _DeadLetterConfig, _FunctionName, _VpcConfig, _Tags, _KMSKeyArn, _MemorySize, _Publish, _Environment, _Handler, _Role, _Timeout, _Runtime, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionRequest")
 	local t = { 
-		["TracingConfig"] = TracingConfig,
-		["Code"] = Code,
-		["DeadLetterConfig"] = DeadLetterConfig,
-		["FunctionName"] = FunctionName,
-		["VpcConfig"] = VpcConfig,
-		["Tags"] = Tags,
-		["KMSKeyArn"] = KMSKeyArn,
-		["MemorySize"] = MemorySize,
-		["Publish"] = Publish,
-		["Environment"] = Environment,
-		["Handler"] = Handler,
-		["Role"] = Role,
-		["Timeout"] = Timeout,
-		["Runtime"] = Runtime,
-		["Description"] = Description,
+		["TracingConfig"] = _TracingConfig,
+		["Code"] = _Code,
+		["DeadLetterConfig"] = _DeadLetterConfig,
+		["FunctionName"] = _FunctionName,
+		["VpcConfig"] = _VpcConfig,
+		["Tags"] = _Tags,
+		["KMSKeyArn"] = _KMSKeyArn,
+		["MemorySize"] = _MemorySize,
+		["Publish"] = _Publish,
+		["Environment"] = _Environment,
+		["Handler"] = _Handler,
+		["Role"] = _Role,
+		["Timeout"] = _Timeout,
+		["Runtime"] = _Runtime,
+		["Description"] = _Description,
 	}
-	M.AssertCreateFunctionRequest(t)
+	asserts.AssertCreateFunctionRequest(t)
 	return t
 end
 
-local KMSDisabledException_keys = { "Message" = true, "Type" = true, nil }
+keys.KMSDisabledException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertKMSDisabledException(struct)
+function asserts.AssertKMSDisabledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KMSDisabledException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(KMSDisabledException_keys[k], "KMSDisabledException contains unknown key " .. tostring(k))
+		assert(keys.KMSDisabledException[k], "KMSDisabledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KMSDisabledException
 -- <p>Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the Lambda function's KMS key settings.</p>
--- @param Message [String] <p>Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the Lambda function's KMS key settings.</p>
--- @param Type [String] <p>Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the Lambda function's KMS key settings.</p>
-function M.KMSDisabledException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.KMSDisabledException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSDisabledException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertKMSDisabledException(t)
+	asserts.AssertKMSDisabledException(t)
 	return t
 end
 
-local KMSAccessDeniedException_keys = { "Message" = true, "Type" = true, nil }
+keys.KMSAccessDeniedException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertKMSAccessDeniedException(struct)
+function asserts.AssertKMSAccessDeniedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KMSAccessDeniedException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(KMSAccessDeniedException_keys[k], "KMSAccessDeniedException contains unknown key " .. tostring(k))
+		assert(keys.KMSAccessDeniedException[k], "KMSAccessDeniedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KMSAccessDeniedException
 -- <p>Lambda was unable to decrypt the environment variables because KMS access was denied. Check the Lambda function's KMS permissions.</p>
--- @param Message [String] <p>Lambda was unable to decrypt the environment variables because KMS access was denied. Check the Lambda function's KMS permissions.</p>
--- @param Type [String] <p>Lambda was unable to decrypt the environment variables because KMS access was denied. Check the Lambda function's KMS permissions.</p>
-function M.KMSAccessDeniedException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.KMSAccessDeniedException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSAccessDeniedException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertKMSAccessDeniedException(t)
+	asserts.AssertKMSAccessDeniedException(t)
 	return t
 end
 
-local EnvironmentResponse_keys = { "Variables" = true, "Error" = true, nil }
+keys.EnvironmentResponse = { ["Variables"] = true, ["Error"] = true, nil }
 
-function M.AssertEnvironmentResponse(struct)
+function asserts.AssertEnvironmentResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnvironmentResponse to be of type 'table'")
-	if struct["Variables"] then M.AssertEnvironmentVariables(struct["Variables"]) end
-	if struct["Error"] then M.AssertEnvironmentError(struct["Error"]) end
+	if struct["Variables"] then asserts.AssertEnvironmentVariables(struct["Variables"]) end
+	if struct["Error"] then asserts.AssertEnvironmentError(struct["Error"]) end
 	for k,_ in pairs(struct) do
-		assert(EnvironmentResponse_keys[k], "EnvironmentResponse contains unknown key " .. tostring(k))
+		assert(keys.EnvironmentResponse[k], "EnvironmentResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnvironmentResponse
 -- <p>The parent object returned that contains your environment's configuration settings or any error information associated with your configuration settings.</p>
--- @param Variables [EnvironmentVariables] <p>The key-value pairs returned that represent your environment's configuration settings or error information.</p>
--- @param Error [EnvironmentError] <p>The parent object returned that contains your environment's configuration settings or any error information associated with your configuration settings.</p>
-function M.EnvironmentResponse(Variables, Error, ...)
+-- @param _Variables [EnvironmentVariables] <p>The key-value pairs returned that represent your environment's configuration settings or error information.</p>
+-- @param _Error [EnvironmentError] 
+function M.EnvironmentResponse(_Variables, _Error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentResponse")
 	local t = { 
-		["Variables"] = Variables,
-		["Error"] = Error,
+		["Variables"] = _Variables,
+		["Error"] = _Error,
 	}
-	M.AssertEnvironmentResponse(t)
+	asserts.AssertEnvironmentResponse(t)
 	return t
 end
 
-local EC2AccessDeniedException_keys = { "Message" = true, "Type" = true, nil }
+keys.EC2AccessDeniedException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertEC2AccessDeniedException(struct)
+function asserts.AssertEC2AccessDeniedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EC2AccessDeniedException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(EC2AccessDeniedException_keys[k], "EC2AccessDeniedException contains unknown key " .. tostring(k))
+		assert(keys.EC2AccessDeniedException[k], "EC2AccessDeniedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EC2AccessDeniedException
 -- <p/>
--- @param Message [String] <p/>
--- @param Type [String] <p/>
-function M.EC2AccessDeniedException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.EC2AccessDeniedException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EC2AccessDeniedException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertEC2AccessDeniedException(t)
+	asserts.AssertEC2AccessDeniedException(t)
 	return t
 end
 
-local InvalidRequestContentException_keys = { "message" = true, "Type" = true, nil }
+keys.InvalidRequestContentException = { ["message"] = true, ["Type"] = true, nil }
 
-function M.AssertInvalidRequestContentException(struct)
+function asserts.AssertInvalidRequestContentException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRequestContentException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidRequestContentException_keys[k], "InvalidRequestContentException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRequestContentException[k], "InvalidRequestContentException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidRequestContentException
 -- <p>The request body could not be parsed as JSON.</p>
--- @param message [String] <p/>
--- @param Type [String] <p/>
-function M.InvalidRequestContentException(message, Type, ...)
+-- @param _message [String] <p/>
+-- @param _Type [String] <p/>
+function M.InvalidRequestContentException(_message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestContentException")
 	local t = { 
-		["message"] = message,
-		["Type"] = Type,
+		["message"] = _message,
+		["Type"] = _Type,
 	}
-	M.AssertInvalidRequestContentException(t)
+	asserts.AssertInvalidRequestContentException(t)
 	return t
 end
 
-local FunctionConfiguration_keys = { "TracingConfig" = true, "Version" = true, "CodeSha256" = true, "FunctionName" = true, "VpcConfig" = true, "KMSKeyArn" = true, "MemorySize" = true, "CodeSize" = true, "FunctionArn" = true, "Environment" = true, "Handler" = true, "Role" = true, "Timeout" = true, "LastModified" = true, "DeadLetterConfig" = true, "Runtime" = true, "Description" = true, nil }
+keys.FunctionConfiguration = { ["TracingConfig"] = true, ["Version"] = true, ["CodeSha256"] = true, ["FunctionName"] = true, ["VpcConfig"] = true, ["KMSKeyArn"] = true, ["MemorySize"] = true, ["CodeSize"] = true, ["FunctionArn"] = true, ["Environment"] = true, ["Handler"] = true, ["Role"] = true, ["Timeout"] = true, ["LastModified"] = true, ["DeadLetterConfig"] = true, ["Runtime"] = true, ["Description"] = true, nil }
 
-function M.AssertFunctionConfiguration(struct)
+function asserts.AssertFunctionConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FunctionConfiguration to be of type 'table'")
-	if struct["TracingConfig"] then M.AssertTracingConfigResponse(struct["TracingConfig"]) end
-	if struct["Version"] then M.AssertVersion(struct["Version"]) end
-	if struct["CodeSha256"] then M.AssertString(struct["CodeSha256"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["VpcConfig"] then M.AssertVpcConfigResponse(struct["VpcConfig"]) end
-	if struct["KMSKeyArn"] then M.AssertKMSKeyArn(struct["KMSKeyArn"]) end
-	if struct["MemorySize"] then M.AssertMemorySize(struct["MemorySize"]) end
-	if struct["CodeSize"] then M.AssertLong(struct["CodeSize"]) end
-	if struct["FunctionArn"] then M.AssertFunctionArn(struct["FunctionArn"]) end
-	if struct["Environment"] then M.AssertEnvironmentResponse(struct["Environment"]) end
-	if struct["Handler"] then M.AssertHandler(struct["Handler"]) end
-	if struct["Role"] then M.AssertRoleArn(struct["Role"]) end
-	if struct["Timeout"] then M.AssertTimeout(struct["Timeout"]) end
-	if struct["LastModified"] then M.AssertTimestamp(struct["LastModified"]) end
-	if struct["DeadLetterConfig"] then M.AssertDeadLetterConfig(struct["DeadLetterConfig"]) end
-	if struct["Runtime"] then M.AssertRuntime(struct["Runtime"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
+	if struct["TracingConfig"] then asserts.AssertTracingConfigResponse(struct["TracingConfig"]) end
+	if struct["Version"] then asserts.AssertVersion(struct["Version"]) end
+	if struct["CodeSha256"] then asserts.AssertString(struct["CodeSha256"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["VpcConfig"] then asserts.AssertVpcConfigResponse(struct["VpcConfig"]) end
+	if struct["KMSKeyArn"] then asserts.AssertKMSKeyArn(struct["KMSKeyArn"]) end
+	if struct["MemorySize"] then asserts.AssertMemorySize(struct["MemorySize"]) end
+	if struct["CodeSize"] then asserts.AssertLong(struct["CodeSize"]) end
+	if struct["FunctionArn"] then asserts.AssertFunctionArn(struct["FunctionArn"]) end
+	if struct["Environment"] then asserts.AssertEnvironmentResponse(struct["Environment"]) end
+	if struct["Handler"] then asserts.AssertHandler(struct["Handler"]) end
+	if struct["Role"] then asserts.AssertRoleArn(struct["Role"]) end
+	if struct["Timeout"] then asserts.AssertTimeout(struct["Timeout"]) end
+	if struct["LastModified"] then asserts.AssertTimestamp(struct["LastModified"]) end
+	if struct["DeadLetterConfig"] then asserts.AssertDeadLetterConfig(struct["DeadLetterConfig"]) end
+	if struct["Runtime"] then asserts.AssertRuntime(struct["Runtime"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(FunctionConfiguration_keys[k], "FunctionConfiguration contains unknown key " .. tostring(k))
+		assert(keys.FunctionConfiguration[k], "FunctionConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionConfiguration
 -- <p>A complex type that describes function metadata.</p>
--- @param TracingConfig [TracingConfigResponse] <p>The parent object that contains your function's tracing settings.</p>
--- @param Version [Version] <p>The version of the Lambda function.</p>
--- @param CodeSha256 [String] <p>It is the SHA256 hash of your function deployment package.</p>
--- @param FunctionName [FunctionName] <p>The name of the function. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param VpcConfig [VpcConfigResponse] <p>VPC configuration associated with your Lambda function.</p>
--- @param KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If empty, it means you are using the AWS Lambda default service key.</p>
--- @param MemorySize [MemorySize] <p>The memory size, in MB, you configured for the function. Must be a multiple of 64 MB.</p>
--- @param CodeSize [Long] <p>The size, in bytes, of the function .zip file you uploaded.</p>
--- @param FunctionArn [FunctionArn] <p>The Amazon Resource Name (ARN) assigned to the function.</p>
--- @param Environment [EnvironmentResponse] <p>The parent object that contains your environment's configuration settings.</p>
--- @param Handler [Handler] <p>The function Lambda calls to begin executing your function.</p>
--- @param Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources.</p>
--- @param Timeout [Timeout] <p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
--- @param LastModified [Timestamp] <p>The time stamp of the last time you updated the function. The time stamp is conveyed as a string complying with ISO-8601 in this way YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more information, see <a href="https://www.w3.org/TR/NOTE-datetime">Date and Time Formats</a>.</p>
--- @param DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
--- @param Runtime [Runtime] <p>The runtime environment for the Lambda function.</p>
--- @param Description [Description] <p>The user-provided description.</p>
-function M.FunctionConfiguration(TracingConfig, Version, CodeSha256, FunctionName, VpcConfig, KMSKeyArn, MemorySize, CodeSize, FunctionArn, Environment, Handler, Role, Timeout, LastModified, DeadLetterConfig, Runtime, Description, ...)
+-- @param _TracingConfig [TracingConfigResponse] <p>The parent object that contains your function's tracing settings.</p>
+-- @param _Version [Version] <p>The version of the Lambda function.</p>
+-- @param _CodeSha256 [String] <p>It is the SHA256 hash of your function deployment package.</p>
+-- @param _FunctionName [FunctionName] <p>The name of the function. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- @param _VpcConfig [VpcConfigResponse] <p>VPC configuration associated with your Lambda function.</p>
+-- @param _KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If empty, it means you are using the AWS Lambda default service key.</p>
+-- @param _MemorySize [MemorySize] <p>The memory size, in MB, you configured for the function. Must be a multiple of 64 MB.</p>
+-- @param _CodeSize [Long] <p>The size, in bytes, of the function .zip file you uploaded.</p>
+-- @param _FunctionArn [FunctionArn] <p>The Amazon Resource Name (ARN) assigned to the function.</p>
+-- @param _Environment [EnvironmentResponse] <p>The parent object that contains your environment's configuration settings.</p>
+-- @param _Handler [Handler] <p>The function Lambda calls to begin executing your function.</p>
+-- @param _Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources.</p>
+-- @param _Timeout [Timeout] <p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
+-- @param _LastModified [Timestamp] <p>The time stamp of the last time you updated the function. The time stamp is conveyed as a string complying with ISO-8601 in this way YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more information, see <a href="https://www.w3.org/TR/NOTE-datetime">Date and Time Formats</a>.</p>
+-- @param _DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
+-- @param _Runtime [Runtime] <p>The runtime environment for the Lambda function.</p>
+-- @param _Description [Description] <p>The user-provided description.</p>
+function M.FunctionConfiguration(_TracingConfig, _Version, _CodeSha256, _FunctionName, _VpcConfig, _KMSKeyArn, _MemorySize, _CodeSize, _FunctionArn, _Environment, _Handler, _Role, _Timeout, _LastModified, _DeadLetterConfig, _Runtime, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FunctionConfiguration")
 	local t = { 
-		["TracingConfig"] = TracingConfig,
-		["Version"] = Version,
-		["CodeSha256"] = CodeSha256,
-		["FunctionName"] = FunctionName,
-		["VpcConfig"] = VpcConfig,
-		["KMSKeyArn"] = KMSKeyArn,
-		["MemorySize"] = MemorySize,
-		["CodeSize"] = CodeSize,
-		["FunctionArn"] = FunctionArn,
-		["Environment"] = Environment,
-		["Handler"] = Handler,
-		["Role"] = Role,
-		["Timeout"] = Timeout,
-		["LastModified"] = LastModified,
-		["DeadLetterConfig"] = DeadLetterConfig,
-		["Runtime"] = Runtime,
-		["Description"] = Description,
+		["TracingConfig"] = _TracingConfig,
+		["Version"] = _Version,
+		["CodeSha256"] = _CodeSha256,
+		["FunctionName"] = _FunctionName,
+		["VpcConfig"] = _VpcConfig,
+		["KMSKeyArn"] = _KMSKeyArn,
+		["MemorySize"] = _MemorySize,
+		["CodeSize"] = _CodeSize,
+		["FunctionArn"] = _FunctionArn,
+		["Environment"] = _Environment,
+		["Handler"] = _Handler,
+		["Role"] = _Role,
+		["Timeout"] = _Timeout,
+		["LastModified"] = _LastModified,
+		["DeadLetterConfig"] = _DeadLetterConfig,
+		["Runtime"] = _Runtime,
+		["Description"] = _Description,
 	}
-	M.AssertFunctionConfiguration(t)
+	asserts.AssertFunctionConfiguration(t)
 	return t
 end
 
-local InvalidSecurityGroupIDException_keys = { "Message" = true, "Type" = true, nil }
+keys.InvalidSecurityGroupIDException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertInvalidSecurityGroupIDException(struct)
+function asserts.AssertInvalidSecurityGroupIDException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSecurityGroupIDException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidSecurityGroupIDException_keys[k], "InvalidSecurityGroupIDException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSecurityGroupIDException[k], "InvalidSecurityGroupIDException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidSecurityGroupIDException
 -- <p>The Security Group ID provided in the Lambda function VPC configuration is invalid.</p>
--- @param Message [String] <p>The Security Group ID provided in the Lambda function VPC configuration is invalid.</p>
--- @param Type [String] <p>The Security Group ID provided in the Lambda function VPC configuration is invalid.</p>
-function M.InvalidSecurityGroupIDException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.InvalidSecurityGroupIDException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSecurityGroupIDException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertInvalidSecurityGroupIDException(t)
+	asserts.AssertInvalidSecurityGroupIDException(t)
 	return t
 end
 
-local InvokeAsyncResponse_keys = { "Status" = true, nil }
+keys.InvokeAsyncResponse = { ["Status"] = true, nil }
 
-function M.AssertInvokeAsyncResponse(struct)
+function asserts.AssertInvokeAsyncResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvokeAsyncResponse to be of type 'table'")
-	if struct["Status"] then M.AssertHttpStatus(struct["Status"]) end
+	if struct["Status"] then asserts.AssertHttpStatus(struct["Status"]) end
 	for k,_ in pairs(struct) do
-		assert(InvokeAsyncResponse_keys[k], "InvokeAsyncResponse contains unknown key " .. tostring(k))
+		assert(keys.InvokeAsyncResponse[k], "InvokeAsyncResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvokeAsyncResponse
 -- <p>Upon success, it returns empty response. Otherwise, throws an exception.</p>
--- @param Status [HttpStatus] <p>It will be 202 upon success.</p>
-function M.InvokeAsyncResponse(Status, ...)
+-- @param _Status [HttpStatus] <p>It will be 202 upon success.</p>
+function M.InvokeAsyncResponse(_Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvokeAsyncResponse")
 	local t = { 
-		["Status"] = Status,
+		["Status"] = _Status,
 	}
-	M.AssertInvokeAsyncResponse(t)
+	asserts.AssertInvokeAsyncResponse(t)
 	return t
 end
 
-local ServiceException_keys = { "Message" = true, "Type" = true, nil }
+keys.ServiceException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertServiceException(struct)
+function asserts.AssertServiceException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ServiceException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(ServiceException_keys[k], "ServiceException contains unknown key " .. tostring(k))
+		assert(keys.ServiceException[k], "ServiceException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ServiceException
 -- <p>The AWS Lambda service encountered an internal error.</p>
--- @param Message [String] <p>The AWS Lambda service encountered an internal error.</p>
--- @param Type [String] <p>The AWS Lambda service encountered an internal error.</p>
-function M.ServiceException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.ServiceException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertServiceException(t)
+	asserts.AssertServiceException(t)
 	return t
 end
 
-local CreateAliasRequest_keys = { "Description" = true, "FunctionVersion" = true, "FunctionName" = true, "Name" = true, nil }
+keys.CreateAliasRequest = { ["Description"] = true, ["FunctionVersion"] = true, ["FunctionName"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateAliasRequest(struct)
+function asserts.AssertCreateAliasRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateAliasRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["FunctionVersion"], "Expected key FunctionVersion to exist in table")
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
-	if struct["FunctionVersion"] then M.AssertVersion(struct["FunctionVersion"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Name"] then M.AssertAlias(struct["Name"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["FunctionVersion"] then asserts.AssertVersion(struct["FunctionVersion"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Name"] then asserts.AssertAlias(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateAliasRequest_keys[k], "CreateAliasRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateAliasRequest[k], "CreateAliasRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateAliasRequest
 --  
--- @param Description [Description] <p>Description of the alias.</p>
--- @param FunctionVersion [Version] <p>Lambda function version for which you are creating the alias.</p>
--- @param FunctionName [FunctionName] <p>Name of the Lambda function for which you want to create an alias. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param Name [Alias] <p>Name for the alias you are creating.</p>
+-- @param _Description [Description] <p>Description of the alias.</p>
+-- @param _FunctionVersion [Version] <p>Lambda function version for which you are creating the alias.</p>
+-- @param _FunctionName [FunctionName] <p>Name of the Lambda function for which you want to create an alias. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- @param _Name [Alias] <p>Name for the alias you are creating.</p>
 -- Required parameter: FunctionName
 -- Required parameter: Name
 -- Required parameter: FunctionVersion
-function M.CreateAliasRequest(Description, FunctionVersion, FunctionName, Name, ...)
+function M.CreateAliasRequest(_Description, _FunctionVersion, _FunctionName, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasRequest")
 	local t = { 
-		["Description"] = Description,
-		["FunctionVersion"] = FunctionVersion,
-		["FunctionName"] = FunctionName,
-		["Name"] = Name,
+		["Description"] = _Description,
+		["FunctionVersion"] = _FunctionVersion,
+		["FunctionName"] = _FunctionName,
+		["Name"] = _Name,
 	}
-	M.AssertCreateAliasRequest(t)
+	asserts.AssertCreateAliasRequest(t)
 	return t
 end
 
-local DeleteEventSourceMappingRequest_keys = { "UUID" = true, nil }
+keys.DeleteEventSourceMappingRequest = { ["UUID"] = true, nil }
 
-function M.AssertDeleteEventSourceMappingRequest(struct)
+function asserts.AssertDeleteEventSourceMappingRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteEventSourceMappingRequest to be of type 'table'")
 	assert(struct["UUID"], "Expected key UUID to exist in table")
-	if struct["UUID"] then M.AssertString(struct["UUID"]) end
+	if struct["UUID"] then asserts.AssertString(struct["UUID"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteEventSourceMappingRequest_keys[k], "DeleteEventSourceMappingRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteEventSourceMappingRequest[k], "DeleteEventSourceMappingRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteEventSourceMappingRequest
 -- <p/>
--- @param UUID [String] <p>The event source mapping ID.</p>
+-- @param _UUID [String] <p>The event source mapping ID.</p>
 -- Required parameter: UUID
-function M.DeleteEventSourceMappingRequest(UUID, ...)
+function M.DeleteEventSourceMappingRequest(_UUID, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSourceMappingRequest")
 	local t = { 
-		["UUID"] = UUID,
+		["UUID"] = _UUID,
 	}
-	M.AssertDeleteEventSourceMappingRequest(t)
+	asserts.AssertDeleteEventSourceMappingRequest(t)
 	return t
 end
 
-local UnsupportedMediaTypeException_keys = { "message" = true, "Type" = true, nil }
+keys.UnsupportedMediaTypeException = { ["message"] = true, ["Type"] = true, nil }
 
-function M.AssertUnsupportedMediaTypeException(struct)
+function asserts.AssertUnsupportedMediaTypeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedMediaTypeException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedMediaTypeException_keys[k], "UnsupportedMediaTypeException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedMediaTypeException[k], "UnsupportedMediaTypeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedMediaTypeException
 -- <p>The content type of the <code>Invoke</code> request body is not JSON.</p>
--- @param message [String] <p>The content type of the <code>Invoke</code> request body is not JSON.</p>
--- @param Type [String] <p>The content type of the <code>Invoke</code> request body is not JSON.</p>
-function M.UnsupportedMediaTypeException(message, Type, ...)
+-- @param _message [String] 
+-- @param _Type [String] 
+function M.UnsupportedMediaTypeException(_message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedMediaTypeException")
 	local t = { 
-		["message"] = message,
-		["Type"] = Type,
+		["message"] = _message,
+		["Type"] = _Type,
 	}
-	M.AssertUnsupportedMediaTypeException(t)
+	asserts.AssertUnsupportedMediaTypeException(t)
 	return t
 end
 
-local UpdateEventSourceMappingRequest_keys = { "BatchSize" = true, "Enabled" = true, "UUID" = true, "FunctionName" = true, nil }
+keys.UpdateEventSourceMappingRequest = { ["BatchSize"] = true, ["Enabled"] = true, ["UUID"] = true, ["FunctionName"] = true, nil }
 
-function M.AssertUpdateEventSourceMappingRequest(struct)
+function asserts.AssertUpdateEventSourceMappingRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateEventSourceMappingRequest to be of type 'table'")
 	assert(struct["UUID"], "Expected key UUID to exist in table")
-	if struct["BatchSize"] then M.AssertBatchSize(struct["BatchSize"]) end
-	if struct["Enabled"] then M.AssertEnabled(struct["Enabled"]) end
-	if struct["UUID"] then M.AssertString(struct["UUID"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
+	if struct["BatchSize"] then asserts.AssertBatchSize(struct["BatchSize"]) end
+	if struct["Enabled"] then asserts.AssertEnabled(struct["Enabled"]) end
+	if struct["UUID"] then asserts.AssertString(struct["UUID"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateEventSourceMappingRequest_keys[k], "UpdateEventSourceMappingRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateEventSourceMappingRequest[k], "UpdateEventSourceMappingRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateEventSourceMappingRequest
 -- <p/>
--- @param BatchSize [BatchSize] <p>The maximum number of stream records that can be sent to your Lambda function for a single invocation.</p>
--- @param Enabled [Enabled] <p>Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.</p>
--- @param UUID [String] <p>The event source mapping identifier.</p>
--- @param FunctionName [FunctionName] <p>The Lambda function to which you want the stream records sent.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p> <p>If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p>
+-- @param _BatchSize [BatchSize] <p>The maximum number of stream records that can be sent to your Lambda function for a single invocation.</p>
+-- @param _Enabled [Enabled] <p>Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.</p>
+-- @param _UUID [String] <p>The event source mapping identifier.</p>
+-- @param _FunctionName [FunctionName] <p>The Lambda function to which you want the stream records sent.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p> <p>If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p>
 -- Required parameter: UUID
-function M.UpdateEventSourceMappingRequest(BatchSize, Enabled, UUID, FunctionName, ...)
+function M.UpdateEventSourceMappingRequest(_BatchSize, _Enabled, _UUID, _FunctionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateEventSourceMappingRequest")
 	local t = { 
-		["BatchSize"] = BatchSize,
-		["Enabled"] = Enabled,
-		["UUID"] = UUID,
-		["FunctionName"] = FunctionName,
+		["BatchSize"] = _BatchSize,
+		["Enabled"] = _Enabled,
+		["UUID"] = _UUID,
+		["FunctionName"] = _FunctionName,
 	}
-	M.AssertUpdateEventSourceMappingRequest(t)
+	asserts.AssertUpdateEventSourceMappingRequest(t)
 	return t
 end
 
-local GetAccountSettingsRequest_keys = { nil }
+keys.GetAccountSettingsRequest = { nil }
 
-function M.AssertGetAccountSettingsRequest(struct)
+function asserts.AssertGetAccountSettingsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetAccountSettingsRequest to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(GetAccountSettingsRequest_keys[k], "GetAccountSettingsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetAccountSettingsRequest[k], "GetAccountSettingsRequest contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1491,1131 +1494,1120 @@ function M.GetAccountSettingsRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountSettingsRequest")
 	local t = { 
 	}
-	M.AssertGetAccountSettingsRequest(t)
+	asserts.AssertGetAccountSettingsRequest(t)
 	return t
 end
 
-local InvalidRuntimeException_keys = { "Message" = true, "Type" = true, nil }
+keys.InvalidRuntimeException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertInvalidRuntimeException(struct)
+function asserts.AssertInvalidRuntimeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRuntimeException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidRuntimeException_keys[k], "InvalidRuntimeException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRuntimeException[k], "InvalidRuntimeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidRuntimeException
 -- <p>The runtime or runtime version specified is not supported.</p>
--- @param Message [String] <p>The runtime or runtime version specified is not supported.</p>
--- @param Type [String] <p>The runtime or runtime version specified is not supported.</p>
-function M.InvalidRuntimeException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.InvalidRuntimeException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRuntimeException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertInvalidRuntimeException(t)
+	asserts.AssertInvalidRuntimeException(t)
 	return t
 end
 
-local GetFunctionResponse_keys = { "Code" = true, "Configuration" = true, "Tags" = true, nil }
+keys.GetFunctionResponse = { ["Code"] = true, ["Configuration"] = true, ["Tags"] = true, nil }
 
-function M.AssertGetFunctionResponse(struct)
+function asserts.AssertGetFunctionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFunctionResponse to be of type 'table'")
-	if struct["Code"] then M.AssertFunctionCodeLocation(struct["Code"]) end
-	if struct["Configuration"] then M.AssertFunctionConfiguration(struct["Configuration"]) end
-	if struct["Tags"] then M.AssertTags(struct["Tags"]) end
+	if struct["Code"] then asserts.AssertFunctionCodeLocation(struct["Code"]) end
+	if struct["Configuration"] then asserts.AssertFunctionConfiguration(struct["Configuration"]) end
+	if struct["Tags"] then asserts.AssertTags(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFunctionResponse_keys[k], "GetFunctionResponse contains unknown key " .. tostring(k))
+		assert(keys.GetFunctionResponse[k], "GetFunctionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFunctionResponse
 -- <p>This response contains the object for the Lambda function location (see <a>FunctionCodeLocation</a>.</p>
--- @param Code [FunctionCodeLocation] <p>This response contains the object for the Lambda function location (see <a>FunctionCodeLocation</a>.</p>
--- @param Configuration [FunctionConfiguration] <p>This response contains the object for the Lambda function location (see <a>FunctionCodeLocation</a>.</p>
--- @param Tags [Tags] <p>Returns the list of tags associated with the function.</p>
-function M.GetFunctionResponse(Code, Configuration, Tags, ...)
+-- @param _Code [FunctionCodeLocation] 
+-- @param _Configuration [FunctionConfiguration] 
+-- @param _Tags [Tags] <p>Returns the list of tags associated with the function.</p>
+function M.GetFunctionResponse(_Code, _Configuration, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionResponse")
 	local t = { 
-		["Code"] = Code,
-		["Configuration"] = Configuration,
-		["Tags"] = Tags,
+		["Code"] = _Code,
+		["Configuration"] = _Configuration,
+		["Tags"] = _Tags,
 	}
-	M.AssertGetFunctionResponse(t)
+	asserts.AssertGetFunctionResponse(t)
 	return t
 end
 
-local FunctionCode_keys = { "S3Bucket" = true, "S3Key" = true, "ZipFile" = true, "S3ObjectVersion" = true, nil }
+keys.FunctionCode = { ["S3Bucket"] = true, ["S3Key"] = true, ["ZipFile"] = true, ["S3ObjectVersion"] = true, nil }
 
-function M.AssertFunctionCode(struct)
+function asserts.AssertFunctionCode(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FunctionCode to be of type 'table'")
-	if struct["S3Bucket"] then M.AssertS3Bucket(struct["S3Bucket"]) end
-	if struct["S3Key"] then M.AssertS3Key(struct["S3Key"]) end
-	if struct["ZipFile"] then M.AssertBlob(struct["ZipFile"]) end
-	if struct["S3ObjectVersion"] then M.AssertS3ObjectVersion(struct["S3ObjectVersion"]) end
+	if struct["S3Bucket"] then asserts.AssertS3Bucket(struct["S3Bucket"]) end
+	if struct["S3Key"] then asserts.AssertS3Key(struct["S3Key"]) end
+	if struct["ZipFile"] then asserts.AssertBlob(struct["ZipFile"]) end
+	if struct["S3ObjectVersion"] then asserts.AssertS3ObjectVersion(struct["S3ObjectVersion"]) end
 	for k,_ in pairs(struct) do
-		assert(FunctionCode_keys[k], "FunctionCode contains unknown key " .. tostring(k))
+		assert(keys.FunctionCode[k], "FunctionCode contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionCode
 -- <p>The code for the Lambda function.</p>
--- @param S3Bucket [S3Bucket] <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS region where you are creating the Lambda function.</p>
--- @param S3Key [S3Key] <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
--- @param ZipFile [Blob] <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
--- @param S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
-function M.FunctionCode(S3Bucket, S3Key, ZipFile, S3ObjectVersion, ...)
+-- @param _S3Bucket [S3Bucket] <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS region where you are creating the Lambda function.</p>
+-- @param _S3Key [S3Key] <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
+-- @param _ZipFile [Blob] <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+-- @param _S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+function M.FunctionCode(_S3Bucket, _S3Key, _ZipFile, _S3ObjectVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FunctionCode")
 	local t = { 
-		["S3Bucket"] = S3Bucket,
-		["S3Key"] = S3Key,
-		["ZipFile"] = ZipFile,
-		["S3ObjectVersion"] = S3ObjectVersion,
+		["S3Bucket"] = _S3Bucket,
+		["S3Key"] = _S3Key,
+		["ZipFile"] = _ZipFile,
+		["S3ObjectVersion"] = _S3ObjectVersion,
 	}
-	M.AssertFunctionCode(t)
+	asserts.AssertFunctionCode(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "Message" = true, "Type" = true, nil }
+keys.ResourceNotFoundException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.</p>
--- @param Message [String] <p>The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.</p>
--- @param Type [String] <p>The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.</p>
-function M.ResourceNotFoundException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.ResourceNotFoundException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local TracingConfigResponse_keys = { "Mode" = true, nil }
+keys.TracingConfigResponse = { ["Mode"] = true, nil }
 
-function M.AssertTracingConfigResponse(struct)
+function asserts.AssertTracingConfigResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TracingConfigResponse to be of type 'table'")
-	if struct["Mode"] then M.AssertTracingMode(struct["Mode"]) end
+	if struct["Mode"] then asserts.AssertTracingMode(struct["Mode"]) end
 	for k,_ in pairs(struct) do
-		assert(TracingConfigResponse_keys[k], "TracingConfigResponse contains unknown key " .. tostring(k))
+		assert(keys.TracingConfigResponse[k], "TracingConfigResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TracingConfigResponse
 -- <p>Parent object of the tracing information associated with your Lambda function.</p>
--- @param Mode [TracingMode] <p>The tracing mode associated with your Lambda function.</p>
-function M.TracingConfigResponse(Mode, ...)
+-- @param _Mode [TracingMode] <p>The tracing mode associated with your Lambda function.</p>
+function M.TracingConfigResponse(_Mode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TracingConfigResponse")
 	local t = { 
-		["Mode"] = Mode,
+		["Mode"] = _Mode,
 	}
-	M.AssertTracingConfigResponse(t)
+	asserts.AssertTracingConfigResponse(t)
 	return t
 end
 
-local FunctionCodeLocation_keys = { "RepositoryType" = true, "Location" = true, nil }
+keys.FunctionCodeLocation = { ["RepositoryType"] = true, ["Location"] = true, nil }
 
-function M.AssertFunctionCodeLocation(struct)
+function asserts.AssertFunctionCodeLocation(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FunctionCodeLocation to be of type 'table'")
-	if struct["RepositoryType"] then M.AssertString(struct["RepositoryType"]) end
-	if struct["Location"] then M.AssertString(struct["Location"]) end
+	if struct["RepositoryType"] then asserts.AssertString(struct["RepositoryType"]) end
+	if struct["Location"] then asserts.AssertString(struct["Location"]) end
 	for k,_ in pairs(struct) do
-		assert(FunctionCodeLocation_keys[k], "FunctionCodeLocation contains unknown key " .. tostring(k))
+		assert(keys.FunctionCodeLocation[k], "FunctionCodeLocation contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FunctionCodeLocation
 -- <p>The object for the Lambda function location.</p>
--- @param RepositoryType [String] <p>The repository from which you can download the function.</p>
--- @param Location [String] <p>The presigned URL you can use to download the function's .zip file that you previously uploaded. The URL is valid for up to 10 minutes.</p>
-function M.FunctionCodeLocation(RepositoryType, Location, ...)
+-- @param _RepositoryType [String] <p>The repository from which you can download the function.</p>
+-- @param _Location [String] <p>The presigned URL you can use to download the function's .zip file that you previously uploaded. The URL is valid for up to 10 minutes.</p>
+function M.FunctionCodeLocation(_RepositoryType, _Location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FunctionCodeLocation")
 	local t = { 
-		["RepositoryType"] = RepositoryType,
-		["Location"] = Location,
+		["RepositoryType"] = _RepositoryType,
+		["Location"] = _Location,
 	}
-	M.AssertFunctionCodeLocation(t)
+	asserts.AssertFunctionCodeLocation(t)
 	return t
 end
 
-local AccountLimit_keys = { "CodeSizeUnzipped" = true, "ConcurrentExecutions" = true, "CodeSizeZipped" = true, "TotalCodeSize" = true, nil }
+keys.AccountLimit = { ["CodeSizeUnzipped"] = true, ["ConcurrentExecutions"] = true, ["CodeSizeZipped"] = true, ["TotalCodeSize"] = true, nil }
 
-function M.AssertAccountLimit(struct)
+function asserts.AssertAccountLimit(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccountLimit to be of type 'table'")
-	if struct["CodeSizeUnzipped"] then M.AssertLong(struct["CodeSizeUnzipped"]) end
-	if struct["ConcurrentExecutions"] then M.AssertInteger(struct["ConcurrentExecutions"]) end
-	if struct["CodeSizeZipped"] then M.AssertLong(struct["CodeSizeZipped"]) end
-	if struct["TotalCodeSize"] then M.AssertLong(struct["TotalCodeSize"]) end
+	if struct["CodeSizeUnzipped"] then asserts.AssertLong(struct["CodeSizeUnzipped"]) end
+	if struct["ConcurrentExecutions"] then asserts.AssertInteger(struct["ConcurrentExecutions"]) end
+	if struct["CodeSizeZipped"] then asserts.AssertLong(struct["CodeSizeZipped"]) end
+	if struct["TotalCodeSize"] then asserts.AssertLong(struct["TotalCodeSize"]) end
 	for k,_ in pairs(struct) do
-		assert(AccountLimit_keys[k], "AccountLimit contains unknown key " .. tostring(k))
+		assert(keys.AccountLimit[k], "AccountLimit contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AccountLimit
 -- <p>Provides limits of code size and concurrency associated with the current account and region.</p>
--- @param CodeSizeUnzipped [Long] <p>Size, in bytes, of code/dependencies that you can zip into a deployment package (uncompressed zip/jar size) for uploading. The default limit is 250 MB.</p>
--- @param ConcurrentExecutions [Integer] <p>Number of simultaneous executions of your function per region. For more information or to request a limit increase for concurrent executions, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Lambda Function Concurrent Executions</a>. The default limit is 100.</p>
--- @param CodeSizeZipped [Long] <p>Size, in bytes, of a single zipped code/dependencies package you can upload for your Lambda function(.zip/.jar file). Try using Amazon S3 for uploading larger files. Default limit is 50 MB.</p>
--- @param TotalCodeSize [Long] <p>Maximum size, in bytes, of a code package you can upload per region. The default size is 75 GB. </p>
-function M.AccountLimit(CodeSizeUnzipped, ConcurrentExecutions, CodeSizeZipped, TotalCodeSize, ...)
+-- @param _CodeSizeUnzipped [Long] <p>Size, in bytes, of code/dependencies that you can zip into a deployment package (uncompressed zip/jar size) for uploading. The default limit is 250 MB.</p>
+-- @param _ConcurrentExecutions [Integer] <p>Number of simultaneous executions of your function per region. For more information or to request a limit increase for concurrent executions, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Lambda Function Concurrent Executions</a>. The default limit is 100.</p>
+-- @param _CodeSizeZipped [Long] <p>Size, in bytes, of a single zipped code/dependencies package you can upload for your Lambda function(.zip/.jar file). Try using Amazon S3 for uploading larger files. Default limit is 50 MB.</p>
+-- @param _TotalCodeSize [Long] <p>Maximum size, in bytes, of a code package you can upload per region. The default size is 75 GB. </p>
+function M.AccountLimit(_CodeSizeUnzipped, _ConcurrentExecutions, _CodeSizeZipped, _TotalCodeSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountLimit")
 	local t = { 
-		["CodeSizeUnzipped"] = CodeSizeUnzipped,
-		["ConcurrentExecutions"] = ConcurrentExecutions,
-		["CodeSizeZipped"] = CodeSizeZipped,
-		["TotalCodeSize"] = TotalCodeSize,
+		["CodeSizeUnzipped"] = _CodeSizeUnzipped,
+		["ConcurrentExecutions"] = _ConcurrentExecutions,
+		["CodeSizeZipped"] = _CodeSizeZipped,
+		["TotalCodeSize"] = _TotalCodeSize,
 	}
-	M.AssertAccountLimit(t)
+	asserts.AssertAccountLimit(t)
 	return t
 end
 
-local EventSourceMappingConfiguration_keys = { "UUID" = true, "StateTransitionReason" = true, "LastModified" = true, "BatchSize" = true, "State" = true, "FunctionArn" = true, "EventSourceArn" = true, "LastProcessingResult" = true, nil }
+keys.EventSourceMappingConfiguration = { ["UUID"] = true, ["StateTransitionReason"] = true, ["LastModified"] = true, ["BatchSize"] = true, ["State"] = true, ["FunctionArn"] = true, ["EventSourceArn"] = true, ["LastProcessingResult"] = true, nil }
 
-function M.AssertEventSourceMappingConfiguration(struct)
+function asserts.AssertEventSourceMappingConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EventSourceMappingConfiguration to be of type 'table'")
-	if struct["UUID"] then M.AssertString(struct["UUID"]) end
-	if struct["StateTransitionReason"] then M.AssertString(struct["StateTransitionReason"]) end
-	if struct["LastModified"] then M.AssertDate(struct["LastModified"]) end
-	if struct["BatchSize"] then M.AssertBatchSize(struct["BatchSize"]) end
-	if struct["State"] then M.AssertString(struct["State"]) end
-	if struct["FunctionArn"] then M.AssertFunctionArn(struct["FunctionArn"]) end
-	if struct["EventSourceArn"] then M.AssertArn(struct["EventSourceArn"]) end
-	if struct["LastProcessingResult"] then M.AssertString(struct["LastProcessingResult"]) end
+	if struct["UUID"] then asserts.AssertString(struct["UUID"]) end
+	if struct["StateTransitionReason"] then asserts.AssertString(struct["StateTransitionReason"]) end
+	if struct["LastModified"] then asserts.AssertDate(struct["LastModified"]) end
+	if struct["BatchSize"] then asserts.AssertBatchSize(struct["BatchSize"]) end
+	if struct["State"] then asserts.AssertString(struct["State"]) end
+	if struct["FunctionArn"] then asserts.AssertFunctionArn(struct["FunctionArn"]) end
+	if struct["EventSourceArn"] then asserts.AssertArn(struct["EventSourceArn"]) end
+	if struct["LastProcessingResult"] then asserts.AssertString(struct["LastProcessingResult"]) end
 	for k,_ in pairs(struct) do
-		assert(EventSourceMappingConfiguration_keys[k], "EventSourceMappingConfiguration contains unknown key " .. tostring(k))
+		assert(keys.EventSourceMappingConfiguration[k], "EventSourceMappingConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EventSourceMappingConfiguration
 -- <p>Describes mapping between an Amazon Kinesis stream and a Lambda function.</p>
--- @param UUID [String] <p>The AWS Lambda assigned opaque identifier for the mapping.</p>
--- @param StateTransitionReason [String] <p>The reason the event source mapping is in its current state. It is either user-requested or an AWS Lambda-initiated state transition.</p>
--- @param LastModified [Date] <p>The UTC time string indicating the last time the event mapping was updated.</p>
--- @param BatchSize [BatchSize] <p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records.</p>
--- @param State [String] <p>The state of the event source mapping. It can be <code>Creating</code>, <code>Enabled</code>, <code>Disabled</code>, <code>Enabling</code>, <code>Disabling</code>, <code>Updating</code>, or <code>Deleting</code>.</p>
--- @param FunctionArn [FunctionArn] <p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p>
--- @param EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the source of events.</p>
--- @param LastProcessingResult [String] <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
-function M.EventSourceMappingConfiguration(UUID, StateTransitionReason, LastModified, BatchSize, State, FunctionArn, EventSourceArn, LastProcessingResult, ...)
+-- @param _UUID [String] <p>The AWS Lambda assigned opaque identifier for the mapping.</p>
+-- @param _StateTransitionReason [String] <p>The reason the event source mapping is in its current state. It is either user-requested or an AWS Lambda-initiated state transition.</p>
+-- @param _LastModified [Date] <p>The UTC time string indicating the last time the event mapping was updated.</p>
+-- @param _BatchSize [BatchSize] <p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records.</p>
+-- @param _State [String] <p>The state of the event source mapping. It can be <code>Creating</code>, <code>Enabled</code>, <code>Disabled</code>, <code>Enabling</code>, <code>Disabling</code>, <code>Updating</code>, or <code>Deleting</code>.</p>
+-- @param _FunctionArn [FunctionArn] <p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p>
+-- @param _EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the source of events.</p>
+-- @param _LastProcessingResult [String] <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
+function M.EventSourceMappingConfiguration(_UUID, _StateTransitionReason, _LastModified, _BatchSize, _State, _FunctionArn, _EventSourceArn, _LastProcessingResult, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSourceMappingConfiguration")
 	local t = { 
-		["UUID"] = UUID,
-		["StateTransitionReason"] = StateTransitionReason,
-		["LastModified"] = LastModified,
-		["BatchSize"] = BatchSize,
-		["State"] = State,
-		["FunctionArn"] = FunctionArn,
-		["EventSourceArn"] = EventSourceArn,
-		["LastProcessingResult"] = LastProcessingResult,
+		["UUID"] = _UUID,
+		["StateTransitionReason"] = _StateTransitionReason,
+		["LastModified"] = _LastModified,
+		["BatchSize"] = _BatchSize,
+		["State"] = _State,
+		["FunctionArn"] = _FunctionArn,
+		["EventSourceArn"] = _EventSourceArn,
+		["LastProcessingResult"] = _LastProcessingResult,
 	}
-	M.AssertEventSourceMappingConfiguration(t)
+	asserts.AssertEventSourceMappingConfiguration(t)
 	return t
 end
 
-local EnvironmentError_keys = { "ErrorCode" = true, "Message" = true, nil }
+keys.EnvironmentError = { ["ErrorCode"] = true, ["Message"] = true, nil }
 
-function M.AssertEnvironmentError(struct)
+function asserts.AssertEnvironmentError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EnvironmentError to be of type 'table'")
-	if struct["ErrorCode"] then M.AssertString(struct["ErrorCode"]) end
-	if struct["Message"] then M.AssertSensitiveString(struct["Message"]) end
+	if struct["ErrorCode"] then asserts.AssertString(struct["ErrorCode"]) end
+	if struct["Message"] then asserts.AssertSensitiveString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(EnvironmentError_keys[k], "EnvironmentError contains unknown key " .. tostring(k))
+		assert(keys.EnvironmentError[k], "EnvironmentError contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EnvironmentError
 -- <p>The parent object that contains error information associated with your configuration settings.</p>
--- @param ErrorCode [String] <p>The error code returned by the environment error object.</p>
--- @param Message [SensitiveString] <p>The message returned by the environment error object.</p>
-function M.EnvironmentError(ErrorCode, Message, ...)
+-- @param _ErrorCode [String] <p>The error code returned by the environment error object.</p>
+-- @param _Message [SensitiveString] <p>The message returned by the environment error object.</p>
+function M.EnvironmentError(_ErrorCode, _Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentError")
 	local t = { 
-		["ErrorCode"] = ErrorCode,
-		["Message"] = Message,
+		["ErrorCode"] = _ErrorCode,
+		["Message"] = _Message,
 	}
-	M.AssertEnvironmentError(t)
+	asserts.AssertEnvironmentError(t)
 	return t
 end
 
-local GetPolicyRequest_keys = { "FunctionName" = true, "Qualifier" = true, nil }
+keys.GetPolicyRequest = { ["FunctionName"] = true, ["Qualifier"] = true, nil }
 
-function M.AssertGetPolicyRequest(struct)
+function asserts.AssertGetPolicyRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetPolicyRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Qualifier"] then M.AssertQualifier(struct["Qualifier"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Qualifier"] then asserts.AssertQualifier(struct["Qualifier"]) end
 	for k,_ in pairs(struct) do
-		assert(GetPolicyRequest_keys[k], "GetPolicyRequest contains unknown key " .. tostring(k))
+		assert(keys.GetPolicyRequest[k], "GetPolicyRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetPolicyRequest
 -- <p/>
--- @param FunctionName [FunctionName] <p>Function name whose resource policy you want to retrieve.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param Qualifier [Qualifier] <p>You can specify this optional query parameter to specify a function version or an alias name in which case this API will return all permissions associated with the specific qualified ARN. If you don't provide this parameter, the API will return permissions that apply to the unqualified function ARN.</p>
+-- @param _FunctionName [FunctionName] <p>Function name whose resource policy you want to retrieve.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _Qualifier [Qualifier] <p>You can specify this optional query parameter to specify a function version or an alias name in which case this API will return all permissions associated with the specific qualified ARN. If you don't provide this parameter, the API will return permissions that apply to the unqualified function ARN.</p>
 -- Required parameter: FunctionName
-function M.GetPolicyRequest(FunctionName, Qualifier, ...)
+function M.GetPolicyRequest(_FunctionName, _Qualifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["Qualifier"] = Qualifier,
+		["FunctionName"] = _FunctionName,
+		["Qualifier"] = _Qualifier,
 	}
-	M.AssertGetPolicyRequest(t)
+	asserts.AssertGetPolicyRequest(t)
 	return t
 end
 
-local SubnetIPAddressLimitReachedException_keys = { "Message" = true, "Type" = true, nil }
+keys.SubnetIPAddressLimitReachedException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertSubnetIPAddressLimitReachedException(struct)
+function asserts.AssertSubnetIPAddressLimitReachedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubnetIPAddressLimitReachedException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(SubnetIPAddressLimitReachedException_keys[k], "SubnetIPAddressLimitReachedException contains unknown key " .. tostring(k))
+		assert(keys.SubnetIPAddressLimitReachedException[k], "SubnetIPAddressLimitReachedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubnetIPAddressLimitReachedException
 -- <p>AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.</p>
--- @param Message [String] <p>AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.</p>
--- @param Type [String] <p>AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.</p>
-function M.SubnetIPAddressLimitReachedException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.SubnetIPAddressLimitReachedException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetIPAddressLimitReachedException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertSubnetIPAddressLimitReachedException(t)
+	asserts.AssertSubnetIPAddressLimitReachedException(t)
 	return t
 end
 
-local GetEventSourceMappingRequest_keys = { "UUID" = true, nil }
+keys.GetEventSourceMappingRequest = { ["UUID"] = true, nil }
 
-function M.AssertGetEventSourceMappingRequest(struct)
+function asserts.AssertGetEventSourceMappingRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetEventSourceMappingRequest to be of type 'table'")
 	assert(struct["UUID"], "Expected key UUID to exist in table")
-	if struct["UUID"] then M.AssertString(struct["UUID"]) end
+	if struct["UUID"] then asserts.AssertString(struct["UUID"]) end
 	for k,_ in pairs(struct) do
-		assert(GetEventSourceMappingRequest_keys[k], "GetEventSourceMappingRequest contains unknown key " .. tostring(k))
+		assert(keys.GetEventSourceMappingRequest[k], "GetEventSourceMappingRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetEventSourceMappingRequest
 -- <p/>
--- @param UUID [String] <p>The AWS Lambda assigned ID of the event source mapping.</p>
+-- @param _UUID [String] <p>The AWS Lambda assigned ID of the event source mapping.</p>
 -- Required parameter: UUID
-function M.GetEventSourceMappingRequest(UUID, ...)
+function M.GetEventSourceMappingRequest(_UUID, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEventSourceMappingRequest")
 	local t = { 
-		["UUID"] = UUID,
+		["UUID"] = _UUID,
 	}
-	M.AssertGetEventSourceMappingRequest(t)
+	asserts.AssertGetEventSourceMappingRequest(t)
 	return t
 end
 
-local EC2ThrottledException_keys = { "Message" = true, "Type" = true, nil }
+keys.EC2ThrottledException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertEC2ThrottledException(struct)
+function asserts.AssertEC2ThrottledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EC2ThrottledException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(EC2ThrottledException_keys[k], "EC2ThrottledException contains unknown key " .. tostring(k))
+		assert(keys.EC2ThrottledException[k], "EC2ThrottledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EC2ThrottledException
 -- <p>AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.</p>
--- @param Message [String] <p>AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.</p>
--- @param Type [String] <p>AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.</p>
-function M.EC2ThrottledException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.EC2ThrottledException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EC2ThrottledException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertEC2ThrottledException(t)
+	asserts.AssertEC2ThrottledException(t)
 	return t
 end
 
-local AddPermissionResponse_keys = { "Statement" = true, nil }
+keys.AddPermissionResponse = { ["Statement"] = true, nil }
 
-function M.AssertAddPermissionResponse(struct)
+function asserts.AssertAddPermissionResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddPermissionResponse to be of type 'table'")
-	if struct["Statement"] then M.AssertString(struct["Statement"]) end
+	if struct["Statement"] then asserts.AssertString(struct["Statement"]) end
 	for k,_ in pairs(struct) do
-		assert(AddPermissionResponse_keys[k], "AddPermissionResponse contains unknown key " .. tostring(k))
+		assert(keys.AddPermissionResponse[k], "AddPermissionResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddPermissionResponse
 -- <p/>
--- @param Statement [String] <p>The permission statement you specified in the request. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
-function M.AddPermissionResponse(Statement, ...)
+-- @param _Statement [String] <p>The permission statement you specified in the request. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
+function M.AddPermissionResponse(_Statement, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddPermissionResponse")
 	local t = { 
-		["Statement"] = Statement,
+		["Statement"] = _Statement,
 	}
-	M.AssertAddPermissionResponse(t)
+	asserts.AssertAddPermissionResponse(t)
 	return t
 end
 
-local GetFunctionConfigurationRequest_keys = { "FunctionName" = true, "Qualifier" = true, nil }
+keys.GetFunctionConfigurationRequest = { ["FunctionName"] = true, ["Qualifier"] = true, nil }
 
-function M.AssertGetFunctionConfigurationRequest(struct)
+function asserts.AssertGetFunctionConfigurationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetFunctionConfigurationRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Qualifier"] then M.AssertQualifier(struct["Qualifier"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Qualifier"] then asserts.AssertQualifier(struct["Qualifier"]) end
 	for k,_ in pairs(struct) do
-		assert(GetFunctionConfigurationRequest_keys[k], "GetFunctionConfigurationRequest contains unknown key " .. tostring(k))
+		assert(keys.GetFunctionConfigurationRequest[k], "GetFunctionConfigurationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetFunctionConfigurationRequest
 -- <p/>
--- @param FunctionName [FunctionName] <p>The name of the Lambda function for which you want to retrieve the configuration information.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param Qualifier [Qualifier] <p>Using this optional parameter you can specify a function version or an alias name. If you specify function version, the API uses qualified function ARN and returns information about the specific function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points.</p> <p>If you don't specify this parameter, the API uses unqualified function ARN, and returns information about the <code>$LATEST</code> function version.</p>
+-- @param _FunctionName [FunctionName] <p>The name of the Lambda function for which you want to retrieve the configuration information.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _Qualifier [Qualifier] <p>Using this optional parameter you can specify a function version or an alias name. If you specify function version, the API uses qualified function ARN and returns information about the specific function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points.</p> <p>If you don't specify this parameter, the API uses unqualified function ARN, and returns information about the <code>$LATEST</code> function version.</p>
 -- Required parameter: FunctionName
-function M.GetFunctionConfigurationRequest(FunctionName, Qualifier, ...)
+function M.GetFunctionConfigurationRequest(_FunctionName, _Qualifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionConfigurationRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["Qualifier"] = Qualifier,
+		["FunctionName"] = _FunctionName,
+		["Qualifier"] = _Qualifier,
 	}
-	M.AssertGetFunctionConfigurationRequest(t)
+	asserts.AssertGetFunctionConfigurationRequest(t)
 	return t
 end
 
-local ListFunctionsResponse_keys = { "Functions" = true, "NextMarker" = true, nil }
+keys.ListFunctionsResponse = { ["Functions"] = true, ["NextMarker"] = true, nil }
 
-function M.AssertListFunctionsResponse(struct)
+function asserts.AssertListFunctionsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListFunctionsResponse to be of type 'table'")
-	if struct["Functions"] then M.AssertFunctionList(struct["Functions"]) end
-	if struct["NextMarker"] then M.AssertString(struct["NextMarker"]) end
+	if struct["Functions"] then asserts.AssertFunctionList(struct["Functions"]) end
+	if struct["NextMarker"] then asserts.AssertString(struct["NextMarker"]) end
 	for k,_ in pairs(struct) do
-		assert(ListFunctionsResponse_keys[k], "ListFunctionsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListFunctionsResponse[k], "ListFunctionsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListFunctionsResponse
 -- <p>Contains a list of AWS Lambda function configurations (see <a>FunctionConfiguration</a>.</p>
--- @param Functions [FunctionList] <p>A list of Lambda functions.</p>
--- @param NextMarker [String] <p>A string, present if there are more functions.</p>
-function M.ListFunctionsResponse(Functions, NextMarker, ...)
+-- @param _Functions [FunctionList] <p>A list of Lambda functions.</p>
+-- @param _NextMarker [String] <p>A string, present if there are more functions.</p>
+function M.ListFunctionsResponse(_Functions, _NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionsResponse")
 	local t = { 
-		["Functions"] = Functions,
-		["NextMarker"] = NextMarker,
+		["Functions"] = _Functions,
+		["NextMarker"] = _NextMarker,
 	}
-	M.AssertListFunctionsResponse(t)
+	asserts.AssertListFunctionsResponse(t)
 	return t
 end
 
-local InvalidSubnetIDException_keys = { "Message" = true, "Type" = true, nil }
+keys.InvalidSubnetIDException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertInvalidSubnetIDException(struct)
+function asserts.AssertInvalidSubnetIDException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidSubnetIDException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidSubnetIDException_keys[k], "InvalidSubnetIDException contains unknown key " .. tostring(k))
+		assert(keys.InvalidSubnetIDException[k], "InvalidSubnetIDException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidSubnetIDException
 -- <p>The Subnet ID provided in the Lambda function VPC configuration is invalid.</p>
--- @param Message [String] <p>The Subnet ID provided in the Lambda function VPC configuration is invalid.</p>
--- @param Type [String] <p>The Subnet ID provided in the Lambda function VPC configuration is invalid.</p>
-function M.InvalidSubnetIDException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.InvalidSubnetIDException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnetIDException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertInvalidSubnetIDException(t)
+	asserts.AssertInvalidSubnetIDException(t)
 	return t
 end
 
-local GetPolicyResponse_keys = { "Policy" = true, nil }
+keys.GetPolicyResponse = { ["Policy"] = true, nil }
 
-function M.AssertGetPolicyResponse(struct)
+function asserts.AssertGetPolicyResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetPolicyResponse to be of type 'table'")
-	if struct["Policy"] then M.AssertString(struct["Policy"]) end
+	if struct["Policy"] then asserts.AssertString(struct["Policy"]) end
 	for k,_ in pairs(struct) do
-		assert(GetPolicyResponse_keys[k], "GetPolicyResponse contains unknown key " .. tostring(k))
+		assert(keys.GetPolicyResponse[k], "GetPolicyResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetPolicyResponse
 -- <p/>
--- @param Policy [String] <p>The resource policy associated with the specified function. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
-function M.GetPolicyResponse(Policy, ...)
+-- @param _Policy [String] <p>The resource policy associated with the specified function. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
+function M.GetPolicyResponse(_Policy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyResponse")
 	local t = { 
-		["Policy"] = Policy,
+		["Policy"] = _Policy,
 	}
-	M.AssertGetPolicyResponse(t)
+	asserts.AssertGetPolicyResponse(t)
 	return t
 end
 
-local ListAliasesRequest_keys = { "Marker" = true, "FunctionVersion" = true, "FunctionName" = true, "MaxItems" = true, nil }
+keys.ListAliasesRequest = { ["Marker"] = true, ["FunctionVersion"] = true, ["FunctionName"] = true, ["MaxItems"] = true, nil }
 
-function M.AssertListAliasesRequest(struct)
+function asserts.AssertListAliasesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAliasesRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
-	if struct["Marker"] then M.AssertString(struct["Marker"]) end
-	if struct["FunctionVersion"] then M.AssertVersion(struct["FunctionVersion"]) end
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["MaxItems"] then M.AssertMaxListItems(struct["MaxItems"]) end
+	if struct["Marker"] then asserts.AssertString(struct["Marker"]) end
+	if struct["FunctionVersion"] then asserts.AssertVersion(struct["FunctionVersion"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["MaxItems"] then asserts.AssertMaxListItems(struct["MaxItems"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAliasesRequest_keys[k], "ListAliasesRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAliasesRequest[k], "ListAliasesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAliasesRequest
 --  
--- @param Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListAliases</code> operation. If present, indicates where to continue the listing.</p>
--- @param FunctionVersion [Version] <p>If you specify this optional parameter, the API returns only the aliases that are pointing to the specific Lambda function version, otherwise the API returns all of the aliases created for the Lambda function.</p>
--- @param FunctionName [FunctionName] <p>Lambda function name for which the alias is created. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of aliases to return in response. This parameter value must be greater than 0.</p>
+-- @param _Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListAliases</code> operation. If present, indicates where to continue the listing.</p>
+-- @param _FunctionVersion [Version] <p>If you specify this optional parameter, the API returns only the aliases that are pointing to the specific Lambda function version, otherwise the API returns all of the aliases created for the Lambda function.</p>
+-- @param _FunctionName [FunctionName] <p>Lambda function name for which the alias is created. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- @param _MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of aliases to return in response. This parameter value must be greater than 0.</p>
 -- Required parameter: FunctionName
-function M.ListAliasesRequest(Marker, FunctionVersion, FunctionName, MaxItems, ...)
+function M.ListAliasesRequest(_Marker, _FunctionVersion, _FunctionName, _MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesRequest")
 	local t = { 
-		["Marker"] = Marker,
-		["FunctionVersion"] = FunctionVersion,
-		["FunctionName"] = FunctionName,
-		["MaxItems"] = MaxItems,
+		["Marker"] = _Marker,
+		["FunctionVersion"] = _FunctionVersion,
+		["FunctionName"] = _FunctionName,
+		["MaxItems"] = _MaxItems,
 	}
-	M.AssertListAliasesRequest(t)
+	asserts.AssertListAliasesRequest(t)
 	return t
 end
 
-local RequestTooLargeException_keys = { "message" = true, "Type" = true, nil }
+keys.RequestTooLargeException = { ["message"] = true, ["Type"] = true, nil }
 
-function M.AssertRequestTooLargeException(struct)
+function asserts.AssertRequestTooLargeException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RequestTooLargeException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(RequestTooLargeException_keys[k], "RequestTooLargeException contains unknown key " .. tostring(k))
+		assert(keys.RequestTooLargeException[k], "RequestTooLargeException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RequestTooLargeException
 -- <p>The request payload exceeded the <code>Invoke</code> request body JSON input limit. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>. </p>
--- @param message [String] <p>The request payload exceeded the <code>Invoke</code> request body JSON input limit. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>. </p>
--- @param Type [String] <p>The request payload exceeded the <code>Invoke</code> request body JSON input limit. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>. </p>
-function M.RequestTooLargeException(message, Type, ...)
+-- @param _message [String] 
+-- @param _Type [String] 
+function M.RequestTooLargeException(_message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestTooLargeException")
 	local t = { 
-		["message"] = message,
-		["Type"] = Type,
+		["message"] = _message,
+		["Type"] = _Type,
 	}
-	M.AssertRequestTooLargeException(t)
+	asserts.AssertRequestTooLargeException(t)
 	return t
 end
 
-local ListEventSourceMappingsResponse_keys = { "NextMarker" = true, "EventSourceMappings" = true, nil }
+keys.ListEventSourceMappingsResponse = { ["NextMarker"] = true, ["EventSourceMappings"] = true, nil }
 
-function M.AssertListEventSourceMappingsResponse(struct)
+function asserts.AssertListEventSourceMappingsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListEventSourceMappingsResponse to be of type 'table'")
-	if struct["NextMarker"] then M.AssertString(struct["NextMarker"]) end
-	if struct["EventSourceMappings"] then M.AssertEventSourceMappingsList(struct["EventSourceMappings"]) end
+	if struct["NextMarker"] then asserts.AssertString(struct["NextMarker"]) end
+	if struct["EventSourceMappings"] then asserts.AssertEventSourceMappingsList(struct["EventSourceMappings"]) end
 	for k,_ in pairs(struct) do
-		assert(ListEventSourceMappingsResponse_keys[k], "ListEventSourceMappingsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListEventSourceMappingsResponse[k], "ListEventSourceMappingsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListEventSourceMappingsResponse
 -- <p>Contains a list of event sources (see <a>EventSourceMappingConfiguration</a>)</p>
--- @param NextMarker [String] <p>A string, present if there are more event source mappings.</p>
--- @param EventSourceMappings [EventSourceMappingsList] <p>An array of <code>EventSourceMappingConfiguration</code> objects.</p>
-function M.ListEventSourceMappingsResponse(NextMarker, EventSourceMappings, ...)
+-- @param _NextMarker [String] <p>A string, present if there are more event source mappings.</p>
+-- @param _EventSourceMappings [EventSourceMappingsList] <p>An array of <code>EventSourceMappingConfiguration</code> objects.</p>
+function M.ListEventSourceMappingsResponse(_NextMarker, _EventSourceMappings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSourceMappingsResponse")
 	local t = { 
-		["NextMarker"] = NextMarker,
-		["EventSourceMappings"] = EventSourceMappings,
+		["NextMarker"] = _NextMarker,
+		["EventSourceMappings"] = _EventSourceMappings,
 	}
-	M.AssertListEventSourceMappingsResponse(t)
+	asserts.AssertListEventSourceMappingsResponse(t)
 	return t
 end
 
-local DeadLetterConfig_keys = { "TargetArn" = true, nil }
+keys.DeadLetterConfig = { ["TargetArn"] = true, nil }
 
-function M.AssertDeadLetterConfig(struct)
+function asserts.AssertDeadLetterConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeadLetterConfig to be of type 'table'")
-	if struct["TargetArn"] then M.AssertResourceArn(struct["TargetArn"]) end
+	if struct["TargetArn"] then asserts.AssertResourceArn(struct["TargetArn"]) end
 	for k,_ in pairs(struct) do
-		assert(DeadLetterConfig_keys[k], "DeadLetterConfig contains unknown key " .. tostring(k))
+		assert(keys.DeadLetterConfig[k], "DeadLetterConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeadLetterConfig
 -- <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
--- @param TargetArn [ResourceArn] <p>The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic you specify as your Dead Letter Queue (DLQ).</p>
-function M.DeadLetterConfig(TargetArn, ...)
+-- @param _TargetArn [ResourceArn] <p>The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic you specify as your Dead Letter Queue (DLQ).</p>
+function M.DeadLetterConfig(_TargetArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeadLetterConfig")
 	local t = { 
-		["TargetArn"] = TargetArn,
+		["TargetArn"] = _TargetArn,
 	}
-	M.AssertDeadLetterConfig(t)
+	asserts.AssertDeadLetterConfig(t)
 	return t
 end
 
-local AddPermissionRequest_keys = { "FunctionName" = true, "Qualifier" = true, "StatementId" = true, "Action" = true, "SourceAccount" = true, "SourceArn" = true, "EventSourceToken" = true, "Principal" = true, nil }
+keys.AddPermissionRequest = { ["FunctionName"] = true, ["Qualifier"] = true, ["StatementId"] = true, ["Action"] = true, ["SourceAccount"] = true, ["SourceArn"] = true, ["EventSourceToken"] = true, ["Principal"] = true, nil }
 
-function M.AssertAddPermissionRequest(struct)
+function asserts.AssertAddPermissionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddPermissionRequest to be of type 'table'")
 	assert(struct["FunctionName"], "Expected key FunctionName to exist in table")
 	assert(struct["StatementId"], "Expected key StatementId to exist in table")
 	assert(struct["Action"], "Expected key Action to exist in table")
 	assert(struct["Principal"], "Expected key Principal to exist in table")
-	if struct["FunctionName"] then M.AssertFunctionName(struct["FunctionName"]) end
-	if struct["Qualifier"] then M.AssertQualifier(struct["Qualifier"]) end
-	if struct["StatementId"] then M.AssertStatementId(struct["StatementId"]) end
-	if struct["Action"] then M.AssertAction(struct["Action"]) end
-	if struct["SourceAccount"] then M.AssertSourceOwner(struct["SourceAccount"]) end
-	if struct["SourceArn"] then M.AssertArn(struct["SourceArn"]) end
-	if struct["EventSourceToken"] then M.AssertEventSourceToken(struct["EventSourceToken"]) end
-	if struct["Principal"] then M.AssertPrincipal(struct["Principal"]) end
+	if struct["FunctionName"] then asserts.AssertFunctionName(struct["FunctionName"]) end
+	if struct["Qualifier"] then asserts.AssertQualifier(struct["Qualifier"]) end
+	if struct["StatementId"] then asserts.AssertStatementId(struct["StatementId"]) end
+	if struct["Action"] then asserts.AssertAction(struct["Action"]) end
+	if struct["SourceAccount"] then asserts.AssertSourceOwner(struct["SourceAccount"]) end
+	if struct["SourceArn"] then asserts.AssertArn(struct["SourceArn"]) end
+	if struct["EventSourceToken"] then asserts.AssertEventSourceToken(struct["EventSourceToken"]) end
+	if struct["Principal"] then asserts.AssertPrincipal(struct["Principal"]) end
 	for k,_ in pairs(struct) do
-		assert(AddPermissionRequest_keys[k], "AddPermissionRequest contains unknown key " .. tostring(k))
+		assert(keys.AddPermissionRequest[k], "AddPermissionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddPermissionRequest
 -- <p/>
--- @param FunctionName [FunctionName] <p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param Qualifier [Qualifier] <p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
--- @param StatementId [StatementId] <p>A unique statement identifier.</p>
--- @param Action [Action] <p>The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with <code>lambda:</code> followed by the API name . For example, <code>lambda:CreateFunction</code>. You can use wildcard (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
--- @param SourceAccount [SourceOwner] <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner. For example, if the <code>SourceArn</code> identifies a bucket, then this is the bucket owner's account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
--- @param SourceArn [Arn] <p>This is optional; however, when granting permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p> <important> <p>If you add a permission without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function.</p> </important>
--- @param EventSourceToken [EventSourceToken] <p>A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.</p>
--- @param Principal [Principal] <p>The principal who is getting this permission. It can be Amazon S3 service Principal (<code>s3.amazonaws.com</code>) if you want Amazon S3 to invoke the function, an AWS account ID if you are granting cross-account permission, or any valid AWS service principal such as <code>sns.amazonaws.com</code>. For example, you might want to allow a custom application in another AWS account to push events to AWS Lambda by invoking your function. </p>
+-- @param _FunctionName [FunctionName] <p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- @param _Qualifier [Qualifier] <p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
+-- @param _StatementId [StatementId] <p>A unique statement identifier.</p>
+-- @param _Action [Action] <p>The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with <code>lambda:</code> followed by the API name . For example, <code>lambda:CreateFunction</code>. You can use wildcard (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
+-- @param _SourceAccount [SourceOwner] <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner. For example, if the <code>SourceArn</code> identifies a bucket, then this is the bucket owner's account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
+-- @param _SourceArn [Arn] <p>This is optional; however, when granting permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p> <important> <p>If you add a permission without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function.</p> </important>
+-- @param _EventSourceToken [EventSourceToken] <p>A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.</p>
+-- @param _Principal [Principal] <p>The principal who is getting this permission. It can be Amazon S3 service Principal (<code>s3.amazonaws.com</code>) if you want Amazon S3 to invoke the function, an AWS account ID if you are granting cross-account permission, or any valid AWS service principal such as <code>sns.amazonaws.com</code>. For example, you might want to allow a custom application in another AWS account to push events to AWS Lambda by invoking your function. </p>
 -- Required parameter: FunctionName
 -- Required parameter: StatementId
 -- Required parameter: Action
 -- Required parameter: Principal
-function M.AddPermissionRequest(FunctionName, Qualifier, StatementId, Action, SourceAccount, SourceArn, EventSourceToken, Principal, ...)
+function M.AddPermissionRequest(_FunctionName, _Qualifier, _StatementId, _Action, _SourceAccount, _SourceArn, _EventSourceToken, _Principal, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddPermissionRequest")
 	local t = { 
-		["FunctionName"] = FunctionName,
-		["Qualifier"] = Qualifier,
-		["StatementId"] = StatementId,
-		["Action"] = Action,
-		["SourceAccount"] = SourceAccount,
-		["SourceArn"] = SourceArn,
-		["EventSourceToken"] = EventSourceToken,
-		["Principal"] = Principal,
+		["FunctionName"] = _FunctionName,
+		["Qualifier"] = _Qualifier,
+		["StatementId"] = _StatementId,
+		["Action"] = _Action,
+		["SourceAccount"] = _SourceAccount,
+		["SourceArn"] = _SourceArn,
+		["EventSourceToken"] = _EventSourceToken,
+		["Principal"] = _Principal,
 	}
-	M.AssertAddPermissionRequest(t)
+	asserts.AssertAddPermissionRequest(t)
 	return t
 end
 
-local TagResourceRequest_keys = { "Resource" = true, "Tags" = true, nil }
+keys.TagResourceRequest = { ["Resource"] = true, ["Tags"] = true, nil }
 
-function M.AssertTagResourceRequest(struct)
+function asserts.AssertTagResourceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagResourceRequest to be of type 'table'")
 	assert(struct["Resource"], "Expected key Resource to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["Resource"] then M.AssertFunctionArn(struct["Resource"]) end
-	if struct["Tags"] then M.AssertTags(struct["Tags"]) end
+	if struct["Resource"] then asserts.AssertFunctionArn(struct["Resource"]) end
+	if struct["Tags"] then asserts.AssertTags(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(TagResourceRequest_keys[k], "TagResourceRequest contains unknown key " .. tostring(k))
+		assert(keys.TagResourceRequest[k], "TagResourceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the Lambda function.</p>
--- @param Tags [Tags] <p>The list of tags (key-value pairs) you are assigning to the Lambda function.</p>
+-- @param _Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the Lambda function.</p>
+-- @param _Tags [Tags] <p>The list of tags (key-value pairs) you are assigning to the Lambda function.</p>
 -- Required parameter: Resource
 -- Required parameter: Tags
-function M.TagResourceRequest(Resource, Tags, ...)
+function M.TagResourceRequest(_Resource, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceRequest")
 	local t = { 
-		["Resource"] = Resource,
-		["Tags"] = Tags,
+		["Resource"] = _Resource,
+		["Tags"] = _Tags,
 	}
-	M.AssertTagResourceRequest(t)
+	asserts.AssertTagResourceRequest(t)
 	return t
 end
 
-local ListTagsResponse_keys = { "Tags" = true, nil }
+keys.ListTagsResponse = { ["Tags"] = true, nil }
 
-function M.AssertListTagsResponse(struct)
+function asserts.AssertListTagsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListTagsResponse to be of type 'table'")
-	if struct["Tags"] then M.AssertTags(struct["Tags"]) end
+	if struct["Tags"] then asserts.AssertTags(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(ListTagsResponse_keys[k], "ListTagsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListTagsResponse[k], "ListTagsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListTagsResponse
 --  
--- @param Tags [Tags] <p>The list of tags assigned to the function.</p>
-function M.ListTagsResponse(Tags, ...)
+-- @param _Tags [Tags] <p>The list of tags assigned to the function.</p>
+function M.ListTagsResponse(_Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResponse")
 	local t = { 
-		["Tags"] = Tags,
+		["Tags"] = _Tags,
 	}
-	M.AssertListTagsResponse(t)
+	asserts.AssertListTagsResponse(t)
 	return t
 end
 
-local ResourceConflictException_keys = { "message" = true, "Type" = true, nil }
+keys.ResourceConflictException = { ["message"] = true, ["Type"] = true, nil }
 
-function M.AssertResourceConflictException(struct)
+function asserts.AssertResourceConflictException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceConflictException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceConflictException_keys[k], "ResourceConflictException contains unknown key " .. tostring(k))
+		assert(keys.ResourceConflictException[k], "ResourceConflictException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceConflictException
 -- <p>The resource already exists.</p>
--- @param message [String] <p/>
--- @param Type [String] <p/>
-function M.ResourceConflictException(message, Type, ...)
+-- @param _message [String] <p/>
+-- @param _Type [String] <p/>
+function M.ResourceConflictException(_message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceConflictException")
 	local t = { 
-		["message"] = message,
-		["Type"] = Type,
+		["message"] = _message,
+		["Type"] = _Type,
 	}
-	M.AssertResourceConflictException(t)
+	asserts.AssertResourceConflictException(t)
 	return t
 end
 
-local VpcConfig_keys = { "SubnetIds" = true, "SecurityGroupIds" = true, nil }
+keys.VpcConfig = { ["SubnetIds"] = true, ["SecurityGroupIds"] = true, nil }
 
-function M.AssertVpcConfig(struct)
+function asserts.AssertVpcConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VpcConfig to be of type 'table'")
-	if struct["SubnetIds"] then M.AssertSubnetIds(struct["SubnetIds"]) end
-	if struct["SecurityGroupIds"] then M.AssertSecurityGroupIds(struct["SecurityGroupIds"]) end
+	if struct["SubnetIds"] then asserts.AssertSubnetIds(struct["SubnetIds"]) end
+	if struct["SecurityGroupIds"] then asserts.AssertSecurityGroupIds(struct["SecurityGroupIds"]) end
 	for k,_ in pairs(struct) do
-		assert(VpcConfig_keys[k], "VpcConfig contains unknown key " .. tostring(k))
+		assert(keys.VpcConfig[k], "VpcConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type VpcConfig
 -- <p>If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.</p>
--- @param SubnetIds [SubnetIds] <p>A list of one or more subnet IDs in your VPC.</p>
--- @param SecurityGroupIds [SecurityGroupIds] <p>A list of one or more security groups IDs in your VPC.</p>
-function M.VpcConfig(SubnetIds, SecurityGroupIds, ...)
+-- @param _SubnetIds [SubnetIds] <p>A list of one or more subnet IDs in your VPC.</p>
+-- @param _SecurityGroupIds [SecurityGroupIds] <p>A list of one or more security groups IDs in your VPC.</p>
+function M.VpcConfig(_SubnetIds, _SecurityGroupIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VpcConfig")
 	local t = { 
-		["SubnetIds"] = SubnetIds,
-		["SecurityGroupIds"] = SecurityGroupIds,
+		["SubnetIds"] = _SubnetIds,
+		["SecurityGroupIds"] = _SecurityGroupIds,
 	}
-	M.AssertVpcConfig(t)
+	asserts.AssertVpcConfig(t)
 	return t
 end
 
-local InvalidParameterValueException_keys = { "message" = true, "Type" = true, nil }
+keys.InvalidParameterValueException = { ["message"] = true, ["Type"] = true, nil }
 
-function M.AssertInvalidParameterValueException(struct)
+function asserts.AssertInvalidParameterValueException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterValueException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterValueException_keys[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterValueException[k], "InvalidParameterValueException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that AWS Lambda is unable to assume you will get this exception. You will also get this exception if you have selected a deprecated runtime, such as Node v0.10.42. </p>
--- @param message [String] <p/>
--- @param Type [String] <p/>
-function M.InvalidParameterValueException(message, Type, ...)
+-- @param _message [String] <p/>
+-- @param _Type [String] <p/>
+function M.InvalidParameterValueException(_message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
 	local t = { 
-		["message"] = message,
-		["Type"] = Type,
+		["message"] = _message,
+		["Type"] = _Type,
 	}
-	M.AssertInvalidParameterValueException(t)
+	asserts.AssertInvalidParameterValueException(t)
 	return t
 end
 
-local InvalidZipFileException_keys = { "Message" = true, "Type" = true, nil }
+keys.InvalidZipFileException = { ["Message"] = true, ["Type"] = true, nil }
 
-function M.AssertInvalidZipFileException(struct)
+function asserts.AssertInvalidZipFileException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidZipFileException to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidZipFileException_keys[k], "InvalidZipFileException contains unknown key " .. tostring(k))
+		assert(keys.InvalidZipFileException[k], "InvalidZipFileException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidZipFileException
 -- <p>AWS Lambda could not unzip the function zip file.</p>
--- @param Message [String] <p>AWS Lambda could not unzip the function zip file.</p>
--- @param Type [String] <p>AWS Lambda could not unzip the function zip file.</p>
-function M.InvalidZipFileException(Message, Type, ...)
+-- @param _Message [String] 
+-- @param _Type [String] 
+function M.InvalidZipFileException(_Message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidZipFileException")
 	local t = { 
-		["Message"] = Message,
-		["Type"] = Type,
+		["Message"] = _Message,
+		["Type"] = _Type,
 	}
-	M.AssertInvalidZipFileException(t)
+	asserts.AssertInvalidZipFileException(t)
 	return t
 end
 
-local PolicyLengthExceededException_keys = { "message" = true, "Type" = true, nil }
+keys.PolicyLengthExceededException = { ["message"] = true, ["Type"] = true, nil }
 
-function M.AssertPolicyLengthExceededException(struct)
+function asserts.AssertPolicyLengthExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PolicyLengthExceededException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
-	if struct["Type"] then M.AssertString(struct["Type"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
+	if struct["Type"] then asserts.AssertString(struct["Type"]) end
 	for k,_ in pairs(struct) do
-		assert(PolicyLengthExceededException_keys[k], "PolicyLengthExceededException contains unknown key " .. tostring(k))
+		assert(keys.PolicyLengthExceededException[k], "PolicyLengthExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PolicyLengthExceededException
 -- <p>Lambda function access policy is limited to 20 KB.</p>
--- @param message [String] <p>Lambda function access policy is limited to 20 KB.</p>
--- @param Type [String] <p>Lambda function access policy is limited to 20 KB.</p>
-function M.PolicyLengthExceededException(message, Type, ...)
+-- @param _message [String] 
+-- @param _Type [String] 
+function M.PolicyLengthExceededException(_message, _Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyLengthExceededException")
 	local t = { 
-		["message"] = message,
-		["Type"] = Type,
+		["message"] = _message,
+		["Type"] = _Type,
 	}
-	M.AssertPolicyLengthExceededException(t)
+	asserts.AssertPolicyLengthExceededException(t)
 	return t
 end
 
-function M.AssertSensitiveString(str)
+function asserts.AssertSensitiveString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SensitiveString to be of type 'string'")
 end
 
 --  
 function M.SensitiveString(str)
-	M.AssertSensitiveString(str)
+	asserts.AssertSensitiveString(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertQualifier(str)
+function asserts.AssertQualifier(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Qualifier to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("(|[a-zA-Z0-9$_-]+)"), "Expected string to match pattern '(|[a-zA-Z0-9$_-]+)'")
 end
 
 --  
 function M.Qualifier(str)
-	M.AssertQualifier(str)
+	asserts.AssertQualifier(str)
 	return str
 end
 
-function M.AssertEnvironmentVariableValue(str)
+function asserts.AssertEnvironmentVariableValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EnvironmentVariableValue to be of type 'string'")
 end
 
 --  
 function M.EnvironmentVariableValue(str)
-	M.AssertEnvironmentVariableValue(str)
+	asserts.AssertEnvironmentVariableValue(str)
 	return str
 end
 
-function M.AssertFunctionName(str)
+function asserts.AssertFunctionName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FunctionName to be of type 'string'")
 	assert(#str <= 140, "Expected string to be max 140 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("(arn:aws:lambda:)?([a-z]{2}-[a-z]+-%d{1}:)?(%d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(%$LATEST|[a-zA-Z0-9-_]+))?"), "Expected string to match pattern '(arn:aws:lambda:)?([a-z]{2}-[a-z]+-%d{1}:)?(%d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(%$LATEST|[a-zA-Z0-9-_]+))?'")
 end
 
 --  
 function M.FunctionName(str)
-	M.AssertFunctionName(str)
+	asserts.AssertFunctionName(str)
 	return str
 end
 
-function M.AssertEventSourceToken(str)
+function asserts.AssertEventSourceToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EventSourceToken to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
-	assert(str:match("[a-zA-Z0-9._%-]+"), "Expected string to match pattern '[a-zA-Z0-9._%-]+'")
 end
 
 --  
 function M.EventSourceToken(str)
-	M.AssertEventSourceToken(str)
+	asserts.AssertEventSourceToken(str)
 	return str
 end
 
-function M.AssertKMSKeyArn(str)
+function asserts.AssertKMSKeyArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected KMSKeyArn to be of type 'string'")
-	assert(str:match("(arn:aws:[a-z0-9-.]+:.*)|()"), "Expected string to match pattern '(arn:aws:[a-z0-9-.]+:.*)|()'")
 end
 
 --  
 function M.KMSKeyArn(str)
-	M.AssertKMSKeyArn(str)
+	asserts.AssertKMSKeyArn(str)
 	return str
 end
 
-function M.AssertThrottleReason(str)
+function asserts.AssertThrottleReason(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ThrottleReason to be of type 'string'")
 end
 
 --  
 function M.ThrottleReason(str)
-	M.AssertThrottleReason(str)
+	asserts.AssertThrottleReason(str)
 	return str
 end
 
-function M.AssertArn(str)
+function asserts.AssertArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Arn to be of type 'string'")
-	assert(str:match("arn:aws:([a-zA-Z0-9%-])+:([a-z]{2}-[a-z]+-%d{1})?:(%d{12})?:(.*)"), "Expected string to match pattern 'arn:aws:([a-zA-Z0-9%-])+:([a-z]{2}-[a-z]+-%d{1})?:(%d{12})?:(.*)'")
 end
 
 --  
 function M.Arn(str)
-	M.AssertArn(str)
+	asserts.AssertArn(str)
 	return str
 end
 
-function M.AssertEventSourcePosition(str)
+function asserts.AssertEventSourcePosition(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EventSourcePosition to be of type 'string'")
 end
 
 --  
 function M.EventSourcePosition(str)
-	M.AssertEventSourcePosition(str)
+	asserts.AssertEventSourcePosition(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertResourceArn(str)
+function asserts.AssertResourceArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceArn to be of type 'string'")
-	assert(str:match("(arn:aws:[a-z0-9-.]+:.*)|()"), "Expected string to match pattern '(arn:aws:[a-z0-9-.]+:.*)|()'")
 end
 
 --  
 function M.ResourceArn(str)
-	M.AssertResourceArn(str)
+	asserts.AssertResourceArn(str)
 	return str
 end
 
-function M.AssertSubnetId(str)
+function asserts.AssertSubnetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubnetId to be of type 'string'")
 end
 
 --  
 function M.SubnetId(str)
-	M.AssertSubnetId(str)
+	asserts.AssertSubnetId(str)
 	return str
 end
 
-function M.AssertTimestamp(str)
+function asserts.AssertTimestamp(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 --  
 function M.Timestamp(str)
-	M.AssertTimestamp(str)
+	asserts.AssertTimestamp(str)
 	return str
 end
 
-function M.AssertTracingMode(str)
+function asserts.AssertTracingMode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TracingMode to be of type 'string'")
 end
 
 --  
 function M.TracingMode(str)
-	M.AssertTracingMode(str)
+	asserts.AssertTracingMode(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertSecurityGroupId(str)
+function asserts.AssertSecurityGroupId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SecurityGroupId to be of type 'string'")
 end
 
 --  
 function M.SecurityGroupId(str)
-	M.AssertSecurityGroupId(str)
+	asserts.AssertSecurityGroupId(str)
 	return str
 end
 
-function M.AssertFunctionArn(str)
+function asserts.AssertFunctionArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FunctionArn to be of type 'string'")
-	assert(str:match("arn:aws:lambda:[a-z]{2}-[a-z]+-%d{1}:%d{12}:function:[a-zA-Z0-9-_]+(:(%$LATEST|[a-zA-Z0-9-_]+))?"), "Expected string to match pattern 'arn:aws:lambda:[a-z]{2}-[a-z]+-%d{1}:%d{12}:function:[a-zA-Z0-9-_]+(:(%$LATEST|[a-zA-Z0-9-_]+))?'")
 end
 
 --  
 function M.FunctionArn(str)
-	M.AssertFunctionArn(str)
+	asserts.AssertFunctionArn(str)
 	return str
 end
 
-function M.AssertSourceOwner(str)
+function asserts.AssertSourceOwner(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SourceOwner to be of type 'string'")
-	assert(str:match("%d{12}"), "Expected string to match pattern '%d{12}'")
 end
 
 --  
 function M.SourceOwner(str)
-	M.AssertSourceOwner(str)
+	asserts.AssertSourceOwner(str)
 	return str
 end
 
-function M.AssertEnvironmentVariableName(str)
+function asserts.AssertEnvironmentVariableName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected EnvironmentVariableName to be of type 'string'")
-	assert(str:match("[a-zA-Z]([a-zA-Z0-9_])+"), "Expected string to match pattern '[a-zA-Z]([a-zA-Z0-9_])+'")
 end
 
 --  
 function M.EnvironmentVariableName(str)
-	M.AssertEnvironmentVariableName(str)
+	asserts.AssertEnvironmentVariableName(str)
 	return str
 end
 
-function M.AssertHandler(str)
+function asserts.AssertHandler(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Handler to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(str:match("[^%s]+"), "Expected string to match pattern '[^%s]+'")
 end
 
 --  
 function M.Handler(str)
-	M.AssertHandler(str)
+	asserts.AssertHandler(str)
 	return str
 end
 
-function M.AssertRuntime(str)
+function asserts.AssertRuntime(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Runtime to be of type 'string'")
 end
 
 --  
 function M.Runtime(str)
-	M.AssertRuntime(str)
+	asserts.AssertRuntime(str)
 	return str
 end
 
-function M.AssertLogType(str)
+function asserts.AssertLogType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LogType to be of type 'string'")
 end
 
 --  
 function M.LogType(str)
-	M.AssertLogType(str)
+	asserts.AssertLogType(str)
 	return str
 end
 
-function M.AssertAction(str)
+function asserts.AssertAction(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Action to be of type 'string'")
-	assert(str:match("(lambda:[*]|lambda:[a-zA-Z]+|[*])"), "Expected string to match pattern '(lambda:[*]|lambda:[a-zA-Z]+|[*])'")
 end
 
 --  
 function M.Action(str)
-	M.AssertAction(str)
+	asserts.AssertAction(str)
 	return str
 end
 
-function M.AssertS3Key(str)
+function asserts.AssertS3Key(str)
 	assert(str)
 	assert(type(str) == "string", "Expected S3Key to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -2624,25 +2616,24 @@ end
 
 --  
 function M.S3Key(str)
-	M.AssertS3Key(str)
+	asserts.AssertS3Key(str)
 	return str
 end
 
-function M.AssertVersion(str)
+function asserts.AssertVersion(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Version to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("(%$LATEST|[0-9]+)"), "Expected string to match pattern '(%$LATEST|[0-9]+)'")
 end
 
 --  
 function M.Version(str)
-	M.AssertVersion(str)
+	asserts.AssertVersion(str)
 	return str
 end
 
-function M.AssertS3ObjectVersion(str)
+function asserts.AssertS3ObjectVersion(str)
 	assert(str)
 	assert(type(str) == "string", "Expected S3ObjectVersion to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -2651,37 +2642,35 @@ end
 
 --  
 function M.S3ObjectVersion(str)
-	M.AssertS3ObjectVersion(str)
+	asserts.AssertS3ObjectVersion(str)
 	return str
 end
 
-function M.AssertRoleArn(str)
+function asserts.AssertRoleArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RoleArn to be of type 'string'")
-	assert(str:match("arn:aws:iam::%d{12}:role/?[a-zA-Z_0-9+=,.@%-_/]+"), "Expected string to match pattern 'arn:aws:iam::%d{12}:role/?[a-zA-Z_0-9+=,.@%-_/]+'")
 end
 
 --  
 function M.RoleArn(str)
-	M.AssertRoleArn(str)
+	asserts.AssertRoleArn(str)
 	return str
 end
 
-function M.AssertStatementId(str)
+function asserts.AssertStatementId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StatementId to be of type 'string'")
 	assert(#str <= 100, "Expected string to be max 100 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("([a-zA-Z0-9-_]+)"), "Expected string to match pattern '([a-zA-Z0-9-_]+)'")
 end
 
 --  
 function M.StatementId(str)
-	M.AssertStatementId(str)
+	asserts.AssertStatementId(str)
 	return str
 end
 
-function M.AssertDescription(str)
+function asserts.AssertDescription(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Description to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -2689,95 +2678,92 @@ end
 
 --  
 function M.Description(str)
-	M.AssertDescription(str)
+	asserts.AssertDescription(str)
 	return str
 end
 
-function M.AssertInvocationType(str)
+function asserts.AssertInvocationType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InvocationType to be of type 'string'")
 end
 
 --  
 function M.InvocationType(str)
-	M.AssertInvocationType(str)
+	asserts.AssertInvocationType(str)
 	return str
 end
 
-function M.AssertS3Bucket(str)
+function asserts.AssertS3Bucket(str)
 	assert(str)
 	assert(type(str) == "string", "Expected S3Bucket to be of type 'string'")
 	assert(#str <= 63, "Expected string to be max 63 characters")
 	assert(#str >= 3, "Expected string to be min 3 characters")
-	assert(str:match("^[0-9A-Za-z%.%-_]*(?<!%.)$"), "Expected string to match pattern '^[0-9A-Za-z%.%-_]*(?<!%.)$'")
 end
 
 --  
 function M.S3Bucket(str)
-	M.AssertS3Bucket(str)
+	asserts.AssertS3Bucket(str)
 	return str
 end
 
-function M.AssertAlias(str)
+function asserts.AssertAlias(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Alias to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("(?!^[0-9]+$)([a-zA-Z0-9-_]+)"), "Expected string to match pattern '(?!^[0-9]+$)([a-zA-Z0-9-_]+)'")
 end
 
 --  
 function M.Alias(str)
-	M.AssertAlias(str)
+	asserts.AssertAlias(str)
 	return str
 end
 
-function M.AssertVpcId(str)
+function asserts.AssertVpcId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VpcId to be of type 'string'")
 end
 
 --  
 function M.VpcId(str)
-	M.AssertVpcId(str)
+	asserts.AssertVpcId(str)
 	return str
 end
 
-function M.AssertPrincipal(str)
+function asserts.AssertPrincipal(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Principal to be of type 'string'")
-	assert(str:match(".*"), "Expected string to match pattern '.*'")
 end
 
 --  
 function M.Principal(str)
-	M.AssertPrincipal(str)
+	asserts.AssertPrincipal(str)
 	return str
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertHttpStatus(integer)
+function asserts.AssertHttpStatus(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected HttpStatus to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.HttpStatus(integer)
-	M.AssertHttpStatus(integer)
+	asserts.AssertHttpStatus(integer)
 	return integer
 end
 
-function M.AssertMemorySize(integer)
+function asserts.AssertMemorySize(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MemorySize to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -2786,11 +2772,11 @@ function M.AssertMemorySize(integer)
 end
 
 function M.MemorySize(integer)
-	M.AssertMemorySize(integer)
+	asserts.AssertMemorySize(integer)
 	return integer
 end
 
-function M.AssertMaxListItems(integer)
+function asserts.AssertMaxListItems(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected MaxListItems to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -2799,22 +2785,22 @@ function M.AssertMaxListItems(integer)
 end
 
 function M.MaxListItems(integer)
-	M.AssertMaxListItems(integer)
+	asserts.AssertMaxListItems(integer)
 	return integer
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertTimeout(integer)
+function asserts.AssertTimeout(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Timeout to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -2822,11 +2808,11 @@ function M.AssertTimeout(integer)
 end
 
 function M.Timeout(integer)
-	M.AssertTimeout(integer)
+	asserts.AssertTimeout(integer)
 	return integer
 end
 
-function M.AssertBatchSize(integer)
+function asserts.AssertBatchSize(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected BatchSize to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -2835,177 +2821,177 @@ function M.AssertBatchSize(integer)
 end
 
 function M.BatchSize(integer)
-	M.AssertBatchSize(integer)
+	asserts.AssertBatchSize(integer)
 	return integer
 end
 
-function M.AssertEnabled(boolean)
+function asserts.AssertEnabled(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Enabled to be of type 'boolean'")
 end
 
 function M.Enabled(boolean)
-	M.AssertEnabled(boolean)
+	asserts.AssertEnabled(boolean)
 	return boolean
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertTags(map)
+function asserts.AssertTags(map)
 	assert(map)
 	assert(type(map) == "table", "Expected Tags to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertTagKey(k)
-		M.AssertTagValue(v)
+		asserts.AssertTagKey(k)
+		asserts.AssertTagValue(v)
 	end
 end
 
 function M.Tags(map)
-	M.AssertTags(map)
+	asserts.AssertTags(map)
 	return map
 end
 
-function M.AssertEnvironmentVariables(map)
+function asserts.AssertEnvironmentVariables(map)
 	assert(map)
 	assert(type(map) == "table", "Expected EnvironmentVariables to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertEnvironmentVariableName(k)
-		M.AssertEnvironmentVariableValue(v)
+		asserts.AssertEnvironmentVariableName(k)
+		asserts.AssertEnvironmentVariableValue(v)
 	end
 end
 
 function M.EnvironmentVariables(map)
-	M.AssertEnvironmentVariables(map)
+	asserts.AssertEnvironmentVariables(map)
 	return map
 end
 
-function M.AssertDate(timestamp)
+function asserts.AssertDate(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Date to be of type 'string'")
 end
 
 function M.Date(timestamp)
-	M.AssertDate(timestamp)
+	asserts.AssertDate(timestamp)
 	return timestamp
 end
 
-function M.AssertBlobStream(blob)
+function asserts.AssertBlobStream(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected BlobStream to be of type 'string'")
 end
 
 function M.BlobStream(blob)
-	M.AssertBlobStream(blob)
+	asserts.AssertBlobStream(blob)
 	return blob
 end
 
-function M.AssertBlob(blob)
+function asserts.AssertBlob(blob)
 	assert(blob)
 	assert(type(string) == "string", "Expected Blob to be of type 'string'")
 end
 
 function M.Blob(blob)
-	M.AssertBlob(blob)
+	asserts.AssertBlob(blob)
 	return blob
 end
 
-function M.AssertSubnetIds(list)
+function asserts.AssertSubnetIds(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubnetIds to be of type ''table")
 	assert(#list <= 16, "Expected list to be contain 16 elements")
 	for _,v in ipairs(list) do
-		M.AssertSubnetId(v)
+		asserts.AssertSubnetId(v)
 	end
 end
 
 --  
 -- List of SubnetId objects
 function M.SubnetIds(list)
-	M.AssertSubnetIds(list)
+	asserts.AssertSubnetIds(list)
 	return list
 end
 
-function M.AssertTagKeyList(list)
+function asserts.AssertTagKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagKey(v)
+		asserts.AssertTagKey(v)
 	end
 end
 
 --  
 -- List of TagKey objects
 function M.TagKeyList(list)
-	M.AssertTagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
-function M.AssertAliasList(list)
+function asserts.AssertAliasList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected AliasList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAliasConfiguration(v)
+		asserts.AssertAliasConfiguration(v)
 	end
 end
 
 --  
 -- List of AliasConfiguration objects
 function M.AliasList(list)
-	M.AssertAliasList(list)
+	asserts.AssertAliasList(list)
 	return list
 end
 
-function M.AssertFunctionList(list)
+function asserts.AssertFunctionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FunctionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFunctionConfiguration(v)
+		asserts.AssertFunctionConfiguration(v)
 	end
 end
 
 --  
 -- List of FunctionConfiguration objects
 function M.FunctionList(list)
-	M.AssertFunctionList(list)
+	asserts.AssertFunctionList(list)
 	return list
 end
 
-function M.AssertEventSourceMappingsList(list)
+function asserts.AssertEventSourceMappingsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EventSourceMappingsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEventSourceMappingConfiguration(v)
+		asserts.AssertEventSourceMappingConfiguration(v)
 	end
 end
 
 --  
 -- List of EventSourceMappingConfiguration objects
 function M.EventSourceMappingsList(list)
-	M.AssertEventSourceMappingsList(list)
+	asserts.AssertEventSourceMappingsList(list)
 	return list
 end
 
-function M.AssertSecurityGroupIds(list)
+function asserts.AssertSecurityGroupIds(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SecurityGroupIds to be of type ''table")
 	assert(#list <= 5, "Expected list to be contain 5 elements")
 	for _,v in ipairs(list) do
-		M.AssertSecurityGroupId(v)
+		asserts.AssertSecurityGroupId(v)
 	end
 end
 
 --  
 -- List of SecurityGroupId objects
 function M.SecurityGroupIds(list)
-	M.AssertSecurityGroupIds(list)
+	asserts.AssertSecurityGroupIds(list)
 	return list
 end
 
@@ -3330,24 +3316,6 @@ function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
 		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/policy/{StatementId}", RemovePermissionRequest, headers, M.metadata, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- InvokeAsync
--- @param InvokeAsyncRequest
--- @param cb Callback function accepting two args: response, error_message
-function M.InvokeAsyncAsync(InvokeAsyncRequest, cb)
-	assert(InvokeAsyncRequest, "You must provide a InvokeAsyncRequest")
-	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".InvokeAsync",
-	}
-
-	local request_handler, err = request_handlers.from_http_method("POST")
-	if request_handler then
-		request_handler(uri .. "/2014-11-13/functions/{FunctionName}/invoke-async/", InvokeAsyncRequest, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end

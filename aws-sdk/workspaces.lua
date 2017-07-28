@@ -18,48 +18,51 @@ M.metadata = {
 	uid = "workspaces-2015-04-08",
 }
 
-local DefaultWorkspaceCreationProperties_keys = { "EnableInternetAccess" = true, "EnableWorkDocs" = true, "DefaultOu" = true, "CustomSecurityGroupId" = true, "UserEnabledAsLocalAdministrator" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertDefaultWorkspaceCreationProperties(struct)
+keys.DefaultWorkspaceCreationProperties = { ["EnableInternetAccess"] = true, ["EnableWorkDocs"] = true, ["DefaultOu"] = true, ["CustomSecurityGroupId"] = true, ["UserEnabledAsLocalAdministrator"] = true, nil }
+
+function asserts.AssertDefaultWorkspaceCreationProperties(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DefaultWorkspaceCreationProperties to be of type 'table'")
-	if struct["EnableInternetAccess"] then M.AssertBooleanObject(struct["EnableInternetAccess"]) end
-	if struct["EnableWorkDocs"] then M.AssertBooleanObject(struct["EnableWorkDocs"]) end
-	if struct["DefaultOu"] then M.AssertDefaultOu(struct["DefaultOu"]) end
-	if struct["CustomSecurityGroupId"] then M.AssertSecurityGroupId(struct["CustomSecurityGroupId"]) end
-	if struct["UserEnabledAsLocalAdministrator"] then M.AssertBooleanObject(struct["UserEnabledAsLocalAdministrator"]) end
+	if struct["EnableInternetAccess"] then asserts.AssertBooleanObject(struct["EnableInternetAccess"]) end
+	if struct["EnableWorkDocs"] then asserts.AssertBooleanObject(struct["EnableWorkDocs"]) end
+	if struct["DefaultOu"] then asserts.AssertDefaultOu(struct["DefaultOu"]) end
+	if struct["CustomSecurityGroupId"] then asserts.AssertSecurityGroupId(struct["CustomSecurityGroupId"]) end
+	if struct["UserEnabledAsLocalAdministrator"] then asserts.AssertBooleanObject(struct["UserEnabledAsLocalAdministrator"]) end
 	for k,_ in pairs(struct) do
-		assert(DefaultWorkspaceCreationProperties_keys[k], "DefaultWorkspaceCreationProperties contains unknown key " .. tostring(k))
+		assert(keys.DefaultWorkspaceCreationProperties[k], "DefaultWorkspaceCreationProperties contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DefaultWorkspaceCreationProperties
 -- <p>Contains default WorkSpace creation information.</p>
--- @param EnableInternetAccess [BooleanObject] <p>A public IP address will be attached to all WorkSpaces that are created or rebuilt.</p>
--- @param EnableWorkDocs [BooleanObject] <p>Specifies if the directory is enabled for Amazon WorkDocs.</p>
--- @param DefaultOu [DefaultOu] <p>The organizational unit (OU) in the directory that the WorkSpace machine accounts are placed in.</p>
--- @param CustomSecurityGroupId [SecurityGroupId] <p>The identifier of any custom security groups that are applied to the WorkSpaces when they are created.</p>
--- @param UserEnabledAsLocalAdministrator [BooleanObject] <p>The WorkSpace user is an administrator on the WorkSpace.</p>
-function M.DefaultWorkspaceCreationProperties(EnableInternetAccess, EnableWorkDocs, DefaultOu, CustomSecurityGroupId, UserEnabledAsLocalAdministrator, ...)
+-- @param _EnableInternetAccess [BooleanObject] <p>A public IP address will be attached to all WorkSpaces that are created or rebuilt.</p>
+-- @param _EnableWorkDocs [BooleanObject] <p>Specifies if the directory is enabled for Amazon WorkDocs.</p>
+-- @param _DefaultOu [DefaultOu] <p>The organizational unit (OU) in the directory that the WorkSpace machine accounts are placed in.</p>
+-- @param _CustomSecurityGroupId [SecurityGroupId] <p>The identifier of any custom security groups that are applied to the WorkSpaces when they are created.</p>
+-- @param _UserEnabledAsLocalAdministrator [BooleanObject] <p>The WorkSpace user is an administrator on the WorkSpace.</p>
+function M.DefaultWorkspaceCreationProperties(_EnableInternetAccess, _EnableWorkDocs, _DefaultOu, _CustomSecurityGroupId, _UserEnabledAsLocalAdministrator, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DefaultWorkspaceCreationProperties")
 	local t = { 
-		["EnableInternetAccess"] = EnableInternetAccess,
-		["EnableWorkDocs"] = EnableWorkDocs,
-		["DefaultOu"] = DefaultOu,
-		["CustomSecurityGroupId"] = CustomSecurityGroupId,
-		["UserEnabledAsLocalAdministrator"] = UserEnabledAsLocalAdministrator,
+		["EnableInternetAccess"] = _EnableInternetAccess,
+		["EnableWorkDocs"] = _EnableWorkDocs,
+		["DefaultOu"] = _DefaultOu,
+		["CustomSecurityGroupId"] = _CustomSecurityGroupId,
+		["UserEnabledAsLocalAdministrator"] = _UserEnabledAsLocalAdministrator,
 	}
-	M.AssertDefaultWorkspaceCreationProperties(t)
+	asserts.AssertDefaultWorkspaceCreationProperties(t)
 	return t
 end
 
-local DeleteTagsResult_keys = { nil }
+keys.DeleteTagsResult = { nil }
 
-function M.AssertDeleteTagsResult(struct)
+function asserts.AssertDeleteTagsResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTagsResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteTagsResult_keys[k], "DeleteTagsResult contains unknown key " .. tostring(k))
+		assert(keys.DeleteTagsResult[k], "DeleteTagsResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -69,564 +72,564 @@ function M.DeleteTagsResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsResult")
 	local t = { 
 	}
-	M.AssertDeleteTagsResult(t)
+	asserts.AssertDeleteTagsResult(t)
 	return t
 end
 
-local TerminateWorkspacesResult_keys = { "FailedRequests" = true, nil }
+keys.TerminateWorkspacesResult = { ["FailedRequests"] = true, nil }
 
-function M.AssertTerminateWorkspacesResult(struct)
+function asserts.AssertTerminateWorkspacesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TerminateWorkspacesResult to be of type 'table'")
-	if struct["FailedRequests"] then M.AssertFailedTerminateWorkspaceRequests(struct["FailedRequests"]) end
+	if struct["FailedRequests"] then asserts.AssertFailedTerminateWorkspaceRequests(struct["FailedRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(TerminateWorkspacesResult_keys[k], "TerminateWorkspacesResult contains unknown key " .. tostring(k))
+		assert(keys.TerminateWorkspacesResult[k], "TerminateWorkspacesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TerminateWorkspacesResult
 -- <p>Contains the results of the <a>TerminateWorkspaces</a> operation.</p>
--- @param FailedRequests [FailedTerminateWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be terminated.</p>
-function M.TerminateWorkspacesResult(FailedRequests, ...)
+-- @param _FailedRequests [FailedTerminateWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be terminated.</p>
+function M.TerminateWorkspacesResult(_FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = FailedRequests,
+		["FailedRequests"] = _FailedRequests,
 	}
-	M.AssertTerminateWorkspacesResult(t)
+	asserts.AssertTerminateWorkspacesResult(t)
 	return t
 end
 
-local RebootWorkspacesResult_keys = { "FailedRequests" = true, nil }
+keys.RebootWorkspacesResult = { ["FailedRequests"] = true, nil }
 
-function M.AssertRebootWorkspacesResult(struct)
+function asserts.AssertRebootWorkspacesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RebootWorkspacesResult to be of type 'table'")
-	if struct["FailedRequests"] then M.AssertFailedRebootWorkspaceRequests(struct["FailedRequests"]) end
+	if struct["FailedRequests"] then asserts.AssertFailedRebootWorkspaceRequests(struct["FailedRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(RebootWorkspacesResult_keys[k], "RebootWorkspacesResult contains unknown key " .. tostring(k))
+		assert(keys.RebootWorkspacesResult[k], "RebootWorkspacesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RebootWorkspacesResult
 -- <p>Contains the results of the <a>RebootWorkspaces</a> operation.</p>
--- @param FailedRequests [FailedRebootWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebooted.</p>
-function M.RebootWorkspacesResult(FailedRequests, ...)
+-- @param _FailedRequests [FailedRebootWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebooted.</p>
+function M.RebootWorkspacesResult(_FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = FailedRequests,
+		["FailedRequests"] = _FailedRequests,
 	}
-	M.AssertRebootWorkspacesResult(t)
+	asserts.AssertRebootWorkspacesResult(t)
 	return t
 end
 
-local DescribeTagsRequest_keys = { "ResourceId" = true, nil }
+keys.DescribeTagsRequest = { ["ResourceId"] = true, nil }
 
-function M.AssertDescribeTagsRequest(struct)
+function asserts.AssertDescribeTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTagsRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
-	if struct["ResourceId"] then M.AssertNonEmptyString(struct["ResourceId"]) end
+	if struct["ResourceId"] then asserts.AssertNonEmptyString(struct["ResourceId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTagsRequest_keys[k], "DescribeTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeTagsRequest[k], "DescribeTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTagsRequest
 -- <p>The request of the <a>DescribeTags</a> operation.</p>
--- @param ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
+-- @param _ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
 -- Required parameter: ResourceId
-function M.DescribeTagsRequest(ResourceId, ...)
+function M.DescribeTagsRequest(_ResourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
 	local t = { 
-		["ResourceId"] = ResourceId,
+		["ResourceId"] = _ResourceId,
 	}
-	M.AssertDescribeTagsRequest(t)
+	asserts.AssertDescribeTagsRequest(t)
 	return t
 end
 
-local StopWorkspacesRequest_keys = { "StopWorkspaceRequests" = true, nil }
+keys.StopWorkspacesRequest = { ["StopWorkspaceRequests"] = true, nil }
 
-function M.AssertStopWorkspacesRequest(struct)
+function asserts.AssertStopWorkspacesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopWorkspacesRequest to be of type 'table'")
 	assert(struct["StopWorkspaceRequests"], "Expected key StopWorkspaceRequests to exist in table")
-	if struct["StopWorkspaceRequests"] then M.AssertStopWorkspaceRequests(struct["StopWorkspaceRequests"]) end
+	if struct["StopWorkspaceRequests"] then asserts.AssertStopWorkspaceRequests(struct["StopWorkspaceRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(StopWorkspacesRequest_keys[k], "StopWorkspacesRequest contains unknown key " .. tostring(k))
+		assert(keys.StopWorkspacesRequest[k], "StopWorkspacesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopWorkspacesRequest
 --  
--- @param StopWorkspaceRequests [StopWorkspaceRequests] <p>The requests.</p>
+-- @param _StopWorkspaceRequests [StopWorkspaceRequests] <p>The requests.</p>
 -- Required parameter: StopWorkspaceRequests
-function M.StopWorkspacesRequest(StopWorkspaceRequests, ...)
+function M.StopWorkspacesRequest(_StopWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopWorkspacesRequest")
 	local t = { 
-		["StopWorkspaceRequests"] = StopWorkspaceRequests,
+		["StopWorkspaceRequests"] = _StopWorkspaceRequests,
 	}
-	M.AssertStopWorkspacesRequest(t)
+	asserts.AssertStopWorkspacesRequest(t)
 	return t
 end
 
-local RebootWorkspacesRequest_keys = { "RebootWorkspaceRequests" = true, nil }
+keys.RebootWorkspacesRequest = { ["RebootWorkspaceRequests"] = true, nil }
 
-function M.AssertRebootWorkspacesRequest(struct)
+function asserts.AssertRebootWorkspacesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RebootWorkspacesRequest to be of type 'table'")
 	assert(struct["RebootWorkspaceRequests"], "Expected key RebootWorkspaceRequests to exist in table")
-	if struct["RebootWorkspaceRequests"] then M.AssertRebootWorkspaceRequests(struct["RebootWorkspaceRequests"]) end
+	if struct["RebootWorkspaceRequests"] then asserts.AssertRebootWorkspaceRequests(struct["RebootWorkspaceRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(RebootWorkspacesRequest_keys[k], "RebootWorkspacesRequest contains unknown key " .. tostring(k))
+		assert(keys.RebootWorkspacesRequest[k], "RebootWorkspacesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RebootWorkspacesRequest
 -- <p>Contains the inputs for the <a>RebootWorkspaces</a> operation.</p>
--- @param RebootWorkspaceRequests [RebootWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to reboot.</p>
+-- @param _RebootWorkspaceRequests [RebootWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to reboot.</p>
 -- Required parameter: RebootWorkspaceRequests
-function M.RebootWorkspacesRequest(RebootWorkspaceRequests, ...)
+function M.RebootWorkspacesRequest(_RebootWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootWorkspacesRequest")
 	local t = { 
-		["RebootWorkspaceRequests"] = RebootWorkspaceRequests,
+		["RebootWorkspaceRequests"] = _RebootWorkspaceRequests,
 	}
-	M.AssertRebootWorkspacesRequest(t)
+	asserts.AssertRebootWorkspacesRequest(t)
 	return t
 end
 
-local ResourceUnavailableException_keys = { "ResourceId" = true, "message" = true, nil }
+keys.ResourceUnavailableException = { ["ResourceId"] = true, ["message"] = true, nil }
 
-function M.AssertResourceUnavailableException(struct)
+function asserts.AssertResourceUnavailableException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceUnavailableException to be of type 'table'")
-	if struct["ResourceId"] then M.AssertNonEmptyString(struct["ResourceId"]) end
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["ResourceId"] then asserts.AssertNonEmptyString(struct["ResourceId"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceUnavailableException_keys[k], "ResourceUnavailableException contains unknown key " .. tostring(k))
+		assert(keys.ResourceUnavailableException[k], "ResourceUnavailableException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceUnavailableException
 -- <p>The specified resource is not available.</p>
--- @param ResourceId [NonEmptyString] <p>The identifier of the resource that is not available.</p>
--- @param message [ExceptionMessage] <p>The exception error message.</p>
-function M.ResourceUnavailableException(ResourceId, message, ...)
+-- @param _ResourceId [NonEmptyString] <p>The identifier of the resource that is not available.</p>
+-- @param _message [ExceptionMessage] <p>The exception error message.</p>
+function M.ResourceUnavailableException(_ResourceId, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceUnavailableException")
 	local t = { 
-		["ResourceId"] = ResourceId,
-		["message"] = message,
+		["ResourceId"] = _ResourceId,
+		["message"] = _message,
 	}
-	M.AssertResourceUnavailableException(t)
+	asserts.AssertResourceUnavailableException(t)
 	return t
 end
 
-local CreateTagsRequest_keys = { "ResourceId" = true, "Tags" = true, nil }
+keys.CreateTagsRequest = { ["ResourceId"] = true, ["Tags"] = true, nil }
 
-function M.AssertCreateTagsRequest(struct)
+function asserts.AssertCreateTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTagsRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceId"] then M.AssertNonEmptyString(struct["ResourceId"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["ResourceId"] then asserts.AssertNonEmptyString(struct["ResourceId"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateTagsRequest_keys[k], "CreateTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateTagsRequest[k], "CreateTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateTagsRequest
 -- <p>The request of the <a>CreateTags</a> operation.</p>
--- @param ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
--- @param Tags [TagList] <p>The tags of the request.</p>
+-- @param _ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
+-- @param _Tags [TagList] <p>The tags of the request.</p>
 -- Required parameter: ResourceId
 -- Required parameter: Tags
-function M.CreateTagsRequest(ResourceId, Tags, ...)
+function M.CreateTagsRequest(_ResourceId, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsRequest")
 	local t = { 
-		["ResourceId"] = ResourceId,
-		["Tags"] = Tags,
+		["ResourceId"] = _ResourceId,
+		["Tags"] = _Tags,
 	}
-	M.AssertCreateTagsRequest(t)
+	asserts.AssertCreateTagsRequest(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>Describes the tag of the WorkSpace.</p>
--- @param Value [TagValue] <p>The value of the tag.</p>
--- @param Key [TagKey] <p>The key of the tag.</p>
+-- @param _Value [TagValue] <p>The value of the tag.</p>
+-- @param _Key [TagKey] <p>The key of the tag.</p>
 -- Required parameter: Key
-function M.Tag(Value, Key, ...)
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local OperationInProgressException_keys = { "message" = true, nil }
+keys.OperationInProgressException = { ["message"] = true, nil }
 
-function M.AssertOperationInProgressException(struct)
+function asserts.AssertOperationInProgressException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OperationInProgressException to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(OperationInProgressException_keys[k], "OperationInProgressException contains unknown key " .. tostring(k))
+		assert(keys.OperationInProgressException[k], "OperationInProgressException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type OperationInProgressException
 -- <p>The properties of this WorkSpace are currently being modified. Try again in a moment.</p>
--- @param message [ExceptionMessage] <p>The properties of this WorkSpace are currently being modified. Try again in a moment.</p>
-function M.OperationInProgressException(message, ...)
+-- @param _message [ExceptionMessage] 
+function M.OperationInProgressException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationInProgressException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertOperationInProgressException(t)
+	asserts.AssertOperationInProgressException(t)
 	return t
 end
 
-local ResourceLimitExceededException_keys = { "message" = true, nil }
+keys.ResourceLimitExceededException = { ["message"] = true, nil }
 
-function M.AssertResourceLimitExceededException(struct)
+function asserts.AssertResourceLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceLimitExceededException to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceLimitExceededException_keys[k], "ResourceLimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.ResourceLimitExceededException[k], "ResourceLimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceLimitExceededException
 -- <p>Your resource limits have been exceeded.</p>
--- @param message [ExceptionMessage] <p>The exception error message.</p>
-function M.ResourceLimitExceededException(message, ...)
+-- @param _message [ExceptionMessage] <p>The exception error message.</p>
+function M.ResourceLimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceLimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceLimitExceededException(t)
+	asserts.AssertResourceLimitExceededException(t)
 	return t
 end
 
-local InvalidResourceStateException_keys = { "message" = true, nil }
+keys.InvalidResourceStateException = { ["message"] = true, nil }
 
-function M.AssertInvalidResourceStateException(struct)
+function asserts.AssertInvalidResourceStateException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidResourceStateException to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidResourceStateException_keys[k], "InvalidResourceStateException contains unknown key " .. tostring(k))
+		assert(keys.InvalidResourceStateException[k], "InvalidResourceStateException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidResourceStateException
 -- <p>The state of the WorkSpace is not valid for this operation.</p>
--- @param message [ExceptionMessage] <p>The state of the WorkSpace is not valid for this operation.</p>
-function M.InvalidResourceStateException(message, ...)
+-- @param _message [ExceptionMessage] 
+function M.InvalidResourceStateException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceStateException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidResourceStateException(t)
+	asserts.AssertInvalidResourceStateException(t)
 	return t
 end
 
-local WorkspaceDirectory_keys = { "CustomerUserName" = true, "DirectoryId" = true, "DirectoryName" = true, "SubnetIds" = true, "WorkspaceCreationProperties" = true, "Alias" = true, "State" = true, "DirectoryType" = true, "RegistrationCode" = true, "IamRoleId" = true, "DnsIpAddresses" = true, "WorkspaceSecurityGroupId" = true, nil }
+keys.WorkspaceDirectory = { ["CustomerUserName"] = true, ["DirectoryId"] = true, ["DirectoryName"] = true, ["SubnetIds"] = true, ["WorkspaceCreationProperties"] = true, ["Alias"] = true, ["State"] = true, ["DirectoryType"] = true, ["RegistrationCode"] = true, ["IamRoleId"] = true, ["DnsIpAddresses"] = true, ["WorkspaceSecurityGroupId"] = true, nil }
 
-function M.AssertWorkspaceDirectory(struct)
+function asserts.AssertWorkspaceDirectory(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected WorkspaceDirectory to be of type 'table'")
-	if struct["CustomerUserName"] then M.AssertUserName(struct["CustomerUserName"]) end
-	if struct["DirectoryId"] then M.AssertDirectoryId(struct["DirectoryId"]) end
-	if struct["DirectoryName"] then M.AssertDirectoryName(struct["DirectoryName"]) end
-	if struct["SubnetIds"] then M.AssertSubnetIds(struct["SubnetIds"]) end
-	if struct["WorkspaceCreationProperties"] then M.AssertDefaultWorkspaceCreationProperties(struct["WorkspaceCreationProperties"]) end
-	if struct["Alias"] then M.AssertAlias(struct["Alias"]) end
-	if struct["State"] then M.AssertWorkspaceDirectoryState(struct["State"]) end
-	if struct["DirectoryType"] then M.AssertWorkspaceDirectoryType(struct["DirectoryType"]) end
-	if struct["RegistrationCode"] then M.AssertRegistrationCode(struct["RegistrationCode"]) end
-	if struct["IamRoleId"] then M.AssertARN(struct["IamRoleId"]) end
-	if struct["DnsIpAddresses"] then M.AssertDnsIpAddresses(struct["DnsIpAddresses"]) end
-	if struct["WorkspaceSecurityGroupId"] then M.AssertSecurityGroupId(struct["WorkspaceSecurityGroupId"]) end
+	if struct["CustomerUserName"] then asserts.AssertUserName(struct["CustomerUserName"]) end
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["DirectoryName"] then asserts.AssertDirectoryName(struct["DirectoryName"]) end
+	if struct["SubnetIds"] then asserts.AssertSubnetIds(struct["SubnetIds"]) end
+	if struct["WorkspaceCreationProperties"] then asserts.AssertDefaultWorkspaceCreationProperties(struct["WorkspaceCreationProperties"]) end
+	if struct["Alias"] then asserts.AssertAlias(struct["Alias"]) end
+	if struct["State"] then asserts.AssertWorkspaceDirectoryState(struct["State"]) end
+	if struct["DirectoryType"] then asserts.AssertWorkspaceDirectoryType(struct["DirectoryType"]) end
+	if struct["RegistrationCode"] then asserts.AssertRegistrationCode(struct["RegistrationCode"]) end
+	if struct["IamRoleId"] then asserts.AssertARN(struct["IamRoleId"]) end
+	if struct["DnsIpAddresses"] then asserts.AssertDnsIpAddresses(struct["DnsIpAddresses"]) end
+	if struct["WorkspaceSecurityGroupId"] then asserts.AssertSecurityGroupId(struct["WorkspaceSecurityGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(WorkspaceDirectory_keys[k], "WorkspaceDirectory contains unknown key " .. tostring(k))
+		assert(keys.WorkspaceDirectory[k], "WorkspaceDirectory contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type WorkspaceDirectory
 -- <p>Contains information about an AWS Directory Service directory for use with Amazon WorkSpaces.</p>
--- @param CustomerUserName [UserName] <p>The user name for the service account.</p>
--- @param DirectoryId [DirectoryId] <p>The directory identifier.</p>
--- @param DirectoryName [DirectoryName] <p>The name of the directory.</p>
--- @param SubnetIds [SubnetIds] <p>An array of strings that contains the identifiers of the subnets used with the directory.</p>
--- @param WorkspaceCreationProperties [DefaultWorkspaceCreationProperties] <p>A structure that specifies the default creation properties for all WorkSpaces in the directory.</p>
--- @param Alias [Alias] <p>The directory alias.</p>
--- @param State [WorkspaceDirectoryState] <p>The state of the directory's registration with Amazon WorkSpaces</p>
--- @param DirectoryType [WorkspaceDirectoryType] <p>The directory type.</p>
--- @param RegistrationCode [RegistrationCode] <p>The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.</p>
--- @param IamRoleId [ARN] <p>The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.</p>
--- @param DnsIpAddresses [DnsIpAddresses] <p>An array of strings that contains the IP addresses of the DNS servers for the directory.</p>
--- @param WorkspaceSecurityGroupId [SecurityGroupId] <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
-function M.WorkspaceDirectory(CustomerUserName, DirectoryId, DirectoryName, SubnetIds, WorkspaceCreationProperties, Alias, State, DirectoryType, RegistrationCode, IamRoleId, DnsIpAddresses, WorkspaceSecurityGroupId, ...)
+-- @param _CustomerUserName [UserName] <p>The user name for the service account.</p>
+-- @param _DirectoryId [DirectoryId] <p>The directory identifier.</p>
+-- @param _DirectoryName [DirectoryName] <p>The name of the directory.</p>
+-- @param _SubnetIds [SubnetIds] <p>An array of strings that contains the identifiers of the subnets used with the directory.</p>
+-- @param _WorkspaceCreationProperties [DefaultWorkspaceCreationProperties] <p>A structure that specifies the default creation properties for all WorkSpaces in the directory.</p>
+-- @param _Alias [Alias] <p>The directory alias.</p>
+-- @param _State [WorkspaceDirectoryState] <p>The state of the directory's registration with Amazon WorkSpaces</p>
+-- @param _DirectoryType [WorkspaceDirectoryType] <p>The directory type.</p>
+-- @param _RegistrationCode [RegistrationCode] <p>The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.</p>
+-- @param _IamRoleId [ARN] <p>The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.</p>
+-- @param _DnsIpAddresses [DnsIpAddresses] <p>An array of strings that contains the IP addresses of the DNS servers for the directory.</p>
+-- @param _WorkspaceSecurityGroupId [SecurityGroupId] <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
+function M.WorkspaceDirectory(_CustomerUserName, _DirectoryId, _DirectoryName, _SubnetIds, _WorkspaceCreationProperties, _Alias, _State, _DirectoryType, _RegistrationCode, _IamRoleId, _DnsIpAddresses, _WorkspaceSecurityGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceDirectory")
 	local t = { 
-		["CustomerUserName"] = CustomerUserName,
-		["DirectoryId"] = DirectoryId,
-		["DirectoryName"] = DirectoryName,
-		["SubnetIds"] = SubnetIds,
-		["WorkspaceCreationProperties"] = WorkspaceCreationProperties,
-		["Alias"] = Alias,
-		["State"] = State,
-		["DirectoryType"] = DirectoryType,
-		["RegistrationCode"] = RegistrationCode,
-		["IamRoleId"] = IamRoleId,
-		["DnsIpAddresses"] = DnsIpAddresses,
-		["WorkspaceSecurityGroupId"] = WorkspaceSecurityGroupId,
+		["CustomerUserName"] = _CustomerUserName,
+		["DirectoryId"] = _DirectoryId,
+		["DirectoryName"] = _DirectoryName,
+		["SubnetIds"] = _SubnetIds,
+		["WorkspaceCreationProperties"] = _WorkspaceCreationProperties,
+		["Alias"] = _Alias,
+		["State"] = _State,
+		["DirectoryType"] = _DirectoryType,
+		["RegistrationCode"] = _RegistrationCode,
+		["IamRoleId"] = _IamRoleId,
+		["DnsIpAddresses"] = _DnsIpAddresses,
+		["WorkspaceSecurityGroupId"] = _WorkspaceSecurityGroupId,
 	}
-	M.AssertWorkspaceDirectory(t)
+	asserts.AssertWorkspaceDirectory(t)
 	return t
 end
 
-local DescribeWorkspacesRequest_keys = { "UserName" = true, "DirectoryId" = true, "Limit" = true, "WorkspaceIds" = true, "NextToken" = true, "BundleId" = true, nil }
+keys.DescribeWorkspacesRequest = { ["UserName"] = true, ["DirectoryId"] = true, ["Limit"] = true, ["WorkspaceIds"] = true, ["NextToken"] = true, ["BundleId"] = true, nil }
 
-function M.AssertDescribeWorkspacesRequest(struct)
+function asserts.AssertDescribeWorkspacesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeWorkspacesRequest to be of type 'table'")
-	if struct["UserName"] then M.AssertUserName(struct["UserName"]) end
-	if struct["DirectoryId"] then M.AssertDirectoryId(struct["DirectoryId"]) end
-	if struct["Limit"] then M.AssertLimit(struct["Limit"]) end
-	if struct["WorkspaceIds"] then M.AssertWorkspaceIdList(struct["WorkspaceIds"]) end
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
-	if struct["BundleId"] then M.AssertBundleId(struct["BundleId"]) end
+	if struct["UserName"] then asserts.AssertUserName(struct["UserName"]) end
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["Limit"] then asserts.AssertLimit(struct["Limit"]) end
+	if struct["WorkspaceIds"] then asserts.AssertWorkspaceIdList(struct["WorkspaceIds"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
+	if struct["BundleId"] then asserts.AssertBundleId(struct["BundleId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeWorkspacesRequest_keys[k], "DescribeWorkspacesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeWorkspacesRequest[k], "DescribeWorkspacesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeWorkspacesRequest
 -- <p>Contains the inputs for the <a>DescribeWorkspaces</a> operation.</p>
--- @param UserName [UserName] <p>Used with the <code>DirectoryId</code> parameter to specify the directory user for whom to obtain the WorkSpace.</p>
--- @param DirectoryId [DirectoryId] <p>Specifies the directory identifier to which to limit the WorkSpaces. Optionally, you can specify a specific directory user with the <code>UserName</code> parameter. This parameter cannot be combined with any other filter parameter.</p>
--- @param Limit [Limit] <p>The maximum number of items to return.</p>
--- @param WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces for which to retrieve information. This parameter cannot be combined with any other filter parameter.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, the identifier it returns is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information is returned.</p>
--- @param NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
--- @param BundleId [BundleId] <p>The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.</p>
-function M.DescribeWorkspacesRequest(UserName, DirectoryId, Limit, WorkspaceIds, NextToken, BundleId, ...)
+-- @param _UserName [UserName] <p>Used with the <code>DirectoryId</code> parameter to specify the directory user for whom to obtain the WorkSpace.</p>
+-- @param _DirectoryId [DirectoryId] <p>Specifies the directory identifier to which to limit the WorkSpaces. Optionally, you can specify a specific directory user with the <code>UserName</code> parameter. This parameter cannot be combined with any other filter parameter.</p>
+-- @param _Limit [Limit] <p>The maximum number of items to return.</p>
+-- @param _WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces for which to retrieve information. This parameter cannot be combined with any other filter parameter.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, the identifier it returns is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information is returned.</p>
+-- @param _NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+-- @param _BundleId [BundleId] <p>The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.</p>
+function M.DescribeWorkspacesRequest(_UserName, _DirectoryId, _Limit, _WorkspaceIds, _NextToken, _BundleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesRequest")
 	local t = { 
-		["UserName"] = UserName,
-		["DirectoryId"] = DirectoryId,
-		["Limit"] = Limit,
-		["WorkspaceIds"] = WorkspaceIds,
-		["NextToken"] = NextToken,
-		["BundleId"] = BundleId,
+		["UserName"] = _UserName,
+		["DirectoryId"] = _DirectoryId,
+		["Limit"] = _Limit,
+		["WorkspaceIds"] = _WorkspaceIds,
+		["NextToken"] = _NextToken,
+		["BundleId"] = _BundleId,
 	}
-	M.AssertDescribeWorkspacesRequest(t)
+	asserts.AssertDescribeWorkspacesRequest(t)
 	return t
 end
 
-local ModifyWorkspacePropertiesRequest_keys = { "WorkspaceId" = true, "WorkspaceProperties" = true, nil }
+keys.ModifyWorkspacePropertiesRequest = { ["WorkspaceId"] = true, ["WorkspaceProperties"] = true, nil }
 
-function M.AssertModifyWorkspacePropertiesRequest(struct)
+function asserts.AssertModifyWorkspacePropertiesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyWorkspacePropertiesRequest to be of type 'table'")
 	assert(struct["WorkspaceId"], "Expected key WorkspaceId to exist in table")
 	assert(struct["WorkspaceProperties"], "Expected key WorkspaceProperties to exist in table")
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
-	if struct["WorkspaceProperties"] then M.AssertWorkspaceProperties(struct["WorkspaceProperties"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["WorkspaceProperties"] then asserts.AssertWorkspaceProperties(struct["WorkspaceProperties"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyWorkspacePropertiesRequest_keys[k], "ModifyWorkspacePropertiesRequest contains unknown key " .. tostring(k))
+		assert(keys.ModifyWorkspacePropertiesRequest[k], "ModifyWorkspacePropertiesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyWorkspacePropertiesRequest
 --  
--- @param WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
--- @param WorkspaceProperties [WorkspaceProperties] <p>The WorkSpace properties of the request.</p>
+-- @param _WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+-- @param _WorkspaceProperties [WorkspaceProperties] <p>The WorkSpace properties of the request.</p>
 -- Required parameter: WorkspaceId
 -- Required parameter: WorkspaceProperties
-function M.ModifyWorkspacePropertiesRequest(WorkspaceId, WorkspaceProperties, ...)
+function M.ModifyWorkspacePropertiesRequest(_WorkspaceId, _WorkspaceProperties, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyWorkspacePropertiesRequest")
 	local t = { 
-		["WorkspaceId"] = WorkspaceId,
-		["WorkspaceProperties"] = WorkspaceProperties,
+		["WorkspaceId"] = _WorkspaceId,
+		["WorkspaceProperties"] = _WorkspaceProperties,
 	}
-	M.AssertModifyWorkspacePropertiesRequest(t)
+	asserts.AssertModifyWorkspacePropertiesRequest(t)
 	return t
 end
 
-local WorkspaceConnectionStatus_keys = { "ConnectionState" = true, "ConnectionStateCheckTimestamp" = true, "WorkspaceId" = true, "LastKnownUserConnectionTimestamp" = true, nil }
+keys.WorkspaceConnectionStatus = { ["ConnectionState"] = true, ["ConnectionStateCheckTimestamp"] = true, ["WorkspaceId"] = true, ["LastKnownUserConnectionTimestamp"] = true, nil }
 
-function M.AssertWorkspaceConnectionStatus(struct)
+function asserts.AssertWorkspaceConnectionStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected WorkspaceConnectionStatus to be of type 'table'")
-	if struct["ConnectionState"] then M.AssertConnectionState(struct["ConnectionState"]) end
-	if struct["ConnectionStateCheckTimestamp"] then M.AssertTimestamp(struct["ConnectionStateCheckTimestamp"]) end
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
-	if struct["LastKnownUserConnectionTimestamp"] then M.AssertTimestamp(struct["LastKnownUserConnectionTimestamp"]) end
+	if struct["ConnectionState"] then asserts.AssertConnectionState(struct["ConnectionState"]) end
+	if struct["ConnectionStateCheckTimestamp"] then asserts.AssertTimestamp(struct["ConnectionStateCheckTimestamp"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["LastKnownUserConnectionTimestamp"] then asserts.AssertTimestamp(struct["LastKnownUserConnectionTimestamp"]) end
 	for k,_ in pairs(struct) do
-		assert(WorkspaceConnectionStatus_keys[k], "WorkspaceConnectionStatus contains unknown key " .. tostring(k))
+		assert(keys.WorkspaceConnectionStatus[k], "WorkspaceConnectionStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type WorkspaceConnectionStatus
 -- <p>Describes the connection status of a WorkSpace.</p>
--- @param ConnectionState [ConnectionState] <p>The connection state of the WorkSpace. Returns UNKOWN if the WorkSpace is in a Stopped state.</p>
--- @param ConnectionStateCheckTimestamp [Timestamp] <p>The timestamp of the connection state check.</p>
--- @param WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
--- @param LastKnownUserConnectionTimestamp [Timestamp] <p>The timestamp of the last known user connection.</p>
-function M.WorkspaceConnectionStatus(ConnectionState, ConnectionStateCheckTimestamp, WorkspaceId, LastKnownUserConnectionTimestamp, ...)
+-- @param _ConnectionState [ConnectionState] <p>The connection state of the WorkSpace. Returns UNKOWN if the WorkSpace is in a Stopped state.</p>
+-- @param _ConnectionStateCheckTimestamp [Timestamp] <p>The timestamp of the connection state check.</p>
+-- @param _WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+-- @param _LastKnownUserConnectionTimestamp [Timestamp] <p>The timestamp of the last known user connection.</p>
+function M.WorkspaceConnectionStatus(_ConnectionState, _ConnectionStateCheckTimestamp, _WorkspaceId, _LastKnownUserConnectionTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceConnectionStatus")
 	local t = { 
-		["ConnectionState"] = ConnectionState,
-		["ConnectionStateCheckTimestamp"] = ConnectionStateCheckTimestamp,
-		["WorkspaceId"] = WorkspaceId,
-		["LastKnownUserConnectionTimestamp"] = LastKnownUserConnectionTimestamp,
+		["ConnectionState"] = _ConnectionState,
+		["ConnectionStateCheckTimestamp"] = _ConnectionStateCheckTimestamp,
+		["WorkspaceId"] = _WorkspaceId,
+		["LastKnownUserConnectionTimestamp"] = _LastKnownUserConnectionTimestamp,
 	}
-	M.AssertWorkspaceConnectionStatus(t)
+	asserts.AssertWorkspaceConnectionStatus(t)
 	return t
 end
 
-local DescribeWorkspaceBundlesResult_keys = { "NextToken" = true, "Bundles" = true, nil }
+keys.DescribeWorkspaceBundlesResult = { ["NextToken"] = true, ["Bundles"] = true, nil }
 
-function M.AssertDescribeWorkspaceBundlesResult(struct)
+function asserts.AssertDescribeWorkspaceBundlesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeWorkspaceBundlesResult to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
-	if struct["Bundles"] then M.AssertBundleList(struct["Bundles"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
+	if struct["Bundles"] then asserts.AssertBundleList(struct["Bundles"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeWorkspaceBundlesResult_keys[k], "DescribeWorkspaceBundlesResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeWorkspaceBundlesResult[k], "DescribeWorkspaceBundlesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeWorkspaceBundlesResult
 -- <p>Contains the results of the <a>DescribeWorkspaceBundles</a> operation.</p>
--- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
--- @param Bundles [BundleList] <p>An array of structures that contain information about the bundles.</p>
-function M.DescribeWorkspaceBundlesResult(NextToken, Bundles, ...)
+-- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+-- @param _Bundles [BundleList] <p>An array of structures that contain information about the bundles.</p>
+function M.DescribeWorkspaceBundlesResult(_NextToken, _Bundles, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceBundlesResult")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Bundles"] = Bundles,
+		["NextToken"] = _NextToken,
+		["Bundles"] = _Bundles,
 	}
-	M.AssertDescribeWorkspaceBundlesResult(t)
+	asserts.AssertDescribeWorkspaceBundlesResult(t)
 	return t
 end
 
-local Workspace_keys = { "UserName" = true, "DirectoryId" = true, "ComputerName" = true, "VolumeEncryptionKey" = true, "UserVolumeEncryptionEnabled" = true, "ErrorMessage" = true, "WorkspaceProperties" = true, "ErrorCode" = true, "State" = true, "WorkspaceId" = true, "SubnetId" = true, "RootVolumeEncryptionEnabled" = true, "IpAddress" = true, "BundleId" = true, nil }
+keys.Workspace = { ["UserName"] = true, ["DirectoryId"] = true, ["ComputerName"] = true, ["VolumeEncryptionKey"] = true, ["UserVolumeEncryptionEnabled"] = true, ["ErrorMessage"] = true, ["WorkspaceProperties"] = true, ["ErrorCode"] = true, ["State"] = true, ["WorkspaceId"] = true, ["SubnetId"] = true, ["RootVolumeEncryptionEnabled"] = true, ["IpAddress"] = true, ["BundleId"] = true, nil }
 
-function M.AssertWorkspace(struct)
+function asserts.AssertWorkspace(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Workspace to be of type 'table'")
-	if struct["UserName"] then M.AssertUserName(struct["UserName"]) end
-	if struct["DirectoryId"] then M.AssertDirectoryId(struct["DirectoryId"]) end
-	if struct["ComputerName"] then M.AssertComputerName(struct["ComputerName"]) end
-	if struct["VolumeEncryptionKey"] then M.AssertVolumeEncryptionKey(struct["VolumeEncryptionKey"]) end
-	if struct["UserVolumeEncryptionEnabled"] then M.AssertBooleanObject(struct["UserVolumeEncryptionEnabled"]) end
-	if struct["ErrorMessage"] then M.AssertDescription(struct["ErrorMessage"]) end
-	if struct["WorkspaceProperties"] then M.AssertWorkspaceProperties(struct["WorkspaceProperties"]) end
-	if struct["ErrorCode"] then M.AssertWorkspaceErrorCode(struct["ErrorCode"]) end
-	if struct["State"] then M.AssertWorkspaceState(struct["State"]) end
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
-	if struct["SubnetId"] then M.AssertSubnetId(struct["SubnetId"]) end
-	if struct["RootVolumeEncryptionEnabled"] then M.AssertBooleanObject(struct["RootVolumeEncryptionEnabled"]) end
-	if struct["IpAddress"] then M.AssertIpAddress(struct["IpAddress"]) end
-	if struct["BundleId"] then M.AssertBundleId(struct["BundleId"]) end
+	if struct["UserName"] then asserts.AssertUserName(struct["UserName"]) end
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["ComputerName"] then asserts.AssertComputerName(struct["ComputerName"]) end
+	if struct["VolumeEncryptionKey"] then asserts.AssertVolumeEncryptionKey(struct["VolumeEncryptionKey"]) end
+	if struct["UserVolumeEncryptionEnabled"] then asserts.AssertBooleanObject(struct["UserVolumeEncryptionEnabled"]) end
+	if struct["ErrorMessage"] then asserts.AssertDescription(struct["ErrorMessage"]) end
+	if struct["WorkspaceProperties"] then asserts.AssertWorkspaceProperties(struct["WorkspaceProperties"]) end
+	if struct["ErrorCode"] then asserts.AssertWorkspaceErrorCode(struct["ErrorCode"]) end
+	if struct["State"] then asserts.AssertWorkspaceState(struct["State"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["SubnetId"] then asserts.AssertSubnetId(struct["SubnetId"]) end
+	if struct["RootVolumeEncryptionEnabled"] then asserts.AssertBooleanObject(struct["RootVolumeEncryptionEnabled"]) end
+	if struct["IpAddress"] then asserts.AssertIpAddress(struct["IpAddress"]) end
+	if struct["BundleId"] then asserts.AssertBundleId(struct["BundleId"]) end
 	for k,_ in pairs(struct) do
-		assert(Workspace_keys[k], "Workspace contains unknown key " .. tostring(k))
+		assert(keys.Workspace[k], "Workspace contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Workspace
 -- <p>Contains information about a WorkSpace.</p>
--- @param UserName [UserName] <p>The user that the WorkSpace is assigned to.</p>
--- @param DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory that the WorkSpace belongs to.</p>
--- @param ComputerName [ComputerName] <p>The name of the WorkSpace as seen by the operating system.</p>
--- @param VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
--- @param UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
--- @param ErrorMessage [Description] <p>If the WorkSpace could not be created, this contains a textual error message that describes the failure.</p>
--- @param WorkspaceProperties [WorkspaceProperties] <p>Contains information about a WorkSpace.</p>
--- @param ErrorCode [WorkspaceErrorCode] <p>If the WorkSpace could not be created, this contains the error code.</p>
--- @param State [WorkspaceState] <p>The operational state of the WorkSpace.</p>
--- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
--- @param SubnetId [SubnetId] <p>The identifier of the subnet that the WorkSpace is in.</p>
--- @param RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
--- @param IpAddress [IpAddress] <p>The IP address of the WorkSpace.</p>
--- @param BundleId [BundleId] <p>The identifier of the bundle that the WorkSpace was created from.</p>
-function M.Workspace(UserName, DirectoryId, ComputerName, VolumeEncryptionKey, UserVolumeEncryptionEnabled, ErrorMessage, WorkspaceProperties, ErrorCode, State, WorkspaceId, SubnetId, RootVolumeEncryptionEnabled, IpAddress, BundleId, ...)
+-- @param _UserName [UserName] <p>The user that the WorkSpace is assigned to.</p>
+-- @param _DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory that the WorkSpace belongs to.</p>
+-- @param _ComputerName [ComputerName] <p>The name of the WorkSpace as seen by the operating system.</p>
+-- @param _VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
+-- @param _UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
+-- @param _ErrorMessage [Description] <p>If the WorkSpace could not be created, this contains a textual error message that describes the failure.</p>
+-- @param _WorkspaceProperties [WorkspaceProperties] 
+-- @param _ErrorCode [WorkspaceErrorCode] <p>If the WorkSpace could not be created, this contains the error code.</p>
+-- @param _State [WorkspaceState] <p>The operational state of the WorkSpace.</p>
+-- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
+-- @param _SubnetId [SubnetId] <p>The identifier of the subnet that the WorkSpace is in.</p>
+-- @param _RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
+-- @param _IpAddress [IpAddress] <p>The IP address of the WorkSpace.</p>
+-- @param _BundleId [BundleId] <p>The identifier of the bundle that the WorkSpace was created from.</p>
+function M.Workspace(_UserName, _DirectoryId, _ComputerName, _VolumeEncryptionKey, _UserVolumeEncryptionEnabled, _ErrorMessage, _WorkspaceProperties, _ErrorCode, _State, _WorkspaceId, _SubnetId, _RootVolumeEncryptionEnabled, _IpAddress, _BundleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Workspace")
 	local t = { 
-		["UserName"] = UserName,
-		["DirectoryId"] = DirectoryId,
-		["ComputerName"] = ComputerName,
-		["VolumeEncryptionKey"] = VolumeEncryptionKey,
-		["UserVolumeEncryptionEnabled"] = UserVolumeEncryptionEnabled,
-		["ErrorMessage"] = ErrorMessage,
-		["WorkspaceProperties"] = WorkspaceProperties,
-		["ErrorCode"] = ErrorCode,
-		["State"] = State,
-		["WorkspaceId"] = WorkspaceId,
-		["SubnetId"] = SubnetId,
-		["RootVolumeEncryptionEnabled"] = RootVolumeEncryptionEnabled,
-		["IpAddress"] = IpAddress,
-		["BundleId"] = BundleId,
+		["UserName"] = _UserName,
+		["DirectoryId"] = _DirectoryId,
+		["ComputerName"] = _ComputerName,
+		["VolumeEncryptionKey"] = _VolumeEncryptionKey,
+		["UserVolumeEncryptionEnabled"] = _UserVolumeEncryptionEnabled,
+		["ErrorMessage"] = _ErrorMessage,
+		["WorkspaceProperties"] = _WorkspaceProperties,
+		["ErrorCode"] = _ErrorCode,
+		["State"] = _State,
+		["WorkspaceId"] = _WorkspaceId,
+		["SubnetId"] = _SubnetId,
+		["RootVolumeEncryptionEnabled"] = _RootVolumeEncryptionEnabled,
+		["IpAddress"] = _IpAddress,
+		["BundleId"] = _BundleId,
 	}
-	M.AssertWorkspace(t)
+	asserts.AssertWorkspace(t)
 	return t
 end
 
-local FailedWorkspaceChangeRequest_keys = { "ErrorCode" = true, "WorkspaceId" = true, "ErrorMessage" = true, nil }
+keys.FailedWorkspaceChangeRequest = { ["ErrorCode"] = true, ["WorkspaceId"] = true, ["ErrorMessage"] = true, nil }
 
-function M.AssertFailedWorkspaceChangeRequest(struct)
+function asserts.AssertFailedWorkspaceChangeRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FailedWorkspaceChangeRequest to be of type 'table'")
-	if struct["ErrorCode"] then M.AssertErrorType(struct["ErrorCode"]) end
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
-	if struct["ErrorMessage"] then M.AssertDescription(struct["ErrorMessage"]) end
+	if struct["ErrorCode"] then asserts.AssertErrorType(struct["ErrorCode"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["ErrorMessage"] then asserts.AssertDescription(struct["ErrorMessage"]) end
 	for k,_ in pairs(struct) do
-		assert(FailedWorkspaceChangeRequest_keys[k], "FailedWorkspaceChangeRequest contains unknown key " .. tostring(k))
+		assert(keys.FailedWorkspaceChangeRequest[k], "FailedWorkspaceChangeRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FailedWorkspaceChangeRequest
 -- <p>Contains information about a WorkSpace that could not be rebooted (<a>RebootWorkspaces</a>), rebuilt (<a>RebuildWorkspaces</a>), terminated (<a>TerminateWorkspaces</a>), started (<a>StartWorkspaces</a>), or stopped (<a>StopWorkspaces</a>).</p>
--- @param ErrorCode [ErrorType] <p>The error code.</p>
--- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
--- @param ErrorMessage [Description] <p>The textual error message.</p>
-function M.FailedWorkspaceChangeRequest(ErrorCode, WorkspaceId, ErrorMessage, ...)
+-- @param _ErrorCode [ErrorType] <p>The error code.</p>
+-- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
+-- @param _ErrorMessage [Description] <p>The textual error message.</p>
+function M.FailedWorkspaceChangeRequest(_ErrorCode, _WorkspaceId, _ErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailedWorkspaceChangeRequest")
 	local t = { 
-		["ErrorCode"] = ErrorCode,
-		["WorkspaceId"] = WorkspaceId,
-		["ErrorMessage"] = ErrorMessage,
+		["ErrorCode"] = _ErrorCode,
+		["WorkspaceId"] = _WorkspaceId,
+		["ErrorMessage"] = _ErrorMessage,
 	}
-	M.AssertFailedWorkspaceChangeRequest(t)
+	asserts.AssertFailedWorkspaceChangeRequest(t)
 	return t
 end
 
-local ModifyWorkspacePropertiesResult_keys = { nil }
+keys.ModifyWorkspacePropertiesResult = { nil }
 
-function M.AssertModifyWorkspacePropertiesResult(struct)
+function asserts.AssertModifyWorkspacePropertiesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyWorkspacePropertiesResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ModifyWorkspacePropertiesResult_keys[k], "ModifyWorkspacePropertiesResult contains unknown key " .. tostring(k))
+		assert(keys.ModifyWorkspacePropertiesResult[k], "ModifyWorkspacePropertiesResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -636,418 +639,418 @@ function M.ModifyWorkspacePropertiesResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyWorkspacePropertiesResult")
 	local t = { 
 	}
-	M.AssertModifyWorkspacePropertiesResult(t)
+	asserts.AssertModifyWorkspacePropertiesResult(t)
 	return t
 end
 
-local StartWorkspacesRequest_keys = { "StartWorkspaceRequests" = true, nil }
+keys.StartWorkspacesRequest = { ["StartWorkspaceRequests"] = true, nil }
 
-function M.AssertStartWorkspacesRequest(struct)
+function asserts.AssertStartWorkspacesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartWorkspacesRequest to be of type 'table'")
 	assert(struct["StartWorkspaceRequests"], "Expected key StartWorkspaceRequests to exist in table")
-	if struct["StartWorkspaceRequests"] then M.AssertStartWorkspaceRequests(struct["StartWorkspaceRequests"]) end
+	if struct["StartWorkspaceRequests"] then asserts.AssertStartWorkspaceRequests(struct["StartWorkspaceRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(StartWorkspacesRequest_keys[k], "StartWorkspacesRequest contains unknown key " .. tostring(k))
+		assert(keys.StartWorkspacesRequest[k], "StartWorkspacesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartWorkspacesRequest
 --  
--- @param StartWorkspaceRequests [StartWorkspaceRequests] <p>The requests.</p>
+-- @param _StartWorkspaceRequests [StartWorkspaceRequests] <p>The requests.</p>
 -- Required parameter: StartWorkspaceRequests
-function M.StartWorkspacesRequest(StartWorkspaceRequests, ...)
+function M.StartWorkspacesRequest(_StartWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartWorkspacesRequest")
 	local t = { 
-		["StartWorkspaceRequests"] = StartWorkspaceRequests,
+		["StartWorkspaceRequests"] = _StartWorkspaceRequests,
 	}
-	M.AssertStartWorkspacesRequest(t)
+	asserts.AssertStartWorkspacesRequest(t)
 	return t
 end
 
-local StartWorkspacesResult_keys = { "FailedRequests" = true, nil }
+keys.StartWorkspacesResult = { ["FailedRequests"] = true, nil }
 
-function M.AssertStartWorkspacesResult(struct)
+function asserts.AssertStartWorkspacesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartWorkspacesResult to be of type 'table'")
-	if struct["FailedRequests"] then M.AssertFailedStartWorkspaceRequests(struct["FailedRequests"]) end
+	if struct["FailedRequests"] then asserts.AssertFailedStartWorkspaceRequests(struct["FailedRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(StartWorkspacesResult_keys[k], "StartWorkspacesResult contains unknown key " .. tostring(k))
+		assert(keys.StartWorkspacesResult[k], "StartWorkspacesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartWorkspacesResult
 --  
--- @param FailedRequests [FailedStartWorkspaceRequests] <p>The failed requests.</p>
-function M.StartWorkspacesResult(FailedRequests, ...)
+-- @param _FailedRequests [FailedStartWorkspaceRequests] <p>The failed requests.</p>
+function M.StartWorkspacesResult(_FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = FailedRequests,
+		["FailedRequests"] = _FailedRequests,
 	}
-	M.AssertStartWorkspacesResult(t)
+	asserts.AssertStartWorkspacesResult(t)
 	return t
 end
 
-local DescribeWorkspacesResult_keys = { "NextToken" = true, "Workspaces" = true, nil }
+keys.DescribeWorkspacesResult = { ["NextToken"] = true, ["Workspaces"] = true, nil }
 
-function M.AssertDescribeWorkspacesResult(struct)
+function asserts.AssertDescribeWorkspacesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeWorkspacesResult to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
-	if struct["Workspaces"] then M.AssertWorkspaceList(struct["Workspaces"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
+	if struct["Workspaces"] then asserts.AssertWorkspaceList(struct["Workspaces"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeWorkspacesResult_keys[k], "DescribeWorkspacesResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeWorkspacesResult[k], "DescribeWorkspacesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeWorkspacesResult
 -- <p>Contains the results for the <a>DescribeWorkspaces</a> operation.</p>
--- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
--- @param Workspaces [WorkspaceList] <p>An array of structures that contain the information about the WorkSpaces.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.</p>
-function M.DescribeWorkspacesResult(NextToken, Workspaces, ...)
+-- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+-- @param _Workspaces [WorkspaceList] <p>An array of structures that contain the information about the WorkSpaces.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.</p>
+function M.DescribeWorkspacesResult(_NextToken, _Workspaces, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesResult")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Workspaces"] = Workspaces,
+		["NextToken"] = _NextToken,
+		["Workspaces"] = _Workspaces,
 	}
-	M.AssertDescribeWorkspacesResult(t)
+	asserts.AssertDescribeWorkspacesResult(t)
 	return t
 end
 
-local WorkspaceRequest_keys = { "UserName" = true, "DirectoryId" = true, "VolumeEncryptionKey" = true, "Tags" = true, "WorkspaceProperties" = true, "BundleId" = true, "UserVolumeEncryptionEnabled" = true, "RootVolumeEncryptionEnabled" = true, nil }
+keys.WorkspaceRequest = { ["UserName"] = true, ["DirectoryId"] = true, ["VolumeEncryptionKey"] = true, ["Tags"] = true, ["WorkspaceProperties"] = true, ["BundleId"] = true, ["UserVolumeEncryptionEnabled"] = true, ["RootVolumeEncryptionEnabled"] = true, nil }
 
-function M.AssertWorkspaceRequest(struct)
+function asserts.AssertWorkspaceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected WorkspaceRequest to be of type 'table'")
 	assert(struct["DirectoryId"], "Expected key DirectoryId to exist in table")
 	assert(struct["UserName"], "Expected key UserName to exist in table")
 	assert(struct["BundleId"], "Expected key BundleId to exist in table")
-	if struct["UserName"] then M.AssertUserName(struct["UserName"]) end
-	if struct["DirectoryId"] then M.AssertDirectoryId(struct["DirectoryId"]) end
-	if struct["VolumeEncryptionKey"] then M.AssertVolumeEncryptionKey(struct["VolumeEncryptionKey"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["WorkspaceProperties"] then M.AssertWorkspaceProperties(struct["WorkspaceProperties"]) end
-	if struct["BundleId"] then M.AssertBundleId(struct["BundleId"]) end
-	if struct["UserVolumeEncryptionEnabled"] then M.AssertBooleanObject(struct["UserVolumeEncryptionEnabled"]) end
-	if struct["RootVolumeEncryptionEnabled"] then M.AssertBooleanObject(struct["RootVolumeEncryptionEnabled"]) end
+	if struct["UserName"] then asserts.AssertUserName(struct["UserName"]) end
+	if struct["DirectoryId"] then asserts.AssertDirectoryId(struct["DirectoryId"]) end
+	if struct["VolumeEncryptionKey"] then asserts.AssertVolumeEncryptionKey(struct["VolumeEncryptionKey"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["WorkspaceProperties"] then asserts.AssertWorkspaceProperties(struct["WorkspaceProperties"]) end
+	if struct["BundleId"] then asserts.AssertBundleId(struct["BundleId"]) end
+	if struct["UserVolumeEncryptionEnabled"] then asserts.AssertBooleanObject(struct["UserVolumeEncryptionEnabled"]) end
+	if struct["RootVolumeEncryptionEnabled"] then asserts.AssertBooleanObject(struct["RootVolumeEncryptionEnabled"]) end
 	for k,_ in pairs(struct) do
-		assert(WorkspaceRequest_keys[k], "WorkspaceRequest contains unknown key " .. tostring(k))
+		assert(keys.WorkspaceRequest[k], "WorkspaceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type WorkspaceRequest
 -- <p>Contains information about a WorkSpace creation request.</p>
--- @param UserName [UserName] <p>The username that the WorkSpace is assigned to. This username must exist in the AWS Directory Service directory specified by the <code>DirectoryId</code> member.</p>
--- @param DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory to create the WorkSpace in. You can use the <a>DescribeWorkspaceDirectories</a> operation to obtain a list of the directories that are available.</p>
--- @param VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
--- @param Tags [TagList] <p>The tags of the WorkSpace request.</p>
--- @param WorkspaceProperties [WorkspaceProperties] <p>Contains information about a WorkSpace creation request.</p>
--- @param BundleId [BundleId] <p>The identifier of the bundle to create the WorkSpace from. You can use the <a>DescribeWorkspaceBundles</a> operation to obtain a list of the bundles that are available.</p>
--- @param UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
--- @param RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
+-- @param _UserName [UserName] <p>The username that the WorkSpace is assigned to. This username must exist in the AWS Directory Service directory specified by the <code>DirectoryId</code> member.</p>
+-- @param _DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory to create the WorkSpace in. You can use the <a>DescribeWorkspaceDirectories</a> operation to obtain a list of the directories that are available.</p>
+-- @param _VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
+-- @param _Tags [TagList] <p>The tags of the WorkSpace request.</p>
+-- @param _WorkspaceProperties [WorkspaceProperties] 
+-- @param _BundleId [BundleId] <p>The identifier of the bundle to create the WorkSpace from. You can use the <a>DescribeWorkspaceBundles</a> operation to obtain a list of the bundles that are available.</p>
+-- @param _UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
+-- @param _RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: UserName
 -- Required parameter: BundleId
-function M.WorkspaceRequest(UserName, DirectoryId, VolumeEncryptionKey, Tags, WorkspaceProperties, BundleId, UserVolumeEncryptionEnabled, RootVolumeEncryptionEnabled, ...)
+function M.WorkspaceRequest(_UserName, _DirectoryId, _VolumeEncryptionKey, _Tags, _WorkspaceProperties, _BundleId, _UserVolumeEncryptionEnabled, _RootVolumeEncryptionEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceRequest")
 	local t = { 
-		["UserName"] = UserName,
-		["DirectoryId"] = DirectoryId,
-		["VolumeEncryptionKey"] = VolumeEncryptionKey,
-		["Tags"] = Tags,
-		["WorkspaceProperties"] = WorkspaceProperties,
-		["BundleId"] = BundleId,
-		["UserVolumeEncryptionEnabled"] = UserVolumeEncryptionEnabled,
-		["RootVolumeEncryptionEnabled"] = RootVolumeEncryptionEnabled,
+		["UserName"] = _UserName,
+		["DirectoryId"] = _DirectoryId,
+		["VolumeEncryptionKey"] = _VolumeEncryptionKey,
+		["Tags"] = _Tags,
+		["WorkspaceProperties"] = _WorkspaceProperties,
+		["BundleId"] = _BundleId,
+		["UserVolumeEncryptionEnabled"] = _UserVolumeEncryptionEnabled,
+		["RootVolumeEncryptionEnabled"] = _RootVolumeEncryptionEnabled,
 	}
-	M.AssertWorkspaceRequest(t)
+	asserts.AssertWorkspaceRequest(t)
 	return t
 end
 
-local ComputeType_keys = { "Name" = true, nil }
+keys.ComputeType = { ["Name"] = true, nil }
 
-function M.AssertComputeType(struct)
+function asserts.AssertComputeType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ComputeType to be of type 'table'")
-	if struct["Name"] then M.AssertCompute(struct["Name"]) end
+	if struct["Name"] then asserts.AssertCompute(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(ComputeType_keys[k], "ComputeType contains unknown key " .. tostring(k))
+		assert(keys.ComputeType[k], "ComputeType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ComputeType
 -- <p>Contains information about the compute type of a WorkSpace bundle.</p>
--- @param Name [Compute] <p>The name of the compute type for the bundle.</p>
-function M.ComputeType(Name, ...)
+-- @param _Name [Compute] <p>The name of the compute type for the bundle.</p>
+function M.ComputeType(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComputeType")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertComputeType(t)
+	asserts.AssertComputeType(t)
 	return t
 end
 
-local TerminateRequest_keys = { "WorkspaceId" = true, nil }
+keys.TerminateRequest = { ["WorkspaceId"] = true, nil }
 
-function M.AssertTerminateRequest(struct)
+function asserts.AssertTerminateRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TerminateRequest to be of type 'table'")
 	assert(struct["WorkspaceId"], "Expected key WorkspaceId to exist in table")
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
 	for k,_ in pairs(struct) do
-		assert(TerminateRequest_keys[k], "TerminateRequest contains unknown key " .. tostring(k))
+		assert(keys.TerminateRequest[k], "TerminateRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TerminateRequest
 -- <p>Contains information used with the <a>TerminateWorkspaces</a> operation to terminate a WorkSpace.</p>
--- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to terminate.</p>
+-- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to terminate.</p>
 -- Required parameter: WorkspaceId
-function M.TerminateRequest(WorkspaceId, ...)
+function M.TerminateRequest(_WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateRequest")
 	local t = { 
-		["WorkspaceId"] = WorkspaceId,
+		["WorkspaceId"] = _WorkspaceId,
 	}
-	M.AssertTerminateRequest(t)
+	asserts.AssertTerminateRequest(t)
 	return t
 end
 
-local DeleteTagsRequest_keys = { "ResourceId" = true, "TagKeys" = true, nil }
+keys.DeleteTagsRequest = { ["ResourceId"] = true, ["TagKeys"] = true, nil }
 
-function M.AssertDeleteTagsRequest(struct)
+function asserts.AssertDeleteTagsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteTagsRequest to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["ResourceId"] then M.AssertNonEmptyString(struct["ResourceId"]) end
-	if struct["TagKeys"] then M.AssertTagKeyList(struct["TagKeys"]) end
+	if struct["ResourceId"] then asserts.AssertNonEmptyString(struct["ResourceId"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteTagsRequest_keys[k], "DeleteTagsRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteTagsRequest[k], "DeleteTagsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteTagsRequest
 -- <p>The request of the <a>DeleteTags</a> operation.</p>
--- @param ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
--- @param TagKeys [TagKeyList] <p>The tag keys of the request.</p>
+-- @param _ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
+-- @param _TagKeys [TagKeyList] <p>The tag keys of the request.</p>
 -- Required parameter: ResourceId
 -- Required parameter: TagKeys
-function M.DeleteTagsRequest(ResourceId, TagKeys, ...)
+function M.DeleteTagsRequest(_ResourceId, _TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsRequest")
 	local t = { 
-		["ResourceId"] = ResourceId,
-		["TagKeys"] = TagKeys,
+		["ResourceId"] = _ResourceId,
+		["TagKeys"] = _TagKeys,
 	}
-	M.AssertDeleteTagsRequest(t)
+	asserts.AssertDeleteTagsRequest(t)
 	return t
 end
 
-local DescribeWorkspaceDirectoriesRequest_keys = { "DirectoryIds" = true, "NextToken" = true, nil }
+keys.DescribeWorkspaceDirectoriesRequest = { ["DirectoryIds"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeWorkspaceDirectoriesRequest(struct)
+function asserts.AssertDescribeWorkspaceDirectoriesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeWorkspaceDirectoriesRequest to be of type 'table'")
-	if struct["DirectoryIds"] then M.AssertDirectoryIdList(struct["DirectoryIds"]) end
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
+	if struct["DirectoryIds"] then asserts.AssertDirectoryIdList(struct["DirectoryIds"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeWorkspaceDirectoriesRequest_keys[k], "DescribeWorkspaceDirectoriesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeWorkspaceDirectoriesRequest[k], "DescribeWorkspaceDirectoriesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeWorkspaceDirectoriesRequest
 -- <p>Contains the inputs for the <a>DescribeWorkspaceDirectories</a> operation.</p>
--- @param DirectoryIds [DirectoryIdList] <p>An array of strings that contains the directory identifiers to retrieve information for. If this member is null, all directories are retrieved.</p>
--- @param NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
-function M.DescribeWorkspaceDirectoriesRequest(DirectoryIds, NextToken, ...)
+-- @param _DirectoryIds [DirectoryIdList] <p>An array of strings that contains the directory identifiers to retrieve information for. If this member is null, all directories are retrieved.</p>
+-- @param _NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+function M.DescribeWorkspaceDirectoriesRequest(_DirectoryIds, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceDirectoriesRequest")
 	local t = { 
-		["DirectoryIds"] = DirectoryIds,
-		["NextToken"] = NextToken,
+		["DirectoryIds"] = _DirectoryIds,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeWorkspaceDirectoriesRequest(t)
+	asserts.AssertDescribeWorkspaceDirectoriesRequest(t)
 	return t
 end
 
-local DescribeWorkspacesConnectionStatusRequest_keys = { "NextToken" = true, "WorkspaceIds" = true, nil }
+keys.DescribeWorkspacesConnectionStatusRequest = { ["NextToken"] = true, ["WorkspaceIds"] = true, nil }
 
-function M.AssertDescribeWorkspacesConnectionStatusRequest(struct)
+function asserts.AssertDescribeWorkspacesConnectionStatusRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeWorkspacesConnectionStatusRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
-	if struct["WorkspaceIds"] then M.AssertWorkspaceIdList(struct["WorkspaceIds"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
+	if struct["WorkspaceIds"] then asserts.AssertWorkspaceIdList(struct["WorkspaceIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeWorkspacesConnectionStatusRequest_keys[k], "DescribeWorkspacesConnectionStatusRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeWorkspacesConnectionStatusRequest[k], "DescribeWorkspacesConnectionStatusRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeWorkspacesConnectionStatusRequest
 --  
--- @param NextToken [PaginationToken] <p>The next token of the request.</p>
--- @param WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces.</p>
-function M.DescribeWorkspacesConnectionStatusRequest(NextToken, WorkspaceIds, ...)
+-- @param _NextToken [PaginationToken] <p>The next token of the request.</p>
+-- @param _WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces.</p>
+function M.DescribeWorkspacesConnectionStatusRequest(_NextToken, _WorkspaceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesConnectionStatusRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["WorkspaceIds"] = WorkspaceIds,
+		["NextToken"] = _NextToken,
+		["WorkspaceIds"] = _WorkspaceIds,
 	}
-	M.AssertDescribeWorkspacesConnectionStatusRequest(t)
+	asserts.AssertDescribeWorkspacesConnectionStatusRequest(t)
 	return t
 end
 
-local UserStorage_keys = { "Capacity" = true, nil }
+keys.UserStorage = { ["Capacity"] = true, nil }
 
-function M.AssertUserStorage(struct)
+function asserts.AssertUserStorage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UserStorage to be of type 'table'")
-	if struct["Capacity"] then M.AssertNonEmptyString(struct["Capacity"]) end
+	if struct["Capacity"] then asserts.AssertNonEmptyString(struct["Capacity"]) end
 	for k,_ in pairs(struct) do
-		assert(UserStorage_keys[k], "UserStorage contains unknown key " .. tostring(k))
+		assert(keys.UserStorage[k], "UserStorage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UserStorage
 -- <p>Contains information about the user storage for a WorkSpace bundle.</p>
--- @param Capacity [NonEmptyString] <p>The amount of user storage for the bundle.</p>
-function M.UserStorage(Capacity, ...)
+-- @param _Capacity [NonEmptyString] <p>The amount of user storage for the bundle.</p>
+function M.UserStorage(_Capacity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserStorage")
 	local t = { 
-		["Capacity"] = Capacity,
+		["Capacity"] = _Capacity,
 	}
-	M.AssertUserStorage(t)
+	asserts.AssertUserStorage(t)
 	return t
 end
 
-local DescribeTagsResult_keys = { "TagList" = true, nil }
+keys.DescribeTagsResult = { ["TagList"] = true, nil }
 
-function M.AssertDescribeTagsResult(struct)
+function asserts.AssertDescribeTagsResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeTagsResult to be of type 'table'")
-	if struct["TagList"] then M.AssertTagList(struct["TagList"]) end
+	if struct["TagList"] then asserts.AssertTagList(struct["TagList"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeTagsResult_keys[k], "DescribeTagsResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeTagsResult[k], "DescribeTagsResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeTagsResult
 -- <p>The result of the <a>DescribeTags</a> operation.</p>
--- @param TagList [TagList] <p>The list of tags.</p>
-function M.DescribeTagsResult(TagList, ...)
+-- @param _TagList [TagList] <p>The list of tags.</p>
+function M.DescribeTagsResult(_TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResult")
 	local t = { 
-		["TagList"] = TagList,
+		["TagList"] = _TagList,
 	}
-	M.AssertDescribeTagsResult(t)
+	asserts.AssertDescribeTagsResult(t)
 	return t
 end
 
-local StopRequest_keys = { "WorkspaceId" = true, nil }
+keys.StopRequest = { ["WorkspaceId"] = true, nil }
 
-function M.AssertStopRequest(struct)
+function asserts.AssertStopRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopRequest to be of type 'table'")
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
 	for k,_ in pairs(struct) do
-		assert(StopRequest_keys[k], "StopRequest contains unknown key " .. tostring(k))
+		assert(keys.StopRequest[k], "StopRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopRequest
 -- <p>Describes the stop request.</p>
--- @param WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
-function M.StopRequest(WorkspaceId, ...)
+-- @param _WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+function M.StopRequest(_WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopRequest")
 	local t = { 
-		["WorkspaceId"] = WorkspaceId,
+		["WorkspaceId"] = _WorkspaceId,
 	}
-	M.AssertStopRequest(t)
+	asserts.AssertStopRequest(t)
 	return t
 end
 
-local DescribeWorkspaceBundlesRequest_keys = { "Owner" = true, "NextToken" = true, "BundleIds" = true, nil }
+keys.DescribeWorkspaceBundlesRequest = { ["Owner"] = true, ["NextToken"] = true, ["BundleIds"] = true, nil }
 
-function M.AssertDescribeWorkspaceBundlesRequest(struct)
+function asserts.AssertDescribeWorkspaceBundlesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeWorkspaceBundlesRequest to be of type 'table'")
-	if struct["Owner"] then M.AssertBundleOwner(struct["Owner"]) end
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
-	if struct["BundleIds"] then M.AssertBundleIdList(struct["BundleIds"]) end
+	if struct["Owner"] then asserts.AssertBundleOwner(struct["Owner"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
+	if struct["BundleIds"] then asserts.AssertBundleIdList(struct["BundleIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeWorkspaceBundlesRequest_keys[k], "DescribeWorkspaceBundlesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeWorkspaceBundlesRequest[k], "DescribeWorkspaceBundlesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeWorkspaceBundlesRequest
 -- <p>Contains the inputs for the <a>DescribeWorkspaceBundles</a> operation.</p>
--- @param Owner [BundleOwner] <p>The owner of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p> <p>This contains one of the following values:</p> <ul> <li> <p>null- Retrieves the bundles that belong to the account making the call.</p> </li> <li> <p> <code>AMAZON</code>- Retrieves the bundles that are provided by AWS.</p> </li> </ul>
--- @param NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
--- @param BundleIds [BundleIdList] <p>An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p>
-function M.DescribeWorkspaceBundlesRequest(Owner, NextToken, BundleIds, ...)
+-- @param _Owner [BundleOwner] <p>The owner of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p> <p>This contains one of the following values:</p> <ul> <li> <p>null- Retrieves the bundles that belong to the account making the call.</p> </li> <li> <p> <code>AMAZON</code>- Retrieves the bundles that are provided by AWS.</p> </li> </ul>
+-- @param _NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+-- @param _BundleIds [BundleIdList] <p>An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p>
+function M.DescribeWorkspaceBundlesRequest(_Owner, _NextToken, _BundleIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceBundlesRequest")
 	local t = { 
-		["Owner"] = Owner,
-		["NextToken"] = NextToken,
-		["BundleIds"] = BundleIds,
+		["Owner"] = _Owner,
+		["NextToken"] = _NextToken,
+		["BundleIds"] = _BundleIds,
 	}
-	M.AssertDescribeWorkspaceBundlesRequest(t)
+	asserts.AssertDescribeWorkspaceBundlesRequest(t)
 	return t
 end
 
-local WorkspaceProperties_keys = { "RunningModeAutoStopTimeoutInMinutes" = true, "RunningMode" = true, nil }
+keys.WorkspaceProperties = { ["RunningModeAutoStopTimeoutInMinutes"] = true, ["RunningMode"] = true, nil }
 
-function M.AssertWorkspaceProperties(struct)
+function asserts.AssertWorkspaceProperties(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected WorkspaceProperties to be of type 'table'")
-	if struct["RunningModeAutoStopTimeoutInMinutes"] then M.AssertRunningModeAutoStopTimeoutInMinutes(struct["RunningModeAutoStopTimeoutInMinutes"]) end
-	if struct["RunningMode"] then M.AssertRunningMode(struct["RunningMode"]) end
+	if struct["RunningModeAutoStopTimeoutInMinutes"] then asserts.AssertRunningModeAutoStopTimeoutInMinutes(struct["RunningModeAutoStopTimeoutInMinutes"]) end
+	if struct["RunningMode"] then asserts.AssertRunningMode(struct["RunningMode"]) end
 	for k,_ in pairs(struct) do
-		assert(WorkspaceProperties_keys[k], "WorkspaceProperties contains unknown key " .. tostring(k))
+		assert(keys.WorkspaceProperties[k], "WorkspaceProperties contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type WorkspaceProperties
 -- <p>Describes the properties of a WorkSpace.</p>
--- @param RunningModeAutoStopTimeoutInMinutes [RunningModeAutoStopTimeoutInMinutes] <p>The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.</p>
--- @param RunningMode [RunningMode] <p>The running mode of the WorkSpace. AlwaysOn WorkSpaces are billed monthly. AutoStop WorkSpaces are billed by the hour and stopped when no longer being used in order to save on costs.</p>
-function M.WorkspaceProperties(RunningModeAutoStopTimeoutInMinutes, RunningMode, ...)
+-- @param _RunningModeAutoStopTimeoutInMinutes [RunningModeAutoStopTimeoutInMinutes] <p>The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.</p>
+-- @param _RunningMode [RunningMode] <p>The running mode of the WorkSpace. AlwaysOn WorkSpaces are billed monthly. AutoStop WorkSpaces are billed by the hour and stopped when no longer being used in order to save on costs.</p>
+function M.WorkspaceProperties(_RunningModeAutoStopTimeoutInMinutes, _RunningMode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceProperties")
 	local t = { 
-		["RunningModeAutoStopTimeoutInMinutes"] = RunningModeAutoStopTimeoutInMinutes,
-		["RunningMode"] = RunningMode,
+		["RunningModeAutoStopTimeoutInMinutes"] = _RunningModeAutoStopTimeoutInMinutes,
+		["RunningMode"] = _RunningMode,
 	}
-	M.AssertWorkspaceProperties(t)
+	asserts.AssertWorkspaceProperties(t)
 	return t
 end
 
-local StopWorkspacesResult_keys = { "FailedRequests" = true, nil }
+keys.StopWorkspacesResult = { ["FailedRequests"] = true, nil }
 
-function M.AssertStopWorkspacesResult(struct)
+function asserts.AssertStopWorkspacesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopWorkspacesResult to be of type 'table'")
-	if struct["FailedRequests"] then M.AssertFailedStopWorkspaceRequests(struct["FailedRequests"]) end
+	if struct["FailedRequests"] then asserts.AssertFailedStopWorkspaceRequests(struct["FailedRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(StopWorkspacesResult_keys[k], "StopWorkspacesResult contains unknown key " .. tostring(k))
+		assert(keys.StopWorkspacesResult[k], "StopWorkspacesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopWorkspacesResult
 --  
--- @param FailedRequests [FailedStopWorkspaceRequests] <p>The failed requests.</p>
-function M.StopWorkspacesResult(FailedRequests, ...)
+-- @param _FailedRequests [FailedStopWorkspaceRequests] <p>The failed requests.</p>
+function M.StopWorkspacesResult(_FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = FailedRequests,
+		["FailedRequests"] = _FailedRequests,
 	}
-	M.AssertStopWorkspacesResult(t)
+	asserts.AssertStopWorkspacesResult(t)
 	return t
 end
 
-local CreateTagsResult_keys = { nil }
+keys.CreateTagsResult = { nil }
 
-function M.AssertCreateTagsResult(struct)
+function asserts.AssertCreateTagsResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateTagsResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(CreateTagsResult_keys[k], "CreateTagsResult contains unknown key " .. tostring(k))
+		assert(keys.CreateTagsResult[k], "CreateTagsResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1057,422 +1060,422 @@ function M.CreateTagsResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsResult")
 	local t = { 
 	}
-	M.AssertCreateTagsResult(t)
+	asserts.AssertCreateTagsResult(t)
 	return t
 end
 
-local UnsupportedWorkspaceConfigurationException_keys = { "message" = true, nil }
+keys.UnsupportedWorkspaceConfigurationException = { ["message"] = true, nil }
 
-function M.AssertUnsupportedWorkspaceConfigurationException(struct)
+function asserts.AssertUnsupportedWorkspaceConfigurationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsupportedWorkspaceConfigurationException to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsupportedWorkspaceConfigurationException_keys[k], "UnsupportedWorkspaceConfigurationException contains unknown key " .. tostring(k))
+		assert(keys.UnsupportedWorkspaceConfigurationException[k], "UnsupportedWorkspaceConfigurationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsupportedWorkspaceConfigurationException
 -- <p>The configuration of this WorkSpace is not supported for this operation. For more information, see the <a href="http://docs.aws.amazon.com/workspaces/latest/adminguide/">Amazon WorkSpaces Administration Guide</a>. </p>
--- @param message [ExceptionMessage] <p>The configuration of this WorkSpace is not supported for this operation. For more information, see the <a href="http://docs.aws.amazon.com/workspaces/latest/adminguide/">Amazon WorkSpaces Administration Guide</a>. </p>
-function M.UnsupportedWorkspaceConfigurationException(message, ...)
+-- @param _message [ExceptionMessage] 
+function M.UnsupportedWorkspaceConfigurationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedWorkspaceConfigurationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertUnsupportedWorkspaceConfigurationException(t)
+	asserts.AssertUnsupportedWorkspaceConfigurationException(t)
 	return t
 end
 
-local TerminateWorkspacesRequest_keys = { "TerminateWorkspaceRequests" = true, nil }
+keys.TerminateWorkspacesRequest = { ["TerminateWorkspaceRequests"] = true, nil }
 
-function M.AssertTerminateWorkspacesRequest(struct)
+function asserts.AssertTerminateWorkspacesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TerminateWorkspacesRequest to be of type 'table'")
 	assert(struct["TerminateWorkspaceRequests"], "Expected key TerminateWorkspaceRequests to exist in table")
-	if struct["TerminateWorkspaceRequests"] then M.AssertTerminateWorkspaceRequests(struct["TerminateWorkspaceRequests"]) end
+	if struct["TerminateWorkspaceRequests"] then asserts.AssertTerminateWorkspaceRequests(struct["TerminateWorkspaceRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(TerminateWorkspacesRequest_keys[k], "TerminateWorkspacesRequest contains unknown key " .. tostring(k))
+		assert(keys.TerminateWorkspacesRequest[k], "TerminateWorkspacesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TerminateWorkspacesRequest
 -- <p>Contains the inputs for the <a>TerminateWorkspaces</a> operation.</p>
--- @param TerminateWorkspaceRequests [TerminateWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to terminate.</p>
+-- @param _TerminateWorkspaceRequests [TerminateWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to terminate.</p>
 -- Required parameter: TerminateWorkspaceRequests
-function M.TerminateWorkspacesRequest(TerminateWorkspaceRequests, ...)
+function M.TerminateWorkspacesRequest(_TerminateWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateWorkspacesRequest")
 	local t = { 
-		["TerminateWorkspaceRequests"] = TerminateWorkspaceRequests,
+		["TerminateWorkspaceRequests"] = _TerminateWorkspaceRequests,
 	}
-	M.AssertTerminateWorkspacesRequest(t)
+	asserts.AssertTerminateWorkspacesRequest(t)
 	return t
 end
 
-local DescribeWorkspaceDirectoriesResult_keys = { "Directories" = true, "NextToken" = true, nil }
+keys.DescribeWorkspaceDirectoriesResult = { ["Directories"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeWorkspaceDirectoriesResult(struct)
+function asserts.AssertDescribeWorkspaceDirectoriesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeWorkspaceDirectoriesResult to be of type 'table'")
-	if struct["Directories"] then M.AssertDirectoryList(struct["Directories"]) end
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
+	if struct["Directories"] then asserts.AssertDirectoryList(struct["Directories"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeWorkspaceDirectoriesResult_keys[k], "DescribeWorkspaceDirectoriesResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeWorkspaceDirectoriesResult[k], "DescribeWorkspaceDirectoriesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeWorkspaceDirectoriesResult
 -- <p>Contains the results of the <a>DescribeWorkspaceDirectories</a> operation.</p>
--- @param Directories [DirectoryList] <p>An array of structures that contain information about the directories.</p>
--- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
-function M.DescribeWorkspaceDirectoriesResult(Directories, NextToken, ...)
+-- @param _Directories [DirectoryList] <p>An array of structures that contain information about the directories.</p>
+-- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+function M.DescribeWorkspaceDirectoriesResult(_Directories, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceDirectoriesResult")
 	local t = { 
-		["Directories"] = Directories,
-		["NextToken"] = NextToken,
+		["Directories"] = _Directories,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeWorkspaceDirectoriesResult(t)
+	asserts.AssertDescribeWorkspaceDirectoriesResult(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "ResourceId" = true, "message" = true, nil }
+keys.ResourceNotFoundException = { ["ResourceId"] = true, ["message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["ResourceId"] then M.AssertNonEmptyString(struct["ResourceId"]) end
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["ResourceId"] then asserts.AssertNonEmptyString(struct["ResourceId"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The resource could not be found.</p>
--- @param ResourceId [NonEmptyString] <p>The resource could not be found.</p>
--- @param message [ExceptionMessage] <p>The resource could not be found.</p>
-function M.ResourceNotFoundException(ResourceId, message, ...)
+-- @param _ResourceId [NonEmptyString] <p>The resource could not be found.</p>
+-- @param _message [ExceptionMessage] <p>The resource could not be found.</p>
+function M.ResourceNotFoundException(_ResourceId, _message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["ResourceId"] = ResourceId,
-		["message"] = message,
+		["ResourceId"] = _ResourceId,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local CreateWorkspacesRequest_keys = { "Workspaces" = true, nil }
+keys.CreateWorkspacesRequest = { ["Workspaces"] = true, nil }
 
-function M.AssertCreateWorkspacesRequest(struct)
+function asserts.AssertCreateWorkspacesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateWorkspacesRequest to be of type 'table'")
 	assert(struct["Workspaces"], "Expected key Workspaces to exist in table")
-	if struct["Workspaces"] then M.AssertWorkspaceRequestList(struct["Workspaces"]) end
+	if struct["Workspaces"] then asserts.AssertWorkspaceRequestList(struct["Workspaces"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateWorkspacesRequest_keys[k], "CreateWorkspacesRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateWorkspacesRequest[k], "CreateWorkspacesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateWorkspacesRequest
 -- <p>Contains the inputs for the <a>CreateWorkspaces</a> operation.</p>
--- @param Workspaces [WorkspaceRequestList] <p>An array of structures that specify the WorkSpaces to create.</p>
+-- @param _Workspaces [WorkspaceRequestList] <p>An array of structures that specify the WorkSpaces to create.</p>
 -- Required parameter: Workspaces
-function M.CreateWorkspacesRequest(Workspaces, ...)
+function M.CreateWorkspacesRequest(_Workspaces, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateWorkspacesRequest")
 	local t = { 
-		["Workspaces"] = Workspaces,
+		["Workspaces"] = _Workspaces,
 	}
-	M.AssertCreateWorkspacesRequest(t)
+	asserts.AssertCreateWorkspacesRequest(t)
 	return t
 end
 
-local DescribeWorkspacesConnectionStatusResult_keys = { "WorkspacesConnectionStatus" = true, "NextToken" = true, nil }
+keys.DescribeWorkspacesConnectionStatusResult = { ["WorkspacesConnectionStatus"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeWorkspacesConnectionStatusResult(struct)
+function asserts.AssertDescribeWorkspacesConnectionStatusResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeWorkspacesConnectionStatusResult to be of type 'table'")
-	if struct["WorkspacesConnectionStatus"] then M.AssertWorkspaceConnectionStatusList(struct["WorkspacesConnectionStatus"]) end
-	if struct["NextToken"] then M.AssertPaginationToken(struct["NextToken"]) end
+	if struct["WorkspacesConnectionStatus"] then asserts.AssertWorkspaceConnectionStatusList(struct["WorkspacesConnectionStatus"]) end
+	if struct["NextToken"] then asserts.AssertPaginationToken(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeWorkspacesConnectionStatusResult_keys[k], "DescribeWorkspacesConnectionStatusResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeWorkspacesConnectionStatusResult[k], "DescribeWorkspacesConnectionStatusResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeWorkspacesConnectionStatusResult
 --  
--- @param WorkspacesConnectionStatus [WorkspaceConnectionStatusList] <p>The connection status of the WorkSpace.</p>
--- @param NextToken [PaginationToken] <p>The next token of the result.</p>
-function M.DescribeWorkspacesConnectionStatusResult(WorkspacesConnectionStatus, NextToken, ...)
+-- @param _WorkspacesConnectionStatus [WorkspaceConnectionStatusList] <p>The connection status of the WorkSpace.</p>
+-- @param _NextToken [PaginationToken] <p>The next token of the result.</p>
+function M.DescribeWorkspacesConnectionStatusResult(_WorkspacesConnectionStatus, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesConnectionStatusResult")
 	local t = { 
-		["WorkspacesConnectionStatus"] = WorkspacesConnectionStatus,
-		["NextToken"] = NextToken,
+		["WorkspacesConnectionStatus"] = _WorkspacesConnectionStatus,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeWorkspacesConnectionStatusResult(t)
+	asserts.AssertDescribeWorkspacesConnectionStatusResult(t)
 	return t
 end
 
-local AccessDeniedException_keys = { "message" = true, nil }
+keys.AccessDeniedException = { ["message"] = true, nil }
 
-function M.AssertAccessDeniedException(struct)
+function asserts.AssertAccessDeniedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AccessDeniedException to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AccessDeniedException_keys[k], "AccessDeniedException contains unknown key " .. tostring(k))
+		assert(keys.AccessDeniedException[k], "AccessDeniedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AccessDeniedException
 -- <p>The user is not authorized to access a resource.</p>
--- @param message [ExceptionMessage] <p>The user is not authorized to access a resource.</p>
-function M.AccessDeniedException(message, ...)
+-- @param _message [ExceptionMessage] 
+function M.AccessDeniedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAccessDeniedException(t)
+	asserts.AssertAccessDeniedException(t)
 	return t
 end
 
-local RebootRequest_keys = { "WorkspaceId" = true, nil }
+keys.RebootRequest = { ["WorkspaceId"] = true, nil }
 
-function M.AssertRebootRequest(struct)
+function asserts.AssertRebootRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RebootRequest to be of type 'table'")
 	assert(struct["WorkspaceId"], "Expected key WorkspaceId to exist in table")
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
 	for k,_ in pairs(struct) do
-		assert(RebootRequest_keys[k], "RebootRequest contains unknown key " .. tostring(k))
+		assert(keys.RebootRequest[k], "RebootRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RebootRequest
 -- <p>Contains information used with the <a>RebootWorkspaces</a> operation to reboot a WorkSpace.</p>
--- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to reboot.</p>
+-- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to reboot.</p>
 -- Required parameter: WorkspaceId
-function M.RebootRequest(WorkspaceId, ...)
+function M.RebootRequest(_WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootRequest")
 	local t = { 
-		["WorkspaceId"] = WorkspaceId,
+		["WorkspaceId"] = _WorkspaceId,
 	}
-	M.AssertRebootRequest(t)
+	asserts.AssertRebootRequest(t)
 	return t
 end
 
-local CreateWorkspacesResult_keys = { "PendingRequests" = true, "FailedRequests" = true, nil }
+keys.CreateWorkspacesResult = { ["PendingRequests"] = true, ["FailedRequests"] = true, nil }
 
-function M.AssertCreateWorkspacesResult(struct)
+function asserts.AssertCreateWorkspacesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateWorkspacesResult to be of type 'table'")
-	if struct["PendingRequests"] then M.AssertWorkspaceList(struct["PendingRequests"]) end
-	if struct["FailedRequests"] then M.AssertFailedCreateWorkspaceRequests(struct["FailedRequests"]) end
+	if struct["PendingRequests"] then asserts.AssertWorkspaceList(struct["PendingRequests"]) end
+	if struct["FailedRequests"] then asserts.AssertFailedCreateWorkspaceRequests(struct["FailedRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateWorkspacesResult_keys[k], "CreateWorkspacesResult contains unknown key " .. tostring(k))
+		assert(keys.CreateWorkspacesResult[k], "CreateWorkspacesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateWorkspacesResult
 -- <p>Contains the result of the <a>CreateWorkspaces</a> operation.</p>
--- @param PendingRequests [WorkspaceList] <p>An array of structures that represent the WorkSpaces that were created.</p> <p>Because this operation is asynchronous, the identifier in <code>WorkspaceId</code> is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information will be returned.</p>
--- @param FailedRequests [FailedCreateWorkspaceRequests] <p>An array of structures that represent the WorkSpaces that could not be created.</p>
-function M.CreateWorkspacesResult(PendingRequests, FailedRequests, ...)
+-- @param _PendingRequests [WorkspaceList] <p>An array of structures that represent the WorkSpaces that were created.</p> <p>Because this operation is asynchronous, the identifier in <code>WorkspaceId</code> is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information will be returned.</p>
+-- @param _FailedRequests [FailedCreateWorkspaceRequests] <p>An array of structures that represent the WorkSpaces that could not be created.</p>
+function M.CreateWorkspacesResult(_PendingRequests, _FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateWorkspacesResult")
 	local t = { 
-		["PendingRequests"] = PendingRequests,
-		["FailedRequests"] = FailedRequests,
+		["PendingRequests"] = _PendingRequests,
+		["FailedRequests"] = _FailedRequests,
 	}
-	M.AssertCreateWorkspacesResult(t)
+	asserts.AssertCreateWorkspacesResult(t)
 	return t
 end
 
-local RebuildRequest_keys = { "WorkspaceId" = true, nil }
+keys.RebuildRequest = { ["WorkspaceId"] = true, nil }
 
-function M.AssertRebuildRequest(struct)
+function asserts.AssertRebuildRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RebuildRequest to be of type 'table'")
 	assert(struct["WorkspaceId"], "Expected key WorkspaceId to exist in table")
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
 	for k,_ in pairs(struct) do
-		assert(RebuildRequest_keys[k], "RebuildRequest contains unknown key " .. tostring(k))
+		assert(keys.RebuildRequest[k], "RebuildRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RebuildRequest
 -- <p>Contains information used with the <a>RebuildWorkspaces</a> operation to rebuild a WorkSpace.</p>
--- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to rebuild.</p>
+-- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to rebuild.</p>
 -- Required parameter: WorkspaceId
-function M.RebuildRequest(WorkspaceId, ...)
+function M.RebuildRequest(_WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebuildRequest")
 	local t = { 
-		["WorkspaceId"] = WorkspaceId,
+		["WorkspaceId"] = _WorkspaceId,
 	}
-	M.AssertRebuildRequest(t)
+	asserts.AssertRebuildRequest(t)
 	return t
 end
 
-local WorkspaceBundle_keys = { "ComputeType" = true, "Description" = true, "BundleId" = true, "Owner" = true, "UserStorage" = true, "Name" = true, nil }
+keys.WorkspaceBundle = { ["ComputeType"] = true, ["Description"] = true, ["BundleId"] = true, ["Owner"] = true, ["UserStorage"] = true, ["Name"] = true, nil }
 
-function M.AssertWorkspaceBundle(struct)
+function asserts.AssertWorkspaceBundle(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected WorkspaceBundle to be of type 'table'")
-	if struct["ComputeType"] then M.AssertComputeType(struct["ComputeType"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
-	if struct["BundleId"] then M.AssertBundleId(struct["BundleId"]) end
-	if struct["Owner"] then M.AssertBundleOwner(struct["Owner"]) end
-	if struct["UserStorage"] then M.AssertUserStorage(struct["UserStorage"]) end
-	if struct["Name"] then M.AssertNonEmptyString(struct["Name"]) end
+	if struct["ComputeType"] then asserts.AssertComputeType(struct["ComputeType"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["BundleId"] then asserts.AssertBundleId(struct["BundleId"]) end
+	if struct["Owner"] then asserts.AssertBundleOwner(struct["Owner"]) end
+	if struct["UserStorage"] then asserts.AssertUserStorage(struct["UserStorage"]) end
+	if struct["Name"] then asserts.AssertNonEmptyString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(WorkspaceBundle_keys[k], "WorkspaceBundle contains unknown key " .. tostring(k))
+		assert(keys.WorkspaceBundle[k], "WorkspaceBundle contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type WorkspaceBundle
 -- <p>Contains information about a WorkSpace bundle.</p>
--- @param ComputeType [ComputeType] <p>A <a>ComputeType</a> object that specifies the compute type for the bundle.</p>
--- @param Description [Description] <p>The bundle description.</p>
--- @param BundleId [BundleId] <p>The bundle identifier.</p>
--- @param Owner [BundleOwner] <p>The owner of the bundle. This contains the owner's account identifier, or <code>AMAZON</code> if the bundle is provided by AWS.</p>
--- @param UserStorage [UserStorage] <p>A <a>UserStorage</a> object that specifies the amount of user storage that the bundle contains.</p>
--- @param Name [NonEmptyString] <p>The name of the bundle.</p>
-function M.WorkspaceBundle(ComputeType, Description, BundleId, Owner, UserStorage, Name, ...)
+-- @param _ComputeType [ComputeType] <p>A <a>ComputeType</a> object that specifies the compute type for the bundle.</p>
+-- @param _Description [Description] <p>The bundle description.</p>
+-- @param _BundleId [BundleId] <p>The bundle identifier.</p>
+-- @param _Owner [BundleOwner] <p>The owner of the bundle. This contains the owner's account identifier, or <code>AMAZON</code> if the bundle is provided by AWS.</p>
+-- @param _UserStorage [UserStorage] <p>A <a>UserStorage</a> object that specifies the amount of user storage that the bundle contains.</p>
+-- @param _Name [NonEmptyString] <p>The name of the bundle.</p>
+function M.WorkspaceBundle(_ComputeType, _Description, _BundleId, _Owner, _UserStorage, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceBundle")
 	local t = { 
-		["ComputeType"] = ComputeType,
-		["Description"] = Description,
-		["BundleId"] = BundleId,
-		["Owner"] = Owner,
-		["UserStorage"] = UserStorage,
-		["Name"] = Name,
+		["ComputeType"] = _ComputeType,
+		["Description"] = _Description,
+		["BundleId"] = _BundleId,
+		["Owner"] = _Owner,
+		["UserStorage"] = _UserStorage,
+		["Name"] = _Name,
 	}
-	M.AssertWorkspaceBundle(t)
+	asserts.AssertWorkspaceBundle(t)
 	return t
 end
 
-local RebuildWorkspacesResult_keys = { "FailedRequests" = true, nil }
+keys.RebuildWorkspacesResult = { ["FailedRequests"] = true, nil }
 
-function M.AssertRebuildWorkspacesResult(struct)
+function asserts.AssertRebuildWorkspacesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RebuildWorkspacesResult to be of type 'table'")
-	if struct["FailedRequests"] then M.AssertFailedRebuildWorkspaceRequests(struct["FailedRequests"]) end
+	if struct["FailedRequests"] then asserts.AssertFailedRebuildWorkspaceRequests(struct["FailedRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(RebuildWorkspacesResult_keys[k], "RebuildWorkspacesResult contains unknown key " .. tostring(k))
+		assert(keys.RebuildWorkspacesResult[k], "RebuildWorkspacesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RebuildWorkspacesResult
 -- <p>Contains the results of the <a>RebuildWorkspaces</a> operation.</p>
--- @param FailedRequests [FailedRebuildWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebuilt.</p>
-function M.RebuildWorkspacesResult(FailedRequests, ...)
+-- @param _FailedRequests [FailedRebuildWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebuilt.</p>
+function M.RebuildWorkspacesResult(_FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebuildWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = FailedRequests,
+		["FailedRequests"] = _FailedRequests,
 	}
-	M.AssertRebuildWorkspacesResult(t)
+	asserts.AssertRebuildWorkspacesResult(t)
 	return t
 end
 
-local RebuildWorkspacesRequest_keys = { "RebuildWorkspaceRequests" = true, nil }
+keys.RebuildWorkspacesRequest = { ["RebuildWorkspaceRequests"] = true, nil }
 
-function M.AssertRebuildWorkspacesRequest(struct)
+function asserts.AssertRebuildWorkspacesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RebuildWorkspacesRequest to be of type 'table'")
 	assert(struct["RebuildWorkspaceRequests"], "Expected key RebuildWorkspaceRequests to exist in table")
-	if struct["RebuildWorkspaceRequests"] then M.AssertRebuildWorkspaceRequests(struct["RebuildWorkspaceRequests"]) end
+	if struct["RebuildWorkspaceRequests"] then asserts.AssertRebuildWorkspaceRequests(struct["RebuildWorkspaceRequests"]) end
 	for k,_ in pairs(struct) do
-		assert(RebuildWorkspacesRequest_keys[k], "RebuildWorkspacesRequest contains unknown key " .. tostring(k))
+		assert(keys.RebuildWorkspacesRequest[k], "RebuildWorkspacesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RebuildWorkspacesRequest
 -- <p>Contains the inputs for the <a>RebuildWorkspaces</a> operation.</p>
--- @param RebuildWorkspaceRequests [RebuildWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to rebuild.</p>
+-- @param _RebuildWorkspaceRequests [RebuildWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to rebuild.</p>
 -- Required parameter: RebuildWorkspaceRequests
-function M.RebuildWorkspacesRequest(RebuildWorkspaceRequests, ...)
+function M.RebuildWorkspacesRequest(_RebuildWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebuildWorkspacesRequest")
 	local t = { 
-		["RebuildWorkspaceRequests"] = RebuildWorkspaceRequests,
+		["RebuildWorkspaceRequests"] = _RebuildWorkspaceRequests,
 	}
-	M.AssertRebuildWorkspacesRequest(t)
+	asserts.AssertRebuildWorkspacesRequest(t)
 	return t
 end
 
-local StartRequest_keys = { "WorkspaceId" = true, nil }
+keys.StartRequest = { ["WorkspaceId"] = true, nil }
 
-function M.AssertStartRequest(struct)
+function asserts.AssertStartRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartRequest to be of type 'table'")
-	if struct["WorkspaceId"] then M.AssertWorkspaceId(struct["WorkspaceId"]) end
+	if struct["WorkspaceId"] then asserts.AssertWorkspaceId(struct["WorkspaceId"]) end
 	for k,_ in pairs(struct) do
-		assert(StartRequest_keys[k], "StartRequest contains unknown key " .. tostring(k))
+		assert(keys.StartRequest[k], "StartRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartRequest
 -- <p>Describes the start request.</p>
--- @param WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
-function M.StartRequest(WorkspaceId, ...)
+-- @param _WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+function M.StartRequest(_WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartRequest")
 	local t = { 
-		["WorkspaceId"] = WorkspaceId,
+		["WorkspaceId"] = _WorkspaceId,
 	}
-	M.AssertStartRequest(t)
+	asserts.AssertStartRequest(t)
 	return t
 end
 
-local InvalidParameterValuesException_keys = { "message" = true, nil }
+keys.InvalidParameterValuesException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterValuesException(struct)
+function asserts.AssertInvalidParameterValuesException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterValuesException to be of type 'table'")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterValuesException_keys[k], "InvalidParameterValuesException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterValuesException[k], "InvalidParameterValuesException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterValuesException
 -- <p>One or more parameter values are not valid.</p>
--- @param message [ExceptionMessage] <p>The exception error message.</p>
-function M.InvalidParameterValuesException(message, ...)
+-- @param _message [ExceptionMessage] <p>The exception error message.</p>
+function M.InvalidParameterValuesException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValuesException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterValuesException(t)
+	asserts.AssertInvalidParameterValuesException(t)
 	return t
 end
 
-local FailedCreateWorkspaceRequest_keys = { "ErrorCode" = true, "ErrorMessage" = true, "WorkspaceRequest" = true, nil }
+keys.FailedCreateWorkspaceRequest = { ["ErrorCode"] = true, ["ErrorMessage"] = true, ["WorkspaceRequest"] = true, nil }
 
-function M.AssertFailedCreateWorkspaceRequest(struct)
+function asserts.AssertFailedCreateWorkspaceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FailedCreateWorkspaceRequest to be of type 'table'")
-	if struct["ErrorCode"] then M.AssertErrorType(struct["ErrorCode"]) end
-	if struct["ErrorMessage"] then M.AssertDescription(struct["ErrorMessage"]) end
-	if struct["WorkspaceRequest"] then M.AssertWorkspaceRequest(struct["WorkspaceRequest"]) end
+	if struct["ErrorCode"] then asserts.AssertErrorType(struct["ErrorCode"]) end
+	if struct["ErrorMessage"] then asserts.AssertDescription(struct["ErrorMessage"]) end
+	if struct["WorkspaceRequest"] then asserts.AssertWorkspaceRequest(struct["WorkspaceRequest"]) end
 	for k,_ in pairs(struct) do
-		assert(FailedCreateWorkspaceRequest_keys[k], "FailedCreateWorkspaceRequest contains unknown key " .. tostring(k))
+		assert(keys.FailedCreateWorkspaceRequest[k], "FailedCreateWorkspaceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FailedCreateWorkspaceRequest
 -- <p>Contains information about a WorkSpace that could not be created.</p>
--- @param ErrorCode [ErrorType] <p>The error code.</p>
--- @param ErrorMessage [Description] <p>The textual error message.</p>
--- @param WorkspaceRequest [WorkspaceRequest] <p>A <a>FailedCreateWorkspaceRequest$WorkspaceRequest</a> object that contains the information about the WorkSpace that could not be created.</p>
-function M.FailedCreateWorkspaceRequest(ErrorCode, ErrorMessage, WorkspaceRequest, ...)
+-- @param _ErrorCode [ErrorType] <p>The error code.</p>
+-- @param _ErrorMessage [Description] <p>The textual error message.</p>
+-- @param _WorkspaceRequest [WorkspaceRequest] <p>A <a>FailedCreateWorkspaceRequest$WorkspaceRequest</a> object that contains the information about the WorkSpace that could not be created.</p>
+function M.FailedCreateWorkspaceRequest(_ErrorCode, _ErrorMessage, _WorkspaceRequest, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailedCreateWorkspaceRequest")
 	local t = { 
-		["ErrorCode"] = ErrorCode,
-		["ErrorMessage"] = ErrorMessage,
-		["WorkspaceRequest"] = WorkspaceRequest,
+		["ErrorCode"] = _ErrorCode,
+		["ErrorMessage"] = _ErrorMessage,
+		["WorkspaceRequest"] = _WorkspaceRequest,
 	}
-	M.AssertFailedCreateWorkspaceRequest(t)
+	asserts.AssertFailedCreateWorkspaceRequest(t)
 	return t
 end
 
-function M.AssertUserName(str)
+function asserts.AssertUserName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserName to be of type 'string'")
 	assert(#str <= 63, "Expected string to be max 63 characters")
@@ -1481,22 +1484,22 @@ end
 
 --  
 function M.UserName(str)
-	M.AssertUserName(str)
+	asserts.AssertUserName(str)
 	return str
 end
 
-function M.AssertWorkspaceErrorCode(str)
+function asserts.AssertWorkspaceErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected WorkspaceErrorCode to be of type 'string'")
 end
 
 --  
 function M.WorkspaceErrorCode(str)
-	M.AssertWorkspaceErrorCode(str)
+	asserts.AssertWorkspaceErrorCode(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 	assert(#str <= 127, "Expected string to be max 127 characters")
@@ -1505,33 +1508,33 @@ end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertWorkspaceState(str)
+function asserts.AssertWorkspaceState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected WorkspaceState to be of type 'string'")
 end
 
 --  
 function M.WorkspaceState(str)
-	M.AssertWorkspaceState(str)
+	asserts.AssertWorkspaceState(str)
 	return str
 end
 
-function M.AssertDefaultOu(str)
+function asserts.AssertDefaultOu(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DefaultOu to be of type 'string'")
 end
 
 --  
 function M.DefaultOu(str)
-	M.AssertDefaultOu(str)
+	asserts.AssertDefaultOu(str)
 	return str
 end
 
-function M.AssertNonEmptyString(str)
+function asserts.AssertNonEmptyString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected NonEmptyString to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
@@ -1539,11 +1542,11 @@ end
 
 --  
 function M.NonEmptyString(str)
-	M.AssertNonEmptyString(str)
+	asserts.AssertNonEmptyString(str)
 	return str
 end
 
-function M.AssertPaginationToken(str)
+function asserts.AssertPaginationToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationToken to be of type 'string'")
 	assert(#str <= 63, "Expected string to be max 63 characters")
@@ -1552,11 +1555,11 @@ end
 
 --  
 function M.PaginationToken(str)
-	M.AssertPaginationToken(str)
+	asserts.AssertPaginationToken(str)
 	return str
 end
 
-function M.AssertRegistrationCode(str)
+function asserts.AssertRegistrationCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RegistrationCode to be of type 'string'")
 	assert(#str <= 20, "Expected string to be max 20 characters")
@@ -1565,23 +1568,22 @@ end
 
 --  
 function M.RegistrationCode(str)
-	M.AssertRegistrationCode(str)
+	asserts.AssertRegistrationCode(str)
 	return str
 end
 
-function M.AssertSubnetId(str)
+function asserts.AssertSubnetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SubnetId to be of type 'string'")
-	assert(str:match("^(subnet-[0-9a-f]{8})$"), "Expected string to match pattern '^(subnet-[0-9a-f]{8})$'")
 end
 
 --  
 function M.SubnetId(str)
-	M.AssertSubnetId(str)
+	asserts.AssertSubnetId(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 	assert(#str <= 255, "Expected string to be max 255 characters")
@@ -1589,225 +1591,220 @@ end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertVolumeEncryptionKey(str)
+function asserts.AssertVolumeEncryptionKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VolumeEncryptionKey to be of type 'string'")
 end
 
 --  
 function M.VolumeEncryptionKey(str)
-	M.AssertVolumeEncryptionKey(str)
+	asserts.AssertVolumeEncryptionKey(str)
 	return str
 end
 
-function M.AssertDirectoryName(str)
+function asserts.AssertDirectoryName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DirectoryName to be of type 'string'")
 end
 
 --  
 function M.DirectoryName(str)
-	M.AssertDirectoryName(str)
+	asserts.AssertDirectoryName(str)
 	return str
 end
 
-function M.AssertSecurityGroupId(str)
+function asserts.AssertSecurityGroupId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SecurityGroupId to be of type 'string'")
-	assert(str:match("^(sg-[0-9a-f]{8})$"), "Expected string to match pattern '^(sg-[0-9a-f]{8})$'")
 end
 
 --  
 function M.SecurityGroupId(str)
-	M.AssertSecurityGroupId(str)
+	asserts.AssertSecurityGroupId(str)
 	return str
 end
 
-function M.AssertDirectoryId(str)
+function asserts.AssertDirectoryId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DirectoryId to be of type 'string'")
-	assert(str:match("^d-[0-9a-f]{8,63}$"), "Expected string to match pattern '^d-[0-9a-f]{8,63}$'")
 end
 
 --  
 function M.DirectoryId(str)
-	M.AssertDirectoryId(str)
+	asserts.AssertDirectoryId(str)
 	return str
 end
 
-function M.AssertWorkspaceDirectoryType(str)
+function asserts.AssertWorkspaceDirectoryType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected WorkspaceDirectoryType to be of type 'string'")
 end
 
 --  
 function M.WorkspaceDirectoryType(str)
-	M.AssertWorkspaceDirectoryType(str)
+	asserts.AssertWorkspaceDirectoryType(str)
 	return str
 end
 
-function M.AssertComputerName(str)
+function asserts.AssertComputerName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ComputerName to be of type 'string'")
 end
 
 --  
 function M.ComputerName(str)
-	M.AssertComputerName(str)
+	asserts.AssertComputerName(str)
 	return str
 end
 
-function M.AssertCompute(str)
+function asserts.AssertCompute(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Compute to be of type 'string'")
 end
 
 --  
 function M.Compute(str)
-	M.AssertCompute(str)
+	asserts.AssertCompute(str)
 	return str
 end
 
-function M.AssertWorkspaceId(str)
+function asserts.AssertWorkspaceId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected WorkspaceId to be of type 'string'")
-	assert(str:match("^ws-[0-9a-z]{8,63}$"), "Expected string to match pattern '^ws-[0-9a-z]{8,63}$'")
 end
 
 --  
 function M.WorkspaceId(str)
-	M.AssertWorkspaceId(str)
+	asserts.AssertWorkspaceId(str)
 	return str
 end
 
-function M.AssertExceptionMessage(str)
+function asserts.AssertExceptionMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
 end
 
 --  
 function M.ExceptionMessage(str)
-	M.AssertExceptionMessage(str)
+	asserts.AssertExceptionMessage(str)
 	return str
 end
 
-function M.AssertErrorType(str)
+function asserts.AssertErrorType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorType to be of type 'string'")
 end
 
 --  
 function M.ErrorType(str)
-	M.AssertErrorType(str)
+	asserts.AssertErrorType(str)
 	return str
 end
 
-function M.AssertBundleOwner(str)
+function asserts.AssertBundleOwner(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BundleOwner to be of type 'string'")
 end
 
 --  
 function M.BundleOwner(str)
-	M.AssertBundleOwner(str)
+	asserts.AssertBundleOwner(str)
 	return str
 end
 
-function M.AssertWorkspaceDirectoryState(str)
+function asserts.AssertWorkspaceDirectoryState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected WorkspaceDirectoryState to be of type 'string'")
 end
 
 --  
 function M.WorkspaceDirectoryState(str)
-	M.AssertWorkspaceDirectoryState(str)
+	asserts.AssertWorkspaceDirectoryState(str)
 	return str
 end
 
-function M.AssertIpAddress(str)
+function asserts.AssertIpAddress(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IpAddress to be of type 'string'")
 end
 
 --  
 function M.IpAddress(str)
-	M.AssertIpAddress(str)
+	asserts.AssertIpAddress(str)
 	return str
 end
 
-function M.AssertRunningMode(str)
+function asserts.AssertRunningMode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RunningMode to be of type 'string'")
 end
 
 --  
 function M.RunningMode(str)
-	M.AssertRunningMode(str)
+	asserts.AssertRunningMode(str)
 	return str
 end
 
-function M.AssertDescription(str)
+function asserts.AssertDescription(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Description to be of type 'string'")
 end
 
 --  
 function M.Description(str)
-	M.AssertDescription(str)
+	asserts.AssertDescription(str)
 	return str
 end
 
-function M.AssertConnectionState(str)
+function asserts.AssertConnectionState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ConnectionState to be of type 'string'")
 end
 
 --  
 function M.ConnectionState(str)
-	M.AssertConnectionState(str)
+	asserts.AssertConnectionState(str)
 	return str
 end
 
-function M.AssertBundleId(str)
+function asserts.AssertBundleId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BundleId to be of type 'string'")
-	assert(str:match("^wsb-[0-9a-z]{8,63}$"), "Expected string to match pattern '^wsb-[0-9a-z]{8,63}$'")
 end
 
 --  
 function M.BundleId(str)
-	M.AssertBundleId(str)
+	asserts.AssertBundleId(str)
 	return str
 end
 
-function M.AssertAlias(str)
+function asserts.AssertAlias(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Alias to be of type 'string'")
 end
 
 --  
 function M.Alias(str)
-	M.AssertAlias(str)
+	asserts.AssertAlias(str)
 	return str
 end
 
-function M.AssertARN(str)
+function asserts.AssertARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ARN to be of type 'string'")
-	assert(str:match("^arn:aws:[A-Za-z0-9][A-za-z0-9_/.-]{0,62}:[A-za-z0-9_/.-]{0,63}:[A-za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-za-z0-9_/.-]{0,127}$"), "Expected string to match pattern '^arn:aws:[A-Za-z0-9][A-za-z0-9_/.-]{0,62}:[A-za-z0-9_/.-]{0,63}:[A-za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-za-z0-9_/.-]{0,127}$'")
 end
 
 --  
 function M.ARN(str)
-	M.AssertARN(str)
+	asserts.AssertARN(str)
 	return str
 end
 
-function M.AssertLimit(integer)
+function asserts.AssertLimit(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Limit to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1816,401 +1813,401 @@ function M.AssertLimit(integer)
 end
 
 function M.Limit(integer)
-	M.AssertLimit(integer)
+	asserts.AssertLimit(integer)
 	return integer
 end
 
-function M.AssertRunningModeAutoStopTimeoutInMinutes(integer)
+function asserts.AssertRunningModeAutoStopTimeoutInMinutes(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected RunningModeAutoStopTimeoutInMinutes to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.RunningModeAutoStopTimeoutInMinutes(integer)
-	M.AssertRunningModeAutoStopTimeoutInMinutes(integer)
+	asserts.AssertRunningModeAutoStopTimeoutInMinutes(integer)
 	return integer
 end
 
-function M.AssertBooleanObject(boolean)
+function asserts.AssertBooleanObject(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanObject to be of type 'boolean'")
 end
 
 function M.BooleanObject(boolean)
-	M.AssertBooleanObject(boolean)
+	asserts.AssertBooleanObject(boolean)
 	return boolean
 end
 
-function M.AssertTimestamp(timestamp)
+function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 function M.Timestamp(timestamp)
-	M.AssertTimestamp(timestamp)
+	asserts.AssertTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertWorkspaceConnectionStatusList(list)
+function asserts.AssertWorkspaceConnectionStatusList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected WorkspaceConnectionStatusList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertWorkspaceConnectionStatus(v)
+		asserts.AssertWorkspaceConnectionStatus(v)
 	end
 end
 
 --  
 -- List of WorkspaceConnectionStatus objects
 function M.WorkspaceConnectionStatusList(list)
-	M.AssertWorkspaceConnectionStatusList(list)
+	asserts.AssertWorkspaceConnectionStatusList(list)
 	return list
 end
 
-function M.AssertDirectoryIdList(list)
+function asserts.AssertDirectoryIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DirectoryIdList to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertDirectoryId(v)
+		asserts.AssertDirectoryId(v)
 	end
 end
 
 --  
 -- List of DirectoryId objects
 function M.DirectoryIdList(list)
-	M.AssertDirectoryIdList(list)
+	asserts.AssertDirectoryIdList(list)
 	return list
 end
 
-function M.AssertTerminateWorkspaceRequests(list)
+function asserts.AssertTerminateWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TerminateWorkspaceRequests to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertTerminateRequest(v)
+		asserts.AssertTerminateRequest(v)
 	end
 end
 
 --  
 -- List of TerminateRequest objects
 function M.TerminateWorkspaceRequests(list)
-	M.AssertTerminateWorkspaceRequests(list)
+	asserts.AssertTerminateWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertBundleIdList(list)
+function asserts.AssertBundleIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BundleIdList to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertBundleId(v)
+		asserts.AssertBundleId(v)
 	end
 end
 
 --  
 -- List of BundleId objects
 function M.BundleIdList(list)
-	M.AssertBundleIdList(list)
+	asserts.AssertBundleIdList(list)
 	return list
 end
 
-function M.AssertBundleList(list)
+function asserts.AssertBundleList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BundleList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertWorkspaceBundle(v)
+		asserts.AssertWorkspaceBundle(v)
 	end
 end
 
 --  
 -- List of WorkspaceBundle objects
 function M.BundleList(list)
-	M.AssertBundleList(list)
+	asserts.AssertBundleList(list)
 	return list
 end
 
-function M.AssertStopWorkspaceRequests(list)
+function asserts.AssertStopWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StopWorkspaceRequests to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertStopRequest(v)
+		asserts.AssertStopRequest(v)
 	end
 end
 
 --  
 -- List of StopRequest objects
 function M.StopWorkspaceRequests(list)
-	M.AssertStopWorkspaceRequests(list)
+	asserts.AssertStopWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertWorkspaceList(list)
+function asserts.AssertWorkspaceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected WorkspaceList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertWorkspace(v)
+		asserts.AssertWorkspace(v)
 	end
 end
 
 --  
 -- List of Workspace objects
 function M.WorkspaceList(list)
-	M.AssertWorkspaceList(list)
+	asserts.AssertWorkspaceList(list)
 	return list
 end
 
-function M.AssertTagKeyList(list)
+function asserts.AssertTagKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertNonEmptyString(v)
+		asserts.AssertNonEmptyString(v)
 	end
 end
 
 --  
 -- List of NonEmptyString objects
 function M.TagKeyList(list)
-	M.AssertTagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
-function M.AssertSubnetIds(list)
+function asserts.AssertSubnetIds(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubnetIds to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSubnetId(v)
+		asserts.AssertSubnetId(v)
 	end
 end
 
 --  
 -- List of SubnetId objects
 function M.SubnetIds(list)
-	M.AssertSubnetIds(list)
+	asserts.AssertSubnetIds(list)
 	return list
 end
 
-function M.AssertStartWorkspaceRequests(list)
+function asserts.AssertStartWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StartWorkspaceRequests to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertStartRequest(v)
+		asserts.AssertStartRequest(v)
 	end
 end
 
 --  
 -- List of StartRequest objects
 function M.StartWorkspaceRequests(list)
-	M.AssertStartWorkspaceRequests(list)
+	asserts.AssertStartWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertDnsIpAddresses(list)
+function asserts.AssertDnsIpAddresses(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DnsIpAddresses to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertIpAddress(v)
+		asserts.AssertIpAddress(v)
 	end
 end
 
 --  
 -- List of IpAddress objects
 function M.DnsIpAddresses(list)
-	M.AssertDnsIpAddresses(list)
+	asserts.AssertDnsIpAddresses(list)
 	return list
 end
 
-function M.AssertDirectoryList(list)
+function asserts.AssertDirectoryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DirectoryList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertWorkspaceDirectory(v)
+		asserts.AssertWorkspaceDirectory(v)
 	end
 end
 
 --  
 -- List of WorkspaceDirectory objects
 function M.DirectoryList(list)
-	M.AssertDirectoryList(list)
+	asserts.AssertDirectoryList(list)
 	return list
 end
 
-function M.AssertWorkspaceIdList(list)
+function asserts.AssertWorkspaceIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected WorkspaceIdList to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertWorkspaceId(v)
+		asserts.AssertWorkspaceId(v)
 	end
 end
 
 --  
 -- List of WorkspaceId objects
 function M.WorkspaceIdList(list)
-	M.AssertWorkspaceIdList(list)
+	asserts.AssertWorkspaceIdList(list)
 	return list
 end
 
-function M.AssertFailedStopWorkspaceRequests(list)
+function asserts.AssertFailedStopWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FailedStopWorkspaceRequests to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFailedWorkspaceChangeRequest(v)
+		asserts.AssertFailedWorkspaceChangeRequest(v)
 	end
 end
 
 --  
 -- List of FailedWorkspaceChangeRequest objects
 function M.FailedStopWorkspaceRequests(list)
-	M.AssertFailedStopWorkspaceRequests(list)
+	asserts.AssertFailedStopWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertRebootWorkspaceRequests(list)
+function asserts.AssertRebootWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RebootWorkspaceRequests to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertRebootRequest(v)
+		asserts.AssertRebootRequest(v)
 	end
 end
 
 --  
 -- List of RebootRequest objects
 function M.RebootWorkspaceRequests(list)
-	M.AssertRebootWorkspaceRequests(list)
+	asserts.AssertRebootWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertFailedRebootWorkspaceRequests(list)
+function asserts.AssertFailedRebootWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FailedRebootWorkspaceRequests to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFailedWorkspaceChangeRequest(v)
+		asserts.AssertFailedWorkspaceChangeRequest(v)
 	end
 end
 
 --  
 -- List of FailedWorkspaceChangeRequest objects
 function M.FailedRebootWorkspaceRequests(list)
-	M.AssertFailedRebootWorkspaceRequests(list)
+	asserts.AssertFailedRebootWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertWorkspaceRequestList(list)
+function asserts.AssertWorkspaceRequestList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected WorkspaceRequestList to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertWorkspaceRequest(v)
+		asserts.AssertWorkspaceRequest(v)
 	end
 end
 
 --  
 -- List of WorkspaceRequest objects
 function M.WorkspaceRequestList(list)
-	M.AssertWorkspaceRequestList(list)
+	asserts.AssertWorkspaceRequestList(list)
 	return list
 end
 
-function M.AssertFailedStartWorkspaceRequests(list)
+function asserts.AssertFailedStartWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FailedStartWorkspaceRequests to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFailedWorkspaceChangeRequest(v)
+		asserts.AssertFailedWorkspaceChangeRequest(v)
 	end
 end
 
 --  
 -- List of FailedWorkspaceChangeRequest objects
 function M.FailedStartWorkspaceRequests(list)
-	M.AssertFailedStartWorkspaceRequests(list)
+	asserts.AssertFailedStartWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertFailedTerminateWorkspaceRequests(list)
+function asserts.AssertFailedTerminateWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FailedTerminateWorkspaceRequests to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFailedWorkspaceChangeRequest(v)
+		asserts.AssertFailedWorkspaceChangeRequest(v)
 	end
 end
 
 --  
 -- List of FailedWorkspaceChangeRequest objects
 function M.FailedTerminateWorkspaceRequests(list)
-	M.AssertFailedTerminateWorkspaceRequests(list)
+	asserts.AssertFailedTerminateWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertFailedCreateWorkspaceRequests(list)
+function asserts.AssertFailedCreateWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FailedCreateWorkspaceRequests to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFailedCreateWorkspaceRequest(v)
+		asserts.AssertFailedCreateWorkspaceRequest(v)
 	end
 end
 
 --  
 -- List of FailedCreateWorkspaceRequest objects
 function M.FailedCreateWorkspaceRequests(list)
-	M.AssertFailedCreateWorkspaceRequests(list)
+	asserts.AssertFailedCreateWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertFailedRebuildWorkspaceRequests(list)
+function asserts.AssertFailedRebuildWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FailedRebuildWorkspaceRequests to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFailedWorkspaceChangeRequest(v)
+		asserts.AssertFailedWorkspaceChangeRequest(v)
 	end
 end
 
 --  
 -- List of FailedWorkspaceChangeRequest objects
 function M.FailedRebuildWorkspaceRequests(list)
-	M.AssertFailedRebuildWorkspaceRequests(list)
+	asserts.AssertFailedRebuildWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertRebuildWorkspaceRequests(list)
+function asserts.AssertRebuildWorkspaceRequests(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RebuildWorkspaceRequests to be of type ''table")
 	assert(#list <= 1, "Expected list to be contain 1 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertRebuildRequest(v)
+		asserts.AssertRebuildRequest(v)
 	end
 end
 
 --  
 -- List of RebuildRequest objects
 function M.RebuildWorkspaceRequests(list)
-	M.AssertRebuildWorkspaceRequests(list)
+	asserts.AssertRebuildWorkspaceRequests(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 

@@ -18,480 +18,483 @@ M.metadata = {
 	uid = "resourcegroupstaggingapi-2017-01-26",
 }
 
-local GetTagValuesOutput_keys = { "PaginationToken" = true, "TagValues" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertGetTagValuesOutput(struct)
+keys.GetTagValuesOutput = { ["PaginationToken"] = true, ["TagValues"] = true, nil }
+
+function asserts.AssertGetTagValuesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTagValuesOutput to be of type 'table'")
-	if struct["PaginationToken"] then M.AssertPaginationToken(struct["PaginationToken"]) end
-	if struct["TagValues"] then M.AssertTagValuesOutputList(struct["TagValues"]) end
+	if struct["PaginationToken"] then asserts.AssertPaginationToken(struct["PaginationToken"]) end
+	if struct["TagValues"] then asserts.AssertTagValuesOutputList(struct["TagValues"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTagValuesOutput_keys[k], "GetTagValuesOutput contains unknown key " .. tostring(k))
+		assert(keys.GetTagValuesOutput[k], "GetTagValuesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTagValuesOutput
 --  
--- @param PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
--- @param TagValues [TagValuesOutputList] <p>A list of all tag values for the specified key in the AWS account.</p>
-function M.GetTagValuesOutput(PaginationToken, TagValues, ...)
+-- @param _PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
+-- @param _TagValues [TagValuesOutputList] <p>A list of all tag values for the specified key in the AWS account.</p>
+function M.GetTagValuesOutput(_PaginationToken, _TagValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTagValuesOutput")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["TagValues"] = TagValues,
+		["PaginationToken"] = _PaginationToken,
+		["TagValues"] = _TagValues,
 	}
-	M.AssertGetTagValuesOutput(t)
+	asserts.AssertGetTagValuesOutput(t)
 	return t
 end
 
-local InternalServiceException_keys = { "Message" = true, nil }
+keys.InternalServiceException = { ["Message"] = true, nil }
 
-function M.AssertInternalServiceException(struct)
+function asserts.AssertInternalServiceException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServiceException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServiceException_keys[k], "InternalServiceException contains unknown key " .. tostring(k))
+		assert(keys.InternalServiceException[k], "InternalServiceException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServiceException
 -- <p>The request processing failed because of an unknown error, exception, or failure. You can retry the request.</p>
--- @param Message [ExceptionMessage] <p>The request processing failed because of an unknown error, exception, or failure. You can retry the request.</p>
-function M.InternalServiceException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InternalServiceException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInternalServiceException(t)
+	asserts.AssertInternalServiceException(t)
 	return t
 end
 
-local ThrottledException_keys = { "Message" = true, nil }
+keys.ThrottledException = { ["Message"] = true, nil }
 
-function M.AssertThrottledException(struct)
+function asserts.AssertThrottledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ThrottledException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ThrottledException_keys[k], "ThrottledException contains unknown key " .. tostring(k))
+		assert(keys.ThrottledException[k], "ThrottledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ThrottledException
 -- <p>The request was denied to limit the frequency of submitted requests.</p>
--- @param Message [ExceptionMessage] <p>The request was denied to limit the frequency of submitted requests.</p>
-function M.ThrottledException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.ThrottledException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottledException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertThrottledException(t)
+	asserts.AssertThrottledException(t)
 	return t
 end
 
-local GetResourcesOutput_keys = { "PaginationToken" = true, "ResourceTagMappingList" = true, nil }
+keys.GetResourcesOutput = { ["PaginationToken"] = true, ["ResourceTagMappingList"] = true, nil }
 
-function M.AssertGetResourcesOutput(struct)
+function asserts.AssertGetResourcesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetResourcesOutput to be of type 'table'")
-	if struct["PaginationToken"] then M.AssertPaginationToken(struct["PaginationToken"]) end
-	if struct["ResourceTagMappingList"] then M.AssertResourceTagMappingList(struct["ResourceTagMappingList"]) end
+	if struct["PaginationToken"] then asserts.AssertPaginationToken(struct["PaginationToken"]) end
+	if struct["ResourceTagMappingList"] then asserts.AssertResourceTagMappingList(struct["ResourceTagMappingList"]) end
 	for k,_ in pairs(struct) do
-		assert(GetResourcesOutput_keys[k], "GetResourcesOutput contains unknown key " .. tostring(k))
+		assert(keys.GetResourcesOutput[k], "GetResourcesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetResourcesOutput
 --  
--- @param PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
--- @param ResourceTagMappingList [ResourceTagMappingList] <p>A list of resource ARNs and the tags (keys and values) associated with each.</p>
-function M.GetResourcesOutput(PaginationToken, ResourceTagMappingList, ...)
+-- @param _PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
+-- @param _ResourceTagMappingList [ResourceTagMappingList] <p>A list of resource ARNs and the tags (keys and values) associated with each.</p>
+function M.GetResourcesOutput(_PaginationToken, _ResourceTagMappingList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetResourcesOutput")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["ResourceTagMappingList"] = ResourceTagMappingList,
+		["PaginationToken"] = _PaginationToken,
+		["ResourceTagMappingList"] = _ResourceTagMappingList,
 	}
-	M.AssertGetResourcesOutput(t)
+	asserts.AssertGetResourcesOutput(t)
 	return t
 end
 
-local GetTagKeysOutput_keys = { "PaginationToken" = true, "TagKeys" = true, nil }
+keys.GetTagKeysOutput = { ["PaginationToken"] = true, ["TagKeys"] = true, nil }
 
-function M.AssertGetTagKeysOutput(struct)
+function asserts.AssertGetTagKeysOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTagKeysOutput to be of type 'table'")
-	if struct["PaginationToken"] then M.AssertPaginationToken(struct["PaginationToken"]) end
-	if struct["TagKeys"] then M.AssertTagKeyList(struct["TagKeys"]) end
+	if struct["PaginationToken"] then asserts.AssertPaginationToken(struct["PaginationToken"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyList(struct["TagKeys"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTagKeysOutput_keys[k], "GetTagKeysOutput contains unknown key " .. tostring(k))
+		assert(keys.GetTagKeysOutput[k], "GetTagKeysOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTagKeysOutput
 --  
--- @param PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
--- @param TagKeys [TagKeyList] <p>A list of all tag keys in the AWS account.</p>
-function M.GetTagKeysOutput(PaginationToken, TagKeys, ...)
+-- @param _PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
+-- @param _TagKeys [TagKeyList] <p>A list of all tag keys in the AWS account.</p>
+function M.GetTagKeysOutput(_PaginationToken, _TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTagKeysOutput")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["TagKeys"] = TagKeys,
+		["PaginationToken"] = _PaginationToken,
+		["TagKeys"] = _TagKeys,
 	}
-	M.AssertGetTagKeysOutput(t)
+	asserts.AssertGetTagKeysOutput(t)
 	return t
 end
 
-local InvalidParameterException_keys = { "Message" = true, nil }
+keys.InvalidParameterException = { ["Message"] = true, nil }
 
-function M.AssertInvalidParameterException(struct)
+function asserts.AssertInvalidParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterException_keys[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterException
 -- <p>A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.</p>
--- @param Message [ExceptionMessage] <p>A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.</p>
-function M.InvalidParameterException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.InvalidParameterException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidParameterException(t)
+	asserts.AssertInvalidParameterException(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
 	assert(struct["Value"], "Expected key Value to exist in table")
-	if struct["Value"] then M.AssertTagValue(struct["Value"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["Value"] then asserts.AssertTagValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>The metadata that you apply to AWS resources to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-basics">Tag Basics</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
--- @param Value [TagValue] <p>The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).</p>
--- @param Key [TagKey] <p>One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.</p>
+-- @param _Value [TagValue] <p>The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).</p>
+-- @param _Key [TagKey] <p>One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.</p>
 -- Required parameter: Key
 -- Required parameter: Value
-function M.Tag(Value, Key, ...)
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local ResourceTagMapping_keys = { "ResourceARN" = true, "Tags" = true, nil }
+keys.ResourceTagMapping = { ["ResourceARN"] = true, ["Tags"] = true, nil }
 
-function M.AssertResourceTagMapping(struct)
+function asserts.AssertResourceTagMapping(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceTagMapping to be of type 'table'")
-	if struct["ResourceARN"] then M.AssertResourceARN(struct["ResourceARN"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["ResourceARN"] then asserts.AssertResourceARN(struct["ResourceARN"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceTagMapping_keys[k], "ResourceTagMapping contains unknown key " .. tostring(k))
+		assert(keys.ResourceTagMapping[k], "ResourceTagMapping contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceTagMapping
 -- <p>A list of resource ARNs and the tags (keys and values) that are associated with each.</p>
--- @param ResourceARN [ResourceARN] <p>An array of resource ARN(s).</p>
--- @param Tags [TagList] <p>The tags that have been applied to one or more AWS resources.</p>
-function M.ResourceTagMapping(ResourceARN, Tags, ...)
+-- @param _ResourceARN [ResourceARN] <p>An array of resource ARN(s).</p>
+-- @param _Tags [TagList] <p>The tags that have been applied to one or more AWS resources.</p>
+function M.ResourceTagMapping(_ResourceARN, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceTagMapping")
 	local t = { 
-		["ResourceARN"] = ResourceARN,
-		["Tags"] = Tags,
+		["ResourceARN"] = _ResourceARN,
+		["Tags"] = _Tags,
 	}
-	M.AssertResourceTagMapping(t)
+	asserts.AssertResourceTagMapping(t)
 	return t
 end
 
-local TagResourcesOutput_keys = { "FailedResourcesMap" = true, nil }
+keys.TagResourcesOutput = { ["FailedResourcesMap"] = true, nil }
 
-function M.AssertTagResourcesOutput(struct)
+function asserts.AssertTagResourcesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagResourcesOutput to be of type 'table'")
-	if struct["FailedResourcesMap"] then M.AssertFailedResourcesMap(struct["FailedResourcesMap"]) end
+	if struct["FailedResourcesMap"] then asserts.AssertFailedResourcesMap(struct["FailedResourcesMap"]) end
 	for k,_ in pairs(struct) do
-		assert(TagResourcesOutput_keys[k], "TagResourcesOutput contains unknown key " .. tostring(k))
+		assert(keys.TagResourcesOutput[k], "TagResourcesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagResourcesOutput
 --  
--- @param FailedResourcesMap [FailedResourcesMap] <p>Details of resources that could not be tagged. An error code, status code, and error message are returned for each failed item.</p>
-function M.TagResourcesOutput(FailedResourcesMap, ...)
+-- @param _FailedResourcesMap [FailedResourcesMap] <p>Details of resources that could not be tagged. An error code, status code, and error message are returned for each failed item.</p>
+function M.TagResourcesOutput(_FailedResourcesMap, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourcesOutput")
 	local t = { 
-		["FailedResourcesMap"] = FailedResourcesMap,
+		["FailedResourcesMap"] = _FailedResourcesMap,
 	}
-	M.AssertTagResourcesOutput(t)
+	asserts.AssertTagResourcesOutput(t)
 	return t
 end
 
-local UntagResourcesInput_keys = { "TagKeys" = true, "ResourceARNList" = true, nil }
+keys.UntagResourcesInput = { ["TagKeys"] = true, ["ResourceARNList"] = true, nil }
 
-function M.AssertUntagResourcesInput(struct)
+function asserts.AssertUntagResourcesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UntagResourcesInput to be of type 'table'")
 	assert(struct["ResourceARNList"], "Expected key ResourceARNList to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["TagKeys"] then M.AssertTagKeyListForUntag(struct["TagKeys"]) end
-	if struct["ResourceARNList"] then M.AssertResourceARNList(struct["ResourceARNList"]) end
+	if struct["TagKeys"] then asserts.AssertTagKeyListForUntag(struct["TagKeys"]) end
+	if struct["ResourceARNList"] then asserts.AssertResourceARNList(struct["ResourceARNList"]) end
 	for k,_ in pairs(struct) do
-		assert(UntagResourcesInput_keys[k], "UntagResourcesInput contains unknown key " .. tostring(k))
+		assert(keys.UntagResourcesInput[k], "UntagResourcesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UntagResourcesInput
 --  
--- @param TagKeys [TagKeyListForUntag] <p>A list of the tag keys that you want to remove from the specified resources.</p>
--- @param ResourceARNList [ResourceARNList] <p>A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- @param _TagKeys [TagKeyListForUntag] <p>A list of the tag keys that you want to remove from the specified resources.</p>
+-- @param _ResourceARNList [ResourceARNList] <p>A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required parameter: ResourceARNList
 -- Required parameter: TagKeys
-function M.UntagResourcesInput(TagKeys, ResourceARNList, ...)
+function M.UntagResourcesInput(_TagKeys, _ResourceARNList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourcesInput")
 	local t = { 
-		["TagKeys"] = TagKeys,
-		["ResourceARNList"] = ResourceARNList,
+		["TagKeys"] = _TagKeys,
+		["ResourceARNList"] = _ResourceARNList,
 	}
-	M.AssertUntagResourcesInput(t)
+	asserts.AssertUntagResourcesInput(t)
 	return t
 end
 
-local TagFilter_keys = { "Values" = true, "Key" = true, nil }
+keys.TagFilter = { ["Values"] = true, ["Key"] = true, nil }
 
-function M.AssertTagFilter(struct)
+function asserts.AssertTagFilter(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagFilter to be of type 'table'")
-	if struct["Values"] then M.AssertTagValueList(struct["Values"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["Values"] then asserts.AssertTagValueList(struct["Values"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(TagFilter_keys[k], "TagFilter contains unknown key " .. tostring(k))
+		assert(keys.TagFilter[k], "TagFilter contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagFilter
 -- <p>A list of tags (keys and values) that are used to specify the associated resources.</p>
--- @param Values [TagValueList] <p>The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).</p>
--- @param Key [TagKey] <p>One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.</p>
-function M.TagFilter(Values, Key, ...)
+-- @param _Values [TagValueList] <p>The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).</p>
+-- @param _Key [TagKey] <p>One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.</p>
+function M.TagFilter(_Values, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagFilter")
 	local t = { 
-		["Values"] = Values,
-		["Key"] = Key,
+		["Values"] = _Values,
+		["Key"] = _Key,
 	}
-	M.AssertTagFilter(t)
+	asserts.AssertTagFilter(t)
 	return t
 end
 
-local UntagResourcesOutput_keys = { "FailedResourcesMap" = true, nil }
+keys.UntagResourcesOutput = { ["FailedResourcesMap"] = true, nil }
 
-function M.AssertUntagResourcesOutput(struct)
+function asserts.AssertUntagResourcesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UntagResourcesOutput to be of type 'table'")
-	if struct["FailedResourcesMap"] then M.AssertFailedResourcesMap(struct["FailedResourcesMap"]) end
+	if struct["FailedResourcesMap"] then asserts.AssertFailedResourcesMap(struct["FailedResourcesMap"]) end
 	for k,_ in pairs(struct) do
-		assert(UntagResourcesOutput_keys[k], "UntagResourcesOutput contains unknown key " .. tostring(k))
+		assert(keys.UntagResourcesOutput[k], "UntagResourcesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UntagResourcesOutput
 --  
--- @param FailedResourcesMap [FailedResourcesMap] <p>Details of resources that could not be untagged. An error code, status code, and error message are returned for each failed item.</p>
-function M.UntagResourcesOutput(FailedResourcesMap, ...)
+-- @param _FailedResourcesMap [FailedResourcesMap] <p>Details of resources that could not be untagged. An error code, status code, and error message are returned for each failed item.</p>
+function M.UntagResourcesOutput(_FailedResourcesMap, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourcesOutput")
 	local t = { 
-		["FailedResourcesMap"] = FailedResourcesMap,
+		["FailedResourcesMap"] = _FailedResourcesMap,
 	}
-	M.AssertUntagResourcesOutput(t)
+	asserts.AssertUntagResourcesOutput(t)
 	return t
 end
 
-local GetResourcesInput_keys = { "PaginationToken" = true, "TagsPerPage" = true, "TagFilters" = true, "ResourcesPerPage" = true, "ResourceTypeFilters" = true, nil }
+keys.GetResourcesInput = { ["PaginationToken"] = true, ["TagsPerPage"] = true, ["TagFilters"] = true, ["ResourcesPerPage"] = true, ["ResourceTypeFilters"] = true, nil }
 
-function M.AssertGetResourcesInput(struct)
+function asserts.AssertGetResourcesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetResourcesInput to be of type 'table'")
-	if struct["PaginationToken"] then M.AssertPaginationToken(struct["PaginationToken"]) end
-	if struct["TagsPerPage"] then M.AssertTagsPerPage(struct["TagsPerPage"]) end
-	if struct["TagFilters"] then M.AssertTagFilterList(struct["TagFilters"]) end
-	if struct["ResourcesPerPage"] then M.AssertResourcesPerPage(struct["ResourcesPerPage"]) end
-	if struct["ResourceTypeFilters"] then M.AssertResourceTypeFilterList(struct["ResourceTypeFilters"]) end
+	if struct["PaginationToken"] then asserts.AssertPaginationToken(struct["PaginationToken"]) end
+	if struct["TagsPerPage"] then asserts.AssertTagsPerPage(struct["TagsPerPage"]) end
+	if struct["TagFilters"] then asserts.AssertTagFilterList(struct["TagFilters"]) end
+	if struct["ResourcesPerPage"] then asserts.AssertResourcesPerPage(struct["ResourcesPerPage"]) end
+	if struct["ResourceTypeFilters"] then asserts.AssertResourceTypeFilterList(struct["ResourceTypeFilters"]) end
 	for k,_ in pairs(struct) do
-		assert(GetResourcesInput_keys[k], "GetResourcesInput contains unknown key " .. tostring(k))
+		assert(keys.GetResourcesInput[k], "GetResourcesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetResourcesInput
 --  
--- @param PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a <code>PaginationToken</code>, use that string for this value to request an additional page of data.</p>
--- @param TagsPerPage [TagsPerPage] <p>A limit that restricts the number of tags (key and value pairs) returned by GetResources in paginated output. A resource with no tags is counted as having one tag (one key and value pair).</p> <p> <code>GetResources</code> does not split a resource and its associated tags across pages. If the specified <code>TagsPerPage</code> would cause such a break, a <code>PaginationToken</code> is returned in place of the affected resource and its tags. Use that token in another request to get the remaining data. For example, if you specify a <code>TagsPerPage</code> of <code>100</code> and the account has 22 resources with 10 tags each (meaning that each resource has 10 key and value pairs), the output will consist of 3 pages, with the first page displaying the first 10 resources, each with its 10 tags, the second page displaying the next 10 resources each with its 10 tags, and the third page displaying the remaining 2 resources, each with its 10 tags.</p> <p/> <p>You can set <code>TagsPerPage</code> to a minimum of 100 items and the maximum of 500 items.</p>
--- @param TagFilters [TagFilterList] <p>A list of tags (keys and values). A request can include up to 50 keys, and each key can include up to 20 values.</p> <p>If you specify multiple filters connected by an AND operator in a single request, the response returns only those resources that are associated with every specified filter.</p> <p>If you specify multiple filters connected by an OR operator in a single request, the response returns all resources that are associated with at least one or possibly more of the specified filters.</p>
--- @param ResourcesPerPage [ResourcesPerPage] <p>A limit that restricts the number of resources returned by GetResources in paginated output. You can set ResourcesPerPage to a minimum of 1 item and the maximum of 50 items. </p>
--- @param ResourceTypeFilters [ResourceTypeFilterList] <p>The constraints on the resources that you want returned. The format of each resource type is <code>service[:resourceType]</code>. For example, specifying a resource type of <code>ec2</code> returns all tagged Amazon EC2 resources (which includes tagged EC2 instances). Specifying a resource type of <code>ec2:instance</code> returns only EC2 instances. </p> <p>The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the <i>AWS General Reference</i> for the following:</p> <ul> <li> <p>For a list of service name strings, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS Service Namespaces</a>.</p> </li> <li> <p>For resource type strings, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax">Example ARNs</a>.</p> </li> <li> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p> </li> </ul>
-function M.GetResourcesInput(PaginationToken, TagsPerPage, TagFilters, ResourcesPerPage, ResourceTypeFilters, ...)
+-- @param _PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a <code>PaginationToken</code>, use that string for this value to request an additional page of data.</p>
+-- @param _TagsPerPage [TagsPerPage] <p>A limit that restricts the number of tags (key and value pairs) returned by GetResources in paginated output. A resource with no tags is counted as having one tag (one key and value pair).</p> <p> <code>GetResources</code> does not split a resource and its associated tags across pages. If the specified <code>TagsPerPage</code> would cause such a break, a <code>PaginationToken</code> is returned in place of the affected resource and its tags. Use that token in another request to get the remaining data. For example, if you specify a <code>TagsPerPage</code> of <code>100</code> and the account has 22 resources with 10 tags each (meaning that each resource has 10 key and value pairs), the output will consist of 3 pages, with the first page displaying the first 10 resources, each with its 10 tags, the second page displaying the next 10 resources each with its 10 tags, and the third page displaying the remaining 2 resources, each with its 10 tags.</p> <p/> <p>You can set <code>TagsPerPage</code> to a minimum of 100 items and the maximum of 500 items.</p>
+-- @param _TagFilters [TagFilterList] <p>A list of tags (keys and values). A request can include up to 50 keys, and each key can include up to 20 values.</p> <p>If you specify multiple filters connected by an AND operator in a single request, the response returns only those resources that are associated with every specified filter.</p> <p>If you specify multiple filters connected by an OR operator in a single request, the response returns all resources that are associated with at least one or possibly more of the specified filters.</p>
+-- @param _ResourcesPerPage [ResourcesPerPage] <p>A limit that restricts the number of resources returned by GetResources in paginated output. You can set ResourcesPerPage to a minimum of 1 item and the maximum of 50 items. </p>
+-- @param _ResourceTypeFilters [ResourceTypeFilterList] <p>The constraints on the resources that you want returned. The format of each resource type is <code>service[:resourceType]</code>. For example, specifying a resource type of <code>ec2</code> returns all tagged Amazon EC2 resources (which includes tagged EC2 instances). Specifying a resource type of <code>ec2:instance</code> returns only EC2 instances. </p> <p>The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the <i>AWS General Reference</i> for the following:</p> <ul> <li> <p>For a list of service name strings, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS Service Namespaces</a>.</p> </li> <li> <p>For resource type strings, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax">Example ARNs</a>.</p> </li> <li> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p> </li> </ul>
+function M.GetResourcesInput(_PaginationToken, _TagsPerPage, _TagFilters, _ResourcesPerPage, _ResourceTypeFilters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetResourcesInput")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["TagsPerPage"] = TagsPerPage,
-		["TagFilters"] = TagFilters,
-		["ResourcesPerPage"] = ResourcesPerPage,
-		["ResourceTypeFilters"] = ResourceTypeFilters,
+		["PaginationToken"] = _PaginationToken,
+		["TagsPerPage"] = _TagsPerPage,
+		["TagFilters"] = _TagFilters,
+		["ResourcesPerPage"] = _ResourcesPerPage,
+		["ResourceTypeFilters"] = _ResourceTypeFilters,
 	}
-	M.AssertGetResourcesInput(t)
+	asserts.AssertGetResourcesInput(t)
 	return t
 end
 
-local FailureInfo_keys = { "ErrorCode" = true, "ErrorMessage" = true, "StatusCode" = true, nil }
+keys.FailureInfo = { ["ErrorCode"] = true, ["ErrorMessage"] = true, ["StatusCode"] = true, nil }
 
-function M.AssertFailureInfo(struct)
+function asserts.AssertFailureInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FailureInfo to be of type 'table'")
-	if struct["ErrorCode"] then M.AssertErrorCode(struct["ErrorCode"]) end
-	if struct["ErrorMessage"] then M.AssertErrorMessage(struct["ErrorMessage"]) end
-	if struct["StatusCode"] then M.AssertStatusCode(struct["StatusCode"]) end
+	if struct["ErrorCode"] then asserts.AssertErrorCode(struct["ErrorCode"]) end
+	if struct["ErrorMessage"] then asserts.AssertErrorMessage(struct["ErrorMessage"]) end
+	if struct["StatusCode"] then asserts.AssertStatusCode(struct["StatusCode"]) end
 	for k,_ in pairs(struct) do
-		assert(FailureInfo_keys[k], "FailureInfo contains unknown key " .. tostring(k))
+		assert(keys.FailureInfo[k], "FailureInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FailureInfo
 -- <p>Details of the common errors that all actions return.</p>
--- @param ErrorCode [ErrorCode] <p>The code of the common error. Valid values include <code>InternalServiceException</code>, <code>InvalidParameterException</code>, and any valid error code returned by the AWS service that hosts the resource that you want to tag.</p>
--- @param ErrorMessage [ErrorMessage] <p>The message of the common error.</p>
--- @param StatusCode [StatusCode] <p>The HTTP status code of the common error.</p>
-function M.FailureInfo(ErrorCode, ErrorMessage, StatusCode, ...)
+-- @param _ErrorCode [ErrorCode] <p>The code of the common error. Valid values include <code>InternalServiceException</code>, <code>InvalidParameterException</code>, and any valid error code returned by the AWS service that hosts the resource that you want to tag.</p>
+-- @param _ErrorMessage [ErrorMessage] <p>The message of the common error.</p>
+-- @param _StatusCode [StatusCode] <p>The HTTP status code of the common error.</p>
+function M.FailureInfo(_ErrorCode, _ErrorMessage, _StatusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailureInfo")
 	local t = { 
-		["ErrorCode"] = ErrorCode,
-		["ErrorMessage"] = ErrorMessage,
-		["StatusCode"] = StatusCode,
+		["ErrorCode"] = _ErrorCode,
+		["ErrorMessage"] = _ErrorMessage,
+		["StatusCode"] = _StatusCode,
 	}
-	M.AssertFailureInfo(t)
+	asserts.AssertFailureInfo(t)
 	return t
 end
 
-local GetTagValuesInput_keys = { "PaginationToken" = true, "Key" = true, nil }
+keys.GetTagValuesInput = { ["PaginationToken"] = true, ["Key"] = true, nil }
 
-function M.AssertGetTagValuesInput(struct)
+function asserts.AssertGetTagValuesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTagValuesInput to be of type 'table'")
 	assert(struct["Key"], "Expected key Key to exist in table")
-	if struct["PaginationToken"] then M.AssertPaginationToken(struct["PaginationToken"]) end
-	if struct["Key"] then M.AssertTagKey(struct["Key"]) end
+	if struct["PaginationToken"] then asserts.AssertPaginationToken(struct["PaginationToken"]) end
+	if struct["Key"] then asserts.AssertTagKey(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTagValuesInput_keys[k], "GetTagValuesInput contains unknown key " .. tostring(k))
+		assert(keys.GetTagValuesInput[k], "GetTagValuesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTagValuesInput
 --  
--- @param PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.</p>
--- @param Key [TagKey] <p>The key for which you want to list all existing values in the specified region for the AWS account.</p>
+-- @param _PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.</p>
+-- @param _Key [TagKey] <p>The key for which you want to list all existing values in the specified region for the AWS account.</p>
 -- Required parameter: Key
-function M.GetTagValuesInput(PaginationToken, Key, ...)
+function M.GetTagValuesInput(_PaginationToken, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTagValuesInput")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
-		["Key"] = Key,
+		["PaginationToken"] = _PaginationToken,
+		["Key"] = _Key,
 	}
-	M.AssertGetTagValuesInput(t)
+	asserts.AssertGetTagValuesInput(t)
 	return t
 end
 
-local TagResourcesInput_keys = { "ResourceARNList" = true, "Tags" = true, nil }
+keys.TagResourcesInput = { ["ResourceARNList"] = true, ["Tags"] = true, nil }
 
-function M.AssertTagResourcesInput(struct)
+function asserts.AssertTagResourcesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TagResourcesInput to be of type 'table'")
 	assert(struct["ResourceARNList"], "Expected key ResourceARNList to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceARNList"] then M.AssertResourceARNList(struct["ResourceARNList"]) end
-	if struct["Tags"] then M.AssertTagMap(struct["Tags"]) end
+	if struct["ResourceARNList"] then asserts.AssertResourceARNList(struct["ResourceARNList"]) end
+	if struct["Tags"] then asserts.AssertTagMap(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(TagResourcesInput_keys[k], "TagResourcesInput contains unknown key " .. tostring(k))
+		assert(keys.TagResourcesInput[k], "TagResourcesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TagResourcesInput
 --  
--- @param ResourceARNList [ResourceARNList] <p>A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to tag. An ARN can be set to a maximum of 1600 characters. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param Tags [TagMap] <p>The tags that you want to add to the specified resources. A tag consists of a key and a value that you define.</p>
+-- @param _ResourceARNList [ResourceARNList] <p>A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to tag. An ARN can be set to a maximum of 1600 characters. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- @param _Tags [TagMap] <p>The tags that you want to add to the specified resources. A tag consists of a key and a value that you define.</p>
 -- Required parameter: ResourceARNList
 -- Required parameter: Tags
-function M.TagResourcesInput(ResourceARNList, Tags, ...)
+function M.TagResourcesInput(_ResourceARNList, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourcesInput")
 	local t = { 
-		["ResourceARNList"] = ResourceARNList,
-		["Tags"] = Tags,
+		["ResourceARNList"] = _ResourceARNList,
+		["Tags"] = _Tags,
 	}
-	M.AssertTagResourcesInput(t)
+	asserts.AssertTagResourcesInput(t)
 	return t
 end
 
-local GetTagKeysInput_keys = { "PaginationToken" = true, nil }
+keys.GetTagKeysInput = { ["PaginationToken"] = true, nil }
 
-function M.AssertGetTagKeysInput(struct)
+function asserts.AssertGetTagKeysInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetTagKeysInput to be of type 'table'")
-	if struct["PaginationToken"] then M.AssertPaginationToken(struct["PaginationToken"]) end
+	if struct["PaginationToken"] then asserts.AssertPaginationToken(struct["PaginationToken"]) end
 	for k,_ in pairs(struct) do
-		assert(GetTagKeysInput_keys[k], "GetTagKeysInput contains unknown key " .. tostring(k))
+		assert(keys.GetTagKeysInput[k], "GetTagKeysInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetTagKeysInput
 --  
--- @param PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.</p>
-function M.GetTagKeysInput(PaginationToken, ...)
+-- @param _PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.</p>
+function M.GetTagKeysInput(_PaginationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTagKeysInput")
 	local t = { 
-		["PaginationToken"] = PaginationToken,
+		["PaginationToken"] = _PaginationToken,
 	}
-	M.AssertGetTagKeysInput(t)
+	asserts.AssertGetTagKeysInput(t)
 	return t
 end
 
-local PaginationTokenExpiredException_keys = { "Message" = true, nil }
+keys.PaginationTokenExpiredException = { ["Message"] = true, nil }
 
-function M.AssertPaginationTokenExpiredException(struct)
+function asserts.AssertPaginationTokenExpiredException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PaginationTokenExpiredException to be of type 'table'")
-	if struct["Message"] then M.AssertExceptionMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertExceptionMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(PaginationTokenExpiredException_keys[k], "PaginationTokenExpiredException contains unknown key " .. tostring(k))
+		assert(keys.PaginationTokenExpiredException[k], "PaginationTokenExpiredException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PaginationTokenExpiredException
 -- <p>A <code>PaginationToken</code> is valid for a maximum of 15 minutes. Your request was denied because the specified <code>PaginationToken</code> has expired.</p>
--- @param Message [ExceptionMessage] <p>A <code>PaginationToken</code> is valid for a maximum of 15 minutes. Your request was denied because the specified <code>PaginationToken</code> has expired.</p>
-function M.PaginationTokenExpiredException(Message, ...)
+-- @param _Message [ExceptionMessage] 
+function M.PaginationTokenExpiredException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PaginationTokenExpiredException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertPaginationTokenExpiredException(t)
+	asserts.AssertPaginationTokenExpiredException(t)
 	return t
 end
 
-function M.AssertPaginationToken(str)
+function asserts.AssertPaginationToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationToken to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -499,22 +502,22 @@ end
 
 --  
 function M.PaginationToken(str)
-	M.AssertPaginationToken(str)
+	asserts.AssertPaginationToken(str)
 	return str
 end
 
-function M.AssertErrorCode(str)
+function asserts.AssertErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorCode to be of type 'string'")
 end
 
 --  
 function M.ErrorCode(str)
-	M.AssertErrorCode(str)
+	asserts.AssertErrorCode(str)
 	return str
 end
 
-function M.AssertTagKey(str)
+function asserts.AssertTagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -523,22 +526,22 @@ end
 
 --  
 function M.TagKey(str)
-	M.AssertTagKey(str)
+	asserts.AssertTagKey(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertTagValue(str)
+function asserts.AssertTagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TagValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -546,11 +549,11 @@ end
 
 --  
 function M.TagValue(str)
-	M.AssertTagValue(str)
+	asserts.AssertTagValue(str)
 	return str
 end
 
-function M.AssertExceptionMessage(str)
+function asserts.AssertExceptionMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -558,11 +561,11 @@ end
 
 --  
 function M.ExceptionMessage(str)
-	M.AssertExceptionMessage(str)
+	asserts.AssertExceptionMessage(str)
 	return str
 end
 
-function M.AssertResourceARN(str)
+function asserts.AssertResourceARN(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceARN to be of type 'string'")
 	assert(#str <= 1600, "Expected string to be max 1600 characters")
@@ -571,11 +574,11 @@ end
 
 --  
 function M.ResourceARN(str)
-	M.AssertResourceARN(str)
+	asserts.AssertResourceARN(str)
 	return str
 end
 
-function M.AssertAmazonResourceType(str)
+function asserts.AssertAmazonResourceType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AmazonResourceType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -583,209 +586,209 @@ end
 
 --  
 function M.AmazonResourceType(str)
-	M.AssertAmazonResourceType(str)
+	asserts.AssertAmazonResourceType(str)
 	return str
 end
 
-function M.AssertStatusCode(integer)
+function asserts.AssertStatusCode(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected StatusCode to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.StatusCode(integer)
-	M.AssertStatusCode(integer)
+	asserts.AssertStatusCode(integer)
 	return integer
 end
 
-function M.AssertTagsPerPage(integer)
+function asserts.AssertTagsPerPage(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected TagsPerPage to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.TagsPerPage(integer)
-	M.AssertTagsPerPage(integer)
+	asserts.AssertTagsPerPage(integer)
 	return integer
 end
 
-function M.AssertResourcesPerPage(integer)
+function asserts.AssertResourcesPerPage(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected ResourcesPerPage to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.ResourcesPerPage(integer)
-	M.AssertResourcesPerPage(integer)
+	asserts.AssertResourcesPerPage(integer)
 	return integer
 end
 
-function M.AssertTagMap(map)
+function asserts.AssertTagMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected TagMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertTagKey(k)
-		M.AssertTagValue(v)
+		asserts.AssertTagKey(k)
+		asserts.AssertTagValue(v)
 	end
 end
 
 function M.TagMap(map)
-	M.AssertTagMap(map)
+	asserts.AssertTagMap(map)
 	return map
 end
 
-function M.AssertFailedResourcesMap(map)
+function asserts.AssertFailedResourcesMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected FailedResourcesMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertResourceARN(k)
-		M.AssertFailureInfo(v)
+		asserts.AssertResourceARN(k)
+		asserts.AssertFailureInfo(v)
 	end
 end
 
 function M.FailedResourcesMap(map)
-	M.AssertFailedResourcesMap(map)
+	asserts.AssertFailedResourcesMap(map)
 	return map
 end
 
-function M.AssertTagFilterList(list)
+function asserts.AssertTagFilterList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagFilterList to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	for _,v in ipairs(list) do
-		M.AssertTagFilter(v)
+		asserts.AssertTagFilter(v)
 	end
 end
 
 --  
 -- List of TagFilter objects
 function M.TagFilterList(list)
-	M.AssertTagFilterList(list)
+	asserts.AssertTagFilterList(list)
 	return list
 end
 
-function M.AssertTagValuesOutputList(list)
+function asserts.AssertTagValuesOutputList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagValuesOutputList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagValue(v)
+		asserts.AssertTagValue(v)
 	end
 end
 
 --  
 -- List of TagValue objects
 function M.TagValuesOutputList(list)
-	M.AssertTagValuesOutputList(list)
+	asserts.AssertTagValuesOutputList(list)
 	return list
 end
 
-function M.AssertResourceTypeFilterList(list)
+function asserts.AssertResourceTypeFilterList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourceTypeFilterList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertAmazonResourceType(v)
+		asserts.AssertAmazonResourceType(v)
 	end
 end
 
 --  
 -- List of AmazonResourceType objects
 function M.ResourceTypeFilterList(list)
-	M.AssertResourceTypeFilterList(list)
+	asserts.AssertResourceTypeFilterList(list)
 	return list
 end
 
-function M.AssertTagValueList(list)
+function asserts.AssertTagValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagValueList to be of type ''table")
 	assert(#list <= 20, "Expected list to be contain 20 elements")
 	for _,v in ipairs(list) do
-		M.AssertTagValue(v)
+		asserts.AssertTagValue(v)
 	end
 end
 
 --  
 -- List of TagValue objects
 function M.TagValueList(list)
-	M.AssertTagValueList(list)
+	asserts.AssertTagValueList(list)
 	return list
 end
 
-function M.AssertResourceARNList(list)
+function asserts.AssertResourceARNList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourceARNList to be of type ''table")
 	assert(#list <= 20, "Expected list to be contain 20 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertResourceARN(v)
+		asserts.AssertResourceARN(v)
 	end
 end
 
 --  
 -- List of ResourceARN objects
 function M.ResourceARNList(list)
-	M.AssertResourceARNList(list)
+	asserts.AssertResourceARNList(list)
 	return list
 end
 
-function M.AssertResourceTagMappingList(list)
+function asserts.AssertResourceTagMappingList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ResourceTagMappingList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertResourceTagMapping(v)
+		asserts.AssertResourceTagMapping(v)
 	end
 end
 
 --  
 -- List of ResourceTagMapping objects
 function M.ResourceTagMappingList(list)
-	M.AssertResourceTagMappingList(list)
+	asserts.AssertResourceTagMappingList(list)
 	return list
 end
 
-function M.AssertTagKeyList(list)
+function asserts.AssertTagKeyList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeyList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTagKey(v)
+		asserts.AssertTagKey(v)
 	end
 end
 
 --  
 -- List of TagKey objects
 function M.TagKeyList(list)
-	M.AssertTagKeyList(list)
+	asserts.AssertTagKeyList(list)
 	return list
 end
 
-function M.AssertTagKeyListForUntag(list)
+function asserts.AssertTagKeyListForUntag(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagKeyListForUntag to be of type ''table")
 	assert(#list <= 50, "Expected list to be contain 50 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertTagKey(v)
+		asserts.AssertTagKey(v)
 	end
 end
 
 --  
 -- List of TagKey objects
 function M.TagKeyListForUntag(list)
-	M.AssertTagKeyListForUntag(list)
+	asserts.AssertTagKeyListForUntag(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 

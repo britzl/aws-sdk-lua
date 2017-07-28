@@ -18,193 +18,196 @@ M.metadata = {
 	uid = "datapipeline-2012-10-29",
 }
 
-local CreatePipelineInput_keys = { "tags" = true, "name" = true, "uniqueId" = true, "description" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertCreatePipelineInput(struct)
+keys.CreatePipelineInput = { ["tags"] = true, ["name"] = true, ["uniqueId"] = true, ["description"] = true, nil }
+
+function asserts.AssertCreatePipelineInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePipelineInput to be of type 'table'")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["uniqueId"], "Expected key uniqueId to exist in table")
-	if struct["tags"] then M.AsserttagList(struct["tags"]) end
-	if struct["name"] then M.Assertid(struct["name"]) end
-	if struct["uniqueId"] then M.Assertid(struct["uniqueId"]) end
-	if struct["description"] then M.Assertstring(struct["description"]) end
+	if struct["tags"] then asserts.AsserttagList(struct["tags"]) end
+	if struct["name"] then asserts.Assertid(struct["name"]) end
+	if struct["uniqueId"] then asserts.Assertid(struct["uniqueId"]) end
+	if struct["description"] then asserts.Assertstring(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePipelineInput_keys[k], "CreatePipelineInput contains unknown key " .. tostring(k))
+		assert(keys.CreatePipelineInput[k], "CreatePipelineInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePipelineInput
 -- <p>Contains the parameters for CreatePipeline.</p>
--- @param tags [tagList] <p>A list of tags to associate with the pipeline at creation. Tags let you control access to pipelines. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- @param name [id] <p>The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account, because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.</p>
--- @param uniqueId [id] <p>A unique identifier. This identifier is not the same as the pipeline identifier assigned by AWS Data Pipeline. You are responsible for defining the format and ensuring the uniqueness of this identifier. You use this parameter to ensure idempotency during repeated calls to <code>CreatePipeline</code>. For example, if the first call to <code>CreatePipeline</code> does not succeed, you can pass in the same unique identifier and pipeline name combination on a subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code> ensures that if a pipeline already exists with the same name and unique identifier, a new pipeline is not created. Instead, you'll receive the pipeline identifier from the previous attempt. The uniqueness of the name and unique identifier combination is scoped to the AWS account or IAM user credentials.</p>
--- @param description [string] <p>The description for the pipeline.</p>
+-- @param _tags [tagList] <p>A list of tags to associate with the pipeline at creation. Tags let you control access to pipelines. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+-- @param _name [id] <p>The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account, because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.</p>
+-- @param _uniqueId [id] <p>A unique identifier. This identifier is not the same as the pipeline identifier assigned by AWS Data Pipeline. You are responsible for defining the format and ensuring the uniqueness of this identifier. You use this parameter to ensure idempotency during repeated calls to <code>CreatePipeline</code>. For example, if the first call to <code>CreatePipeline</code> does not succeed, you can pass in the same unique identifier and pipeline name combination on a subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code> ensures that if a pipeline already exists with the same name and unique identifier, a new pipeline is not created. Instead, you'll receive the pipeline identifier from the previous attempt. The uniqueness of the name and unique identifier combination is scoped to the AWS account or IAM user credentials.</p>
+-- @param _description [string] <p>The description for the pipeline.</p>
 -- Required parameter: name
 -- Required parameter: uniqueId
-function M.CreatePipelineInput(tags, name, uniqueId, description, ...)
+function M.CreatePipelineInput(_tags, _name, _uniqueId, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePipelineInput")
 	local t = { 
-		["tags"] = tags,
-		["name"] = name,
-		["uniqueId"] = uniqueId,
-		["description"] = description,
+		["tags"] = _tags,
+		["name"] = _name,
+		["uniqueId"] = _uniqueId,
+		["description"] = _description,
 	}
-	M.AssertCreatePipelineInput(t)
+	asserts.AssertCreatePipelineInput(t)
 	return t
 end
 
-local QueryObjectsInput_keys = { "marker" = true, "query" = true, "pipelineId" = true, "limit" = true, "sphere" = true, nil }
+keys.QueryObjectsInput = { ["marker"] = true, ["query"] = true, ["pipelineId"] = true, ["limit"] = true, ["sphere"] = true, nil }
 
-function M.AssertQueryObjectsInput(struct)
+function asserts.AssertQueryObjectsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected QueryObjectsInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["sphere"], "Expected key sphere to exist in table")
-	if struct["marker"] then M.Assertstring(struct["marker"]) end
-	if struct["query"] then M.AssertQuery(struct["query"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["limit"] then M.Assertint(struct["limit"]) end
-	if struct["sphere"] then M.Assertstring(struct["sphere"]) end
+	if struct["marker"] then asserts.Assertstring(struct["marker"]) end
+	if struct["query"] then asserts.AssertQuery(struct["query"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["limit"] then asserts.Assertint(struct["limit"]) end
+	if struct["sphere"] then asserts.Assertstring(struct["sphere"]) end
 	for k,_ in pairs(struct) do
-		assert(QueryObjectsInput_keys[k], "QueryObjectsInput contains unknown key " .. tostring(k))
+		assert(keys.QueryObjectsInput[k], "QueryObjectsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type QueryObjectsInput
 -- <p>Contains the parameters for QueryObjects.</p>
--- @param marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>QueryObjects</code> with the marker value from the previous call to retrieve the next set of results.</p>
--- @param query [Query] <p>The query that defines the objects to be returned. The <code>Query</code> object can contain a maximum of ten selectors. The conditions in the query are limited to top-level String fields in the object. These filters can be applied to components, instances, and attempts.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
--- @param limit [int] <p>The maximum number of object names that <code>QueryObjects</code> will return in a single call. The default value is 100. </p>
--- @param sphere [string] <p>Indicates whether the query applies to components or instances. The possible values are: <code>COMPONENT</code>, <code>INSTANCE</code>, and <code>ATTEMPT</code>.</p>
+-- @param _marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>QueryObjects</code> with the marker value from the previous call to retrieve the next set of results.</p>
+-- @param _query [Query] <p>The query that defines the objects to be returned. The <code>Query</code> object can contain a maximum of ten selectors. The conditions in the query are limited to top-level String fields in the object. These filters can be applied to components, instances, and attempts.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _limit [int] <p>The maximum number of object names that <code>QueryObjects</code> will return in a single call. The default value is 100. </p>
+-- @param _sphere [string] <p>Indicates whether the query applies to components or instances. The possible values are: <code>COMPONENT</code>, <code>INSTANCE</code>, and <code>ATTEMPT</code>.</p>
 -- Required parameter: pipelineId
 -- Required parameter: sphere
-function M.QueryObjectsInput(marker, query, pipelineId, limit, sphere, ...)
+function M.QueryObjectsInput(_marker, _query, _pipelineId, _limit, _sphere, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QueryObjectsInput")
 	local t = { 
-		["marker"] = marker,
-		["query"] = query,
-		["pipelineId"] = pipelineId,
-		["limit"] = limit,
-		["sphere"] = sphere,
+		["marker"] = _marker,
+		["query"] = _query,
+		["pipelineId"] = _pipelineId,
+		["limit"] = _limit,
+		["sphere"] = _sphere,
 	}
-	M.AssertQueryObjectsInput(t)
+	asserts.AssertQueryObjectsInput(t)
 	return t
 end
 
-local ListPipelinesOutput_keys = { "marker" = true, "hasMoreResults" = true, "pipelineIdList" = true, nil }
+keys.ListPipelinesOutput = { ["marker"] = true, ["hasMoreResults"] = true, ["pipelineIdList"] = true, nil }
 
-function M.AssertListPipelinesOutput(struct)
+function asserts.AssertListPipelinesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPipelinesOutput to be of type 'table'")
 	assert(struct["pipelineIdList"], "Expected key pipelineIdList to exist in table")
-	if struct["marker"] then M.Assertstring(struct["marker"]) end
-	if struct["hasMoreResults"] then M.Assertboolean(struct["hasMoreResults"]) end
-	if struct["pipelineIdList"] then M.AssertpipelineList(struct["pipelineIdList"]) end
+	if struct["marker"] then asserts.Assertstring(struct["marker"]) end
+	if struct["hasMoreResults"] then asserts.Assertboolean(struct["hasMoreResults"]) end
+	if struct["pipelineIdList"] then asserts.AssertpipelineList(struct["pipelineIdList"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPipelinesOutput_keys[k], "ListPipelinesOutput contains unknown key " .. tostring(k))
+		assert(keys.ListPipelinesOutput[k], "ListPipelinesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPipelinesOutput
 -- <p>Contains the output of ListPipelines.</p>
--- @param marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>ListPipelinesOutput</code> again with this marker value. If the value is null, there are no more results.</p>
--- @param hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
--- @param pipelineIdList [pipelineList] <p>The pipeline identifiers. If you require additional information about the pipelines, you can use these identifiers to call <a>DescribePipelines</a> and <a>GetPipelineDefinition</a>.</p>
+-- @param _marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>ListPipelinesOutput</code> again with this marker value. If the value is null, there are no more results.</p>
+-- @param _hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
+-- @param _pipelineIdList [pipelineList] <p>The pipeline identifiers. If you require additional information about the pipelines, you can use these identifiers to call <a>DescribePipelines</a> and <a>GetPipelineDefinition</a>.</p>
 -- Required parameter: pipelineIdList
-function M.ListPipelinesOutput(marker, hasMoreResults, pipelineIdList, ...)
+function M.ListPipelinesOutput(_marker, _hasMoreResults, _pipelineIdList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelinesOutput")
 	local t = { 
-		["marker"] = marker,
-		["hasMoreResults"] = hasMoreResults,
-		["pipelineIdList"] = pipelineIdList,
+		["marker"] = _marker,
+		["hasMoreResults"] = _hasMoreResults,
+		["pipelineIdList"] = _pipelineIdList,
 	}
-	M.AssertListPipelinesOutput(t)
+	asserts.AssertListPipelinesOutput(t)
 	return t
 end
 
-local SetTaskStatusInput_keys = { "errorStackTrace" = true, "errorMessage" = true, "errorId" = true, "taskId" = true, "taskStatus" = true, nil }
+keys.SetTaskStatusInput = { ["errorStackTrace"] = true, ["errorMessage"] = true, ["errorId"] = true, ["taskId"] = true, ["taskStatus"] = true, nil }
 
-function M.AssertSetTaskStatusInput(struct)
+function asserts.AssertSetTaskStatusInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetTaskStatusInput to be of type 'table'")
 	assert(struct["taskId"], "Expected key taskId to exist in table")
 	assert(struct["taskStatus"], "Expected key taskStatus to exist in table")
-	if struct["errorStackTrace"] then M.Assertstring(struct["errorStackTrace"]) end
-	if struct["errorMessage"] then M.AsserterrorMessage(struct["errorMessage"]) end
-	if struct["errorId"] then M.Assertstring(struct["errorId"]) end
-	if struct["taskId"] then M.AsserttaskId(struct["taskId"]) end
-	if struct["taskStatus"] then M.AssertTaskStatus(struct["taskStatus"]) end
+	if struct["errorStackTrace"] then asserts.Assertstring(struct["errorStackTrace"]) end
+	if struct["errorMessage"] then asserts.AsserterrorMessage(struct["errorMessage"]) end
+	if struct["errorId"] then asserts.Assertstring(struct["errorId"]) end
+	if struct["taskId"] then asserts.AsserttaskId(struct["taskId"]) end
+	if struct["taskStatus"] then asserts.AssertTaskStatus(struct["taskStatus"]) end
 	for k,_ in pairs(struct) do
-		assert(SetTaskStatusInput_keys[k], "SetTaskStatusInput contains unknown key " .. tostring(k))
+		assert(keys.SetTaskStatusInput[k], "SetTaskStatusInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetTaskStatusInput
 -- <p>Contains the parameters for SetTaskStatus.</p>
--- @param errorStackTrace [string] <p>If an error occurred during the task, this value specifies the stack trace associated with the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
--- @param errorMessage [errorMessage] <p>If an error occurred during the task, this value specifies a text description of the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
--- @param errorId [string] <p>If an error occurred during the task, this value specifies the error code. This value is set on the physical attempt object. It is used to display error information to the user. It should not start with string "Service_" which is reserved by the system.</p>
--- @param taskId [taskId] <p>The ID of the task assigned to the task runner. This value is provided in the response for <a>PollForTask</a>.</p>
--- @param taskStatus [TaskStatus] <p>If <code>FINISHED</code>, the task successfully completed. If <code>FAILED</code>, the task ended unsuccessfully. Preconditions use false.</p>
+-- @param _errorStackTrace [string] <p>If an error occurred during the task, this value specifies the stack trace associated with the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
+-- @param _errorMessage [errorMessage] <p>If an error occurred during the task, this value specifies a text description of the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
+-- @param _errorId [string] <p>If an error occurred during the task, this value specifies the error code. This value is set on the physical attempt object. It is used to display error information to the user. It should not start with string "Service_" which is reserved by the system.</p>
+-- @param _taskId [taskId] <p>The ID of the task assigned to the task runner. This value is provided in the response for <a>PollForTask</a>.</p>
+-- @param _taskStatus [TaskStatus] <p>If <code>FINISHED</code>, the task successfully completed. If <code>FAILED</code>, the task ended unsuccessfully. Preconditions use false.</p>
 -- Required parameter: taskId
 -- Required parameter: taskStatus
-function M.SetTaskStatusInput(errorStackTrace, errorMessage, errorId, taskId, taskStatus, ...)
+function M.SetTaskStatusInput(_errorStackTrace, _errorMessage, _errorId, _taskId, _taskStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetTaskStatusInput")
 	local t = { 
-		["errorStackTrace"] = errorStackTrace,
-		["errorMessage"] = errorMessage,
-		["errorId"] = errorId,
-		["taskId"] = taskId,
-		["taskStatus"] = taskStatus,
+		["errorStackTrace"] = _errorStackTrace,
+		["errorMessage"] = _errorMessage,
+		["errorId"] = _errorId,
+		["taskId"] = _taskId,
+		["taskStatus"] = _taskStatus,
 	}
-	M.AssertSetTaskStatusInput(t)
+	asserts.AssertSetTaskStatusInput(t)
 	return t
 end
 
-local EvaluateExpressionInput_keys = { "pipelineId" = true, "expression" = true, "objectId" = true, nil }
+keys.EvaluateExpressionInput = { ["pipelineId"] = true, ["expression"] = true, ["objectId"] = true, nil }
 
-function M.AssertEvaluateExpressionInput(struct)
+function asserts.AssertEvaluateExpressionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EvaluateExpressionInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["objectId"], "Expected key objectId to exist in table")
 	assert(struct["expression"], "Expected key expression to exist in table")
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["expression"] then M.AssertlongString(struct["expression"]) end
-	if struct["objectId"] then M.Assertid(struct["objectId"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["expression"] then asserts.AssertlongString(struct["expression"]) end
+	if struct["objectId"] then asserts.Assertid(struct["objectId"]) end
 	for k,_ in pairs(struct) do
-		assert(EvaluateExpressionInput_keys[k], "EvaluateExpressionInput contains unknown key " .. tostring(k))
+		assert(keys.EvaluateExpressionInput[k], "EvaluateExpressionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EvaluateExpressionInput
 -- <p>Contains the parameters for EvaluateExpression.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
--- @param expression [longString] <p>The expression to evaluate.</p>
--- @param objectId [id] <p>The ID of the object.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _expression [longString] <p>The expression to evaluate.</p>
+-- @param _objectId [id] <p>The ID of the object.</p>
 -- Required parameter: pipelineId
 -- Required parameter: objectId
 -- Required parameter: expression
-function M.EvaluateExpressionInput(pipelineId, expression, objectId, ...)
+function M.EvaluateExpressionInput(_pipelineId, _expression, _objectId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EvaluateExpressionInput")
 	local t = { 
-		["pipelineId"] = pipelineId,
-		["expression"] = expression,
-		["objectId"] = objectId,
+		["pipelineId"] = _pipelineId,
+		["expression"] = _expression,
+		["objectId"] = _objectId,
 	}
-	M.AssertEvaluateExpressionInput(t)
+	asserts.AssertEvaluateExpressionInput(t)
 	return t
 end
 
-local SetTaskStatusOutput_keys = { nil }
+keys.SetTaskStatusOutput = { nil }
 
-function M.AssertSetTaskStatusOutput(struct)
+function asserts.AssertSetTaskStatusOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetTaskStatusOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(SetTaskStatusOutput_keys[k], "SetTaskStatusOutput contains unknown key " .. tostring(k))
+		assert(keys.SetTaskStatusOutput[k], "SetTaskStatusOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -214,668 +217,668 @@ function M.SetTaskStatusOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetTaskStatusOutput")
 	local t = { 
 	}
-	M.AssertSetTaskStatusOutput(t)
+	asserts.AssertSetTaskStatusOutput(t)
 	return t
 end
 
-local InstanceIdentity_keys = { "document" = true, "signature" = true, nil }
+keys.InstanceIdentity = { ["document"] = true, ["signature"] = true, nil }
 
-function M.AssertInstanceIdentity(struct)
+function asserts.AssertInstanceIdentity(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceIdentity to be of type 'table'")
-	if struct["document"] then M.Assertstring(struct["document"]) end
-	if struct["signature"] then M.Assertstring(struct["signature"]) end
+	if struct["document"] then asserts.Assertstring(struct["document"]) end
+	if struct["signature"] then asserts.Assertstring(struct["signature"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceIdentity_keys[k], "InstanceIdentity contains unknown key " .. tostring(k))
+		assert(keys.InstanceIdentity[k], "InstanceIdentity contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceIdentity
 -- <p><p>Identity information for the EC2 instance that is hosting the task runner. You can get this value by calling a metadata URI from the EC2 instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p></p>
--- @param document [string] <p>A description of an EC2 instance that is generated when the instance is launched and exposed to the instance via the instance metadata service in the form of a JSON representation of an object.</p>
--- @param signature [string] <p>A signature which can be used to verify the accuracy and authenticity of the information provided in the instance identity document.</p>
-function M.InstanceIdentity(document, signature, ...)
+-- @param _document [string] <p>A description of an EC2 instance that is generated when the instance is launched and exposed to the instance via the instance metadata service in the form of a JSON representation of an object.</p>
+-- @param _signature [string] <p>A signature which can be used to verify the accuracy and authenticity of the information provided in the instance identity document.</p>
+function M.InstanceIdentity(_document, _signature, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceIdentity")
 	local t = { 
-		["document"] = document,
-		["signature"] = signature,
+		["document"] = _document,
+		["signature"] = _signature,
 	}
-	M.AssertInstanceIdentity(t)
+	asserts.AssertInstanceIdentity(t)
 	return t
 end
 
-local ParameterAttribute_keys = { "stringValue" = true, "key" = true, nil }
+keys.ParameterAttribute = { ["stringValue"] = true, ["key"] = true, nil }
 
-function M.AssertParameterAttribute(struct)
+function asserts.AssertParameterAttribute(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ParameterAttribute to be of type 'table'")
 	assert(struct["key"], "Expected key key to exist in table")
 	assert(struct["stringValue"], "Expected key stringValue to exist in table")
-	if struct["stringValue"] then M.AssertattributeValueString(struct["stringValue"]) end
-	if struct["key"] then M.AssertattributeNameString(struct["key"]) end
+	if struct["stringValue"] then asserts.AssertattributeValueString(struct["stringValue"]) end
+	if struct["key"] then asserts.AssertattributeNameString(struct["key"]) end
 	for k,_ in pairs(struct) do
-		assert(ParameterAttribute_keys[k], "ParameterAttribute contains unknown key " .. tostring(k))
+		assert(keys.ParameterAttribute[k], "ParameterAttribute contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ParameterAttribute
 -- <p>The attributes allowed or specified with a parameter object.</p>
--- @param stringValue [attributeValueString] <p>The field value, expressed as a String.</p>
--- @param key [attributeNameString] <p>The field identifier.</p>
+-- @param _stringValue [attributeValueString] <p>The field value, expressed as a String.</p>
+-- @param _key [attributeNameString] <p>The field identifier.</p>
 -- Required parameter: key
 -- Required parameter: stringValue
-function M.ParameterAttribute(stringValue, key, ...)
+function M.ParameterAttribute(_stringValue, _key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterAttribute")
 	local t = { 
-		["stringValue"] = stringValue,
-		["key"] = key,
+		["stringValue"] = _stringValue,
+		["key"] = _key,
 	}
-	M.AssertParameterAttribute(t)
+	asserts.AssertParameterAttribute(t)
 	return t
 end
 
-local ValidationError_keys = { "errors" = true, "id" = true, nil }
+keys.ValidationError = { ["errors"] = true, ["id"] = true, nil }
 
-function M.AssertValidationError(struct)
+function asserts.AssertValidationError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ValidationError to be of type 'table'")
-	if struct["errors"] then M.AssertvalidationMessages(struct["errors"]) end
-	if struct["id"] then M.Assertid(struct["id"]) end
+	if struct["errors"] then asserts.AssertvalidationMessages(struct["errors"]) end
+	if struct["id"] then asserts.Assertid(struct["id"]) end
 	for k,_ in pairs(struct) do
-		assert(ValidationError_keys[k], "ValidationError contains unknown key " .. tostring(k))
+		assert(keys.ValidationError[k], "ValidationError contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ValidationError
 -- <p>Defines a validation error. Validation errors prevent pipeline activation. The set of validation errors that can be returned are defined by AWS Data Pipeline.</p>
--- @param errors [validationMessages] <p>A description of the validation error.</p>
--- @param id [id] <p>The identifier of the object that contains the validation error.</p>
-function M.ValidationError(errors, id, ...)
+-- @param _errors [validationMessages] <p>A description of the validation error.</p>
+-- @param _id [id] <p>The identifier of the object that contains the validation error.</p>
+function M.ValidationError(_errors, _id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationError")
 	local t = { 
-		["errors"] = errors,
-		["id"] = id,
+		["errors"] = _errors,
+		["id"] = _id,
 	}
-	M.AssertValidationError(t)
+	asserts.AssertValidationError(t)
 	return t
 end
 
-local PipelineDeletedException_keys = { "message" = true, nil }
+keys.PipelineDeletedException = { ["message"] = true, nil }
 
-function M.AssertPipelineDeletedException(struct)
+function asserts.AssertPipelineDeletedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PipelineDeletedException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(PipelineDeletedException_keys[k], "PipelineDeletedException contains unknown key " .. tostring(k))
+		assert(keys.PipelineDeletedException[k], "PipelineDeletedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PipelineDeletedException
 -- <p>The specified pipeline has been deleted.</p>
--- @param message [errorMessage] <p>Description of the error message.</p>
-function M.PipelineDeletedException(message, ...)
+-- @param _message [errorMessage] <p>Description of the error message.</p>
+function M.PipelineDeletedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineDeletedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertPipelineDeletedException(t)
+	asserts.AssertPipelineDeletedException(t)
 	return t
 end
 
-local GetPipelineDefinitionOutput_keys = { "parameterValues" = true, "pipelineObjects" = true, "parameterObjects" = true, nil }
+keys.GetPipelineDefinitionOutput = { ["parameterValues"] = true, ["pipelineObjects"] = true, ["parameterObjects"] = true, nil }
 
-function M.AssertGetPipelineDefinitionOutput(struct)
+function asserts.AssertGetPipelineDefinitionOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetPipelineDefinitionOutput to be of type 'table'")
-	if struct["parameterValues"] then M.AssertParameterValueList(struct["parameterValues"]) end
-	if struct["pipelineObjects"] then M.AssertPipelineObjectList(struct["pipelineObjects"]) end
-	if struct["parameterObjects"] then M.AssertParameterObjectList(struct["parameterObjects"]) end
+	if struct["parameterValues"] then asserts.AssertParameterValueList(struct["parameterValues"]) end
+	if struct["pipelineObjects"] then asserts.AssertPipelineObjectList(struct["pipelineObjects"]) end
+	if struct["parameterObjects"] then asserts.AssertParameterObjectList(struct["parameterObjects"]) end
 	for k,_ in pairs(struct) do
-		assert(GetPipelineDefinitionOutput_keys[k], "GetPipelineDefinitionOutput contains unknown key " .. tostring(k))
+		assert(keys.GetPipelineDefinitionOutput[k], "GetPipelineDefinitionOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetPipelineDefinitionOutput
 -- <p>Contains the output of GetPipelineDefinition.</p>
--- @param parameterValues [ParameterValueList] <p>The parameter values used in the pipeline definition.</p>
--- @param pipelineObjects [PipelineObjectList] <p>The objects defined in the pipeline.</p>
--- @param parameterObjects [ParameterObjectList] <p>The parameter objects used in the pipeline definition.</p>
-function M.GetPipelineDefinitionOutput(parameterValues, pipelineObjects, parameterObjects, ...)
+-- @param _parameterValues [ParameterValueList] <p>The parameter values used in the pipeline definition.</p>
+-- @param _pipelineObjects [PipelineObjectList] <p>The objects defined in the pipeline.</p>
+-- @param _parameterObjects [ParameterObjectList] <p>The parameter objects used in the pipeline definition.</p>
+function M.GetPipelineDefinitionOutput(_parameterValues, _pipelineObjects, _parameterObjects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineDefinitionOutput")
 	local t = { 
-		["parameterValues"] = parameterValues,
-		["pipelineObjects"] = pipelineObjects,
-		["parameterObjects"] = parameterObjects,
+		["parameterValues"] = _parameterValues,
+		["pipelineObjects"] = _pipelineObjects,
+		["parameterObjects"] = _parameterObjects,
 	}
-	M.AssertGetPipelineDefinitionOutput(t)
+	asserts.AssertGetPipelineDefinitionOutput(t)
 	return t
 end
 
-local TaskNotFoundException_keys = { "message" = true, nil }
+keys.TaskNotFoundException = { ["message"] = true, nil }
 
-function M.AssertTaskNotFoundException(struct)
+function asserts.AssertTaskNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TaskNotFoundException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TaskNotFoundException_keys[k], "TaskNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.TaskNotFoundException[k], "TaskNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TaskNotFoundException
 -- <p>The specified task was not found. </p>
--- @param message [errorMessage] <p>Description of the error message.</p>
-function M.TaskNotFoundException(message, ...)
+-- @param _message [errorMessage] <p>Description of the error message.</p>
+function M.TaskNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TaskNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTaskNotFoundException(t)
+	asserts.AssertTaskNotFoundException(t)
 	return t
 end
 
-local DescribeObjectsOutput_keys = { "marker" = true, "pipelineObjects" = true, "hasMoreResults" = true, nil }
+keys.DescribeObjectsOutput = { ["marker"] = true, ["pipelineObjects"] = true, ["hasMoreResults"] = true, nil }
 
-function M.AssertDescribeObjectsOutput(struct)
+function asserts.AssertDescribeObjectsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeObjectsOutput to be of type 'table'")
 	assert(struct["pipelineObjects"], "Expected key pipelineObjects to exist in table")
-	if struct["marker"] then M.Assertstring(struct["marker"]) end
-	if struct["pipelineObjects"] then M.AssertPipelineObjectList(struct["pipelineObjects"]) end
-	if struct["hasMoreResults"] then M.Assertboolean(struct["hasMoreResults"]) end
+	if struct["marker"] then asserts.Assertstring(struct["marker"]) end
+	if struct["pipelineObjects"] then asserts.AssertPipelineObjectList(struct["pipelineObjects"]) end
+	if struct["hasMoreResults"] then asserts.Assertboolean(struct["hasMoreResults"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeObjectsOutput_keys[k], "DescribeObjectsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeObjectsOutput[k], "DescribeObjectsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeObjectsOutput
 -- <p>Contains the output of DescribeObjects.</p>
--- @param marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>DescribeObjects</code> again with this marker value. If the value is null, there are no more results.</p>
--- @param pipelineObjects [PipelineObjectList] <p>An array of object definitions.</p>
--- @param hasMoreResults [boolean] <p>Indicates whether there are more results to return.</p>
+-- @param _marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>DescribeObjects</code> again with this marker value. If the value is null, there are no more results.</p>
+-- @param _pipelineObjects [PipelineObjectList] <p>An array of object definitions.</p>
+-- @param _hasMoreResults [boolean] <p>Indicates whether there are more results to return.</p>
 -- Required parameter: pipelineObjects
-function M.DescribeObjectsOutput(marker, pipelineObjects, hasMoreResults, ...)
+function M.DescribeObjectsOutput(_marker, _pipelineObjects, _hasMoreResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeObjectsOutput")
 	local t = { 
-		["marker"] = marker,
-		["pipelineObjects"] = pipelineObjects,
-		["hasMoreResults"] = hasMoreResults,
+		["marker"] = _marker,
+		["pipelineObjects"] = _pipelineObjects,
+		["hasMoreResults"] = _hasMoreResults,
 	}
-	M.AssertDescribeObjectsOutput(t)
+	asserts.AssertDescribeObjectsOutput(t)
 	return t
 end
 
-local ReportTaskProgressInput_keys = { "fields" = true, "taskId" = true, nil }
+keys.ReportTaskProgressInput = { ["fields"] = true, ["taskId"] = true, nil }
 
-function M.AssertReportTaskProgressInput(struct)
+function asserts.AssertReportTaskProgressInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReportTaskProgressInput to be of type 'table'")
 	assert(struct["taskId"], "Expected key taskId to exist in table")
-	if struct["fields"] then M.AssertfieldList(struct["fields"]) end
-	if struct["taskId"] then M.AsserttaskId(struct["taskId"]) end
+	if struct["fields"] then asserts.AssertfieldList(struct["fields"]) end
+	if struct["taskId"] then asserts.AsserttaskId(struct["taskId"]) end
 	for k,_ in pairs(struct) do
-		assert(ReportTaskProgressInput_keys[k], "ReportTaskProgressInput contains unknown key " .. tostring(k))
+		assert(keys.ReportTaskProgressInput[k], "ReportTaskProgressInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReportTaskProgressInput
 -- <p>Contains the parameters for ReportTaskProgress.</p>
--- @param fields [fieldList] <p>Key-value pairs that define the properties of the ReportTaskProgressInput object.</p>
--- @param taskId [taskId] <p>The ID of the task assigned to the task runner. This value is provided in the response for <a>PollForTask</a>.</p>
+-- @param _fields [fieldList] <p>Key-value pairs that define the properties of the ReportTaskProgressInput object.</p>
+-- @param _taskId [taskId] <p>The ID of the task assigned to the task runner. This value is provided in the response for <a>PollForTask</a>.</p>
 -- Required parameter: taskId
-function M.ReportTaskProgressInput(fields, taskId, ...)
+function M.ReportTaskProgressInput(_fields, _taskId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReportTaskProgressInput")
 	local t = { 
-		["fields"] = fields,
-		["taskId"] = taskId,
+		["fields"] = _fields,
+		["taskId"] = _taskId,
 	}
-	M.AssertReportTaskProgressInput(t)
+	asserts.AssertReportTaskProgressInput(t)
 	return t
 end
 
-local Tag_keys = { "value" = true, "key" = true, nil }
+keys.Tag = { ["value"] = true, ["key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
 	assert(struct["key"], "Expected key key to exist in table")
 	assert(struct["value"], "Expected key value to exist in table")
-	if struct["value"] then M.AsserttagValue(struct["value"]) end
-	if struct["key"] then M.AsserttagKey(struct["key"]) end
+	if struct["value"] then asserts.AsserttagValue(struct["value"]) end
+	if struct["key"] then asserts.AsserttagKey(struct["key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>Tags are key/value pairs defined by a user and associated with a pipeline to control access. AWS Data Pipeline allows you to associate ten tags per pipeline. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- @param value [tagValue] <p>The optional value portion of a tag defined by a user. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- @param key [tagKey] <p>The key name of a tag defined by a user. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+-- @param _value [tagValue] <p>The optional value portion of a tag defined by a user. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+-- @param _key [tagKey] <p>The key name of a tag defined by a user. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
 -- Required parameter: key
 -- Required parameter: value
-function M.Tag(value, key, ...)
+function M.Tag(_value, _key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["value"] = value,
-		["key"] = key,
+		["value"] = _value,
+		["key"] = _key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local Operator_keys = { "values" = true, "type" = true, nil }
+keys.Operator = { ["values"] = true, ["type"] = true, nil }
 
-function M.AssertOperator(struct)
+function asserts.AssertOperator(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Operator to be of type 'table'")
-	if struct["values"] then M.AssertstringList(struct["values"]) end
-	if struct["type"] then M.AssertOperatorType(struct["type"]) end
+	if struct["values"] then asserts.AssertstringList(struct["values"]) end
+	if struct["type"] then asserts.AssertOperatorType(struct["type"]) end
 	for k,_ in pairs(struct) do
-		assert(Operator_keys[k], "Operator contains unknown key " .. tostring(k))
+		assert(keys.Operator[k], "Operator contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Operator
 -- <p>Contains a logical operation for comparing the value of a field with a specified value.</p>
--- @param values [stringList] <p>The value that the actual field value will be compared with.</p>
--- @param type [OperatorType] <p> The logical operation to be performed: equal (<code>EQ</code>), equal reference (<code>REF_EQ</code>), less than or equal (<code>LE</code>), greater than or equal (<code>GE</code>), or between (<code>BETWEEN</code>). Equal reference (<code>REF_EQ</code>) can be used only with reference fields. The other comparison types can be used only with String fields. The comparison types you can use apply only to certain object fields, as detailed below. </p> <p> The comparison operators EQ and REF_EQ act on the following fields: </p> <ul> <li>name</li> <li>@sphere</li> <li>parent</li> <li>@componentParent</li> <li>@instanceParent</li> <li>@status</li> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p> The comparison operators <code>GE</code>, <code>LE</code>, and <code>BETWEEN</code> act on the following fields: </p> <ul> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p>Note that fields beginning with the at sign (@) are read-only and set by the web service. When you name fields, you should choose names containing only alpha-numeric values, as symbols may be reserved by AWS Data Pipeline. User-defined fields that you add to a pipeline should prefix their name with the string "my".</p>
-function M.Operator(values, type, ...)
+-- @param _values [stringList] <p>The value that the actual field value will be compared with.</p>
+-- @param _type [OperatorType] <p> The logical operation to be performed: equal (<code>EQ</code>), equal reference (<code>REF_EQ</code>), less than or equal (<code>LE</code>), greater than or equal (<code>GE</code>), or between (<code>BETWEEN</code>). Equal reference (<code>REF_EQ</code>) can be used only with reference fields. The other comparison types can be used only with String fields. The comparison types you can use apply only to certain object fields, as detailed below. </p> <p> The comparison operators EQ and REF_EQ act on the following fields: </p> <ul> <li>name</li> <li>@sphere</li> <li>parent</li> <li>@componentParent</li> <li>@instanceParent</li> <li>@status</li> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p> The comparison operators <code>GE</code>, <code>LE</code>, and <code>BETWEEN</code> act on the following fields: </p> <ul> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p>Note that fields beginning with the at sign (@) are read-only and set by the web service. When you name fields, you should choose names containing only alpha-numeric values, as symbols may be reserved by AWS Data Pipeline. User-defined fields that you add to a pipeline should prefix their name with the string "my".</p>
+function M.Operator(_values, _type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Operator")
 	local t = { 
-		["values"] = values,
-		["type"] = type,
+		["values"] = _values,
+		["type"] = _type,
 	}
-	M.AssertOperator(t)
+	asserts.AssertOperator(t)
 	return t
 end
 
-local InternalServiceError_keys = { "message" = true, nil }
+keys.InternalServiceError = { ["message"] = true, nil }
 
-function M.AssertInternalServiceError(struct)
+function asserts.AssertInternalServiceError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServiceError to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServiceError_keys[k], "InternalServiceError contains unknown key " .. tostring(k))
+		assert(keys.InternalServiceError[k], "InternalServiceError contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServiceError
 -- <p>An internal service error occurred.</p>
--- @param message [errorMessage] <p>Description of the error message.</p>
-function M.InternalServiceError(message, ...)
+-- @param _message [errorMessage] <p>Description of the error message.</p>
+function M.InternalServiceError(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceError")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalServiceError(t)
+	asserts.AssertInternalServiceError(t)
 	return t
 end
 
-local DescribePipelinesInput_keys = { "pipelineIds" = true, nil }
+keys.DescribePipelinesInput = { ["pipelineIds"] = true, nil }
 
-function M.AssertDescribePipelinesInput(struct)
+function asserts.AssertDescribePipelinesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribePipelinesInput to be of type 'table'")
 	assert(struct["pipelineIds"], "Expected key pipelineIds to exist in table")
-	if struct["pipelineIds"] then M.AssertidList(struct["pipelineIds"]) end
+	if struct["pipelineIds"] then asserts.AssertidList(struct["pipelineIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribePipelinesInput_keys[k], "DescribePipelinesInput contains unknown key " .. tostring(k))
+		assert(keys.DescribePipelinesInput[k], "DescribePipelinesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribePipelinesInput
 -- <p>Contains the parameters for DescribePipelines.</p>
--- @param pipelineIds [idList] <p>The IDs of the pipelines to describe. You can pass as many as 25 identifiers in a single call. To obtain pipeline IDs, call <a>ListPipelines</a>.</p>
+-- @param _pipelineIds [idList] <p>The IDs of the pipelines to describe. You can pass as many as 25 identifiers in a single call. To obtain pipeline IDs, call <a>ListPipelines</a>.</p>
 -- Required parameter: pipelineIds
-function M.DescribePipelinesInput(pipelineIds, ...)
+function M.DescribePipelinesInput(_pipelineIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePipelinesInput")
 	local t = { 
-		["pipelineIds"] = pipelineIds,
+		["pipelineIds"] = _pipelineIds,
 	}
-	M.AssertDescribePipelinesInput(t)
+	asserts.AssertDescribePipelinesInput(t)
 	return t
 end
 
-local Selector_keys = { "operator" = true, "fieldName" = true, nil }
+keys.Selector = { ["operator"] = true, ["fieldName"] = true, nil }
 
-function M.AssertSelector(struct)
+function asserts.AssertSelector(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Selector to be of type 'table'")
-	if struct["operator"] then M.AssertOperator(struct["operator"]) end
-	if struct["fieldName"] then M.Assertstring(struct["fieldName"]) end
+	if struct["operator"] then asserts.AssertOperator(struct["operator"]) end
+	if struct["fieldName"] then asserts.Assertstring(struct["fieldName"]) end
 	for k,_ in pairs(struct) do
-		assert(Selector_keys[k], "Selector contains unknown key " .. tostring(k))
+		assert(keys.Selector[k], "Selector contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Selector
 -- <p>A comparision that is used to determine whether a query should return this object.</p>
--- @param operator [Operator] <p>A comparision that is used to determine whether a query should return this object.</p>
--- @param fieldName [string] <p>The name of the field that the operator will be applied to. The field name is the "key" portion of the field definition in the pipeline definition syntax that is used by the AWS Data Pipeline API. If the field is not set on the object, the condition fails.</p>
-function M.Selector(operator, fieldName, ...)
+-- @param _operator [Operator] 
+-- @param _fieldName [string] <p>The name of the field that the operator will be applied to. The field name is the "key" portion of the field definition in the pipeline definition syntax that is used by the AWS Data Pipeline API. If the field is not set on the object, the condition fails.</p>
+function M.Selector(_operator, _fieldName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Selector")
 	local t = { 
-		["operator"] = operator,
-		["fieldName"] = fieldName,
+		["operator"] = _operator,
+		["fieldName"] = _fieldName,
 	}
-	M.AssertSelector(t)
+	asserts.AssertSelector(t)
 	return t
 end
 
-local PipelineDescription_keys = { "fields" = true, "pipelineId" = true, "name" = true, "tags" = true, "description" = true, nil }
+keys.PipelineDescription = { ["fields"] = true, ["pipelineId"] = true, ["name"] = true, ["tags"] = true, ["description"] = true, nil }
 
-function M.AssertPipelineDescription(struct)
+function asserts.AssertPipelineDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PipelineDescription to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["fields"], "Expected key fields to exist in table")
-	if struct["fields"] then M.AssertfieldList(struct["fields"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["name"] then M.Assertid(struct["name"]) end
-	if struct["tags"] then M.AsserttagList(struct["tags"]) end
-	if struct["description"] then M.Assertstring(struct["description"]) end
+	if struct["fields"] then asserts.AssertfieldList(struct["fields"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["name"] then asserts.Assertid(struct["name"]) end
+	if struct["tags"] then asserts.AsserttagList(struct["tags"]) end
+	if struct["description"] then asserts.Assertstring(struct["description"]) end
 	for k,_ in pairs(struct) do
-		assert(PipelineDescription_keys[k], "PipelineDescription contains unknown key " .. tostring(k))
+		assert(keys.PipelineDescription[k], "PipelineDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PipelineDescription
 -- <p>Contains pipeline metadata.</p>
--- @param fields [fieldList] <p>A list of read-only fields that contain metadata about the pipeline: @userId, @accountId, and @pipelineState.</p>
--- @param pipelineId [id] <p>The pipeline identifier that was assigned by AWS Data Pipeline. This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.</p>
--- @param name [id] <p>The name of the pipeline.</p>
--- @param tags [tagList] <p>A list of tags to associated with a pipeline. Tags let you control access to pipelines. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- @param description [string] <p>Description of the pipeline.</p>
+-- @param _fields [fieldList] <p>A list of read-only fields that contain metadata about the pipeline: @userId, @accountId, and @pipelineState.</p>
+-- @param _pipelineId [id] <p>The pipeline identifier that was assigned by AWS Data Pipeline. This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.</p>
+-- @param _name [id] <p>The name of the pipeline.</p>
+-- @param _tags [tagList] <p>A list of tags to associated with a pipeline. Tags let you control access to pipelines. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+-- @param _description [string] <p>Description of the pipeline.</p>
 -- Required parameter: pipelineId
 -- Required parameter: name
 -- Required parameter: fields
-function M.PipelineDescription(fields, pipelineId, name, tags, description, ...)
+function M.PipelineDescription(_fields, _pipelineId, _name, _tags, _description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineDescription")
 	local t = { 
-		["fields"] = fields,
-		["pipelineId"] = pipelineId,
-		["name"] = name,
-		["tags"] = tags,
-		["description"] = description,
+		["fields"] = _fields,
+		["pipelineId"] = _pipelineId,
+		["name"] = _name,
+		["tags"] = _tags,
+		["description"] = _description,
 	}
-	M.AssertPipelineDescription(t)
+	asserts.AssertPipelineDescription(t)
 	return t
 end
 
-local TaskObject_keys = { "objects" = true, "pipelineId" = true, "attemptId" = true, "taskId" = true, nil }
+keys.TaskObject = { ["objects"] = true, ["pipelineId"] = true, ["attemptId"] = true, ["taskId"] = true, nil }
 
-function M.AssertTaskObject(struct)
+function asserts.AssertTaskObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TaskObject to be of type 'table'")
-	if struct["objects"] then M.AssertPipelineObjectMap(struct["objects"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["attemptId"] then M.Assertid(struct["attemptId"]) end
-	if struct["taskId"] then M.AsserttaskId(struct["taskId"]) end
+	if struct["objects"] then asserts.AssertPipelineObjectMap(struct["objects"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["attemptId"] then asserts.Assertid(struct["attemptId"]) end
+	if struct["taskId"] then asserts.AsserttaskId(struct["taskId"]) end
 	for k,_ in pairs(struct) do
-		assert(TaskObject_keys[k], "TaskObject contains unknown key " .. tostring(k))
+		assert(keys.TaskObject[k], "TaskObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TaskObject
 -- <p>Contains information about a pipeline task that is assigned to a task runner.</p>
--- @param objects [PipelineObjectMap] <p>Connection information for the location where the task runner will publish the output of the task.</p>
--- @param pipelineId [id] <p>The ID of the pipeline that provided the task.</p>
--- @param attemptId [id] <p>The ID of the pipeline task attempt object. AWS Data Pipeline uses this value to track how many times a task is attempted.</p>
--- @param taskId [taskId] <p>An internal identifier for the task. This ID is passed to the <a>SetTaskStatus</a> and <a>ReportTaskProgress</a> actions.</p>
-function M.TaskObject(objects, pipelineId, attemptId, taskId, ...)
+-- @param _objects [PipelineObjectMap] <p>Connection information for the location where the task runner will publish the output of the task.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline that provided the task.</p>
+-- @param _attemptId [id] <p>The ID of the pipeline task attempt object. AWS Data Pipeline uses this value to track how many times a task is attempted.</p>
+-- @param _taskId [taskId] <p>An internal identifier for the task. This ID is passed to the <a>SetTaskStatus</a> and <a>ReportTaskProgress</a> actions.</p>
+function M.TaskObject(_objects, _pipelineId, _attemptId, _taskId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TaskObject")
 	local t = { 
-		["objects"] = objects,
-		["pipelineId"] = pipelineId,
-		["attemptId"] = attemptId,
-		["taskId"] = taskId,
+		["objects"] = _objects,
+		["pipelineId"] = _pipelineId,
+		["attemptId"] = _attemptId,
+		["taskId"] = _taskId,
 	}
-	M.AssertTaskObject(t)
+	asserts.AssertTaskObject(t)
 	return t
 end
 
-local PipelineObject_keys = { "fields" = true, "id" = true, "name" = true, nil }
+keys.PipelineObject = { ["fields"] = true, ["id"] = true, ["name"] = true, nil }
 
-function M.AssertPipelineObject(struct)
+function asserts.AssertPipelineObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PipelineObject to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
 	assert(struct["name"], "Expected key name to exist in table")
 	assert(struct["fields"], "Expected key fields to exist in table")
-	if struct["fields"] then M.AssertfieldList(struct["fields"]) end
-	if struct["id"] then M.Assertid(struct["id"]) end
-	if struct["name"] then M.Assertid(struct["name"]) end
+	if struct["fields"] then asserts.AssertfieldList(struct["fields"]) end
+	if struct["id"] then asserts.Assertid(struct["id"]) end
+	if struct["name"] then asserts.Assertid(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(PipelineObject_keys[k], "PipelineObject contains unknown key " .. tostring(k))
+		assert(keys.PipelineObject[k], "PipelineObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PipelineObject
 -- <p>Contains information about a pipeline object. This can be a logical, physical, or physical attempt pipeline object. The complete set of components of a pipeline defines the pipeline.</p>
--- @param fields [fieldList] <p>Key-value pairs that define the properties of the object.</p>
--- @param id [id] <p>The ID of the object.</p>
--- @param name [id] <p>The name of the object.</p>
+-- @param _fields [fieldList] <p>Key-value pairs that define the properties of the object.</p>
+-- @param _id [id] <p>The ID of the object.</p>
+-- @param _name [id] <p>The name of the object.</p>
 -- Required parameter: id
 -- Required parameter: name
 -- Required parameter: fields
-function M.PipelineObject(fields, id, name, ...)
+function M.PipelineObject(_fields, _id, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineObject")
 	local t = { 
-		["fields"] = fields,
-		["id"] = id,
-		["name"] = name,
+		["fields"] = _fields,
+		["id"] = _id,
+		["name"] = _name,
 	}
-	M.AssertPipelineObject(t)
+	asserts.AssertPipelineObject(t)
 	return t
 end
 
-local ValidatePipelineDefinitionInput_keys = { "parameterValues" = true, "pipelineObjects" = true, "pipelineId" = true, "parameterObjects" = true, nil }
+keys.ValidatePipelineDefinitionInput = { ["parameterValues"] = true, ["pipelineObjects"] = true, ["pipelineId"] = true, ["parameterObjects"] = true, nil }
 
-function M.AssertValidatePipelineDefinitionInput(struct)
+function asserts.AssertValidatePipelineDefinitionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ValidatePipelineDefinitionInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["pipelineObjects"], "Expected key pipelineObjects to exist in table")
-	if struct["parameterValues"] then M.AssertParameterValueList(struct["parameterValues"]) end
-	if struct["pipelineObjects"] then M.AssertPipelineObjectList(struct["pipelineObjects"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["parameterObjects"] then M.AssertParameterObjectList(struct["parameterObjects"]) end
+	if struct["parameterValues"] then asserts.AssertParameterValueList(struct["parameterValues"]) end
+	if struct["pipelineObjects"] then asserts.AssertPipelineObjectList(struct["pipelineObjects"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["parameterObjects"] then asserts.AssertParameterObjectList(struct["parameterObjects"]) end
 	for k,_ in pairs(struct) do
-		assert(ValidatePipelineDefinitionInput_keys[k], "ValidatePipelineDefinitionInput contains unknown key " .. tostring(k))
+		assert(keys.ValidatePipelineDefinitionInput[k], "ValidatePipelineDefinitionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ValidatePipelineDefinitionInput
 -- <p>Contains the parameters for ValidatePipelineDefinition.</p>
--- @param parameterValues [ParameterValueList] <p>The parameter values used with the pipeline.</p>
--- @param pipelineObjects [PipelineObjectList] <p>The objects that define the pipeline changes to validate against the pipeline.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
--- @param parameterObjects [ParameterObjectList] <p>The parameter objects used with the pipeline.</p>
+-- @param _parameterValues [ParameterValueList] <p>The parameter values used with the pipeline.</p>
+-- @param _pipelineObjects [PipelineObjectList] <p>The objects that define the pipeline changes to validate against the pipeline.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _parameterObjects [ParameterObjectList] <p>The parameter objects used with the pipeline.</p>
 -- Required parameter: pipelineId
 -- Required parameter: pipelineObjects
-function M.ValidatePipelineDefinitionInput(parameterValues, pipelineObjects, pipelineId, parameterObjects, ...)
+function M.ValidatePipelineDefinitionInput(_parameterValues, _pipelineObjects, _pipelineId, _parameterObjects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidatePipelineDefinitionInput")
 	local t = { 
-		["parameterValues"] = parameterValues,
-		["pipelineObjects"] = pipelineObjects,
-		["pipelineId"] = pipelineId,
-		["parameterObjects"] = parameterObjects,
+		["parameterValues"] = _parameterValues,
+		["pipelineObjects"] = _pipelineObjects,
+		["pipelineId"] = _pipelineId,
+		["parameterObjects"] = _parameterObjects,
 	}
-	M.AssertValidatePipelineDefinitionInput(t)
+	asserts.AssertValidatePipelineDefinitionInput(t)
 	return t
 end
 
-local DeletePipelineInput_keys = { "pipelineId" = true, nil }
+keys.DeletePipelineInput = { ["pipelineId"] = true, nil }
 
-function M.AssertDeletePipelineInput(struct)
+function asserts.AssertDeletePipelineInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeletePipelineInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeletePipelineInput_keys[k], "DeletePipelineInput contains unknown key " .. tostring(k))
+		assert(keys.DeletePipelineInput[k], "DeletePipelineInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeletePipelineInput
 -- <p>Contains the parameters for DeletePipeline.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
 -- Required parameter: pipelineId
-function M.DeletePipelineInput(pipelineId, ...)
+function M.DeletePipelineInput(_pipelineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePipelineInput")
 	local t = { 
-		["pipelineId"] = pipelineId,
+		["pipelineId"] = _pipelineId,
 	}
-	M.AssertDeletePipelineInput(t)
+	asserts.AssertDeletePipelineInput(t)
 	return t
 end
 
-local ReportTaskProgressOutput_keys = { "canceled" = true, nil }
+keys.ReportTaskProgressOutput = { ["canceled"] = true, nil }
 
-function M.AssertReportTaskProgressOutput(struct)
+function asserts.AssertReportTaskProgressOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReportTaskProgressOutput to be of type 'table'")
 	assert(struct["canceled"], "Expected key canceled to exist in table")
-	if struct["canceled"] then M.Assertboolean(struct["canceled"]) end
+	if struct["canceled"] then asserts.Assertboolean(struct["canceled"]) end
 	for k,_ in pairs(struct) do
-		assert(ReportTaskProgressOutput_keys[k], "ReportTaskProgressOutput contains unknown key " .. tostring(k))
+		assert(keys.ReportTaskProgressOutput[k], "ReportTaskProgressOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReportTaskProgressOutput
 -- <p>Contains the output of ReportTaskProgress.</p>
--- @param canceled [boolean] <p>If true, the calling task runner should cancel processing of the task. The task runner does not need to call <a>SetTaskStatus</a> for canceled tasks.</p>
+-- @param _canceled [boolean] <p>If true, the calling task runner should cancel processing of the task. The task runner does not need to call <a>SetTaskStatus</a> for canceled tasks.</p>
 -- Required parameter: canceled
-function M.ReportTaskProgressOutput(canceled, ...)
+function M.ReportTaskProgressOutput(_canceled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReportTaskProgressOutput")
 	local t = { 
-		["canceled"] = canceled,
+		["canceled"] = _canceled,
 	}
-	M.AssertReportTaskProgressOutput(t)
+	asserts.AssertReportTaskProgressOutput(t)
 	return t
 end
 
-local PutPipelineDefinitionOutput_keys = { "validationErrors" = true, "errored" = true, "validationWarnings" = true, nil }
+keys.PutPipelineDefinitionOutput = { ["validationErrors"] = true, ["errored"] = true, ["validationWarnings"] = true, nil }
 
-function M.AssertPutPipelineDefinitionOutput(struct)
+function asserts.AssertPutPipelineDefinitionOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutPipelineDefinitionOutput to be of type 'table'")
 	assert(struct["errored"], "Expected key errored to exist in table")
-	if struct["validationErrors"] then M.AssertValidationErrors(struct["validationErrors"]) end
-	if struct["errored"] then M.Assertboolean(struct["errored"]) end
-	if struct["validationWarnings"] then M.AssertValidationWarnings(struct["validationWarnings"]) end
+	if struct["validationErrors"] then asserts.AssertValidationErrors(struct["validationErrors"]) end
+	if struct["errored"] then asserts.Assertboolean(struct["errored"]) end
+	if struct["validationWarnings"] then asserts.AssertValidationWarnings(struct["validationWarnings"]) end
 	for k,_ in pairs(struct) do
-		assert(PutPipelineDefinitionOutput_keys[k], "PutPipelineDefinitionOutput contains unknown key " .. tostring(k))
+		assert(keys.PutPipelineDefinitionOutput[k], "PutPipelineDefinitionOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutPipelineDefinitionOutput
 -- <p>Contains the output of PutPipelineDefinition.</p>
--- @param validationErrors [ValidationErrors] <p>The validation errors that are associated with the objects defined in <code>pipelineObjects</code>.</p>
--- @param errored [boolean] <p>Indicates whether there were validation errors, and the pipeline definition is stored but cannot be activated until you correct the pipeline and call <code>PutPipelineDefinition</code> to commit the corrected pipeline.</p>
--- @param validationWarnings [ValidationWarnings] <p>The validation warnings that are associated with the objects defined in <code>pipelineObjects</code>.</p>
+-- @param _validationErrors [ValidationErrors] <p>The validation errors that are associated with the objects defined in <code>pipelineObjects</code>.</p>
+-- @param _errored [boolean] <p>Indicates whether there were validation errors, and the pipeline definition is stored but cannot be activated until you correct the pipeline and call <code>PutPipelineDefinition</code> to commit the corrected pipeline.</p>
+-- @param _validationWarnings [ValidationWarnings] <p>The validation warnings that are associated with the objects defined in <code>pipelineObjects</code>.</p>
 -- Required parameter: errored
-function M.PutPipelineDefinitionOutput(validationErrors, errored, validationWarnings, ...)
+function M.PutPipelineDefinitionOutput(_validationErrors, _errored, _validationWarnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutPipelineDefinitionOutput")
 	local t = { 
-		["validationErrors"] = validationErrors,
-		["errored"] = errored,
-		["validationWarnings"] = validationWarnings,
+		["validationErrors"] = _validationErrors,
+		["errored"] = _errored,
+		["validationWarnings"] = _validationWarnings,
 	}
-	M.AssertPutPipelineDefinitionOutput(t)
+	asserts.AssertPutPipelineDefinitionOutput(t)
 	return t
 end
 
-local CreatePipelineOutput_keys = { "pipelineId" = true, nil }
+keys.CreatePipelineOutput = { ["pipelineId"] = true, nil }
 
-function M.AssertCreatePipelineOutput(struct)
+function asserts.AssertCreatePipelineOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreatePipelineOutput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreatePipelineOutput_keys[k], "CreatePipelineOutput contains unknown key " .. tostring(k))
+		assert(keys.CreatePipelineOutput[k], "CreatePipelineOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreatePipelineOutput
 -- <p>Contains the output of CreatePipeline.</p>
--- @param pipelineId [id] <p>The ID that AWS Data Pipeline assigns the newly created pipeline. For example, <code>df-06372391ZG65EXAMPLE</code>.</p>
+-- @param _pipelineId [id] <p>The ID that AWS Data Pipeline assigns the newly created pipeline. For example, <code>df-06372391ZG65EXAMPLE</code>.</p>
 -- Required parameter: pipelineId
-function M.CreatePipelineOutput(pipelineId, ...)
+function M.CreatePipelineOutput(_pipelineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePipelineOutput")
 	local t = { 
-		["pipelineId"] = pipelineId,
+		["pipelineId"] = _pipelineId,
 	}
-	M.AssertCreatePipelineOutput(t)
+	asserts.AssertCreatePipelineOutput(t)
 	return t
 end
 
-local ReportTaskRunnerHeartbeatOutput_keys = { "terminate" = true, nil }
+keys.ReportTaskRunnerHeartbeatOutput = { ["terminate"] = true, nil }
 
-function M.AssertReportTaskRunnerHeartbeatOutput(struct)
+function asserts.AssertReportTaskRunnerHeartbeatOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReportTaskRunnerHeartbeatOutput to be of type 'table'")
 	assert(struct["terminate"], "Expected key terminate to exist in table")
-	if struct["terminate"] then M.Assertboolean(struct["terminate"]) end
+	if struct["terminate"] then asserts.Assertboolean(struct["terminate"]) end
 	for k,_ in pairs(struct) do
-		assert(ReportTaskRunnerHeartbeatOutput_keys[k], "ReportTaskRunnerHeartbeatOutput contains unknown key " .. tostring(k))
+		assert(keys.ReportTaskRunnerHeartbeatOutput[k], "ReportTaskRunnerHeartbeatOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReportTaskRunnerHeartbeatOutput
 -- <p>Contains the output of ReportTaskRunnerHeartbeat.</p>
--- @param terminate [boolean] <p>Indicates whether the calling task runner should terminate.</p>
+-- @param _terminate [boolean] <p>Indicates whether the calling task runner should terminate.</p>
 -- Required parameter: terminate
-function M.ReportTaskRunnerHeartbeatOutput(terminate, ...)
+function M.ReportTaskRunnerHeartbeatOutput(_terminate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReportTaskRunnerHeartbeatOutput")
 	local t = { 
-		["terminate"] = terminate,
+		["terminate"] = _terminate,
 	}
-	M.AssertReportTaskRunnerHeartbeatOutput(t)
+	asserts.AssertReportTaskRunnerHeartbeatOutput(t)
 	return t
 end
 
-local RemoveTagsInput_keys = { "tagKeys" = true, "pipelineId" = true, nil }
+keys.RemoveTagsInput = { ["tagKeys"] = true, ["pipelineId"] = true, nil }
 
-function M.AssertRemoveTagsInput(struct)
+function asserts.AssertRemoveTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["tagKeys"], "Expected key tagKeys to exist in table")
-	if struct["tagKeys"] then M.AssertstringList(struct["tagKeys"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
+	if struct["tagKeys"] then asserts.AssertstringList(struct["tagKeys"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsInput_keys[k], "RemoveTagsInput contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsInput[k], "RemoveTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsInput
 -- <p>Contains the parameters for RemoveTags.</p>
--- @param tagKeys [stringList] <p>The keys of the tags to remove.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _tagKeys [stringList] <p>The keys of the tags to remove.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
 -- Required parameter: pipelineId
 -- Required parameter: tagKeys
-function M.RemoveTagsInput(tagKeys, pipelineId, ...)
+function M.RemoveTagsInput(_tagKeys, _pipelineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsInput")
 	local t = { 
-		["tagKeys"] = tagKeys,
-		["pipelineId"] = pipelineId,
+		["tagKeys"] = _tagKeys,
+		["pipelineId"] = _pipelineId,
 	}
-	M.AssertRemoveTagsInput(t)
+	asserts.AssertRemoveTagsInput(t)
 	return t
 end
 
-local ActivatePipelineOutput_keys = { nil }
+keys.ActivatePipelineOutput = { nil }
 
-function M.AssertActivatePipelineOutput(struct)
+function asserts.AssertActivatePipelineOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ActivatePipelineOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ActivatePipelineOutput_keys[k], "ActivatePipelineOutput contains unknown key " .. tostring(k))
+		assert(keys.ActivatePipelineOutput[k], "ActivatePipelineOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -885,17 +888,17 @@ function M.ActivatePipelineOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivatePipelineOutput")
 	local t = { 
 	}
-	M.AssertActivatePipelineOutput(t)
+	asserts.AssertActivatePipelineOutput(t)
 	return t
 end
 
-local RemoveTagsOutput_keys = { nil }
+keys.RemoveTagsOutput = { nil }
 
-function M.AssertRemoveTagsOutput(struct)
+function asserts.AssertRemoveTagsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsOutput_keys[k], "RemoveTagsOutput contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsOutput[k], "RemoveTagsOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -905,146 +908,146 @@ function M.RemoveTagsOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsOutput")
 	local t = { 
 	}
-	M.AssertRemoveTagsOutput(t)
+	asserts.AssertRemoveTagsOutput(t)
 	return t
 end
 
-local Query_keys = { "selectors" = true, nil }
+keys.Query = { ["selectors"] = true, nil }
 
-function M.AssertQuery(struct)
+function asserts.AssertQuery(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Query to be of type 'table'")
-	if struct["selectors"] then M.AssertSelectorList(struct["selectors"]) end
+	if struct["selectors"] then asserts.AssertSelectorList(struct["selectors"]) end
 	for k,_ in pairs(struct) do
-		assert(Query_keys[k], "Query contains unknown key " .. tostring(k))
+		assert(keys.Query[k], "Query contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Query
 -- <p>Defines the query to run against an object.</p>
--- @param selectors [SelectorList] <p>List of selectors that define the query. An object must satisfy all of the selectors to match the query.</p>
-function M.Query(selectors, ...)
+-- @param _selectors [SelectorList] <p>List of selectors that define the query. An object must satisfy all of the selectors to match the query.</p>
+function M.Query(_selectors, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Query")
 	local t = { 
-		["selectors"] = selectors,
+		["selectors"] = _selectors,
 	}
-	M.AssertQuery(t)
+	asserts.AssertQuery(t)
 	return t
 end
 
-local InvalidRequestException_keys = { "message" = true, nil }
+keys.InvalidRequestException = { ["message"] = true, nil }
 
-function M.AssertInvalidRequestException(struct)
+function asserts.AssertInvalidRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRequestException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidRequestException_keys[k], "InvalidRequestException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRequestException[k], "InvalidRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidRequestException
 -- <p>The request was not valid. Verify that your request was properly formatted, that the signature was generated with the correct credentials, and that you haven't exceeded any of the service limits for your account.</p>
--- @param message [errorMessage] <p>Description of the error message.</p>
-function M.InvalidRequestException(message, ...)
+-- @param _message [errorMessage] <p>Description of the error message.</p>
+function M.InvalidRequestException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidRequestException(t)
+	asserts.AssertInvalidRequestException(t)
 	return t
 end
 
-local SetStatusInput_keys = { "objectIds" = true, "status" = true, "pipelineId" = true, nil }
+keys.SetStatusInput = { ["objectIds"] = true, ["status"] = true, ["pipelineId"] = true, nil }
 
-function M.AssertSetStatusInput(struct)
+function asserts.AssertSetStatusInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetStatusInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["objectIds"], "Expected key objectIds to exist in table")
 	assert(struct["status"], "Expected key status to exist in table")
-	if struct["objectIds"] then M.AssertidList(struct["objectIds"]) end
-	if struct["status"] then M.Assertstring(struct["status"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
+	if struct["objectIds"] then asserts.AssertidList(struct["objectIds"]) end
+	if struct["status"] then asserts.Assertstring(struct["status"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
 	for k,_ in pairs(struct) do
-		assert(SetStatusInput_keys[k], "SetStatusInput contains unknown key " .. tostring(k))
+		assert(keys.SetStatusInput[k], "SetStatusInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetStatusInput
 -- <p>Contains the parameters for SetStatus.</p>
--- @param objectIds [idList] <p>The IDs of the objects. The corresponding objects can be either physical or components, but not a mix of both types.</p>
--- @param status [string] <p>The status to be set on all the objects specified in <code>objectIds</code>. For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances, use <code>TRY_CANCEL</code>, <code>RERUN</code>, or <code>MARK_FINISHED</code>.</p>
--- @param pipelineId [id] <p>The ID of the pipeline that contains the objects.</p>
+-- @param _objectIds [idList] <p>The IDs of the objects. The corresponding objects can be either physical or components, but not a mix of both types.</p>
+-- @param _status [string] <p>The status to be set on all the objects specified in <code>objectIds</code>. For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances, use <code>TRY_CANCEL</code>, <code>RERUN</code>, or <code>MARK_FINISHED</code>.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline that contains the objects.</p>
 -- Required parameter: pipelineId
 -- Required parameter: objectIds
 -- Required parameter: status
-function M.SetStatusInput(objectIds, status, pipelineId, ...)
+function M.SetStatusInput(_objectIds, _status, _pipelineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetStatusInput")
 	local t = { 
-		["objectIds"] = objectIds,
-		["status"] = status,
-		["pipelineId"] = pipelineId,
+		["objectIds"] = _objectIds,
+		["status"] = _status,
+		["pipelineId"] = _pipelineId,
 	}
-	M.AssertSetStatusInput(t)
+	asserts.AssertSetStatusInput(t)
 	return t
 end
 
-local PollForTaskOutput_keys = { "taskObject" = true, nil }
+keys.PollForTaskOutput = { ["taskObject"] = true, nil }
 
-function M.AssertPollForTaskOutput(struct)
+function asserts.AssertPollForTaskOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PollForTaskOutput to be of type 'table'")
-	if struct["taskObject"] then M.AssertTaskObject(struct["taskObject"]) end
+	if struct["taskObject"] then asserts.AssertTaskObject(struct["taskObject"]) end
 	for k,_ in pairs(struct) do
-		assert(PollForTaskOutput_keys[k], "PollForTaskOutput contains unknown key " .. tostring(k))
+		assert(keys.PollForTaskOutput[k], "PollForTaskOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PollForTaskOutput
 -- <p>Contains the output of PollForTask.</p>
--- @param taskObject [TaskObject] <p>The information needed to complete the task that is being assigned to the task runner. One of the fields returned in this object is <code>taskId</code>, which contains an identifier for the task being assigned. The calling task runner uses <code>taskId</code> in subsequent calls to <a>ReportTaskProgress</a> and <a>SetTaskStatus</a>.</p>
-function M.PollForTaskOutput(taskObject, ...)
+-- @param _taskObject [TaskObject] <p>The information needed to complete the task that is being assigned to the task runner. One of the fields returned in this object is <code>taskId</code>, which contains an identifier for the task being assigned. The calling task runner uses <code>taskId</code> in subsequent calls to <a>ReportTaskProgress</a> and <a>SetTaskStatus</a>.</p>
+function M.PollForTaskOutput(_taskObject, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PollForTaskOutput")
 	local t = { 
-		["taskObject"] = taskObject,
+		["taskObject"] = _taskObject,
 	}
-	M.AssertPollForTaskOutput(t)
+	asserts.AssertPollForTaskOutput(t)
 	return t
 end
 
-local EvaluateExpressionOutput_keys = { "evaluatedExpression" = true, nil }
+keys.EvaluateExpressionOutput = { ["evaluatedExpression"] = true, nil }
 
-function M.AssertEvaluateExpressionOutput(struct)
+function asserts.AssertEvaluateExpressionOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EvaluateExpressionOutput to be of type 'table'")
 	assert(struct["evaluatedExpression"], "Expected key evaluatedExpression to exist in table")
-	if struct["evaluatedExpression"] then M.AssertlongString(struct["evaluatedExpression"]) end
+	if struct["evaluatedExpression"] then asserts.AssertlongString(struct["evaluatedExpression"]) end
 	for k,_ in pairs(struct) do
-		assert(EvaluateExpressionOutput_keys[k], "EvaluateExpressionOutput contains unknown key " .. tostring(k))
+		assert(keys.EvaluateExpressionOutput[k], "EvaluateExpressionOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EvaluateExpressionOutput
 -- <p>Contains the output of EvaluateExpression.</p>
--- @param evaluatedExpression [longString] <p>The evaluated expression.</p>
+-- @param _evaluatedExpression [longString] <p>The evaluated expression.</p>
 -- Required parameter: evaluatedExpression
-function M.EvaluateExpressionOutput(evaluatedExpression, ...)
+function M.EvaluateExpressionOutput(_evaluatedExpression, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EvaluateExpressionOutput")
 	local t = { 
-		["evaluatedExpression"] = evaluatedExpression,
+		["evaluatedExpression"] = _evaluatedExpression,
 	}
-	M.AssertEvaluateExpressionOutput(t)
+	asserts.AssertEvaluateExpressionOutput(t)
 	return t
 end
 
-local DeactivatePipelineOutput_keys = { nil }
+keys.DeactivatePipelineOutput = { nil }
 
-function M.AssertDeactivatePipelineOutput(struct)
+function asserts.AssertDeactivatePipelineOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeactivatePipelineOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeactivatePipelineOutput_keys[k], "DeactivatePipelineOutput contains unknown key " .. tostring(k))
+		assert(keys.DeactivatePipelineOutput[k], "DeactivatePipelineOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1054,17 +1057,17 @@ function M.DeactivatePipelineOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeactivatePipelineOutput")
 	local t = { 
 	}
-	M.AssertDeactivatePipelineOutput(t)
+	asserts.AssertDeactivatePipelineOutput(t)
 	return t
 end
 
-local AddTagsOutput_keys = { nil }
+keys.AddTagsOutput = { nil }
 
-function M.AssertAddTagsOutput(struct)
+function asserts.AssertAddTagsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AddTagsOutput_keys[k], "AddTagsOutput contains unknown key " .. tostring(k))
+		assert(keys.AddTagsOutput[k], "AddTagsOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1074,536 +1077,536 @@ function M.AddTagsOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsOutput")
 	local t = { 
 	}
-	M.AssertAddTagsOutput(t)
+	asserts.AssertAddTagsOutput(t)
 	return t
 end
 
-local PipelineNotFoundException_keys = { "message" = true, nil }
+keys.PipelineNotFoundException = { ["message"] = true, nil }
 
-function M.AssertPipelineNotFoundException(struct)
+function asserts.AssertPipelineNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PipelineNotFoundException to be of type 'table'")
-	if struct["message"] then M.AsserterrorMessage(struct["message"]) end
+	if struct["message"] then asserts.AsserterrorMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(PipelineNotFoundException_keys[k], "PipelineNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.PipelineNotFoundException[k], "PipelineNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PipelineNotFoundException
 -- <p>The specified pipeline was not found. Verify that you used the correct user and account identifiers.</p>
--- @param message [errorMessage] <p>Description of the error message.</p>
-function M.PipelineNotFoundException(message, ...)
+-- @param _message [errorMessage] <p>Description of the error message.</p>
+function M.PipelineNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertPipelineNotFoundException(t)
+	asserts.AssertPipelineNotFoundException(t)
 	return t
 end
 
-local PollForTaskInput_keys = { "workerGroup" = true, "hostname" = true, "instanceIdentity" = true, nil }
+keys.PollForTaskInput = { ["workerGroup"] = true, ["hostname"] = true, ["instanceIdentity"] = true, nil }
 
-function M.AssertPollForTaskInput(struct)
+function asserts.AssertPollForTaskInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PollForTaskInput to be of type 'table'")
 	assert(struct["workerGroup"], "Expected key workerGroup to exist in table")
-	if struct["workerGroup"] then M.Assertstring(struct["workerGroup"]) end
-	if struct["hostname"] then M.Assertid(struct["hostname"]) end
-	if struct["instanceIdentity"] then M.AssertInstanceIdentity(struct["instanceIdentity"]) end
+	if struct["workerGroup"] then asserts.Assertstring(struct["workerGroup"]) end
+	if struct["hostname"] then asserts.Assertid(struct["hostname"]) end
+	if struct["instanceIdentity"] then asserts.AssertInstanceIdentity(struct["instanceIdentity"]) end
 	for k,_ in pairs(struct) do
-		assert(PollForTaskInput_keys[k], "PollForTaskInput contains unknown key " .. tostring(k))
+		assert(keys.PollForTaskInput[k], "PollForTaskInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PollForTaskInput
 -- <p>Contains the parameters for PollForTask.</p>
--- @param workerGroup [string] <p>The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for <code>workerGroup</code> in the call to <code>PollForTask</code>. There are no wildcard values permitted in <code>workerGroup</code>; the string must be an exact, case-sensitive, match.</p>
--- @param hostname [id] <p>The public DNS name of the calling task runner.</p>
--- @param instanceIdentity [InstanceIdentity] <p>Identity information for the EC2 instance that is hosting the task runner. You can get this value from the instance using <code>http://169.254.169.254/latest/meta-data/instance-id</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p>
+-- @param _workerGroup [string] <p>The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for <code>workerGroup</code> in the call to <code>PollForTask</code>. There are no wildcard values permitted in <code>workerGroup</code>; the string must be an exact, case-sensitive, match.</p>
+-- @param _hostname [id] <p>The public DNS name of the calling task runner.</p>
+-- @param _instanceIdentity [InstanceIdentity] <p>Identity information for the EC2 instance that is hosting the task runner. You can get this value from the instance using <code>http://169.254.169.254/latest/meta-data/instance-id</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p>
 -- Required parameter: workerGroup
-function M.PollForTaskInput(workerGroup, hostname, instanceIdentity, ...)
+function M.PollForTaskInput(_workerGroup, _hostname, _instanceIdentity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PollForTaskInput")
 	local t = { 
-		["workerGroup"] = workerGroup,
-		["hostname"] = hostname,
-		["instanceIdentity"] = instanceIdentity,
+		["workerGroup"] = _workerGroup,
+		["hostname"] = _hostname,
+		["instanceIdentity"] = _instanceIdentity,
 	}
-	M.AssertPollForTaskInput(t)
+	asserts.AssertPollForTaskInput(t)
 	return t
 end
 
-local PipelineIdName_keys = { "id" = true, "name" = true, nil }
+keys.PipelineIdName = { ["id"] = true, ["name"] = true, nil }
 
-function M.AssertPipelineIdName(struct)
+function asserts.AssertPipelineIdName(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PipelineIdName to be of type 'table'")
-	if struct["id"] then M.Assertid(struct["id"]) end
-	if struct["name"] then M.Assertid(struct["name"]) end
+	if struct["id"] then asserts.Assertid(struct["id"]) end
+	if struct["name"] then asserts.Assertid(struct["name"]) end
 	for k,_ in pairs(struct) do
-		assert(PipelineIdName_keys[k], "PipelineIdName contains unknown key " .. tostring(k))
+		assert(keys.PipelineIdName[k], "PipelineIdName contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PipelineIdName
 -- <p>Contains the name and identifier of a pipeline.</p>
--- @param id [id] <p>The ID of the pipeline that was assigned by AWS Data Pipeline. This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.</p>
--- @param name [id] <p>The name of the pipeline.</p>
-function M.PipelineIdName(id, name, ...)
+-- @param _id [id] <p>The ID of the pipeline that was assigned by AWS Data Pipeline. This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.</p>
+-- @param _name [id] <p>The name of the pipeline.</p>
+function M.PipelineIdName(_id, _name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineIdName")
 	local t = { 
-		["id"] = id,
-		["name"] = name,
+		["id"] = _id,
+		["name"] = _name,
 	}
-	M.AssertPipelineIdName(t)
+	asserts.AssertPipelineIdName(t)
 	return t
 end
 
-local AddTagsInput_keys = { "pipelineId" = true, "tags" = true, nil }
+keys.AddTagsInput = { ["pipelineId"] = true, ["tags"] = true, nil }
 
-function M.AssertAddTagsInput(struct)
+function asserts.AssertAddTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["tags"], "Expected key tags to exist in table")
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["tags"] then M.AsserttagList(struct["tags"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["tags"] then asserts.AsserttagList(struct["tags"]) end
 	for k,_ in pairs(struct) do
-		assert(AddTagsInput_keys[k], "AddTagsInput contains unknown key " .. tostring(k))
+		assert(keys.AddTagsInput[k], "AddTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddTagsInput
 -- <p>Contains the parameters for AddTags.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
--- @param tags [tagList] <p>The tags to add, as key/value pairs.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _tags [tagList] <p>The tags to add, as key/value pairs.</p>
 -- Required parameter: pipelineId
 -- Required parameter: tags
-function M.AddTagsInput(pipelineId, tags, ...)
+function M.AddTagsInput(_pipelineId, _tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsInput")
 	local t = { 
-		["pipelineId"] = pipelineId,
-		["tags"] = tags,
+		["pipelineId"] = _pipelineId,
+		["tags"] = _tags,
 	}
-	M.AssertAddTagsInput(t)
+	asserts.AssertAddTagsInput(t)
 	return t
 end
 
-local ParameterObject_keys = { "attributes" = true, "id" = true, nil }
+keys.ParameterObject = { ["attributes"] = true, ["id"] = true, nil }
 
-function M.AssertParameterObject(struct)
+function asserts.AssertParameterObject(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ParameterObject to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
 	assert(struct["attributes"], "Expected key attributes to exist in table")
-	if struct["attributes"] then M.AssertParameterAttributeList(struct["attributes"]) end
-	if struct["id"] then M.AssertfieldNameString(struct["id"]) end
+	if struct["attributes"] then asserts.AssertParameterAttributeList(struct["attributes"]) end
+	if struct["id"] then asserts.AssertfieldNameString(struct["id"]) end
 	for k,_ in pairs(struct) do
-		assert(ParameterObject_keys[k], "ParameterObject contains unknown key " .. tostring(k))
+		assert(keys.ParameterObject[k], "ParameterObject contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ParameterObject
 -- <p>Contains information about a parameter object.</p>
--- @param attributes [ParameterAttributeList] <p>The attributes of the parameter object.</p>
--- @param id [fieldNameString] <p>The ID of the parameter object. </p>
+-- @param _attributes [ParameterAttributeList] <p>The attributes of the parameter object.</p>
+-- @param _id [fieldNameString] <p>The ID of the parameter object. </p>
 -- Required parameter: id
 -- Required parameter: attributes
-function M.ParameterObject(attributes, id, ...)
+function M.ParameterObject(_attributes, _id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterObject")
 	local t = { 
-		["attributes"] = attributes,
-		["id"] = id,
+		["attributes"] = _attributes,
+		["id"] = _id,
 	}
-	M.AssertParameterObject(t)
+	asserts.AssertParameterObject(t)
 	return t
 end
 
-local ListPipelinesInput_keys = { "marker" = true, nil }
+keys.ListPipelinesInput = { ["marker"] = true, nil }
 
-function M.AssertListPipelinesInput(struct)
+function asserts.AssertListPipelinesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListPipelinesInput to be of type 'table'")
-	if struct["marker"] then M.Assertstring(struct["marker"]) end
+	if struct["marker"] then asserts.Assertstring(struct["marker"]) end
 	for k,_ in pairs(struct) do
-		assert(ListPipelinesInput_keys[k], "ListPipelinesInput contains unknown key " .. tostring(k))
+		assert(keys.ListPipelinesInput[k], "ListPipelinesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListPipelinesInput
 -- <p>Contains the parameters for ListPipelines.</p>
--- @param marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>ListPipelines</code> with the marker value from the previous call to retrieve the next set of results.</p>
-function M.ListPipelinesInput(marker, ...)
+-- @param _marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>ListPipelines</code> with the marker value from the previous call to retrieve the next set of results.</p>
+function M.ListPipelinesInput(_marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelinesInput")
 	local t = { 
-		["marker"] = marker,
+		["marker"] = _marker,
 	}
-	M.AssertListPipelinesInput(t)
+	asserts.AssertListPipelinesInput(t)
 	return t
 end
 
-local Field_keys = { "stringValue" = true, "refValue" = true, "key" = true, nil }
+keys.Field = { ["stringValue"] = true, ["refValue"] = true, ["key"] = true, nil }
 
-function M.AssertField(struct)
+function asserts.AssertField(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Field to be of type 'table'")
 	assert(struct["key"], "Expected key key to exist in table")
-	if struct["stringValue"] then M.AssertfieldStringValue(struct["stringValue"]) end
-	if struct["refValue"] then M.AssertfieldNameString(struct["refValue"]) end
-	if struct["key"] then M.AssertfieldNameString(struct["key"]) end
+	if struct["stringValue"] then asserts.AssertfieldStringValue(struct["stringValue"]) end
+	if struct["refValue"] then asserts.AssertfieldNameString(struct["refValue"]) end
+	if struct["key"] then asserts.AssertfieldNameString(struct["key"]) end
 	for k,_ in pairs(struct) do
-		assert(Field_keys[k], "Field contains unknown key " .. tostring(k))
+		assert(keys.Field[k], "Field contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Field
 -- <p>A key-value pair that describes a property of a pipeline object. The value is specified as either a string value (<code>StringValue</code>) or a reference to another object (<code>RefValue</code>) but not as both.</p>
--- @param stringValue [fieldStringValue] <p>The field value, expressed as a String.</p>
--- @param refValue [fieldNameString] <p>The field value, expressed as the identifier of another object.</p>
--- @param key [fieldNameString] <p>The field identifier.</p>
+-- @param _stringValue [fieldStringValue] <p>The field value, expressed as a String.</p>
+-- @param _refValue [fieldNameString] <p>The field value, expressed as the identifier of another object.</p>
+-- @param _key [fieldNameString] <p>The field identifier.</p>
 -- Required parameter: key
-function M.Field(stringValue, refValue, key, ...)
+function M.Field(_stringValue, _refValue, _key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Field")
 	local t = { 
-		["stringValue"] = stringValue,
-		["refValue"] = refValue,
-		["key"] = key,
+		["stringValue"] = _stringValue,
+		["refValue"] = _refValue,
+		["key"] = _key,
 	}
-	M.AssertField(t)
+	asserts.AssertField(t)
 	return t
 end
 
-local GetPipelineDefinitionInput_keys = { "pipelineId" = true, "version" = true, nil }
+keys.GetPipelineDefinitionInput = { ["pipelineId"] = true, ["version"] = true, nil }
 
-function M.AssertGetPipelineDefinitionInput(struct)
+function asserts.AssertGetPipelineDefinitionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetPipelineDefinitionInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["version"] then M.Assertstring(struct["version"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["version"] then asserts.Assertstring(struct["version"]) end
 	for k,_ in pairs(struct) do
-		assert(GetPipelineDefinitionInput_keys[k], "GetPipelineDefinitionInput contains unknown key " .. tostring(k))
+		assert(keys.GetPipelineDefinitionInput[k], "GetPipelineDefinitionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetPipelineDefinitionInput
 -- <p>Contains the parameters for GetPipelineDefinition.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
--- @param version [string] <p>The version of the pipeline definition to retrieve. Set this parameter to <code>latest</code> (default) to use the last definition saved to the pipeline or <code>active</code> to use the last definition that was activated.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _version [string] <p>The version of the pipeline definition to retrieve. Set this parameter to <code>latest</code> (default) to use the last definition saved to the pipeline or <code>active</code> to use the last definition that was activated.</p>
 -- Required parameter: pipelineId
-function M.GetPipelineDefinitionInput(pipelineId, version, ...)
+function M.GetPipelineDefinitionInput(_pipelineId, _version, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineDefinitionInput")
 	local t = { 
-		["pipelineId"] = pipelineId,
-		["version"] = version,
+		["pipelineId"] = _pipelineId,
+		["version"] = _version,
 	}
-	M.AssertGetPipelineDefinitionInput(t)
+	asserts.AssertGetPipelineDefinitionInput(t)
 	return t
 end
 
-local DescribePipelinesOutput_keys = { "pipelineDescriptionList" = true, nil }
+keys.DescribePipelinesOutput = { ["pipelineDescriptionList"] = true, nil }
 
-function M.AssertDescribePipelinesOutput(struct)
+function asserts.AssertDescribePipelinesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribePipelinesOutput to be of type 'table'")
 	assert(struct["pipelineDescriptionList"], "Expected key pipelineDescriptionList to exist in table")
-	if struct["pipelineDescriptionList"] then M.AssertPipelineDescriptionList(struct["pipelineDescriptionList"]) end
+	if struct["pipelineDescriptionList"] then asserts.AssertPipelineDescriptionList(struct["pipelineDescriptionList"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribePipelinesOutput_keys[k], "DescribePipelinesOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribePipelinesOutput[k], "DescribePipelinesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribePipelinesOutput
 -- <p>Contains the output of DescribePipelines.</p>
--- @param pipelineDescriptionList [PipelineDescriptionList] <p>An array of descriptions for the specified pipelines.</p>
+-- @param _pipelineDescriptionList [PipelineDescriptionList] <p>An array of descriptions for the specified pipelines.</p>
 -- Required parameter: pipelineDescriptionList
-function M.DescribePipelinesOutput(pipelineDescriptionList, ...)
+function M.DescribePipelinesOutput(_pipelineDescriptionList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePipelinesOutput")
 	local t = { 
-		["pipelineDescriptionList"] = pipelineDescriptionList,
+		["pipelineDescriptionList"] = _pipelineDescriptionList,
 	}
-	M.AssertDescribePipelinesOutput(t)
+	asserts.AssertDescribePipelinesOutput(t)
 	return t
 end
 
-local ReportTaskRunnerHeartbeatInput_keys = { "workerGroup" = true, "hostname" = true, "taskrunnerId" = true, nil }
+keys.ReportTaskRunnerHeartbeatInput = { ["workerGroup"] = true, ["hostname"] = true, ["taskrunnerId"] = true, nil }
 
-function M.AssertReportTaskRunnerHeartbeatInput(struct)
+function asserts.AssertReportTaskRunnerHeartbeatInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ReportTaskRunnerHeartbeatInput to be of type 'table'")
 	assert(struct["taskrunnerId"], "Expected key taskrunnerId to exist in table")
-	if struct["workerGroup"] then M.Assertstring(struct["workerGroup"]) end
-	if struct["hostname"] then M.Assertid(struct["hostname"]) end
-	if struct["taskrunnerId"] then M.Assertid(struct["taskrunnerId"]) end
+	if struct["workerGroup"] then asserts.Assertstring(struct["workerGroup"]) end
+	if struct["hostname"] then asserts.Assertid(struct["hostname"]) end
+	if struct["taskrunnerId"] then asserts.Assertid(struct["taskrunnerId"]) end
 	for k,_ in pairs(struct) do
-		assert(ReportTaskRunnerHeartbeatInput_keys[k], "ReportTaskRunnerHeartbeatInput contains unknown key " .. tostring(k))
+		assert(keys.ReportTaskRunnerHeartbeatInput[k], "ReportTaskRunnerHeartbeatInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ReportTaskRunnerHeartbeatInput
 -- <p>Contains the parameters for ReportTaskRunnerHeartbeat.</p>
--- @param workerGroup [string] <p>The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for <code>workerGroup</code>. There are no wildcard values permitted in <code>workerGroup</code>; the string must be an exact, case-sensitive, match.</p>
--- @param hostname [id] <p>The public DNS name of the task runner.</p>
--- @param taskrunnerId [id] <p>The ID of the task runner. This value should be unique across your AWS account. In the case of AWS Data Pipeline Task Runner launched on a resource managed by AWS Data Pipeline, the web service provides a unique identifier when it launches the application. If you have written a custom task runner, you should assign a unique identifier for the task runner.</p>
+-- @param _workerGroup [string] <p>The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for <code>workerGroup</code>. There are no wildcard values permitted in <code>workerGroup</code>; the string must be an exact, case-sensitive, match.</p>
+-- @param _hostname [id] <p>The public DNS name of the task runner.</p>
+-- @param _taskrunnerId [id] <p>The ID of the task runner. This value should be unique across your AWS account. In the case of AWS Data Pipeline Task Runner launched on a resource managed by AWS Data Pipeline, the web service provides a unique identifier when it launches the application. If you have written a custom task runner, you should assign a unique identifier for the task runner.</p>
 -- Required parameter: taskrunnerId
-function M.ReportTaskRunnerHeartbeatInput(workerGroup, hostname, taskrunnerId, ...)
+function M.ReportTaskRunnerHeartbeatInput(_workerGroup, _hostname, _taskrunnerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReportTaskRunnerHeartbeatInput")
 	local t = { 
-		["workerGroup"] = workerGroup,
-		["hostname"] = hostname,
-		["taskrunnerId"] = taskrunnerId,
+		["workerGroup"] = _workerGroup,
+		["hostname"] = _hostname,
+		["taskrunnerId"] = _taskrunnerId,
 	}
-	M.AssertReportTaskRunnerHeartbeatInput(t)
+	asserts.AssertReportTaskRunnerHeartbeatInput(t)
 	return t
 end
 
-local DeactivatePipelineInput_keys = { "cancelActive" = true, "pipelineId" = true, nil }
+keys.DeactivatePipelineInput = { ["cancelActive"] = true, ["pipelineId"] = true, nil }
 
-function M.AssertDeactivatePipelineInput(struct)
+function asserts.AssertDeactivatePipelineInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeactivatePipelineInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
-	if struct["cancelActive"] then M.AssertcancelActive(struct["cancelActive"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
+	if struct["cancelActive"] then asserts.AssertcancelActive(struct["cancelActive"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeactivatePipelineInput_keys[k], "DeactivatePipelineInput contains unknown key " .. tostring(k))
+		assert(keys.DeactivatePipelineInput[k], "DeactivatePipelineInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeactivatePipelineInput
 -- <p>Contains the parameters for DeactivatePipeline.</p>
--- @param cancelActive [cancelActive] <p>Indicates whether to cancel any running objects. The default is true, which sets the state of any running objects to <code>CANCELED</code>. If this value is false, the pipeline is deactivated after all running objects finish.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _cancelActive [cancelActive] <p>Indicates whether to cancel any running objects. The default is true, which sets the state of any running objects to <code>CANCELED</code>. If this value is false, the pipeline is deactivated after all running objects finish.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
 -- Required parameter: pipelineId
-function M.DeactivatePipelineInput(cancelActive, pipelineId, ...)
+function M.DeactivatePipelineInput(_cancelActive, _pipelineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeactivatePipelineInput")
 	local t = { 
-		["cancelActive"] = cancelActive,
-		["pipelineId"] = pipelineId,
+		["cancelActive"] = _cancelActive,
+		["pipelineId"] = _pipelineId,
 	}
-	M.AssertDeactivatePipelineInput(t)
+	asserts.AssertDeactivatePipelineInput(t)
 	return t
 end
 
-local ValidatePipelineDefinitionOutput_keys = { "validationErrors" = true, "errored" = true, "validationWarnings" = true, nil }
+keys.ValidatePipelineDefinitionOutput = { ["validationErrors"] = true, ["errored"] = true, ["validationWarnings"] = true, nil }
 
-function M.AssertValidatePipelineDefinitionOutput(struct)
+function asserts.AssertValidatePipelineDefinitionOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ValidatePipelineDefinitionOutput to be of type 'table'")
 	assert(struct["errored"], "Expected key errored to exist in table")
-	if struct["validationErrors"] then M.AssertValidationErrors(struct["validationErrors"]) end
-	if struct["errored"] then M.Assertboolean(struct["errored"]) end
-	if struct["validationWarnings"] then M.AssertValidationWarnings(struct["validationWarnings"]) end
+	if struct["validationErrors"] then asserts.AssertValidationErrors(struct["validationErrors"]) end
+	if struct["errored"] then asserts.Assertboolean(struct["errored"]) end
+	if struct["validationWarnings"] then asserts.AssertValidationWarnings(struct["validationWarnings"]) end
 	for k,_ in pairs(struct) do
-		assert(ValidatePipelineDefinitionOutput_keys[k], "ValidatePipelineDefinitionOutput contains unknown key " .. tostring(k))
+		assert(keys.ValidatePipelineDefinitionOutput[k], "ValidatePipelineDefinitionOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ValidatePipelineDefinitionOutput
 -- <p>Contains the output of ValidatePipelineDefinition.</p>
--- @param validationErrors [ValidationErrors] <p>Any validation errors that were found.</p>
--- @param errored [boolean] <p>Indicates whether there were validation errors.</p>
--- @param validationWarnings [ValidationWarnings] <p>Any validation warnings that were found.</p>
+-- @param _validationErrors [ValidationErrors] <p>Any validation errors that were found.</p>
+-- @param _errored [boolean] <p>Indicates whether there were validation errors.</p>
+-- @param _validationWarnings [ValidationWarnings] <p>Any validation warnings that were found.</p>
 -- Required parameter: errored
-function M.ValidatePipelineDefinitionOutput(validationErrors, errored, validationWarnings, ...)
+function M.ValidatePipelineDefinitionOutput(_validationErrors, _errored, _validationWarnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidatePipelineDefinitionOutput")
 	local t = { 
-		["validationErrors"] = validationErrors,
-		["errored"] = errored,
-		["validationWarnings"] = validationWarnings,
+		["validationErrors"] = _validationErrors,
+		["errored"] = _errored,
+		["validationWarnings"] = _validationWarnings,
 	}
-	M.AssertValidatePipelineDefinitionOutput(t)
+	asserts.AssertValidatePipelineDefinitionOutput(t)
 	return t
 end
 
-local DescribeObjectsInput_keys = { "objectIds" = true, "marker" = true, "pipelineId" = true, "evaluateExpressions" = true, nil }
+keys.DescribeObjectsInput = { ["objectIds"] = true, ["marker"] = true, ["pipelineId"] = true, ["evaluateExpressions"] = true, nil }
 
-function M.AssertDescribeObjectsInput(struct)
+function asserts.AssertDescribeObjectsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeObjectsInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["objectIds"], "Expected key objectIds to exist in table")
-	if struct["objectIds"] then M.AssertidList(struct["objectIds"]) end
-	if struct["marker"] then M.Assertstring(struct["marker"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["evaluateExpressions"] then M.Assertboolean(struct["evaluateExpressions"]) end
+	if struct["objectIds"] then asserts.AssertidList(struct["objectIds"]) end
+	if struct["marker"] then asserts.Assertstring(struct["marker"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["evaluateExpressions"] then asserts.Assertboolean(struct["evaluateExpressions"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeObjectsInput_keys[k], "DescribeObjectsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeObjectsInput[k], "DescribeObjectsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeObjectsInput
 -- <p>Contains the parameters for DescribeObjects.</p>
--- @param objectIds [idList] <p>The IDs of the pipeline objects that contain the definitions to be described. You can pass as many as 25 identifiers in a single call to <code>DescribeObjects</code>.</p>
--- @param marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>DescribeObjects</code> with the marker value from the previous call to retrieve the next set of results.</p>
--- @param pipelineId [id] <p>The ID of the pipeline that contains the object definitions.</p>
--- @param evaluateExpressions [boolean] <p>Indicates whether any expressions in the object should be evaluated when the object descriptions are returned.</p>
+-- @param _objectIds [idList] <p>The IDs of the pipeline objects that contain the definitions to be described. You can pass as many as 25 identifiers in a single call to <code>DescribeObjects</code>.</p>
+-- @param _marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>DescribeObjects</code> with the marker value from the previous call to retrieve the next set of results.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline that contains the object definitions.</p>
+-- @param _evaluateExpressions [boolean] <p>Indicates whether any expressions in the object should be evaluated when the object descriptions are returned.</p>
 -- Required parameter: pipelineId
 -- Required parameter: objectIds
-function M.DescribeObjectsInput(objectIds, marker, pipelineId, evaluateExpressions, ...)
+function M.DescribeObjectsInput(_objectIds, _marker, _pipelineId, _evaluateExpressions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeObjectsInput")
 	local t = { 
-		["objectIds"] = objectIds,
-		["marker"] = marker,
-		["pipelineId"] = pipelineId,
-		["evaluateExpressions"] = evaluateExpressions,
+		["objectIds"] = _objectIds,
+		["marker"] = _marker,
+		["pipelineId"] = _pipelineId,
+		["evaluateExpressions"] = _evaluateExpressions,
 	}
-	M.AssertDescribeObjectsInput(t)
+	asserts.AssertDescribeObjectsInput(t)
 	return t
 end
 
-local QueryObjectsOutput_keys = { "marker" = true, "ids" = true, "hasMoreResults" = true, nil }
+keys.QueryObjectsOutput = { ["marker"] = true, ["ids"] = true, ["hasMoreResults"] = true, nil }
 
-function M.AssertQueryObjectsOutput(struct)
+function asserts.AssertQueryObjectsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected QueryObjectsOutput to be of type 'table'")
-	if struct["marker"] then M.Assertstring(struct["marker"]) end
-	if struct["ids"] then M.AssertidList(struct["ids"]) end
-	if struct["hasMoreResults"] then M.Assertboolean(struct["hasMoreResults"]) end
+	if struct["marker"] then asserts.Assertstring(struct["marker"]) end
+	if struct["ids"] then asserts.AssertidList(struct["ids"]) end
+	if struct["hasMoreResults"] then asserts.Assertboolean(struct["hasMoreResults"]) end
 	for k,_ in pairs(struct) do
-		assert(QueryObjectsOutput_keys[k], "QueryObjectsOutput contains unknown key " .. tostring(k))
+		assert(keys.QueryObjectsOutput[k], "QueryObjectsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type QueryObjectsOutput
 -- <p>Contains the output of QueryObjects.</p>
--- @param marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>QueryObjects</code> again with this marker value. If the value is null, there are no more results.</p>
--- @param ids [idList] <p>The identifiers that match the query selectors.</p>
--- @param hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
-function M.QueryObjectsOutput(marker, ids, hasMoreResults, ...)
+-- @param _marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>QueryObjects</code> again with this marker value. If the value is null, there are no more results.</p>
+-- @param _ids [idList] <p>The identifiers that match the query selectors.</p>
+-- @param _hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
+function M.QueryObjectsOutput(_marker, _ids, _hasMoreResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QueryObjectsOutput")
 	local t = { 
-		["marker"] = marker,
-		["ids"] = ids,
-		["hasMoreResults"] = hasMoreResults,
+		["marker"] = _marker,
+		["ids"] = _ids,
+		["hasMoreResults"] = _hasMoreResults,
 	}
-	M.AssertQueryObjectsOutput(t)
+	asserts.AssertQueryObjectsOutput(t)
 	return t
 end
 
-local ParameterValue_keys = { "stringValue" = true, "id" = true, nil }
+keys.ParameterValue = { ["stringValue"] = true, ["id"] = true, nil }
 
-function M.AssertParameterValue(struct)
+function asserts.AssertParameterValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ParameterValue to be of type 'table'")
 	assert(struct["id"], "Expected key id to exist in table")
 	assert(struct["stringValue"], "Expected key stringValue to exist in table")
-	if struct["stringValue"] then M.AssertfieldStringValue(struct["stringValue"]) end
-	if struct["id"] then M.AssertfieldNameString(struct["id"]) end
+	if struct["stringValue"] then asserts.AssertfieldStringValue(struct["stringValue"]) end
+	if struct["id"] then asserts.AssertfieldNameString(struct["id"]) end
 	for k,_ in pairs(struct) do
-		assert(ParameterValue_keys[k], "ParameterValue contains unknown key " .. tostring(k))
+		assert(keys.ParameterValue[k], "ParameterValue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ParameterValue
 -- <p>A value or list of parameter values. </p>
--- @param stringValue [fieldStringValue] <p>The field value, expressed as a String.</p>
--- @param id [fieldNameString] <p>The ID of the parameter value.</p>
+-- @param _stringValue [fieldStringValue] <p>The field value, expressed as a String.</p>
+-- @param _id [fieldNameString] <p>The ID of the parameter value.</p>
 -- Required parameter: id
 -- Required parameter: stringValue
-function M.ParameterValue(stringValue, id, ...)
+function M.ParameterValue(_stringValue, _id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterValue")
 	local t = { 
-		["stringValue"] = stringValue,
-		["id"] = id,
+		["stringValue"] = _stringValue,
+		["id"] = _id,
 	}
-	M.AssertParameterValue(t)
+	asserts.AssertParameterValue(t)
 	return t
 end
 
-local ValidationWarning_keys = { "id" = true, "warnings" = true, nil }
+keys.ValidationWarning = { ["id"] = true, ["warnings"] = true, nil }
 
-function M.AssertValidationWarning(struct)
+function asserts.AssertValidationWarning(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ValidationWarning to be of type 'table'")
-	if struct["id"] then M.Assertid(struct["id"]) end
-	if struct["warnings"] then M.AssertvalidationMessages(struct["warnings"]) end
+	if struct["id"] then asserts.Assertid(struct["id"]) end
+	if struct["warnings"] then asserts.AssertvalidationMessages(struct["warnings"]) end
 	for k,_ in pairs(struct) do
-		assert(ValidationWarning_keys[k], "ValidationWarning contains unknown key " .. tostring(k))
+		assert(keys.ValidationWarning[k], "ValidationWarning contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ValidationWarning
 -- <p>Defines a validation warning. Validation warnings do not prevent pipeline activation. The set of validation warnings that can be returned are defined by AWS Data Pipeline.</p>
--- @param id [id] <p>The identifier of the object that contains the validation warning.</p>
--- @param warnings [validationMessages] <p>A description of the validation warning.</p>
-function M.ValidationWarning(id, warnings, ...)
+-- @param _id [id] <p>The identifier of the object that contains the validation warning.</p>
+-- @param _warnings [validationMessages] <p>A description of the validation warning.</p>
+function M.ValidationWarning(_id, _warnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationWarning")
 	local t = { 
-		["id"] = id,
-		["warnings"] = warnings,
+		["id"] = _id,
+		["warnings"] = _warnings,
 	}
-	M.AssertValidationWarning(t)
+	asserts.AssertValidationWarning(t)
 	return t
 end
 
-local PutPipelineDefinitionInput_keys = { "parameterValues" = true, "pipelineObjects" = true, "pipelineId" = true, "parameterObjects" = true, nil }
+keys.PutPipelineDefinitionInput = { ["parameterValues"] = true, ["pipelineObjects"] = true, ["pipelineId"] = true, ["parameterObjects"] = true, nil }
 
-function M.AssertPutPipelineDefinitionInput(struct)
+function asserts.AssertPutPipelineDefinitionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutPipelineDefinitionInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
 	assert(struct["pipelineObjects"], "Expected key pipelineObjects to exist in table")
-	if struct["parameterValues"] then M.AssertParameterValueList(struct["parameterValues"]) end
-	if struct["pipelineObjects"] then M.AssertPipelineObjectList(struct["pipelineObjects"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
-	if struct["parameterObjects"] then M.AssertParameterObjectList(struct["parameterObjects"]) end
+	if struct["parameterValues"] then asserts.AssertParameterValueList(struct["parameterValues"]) end
+	if struct["pipelineObjects"] then asserts.AssertPipelineObjectList(struct["pipelineObjects"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
+	if struct["parameterObjects"] then asserts.AssertParameterObjectList(struct["parameterObjects"]) end
 	for k,_ in pairs(struct) do
-		assert(PutPipelineDefinitionInput_keys[k], "PutPipelineDefinitionInput contains unknown key " .. tostring(k))
+		assert(keys.PutPipelineDefinitionInput[k], "PutPipelineDefinitionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutPipelineDefinitionInput
 -- <p>Contains the parameters for PutPipelineDefinition.</p>
--- @param parameterValues [ParameterValueList] <p>The parameter values used with the pipeline.</p>
--- @param pipelineObjects [PipelineObjectList] <p>The objects that define the pipeline. These objects overwrite the existing pipeline definition.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
--- @param parameterObjects [ParameterObjectList] <p>The parameter objects used with the pipeline.</p>
+-- @param _parameterValues [ParameterValueList] <p>The parameter values used with the pipeline.</p>
+-- @param _pipelineObjects [PipelineObjectList] <p>The objects that define the pipeline. These objects overwrite the existing pipeline definition.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _parameterObjects [ParameterObjectList] <p>The parameter objects used with the pipeline.</p>
 -- Required parameter: pipelineId
 -- Required parameter: pipelineObjects
-function M.PutPipelineDefinitionInput(parameterValues, pipelineObjects, pipelineId, parameterObjects, ...)
+function M.PutPipelineDefinitionInput(_parameterValues, _pipelineObjects, _pipelineId, _parameterObjects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutPipelineDefinitionInput")
 	local t = { 
-		["parameterValues"] = parameterValues,
-		["pipelineObjects"] = pipelineObjects,
-		["pipelineId"] = pipelineId,
-		["parameterObjects"] = parameterObjects,
+		["parameterValues"] = _parameterValues,
+		["pipelineObjects"] = _pipelineObjects,
+		["pipelineId"] = _pipelineId,
+		["parameterObjects"] = _parameterObjects,
 	}
-	M.AssertPutPipelineDefinitionInput(t)
+	asserts.AssertPutPipelineDefinitionInput(t)
 	return t
 end
 
-local ActivatePipelineInput_keys = { "parameterValues" = true, "startTimestamp" = true, "pipelineId" = true, nil }
+keys.ActivatePipelineInput = { ["parameterValues"] = true, ["startTimestamp"] = true, ["pipelineId"] = true, nil }
 
-function M.AssertActivatePipelineInput(struct)
+function asserts.AssertActivatePipelineInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ActivatePipelineInput to be of type 'table'")
 	assert(struct["pipelineId"], "Expected key pipelineId to exist in table")
-	if struct["parameterValues"] then M.AssertParameterValueList(struct["parameterValues"]) end
-	if struct["startTimestamp"] then M.Asserttimestamp(struct["startTimestamp"]) end
-	if struct["pipelineId"] then M.Assertid(struct["pipelineId"]) end
+	if struct["parameterValues"] then asserts.AssertParameterValueList(struct["parameterValues"]) end
+	if struct["startTimestamp"] then asserts.Asserttimestamp(struct["startTimestamp"]) end
+	if struct["pipelineId"] then asserts.Assertid(struct["pipelineId"]) end
 	for k,_ in pairs(struct) do
-		assert(ActivatePipelineInput_keys[k], "ActivatePipelineInput contains unknown key " .. tostring(k))
+		assert(keys.ActivatePipelineInput[k], "ActivatePipelineInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ActivatePipelineInput
 -- <p>Contains the parameters for ActivatePipeline.</p>
--- @param parameterValues [ParameterValueList] <p>A list of parameter values to pass to the pipeline at activation.</p>
--- @param startTimestamp [timestamp] <p>The date and time to resume the pipeline. By default, the pipeline resumes from the last completed execution.</p>
--- @param pipelineId [id] <p>The ID of the pipeline.</p>
+-- @param _parameterValues [ParameterValueList] <p>A list of parameter values to pass to the pipeline at activation.</p>
+-- @param _startTimestamp [timestamp] <p>The date and time to resume the pipeline. By default, the pipeline resumes from the last completed execution.</p>
+-- @param _pipelineId [id] <p>The ID of the pipeline.</p>
 -- Required parameter: pipelineId
-function M.ActivatePipelineInput(parameterValues, startTimestamp, pipelineId, ...)
+function M.ActivatePipelineInput(_parameterValues, _startTimestamp, _pipelineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivatePipelineInput")
 	local t = { 
-		["parameterValues"] = parameterValues,
-		["startTimestamp"] = startTimestamp,
-		["pipelineId"] = pipelineId,
+		["parameterValues"] = _parameterValues,
+		["startTimestamp"] = _startTimestamp,
+		["pipelineId"] = _pipelineId,
 	}
-	M.AssertActivatePipelineInput(t)
+	asserts.AssertActivatePipelineInput(t)
 	return t
 end
 
-function M.AsserttagKey(str)
+function asserts.AsserttagKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected tagKey to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -1612,24 +1615,23 @@ end
 
 --  
 function M.tagKey(str)
-	M.AsserttagKey(str)
+	asserts.AsserttagKey(str)
 	return str
 end
 
-function M.AssertfieldStringValue(str)
+function asserts.AssertfieldStringValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected fieldStringValue to be of type 'string'")
 	assert(#str <= 10240, "Expected string to be max 10240 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.fieldStringValue(str)
-	M.AssertfieldStringValue(str)
+	asserts.AssertfieldStringValue(str)
 	return str
 end
 
-function M.AsserttagValue(str)
+function asserts.AsserttagValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected tagValue to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -1637,414 +1639,406 @@ end
 
 --  
 function M.tagValue(str)
-	M.AsserttagValue(str)
+	asserts.AsserttagValue(str)
 	return str
 end
 
-function M.AssertfieldNameString(str)
+function asserts.AssertfieldNameString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected fieldNameString to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.fieldNameString(str)
-	M.AssertfieldNameString(str)
+	asserts.AssertfieldNameString(str)
 	return str
 end
 
-function M.AsserterrorMessage(str)
+function asserts.AsserterrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected errorMessage to be of type 'string'")
 end
 
 --  
 function M.errorMessage(str)
-	M.AsserterrorMessage(str)
+	asserts.AsserterrorMessage(str)
 	return str
 end
 
-function M.AssertTaskStatus(str)
+function asserts.AssertTaskStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected TaskStatus to be of type 'string'")
 end
 
 --  
 function M.TaskStatus(str)
-	M.AssertTaskStatus(str)
+	asserts.AssertTaskStatus(str)
 	return str
 end
 
-function M.AssertvalidationMessage(str)
+function asserts.AssertvalidationMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected validationMessage to be of type 'string'")
 	assert(#str <= 10000, "Expected string to be max 10000 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.validationMessage(str)
-	M.AssertvalidationMessage(str)
+	asserts.AssertvalidationMessage(str)
 	return str
 end
 
-function M.AsserttaskId(str)
+function asserts.AsserttaskId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected taskId to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.taskId(str)
-	M.AsserttaskId(str)
+	asserts.AsserttaskId(str)
 	return str
 end
 
-function M.AssertOperatorType(str)
+function asserts.AssertOperatorType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OperatorType to be of type 'string'")
 end
 
 --  
 function M.OperatorType(str)
-	M.AssertOperatorType(str)
+	asserts.AssertOperatorType(str)
 	return str
 end
 
-function M.AssertattributeNameString(str)
+function asserts.AssertattributeNameString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected attributeNameString to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.attributeNameString(str)
-	M.AssertattributeNameString(str)
+	asserts.AssertattributeNameString(str)
 	return str
 end
 
-function M.AssertattributeValueString(str)
+function asserts.AssertattributeValueString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected attributeValueString to be of type 'string'")
 	assert(#str <= 10240, "Expected string to be max 10240 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.attributeValueString(str)
-	M.AssertattributeValueString(str)
+	asserts.AssertattributeValueString(str)
 	return str
 end
 
-function M.Assertid(str)
+function asserts.Assertid(str)
 	assert(str)
 	assert(type(str) == "string", "Expected id to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.id(str)
-	M.Assertid(str)
+	asserts.Assertid(str)
 	return str
 end
 
-function M.Assertstring(str)
+function asserts.Assertstring(str)
 	assert(str)
 	assert(type(str) == "string", "Expected string to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.string(str)
-	M.Assertstring(str)
+	asserts.Assertstring(str)
 	return str
 end
 
-function M.AssertlongString(str)
+function asserts.AssertlongString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected longString to be of type 'string'")
 	assert(#str <= 20971520, "Expected string to be max 20971520 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.longString(str)
-	M.AssertlongString(str)
+	asserts.AssertlongString(str)
 	return str
 end
 
-function M.Assertint(integer)
+function asserts.Assertint(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected int to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.int(integer)
-	M.Assertint(integer)
+	asserts.Assertint(integer)
 	return integer
 end
 
-function M.AssertcancelActive(boolean)
+function asserts.AssertcancelActive(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected cancelActive to be of type 'boolean'")
 end
 
 function M.cancelActive(boolean)
-	M.AssertcancelActive(boolean)
+	asserts.AssertcancelActive(boolean)
 	return boolean
 end
 
-function M.Assertboolean(boolean)
+function asserts.Assertboolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected boolean to be of type 'boolean'")
 end
 
 function M.boolean(boolean)
-	M.Assertboolean(boolean)
+	asserts.Assertboolean(boolean)
 	return boolean
 end
 
-function M.AssertPipelineObjectMap(map)
+function asserts.AssertPipelineObjectMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected PipelineObjectMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.Assertid(k)
-		M.AssertPipelineObject(v)
+		asserts.Assertid(k)
+		asserts.AssertPipelineObject(v)
 	end
 end
 
 function M.PipelineObjectMap(map)
-	M.AssertPipelineObjectMap(map)
+	asserts.AssertPipelineObjectMap(map)
 	return map
 end
 
-function M.Asserttimestamp(timestamp)
+function asserts.Asserttimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected timestamp to be of type 'string'")
 end
 
 function M.timestamp(timestamp)
-	M.Asserttimestamp(timestamp)
+	asserts.Asserttimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertpipelineList(list)
+function asserts.AssertpipelineList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected pipelineList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPipelineIdName(v)
+		asserts.AssertPipelineIdName(v)
 	end
 end
 
 --  
 -- List of PipelineIdName objects
 function M.pipelineList(list)
-	M.AssertpipelineList(list)
+	asserts.AssertpipelineList(list)
 	return list
 end
 
-function M.AsserttagList(list)
+function asserts.AsserttagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected tagList to be of type ''table")
 	assert(#list <= 10, "Expected list to be contain 10 elements")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.tagList(list)
-	M.AsserttagList(list)
+	asserts.AsserttagList(list)
 	return list
 end
 
-function M.AssertParameterAttributeList(list)
+function asserts.AssertParameterAttributeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ParameterAttributeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertParameterAttribute(v)
+		asserts.AssertParameterAttribute(v)
 	end
 end
 
 --  
 -- List of ParameterAttribute objects
 function M.ParameterAttributeList(list)
-	M.AssertParameterAttributeList(list)
+	asserts.AssertParameterAttributeList(list)
 	return list
 end
 
-function M.AssertSelectorList(list)
+function asserts.AssertSelectorList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SelectorList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSelector(v)
+		asserts.AssertSelector(v)
 	end
 end
 
 -- <p>The list of Selectors that define queries on individual fields.</p>
 -- List of Selector objects
 function M.SelectorList(list)
-	M.AssertSelectorList(list)
+	asserts.AssertSelectorList(list)
 	return list
 end
 
-function M.AssertParameterValueList(list)
+function asserts.AssertParameterValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ParameterValueList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertParameterValue(v)
+		asserts.AssertParameterValue(v)
 	end
 end
 
 --  
 -- List of ParameterValue objects
 function M.ParameterValueList(list)
-	M.AssertParameterValueList(list)
+	asserts.AssertParameterValueList(list)
 	return list
 end
 
-function M.AssertfieldList(list)
+function asserts.AssertfieldList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected fieldList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertField(v)
+		asserts.AssertField(v)
 	end
 end
 
 --  
 -- List of Field objects
 function M.fieldList(list)
-	M.AssertfieldList(list)
+	asserts.AssertfieldList(list)
 	return list
 end
 
-function M.AssertParameterObjectList(list)
+function asserts.AssertParameterObjectList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ParameterObjectList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertParameterObject(v)
+		asserts.AssertParameterObject(v)
 	end
 end
 
 --  
 -- List of ParameterObject objects
 function M.ParameterObjectList(list)
-	M.AssertParameterObjectList(list)
+	asserts.AssertParameterObjectList(list)
 	return list
 end
 
-function M.AssertPipelineObjectList(list)
+function asserts.AssertPipelineObjectList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PipelineObjectList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPipelineObject(v)
+		asserts.AssertPipelineObject(v)
 	end
 end
 
 --  
 -- List of PipelineObject objects
 function M.PipelineObjectList(list)
-	M.AssertPipelineObjectList(list)
+	asserts.AssertPipelineObjectList(list)
 	return list
 end
 
-function M.AssertValidationWarnings(list)
+function asserts.AssertValidationWarnings(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ValidationWarnings to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertValidationWarning(v)
+		asserts.AssertValidationWarning(v)
 	end
 end
 
 --  
 -- List of ValidationWarning objects
 function M.ValidationWarnings(list)
-	M.AssertValidationWarnings(list)
+	asserts.AssertValidationWarnings(list)
 	return list
 end
 
-function M.AssertValidationErrors(list)
+function asserts.AssertValidationErrors(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ValidationErrors to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertValidationError(v)
+		asserts.AssertValidationError(v)
 	end
 end
 
 --  
 -- List of ValidationError objects
 function M.ValidationErrors(list)
-	M.AssertValidationErrors(list)
+	asserts.AssertValidationErrors(list)
 	return list
 end
 
-function M.AssertstringList(list)
+function asserts.AssertstringList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected stringList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.Assertstring(v)
+		asserts.Assertstring(v)
 	end
 end
 
 --  
 -- List of string objects
 function M.stringList(list)
-	M.AssertstringList(list)
+	asserts.AssertstringList(list)
 	return list
 end
 
-function M.AssertPipelineDescriptionList(list)
+function asserts.AssertPipelineDescriptionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected PipelineDescriptionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertPipelineDescription(v)
+		asserts.AssertPipelineDescription(v)
 	end
 end
 
 --  
 -- List of PipelineDescription objects
 function M.PipelineDescriptionList(list)
-	M.AssertPipelineDescriptionList(list)
+	asserts.AssertPipelineDescriptionList(list)
 	return list
 end
 
-function M.AssertidList(list)
+function asserts.AssertidList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected idList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.Assertid(v)
+		asserts.Assertid(v)
 	end
 end
 
 --  
 -- List of id objects
 function M.idList(list)
-	M.AssertidList(list)
+	asserts.AssertidList(list)
 	return list
 end
 
-function M.AssertvalidationMessages(list)
+function asserts.AssertvalidationMessages(list)
 	assert(list)
 	assert(type(list) == "table", "Expected validationMessages to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertvalidationMessage(v)
+		asserts.AssertvalidationMessage(v)
 	end
 end
 
 --  
 -- List of validationMessage objects
 function M.validationMessages(list)
-	M.AssertvalidationMessages(list)
+	asserts.AssertvalidationMessages(list)
 	return list
 end
 

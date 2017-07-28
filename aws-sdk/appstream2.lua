@@ -18,39 +18,42 @@ M.metadata = {
 	uid = "appstream-2016-12-01",
 }
 
-local ListAssociatedStacksResult_keys = { "NextToken" = true, "Names" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertListAssociatedStacksResult(struct)
+keys.ListAssociatedStacksResult = { ["NextToken"] = true, ["Names"] = true, nil }
+
+function asserts.AssertListAssociatedStacksResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssociatedStacksResult to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["Names"] then M.AssertStringList(struct["Names"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["Names"] then asserts.AssertStringList(struct["Names"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssociatedStacksResult_keys[k], "ListAssociatedStacksResult contains unknown key " .. tostring(k))
+		assert(keys.ListAssociatedStacksResult[k], "ListAssociatedStacksResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssociatedStacksResult
 -- <p>The response from a successful operation.</p>
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param Names [StringList] <p>The names of associated stacks.</p>
-function M.ListAssociatedStacksResult(NextToken, Names, ...)
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param _Names [StringList] <p>The names of associated stacks.</p>
+function M.ListAssociatedStacksResult(_NextToken, _Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedStacksResult")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Names"] = Names,
+		["NextToken"] = _NextToken,
+		["Names"] = _Names,
 	}
-	M.AssertListAssociatedStacksResult(t)
+	asserts.AssertListAssociatedStacksResult(t)
 	return t
 end
 
-local StopFleetResult_keys = { nil }
+keys.StopFleetResult = { nil }
 
-function M.AssertStopFleetResult(struct)
+function asserts.AssertStopFleetResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopFleetResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(StopFleetResult_keys[k], "StopFleetResult contains unknown key " .. tostring(k))
+		assert(keys.StopFleetResult[k], "StopFleetResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -60,191 +63,191 @@ function M.StopFleetResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopFleetResult")
 	local t = { 
 	}
-	M.AssertStopFleetResult(t)
+	asserts.AssertStopFleetResult(t)
 	return t
 end
 
-local DescribeImagesResult_keys = { "Images" = true, nil }
+keys.DescribeImagesResult = { ["Images"] = true, nil }
 
-function M.AssertDescribeImagesResult(struct)
+function asserts.AssertDescribeImagesResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeImagesResult to be of type 'table'")
-	if struct["Images"] then M.AssertImageList(struct["Images"]) end
+	if struct["Images"] then asserts.AssertImageList(struct["Images"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeImagesResult_keys[k], "DescribeImagesResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeImagesResult[k], "DescribeImagesResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeImagesResult
 --  
--- @param Images [ImageList] <p>The list of images.</p>
-function M.DescribeImagesResult(Images, ...)
+-- @param _Images [ImageList] <p>The list of images.</p>
+function M.DescribeImagesResult(_Images, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesResult")
 	local t = { 
-		["Images"] = Images,
+		["Images"] = _Images,
 	}
-	M.AssertDescribeImagesResult(t)
+	asserts.AssertDescribeImagesResult(t)
 	return t
 end
 
-local OperationNotPermittedException_keys = { "Message" = true, nil }
+keys.OperationNotPermittedException = { ["Message"] = true, nil }
 
-function M.AssertOperationNotPermittedException(struct)
+function asserts.AssertOperationNotPermittedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected OperationNotPermittedException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(OperationNotPermittedException_keys[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
+		assert(keys.OperationNotPermittedException[k], "OperationNotPermittedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type OperationNotPermittedException
 -- <p>The attempted operation is not permitted.</p>
--- @param Message [ErrorMessage] <p>The attempted operation is not permitted.</p>
-function M.OperationNotPermittedException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.OperationNotPermittedException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertOperationNotPermittedException(t)
+	asserts.AssertOperationNotPermittedException(t)
 	return t
 end
 
-local DeleteFleetRequest_keys = { "Name" = true, nil }
+keys.DeleteFleetRequest = { ["Name"] = true, nil }
 
-function M.AssertDeleteFleetRequest(struct)
+function asserts.AssertDeleteFleetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFleetRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteFleetRequest_keys[k], "DeleteFleetRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteFleetRequest[k], "DeleteFleetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteFleetRequest
 --  
--- @param Name [String] <p>The name of the fleet to be deleted.</p>
+-- @param _Name [String] <p>The name of the fleet to be deleted.</p>
 -- Required parameter: Name
-function M.DeleteFleetRequest(Name, ...)
+function M.DeleteFleetRequest(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFleetRequest")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteFleetRequest(t)
+	asserts.AssertDeleteFleetRequest(t)
 	return t
 end
 
-local CreateStackRequest_keys = { "DisplayName" = true, "Name" = true, "StorageConnectors" = true, "Description" = true, nil }
+keys.CreateStackRequest = { ["DisplayName"] = true, ["Name"] = true, ["StorageConnectors"] = true, ["Description"] = true, nil }
 
-function M.AssertCreateStackRequest(struct)
+function asserts.AssertCreateStackRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateStackRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["DisplayName"] then M.AssertDisplayName(struct["DisplayName"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["StorageConnectors"] then M.AssertStorageConnectorList(struct["StorageConnectors"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
+	if struct["DisplayName"] then asserts.AssertDisplayName(struct["DisplayName"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["StorageConnectors"] then asserts.AssertStorageConnectorList(struct["StorageConnectors"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateStackRequest_keys[k], "CreateStackRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateStackRequest[k], "CreateStackRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateStackRequest
 --  
--- @param DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
--- @param Name [String] <p>The unique identifier for this stack.</p>
--- @param StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
--- @param Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- @param _DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- @param _Name [String] <p>The unique identifier for this stack.</p>
+-- @param _StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- @param _Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
 -- Required parameter: Name
-function M.CreateStackRequest(DisplayName, Name, StorageConnectors, Description, ...)
+function M.CreateStackRequest(_DisplayName, _Name, _StorageConnectors, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackRequest")
 	local t = { 
-		["DisplayName"] = DisplayName,
-		["Name"] = Name,
-		["StorageConnectors"] = StorageConnectors,
-		["Description"] = Description,
+		["DisplayName"] = _DisplayName,
+		["Name"] = _Name,
+		["StorageConnectors"] = _StorageConnectors,
+		["Description"] = _Description,
 	}
-	M.AssertCreateStackRequest(t)
+	asserts.AssertCreateStackRequest(t)
 	return t
 end
 
-local DescribeSessionsResult_keys = { "NextToken" = true, "Sessions" = true, nil }
+keys.DescribeSessionsResult = { ["NextToken"] = true, ["Sessions"] = true, nil }
 
-function M.AssertDescribeSessionsResult(struct)
+function asserts.AssertDescribeSessionsResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSessionsResult to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["Sessions"] then M.AssertSessionList(struct["Sessions"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["Sessions"] then asserts.AssertSessionList(struct["Sessions"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSessionsResult_keys[k], "DescribeSessionsResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeSessionsResult[k], "DescribeSessionsResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSessionsResult
 --  
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param Sessions [SessionList] <p>The list of streaming sessions.</p>
-function M.DescribeSessionsResult(NextToken, Sessions, ...)
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param _Sessions [SessionList] <p>The list of streaming sessions.</p>
+function M.DescribeSessionsResult(_NextToken, _Sessions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSessionsResult")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Sessions"] = Sessions,
+		["NextToken"] = _NextToken,
+		["Sessions"] = _Sessions,
 	}
-	M.AssertDescribeSessionsResult(t)
+	asserts.AssertDescribeSessionsResult(t)
 	return t
 end
 
-local Stack_keys = { "DisplayName" = true, "Name" = true, "StorageConnectors" = true, "StackErrors" = true, "CreatedTime" = true, "Arn" = true, "Description" = true, nil }
+keys.Stack = { ["DisplayName"] = true, ["Name"] = true, ["StorageConnectors"] = true, ["StackErrors"] = true, ["CreatedTime"] = true, ["Arn"] = true, ["Description"] = true, nil }
 
-function M.AssertStack(struct)
+function asserts.AssertStack(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Stack to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["DisplayName"] then M.AssertString(struct["DisplayName"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["StorageConnectors"] then M.AssertStorageConnectorList(struct["StorageConnectors"]) end
-	if struct["StackErrors"] then M.AssertStackErrors(struct["StackErrors"]) end
-	if struct["CreatedTime"] then M.AssertTimestamp(struct["CreatedTime"]) end
-	if struct["Arn"] then M.AssertArn(struct["Arn"]) end
-	if struct["Description"] then M.AssertString(struct["Description"]) end
+	if struct["DisplayName"] then asserts.AssertString(struct["DisplayName"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["StorageConnectors"] then asserts.AssertStorageConnectorList(struct["StorageConnectors"]) end
+	if struct["StackErrors"] then asserts.AssertStackErrors(struct["StackErrors"]) end
+	if struct["CreatedTime"] then asserts.AssertTimestamp(struct["CreatedTime"]) end
+	if struct["Arn"] then asserts.AssertArn(struct["Arn"]) end
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(Stack_keys[k], "Stack contains unknown key " .. tostring(k))
+		assert(keys.Stack[k], "Stack contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Stack
 -- <p>Details about a stack.</p>
--- @param DisplayName [String] <p>A display name for the stack.</p>
--- @param Name [String] <p>The unique identifier of the stack.</p>
--- @param StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
--- @param StackErrors [StackErrors] <p>The list of errors associated with the stack.</p>
--- @param CreatedTime [Timestamp] <p>The timestamp when the stack was created.</p>
--- @param Arn [Arn] <p>The ARN of the stack.</p>
--- @param Description [String] <p>A meaningful description for the stack.</p>
+-- @param _DisplayName [String] <p>A display name for the stack.</p>
+-- @param _Name [String] <p>The unique identifier of the stack.</p>
+-- @param _StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- @param _StackErrors [StackErrors] <p>The list of errors associated with the stack.</p>
+-- @param _CreatedTime [Timestamp] <p>The timestamp when the stack was created.</p>
+-- @param _Arn [Arn] <p>The ARN of the stack.</p>
+-- @param _Description [String] <p>A meaningful description for the stack.</p>
 -- Required parameter: Name
-function M.Stack(DisplayName, Name, StorageConnectors, StackErrors, CreatedTime, Arn, Description, ...)
+function M.Stack(_DisplayName, _Name, _StorageConnectors, _StackErrors, _CreatedTime, _Arn, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Stack")
 	local t = { 
-		["DisplayName"] = DisplayName,
-		["Name"] = Name,
-		["StorageConnectors"] = StorageConnectors,
-		["StackErrors"] = StackErrors,
-		["CreatedTime"] = CreatedTime,
-		["Arn"] = Arn,
-		["Description"] = Description,
+		["DisplayName"] = _DisplayName,
+		["Name"] = _Name,
+		["StorageConnectors"] = _StorageConnectors,
+		["StackErrors"] = _StackErrors,
+		["CreatedTime"] = _CreatedTime,
+		["Arn"] = _Arn,
+		["Description"] = _Description,
 	}
-	M.AssertStack(t)
+	asserts.AssertStack(t)
 	return t
 end
 
-local StartFleetResult_keys = { nil }
+keys.StartFleetResult = { nil }
 
-function M.AssertStartFleetResult(struct)
+function asserts.AssertStartFleetResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartFleetResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(StartFleetResult_keys[k], "StartFleetResult contains unknown key " .. tostring(k))
+		assert(keys.StartFleetResult[k], "StartFleetResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -254,233 +257,233 @@ function M.StartFleetResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartFleetResult")
 	local t = { 
 	}
-	M.AssertStartFleetResult(t)
+	asserts.AssertStartFleetResult(t)
 	return t
 end
 
-local ComputeCapacityStatus_keys = { "Available" = true, "Desired" = true, "Running" = true, "InUse" = true, nil }
+keys.ComputeCapacityStatus = { ["Available"] = true, ["Desired"] = true, ["Running"] = true, ["InUse"] = true, nil }
 
-function M.AssertComputeCapacityStatus(struct)
+function asserts.AssertComputeCapacityStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ComputeCapacityStatus to be of type 'table'")
 	assert(struct["Desired"], "Expected key Desired to exist in table")
-	if struct["Available"] then M.AssertInteger(struct["Available"]) end
-	if struct["Desired"] then M.AssertInteger(struct["Desired"]) end
-	if struct["Running"] then M.AssertInteger(struct["Running"]) end
-	if struct["InUse"] then M.AssertInteger(struct["InUse"]) end
+	if struct["Available"] then asserts.AssertInteger(struct["Available"]) end
+	if struct["Desired"] then asserts.AssertInteger(struct["Desired"]) end
+	if struct["Running"] then asserts.AssertInteger(struct["Running"]) end
+	if struct["InUse"] then asserts.AssertInteger(struct["InUse"]) end
 	for k,_ in pairs(struct) do
-		assert(ComputeCapacityStatus_keys[k], "ComputeCapacityStatus contains unknown key " .. tostring(k))
+		assert(keys.ComputeCapacityStatus[k], "ComputeCapacityStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ComputeCapacityStatus
 -- <p>The capacity information for the fleet.</p>
--- @param Available [Integer] <p>The number of currently available instances that can be used to stream sessions.</p>
--- @param Desired [Integer] <p>The desired number of streaming instances.</p>
--- @param Running [Integer] <p>The total number of simultaneous streaming instances that are running.</p>
--- @param InUse [Integer] <p>The number of instances that are being used for streaming.</p>
+-- @param _Available [Integer] <p>The number of currently available instances that can be used to stream sessions.</p>
+-- @param _Desired [Integer] <p>The desired number of streaming instances.</p>
+-- @param _Running [Integer] <p>The total number of simultaneous streaming instances that are running.</p>
+-- @param _InUse [Integer] <p>The number of instances that are being used for streaming.</p>
 -- Required parameter: Desired
-function M.ComputeCapacityStatus(Available, Desired, Running, InUse, ...)
+function M.ComputeCapacityStatus(_Available, _Desired, _Running, _InUse, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComputeCapacityStatus")
 	local t = { 
-		["Available"] = Available,
-		["Desired"] = Desired,
-		["Running"] = Running,
-		["InUse"] = InUse,
+		["Available"] = _Available,
+		["Desired"] = _Desired,
+		["Running"] = _Running,
+		["InUse"] = _InUse,
 	}
-	M.AssertComputeCapacityStatus(t)
+	asserts.AssertComputeCapacityStatus(t)
 	return t
 end
 
-local LimitExceededException_keys = { "Message" = true, nil }
+keys.LimitExceededException = { ["Message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>The requested limit exceeds the permitted limit for an account.</p>
--- @param Message [ErrorMessage] <p>The requested limit exceeds the permitted limit for an account.</p>
-function M.LimitExceededException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.LimitExceededException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local ConcurrentModificationException_keys = { "Message" = true, nil }
+keys.ConcurrentModificationException = { ["Message"] = true, nil }
 
-function M.AssertConcurrentModificationException(struct)
+function asserts.AssertConcurrentModificationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConcurrentModificationException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ConcurrentModificationException_keys[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
+		assert(keys.ConcurrentModificationException[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>An API error occurred. Wait a few minutes and try again.</p>
--- @param Message [ErrorMessage] <p>An API error occurred. Wait a few minutes and try again.</p>
-function M.ConcurrentModificationException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.ConcurrentModificationException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertConcurrentModificationException(t)
+	asserts.AssertConcurrentModificationException(t)
 	return t
 end
 
-local StartFleetRequest_keys = { "Name" = true, nil }
+keys.StartFleetRequest = { ["Name"] = true, nil }
 
-function M.AssertStartFleetRequest(struct)
+function asserts.AssertStartFleetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StartFleetRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(StartFleetRequest_keys[k], "StartFleetRequest contains unknown key " .. tostring(k))
+		assert(keys.StartFleetRequest[k], "StartFleetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StartFleetRequest
 --  
--- @param Name [String] <p>The name of the fleet to start.</p>
+-- @param _Name [String] <p>The name of the fleet to start.</p>
 -- Required parameter: Name
-function M.StartFleetRequest(Name, ...)
+function M.StartFleetRequest(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartFleetRequest")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertStartFleetRequest(t)
+	asserts.AssertStartFleetRequest(t)
 	return t
 end
 
-local DescribeStacksRequest_keys = { "NextToken" = true, "Names" = true, nil }
+keys.DescribeStacksRequest = { ["NextToken"] = true, ["Names"] = true, nil }
 
-function M.AssertDescribeStacksRequest(struct)
+function asserts.AssertDescribeStacksRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeStacksRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["Names"] then M.AssertStringList(struct["Names"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["Names"] then asserts.AssertStringList(struct["Names"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeStacksRequest_keys[k], "DescribeStacksRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeStacksRequest[k], "DescribeStacksRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeStacksRequest
 --  
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
--- @param Names [StringList] <p>The stack names to describe. Use null to describe all the stacks for the AWS account.</p>
-function M.DescribeStacksRequest(NextToken, Names, ...)
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- @param _Names [StringList] <p>The stack names to describe. Use null to describe all the stacks for the AWS account.</p>
+function M.DescribeStacksRequest(_NextToken, _Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Names"] = Names,
+		["NextToken"] = _NextToken,
+		["Names"] = _Names,
 	}
-	M.AssertDescribeStacksRequest(t)
+	asserts.AssertDescribeStacksRequest(t)
 	return t
 end
 
-local CreateStreamingURLRequest_keys = { "FleetName" = true, "UserId" = true, "Validity" = true, "StackName" = true, "SessionContext" = true, "ApplicationId" = true, nil }
+keys.CreateStreamingURLRequest = { ["FleetName"] = true, ["UserId"] = true, ["Validity"] = true, ["StackName"] = true, ["SessionContext"] = true, ["ApplicationId"] = true, nil }
 
-function M.AssertCreateStreamingURLRequest(struct)
+function asserts.AssertCreateStreamingURLRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateStreamingURLRequest to be of type 'table'")
 	assert(struct["StackName"], "Expected key StackName to exist in table")
 	assert(struct["FleetName"], "Expected key FleetName to exist in table")
 	assert(struct["UserId"], "Expected key UserId to exist in table")
-	if struct["FleetName"] then M.AssertString(struct["FleetName"]) end
-	if struct["UserId"] then M.AssertUserId(struct["UserId"]) end
-	if struct["Validity"] then M.AssertLong(struct["Validity"]) end
-	if struct["StackName"] then M.AssertString(struct["StackName"]) end
-	if struct["SessionContext"] then M.AssertString(struct["SessionContext"]) end
-	if struct["ApplicationId"] then M.AssertString(struct["ApplicationId"]) end
+	if struct["FleetName"] then asserts.AssertString(struct["FleetName"]) end
+	if struct["UserId"] then asserts.AssertUserId(struct["UserId"]) end
+	if struct["Validity"] then asserts.AssertLong(struct["Validity"]) end
+	if struct["StackName"] then asserts.AssertString(struct["StackName"]) end
+	if struct["SessionContext"] then asserts.AssertString(struct["SessionContext"]) end
+	if struct["ApplicationId"] then asserts.AssertString(struct["ApplicationId"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateStreamingURLRequest_keys[k], "CreateStreamingURLRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateStreamingURLRequest[k], "CreateStreamingURLRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateStreamingURLRequest
 --  
--- @param FleetName [String] <p>The fleet for which the URL is generated.</p>
--- @param UserId [UserId] <p>A unique user ID for whom the URL is generated.</p>
--- @param Validity [Long] <p>The duration up to which the URL returned by this action is valid. The input can be any numeric value in seconds between 1 and 604800 seconds.</p>
--- @param StackName [String] <p>The stack for which the URL is generated.</p>
--- @param SessionContext [String] <p>The sessionContext of the streaming URL.</p>
--- @param ApplicationId [String] <p>The ID of the application that must be launched after the session starts.</p>
+-- @param _FleetName [String] <p>The fleet for which the URL is generated.</p>
+-- @param _UserId [UserId] <p>A unique user ID for whom the URL is generated.</p>
+-- @param _Validity [Long] <p>The duration up to which the URL returned by this action is valid. The input can be any numeric value in seconds between 1 and 604800 seconds.</p>
+-- @param _StackName [String] <p>The stack for which the URL is generated.</p>
+-- @param _SessionContext [String] <p>The sessionContext of the streaming URL.</p>
+-- @param _ApplicationId [String] <p>The ID of the application that must be launched after the session starts.</p>
 -- Required parameter: StackName
 -- Required parameter: FleetName
 -- Required parameter: UserId
-function M.CreateStreamingURLRequest(FleetName, UserId, Validity, StackName, SessionContext, ApplicationId, ...)
+function M.CreateStreamingURLRequest(_FleetName, _UserId, _Validity, _StackName, _SessionContext, _ApplicationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingURLRequest")
 	local t = { 
-		["FleetName"] = FleetName,
-		["UserId"] = UserId,
-		["Validity"] = Validity,
-		["StackName"] = StackName,
-		["SessionContext"] = SessionContext,
-		["ApplicationId"] = ApplicationId,
+		["FleetName"] = _FleetName,
+		["UserId"] = _UserId,
+		["Validity"] = _Validity,
+		["StackName"] = _StackName,
+		["SessionContext"] = _SessionContext,
+		["ApplicationId"] = _ApplicationId,
 	}
-	M.AssertCreateStreamingURLRequest(t)
+	asserts.AssertCreateStreamingURLRequest(t)
 	return t
 end
 
-local Application_keys = { "DisplayName" = true, "Name" = true, "LaunchParameters" = true, "Enabled" = true, "IconURL" = true, "LaunchPath" = true, "Metadata" = true, nil }
+keys.Application = { ["DisplayName"] = true, ["Name"] = true, ["LaunchParameters"] = true, ["Enabled"] = true, ["IconURL"] = true, ["LaunchPath"] = true, ["Metadata"] = true, nil }
 
-function M.AssertApplication(struct)
+function asserts.AssertApplication(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Application to be of type 'table'")
-	if struct["DisplayName"] then M.AssertString(struct["DisplayName"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["LaunchParameters"] then M.AssertString(struct["LaunchParameters"]) end
-	if struct["Enabled"] then M.AssertBoolean(struct["Enabled"]) end
-	if struct["IconURL"] then M.AssertString(struct["IconURL"]) end
-	if struct["LaunchPath"] then M.AssertString(struct["LaunchPath"]) end
-	if struct["Metadata"] then M.AssertMetadata(struct["Metadata"]) end
+	if struct["DisplayName"] then asserts.AssertString(struct["DisplayName"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["LaunchParameters"] then asserts.AssertString(struct["LaunchParameters"]) end
+	if struct["Enabled"] then asserts.AssertBoolean(struct["Enabled"]) end
+	if struct["IconURL"] then asserts.AssertString(struct["IconURL"]) end
+	if struct["LaunchPath"] then asserts.AssertString(struct["LaunchPath"]) end
+	if struct["Metadata"] then asserts.AssertMetadata(struct["Metadata"]) end
 	for k,_ in pairs(struct) do
-		assert(Application_keys[k], "Application contains unknown key " .. tostring(k))
+		assert(keys.Application[k], "Application contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Application
 -- <p>An entry for a single application in the application catalog.</p>
--- @param DisplayName [String] <p>The name of the application shown to the end users.</p>
--- @param Name [String] <p>The unique identifier for the application.</p>
--- @param LaunchParameters [String] <p>A list of arguments that are passed to the application at launch.</p>
--- @param Enabled [Boolean] <p>An application can be disabled after image creation if there is a problem.</p>
--- @param IconURL [String] <p>The URL for the application icon. This URL may be time-limited.</p>
--- @param LaunchPath [String] <p>The path to the application executable in the instance.</p>
--- @param Metadata [Metadata] <p>Additional attributes that describe the application.</p>
-function M.Application(DisplayName, Name, LaunchParameters, Enabled, IconURL, LaunchPath, Metadata, ...)
+-- @param _DisplayName [String] <p>The name of the application shown to the end users.</p>
+-- @param _Name [String] <p>The unique identifier for the application.</p>
+-- @param _LaunchParameters [String] <p>A list of arguments that are passed to the application at launch.</p>
+-- @param _Enabled [Boolean] <p>An application can be disabled after image creation if there is a problem.</p>
+-- @param _IconURL [String] <p>The URL for the application icon. This URL may be time-limited.</p>
+-- @param _LaunchPath [String] <p>The path to the application executable in the instance.</p>
+-- @param _Metadata [Metadata] <p>Additional attributes that describe the application.</p>
+function M.Application(_DisplayName, _Name, _LaunchParameters, _Enabled, _IconURL, _LaunchPath, _Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Application")
 	local t = { 
-		["DisplayName"] = DisplayName,
-		["Name"] = Name,
-		["LaunchParameters"] = LaunchParameters,
-		["Enabled"] = Enabled,
-		["IconURL"] = IconURL,
-		["LaunchPath"] = LaunchPath,
-		["Metadata"] = Metadata,
+		["DisplayName"] = _DisplayName,
+		["Name"] = _Name,
+		["LaunchParameters"] = _LaunchParameters,
+		["Enabled"] = _Enabled,
+		["IconURL"] = _IconURL,
+		["LaunchPath"] = _LaunchPath,
+		["Metadata"] = _Metadata,
 	}
-	M.AssertApplication(t)
+	asserts.AssertApplication(t)
 	return t
 end
 
-local DisassociateFleetResult_keys = { nil }
+keys.DisassociateFleetResult = { nil }
 
-function M.AssertDisassociateFleetResult(struct)
+function asserts.AssertDisassociateFleetResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateFleetResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DisassociateFleetResult_keys[k], "DisassociateFleetResult contains unknown key " .. tostring(k))
+		assert(keys.DisassociateFleetResult[k], "DisassociateFleetResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -490,327 +493,327 @@ function M.DisassociateFleetResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateFleetResult")
 	local t = { 
 	}
-	M.AssertDisassociateFleetResult(t)
+	asserts.AssertDisassociateFleetResult(t)
 	return t
 end
 
-local UpdateStackRequest_keys = { "DeleteStorageConnectors" = true, "DisplayName" = true, "Description" = true, "StorageConnectors" = true, "Name" = true, nil }
+keys.UpdateStackRequest = { ["DeleteStorageConnectors"] = true, ["DisplayName"] = true, ["Description"] = true, ["StorageConnectors"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateStackRequest(struct)
+function asserts.AssertUpdateStackRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateStackRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["DeleteStorageConnectors"] then M.AssertBoolean(struct["DeleteStorageConnectors"]) end
-	if struct["DisplayName"] then M.AssertDisplayName(struct["DisplayName"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
-	if struct["StorageConnectors"] then M.AssertStorageConnectorList(struct["StorageConnectors"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["DeleteStorageConnectors"] then asserts.AssertBoolean(struct["DeleteStorageConnectors"]) end
+	if struct["DisplayName"] then asserts.AssertDisplayName(struct["DisplayName"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["StorageConnectors"] then asserts.AssertStorageConnectorList(struct["StorageConnectors"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateStackRequest_keys[k], "UpdateStackRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateStackRequest[k], "UpdateStackRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateStackRequest
 --  
--- @param DeleteStorageConnectors [Boolean] <p>Remove all the storage connectors currently enabled for the stack.</p>
--- @param DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
--- @param Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
--- @param StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
--- @param Name [String] <p>The name of the stack to update.</p>
+-- @param _DeleteStorageConnectors [Boolean] <p>Remove all the storage connectors currently enabled for the stack.</p>
+-- @param _DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- @param _Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- @param _StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- @param _Name [String] <p>The name of the stack to update.</p>
 -- Required parameter: Name
-function M.UpdateStackRequest(DeleteStorageConnectors, DisplayName, Description, StorageConnectors, Name, ...)
+function M.UpdateStackRequest(_DeleteStorageConnectors, _DisplayName, _Description, _StorageConnectors, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackRequest")
 	local t = { 
-		["DeleteStorageConnectors"] = DeleteStorageConnectors,
-		["DisplayName"] = DisplayName,
-		["Description"] = Description,
-		["StorageConnectors"] = StorageConnectors,
-		["Name"] = Name,
+		["DeleteStorageConnectors"] = _DeleteStorageConnectors,
+		["DisplayName"] = _DisplayName,
+		["Description"] = _Description,
+		["StorageConnectors"] = _StorageConnectors,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateStackRequest(t)
+	asserts.AssertUpdateStackRequest(t)
 	return t
 end
 
-local ListAssociatedFleetsResult_keys = { "NextToken" = true, "Names" = true, nil }
+keys.ListAssociatedFleetsResult = { ["NextToken"] = true, ["Names"] = true, nil }
 
-function M.AssertListAssociatedFleetsResult(struct)
+function asserts.AssertListAssociatedFleetsResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssociatedFleetsResult to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["Names"] then M.AssertStringList(struct["Names"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["Names"] then asserts.AssertStringList(struct["Names"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssociatedFleetsResult_keys[k], "ListAssociatedFleetsResult contains unknown key " .. tostring(k))
+		assert(keys.ListAssociatedFleetsResult[k], "ListAssociatedFleetsResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssociatedFleetsResult
 -- <p>The response from a successful operation.</p>
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param Names [StringList] <p>The names of associated fleets.</p>
-function M.ListAssociatedFleetsResult(NextToken, Names, ...)
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param _Names [StringList] <p>The names of associated fleets.</p>
+function M.ListAssociatedFleetsResult(_NextToken, _Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedFleetsResult")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Names"] = Names,
+		["NextToken"] = _NextToken,
+		["Names"] = _Names,
 	}
-	M.AssertListAssociatedFleetsResult(t)
+	asserts.AssertListAssociatedFleetsResult(t)
 	return t
 end
 
-local InvalidParameterCombinationException_keys = { "Message" = true, nil }
+keys.InvalidParameterCombinationException = { ["Message"] = true, nil }
 
-function M.AssertInvalidParameterCombinationException(struct)
+function asserts.AssertInvalidParameterCombinationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterCombinationException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterCombinationException_keys[k], "InvalidParameterCombinationException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterCombinationException[k], "InvalidParameterCombinationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterCombinationException
 -- <p>Indicates an incorrect combination of parameters, or a missing parameter.</p>
--- @param Message [ErrorMessage] <p>Indicates an incorrect combination of parameters, or a missing parameter.</p>
-function M.InvalidParameterCombinationException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.InvalidParameterCombinationException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterCombinationException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidParameterCombinationException(t)
+	asserts.AssertInvalidParameterCombinationException(t)
 	return t
 end
 
-local UpdateStackResult_keys = { "Stack" = true, nil }
+keys.UpdateStackResult = { ["Stack"] = true, nil }
 
-function M.AssertUpdateStackResult(struct)
+function asserts.AssertUpdateStackResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateStackResult to be of type 'table'")
-	if struct["Stack"] then M.AssertStack(struct["Stack"]) end
+	if struct["Stack"] then asserts.AssertStack(struct["Stack"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateStackResult_keys[k], "UpdateStackResult contains unknown key " .. tostring(k))
+		assert(keys.UpdateStackResult[k], "UpdateStackResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateStackResult
 --  
--- @param Stack [Stack] <p>A list of stack details.</p>
-function M.UpdateStackResult(Stack, ...)
+-- @param _Stack [Stack] <p>A list of stack details.</p>
+function M.UpdateStackResult(_Stack, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackResult")
 	local t = { 
-		["Stack"] = Stack,
+		["Stack"] = _Stack,
 	}
-	M.AssertUpdateStackResult(t)
+	asserts.AssertUpdateStackResult(t)
 	return t
 end
 
-local ComputeCapacity_keys = { "DesiredInstances" = true, nil }
+keys.ComputeCapacity = { ["DesiredInstances"] = true, nil }
 
-function M.AssertComputeCapacity(struct)
+function asserts.AssertComputeCapacity(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ComputeCapacity to be of type 'table'")
 	assert(struct["DesiredInstances"], "Expected key DesiredInstances to exist in table")
-	if struct["DesiredInstances"] then M.AssertInteger(struct["DesiredInstances"]) end
+	if struct["DesiredInstances"] then asserts.AssertInteger(struct["DesiredInstances"]) end
 	for k,_ in pairs(struct) do
-		assert(ComputeCapacity_keys[k], "ComputeCapacity contains unknown key " .. tostring(k))
+		assert(keys.ComputeCapacity[k], "ComputeCapacity contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ComputeCapacity
 -- <p>The capacity configuration for the fleet.</p>
--- @param DesiredInstances [Integer] <p>The desired number of streaming instances.</p>
+-- @param _DesiredInstances [Integer] <p>The desired number of streaming instances.</p>
 -- Required parameter: DesiredInstances
-function M.ComputeCapacity(DesiredInstances, ...)
+function M.ComputeCapacity(_DesiredInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComputeCapacity")
 	local t = { 
-		["DesiredInstances"] = DesiredInstances,
+		["DesiredInstances"] = _DesiredInstances,
 	}
-	M.AssertComputeCapacity(t)
+	asserts.AssertComputeCapacity(t)
 	return t
 end
 
-local ExpireSessionRequest_keys = { "SessionId" = true, nil }
+keys.ExpireSessionRequest = { ["SessionId"] = true, nil }
 
-function M.AssertExpireSessionRequest(struct)
+function asserts.AssertExpireSessionRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExpireSessionRequest to be of type 'table'")
 	assert(struct["SessionId"], "Expected key SessionId to exist in table")
-	if struct["SessionId"] then M.AssertString(struct["SessionId"]) end
+	if struct["SessionId"] then asserts.AssertString(struct["SessionId"]) end
 	for k,_ in pairs(struct) do
-		assert(ExpireSessionRequest_keys[k], "ExpireSessionRequest contains unknown key " .. tostring(k))
+		assert(keys.ExpireSessionRequest[k], "ExpireSessionRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExpireSessionRequest
 --  
--- @param SessionId [String] <p>The unique identifier of the streaming session to be stopped.</p>
+-- @param _SessionId [String] <p>The unique identifier of the streaming session to be stopped.</p>
 -- Required parameter: SessionId
-function M.ExpireSessionRequest(SessionId, ...)
+function M.ExpireSessionRequest(_SessionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpireSessionRequest")
 	local t = { 
-		["SessionId"] = SessionId,
+		["SessionId"] = _SessionId,
 	}
-	M.AssertExpireSessionRequest(t)
+	asserts.AssertExpireSessionRequest(t)
 	return t
 end
 
-local IncompatibleImageException_keys = { "Message" = true, nil }
+keys.IncompatibleImageException = { ["Message"] = true, nil }
 
-function M.AssertIncompatibleImageException(struct)
+function asserts.AssertIncompatibleImageException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IncompatibleImageException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(IncompatibleImageException_keys[k], "IncompatibleImageException contains unknown key " .. tostring(k))
+		assert(keys.IncompatibleImageException[k], "IncompatibleImageException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IncompatibleImageException
 -- <p>The image does not support storage connectors.</p>
--- @param Message [ErrorMessage] <p>The image does not support storage connectors.</p>
-function M.IncompatibleImageException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.IncompatibleImageException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncompatibleImageException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertIncompatibleImageException(t)
+	asserts.AssertIncompatibleImageException(t)
 	return t
 end
 
-local ResourceAlreadyExistsException_keys = { "Message" = true, nil }
+keys.ResourceAlreadyExistsException = { ["Message"] = true, nil }
 
-function M.AssertResourceAlreadyExistsException(struct)
+function asserts.AssertResourceAlreadyExistsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceAlreadyExistsException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceAlreadyExistsException_keys[k], "ResourceAlreadyExistsException contains unknown key " .. tostring(k))
+		assert(keys.ResourceAlreadyExistsException[k], "ResourceAlreadyExistsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceAlreadyExistsException
 -- <p>The specified resource already exists.</p>
--- @param Message [ErrorMessage] <p>The specified resource already exists.</p>
-function M.ResourceAlreadyExistsException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.ResourceAlreadyExistsException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertResourceAlreadyExistsException(t)
+	asserts.AssertResourceAlreadyExistsException(t)
 	return t
 end
 
-local DeleteStackRequest_keys = { "Name" = true, nil }
+keys.DeleteStackRequest = { ["Name"] = true, nil }
 
-function M.AssertDeleteStackRequest(struct)
+function asserts.AssertDeleteStackRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteStackRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteStackRequest_keys[k], "DeleteStackRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteStackRequest[k], "DeleteStackRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteStackRequest
 --  
--- @param Name [String] <p>The name of the stack to delete.</p>
+-- @param _Name [String] <p>The name of the stack to delete.</p>
 -- Required parameter: Name
-function M.DeleteStackRequest(Name, ...)
+function M.DeleteStackRequest(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStackRequest")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteStackRequest(t)
+	asserts.AssertDeleteStackRequest(t)
 	return t
 end
 
-local CreateStackResult_keys = { "Stack" = true, nil }
+keys.CreateStackResult = { ["Stack"] = true, nil }
 
-function M.AssertCreateStackResult(struct)
+function asserts.AssertCreateStackResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateStackResult to be of type 'table'")
-	if struct["Stack"] then M.AssertStack(struct["Stack"]) end
+	if struct["Stack"] then asserts.AssertStack(struct["Stack"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateStackResult_keys[k], "CreateStackResult contains unknown key " .. tostring(k))
+		assert(keys.CreateStackResult[k], "CreateStackResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateStackResult
 --  
--- @param Stack [Stack] <p>The details for the created stack.</p>
-function M.CreateStackResult(Stack, ...)
+-- @param _Stack [Stack] <p>The details for the created stack.</p>
+function M.CreateStackResult(_Stack, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackResult")
 	local t = { 
-		["Stack"] = Stack,
+		["Stack"] = _Stack,
 	}
-	M.AssertCreateStackResult(t)
+	asserts.AssertCreateStackResult(t)
 	return t
 end
 
-local Image_keys = { "PublicBaseImageReleasedDate" = true, "DisplayName" = true, "Name" = true, "Applications" = true, "BaseImageArn" = true, "Visibility" = true, "Platform" = true, "State" = true, "CreatedTime" = true, "Description" = true, "StateChangeReason" = true, "Arn" = true, "ImageBuilderSupported" = true, nil }
+keys.Image = { ["PublicBaseImageReleasedDate"] = true, ["DisplayName"] = true, ["Name"] = true, ["Applications"] = true, ["BaseImageArn"] = true, ["Visibility"] = true, ["Platform"] = true, ["State"] = true, ["CreatedTime"] = true, ["Description"] = true, ["StateChangeReason"] = true, ["Arn"] = true, ["ImageBuilderSupported"] = true, nil }
 
-function M.AssertImage(struct)
+function asserts.AssertImage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Image to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["PublicBaseImageReleasedDate"] then M.AssertTimestamp(struct["PublicBaseImageReleasedDate"]) end
-	if struct["DisplayName"] then M.AssertString(struct["DisplayName"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["Applications"] then M.AssertApplications(struct["Applications"]) end
-	if struct["BaseImageArn"] then M.AssertArn(struct["BaseImageArn"]) end
-	if struct["Visibility"] then M.AssertVisibilityType(struct["Visibility"]) end
-	if struct["Platform"] then M.AssertPlatformType(struct["Platform"]) end
-	if struct["State"] then M.AssertImageState(struct["State"]) end
-	if struct["CreatedTime"] then M.AssertTimestamp(struct["CreatedTime"]) end
-	if struct["Description"] then M.AssertString(struct["Description"]) end
-	if struct["StateChangeReason"] then M.AssertImageStateChangeReason(struct["StateChangeReason"]) end
-	if struct["Arn"] then M.AssertArn(struct["Arn"]) end
-	if struct["ImageBuilderSupported"] then M.AssertBoolean(struct["ImageBuilderSupported"]) end
+	if struct["PublicBaseImageReleasedDate"] then asserts.AssertTimestamp(struct["PublicBaseImageReleasedDate"]) end
+	if struct["DisplayName"] then asserts.AssertString(struct["DisplayName"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["Applications"] then asserts.AssertApplications(struct["Applications"]) end
+	if struct["BaseImageArn"] then asserts.AssertArn(struct["BaseImageArn"]) end
+	if struct["Visibility"] then asserts.AssertVisibilityType(struct["Visibility"]) end
+	if struct["Platform"] then asserts.AssertPlatformType(struct["Platform"]) end
+	if struct["State"] then asserts.AssertImageState(struct["State"]) end
+	if struct["CreatedTime"] then asserts.AssertTimestamp(struct["CreatedTime"]) end
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
+	if struct["StateChangeReason"] then asserts.AssertImageStateChangeReason(struct["StateChangeReason"]) end
+	if struct["Arn"] then asserts.AssertArn(struct["Arn"]) end
+	if struct["ImageBuilderSupported"] then asserts.AssertBoolean(struct["ImageBuilderSupported"]) end
 	for k,_ in pairs(struct) do
-		assert(Image_keys[k], "Image contains unknown key " .. tostring(k))
+		assert(keys.Image[k], "Image contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Image
 -- <p>New streaming instances are booted from images. The image stores the application catalog and is connected to fleets.</p>
--- @param PublicBaseImageReleasedDate [Timestamp] <p>The AWS release date of the public base image. For private images, this date is the release date of the base image from which the image was created.</p>
--- @param DisplayName [String] <p>The display name for the image.</p>
--- @param Name [String] <p>The unique identifier for the image.</p>
--- @param Applications [Applications] <p>The applications associated with an image.</p>
--- @param BaseImageArn [Arn] <p>The source image ARN from which this image was created.</p>
--- @param Visibility [VisibilityType] <p>The visibility of an image to the user; images can be public or private.</p>
--- @param Platform [PlatformType] <p>The operating system platform of the image.</p>
--- @param State [ImageState] <p>The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and <b>FAILED</b> if image creation has failed.</p>
--- @param CreatedTime [Timestamp] <p>The timestamp when the image was created.</p>
--- @param Description [String] <p>A meaningful description for the image.</p>
--- @param StateChangeReason [ImageStateChangeReason] <p>The reason why the last state change occurred.</p>
--- @param Arn [Arn] <p>The ARN for the image.</p>
--- @param ImageBuilderSupported [Boolean] <p>Whether an image builder can be launched from this image.</p>
+-- @param _PublicBaseImageReleasedDate [Timestamp] <p>The AWS release date of the public base image. For private images, this date is the release date of the base image from which the image was created.</p>
+-- @param _DisplayName [String] <p>The display name for the image.</p>
+-- @param _Name [String] <p>The unique identifier for the image.</p>
+-- @param _Applications [Applications] <p>The applications associated with an image.</p>
+-- @param _BaseImageArn [Arn] <p>The source image ARN from which this image was created.</p>
+-- @param _Visibility [VisibilityType] <p>The visibility of an image to the user; images can be public or private.</p>
+-- @param _Platform [PlatformType] <p>The operating system platform of the image.</p>
+-- @param _State [ImageState] <p>The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and <b>FAILED</b> if image creation has failed.</p>
+-- @param _CreatedTime [Timestamp] <p>The timestamp when the image was created.</p>
+-- @param _Description [String] <p>A meaningful description for the image.</p>
+-- @param _StateChangeReason [ImageStateChangeReason] <p>The reason why the last state change occurred.</p>
+-- @param _Arn [Arn] <p>The ARN for the image.</p>
+-- @param _ImageBuilderSupported [Boolean] <p>Whether an image builder can be launched from this image.</p>
 -- Required parameter: Name
-function M.Image(PublicBaseImageReleasedDate, DisplayName, Name, Applications, BaseImageArn, Visibility, Platform, State, CreatedTime, Description, StateChangeReason, Arn, ImageBuilderSupported, ...)
+function M.Image(_PublicBaseImageReleasedDate, _DisplayName, _Name, _Applications, _BaseImageArn, _Visibility, _Platform, _State, _CreatedTime, _Description, _StateChangeReason, _Arn, _ImageBuilderSupported, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Image")
 	local t = { 
-		["PublicBaseImageReleasedDate"] = PublicBaseImageReleasedDate,
-		["DisplayName"] = DisplayName,
-		["Name"] = Name,
-		["Applications"] = Applications,
-		["BaseImageArn"] = BaseImageArn,
-		["Visibility"] = Visibility,
-		["Platform"] = Platform,
-		["State"] = State,
-		["CreatedTime"] = CreatedTime,
-		["Description"] = Description,
-		["StateChangeReason"] = StateChangeReason,
-		["Arn"] = Arn,
-		["ImageBuilderSupported"] = ImageBuilderSupported,
+		["PublicBaseImageReleasedDate"] = _PublicBaseImageReleasedDate,
+		["DisplayName"] = _DisplayName,
+		["Name"] = _Name,
+		["Applications"] = _Applications,
+		["BaseImageArn"] = _BaseImageArn,
+		["Visibility"] = _Visibility,
+		["Platform"] = _Platform,
+		["State"] = _State,
+		["CreatedTime"] = _CreatedTime,
+		["Description"] = _Description,
+		["StateChangeReason"] = _StateChangeReason,
+		["Arn"] = _Arn,
+		["ImageBuilderSupported"] = _ImageBuilderSupported,
 	}
-	M.AssertImage(t)
+	asserts.AssertImage(t)
 	return t
 end
 
-local Session_keys = { "AuthenticationType" = true, "UserId" = true, "FleetName" = true, "StackName" = true, "State" = true, "Id" = true, nil }
+keys.Session = { ["AuthenticationType"] = true, ["UserId"] = true, ["FleetName"] = true, ["StackName"] = true, ["State"] = true, ["Id"] = true, nil }
 
-function M.AssertSession(struct)
+function asserts.AssertSession(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Session to be of type 'table'")
 	assert(struct["Id"], "Expected key Id to exist in table")
@@ -818,102 +821,102 @@ function M.AssertSession(struct)
 	assert(struct["StackName"], "Expected key StackName to exist in table")
 	assert(struct["FleetName"], "Expected key FleetName to exist in table")
 	assert(struct["State"], "Expected key State to exist in table")
-	if struct["AuthenticationType"] then M.AssertAuthenticationType(struct["AuthenticationType"]) end
-	if struct["UserId"] then M.AssertUserId(struct["UserId"]) end
-	if struct["FleetName"] then M.AssertString(struct["FleetName"]) end
-	if struct["StackName"] then M.AssertString(struct["StackName"]) end
-	if struct["State"] then M.AssertSessionState(struct["State"]) end
-	if struct["Id"] then M.AssertString(struct["Id"]) end
+	if struct["AuthenticationType"] then asserts.AssertAuthenticationType(struct["AuthenticationType"]) end
+	if struct["UserId"] then asserts.AssertUserId(struct["UserId"]) end
+	if struct["FleetName"] then asserts.AssertString(struct["FleetName"]) end
+	if struct["StackName"] then asserts.AssertString(struct["StackName"]) end
+	if struct["State"] then asserts.AssertSessionState(struct["State"]) end
+	if struct["Id"] then asserts.AssertString(struct["Id"]) end
 	for k,_ in pairs(struct) do
-		assert(Session_keys[k], "Session contains unknown key " .. tostring(k))
+		assert(keys.Session[k], "Session contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Session
 -- <p>Contains the parameters for a streaming session.</p>
--- @param AuthenticationType [AuthenticationType] <p>The authentication method of the user for whom the session was created. It can be <code>API</code> for a user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.</p>
--- @param UserId [UserId] <p>The identifier of the user for whom the session was created.</p>
--- @param FleetName [String] <p>The name of the fleet for which the streaming session was created.</p>
--- @param StackName [String] <p>The name of the stack for which the streaming session was created.</p>
--- @param State [SessionState] <p>The current state of the streaming session.</p>
--- @param Id [String] <p>The unique ID for a streaming session.</p>
+-- @param _AuthenticationType [AuthenticationType] <p>The authentication method of the user for whom the session was created. It can be <code>API</code> for a user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.</p>
+-- @param _UserId [UserId] <p>The identifier of the user for whom the session was created.</p>
+-- @param _FleetName [String] <p>The name of the fleet for which the streaming session was created.</p>
+-- @param _StackName [String] <p>The name of the stack for which the streaming session was created.</p>
+-- @param _State [SessionState] <p>The current state of the streaming session.</p>
+-- @param _Id [String] <p>The unique ID for a streaming session.</p>
 -- Required parameter: Id
 -- Required parameter: UserId
 -- Required parameter: StackName
 -- Required parameter: FleetName
 -- Required parameter: State
-function M.Session(AuthenticationType, UserId, FleetName, StackName, State, Id, ...)
+function M.Session(_AuthenticationType, _UserId, _FleetName, _StackName, _State, _Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Session")
 	local t = { 
-		["AuthenticationType"] = AuthenticationType,
-		["UserId"] = UserId,
-		["FleetName"] = FleetName,
-		["StackName"] = StackName,
-		["State"] = State,
-		["Id"] = Id,
+		["AuthenticationType"] = _AuthenticationType,
+		["UserId"] = _UserId,
+		["FleetName"] = _FleetName,
+		["StackName"] = _StackName,
+		["State"] = _State,
+		["Id"] = _Id,
 	}
-	M.AssertSession(t)
+	asserts.AssertSession(t)
 	return t
 end
 
-local StopFleetRequest_keys = { "Name" = true, nil }
+keys.StopFleetRequest = { ["Name"] = true, nil }
 
-function M.AssertStopFleetRequest(struct)
+function asserts.AssertStopFleetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StopFleetRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(StopFleetRequest_keys[k], "StopFleetRequest contains unknown key " .. tostring(k))
+		assert(keys.StopFleetRequest[k], "StopFleetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StopFleetRequest
 --  
--- @param Name [String] <p>The name of the fleet to stop.</p>
+-- @param _Name [String] <p>The name of the fleet to stop.</p>
 -- Required parameter: Name
-function M.StopFleetRequest(Name, ...)
+function M.StopFleetRequest(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopFleetRequest")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertStopFleetRequest(t)
+	asserts.AssertStopFleetRequest(t)
 	return t
 end
 
-local ImageStateChangeReason_keys = { "Message" = true, "Code" = true, nil }
+keys.ImageStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
 
-function M.AssertImageStateChangeReason(struct)
+function asserts.AssertImageStateChangeReason(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ImageStateChangeReason to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Code"] then M.AssertImageStateChangeReasonCode(struct["Code"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Code"] then asserts.AssertImageStateChangeReasonCode(struct["Code"]) end
 	for k,_ in pairs(struct) do
-		assert(ImageStateChangeReason_keys[k], "ImageStateChangeReason contains unknown key " .. tostring(k))
+		assert(keys.ImageStateChangeReason[k], "ImageStateChangeReason contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ImageStateChangeReason
 -- <p>The reason why the last state change occurred.</p>
--- @param Message [String] <p>The state change reason message to the end user.</p>
--- @param Code [ImageStateChangeReasonCode] <p>The state change reason code of the image.</p>
-function M.ImageStateChangeReason(Message, Code, ...)
+-- @param _Message [String] <p>The state change reason message to the end user.</p>
+-- @param _Code [ImageStateChangeReasonCode] <p>The state change reason code of the image.</p>
+function M.ImageStateChangeReason(_Message, _Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageStateChangeReason")
 	local t = { 
-		["Message"] = Message,
-		["Code"] = Code,
+		["Message"] = _Message,
+		["Code"] = _Code,
 	}
-	M.AssertImageStateChangeReason(t)
+	asserts.AssertImageStateChangeReason(t)
 	return t
 end
 
-local ExpireSessionResult_keys = { nil }
+keys.ExpireSessionResult = { nil }
 
-function M.AssertExpireSessionResult(struct)
+function asserts.AssertExpireSessionResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExpireSessionResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(ExpireSessionResult_keys[k], "ExpireSessionResult contains unknown key " .. tostring(k))
+		assert(keys.ExpireSessionResult[k], "ExpireSessionResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -923,203 +926,203 @@ function M.ExpireSessionResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpireSessionResult")
 	local t = { 
 	}
-	M.AssertExpireSessionResult(t)
+	asserts.AssertExpireSessionResult(t)
 	return t
 end
 
-local ListAssociatedFleetsRequest_keys = { "StackName" = true, "NextToken" = true, nil }
+keys.ListAssociatedFleetsRequest = { ["StackName"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListAssociatedFleetsRequest(struct)
+function asserts.AssertListAssociatedFleetsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssociatedFleetsRequest to be of type 'table'")
 	assert(struct["StackName"], "Expected key StackName to exist in table")
-	if struct["StackName"] then M.AssertString(struct["StackName"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
+	if struct["StackName"] then asserts.AssertString(struct["StackName"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssociatedFleetsRequest_keys[k], "ListAssociatedFleetsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAssociatedFleetsRequest[k], "ListAssociatedFleetsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssociatedFleetsRequest
 --  
--- @param StackName [String] <p>The name of the stack whose associated fleets are listed.</p>
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- @param _StackName [String] <p>The name of the stack whose associated fleets are listed.</p>
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
 -- Required parameter: StackName
-function M.ListAssociatedFleetsRequest(StackName, NextToken, ...)
+function M.ListAssociatedFleetsRequest(_StackName, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedFleetsRequest")
 	local t = { 
-		["StackName"] = StackName,
-		["NextToken"] = NextToken,
+		["StackName"] = _StackName,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListAssociatedFleetsRequest(t)
+	asserts.AssertListAssociatedFleetsRequest(t)
 	return t
 end
 
-local DescribeStacksResult_keys = { "NextToken" = true, "Stacks" = true, nil }
+keys.DescribeStacksResult = { ["NextToken"] = true, ["Stacks"] = true, nil }
 
-function M.AssertDescribeStacksResult(struct)
+function asserts.AssertDescribeStacksResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeStacksResult to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["Stacks"] then M.AssertStackList(struct["Stacks"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["Stacks"] then asserts.AssertStackList(struct["Stacks"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeStacksResult_keys[k], "DescribeStacksResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeStacksResult[k], "DescribeStacksResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeStacksResult
 --  
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param Stacks [StackList] <p>The list of stack details.</p>
-function M.DescribeStacksResult(NextToken, Stacks, ...)
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param _Stacks [StackList] <p>The list of stack details.</p>
+function M.DescribeStacksResult(_NextToken, _Stacks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksResult")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Stacks"] = Stacks,
+		["NextToken"] = _NextToken,
+		["Stacks"] = _Stacks,
 	}
-	M.AssertDescribeStacksResult(t)
+	asserts.AssertDescribeStacksResult(t)
 	return t
 end
 
-local CreateFleetRequest_keys = { "DisplayName" = true, "MaxUserDurationInSeconds" = true, "VpcConfig" = true, "DisconnectTimeoutInSeconds" = true, "EnableDefaultInternetAccess" = true, "ImageName" = true, "ComputeCapacity" = true, "Description" = true, "InstanceType" = true, "Name" = true, nil }
+keys.CreateFleetRequest = { ["DisplayName"] = true, ["MaxUserDurationInSeconds"] = true, ["VpcConfig"] = true, ["DisconnectTimeoutInSeconds"] = true, ["EnableDefaultInternetAccess"] = true, ["ImageName"] = true, ["ComputeCapacity"] = true, ["Description"] = true, ["InstanceType"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateFleetRequest(struct)
+function asserts.AssertCreateFleetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFleetRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["ImageName"], "Expected key ImageName to exist in table")
 	assert(struct["InstanceType"], "Expected key InstanceType to exist in table")
 	assert(struct["ComputeCapacity"], "Expected key ComputeCapacity to exist in table")
-	if struct["DisplayName"] then M.AssertDisplayName(struct["DisplayName"]) end
-	if struct["MaxUserDurationInSeconds"] then M.AssertInteger(struct["MaxUserDurationInSeconds"]) end
-	if struct["VpcConfig"] then M.AssertVpcConfig(struct["VpcConfig"]) end
-	if struct["DisconnectTimeoutInSeconds"] then M.AssertInteger(struct["DisconnectTimeoutInSeconds"]) end
-	if struct["EnableDefaultInternetAccess"] then M.AssertBooleanObject(struct["EnableDefaultInternetAccess"]) end
-	if struct["ImageName"] then M.AssertString(struct["ImageName"]) end
-	if struct["ComputeCapacity"] then M.AssertComputeCapacity(struct["ComputeCapacity"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
-	if struct["InstanceType"] then M.AssertString(struct["InstanceType"]) end
-	if struct["Name"] then M.AssertName(struct["Name"]) end
+	if struct["DisplayName"] then asserts.AssertDisplayName(struct["DisplayName"]) end
+	if struct["MaxUserDurationInSeconds"] then asserts.AssertInteger(struct["MaxUserDurationInSeconds"]) end
+	if struct["VpcConfig"] then asserts.AssertVpcConfig(struct["VpcConfig"]) end
+	if struct["DisconnectTimeoutInSeconds"] then asserts.AssertInteger(struct["DisconnectTimeoutInSeconds"]) end
+	if struct["EnableDefaultInternetAccess"] then asserts.AssertBooleanObject(struct["EnableDefaultInternetAccess"]) end
+	if struct["ImageName"] then asserts.AssertString(struct["ImageName"]) end
+	if struct["ComputeCapacity"] then asserts.AssertComputeCapacity(struct["ComputeCapacity"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["InstanceType"] then asserts.AssertString(struct["InstanceType"]) end
+	if struct["Name"] then asserts.AssertName(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFleetRequest_keys[k], "CreateFleetRequest contains unknown key " .. tostring(k))
+		assert(keys.CreateFleetRequest[k], "CreateFleetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFleetRequest
 -- <p>Contains the parameters for the new fleet to create.</p>
--- @param DisplayName [DisplayName] <p>The display name of the fleet.</p>
--- @param MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
--- @param VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
--- @param DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600. </p>
--- @param EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
--- @param ImageName [String] <p>Unique name of the image used by the fleet.</p>
--- @param ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet.</p>
--- @param Description [Description] <p>The description of the fleet.</p>
--- @param InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
--- @param Name [Name] <p>A unique identifier for the fleet.</p>
+-- @param _DisplayName [DisplayName] <p>The display name of the fleet.</p>
+-- @param _MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
+-- @param _VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- @param _DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600. </p>
+-- @param _EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
+-- @param _ImageName [String] <p>Unique name of the image used by the fleet.</p>
+-- @param _ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet.</p>
+-- @param _Description [Description] <p>The description of the fleet.</p>
+-- @param _InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
+-- @param _Name [Name] <p>A unique identifier for the fleet.</p>
 -- Required parameter: Name
 -- Required parameter: ImageName
 -- Required parameter: InstanceType
 -- Required parameter: ComputeCapacity
-function M.CreateFleetRequest(DisplayName, MaxUserDurationInSeconds, VpcConfig, DisconnectTimeoutInSeconds, EnableDefaultInternetAccess, ImageName, ComputeCapacity, Description, InstanceType, Name, ...)
+function M.CreateFleetRequest(_DisplayName, _MaxUserDurationInSeconds, _VpcConfig, _DisconnectTimeoutInSeconds, _EnableDefaultInternetAccess, _ImageName, _ComputeCapacity, _Description, _InstanceType, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetRequest")
 	local t = { 
-		["DisplayName"] = DisplayName,
-		["MaxUserDurationInSeconds"] = MaxUserDurationInSeconds,
-		["VpcConfig"] = VpcConfig,
-		["DisconnectTimeoutInSeconds"] = DisconnectTimeoutInSeconds,
-		["EnableDefaultInternetAccess"] = EnableDefaultInternetAccess,
-		["ImageName"] = ImageName,
-		["ComputeCapacity"] = ComputeCapacity,
-		["Description"] = Description,
-		["InstanceType"] = InstanceType,
-		["Name"] = Name,
+		["DisplayName"] = _DisplayName,
+		["MaxUserDurationInSeconds"] = _MaxUserDurationInSeconds,
+		["VpcConfig"] = _VpcConfig,
+		["DisconnectTimeoutInSeconds"] = _DisconnectTimeoutInSeconds,
+		["EnableDefaultInternetAccess"] = _EnableDefaultInternetAccess,
+		["ImageName"] = _ImageName,
+		["ComputeCapacity"] = _ComputeCapacity,
+		["Description"] = _Description,
+		["InstanceType"] = _InstanceType,
+		["Name"] = _Name,
 	}
-	M.AssertCreateFleetRequest(t)
+	asserts.AssertCreateFleetRequest(t)
 	return t
 end
 
-local UpdateFleetResult_keys = { "Fleet" = true, nil }
+keys.UpdateFleetResult = { ["Fleet"] = true, nil }
 
-function M.AssertUpdateFleetResult(struct)
+function asserts.AssertUpdateFleetResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFleetResult to be of type 'table'")
-	if struct["Fleet"] then M.AssertFleet(struct["Fleet"]) end
+	if struct["Fleet"] then asserts.AssertFleet(struct["Fleet"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFleetResult_keys[k], "UpdateFleetResult contains unknown key " .. tostring(k))
+		assert(keys.UpdateFleetResult[k], "UpdateFleetResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFleetResult
 --  
--- @param Fleet [Fleet] <p>A list of fleet details.</p>
-function M.UpdateFleetResult(Fleet, ...)
+-- @param _Fleet [Fleet] <p>A list of fleet details.</p>
+function M.UpdateFleetResult(_Fleet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetResult")
 	local t = { 
-		["Fleet"] = Fleet,
+		["Fleet"] = _Fleet,
 	}
-	M.AssertUpdateFleetResult(t)
+	asserts.AssertUpdateFleetResult(t)
 	return t
 end
 
-local InvalidRoleException_keys = { "Message" = true, nil }
+keys.InvalidRoleException = { ["Message"] = true, nil }
 
-function M.AssertInvalidRoleException(struct)
+function asserts.AssertInvalidRoleException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRoleException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidRoleException_keys[k], "InvalidRoleException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRoleException[k], "InvalidRoleException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidRoleException
 -- <p>The specified role is invalid.</p>
--- @param Message [ErrorMessage] <p>The specified role is invalid.</p>
-function M.InvalidRoleException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.InvalidRoleException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRoleException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidRoleException(t)
+	asserts.AssertInvalidRoleException(t)
 	return t
 end
 
-local ListAssociatedStacksRequest_keys = { "NextToken" = true, "FleetName" = true, nil }
+keys.ListAssociatedStacksRequest = { ["NextToken"] = true, ["FleetName"] = true, nil }
 
-function M.AssertListAssociatedStacksRequest(struct)
+function asserts.AssertListAssociatedStacksRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListAssociatedStacksRequest to be of type 'table'")
 	assert(struct["FleetName"], "Expected key FleetName to exist in table")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["FleetName"] then M.AssertString(struct["FleetName"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["FleetName"] then asserts.AssertString(struct["FleetName"]) end
 	for k,_ in pairs(struct) do
-		assert(ListAssociatedStacksRequest_keys[k], "ListAssociatedStacksRequest contains unknown key " .. tostring(k))
+		assert(keys.ListAssociatedStacksRequest[k], "ListAssociatedStacksRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListAssociatedStacksRequest
 --  
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
--- @param FleetName [String] <p>The name of the fleet whose associated stacks are listed.</p>
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- @param _FleetName [String] <p>The name of the fleet whose associated stacks are listed.</p>
 -- Required parameter: FleetName
-function M.ListAssociatedStacksRequest(NextToken, FleetName, ...)
+function M.ListAssociatedStacksRequest(_NextToken, _FleetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedStacksRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["FleetName"] = FleetName,
+		["NextToken"] = _NextToken,
+		["FleetName"] = _FleetName,
 	}
-	M.AssertListAssociatedStacksRequest(t)
+	asserts.AssertListAssociatedStacksRequest(t)
 	return t
 end
 
-local DeleteStackResult_keys = { nil }
+keys.DeleteStackResult = { nil }
 
-function M.AssertDeleteStackResult(struct)
+function asserts.AssertDeleteStackResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteStackResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteStackResult_keys[k], "DeleteStackResult contains unknown key " .. tostring(k))
+		assert(keys.DeleteStackResult[k], "DeleteStackResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1129,13 +1132,13 @@ function M.DeleteStackResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStackResult")
 	local t = { 
 	}
-	M.AssertDeleteStackResult(t)
+	asserts.AssertDeleteStackResult(t)
 	return t
 end
 
-local Fleet_keys = { "ComputeCapacityStatus" = true, "DisplayName" = true, "Name" = true, "VpcConfig" = true, "FleetErrors" = true, "DisconnectTimeoutInSeconds" = true, "EnableDefaultInternetAccess" = true, "State" = true, "ImageName" = true, "CreatedTime" = true, "MaxUserDurationInSeconds" = true, "InstanceType" = true, "Arn" = true, "Description" = true, nil }
+keys.Fleet = { ["ComputeCapacityStatus"] = true, ["DisplayName"] = true, ["Name"] = true, ["VpcConfig"] = true, ["FleetErrors"] = true, ["DisconnectTimeoutInSeconds"] = true, ["EnableDefaultInternetAccess"] = true, ["State"] = true, ["ImageName"] = true, ["CreatedTime"] = true, ["MaxUserDurationInSeconds"] = true, ["InstanceType"] = true, ["Arn"] = true, ["Description"] = true, nil }
 
-function M.AssertFleet(struct)
+function asserts.AssertFleet(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Fleet to be of type 'table'")
 	assert(struct["Arn"], "Expected key Arn to exist in table")
@@ -1144,430 +1147,430 @@ function M.AssertFleet(struct)
 	assert(struct["InstanceType"], "Expected key InstanceType to exist in table")
 	assert(struct["ComputeCapacityStatus"], "Expected key ComputeCapacityStatus to exist in table")
 	assert(struct["State"], "Expected key State to exist in table")
-	if struct["ComputeCapacityStatus"] then M.AssertComputeCapacityStatus(struct["ComputeCapacityStatus"]) end
-	if struct["DisplayName"] then M.AssertString(struct["DisplayName"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["VpcConfig"] then M.AssertVpcConfig(struct["VpcConfig"]) end
-	if struct["FleetErrors"] then M.AssertFleetErrors(struct["FleetErrors"]) end
-	if struct["DisconnectTimeoutInSeconds"] then M.AssertInteger(struct["DisconnectTimeoutInSeconds"]) end
-	if struct["EnableDefaultInternetAccess"] then M.AssertBooleanObject(struct["EnableDefaultInternetAccess"]) end
-	if struct["State"] then M.AssertFleetState(struct["State"]) end
-	if struct["ImageName"] then M.AssertString(struct["ImageName"]) end
-	if struct["CreatedTime"] then M.AssertTimestamp(struct["CreatedTime"]) end
-	if struct["MaxUserDurationInSeconds"] then M.AssertInteger(struct["MaxUserDurationInSeconds"]) end
-	if struct["InstanceType"] then M.AssertString(struct["InstanceType"]) end
-	if struct["Arn"] then M.AssertArn(struct["Arn"]) end
-	if struct["Description"] then M.AssertString(struct["Description"]) end
+	if struct["ComputeCapacityStatus"] then asserts.AssertComputeCapacityStatus(struct["ComputeCapacityStatus"]) end
+	if struct["DisplayName"] then asserts.AssertString(struct["DisplayName"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["VpcConfig"] then asserts.AssertVpcConfig(struct["VpcConfig"]) end
+	if struct["FleetErrors"] then asserts.AssertFleetErrors(struct["FleetErrors"]) end
+	if struct["DisconnectTimeoutInSeconds"] then asserts.AssertInteger(struct["DisconnectTimeoutInSeconds"]) end
+	if struct["EnableDefaultInternetAccess"] then asserts.AssertBooleanObject(struct["EnableDefaultInternetAccess"]) end
+	if struct["State"] then asserts.AssertFleetState(struct["State"]) end
+	if struct["ImageName"] then asserts.AssertString(struct["ImageName"]) end
+	if struct["CreatedTime"] then asserts.AssertTimestamp(struct["CreatedTime"]) end
+	if struct["MaxUserDurationInSeconds"] then asserts.AssertInteger(struct["MaxUserDurationInSeconds"]) end
+	if struct["InstanceType"] then asserts.AssertString(struct["InstanceType"]) end
+	if struct["Arn"] then asserts.AssertArn(struct["Arn"]) end
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(Fleet_keys[k], "Fleet contains unknown key " .. tostring(k))
+		assert(keys.Fleet[k], "Fleet contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Fleet
 -- <p>Contains the parameters for a fleet.</p>
--- @param ComputeCapacityStatus [ComputeCapacityStatus] <p>The capacity information for the fleet.</p>
--- @param DisplayName [String] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
--- @param Name [String] <p>The name of the fleet.</p>
--- @param VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
--- @param FleetErrors [FleetErrors] <p>The list of fleet errors is appended to this list.</p>
--- @param DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
--- @param EnableDefaultInternetAccess [BooleanObject] <p>Whether default Internet access is enabled for the fleet. </p>
--- @param State [FleetState] <p>The current state for the fleet.</p>
--- @param ImageName [String] <p>The image used by the fleet.</p>
--- @param CreatedTime [Timestamp] <p>The time at which the fleet was created.</p>
--- @param MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The value can be any numeric value in seconds between 600 and 57600.</p>
--- @param InstanceType [String] <p>The instance type of compute resources for the fleet. The fleet instances are launched from this instance type. </p>
--- @param Arn [Arn] <p>The ARN for the fleet.</p>
--- @param Description [String] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- @param _ComputeCapacityStatus [ComputeCapacityStatus] <p>The capacity information for the fleet.</p>
+-- @param _DisplayName [String] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- @param _Name [String] <p>The name of the fleet.</p>
+-- @param _VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- @param _FleetErrors [FleetErrors] <p>The list of fleet errors is appended to this list.</p>
+-- @param _DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
+-- @param _EnableDefaultInternetAccess [BooleanObject] <p>Whether default Internet access is enabled for the fleet. </p>
+-- @param _State [FleetState] <p>The current state for the fleet.</p>
+-- @param _ImageName [String] <p>The image used by the fleet.</p>
+-- @param _CreatedTime [Timestamp] <p>The time at which the fleet was created.</p>
+-- @param _MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The value can be any numeric value in seconds between 600 and 57600.</p>
+-- @param _InstanceType [String] <p>The instance type of compute resources for the fleet. The fleet instances are launched from this instance type. </p>
+-- @param _Arn [Arn] <p>The ARN for the fleet.</p>
+-- @param _Description [String] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
 -- Required parameter: Arn
 -- Required parameter: Name
 -- Required parameter: ImageName
 -- Required parameter: InstanceType
 -- Required parameter: ComputeCapacityStatus
 -- Required parameter: State
-function M.Fleet(ComputeCapacityStatus, DisplayName, Name, VpcConfig, FleetErrors, DisconnectTimeoutInSeconds, EnableDefaultInternetAccess, State, ImageName, CreatedTime, MaxUserDurationInSeconds, InstanceType, Arn, Description, ...)
+function M.Fleet(_ComputeCapacityStatus, _DisplayName, _Name, _VpcConfig, _FleetErrors, _DisconnectTimeoutInSeconds, _EnableDefaultInternetAccess, _State, _ImageName, _CreatedTime, _MaxUserDurationInSeconds, _InstanceType, _Arn, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Fleet")
 	local t = { 
-		["ComputeCapacityStatus"] = ComputeCapacityStatus,
-		["DisplayName"] = DisplayName,
-		["Name"] = Name,
-		["VpcConfig"] = VpcConfig,
-		["FleetErrors"] = FleetErrors,
-		["DisconnectTimeoutInSeconds"] = DisconnectTimeoutInSeconds,
-		["EnableDefaultInternetAccess"] = EnableDefaultInternetAccess,
-		["State"] = State,
-		["ImageName"] = ImageName,
-		["CreatedTime"] = CreatedTime,
-		["MaxUserDurationInSeconds"] = MaxUserDurationInSeconds,
-		["InstanceType"] = InstanceType,
-		["Arn"] = Arn,
-		["Description"] = Description,
+		["ComputeCapacityStatus"] = _ComputeCapacityStatus,
+		["DisplayName"] = _DisplayName,
+		["Name"] = _Name,
+		["VpcConfig"] = _VpcConfig,
+		["FleetErrors"] = _FleetErrors,
+		["DisconnectTimeoutInSeconds"] = _DisconnectTimeoutInSeconds,
+		["EnableDefaultInternetAccess"] = _EnableDefaultInternetAccess,
+		["State"] = _State,
+		["ImageName"] = _ImageName,
+		["CreatedTime"] = _CreatedTime,
+		["MaxUserDurationInSeconds"] = _MaxUserDurationInSeconds,
+		["InstanceType"] = _InstanceType,
+		["Arn"] = _Arn,
+		["Description"] = _Description,
 	}
-	M.AssertFleet(t)
+	asserts.AssertFleet(t)
 	return t
 end
 
-local DescribeFleetsRequest_keys = { "NextToken" = true, "Names" = true, nil }
+keys.DescribeFleetsRequest = { ["NextToken"] = true, ["Names"] = true, nil }
 
-function M.AssertDescribeFleetsRequest(struct)
+function asserts.AssertDescribeFleetsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetsRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["Names"] then M.AssertStringList(struct["Names"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["Names"] then asserts.AssertStringList(struct["Names"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetsRequest_keys[k], "DescribeFleetsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetsRequest[k], "DescribeFleetsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetsRequest
 --  
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
--- @param Names [StringList] <p>The fleet names to describe. Use null to describe all the fleets for the AWS account.</p>
-function M.DescribeFleetsRequest(NextToken, Names, ...)
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- @param _Names [StringList] <p>The fleet names to describe. Use null to describe all the fleets for the AWS account.</p>
+function M.DescribeFleetsRequest(_NextToken, _Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetsRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["Names"] = Names,
+		["NextToken"] = _NextToken,
+		["Names"] = _Names,
 	}
-	M.AssertDescribeFleetsRequest(t)
+	asserts.AssertDescribeFleetsRequest(t)
 	return t
 end
 
-local DescribeFleetsResult_keys = { "Fleets" = true, "NextToken" = true, nil }
+keys.DescribeFleetsResult = { ["Fleets"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeFleetsResult(struct)
+function asserts.AssertDescribeFleetsResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeFleetsResult to be of type 'table'")
-	if struct["Fleets"] then M.AssertFleetList(struct["Fleets"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
+	if struct["Fleets"] then asserts.AssertFleetList(struct["Fleets"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeFleetsResult_keys[k], "DescribeFleetsResult contains unknown key " .. tostring(k))
+		assert(keys.DescribeFleetsResult[k], "DescribeFleetsResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeFleetsResult
 --  
--- @param Fleets [FleetList] <p>The list of fleet details.</p>
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
-function M.DescribeFleetsResult(Fleets, NextToken, ...)
+-- @param _Fleets [FleetList] <p>The list of fleet details.</p>
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+function M.DescribeFleetsResult(_Fleets, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetsResult")
 	local t = { 
-		["Fleets"] = Fleets,
-		["NextToken"] = NextToken,
+		["Fleets"] = _Fleets,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeFleetsResult(t)
+	asserts.AssertDescribeFleetsResult(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "Message" = true, nil }
+keys.ResourceNotFoundException = { ["Message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource was not found.</p>
--- @param Message [ErrorMessage] <p>The specified resource was not found.</p>
-function M.ResourceNotFoundException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.ResourceNotFoundException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local UpdateFleetRequest_keys = { "AttributesToDelete" = true, "DeleteVpcConfig" = true, "DisplayName" = true, "MaxUserDurationInSeconds" = true, "VpcConfig" = true, "DisconnectTimeoutInSeconds" = true, "EnableDefaultInternetAccess" = true, "ImageName" = true, "ComputeCapacity" = true, "Description" = true, "InstanceType" = true, "Name" = true, nil }
+keys.UpdateFleetRequest = { ["AttributesToDelete"] = true, ["DeleteVpcConfig"] = true, ["DisplayName"] = true, ["MaxUserDurationInSeconds"] = true, ["VpcConfig"] = true, ["DisconnectTimeoutInSeconds"] = true, ["EnableDefaultInternetAccess"] = true, ["ImageName"] = true, ["ComputeCapacity"] = true, ["Description"] = true, ["InstanceType"] = true, ["Name"] = true, nil }
 
-function M.AssertUpdateFleetRequest(struct)
+function asserts.AssertUpdateFleetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateFleetRequest to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["AttributesToDelete"] then M.AssertFleetAttributes(struct["AttributesToDelete"]) end
-	if struct["DeleteVpcConfig"] then M.AssertBoolean(struct["DeleteVpcConfig"]) end
-	if struct["DisplayName"] then M.AssertDisplayName(struct["DisplayName"]) end
-	if struct["MaxUserDurationInSeconds"] then M.AssertInteger(struct["MaxUserDurationInSeconds"]) end
-	if struct["VpcConfig"] then M.AssertVpcConfig(struct["VpcConfig"]) end
-	if struct["DisconnectTimeoutInSeconds"] then M.AssertInteger(struct["DisconnectTimeoutInSeconds"]) end
-	if struct["EnableDefaultInternetAccess"] then M.AssertBooleanObject(struct["EnableDefaultInternetAccess"]) end
-	if struct["ImageName"] then M.AssertString(struct["ImageName"]) end
-	if struct["ComputeCapacity"] then M.AssertComputeCapacity(struct["ComputeCapacity"]) end
-	if struct["Description"] then M.AssertDescription(struct["Description"]) end
-	if struct["InstanceType"] then M.AssertString(struct["InstanceType"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["AttributesToDelete"] then asserts.AssertFleetAttributes(struct["AttributesToDelete"]) end
+	if struct["DeleteVpcConfig"] then asserts.AssertBoolean(struct["DeleteVpcConfig"]) end
+	if struct["DisplayName"] then asserts.AssertDisplayName(struct["DisplayName"]) end
+	if struct["MaxUserDurationInSeconds"] then asserts.AssertInteger(struct["MaxUserDurationInSeconds"]) end
+	if struct["VpcConfig"] then asserts.AssertVpcConfig(struct["VpcConfig"]) end
+	if struct["DisconnectTimeoutInSeconds"] then asserts.AssertInteger(struct["DisconnectTimeoutInSeconds"]) end
+	if struct["EnableDefaultInternetAccess"] then asserts.AssertBooleanObject(struct["EnableDefaultInternetAccess"]) end
+	if struct["ImageName"] then asserts.AssertString(struct["ImageName"]) end
+	if struct["ComputeCapacity"] then asserts.AssertComputeCapacity(struct["ComputeCapacity"]) end
+	if struct["Description"] then asserts.AssertDescription(struct["Description"]) end
+	if struct["InstanceType"] then asserts.AssertString(struct["InstanceType"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateFleetRequest_keys[k], "UpdateFleetRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateFleetRequest[k], "UpdateFleetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateFleetRequest
 --  
--- @param AttributesToDelete [FleetAttributes] <p>Fleet attributes to be deleted.</p>
--- @param DeleteVpcConfig [Boolean] <p>Delete the VPC association for the specified fleet.</p>
--- @param DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
--- @param MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
--- @param VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
--- @param DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
--- @param EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
--- @param ImageName [String] <p>The image name from which a fleet is created.</p>
--- @param ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet. </p>
--- @param Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
--- @param InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
--- @param Name [String] <p>The name of the fleet.</p>
+-- @param _AttributesToDelete [FleetAttributes] <p>Fleet attributes to be deleted.</p>
+-- @param _DeleteVpcConfig [Boolean] <p>Delete the VPC association for the specified fleet.</p>
+-- @param _DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- @param _MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
+-- @param _VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- @param _DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
+-- @param _EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
+-- @param _ImageName [String] <p>The image name from which a fleet is created.</p>
+-- @param _ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet. </p>
+-- @param _Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- @param _InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
+-- @param _Name [String] <p>The name of the fleet.</p>
 -- Required parameter: Name
-function M.UpdateFleetRequest(AttributesToDelete, DeleteVpcConfig, DisplayName, MaxUserDurationInSeconds, VpcConfig, DisconnectTimeoutInSeconds, EnableDefaultInternetAccess, ImageName, ComputeCapacity, Description, InstanceType, Name, ...)
+function M.UpdateFleetRequest(_AttributesToDelete, _DeleteVpcConfig, _DisplayName, _MaxUserDurationInSeconds, _VpcConfig, _DisconnectTimeoutInSeconds, _EnableDefaultInternetAccess, _ImageName, _ComputeCapacity, _Description, _InstanceType, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetRequest")
 	local t = { 
-		["AttributesToDelete"] = AttributesToDelete,
-		["DeleteVpcConfig"] = DeleteVpcConfig,
-		["DisplayName"] = DisplayName,
-		["MaxUserDurationInSeconds"] = MaxUserDurationInSeconds,
-		["VpcConfig"] = VpcConfig,
-		["DisconnectTimeoutInSeconds"] = DisconnectTimeoutInSeconds,
-		["EnableDefaultInternetAccess"] = EnableDefaultInternetAccess,
-		["ImageName"] = ImageName,
-		["ComputeCapacity"] = ComputeCapacity,
-		["Description"] = Description,
-		["InstanceType"] = InstanceType,
-		["Name"] = Name,
+		["AttributesToDelete"] = _AttributesToDelete,
+		["DeleteVpcConfig"] = _DeleteVpcConfig,
+		["DisplayName"] = _DisplayName,
+		["MaxUserDurationInSeconds"] = _MaxUserDurationInSeconds,
+		["VpcConfig"] = _VpcConfig,
+		["DisconnectTimeoutInSeconds"] = _DisconnectTimeoutInSeconds,
+		["EnableDefaultInternetAccess"] = _EnableDefaultInternetAccess,
+		["ImageName"] = _ImageName,
+		["ComputeCapacity"] = _ComputeCapacity,
+		["Description"] = _Description,
+		["InstanceType"] = _InstanceType,
+		["Name"] = _Name,
 	}
-	M.AssertUpdateFleetRequest(t)
+	asserts.AssertUpdateFleetRequest(t)
 	return t
 end
 
-local FleetError_keys = { "ErrorCode" = true, "ErrorMessage" = true, nil }
+keys.FleetError = { ["ErrorCode"] = true, ["ErrorMessage"] = true, nil }
 
-function M.AssertFleetError(struct)
+function asserts.AssertFleetError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FleetError to be of type 'table'")
-	if struct["ErrorCode"] then M.AssertFleetErrorCode(struct["ErrorCode"]) end
-	if struct["ErrorMessage"] then M.AssertString(struct["ErrorMessage"]) end
+	if struct["ErrorCode"] then asserts.AssertFleetErrorCode(struct["ErrorCode"]) end
+	if struct["ErrorMessage"] then asserts.AssertString(struct["ErrorMessage"]) end
 	for k,_ in pairs(struct) do
-		assert(FleetError_keys[k], "FleetError contains unknown key " .. tostring(k))
+		assert(keys.FleetError[k], "FleetError contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FleetError
 -- <p>The details of the fleet error.</p>
--- @param ErrorCode [FleetErrorCode] <p>The error code for the fleet error.</p>
--- @param ErrorMessage [String] <p>The error message generated when the fleet has errors.</p>
-function M.FleetError(ErrorCode, ErrorMessage, ...)
+-- @param _ErrorCode [FleetErrorCode] <p>The error code for the fleet error.</p>
+-- @param _ErrorMessage [String] <p>The error message generated when the fleet has errors.</p>
+function M.FleetError(_ErrorCode, _ErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FleetError")
 	local t = { 
-		["ErrorCode"] = ErrorCode,
-		["ErrorMessage"] = ErrorMessage,
+		["ErrorCode"] = _ErrorCode,
+		["ErrorMessage"] = _ErrorMessage,
 	}
-	M.AssertFleetError(t)
+	asserts.AssertFleetError(t)
 	return t
 end
 
-local DescribeSessionsRequest_keys = { "AuthenticationType" = true, "FleetName" = true, "UserId" = true, "StackName" = true, "Limit" = true, "NextToken" = true, nil }
+keys.DescribeSessionsRequest = { ["AuthenticationType"] = true, ["FleetName"] = true, ["UserId"] = true, ["StackName"] = true, ["Limit"] = true, ["NextToken"] = true, nil }
 
-function M.AssertDescribeSessionsRequest(struct)
+function asserts.AssertDescribeSessionsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSessionsRequest to be of type 'table'")
 	assert(struct["StackName"], "Expected key StackName to exist in table")
 	assert(struct["FleetName"], "Expected key FleetName to exist in table")
-	if struct["AuthenticationType"] then M.AssertAuthenticationType(struct["AuthenticationType"]) end
-	if struct["FleetName"] then M.AssertString(struct["FleetName"]) end
-	if struct["UserId"] then M.AssertUserId(struct["UserId"]) end
-	if struct["StackName"] then M.AssertString(struct["StackName"]) end
-	if struct["Limit"] then M.AssertInteger(struct["Limit"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
+	if struct["AuthenticationType"] then asserts.AssertAuthenticationType(struct["AuthenticationType"]) end
+	if struct["FleetName"] then asserts.AssertString(struct["FleetName"]) end
+	if struct["UserId"] then asserts.AssertUserId(struct["UserId"]) end
+	if struct["StackName"] then asserts.AssertString(struct["StackName"]) end
+	if struct["Limit"] then asserts.AssertInteger(struct["Limit"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSessionsRequest_keys[k], "DescribeSessionsRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeSessionsRequest[k], "DescribeSessionsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSessionsRequest
 --  
--- @param AuthenticationType [AuthenticationType] <p>The authentication method of the user. It can be <code>API</code> for a user authenticated using a streaming URL, or <code>SAML</code> for a SAML federated user. If an authentication type is not provided, the operation defaults to users authenticated using a streaming URL.</p>
--- @param FleetName [String] <p>The name of the fleet for which to list sessions.</p>
--- @param UserId [UserId] <p>The user for whom to list sessions. Use null to describe all the sessions for the stack and fleet.</p>
--- @param StackName [String] <p>The name of the stack for which to list sessions.</p>
--- @param Limit [Integer] <p>The size of each page of results. The default value is 20 and the maximum supported value is 50.</p>
--- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- @param _AuthenticationType [AuthenticationType] <p>The authentication method of the user. It can be <code>API</code> for a user authenticated using a streaming URL, or <code>SAML</code> for a SAML federated user. If an authentication type is not provided, the operation defaults to users authenticated using a streaming URL.</p>
+-- @param _FleetName [String] <p>The name of the fleet for which to list sessions.</p>
+-- @param _UserId [UserId] <p>The user for whom to list sessions. Use null to describe all the sessions for the stack and fleet.</p>
+-- @param _StackName [String] <p>The name of the stack for which to list sessions.</p>
+-- @param _Limit [Integer] <p>The size of each page of results. The default value is 20 and the maximum supported value is 50.</p>
+-- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
 -- Required parameter: StackName
 -- Required parameter: FleetName
-function M.DescribeSessionsRequest(AuthenticationType, FleetName, UserId, StackName, Limit, NextToken, ...)
+function M.DescribeSessionsRequest(_AuthenticationType, _FleetName, _UserId, _StackName, _Limit, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSessionsRequest")
 	local t = { 
-		["AuthenticationType"] = AuthenticationType,
-		["FleetName"] = FleetName,
-		["UserId"] = UserId,
-		["StackName"] = StackName,
-		["Limit"] = Limit,
-		["NextToken"] = NextToken,
+		["AuthenticationType"] = _AuthenticationType,
+		["FleetName"] = _FleetName,
+		["UserId"] = _UserId,
+		["StackName"] = _StackName,
+		["Limit"] = _Limit,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertDescribeSessionsRequest(t)
+	asserts.AssertDescribeSessionsRequest(t)
 	return t
 end
 
-local AssociateFleetRequest_keys = { "StackName" = true, "FleetName" = true, nil }
+keys.AssociateFleetRequest = { ["StackName"] = true, ["FleetName"] = true, nil }
 
-function M.AssertAssociateFleetRequest(struct)
+function asserts.AssertAssociateFleetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateFleetRequest to be of type 'table'")
 	assert(struct["FleetName"], "Expected key FleetName to exist in table")
 	assert(struct["StackName"], "Expected key StackName to exist in table")
-	if struct["StackName"] then M.AssertString(struct["StackName"]) end
-	if struct["FleetName"] then M.AssertString(struct["FleetName"]) end
+	if struct["StackName"] then asserts.AssertString(struct["StackName"]) end
+	if struct["FleetName"] then asserts.AssertString(struct["FleetName"]) end
 	for k,_ in pairs(struct) do
-		assert(AssociateFleetRequest_keys[k], "AssociateFleetRequest contains unknown key " .. tostring(k))
+		assert(keys.AssociateFleetRequest[k], "AssociateFleetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AssociateFleetRequest
 --  
--- @param StackName [String] <p>The name of the stack to which the fleet is associated.</p>
--- @param FleetName [String] <p>The name of the fleet to associate.</p>
+-- @param _StackName [String] <p>The name of the stack to which the fleet is associated.</p>
+-- @param _FleetName [String] <p>The name of the fleet to associate.</p>
 -- Required parameter: FleetName
 -- Required parameter: StackName
-function M.AssociateFleetRequest(StackName, FleetName, ...)
+function M.AssociateFleetRequest(_StackName, _FleetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateFleetRequest")
 	local t = { 
-		["StackName"] = StackName,
-		["FleetName"] = FleetName,
+		["StackName"] = _StackName,
+		["FleetName"] = _FleetName,
 	}
-	M.AssertAssociateFleetRequest(t)
+	asserts.AssertAssociateFleetRequest(t)
 	return t
 end
 
-local ResourceNotAvailableException_keys = { "Message" = true, nil }
+keys.ResourceNotAvailableException = { ["Message"] = true, nil }
 
-function M.AssertResourceNotAvailableException(struct)
+function asserts.AssertResourceNotAvailableException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotAvailableException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotAvailableException_keys[k], "ResourceNotAvailableException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotAvailableException[k], "ResourceNotAvailableException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotAvailableException
 -- <p>The specified resource exists and is not in use, but isn't available.</p>
--- @param Message [ErrorMessage] <p>The specified resource exists and is not in use, but isn't available.</p>
-function M.ResourceNotAvailableException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.ResourceNotAvailableException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotAvailableException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertResourceNotAvailableException(t)
+	asserts.AssertResourceNotAvailableException(t)
 	return t
 end
 
-local CreateFleetResult_keys = { "Fleet" = true, nil }
+keys.CreateFleetResult = { ["Fleet"] = true, nil }
 
-function M.AssertCreateFleetResult(struct)
+function asserts.AssertCreateFleetResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateFleetResult to be of type 'table'")
-	if struct["Fleet"] then M.AssertFleet(struct["Fleet"]) end
+	if struct["Fleet"] then asserts.AssertFleet(struct["Fleet"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateFleetResult_keys[k], "CreateFleetResult contains unknown key " .. tostring(k))
+		assert(keys.CreateFleetResult[k], "CreateFleetResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateFleetResult
 --  
--- @param Fleet [Fleet] <p>The details for the created fleet.</p>
-function M.CreateFleetResult(Fleet, ...)
+-- @param _Fleet [Fleet] <p>The details for the created fleet.</p>
+function M.CreateFleetResult(_Fleet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetResult")
 	local t = { 
-		["Fleet"] = Fleet,
+		["Fleet"] = _Fleet,
 	}
-	M.AssertCreateFleetResult(t)
+	asserts.AssertCreateFleetResult(t)
 	return t
 end
 
-local StorageConnector_keys = { "ConnectorType" = true, "ResourceIdentifier" = true, nil }
+keys.StorageConnector = { ["ConnectorType"] = true, ["ResourceIdentifier"] = true, nil }
 
-function M.AssertStorageConnector(struct)
+function asserts.AssertStorageConnector(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StorageConnector to be of type 'table'")
 	assert(struct["ConnectorType"], "Expected key ConnectorType to exist in table")
-	if struct["ConnectorType"] then M.AssertStorageConnectorType(struct["ConnectorType"]) end
-	if struct["ResourceIdentifier"] then M.AssertResourceIdentifier(struct["ResourceIdentifier"]) end
+	if struct["ConnectorType"] then asserts.AssertStorageConnectorType(struct["ConnectorType"]) end
+	if struct["ResourceIdentifier"] then asserts.AssertResourceIdentifier(struct["ResourceIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(StorageConnector_keys[k], "StorageConnector contains unknown key " .. tostring(k))
+		assert(keys.StorageConnector[k], "StorageConnector contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StorageConnector
 -- <p>Contains the parameters for a storage connector.</p>
--- @param ConnectorType [StorageConnectorType] <p>The type of storage connector. The possible values include: HOMEFOLDERS.</p>
--- @param ResourceIdentifier [ResourceIdentifier] <p>The ARN associated with the storage connector.</p>
+-- @param _ConnectorType [StorageConnectorType] <p>The type of storage connector. The possible values include: HOMEFOLDERS.</p>
+-- @param _ResourceIdentifier [ResourceIdentifier] <p>The ARN associated with the storage connector.</p>
 -- Required parameter: ConnectorType
-function M.StorageConnector(ConnectorType, ResourceIdentifier, ...)
+function M.StorageConnector(_ConnectorType, _ResourceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageConnector")
 	local t = { 
-		["ConnectorType"] = ConnectorType,
-		["ResourceIdentifier"] = ResourceIdentifier,
+		["ConnectorType"] = _ConnectorType,
+		["ResourceIdentifier"] = _ResourceIdentifier,
 	}
-	M.AssertStorageConnector(t)
+	asserts.AssertStorageConnector(t)
 	return t
 end
 
-local DescribeImagesRequest_keys = { "Names" = true, nil }
+keys.DescribeImagesRequest = { ["Names"] = true, nil }
 
-function M.AssertDescribeImagesRequest(struct)
+function asserts.AssertDescribeImagesRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeImagesRequest to be of type 'table'")
-	if struct["Names"] then M.AssertStringList(struct["Names"]) end
+	if struct["Names"] then asserts.AssertStringList(struct["Names"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeImagesRequest_keys[k], "DescribeImagesRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeImagesRequest[k], "DescribeImagesRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeImagesRequest
 --  
--- @param Names [StringList] <p>A specific list of images to describe.</p>
-function M.DescribeImagesRequest(Names, ...)
+-- @param _Names [StringList] <p>A specific list of images to describe.</p>
+function M.DescribeImagesRequest(_Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesRequest")
 	local t = { 
-		["Names"] = Names,
+		["Names"] = _Names,
 	}
-	M.AssertDescribeImagesRequest(t)
+	asserts.AssertDescribeImagesRequest(t)
 	return t
 end
 
-local StackError_keys = { "ErrorCode" = true, "ErrorMessage" = true, nil }
+keys.StackError = { ["ErrorCode"] = true, ["ErrorMessage"] = true, nil }
 
-function M.AssertStackError(struct)
+function asserts.AssertStackError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StackError to be of type 'table'")
-	if struct["ErrorCode"] then M.AssertStackErrorCode(struct["ErrorCode"]) end
-	if struct["ErrorMessage"] then M.AssertString(struct["ErrorMessage"]) end
+	if struct["ErrorCode"] then asserts.AssertStackErrorCode(struct["ErrorCode"]) end
+	if struct["ErrorMessage"] then asserts.AssertString(struct["ErrorMessage"]) end
 	for k,_ in pairs(struct) do
-		assert(StackError_keys[k], "StackError contains unknown key " .. tostring(k))
+		assert(keys.StackError[k], "StackError contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StackError
 -- <p>Contains the parameters for a stack error.</p>
--- @param ErrorCode [StackErrorCode] <p>The error code of a stack error.</p>
--- @param ErrorMessage [String] <p>The error message of a stack error.</p>
-function M.StackError(ErrorCode, ErrorMessage, ...)
+-- @param _ErrorCode [StackErrorCode] <p>The error code of a stack error.</p>
+-- @param _ErrorMessage [String] <p>The error message of a stack error.</p>
+function M.StackError(_ErrorCode, _ErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StackError")
 	local t = { 
-		["ErrorCode"] = ErrorCode,
-		["ErrorMessage"] = ErrorMessage,
+		["ErrorCode"] = _ErrorCode,
+		["ErrorMessage"] = _ErrorMessage,
 	}
-	M.AssertStackError(t)
+	asserts.AssertStackError(t)
 	return t
 end
 
-local DeleteFleetResult_keys = { nil }
+keys.DeleteFleetResult = { nil }
 
-function M.AssertDeleteFleetResult(struct)
+function asserts.AssertDeleteFleetResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteFleetResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteFleetResult_keys[k], "DeleteFleetResult contains unknown key " .. tostring(k))
+		assert(keys.DeleteFleetResult[k], "DeleteFleetResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1577,17 +1580,17 @@ function M.DeleteFleetResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFleetResult")
 	local t = { 
 	}
-	M.AssertDeleteFleetResult(t)
+	asserts.AssertDeleteFleetResult(t)
 	return t
 end
 
-local AssociateFleetResult_keys = { nil }
+keys.AssociateFleetResult = { nil }
 
-function M.AssertAssociateFleetResult(struct)
+function asserts.AssertAssociateFleetResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AssociateFleetResult to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AssociateFleetResult_keys[k], "AssociateFleetResult contains unknown key " .. tostring(k))
+		assert(keys.AssociateFleetResult[k], "AssociateFleetResult contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1597,172 +1600,171 @@ function M.AssociateFleetResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateFleetResult")
 	local t = { 
 	}
-	M.AssertAssociateFleetResult(t)
+	asserts.AssertAssociateFleetResult(t)
 	return t
 end
 
-local CreateStreamingURLResult_keys = { "Expires" = true, "StreamingURL" = true, nil }
+keys.CreateStreamingURLResult = { ["Expires"] = true, ["StreamingURL"] = true, nil }
 
-function M.AssertCreateStreamingURLResult(struct)
+function asserts.AssertCreateStreamingURLResult(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateStreamingURLResult to be of type 'table'")
-	if struct["Expires"] then M.AssertTimestamp(struct["Expires"]) end
-	if struct["StreamingURL"] then M.AssertString(struct["StreamingURL"]) end
+	if struct["Expires"] then asserts.AssertTimestamp(struct["Expires"]) end
+	if struct["StreamingURL"] then asserts.AssertString(struct["StreamingURL"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateStreamingURLResult_keys[k], "CreateStreamingURLResult contains unknown key " .. tostring(k))
+		assert(keys.CreateStreamingURLResult[k], "CreateStreamingURLResult contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateStreamingURLResult
 --  
--- @param Expires [Timestamp] <p>Elapsed seconds after the Unix epoch, at which time this URL expires.</p>
--- @param StreamingURL [String] <p>The URL to start the AppStream 2.0 streaming session.</p>
-function M.CreateStreamingURLResult(Expires, StreamingURL, ...)
+-- @param _Expires [Timestamp] <p>Elapsed seconds after the Unix epoch, at which time this URL expires.</p>
+-- @param _StreamingURL [String] <p>The URL to start the AppStream 2.0 streaming session.</p>
+function M.CreateStreamingURLResult(_Expires, _StreamingURL, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingURLResult")
 	local t = { 
-		["Expires"] = Expires,
-		["StreamingURL"] = StreamingURL,
+		["Expires"] = _Expires,
+		["StreamingURL"] = _StreamingURL,
 	}
-	M.AssertCreateStreamingURLResult(t)
+	asserts.AssertCreateStreamingURLResult(t)
 	return t
 end
 
-local DisassociateFleetRequest_keys = { "StackName" = true, "FleetName" = true, nil }
+keys.DisassociateFleetRequest = { ["StackName"] = true, ["FleetName"] = true, nil }
 
-function M.AssertDisassociateFleetRequest(struct)
+function asserts.AssertDisassociateFleetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DisassociateFleetRequest to be of type 'table'")
 	assert(struct["FleetName"], "Expected key FleetName to exist in table")
 	assert(struct["StackName"], "Expected key StackName to exist in table")
-	if struct["StackName"] then M.AssertString(struct["StackName"]) end
-	if struct["FleetName"] then M.AssertString(struct["FleetName"]) end
+	if struct["StackName"] then asserts.AssertString(struct["StackName"]) end
+	if struct["FleetName"] then asserts.AssertString(struct["FleetName"]) end
 	for k,_ in pairs(struct) do
-		assert(DisassociateFleetRequest_keys[k], "DisassociateFleetRequest contains unknown key " .. tostring(k))
+		assert(keys.DisassociateFleetRequest[k], "DisassociateFleetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DisassociateFleetRequest
 --  
--- @param StackName [String] <p>The name of the stack with which the fleet is associated.</p>
--- @param FleetName [String] <p>The name of the fleet to disassociate.</p>
+-- @param _StackName [String] <p>The name of the stack with which the fleet is associated.</p>
+-- @param _FleetName [String] <p>The name of the fleet to disassociate.</p>
 -- Required parameter: FleetName
 -- Required parameter: StackName
-function M.DisassociateFleetRequest(StackName, FleetName, ...)
+function M.DisassociateFleetRequest(_StackName, _FleetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateFleetRequest")
 	local t = { 
-		["StackName"] = StackName,
-		["FleetName"] = FleetName,
+		["StackName"] = _StackName,
+		["FleetName"] = _FleetName,
 	}
-	M.AssertDisassociateFleetRequest(t)
+	asserts.AssertDisassociateFleetRequest(t)
 	return t
 end
 
-local VpcConfig_keys = { "SubnetIds" = true, "SecurityGroupIds" = true, nil }
+keys.VpcConfig = { ["SubnetIds"] = true, ["SecurityGroupIds"] = true, nil }
 
-function M.AssertVpcConfig(struct)
+function asserts.AssertVpcConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VpcConfig to be of type 'table'")
-	if struct["SubnetIds"] then M.AssertSubnetIdList(struct["SubnetIds"]) end
-	if struct["SecurityGroupIds"] then M.AssertSecurityGroupIdList(struct["SecurityGroupIds"]) end
+	if struct["SubnetIds"] then asserts.AssertSubnetIdList(struct["SubnetIds"]) end
+	if struct["SecurityGroupIds"] then asserts.AssertSecurityGroupIdList(struct["SecurityGroupIds"]) end
 	for k,_ in pairs(struct) do
-		assert(VpcConfig_keys[k], "VpcConfig contains unknown key " .. tostring(k))
+		assert(keys.VpcConfig[k], "VpcConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type VpcConfig
 -- <p>VPC configuration information.</p>
--- @param SubnetIds [SubnetIdList] <p>The list of subnets to which a network interface is established from the fleet instance.</p>
--- @param SecurityGroupIds [SecurityGroupIdList] <p>Security groups associated with the fleet.</p>
-function M.VpcConfig(SubnetIds, SecurityGroupIds, ...)
+-- @param _SubnetIds [SubnetIdList] <p>The list of subnets to which a network interface is established from the fleet instance.</p>
+-- @param _SecurityGroupIds [SecurityGroupIdList] <p>Security groups associated with the fleet.</p>
+function M.VpcConfig(_SubnetIds, _SecurityGroupIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VpcConfig")
 	local t = { 
-		["SubnetIds"] = SubnetIds,
-		["SecurityGroupIds"] = SecurityGroupIds,
+		["SubnetIds"] = _SubnetIds,
+		["SecurityGroupIds"] = _SecurityGroupIds,
 	}
-	M.AssertVpcConfig(t)
+	asserts.AssertVpcConfig(t)
 	return t
 end
 
-local ResourceInUseException_keys = { "Message" = true, nil }
+keys.ResourceInUseException = { ["Message"] = true, nil }
 
-function M.AssertResourceInUseException(struct)
+function asserts.AssertResourceInUseException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceInUseException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceInUseException_keys[k], "ResourceInUseException contains unknown key " .. tostring(k))
+		assert(keys.ResourceInUseException[k], "ResourceInUseException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceInUseException
 -- <p>The specified resource is in use.</p>
--- @param Message [ErrorMessage] <p>The specified resource is in use.</p>
-function M.ResourceInUseException(Message, ...)
+-- @param _Message [ErrorMessage] 
+function M.ResourceInUseException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertResourceInUseException(t)
+	asserts.AssertResourceInUseException(t)
 	return t
 end
 
-function M.AssertSessionState(str)
+function asserts.AssertSessionState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SessionState to be of type 'string'")
 end
 
 -- <p>Possible values for the state of a streaming session.</p>
 function M.SessionState(str)
-	M.AssertSessionState(str)
+	asserts.AssertSessionState(str)
 	return str
 end
 
-function M.AssertFleetErrorCode(str)
+function asserts.AssertFleetErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FleetErrorCode to be of type 'string'")
 end
 
 --  
 function M.FleetErrorCode(str)
-	M.AssertFleetErrorCode(str)
+	asserts.AssertFleetErrorCode(str)
 	return str
 end
 
-function M.AssertStackErrorCode(str)
+function asserts.AssertStackErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StackErrorCode to be of type 'string'")
 end
 
 --  
 function M.StackErrorCode(str)
-	M.AssertStackErrorCode(str)
+	asserts.AssertStackErrorCode(str)
 	return str
 end
 
-function M.AssertFleetAttribute(str)
+function asserts.AssertFleetAttribute(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FleetAttribute to be of type 'string'")
 end
 
 -- <p>Fleet attribute.</p>
 function M.FleetAttribute(str)
-	M.AssertFleetAttribute(str)
+	asserts.AssertFleetAttribute(str)
 	return str
 end
 
-function M.AssertArn(str)
+function asserts.AssertArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Arn to be of type 'string'")
-	assert(str:match("^arn:aws:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}$"), "Expected string to match pattern '^arn:aws:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}$'")
 end
 
 --  
 function M.Arn(str)
-	M.AssertArn(str)
+	asserts.AssertArn(str)
 	return str
 end
 
-function M.AssertDisplayName(str)
+function asserts.AssertDisplayName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DisplayName to be of type 'string'")
 	assert(#str <= 100, "Expected string to be max 100 characters")
@@ -1770,23 +1772,22 @@ end
 
 --  
 function M.DisplayName(str)
-	M.AssertDisplayName(str)
+	asserts.AssertDisplayName(str)
 	return str
 end
 
-function M.AssertName(str)
+function asserts.AssertName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Name to be of type 'string'")
-	assert(str:match("^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$"), "Expected string to match pattern '^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$'")
 end
 
 --  
 function M.Name(str)
-	M.AssertName(str)
+	asserts.AssertName(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
@@ -1794,44 +1795,44 @@ end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertFleetState(str)
+function asserts.AssertFleetState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected FleetState to be of type 'string'")
 end
 
 --  
 function M.FleetState(str)
-	M.AssertFleetState(str)
+	asserts.AssertFleetState(str)
 	return str
 end
 
-function M.AssertImageStateChangeReasonCode(str)
+function asserts.AssertImageStateChangeReasonCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ImageStateChangeReasonCode to be of type 'string'")
 end
 
 --  
 function M.ImageStateChangeReasonCode(str)
-	M.AssertImageStateChangeReasonCode(str)
+	asserts.AssertImageStateChangeReasonCode(str)
 	return str
 end
 
-function M.AssertPlatformType(str)
+function asserts.AssertPlatformType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PlatformType to be of type 'string'")
 end
 
 --  
 function M.PlatformType(str)
-	M.AssertPlatformType(str)
+	asserts.AssertPlatformType(str)
 	return str
 end
 
-function M.AssertResourceIdentifier(str)
+function asserts.AssertResourceIdentifier(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceIdentifier to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
@@ -1839,44 +1840,44 @@ end
 
 -- <p>The ARN of the resource.</p>
 function M.ResourceIdentifier(str)
-	M.AssertResourceIdentifier(str)
+	asserts.AssertResourceIdentifier(str)
 	return str
 end
 
-function M.AssertVisibilityType(str)
+function asserts.AssertVisibilityType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected VisibilityType to be of type 'string'")
 end
 
 --  
 function M.VisibilityType(str)
-	M.AssertVisibilityType(str)
+	asserts.AssertVisibilityType(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 -- <p>The error message in the exception.</p>
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertAuthenticationType(str)
+function asserts.AssertAuthenticationType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AuthenticationType to be of type 'string'")
 end
 
 --  
 function M.AuthenticationType(str)
-	M.AssertAuthenticationType(str)
+	asserts.AssertAuthenticationType(str)
 	return str
 end
 
-function M.AssertUserId(str)
+function asserts.AssertUserId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected UserId to be of type 'string'")
 	assert(#str <= 32, "Expected string to be max 32 characters")
@@ -1885,22 +1886,22 @@ end
 
 --  
 function M.UserId(str)
-	M.AssertUserId(str)
+	asserts.AssertUserId(str)
 	return str
 end
 
-function M.AssertImageState(str)
+function asserts.AssertImageState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ImageState to be of type 'string'")
 end
 
 --  
 function M.ImageState(str)
-	M.AssertImageState(str)
+	asserts.AssertImageState(str)
 	return str
 end
 
-function M.AssertDescription(str)
+function asserts.AssertDescription(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Description to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -1908,265 +1909,265 @@ end
 
 --  
 function M.Description(str)
-	M.AssertDescription(str)
+	asserts.AssertDescription(str)
 	return str
 end
 
-function M.AssertStorageConnectorType(str)
+function asserts.AssertStorageConnectorType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StorageConnectorType to be of type 'string'")
 end
 
 -- <p>The type of storage connector. The possible values include: HOMEFOLDERS.</p>
 function M.StorageConnectorType(str)
-	M.AssertStorageConnectorType(str)
+	asserts.AssertStorageConnectorType(str)
 	return str
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertBooleanObject(boolean)
+function asserts.AssertBooleanObject(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanObject to be of type 'boolean'")
 end
 
 function M.BooleanObject(boolean)
-	M.AssertBooleanObject(boolean)
+	asserts.AssertBooleanObject(boolean)
 	return boolean
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertMetadata(map)
+function asserts.AssertMetadata(map)
 	assert(map)
 	assert(type(map) == "table", "Expected Metadata to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertString(v)
+		asserts.AssertString(k)
+		asserts.AssertString(v)
 	end
 end
 
 function M.Metadata(map)
-	M.AssertMetadata(map)
+	asserts.AssertMetadata(map)
 	return map
 end
 
-function M.AssertTimestamp(timestamp)
+function asserts.AssertTimestamp(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Timestamp to be of type 'string'")
 end
 
 function M.Timestamp(timestamp)
-	M.AssertTimestamp(timestamp)
+	asserts.AssertTimestamp(timestamp)
 	return timestamp
 end
 
-function M.AssertStorageConnectorList(list)
+function asserts.AssertStorageConnectorList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StorageConnectorList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStorageConnector(v)
+		asserts.AssertStorageConnector(v)
 	end
 end
 
 -- <p>A list of storage connectors.</p>
 -- List of StorageConnector objects
 function M.StorageConnectorList(list)
-	M.AssertStorageConnectorList(list)
+	asserts.AssertStorageConnectorList(list)
 	return list
 end
 
-function M.AssertFleetAttributes(list)
+function asserts.AssertFleetAttributes(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FleetAttributes to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFleetAttribute(v)
+		asserts.AssertFleetAttribute(v)
 	end
 end
 
 -- <p>A list of fleet attributes.</p>
 -- List of FleetAttribute objects
 function M.FleetAttributes(list)
-	M.AssertFleetAttributes(list)
+	asserts.AssertFleetAttributes(list)
 	return list
 end
 
-function M.AssertApplications(list)
+function asserts.AssertApplications(list)
 	assert(list)
 	assert(type(list) == "table", "Expected Applications to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertApplication(v)
+		asserts.AssertApplication(v)
 	end
 end
 
 --  
 -- List of Application objects
 function M.Applications(list)
-	M.AssertApplications(list)
+	asserts.AssertApplications(list)
 	return list
 end
 
-function M.AssertSessionList(list)
+function asserts.AssertSessionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SessionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSession(v)
+		asserts.AssertSession(v)
 	end
 end
 
 -- <p>List of sessions.</p>
 -- List of Session objects
 function M.SessionList(list)
-	M.AssertSessionList(list)
+	asserts.AssertSessionList(list)
 	return list
 end
 
-function M.AssertFleetErrors(list)
+function asserts.AssertFleetErrors(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FleetErrors to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFleetError(v)
+		asserts.AssertFleetError(v)
 	end
 end
 
 --  
 -- List of FleetError objects
 function M.FleetErrors(list)
-	M.AssertFleetErrors(list)
+	asserts.AssertFleetErrors(list)
 	return list
 end
 
-function M.AssertStackList(list)
+function asserts.AssertStackList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StackList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStack(v)
+		asserts.AssertStack(v)
 	end
 end
 
 -- <p>A list of stacks.</p>
 -- List of Stack objects
 function M.StackList(list)
-	M.AssertStackList(list)
+	asserts.AssertStackList(list)
 	return list
 end
 
-function M.AssertStringList(list)
+function asserts.AssertStringList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StringList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.StringList(list)
-	M.AssertStringList(list)
+	asserts.AssertStringList(list)
 	return list
 end
 
-function M.AssertSubnetIdList(list)
+function asserts.AssertSubnetIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SubnetIdList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 -- <p>A list of subnet IDs.</p>
 -- List of String objects
 function M.SubnetIdList(list)
-	M.AssertSubnetIdList(list)
+	asserts.AssertSubnetIdList(list)
 	return list
 end
 
-function M.AssertFleetList(list)
+function asserts.AssertFleetList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected FleetList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertFleet(v)
+		asserts.AssertFleet(v)
 	end
 end
 
 -- <p>A list of fleets.</p>
 -- List of Fleet objects
 function M.FleetList(list)
-	M.AssertFleetList(list)
+	asserts.AssertFleetList(list)
 	return list
 end
 
-function M.AssertImageList(list)
+function asserts.AssertImageList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ImageList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertImage(v)
+		asserts.AssertImage(v)
 	end
 end
 
 --  
 -- List of Image objects
 function M.ImageList(list)
-	M.AssertImageList(list)
+	asserts.AssertImageList(list)
 	return list
 end
 
-function M.AssertStackErrors(list)
+function asserts.AssertStackErrors(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StackErrors to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStackError(v)
+		asserts.AssertStackError(v)
 	end
 end
 
 -- <p>A list of stack errors.</p>
 -- List of StackError objects
 function M.StackErrors(list)
-	M.AssertStackErrors(list)
+	asserts.AssertStackErrors(list)
 	return list
 end
 
-function M.AssertSecurityGroupIdList(list)
+function asserts.AssertSecurityGroupIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SecurityGroupIdList to be of type ''table")
 	assert(#list <= 5, "Expected list to be contain 5 elements")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 -- <p>A list of security groups.</p>
 -- List of String objects
 function M.SecurityGroupIdList(list)
-	M.AssertSecurityGroupIdList(list)
+	asserts.AssertSecurityGroupIdList(list)
 	return list
 end
 

@@ -18,311 +18,314 @@ M.metadata = {
 	uid = "cognito-sync-2014-06-30",
 }
 
-local LimitExceededException_keys = { "message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertLimitExceededException(struct)
+keys.LimitExceededException = { ["message"] = true, nil }
+
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- Thrown when the limit on the number of objects or operations has been exceeded.
--- @param message [ExceptionMessage] Message returned by LimitExceededException.
+-- @param _message [ExceptionMessage] Message returned by LimitExceededException.
 -- Required parameter: message
-function M.LimitExceededException(message, ...)
+function M.LimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local GetIdentityPoolConfigurationResponse_keys = { "IdentityPoolId" = true, "PushSync" = true, "CognitoStreams" = true, nil }
+keys.GetIdentityPoolConfigurationResponse = { ["IdentityPoolId"] = true, ["PushSync"] = true, ["CognitoStreams"] = true, nil }
 
-function M.AssertGetIdentityPoolConfigurationResponse(struct)
+function asserts.AssertGetIdentityPoolConfigurationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIdentityPoolConfigurationResponse to be of type 'table'")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["PushSync"] then M.AssertPushSync(struct["PushSync"]) end
-	if struct["CognitoStreams"] then M.AssertCognitoStreams(struct["CognitoStreams"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["PushSync"] then asserts.AssertPushSync(struct["PushSync"]) end
+	if struct["CognitoStreams"] then asserts.AssertCognitoStreams(struct["CognitoStreams"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIdentityPoolConfigurationResponse_keys[k], "GetIdentityPoolConfigurationResponse contains unknown key " .. tostring(k))
+		assert(keys.GetIdentityPoolConfigurationResponse[k], "GetIdentityPoolConfigurationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIdentityPoolConfigurationResponse
 -- <p>The output for the GetIdentityPoolConfiguration operation.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
--- @param PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
--- @param CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
-function M.GetIdentityPoolConfigurationResponse(IdentityPoolId, PushSync, CognitoStreams, ...)
+-- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
+-- @param _PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
+-- @param _CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
+function M.GetIdentityPoolConfigurationResponse(_IdentityPoolId, _PushSync, _CognitoStreams, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolConfigurationResponse")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["PushSync"] = PushSync,
-		["CognitoStreams"] = CognitoStreams,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["PushSync"] = _PushSync,
+		["CognitoStreams"] = _CognitoStreams,
 	}
-	M.AssertGetIdentityPoolConfigurationResponse(t)
+	asserts.AssertGetIdentityPoolConfigurationResponse(t)
 	return t
 end
 
-local ConcurrentModificationException_keys = { "message" = true, nil }
+keys.ConcurrentModificationException = { ["message"] = true, nil }
 
-function M.AssertConcurrentModificationException(struct)
+function asserts.AssertConcurrentModificationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConcurrentModificationException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ConcurrentModificationException_keys[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
+		assert(keys.ConcurrentModificationException[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>Thrown if there are parallel requests to modify a resource.</p>
--- @param message [String] <p>The message returned by a ConcurrentModicationException.</p>
+-- @param _message [String] <p>The message returned by a ConcurrentModicationException.</p>
 -- Required parameter: message
-function M.ConcurrentModificationException(message, ...)
+function M.ConcurrentModificationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertConcurrentModificationException(t)
+	asserts.AssertConcurrentModificationException(t)
 	return t
 end
 
-local DeleteDatasetResponse_keys = { "Dataset" = true, nil }
+keys.DeleteDatasetResponse = { ["Dataset"] = true, nil }
 
-function M.AssertDeleteDatasetResponse(struct)
+function asserts.AssertDeleteDatasetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDatasetResponse to be of type 'table'")
-	if struct["Dataset"] then M.AssertDataset(struct["Dataset"]) end
+	if struct["Dataset"] then asserts.AssertDataset(struct["Dataset"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDatasetResponse_keys[k], "DeleteDatasetResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteDatasetResponse[k], "DeleteDatasetResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDatasetResponse
 -- Response to a successful DeleteDataset request.
--- @param Dataset [Dataset] A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
-function M.DeleteDatasetResponse(Dataset, ...)
+-- @param _Dataset [Dataset] A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
+function M.DeleteDatasetResponse(_Dataset, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDatasetResponse")
 	local t = { 
-		["Dataset"] = Dataset,
+		["Dataset"] = _Dataset,
 	}
-	M.AssertDeleteDatasetResponse(t)
+	asserts.AssertDeleteDatasetResponse(t)
 	return t
 end
 
-local InternalErrorException_keys = { "message" = true, nil }
+keys.InternalErrorException = { ["message"] = true, nil }
 
-function M.AssertInternalErrorException(struct)
+function asserts.AssertInternalErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalErrorException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalErrorException_keys[k], "InternalErrorException contains unknown key " .. tostring(k))
+		assert(keys.InternalErrorException[k], "InternalErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalErrorException
 -- Indicates an internal service error.
--- @param message [ExceptionMessage] Message returned by InternalErrorException.
+-- @param _message [ExceptionMessage] Message returned by InternalErrorException.
 -- Required parameter: message
-function M.InternalErrorException(message, ...)
+function M.InternalErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalErrorException(t)
+	asserts.AssertInternalErrorException(t)
 	return t
 end
 
-local DescribeIdentityUsageRequest_keys = { "IdentityPoolId" = true, "IdentityId" = true, nil }
+keys.DescribeIdentityUsageRequest = { ["IdentityPoolId"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertDescribeIdentityUsageRequest(struct)
+function asserts.AssertDescribeIdentityUsageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeIdentityUsageRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeIdentityUsageRequest_keys[k], "DescribeIdentityUsageRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeIdentityUsageRequest[k], "DescribeIdentityUsageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeIdentityUsageRequest
 -- A request for information about the usage of an identity pool.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
-function M.DescribeIdentityUsageRequest(IdentityPoolId, IdentityId, ...)
+function M.DescribeIdentityUsageRequest(_IdentityPoolId, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityUsageRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["IdentityId"] = IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertDescribeIdentityUsageRequest(t)
+	asserts.AssertDescribeIdentityUsageRequest(t)
 	return t
 end
 
-local GetBulkPublishDetailsRequest_keys = { "IdentityPoolId" = true, nil }
+keys.GetBulkPublishDetailsRequest = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertGetBulkPublishDetailsRequest(struct)
+function asserts.AssertGetBulkPublishDetailsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetBulkPublishDetailsRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetBulkPublishDetailsRequest_keys[k], "GetBulkPublishDetailsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetBulkPublishDetailsRequest[k], "GetBulkPublishDetailsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetBulkPublishDetailsRequest
 -- The input for the GetBulkPublishDetails operation.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- Required parameter: IdentityPoolId
-function M.GetBulkPublishDetailsRequest(IdentityPoolId, ...)
+function M.GetBulkPublishDetailsRequest(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBulkPublishDetailsRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertGetBulkPublishDetailsRequest(t)
+	asserts.AssertGetBulkPublishDetailsRequest(t)
 	return t
 end
 
-local ListRecordsResponse_keys = { "Count" = true, "DatasetExists" = true, "DatasetSyncCount" = true, "LastModifiedBy" = true, "Records" = true, "MergedDatasetNames" = true, "SyncSessionToken" = true, "DatasetDeletedAfterRequestedSyncCount" = true, "NextToken" = true, nil }
+keys.ListRecordsResponse = { ["Count"] = true, ["DatasetExists"] = true, ["DatasetSyncCount"] = true, ["LastModifiedBy"] = true, ["Records"] = true, ["MergedDatasetNames"] = true, ["SyncSessionToken"] = true, ["DatasetDeletedAfterRequestedSyncCount"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListRecordsResponse(struct)
+function asserts.AssertListRecordsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListRecordsResponse to be of type 'table'")
-	if struct["Count"] then M.AssertInteger(struct["Count"]) end
-	if struct["DatasetExists"] then M.AssertBoolean(struct["DatasetExists"]) end
-	if struct["DatasetSyncCount"] then M.AssertLong(struct["DatasetSyncCount"]) end
-	if struct["LastModifiedBy"] then M.AssertString(struct["LastModifiedBy"]) end
-	if struct["Records"] then M.AssertRecordList(struct["Records"]) end
-	if struct["MergedDatasetNames"] then M.AssertMergedDatasetNameList(struct["MergedDatasetNames"]) end
-	if struct["SyncSessionToken"] then M.AssertString(struct["SyncSessionToken"]) end
-	if struct["DatasetDeletedAfterRequestedSyncCount"] then M.AssertBoolean(struct["DatasetDeletedAfterRequestedSyncCount"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
+	if struct["Count"] then asserts.AssertInteger(struct["Count"]) end
+	if struct["DatasetExists"] then asserts.AssertBoolean(struct["DatasetExists"]) end
+	if struct["DatasetSyncCount"] then asserts.AssertLong(struct["DatasetSyncCount"]) end
+	if struct["LastModifiedBy"] then asserts.AssertString(struct["LastModifiedBy"]) end
+	if struct["Records"] then asserts.AssertRecordList(struct["Records"]) end
+	if struct["MergedDatasetNames"] then asserts.AssertMergedDatasetNameList(struct["MergedDatasetNames"]) end
+	if struct["SyncSessionToken"] then asserts.AssertString(struct["SyncSessionToken"]) end
+	if struct["DatasetDeletedAfterRequestedSyncCount"] then asserts.AssertBoolean(struct["DatasetDeletedAfterRequestedSyncCount"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListRecordsResponse_keys[k], "ListRecordsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListRecordsResponse[k], "ListRecordsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListRecordsResponse
 -- Returned for a successful ListRecordsRequest.
--- @param Count [Integer] Total number of records.
--- @param DatasetExists [Boolean] Indicates whether the dataset exists.
--- @param DatasetSyncCount [Long] Server sync count for this dataset.
--- @param LastModifiedBy [String] The user/device that made the last change to this record.
--- @param Records [RecordList] A list of all records.
--- @param MergedDatasetNames [MergedDatasetNameList] Names of merged datasets.
--- @param SyncSessionToken [String] A token containing a session ID, identity ID, and expiration.
--- @param DatasetDeletedAfterRequestedSyncCount [Boolean] A boolean value specifying whether to delete the dataset locally.
--- @param NextToken [String] A pagination token for obtaining the next page of results.
-function M.ListRecordsResponse(Count, DatasetExists, DatasetSyncCount, LastModifiedBy, Records, MergedDatasetNames, SyncSessionToken, DatasetDeletedAfterRequestedSyncCount, NextToken, ...)
+-- @param _Count [Integer] Total number of records.
+-- @param _DatasetExists [Boolean] Indicates whether the dataset exists.
+-- @param _DatasetSyncCount [Long] Server sync count for this dataset.
+-- @param _LastModifiedBy [String] The user/device that made the last change to this record.
+-- @param _Records [RecordList] A list of all records.
+-- @param _MergedDatasetNames [MergedDatasetNameList] Names of merged datasets.
+-- @param _SyncSessionToken [String] A token containing a session ID, identity ID, and expiration.
+-- @param _DatasetDeletedAfterRequestedSyncCount [Boolean] A boolean value specifying whether to delete the dataset locally.
+-- @param _NextToken [String] A pagination token for obtaining the next page of results.
+function M.ListRecordsResponse(_Count, _DatasetExists, _DatasetSyncCount, _LastModifiedBy, _Records, _MergedDatasetNames, _SyncSessionToken, _DatasetDeletedAfterRequestedSyncCount, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordsResponse")
 	local t = { 
-		["Count"] = Count,
-		["DatasetExists"] = DatasetExists,
-		["DatasetSyncCount"] = DatasetSyncCount,
-		["LastModifiedBy"] = LastModifiedBy,
-		["Records"] = Records,
-		["MergedDatasetNames"] = MergedDatasetNames,
-		["SyncSessionToken"] = SyncSessionToken,
-		["DatasetDeletedAfterRequestedSyncCount"] = DatasetDeletedAfterRequestedSyncCount,
-		["NextToken"] = NextToken,
+		["Count"] = _Count,
+		["DatasetExists"] = _DatasetExists,
+		["DatasetSyncCount"] = _DatasetSyncCount,
+		["LastModifiedBy"] = _LastModifiedBy,
+		["Records"] = _Records,
+		["MergedDatasetNames"] = _MergedDatasetNames,
+		["SyncSessionToken"] = _SyncSessionToken,
+		["DatasetDeletedAfterRequestedSyncCount"] = _DatasetDeletedAfterRequestedSyncCount,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListRecordsResponse(t)
+	asserts.AssertListRecordsResponse(t)
 	return t
 end
 
-local SetIdentityPoolConfigurationResponse_keys = { "IdentityPoolId" = true, "PushSync" = true, "CognitoStreams" = true, nil }
+keys.SetIdentityPoolConfigurationResponse = { ["IdentityPoolId"] = true, ["PushSync"] = true, ["CognitoStreams"] = true, nil }
 
-function M.AssertSetIdentityPoolConfigurationResponse(struct)
+function asserts.AssertSetIdentityPoolConfigurationResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetIdentityPoolConfigurationResponse to be of type 'table'")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["PushSync"] then M.AssertPushSync(struct["PushSync"]) end
-	if struct["CognitoStreams"] then M.AssertCognitoStreams(struct["CognitoStreams"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["PushSync"] then asserts.AssertPushSync(struct["PushSync"]) end
+	if struct["CognitoStreams"] then asserts.AssertCognitoStreams(struct["CognitoStreams"]) end
 	for k,_ in pairs(struct) do
-		assert(SetIdentityPoolConfigurationResponse_keys[k], "SetIdentityPoolConfigurationResponse contains unknown key " .. tostring(k))
+		assert(keys.SetIdentityPoolConfigurationResponse[k], "SetIdentityPoolConfigurationResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetIdentityPoolConfigurationResponse
 -- <p>The output for the SetIdentityPoolConfiguration operation</p>
--- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
--- @param PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
--- @param CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
-function M.SetIdentityPoolConfigurationResponse(IdentityPoolId, PushSync, CognitoStreams, ...)
+-- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
+-- @param _PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
+-- @param _CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
+function M.SetIdentityPoolConfigurationResponse(_IdentityPoolId, _PushSync, _CognitoStreams, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityPoolConfigurationResponse")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["PushSync"] = PushSync,
-		["CognitoStreams"] = CognitoStreams,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["PushSync"] = _PushSync,
+		["CognitoStreams"] = _CognitoStreams,
 	}
-	M.AssertSetIdentityPoolConfigurationResponse(t)
+	asserts.AssertSetIdentityPoolConfigurationResponse(t)
 	return t
 end
 
-local SubscribeToDatasetRequest_keys = { "IdentityPoolId" = true, "DatasetName" = true, "DeviceId" = true, "IdentityId" = true, nil }
+keys.SubscribeToDatasetRequest = { ["IdentityPoolId"] = true, ["DatasetName"] = true, ["DeviceId"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertSubscribeToDatasetRequest(struct)
+function asserts.AssertSubscribeToDatasetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubscribeToDatasetRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["DatasetName"], "Expected key DatasetName to exist in table")
 	assert(struct["DeviceId"], "Expected key DeviceId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["DatasetName"] then M.AssertDatasetName(struct["DatasetName"]) end
-	if struct["DeviceId"] then M.AssertDeviceId(struct["DeviceId"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["DatasetName"] then asserts.AssertDatasetName(struct["DatasetName"]) end
+	if struct["DeviceId"] then asserts.AssertDeviceId(struct["DeviceId"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(SubscribeToDatasetRequest_keys[k], "SubscribeToDatasetRequest contains unknown key " .. tostring(k))
+		assert(keys.SubscribeToDatasetRequest[k], "SubscribeToDatasetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SubscribeToDatasetRequest
 -- <p>A request to SubscribeToDatasetRequest.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.</p>
--- @param DatasetName [DatasetName] <p>The name of the dataset to subcribe to.</p>
--- @param DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
--- @param IdentityId [IdentityId] <p>Unique ID for this identity.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.</p>
+-- @param _DatasetName [DatasetName] <p>The name of the dataset to subcribe to.</p>
+-- @param _DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- @param _IdentityId [IdentityId] <p>Unique ID for this identity.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: DatasetName
 -- Required parameter: DeviceId
-function M.SubscribeToDatasetRequest(IdentityPoolId, DatasetName, DeviceId, IdentityId, ...)
+function M.SubscribeToDatasetRequest(_IdentityPoolId, _DatasetName, _DeviceId, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeToDatasetRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["DatasetName"] = DatasetName,
-		["DeviceId"] = DeviceId,
-		["IdentityId"] = IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["DatasetName"] = _DatasetName,
+		["DeviceId"] = _DeviceId,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertSubscribeToDatasetRequest(t)
+	asserts.AssertSubscribeToDatasetRequest(t)
 	return t
 end
 
-local UnsubscribeFromDatasetResponse_keys = { nil }
+keys.UnsubscribeFromDatasetResponse = { nil }
 
-function M.AssertUnsubscribeFromDatasetResponse(struct)
+function asserts.AssertUnsubscribeFromDatasetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsubscribeFromDatasetResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(UnsubscribeFromDatasetResponse_keys[k], "UnsubscribeFromDatasetResponse contains unknown key " .. tostring(k))
+		assert(keys.UnsubscribeFromDatasetResponse[k], "UnsubscribeFromDatasetResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -332,541 +335,541 @@ function M.UnsubscribeFromDatasetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeFromDatasetResponse")
 	local t = { 
 	}
-	M.AssertUnsubscribeFromDatasetResponse(t)
+	asserts.AssertUnsubscribeFromDatasetResponse(t)
 	return t
 end
 
-local SetIdentityPoolConfigurationRequest_keys = { "IdentityPoolId" = true, "PushSync" = true, "CognitoStreams" = true, nil }
+keys.SetIdentityPoolConfigurationRequest = { ["IdentityPoolId"] = true, ["PushSync"] = true, ["CognitoStreams"] = true, nil }
 
-function M.AssertSetIdentityPoolConfigurationRequest(struct)
+function asserts.AssertSetIdentityPoolConfigurationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetIdentityPoolConfigurationRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["PushSync"] then M.AssertPushSync(struct["PushSync"]) end
-	if struct["CognitoStreams"] then M.AssertCognitoStreams(struct["CognitoStreams"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["PushSync"] then asserts.AssertPushSync(struct["PushSync"]) end
+	if struct["CognitoStreams"] then asserts.AssertCognitoStreams(struct["CognitoStreams"]) end
 	for k,_ in pairs(struct) do
-		assert(SetIdentityPoolConfigurationRequest_keys[k], "SetIdentityPoolConfigurationRequest contains unknown key " .. tostring(k))
+		assert(keys.SetIdentityPoolConfigurationRequest[k], "SetIdentityPoolConfigurationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetIdentityPoolConfigurationRequest
 -- <p>The input for the SetIdentityPoolConfiguration operation.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.</p>
--- @param PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
--- @param CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
+-- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.</p>
+-- @param _PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
+-- @param _CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
 -- Required parameter: IdentityPoolId
-function M.SetIdentityPoolConfigurationRequest(IdentityPoolId, PushSync, CognitoStreams, ...)
+function M.SetIdentityPoolConfigurationRequest(_IdentityPoolId, _PushSync, _CognitoStreams, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityPoolConfigurationRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["PushSync"] = PushSync,
-		["CognitoStreams"] = CognitoStreams,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["PushSync"] = _PushSync,
+		["CognitoStreams"] = _CognitoStreams,
 	}
-	M.AssertSetIdentityPoolConfigurationRequest(t)
+	asserts.AssertSetIdentityPoolConfigurationRequest(t)
 	return t
 end
 
-local ListIdentityPoolUsageResponse_keys = { "Count" = true, "NextToken" = true, "MaxResults" = true, "IdentityPoolUsages" = true, nil }
+keys.ListIdentityPoolUsageResponse = { ["Count"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["IdentityPoolUsages"] = true, nil }
 
-function M.AssertListIdentityPoolUsageResponse(struct)
+function asserts.AssertListIdentityPoolUsageResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIdentityPoolUsageResponse to be of type 'table'")
-	if struct["Count"] then M.AssertInteger(struct["Count"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertInteger(struct["MaxResults"]) end
-	if struct["IdentityPoolUsages"] then M.AssertIdentityPoolUsageList(struct["IdentityPoolUsages"]) end
+	if struct["Count"] then asserts.AssertInteger(struct["Count"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertInteger(struct["MaxResults"]) end
+	if struct["IdentityPoolUsages"] then asserts.AssertIdentityPoolUsageList(struct["IdentityPoolUsages"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIdentityPoolUsageResponse_keys[k], "ListIdentityPoolUsageResponse contains unknown key " .. tostring(k))
+		assert(keys.ListIdentityPoolUsageResponse[k], "ListIdentityPoolUsageResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIdentityPoolUsageResponse
 -- Returned for a successful ListIdentityPoolUsage request.
--- @param Count [Integer] Total number of identities for the identity pool.
--- @param NextToken [String] A pagination token for obtaining the next page of results.
--- @param MaxResults [Integer] The maximum number of results to be returned.
--- @param IdentityPoolUsages [IdentityPoolUsageList] Usage information for the identity pools.
-function M.ListIdentityPoolUsageResponse(Count, NextToken, MaxResults, IdentityPoolUsages, ...)
+-- @param _Count [Integer] Total number of identities for the identity pool.
+-- @param _NextToken [String] A pagination token for obtaining the next page of results.
+-- @param _MaxResults [Integer] The maximum number of results to be returned.
+-- @param _IdentityPoolUsages [IdentityPoolUsageList] Usage information for the identity pools.
+function M.ListIdentityPoolUsageResponse(_Count, _NextToken, _MaxResults, _IdentityPoolUsages, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolUsageResponse")
 	local t = { 
-		["Count"] = Count,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["IdentityPoolUsages"] = IdentityPoolUsages,
+		["Count"] = _Count,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["IdentityPoolUsages"] = _IdentityPoolUsages,
 	}
-	M.AssertListIdentityPoolUsageResponse(t)
+	asserts.AssertListIdentityPoolUsageResponse(t)
 	return t
 end
 
-local GetCognitoEventsRequest_keys = { "IdentityPoolId" = true, nil }
+keys.GetCognitoEventsRequest = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertGetCognitoEventsRequest(struct)
+function asserts.AssertGetCognitoEventsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCognitoEventsRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCognitoEventsRequest_keys[k], "GetCognitoEventsRequest contains unknown key " .. tostring(k))
+		assert(keys.GetCognitoEventsRequest[k], "GetCognitoEventsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCognitoEventsRequest
 -- <p>A request for a list of the configured Cognito Events</p>
--- @param IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool ID for the request</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool ID for the request</p>
 -- Required parameter: IdentityPoolId
-function M.GetCognitoEventsRequest(IdentityPoolId, ...)
+function M.GetCognitoEventsRequest(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCognitoEventsRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertGetCognitoEventsRequest(t)
+	asserts.AssertGetCognitoEventsRequest(t)
 	return t
 end
 
-local DescribeIdentityPoolUsageRequest_keys = { "IdentityPoolId" = true, nil }
+keys.DescribeIdentityPoolUsageRequest = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertDescribeIdentityPoolUsageRequest(struct)
+function asserts.AssertDescribeIdentityPoolUsageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeIdentityPoolUsageRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeIdentityPoolUsageRequest_keys[k], "DescribeIdentityPoolUsageRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeIdentityPoolUsageRequest[k], "DescribeIdentityPoolUsageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeIdentityPoolUsageRequest
 -- A request for usage information about the identity pool.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- Required parameter: IdentityPoolId
-function M.DescribeIdentityPoolUsageRequest(IdentityPoolId, ...)
+function M.DescribeIdentityPoolUsageRequest(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityPoolUsageRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertDescribeIdentityPoolUsageRequest(t)
+	asserts.AssertDescribeIdentityPoolUsageRequest(t)
 	return t
 end
 
-local IdentityPoolUsage_keys = { "DataStorage" = true, "IdentityPoolId" = true, "SyncSessionsCount" = true, "LastModifiedDate" = true, nil }
+keys.IdentityPoolUsage = { ["DataStorage"] = true, ["IdentityPoolId"] = true, ["SyncSessionsCount"] = true, ["LastModifiedDate"] = true, nil }
 
-function M.AssertIdentityPoolUsage(struct)
+function asserts.AssertIdentityPoolUsage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IdentityPoolUsage to be of type 'table'")
-	if struct["DataStorage"] then M.AssertLong(struct["DataStorage"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["SyncSessionsCount"] then M.AssertLong(struct["SyncSessionsCount"]) end
-	if struct["LastModifiedDate"] then M.AssertDate(struct["LastModifiedDate"]) end
+	if struct["DataStorage"] then asserts.AssertLong(struct["DataStorage"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["SyncSessionsCount"] then asserts.AssertLong(struct["SyncSessionsCount"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDate(struct["LastModifiedDate"]) end
 	for k,_ in pairs(struct) do
-		assert(IdentityPoolUsage_keys[k], "IdentityPoolUsage contains unknown key " .. tostring(k))
+		assert(keys.IdentityPoolUsage[k], "IdentityPoolUsage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IdentityPoolUsage
 -- Usage information for the identity pool.
--- @param DataStorage [Long] Data storage information for the identity pool.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param SyncSessionsCount [Long] Number of sync sessions for the identity pool.
--- @param LastModifiedDate [Date] Date on which the identity pool was last modified.
-function M.IdentityPoolUsage(DataStorage, IdentityPoolId, SyncSessionsCount, LastModifiedDate, ...)
+-- @param _DataStorage [Long] Data storage information for the identity pool.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _SyncSessionsCount [Long] Number of sync sessions for the identity pool.
+-- @param _LastModifiedDate [Date] Date on which the identity pool was last modified.
+function M.IdentityPoolUsage(_DataStorage, _IdentityPoolId, _SyncSessionsCount, _LastModifiedDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityPoolUsage")
 	local t = { 
-		["DataStorage"] = DataStorage,
-		["IdentityPoolId"] = IdentityPoolId,
-		["SyncSessionsCount"] = SyncSessionsCount,
-		["LastModifiedDate"] = LastModifiedDate,
+		["DataStorage"] = _DataStorage,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["SyncSessionsCount"] = _SyncSessionsCount,
+		["LastModifiedDate"] = _LastModifiedDate,
 	}
-	M.AssertIdentityPoolUsage(t)
+	asserts.AssertIdentityPoolUsage(t)
 	return t
 end
 
-local GetBulkPublishDetailsResponse_keys = { "BulkPublishStartTime" = true, "IdentityPoolId" = true, "BulkPublishStatus" = true, "BulkPublishCompleteTime" = true, "FailureMessage" = true, nil }
+keys.GetBulkPublishDetailsResponse = { ["BulkPublishStartTime"] = true, ["IdentityPoolId"] = true, ["BulkPublishStatus"] = true, ["BulkPublishCompleteTime"] = true, ["FailureMessage"] = true, nil }
 
-function M.AssertGetBulkPublishDetailsResponse(struct)
+function asserts.AssertGetBulkPublishDetailsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetBulkPublishDetailsResponse to be of type 'table'")
-	if struct["BulkPublishStartTime"] then M.AssertDate(struct["BulkPublishStartTime"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["BulkPublishStatus"] then M.AssertBulkPublishStatus(struct["BulkPublishStatus"]) end
-	if struct["BulkPublishCompleteTime"] then M.AssertDate(struct["BulkPublishCompleteTime"]) end
-	if struct["FailureMessage"] then M.AssertString(struct["FailureMessage"]) end
+	if struct["BulkPublishStartTime"] then asserts.AssertDate(struct["BulkPublishStartTime"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["BulkPublishStatus"] then asserts.AssertBulkPublishStatus(struct["BulkPublishStatus"]) end
+	if struct["BulkPublishCompleteTime"] then asserts.AssertDate(struct["BulkPublishCompleteTime"]) end
+	if struct["FailureMessage"] then asserts.AssertString(struct["FailureMessage"]) end
 	for k,_ in pairs(struct) do
-		assert(GetBulkPublishDetailsResponse_keys[k], "GetBulkPublishDetailsResponse contains unknown key " .. tostring(k))
+		assert(keys.GetBulkPublishDetailsResponse[k], "GetBulkPublishDetailsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetBulkPublishDetailsResponse
 -- The output for the GetBulkPublishDetails operation.
--- @param BulkPublishStartTime [Date] The date/time at which the last bulk publish was initiated.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param BulkPublishStatus [BulkPublishStatus] Status of the last bulk publish operation, valid values are: <p>NOT_STARTED - No bulk publish has been requested for this identity pool</p> <p>IN_PROGRESS - Data is being published to the configured stream</p> <p>SUCCEEDED - All data for the identity pool has been published to the configured stream</p> <p>FAILED - Some portion of the data has failed to publish, check FailureMessage for the cause.</p>
--- @param BulkPublishCompleteTime [Date] If BulkPublishStatus is SUCCEEDED, the time the last bulk publish operation completed.
--- @param FailureMessage [String] If BulkPublishStatus is FAILED this field will contain the error message that caused the bulk publish to fail.
-function M.GetBulkPublishDetailsResponse(BulkPublishStartTime, IdentityPoolId, BulkPublishStatus, BulkPublishCompleteTime, FailureMessage, ...)
+-- @param _BulkPublishStartTime [Date] The date/time at which the last bulk publish was initiated.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _BulkPublishStatus [BulkPublishStatus] Status of the last bulk publish operation, valid values are: <p>NOT_STARTED - No bulk publish has been requested for this identity pool</p> <p>IN_PROGRESS - Data is being published to the configured stream</p> <p>SUCCEEDED - All data for the identity pool has been published to the configured stream</p> <p>FAILED - Some portion of the data has failed to publish, check FailureMessage for the cause.</p>
+-- @param _BulkPublishCompleteTime [Date] If BulkPublishStatus is SUCCEEDED, the time the last bulk publish operation completed.
+-- @param _FailureMessage [String] If BulkPublishStatus is FAILED this field will contain the error message that caused the bulk publish to fail.
+function M.GetBulkPublishDetailsResponse(_BulkPublishStartTime, _IdentityPoolId, _BulkPublishStatus, _BulkPublishCompleteTime, _FailureMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBulkPublishDetailsResponse")
 	local t = { 
-		["BulkPublishStartTime"] = BulkPublishStartTime,
-		["IdentityPoolId"] = IdentityPoolId,
-		["BulkPublishStatus"] = BulkPublishStatus,
-		["BulkPublishCompleteTime"] = BulkPublishCompleteTime,
-		["FailureMessage"] = FailureMessage,
+		["BulkPublishStartTime"] = _BulkPublishStartTime,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["BulkPublishStatus"] = _BulkPublishStatus,
+		["BulkPublishCompleteTime"] = _BulkPublishCompleteTime,
+		["FailureMessage"] = _FailureMessage,
 	}
-	M.AssertGetBulkPublishDetailsResponse(t)
+	asserts.AssertGetBulkPublishDetailsResponse(t)
 	return t
 end
 
-local InvalidParameterException_keys = { "message" = true, nil }
+keys.InvalidParameterException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterException(struct)
+function asserts.AssertInvalidParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterException_keys[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterException
 -- Thrown when a request parameter does not comply with the associated constraints.
--- @param message [ExceptionMessage] Message returned by InvalidParameterException.
+-- @param _message [ExceptionMessage] Message returned by InvalidParameterException.
 -- Required parameter: message
-function M.InvalidParameterException(message, ...)
+function M.InvalidParameterException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterException(t)
+	asserts.AssertInvalidParameterException(t)
 	return t
 end
 
-local UnsubscribeFromDatasetRequest_keys = { "IdentityPoolId" = true, "DatasetName" = true, "DeviceId" = true, "IdentityId" = true, nil }
+keys.UnsubscribeFromDatasetRequest = { ["IdentityPoolId"] = true, ["DatasetName"] = true, ["DeviceId"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertUnsubscribeFromDatasetRequest(struct)
+function asserts.AssertUnsubscribeFromDatasetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnsubscribeFromDatasetRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["DatasetName"], "Expected key DatasetName to exist in table")
 	assert(struct["DeviceId"], "Expected key DeviceId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["DatasetName"] then M.AssertDatasetName(struct["DatasetName"]) end
-	if struct["DeviceId"] then M.AssertDeviceId(struct["DeviceId"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["DatasetName"] then asserts.AssertDatasetName(struct["DatasetName"]) end
+	if struct["DeviceId"] then asserts.AssertDeviceId(struct["DeviceId"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(UnsubscribeFromDatasetRequest_keys[k], "UnsubscribeFromDatasetRequest contains unknown key " .. tostring(k))
+		assert(keys.UnsubscribeFromDatasetRequest[k], "UnsubscribeFromDatasetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnsubscribeFromDatasetRequest
 -- <p>A request to UnsubscribeFromDataset.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.</p>
--- @param DatasetName [DatasetName] <p>The name of the dataset from which to unsubcribe.</p>
--- @param DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
--- @param IdentityId [IdentityId] <p>Unique ID for this identity.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.</p>
+-- @param _DatasetName [DatasetName] <p>The name of the dataset from which to unsubcribe.</p>
+-- @param _DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- @param _IdentityId [IdentityId] <p>Unique ID for this identity.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: DatasetName
 -- Required parameter: DeviceId
-function M.UnsubscribeFromDatasetRequest(IdentityPoolId, DatasetName, DeviceId, IdentityId, ...)
+function M.UnsubscribeFromDatasetRequest(_IdentityPoolId, _DatasetName, _DeviceId, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeFromDatasetRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["DatasetName"] = DatasetName,
-		["DeviceId"] = DeviceId,
-		["IdentityId"] = IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["DatasetName"] = _DatasetName,
+		["DeviceId"] = _DeviceId,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertUnsubscribeFromDatasetRequest(t)
+	asserts.AssertUnsubscribeFromDatasetRequest(t)
 	return t
 end
 
-local CognitoStreams_keys = { "StreamingStatus" = true, "RoleArn" = true, "StreamName" = true, nil }
+keys.CognitoStreams = { ["StreamingStatus"] = true, ["RoleArn"] = true, ["StreamName"] = true, nil }
 
-function M.AssertCognitoStreams(struct)
+function asserts.AssertCognitoStreams(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CognitoStreams to be of type 'table'")
-	if struct["StreamingStatus"] then M.AssertStreamingStatus(struct["StreamingStatus"]) end
-	if struct["RoleArn"] then M.AssertAssumeRoleArn(struct["RoleArn"]) end
-	if struct["StreamName"] then M.AssertStreamName(struct["StreamName"]) end
+	if struct["StreamingStatus"] then asserts.AssertStreamingStatus(struct["StreamingStatus"]) end
+	if struct["RoleArn"] then asserts.AssertAssumeRoleArn(struct["RoleArn"]) end
+	if struct["StreamName"] then asserts.AssertStreamName(struct["StreamName"]) end
 	for k,_ in pairs(struct) do
-		assert(CognitoStreams_keys[k], "CognitoStreams contains unknown key " .. tostring(k))
+		assert(keys.CognitoStreams[k], "CognitoStreams contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CognitoStreams
 -- Configuration options for configure Cognito streams.
--- @param StreamingStatus [StreamingStatus] Status of the Cognito streams. Valid values are: <p>ENABLED - Streaming of updates to identity pool is enabled.</p> <p>DISABLED - Streaming of updates to identity pool is disabled. Bulk publish will also fail if StreamingStatus is DISABLED.</p>
--- @param RoleArn [AssumeRoleArn] The ARN of the role Amazon Cognito can assume in order to publish to the stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke PutRecord on your Cognito stream.
--- @param StreamName [StreamName] The name of the Cognito stream to receive updates. This stream must be in the developers account and in the same region as the identity pool.
-function M.CognitoStreams(StreamingStatus, RoleArn, StreamName, ...)
+-- @param _StreamingStatus [StreamingStatus] Status of the Cognito streams. Valid values are: <p>ENABLED - Streaming of updates to identity pool is enabled.</p> <p>DISABLED - Streaming of updates to identity pool is disabled. Bulk publish will also fail if StreamingStatus is DISABLED.</p>
+-- @param _RoleArn [AssumeRoleArn] The ARN of the role Amazon Cognito can assume in order to publish to the stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke PutRecord on your Cognito stream.
+-- @param _StreamName [StreamName] The name of the Cognito stream to receive updates. This stream must be in the developers account and in the same region as the identity pool.
+function M.CognitoStreams(_StreamingStatus, _RoleArn, _StreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CognitoStreams")
 	local t = { 
-		["StreamingStatus"] = StreamingStatus,
-		["RoleArn"] = RoleArn,
-		["StreamName"] = StreamName,
+		["StreamingStatus"] = _StreamingStatus,
+		["RoleArn"] = _RoleArn,
+		["StreamName"] = _StreamName,
 	}
-	M.AssertCognitoStreams(t)
+	asserts.AssertCognitoStreams(t)
 	return t
 end
 
-local ListDatasetsRequest_keys = { "IdentityPoolId" = true, "NextToken" = true, "MaxResults" = true, "IdentityId" = true, nil }
+keys.ListDatasetsRequest = { ["IdentityPoolId"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertListDatasetsRequest(struct)
+function asserts.AssertListDatasetsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDatasetsRequest to be of type 'table'")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertIntegerString(struct["MaxResults"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertIntegerString(struct["MaxResults"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDatasetsRequest_keys[k], "ListDatasetsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListDatasetsRequest[k], "ListDatasetsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDatasetsRequest
 -- Request for a list of datasets for an identity.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param NextToken [String] A pagination token for obtaining the next page of results.
--- @param MaxResults [IntegerString] The maximum number of results to be returned.
--- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _NextToken [String] A pagination token for obtaining the next page of results.
+-- @param _MaxResults [IntegerString] The maximum number of results to be returned.
+-- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- Required parameter: IdentityId
 -- Required parameter: IdentityPoolId
-function M.ListDatasetsRequest(IdentityPoolId, NextToken, MaxResults, IdentityId, ...)
+function M.ListDatasetsRequest(_IdentityPoolId, _NextToken, _MaxResults, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDatasetsRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
-		["IdentityId"] = IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertListDatasetsRequest(t)
+	asserts.AssertListDatasetsRequest(t)
 	return t
 end
 
-local ListIdentityPoolUsageRequest_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListIdentityPoolUsageRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListIdentityPoolUsageRequest(struct)
+function asserts.AssertListIdentityPoolUsageRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIdentityPoolUsageRequest to be of type 'table'")
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertIntegerString(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertIntegerString(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIdentityPoolUsageRequest_keys[k], "ListIdentityPoolUsageRequest contains unknown key " .. tostring(k))
+		assert(keys.ListIdentityPoolUsageRequest[k], "ListIdentityPoolUsageRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIdentityPoolUsageRequest
 -- A request for usage information on an identity pool.
--- @param NextToken [String] A pagination token for obtaining the next page of results.
--- @param MaxResults [IntegerString] The maximum number of results to be returned.
-function M.ListIdentityPoolUsageRequest(NextToken, MaxResults, ...)
+-- @param _NextToken [String] A pagination token for obtaining the next page of results.
+-- @param _MaxResults [IntegerString] The maximum number of results to be returned.
+function M.ListIdentityPoolUsageRequest(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolUsageRequest")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListIdentityPoolUsageRequest(t)
+	asserts.AssertListIdentityPoolUsageRequest(t)
 	return t
 end
 
-local NotAuthorizedException_keys = { "message" = true, nil }
+keys.NotAuthorizedException = { ["message"] = true, nil }
 
-function M.AssertNotAuthorizedException(struct)
+function asserts.AssertNotAuthorizedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotAuthorizedException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotAuthorizedException_keys[k], "NotAuthorizedException contains unknown key " .. tostring(k))
+		assert(keys.NotAuthorizedException[k], "NotAuthorizedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotAuthorizedException
 -- Thrown when a user is not authorized to access the requested resource.
--- @param message [ExceptionMessage] The message returned by a NotAuthorizedException.
+-- @param _message [ExceptionMessage] The message returned by a NotAuthorizedException.
 -- Required parameter: message
-function M.NotAuthorizedException(message, ...)
+function M.NotAuthorizedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotAuthorizedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertNotAuthorizedException(t)
+	asserts.AssertNotAuthorizedException(t)
 	return t
 end
 
-local ListRecordsRequest_keys = { "DatasetName" = true, "MaxResults" = true, "IdentityId" = true, "IdentityPoolId" = true, "LastSyncCount" = true, "SyncSessionToken" = true, "NextToken" = true, nil }
+keys.ListRecordsRequest = { ["DatasetName"] = true, ["MaxResults"] = true, ["IdentityId"] = true, ["IdentityPoolId"] = true, ["LastSyncCount"] = true, ["SyncSessionToken"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListRecordsRequest(struct)
+function asserts.AssertListRecordsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListRecordsRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["DatasetName"], "Expected key DatasetName to exist in table")
-	if struct["DatasetName"] then M.AssertDatasetName(struct["DatasetName"]) end
-	if struct["MaxResults"] then M.AssertIntegerString(struct["MaxResults"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["LastSyncCount"] then M.AssertLong(struct["LastSyncCount"]) end
-	if struct["SyncSessionToken"] then M.AssertSyncSessionToken(struct["SyncSessionToken"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
+	if struct["DatasetName"] then asserts.AssertDatasetName(struct["DatasetName"]) end
+	if struct["MaxResults"] then asserts.AssertIntegerString(struct["MaxResults"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["LastSyncCount"] then asserts.AssertLong(struct["LastSyncCount"]) end
+	if struct["SyncSessionToken"] then asserts.AssertSyncSessionToken(struct["SyncSessionToken"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListRecordsRequest_keys[k], "ListRecordsRequest contains unknown key " .. tostring(k))
+		assert(keys.ListRecordsRequest[k], "ListRecordsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListRecordsRequest
 -- A request for a list of records.
--- @param DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param MaxResults [IntegerString] The maximum number of results to be returned.
--- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param LastSyncCount [Long] The last server sync count for this record.
--- @param SyncSessionToken [SyncSessionToken] A token containing a session ID, identity ID, and expiration.
--- @param NextToken [String] A pagination token for obtaining the next page of results.
+-- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- @param _MaxResults [IntegerString] The maximum number of results to be returned.
+-- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _LastSyncCount [Long] The last server sync count for this record.
+-- @param _SyncSessionToken [SyncSessionToken] A token containing a session ID, identity ID, and expiration.
+-- @param _NextToken [String] A pagination token for obtaining the next page of results.
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: DatasetName
-function M.ListRecordsRequest(DatasetName, MaxResults, IdentityId, IdentityPoolId, LastSyncCount, SyncSessionToken, NextToken, ...)
+function M.ListRecordsRequest(_DatasetName, _MaxResults, _IdentityId, _IdentityPoolId, _LastSyncCount, _SyncSessionToken, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordsRequest")
 	local t = { 
-		["DatasetName"] = DatasetName,
-		["MaxResults"] = MaxResults,
-		["IdentityId"] = IdentityId,
-		["IdentityPoolId"] = IdentityPoolId,
-		["LastSyncCount"] = LastSyncCount,
-		["SyncSessionToken"] = SyncSessionToken,
-		["NextToken"] = NextToken,
+		["DatasetName"] = _DatasetName,
+		["MaxResults"] = _MaxResults,
+		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["LastSyncCount"] = _LastSyncCount,
+		["SyncSessionToken"] = _SyncSessionToken,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListRecordsRequest(t)
+	asserts.AssertListRecordsRequest(t)
 	return t
 end
 
-local IdentityUsage_keys = { "DatasetCount" = true, "IdentityPoolId" = true, "DataStorage" = true, "LastModifiedDate" = true, "IdentityId" = true, nil }
+keys.IdentityUsage = { ["DatasetCount"] = true, ["IdentityPoolId"] = true, ["DataStorage"] = true, ["LastModifiedDate"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertIdentityUsage(struct)
+function asserts.AssertIdentityUsage(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IdentityUsage to be of type 'table'")
-	if struct["DatasetCount"] then M.AssertInteger(struct["DatasetCount"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["DataStorage"] then M.AssertLong(struct["DataStorage"]) end
-	if struct["LastModifiedDate"] then M.AssertDate(struct["LastModifiedDate"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["DatasetCount"] then asserts.AssertInteger(struct["DatasetCount"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["DataStorage"] then asserts.AssertLong(struct["DataStorage"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDate(struct["LastModifiedDate"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(IdentityUsage_keys[k], "IdentityUsage contains unknown key " .. tostring(k))
+		assert(keys.IdentityUsage[k], "IdentityUsage contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IdentityUsage
 -- Usage information for the identity.
--- @param DatasetCount [Integer] Number of datasets for the identity.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param DataStorage [Long] Total data storage for this identity.
--- @param LastModifiedDate [Date] Date on which the identity was last modified.
--- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-function M.IdentityUsage(DatasetCount, IdentityPoolId, DataStorage, LastModifiedDate, IdentityId, ...)
+-- @param _DatasetCount [Integer] Number of datasets for the identity.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _DataStorage [Long] Total data storage for this identity.
+-- @param _LastModifiedDate [Date] Date on which the identity was last modified.
+-- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+function M.IdentityUsage(_DatasetCount, _IdentityPoolId, _DataStorage, _LastModifiedDate, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityUsage")
 	local t = { 
-		["DatasetCount"] = DatasetCount,
-		["IdentityPoolId"] = IdentityPoolId,
-		["DataStorage"] = DataStorage,
-		["LastModifiedDate"] = LastModifiedDate,
-		["IdentityId"] = IdentityId,
+		["DatasetCount"] = _DatasetCount,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["DataStorage"] = _DataStorage,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertIdentityUsage(t)
+	asserts.AssertIdentityUsage(t)
 	return t
 end
 
-local DescribeDatasetResponse_keys = { "Dataset" = true, nil }
+keys.DescribeDatasetResponse = { ["Dataset"] = true, nil }
 
-function M.AssertDescribeDatasetResponse(struct)
+function asserts.AssertDescribeDatasetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeDatasetResponse to be of type 'table'")
-	if struct["Dataset"] then M.AssertDataset(struct["Dataset"]) end
+	if struct["Dataset"] then asserts.AssertDataset(struct["Dataset"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeDatasetResponse_keys[k], "DescribeDatasetResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeDatasetResponse[k], "DescribeDatasetResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeDatasetResponse
 -- Response to a successful DescribeDataset request.
--- @param Dataset [Dataset] Meta data for a collection of data for an identity. An identity can have multiple datasets. A dataset can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
-function M.DescribeDatasetResponse(Dataset, ...)
+-- @param _Dataset [Dataset] Meta data for a collection of data for an identity. An identity can have multiple datasets. A dataset can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
+function M.DescribeDatasetResponse(_Dataset, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDatasetResponse")
 	local t = { 
-		["Dataset"] = Dataset,
+		["Dataset"] = _Dataset,
 	}
-	M.AssertDescribeDatasetResponse(t)
+	asserts.AssertDescribeDatasetResponse(t)
 	return t
 end
 
-local DeleteDatasetRequest_keys = { "IdentityPoolId" = true, "DatasetName" = true, "IdentityId" = true, nil }
+keys.DeleteDatasetRequest = { ["IdentityPoolId"] = true, ["DatasetName"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertDeleteDatasetRequest(struct)
+function asserts.AssertDeleteDatasetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteDatasetRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["DatasetName"], "Expected key DatasetName to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["DatasetName"] then M.AssertDatasetName(struct["DatasetName"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["DatasetName"] then asserts.AssertDatasetName(struct["DatasetName"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteDatasetRequest_keys[k], "DeleteDatasetRequest contains unknown key " .. tostring(k))
+		assert(keys.DeleteDatasetRequest[k], "DeleteDatasetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteDatasetRequest
 -- A request to delete the specific dataset.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: DatasetName
-function M.DeleteDatasetRequest(IdentityPoolId, DatasetName, IdentityId, ...)
+function M.DeleteDatasetRequest(_IdentityPoolId, _DatasetName, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDatasetRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["DatasetName"] = DatasetName,
-		["IdentityId"] = IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["DatasetName"] = _DatasetName,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertDeleteDatasetRequest(t)
+	asserts.AssertDeleteDatasetRequest(t)
 	return t
 end
 
-local BulkPublishResponse_keys = { "IdentityPoolId" = true, nil }
+keys.BulkPublishResponse = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertBulkPublishResponse(struct)
+function asserts.AssertBulkPublishResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BulkPublishResponse to be of type 'table'")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(BulkPublishResponse_keys[k], "BulkPublishResponse contains unknown key " .. tostring(k))
+		assert(keys.BulkPublishResponse[k], "BulkPublishResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BulkPublishResponse
 -- The output for the BulkPublish operation.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-function M.BulkPublishResponse(IdentityPoolId, ...)
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+function M.BulkPublishResponse(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BulkPublishResponse")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertBulkPublishResponse(t)
+	asserts.AssertBulkPublishResponse(t)
 	return t
 end
 
-local SubscribeToDatasetResponse_keys = { nil }
+keys.SubscribeToDatasetResponse = { nil }
 
-function M.AssertSubscribeToDatasetResponse(struct)
+function asserts.AssertSubscribeToDatasetResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SubscribeToDatasetResponse to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(SubscribeToDatasetResponse_keys[k], "SubscribeToDatasetResponse contains unknown key " .. tostring(k))
+		assert(keys.SubscribeToDatasetResponse[k], "SubscribeToDatasetResponse contains unknown key " .. tostring(k))
 	end
 end
 
@@ -876,755 +879,753 @@ function M.SubscribeToDatasetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeToDatasetResponse")
 	local t = { 
 	}
-	M.AssertSubscribeToDatasetResponse(t)
+	asserts.AssertSubscribeToDatasetResponse(t)
 	return t
 end
 
-local InvalidLambdaFunctionOutputException_keys = { "message" = true, nil }
+keys.InvalidLambdaFunctionOutputException = { ["message"] = true, nil }
 
-function M.AssertInvalidLambdaFunctionOutputException(struct)
+function asserts.AssertInvalidLambdaFunctionOutputException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidLambdaFunctionOutputException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidLambdaFunctionOutputException_keys[k], "InvalidLambdaFunctionOutputException contains unknown key " .. tostring(k))
+		assert(keys.InvalidLambdaFunctionOutputException[k], "InvalidLambdaFunctionOutputException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidLambdaFunctionOutputException
 -- <p>The AWS Lambda function returned invalid output or an exception.</p>
--- @param message [ExceptionMessage] <p>A message returned when an InvalidLambdaFunctionOutputException occurs</p>
+-- @param _message [ExceptionMessage] <p>A message returned when an InvalidLambdaFunctionOutputException occurs</p>
 -- Required parameter: message
-function M.InvalidLambdaFunctionOutputException(message, ...)
+function M.InvalidLambdaFunctionOutputException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLambdaFunctionOutputException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidLambdaFunctionOutputException(t)
+	asserts.AssertInvalidLambdaFunctionOutputException(t)
 	return t
 end
 
-local TooManyRequestsException_keys = { "message" = true, nil }
+keys.TooManyRequestsException = { ["message"] = true, nil }
 
-function M.AssertTooManyRequestsException(struct)
+function asserts.AssertTooManyRequestsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyRequestsException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TooManyRequestsException_keys[k], "TooManyRequestsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyRequestsException[k], "TooManyRequestsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TooManyRequestsException
 -- Thrown if the request is throttled.
--- @param message [ExceptionMessage] Message returned by a TooManyRequestsException.
+-- @param _message [ExceptionMessage] Message returned by a TooManyRequestsException.
 -- Required parameter: message
-function M.TooManyRequestsException(message, ...)
+function M.TooManyRequestsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTooManyRequestsException(t)
+	asserts.AssertTooManyRequestsException(t)
 	return t
 end
 
-local DescribeIdentityUsageResponse_keys = { "IdentityUsage" = true, nil }
+keys.DescribeIdentityUsageResponse = { ["IdentityUsage"] = true, nil }
 
-function M.AssertDescribeIdentityUsageResponse(struct)
+function asserts.AssertDescribeIdentityUsageResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeIdentityUsageResponse to be of type 'table'")
-	if struct["IdentityUsage"] then M.AssertIdentityUsage(struct["IdentityUsage"]) end
+	if struct["IdentityUsage"] then asserts.AssertIdentityUsage(struct["IdentityUsage"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeIdentityUsageResponse_keys[k], "DescribeIdentityUsageResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeIdentityUsageResponse[k], "DescribeIdentityUsageResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeIdentityUsageResponse
 -- The response to a successful DescribeIdentityUsage request.
--- @param IdentityUsage [IdentityUsage] Usage information for the identity.
-function M.DescribeIdentityUsageResponse(IdentityUsage, ...)
+-- @param _IdentityUsage [IdentityUsage] Usage information for the identity.
+function M.DescribeIdentityUsageResponse(_IdentityUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityUsageResponse")
 	local t = { 
-		["IdentityUsage"] = IdentityUsage,
+		["IdentityUsage"] = _IdentityUsage,
 	}
-	M.AssertDescribeIdentityUsageResponse(t)
+	asserts.AssertDescribeIdentityUsageResponse(t)
 	return t
 end
 
-local PushSync_keys = { "RoleArn" = true, "ApplicationArns" = true, nil }
+keys.PushSync = { ["RoleArn"] = true, ["ApplicationArns"] = true, nil }
 
-function M.AssertPushSync(struct)
+function asserts.AssertPushSync(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PushSync to be of type 'table'")
-	if struct["RoleArn"] then M.AssertAssumeRoleArn(struct["RoleArn"]) end
-	if struct["ApplicationArns"] then M.AssertApplicationArnList(struct["ApplicationArns"]) end
+	if struct["RoleArn"] then asserts.AssertAssumeRoleArn(struct["RoleArn"]) end
+	if struct["ApplicationArns"] then asserts.AssertApplicationArnList(struct["ApplicationArns"]) end
 	for k,_ in pairs(struct) do
-		assert(PushSync_keys[k], "PushSync contains unknown key " .. tostring(k))
+		assert(keys.PushSync[k], "PushSync contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PushSync
 -- <p>Configuration options to be applied to the identity pool.</p>
--- @param RoleArn [AssumeRoleArn] <p>A role configured to allow Cognito to call SNS on behalf of the developer.</p>
--- @param ApplicationArns [ApplicationArnList] <p>List of SNS platform application ARNs that could be used by clients.</p>
-function M.PushSync(RoleArn, ApplicationArns, ...)
+-- @param _RoleArn [AssumeRoleArn] <p>A role configured to allow Cognito to call SNS on behalf of the developer.</p>
+-- @param _ApplicationArns [ApplicationArnList] <p>List of SNS platform application ARNs that could be used by clients.</p>
+function M.PushSync(_RoleArn, _ApplicationArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PushSync")
 	local t = { 
-		["RoleArn"] = RoleArn,
-		["ApplicationArns"] = ApplicationArns,
+		["RoleArn"] = _RoleArn,
+		["ApplicationArns"] = _ApplicationArns,
 	}
-	M.AssertPushSync(t)
+	asserts.AssertPushSync(t)
 	return t
 end
 
-local Record_keys = { "DeviceLastModifiedDate" = true, "LastModifiedDate" = true, "Value" = true, "LastModifiedBy" = true, "Key" = true, "SyncCount" = true, nil }
+keys.Record = { ["DeviceLastModifiedDate"] = true, ["LastModifiedDate"] = true, ["Value"] = true, ["LastModifiedBy"] = true, ["Key"] = true, ["SyncCount"] = true, nil }
 
-function M.AssertRecord(struct)
+function asserts.AssertRecord(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Record to be of type 'table'")
-	if struct["DeviceLastModifiedDate"] then M.AssertDate(struct["DeviceLastModifiedDate"]) end
-	if struct["LastModifiedDate"] then M.AssertDate(struct["LastModifiedDate"]) end
-	if struct["Value"] then M.AssertRecordValue(struct["Value"]) end
-	if struct["LastModifiedBy"] then M.AssertString(struct["LastModifiedBy"]) end
-	if struct["Key"] then M.AssertRecordKey(struct["Key"]) end
-	if struct["SyncCount"] then M.AssertLong(struct["SyncCount"]) end
+	if struct["DeviceLastModifiedDate"] then asserts.AssertDate(struct["DeviceLastModifiedDate"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDate(struct["LastModifiedDate"]) end
+	if struct["Value"] then asserts.AssertRecordValue(struct["Value"]) end
+	if struct["LastModifiedBy"] then asserts.AssertString(struct["LastModifiedBy"]) end
+	if struct["Key"] then asserts.AssertRecordKey(struct["Key"]) end
+	if struct["SyncCount"] then asserts.AssertLong(struct["SyncCount"]) end
 	for k,_ in pairs(struct) do
-		assert(Record_keys[k], "Record contains unknown key " .. tostring(k))
+		assert(keys.Record[k], "Record contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Record
 -- The basic data structure of a dataset.
--- @param DeviceLastModifiedDate [Date] The last modified date of the client device.
--- @param LastModifiedDate [Date] The date on which the record was last modified.
--- @param Value [RecordValue] The value for the record.
--- @param LastModifiedBy [String] The user/device that made the last change to this record.
--- @param Key [RecordKey] The key for the record.
--- @param SyncCount [Long] The server sync count for this record.
-function M.Record(DeviceLastModifiedDate, LastModifiedDate, Value, LastModifiedBy, Key, SyncCount, ...)
+-- @param _DeviceLastModifiedDate [Date] The last modified date of the client device.
+-- @param _LastModifiedDate [Date] The date on which the record was last modified.
+-- @param _Value [RecordValue] The value for the record.
+-- @param _LastModifiedBy [String] The user/device that made the last change to this record.
+-- @param _Key [RecordKey] The key for the record.
+-- @param _SyncCount [Long] The server sync count for this record.
+function M.Record(_DeviceLastModifiedDate, _LastModifiedDate, _Value, _LastModifiedBy, _Key, _SyncCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Record")
 	local t = { 
-		["DeviceLastModifiedDate"] = DeviceLastModifiedDate,
-		["LastModifiedDate"] = LastModifiedDate,
-		["Value"] = Value,
-		["LastModifiedBy"] = LastModifiedBy,
-		["Key"] = Key,
-		["SyncCount"] = SyncCount,
+		["DeviceLastModifiedDate"] = _DeviceLastModifiedDate,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["Value"] = _Value,
+		["LastModifiedBy"] = _LastModifiedBy,
+		["Key"] = _Key,
+		["SyncCount"] = _SyncCount,
 	}
-	M.AssertRecord(t)
+	asserts.AssertRecord(t)
 	return t
 end
 
-local BulkPublishRequest_keys = { "IdentityPoolId" = true, nil }
+keys.BulkPublishRequest = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertBulkPublishRequest(struct)
+function asserts.AssertBulkPublishRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BulkPublishRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(BulkPublishRequest_keys[k], "BulkPublishRequest contains unknown key " .. tostring(k))
+		assert(keys.BulkPublishRequest[k], "BulkPublishRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BulkPublishRequest
 -- The input for the BulkPublish operation.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- Required parameter: IdentityPoolId
-function M.BulkPublishRequest(IdentityPoolId, ...)
+function M.BulkPublishRequest(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BulkPublishRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertBulkPublishRequest(t)
+	asserts.AssertBulkPublishRequest(t)
 	return t
 end
 
-local UpdateRecordsResponse_keys = { "Records" = true, nil }
+keys.UpdateRecordsResponse = { ["Records"] = true, nil }
 
-function M.AssertUpdateRecordsResponse(struct)
+function asserts.AssertUpdateRecordsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateRecordsResponse to be of type 'table'")
-	if struct["Records"] then M.AssertRecordList(struct["Records"]) end
+	if struct["Records"] then asserts.AssertRecordList(struct["Records"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateRecordsResponse_keys[k], "UpdateRecordsResponse contains unknown key " .. tostring(k))
+		assert(keys.UpdateRecordsResponse[k], "UpdateRecordsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateRecordsResponse
 -- Returned for a successful UpdateRecordsRequest.
--- @param Records [RecordList] A list of records that have been updated.
-function M.UpdateRecordsResponse(Records, ...)
+-- @param _Records [RecordList] A list of records that have been updated.
+function M.UpdateRecordsResponse(_Records, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRecordsResponse")
 	local t = { 
-		["Records"] = Records,
+		["Records"] = _Records,
 	}
-	M.AssertUpdateRecordsResponse(t)
+	asserts.AssertUpdateRecordsResponse(t)
 	return t
 end
 
-local DescribeIdentityPoolUsageResponse_keys = { "IdentityPoolUsage" = true, nil }
+keys.DescribeIdentityPoolUsageResponse = { ["IdentityPoolUsage"] = true, nil }
 
-function M.AssertDescribeIdentityPoolUsageResponse(struct)
+function asserts.AssertDescribeIdentityPoolUsageResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeIdentityPoolUsageResponse to be of type 'table'")
-	if struct["IdentityPoolUsage"] then M.AssertIdentityPoolUsage(struct["IdentityPoolUsage"]) end
+	if struct["IdentityPoolUsage"] then asserts.AssertIdentityPoolUsage(struct["IdentityPoolUsage"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeIdentityPoolUsageResponse_keys[k], "DescribeIdentityPoolUsageResponse contains unknown key " .. tostring(k))
+		assert(keys.DescribeIdentityPoolUsageResponse[k], "DescribeIdentityPoolUsageResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeIdentityPoolUsageResponse
 -- Response to a successful DescribeIdentityPoolUsage request.
--- @param IdentityPoolUsage [IdentityPoolUsage] Information about the usage of the identity pool.
-function M.DescribeIdentityPoolUsageResponse(IdentityPoolUsage, ...)
+-- @param _IdentityPoolUsage [IdentityPoolUsage] Information about the usage of the identity pool.
+function M.DescribeIdentityPoolUsageResponse(_IdentityPoolUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityPoolUsageResponse")
 	local t = { 
-		["IdentityPoolUsage"] = IdentityPoolUsage,
+		["IdentityPoolUsage"] = _IdentityPoolUsage,
 	}
-	M.AssertDescribeIdentityPoolUsageResponse(t)
+	asserts.AssertDescribeIdentityPoolUsageResponse(t)
 	return t
 end
 
-local UpdateRecordsRequest_keys = { "DatasetName" = true, "RecordPatches" = true, "IdentityId" = true, "IdentityPoolId" = true, "DeviceId" = true, "SyncSessionToken" = true, "ClientContext" = true, nil }
+keys.UpdateRecordsRequest = { ["DatasetName"] = true, ["RecordPatches"] = true, ["IdentityId"] = true, ["IdentityPoolId"] = true, ["DeviceId"] = true, ["SyncSessionToken"] = true, ["ClientContext"] = true, nil }
 
-function M.AssertUpdateRecordsRequest(struct)
+function asserts.AssertUpdateRecordsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UpdateRecordsRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["DatasetName"], "Expected key DatasetName to exist in table")
 	assert(struct["SyncSessionToken"], "Expected key SyncSessionToken to exist in table")
-	if struct["DatasetName"] then M.AssertDatasetName(struct["DatasetName"]) end
-	if struct["RecordPatches"] then M.AssertRecordPatchList(struct["RecordPatches"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["DeviceId"] then M.AssertDeviceId(struct["DeviceId"]) end
-	if struct["SyncSessionToken"] then M.AssertSyncSessionToken(struct["SyncSessionToken"]) end
-	if struct["ClientContext"] then M.AssertClientContext(struct["ClientContext"]) end
+	if struct["DatasetName"] then asserts.AssertDatasetName(struct["DatasetName"]) end
+	if struct["RecordPatches"] then asserts.AssertRecordPatchList(struct["RecordPatches"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["DeviceId"] then asserts.AssertDeviceId(struct["DeviceId"]) end
+	if struct["SyncSessionToken"] then asserts.AssertSyncSessionToken(struct["SyncSessionToken"]) end
+	if struct["ClientContext"] then asserts.AssertClientContext(struct["ClientContext"]) end
 	for k,_ in pairs(struct) do
-		assert(UpdateRecordsRequest_keys[k], "UpdateRecordsRequest contains unknown key " .. tostring(k))
+		assert(keys.UpdateRecordsRequest[k], "UpdateRecordsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UpdateRecordsRequest
 -- A request to post updates to records or add and delete records for a dataset and user.
--- @param DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param RecordPatches [RecordPatchList] A list of patch operations.
--- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
--- @param SyncSessionToken [SyncSessionToken] The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
--- @param ClientContext [ClientContext] Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
+-- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- @param _RecordPatches [RecordPatchList] A list of patch operations.
+-- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- @param _SyncSessionToken [SyncSessionToken] The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
+-- @param _ClientContext [ClientContext] Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: DatasetName
 -- Required parameter: SyncSessionToken
-function M.UpdateRecordsRequest(DatasetName, RecordPatches, IdentityId, IdentityPoolId, DeviceId, SyncSessionToken, ClientContext, ...)
+function M.UpdateRecordsRequest(_DatasetName, _RecordPatches, _IdentityId, _IdentityPoolId, _DeviceId, _SyncSessionToken, _ClientContext, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRecordsRequest")
 	local t = { 
-		["DatasetName"] = DatasetName,
-		["RecordPatches"] = RecordPatches,
-		["IdentityId"] = IdentityId,
-		["IdentityPoolId"] = IdentityPoolId,
-		["DeviceId"] = DeviceId,
-		["SyncSessionToken"] = SyncSessionToken,
-		["ClientContext"] = ClientContext,
+		["DatasetName"] = _DatasetName,
+		["RecordPatches"] = _RecordPatches,
+		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["DeviceId"] = _DeviceId,
+		["SyncSessionToken"] = _SyncSessionToken,
+		["ClientContext"] = _ClientContext,
 	}
-	M.AssertUpdateRecordsRequest(t)
+	asserts.AssertUpdateRecordsRequest(t)
 	return t
 end
 
-local DescribeDatasetRequest_keys = { "IdentityPoolId" = true, "DatasetName" = true, "IdentityId" = true, nil }
+keys.DescribeDatasetRequest = { ["IdentityPoolId"] = true, ["DatasetName"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertDescribeDatasetRequest(struct)
+function asserts.AssertDescribeDatasetRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeDatasetRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["DatasetName"], "Expected key DatasetName to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["DatasetName"] then M.AssertDatasetName(struct["DatasetName"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["DatasetName"] then asserts.AssertDatasetName(struct["DatasetName"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeDatasetRequest_keys[k], "DescribeDatasetRequest contains unknown key " .. tostring(k))
+		assert(keys.DescribeDatasetRequest[k], "DescribeDatasetRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeDatasetRequest
 -- A request for meta data about a dataset (creation date, number of records, size) by owner and dataset name.
--- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: DatasetName
-function M.DescribeDatasetRequest(IdentityPoolId, DatasetName, IdentityId, ...)
+function M.DescribeDatasetRequest(_IdentityPoolId, _DatasetName, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDatasetRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["DatasetName"] = DatasetName,
-		["IdentityId"] = IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["DatasetName"] = _DatasetName,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertDescribeDatasetRequest(t)
+	asserts.AssertDescribeDatasetRequest(t)
 	return t
 end
 
-local GetCognitoEventsResponse_keys = { "Events" = true, nil }
+keys.GetCognitoEventsResponse = { ["Events"] = true, nil }
 
-function M.AssertGetCognitoEventsResponse(struct)
+function asserts.AssertGetCognitoEventsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCognitoEventsResponse to be of type 'table'")
-	if struct["Events"] then M.AssertEvents(struct["Events"]) end
+	if struct["Events"] then asserts.AssertEvents(struct["Events"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCognitoEventsResponse_keys[k], "GetCognitoEventsResponse contains unknown key " .. tostring(k))
+		assert(keys.GetCognitoEventsResponse[k], "GetCognitoEventsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCognitoEventsResponse
 -- <p>The response from the GetCognitoEvents request</p>
--- @param Events [Events] <p>The Cognito Events returned from the GetCognitoEvents request</p>
-function M.GetCognitoEventsResponse(Events, ...)
+-- @param _Events [Events] <p>The Cognito Events returned from the GetCognitoEvents request</p>
+function M.GetCognitoEventsResponse(_Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCognitoEventsResponse")
 	local t = { 
-		["Events"] = Events,
+		["Events"] = _Events,
 	}
-	M.AssertGetCognitoEventsResponse(t)
+	asserts.AssertGetCognitoEventsResponse(t)
 	return t
 end
 
-local SetCognitoEventsRequest_keys = { "IdentityPoolId" = true, "Events" = true, nil }
+keys.SetCognitoEventsRequest = { ["IdentityPoolId"] = true, ["Events"] = true, nil }
 
-function M.AssertSetCognitoEventsRequest(struct)
+function asserts.AssertSetCognitoEventsRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetCognitoEventsRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["Events"], "Expected key Events to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["Events"] then M.AssertEvents(struct["Events"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["Events"] then asserts.AssertEvents(struct["Events"]) end
 	for k,_ in pairs(struct) do
-		assert(SetCognitoEventsRequest_keys[k], "SetCognitoEventsRequest contains unknown key " .. tostring(k))
+		assert(keys.SetCognitoEventsRequest[k], "SetCognitoEventsRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetCognitoEventsRequest
 -- <p>A request to configure Cognito Events"</p>"
--- @param IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool to use when configuring Cognito Events</p>
--- @param Events [Events] <p>The events to configure</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool to use when configuring Cognito Events</p>
+-- @param _Events [Events] <p>The events to configure</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: Events
-function M.SetCognitoEventsRequest(IdentityPoolId, Events, ...)
+function M.SetCognitoEventsRequest(_IdentityPoolId, _Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetCognitoEventsRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["Events"] = Events,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["Events"] = _Events,
 	}
-	M.AssertSetCognitoEventsRequest(t)
+	asserts.AssertSetCognitoEventsRequest(t)
 	return t
 end
 
-local ListDatasetsResponse_keys = { "Count" = true, "Datasets" = true, "NextToken" = true, nil }
+keys.ListDatasetsResponse = { ["Count"] = true, ["Datasets"] = true, ["NextToken"] = true, nil }
 
-function M.AssertListDatasetsResponse(struct)
+function asserts.AssertListDatasetsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListDatasetsResponse to be of type 'table'")
-	if struct["Count"] then M.AssertInteger(struct["Count"]) end
-	if struct["Datasets"] then M.AssertDatasetList(struct["Datasets"]) end
-	if struct["NextToken"] then M.AssertString(struct["NextToken"]) end
+	if struct["Count"] then asserts.AssertInteger(struct["Count"]) end
+	if struct["Datasets"] then asserts.AssertDatasetList(struct["Datasets"]) end
+	if struct["NextToken"] then asserts.AssertString(struct["NextToken"]) end
 	for k,_ in pairs(struct) do
-		assert(ListDatasetsResponse_keys[k], "ListDatasetsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListDatasetsResponse[k], "ListDatasetsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListDatasetsResponse
 -- Returned for a successful ListDatasets request.
--- @param Count [Integer] Number of datasets returned.
--- @param Datasets [DatasetList] A set of datasets.
--- @param NextToken [String] A pagination token for obtaining the next page of results.
-function M.ListDatasetsResponse(Count, Datasets, NextToken, ...)
+-- @param _Count [Integer] Number of datasets returned.
+-- @param _Datasets [DatasetList] A set of datasets.
+-- @param _NextToken [String] A pagination token for obtaining the next page of results.
+function M.ListDatasetsResponse(_Count, _Datasets, _NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDatasetsResponse")
 	local t = { 
-		["Count"] = Count,
-		["Datasets"] = Datasets,
-		["NextToken"] = NextToken,
+		["Count"] = _Count,
+		["Datasets"] = _Datasets,
+		["NextToken"] = _NextToken,
 	}
-	M.AssertListDatasetsResponse(t)
+	asserts.AssertListDatasetsResponse(t)
 	return t
 end
 
-local LambdaThrottledException_keys = { "message" = true, nil }
+keys.LambdaThrottledException = { ["message"] = true, nil }
 
-function M.AssertLambdaThrottledException(struct)
+function asserts.AssertLambdaThrottledException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LambdaThrottledException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LambdaThrottledException_keys[k], "LambdaThrottledException contains unknown key " .. tostring(k))
+		assert(keys.LambdaThrottledException[k], "LambdaThrottledException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LambdaThrottledException
 -- <p>AWS Lambda throttled your account, please contact AWS Support</p>
--- @param message [ExceptionMessage] <p>A message returned when an LambdaThrottledException is thrown</p>
+-- @param _message [ExceptionMessage] <p>A message returned when an LambdaThrottledException is thrown</p>
 -- Required parameter: message
-function M.LambdaThrottledException(message, ...)
+function M.LambdaThrottledException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaThrottledException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLambdaThrottledException(t)
+	asserts.AssertLambdaThrottledException(t)
 	return t
 end
 
-local ResourceConflictException_keys = { "message" = true, nil }
+keys.ResourceConflictException = { ["message"] = true, nil }
 
-function M.AssertResourceConflictException(struct)
+function asserts.AssertResourceConflictException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceConflictException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceConflictException_keys[k], "ResourceConflictException contains unknown key " .. tostring(k))
+		assert(keys.ResourceConflictException[k], "ResourceConflictException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceConflictException
 -- Thrown if an update can't be applied because the resource was changed by another call and this would result in a conflict.
--- @param message [ExceptionMessage] The message returned by a ResourceConflictException.
+-- @param _message [ExceptionMessage] The message returned by a ResourceConflictException.
 -- Required parameter: message
-function M.ResourceConflictException(message, ...)
+function M.ResourceConflictException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceConflictException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceConflictException(t)
+	asserts.AssertResourceConflictException(t)
 	return t
 end
 
-local AlreadyStreamedException_keys = { "message" = true, nil }
+keys.AlreadyStreamedException = { ["message"] = true, nil }
 
-function M.AssertAlreadyStreamedException(struct)
+function asserts.AssertAlreadyStreamedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AlreadyStreamedException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(AlreadyStreamedException_keys[k], "AlreadyStreamedException contains unknown key " .. tostring(k))
+		assert(keys.AlreadyStreamedException[k], "AlreadyStreamedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AlreadyStreamedException
 -- An exception thrown when a bulk publish operation is requested less than 24 hours after a previous bulk publish operation completed successfully.
--- @param message [ExceptionMessage] The message associated with the AlreadyStreamedException exception.
+-- @param _message [ExceptionMessage] The message associated with the AlreadyStreamedException exception.
 -- Required parameter: message
-function M.AlreadyStreamedException(message, ...)
+function M.AlreadyStreamedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyStreamedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertAlreadyStreamedException(t)
+	asserts.AssertAlreadyStreamedException(t)
 	return t
 end
 
-local Dataset_keys = { "DatasetName" = true, "DataStorage" = true, "LastModifiedDate" = true, "NumRecords" = true, "IdentityId" = true, "LastModifiedBy" = true, "CreationDate" = true, nil }
+keys.Dataset = { ["DatasetName"] = true, ["DataStorage"] = true, ["LastModifiedDate"] = true, ["NumRecords"] = true, ["IdentityId"] = true, ["LastModifiedBy"] = true, ["CreationDate"] = true, nil }
 
-function M.AssertDataset(struct)
+function asserts.AssertDataset(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Dataset to be of type 'table'")
-	if struct["DatasetName"] then M.AssertDatasetName(struct["DatasetName"]) end
-	if struct["DataStorage"] then M.AssertLong(struct["DataStorage"]) end
-	if struct["LastModifiedDate"] then M.AssertDate(struct["LastModifiedDate"]) end
-	if struct["NumRecords"] then M.AssertLong(struct["NumRecords"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
-	if struct["LastModifiedBy"] then M.AssertString(struct["LastModifiedBy"]) end
-	if struct["CreationDate"] then M.AssertDate(struct["CreationDate"]) end
+	if struct["DatasetName"] then asserts.AssertDatasetName(struct["DatasetName"]) end
+	if struct["DataStorage"] then asserts.AssertLong(struct["DataStorage"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDate(struct["LastModifiedDate"]) end
+	if struct["NumRecords"] then asserts.AssertLong(struct["NumRecords"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
+	if struct["LastModifiedBy"] then asserts.AssertString(struct["LastModifiedBy"]) end
+	if struct["CreationDate"] then asserts.AssertDate(struct["CreationDate"]) end
 	for k,_ in pairs(struct) do
-		assert(Dataset_keys[k], "Dataset contains unknown key " .. tostring(k))
+		assert(keys.Dataset[k], "Dataset contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Dataset
 -- A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
--- @param DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param DataStorage [Long] Total size in bytes of the records in this dataset.
--- @param LastModifiedDate [Date] Date when the dataset was last modified.
--- @param NumRecords [Long] Number of records in this dataset.
--- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param LastModifiedBy [String] The device that made the last change to this dataset.
--- @param CreationDate [Date] Date on which the dataset was created.
-function M.Dataset(DatasetName, DataStorage, LastModifiedDate, NumRecords, IdentityId, LastModifiedBy, CreationDate, ...)
+-- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- @param _DataStorage [Long] Total size in bytes of the records in this dataset.
+-- @param _LastModifiedDate [Date] Date when the dataset was last modified.
+-- @param _NumRecords [Long] Number of records in this dataset.
+-- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @param _LastModifiedBy [String] The device that made the last change to this dataset.
+-- @param _CreationDate [Date] Date on which the dataset was created.
+function M.Dataset(_DatasetName, _DataStorage, _LastModifiedDate, _NumRecords, _IdentityId, _LastModifiedBy, _CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Dataset")
 	local t = { 
-		["DatasetName"] = DatasetName,
-		["DataStorage"] = DataStorage,
-		["LastModifiedDate"] = LastModifiedDate,
-		["NumRecords"] = NumRecords,
-		["IdentityId"] = IdentityId,
-		["LastModifiedBy"] = LastModifiedBy,
-		["CreationDate"] = CreationDate,
+		["DatasetName"] = _DatasetName,
+		["DataStorage"] = _DataStorage,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["NumRecords"] = _NumRecords,
+		["IdentityId"] = _IdentityId,
+		["LastModifiedBy"] = _LastModifiedBy,
+		["CreationDate"] = _CreationDate,
 	}
-	M.AssertDataset(t)
+	asserts.AssertDataset(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "message" = true, nil }
+keys.ResourceNotFoundException = { ["message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- Thrown if the resource doesn't exist.
--- @param message [ExceptionMessage] Message returned by a ResourceNotFoundException.
+-- @param _message [ExceptionMessage] Message returned by a ResourceNotFoundException.
 -- Required parameter: message
-function M.ResourceNotFoundException(message, ...)
+function M.ResourceNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local RecordPatch_keys = { "SyncCount" = true, "DeviceLastModifiedDate" = true, "Value" = true, "Key" = true, "Op" = true, nil }
+keys.RecordPatch = { ["SyncCount"] = true, ["DeviceLastModifiedDate"] = true, ["Value"] = true, ["Key"] = true, ["Op"] = true, nil }
 
-function M.AssertRecordPatch(struct)
+function asserts.AssertRecordPatch(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RecordPatch to be of type 'table'")
 	assert(struct["Op"], "Expected key Op to exist in table")
 	assert(struct["Key"], "Expected key Key to exist in table")
 	assert(struct["SyncCount"], "Expected key SyncCount to exist in table")
-	if struct["SyncCount"] then M.AssertLong(struct["SyncCount"]) end
-	if struct["DeviceLastModifiedDate"] then M.AssertDate(struct["DeviceLastModifiedDate"]) end
-	if struct["Value"] then M.AssertRecordValue(struct["Value"]) end
-	if struct["Key"] then M.AssertRecordKey(struct["Key"]) end
-	if struct["Op"] then M.AssertOperation(struct["Op"]) end
+	if struct["SyncCount"] then asserts.AssertLong(struct["SyncCount"]) end
+	if struct["DeviceLastModifiedDate"] then asserts.AssertDate(struct["DeviceLastModifiedDate"]) end
+	if struct["Value"] then asserts.AssertRecordValue(struct["Value"]) end
+	if struct["Key"] then asserts.AssertRecordKey(struct["Key"]) end
+	if struct["Op"] then asserts.AssertOperation(struct["Op"]) end
 	for k,_ in pairs(struct) do
-		assert(RecordPatch_keys[k], "RecordPatch contains unknown key " .. tostring(k))
+		assert(keys.RecordPatch[k], "RecordPatch contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RecordPatch
 -- An update operation for a record.
--- @param SyncCount [Long] Last known server sync count for this record. Set to 0 if unknown.
--- @param DeviceLastModifiedDate [Date] The last modified date of the client device.
--- @param Value [RecordValue] The value associated with the record patch.
--- @param Key [RecordKey] The key associated with the record patch.
--- @param Op [Operation] An operation, either replace or remove.
+-- @param _SyncCount [Long] Last known server sync count for this record. Set to 0 if unknown.
+-- @param _DeviceLastModifiedDate [Date] The last modified date of the client device.
+-- @param _Value [RecordValue] The value associated with the record patch.
+-- @param _Key [RecordKey] The key associated with the record patch.
+-- @param _Op [Operation] An operation, either replace or remove.
 -- Required parameter: Op
 -- Required parameter: Key
 -- Required parameter: SyncCount
-function M.RecordPatch(SyncCount, DeviceLastModifiedDate, Value, Key, Op, ...)
+function M.RecordPatch(_SyncCount, _DeviceLastModifiedDate, _Value, _Key, _Op, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecordPatch")
 	local t = { 
-		["SyncCount"] = SyncCount,
-		["DeviceLastModifiedDate"] = DeviceLastModifiedDate,
-		["Value"] = Value,
-		["Key"] = Key,
-		["Op"] = Op,
+		["SyncCount"] = _SyncCount,
+		["DeviceLastModifiedDate"] = _DeviceLastModifiedDate,
+		["Value"] = _Value,
+		["Key"] = _Key,
+		["Op"] = _Op,
 	}
-	M.AssertRecordPatch(t)
+	asserts.AssertRecordPatch(t)
 	return t
 end
 
-local RegisterDeviceResponse_keys = { "DeviceId" = true, nil }
+keys.RegisterDeviceResponse = { ["DeviceId"] = true, nil }
 
-function M.AssertRegisterDeviceResponse(struct)
+function asserts.AssertRegisterDeviceResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RegisterDeviceResponse to be of type 'table'")
-	if struct["DeviceId"] then M.AssertDeviceId(struct["DeviceId"]) end
+	if struct["DeviceId"] then asserts.AssertDeviceId(struct["DeviceId"]) end
 	for k,_ in pairs(struct) do
-		assert(RegisterDeviceResponse_keys[k], "RegisterDeviceResponse contains unknown key " .. tostring(k))
+		assert(keys.RegisterDeviceResponse[k], "RegisterDeviceResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RegisterDeviceResponse
 -- <p>Response to a RegisterDevice request.</p>
--- @param DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
-function M.RegisterDeviceResponse(DeviceId, ...)
+-- @param _DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+function M.RegisterDeviceResponse(_DeviceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDeviceResponse")
 	local t = { 
-		["DeviceId"] = DeviceId,
+		["DeviceId"] = _DeviceId,
 	}
-	M.AssertRegisterDeviceResponse(t)
+	asserts.AssertRegisterDeviceResponse(t)
 	return t
 end
 
-local RegisterDeviceRequest_keys = { "Platform" = true, "IdentityPoolId" = true, "Token" = true, "IdentityId" = true, nil }
+keys.RegisterDeviceRequest = { ["Platform"] = true, ["IdentityPoolId"] = true, ["Token"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertRegisterDeviceRequest(struct)
+function asserts.AssertRegisterDeviceRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RegisterDeviceRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["Platform"], "Expected key Platform to exist in table")
 	assert(struct["Token"], "Expected key Token to exist in table")
-	if struct["Platform"] then M.AssertPlatform(struct["Platform"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["Token"] then M.AssertPushToken(struct["Token"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Platform"] then asserts.AssertPlatform(struct["Platform"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["Token"] then asserts.AssertPushToken(struct["Token"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(RegisterDeviceRequest_keys[k], "RegisterDeviceRequest contains unknown key " .. tostring(k))
+		assert(keys.RegisterDeviceRequest[k], "RegisterDeviceRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RegisterDeviceRequest
 -- <p>A request to RegisterDevice.</p>
--- @param Platform [Platform] <p>The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).</p>
--- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. Here, the ID of the pool that the identity belongs to.</p>
--- @param Token [PushToken] <p>The push token.</p>
--- @param IdentityId [IdentityId] <p>The unique ID for this identity.</p>
+-- @param _Platform [Platform] <p>The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. Here, the ID of the pool that the identity belongs to.</p>
+-- @param _Token [PushToken] <p>The push token.</p>
+-- @param _IdentityId [IdentityId] <p>The unique ID for this identity.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: Platform
 -- Required parameter: Token
-function M.RegisterDeviceRequest(Platform, IdentityPoolId, Token, IdentityId, ...)
+function M.RegisterDeviceRequest(_Platform, _IdentityPoolId, _Token, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDeviceRequest")
 	local t = { 
-		["Platform"] = Platform,
-		["IdentityPoolId"] = IdentityPoolId,
-		["Token"] = Token,
-		["IdentityId"] = IdentityId,
+		["Platform"] = _Platform,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["Token"] = _Token,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertRegisterDeviceRequest(t)
+	asserts.AssertRegisterDeviceRequest(t)
 	return t
 end
 
-local InvalidConfigurationException_keys = { "message" = true, nil }
+keys.InvalidConfigurationException = { ["message"] = true, nil }
 
-function M.AssertInvalidConfigurationException(struct)
+function asserts.AssertInvalidConfigurationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidConfigurationException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidConfigurationException_keys[k], "InvalidConfigurationException contains unknown key " .. tostring(k))
+		assert(keys.InvalidConfigurationException[k], "InvalidConfigurationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidConfigurationException
 --  
--- @param message [ExceptionMessage] Message returned by InvalidConfigurationException.
+-- @param _message [ExceptionMessage] Message returned by InvalidConfigurationException.
 -- Required parameter: message
-function M.InvalidConfigurationException(message, ...)
+function M.InvalidConfigurationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidConfigurationException(t)
+	asserts.AssertInvalidConfigurationException(t)
 	return t
 end
 
-local GetIdentityPoolConfigurationRequest_keys = { "IdentityPoolId" = true, nil }
+keys.GetIdentityPoolConfigurationRequest = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertGetIdentityPoolConfigurationRequest(struct)
+function asserts.AssertGetIdentityPoolConfigurationRequest(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIdentityPoolConfigurationRequest to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIdentityPoolConfigurationRequest_keys[k], "GetIdentityPoolConfigurationRequest contains unknown key " .. tostring(k))
+		assert(keys.GetIdentityPoolConfigurationRequest[k], "GetIdentityPoolConfigurationRequest contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIdentityPoolConfigurationRequest
 -- <p>The input for the GetIdentityPoolConfiguration operation.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool for which to return a configuration.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool for which to return a configuration.</p>
 -- Required parameter: IdentityPoolId
-function M.GetIdentityPoolConfigurationRequest(IdentityPoolId, ...)
+function M.GetIdentityPoolConfigurationRequest(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolConfigurationRequest")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertGetIdentityPoolConfigurationRequest(t)
+	asserts.AssertGetIdentityPoolConfigurationRequest(t)
 	return t
 end
 
-local DuplicateRequestException_keys = { "message" = true, nil }
+keys.DuplicateRequestException = { ["message"] = true, nil }
 
-function M.AssertDuplicateRequestException(struct)
+function asserts.AssertDuplicateRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DuplicateRequestException to be of type 'table'")
 	assert(struct["message"], "Expected key message to exist in table")
-	if struct["message"] then M.AssertExceptionMessage(struct["message"]) end
+	if struct["message"] then asserts.AssertExceptionMessage(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(DuplicateRequestException_keys[k], "DuplicateRequestException contains unknown key " .. tostring(k))
+		assert(keys.DuplicateRequestException[k], "DuplicateRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DuplicateRequestException
 -- An exception thrown when there is an IN_PROGRESS bulk publish operation for the given identity pool.
--- @param message [ExceptionMessage] The message associated with the DuplicateRequestException exception.
+-- @param _message [ExceptionMessage] The message associated with the DuplicateRequestException exception.
 -- Required parameter: message
-function M.DuplicateRequestException(message, ...)
+function M.DuplicateRequestException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateRequestException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertDuplicateRequestException(t)
+	asserts.AssertDuplicateRequestException(t)
 	return t
 end
 
-function M.AssertDatasetName(str)
+function asserts.AssertDatasetName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DatasetName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[a-zA-Z0-9_.:-]+"), "Expected string to match pattern '[a-zA-Z0-9_.:-]+'")
 end
 
 --  
 function M.DatasetName(str)
-	M.AssertDatasetName(str)
+	asserts.AssertDatasetName(str)
 	return str
 end
 
-function M.AssertSyncSessionToken(str)
+function asserts.AssertSyncSessionToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SyncSessionToken to be of type 'string'")
 end
 
 --  
 function M.SyncSessionToken(str)
-	M.AssertSyncSessionToken(str)
+	asserts.AssertSyncSessionToken(str)
 	return str
 end
 
-function M.AssertIdentityPoolId(str)
+function asserts.AssertIdentityPoolId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityPoolId to be of type 'string'")
 	assert(#str <= 55, "Expected string to be max 55 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w-]+:[0-9a-f-]+"), "Expected string to match pattern '[%w-]+:[0-9a-f-]+'")
 end
 
 --  
 function M.IdentityPoolId(str)
-	M.AssertIdentityPoolId(str)
+	asserts.AssertIdentityPoolId(str)
 	return str
 end
 
-function M.AssertCognitoEventType(str)
+function asserts.AssertCognitoEventType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CognitoEventType to be of type 'string'")
 end
 
 --  
 function M.CognitoEventType(str)
-	M.AssertCognitoEventType(str)
+	asserts.AssertCognitoEventType(str)
 	return str
 end
 
-function M.AssertRecordKey(str)
+function asserts.AssertRecordKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RecordKey to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -1633,61 +1634,59 @@ end
 
 --  
 function M.RecordKey(str)
-	M.AssertRecordKey(str)
+	asserts.AssertRecordKey(str)
 	return str
 end
 
-function M.AssertIdentityId(str)
+function asserts.AssertIdentityId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityId to be of type 'string'")
 	assert(#str <= 55, "Expected string to be max 55 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w-]+:[0-9a-f-]+"), "Expected string to match pattern '[%w-]+:[0-9a-f-]+'")
 end
 
 --  
 function M.IdentityId(str)
-	M.AssertIdentityId(str)
+	asserts.AssertIdentityId(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertBulkPublishStatus(str)
+function asserts.AssertBulkPublishStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected BulkPublishStatus to be of type 'string'")
 end
 
 --  
 function M.BulkPublishStatus(str)
-	M.AssertBulkPublishStatus(str)
+	asserts.AssertBulkPublishStatus(str)
 	return str
 end
 
-function M.AssertAssumeRoleArn(str)
+function asserts.AssertAssumeRoleArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AssumeRoleArn to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
 	assert(#str >= 20, "Expected string to be min 20 characters")
-	assert(str:match("arn:aws:iam::%d+:role/.*"), "Expected string to match pattern 'arn:aws:iam::%d+:role/.*'")
 end
 
 --  
 function M.AssumeRoleArn(str)
-	M.AssertAssumeRoleArn(str)
+	asserts.AssertAssumeRoleArn(str)
 	return str
 end
 
-function M.AssertDeviceId(str)
+function asserts.AssertDeviceId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeviceId to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -1696,55 +1695,55 @@ end
 
 --  
 function M.DeviceId(str)
-	M.AssertDeviceId(str)
+	asserts.AssertDeviceId(str)
 	return str
 end
 
-function M.AssertStreamingStatus(str)
+function asserts.AssertStreamingStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StreamingStatus to be of type 'string'")
 end
 
 --  
 function M.StreamingStatus(str)
-	M.AssertStreamingStatus(str)
+	asserts.AssertStreamingStatus(str)
 	return str
 end
 
-function M.AssertLambdaFunctionArn(str)
+function asserts.AssertLambdaFunctionArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected LambdaFunctionArn to be of type 'string'")
 end
 
 --  
 function M.LambdaFunctionArn(str)
-	M.AssertLambdaFunctionArn(str)
+	asserts.AssertLambdaFunctionArn(str)
 	return str
 end
 
-function M.AssertPushToken(str)
+function asserts.AssertPushToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PushToken to be of type 'string'")
 end
 
 --  
 function M.PushToken(str)
-	M.AssertPushToken(str)
+	asserts.AssertPushToken(str)
 	return str
 end
 
-function M.AssertOperation(str)
+function asserts.AssertOperation(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Operation to be of type 'string'")
 end
 
 --  
 function M.Operation(str)
-	M.AssertOperation(str)
+	asserts.AssertOperation(str)
 	return str
 end
 
-function M.AssertRecordValue(str)
+function asserts.AssertRecordValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RecordValue to be of type 'string'")
 	assert(#str <= 1048575, "Expected string to be max 1048575 characters")
@@ -1752,33 +1751,33 @@ end
 
 --  
 function M.RecordValue(str)
-	M.AssertRecordValue(str)
+	asserts.AssertRecordValue(str)
 	return str
 end
 
-function M.AssertPlatform(str)
+function asserts.AssertPlatform(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Platform to be of type 'string'")
 end
 
 --  
 function M.Platform(str)
-	M.AssertPlatform(str)
+	asserts.AssertPlatform(str)
 	return str
 end
 
-function M.AssertExceptionMessage(str)
+function asserts.AssertExceptionMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
 end
 
 --  
 function M.ExceptionMessage(str)
-	M.AssertExceptionMessage(str)
+	asserts.AssertExceptionMessage(str)
 	return str
 end
 
-function M.AssertStreamName(str)
+function asserts.AssertStreamName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StreamName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -1787,187 +1786,186 @@ end
 
 --  
 function M.StreamName(str)
-	M.AssertStreamName(str)
+	asserts.AssertStreamName(str)
 	return str
 end
 
-function M.AssertApplicationArn(str)
+function asserts.AssertApplicationArn(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ApplicationArn to be of type 'string'")
-	assert(str:match("arn:aws:sns:[-0-9a-z]+:%d+:app/[A-Z_]+/[a-zA-Z0-9_.-]+"), "Expected string to match pattern 'arn:aws:sns:[-0-9a-z]+:%d+:app/[A-Z_]+/[a-zA-Z0-9_.-]+'")
 end
 
 --  
 function M.ApplicationArn(str)
-	M.AssertApplicationArn(str)
+	asserts.AssertApplicationArn(str)
 	return str
 end
 
-function M.AssertClientContext(str)
+function asserts.AssertClientContext(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClientContext to be of type 'string'")
 end
 
 --  
 function M.ClientContext(str)
-	M.AssertClientContext(str)
+	asserts.AssertClientContext(str)
 	return str
 end
 
-function M.AssertLong(long)
+function asserts.AssertLong(long)
 	assert(long)
 	assert(type(long) == "number", "Expected Long to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.Long(long)
-	M.AssertLong(long)
+	asserts.AssertLong(long)
 	return long
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertIntegerString(integer)
+function asserts.AssertIntegerString(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected IntegerString to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.IntegerString(integer)
-	M.AssertIntegerString(integer)
+	asserts.AssertIntegerString(integer)
 	return integer
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertEvents(map)
+function asserts.AssertEvents(map)
 	assert(map)
 	assert(type(map) == "table", "Expected Events to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertCognitoEventType(k)
-		M.AssertLambdaFunctionArn(v)
+		asserts.AssertCognitoEventType(k)
+		asserts.AssertLambdaFunctionArn(v)
 	end
 end
 
 function M.Events(map)
-	M.AssertEvents(map)
+	asserts.AssertEvents(map)
 	return map
 end
 
-function M.AssertDate(timestamp)
+function asserts.AssertDate(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Date to be of type 'string'")
 end
 
 function M.Date(timestamp)
-	M.AssertDate(timestamp)
+	asserts.AssertDate(timestamp)
 	return timestamp
 end
 
-function M.AssertIdentityPoolUsageList(list)
+function asserts.AssertIdentityPoolUsageList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IdentityPoolUsageList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertIdentityPoolUsage(v)
+		asserts.AssertIdentityPoolUsage(v)
 	end
 end
 
 --  
 -- List of IdentityPoolUsage objects
 function M.IdentityPoolUsageList(list)
-	M.AssertIdentityPoolUsageList(list)
+	asserts.AssertIdentityPoolUsageList(list)
 	return list
 end
 
-function M.AssertMergedDatasetNameList(list)
+function asserts.AssertMergedDatasetNameList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MergedDatasetNameList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.MergedDatasetNameList(list)
-	M.AssertMergedDatasetNameList(list)
+	asserts.AssertMergedDatasetNameList(list)
 	return list
 end
 
-function M.AssertRecordPatchList(list)
+function asserts.AssertRecordPatchList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RecordPatchList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRecordPatch(v)
+		asserts.AssertRecordPatch(v)
 	end
 end
 
 --  
 -- List of RecordPatch objects
 function M.RecordPatchList(list)
-	M.AssertRecordPatchList(list)
+	asserts.AssertRecordPatchList(list)
 	return list
 end
 
-function M.AssertRecordList(list)
+function asserts.AssertRecordList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected RecordList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertRecord(v)
+		asserts.AssertRecord(v)
 	end
 end
 
 --  
 -- List of Record objects
 function M.RecordList(list)
-	M.AssertRecordList(list)
+	asserts.AssertRecordList(list)
 	return list
 end
 
-function M.AssertApplicationArnList(list)
+function asserts.AssertApplicationArnList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ApplicationArnList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertApplicationArn(v)
+		asserts.AssertApplicationArn(v)
 	end
 end
 
 --  
 -- List of ApplicationArn objects
 function M.ApplicationArnList(list)
-	M.AssertApplicationArnList(list)
+	asserts.AssertApplicationArnList(list)
 	return list
 end
 
-function M.AssertDatasetList(list)
+function asserts.AssertDatasetList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DatasetList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDataset(v)
+		asserts.AssertDataset(v)
 	end
 end
 
 --  
 -- List of Dataset objects
 function M.DatasetList(list)
-	M.AssertDatasetList(list)
+	asserts.AssertDatasetList(list)
 	return list
 end
 

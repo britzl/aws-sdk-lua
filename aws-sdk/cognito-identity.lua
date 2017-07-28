@@ -18,1370 +18,1372 @@ M.metadata = {
 	uid = "cognito-identity-2014-06-30",
 }
 
-local GetOpenIdTokenInput_keys = { "Logins" = true, "IdentityId" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertGetOpenIdTokenInput(struct)
+keys.GetOpenIdTokenInput = { ["Logins"] = true, ["IdentityId"] = true, nil }
+
+function asserts.AssertGetOpenIdTokenInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetOpenIdTokenInput to be of type 'table'")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
-	if struct["Logins"] then M.AssertLoginsMap(struct["Logins"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Logins"] then asserts.AssertLoginsMap(struct["Logins"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetOpenIdTokenInput_keys[k], "GetOpenIdTokenInput contains unknown key " .. tostring(k))
+		assert(keys.GetOpenIdTokenInput[k], "GetOpenIdTokenInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetOpenIdTokenInput
 -- <p>Input to the GetOpenIdToken action.</p>
--- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the <code>id_token</code>.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the <code>id_token</code>.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
-function M.GetOpenIdTokenInput(Logins, IdentityId, ...)
+function M.GetOpenIdTokenInput(_Logins, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenInput")
 	local t = { 
-		["Logins"] = Logins,
-		["IdentityId"] = IdentityId,
+		["Logins"] = _Logins,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertGetOpenIdTokenInput(t)
+	asserts.AssertGetOpenIdTokenInput(t)
 	return t
 end
 
-local RulesConfigurationType_keys = { "Rules" = true, nil }
+keys.RulesConfigurationType = { ["Rules"] = true, nil }
 
-function M.AssertRulesConfigurationType(struct)
+function asserts.AssertRulesConfigurationType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RulesConfigurationType to be of type 'table'")
 	assert(struct["Rules"], "Expected key Rules to exist in table")
-	if struct["Rules"] then M.AssertMappingRulesList(struct["Rules"]) end
+	if struct["Rules"] then asserts.AssertMappingRulesList(struct["Rules"]) end
 	for k,_ in pairs(struct) do
-		assert(RulesConfigurationType_keys[k], "RulesConfigurationType contains unknown key " .. tostring(k))
+		assert(keys.RulesConfigurationType[k], "RulesConfigurationType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RulesConfigurationType
 -- <p>A container for rules.</p>
--- @param Rules [MappingRulesList] <p>An array of rules. You can specify up to 25 rules per identity provider.</p> <p>Rules are evaluated in order. The first one to match specifies the role.</p>
+-- @param _Rules [MappingRulesList] <p>An array of rules. You can specify up to 25 rules per identity provider.</p> <p>Rules are evaluated in order. The first one to match specifies the role.</p>
 -- Required parameter: Rules
-function M.RulesConfigurationType(Rules, ...)
+function M.RulesConfigurationType(_Rules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RulesConfigurationType")
 	local t = { 
-		["Rules"] = Rules,
+		["Rules"] = _Rules,
 	}
-	M.AssertRulesConfigurationType(t)
+	asserts.AssertRulesConfigurationType(t)
 	return t
 end
 
-local GetIdentityPoolRolesResponse_keys = { "IdentityPoolId" = true, "Roles" = true, "RoleMappings" = true, nil }
+keys.GetIdentityPoolRolesResponse = { ["IdentityPoolId"] = true, ["Roles"] = true, ["RoleMappings"] = true, nil }
 
-function M.AssertGetIdentityPoolRolesResponse(struct)
+function asserts.AssertGetIdentityPoolRolesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIdentityPoolRolesResponse to be of type 'table'")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["Roles"] then M.AssertRolesMap(struct["Roles"]) end
-	if struct["RoleMappings"] then M.AssertRoleMappingMap(struct["RoleMappings"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["Roles"] then asserts.AssertRolesMap(struct["Roles"]) end
+	if struct["RoleMappings"] then asserts.AssertRoleMappingMap(struct["RoleMappings"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIdentityPoolRolesResponse_keys[k], "GetIdentityPoolRolesResponse contains unknown key " .. tostring(k))
+		assert(keys.GetIdentityPoolRolesResponse[k], "GetIdentityPoolRolesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIdentityPoolRolesResponse
 -- <p>Returned in response to a successful <code>GetIdentityPoolRoles</code> operation.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param Roles [RolesMap] <p>The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.</p>
--- @param RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a String-to-<a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p>
-function M.GetIdentityPoolRolesResponse(IdentityPoolId, Roles, RoleMappings, ...)
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _Roles [RolesMap] <p>The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.</p>
+-- @param _RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a String-to-<a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p>
+function M.GetIdentityPoolRolesResponse(_IdentityPoolId, _Roles, _RoleMappings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolRolesResponse")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["Roles"] = Roles,
-		["RoleMappings"] = RoleMappings,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["Roles"] = _Roles,
+		["RoleMappings"] = _RoleMappings,
 	}
-	M.AssertGetIdentityPoolRolesResponse(t)
+	asserts.AssertGetIdentityPoolRolesResponse(t)
 	return t
 end
 
-local ListIdentityPoolsInput_keys = { "NextToken" = true, "MaxResults" = true, nil }
+keys.ListIdentityPoolsInput = { ["NextToken"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListIdentityPoolsInput(struct)
+function asserts.AssertListIdentityPoolsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIdentityPoolsInput to be of type 'table'")
 	assert(struct["MaxResults"], "Expected key MaxResults to exist in table")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["MaxResults"] then M.AssertQueryLimit(struct["MaxResults"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["MaxResults"] then asserts.AssertQueryLimit(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIdentityPoolsInput_keys[k], "ListIdentityPoolsInput contains unknown key " .. tostring(k))
+		assert(keys.ListIdentityPoolsInput[k], "ListIdentityPoolsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIdentityPoolsInput
 -- <p>Input to the ListIdentityPools action.</p>
--- @param NextToken [PaginationKey] <p>A pagination token.</p>
--- @param MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
+-- @param _NextToken [PaginationKey] <p>A pagination token.</p>
+-- @param _MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
 -- Required parameter: MaxResults
-function M.ListIdentityPoolsInput(NextToken, MaxResults, ...)
+function M.ListIdentityPoolsInput(_NextToken, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolsInput")
 	local t = { 
-		["NextToken"] = NextToken,
-		["MaxResults"] = MaxResults,
+		["NextToken"] = _NextToken,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListIdentityPoolsInput(t)
+	asserts.AssertListIdentityPoolsInput(t)
 	return t
 end
 
-local NotAuthorizedException_keys = { "message" = true, nil }
+keys.NotAuthorizedException = { ["message"] = true, nil }
 
-function M.AssertNotAuthorizedException(struct)
+function asserts.AssertNotAuthorizedException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected NotAuthorizedException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(NotAuthorizedException_keys[k], "NotAuthorizedException contains unknown key " .. tostring(k))
+		assert(keys.NotAuthorizedException[k], "NotAuthorizedException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type NotAuthorizedException
 -- <p>Thrown when a user is not authorized to access the requested resource.</p>
--- @param message [String] <p>The message returned by a NotAuthorizedException</p>
-function M.NotAuthorizedException(message, ...)
+-- @param _message [String] <p>The message returned by a NotAuthorizedException</p>
+function M.NotAuthorizedException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotAuthorizedException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertNotAuthorizedException(t)
+	asserts.AssertNotAuthorizedException(t)
 	return t
 end
 
-local CreateIdentityPoolInput_keys = { "DeveloperProviderName" = true, "SamlProviderARNs" = true, "SupportedLoginProviders" = true, "AllowUnauthenticatedIdentities" = true, "CognitoIdentityProviders" = true, "IdentityPoolName" = true, "OpenIdConnectProviderARNs" = true, nil }
+keys.CreateIdentityPoolInput = { ["DeveloperProviderName"] = true, ["SamlProviderARNs"] = true, ["SupportedLoginProviders"] = true, ["AllowUnauthenticatedIdentities"] = true, ["CognitoIdentityProviders"] = true, ["IdentityPoolName"] = true, ["OpenIdConnectProviderARNs"] = true, nil }
 
-function M.AssertCreateIdentityPoolInput(struct)
+function asserts.AssertCreateIdentityPoolInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateIdentityPoolInput to be of type 'table'")
 	assert(struct["IdentityPoolName"], "Expected key IdentityPoolName to exist in table")
 	assert(struct["AllowUnauthenticatedIdentities"], "Expected key AllowUnauthenticatedIdentities to exist in table")
-	if struct["DeveloperProviderName"] then M.AssertDeveloperProviderName(struct["DeveloperProviderName"]) end
-	if struct["SamlProviderARNs"] then M.AssertSAMLProviderList(struct["SamlProviderARNs"]) end
-	if struct["SupportedLoginProviders"] then M.AssertIdentityProviders(struct["SupportedLoginProviders"]) end
-	if struct["AllowUnauthenticatedIdentities"] then M.AssertIdentityPoolUnauthenticated(struct["AllowUnauthenticatedIdentities"]) end
-	if struct["CognitoIdentityProviders"] then M.AssertCognitoIdentityProviderList(struct["CognitoIdentityProviders"]) end
-	if struct["IdentityPoolName"] then M.AssertIdentityPoolName(struct["IdentityPoolName"]) end
-	if struct["OpenIdConnectProviderARNs"] then M.AssertOIDCProviderList(struct["OpenIdConnectProviderARNs"]) end
+	if struct["DeveloperProviderName"] then asserts.AssertDeveloperProviderName(struct["DeveloperProviderName"]) end
+	if struct["SamlProviderARNs"] then asserts.AssertSAMLProviderList(struct["SamlProviderARNs"]) end
+	if struct["SupportedLoginProviders"] then asserts.AssertIdentityProviders(struct["SupportedLoginProviders"]) end
+	if struct["AllowUnauthenticatedIdentities"] then asserts.AssertIdentityPoolUnauthenticated(struct["AllowUnauthenticatedIdentities"]) end
+	if struct["CognitoIdentityProviders"] then asserts.AssertCognitoIdentityProviderList(struct["CognitoIdentityProviders"]) end
+	if struct["IdentityPoolName"] then asserts.AssertIdentityPoolName(struct["IdentityPoolName"]) end
+	if struct["OpenIdConnectProviderARNs"] then asserts.AssertOIDCProviderList(struct["OpenIdConnectProviderARNs"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateIdentityPoolInput_keys[k], "CreateIdentityPoolInput contains unknown key " .. tostring(k))
+		assert(keys.CreateIdentityPoolInput[k], "CreateIdentityPoolInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateIdentityPoolInput
 -- <p>Input to the CreateIdentityPool action.</p>
--- @param DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (<code>.</code>), underscore (<code>_</code>), and dash (<code>-</code>).</p> <p>Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.</p>
--- @param SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
--- @param SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
--- @param AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
--- @param CognitoIdentityProviders [CognitoIdentityProviderList] <p>An array of Amazon Cognito Identity user pools and their client IDs.</p>
--- @param IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
--- @param OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
+-- @param _DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (<code>.</code>), underscore (<code>_</code>), and dash (<code>-</code>).</p> <p>Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.</p>
+-- @param _SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
+-- @param _SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
+-- @param _AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
+-- @param _CognitoIdentityProviders [CognitoIdentityProviderList] <p>An array of Amazon Cognito Identity user pools and their client IDs.</p>
+-- @param _IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
+-- @param _OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
 -- Required parameter: IdentityPoolName
 -- Required parameter: AllowUnauthenticatedIdentities
-function M.CreateIdentityPoolInput(DeveloperProviderName, SamlProviderARNs, SupportedLoginProviders, AllowUnauthenticatedIdentities, CognitoIdentityProviders, IdentityPoolName, OpenIdConnectProviderARNs, ...)
+function M.CreateIdentityPoolInput(_DeveloperProviderName, _SamlProviderARNs, _SupportedLoginProviders, _AllowUnauthenticatedIdentities, _CognitoIdentityProviders, _IdentityPoolName, _OpenIdConnectProviderARNs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateIdentityPoolInput")
 	local t = { 
-		["DeveloperProviderName"] = DeveloperProviderName,
-		["SamlProviderARNs"] = SamlProviderARNs,
-		["SupportedLoginProviders"] = SupportedLoginProviders,
-		["AllowUnauthenticatedIdentities"] = AllowUnauthenticatedIdentities,
-		["CognitoIdentityProviders"] = CognitoIdentityProviders,
-		["IdentityPoolName"] = IdentityPoolName,
-		["OpenIdConnectProviderARNs"] = OpenIdConnectProviderARNs,
+		["DeveloperProviderName"] = _DeveloperProviderName,
+		["SamlProviderARNs"] = _SamlProviderARNs,
+		["SupportedLoginProviders"] = _SupportedLoginProviders,
+		["AllowUnauthenticatedIdentities"] = _AllowUnauthenticatedIdentities,
+		["CognitoIdentityProviders"] = _CognitoIdentityProviders,
+		["IdentityPoolName"] = _IdentityPoolName,
+		["OpenIdConnectProviderARNs"] = _OpenIdConnectProviderARNs,
 	}
-	M.AssertCreateIdentityPoolInput(t)
+	asserts.AssertCreateIdentityPoolInput(t)
 	return t
 end
 
-local GetOpenIdTokenForDeveloperIdentityResponse_keys = { "Token" = true, "IdentityId" = true, nil }
+keys.GetOpenIdTokenForDeveloperIdentityResponse = { ["Token"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertGetOpenIdTokenForDeveloperIdentityResponse(struct)
+function asserts.AssertGetOpenIdTokenForDeveloperIdentityResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetOpenIdTokenForDeveloperIdentityResponse to be of type 'table'")
-	if struct["Token"] then M.AssertOIDCToken(struct["Token"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Token"] then asserts.AssertOIDCToken(struct["Token"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetOpenIdTokenForDeveloperIdentityResponse_keys[k], "GetOpenIdTokenForDeveloperIdentityResponse contains unknown key " .. tostring(k))
+		assert(keys.GetOpenIdTokenForDeveloperIdentityResponse[k], "GetOpenIdTokenForDeveloperIdentityResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetOpenIdTokenForDeveloperIdentityResponse
 -- <p>Returned in response to a successful <code>GetOpenIdTokenForDeveloperIdentity</code> request.</p>
--- @param Token [OIDCToken] <p>An OpenID token.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.GetOpenIdTokenForDeveloperIdentityResponse(Token, IdentityId, ...)
+-- @param _Token [OIDCToken] <p>An OpenID token.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+function M.GetOpenIdTokenForDeveloperIdentityResponse(_Token, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenForDeveloperIdentityResponse")
 	local t = { 
-		["Token"] = Token,
-		["IdentityId"] = IdentityId,
+		["Token"] = _Token,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertGetOpenIdTokenForDeveloperIdentityResponse(t)
+	asserts.AssertGetOpenIdTokenForDeveloperIdentityResponse(t)
 	return t
 end
 
-local GetIdResponse_keys = { "IdentityId" = true, nil }
+keys.GetIdResponse = { ["IdentityId"] = true, nil }
 
-function M.AssertGetIdResponse(struct)
+function asserts.AssertGetIdResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIdResponse to be of type 'table'")
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIdResponse_keys[k], "GetIdResponse contains unknown key " .. tostring(k))
+		assert(keys.GetIdResponse[k], "GetIdResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIdResponse
 -- <p>Returned in response to a GetId request.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.GetIdResponse(IdentityId, ...)
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+function M.GetIdResponse(_IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdResponse")
 	local t = { 
-		["IdentityId"] = IdentityId,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertGetIdResponse(t)
+	asserts.AssertGetIdResponse(t)
 	return t
 end
 
-local GetOpenIdTokenResponse_keys = { "Token" = true, "IdentityId" = true, nil }
+keys.GetOpenIdTokenResponse = { ["Token"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertGetOpenIdTokenResponse(struct)
+function asserts.AssertGetOpenIdTokenResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetOpenIdTokenResponse to be of type 'table'")
-	if struct["Token"] then M.AssertOIDCToken(struct["Token"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Token"] then asserts.AssertOIDCToken(struct["Token"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetOpenIdTokenResponse_keys[k], "GetOpenIdTokenResponse contains unknown key " .. tostring(k))
+		assert(keys.GetOpenIdTokenResponse[k], "GetOpenIdTokenResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetOpenIdTokenResponse
 -- <p>Returned in response to a successful GetOpenIdToken request.</p>
--- @param Token [OIDCToken] <p>An OpenID token, valid for 15 minutes.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.</p>
-function M.GetOpenIdTokenResponse(Token, IdentityId, ...)
+-- @param _Token [OIDCToken] <p>An OpenID token, valid for 15 minutes.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.</p>
+function M.GetOpenIdTokenResponse(_Token, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenResponse")
 	local t = { 
-		["Token"] = Token,
-		["IdentityId"] = IdentityId,
+		["Token"] = _Token,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertGetOpenIdTokenResponse(t)
+	asserts.AssertGetOpenIdTokenResponse(t)
 	return t
 end
 
-local RoleMapping_keys = { "AmbiguousRoleResolution" = true, "Type" = true, "RulesConfiguration" = true, nil }
+keys.RoleMapping = { ["AmbiguousRoleResolution"] = true, ["Type"] = true, ["RulesConfiguration"] = true, nil }
 
-function M.AssertRoleMapping(struct)
+function asserts.AssertRoleMapping(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RoleMapping to be of type 'table'")
 	assert(struct["Type"], "Expected key Type to exist in table")
-	if struct["AmbiguousRoleResolution"] then M.AssertAmbiguousRoleResolutionType(struct["AmbiguousRoleResolution"]) end
-	if struct["Type"] then M.AssertRoleMappingType(struct["Type"]) end
-	if struct["RulesConfiguration"] then M.AssertRulesConfigurationType(struct["RulesConfiguration"]) end
+	if struct["AmbiguousRoleResolution"] then asserts.AssertAmbiguousRoleResolutionType(struct["AmbiguousRoleResolution"]) end
+	if struct["Type"] then asserts.AssertRoleMappingType(struct["Type"]) end
+	if struct["RulesConfiguration"] then asserts.AssertRulesConfigurationType(struct["RulesConfiguration"]) end
 	for k,_ in pairs(struct) do
-		assert(RoleMapping_keys[k], "RoleMapping contains unknown key " .. tostring(k))
+		assert(keys.RoleMapping[k], "RoleMapping contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RoleMapping
 -- <p>A role mapping.</p>
--- @param AmbiguousRoleResolution [AmbiguousRoleResolutionType] <p>If you specify Token or Rules as the <code>Type</code>, <code>AmbiguousRoleResolution</code> is required.</p> <p>Specifies the action to be taken if either no rules match the claim value for the <code>Rules</code> type, or there is no <code>cognito:preferred_role</code> claim and there are multiple <code>cognito:roles</code> matches for the <code>Token</code> type.</p>
--- @param Type [RoleMappingType] <p>The role mapping type. Token will use <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims from the Cognito identity provider token to map groups to roles. Rules will attempt to match claims from the token to map to a role.</p>
--- @param RulesConfiguration [RulesConfigurationType] <p>The rules to be used for mapping users to roles.</p> <p>If you specify Rules as the role mapping type, <code>RulesConfiguration</code> is required.</p>
+-- @param _AmbiguousRoleResolution [AmbiguousRoleResolutionType] <p>If you specify Token or Rules as the <code>Type</code>, <code>AmbiguousRoleResolution</code> is required.</p> <p>Specifies the action to be taken if either no rules match the claim value for the <code>Rules</code> type, or there is no <code>cognito:preferred_role</code> claim and there are multiple <code>cognito:roles</code> matches for the <code>Token</code> type.</p>
+-- @param _Type [RoleMappingType] <p>The role mapping type. Token will use <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims from the Cognito identity provider token to map groups to roles. Rules will attempt to match claims from the token to map to a role.</p>
+-- @param _RulesConfiguration [RulesConfigurationType] <p>The rules to be used for mapping users to roles.</p> <p>If you specify Rules as the role mapping type, <code>RulesConfiguration</code> is required.</p>
 -- Required parameter: Type
-function M.RoleMapping(AmbiguousRoleResolution, Type, RulesConfiguration, ...)
+function M.RoleMapping(_AmbiguousRoleResolution, _Type, _RulesConfiguration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RoleMapping")
 	local t = { 
-		["AmbiguousRoleResolution"] = AmbiguousRoleResolution,
-		["Type"] = Type,
-		["RulesConfiguration"] = RulesConfiguration,
+		["AmbiguousRoleResolution"] = _AmbiguousRoleResolution,
+		["Type"] = _Type,
+		["RulesConfiguration"] = _RulesConfiguration,
 	}
-	M.AssertRoleMapping(t)
+	asserts.AssertRoleMapping(t)
 	return t
 end
 
-local MappingRule_keys = { "Claim" = true, "MatchType" = true, "RoleARN" = true, "Value" = true, nil }
+keys.MappingRule = { ["Claim"] = true, ["MatchType"] = true, ["RoleARN"] = true, ["Value"] = true, nil }
 
-function M.AssertMappingRule(struct)
+function asserts.AssertMappingRule(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MappingRule to be of type 'table'")
 	assert(struct["Claim"], "Expected key Claim to exist in table")
 	assert(struct["MatchType"], "Expected key MatchType to exist in table")
 	assert(struct["Value"], "Expected key Value to exist in table")
 	assert(struct["RoleARN"], "Expected key RoleARN to exist in table")
-	if struct["Claim"] then M.AssertClaimName(struct["Claim"]) end
-	if struct["MatchType"] then M.AssertMappingRuleMatchType(struct["MatchType"]) end
-	if struct["RoleARN"] then M.AssertARNString(struct["RoleARN"]) end
-	if struct["Value"] then M.AssertClaimValue(struct["Value"]) end
+	if struct["Claim"] then asserts.AssertClaimName(struct["Claim"]) end
+	if struct["MatchType"] then asserts.AssertMappingRuleMatchType(struct["MatchType"]) end
+	if struct["RoleARN"] then asserts.AssertARNString(struct["RoleARN"]) end
+	if struct["Value"] then asserts.AssertClaimValue(struct["Value"]) end
 	for k,_ in pairs(struct) do
-		assert(MappingRule_keys[k], "MappingRule contains unknown key " .. tostring(k))
+		assert(keys.MappingRule[k], "MappingRule contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MappingRule
 -- <p>A rule that maps a claim name, a claim value, and a match type to a role ARN.</p>
--- @param Claim [ClaimName] <p>The claim name that must be present in the token, for example, "isAdmin" or "paid".</p>
--- @param MatchType [MappingRuleMatchType] <p>The match condition that specifies how closely the claim value in the IdP token must match <code>Value</code>.</p>
--- @param RoleARN [ARNString] <p>The role ARN.</p>
--- @param Value [ClaimValue] <p>A brief string that the claim must match, for example, "paid" or "yes".</p>
+-- @param _Claim [ClaimName] <p>The claim name that must be present in the token, for example, "isAdmin" or "paid".</p>
+-- @param _MatchType [MappingRuleMatchType] <p>The match condition that specifies how closely the claim value in the IdP token must match <code>Value</code>.</p>
+-- @param _RoleARN [ARNString] <p>The role ARN.</p>
+-- @param _Value [ClaimValue] <p>A brief string that the claim must match, for example, "paid" or "yes".</p>
 -- Required parameter: Claim
 -- Required parameter: MatchType
 -- Required parameter: Value
 -- Required parameter: RoleARN
-function M.MappingRule(Claim, MatchType, RoleARN, Value, ...)
+function M.MappingRule(_Claim, _MatchType, _RoleARN, _Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MappingRule")
 	local t = { 
-		["Claim"] = Claim,
-		["MatchType"] = MatchType,
-		["RoleARN"] = RoleARN,
-		["Value"] = Value,
+		["Claim"] = _Claim,
+		["MatchType"] = _MatchType,
+		["RoleARN"] = _RoleARN,
+		["Value"] = _Value,
 	}
-	M.AssertMappingRule(t)
+	asserts.AssertMappingRule(t)
 	return t
 end
 
-local InvalidParameterException_keys = { "message" = true, nil }
+keys.InvalidParameterException = { ["message"] = true, nil }
 
-function M.AssertInvalidParameterException(struct)
+function asserts.AssertInvalidParameterException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidParameterException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidParameterException_keys[k], "InvalidParameterException contains unknown key " .. tostring(k))
+		assert(keys.InvalidParameterException[k], "InvalidParameterException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidParameterException
 -- <p>Thrown for missing or bad input parameter(s).</p>
--- @param message [String] <p>The message returned by an InvalidParameterException.</p>
-function M.InvalidParameterException(message, ...)
+-- @param _message [String] <p>The message returned by an InvalidParameterException.</p>
+function M.InvalidParameterException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidParameterException(t)
+	asserts.AssertInvalidParameterException(t)
 	return t
 end
 
-local UnprocessedIdentityId_keys = { "ErrorCode" = true, "IdentityId" = true, nil }
+keys.UnprocessedIdentityId = { ["ErrorCode"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertUnprocessedIdentityId(struct)
+function asserts.AssertUnprocessedIdentityId(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnprocessedIdentityId to be of type 'table'")
-	if struct["ErrorCode"] then M.AssertErrorCode(struct["ErrorCode"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["ErrorCode"] then asserts.AssertErrorCode(struct["ErrorCode"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(UnprocessedIdentityId_keys[k], "UnprocessedIdentityId contains unknown key " .. tostring(k))
+		assert(keys.UnprocessedIdentityId[k], "UnprocessedIdentityId contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnprocessedIdentityId
 -- <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
--- @param ErrorCode [ErrorCode] <p>The error code indicating the type of error that occurred.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.UnprocessedIdentityId(ErrorCode, IdentityId, ...)
+-- @param _ErrorCode [ErrorCode] <p>The error code indicating the type of error that occurred.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+function M.UnprocessedIdentityId(_ErrorCode, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedIdentityId")
 	local t = { 
-		["ErrorCode"] = ErrorCode,
-		["IdentityId"] = IdentityId,
+		["ErrorCode"] = _ErrorCode,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertUnprocessedIdentityId(t)
+	asserts.AssertUnprocessedIdentityId(t)
 	return t
 end
 
-local GetIdentityPoolRolesInput_keys = { "IdentityPoolId" = true, nil }
+keys.GetIdentityPoolRolesInput = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertGetIdentityPoolRolesInput(struct)
+function asserts.AssertGetIdentityPoolRolesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIdentityPoolRolesInput to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIdentityPoolRolesInput_keys[k], "GetIdentityPoolRolesInput contains unknown key " .. tostring(k))
+		assert(keys.GetIdentityPoolRolesInput[k], "GetIdentityPoolRolesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIdentityPoolRolesInput
 -- <p>Input to the <code>GetIdentityPoolRoles</code> action.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
-function M.GetIdentityPoolRolesInput(IdentityPoolId, ...)
+function M.GetIdentityPoolRolesInput(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolRolesInput")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertGetIdentityPoolRolesInput(t)
+	asserts.AssertGetIdentityPoolRolesInput(t)
 	return t
 end
 
-local ListIdentitiesInput_keys = { "IdentityPoolId" = true, "NextToken" = true, "HideDisabled" = true, "MaxResults" = true, nil }
+keys.ListIdentitiesInput = { ["IdentityPoolId"] = true, ["NextToken"] = true, ["HideDisabled"] = true, ["MaxResults"] = true, nil }
 
-function M.AssertListIdentitiesInput(struct)
+function asserts.AssertListIdentitiesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIdentitiesInput to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["MaxResults"], "Expected key MaxResults to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["HideDisabled"] then M.AssertHideDisabled(struct["HideDisabled"]) end
-	if struct["MaxResults"] then M.AssertQueryLimit(struct["MaxResults"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["HideDisabled"] then asserts.AssertHideDisabled(struct["HideDisabled"]) end
+	if struct["MaxResults"] then asserts.AssertQueryLimit(struct["MaxResults"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIdentitiesInput_keys[k], "ListIdentitiesInput contains unknown key " .. tostring(k))
+		assert(keys.ListIdentitiesInput[k], "ListIdentitiesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIdentitiesInput
 -- <p>Input to the ListIdentities action.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param NextToken [PaginationKey] <p>A pagination token.</p>
--- @param HideDisabled [HideDisabled] <p>An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.</p>
--- @param MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _NextToken [PaginationKey] <p>A pagination token.</p>
+-- @param _HideDisabled [HideDisabled] <p>An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.</p>
+-- @param _MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: MaxResults
-function M.ListIdentitiesInput(IdentityPoolId, NextToken, HideDisabled, MaxResults, ...)
+function M.ListIdentitiesInput(_IdentityPoolId, _NextToken, _HideDisabled, _MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesInput")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["NextToken"] = NextToken,
-		["HideDisabled"] = HideDisabled,
-		["MaxResults"] = MaxResults,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["NextToken"] = _NextToken,
+		["HideDisabled"] = _HideDisabled,
+		["MaxResults"] = _MaxResults,
 	}
-	M.AssertListIdentitiesInput(t)
+	asserts.AssertListIdentitiesInput(t)
 	return t
 end
 
-local DeleteIdentityPoolInput_keys = { "IdentityPoolId" = true, nil }
+keys.DeleteIdentityPoolInput = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertDeleteIdentityPoolInput(struct)
+function asserts.AssertDeleteIdentityPoolInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteIdentityPoolInput to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteIdentityPoolInput_keys[k], "DeleteIdentityPoolInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteIdentityPoolInput[k], "DeleteIdentityPoolInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteIdentityPoolInput
 -- <p>Input to the DeleteIdentityPool action.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
-function M.DeleteIdentityPoolInput(IdentityPoolId, ...)
+function M.DeleteIdentityPoolInput(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityPoolInput")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertDeleteIdentityPoolInput(t)
+	asserts.AssertDeleteIdentityPoolInput(t)
 	return t
 end
 
-local DeleteIdentitiesInput_keys = { "IdentityIdsToDelete" = true, nil }
+keys.DeleteIdentitiesInput = { ["IdentityIdsToDelete"] = true, nil }
 
-function M.AssertDeleteIdentitiesInput(struct)
+function asserts.AssertDeleteIdentitiesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteIdentitiesInput to be of type 'table'")
 	assert(struct["IdentityIdsToDelete"], "Expected key IdentityIdsToDelete to exist in table")
-	if struct["IdentityIdsToDelete"] then M.AssertIdentityIdList(struct["IdentityIdsToDelete"]) end
+	if struct["IdentityIdsToDelete"] then asserts.AssertIdentityIdList(struct["IdentityIdsToDelete"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteIdentitiesInput_keys[k], "DeleteIdentitiesInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteIdentitiesInput[k], "DeleteIdentitiesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteIdentitiesInput
 -- <p>Input to the <code>DeleteIdentities</code> action.</p>
--- @param IdentityIdsToDelete [IdentityIdList] <p>A list of 1-60 identities that you want to delete.</p>
+-- @param _IdentityIdsToDelete [IdentityIdList] <p>A list of 1-60 identities that you want to delete.</p>
 -- Required parameter: IdentityIdsToDelete
-function M.DeleteIdentitiesInput(IdentityIdsToDelete, ...)
+function M.DeleteIdentitiesInput(_IdentityIdsToDelete, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentitiesInput")
 	local t = { 
-		["IdentityIdsToDelete"] = IdentityIdsToDelete,
+		["IdentityIdsToDelete"] = _IdentityIdsToDelete,
 	}
-	M.AssertDeleteIdentitiesInput(t)
+	asserts.AssertDeleteIdentitiesInput(t)
 	return t
 end
 
-local LimitExceededException_keys = { "message" = true, nil }
+keys.LimitExceededException = { ["message"] = true, nil }
 
-function M.AssertLimitExceededException(struct)
+function asserts.AssertLimitExceededException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LimitExceededException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(LimitExceededException_keys[k], "LimitExceededException contains unknown key " .. tostring(k))
+		assert(keys.LimitExceededException[k], "LimitExceededException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LimitExceededException
 -- <p>Thrown when the total number of user pools has exceeded a preset limit.</p>
--- @param message [String] <p>The message returned by a LimitExceededException.</p>
-function M.LimitExceededException(message, ...)
+-- @param _message [String] <p>The message returned by a LimitExceededException.</p>
+function M.LimitExceededException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertLimitExceededException(t)
+	asserts.AssertLimitExceededException(t)
 	return t
 end
 
-local ListIdentityPoolsResponse_keys = { "NextToken" = true, "IdentityPools" = true, nil }
+keys.ListIdentityPoolsResponse = { ["NextToken"] = true, ["IdentityPools"] = true, nil }
 
-function M.AssertListIdentityPoolsResponse(struct)
+function asserts.AssertListIdentityPoolsResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIdentityPoolsResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["IdentityPools"] then M.AssertIdentityPoolsList(struct["IdentityPools"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["IdentityPools"] then asserts.AssertIdentityPoolsList(struct["IdentityPools"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIdentityPoolsResponse_keys[k], "ListIdentityPoolsResponse contains unknown key " .. tostring(k))
+		assert(keys.ListIdentityPoolsResponse[k], "ListIdentityPoolsResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIdentityPoolsResponse
 -- <p>The result of a successful ListIdentityPools action.</p>
--- @param NextToken [PaginationKey] <p>A pagination token.</p>
--- @param IdentityPools [IdentityPoolsList] <p>The identity pools returned by the ListIdentityPools action.</p>
-function M.ListIdentityPoolsResponse(NextToken, IdentityPools, ...)
+-- @param _NextToken [PaginationKey] <p>A pagination token.</p>
+-- @param _IdentityPools [IdentityPoolsList] <p>The identity pools returned by the ListIdentityPools action.</p>
+function M.ListIdentityPoolsResponse(_NextToken, _IdentityPools, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolsResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["IdentityPools"] = IdentityPools,
+		["NextToken"] = _NextToken,
+		["IdentityPools"] = _IdentityPools,
 	}
-	M.AssertListIdentityPoolsResponse(t)
+	asserts.AssertListIdentityPoolsResponse(t)
 	return t
 end
 
-local ConcurrentModificationException_keys = { "message" = true, nil }
+keys.ConcurrentModificationException = { ["message"] = true, nil }
 
-function M.AssertConcurrentModificationException(struct)
+function asserts.AssertConcurrentModificationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ConcurrentModificationException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ConcurrentModificationException_keys[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
+		assert(keys.ConcurrentModificationException[k], "ConcurrentModificationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>Thrown if there are parallel requests to modify a resource.</p>
--- @param message [String] <p>The message returned by a ConcurrentModificationException.</p>
-function M.ConcurrentModificationException(message, ...)
+-- @param _message [String] <p>The message returned by a ConcurrentModificationException.</p>
+function M.ConcurrentModificationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertConcurrentModificationException(t)
+	asserts.AssertConcurrentModificationException(t)
 	return t
 end
 
-local GetOpenIdTokenForDeveloperIdentityInput_keys = { "Logins" = true, "IdentityPoolId" = true, "TokenDuration" = true, "IdentityId" = true, nil }
+keys.GetOpenIdTokenForDeveloperIdentityInput = { ["Logins"] = true, ["IdentityPoolId"] = true, ["TokenDuration"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertGetOpenIdTokenForDeveloperIdentityInput(struct)
+function asserts.AssertGetOpenIdTokenForDeveloperIdentityInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetOpenIdTokenForDeveloperIdentityInput to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["Logins"], "Expected key Logins to exist in table")
-	if struct["Logins"] then M.AssertLoginsMap(struct["Logins"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["TokenDuration"] then M.AssertTokenDuration(struct["TokenDuration"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Logins"] then asserts.AssertLoginsMap(struct["Logins"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["TokenDuration"] then asserts.AssertTokenDuration(struct["TokenDuration"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetOpenIdTokenForDeveloperIdentityInput_keys[k], "GetOpenIdTokenForDeveloperIdentityInput contains unknown key " .. tostring(k))
+		assert(keys.GetOpenIdTokenForDeveloperIdentityInput[k], "GetOpenIdTokenForDeveloperIdentityInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetOpenIdTokenForDeveloperIdentityInput
 -- <p>Input to the <code>GetOpenIdTokenForDeveloperIdentity</code> action.</p>
--- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. Each name-value pair represents a user from a public provider or developer provider. If the user is from a developer provider, the name-value pair will follow the syntax <code>"developer_provider_name": "developer_user_identifier"</code>. The developer provider is the "domain" by which Cognito will refer to your users; you provided this domain while creating/updating the identity pool. The developer user identifier is an identifier from your backend that uniquely identifies a user. When you create an identity pool, you can specify the supported logins.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param TokenDuration [TokenDuration] <p>The expiration time of the token, in seconds. You can specify a custom expiration time for the token so that you can cache it. If you don't provide an expiration time, the token is valid for 15 minutes. You can exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of one hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration time for a token, as there are significant security implications: an attacker could use a leaked token to access your AWS resources for the token's duration.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. Each name-value pair represents a user from a public provider or developer provider. If the user is from a developer provider, the name-value pair will follow the syntax <code>"developer_provider_name": "developer_user_identifier"</code>. The developer provider is the "domain" by which Cognito will refer to your users; you provided this domain while creating/updating the identity pool. The developer user identifier is an identifier from your backend that uniquely identifies a user. When you create an identity pool, you can specify the supported logins.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _TokenDuration [TokenDuration] <p>The expiration time of the token, in seconds. You can specify a custom expiration time for the token so that you can cache it. If you don't provide an expiration time, the token is valid for 15 minutes. You can exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of one hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration time for a token, as there are significant security implications: an attacker could use a leaked token to access your AWS resources for the token's duration.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: Logins
-function M.GetOpenIdTokenForDeveloperIdentityInput(Logins, IdentityPoolId, TokenDuration, IdentityId, ...)
+function M.GetOpenIdTokenForDeveloperIdentityInput(_Logins, _IdentityPoolId, _TokenDuration, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenForDeveloperIdentityInput")
 	local t = { 
-		["Logins"] = Logins,
-		["IdentityPoolId"] = IdentityPoolId,
-		["TokenDuration"] = TokenDuration,
-		["IdentityId"] = IdentityId,
+		["Logins"] = _Logins,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["TokenDuration"] = _TokenDuration,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertGetOpenIdTokenForDeveloperIdentityInput(t)
+	asserts.AssertGetOpenIdTokenForDeveloperIdentityInput(t)
 	return t
 end
 
-local CognitoIdentityProvider_keys = { "ServerSideTokenCheck" = true, "ClientId" = true, "ProviderName" = true, nil }
+keys.CognitoIdentityProvider = { ["ServerSideTokenCheck"] = true, ["ClientId"] = true, ["ProviderName"] = true, nil }
 
-function M.AssertCognitoIdentityProvider(struct)
+function asserts.AssertCognitoIdentityProvider(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CognitoIdentityProvider to be of type 'table'")
-	if struct["ServerSideTokenCheck"] then M.AssertCognitoIdentityProviderTokenCheck(struct["ServerSideTokenCheck"]) end
-	if struct["ClientId"] then M.AssertCognitoIdentityProviderClientId(struct["ClientId"]) end
-	if struct["ProviderName"] then M.AssertCognitoIdentityProviderName(struct["ProviderName"]) end
+	if struct["ServerSideTokenCheck"] then asserts.AssertCognitoIdentityProviderTokenCheck(struct["ServerSideTokenCheck"]) end
+	if struct["ClientId"] then asserts.AssertCognitoIdentityProviderClientId(struct["ClientId"]) end
+	if struct["ProviderName"] then asserts.AssertCognitoIdentityProviderName(struct["ProviderName"]) end
 	for k,_ in pairs(struct) do
-		assert(CognitoIdentityProvider_keys[k], "CognitoIdentityProvider contains unknown key " .. tostring(k))
+		assert(keys.CognitoIdentityProvider[k], "CognitoIdentityProvider contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CognitoIdentityProvider
 -- <p>A provider representing an Amazon Cognito Identity User Pool and its client ID.</p>
--- @param ServerSideTokenCheck [CognitoIdentityProviderTokenCheck] <p>TRUE if server-side token validation is enabled for the identity provider’s token.</p>
--- @param ClientId [CognitoIdentityProviderClientId] <p>The client ID for the Amazon Cognito Identity User Pool.</p>
--- @param ProviderName [CognitoIdentityProviderName] <p>The provider name for an Amazon Cognito Identity User Pool. For example, <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code>.</p>
-function M.CognitoIdentityProvider(ServerSideTokenCheck, ClientId, ProviderName, ...)
+-- @param _ServerSideTokenCheck [CognitoIdentityProviderTokenCheck] <p>TRUE if server-side token validation is enabled for the identity provider’s token.</p>
+-- @param _ClientId [CognitoIdentityProviderClientId] <p>The client ID for the Amazon Cognito Identity User Pool.</p>
+-- @param _ProviderName [CognitoIdentityProviderName] <p>The provider name for an Amazon Cognito Identity User Pool. For example, <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code>.</p>
+function M.CognitoIdentityProvider(_ServerSideTokenCheck, _ClientId, _ProviderName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CognitoIdentityProvider")
 	local t = { 
-		["ServerSideTokenCheck"] = ServerSideTokenCheck,
-		["ClientId"] = ClientId,
-		["ProviderName"] = ProviderName,
+		["ServerSideTokenCheck"] = _ServerSideTokenCheck,
+		["ClientId"] = _ClientId,
+		["ProviderName"] = _ProviderName,
 	}
-	M.AssertCognitoIdentityProvider(t)
+	asserts.AssertCognitoIdentityProvider(t)
 	return t
 end
 
-local TooManyRequestsException_keys = { "message" = true, nil }
+keys.TooManyRequestsException = { ["message"] = true, nil }
 
-function M.AssertTooManyRequestsException(struct)
+function asserts.AssertTooManyRequestsException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TooManyRequestsException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(TooManyRequestsException_keys[k], "TooManyRequestsException contains unknown key " .. tostring(k))
+		assert(keys.TooManyRequestsException[k], "TooManyRequestsException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TooManyRequestsException
 -- <p>Thrown when a request is throttled.</p>
--- @param message [String] <p>Message returned by a TooManyRequestsException</p>
-function M.TooManyRequestsException(message, ...)
+-- @param _message [String] <p>Message returned by a TooManyRequestsException</p>
+function M.TooManyRequestsException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertTooManyRequestsException(t)
+	asserts.AssertTooManyRequestsException(t)
 	return t
 end
 
-local IdentityDescription_keys = { "Logins" = true, "LastModifiedDate" = true, "CreationDate" = true, "IdentityId" = true, nil }
+keys.IdentityDescription = { ["Logins"] = true, ["LastModifiedDate"] = true, ["CreationDate"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertIdentityDescription(struct)
+function asserts.AssertIdentityDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IdentityDescription to be of type 'table'")
-	if struct["Logins"] then M.AssertLoginsList(struct["Logins"]) end
-	if struct["LastModifiedDate"] then M.AssertDateType(struct["LastModifiedDate"]) end
-	if struct["CreationDate"] then M.AssertDateType(struct["CreationDate"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Logins"] then asserts.AssertLoginsList(struct["Logins"]) end
+	if struct["LastModifiedDate"] then asserts.AssertDateType(struct["LastModifiedDate"]) end
+	if struct["CreationDate"] then asserts.AssertDateType(struct["CreationDate"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(IdentityDescription_keys[k], "IdentityDescription contains unknown key " .. tostring(k))
+		assert(keys.IdentityDescription[k], "IdentityDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IdentityDescription
 -- <p>A description of the identity.</p>
--- @param Logins [LoginsList] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
--- @param LastModifiedDate [DateType] <p>Date on which the identity was last modified.</p>
--- @param CreationDate [DateType] <p>Date on which the identity was created.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.IdentityDescription(Logins, LastModifiedDate, CreationDate, IdentityId, ...)
+-- @param _Logins [LoginsList] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- @param _LastModifiedDate [DateType] <p>Date on which the identity was last modified.</p>
+-- @param _CreationDate [DateType] <p>Date on which the identity was created.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+function M.IdentityDescription(_Logins, _LastModifiedDate, _CreationDate, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityDescription")
 	local t = { 
-		["Logins"] = Logins,
-		["LastModifiedDate"] = LastModifiedDate,
-		["CreationDate"] = CreationDate,
-		["IdentityId"] = IdentityId,
+		["Logins"] = _Logins,
+		["LastModifiedDate"] = _LastModifiedDate,
+		["CreationDate"] = _CreationDate,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertIdentityDescription(t)
+	asserts.AssertIdentityDescription(t)
 	return t
 end
 
-local ListIdentitiesResponse_keys = { "IdentityPoolId" = true, "NextToken" = true, "Identities" = true, nil }
+keys.ListIdentitiesResponse = { ["IdentityPoolId"] = true, ["NextToken"] = true, ["Identities"] = true, nil }
 
-function M.AssertListIdentitiesResponse(struct)
+function asserts.AssertListIdentitiesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListIdentitiesResponse to be of type 'table'")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["Identities"] then M.AssertIdentitiesList(struct["Identities"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["Identities"] then asserts.AssertIdentitiesList(struct["Identities"]) end
 	for k,_ in pairs(struct) do
-		assert(ListIdentitiesResponse_keys[k], "ListIdentitiesResponse contains unknown key " .. tostring(k))
+		assert(keys.ListIdentitiesResponse[k], "ListIdentitiesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListIdentitiesResponse
 -- <p>The response to a ListIdentities request.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param NextToken [PaginationKey] <p>A pagination token.</p>
--- @param Identities [IdentitiesList] <p>An object containing a set of identities and associated mappings.</p>
-function M.ListIdentitiesResponse(IdentityPoolId, NextToken, Identities, ...)
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _NextToken [PaginationKey] <p>A pagination token.</p>
+-- @param _Identities [IdentitiesList] <p>An object containing a set of identities and associated mappings.</p>
+function M.ListIdentitiesResponse(_IdentityPoolId, _NextToken, _Identities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesResponse")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["NextToken"] = NextToken,
-		["Identities"] = Identities,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["NextToken"] = _NextToken,
+		["Identities"] = _Identities,
 	}
-	M.AssertListIdentitiesResponse(t)
+	asserts.AssertListIdentitiesResponse(t)
 	return t
 end
 
-local IdentityPoolShortDescription_keys = { "IdentityPoolId" = true, "IdentityPoolName" = true, nil }
+keys.IdentityPoolShortDescription = { ["IdentityPoolId"] = true, ["IdentityPoolName"] = true, nil }
 
-function M.AssertIdentityPoolShortDescription(struct)
+function asserts.AssertIdentityPoolShortDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IdentityPoolShortDescription to be of type 'table'")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["IdentityPoolName"] then M.AssertIdentityPoolName(struct["IdentityPoolName"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolName"] then asserts.AssertIdentityPoolName(struct["IdentityPoolName"]) end
 	for k,_ in pairs(struct) do
-		assert(IdentityPoolShortDescription_keys[k], "IdentityPoolShortDescription contains unknown key " .. tostring(k))
+		assert(keys.IdentityPoolShortDescription[k], "IdentityPoolShortDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IdentityPoolShortDescription
 -- <p>A description of the identity pool.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
-function M.IdentityPoolShortDescription(IdentityPoolId, IdentityPoolName, ...)
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
+function M.IdentityPoolShortDescription(_IdentityPoolId, _IdentityPoolName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityPoolShortDescription")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["IdentityPoolName"] = IdentityPoolName,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolName"] = _IdentityPoolName,
 	}
-	M.AssertIdentityPoolShortDescription(t)
+	asserts.AssertIdentityPoolShortDescription(t)
 	return t
 end
 
-local InternalErrorException_keys = { "message" = true, nil }
+keys.InternalErrorException = { ["message"] = true, nil }
 
-function M.AssertInternalErrorException(struct)
+function asserts.AssertInternalErrorException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalErrorException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalErrorException_keys[k], "InternalErrorException contains unknown key " .. tostring(k))
+		assert(keys.InternalErrorException[k], "InternalErrorException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalErrorException
 -- <p>Thrown when the service encounters an error during processing the request.</p>
--- @param message [String] <p>The message returned by an InternalErrorException.</p>
-function M.InternalErrorException(message, ...)
+-- @param _message [String] <p>The message returned by an InternalErrorException.</p>
+function M.InternalErrorException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInternalErrorException(t)
+	asserts.AssertInternalErrorException(t)
 	return t
 end
 
-local InvalidIdentityPoolConfigurationException_keys = { "message" = true, nil }
+keys.InvalidIdentityPoolConfigurationException = { ["message"] = true, nil }
 
-function M.AssertInvalidIdentityPoolConfigurationException(struct)
+function asserts.AssertInvalidIdentityPoolConfigurationException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidIdentityPoolConfigurationException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidIdentityPoolConfigurationException_keys[k], "InvalidIdentityPoolConfigurationException contains unknown key " .. tostring(k))
+		assert(keys.InvalidIdentityPoolConfigurationException[k], "InvalidIdentityPoolConfigurationException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidIdentityPoolConfigurationException
 -- <p>Thrown if the identity pool has no role associated for the given auth type (auth/unauth) or if the AssumeRole fails.</p>
--- @param message [String] <p>The message returned for an <code>InvalidIdentityPoolConfigurationException</code> </p>
-function M.InvalidIdentityPoolConfigurationException(message, ...)
+-- @param _message [String] <p>The message returned for an <code>InvalidIdentityPoolConfigurationException</code> </p>
+function M.InvalidIdentityPoolConfigurationException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidIdentityPoolConfigurationException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertInvalidIdentityPoolConfigurationException(t)
+	asserts.AssertInvalidIdentityPoolConfigurationException(t)
 	return t
 end
 
-local Credentials_keys = { "SecretKey" = true, "SessionToken" = true, "Expiration" = true, "AccessKeyId" = true, nil }
+keys.Credentials = { ["SecretKey"] = true, ["SessionToken"] = true, ["Expiration"] = true, ["AccessKeyId"] = true, nil }
 
-function M.AssertCredentials(struct)
+function asserts.AssertCredentials(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Credentials to be of type 'table'")
-	if struct["SecretKey"] then M.AssertSecretKeyString(struct["SecretKey"]) end
-	if struct["SessionToken"] then M.AssertSessionTokenString(struct["SessionToken"]) end
-	if struct["Expiration"] then M.AssertDateType(struct["Expiration"]) end
-	if struct["AccessKeyId"] then M.AssertAccessKeyString(struct["AccessKeyId"]) end
+	if struct["SecretKey"] then asserts.AssertSecretKeyString(struct["SecretKey"]) end
+	if struct["SessionToken"] then asserts.AssertSessionTokenString(struct["SessionToken"]) end
+	if struct["Expiration"] then asserts.AssertDateType(struct["Expiration"]) end
+	if struct["AccessKeyId"] then asserts.AssertAccessKeyString(struct["AccessKeyId"]) end
 	for k,_ in pairs(struct) do
-		assert(Credentials_keys[k], "Credentials contains unknown key " .. tostring(k))
+		assert(keys.Credentials[k], "Credentials contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Credentials
 -- <p>Credentials for the provided identity ID.</p>
--- @param SecretKey [SecretKeyString] <p>The Secret Access Key portion of the credentials</p>
--- @param SessionToken [SessionTokenString] <p>The Session Token portion of the credentials</p>
--- @param Expiration [DateType] <p>The date at which these credentials will expire.</p>
--- @param AccessKeyId [AccessKeyString] <p>The Access Key portion of the credentials.</p>
-function M.Credentials(SecretKey, SessionToken, Expiration, AccessKeyId, ...)
+-- @param _SecretKey [SecretKeyString] <p>The Secret Access Key portion of the credentials</p>
+-- @param _SessionToken [SessionTokenString] <p>The Session Token portion of the credentials</p>
+-- @param _Expiration [DateType] <p>The date at which these credentials will expire.</p>
+-- @param _AccessKeyId [AccessKeyString] <p>The Access Key portion of the credentials.</p>
+function M.Credentials(_SecretKey, _SessionToken, _Expiration, _AccessKeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Credentials")
 	local t = { 
-		["SecretKey"] = SecretKey,
-		["SessionToken"] = SessionToken,
-		["Expiration"] = Expiration,
-		["AccessKeyId"] = AccessKeyId,
+		["SecretKey"] = _SecretKey,
+		["SessionToken"] = _SessionToken,
+		["Expiration"] = _Expiration,
+		["AccessKeyId"] = _AccessKeyId,
 	}
-	M.AssertCredentials(t)
+	asserts.AssertCredentials(t)
 	return t
 end
 
-local SetIdentityPoolRolesInput_keys = { "IdentityPoolId" = true, "Roles" = true, "RoleMappings" = true, nil }
+keys.SetIdentityPoolRolesInput = { ["IdentityPoolId"] = true, ["Roles"] = true, ["RoleMappings"] = true, nil }
 
-function M.AssertSetIdentityPoolRolesInput(struct)
+function asserts.AssertSetIdentityPoolRolesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetIdentityPoolRolesInput to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["Roles"], "Expected key Roles to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["Roles"] then M.AssertRolesMap(struct["Roles"]) end
-	if struct["RoleMappings"] then M.AssertRoleMappingMap(struct["RoleMappings"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["Roles"] then asserts.AssertRolesMap(struct["Roles"]) end
+	if struct["RoleMappings"] then asserts.AssertRoleMappingMap(struct["RoleMappings"]) end
 	for k,_ in pairs(struct) do
-		assert(SetIdentityPoolRolesInput_keys[k], "SetIdentityPoolRolesInput contains unknown key " .. tostring(k))
+		assert(keys.SetIdentityPoolRolesInput[k], "SetIdentityPoolRolesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetIdentityPoolRolesInput
 -- <p>Input to the <code>SetIdentityPoolRoles</code> action.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param Roles [RolesMap] <p>The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.</p>
--- @param RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a string to <a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p> <p>Up to 25 rules can be specified per identity provider.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _Roles [RolesMap] <p>The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.</p>
+-- @param _RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a string to <a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p> <p>Up to 25 rules can be specified per identity provider.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: Roles
-function M.SetIdentityPoolRolesInput(IdentityPoolId, Roles, RoleMappings, ...)
+function M.SetIdentityPoolRolesInput(_IdentityPoolId, _Roles, _RoleMappings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityPoolRolesInput")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["Roles"] = Roles,
-		["RoleMappings"] = RoleMappings,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["Roles"] = _Roles,
+		["RoleMappings"] = _RoleMappings,
 	}
-	M.AssertSetIdentityPoolRolesInput(t)
+	asserts.AssertSetIdentityPoolRolesInput(t)
 	return t
 end
 
-local GetIdInput_keys = { "Logins" = true, "IdentityPoolId" = true, "AccountId" = true, nil }
+keys.GetIdInput = { ["Logins"] = true, ["IdentityPoolId"] = true, ["AccountId"] = true, nil }
 
-function M.AssertGetIdInput(struct)
+function asserts.AssertGetIdInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetIdInput to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["Logins"] then M.AssertLoginsMap(struct["Logins"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["AccountId"] then M.AssertAccountId(struct["AccountId"]) end
+	if struct["Logins"] then asserts.AssertLoginsMap(struct["Logins"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["AccountId"] then asserts.AssertAccountId(struct["AccountId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetIdInput_keys[k], "GetIdInput contains unknown key " .. tostring(k))
+		assert(keys.GetIdInput[k], "GetIdInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetIdInput
 -- <p>Input to the GetId action.</p>
--- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. The available provider names for <code>Logins</code> are as follows:</p> <ul> <li> <p>Facebook: <code>graph.facebook.com</code> </p> </li> <li> <p>Amazon Cognito Identity Provider: <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code> </p> </li> <li> <p>Google: <code>accounts.google.com</code> </p> </li> <li> <p>Amazon: <code>www.amazon.com</code> </p> </li> <li> <p>Twitter: <code>api.twitter.com</code> </p> </li> <li> <p>Digits: <code>www.digits.com</code> </p> </li> </ul>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param AccountId [AccountId] <p>A standard AWS account ID (9+ digits).</p>
+-- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. The available provider names for <code>Logins</code> are as follows:</p> <ul> <li> <p>Facebook: <code>graph.facebook.com</code> </p> </li> <li> <p>Amazon Cognito Identity Provider: <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code> </p> </li> <li> <p>Google: <code>accounts.google.com</code> </p> </li> <li> <p>Amazon: <code>www.amazon.com</code> </p> </li> <li> <p>Twitter: <code>api.twitter.com</code> </p> </li> <li> <p>Digits: <code>www.digits.com</code> </p> </li> </ul>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _AccountId [AccountId] <p>A standard AWS account ID (9+ digits).</p>
 -- Required parameter: IdentityPoolId
-function M.GetIdInput(Logins, IdentityPoolId, AccountId, ...)
+function M.GetIdInput(_Logins, _IdentityPoolId, _AccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdInput")
 	local t = { 
-		["Logins"] = Logins,
-		["IdentityPoolId"] = IdentityPoolId,
-		["AccountId"] = AccountId,
+		["Logins"] = _Logins,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["AccountId"] = _AccountId,
 	}
-	M.AssertGetIdInput(t)
+	asserts.AssertGetIdInput(t)
 	return t
 end
 
-local DescribeIdentityPoolInput_keys = { "IdentityPoolId" = true, nil }
+keys.DescribeIdentityPoolInput = { ["IdentityPoolId"] = true, nil }
 
-function M.AssertDescribeIdentityPoolInput(struct)
+function asserts.AssertDescribeIdentityPoolInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeIdentityPoolInput to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeIdentityPoolInput_keys[k], "DescribeIdentityPoolInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeIdentityPoolInput[k], "DescribeIdentityPoolInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeIdentityPoolInput
 -- <p>Input to the DescribeIdentityPool action.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
-function M.DescribeIdentityPoolInput(IdentityPoolId, ...)
+function M.DescribeIdentityPoolInput(_IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityPoolInput")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
+		["IdentityPoolId"] = _IdentityPoolId,
 	}
-	M.AssertDescribeIdentityPoolInput(t)
+	asserts.AssertDescribeIdentityPoolInput(t)
 	return t
 end
 
-local UnlinkDeveloperIdentityInput_keys = { "IdentityPoolId" = true, "DeveloperUserIdentifier" = true, "DeveloperProviderName" = true, "IdentityId" = true, nil }
+keys.UnlinkDeveloperIdentityInput = { ["IdentityPoolId"] = true, ["DeveloperUserIdentifier"] = true, ["DeveloperProviderName"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertUnlinkDeveloperIdentityInput(struct)
+function asserts.AssertUnlinkDeveloperIdentityInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnlinkDeveloperIdentityInput to be of type 'table'")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["DeveloperProviderName"], "Expected key DeveloperProviderName to exist in table")
 	assert(struct["DeveloperUserIdentifier"], "Expected key DeveloperUserIdentifier to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["DeveloperUserIdentifier"] then M.AssertDeveloperUserIdentifier(struct["DeveloperUserIdentifier"]) end
-	if struct["DeveloperProviderName"] then M.AssertDeveloperProviderName(struct["DeveloperProviderName"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["DeveloperUserIdentifier"] then asserts.AssertDeveloperUserIdentifier(struct["DeveloperUserIdentifier"]) end
+	if struct["DeveloperProviderName"] then asserts.AssertDeveloperProviderName(struct["DeveloperProviderName"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(UnlinkDeveloperIdentityInput_keys[k], "UnlinkDeveloperIdentityInput contains unknown key " .. tostring(k))
+		assert(keys.UnlinkDeveloperIdentityInput[k], "UnlinkDeveloperIdentityInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnlinkDeveloperIdentityInput
 -- <p>Input to the <code>UnlinkDeveloperIdentity</code> action.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user.</p>
--- @param DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user.</p>
+-- @param _DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
 -- Required parameter: IdentityPoolId
 -- Required parameter: DeveloperProviderName
 -- Required parameter: DeveloperUserIdentifier
-function M.UnlinkDeveloperIdentityInput(IdentityPoolId, DeveloperUserIdentifier, DeveloperProviderName, IdentityId, ...)
+function M.UnlinkDeveloperIdentityInput(_IdentityPoolId, _DeveloperUserIdentifier, _DeveloperProviderName, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnlinkDeveloperIdentityInput")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["DeveloperUserIdentifier"] = DeveloperUserIdentifier,
-		["DeveloperProviderName"] = DeveloperProviderName,
-		["IdentityId"] = IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["DeveloperUserIdentifier"] = _DeveloperUserIdentifier,
+		["DeveloperProviderName"] = _DeveloperProviderName,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertUnlinkDeveloperIdentityInput(t)
+	asserts.AssertUnlinkDeveloperIdentityInput(t)
 	return t
 end
 
-local IdentityPool_keys = { "DeveloperProviderName" = true, "SamlProviderARNs" = true, "SupportedLoginProviders" = true, "AllowUnauthenticatedIdentities" = true, "IdentityPoolName" = true, "IdentityPoolId" = true, "CognitoIdentityProviders" = true, "OpenIdConnectProviderARNs" = true, nil }
+keys.IdentityPool = { ["DeveloperProviderName"] = true, ["SamlProviderARNs"] = true, ["SupportedLoginProviders"] = true, ["AllowUnauthenticatedIdentities"] = true, ["IdentityPoolName"] = true, ["IdentityPoolId"] = true, ["CognitoIdentityProviders"] = true, ["OpenIdConnectProviderARNs"] = true, nil }
 
-function M.AssertIdentityPool(struct)
+function asserts.AssertIdentityPool(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected IdentityPool to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
 	assert(struct["IdentityPoolName"], "Expected key IdentityPoolName to exist in table")
 	assert(struct["AllowUnauthenticatedIdentities"], "Expected key AllowUnauthenticatedIdentities to exist in table")
-	if struct["DeveloperProviderName"] then M.AssertDeveloperProviderName(struct["DeveloperProviderName"]) end
-	if struct["SamlProviderARNs"] then M.AssertSAMLProviderList(struct["SamlProviderARNs"]) end
-	if struct["SupportedLoginProviders"] then M.AssertIdentityProviders(struct["SupportedLoginProviders"]) end
-	if struct["AllowUnauthenticatedIdentities"] then M.AssertIdentityPoolUnauthenticated(struct["AllowUnauthenticatedIdentities"]) end
-	if struct["IdentityPoolName"] then M.AssertIdentityPoolName(struct["IdentityPoolName"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["CognitoIdentityProviders"] then M.AssertCognitoIdentityProviderList(struct["CognitoIdentityProviders"]) end
-	if struct["OpenIdConnectProviderARNs"] then M.AssertOIDCProviderList(struct["OpenIdConnectProviderARNs"]) end
+	if struct["DeveloperProviderName"] then asserts.AssertDeveloperProviderName(struct["DeveloperProviderName"]) end
+	if struct["SamlProviderARNs"] then asserts.AssertSAMLProviderList(struct["SamlProviderARNs"]) end
+	if struct["SupportedLoginProviders"] then asserts.AssertIdentityProviders(struct["SupportedLoginProviders"]) end
+	if struct["AllowUnauthenticatedIdentities"] then asserts.AssertIdentityPoolUnauthenticated(struct["AllowUnauthenticatedIdentities"]) end
+	if struct["IdentityPoolName"] then asserts.AssertIdentityPoolName(struct["IdentityPoolName"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["CognitoIdentityProviders"] then asserts.AssertCognitoIdentityProviderList(struct["CognitoIdentityProviders"]) end
+	if struct["OpenIdConnectProviderARNs"] then asserts.AssertOIDCProviderList(struct["OpenIdConnectProviderARNs"]) end
 	for k,_ in pairs(struct) do
-		assert(IdentityPool_keys[k], "IdentityPool contains unknown key " .. tostring(k))
+		assert(keys.IdentityPool[k], "IdentityPool contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type IdentityPool
 -- <p>An object representing an Amazon Cognito identity pool.</p>
--- @param DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
--- @param SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
--- @param SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
--- @param AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
--- @param IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param CognitoIdentityProviders [CognitoIdentityProviderList] <p>A list representing an Amazon Cognito Identity User Pool and its client ID.</p>
--- @param OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
+-- @param _DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
+-- @param _SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
+-- @param _SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
+-- @param _AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
+-- @param _IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _CognitoIdentityProviders [CognitoIdentityProviderList] <p>A list representing an Amazon Cognito Identity User Pool and its client ID.</p>
+-- @param _OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityPoolName
 -- Required parameter: AllowUnauthenticatedIdentities
-function M.IdentityPool(DeveloperProviderName, SamlProviderARNs, SupportedLoginProviders, AllowUnauthenticatedIdentities, IdentityPoolName, IdentityPoolId, CognitoIdentityProviders, OpenIdConnectProviderARNs, ...)
+function M.IdentityPool(_DeveloperProviderName, _SamlProviderARNs, _SupportedLoginProviders, _AllowUnauthenticatedIdentities, _IdentityPoolName, _IdentityPoolId, _CognitoIdentityProviders, _OpenIdConnectProviderARNs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityPool")
 	local t = { 
-		["DeveloperProviderName"] = DeveloperProviderName,
-		["SamlProviderARNs"] = SamlProviderARNs,
-		["SupportedLoginProviders"] = SupportedLoginProviders,
-		["AllowUnauthenticatedIdentities"] = AllowUnauthenticatedIdentities,
-		["IdentityPoolName"] = IdentityPoolName,
-		["IdentityPoolId"] = IdentityPoolId,
-		["CognitoIdentityProviders"] = CognitoIdentityProviders,
-		["OpenIdConnectProviderARNs"] = OpenIdConnectProviderARNs,
+		["DeveloperProviderName"] = _DeveloperProviderName,
+		["SamlProviderARNs"] = _SamlProviderARNs,
+		["SupportedLoginProviders"] = _SupportedLoginProviders,
+		["AllowUnauthenticatedIdentities"] = _AllowUnauthenticatedIdentities,
+		["IdentityPoolName"] = _IdentityPoolName,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["CognitoIdentityProviders"] = _CognitoIdentityProviders,
+		["OpenIdConnectProviderARNs"] = _OpenIdConnectProviderARNs,
 	}
-	M.AssertIdentityPool(t)
+	asserts.AssertIdentityPool(t)
 	return t
 end
 
-local ResourceNotFoundException_keys = { "message" = true, nil }
+keys.ResourceNotFoundException = { ["message"] = true, nil }
 
-function M.AssertResourceNotFoundException(struct)
+function asserts.AssertResourceNotFoundException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceNotFoundException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceNotFoundException_keys[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
+		assert(keys.ResourceNotFoundException[k], "ResourceNotFoundException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>Thrown when the requested resource (for example, a dataset or record) does not exist.</p>
--- @param message [String] <p>The message returned by a ResourceNotFoundException.</p>
-function M.ResourceNotFoundException(message, ...)
+-- @param _message [String] <p>The message returned by a ResourceNotFoundException.</p>
+function M.ResourceNotFoundException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceNotFoundException(t)
+	asserts.AssertResourceNotFoundException(t)
 	return t
 end
 
-local LookupDeveloperIdentityInput_keys = { "IdentityPoolId" = true, "NextToken" = true, "DeveloperUserIdentifier" = true, "MaxResults" = true, "IdentityId" = true, nil }
+keys.LookupDeveloperIdentityInput = { ["IdentityPoolId"] = true, ["NextToken"] = true, ["DeveloperUserIdentifier"] = true, ["MaxResults"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertLookupDeveloperIdentityInput(struct)
+function asserts.AssertLookupDeveloperIdentityInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LookupDeveloperIdentityInput to be of type 'table'")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["DeveloperUserIdentifier"] then M.AssertDeveloperUserIdentifier(struct["DeveloperUserIdentifier"]) end
-	if struct["MaxResults"] then M.AssertQueryLimit(struct["MaxResults"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["DeveloperUserIdentifier"] then asserts.AssertDeveloperUserIdentifier(struct["DeveloperUserIdentifier"]) end
+	if struct["MaxResults"] then asserts.AssertQueryLimit(struct["MaxResults"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(LookupDeveloperIdentityInput_keys[k], "LookupDeveloperIdentityInput contains unknown key " .. tostring(k))
+		assert(keys.LookupDeveloperIdentityInput[k], "LookupDeveloperIdentityInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LookupDeveloperIdentityInput
 -- <p>Input to the <code>LookupDeveloperIdentityInput</code> action.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
--- @param DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user. Typically, a developer identity provider would issue many developer user identifiers, in keeping with the number of users.</p>
--- @param MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
+-- @param _DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user. Typically, a developer identity provider would issue many developer user identifiers, in keeping with the number of users.</p>
+-- @param _MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
-function M.LookupDeveloperIdentityInput(IdentityPoolId, NextToken, DeveloperUserIdentifier, MaxResults, IdentityId, ...)
+function M.LookupDeveloperIdentityInput(_IdentityPoolId, _NextToken, _DeveloperUserIdentifier, _MaxResults, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LookupDeveloperIdentityInput")
 	local t = { 
-		["IdentityPoolId"] = IdentityPoolId,
-		["NextToken"] = NextToken,
-		["DeveloperUserIdentifier"] = DeveloperUserIdentifier,
-		["MaxResults"] = MaxResults,
-		["IdentityId"] = IdentityId,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["NextToken"] = _NextToken,
+		["DeveloperUserIdentifier"] = _DeveloperUserIdentifier,
+		["MaxResults"] = _MaxResults,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertLookupDeveloperIdentityInput(t)
+	asserts.AssertLookupDeveloperIdentityInput(t)
 	return t
 end
 
-local MergeDeveloperIdentitiesInput_keys = { "DestinationUserIdentifier" = true, "IdentityPoolId" = true, "DeveloperProviderName" = true, "SourceUserIdentifier" = true, nil }
+keys.MergeDeveloperIdentitiesInput = { ["DestinationUserIdentifier"] = true, ["IdentityPoolId"] = true, ["DeveloperProviderName"] = true, ["SourceUserIdentifier"] = true, nil }
 
-function M.AssertMergeDeveloperIdentitiesInput(struct)
+function asserts.AssertMergeDeveloperIdentitiesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MergeDeveloperIdentitiesInput to be of type 'table'")
 	assert(struct["SourceUserIdentifier"], "Expected key SourceUserIdentifier to exist in table")
 	assert(struct["DestinationUserIdentifier"], "Expected key DestinationUserIdentifier to exist in table")
 	assert(struct["DeveloperProviderName"], "Expected key DeveloperProviderName to exist in table")
 	assert(struct["IdentityPoolId"], "Expected key IdentityPoolId to exist in table")
-	if struct["DestinationUserIdentifier"] then M.AssertDeveloperUserIdentifier(struct["DestinationUserIdentifier"]) end
-	if struct["IdentityPoolId"] then M.AssertIdentityPoolId(struct["IdentityPoolId"]) end
-	if struct["DeveloperProviderName"] then M.AssertDeveloperProviderName(struct["DeveloperProviderName"]) end
-	if struct["SourceUserIdentifier"] then M.AssertDeveloperUserIdentifier(struct["SourceUserIdentifier"]) end
+	if struct["DestinationUserIdentifier"] then asserts.AssertDeveloperUserIdentifier(struct["DestinationUserIdentifier"]) end
+	if struct["IdentityPoolId"] then asserts.AssertIdentityPoolId(struct["IdentityPoolId"]) end
+	if struct["DeveloperProviderName"] then asserts.AssertDeveloperProviderName(struct["DeveloperProviderName"]) end
+	if struct["SourceUserIdentifier"] then asserts.AssertDeveloperUserIdentifier(struct["SourceUserIdentifier"]) end
 	for k,_ in pairs(struct) do
-		assert(MergeDeveloperIdentitiesInput_keys[k], "MergeDeveloperIdentitiesInput contains unknown key " .. tostring(k))
+		assert(keys.MergeDeveloperIdentitiesInput[k], "MergeDeveloperIdentitiesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MergeDeveloperIdentitiesInput
 -- <p>Input to the <code>MergeDeveloperIdentities</code> action.</p>
--- @param DestinationUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the destination user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
--- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This is a (pseudo) domain name that you provide while creating an identity pool. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (.), underscore (_), and dash (-).</p>
--- @param SourceUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the source user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
+-- @param _DestinationUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the destination user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
+-- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param _DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This is a (pseudo) domain name that you provide while creating an identity pool. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (.), underscore (_), and dash (-).</p>
+-- @param _SourceUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the source user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
 -- Required parameter: SourceUserIdentifier
 -- Required parameter: DestinationUserIdentifier
 -- Required parameter: DeveloperProviderName
 -- Required parameter: IdentityPoolId
-function M.MergeDeveloperIdentitiesInput(DestinationUserIdentifier, IdentityPoolId, DeveloperProviderName, SourceUserIdentifier, ...)
+function M.MergeDeveloperIdentitiesInput(_DestinationUserIdentifier, _IdentityPoolId, _DeveloperProviderName, _SourceUserIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MergeDeveloperIdentitiesInput")
 	local t = { 
-		["DestinationUserIdentifier"] = DestinationUserIdentifier,
-		["IdentityPoolId"] = IdentityPoolId,
-		["DeveloperProviderName"] = DeveloperProviderName,
-		["SourceUserIdentifier"] = SourceUserIdentifier,
+		["DestinationUserIdentifier"] = _DestinationUserIdentifier,
+		["IdentityPoolId"] = _IdentityPoolId,
+		["DeveloperProviderName"] = _DeveloperProviderName,
+		["SourceUserIdentifier"] = _SourceUserIdentifier,
 	}
-	M.AssertMergeDeveloperIdentitiesInput(t)
+	asserts.AssertMergeDeveloperIdentitiesInput(t)
 	return t
 end
 
-local DeveloperUserAlreadyRegisteredException_keys = { "message" = true, nil }
+keys.DeveloperUserAlreadyRegisteredException = { ["message"] = true, nil }
 
-function M.AssertDeveloperUserAlreadyRegisteredException(struct)
+function asserts.AssertDeveloperUserAlreadyRegisteredException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeveloperUserAlreadyRegisteredException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(DeveloperUserAlreadyRegisteredException_keys[k], "DeveloperUserAlreadyRegisteredException contains unknown key " .. tostring(k))
+		assert(keys.DeveloperUserAlreadyRegisteredException[k], "DeveloperUserAlreadyRegisteredException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeveloperUserAlreadyRegisteredException
 -- <p>The provided developer user identifier is already registered with Cognito under a different identity ID.</p>
--- @param message [String] <p>This developer user identifier is already registered with Cognito.</p>
-function M.DeveloperUserAlreadyRegisteredException(message, ...)
+-- @param _message [String] <p>This developer user identifier is already registered with Cognito.</p>
+function M.DeveloperUserAlreadyRegisteredException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeveloperUserAlreadyRegisteredException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertDeveloperUserAlreadyRegisteredException(t)
+	asserts.AssertDeveloperUserAlreadyRegisteredException(t)
 	return t
 end
 
-local UnlinkIdentityInput_keys = { "Logins" = true, "LoginsToRemove" = true, "IdentityId" = true, nil }
+keys.UnlinkIdentityInput = { ["Logins"] = true, ["LoginsToRemove"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertUnlinkIdentityInput(struct)
+function asserts.AssertUnlinkIdentityInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected UnlinkIdentityInput to be of type 'table'")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
 	assert(struct["Logins"], "Expected key Logins to exist in table")
 	assert(struct["LoginsToRemove"], "Expected key LoginsToRemove to exist in table")
-	if struct["Logins"] then M.AssertLoginsMap(struct["Logins"]) end
-	if struct["LoginsToRemove"] then M.AssertLoginsList(struct["LoginsToRemove"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Logins"] then asserts.AssertLoginsMap(struct["Logins"]) end
+	if struct["LoginsToRemove"] then asserts.AssertLoginsList(struct["LoginsToRemove"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(UnlinkIdentityInput_keys[k], "UnlinkIdentityInput contains unknown key " .. tostring(k))
+		assert(keys.UnlinkIdentityInput[k], "UnlinkIdentityInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type UnlinkIdentityInput
 -- <p>Input to the UnlinkIdentity action.</p>
--- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
--- @param LoginsToRemove [LoginsList] <p>Provider names to unlink from this identity.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- @param _LoginsToRemove [LoginsList] <p>Provider names to unlink from this identity.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
 -- Required parameter: Logins
 -- Required parameter: LoginsToRemove
-function M.UnlinkIdentityInput(Logins, LoginsToRemove, IdentityId, ...)
+function M.UnlinkIdentityInput(_Logins, _LoginsToRemove, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnlinkIdentityInput")
 	local t = { 
-		["Logins"] = Logins,
-		["LoginsToRemove"] = LoginsToRemove,
-		["IdentityId"] = IdentityId,
+		["Logins"] = _Logins,
+		["LoginsToRemove"] = _LoginsToRemove,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertUnlinkIdentityInput(t)
+	asserts.AssertUnlinkIdentityInput(t)
 	return t
 end
 
-local ExternalServiceException_keys = { "message" = true, nil }
+keys.ExternalServiceException = { ["message"] = true, nil }
 
-function M.AssertExternalServiceException(struct)
+function asserts.AssertExternalServiceException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ExternalServiceException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ExternalServiceException_keys[k], "ExternalServiceException contains unknown key " .. tostring(k))
+		assert(keys.ExternalServiceException[k], "ExternalServiceException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ExternalServiceException
 -- <p>An exception thrown when a dependent service such as Facebook or Twitter is not responding</p>
--- @param message [String] <p>The message returned by an ExternalServiceException</p>
-function M.ExternalServiceException(message, ...)
+-- @param _message [String] <p>The message returned by an ExternalServiceException</p>
+function M.ExternalServiceException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExternalServiceException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertExternalServiceException(t)
+	asserts.AssertExternalServiceException(t)
 	return t
 end
 
-local GetCredentialsForIdentityResponse_keys = { "Credentials" = true, "IdentityId" = true, nil }
+keys.GetCredentialsForIdentityResponse = { ["Credentials"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertGetCredentialsForIdentityResponse(struct)
+function asserts.AssertGetCredentialsForIdentityResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCredentialsForIdentityResponse to be of type 'table'")
-	if struct["Credentials"] then M.AssertCredentials(struct["Credentials"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Credentials"] then asserts.AssertCredentials(struct["Credentials"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCredentialsForIdentityResponse_keys[k], "GetCredentialsForIdentityResponse contains unknown key " .. tostring(k))
+		assert(keys.GetCredentialsForIdentityResponse[k], "GetCredentialsForIdentityResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCredentialsForIdentityResponse
 -- <p>Returned in response to a successful <code>GetCredentialsForIdentity</code> operation.</p>
--- @param Credentials [Credentials] <p>Credentials for the provided identity ID.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.GetCredentialsForIdentityResponse(Credentials, IdentityId, ...)
+-- @param _Credentials [Credentials] <p>Credentials for the provided identity ID.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+function M.GetCredentialsForIdentityResponse(_Credentials, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCredentialsForIdentityResponse")
 	local t = { 
-		["Credentials"] = Credentials,
-		["IdentityId"] = IdentityId,
+		["Credentials"] = _Credentials,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertGetCredentialsForIdentityResponse(t)
+	asserts.AssertGetCredentialsForIdentityResponse(t)
 	return t
 end
 
-local GetCredentialsForIdentityInput_keys = { "Logins" = true, "CustomRoleArn" = true, "IdentityId" = true, nil }
+keys.GetCredentialsForIdentityInput = { ["Logins"] = true, ["CustomRoleArn"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertGetCredentialsForIdentityInput(struct)
+function asserts.AssertGetCredentialsForIdentityInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected GetCredentialsForIdentityInput to be of type 'table'")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
-	if struct["Logins"] then M.AssertLoginsMap(struct["Logins"]) end
-	if struct["CustomRoleArn"] then M.AssertARNString(struct["CustomRoleArn"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["Logins"] then asserts.AssertLoginsMap(struct["Logins"]) end
+	if struct["CustomRoleArn"] then asserts.AssertARNString(struct["CustomRoleArn"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(GetCredentialsForIdentityInput_keys[k], "GetCredentialsForIdentityInput contains unknown key " .. tostring(k))
+		assert(keys.GetCredentialsForIdentityInput[k], "GetCredentialsForIdentityInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type GetCredentialsForIdentityInput
 -- <p>Input to the <code>GetCredentialsForIdentity</code> action.</p>
--- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
--- @param CustomRoleArn [ARNString] <p>The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- @param _CustomRoleArn [ARNString] <p>The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
-function M.GetCredentialsForIdentityInput(Logins, CustomRoleArn, IdentityId, ...)
+function M.GetCredentialsForIdentityInput(_Logins, _CustomRoleArn, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCredentialsForIdentityInput")
 	local t = { 
-		["Logins"] = Logins,
-		["CustomRoleArn"] = CustomRoleArn,
-		["IdentityId"] = IdentityId,
+		["Logins"] = _Logins,
+		["CustomRoleArn"] = _CustomRoleArn,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertGetCredentialsForIdentityInput(t)
+	asserts.AssertGetCredentialsForIdentityInput(t)
 	return t
 end
 
-local DescribeIdentityInput_keys = { "IdentityId" = true, nil }
+keys.DescribeIdentityInput = { ["IdentityId"] = true, nil }
 
-function M.AssertDescribeIdentityInput(struct)
+function asserts.AssertDescribeIdentityInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeIdentityInput to be of type 'table'")
 	assert(struct["IdentityId"], "Expected key IdentityId to exist in table")
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeIdentityInput_keys[k], "DescribeIdentityInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeIdentityInput[k], "DescribeIdentityInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeIdentityInput
 -- <p>Input to the <code>DescribeIdentity</code> action.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
-function M.DescribeIdentityInput(IdentityId, ...)
+function M.DescribeIdentityInput(_IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityInput")
 	local t = { 
-		["IdentityId"] = IdentityId,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertDescribeIdentityInput(t)
+	asserts.AssertDescribeIdentityInput(t)
 	return t
 end
 
-local DeleteIdentitiesResponse_keys = { "UnprocessedIdentityIds" = true, nil }
+keys.DeleteIdentitiesResponse = { ["UnprocessedIdentityIds"] = true, nil }
 
-function M.AssertDeleteIdentitiesResponse(struct)
+function asserts.AssertDeleteIdentitiesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteIdentitiesResponse to be of type 'table'")
-	if struct["UnprocessedIdentityIds"] then M.AssertUnprocessedIdentityIdList(struct["UnprocessedIdentityIds"]) end
+	if struct["UnprocessedIdentityIds"] then asserts.AssertUnprocessedIdentityIdList(struct["UnprocessedIdentityIds"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteIdentitiesResponse_keys[k], "DeleteIdentitiesResponse contains unknown key " .. tostring(k))
+		assert(keys.DeleteIdentitiesResponse[k], "DeleteIdentitiesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteIdentitiesResponse
 -- <p>Returned in response to a successful <code>DeleteIdentities</code> operation.</p>
--- @param UnprocessedIdentityIds [UnprocessedIdentityIdList] <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
-function M.DeleteIdentitiesResponse(UnprocessedIdentityIds, ...)
+-- @param _UnprocessedIdentityIds [UnprocessedIdentityIdList] <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
+function M.DeleteIdentitiesResponse(_UnprocessedIdentityIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentitiesResponse")
 	local t = { 
-		["UnprocessedIdentityIds"] = UnprocessedIdentityIds,
+		["UnprocessedIdentityIds"] = _UnprocessedIdentityIds,
 	}
-	M.AssertDeleteIdentitiesResponse(t)
+	asserts.AssertDeleteIdentitiesResponse(t)
 	return t
 end
 
-local ResourceConflictException_keys = { "message" = true, nil }
+keys.ResourceConflictException = { ["message"] = true, nil }
 
-function M.AssertResourceConflictException(struct)
+function asserts.AssertResourceConflictException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ResourceConflictException to be of type 'table'")
-	if struct["message"] then M.AssertString(struct["message"]) end
+	if struct["message"] then asserts.AssertString(struct["message"]) end
 	for k,_ in pairs(struct) do
-		assert(ResourceConflictException_keys[k], "ResourceConflictException contains unknown key " .. tostring(k))
+		assert(keys.ResourceConflictException[k], "ResourceConflictException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ResourceConflictException
 -- <p>Thrown when a user tries to use a login which is already linked to another account.</p>
--- @param message [String] <p>The message returned by a ResourceConflictException.</p>
-function M.ResourceConflictException(message, ...)
+-- @param _message [String] <p>The message returned by a ResourceConflictException.</p>
+function M.ResourceConflictException(_message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceConflictException")
 	local t = { 
-		["message"] = message,
+		["message"] = _message,
 	}
-	M.AssertResourceConflictException(t)
+	asserts.AssertResourceConflictException(t)
 	return t
 end
 
-local MergeDeveloperIdentitiesResponse_keys = { "IdentityId" = true, nil }
+keys.MergeDeveloperIdentitiesResponse = { ["IdentityId"] = true, nil }
 
-function M.AssertMergeDeveloperIdentitiesResponse(struct)
+function asserts.AssertMergeDeveloperIdentitiesResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MergeDeveloperIdentitiesResponse to be of type 'table'")
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(MergeDeveloperIdentitiesResponse_keys[k], "MergeDeveloperIdentitiesResponse contains unknown key " .. tostring(k))
+		assert(keys.MergeDeveloperIdentitiesResponse[k], "MergeDeveloperIdentitiesResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MergeDeveloperIdentitiesResponse
 -- <p>Returned in response to a successful <code>MergeDeveloperIdentities</code> action.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.MergeDeveloperIdentitiesResponse(IdentityId, ...)
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+function M.MergeDeveloperIdentitiesResponse(_IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MergeDeveloperIdentitiesResponse")
 	local t = { 
-		["IdentityId"] = IdentityId,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertMergeDeveloperIdentitiesResponse(t)
+	asserts.AssertMergeDeveloperIdentitiesResponse(t)
 	return t
 end
 
-local LookupDeveloperIdentityResponse_keys = { "NextToken" = true, "DeveloperUserIdentifierList" = true, "IdentityId" = true, nil }
+keys.LookupDeveloperIdentityResponse = { ["NextToken"] = true, ["DeveloperUserIdentifierList"] = true, ["IdentityId"] = true, nil }
 
-function M.AssertLookupDeveloperIdentityResponse(struct)
+function asserts.AssertLookupDeveloperIdentityResponse(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected LookupDeveloperIdentityResponse to be of type 'table'")
-	if struct["NextToken"] then M.AssertPaginationKey(struct["NextToken"]) end
-	if struct["DeveloperUserIdentifierList"] then M.AssertDeveloperUserIdentifierList(struct["DeveloperUserIdentifierList"]) end
-	if struct["IdentityId"] then M.AssertIdentityId(struct["IdentityId"]) end
+	if struct["NextToken"] then asserts.AssertPaginationKey(struct["NextToken"]) end
+	if struct["DeveloperUserIdentifierList"] then asserts.AssertDeveloperUserIdentifierList(struct["DeveloperUserIdentifierList"]) end
+	if struct["IdentityId"] then asserts.AssertIdentityId(struct["IdentityId"]) end
 	for k,_ in pairs(struct) do
-		assert(LookupDeveloperIdentityResponse_keys[k], "LookupDeveloperIdentityResponse contains unknown key " .. tostring(k))
+		assert(keys.LookupDeveloperIdentityResponse[k], "LookupDeveloperIdentityResponse contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type LookupDeveloperIdentityResponse
 -- <p>Returned in response to a successful <code>LookupDeveloperIdentity</code> action.</p>
--- @param NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
--- @param DeveloperUserIdentifierList [DeveloperUserIdentifierList] <p>This is the list of developer user identifiers associated with an identity ID. Cognito supports the association of multiple developer user identifiers with an identity ID.</p>
--- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.LookupDeveloperIdentityResponse(NextToken, DeveloperUserIdentifierList, IdentityId, ...)
+-- @param _NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
+-- @param _DeveloperUserIdentifierList [DeveloperUserIdentifierList] <p>This is the list of developer user identifiers associated with an identity ID. Cognito supports the association of multiple developer user identifiers with an identity ID.</p>
+-- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+function M.LookupDeveloperIdentityResponse(_NextToken, _DeveloperUserIdentifierList, _IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LookupDeveloperIdentityResponse")
 	local t = { 
-		["NextToken"] = NextToken,
-		["DeveloperUserIdentifierList"] = DeveloperUserIdentifierList,
-		["IdentityId"] = IdentityId,
+		["NextToken"] = _NextToken,
+		["DeveloperUserIdentifierList"] = _DeveloperUserIdentifierList,
+		["IdentityId"] = _IdentityId,
 	}
-	M.AssertLookupDeveloperIdentityResponse(t)
+	asserts.AssertLookupDeveloperIdentityResponse(t)
 	return t
 end
 
-function M.AssertCognitoIdentityProviderClientId(str)
+function asserts.AssertCognitoIdentityProviderClientId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CognitoIdentityProviderClientId to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w_]+"), "Expected string to match pattern '[%w_]+'")
 end
 
 --  
 function M.CognitoIdentityProviderClientId(str)
-	M.AssertCognitoIdentityProviderClientId(str)
+	asserts.AssertCognitoIdentityProviderClientId(str)
 	return str
 end
 
-function M.AssertIdentityProviderToken(str)
+function asserts.AssertIdentityProviderToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityProviderToken to be of type 'string'")
 	assert(#str <= 50000, "Expected string to be max 50000 characters")
@@ -1390,142 +1392,134 @@ end
 
 --  
 function M.IdentityProviderToken(str)
-	M.AssertIdentityProviderToken(str)
+	asserts.AssertIdentityProviderToken(str)
 	return str
 end
 
-function M.AssertSecretKeyString(str)
+function asserts.AssertSecretKeyString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SecretKeyString to be of type 'string'")
 end
 
 --  
 function M.SecretKeyString(str)
-	M.AssertSecretKeyString(str)
+	asserts.AssertSecretKeyString(str)
 	return str
 end
 
-function M.AssertDeveloperProviderName(str)
+function asserts.AssertDeveloperProviderName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeveloperProviderName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w._-]+"), "Expected string to match pattern '[%w._-]+'")
 end
 
 --  
 function M.DeveloperProviderName(str)
-	M.AssertDeveloperProviderName(str)
+	asserts.AssertDeveloperProviderName(str)
 	return str
 end
 
-function M.AssertCognitoIdentityProviderName(str)
+function asserts.AssertCognitoIdentityProviderName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CognitoIdentityProviderName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w._:/-]+"), "Expected string to match pattern '[%w._:/-]+'")
 end
 
 --  
 function M.CognitoIdentityProviderName(str)
-	M.AssertCognitoIdentityProviderName(str)
+	asserts.AssertCognitoIdentityProviderName(str)
 	return str
 end
 
-function M.AssertPaginationKey(str)
+function asserts.AssertPaginationKey(str)
 	assert(str)
 	assert(type(str) == "string", "Expected PaginationKey to be of type 'string'")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%S]+"), "Expected string to match pattern '[%S]+'")
 end
 
 --  
 function M.PaginationKey(str)
-	M.AssertPaginationKey(str)
+	asserts.AssertPaginationKey(str)
 	return str
 end
 
-function M.AssertIdentityPoolName(str)
+function asserts.AssertIdentityPoolName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityPoolName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w ]+"), "Expected string to match pattern '[%w ]+'")
 end
 
 --  
 function M.IdentityPoolName(str)
-	M.AssertIdentityPoolName(str)
+	asserts.AssertIdentityPoolName(str)
 	return str
 end
 
-function M.AssertMappingRuleMatchType(str)
+function asserts.AssertMappingRuleMatchType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MappingRuleMatchType to be of type 'string'")
 end
 
 --  
 function M.MappingRuleMatchType(str)
-	M.AssertMappingRuleMatchType(str)
+	asserts.AssertMappingRuleMatchType(str)
 	return str
 end
 
-function M.AssertRoleType(str)
+function asserts.AssertRoleType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RoleType to be of type 'string'")
-	assert(str:match("(un)?authenticated"), "Expected string to match pattern '(un)?authenticated'")
 end
 
 --  
 function M.RoleType(str)
-	M.AssertRoleType(str)
+	asserts.AssertRoleType(str)
 	return str
 end
 
-function M.AssertIdentityProviderId(str)
+function asserts.AssertIdentityProviderId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityProviderId to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w.;_/-]+"), "Expected string to match pattern '[%w.;_/-]+'")
 end
 
 --  
 function M.IdentityProviderId(str)
-	M.AssertIdentityProviderId(str)
+	asserts.AssertIdentityProviderId(str)
 	return str
 end
 
-function M.AssertClaimName(str)
+function asserts.AssertClaimName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClaimName to be of type 'string'")
 	assert(#str <= 64, "Expected string to be max 64 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%p{L}%p{M}%p{S}%p{N}%p{P}]+"), "Expected string to match pattern '[%p{L}%p{M}%p{S}%p{N}%p{P}]+'")
 end
 
 --  
 function M.ClaimName(str)
-	M.AssertClaimName(str)
+	asserts.AssertClaimName(str)
 	return str
 end
 
-function M.AssertIdentityPoolId(str)
+function asserts.AssertIdentityPoolId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityPoolId to be of type 'string'")
 	assert(#str <= 55, "Expected string to be max 55 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w-]+:[0-9a-f-]+"), "Expected string to match pattern '[%w-]+:[0-9a-f-]+'")
 end
 
 --  
 function M.IdentityPoolId(str)
-	M.AssertIdentityPoolId(str)
+	asserts.AssertIdentityPoolId(str)
 	return str
 end
 
-function M.AssertARNString(str)
+function asserts.AssertARNString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ARNString to be of type 'string'")
 	assert(#str <= 2048, "Expected string to be max 2048 characters")
@@ -1534,44 +1528,44 @@ end
 
 --  
 function M.ARNString(str)
-	M.AssertARNString(str)
+	asserts.AssertARNString(str)
 	return str
 end
 
-function M.AssertAccessKeyString(str)
+function asserts.AssertAccessKeyString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AccessKeyString to be of type 'string'")
 end
 
 --  
 function M.AccessKeyString(str)
-	M.AssertAccessKeyString(str)
+	asserts.AssertAccessKeyString(str)
 	return str
 end
 
-function M.AssertErrorCode(str)
+function asserts.AssertErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorCode to be of type 'string'")
 end
 
 --  
 function M.ErrorCode(str)
-	M.AssertErrorCode(str)
+	asserts.AssertErrorCode(str)
 	return str
 end
 
-function M.AssertOIDCToken(str)
+function asserts.AssertOIDCToken(str)
 	assert(str)
 	assert(type(str) == "string", "Expected OIDCToken to be of type 'string'")
 end
 
 --  
 function M.OIDCToken(str)
-	M.AssertOIDCToken(str)
+	asserts.AssertOIDCToken(str)
 	return str
 end
 
-function M.AssertClaimValue(str)
+function asserts.AssertClaimValue(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClaimValue to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -1580,22 +1574,22 @@ end
 
 --  
 function M.ClaimValue(str)
-	M.AssertClaimValue(str)
+	asserts.AssertClaimValue(str)
 	return str
 end
 
-function M.AssertRoleMappingType(str)
+function asserts.AssertRoleMappingType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected RoleMappingType to be of type 'string'")
 end
 
 --  
 function M.RoleMappingType(str)
-	M.AssertRoleMappingType(str)
+	asserts.AssertRoleMappingType(str)
 	return str
 end
 
-function M.AssertIdentityProviderName(str)
+function asserts.AssertIdentityProviderName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityProviderName to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
@@ -1604,50 +1598,48 @@ end
 
 --  
 function M.IdentityProviderName(str)
-	M.AssertIdentityProviderName(str)
+	asserts.AssertIdentityProviderName(str)
 	return str
 end
 
-function M.AssertAmbiguousRoleResolutionType(str)
+function asserts.AssertAmbiguousRoleResolutionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AmbiguousRoleResolutionType to be of type 'string'")
 end
 
 --  
 function M.AmbiguousRoleResolutionType(str)
-	M.AssertAmbiguousRoleResolutionType(str)
+	asserts.AssertAmbiguousRoleResolutionType(str)
 	return str
 end
 
-function M.AssertIdentityId(str)
+function asserts.AssertIdentityId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected IdentityId to be of type 'string'")
 	assert(#str <= 55, "Expected string to be max 55 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%w-]+:[0-9a-f-]+"), "Expected string to match pattern '[%w-]+:[0-9a-f-]+'")
 end
 
 --  
 function M.IdentityId(str)
-	M.AssertIdentityId(str)
+	asserts.AssertIdentityId(str)
 	return str
 end
 
-function M.AssertAccountId(str)
+function asserts.AssertAccountId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AccountId to be of type 'string'")
 	assert(#str <= 15, "Expected string to be max 15 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("%d+"), "Expected string to match pattern '%d+'")
 end
 
 --  
 function M.AccountId(str)
-	M.AssertAccountId(str)
+	asserts.AssertAccountId(str)
 	return str
 end
 
-function M.AssertDeveloperUserIdentifier(str)
+function asserts.AssertDeveloperUserIdentifier(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DeveloperUserIdentifier to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
@@ -1656,44 +1648,44 @@ end
 
 --  
 function M.DeveloperUserIdentifier(str)
-	M.AssertDeveloperUserIdentifier(str)
+	asserts.AssertDeveloperUserIdentifier(str)
 	return str
 end
 
-function M.AssertSessionTokenString(str)
+function asserts.AssertSessionTokenString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SessionTokenString to be of type 'string'")
 end
 
 --  
 function M.SessionTokenString(str)
-	M.AssertSessionTokenString(str)
+	asserts.AssertSessionTokenString(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertTokenDuration(long)
+function asserts.AssertTokenDuration(long)
 	assert(long)
 	assert(type(long) == "number", "Expected TokenDuration to be of type 'number'")
 	assert(long % 1 == 0, "Expected a whole integer number")
 end
 
 function M.TokenDuration(long)
-	M.AssertTokenDuration(long)
+	asserts.AssertTokenDuration(long)
 	return long
 end
 
-function M.AssertQueryLimit(integer)
+function asserts.AssertQueryLimit(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected QueryLimit to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
@@ -1702,258 +1694,258 @@ function M.AssertQueryLimit(integer)
 end
 
 function M.QueryLimit(integer)
-	M.AssertQueryLimit(integer)
+	asserts.AssertQueryLimit(integer)
 	return integer
 end
 
-function M.AssertHideDisabled(boolean)
+function asserts.AssertHideDisabled(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected HideDisabled to be of type 'boolean'")
 end
 
 function M.HideDisabled(boolean)
-	M.AssertHideDisabled(boolean)
+	asserts.AssertHideDisabled(boolean)
 	return boolean
 end
 
-function M.AssertIdentityPoolUnauthenticated(boolean)
+function asserts.AssertIdentityPoolUnauthenticated(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected IdentityPoolUnauthenticated to be of type 'boolean'")
 end
 
 function M.IdentityPoolUnauthenticated(boolean)
-	M.AssertIdentityPoolUnauthenticated(boolean)
+	asserts.AssertIdentityPoolUnauthenticated(boolean)
 	return boolean
 end
 
-function M.AssertCognitoIdentityProviderTokenCheck(boolean)
+function asserts.AssertCognitoIdentityProviderTokenCheck(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected CognitoIdentityProviderTokenCheck to be of type 'boolean'")
 end
 
 function M.CognitoIdentityProviderTokenCheck(boolean)
-	M.AssertCognitoIdentityProviderTokenCheck(boolean)
+	asserts.AssertCognitoIdentityProviderTokenCheck(boolean)
 	return boolean
 end
 
-function M.AssertIdentityProviders(map)
+function asserts.AssertIdentityProviders(map)
 	assert(map)
 	assert(type(map) == "table", "Expected IdentityProviders to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertIdentityProviderName(k)
-		M.AssertIdentityProviderId(v)
+		asserts.AssertIdentityProviderName(k)
+		asserts.AssertIdentityProviderId(v)
 	end
 end
 
 function M.IdentityProviders(map)
-	M.AssertIdentityProviders(map)
+	asserts.AssertIdentityProviders(map)
 	return map
 end
 
-function M.AssertLoginsMap(map)
+function asserts.AssertLoginsMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected LoginsMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertIdentityProviderName(k)
-		M.AssertIdentityProviderToken(v)
+		asserts.AssertIdentityProviderName(k)
+		asserts.AssertIdentityProviderToken(v)
 	end
 end
 
 function M.LoginsMap(map)
-	M.AssertLoginsMap(map)
+	asserts.AssertLoginsMap(map)
 	return map
 end
 
-function M.AssertRoleMappingMap(map)
+function asserts.AssertRoleMappingMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected RoleMappingMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertIdentityProviderName(k)
-		M.AssertRoleMapping(v)
+		asserts.AssertIdentityProviderName(k)
+		asserts.AssertRoleMapping(v)
 	end
 end
 
 function M.RoleMappingMap(map)
-	M.AssertRoleMappingMap(map)
+	asserts.AssertRoleMappingMap(map)
 	return map
 end
 
-function M.AssertRolesMap(map)
+function asserts.AssertRolesMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected RolesMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertRoleType(k)
-		M.AssertARNString(v)
+		asserts.AssertRoleType(k)
+		asserts.AssertARNString(v)
 	end
 end
 
 function M.RolesMap(map)
-	M.AssertRolesMap(map)
+	asserts.AssertRolesMap(map)
 	return map
 end
 
-function M.AssertDateType(timestamp)
+function asserts.AssertDateType(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected DateType to be of type 'string'")
 end
 
 function M.DateType(timestamp)
-	M.AssertDateType(timestamp)
+	asserts.AssertDateType(timestamp)
 	return timestamp
 end
 
-function M.AssertOIDCProviderList(list)
+function asserts.AssertOIDCProviderList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected OIDCProviderList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertARNString(v)
+		asserts.AssertARNString(v)
 	end
 end
 
 --  
 -- List of ARNString objects
 function M.OIDCProviderList(list)
-	M.AssertOIDCProviderList(list)
+	asserts.AssertOIDCProviderList(list)
 	return list
 end
 
-function M.AssertMappingRulesList(list)
+function asserts.AssertMappingRulesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MappingRulesList to be of type ''table")
 	assert(#list <= 25, "Expected list to be contain 25 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertMappingRule(v)
+		asserts.AssertMappingRule(v)
 	end
 end
 
 --  
 -- List of MappingRule objects
 function M.MappingRulesList(list)
-	M.AssertMappingRulesList(list)
+	asserts.AssertMappingRulesList(list)
 	return list
 end
 
-function M.AssertIdentitiesList(list)
+function asserts.AssertIdentitiesList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IdentitiesList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertIdentityDescription(v)
+		asserts.AssertIdentityDescription(v)
 	end
 end
 
 --  
 -- List of IdentityDescription objects
 function M.IdentitiesList(list)
-	M.AssertIdentitiesList(list)
+	asserts.AssertIdentitiesList(list)
 	return list
 end
 
-function M.AssertDeveloperUserIdentifierList(list)
+function asserts.AssertDeveloperUserIdentifierList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected DeveloperUserIdentifierList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertDeveloperUserIdentifier(v)
+		asserts.AssertDeveloperUserIdentifier(v)
 	end
 end
 
 --  
 -- List of DeveloperUserIdentifier objects
 function M.DeveloperUserIdentifierList(list)
-	M.AssertDeveloperUserIdentifierList(list)
+	asserts.AssertDeveloperUserIdentifierList(list)
 	return list
 end
 
-function M.AssertIdentityPoolsList(list)
+function asserts.AssertIdentityPoolsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IdentityPoolsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertIdentityPoolShortDescription(v)
+		asserts.AssertIdentityPoolShortDescription(v)
 	end
 end
 
 --  
 -- List of IdentityPoolShortDescription objects
 function M.IdentityPoolsList(list)
-	M.AssertIdentityPoolsList(list)
+	asserts.AssertIdentityPoolsList(list)
 	return list
 end
 
-function M.AssertIdentityIdList(list)
+function asserts.AssertIdentityIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected IdentityIdList to be of type ''table")
 	assert(#list <= 60, "Expected list to be contain 60 elements")
 	assert(#list >= 1, "Expected list to be contain 1 elements")
 	for _,v in ipairs(list) do
-		M.AssertIdentityId(v)
+		asserts.AssertIdentityId(v)
 	end
 end
 
 --  
 -- List of IdentityId objects
 function M.IdentityIdList(list)
-	M.AssertIdentityIdList(list)
+	asserts.AssertIdentityIdList(list)
 	return list
 end
 
-function M.AssertLoginsList(list)
+function asserts.AssertLoginsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected LoginsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertIdentityProviderName(v)
+		asserts.AssertIdentityProviderName(v)
 	end
 end
 
 --  
 -- List of IdentityProviderName objects
 function M.LoginsList(list)
-	M.AssertLoginsList(list)
+	asserts.AssertLoginsList(list)
 	return list
 end
 
-function M.AssertCognitoIdentityProviderList(list)
+function asserts.AssertCognitoIdentityProviderList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CognitoIdentityProviderList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCognitoIdentityProvider(v)
+		asserts.AssertCognitoIdentityProvider(v)
 	end
 end
 
 --  
 -- List of CognitoIdentityProvider objects
 function M.CognitoIdentityProviderList(list)
-	M.AssertCognitoIdentityProviderList(list)
+	asserts.AssertCognitoIdentityProviderList(list)
 	return list
 end
 
-function M.AssertUnprocessedIdentityIdList(list)
+function asserts.AssertUnprocessedIdentityIdList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected UnprocessedIdentityIdList to be of type ''table")
 	assert(#list <= 60, "Expected list to be contain 60 elements")
 	for _,v in ipairs(list) do
-		M.AssertUnprocessedIdentityId(v)
+		asserts.AssertUnprocessedIdentityId(v)
 	end
 end
 
 --  
 -- List of UnprocessedIdentityId objects
 function M.UnprocessedIdentityIdList(list)
-	M.AssertUnprocessedIdentityIdList(list)
+	asserts.AssertUnprocessedIdentityIdList(list)
 	return list
 end
 
-function M.AssertSAMLProviderList(list)
+function asserts.AssertSAMLProviderList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SAMLProviderList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertARNString(v)
+		asserts.AssertARNString(v)
 	end
 end
 
 --  
 -- List of ARNString objects
 function M.SAMLProviderList(list)
-	M.AssertSAMLProviderList(list)
+	asserts.AssertSAMLProviderList(list)
 	return list
 end
 

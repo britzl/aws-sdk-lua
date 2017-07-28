@@ -18,866 +18,869 @@ M.metadata = {
 	uid = "elasticmapreduce-2009-03-31",
 }
 
-local InternalServerException_keys = { "Message" = true, nil }
+local keys = {}
+local asserts = {}
 
-function M.AssertInternalServerException(struct)
+keys.InternalServerException = { ["Message"] = true, nil }
+
+function asserts.AssertInternalServerException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServerException to be of type 'table'")
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InternalServerException_keys[k], "InternalServerException contains unknown key " .. tostring(k))
+		assert(keys.InternalServerException[k], "InternalServerException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InternalServerException
 -- <p>This exception occurs when there is an internal failure in the EMR service.</p>
--- @param Message [ErrorMessage] <p>The message associated with the exception.</p>
-function M.InternalServerException(Message, ...)
+-- @param _Message [ErrorMessage] <p>The message associated with the exception.</p>
+function M.InternalServerException(_Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerException")
 	local t = { 
-		["Message"] = Message,
+		["Message"] = _Message,
 	}
-	M.AssertInternalServerException(t)
+	asserts.AssertInternalServerException(t)
 	return t
 end
 
-local CancelStepsInfo_keys = { "Status" = true, "Reason" = true, "StepId" = true, nil }
+keys.CancelStepsInfo = { ["Status"] = true, ["Reason"] = true, ["StepId"] = true, nil }
 
-function M.AssertCancelStepsInfo(struct)
+function asserts.AssertCancelStepsInfo(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CancelStepsInfo to be of type 'table'")
-	if struct["Status"] then M.AssertCancelStepsRequestStatus(struct["Status"]) end
-	if struct["Reason"] then M.AssertString(struct["Reason"]) end
-	if struct["StepId"] then M.AssertStepId(struct["StepId"]) end
+	if struct["Status"] then asserts.AssertCancelStepsRequestStatus(struct["Status"]) end
+	if struct["Reason"] then asserts.AssertString(struct["Reason"]) end
+	if struct["StepId"] then asserts.AssertStepId(struct["StepId"]) end
 	for k,_ in pairs(struct) do
-		assert(CancelStepsInfo_keys[k], "CancelStepsInfo contains unknown key " .. tostring(k))
+		assert(keys.CancelStepsInfo[k], "CancelStepsInfo contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CancelStepsInfo
 -- <p>Specification of the status of a CancelSteps request. Available only in Amazon EMR version 4.8.0 and later, excluding version 5.0.0.</p>
--- @param Status [CancelStepsRequestStatus] <p>The status of a CancelSteps Request. The value may be SUBMITTED or FAILED.</p>
--- @param Reason [String] <p>The reason for the failure if the CancelSteps request fails.</p>
--- @param StepId [StepId] <p>The encrypted StepId of a step.</p>
-function M.CancelStepsInfo(Status, Reason, StepId, ...)
+-- @param _Status [CancelStepsRequestStatus] <p>The status of a CancelSteps Request. The value may be SUBMITTED or FAILED.</p>
+-- @param _Reason [String] <p>The reason for the failure if the CancelSteps request fails.</p>
+-- @param _StepId [StepId] <p>The encrypted StepId of a step.</p>
+function M.CancelStepsInfo(_Status, _Reason, _StepId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelStepsInfo")
 	local t = { 
-		["Status"] = Status,
-		["Reason"] = Reason,
-		["StepId"] = StepId,
+		["Status"] = _Status,
+		["Reason"] = _Reason,
+		["StepId"] = _StepId,
 	}
-	M.AssertCancelStepsInfo(t)
+	asserts.AssertCancelStepsInfo(t)
 	return t
 end
 
-local InstanceFleetTimeline_keys = { "ReadyDateTime" = true, "CreationDateTime" = true, "EndDateTime" = true, nil }
+keys.InstanceFleetTimeline = { ["ReadyDateTime"] = true, ["CreationDateTime"] = true, ["EndDateTime"] = true, nil }
 
-function M.AssertInstanceFleetTimeline(struct)
+function asserts.AssertInstanceFleetTimeline(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceFleetTimeline to be of type 'table'")
-	if struct["ReadyDateTime"] then M.AssertDate(struct["ReadyDateTime"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["EndDateTime"] then M.AssertDate(struct["EndDateTime"]) end
+	if struct["ReadyDateTime"] then asserts.AssertDate(struct["ReadyDateTime"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["EndDateTime"] then asserts.AssertDate(struct["EndDateTime"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceFleetTimeline_keys[k], "InstanceFleetTimeline contains unknown key " .. tostring(k))
+		assert(keys.InstanceFleetTimeline[k], "InstanceFleetTimeline contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceFleetTimeline
 -- <p>Provides historical timestamps for the instance fleet, including the time of creation, the time it became ready to run jobs, and the time of termination.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param ReadyDateTime [Date] <p>The time and date the instance fleet was ready to run jobs.</p>
--- @param CreationDateTime [Date] <p>The time and date the instance fleet was created.</p>
--- @param EndDateTime [Date] <p>The time and date the instance fleet terminated.</p>
-function M.InstanceFleetTimeline(ReadyDateTime, CreationDateTime, EndDateTime, ...)
+-- @param _ReadyDateTime [Date] <p>The time and date the instance fleet was ready to run jobs.</p>
+-- @param _CreationDateTime [Date] <p>The time and date the instance fleet was created.</p>
+-- @param _EndDateTime [Date] <p>The time and date the instance fleet terminated.</p>
+function M.InstanceFleetTimeline(_ReadyDateTime, _CreationDateTime, _EndDateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetTimeline")
 	local t = { 
-		["ReadyDateTime"] = ReadyDateTime,
-		["CreationDateTime"] = CreationDateTime,
-		["EndDateTime"] = EndDateTime,
+		["ReadyDateTime"] = _ReadyDateTime,
+		["CreationDateTime"] = _CreationDateTime,
+		["EndDateTime"] = _EndDateTime,
 	}
-	M.AssertInstanceFleetTimeline(t)
+	asserts.AssertInstanceFleetTimeline(t)
 	return t
 end
 
-local ListStepsInput_keys = { "Marker" = true, "StepIds" = true, "ClusterId" = true, "StepStates" = true, nil }
+keys.ListStepsInput = { ["Marker"] = true, ["StepIds"] = true, ["ClusterId"] = true, ["StepStates"] = true, nil }
 
-function M.AssertListStepsInput(struct)
+function asserts.AssertListStepsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListStepsInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["StepIds"] then M.AssertXmlStringList(struct["StepIds"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
-	if struct["StepStates"] then M.AssertStepStateList(struct["StepStates"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["StepIds"] then asserts.AssertXmlStringList(struct["StepIds"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
+	if struct["StepStates"] then asserts.AssertStepStateList(struct["StepStates"]) end
 	for k,_ in pairs(struct) do
-		assert(ListStepsInput_keys[k], "ListStepsInput contains unknown key " .. tostring(k))
+		assert(keys.ListStepsInput[k], "ListStepsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListStepsInput
 -- <p>This input determines which steps to list.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param StepIds [XmlStringList] <p>The filter to limit the step list based on the identifier of the steps.</p>
--- @param ClusterId [ClusterId] <p>The identifier of the cluster for which to list the steps.</p>
--- @param StepStates [StepStateList] <p>The filter to limit the step list based on certain states.</p>
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _StepIds [XmlStringList] <p>The filter to limit the step list based on the identifier of the steps.</p>
+-- @param _ClusterId [ClusterId] <p>The identifier of the cluster for which to list the steps.</p>
+-- @param _StepStates [StepStateList] <p>The filter to limit the step list based on certain states.</p>
 -- Required parameter: ClusterId
-function M.ListStepsInput(Marker, StepIds, ClusterId, StepStates, ...)
+function M.ListStepsInput(_Marker, _StepIds, _ClusterId, _StepStates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStepsInput")
 	local t = { 
-		["Marker"] = Marker,
-		["StepIds"] = StepIds,
-		["ClusterId"] = ClusterId,
-		["StepStates"] = StepStates,
+		["Marker"] = _Marker,
+		["StepIds"] = _StepIds,
+		["ClusterId"] = _ClusterId,
+		["StepStates"] = _StepStates,
 	}
-	M.AssertListStepsInput(t)
+	asserts.AssertListStepsInput(t)
 	return t
 end
 
-local JobFlowInstancesDetail_keys = { "InstanceCount" = true, "Placement" = true, "MasterPublicDnsName" = true, "NormalizedInstanceHours" = true, "MasterInstanceId" = true, "InstanceGroups" = true, "MasterInstanceType" = true, "TerminationProtected" = true, "HadoopVersion" = true, "Ec2SubnetId" = true, "KeepJobFlowAliveWhenNoSteps" = true, "SlaveInstanceType" = true, "Ec2KeyName" = true, nil }
+keys.JobFlowInstancesDetail = { ["InstanceCount"] = true, ["Placement"] = true, ["MasterPublicDnsName"] = true, ["NormalizedInstanceHours"] = true, ["MasterInstanceId"] = true, ["InstanceGroups"] = true, ["MasterInstanceType"] = true, ["TerminationProtected"] = true, ["HadoopVersion"] = true, ["Ec2SubnetId"] = true, ["KeepJobFlowAliveWhenNoSteps"] = true, ["SlaveInstanceType"] = true, ["Ec2KeyName"] = true, nil }
 
-function M.AssertJobFlowInstancesDetail(struct)
+function asserts.AssertJobFlowInstancesDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected JobFlowInstancesDetail to be of type 'table'")
 	assert(struct["MasterInstanceType"], "Expected key MasterInstanceType to exist in table")
 	assert(struct["SlaveInstanceType"], "Expected key SlaveInstanceType to exist in table")
 	assert(struct["InstanceCount"], "Expected key InstanceCount to exist in table")
-	if struct["InstanceCount"] then M.AssertInteger(struct["InstanceCount"]) end
-	if struct["Placement"] then M.AssertPlacementType(struct["Placement"]) end
-	if struct["MasterPublicDnsName"] then M.AssertXmlString(struct["MasterPublicDnsName"]) end
-	if struct["NormalizedInstanceHours"] then M.AssertInteger(struct["NormalizedInstanceHours"]) end
-	if struct["MasterInstanceId"] then M.AssertXmlString(struct["MasterInstanceId"]) end
-	if struct["InstanceGroups"] then M.AssertInstanceGroupDetailList(struct["InstanceGroups"]) end
-	if struct["MasterInstanceType"] then M.AssertInstanceType(struct["MasterInstanceType"]) end
-	if struct["TerminationProtected"] then M.AssertBoolean(struct["TerminationProtected"]) end
-	if struct["HadoopVersion"] then M.AssertXmlStringMaxLen256(struct["HadoopVersion"]) end
-	if struct["Ec2SubnetId"] then M.AssertXmlStringMaxLen256(struct["Ec2SubnetId"]) end
-	if struct["KeepJobFlowAliveWhenNoSteps"] then M.AssertBoolean(struct["KeepJobFlowAliveWhenNoSteps"]) end
-	if struct["SlaveInstanceType"] then M.AssertInstanceType(struct["SlaveInstanceType"]) end
-	if struct["Ec2KeyName"] then M.AssertXmlStringMaxLen256(struct["Ec2KeyName"]) end
+	if struct["InstanceCount"] then asserts.AssertInteger(struct["InstanceCount"]) end
+	if struct["Placement"] then asserts.AssertPlacementType(struct["Placement"]) end
+	if struct["MasterPublicDnsName"] then asserts.AssertXmlString(struct["MasterPublicDnsName"]) end
+	if struct["NormalizedInstanceHours"] then asserts.AssertInteger(struct["NormalizedInstanceHours"]) end
+	if struct["MasterInstanceId"] then asserts.AssertXmlString(struct["MasterInstanceId"]) end
+	if struct["InstanceGroups"] then asserts.AssertInstanceGroupDetailList(struct["InstanceGroups"]) end
+	if struct["MasterInstanceType"] then asserts.AssertInstanceType(struct["MasterInstanceType"]) end
+	if struct["TerminationProtected"] then asserts.AssertBoolean(struct["TerminationProtected"]) end
+	if struct["HadoopVersion"] then asserts.AssertXmlStringMaxLen256(struct["HadoopVersion"]) end
+	if struct["Ec2SubnetId"] then asserts.AssertXmlStringMaxLen256(struct["Ec2SubnetId"]) end
+	if struct["KeepJobFlowAliveWhenNoSteps"] then asserts.AssertBoolean(struct["KeepJobFlowAliveWhenNoSteps"]) end
+	if struct["SlaveInstanceType"] then asserts.AssertInstanceType(struct["SlaveInstanceType"]) end
+	if struct["Ec2KeyName"] then asserts.AssertXmlStringMaxLen256(struct["Ec2KeyName"]) end
 	for k,_ in pairs(struct) do
-		assert(JobFlowInstancesDetail_keys[k], "JobFlowInstancesDetail contains unknown key " .. tostring(k))
+		assert(keys.JobFlowInstancesDetail[k], "JobFlowInstancesDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type JobFlowInstancesDetail
 -- <p>Specify the type of Amazon EC2 instances that the cluster (job flow) runs on.</p>
--- @param InstanceCount [Integer] <p>The number of Amazon EC2 instances in the cluster. If the value is 1, the same instance serves as both the master and slave node. If the value is greater than 1, one instance is the master node and all others are slave nodes.</p>
--- @param Placement [PlacementType] <p>The Amazon EC2 Availability Zone for the cluster.</p>
--- @param MasterPublicDnsName [XmlString] <p>The DNS name of the master node.</p>
--- @param NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour that an m1.small runs. Larger instances are weighted more, so an Amazon EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
--- @param MasterInstanceId [XmlString] <p>The Amazon EC2 instance identifier of the master node.</p>
--- @param InstanceGroups [InstanceGroupDetailList] <p>Details about the instance groups in a cluster.</p>
--- @param MasterInstanceType [InstanceType] <p>The Amazon EC2 master node instance type.</p>
--- @param TerminationProtected [Boolean] <p>Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.</p>
--- @param HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster.</p>
--- @param Ec2SubnetId [XmlStringMaxLen256] <p>For clusters launched within Amazon Virtual Private Cloud, this is the identifier of the subnet where the cluster was launched.</p>
--- @param KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
--- @param SlaveInstanceType [InstanceType] <p>The Amazon EC2 slave node instance type.</p>
--- @param Ec2KeyName [XmlStringMaxLen256] <p>The name of an Amazon EC2 key pair that can be used to ssh to the master node.</p>
+-- @param _InstanceCount [Integer] <p>The number of Amazon EC2 instances in the cluster. If the value is 1, the same instance serves as both the master and slave node. If the value is greater than 1, one instance is the master node and all others are slave nodes.</p>
+-- @param _Placement [PlacementType] <p>The Amazon EC2 Availability Zone for the cluster.</p>
+-- @param _MasterPublicDnsName [XmlString] <p>The DNS name of the master node.</p>
+-- @param _NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour that an m1.small runs. Larger instances are weighted more, so an Amazon EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+-- @param _MasterInstanceId [XmlString] <p>The Amazon EC2 instance identifier of the master node.</p>
+-- @param _InstanceGroups [InstanceGroupDetailList] <p>Details about the instance groups in a cluster.</p>
+-- @param _MasterInstanceType [InstanceType] <p>The Amazon EC2 master node instance type.</p>
+-- @param _TerminationProtected [Boolean] <p>Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.</p>
+-- @param _HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster.</p>
+-- @param _Ec2SubnetId [XmlStringMaxLen256] <p>For clusters launched within Amazon Virtual Private Cloud, this is the identifier of the subnet where the cluster was launched.</p>
+-- @param _KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
+-- @param _SlaveInstanceType [InstanceType] <p>The Amazon EC2 slave node instance type.</p>
+-- @param _Ec2KeyName [XmlStringMaxLen256] <p>The name of an Amazon EC2 key pair that can be used to ssh to the master node.</p>
 -- Required parameter: MasterInstanceType
 -- Required parameter: SlaveInstanceType
 -- Required parameter: InstanceCount
-function M.JobFlowInstancesDetail(InstanceCount, Placement, MasterPublicDnsName, NormalizedInstanceHours, MasterInstanceId, InstanceGroups, MasterInstanceType, TerminationProtected, HadoopVersion, Ec2SubnetId, KeepJobFlowAliveWhenNoSteps, SlaveInstanceType, Ec2KeyName, ...)
+function M.JobFlowInstancesDetail(_InstanceCount, _Placement, _MasterPublicDnsName, _NormalizedInstanceHours, _MasterInstanceId, _InstanceGroups, _MasterInstanceType, _TerminationProtected, _HadoopVersion, _Ec2SubnetId, _KeepJobFlowAliveWhenNoSteps, _SlaveInstanceType, _Ec2KeyName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobFlowInstancesDetail")
 	local t = { 
-		["InstanceCount"] = InstanceCount,
-		["Placement"] = Placement,
-		["MasterPublicDnsName"] = MasterPublicDnsName,
-		["NormalizedInstanceHours"] = NormalizedInstanceHours,
-		["MasterInstanceId"] = MasterInstanceId,
-		["InstanceGroups"] = InstanceGroups,
-		["MasterInstanceType"] = MasterInstanceType,
-		["TerminationProtected"] = TerminationProtected,
-		["HadoopVersion"] = HadoopVersion,
-		["Ec2SubnetId"] = Ec2SubnetId,
-		["KeepJobFlowAliveWhenNoSteps"] = KeepJobFlowAliveWhenNoSteps,
-		["SlaveInstanceType"] = SlaveInstanceType,
-		["Ec2KeyName"] = Ec2KeyName,
+		["InstanceCount"] = _InstanceCount,
+		["Placement"] = _Placement,
+		["MasterPublicDnsName"] = _MasterPublicDnsName,
+		["NormalizedInstanceHours"] = _NormalizedInstanceHours,
+		["MasterInstanceId"] = _MasterInstanceId,
+		["InstanceGroups"] = _InstanceGroups,
+		["MasterInstanceType"] = _MasterInstanceType,
+		["TerminationProtected"] = _TerminationProtected,
+		["HadoopVersion"] = _HadoopVersion,
+		["Ec2SubnetId"] = _Ec2SubnetId,
+		["KeepJobFlowAliveWhenNoSteps"] = _KeepJobFlowAliveWhenNoSteps,
+		["SlaveInstanceType"] = _SlaveInstanceType,
+		["Ec2KeyName"] = _Ec2KeyName,
 	}
-	M.AssertJobFlowInstancesDetail(t)
+	asserts.AssertJobFlowInstancesDetail(t)
 	return t
 end
 
-local JobFlowInstancesConfig_keys = { "ServiceAccessSecurityGroup" = true, "InstanceCount" = true, "Placement" = true, "TerminationProtected" = true, "Ec2SubnetIds" = true, "InstanceGroups" = true, "InstanceFleets" = true, "MasterInstanceType" = true, "AdditionalSlaveSecurityGroups" = true, "HadoopVersion" = true, "AdditionalMasterSecurityGroups" = true, "Ec2SubnetId" = true, "KeepJobFlowAliveWhenNoSteps" = true, "SlaveInstanceType" = true, "EmrManagedMasterSecurityGroup" = true, "Ec2KeyName" = true, "EmrManagedSlaveSecurityGroup" = true, nil }
+keys.JobFlowInstancesConfig = { ["ServiceAccessSecurityGroup"] = true, ["InstanceCount"] = true, ["Placement"] = true, ["TerminationProtected"] = true, ["Ec2SubnetIds"] = true, ["InstanceGroups"] = true, ["InstanceFleets"] = true, ["MasterInstanceType"] = true, ["AdditionalSlaveSecurityGroups"] = true, ["HadoopVersion"] = true, ["AdditionalMasterSecurityGroups"] = true, ["Ec2SubnetId"] = true, ["KeepJobFlowAliveWhenNoSteps"] = true, ["SlaveInstanceType"] = true, ["EmrManagedMasterSecurityGroup"] = true, ["Ec2KeyName"] = true, ["EmrManagedSlaveSecurityGroup"] = true, nil }
 
-function M.AssertJobFlowInstancesConfig(struct)
+function asserts.AssertJobFlowInstancesConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected JobFlowInstancesConfig to be of type 'table'")
-	if struct["ServiceAccessSecurityGroup"] then M.AssertXmlStringMaxLen256(struct["ServiceAccessSecurityGroup"]) end
-	if struct["InstanceCount"] then M.AssertInteger(struct["InstanceCount"]) end
-	if struct["Placement"] then M.AssertPlacementType(struct["Placement"]) end
-	if struct["TerminationProtected"] then M.AssertBoolean(struct["TerminationProtected"]) end
-	if struct["Ec2SubnetIds"] then M.AssertXmlStringMaxLen256List(struct["Ec2SubnetIds"]) end
-	if struct["InstanceGroups"] then M.AssertInstanceGroupConfigList(struct["InstanceGroups"]) end
-	if struct["InstanceFleets"] then M.AssertInstanceFleetConfigList(struct["InstanceFleets"]) end
-	if struct["MasterInstanceType"] then M.AssertInstanceType(struct["MasterInstanceType"]) end
-	if struct["AdditionalSlaveSecurityGroups"] then M.AssertSecurityGroupsList(struct["AdditionalSlaveSecurityGroups"]) end
-	if struct["HadoopVersion"] then M.AssertXmlStringMaxLen256(struct["HadoopVersion"]) end
-	if struct["AdditionalMasterSecurityGroups"] then M.AssertSecurityGroupsList(struct["AdditionalMasterSecurityGroups"]) end
-	if struct["Ec2SubnetId"] then M.AssertXmlStringMaxLen256(struct["Ec2SubnetId"]) end
-	if struct["KeepJobFlowAliveWhenNoSteps"] then M.AssertBoolean(struct["KeepJobFlowAliveWhenNoSteps"]) end
-	if struct["SlaveInstanceType"] then M.AssertInstanceType(struct["SlaveInstanceType"]) end
-	if struct["EmrManagedMasterSecurityGroup"] then M.AssertXmlStringMaxLen256(struct["EmrManagedMasterSecurityGroup"]) end
-	if struct["Ec2KeyName"] then M.AssertXmlStringMaxLen256(struct["Ec2KeyName"]) end
-	if struct["EmrManagedSlaveSecurityGroup"] then M.AssertXmlStringMaxLen256(struct["EmrManagedSlaveSecurityGroup"]) end
+	if struct["ServiceAccessSecurityGroup"] then asserts.AssertXmlStringMaxLen256(struct["ServiceAccessSecurityGroup"]) end
+	if struct["InstanceCount"] then asserts.AssertInteger(struct["InstanceCount"]) end
+	if struct["Placement"] then asserts.AssertPlacementType(struct["Placement"]) end
+	if struct["TerminationProtected"] then asserts.AssertBoolean(struct["TerminationProtected"]) end
+	if struct["Ec2SubnetIds"] then asserts.AssertXmlStringMaxLen256List(struct["Ec2SubnetIds"]) end
+	if struct["InstanceGroups"] then asserts.AssertInstanceGroupConfigList(struct["InstanceGroups"]) end
+	if struct["InstanceFleets"] then asserts.AssertInstanceFleetConfigList(struct["InstanceFleets"]) end
+	if struct["MasterInstanceType"] then asserts.AssertInstanceType(struct["MasterInstanceType"]) end
+	if struct["AdditionalSlaveSecurityGroups"] then asserts.AssertSecurityGroupsList(struct["AdditionalSlaveSecurityGroups"]) end
+	if struct["HadoopVersion"] then asserts.AssertXmlStringMaxLen256(struct["HadoopVersion"]) end
+	if struct["AdditionalMasterSecurityGroups"] then asserts.AssertSecurityGroupsList(struct["AdditionalMasterSecurityGroups"]) end
+	if struct["Ec2SubnetId"] then asserts.AssertXmlStringMaxLen256(struct["Ec2SubnetId"]) end
+	if struct["KeepJobFlowAliveWhenNoSteps"] then asserts.AssertBoolean(struct["KeepJobFlowAliveWhenNoSteps"]) end
+	if struct["SlaveInstanceType"] then asserts.AssertInstanceType(struct["SlaveInstanceType"]) end
+	if struct["EmrManagedMasterSecurityGroup"] then asserts.AssertXmlStringMaxLen256(struct["EmrManagedMasterSecurityGroup"]) end
+	if struct["Ec2KeyName"] then asserts.AssertXmlStringMaxLen256(struct["Ec2KeyName"]) end
+	if struct["EmrManagedSlaveSecurityGroup"] then asserts.AssertXmlStringMaxLen256(struct["EmrManagedSlaveSecurityGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(JobFlowInstancesConfig_keys[k], "JobFlowInstancesConfig contains unknown key " .. tostring(k))
+		assert(keys.JobFlowInstancesConfig[k], "JobFlowInstancesConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type JobFlowInstancesConfig
 -- <p>A description of the Amazon EC2 instance on which the cluster (job flow) runs. A valid JobFlowInstancesConfig must contain either InstanceGroups or InstanceFleets, which is the recommended configuration. They cannot be used together. You may also have MasterInstanceType, SlaveInstanceType, and InstanceCount (all three must be present), but we don't recommend this configuration.</p>
--- @param ServiceAccessSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
--- @param InstanceCount [Integer] <p>The number of EC2 instances in the cluster.</p>
--- @param Placement [PlacementType] <p>The Availability Zone in which the cluster runs.</p>
--- @param TerminationProtected [Boolean] <p>Specifies whether to lock the cluster to prevent the Amazon EC2 instances from being terminated by API call, user intervention, or in the event of a job-flow error.</p>
--- @param Ec2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters that use the instance fleet configuration. When multiple EC2 subnet IDs are specified, Amazon EMR evaluates them and launches instances in the optimal subnet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param InstanceGroups [InstanceGroupConfigList] <p>Configuration for the instance groups in a cluster.</p>
--- @param InstanceFleets [InstanceFleetConfigList] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>Describes the EC2 instances and instance configurations for clusters that use the instance fleet configuration.</p>
--- @param MasterInstanceType [InstanceType] <p>The EC2 instance type of the master node.</p>
--- @param AdditionalSlaveSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
--- @param HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the AmiVersion parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.</p>
--- @param AdditionalMasterSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
--- @param Ec2SubnetId [XmlStringMaxLen256] <p>Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster launches in the normal Amazon Web Services cloud, outside of an Amazon VPC, if the account launching the cluster supports EC2 Classic networks in the region where the cluster launches.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge instance type for clusters launched in an Amazon VPC.</p>
--- @param KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
--- @param SlaveInstanceType [InstanceType] <p>The EC2 instance type of the slave nodes.</p>
--- @param EmrManagedMasterSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the master node.</p>
--- @param Ec2KeyName [XmlStringMaxLen256] <p>The name of the EC2 key pair that can be used to ssh to the master node as the user called "hadoop."</p>
--- @param EmrManagedSlaveSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
-function M.JobFlowInstancesConfig(ServiceAccessSecurityGroup, InstanceCount, Placement, TerminationProtected, Ec2SubnetIds, InstanceGroups, InstanceFleets, MasterInstanceType, AdditionalSlaveSecurityGroups, HadoopVersion, AdditionalMasterSecurityGroups, Ec2SubnetId, KeepJobFlowAliveWhenNoSteps, SlaveInstanceType, EmrManagedMasterSecurityGroup, Ec2KeyName, EmrManagedSlaveSecurityGroup, ...)
+-- @param _ServiceAccessSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
+-- @param _InstanceCount [Integer] <p>The number of EC2 instances in the cluster.</p>
+-- @param _Placement [PlacementType] <p>The Availability Zone in which the cluster runs.</p>
+-- @param _TerminationProtected [Boolean] <p>Specifies whether to lock the cluster to prevent the Amazon EC2 instances from being terminated by API call, user intervention, or in the event of a job-flow error.</p>
+-- @param _Ec2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters that use the instance fleet configuration. When multiple EC2 subnet IDs are specified, Amazon EMR evaluates them and launches instances in the optimal subnet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
+-- @param _InstanceGroups [InstanceGroupConfigList] <p>Configuration for the instance groups in a cluster.</p>
+-- @param _InstanceFleets [InstanceFleetConfigList] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>Describes the EC2 instances and instance configurations for clusters that use the instance fleet configuration.</p>
+-- @param _MasterInstanceType [InstanceType] <p>The EC2 instance type of the master node.</p>
+-- @param _AdditionalSlaveSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
+-- @param _HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the AmiVersion parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.</p>
+-- @param _AdditionalMasterSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
+-- @param _Ec2SubnetId [XmlStringMaxLen256] <p>Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster launches in the normal Amazon Web Services cloud, outside of an Amazon VPC, if the account launching the cluster supports EC2 Classic networks in the region where the cluster launches.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge instance type for clusters launched in an Amazon VPC.</p>
+-- @param _KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
+-- @param _SlaveInstanceType [InstanceType] <p>The EC2 instance type of the slave nodes.</p>
+-- @param _EmrManagedMasterSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the master node.</p>
+-- @param _Ec2KeyName [XmlStringMaxLen256] <p>The name of the EC2 key pair that can be used to ssh to the master node as the user called "hadoop."</p>
+-- @param _EmrManagedSlaveSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
+function M.JobFlowInstancesConfig(_ServiceAccessSecurityGroup, _InstanceCount, _Placement, _TerminationProtected, _Ec2SubnetIds, _InstanceGroups, _InstanceFleets, _MasterInstanceType, _AdditionalSlaveSecurityGroups, _HadoopVersion, _AdditionalMasterSecurityGroups, _Ec2SubnetId, _KeepJobFlowAliveWhenNoSteps, _SlaveInstanceType, _EmrManagedMasterSecurityGroup, _Ec2KeyName, _EmrManagedSlaveSecurityGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobFlowInstancesConfig")
 	local t = { 
-		["ServiceAccessSecurityGroup"] = ServiceAccessSecurityGroup,
-		["InstanceCount"] = InstanceCount,
-		["Placement"] = Placement,
-		["TerminationProtected"] = TerminationProtected,
-		["Ec2SubnetIds"] = Ec2SubnetIds,
-		["InstanceGroups"] = InstanceGroups,
-		["InstanceFleets"] = InstanceFleets,
-		["MasterInstanceType"] = MasterInstanceType,
-		["AdditionalSlaveSecurityGroups"] = AdditionalSlaveSecurityGroups,
-		["HadoopVersion"] = HadoopVersion,
-		["AdditionalMasterSecurityGroups"] = AdditionalMasterSecurityGroups,
-		["Ec2SubnetId"] = Ec2SubnetId,
-		["KeepJobFlowAliveWhenNoSteps"] = KeepJobFlowAliveWhenNoSteps,
-		["SlaveInstanceType"] = SlaveInstanceType,
-		["EmrManagedMasterSecurityGroup"] = EmrManagedMasterSecurityGroup,
-		["Ec2KeyName"] = Ec2KeyName,
-		["EmrManagedSlaveSecurityGroup"] = EmrManagedSlaveSecurityGroup,
+		["ServiceAccessSecurityGroup"] = _ServiceAccessSecurityGroup,
+		["InstanceCount"] = _InstanceCount,
+		["Placement"] = _Placement,
+		["TerminationProtected"] = _TerminationProtected,
+		["Ec2SubnetIds"] = _Ec2SubnetIds,
+		["InstanceGroups"] = _InstanceGroups,
+		["InstanceFleets"] = _InstanceFleets,
+		["MasterInstanceType"] = _MasterInstanceType,
+		["AdditionalSlaveSecurityGroups"] = _AdditionalSlaveSecurityGroups,
+		["HadoopVersion"] = _HadoopVersion,
+		["AdditionalMasterSecurityGroups"] = _AdditionalMasterSecurityGroups,
+		["Ec2SubnetId"] = _Ec2SubnetId,
+		["KeepJobFlowAliveWhenNoSteps"] = _KeepJobFlowAliveWhenNoSteps,
+		["SlaveInstanceType"] = _SlaveInstanceType,
+		["EmrManagedMasterSecurityGroup"] = _EmrManagedMasterSecurityGroup,
+		["Ec2KeyName"] = _Ec2KeyName,
+		["EmrManagedSlaveSecurityGroup"] = _EmrManagedSlaveSecurityGroup,
 	}
-	M.AssertJobFlowInstancesConfig(t)
+	asserts.AssertJobFlowInstancesConfig(t)
 	return t
 end
 
-local InstanceFleetStateChangeReason_keys = { "Message" = true, "Code" = true, nil }
+keys.InstanceFleetStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
 
-function M.AssertInstanceFleetStateChangeReason(struct)
+function asserts.AssertInstanceFleetStateChangeReason(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceFleetStateChangeReason to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Code"] then M.AssertInstanceFleetStateChangeReasonCode(struct["Code"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Code"] then asserts.AssertInstanceFleetStateChangeReasonCode(struct["Code"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceFleetStateChangeReason_keys[k], "InstanceFleetStateChangeReason contains unknown key " .. tostring(k))
+		assert(keys.InstanceFleetStateChangeReason[k], "InstanceFleetStateChangeReason contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceFleetStateChangeReason
 -- <p>Provides status change reason details for the instance fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param Message [String] <p>An explanatory message.</p>
--- @param Code [InstanceFleetStateChangeReasonCode] <p>A code corresponding to the reason the state change occurred.</p>
-function M.InstanceFleetStateChangeReason(Message, Code, ...)
+-- @param _Message [String] <p>An explanatory message.</p>
+-- @param _Code [InstanceFleetStateChangeReasonCode] <p>A code corresponding to the reason the state change occurred.</p>
+function M.InstanceFleetStateChangeReason(_Message, _Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetStateChangeReason")
 	local t = { 
-		["Message"] = Message,
-		["Code"] = Code,
+		["Message"] = _Message,
+		["Code"] = _Code,
 	}
-	M.AssertInstanceFleetStateChangeReason(t)
+	asserts.AssertInstanceFleetStateChangeReason(t)
 	return t
 end
 
-local StepStateChangeReason_keys = { "Message" = true, "Code" = true, nil }
+keys.StepStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
 
-function M.AssertStepStateChangeReason(struct)
+function asserts.AssertStepStateChangeReason(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StepStateChangeReason to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Code"] then M.AssertStepStateChangeReasonCode(struct["Code"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Code"] then asserts.AssertStepStateChangeReasonCode(struct["Code"]) end
 	for k,_ in pairs(struct) do
-		assert(StepStateChangeReason_keys[k], "StepStateChangeReason contains unknown key " .. tostring(k))
+		assert(keys.StepStateChangeReason[k], "StepStateChangeReason contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StepStateChangeReason
 -- <p>The details of the step state change reason.</p>
--- @param Message [String] <p>The descriptive message for the state change reason.</p>
--- @param Code [StepStateChangeReasonCode] <p>The programmable code for the state change reason. Note: Currently, the service provides no code for the state change.</p>
-function M.StepStateChangeReason(Message, Code, ...)
+-- @param _Message [String] <p>The descriptive message for the state change reason.</p>
+-- @param _Code [StepStateChangeReasonCode] <p>The programmable code for the state change reason. Note: Currently, the service provides no code for the state change.</p>
+function M.StepStateChangeReason(_Message, _Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepStateChangeReason")
 	local t = { 
-		["Message"] = Message,
-		["Code"] = Code,
+		["Message"] = _Message,
+		["Code"] = _Code,
 	}
-	M.AssertStepStateChangeReason(t)
+	asserts.AssertStepStateChangeReason(t)
 	return t
 end
 
-local PlacementType_keys = { "AvailabilityZone" = true, "AvailabilityZones" = true, nil }
+keys.PlacementType = { ["AvailabilityZone"] = true, ["AvailabilityZones"] = true, nil }
 
-function M.AssertPlacementType(struct)
+function asserts.AssertPlacementType(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PlacementType to be of type 'table'")
-	if struct["AvailabilityZone"] then M.AssertXmlString(struct["AvailabilityZone"]) end
-	if struct["AvailabilityZones"] then M.AssertXmlStringMaxLen256List(struct["AvailabilityZones"]) end
+	if struct["AvailabilityZone"] then asserts.AssertXmlString(struct["AvailabilityZone"]) end
+	if struct["AvailabilityZones"] then asserts.AssertXmlStringMaxLen256List(struct["AvailabilityZones"]) end
 	for k,_ in pairs(struct) do
-		assert(PlacementType_keys[k], "PlacementType contains unknown key " .. tostring(k))
+		assert(keys.PlacementType[k], "PlacementType contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PlacementType
 -- <p>The Amazon EC2 Availability Zone configuration of the cluster (job flow).</p>
--- @param AvailabilityZone [XmlString] <p>The Amazon EC2 Availability Zone for the cluster. <code>AvailabilityZone</code> is used for uniform instance groups, while <code>AvailabilityZones</code> (plural) is used for instance fleets.</p>
--- @param AvailabilityZones [XmlStringMaxLen256List] <p>When multiple Availability Zones are specified, Amazon EMR evaluates them and launches instances in the optimal Availability Zone. <code>AvailabilityZones</code> is used for instance fleets, while <code>AvailabilityZone</code> (singular) is used for uniform instance groups.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
-function M.PlacementType(AvailabilityZone, AvailabilityZones, ...)
+-- @param _AvailabilityZone [XmlString] <p>The Amazon EC2 Availability Zone for the cluster. <code>AvailabilityZone</code> is used for uniform instance groups, while <code>AvailabilityZones</code> (plural) is used for instance fleets.</p>
+-- @param _AvailabilityZones [XmlStringMaxLen256List] <p>When multiple Availability Zones are specified, Amazon EMR evaluates them and launches instances in the optimal Availability Zone. <code>AvailabilityZones</code> is used for instance fleets, while <code>AvailabilityZone</code> (singular) is used for uniform instance groups.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
+function M.PlacementType(_AvailabilityZone, _AvailabilityZones, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlacementType")
 	local t = { 
-		["AvailabilityZone"] = AvailabilityZone,
-		["AvailabilityZones"] = AvailabilityZones,
+		["AvailabilityZone"] = _AvailabilityZone,
+		["AvailabilityZones"] = _AvailabilityZones,
 	}
-	M.AssertPlacementType(t)
+	asserts.AssertPlacementType(t)
 	return t
 end
 
-local ListInstanceFleetsOutput_keys = { "InstanceFleets" = true, "Marker" = true, nil }
+keys.ListInstanceFleetsOutput = { ["InstanceFleets"] = true, ["Marker"] = true, nil }
 
-function M.AssertListInstanceFleetsOutput(struct)
+function asserts.AssertListInstanceFleetsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListInstanceFleetsOutput to be of type 'table'")
-	if struct["InstanceFleets"] then M.AssertInstanceFleetList(struct["InstanceFleets"]) end
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
+	if struct["InstanceFleets"] then asserts.AssertInstanceFleetList(struct["InstanceFleets"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
 	for k,_ in pairs(struct) do
-		assert(ListInstanceFleetsOutput_keys[k], "ListInstanceFleetsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListInstanceFleetsOutput[k], "ListInstanceFleetsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListInstanceFleetsOutput
 --  
--- @param InstanceFleets [InstanceFleetList] <p>The list of instance fleets for the cluster and given filters.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
-function M.ListInstanceFleetsOutput(InstanceFleets, Marker, ...)
+-- @param _InstanceFleets [InstanceFleetList] <p>The list of instance fleets for the cluster and given filters.</p>
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+function M.ListInstanceFleetsOutput(_InstanceFleets, _Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceFleetsOutput")
 	local t = { 
-		["InstanceFleets"] = InstanceFleets,
-		["Marker"] = Marker,
+		["InstanceFleets"] = _InstanceFleets,
+		["Marker"] = _Marker,
 	}
-	M.AssertListInstanceFleetsOutput(t)
+	asserts.AssertListInstanceFleetsOutput(t)
 	return t
 end
 
-local ListBootstrapActionsOutput_keys = { "Marker" = true, "BootstrapActions" = true, nil }
+keys.ListBootstrapActionsOutput = { ["Marker"] = true, ["BootstrapActions"] = true, nil }
 
-function M.AssertListBootstrapActionsOutput(struct)
+function asserts.AssertListBootstrapActionsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListBootstrapActionsOutput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["BootstrapActions"] then M.AssertCommandList(struct["BootstrapActions"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["BootstrapActions"] then asserts.AssertCommandList(struct["BootstrapActions"]) end
 	for k,_ in pairs(struct) do
-		assert(ListBootstrapActionsOutput_keys[k], "ListBootstrapActionsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListBootstrapActionsOutput[k], "ListBootstrapActionsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListBootstrapActionsOutput
 -- <p>This output contains the bootstrap actions detail.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param BootstrapActions [CommandList] <p>The bootstrap actions associated with the cluster.</p>
-function M.ListBootstrapActionsOutput(Marker, BootstrapActions, ...)
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _BootstrapActions [CommandList] <p>The bootstrap actions associated with the cluster.</p>
+function M.ListBootstrapActionsOutput(_Marker, _BootstrapActions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBootstrapActionsOutput")
 	local t = { 
-		["Marker"] = Marker,
-		["BootstrapActions"] = BootstrapActions,
+		["Marker"] = _Marker,
+		["BootstrapActions"] = _BootstrapActions,
 	}
-	M.AssertListBootstrapActionsOutput(t)
+	asserts.AssertListBootstrapActionsOutput(t)
 	return t
 end
 
-local DescribeStepInput_keys = { "StepId" = true, "ClusterId" = true, nil }
+keys.DescribeStepInput = { ["StepId"] = true, ["ClusterId"] = true, nil }
 
-function M.AssertDescribeStepInput(struct)
+function asserts.AssertDescribeStepInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeStepInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
 	assert(struct["StepId"], "Expected key StepId to exist in table")
-	if struct["StepId"] then M.AssertStepId(struct["StepId"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
+	if struct["StepId"] then asserts.AssertStepId(struct["StepId"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeStepInput_keys[k], "DescribeStepInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeStepInput[k], "DescribeStepInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeStepInput
 -- <p>This input determines which step to describe.</p>
--- @param StepId [StepId] <p>The identifier of the step to describe.</p>
--- @param ClusterId [ClusterId] <p>The identifier of the cluster with steps to describe.</p>
+-- @param _StepId [StepId] <p>The identifier of the step to describe.</p>
+-- @param _ClusterId [ClusterId] <p>The identifier of the cluster with steps to describe.</p>
 -- Required parameter: ClusterId
 -- Required parameter: StepId
-function M.DescribeStepInput(StepId, ClusterId, ...)
+function M.DescribeStepInput(_StepId, _ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStepInput")
 	local t = { 
-		["StepId"] = StepId,
-		["ClusterId"] = ClusterId,
+		["StepId"] = _StepId,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertDescribeStepInput(t)
+	asserts.AssertDescribeStepInput(t)
 	return t
 end
 
-local ModifyInstanceGroupsInput_keys = { "ClusterId" = true, "InstanceGroups" = true, nil }
+keys.ModifyInstanceGroupsInput = { ["ClusterId"] = true, ["InstanceGroups"] = true, nil }
 
-function M.AssertModifyInstanceGroupsInput(struct)
+function asserts.AssertModifyInstanceGroupsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyInstanceGroupsInput to be of type 'table'")
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
-	if struct["InstanceGroups"] then M.AssertInstanceGroupModifyConfigList(struct["InstanceGroups"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
+	if struct["InstanceGroups"] then asserts.AssertInstanceGroupModifyConfigList(struct["InstanceGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyInstanceGroupsInput_keys[k], "ModifyInstanceGroupsInput contains unknown key " .. tostring(k))
+		assert(keys.ModifyInstanceGroupsInput[k], "ModifyInstanceGroupsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyInstanceGroupsInput
 -- <p>Change the size of some instance groups.</p>
--- @param ClusterId [ClusterId] <p>The ID of the cluster to which the instance group belongs.</p>
--- @param InstanceGroups [InstanceGroupModifyConfigList] <p>Instance groups to change.</p>
-function M.ModifyInstanceGroupsInput(ClusterId, InstanceGroups, ...)
+-- @param _ClusterId [ClusterId] <p>The ID of the cluster to which the instance group belongs.</p>
+-- @param _InstanceGroups [InstanceGroupModifyConfigList] <p>Instance groups to change.</p>
+function M.ModifyInstanceGroupsInput(_ClusterId, _InstanceGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyInstanceGroupsInput")
 	local t = { 
-		["ClusterId"] = ClusterId,
-		["InstanceGroups"] = InstanceGroups,
+		["ClusterId"] = _ClusterId,
+		["InstanceGroups"] = _InstanceGroups,
 	}
-	M.AssertModifyInstanceGroupsInput(t)
+	asserts.AssertModifyInstanceGroupsInput(t)
 	return t
 end
 
-local DescribeJobFlowsOutput_keys = { "JobFlows" = true, nil }
+keys.DescribeJobFlowsOutput = { ["JobFlows"] = true, nil }
 
-function M.AssertDescribeJobFlowsOutput(struct)
+function asserts.AssertDescribeJobFlowsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeJobFlowsOutput to be of type 'table'")
-	if struct["JobFlows"] then M.AssertJobFlowDetailList(struct["JobFlows"]) end
+	if struct["JobFlows"] then asserts.AssertJobFlowDetailList(struct["JobFlows"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeJobFlowsOutput_keys[k], "DescribeJobFlowsOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeJobFlowsOutput[k], "DescribeJobFlowsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeJobFlowsOutput
 -- <p> The output for the <a>DescribeJobFlows</a> operation. </p>
--- @param JobFlows [JobFlowDetailList] <p>A list of job flows matching the parameters supplied.</p>
-function M.DescribeJobFlowsOutput(JobFlows, ...)
+-- @param _JobFlows [JobFlowDetailList] <p>A list of job flows matching the parameters supplied.</p>
+function M.DescribeJobFlowsOutput(_JobFlows, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobFlowsOutput")
 	local t = { 
-		["JobFlows"] = JobFlows,
+		["JobFlows"] = _JobFlows,
 	}
-	M.AssertDescribeJobFlowsOutput(t)
+	asserts.AssertDescribeJobFlowsOutput(t)
 	return t
 end
 
-local StepTimeline_keys = { "EndDateTime" = true, "CreationDateTime" = true, "StartDateTime" = true, nil }
+keys.StepTimeline = { ["EndDateTime"] = true, ["CreationDateTime"] = true, ["StartDateTime"] = true, nil }
 
-function M.AssertStepTimeline(struct)
+function asserts.AssertStepTimeline(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StepTimeline to be of type 'table'")
-	if struct["EndDateTime"] then M.AssertDate(struct["EndDateTime"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["StartDateTime"] then M.AssertDate(struct["StartDateTime"]) end
+	if struct["EndDateTime"] then asserts.AssertDate(struct["EndDateTime"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["StartDateTime"] then asserts.AssertDate(struct["StartDateTime"]) end
 	for k,_ in pairs(struct) do
-		assert(StepTimeline_keys[k], "StepTimeline contains unknown key " .. tostring(k))
+		assert(keys.StepTimeline[k], "StepTimeline contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StepTimeline
 -- <p>The timeline of the cluster step lifecycle.</p>
--- @param EndDateTime [Date] <p>The date and time when the cluster step execution completed or failed.</p>
--- @param CreationDateTime [Date] <p>The date and time when the cluster step was created.</p>
--- @param StartDateTime [Date] <p>The date and time when the cluster step execution started.</p>
-function M.StepTimeline(EndDateTime, CreationDateTime, StartDateTime, ...)
+-- @param _EndDateTime [Date] <p>The date and time when the cluster step execution completed or failed.</p>
+-- @param _CreationDateTime [Date] <p>The date and time when the cluster step was created.</p>
+-- @param _StartDateTime [Date] <p>The date and time when the cluster step execution started.</p>
+function M.StepTimeline(_EndDateTime, _CreationDateTime, _StartDateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepTimeline")
 	local t = { 
-		["EndDateTime"] = EndDateTime,
-		["CreationDateTime"] = CreationDateTime,
-		["StartDateTime"] = StartDateTime,
+		["EndDateTime"] = _EndDateTime,
+		["CreationDateTime"] = _CreationDateTime,
+		["StartDateTime"] = _StartDateTime,
 	}
-	M.AssertStepTimeline(t)
+	asserts.AssertStepTimeline(t)
 	return t
 end
 
-local Step_keys = { "Status" = true, "Config" = true, "Id" = true, "ActionOnFailure" = true, "Name" = true, nil }
+keys.Step = { ["Status"] = true, ["Config"] = true, ["Id"] = true, ["ActionOnFailure"] = true, ["Name"] = true, nil }
 
-function M.AssertStep(struct)
+function asserts.AssertStep(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Step to be of type 'table'")
-	if struct["Status"] then M.AssertStepStatus(struct["Status"]) end
-	if struct["Config"] then M.AssertHadoopStepConfig(struct["Config"]) end
-	if struct["Id"] then M.AssertStepId(struct["Id"]) end
-	if struct["ActionOnFailure"] then M.AssertActionOnFailure(struct["ActionOnFailure"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Status"] then asserts.AssertStepStatus(struct["Status"]) end
+	if struct["Config"] then asserts.AssertHadoopStepConfig(struct["Config"]) end
+	if struct["Id"] then asserts.AssertStepId(struct["Id"]) end
+	if struct["ActionOnFailure"] then asserts.AssertActionOnFailure(struct["ActionOnFailure"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(Step_keys[k], "Step contains unknown key " .. tostring(k))
+		assert(keys.Step[k], "Step contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Step
 -- <p>This represents a step in a cluster.</p>
--- @param Status [StepStatus] <p>The current execution status details of the cluster step.</p>
--- @param Config [HadoopStepConfig] <p>The Hadoop job configuration of the cluster step.</p>
--- @param Id [StepId] <p>The identifier of the cluster step.</p>
--- @param ActionOnFailure [ActionOnFailure] <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
--- @param Name [String] <p>The name of the cluster step.</p>
-function M.Step(Status, Config, Id, ActionOnFailure, Name, ...)
+-- @param _Status [StepStatus] <p>The current execution status details of the cluster step.</p>
+-- @param _Config [HadoopStepConfig] <p>The Hadoop job configuration of the cluster step.</p>
+-- @param _Id [StepId] <p>The identifier of the cluster step.</p>
+-- @param _ActionOnFailure [ActionOnFailure] <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
+-- @param _Name [String] <p>The name of the cluster step.</p>
+function M.Step(_Status, _Config, _Id, _ActionOnFailure, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Step")
 	local t = { 
-		["Status"] = Status,
-		["Config"] = Config,
-		["Id"] = Id,
-		["ActionOnFailure"] = ActionOnFailure,
-		["Name"] = Name,
+		["Status"] = _Status,
+		["Config"] = _Config,
+		["Id"] = _Id,
+		["ActionOnFailure"] = _ActionOnFailure,
+		["Name"] = _Name,
 	}
-	M.AssertStep(t)
+	asserts.AssertStep(t)
 	return t
 end
 
-local KeyValue_keys = { "Value" = true, "Key" = true, nil }
+keys.KeyValue = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertKeyValue(struct)
+function asserts.AssertKeyValue(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected KeyValue to be of type 'table'")
-	if struct["Value"] then M.AssertXmlString(struct["Value"]) end
-	if struct["Key"] then M.AssertXmlString(struct["Key"]) end
+	if struct["Value"] then asserts.AssertXmlString(struct["Value"]) end
+	if struct["Key"] then asserts.AssertXmlString(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(KeyValue_keys[k], "KeyValue contains unknown key " .. tostring(k))
+		assert(keys.KeyValue[k], "KeyValue contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type KeyValue
 -- <p>A key value pair.</p>
--- @param Value [XmlString] <p>The value part of the identified key.</p>
--- @param Key [XmlString] <p>The unique identifier of a key value pair.</p>
-function M.KeyValue(Value, Key, ...)
+-- @param _Value [XmlString] <p>The value part of the identified key.</p>
+-- @param _Key [XmlString] <p>The unique identifier of a key value pair.</p>
+function M.KeyValue(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyValue")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertKeyValue(t)
+	asserts.AssertKeyValue(t)
 	return t
 end
 
-local ClusterStateChangeReason_keys = { "Message" = true, "Code" = true, nil }
+keys.ClusterStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
 
-function M.AssertClusterStateChangeReason(struct)
+function asserts.AssertClusterStateChangeReason(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ClusterStateChangeReason to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Code"] then M.AssertClusterStateChangeReasonCode(struct["Code"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Code"] then asserts.AssertClusterStateChangeReasonCode(struct["Code"]) end
 	for k,_ in pairs(struct) do
-		assert(ClusterStateChangeReason_keys[k], "ClusterStateChangeReason contains unknown key " .. tostring(k))
+		assert(keys.ClusterStateChangeReason[k], "ClusterStateChangeReason contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ClusterStateChangeReason
 -- <p>The reason that the cluster changed to its current state.</p>
--- @param Message [String] <p>The descriptive message for the state change reason.</p>
--- @param Code [ClusterStateChangeReasonCode] <p>The programmatic code for the state change reason.</p>
-function M.ClusterStateChangeReason(Message, Code, ...)
+-- @param _Message [String] <p>The descriptive message for the state change reason.</p>
+-- @param _Code [ClusterStateChangeReasonCode] <p>The programmatic code for the state change reason.</p>
+function M.ClusterStateChangeReason(_Message, _Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterStateChangeReason")
 	local t = { 
-		["Message"] = Message,
-		["Code"] = Code,
+		["Message"] = _Message,
+		["Code"] = _Code,
 	}
-	M.AssertClusterStateChangeReason(t)
+	asserts.AssertClusterStateChangeReason(t)
 	return t
 end
 
-local InstanceStateChangeReason_keys = { "Message" = true, "Code" = true, nil }
+keys.InstanceStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
 
-function M.AssertInstanceStateChangeReason(struct)
+function asserts.AssertInstanceStateChangeReason(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceStateChangeReason to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Code"] then M.AssertInstanceStateChangeReasonCode(struct["Code"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Code"] then asserts.AssertInstanceStateChangeReasonCode(struct["Code"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceStateChangeReason_keys[k], "InstanceStateChangeReason contains unknown key " .. tostring(k))
+		assert(keys.InstanceStateChangeReason[k], "InstanceStateChangeReason contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceStateChangeReason
 -- <p>The details of the status change reason for the instance.</p>
--- @param Message [String] <p>The status change reason description.</p>
--- @param Code [InstanceStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
-function M.InstanceStateChangeReason(Message, Code, ...)
+-- @param _Message [String] <p>The status change reason description.</p>
+-- @param _Code [InstanceStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
+function M.InstanceStateChangeReason(_Message, _Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceStateChangeReason")
 	local t = { 
-		["Message"] = Message,
-		["Code"] = Code,
+		["Message"] = _Message,
+		["Code"] = _Code,
 	}
-	M.AssertInstanceStateChangeReason(t)
+	asserts.AssertInstanceStateChangeReason(t)
 	return t
 end
 
-local Ec2InstanceAttributes_keys = { "ServiceAccessSecurityGroup" = true, "EmrManagedMasterSecurityGroup" = true, "RequestedEc2AvailabilityZones" = true, "AdditionalSlaveSecurityGroups" = true, "AdditionalMasterSecurityGroups" = true, "RequestedEc2SubnetIds" = true, "Ec2SubnetId" = true, "IamInstanceProfile" = true, "Ec2KeyName" = true, "Ec2AvailabilityZone" = true, "EmrManagedSlaveSecurityGroup" = true, nil }
+keys.Ec2InstanceAttributes = { ["ServiceAccessSecurityGroup"] = true, ["EmrManagedMasterSecurityGroup"] = true, ["RequestedEc2AvailabilityZones"] = true, ["AdditionalSlaveSecurityGroups"] = true, ["AdditionalMasterSecurityGroups"] = true, ["RequestedEc2SubnetIds"] = true, ["Ec2SubnetId"] = true, ["IamInstanceProfile"] = true, ["Ec2KeyName"] = true, ["Ec2AvailabilityZone"] = true, ["EmrManagedSlaveSecurityGroup"] = true, nil }
 
-function M.AssertEc2InstanceAttributes(struct)
+function asserts.AssertEc2InstanceAttributes(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Ec2InstanceAttributes to be of type 'table'")
-	if struct["ServiceAccessSecurityGroup"] then M.AssertString(struct["ServiceAccessSecurityGroup"]) end
-	if struct["EmrManagedMasterSecurityGroup"] then M.AssertString(struct["EmrManagedMasterSecurityGroup"]) end
-	if struct["RequestedEc2AvailabilityZones"] then M.AssertXmlStringMaxLen256List(struct["RequestedEc2AvailabilityZones"]) end
-	if struct["AdditionalSlaveSecurityGroups"] then M.AssertStringList(struct["AdditionalSlaveSecurityGroups"]) end
-	if struct["AdditionalMasterSecurityGroups"] then M.AssertStringList(struct["AdditionalMasterSecurityGroups"]) end
-	if struct["RequestedEc2SubnetIds"] then M.AssertXmlStringMaxLen256List(struct["RequestedEc2SubnetIds"]) end
-	if struct["Ec2SubnetId"] then M.AssertString(struct["Ec2SubnetId"]) end
-	if struct["IamInstanceProfile"] then M.AssertString(struct["IamInstanceProfile"]) end
-	if struct["Ec2KeyName"] then M.AssertString(struct["Ec2KeyName"]) end
-	if struct["Ec2AvailabilityZone"] then M.AssertString(struct["Ec2AvailabilityZone"]) end
-	if struct["EmrManagedSlaveSecurityGroup"] then M.AssertString(struct["EmrManagedSlaveSecurityGroup"]) end
+	if struct["ServiceAccessSecurityGroup"] then asserts.AssertString(struct["ServiceAccessSecurityGroup"]) end
+	if struct["EmrManagedMasterSecurityGroup"] then asserts.AssertString(struct["EmrManagedMasterSecurityGroup"]) end
+	if struct["RequestedEc2AvailabilityZones"] then asserts.AssertXmlStringMaxLen256List(struct["RequestedEc2AvailabilityZones"]) end
+	if struct["AdditionalSlaveSecurityGroups"] then asserts.AssertStringList(struct["AdditionalSlaveSecurityGroups"]) end
+	if struct["AdditionalMasterSecurityGroups"] then asserts.AssertStringList(struct["AdditionalMasterSecurityGroups"]) end
+	if struct["RequestedEc2SubnetIds"] then asserts.AssertXmlStringMaxLen256List(struct["RequestedEc2SubnetIds"]) end
+	if struct["Ec2SubnetId"] then asserts.AssertString(struct["Ec2SubnetId"]) end
+	if struct["IamInstanceProfile"] then asserts.AssertString(struct["IamInstanceProfile"]) end
+	if struct["Ec2KeyName"] then asserts.AssertString(struct["Ec2KeyName"]) end
+	if struct["Ec2AvailabilityZone"] then asserts.AssertString(struct["Ec2AvailabilityZone"]) end
+	if struct["EmrManagedSlaveSecurityGroup"] then asserts.AssertString(struct["EmrManagedSlaveSecurityGroup"]) end
 	for k,_ in pairs(struct) do
-		assert(Ec2InstanceAttributes_keys[k], "Ec2InstanceAttributes contains unknown key " .. tostring(k))
+		assert(keys.Ec2InstanceAttributes[k], "Ec2InstanceAttributes contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Ec2InstanceAttributes
 -- <p>Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.</p>
--- @param ServiceAccessSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
--- @param EmrManagedMasterSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the master node.</p>
--- @param RequestedEc2AvailabilityZones [XmlStringMaxLen256List] <p>Applies to clusters configured with the The list of availability zones to choose from. The service will choose the availability zone with the best mix of available capacity and lowest cost to launch the cluster. If you do not specify this value, the cluster is launched in any availability zone that the customer account has access to.</p>
--- @param AdditionalSlaveSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
--- @param AdditionalMasterSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
--- @param RequestedEc2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters configured with the instance fleets option. Specifies the unique identifier of one or more Amazon EC2 subnets in which to launch EC2 cluster instances. Amazon EMR chooses the EC2 subnet with the best performance and cost characteristics from among the list of RequestedEc2SubnetIds and launches all cluster instances within that subnet. If this value is not specified, and the account supports EC2-Classic networks, the cluster launches instances in the EC2-Classic network and uses Requested</p>
--- @param Ec2SubnetId [String] <p>To launch the cluster in Amazon VPC, set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster is launched in the normal AWS cloud, outside of a VPC.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus, you cannot specify the cc1.4xlarge instance type for nodes of a cluster launched in a VPC.</p>
--- @param IamInstanceProfile [String] <p>The IAM role that was specified when the cluster was launched. The EC2 instances of the cluster assume this role.</p>
--- @param Ec2KeyName [String] <p>The name of the Amazon EC2 key pair to use when connecting with SSH into the master node as a user named "hadoop".</p>
--- @param Ec2AvailabilityZone [String] <p>The Availability Zone in which the cluster will run. </p>
--- @param EmrManagedSlaveSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
-function M.Ec2InstanceAttributes(ServiceAccessSecurityGroup, EmrManagedMasterSecurityGroup, RequestedEc2AvailabilityZones, AdditionalSlaveSecurityGroups, AdditionalMasterSecurityGroups, RequestedEc2SubnetIds, Ec2SubnetId, IamInstanceProfile, Ec2KeyName, Ec2AvailabilityZone, EmrManagedSlaveSecurityGroup, ...)
+-- @param _ServiceAccessSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
+-- @param _EmrManagedMasterSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the master node.</p>
+-- @param _RequestedEc2AvailabilityZones [XmlStringMaxLen256List] <p>Applies to clusters configured with the The list of availability zones to choose from. The service will choose the availability zone with the best mix of available capacity and lowest cost to launch the cluster. If you do not specify this value, the cluster is launched in any availability zone that the customer account has access to.</p>
+-- @param _AdditionalSlaveSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
+-- @param _AdditionalMasterSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
+-- @param _RequestedEc2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters configured with the instance fleets option. Specifies the unique identifier of one or more Amazon EC2 subnets in which to launch EC2 cluster instances. Amazon EMR chooses the EC2 subnet with the best performance and cost characteristics from among the list of RequestedEc2SubnetIds and launches all cluster instances within that subnet. If this value is not specified, and the account supports EC2-Classic networks, the cluster launches instances in the EC2-Classic network and uses Requested</p>
+-- @param _Ec2SubnetId [String] <p>To launch the cluster in Amazon VPC, set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster is launched in the normal AWS cloud, outside of a VPC.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus, you cannot specify the cc1.4xlarge instance type for nodes of a cluster launched in a VPC.</p>
+-- @param _IamInstanceProfile [String] <p>The IAM role that was specified when the cluster was launched. The EC2 instances of the cluster assume this role.</p>
+-- @param _Ec2KeyName [String] <p>The name of the Amazon EC2 key pair to use when connecting with SSH into the master node as a user named "hadoop".</p>
+-- @param _Ec2AvailabilityZone [String] <p>The Availability Zone in which the cluster will run. </p>
+-- @param _EmrManagedSlaveSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
+function M.Ec2InstanceAttributes(_ServiceAccessSecurityGroup, _EmrManagedMasterSecurityGroup, _RequestedEc2AvailabilityZones, _AdditionalSlaveSecurityGroups, _AdditionalMasterSecurityGroups, _RequestedEc2SubnetIds, _Ec2SubnetId, _IamInstanceProfile, _Ec2KeyName, _Ec2AvailabilityZone, _EmrManagedSlaveSecurityGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Ec2InstanceAttributes")
 	local t = { 
-		["ServiceAccessSecurityGroup"] = ServiceAccessSecurityGroup,
-		["EmrManagedMasterSecurityGroup"] = EmrManagedMasterSecurityGroup,
-		["RequestedEc2AvailabilityZones"] = RequestedEc2AvailabilityZones,
-		["AdditionalSlaveSecurityGroups"] = AdditionalSlaveSecurityGroups,
-		["AdditionalMasterSecurityGroups"] = AdditionalMasterSecurityGroups,
-		["RequestedEc2SubnetIds"] = RequestedEc2SubnetIds,
-		["Ec2SubnetId"] = Ec2SubnetId,
-		["IamInstanceProfile"] = IamInstanceProfile,
-		["Ec2KeyName"] = Ec2KeyName,
-		["Ec2AvailabilityZone"] = Ec2AvailabilityZone,
-		["EmrManagedSlaveSecurityGroup"] = EmrManagedSlaveSecurityGroup,
+		["ServiceAccessSecurityGroup"] = _ServiceAccessSecurityGroup,
+		["EmrManagedMasterSecurityGroup"] = _EmrManagedMasterSecurityGroup,
+		["RequestedEc2AvailabilityZones"] = _RequestedEc2AvailabilityZones,
+		["AdditionalSlaveSecurityGroups"] = _AdditionalSlaveSecurityGroups,
+		["AdditionalMasterSecurityGroups"] = _AdditionalMasterSecurityGroups,
+		["RequestedEc2SubnetIds"] = _RequestedEc2SubnetIds,
+		["Ec2SubnetId"] = _Ec2SubnetId,
+		["IamInstanceProfile"] = _IamInstanceProfile,
+		["Ec2KeyName"] = _Ec2KeyName,
+		["Ec2AvailabilityZone"] = _Ec2AvailabilityZone,
+		["EmrManagedSlaveSecurityGroup"] = _EmrManagedSlaveSecurityGroup,
 	}
-	M.AssertEc2InstanceAttributes(t)
+	asserts.AssertEc2InstanceAttributes(t)
 	return t
 end
 
-local InstanceFleet_keys = { "Status" = true, "ProvisionedSpotCapacity" = true, "Name" = true, "InstanceFleetType" = true, "LaunchSpecifications" = true, "TargetSpotCapacity" = true, "ProvisionedOnDemandCapacity" = true, "InstanceTypeSpecifications" = true, "Id" = true, "TargetOnDemandCapacity" = true, nil }
+keys.InstanceFleet = { ["Status"] = true, ["ProvisionedSpotCapacity"] = true, ["Name"] = true, ["InstanceFleetType"] = true, ["LaunchSpecifications"] = true, ["TargetSpotCapacity"] = true, ["ProvisionedOnDemandCapacity"] = true, ["InstanceTypeSpecifications"] = true, ["Id"] = true, ["TargetOnDemandCapacity"] = true, nil }
 
-function M.AssertInstanceFleet(struct)
+function asserts.AssertInstanceFleet(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceFleet to be of type 'table'")
-	if struct["Status"] then M.AssertInstanceFleetStatus(struct["Status"]) end
-	if struct["ProvisionedSpotCapacity"] then M.AssertWholeNumber(struct["ProvisionedSpotCapacity"]) end
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
-	if struct["InstanceFleetType"] then M.AssertInstanceFleetType(struct["InstanceFleetType"]) end
-	if struct["LaunchSpecifications"] then M.AssertInstanceFleetProvisioningSpecifications(struct["LaunchSpecifications"]) end
-	if struct["TargetSpotCapacity"] then M.AssertWholeNumber(struct["TargetSpotCapacity"]) end
-	if struct["ProvisionedOnDemandCapacity"] then M.AssertWholeNumber(struct["ProvisionedOnDemandCapacity"]) end
-	if struct["InstanceTypeSpecifications"] then M.AssertInstanceTypeSpecificationList(struct["InstanceTypeSpecifications"]) end
-	if struct["Id"] then M.AssertInstanceFleetId(struct["Id"]) end
-	if struct["TargetOnDemandCapacity"] then M.AssertWholeNumber(struct["TargetOnDemandCapacity"]) end
+	if struct["Status"] then asserts.AssertInstanceFleetStatus(struct["Status"]) end
+	if struct["ProvisionedSpotCapacity"] then asserts.AssertWholeNumber(struct["ProvisionedSpotCapacity"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["InstanceFleetType"] then asserts.AssertInstanceFleetType(struct["InstanceFleetType"]) end
+	if struct["LaunchSpecifications"] then asserts.AssertInstanceFleetProvisioningSpecifications(struct["LaunchSpecifications"]) end
+	if struct["TargetSpotCapacity"] then asserts.AssertWholeNumber(struct["TargetSpotCapacity"]) end
+	if struct["ProvisionedOnDemandCapacity"] then asserts.AssertWholeNumber(struct["ProvisionedOnDemandCapacity"]) end
+	if struct["InstanceTypeSpecifications"] then asserts.AssertInstanceTypeSpecificationList(struct["InstanceTypeSpecifications"]) end
+	if struct["Id"] then asserts.AssertInstanceFleetId(struct["Id"]) end
+	if struct["TargetOnDemandCapacity"] then asserts.AssertWholeNumber(struct["TargetOnDemandCapacity"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceFleet_keys[k], "InstanceFleet contains unknown key " .. tostring(k))
+		assert(keys.InstanceFleet[k], "InstanceFleet contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceFleet
 -- <p>Describes an instance fleet, which is a group of EC2 instances that host a particular node type (master, core, or task) in an Amazon EMR cluster. Instance fleets can consist of a mix of instance types and On-Demand and Spot instances, which are provisioned to meet a defined target capacity. </p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param Status [InstanceFleetStatus] <p>The current status of the instance fleet. </p>
--- @param ProvisionedSpotCapacity [WholeNumber] <p>The number of Spot units that have been provisioned for this instance fleet to fulfill <code>TargetSpotCapacity</code>. This provisioned capacity might be less than or greater than <code>TargetSpotCapacity</code>.</p>
--- @param Name [XmlStringMaxLen256] <p>A friendly name for the instance fleet.</p>
--- @param InstanceFleetType [InstanceFleetType] <p>The node type that the instance fleet hosts. Valid values are MASTER, CORE, or TASK. </p>
--- @param LaunchSpecifications [InstanceFleetProvisioningSpecifications] <p>Describes the launch specification for an instance fleet. </p>
--- @param TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedSpotCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
--- @param ProvisionedOnDemandCapacity [WholeNumber] <p>The number of On-Demand units that have been provisioned for the instance fleet to fulfill <code>TargetOnDemandCapacity</code>. This provisioned capacity might be less than or greater than <code>TargetOnDemandCapacity</code>.</p>
--- @param InstanceTypeSpecifications [InstanceTypeSpecificationList] <p>The specification for the instance types that comprise an instance fleet. Up to five unique instance specifications may be defined for each instance fleet. </p>
--- @param Id [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
--- @param TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedOnDemandCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
-function M.InstanceFleet(Status, ProvisionedSpotCapacity, Name, InstanceFleetType, LaunchSpecifications, TargetSpotCapacity, ProvisionedOnDemandCapacity, InstanceTypeSpecifications, Id, TargetOnDemandCapacity, ...)
+-- @param _Status [InstanceFleetStatus] <p>The current status of the instance fleet. </p>
+-- @param _ProvisionedSpotCapacity [WholeNumber] <p>The number of Spot units that have been provisioned for this instance fleet to fulfill <code>TargetSpotCapacity</code>. This provisioned capacity might be less than or greater than <code>TargetSpotCapacity</code>.</p>
+-- @param _Name [XmlStringMaxLen256] <p>A friendly name for the instance fleet.</p>
+-- @param _InstanceFleetType [InstanceFleetType] <p>The node type that the instance fleet hosts. Valid values are MASTER, CORE, or TASK. </p>
+-- @param _LaunchSpecifications [InstanceFleetProvisioningSpecifications] <p>Describes the launch specification for an instance fleet. </p>
+-- @param _TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedSpotCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
+-- @param _ProvisionedOnDemandCapacity [WholeNumber] <p>The number of On-Demand units that have been provisioned for the instance fleet to fulfill <code>TargetOnDemandCapacity</code>. This provisioned capacity might be less than or greater than <code>TargetOnDemandCapacity</code>.</p>
+-- @param _InstanceTypeSpecifications [InstanceTypeSpecificationList] <p>The specification for the instance types that comprise an instance fleet. Up to five unique instance specifications may be defined for each instance fleet. </p>
+-- @param _Id [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
+-- @param _TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedOnDemandCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
+function M.InstanceFleet(_Status, _ProvisionedSpotCapacity, _Name, _InstanceFleetType, _LaunchSpecifications, _TargetSpotCapacity, _ProvisionedOnDemandCapacity, _InstanceTypeSpecifications, _Id, _TargetOnDemandCapacity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleet")
 	local t = { 
-		["Status"] = Status,
-		["ProvisionedSpotCapacity"] = ProvisionedSpotCapacity,
-		["Name"] = Name,
-		["InstanceFleetType"] = InstanceFleetType,
-		["LaunchSpecifications"] = LaunchSpecifications,
-		["TargetSpotCapacity"] = TargetSpotCapacity,
-		["ProvisionedOnDemandCapacity"] = ProvisionedOnDemandCapacity,
-		["InstanceTypeSpecifications"] = InstanceTypeSpecifications,
-		["Id"] = Id,
-		["TargetOnDemandCapacity"] = TargetOnDemandCapacity,
+		["Status"] = _Status,
+		["ProvisionedSpotCapacity"] = _ProvisionedSpotCapacity,
+		["Name"] = _Name,
+		["InstanceFleetType"] = _InstanceFleetType,
+		["LaunchSpecifications"] = _LaunchSpecifications,
+		["TargetSpotCapacity"] = _TargetSpotCapacity,
+		["ProvisionedOnDemandCapacity"] = _ProvisionedOnDemandCapacity,
+		["InstanceTypeSpecifications"] = _InstanceTypeSpecifications,
+		["Id"] = _Id,
+		["TargetOnDemandCapacity"] = _TargetOnDemandCapacity,
 	}
-	M.AssertInstanceFleet(t)
+	asserts.AssertInstanceFleet(t)
 	return t
 end
 
-local InstanceGroupStateChangeReason_keys = { "Message" = true, "Code" = true, nil }
+keys.InstanceGroupStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
 
-function M.AssertInstanceGroupStateChangeReason(struct)
+function asserts.AssertInstanceGroupStateChangeReason(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceGroupStateChangeReason to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Code"] then M.AssertInstanceGroupStateChangeReasonCode(struct["Code"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Code"] then asserts.AssertInstanceGroupStateChangeReasonCode(struct["Code"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceGroupStateChangeReason_keys[k], "InstanceGroupStateChangeReason contains unknown key " .. tostring(k))
+		assert(keys.InstanceGroupStateChangeReason[k], "InstanceGroupStateChangeReason contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceGroupStateChangeReason
 -- <p>The status change reason details for the instance group.</p>
--- @param Message [String] <p>The status change reason description.</p>
--- @param Code [InstanceGroupStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
-function M.InstanceGroupStateChangeReason(Message, Code, ...)
+-- @param _Message [String] <p>The status change reason description.</p>
+-- @param _Code [InstanceGroupStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
+function M.InstanceGroupStateChangeReason(_Message, _Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupStateChangeReason")
 	local t = { 
-		["Message"] = Message,
-		["Code"] = Code,
+		["Message"] = _Message,
+		["Code"] = _Code,
 	}
-	M.AssertInstanceGroupStateChangeReason(t)
+	asserts.AssertInstanceGroupStateChangeReason(t)
 	return t
 end
 
-local ShrinkPolicy_keys = { "DecommissionTimeout" = true, "InstanceResizePolicy" = true, nil }
+keys.ShrinkPolicy = { ["DecommissionTimeout"] = true, ["InstanceResizePolicy"] = true, nil }
 
-function M.AssertShrinkPolicy(struct)
+function asserts.AssertShrinkPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ShrinkPolicy to be of type 'table'")
-	if struct["DecommissionTimeout"] then M.AssertInteger(struct["DecommissionTimeout"]) end
-	if struct["InstanceResizePolicy"] then M.AssertInstanceResizePolicy(struct["InstanceResizePolicy"]) end
+	if struct["DecommissionTimeout"] then asserts.AssertInteger(struct["DecommissionTimeout"]) end
+	if struct["InstanceResizePolicy"] then asserts.AssertInstanceResizePolicy(struct["InstanceResizePolicy"]) end
 	for k,_ in pairs(struct) do
-		assert(ShrinkPolicy_keys[k], "ShrinkPolicy contains unknown key " .. tostring(k))
+		assert(keys.ShrinkPolicy[k], "ShrinkPolicy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ShrinkPolicy
 -- <p>Policy for customizing shrink operations. Allows configuration of decommissioning timeout and targeted instance shrinking.</p>
--- @param DecommissionTimeout [Integer] <p>The desired timeout for decommissioning an instance. Overrides the default YARN decommissioning timeout.</p>
--- @param InstanceResizePolicy [InstanceResizePolicy] <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
-function M.ShrinkPolicy(DecommissionTimeout, InstanceResizePolicy, ...)
+-- @param _DecommissionTimeout [Integer] <p>The desired timeout for decommissioning an instance. Overrides the default YARN decommissioning timeout.</p>
+-- @param _InstanceResizePolicy [InstanceResizePolicy] <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
+function M.ShrinkPolicy(_DecommissionTimeout, _InstanceResizePolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ShrinkPolicy")
 	local t = { 
-		["DecommissionTimeout"] = DecommissionTimeout,
-		["InstanceResizePolicy"] = InstanceResizePolicy,
+		["DecommissionTimeout"] = _DecommissionTimeout,
+		["InstanceResizePolicy"] = _InstanceResizePolicy,
 	}
-	M.AssertShrinkPolicy(t)
+	asserts.AssertShrinkPolicy(t)
 	return t
 end
 
-local InstanceTypeConfig_keys = { "WeightedCapacity" = true, "EbsConfiguration" = true, "BidPrice" = true, "BidPriceAsPercentageOfOnDemandPrice" = true, "InstanceType" = true, "Configurations" = true, nil }
+keys.InstanceTypeConfig = { ["WeightedCapacity"] = true, ["EbsConfiguration"] = true, ["BidPrice"] = true, ["BidPriceAsPercentageOfOnDemandPrice"] = true, ["InstanceType"] = true, ["Configurations"] = true, nil }
 
-function M.AssertInstanceTypeConfig(struct)
+function asserts.AssertInstanceTypeConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceTypeConfig to be of type 'table'")
 	assert(struct["InstanceType"], "Expected key InstanceType to exist in table")
-	if struct["WeightedCapacity"] then M.AssertWholeNumber(struct["WeightedCapacity"]) end
-	if struct["EbsConfiguration"] then M.AssertEbsConfiguration(struct["EbsConfiguration"]) end
-	if struct["BidPrice"] then M.AssertXmlStringMaxLen256(struct["BidPrice"]) end
-	if struct["BidPriceAsPercentageOfOnDemandPrice"] then M.AssertNonNegativeDouble(struct["BidPriceAsPercentageOfOnDemandPrice"]) end
-	if struct["InstanceType"] then M.AssertInstanceType(struct["InstanceType"]) end
-	if struct["Configurations"] then M.AssertConfigurationList(struct["Configurations"]) end
+	if struct["WeightedCapacity"] then asserts.AssertWholeNumber(struct["WeightedCapacity"]) end
+	if struct["EbsConfiguration"] then asserts.AssertEbsConfiguration(struct["EbsConfiguration"]) end
+	if struct["BidPrice"] then asserts.AssertXmlStringMaxLen256(struct["BidPrice"]) end
+	if struct["BidPriceAsPercentageOfOnDemandPrice"] then asserts.AssertNonNegativeDouble(struct["BidPriceAsPercentageOfOnDemandPrice"]) end
+	if struct["InstanceType"] then asserts.AssertInstanceType(struct["InstanceType"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceTypeConfig_keys[k], "InstanceTypeConfig contains unknown key " .. tostring(k))
+		assert(keys.InstanceTypeConfig[k], "InstanceTypeConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceTypeConfig
 -- <p>An instance type configuration for each instance type in an instance fleet, which determines the EC2 instances Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities. There can be a maximum of 5 instance type configurations in a fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. This value is 1 for a master instance fleet, and must be greater than 0 for core and task instance fleets. </p>
--- @param EbsConfiguration [EbsConfiguration] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>. </p>
--- @param BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD. If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%. </p>
--- @param BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number between 0 and 1000 (for example, 20 specifies 20%). If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
--- @param InstanceType [InstanceType] <p>An EC2 instance type, such as <code>m3.xlarge</code>. </p>
--- @param Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster.</p>
+-- @param _WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. This value is 1 for a master instance fleet, and must be greater than 0 for core and task instance fleets. </p>
+-- @param _EbsConfiguration [EbsConfiguration] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>. </p>
+-- @param _BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD. If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%. </p>
+-- @param _BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number between 0 and 1000 (for example, 20 specifies 20%). If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
+-- @param _InstanceType [InstanceType] <p>An EC2 instance type, such as <code>m3.xlarge</code>. </p>
+-- @param _Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster.</p>
 -- Required parameter: InstanceType
-function M.InstanceTypeConfig(WeightedCapacity, EbsConfiguration, BidPrice, BidPriceAsPercentageOfOnDemandPrice, InstanceType, Configurations, ...)
+function M.InstanceTypeConfig(_WeightedCapacity, _EbsConfiguration, _BidPrice, _BidPriceAsPercentageOfOnDemandPrice, _InstanceType, _Configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceTypeConfig")
 	local t = { 
-		["WeightedCapacity"] = WeightedCapacity,
-		["EbsConfiguration"] = EbsConfiguration,
-		["BidPrice"] = BidPrice,
-		["BidPriceAsPercentageOfOnDemandPrice"] = BidPriceAsPercentageOfOnDemandPrice,
-		["InstanceType"] = InstanceType,
-		["Configurations"] = Configurations,
+		["WeightedCapacity"] = _WeightedCapacity,
+		["EbsConfiguration"] = _EbsConfiguration,
+		["BidPrice"] = _BidPrice,
+		["BidPriceAsPercentageOfOnDemandPrice"] = _BidPriceAsPercentageOfOnDemandPrice,
+		["InstanceType"] = _InstanceType,
+		["Configurations"] = _Configurations,
 	}
-	M.AssertInstanceTypeConfig(t)
+	asserts.AssertInstanceTypeConfig(t)
 	return t
 end
 
-local AutoScalingPolicyStatus_keys = { "State" = true, "StateChangeReason" = true, nil }
+keys.AutoScalingPolicyStatus = { ["State"] = true, ["StateChangeReason"] = true, nil }
 
-function M.AssertAutoScalingPolicyStatus(struct)
+function asserts.AssertAutoScalingPolicyStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingPolicyStatus to be of type 'table'")
-	if struct["State"] then M.AssertAutoScalingPolicyState(struct["State"]) end
-	if struct["StateChangeReason"] then M.AssertAutoScalingPolicyStateChangeReason(struct["StateChangeReason"]) end
+	if struct["State"] then asserts.AssertAutoScalingPolicyState(struct["State"]) end
+	if struct["StateChangeReason"] then asserts.AssertAutoScalingPolicyStateChangeReason(struct["StateChangeReason"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingPolicyStatus_keys[k], "AutoScalingPolicyStatus contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingPolicyStatus[k], "AutoScalingPolicyStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingPolicyStatus
 -- <p>The status of an automatic scaling policy. </p>
--- @param State [AutoScalingPolicyState] <p>Indicates the status of the automatic scaling policy.</p>
--- @param StateChangeReason [AutoScalingPolicyStateChangeReason] <p>The reason for a change in status.</p>
-function M.AutoScalingPolicyStatus(State, StateChangeReason, ...)
+-- @param _State [AutoScalingPolicyState] <p>Indicates the status of the automatic scaling policy.</p>
+-- @param _StateChangeReason [AutoScalingPolicyStateChangeReason] <p>The reason for a change in status.</p>
+function M.AutoScalingPolicyStatus(_State, _StateChangeReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingPolicyStatus")
 	local t = { 
-		["State"] = State,
-		["StateChangeReason"] = StateChangeReason,
+		["State"] = _State,
+		["StateChangeReason"] = _StateChangeReason,
 	}
-	M.AssertAutoScalingPolicyStatus(t)
+	asserts.AssertAutoScalingPolicyStatus(t)
 	return t
 end
 
-local CreateSecurityConfigurationOutput_keys = { "CreationDateTime" = true, "Name" = true, nil }
+keys.CreateSecurityConfigurationOutput = { ["CreationDateTime"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateSecurityConfigurationOutput(struct)
+function asserts.AssertCreateSecurityConfigurationOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateSecurityConfigurationOutput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["CreationDateTime"], "Expected key CreationDateTime to exist in table")
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["Name"] then M.AssertXmlString(struct["Name"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["Name"] then asserts.AssertXmlString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateSecurityConfigurationOutput_keys[k], "CreateSecurityConfigurationOutput contains unknown key " .. tostring(k))
+		assert(keys.CreateSecurityConfigurationOutput[k], "CreateSecurityConfigurationOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateSecurityConfigurationOutput
 --  
--- @param CreationDateTime [Date] <p>The date and time the security configuration was created.</p>
--- @param Name [XmlString] <p>The name of the security configuration.</p>
+-- @param _CreationDateTime [Date] <p>The date and time the security configuration was created.</p>
+-- @param _Name [XmlString] <p>The name of the security configuration.</p>
 -- Required parameter: Name
 -- Required parameter: CreationDateTime
-function M.CreateSecurityConfigurationOutput(CreationDateTime, Name, ...)
+function M.CreateSecurityConfigurationOutput(_CreationDateTime, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSecurityConfigurationOutput")
 	local t = { 
-		["CreationDateTime"] = CreationDateTime,
-		["Name"] = Name,
+		["CreationDateTime"] = _CreationDateTime,
+		["Name"] = _Name,
 	}
-	M.AssertCreateSecurityConfigurationOutput(t)
+	asserts.AssertCreateSecurityConfigurationOutput(t)
 	return t
 end
 
-local InternalServerError_keys = { nil }
+keys.InternalServerError = { nil }
 
-function M.AssertInternalServerError(struct)
+function asserts.AssertInternalServerError(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InternalServerError to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(InternalServerError_keys[k], "InternalServerError contains unknown key " .. tostring(k))
+		assert(keys.InternalServerError[k], "InternalServerError contains unknown key " .. tostring(k))
 	end
 end
 
@@ -887,1042 +890,1042 @@ function M.InternalServerError(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
 	local t = { 
 	}
-	M.AssertInternalServerError(t)
+	asserts.AssertInternalServerError(t)
 	return t
 end
 
-local DescribeStepOutput_keys = { "Step" = true, nil }
+keys.DescribeStepOutput = { ["Step"] = true, nil }
 
-function M.AssertDescribeStepOutput(struct)
+function asserts.AssertDescribeStepOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeStepOutput to be of type 'table'")
-	if struct["Step"] then M.AssertStep(struct["Step"]) end
+	if struct["Step"] then asserts.AssertStep(struct["Step"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeStepOutput_keys[k], "DescribeStepOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeStepOutput[k], "DescribeStepOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeStepOutput
 -- <p>This output contains the description of the cluster step.</p>
--- @param Step [Step] <p>The step details for the requested step identifier.</p>
-function M.DescribeStepOutput(Step, ...)
+-- @param _Step [Step] <p>The step details for the requested step identifier.</p>
+function M.DescribeStepOutput(_Step, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStepOutput")
 	local t = { 
-		["Step"] = Step,
+		["Step"] = _Step,
 	}
-	M.AssertDescribeStepOutput(t)
+	asserts.AssertDescribeStepOutput(t)
 	return t
 end
 
-local ListSecurityConfigurationsInput_keys = { "Marker" = true, nil }
+keys.ListSecurityConfigurationsInput = { ["Marker"] = true, nil }
 
-function M.AssertListSecurityConfigurationsInput(struct)
+function asserts.AssertListSecurityConfigurationsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSecurityConfigurationsInput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSecurityConfigurationsInput_keys[k], "ListSecurityConfigurationsInput contains unknown key " .. tostring(k))
+		assert(keys.ListSecurityConfigurationsInput[k], "ListSecurityConfigurationsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSecurityConfigurationsInput
 --  
--- @param Marker [Marker] <p>The pagination token that indicates the set of results to retrieve.</p>
-function M.ListSecurityConfigurationsInput(Marker, ...)
+-- @param _Marker [Marker] <p>The pagination token that indicates the set of results to retrieve.</p>
+function M.ListSecurityConfigurationsInput(_Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSecurityConfigurationsInput")
 	local t = { 
-		["Marker"] = Marker,
+		["Marker"] = _Marker,
 	}
-	M.AssertListSecurityConfigurationsInput(t)
+	asserts.AssertListSecurityConfigurationsInput(t)
 	return t
 end
 
-local ClusterTimeline_keys = { "ReadyDateTime" = true, "CreationDateTime" = true, "EndDateTime" = true, nil }
+keys.ClusterTimeline = { ["ReadyDateTime"] = true, ["CreationDateTime"] = true, ["EndDateTime"] = true, nil }
 
-function M.AssertClusterTimeline(struct)
+function asserts.AssertClusterTimeline(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ClusterTimeline to be of type 'table'")
-	if struct["ReadyDateTime"] then M.AssertDate(struct["ReadyDateTime"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["EndDateTime"] then M.AssertDate(struct["EndDateTime"]) end
+	if struct["ReadyDateTime"] then asserts.AssertDate(struct["ReadyDateTime"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["EndDateTime"] then asserts.AssertDate(struct["EndDateTime"]) end
 	for k,_ in pairs(struct) do
-		assert(ClusterTimeline_keys[k], "ClusterTimeline contains unknown key " .. tostring(k))
+		assert(keys.ClusterTimeline[k], "ClusterTimeline contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ClusterTimeline
 -- <p>Represents the timeline of the cluster's lifecycle.</p>
--- @param ReadyDateTime [Date] <p>The date and time when the cluster was ready to execute steps.</p>
--- @param CreationDateTime [Date] <p>The creation date and time of the cluster.</p>
--- @param EndDateTime [Date] <p>The date and time when the cluster was terminated.</p>
-function M.ClusterTimeline(ReadyDateTime, CreationDateTime, EndDateTime, ...)
+-- @param _ReadyDateTime [Date] <p>The date and time when the cluster was ready to execute steps.</p>
+-- @param _CreationDateTime [Date] <p>The creation date and time of the cluster.</p>
+-- @param _EndDateTime [Date] <p>The date and time when the cluster was terminated.</p>
+function M.ClusterTimeline(_ReadyDateTime, _CreationDateTime, _EndDateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterTimeline")
 	local t = { 
-		["ReadyDateTime"] = ReadyDateTime,
-		["CreationDateTime"] = CreationDateTime,
-		["EndDateTime"] = EndDateTime,
+		["ReadyDateTime"] = _ReadyDateTime,
+		["CreationDateTime"] = _CreationDateTime,
+		["EndDateTime"] = _EndDateTime,
 	}
-	M.AssertClusterTimeline(t)
+	asserts.AssertClusterTimeline(t)
 	return t
 end
 
-local Tag_keys = { "Value" = true, "Key" = true, nil }
+keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertTag(struct)
+function asserts.AssertTag(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Tag to be of type 'table'")
-	if struct["Value"] then M.AssertString(struct["Value"]) end
-	if struct["Key"] then M.AssertString(struct["Key"]) end
+	if struct["Value"] then asserts.AssertString(struct["Value"]) end
+	if struct["Key"] then asserts.AssertString(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(Tag_keys[k], "Tag contains unknown key " .. tostring(k))
+		assert(keys.Tag[k], "Tag contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Tag
 -- <p>A key/value pair containing user-defined metadata that you can associate with an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
--- @param Value [String] <p>A user-defined value, which is optional in a tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
--- @param Key [String] <p>A user-defined key, which is the minimum required information for a valid tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
-function M.Tag(Value, Key, ...)
+-- @param _Value [String] <p>A user-defined value, which is optional in a tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+-- @param _Key [String] <p>A user-defined key, which is the minimum required information for a valid tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+function M.Tag(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertTag(t)
+	asserts.AssertTag(t)
 	return t
 end
 
-local ListInstanceGroupsInput_keys = { "Marker" = true, "ClusterId" = true, nil }
+keys.ListInstanceGroupsInput = { ["Marker"] = true, ["ClusterId"] = true, nil }
 
-function M.AssertListInstanceGroupsInput(struct)
+function asserts.AssertListInstanceGroupsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListInstanceGroupsInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListInstanceGroupsInput_keys[k], "ListInstanceGroupsInput contains unknown key " .. tostring(k))
+		assert(keys.ListInstanceGroupsInput[k], "ListInstanceGroupsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListInstanceGroupsInput
 -- <p>This input determines which instance groups to retrieve.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param ClusterId [ClusterId] <p>The identifier of the cluster for which to list the instance groups.</p>
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _ClusterId [ClusterId] <p>The identifier of the cluster for which to list the instance groups.</p>
 -- Required parameter: ClusterId
-function M.ListInstanceGroupsInput(Marker, ClusterId, ...)
+function M.ListInstanceGroupsInput(_Marker, _ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceGroupsInput")
 	local t = { 
-		["Marker"] = Marker,
-		["ClusterId"] = ClusterId,
+		["Marker"] = _Marker,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertListInstanceGroupsInput(t)
+	asserts.AssertListInstanceGroupsInput(t)
 	return t
 end
 
-local InstanceFleetModifyConfig_keys = { "TargetOnDemandCapacity" = true, "TargetSpotCapacity" = true, "InstanceFleetId" = true, nil }
+keys.InstanceFleetModifyConfig = { ["TargetOnDemandCapacity"] = true, ["TargetSpotCapacity"] = true, ["InstanceFleetId"] = true, nil }
 
-function M.AssertInstanceFleetModifyConfig(struct)
+function asserts.AssertInstanceFleetModifyConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceFleetModifyConfig to be of type 'table'")
 	assert(struct["InstanceFleetId"], "Expected key InstanceFleetId to exist in table")
-	if struct["TargetOnDemandCapacity"] then M.AssertWholeNumber(struct["TargetOnDemandCapacity"]) end
-	if struct["TargetSpotCapacity"] then M.AssertWholeNumber(struct["TargetSpotCapacity"]) end
-	if struct["InstanceFleetId"] then M.AssertInstanceFleetId(struct["InstanceFleetId"]) end
+	if struct["TargetOnDemandCapacity"] then asserts.AssertWholeNumber(struct["TargetOnDemandCapacity"]) end
+	if struct["TargetSpotCapacity"] then asserts.AssertWholeNumber(struct["TargetSpotCapacity"]) end
+	if struct["InstanceFleetId"] then asserts.AssertInstanceFleetId(struct["InstanceFleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceFleetModifyConfig_keys[k], "InstanceFleetModifyConfig contains unknown key " .. tostring(k))
+		assert(keys.InstanceFleetModifyConfig[k], "InstanceFleetModifyConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceFleetModifyConfig
 -- <p>Configuration parameters for an instance fleet modification request.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet. For more information see <a>InstanceFleetConfig$TargetOnDemandCapacity</a>.</p>
--- @param TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet. For more information, see <a>InstanceFleetConfig$TargetSpotCapacity</a>.</p>
--- @param InstanceFleetId [InstanceFleetId] <p>A unique identifier for the instance fleet.</p>
+-- @param _TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet. For more information see <a>InstanceFleetConfig$TargetOnDemandCapacity</a>.</p>
+-- @param _TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet. For more information, see <a>InstanceFleetConfig$TargetSpotCapacity</a>.</p>
+-- @param _InstanceFleetId [InstanceFleetId] <p>A unique identifier for the instance fleet.</p>
 -- Required parameter: InstanceFleetId
-function M.InstanceFleetModifyConfig(TargetOnDemandCapacity, TargetSpotCapacity, InstanceFleetId, ...)
+function M.InstanceFleetModifyConfig(_TargetOnDemandCapacity, _TargetSpotCapacity, _InstanceFleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetModifyConfig")
 	local t = { 
-		["TargetOnDemandCapacity"] = TargetOnDemandCapacity,
-		["TargetSpotCapacity"] = TargetSpotCapacity,
-		["InstanceFleetId"] = InstanceFleetId,
+		["TargetOnDemandCapacity"] = _TargetOnDemandCapacity,
+		["TargetSpotCapacity"] = _TargetSpotCapacity,
+		["InstanceFleetId"] = _InstanceFleetId,
 	}
-	M.AssertInstanceFleetModifyConfig(t)
+	asserts.AssertInstanceFleetModifyConfig(t)
 	return t
 end
 
-local EbsBlockDevice_keys = { "Device" = true, "VolumeSpecification" = true, nil }
+keys.EbsBlockDevice = { ["Device"] = true, ["VolumeSpecification"] = true, nil }
 
-function M.AssertEbsBlockDevice(struct)
+function asserts.AssertEbsBlockDevice(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EbsBlockDevice to be of type 'table'")
-	if struct["Device"] then M.AssertString(struct["Device"]) end
-	if struct["VolumeSpecification"] then M.AssertVolumeSpecification(struct["VolumeSpecification"]) end
+	if struct["Device"] then asserts.AssertString(struct["Device"]) end
+	if struct["VolumeSpecification"] then asserts.AssertVolumeSpecification(struct["VolumeSpecification"]) end
 	for k,_ in pairs(struct) do
-		assert(EbsBlockDevice_keys[k], "EbsBlockDevice contains unknown key " .. tostring(k))
+		assert(keys.EbsBlockDevice[k], "EbsBlockDevice contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EbsBlockDevice
 -- <p>Configuration of requested EBS block device associated with the instance group.</p>
--- @param Device [String] <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
--- @param VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
-function M.EbsBlockDevice(Device, VolumeSpecification, ...)
+-- @param _Device [String] <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
+-- @param _VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
+function M.EbsBlockDevice(_Device, _VolumeSpecification, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EbsBlockDevice")
 	local t = { 
-		["Device"] = Device,
-		["VolumeSpecification"] = VolumeSpecification,
+		["Device"] = _Device,
+		["VolumeSpecification"] = _VolumeSpecification,
 	}
-	M.AssertEbsBlockDevice(t)
+	asserts.AssertEbsBlockDevice(t)
 	return t
 end
 
-local InstanceGroupConfig_keys = { "InstanceCount" = true, "Name" = true, "InstanceRole" = true, "AutoScalingPolicy" = true, "EbsConfiguration" = true, "BidPrice" = true, "InstanceType" = true, "Market" = true, "Configurations" = true, nil }
+keys.InstanceGroupConfig = { ["InstanceCount"] = true, ["Name"] = true, ["InstanceRole"] = true, ["AutoScalingPolicy"] = true, ["EbsConfiguration"] = true, ["BidPrice"] = true, ["InstanceType"] = true, ["Market"] = true, ["Configurations"] = true, nil }
 
-function M.AssertInstanceGroupConfig(struct)
+function asserts.AssertInstanceGroupConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceGroupConfig to be of type 'table'")
 	assert(struct["InstanceRole"], "Expected key InstanceRole to exist in table")
 	assert(struct["InstanceType"], "Expected key InstanceType to exist in table")
 	assert(struct["InstanceCount"], "Expected key InstanceCount to exist in table")
-	if struct["InstanceCount"] then M.AssertInteger(struct["InstanceCount"]) end
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
-	if struct["InstanceRole"] then M.AssertInstanceRoleType(struct["InstanceRole"]) end
-	if struct["AutoScalingPolicy"] then M.AssertAutoScalingPolicy(struct["AutoScalingPolicy"]) end
-	if struct["EbsConfiguration"] then M.AssertEbsConfiguration(struct["EbsConfiguration"]) end
-	if struct["BidPrice"] then M.AssertXmlStringMaxLen256(struct["BidPrice"]) end
-	if struct["InstanceType"] then M.AssertInstanceType(struct["InstanceType"]) end
-	if struct["Market"] then M.AssertMarketType(struct["Market"]) end
-	if struct["Configurations"] then M.AssertConfigurationList(struct["Configurations"]) end
+	if struct["InstanceCount"] then asserts.AssertInteger(struct["InstanceCount"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["InstanceRole"] then asserts.AssertInstanceRoleType(struct["InstanceRole"]) end
+	if struct["AutoScalingPolicy"] then asserts.AssertAutoScalingPolicy(struct["AutoScalingPolicy"]) end
+	if struct["EbsConfiguration"] then asserts.AssertEbsConfiguration(struct["EbsConfiguration"]) end
+	if struct["BidPrice"] then asserts.AssertXmlStringMaxLen256(struct["BidPrice"]) end
+	if struct["InstanceType"] then asserts.AssertInstanceType(struct["InstanceType"]) end
+	if struct["Market"] then asserts.AssertMarketType(struct["Market"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceGroupConfig_keys[k], "InstanceGroupConfig contains unknown key " .. tostring(k))
+		assert(keys.InstanceGroupConfig[k], "InstanceGroupConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceGroupConfig
 -- <p>Configuration defining a new instance group.</p>
--- @param InstanceCount [Integer] <p>Target number of instances for the instance group.</p>
--- @param Name [XmlStringMaxLen256] <p>Friendly name given to the instance group.</p>
--- @param InstanceRole [InstanceRoleType] <p>The role of the instance group in the cluster.</p>
--- @param AutoScalingPolicy [AutoScalingPolicy] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
--- @param EbsConfiguration [EbsConfiguration] <p>EBS configurations that will be attached to each EC2 instance in the instance group.</p>
--- @param BidPrice [XmlStringMaxLen256] <p>Bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
--- @param InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
--- @param Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
--- @param Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
+-- @param _InstanceCount [Integer] <p>Target number of instances for the instance group.</p>
+-- @param _Name [XmlStringMaxLen256] <p>Friendly name given to the instance group.</p>
+-- @param _InstanceRole [InstanceRoleType] <p>The role of the instance group in the cluster.</p>
+-- @param _AutoScalingPolicy [AutoScalingPolicy] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
+-- @param _EbsConfiguration [EbsConfiguration] <p>EBS configurations that will be attached to each EC2 instance in the instance group.</p>
+-- @param _BidPrice [XmlStringMaxLen256] <p>Bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
+-- @param _InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
+-- @param _Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
+-- @param _Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
 -- Required parameter: InstanceRole
 -- Required parameter: InstanceType
 -- Required parameter: InstanceCount
-function M.InstanceGroupConfig(InstanceCount, Name, InstanceRole, AutoScalingPolicy, EbsConfiguration, BidPrice, InstanceType, Market, Configurations, ...)
+function M.InstanceGroupConfig(_InstanceCount, _Name, _InstanceRole, _AutoScalingPolicy, _EbsConfiguration, _BidPrice, _InstanceType, _Market, _Configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupConfig")
 	local t = { 
-		["InstanceCount"] = InstanceCount,
-		["Name"] = Name,
-		["InstanceRole"] = InstanceRole,
-		["AutoScalingPolicy"] = AutoScalingPolicy,
-		["EbsConfiguration"] = EbsConfiguration,
-		["BidPrice"] = BidPrice,
-		["InstanceType"] = InstanceType,
-		["Market"] = Market,
-		["Configurations"] = Configurations,
+		["InstanceCount"] = _InstanceCount,
+		["Name"] = _Name,
+		["InstanceRole"] = _InstanceRole,
+		["AutoScalingPolicy"] = _AutoScalingPolicy,
+		["EbsConfiguration"] = _EbsConfiguration,
+		["BidPrice"] = _BidPrice,
+		["InstanceType"] = _InstanceType,
+		["Market"] = _Market,
+		["Configurations"] = _Configurations,
 	}
-	M.AssertInstanceGroupConfig(t)
+	asserts.AssertInstanceGroupConfig(t)
 	return t
 end
 
-local AutoScalingPolicyDescription_keys = { "Status" = true, "Rules" = true, "Constraints" = true, nil }
+keys.AutoScalingPolicyDescription = { ["Status"] = true, ["Rules"] = true, ["Constraints"] = true, nil }
 
-function M.AssertAutoScalingPolicyDescription(struct)
+function asserts.AssertAutoScalingPolicyDescription(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingPolicyDescription to be of type 'table'")
-	if struct["Status"] then M.AssertAutoScalingPolicyStatus(struct["Status"]) end
-	if struct["Rules"] then M.AssertScalingRuleList(struct["Rules"]) end
-	if struct["Constraints"] then M.AssertScalingConstraints(struct["Constraints"]) end
+	if struct["Status"] then asserts.AssertAutoScalingPolicyStatus(struct["Status"]) end
+	if struct["Rules"] then asserts.AssertScalingRuleList(struct["Rules"]) end
+	if struct["Constraints"] then asserts.AssertScalingConstraints(struct["Constraints"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingPolicyDescription_keys[k], "AutoScalingPolicyDescription contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingPolicyDescription[k], "AutoScalingPolicyDescription contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingPolicyDescription
 -- <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
--- @param Status [AutoScalingPolicyStatus] <p>The status of an automatic scaling policy. </p>
--- @param Rules [ScalingRuleList] <p>The scale-in and scale-out rules that comprise the automatic scaling policy.</p>
--- @param Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
-function M.AutoScalingPolicyDescription(Status, Rules, Constraints, ...)
+-- @param _Status [AutoScalingPolicyStatus] <p>The status of an automatic scaling policy. </p>
+-- @param _Rules [ScalingRuleList] <p>The scale-in and scale-out rules that comprise the automatic scaling policy.</p>
+-- @param _Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
+function M.AutoScalingPolicyDescription(_Status, _Rules, _Constraints, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingPolicyDescription")
 	local t = { 
-		["Status"] = Status,
-		["Rules"] = Rules,
-		["Constraints"] = Constraints,
+		["Status"] = _Status,
+		["Rules"] = _Rules,
+		["Constraints"] = _Constraints,
 	}
-	M.AssertAutoScalingPolicyDescription(t)
+	asserts.AssertAutoScalingPolicyDescription(t)
 	return t
 end
 
-local JobFlowExecutionStatusDetail_keys = { "ReadyDateTime" = true, "EndDateTime" = true, "State" = true, "StartDateTime" = true, "CreationDateTime" = true, "LastStateChangeReason" = true, nil }
+keys.JobFlowExecutionStatusDetail = { ["ReadyDateTime"] = true, ["EndDateTime"] = true, ["State"] = true, ["StartDateTime"] = true, ["CreationDateTime"] = true, ["LastStateChangeReason"] = true, nil }
 
-function M.AssertJobFlowExecutionStatusDetail(struct)
+function asserts.AssertJobFlowExecutionStatusDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected JobFlowExecutionStatusDetail to be of type 'table'")
 	assert(struct["State"], "Expected key State to exist in table")
 	assert(struct["CreationDateTime"], "Expected key CreationDateTime to exist in table")
-	if struct["ReadyDateTime"] then M.AssertDate(struct["ReadyDateTime"]) end
-	if struct["EndDateTime"] then M.AssertDate(struct["EndDateTime"]) end
-	if struct["State"] then M.AssertJobFlowExecutionState(struct["State"]) end
-	if struct["StartDateTime"] then M.AssertDate(struct["StartDateTime"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["LastStateChangeReason"] then M.AssertXmlString(struct["LastStateChangeReason"]) end
+	if struct["ReadyDateTime"] then asserts.AssertDate(struct["ReadyDateTime"]) end
+	if struct["EndDateTime"] then asserts.AssertDate(struct["EndDateTime"]) end
+	if struct["State"] then asserts.AssertJobFlowExecutionState(struct["State"]) end
+	if struct["StartDateTime"] then asserts.AssertDate(struct["StartDateTime"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["LastStateChangeReason"] then asserts.AssertXmlString(struct["LastStateChangeReason"]) end
 	for k,_ in pairs(struct) do
-		assert(JobFlowExecutionStatusDetail_keys[k], "JobFlowExecutionStatusDetail contains unknown key " .. tostring(k))
+		assert(keys.JobFlowExecutionStatusDetail[k], "JobFlowExecutionStatusDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type JobFlowExecutionStatusDetail
 -- <p>Describes the status of the cluster (job flow).</p>
--- @param ReadyDateTime [Date] <p>The date and time when the job flow was ready to start running bootstrap actions.</p>
--- @param EndDateTime [Date] <p>The completion date and time of the job flow.</p>
--- @param State [JobFlowExecutionState] <p>The state of the job flow.</p>
--- @param StartDateTime [Date] <p>The start date and time of the job flow.</p>
--- @param CreationDateTime [Date] <p>The creation date and time of the job flow.</p>
--- @param LastStateChangeReason [XmlString] <p>Description of the job flow last changed state.</p>
+-- @param _ReadyDateTime [Date] <p>The date and time when the job flow was ready to start running bootstrap actions.</p>
+-- @param _EndDateTime [Date] <p>The completion date and time of the job flow.</p>
+-- @param _State [JobFlowExecutionState] <p>The state of the job flow.</p>
+-- @param _StartDateTime [Date] <p>The start date and time of the job flow.</p>
+-- @param _CreationDateTime [Date] <p>The creation date and time of the job flow.</p>
+-- @param _LastStateChangeReason [XmlString] <p>Description of the job flow last changed state.</p>
 -- Required parameter: State
 -- Required parameter: CreationDateTime
-function M.JobFlowExecutionStatusDetail(ReadyDateTime, EndDateTime, State, StartDateTime, CreationDateTime, LastStateChangeReason, ...)
+function M.JobFlowExecutionStatusDetail(_ReadyDateTime, _EndDateTime, _State, _StartDateTime, _CreationDateTime, _LastStateChangeReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobFlowExecutionStatusDetail")
 	local t = { 
-		["ReadyDateTime"] = ReadyDateTime,
-		["EndDateTime"] = EndDateTime,
-		["State"] = State,
-		["StartDateTime"] = StartDateTime,
-		["CreationDateTime"] = CreationDateTime,
-		["LastStateChangeReason"] = LastStateChangeReason,
+		["ReadyDateTime"] = _ReadyDateTime,
+		["EndDateTime"] = _EndDateTime,
+		["State"] = _State,
+		["StartDateTime"] = _StartDateTime,
+		["CreationDateTime"] = _CreationDateTime,
+		["LastStateChangeReason"] = _LastStateChangeReason,
 	}
-	M.AssertJobFlowExecutionStatusDetail(t)
+	asserts.AssertJobFlowExecutionStatusDetail(t)
 	return t
 end
 
-local Application_keys = { "Args" = true, "Version" = true, "Name" = true, "AdditionalInfo" = true, nil }
+keys.Application = { ["Args"] = true, ["Version"] = true, ["Name"] = true, ["AdditionalInfo"] = true, nil }
 
-function M.AssertApplication(struct)
+function asserts.AssertApplication(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Application to be of type 'table'")
-	if struct["Args"] then M.AssertStringList(struct["Args"]) end
-	if struct["Version"] then M.AssertString(struct["Version"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["AdditionalInfo"] then M.AssertStringMap(struct["AdditionalInfo"]) end
+	if struct["Args"] then asserts.AssertStringList(struct["Args"]) end
+	if struct["Version"] then asserts.AssertString(struct["Version"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["AdditionalInfo"] then asserts.AssertStringMap(struct["AdditionalInfo"]) end
 	for k,_ in pairs(struct) do
-		assert(Application_keys[k], "Application contains unknown key " .. tostring(k))
+		assert(keys.Application[k], "Application contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Application
 -- <p>An application is any Amazon or third-party software that you can add to the cluster. This structure contains a list of strings that indicates the software to use with the cluster and accepts a user argument list. Amazon EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action argument. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-mapr.html">Using the MapR Distribution for Hadoop</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the cluster using MapR M3 or M5 Edition, respectively.</p> </li> </ul> <note> <p>In Amazon EMR releases 4.0 and greater, the only accepted parameter is the application name. To pass arguments to applications, you supply a configuration for each application.</p> </note>
--- @param Args [StringList] <p>Arguments for Amazon EMR to pass to the application.</p>
--- @param Version [String] <p>The version of the application.</p>
--- @param Name [String] <p>The name of the application.</p>
--- @param AdditionalInfo [StringMap] <p>This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.</p>
-function M.Application(Args, Version, Name, AdditionalInfo, ...)
+-- @param _Args [StringList] <p>Arguments for Amazon EMR to pass to the application.</p>
+-- @param _Version [String] <p>The version of the application.</p>
+-- @param _Name [String] <p>The name of the application.</p>
+-- @param _AdditionalInfo [StringMap] <p>This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.</p>
+function M.Application(_Args, _Version, _Name, _AdditionalInfo, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Application")
 	local t = { 
-		["Args"] = Args,
-		["Version"] = Version,
-		["Name"] = Name,
-		["AdditionalInfo"] = AdditionalInfo,
+		["Args"] = _Args,
+		["Version"] = _Version,
+		["Name"] = _Name,
+		["AdditionalInfo"] = _AdditionalInfo,
 	}
-	M.AssertApplication(t)
+	asserts.AssertApplication(t)
 	return t
 end
 
-local EbsConfiguration_keys = { "EbsOptimized" = true, "EbsBlockDeviceConfigs" = true, nil }
+keys.EbsConfiguration = { ["EbsOptimized"] = true, ["EbsBlockDeviceConfigs"] = true, nil }
 
-function M.AssertEbsConfiguration(struct)
+function asserts.AssertEbsConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EbsConfiguration to be of type 'table'")
-	if struct["EbsOptimized"] then M.AssertBooleanObject(struct["EbsOptimized"]) end
-	if struct["EbsBlockDeviceConfigs"] then M.AssertEbsBlockDeviceConfigList(struct["EbsBlockDeviceConfigs"]) end
+	if struct["EbsOptimized"] then asserts.AssertBooleanObject(struct["EbsOptimized"]) end
+	if struct["EbsBlockDeviceConfigs"] then asserts.AssertEbsBlockDeviceConfigList(struct["EbsBlockDeviceConfigs"]) end
 	for k,_ in pairs(struct) do
-		assert(EbsConfiguration_keys[k], "EbsConfiguration contains unknown key " .. tostring(k))
+		assert(keys.EbsConfiguration[k], "EbsConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EbsConfiguration
 -- <p>The Amazon EBS configuration of a cluster instance.</p>
--- @param EbsOptimized [BooleanObject] <p>Indicates whether an Amazon EBS volume is EBS-optimized.</p>
--- @param EbsBlockDeviceConfigs [EbsBlockDeviceConfigList] <p>An array of Amazon EBS volume specifications attached to a cluster instance.</p>
-function M.EbsConfiguration(EbsOptimized, EbsBlockDeviceConfigs, ...)
+-- @param _EbsOptimized [BooleanObject] <p>Indicates whether an Amazon EBS volume is EBS-optimized.</p>
+-- @param _EbsBlockDeviceConfigs [EbsBlockDeviceConfigList] <p>An array of Amazon EBS volume specifications attached to a cluster instance.</p>
+function M.EbsConfiguration(_EbsOptimized, _EbsBlockDeviceConfigs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EbsConfiguration")
 	local t = { 
-		["EbsOptimized"] = EbsOptimized,
-		["EbsBlockDeviceConfigs"] = EbsBlockDeviceConfigs,
+		["EbsOptimized"] = _EbsOptimized,
+		["EbsBlockDeviceConfigs"] = _EbsBlockDeviceConfigs,
 	}
-	M.AssertEbsConfiguration(t)
+	asserts.AssertEbsConfiguration(t)
 	return t
 end
 
-local RunJobFlowInput_keys = { "AutoScalingRole" = true, "AdditionalInfo" = true, "SecurityConfiguration" = true, "Name" = true, "ServiceRole" = true, "Applications" = true, "ReleaseLabel" = true, "Tags" = true, "BootstrapActions" = true, "Instances" = true, "JobFlowRole" = true, "Steps" = true, "ScaleDownBehavior" = true, "Configurations" = true, "VisibleToAllUsers" = true, "LogUri" = true, "AmiVersion" = true, "NewSupportedProducts" = true, "SupportedProducts" = true, nil }
+keys.RunJobFlowInput = { ["AutoScalingRole"] = true, ["AdditionalInfo"] = true, ["SecurityConfiguration"] = true, ["Name"] = true, ["ServiceRole"] = true, ["Applications"] = true, ["ReleaseLabel"] = true, ["Tags"] = true, ["BootstrapActions"] = true, ["Instances"] = true, ["JobFlowRole"] = true, ["Steps"] = true, ["ScaleDownBehavior"] = true, ["Configurations"] = true, ["VisibleToAllUsers"] = true, ["LogUri"] = true, ["AmiVersion"] = true, ["NewSupportedProducts"] = true, ["SupportedProducts"] = true, nil }
 
-function M.AssertRunJobFlowInput(struct)
+function asserts.AssertRunJobFlowInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RunJobFlowInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Instances"], "Expected key Instances to exist in table")
-	if struct["AutoScalingRole"] then M.AssertXmlString(struct["AutoScalingRole"]) end
-	if struct["AdditionalInfo"] then M.AssertXmlString(struct["AdditionalInfo"]) end
-	if struct["SecurityConfiguration"] then M.AssertXmlString(struct["SecurityConfiguration"]) end
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
-	if struct["ServiceRole"] then M.AssertXmlString(struct["ServiceRole"]) end
-	if struct["Applications"] then M.AssertApplicationList(struct["Applications"]) end
-	if struct["ReleaseLabel"] then M.AssertXmlStringMaxLen256(struct["ReleaseLabel"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["BootstrapActions"] then M.AssertBootstrapActionConfigList(struct["BootstrapActions"]) end
-	if struct["Instances"] then M.AssertJobFlowInstancesConfig(struct["Instances"]) end
-	if struct["JobFlowRole"] then M.AssertXmlString(struct["JobFlowRole"]) end
-	if struct["Steps"] then M.AssertStepConfigList(struct["Steps"]) end
-	if struct["ScaleDownBehavior"] then M.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
-	if struct["Configurations"] then M.AssertConfigurationList(struct["Configurations"]) end
-	if struct["VisibleToAllUsers"] then M.AssertBoolean(struct["VisibleToAllUsers"]) end
-	if struct["LogUri"] then M.AssertXmlString(struct["LogUri"]) end
-	if struct["AmiVersion"] then M.AssertXmlStringMaxLen256(struct["AmiVersion"]) end
-	if struct["NewSupportedProducts"] then M.AssertNewSupportedProductsList(struct["NewSupportedProducts"]) end
-	if struct["SupportedProducts"] then M.AssertSupportedProductsList(struct["SupportedProducts"]) end
+	if struct["AutoScalingRole"] then asserts.AssertXmlString(struct["AutoScalingRole"]) end
+	if struct["AdditionalInfo"] then asserts.AssertXmlString(struct["AdditionalInfo"]) end
+	if struct["SecurityConfiguration"] then asserts.AssertXmlString(struct["SecurityConfiguration"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["ServiceRole"] then asserts.AssertXmlString(struct["ServiceRole"]) end
+	if struct["Applications"] then asserts.AssertApplicationList(struct["Applications"]) end
+	if struct["ReleaseLabel"] then asserts.AssertXmlStringMaxLen256(struct["ReleaseLabel"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["BootstrapActions"] then asserts.AssertBootstrapActionConfigList(struct["BootstrapActions"]) end
+	if struct["Instances"] then asserts.AssertJobFlowInstancesConfig(struct["Instances"]) end
+	if struct["JobFlowRole"] then asserts.AssertXmlString(struct["JobFlowRole"]) end
+	if struct["Steps"] then asserts.AssertStepConfigList(struct["Steps"]) end
+	if struct["ScaleDownBehavior"] then asserts.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
+	if struct["VisibleToAllUsers"] then asserts.AssertBoolean(struct["VisibleToAllUsers"]) end
+	if struct["LogUri"] then asserts.AssertXmlString(struct["LogUri"]) end
+	if struct["AmiVersion"] then asserts.AssertXmlStringMaxLen256(struct["AmiVersion"]) end
+	if struct["NewSupportedProducts"] then asserts.AssertNewSupportedProductsList(struct["NewSupportedProducts"]) end
+	if struct["SupportedProducts"] then asserts.AssertSupportedProductsList(struct["SupportedProducts"]) end
 	for k,_ in pairs(struct) do
-		assert(RunJobFlowInput_keys[k], "RunJobFlowInput contains unknown key " .. tostring(k))
+		assert(keys.RunJobFlowInput[k], "RunJobFlowInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RunJobFlowInput
 -- <p> Input to the <a>RunJobFlow</a> operation. </p>
--- @param AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
--- @param AdditionalInfo [XmlString] <p>A JSON string for selecting additional features.</p>
--- @param SecurityConfiguration [XmlString] <p>The name of a security configuration to apply to the cluster.</p>
--- @param Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
--- @param ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
--- @param Applications [ApplicationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>A list of applications for the cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.</p>
--- @param ReleaseLabel [XmlStringMaxLen256] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
--- @param Tags [TagList] <p>A list of tags to associate with a cluster and propagate to Amazon EC2 instances.</p>
--- @param BootstrapActions [BootstrapActionConfigList] <p>A list of bootstrap actions to run before Hadoop starts on the cluster nodes.</p>
--- @param Instances [JobFlowInstancesConfig] <p>A specification of the number and type of Amazon EC2 instances.</p>
--- @param JobFlowRole [XmlString] <p>Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2 instances of the cluster assume this role. The default role is <code>EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the CLI or console.</p>
--- @param Steps [StepConfigList] <p>A list of steps to run.</p>
--- @param ScaleDownBehavior [ScaleDownBehavior] <p>Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
--- @param Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for the EMR cluster you are creating.</p>
--- @param VisibleToAllUsers [Boolean] <p>Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it.</p>
--- @param LogUri [XmlString] <p>The location in Amazon S3 to write the log files of the job flow. If a value is not provided, logs are not created.</p>
--- @param AmiVersion [XmlStringMaxLen256] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use ReleaseLabel.</p> </note> <p>The version of the Amazon Machine Image (AMI) to use when launching Amazon EC2 instances in the job flow. The following values are valid:</p> <ul> <li> <p>The version number of the AMI to use, for example, "2.0."</p> </li> </ul> <p>If the AMI supports multiple versions of Hadoop (for example, AMI 1.0 supports both Hadoop 0.18 and 0.20) you can use the <a>JobFlowInstancesConfig</a> <code>HadoopVersion</code> parameter to modify the version of Hadoop from the defaults shown above.</p> <p>For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i> </p> <note> <p>Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).</p> </note>
--- @param NewSupportedProducts [NewSupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5 Edition respectively.</p> </li> <li> <p>"mapr-m7" - launch the cluster using MapR M7 Edition.</p> </li> <li> <p>"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.</p> </li> <li> <p>"hue"- launch the cluster with Hue installed.</p> </li> <li> <p>"spark" - launch the cluster with Apache Spark installed.</p> </li> <li> <p>"ganglia" - launch the cluster with the Ganglia Monitoring System installed.</p> </li> </ul>
--- @param SupportedProducts [SupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third Party Applications with Amazon EMR</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the job flow using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the job flow using MapR M5 Edition.</p> </li> </ul>
+-- @param _AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
+-- @param _AdditionalInfo [XmlString] <p>A JSON string for selecting additional features.</p>
+-- @param _SecurityConfiguration [XmlString] <p>The name of a security configuration to apply to the cluster.</p>
+-- @param _Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
+-- @param _ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+-- @param _Applications [ApplicationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>A list of applications for the cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.</p>
+-- @param _ReleaseLabel [XmlStringMaxLen256] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
+-- @param _Tags [TagList] <p>A list of tags to associate with a cluster and propagate to Amazon EC2 instances.</p>
+-- @param _BootstrapActions [BootstrapActionConfigList] <p>A list of bootstrap actions to run before Hadoop starts on the cluster nodes.</p>
+-- @param _Instances [JobFlowInstancesConfig] <p>A specification of the number and type of Amazon EC2 instances.</p>
+-- @param _JobFlowRole [XmlString] <p>Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2 instances of the cluster assume this role. The default role is <code>EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the CLI or console.</p>
+-- @param _Steps [StepConfigList] <p>A list of steps to run.</p>
+-- @param _ScaleDownBehavior [ScaleDownBehavior] <p>Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
+-- @param _Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for the EMR cluster you are creating.</p>
+-- @param _VisibleToAllUsers [Boolean] <p>Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it.</p>
+-- @param _LogUri [XmlString] <p>The location in Amazon S3 to write the log files of the job flow. If a value is not provided, logs are not created.</p>
+-- @param _AmiVersion [XmlStringMaxLen256] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use ReleaseLabel.</p> </note> <p>The version of the Amazon Machine Image (AMI) to use when launching Amazon EC2 instances in the job flow. The following values are valid:</p> <ul> <li> <p>The version number of the AMI to use, for example, "2.0."</p> </li> </ul> <p>If the AMI supports multiple versions of Hadoop (for example, AMI 1.0 supports both Hadoop 0.18 and 0.20) you can use the <a>JobFlowInstancesConfig</a> <code>HadoopVersion</code> parameter to modify the version of Hadoop from the defaults shown above.</p> <p>For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i> </p> <note> <p>Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).</p> </note>
+-- @param _NewSupportedProducts [NewSupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5 Edition respectively.</p> </li> <li> <p>"mapr-m7" - launch the cluster using MapR M7 Edition.</p> </li> <li> <p>"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.</p> </li> <li> <p>"hue"- launch the cluster with Hue installed.</p> </li> <li> <p>"spark" - launch the cluster with Apache Spark installed.</p> </li> <li> <p>"ganglia" - launch the cluster with the Ganglia Monitoring System installed.</p> </li> </ul>
+-- @param _SupportedProducts [SupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third Party Applications with Amazon EMR</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the job flow using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the job flow using MapR M5 Edition.</p> </li> </ul>
 -- Required parameter: Name
 -- Required parameter: Instances
-function M.RunJobFlowInput(AutoScalingRole, AdditionalInfo, SecurityConfiguration, Name, ServiceRole, Applications, ReleaseLabel, Tags, BootstrapActions, Instances, JobFlowRole, Steps, ScaleDownBehavior, Configurations, VisibleToAllUsers, LogUri, AmiVersion, NewSupportedProducts, SupportedProducts, ...)
+function M.RunJobFlowInput(_AutoScalingRole, _AdditionalInfo, _SecurityConfiguration, _Name, _ServiceRole, _Applications, _ReleaseLabel, _Tags, _BootstrapActions, _Instances, _JobFlowRole, _Steps, _ScaleDownBehavior, _Configurations, _VisibleToAllUsers, _LogUri, _AmiVersion, _NewSupportedProducts, _SupportedProducts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RunJobFlowInput")
 	local t = { 
-		["AutoScalingRole"] = AutoScalingRole,
-		["AdditionalInfo"] = AdditionalInfo,
-		["SecurityConfiguration"] = SecurityConfiguration,
-		["Name"] = Name,
-		["ServiceRole"] = ServiceRole,
-		["Applications"] = Applications,
-		["ReleaseLabel"] = ReleaseLabel,
-		["Tags"] = Tags,
-		["BootstrapActions"] = BootstrapActions,
-		["Instances"] = Instances,
-		["JobFlowRole"] = JobFlowRole,
-		["Steps"] = Steps,
-		["ScaleDownBehavior"] = ScaleDownBehavior,
-		["Configurations"] = Configurations,
-		["VisibleToAllUsers"] = VisibleToAllUsers,
-		["LogUri"] = LogUri,
-		["AmiVersion"] = AmiVersion,
-		["NewSupportedProducts"] = NewSupportedProducts,
-		["SupportedProducts"] = SupportedProducts,
+		["AutoScalingRole"] = _AutoScalingRole,
+		["AdditionalInfo"] = _AdditionalInfo,
+		["SecurityConfiguration"] = _SecurityConfiguration,
+		["Name"] = _Name,
+		["ServiceRole"] = _ServiceRole,
+		["Applications"] = _Applications,
+		["ReleaseLabel"] = _ReleaseLabel,
+		["Tags"] = _Tags,
+		["BootstrapActions"] = _BootstrapActions,
+		["Instances"] = _Instances,
+		["JobFlowRole"] = _JobFlowRole,
+		["Steps"] = _Steps,
+		["ScaleDownBehavior"] = _ScaleDownBehavior,
+		["Configurations"] = _Configurations,
+		["VisibleToAllUsers"] = _VisibleToAllUsers,
+		["LogUri"] = _LogUri,
+		["AmiVersion"] = _AmiVersion,
+		["NewSupportedProducts"] = _NewSupportedProducts,
+		["SupportedProducts"] = _SupportedProducts,
 	}
-	M.AssertRunJobFlowInput(t)
+	asserts.AssertRunJobFlowInput(t)
 	return t
 end
 
-local SetVisibleToAllUsersInput_keys = { "JobFlowIds" = true, "VisibleToAllUsers" = true, nil }
+keys.SetVisibleToAllUsersInput = { ["JobFlowIds"] = true, ["VisibleToAllUsers"] = true, nil }
 
-function M.AssertSetVisibleToAllUsersInput(struct)
+function asserts.AssertSetVisibleToAllUsersInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetVisibleToAllUsersInput to be of type 'table'")
 	assert(struct["JobFlowIds"], "Expected key JobFlowIds to exist in table")
 	assert(struct["VisibleToAllUsers"], "Expected key VisibleToAllUsers to exist in table")
-	if struct["JobFlowIds"] then M.AssertXmlStringList(struct["JobFlowIds"]) end
-	if struct["VisibleToAllUsers"] then M.AssertBoolean(struct["VisibleToAllUsers"]) end
+	if struct["JobFlowIds"] then asserts.AssertXmlStringList(struct["JobFlowIds"]) end
+	if struct["VisibleToAllUsers"] then asserts.AssertBoolean(struct["VisibleToAllUsers"]) end
 	for k,_ in pairs(struct) do
-		assert(SetVisibleToAllUsersInput_keys[k], "SetVisibleToAllUsersInput contains unknown key " .. tostring(k))
+		assert(keys.SetVisibleToAllUsersInput[k], "SetVisibleToAllUsersInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetVisibleToAllUsersInput
 -- <p>The input to the SetVisibleToAllUsers action.</p>
--- @param JobFlowIds [XmlStringList] <p>Identifiers of the job flows to receive the new visibility setting.</p>
--- @param VisibleToAllUsers [Boolean] <p>Whether the specified clusters are visible to all IAM users of the AWS account associated with the cluster. If this value is set to True, all IAM users of that AWS account can view and, if they have the proper IAM policy permissions set, manage the clusters. If it is set to False, only the IAM user that created a cluster can view and manage it.</p>
+-- @param _JobFlowIds [XmlStringList] <p>Identifiers of the job flows to receive the new visibility setting.</p>
+-- @param _VisibleToAllUsers [Boolean] <p>Whether the specified clusters are visible to all IAM users of the AWS account associated with the cluster. If this value is set to True, all IAM users of that AWS account can view and, if they have the proper IAM policy permissions set, manage the clusters. If it is set to False, only the IAM user that created a cluster can view and manage it.</p>
 -- Required parameter: JobFlowIds
 -- Required parameter: VisibleToAllUsers
-function M.SetVisibleToAllUsersInput(JobFlowIds, VisibleToAllUsers, ...)
+function M.SetVisibleToAllUsersInput(_JobFlowIds, _VisibleToAllUsers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetVisibleToAllUsersInput")
 	local t = { 
-		["JobFlowIds"] = JobFlowIds,
-		["VisibleToAllUsers"] = VisibleToAllUsers,
+		["JobFlowIds"] = _JobFlowIds,
+		["VisibleToAllUsers"] = _VisibleToAllUsers,
 	}
-	M.AssertSetVisibleToAllUsersInput(t)
+	asserts.AssertSetVisibleToAllUsersInput(t)
 	return t
 end
 
-local HadoopJarStepConfig_keys = { "MainClass" = true, "Args" = true, "Jar" = true, "Properties" = true, nil }
+keys.HadoopJarStepConfig = { ["MainClass"] = true, ["Args"] = true, ["Jar"] = true, ["Properties"] = true, nil }
 
-function M.AssertHadoopJarStepConfig(struct)
+function asserts.AssertHadoopJarStepConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected HadoopJarStepConfig to be of type 'table'")
 	assert(struct["Jar"], "Expected key Jar to exist in table")
-	if struct["MainClass"] then M.AssertXmlString(struct["MainClass"]) end
-	if struct["Args"] then M.AssertXmlStringList(struct["Args"]) end
-	if struct["Jar"] then M.AssertXmlString(struct["Jar"]) end
-	if struct["Properties"] then M.AssertKeyValueList(struct["Properties"]) end
+	if struct["MainClass"] then asserts.AssertXmlString(struct["MainClass"]) end
+	if struct["Args"] then asserts.AssertXmlStringList(struct["Args"]) end
+	if struct["Jar"] then asserts.AssertXmlString(struct["Jar"]) end
+	if struct["Properties"] then asserts.AssertKeyValueList(struct["Properties"]) end
 	for k,_ in pairs(struct) do
-		assert(HadoopJarStepConfig_keys[k], "HadoopJarStepConfig contains unknown key " .. tostring(k))
+		assert(keys.HadoopJarStepConfig[k], "HadoopJarStepConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type HadoopJarStepConfig
 -- <p>A job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for Hadoop to execute and waits for the job to finish or fail.</p>
--- @param MainClass [XmlString] <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.</p>
--- @param Args [XmlStringList] <p>A list of command line arguments passed to the JAR file's main function when executed.</p>
--- @param Jar [XmlString] <p>A path to a JAR file run during the step.</p>
--- @param Properties [KeyValueList] <p>A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
+-- @param _MainClass [XmlString] <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.</p>
+-- @param _Args [XmlStringList] <p>A list of command line arguments passed to the JAR file's main function when executed.</p>
+-- @param _Jar [XmlString] <p>A path to a JAR file run during the step.</p>
+-- @param _Properties [KeyValueList] <p>A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
 -- Required parameter: Jar
-function M.HadoopJarStepConfig(MainClass, Args, Jar, Properties, ...)
+function M.HadoopJarStepConfig(_MainClass, _Args, _Jar, _Properties, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HadoopJarStepConfig")
 	local t = { 
-		["MainClass"] = MainClass,
-		["Args"] = Args,
-		["Jar"] = Jar,
-		["Properties"] = Properties,
+		["MainClass"] = _MainClass,
+		["Args"] = _Args,
+		["Jar"] = _Jar,
+		["Properties"] = _Properties,
 	}
-	M.AssertHadoopJarStepConfig(t)
+	asserts.AssertHadoopJarStepConfig(t)
 	return t
 end
 
-local InstanceGroupTimeline_keys = { "ReadyDateTime" = true, "CreationDateTime" = true, "EndDateTime" = true, nil }
+keys.InstanceGroupTimeline = { ["ReadyDateTime"] = true, ["CreationDateTime"] = true, ["EndDateTime"] = true, nil }
 
-function M.AssertInstanceGroupTimeline(struct)
+function asserts.AssertInstanceGroupTimeline(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceGroupTimeline to be of type 'table'")
-	if struct["ReadyDateTime"] then M.AssertDate(struct["ReadyDateTime"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["EndDateTime"] then M.AssertDate(struct["EndDateTime"]) end
+	if struct["ReadyDateTime"] then asserts.AssertDate(struct["ReadyDateTime"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["EndDateTime"] then asserts.AssertDate(struct["EndDateTime"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceGroupTimeline_keys[k], "InstanceGroupTimeline contains unknown key " .. tostring(k))
+		assert(keys.InstanceGroupTimeline[k], "InstanceGroupTimeline contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceGroupTimeline
 -- <p>The timeline of the instance group lifecycle.</p>
--- @param ReadyDateTime [Date] <p>The date and time when the instance group became ready to perform tasks.</p>
--- @param CreationDateTime [Date] <p>The creation date and time of the instance group.</p>
--- @param EndDateTime [Date] <p>The date and time when the instance group terminated.</p>
-function M.InstanceGroupTimeline(ReadyDateTime, CreationDateTime, EndDateTime, ...)
+-- @param _ReadyDateTime [Date] <p>The date and time when the instance group became ready to perform tasks.</p>
+-- @param _CreationDateTime [Date] <p>The creation date and time of the instance group.</p>
+-- @param _EndDateTime [Date] <p>The date and time when the instance group terminated.</p>
+function M.InstanceGroupTimeline(_ReadyDateTime, _CreationDateTime, _EndDateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupTimeline")
 	local t = { 
-		["ReadyDateTime"] = ReadyDateTime,
-		["CreationDateTime"] = CreationDateTime,
-		["EndDateTime"] = EndDateTime,
+		["ReadyDateTime"] = _ReadyDateTime,
+		["CreationDateTime"] = _CreationDateTime,
+		["EndDateTime"] = _EndDateTime,
 	}
-	M.AssertInstanceGroupTimeline(t)
+	asserts.AssertInstanceGroupTimeline(t)
 	return t
 end
 
-local Cluster_keys = { "Status" = true, "Ec2InstanceAttributes" = true, "Name" = true, "ServiceRole" = true, "Tags" = true, "TerminationProtected" = true, "RunningAmiVersion" = true, "ReleaseLabel" = true, "NormalizedInstanceHours" = true, "InstanceCollectionType" = true, "Applications" = true, "MasterPublicDnsName" = true, "AutoScalingRole" = true, "SecurityConfiguration" = true, "VisibleToAllUsers" = true, "RequestedAmiVersion" = true, "LogUri" = true, "AutoTerminate" = true, "Id" = true, "ScaleDownBehavior" = true, "Configurations" = true, nil }
+keys.Cluster = { ["Status"] = true, ["Ec2InstanceAttributes"] = true, ["Name"] = true, ["ServiceRole"] = true, ["Tags"] = true, ["TerminationProtected"] = true, ["RunningAmiVersion"] = true, ["ReleaseLabel"] = true, ["NormalizedInstanceHours"] = true, ["InstanceCollectionType"] = true, ["Applications"] = true, ["MasterPublicDnsName"] = true, ["AutoScalingRole"] = true, ["SecurityConfiguration"] = true, ["VisibleToAllUsers"] = true, ["RequestedAmiVersion"] = true, ["LogUri"] = true, ["AutoTerminate"] = true, ["Id"] = true, ["ScaleDownBehavior"] = true, ["Configurations"] = true, nil }
 
-function M.AssertCluster(struct)
+function asserts.AssertCluster(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Cluster to be of type 'table'")
-	if struct["Status"] then M.AssertClusterStatus(struct["Status"]) end
-	if struct["Ec2InstanceAttributes"] then M.AssertEc2InstanceAttributes(struct["Ec2InstanceAttributes"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["ServiceRole"] then M.AssertString(struct["ServiceRole"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
-	if struct["TerminationProtected"] then M.AssertBoolean(struct["TerminationProtected"]) end
-	if struct["RunningAmiVersion"] then M.AssertString(struct["RunningAmiVersion"]) end
-	if struct["ReleaseLabel"] then M.AssertString(struct["ReleaseLabel"]) end
-	if struct["NormalizedInstanceHours"] then M.AssertInteger(struct["NormalizedInstanceHours"]) end
-	if struct["InstanceCollectionType"] then M.AssertInstanceCollectionType(struct["InstanceCollectionType"]) end
-	if struct["Applications"] then M.AssertApplicationList(struct["Applications"]) end
-	if struct["MasterPublicDnsName"] then M.AssertString(struct["MasterPublicDnsName"]) end
-	if struct["AutoScalingRole"] then M.AssertXmlString(struct["AutoScalingRole"]) end
-	if struct["SecurityConfiguration"] then M.AssertXmlString(struct["SecurityConfiguration"]) end
-	if struct["VisibleToAllUsers"] then M.AssertBoolean(struct["VisibleToAllUsers"]) end
-	if struct["RequestedAmiVersion"] then M.AssertString(struct["RequestedAmiVersion"]) end
-	if struct["LogUri"] then M.AssertString(struct["LogUri"]) end
-	if struct["AutoTerminate"] then M.AssertBoolean(struct["AutoTerminate"]) end
-	if struct["Id"] then M.AssertClusterId(struct["Id"]) end
-	if struct["ScaleDownBehavior"] then M.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
-	if struct["Configurations"] then M.AssertConfigurationList(struct["Configurations"]) end
+	if struct["Status"] then asserts.AssertClusterStatus(struct["Status"]) end
+	if struct["Ec2InstanceAttributes"] then asserts.AssertEc2InstanceAttributes(struct["Ec2InstanceAttributes"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["ServiceRole"] then asserts.AssertString(struct["ServiceRole"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
+	if struct["TerminationProtected"] then asserts.AssertBoolean(struct["TerminationProtected"]) end
+	if struct["RunningAmiVersion"] then asserts.AssertString(struct["RunningAmiVersion"]) end
+	if struct["ReleaseLabel"] then asserts.AssertString(struct["ReleaseLabel"]) end
+	if struct["NormalizedInstanceHours"] then asserts.AssertInteger(struct["NormalizedInstanceHours"]) end
+	if struct["InstanceCollectionType"] then asserts.AssertInstanceCollectionType(struct["InstanceCollectionType"]) end
+	if struct["Applications"] then asserts.AssertApplicationList(struct["Applications"]) end
+	if struct["MasterPublicDnsName"] then asserts.AssertString(struct["MasterPublicDnsName"]) end
+	if struct["AutoScalingRole"] then asserts.AssertXmlString(struct["AutoScalingRole"]) end
+	if struct["SecurityConfiguration"] then asserts.AssertXmlString(struct["SecurityConfiguration"]) end
+	if struct["VisibleToAllUsers"] then asserts.AssertBoolean(struct["VisibleToAllUsers"]) end
+	if struct["RequestedAmiVersion"] then asserts.AssertString(struct["RequestedAmiVersion"]) end
+	if struct["LogUri"] then asserts.AssertString(struct["LogUri"]) end
+	if struct["AutoTerminate"] then asserts.AssertBoolean(struct["AutoTerminate"]) end
+	if struct["Id"] then asserts.AssertClusterId(struct["Id"]) end
+	if struct["ScaleDownBehavior"] then asserts.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
 	for k,_ in pairs(struct) do
-		assert(Cluster_keys[k], "Cluster contains unknown key " .. tostring(k))
+		assert(keys.Cluster[k], "Cluster contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Cluster
 -- <p>The detailed description of the cluster.</p>
--- @param Status [ClusterStatus] <p>The current status details about the cluster.</p>
--- @param Ec2InstanceAttributes [Ec2InstanceAttributes] <p>Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.</p>
--- @param Name [String] <p>The name of the cluster.</p>
--- @param ServiceRole [String] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
--- @param Tags [TagList] <p>A list of tags associated with a cluster.</p>
--- @param TerminationProtected [Boolean] <p>Indicates whether Amazon EMR will lock the cluster to prevent the EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.</p>
--- @param RunningAmiVersion [String] <p>The AMI version running on this cluster.</p>
--- @param ReleaseLabel [String] <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
--- @param NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
--- @param InstanceCollectionType [InstanceCollectionType] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.</p>
--- @param Applications [ApplicationList] <p>The applications installed on this cluster.</p>
--- @param MasterPublicDnsName [String] <p>The public DNS name of the master EC2 instance.</p>
--- @param AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
--- @param SecurityConfiguration [XmlString] <p>The name of the security configuration applied to the cluster.</p>
--- @param VisibleToAllUsers [Boolean] <p>Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
--- @param RequestedAmiVersion [String] <p>The AMI version requested for this cluster.</p>
--- @param LogUri [String] <p>The path to the Amazon S3 location where logs for this cluster are stored.</p>
--- @param AutoTerminate [Boolean] <p>Specifies whether the cluster should terminate after completing all steps.</p>
--- @param Id [ClusterId] <p>The unique identifier for the cluster.</p>
--- @param ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
--- @param Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of Configurations supplied to the EMR cluster.</p>
-function M.Cluster(Status, Ec2InstanceAttributes, Name, ServiceRole, Tags, TerminationProtected, RunningAmiVersion, ReleaseLabel, NormalizedInstanceHours, InstanceCollectionType, Applications, MasterPublicDnsName, AutoScalingRole, SecurityConfiguration, VisibleToAllUsers, RequestedAmiVersion, LogUri, AutoTerminate, Id, ScaleDownBehavior, Configurations, ...)
+-- @param _Status [ClusterStatus] <p>The current status details about the cluster.</p>
+-- @param _Ec2InstanceAttributes [Ec2InstanceAttributes] <p>Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.</p>
+-- @param _Name [String] <p>The name of the cluster.</p>
+-- @param _ServiceRole [String] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+-- @param _Tags [TagList] <p>A list of tags associated with a cluster.</p>
+-- @param _TerminationProtected [Boolean] <p>Indicates whether Amazon EMR will lock the cluster to prevent the EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.</p>
+-- @param _RunningAmiVersion [String] <p>The AMI version running on this cluster.</p>
+-- @param _ReleaseLabel [String] <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
+-- @param _NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+-- @param _InstanceCollectionType [InstanceCollectionType] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.</p>
+-- @param _Applications [ApplicationList] <p>The applications installed on this cluster.</p>
+-- @param _MasterPublicDnsName [String] <p>The public DNS name of the master EC2 instance.</p>
+-- @param _AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
+-- @param _SecurityConfiguration [XmlString] <p>The name of the security configuration applied to the cluster.</p>
+-- @param _VisibleToAllUsers [Boolean] <p>Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
+-- @param _RequestedAmiVersion [String] <p>The AMI version requested for this cluster.</p>
+-- @param _LogUri [String] <p>The path to the Amazon S3 location where logs for this cluster are stored.</p>
+-- @param _AutoTerminate [Boolean] <p>Specifies whether the cluster should terminate after completing all steps.</p>
+-- @param _Id [ClusterId] <p>The unique identifier for the cluster.</p>
+-- @param _ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
+-- @param _Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of Configurations supplied to the EMR cluster.</p>
+function M.Cluster(_Status, _Ec2InstanceAttributes, _Name, _ServiceRole, _Tags, _TerminationProtected, _RunningAmiVersion, _ReleaseLabel, _NormalizedInstanceHours, _InstanceCollectionType, _Applications, _MasterPublicDnsName, _AutoScalingRole, _SecurityConfiguration, _VisibleToAllUsers, _RequestedAmiVersion, _LogUri, _AutoTerminate, _Id, _ScaleDownBehavior, _Configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Cluster")
 	local t = { 
-		["Status"] = Status,
-		["Ec2InstanceAttributes"] = Ec2InstanceAttributes,
-		["Name"] = Name,
-		["ServiceRole"] = ServiceRole,
-		["Tags"] = Tags,
-		["TerminationProtected"] = TerminationProtected,
-		["RunningAmiVersion"] = RunningAmiVersion,
-		["ReleaseLabel"] = ReleaseLabel,
-		["NormalizedInstanceHours"] = NormalizedInstanceHours,
-		["InstanceCollectionType"] = InstanceCollectionType,
-		["Applications"] = Applications,
-		["MasterPublicDnsName"] = MasterPublicDnsName,
-		["AutoScalingRole"] = AutoScalingRole,
-		["SecurityConfiguration"] = SecurityConfiguration,
-		["VisibleToAllUsers"] = VisibleToAllUsers,
-		["RequestedAmiVersion"] = RequestedAmiVersion,
-		["LogUri"] = LogUri,
-		["AutoTerminate"] = AutoTerminate,
-		["Id"] = Id,
-		["ScaleDownBehavior"] = ScaleDownBehavior,
-		["Configurations"] = Configurations,
+		["Status"] = _Status,
+		["Ec2InstanceAttributes"] = _Ec2InstanceAttributes,
+		["Name"] = _Name,
+		["ServiceRole"] = _ServiceRole,
+		["Tags"] = _Tags,
+		["TerminationProtected"] = _TerminationProtected,
+		["RunningAmiVersion"] = _RunningAmiVersion,
+		["ReleaseLabel"] = _ReleaseLabel,
+		["NormalizedInstanceHours"] = _NormalizedInstanceHours,
+		["InstanceCollectionType"] = _InstanceCollectionType,
+		["Applications"] = _Applications,
+		["MasterPublicDnsName"] = _MasterPublicDnsName,
+		["AutoScalingRole"] = _AutoScalingRole,
+		["SecurityConfiguration"] = _SecurityConfiguration,
+		["VisibleToAllUsers"] = _VisibleToAllUsers,
+		["RequestedAmiVersion"] = _RequestedAmiVersion,
+		["LogUri"] = _LogUri,
+		["AutoTerminate"] = _AutoTerminate,
+		["Id"] = _Id,
+		["ScaleDownBehavior"] = _ScaleDownBehavior,
+		["Configurations"] = _Configurations,
 	}
-	M.AssertCluster(t)
+	asserts.AssertCluster(t)
 	return t
 end
 
-local JobFlowDetail_keys = { "AutoScalingRole" = true, "Name" = true, "ServiceRole" = true, "JobFlowId" = true, "Instances" = true, "JobFlowRole" = true, "Steps" = true, "ScaleDownBehavior" = true, "ExecutionStatusDetail" = true, "VisibleToAllUsers" = true, "BootstrapActions" = true, "LogUri" = true, "AmiVersion" = true, "SupportedProducts" = true, nil }
+keys.JobFlowDetail = { ["AutoScalingRole"] = true, ["Name"] = true, ["ServiceRole"] = true, ["JobFlowId"] = true, ["Instances"] = true, ["JobFlowRole"] = true, ["Steps"] = true, ["ScaleDownBehavior"] = true, ["ExecutionStatusDetail"] = true, ["VisibleToAllUsers"] = true, ["BootstrapActions"] = true, ["LogUri"] = true, ["AmiVersion"] = true, ["SupportedProducts"] = true, nil }
 
-function M.AssertJobFlowDetail(struct)
+function asserts.AssertJobFlowDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected JobFlowDetail to be of type 'table'")
 	assert(struct["JobFlowId"], "Expected key JobFlowId to exist in table")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["ExecutionStatusDetail"], "Expected key ExecutionStatusDetail to exist in table")
 	assert(struct["Instances"], "Expected key Instances to exist in table")
-	if struct["AutoScalingRole"] then M.AssertXmlString(struct["AutoScalingRole"]) end
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
-	if struct["ServiceRole"] then M.AssertXmlString(struct["ServiceRole"]) end
-	if struct["JobFlowId"] then M.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
-	if struct["Instances"] then M.AssertJobFlowInstancesDetail(struct["Instances"]) end
-	if struct["JobFlowRole"] then M.AssertXmlString(struct["JobFlowRole"]) end
-	if struct["Steps"] then M.AssertStepDetailList(struct["Steps"]) end
-	if struct["ScaleDownBehavior"] then M.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
-	if struct["ExecutionStatusDetail"] then M.AssertJobFlowExecutionStatusDetail(struct["ExecutionStatusDetail"]) end
-	if struct["VisibleToAllUsers"] then M.AssertBoolean(struct["VisibleToAllUsers"]) end
-	if struct["BootstrapActions"] then M.AssertBootstrapActionDetailList(struct["BootstrapActions"]) end
-	if struct["LogUri"] then M.AssertXmlString(struct["LogUri"]) end
-	if struct["AmiVersion"] then M.AssertXmlStringMaxLen256(struct["AmiVersion"]) end
-	if struct["SupportedProducts"] then M.AssertSupportedProductsList(struct["SupportedProducts"]) end
+	if struct["AutoScalingRole"] then asserts.AssertXmlString(struct["AutoScalingRole"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["ServiceRole"] then asserts.AssertXmlString(struct["ServiceRole"]) end
+	if struct["JobFlowId"] then asserts.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
+	if struct["Instances"] then asserts.AssertJobFlowInstancesDetail(struct["Instances"]) end
+	if struct["JobFlowRole"] then asserts.AssertXmlString(struct["JobFlowRole"]) end
+	if struct["Steps"] then asserts.AssertStepDetailList(struct["Steps"]) end
+	if struct["ScaleDownBehavior"] then asserts.AssertScaleDownBehavior(struct["ScaleDownBehavior"]) end
+	if struct["ExecutionStatusDetail"] then asserts.AssertJobFlowExecutionStatusDetail(struct["ExecutionStatusDetail"]) end
+	if struct["VisibleToAllUsers"] then asserts.AssertBoolean(struct["VisibleToAllUsers"]) end
+	if struct["BootstrapActions"] then asserts.AssertBootstrapActionDetailList(struct["BootstrapActions"]) end
+	if struct["LogUri"] then asserts.AssertXmlString(struct["LogUri"]) end
+	if struct["AmiVersion"] then asserts.AssertXmlStringMaxLen256(struct["AmiVersion"]) end
+	if struct["SupportedProducts"] then asserts.AssertSupportedProductsList(struct["SupportedProducts"]) end
 	for k,_ in pairs(struct) do
-		assert(JobFlowDetail_keys[k], "JobFlowDetail contains unknown key " .. tostring(k))
+		assert(keys.JobFlowDetail[k], "JobFlowDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type JobFlowDetail
 -- <p>A description of a cluster (job flow).</p>
--- @param AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides a way for the automatic scaling feature to get the required permissions it needs to launch and terminate EC2 instances in an instance group.</p>
--- @param Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
--- @param ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
--- @param JobFlowId [XmlStringMaxLen256] <p>The job flow identifier.</p>
--- @param Instances [JobFlowInstancesDetail] <p>Describes the Amazon EC2 instances of the job flow.</p>
--- @param JobFlowRole [XmlString] <p>The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.</p>
--- @param Steps [StepDetailList] <p>A list of steps run by the job flow.</p>
--- @param ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
--- @param ExecutionStatusDetail [JobFlowExecutionStatusDetail] <p>Describes the execution status of the job flow.</p>
--- @param VisibleToAllUsers [Boolean] <p>Specifies whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
--- @param BootstrapActions [BootstrapActionDetailList] <p>A list of the bootstrap actions run by the job flow.</p>
--- @param LogUri [XmlString] <p>The location in Amazon S3 where log files for the job are stored.</p>
--- @param AmiVersion [XmlStringMaxLen256] <p>The version of the AMI used to initialize Amazon EC2 instances in the job flow. For a list of AMI versions currently supported by Amazon EMR, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in EMR</a> in the <i>Amazon EMR Developer Guide.</i> </p>
--- @param SupportedProducts [SupportedProductsList] <p>A list of strings set by third party software when the job flow is launched. If you are not using third party software to manage the job flow this value is empty.</p>
+-- @param _AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides a way for the automatic scaling feature to get the required permissions it needs to launch and terminate EC2 instances in an instance group.</p>
+-- @param _Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
+-- @param _ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+-- @param _JobFlowId [XmlStringMaxLen256] <p>The job flow identifier.</p>
+-- @param _Instances [JobFlowInstancesDetail] <p>Describes the Amazon EC2 instances of the job flow.</p>
+-- @param _JobFlowRole [XmlString] <p>The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.</p>
+-- @param _Steps [StepDetailList] <p>A list of steps run by the job flow.</p>
+-- @param _ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
+-- @param _ExecutionStatusDetail [JobFlowExecutionStatusDetail] <p>Describes the execution status of the job flow.</p>
+-- @param _VisibleToAllUsers [Boolean] <p>Specifies whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
+-- @param _BootstrapActions [BootstrapActionDetailList] <p>A list of the bootstrap actions run by the job flow.</p>
+-- @param _LogUri [XmlString] <p>The location in Amazon S3 where log files for the job are stored.</p>
+-- @param _AmiVersion [XmlStringMaxLen256] <p>The version of the AMI used to initialize Amazon EC2 instances in the job flow. For a list of AMI versions currently supported by Amazon EMR, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in EMR</a> in the <i>Amazon EMR Developer Guide.</i> </p>
+-- @param _SupportedProducts [SupportedProductsList] <p>A list of strings set by third party software when the job flow is launched. If you are not using third party software to manage the job flow this value is empty.</p>
 -- Required parameter: JobFlowId
 -- Required parameter: Name
 -- Required parameter: ExecutionStatusDetail
 -- Required parameter: Instances
-function M.JobFlowDetail(AutoScalingRole, Name, ServiceRole, JobFlowId, Instances, JobFlowRole, Steps, ScaleDownBehavior, ExecutionStatusDetail, VisibleToAllUsers, BootstrapActions, LogUri, AmiVersion, SupportedProducts, ...)
+function M.JobFlowDetail(_AutoScalingRole, _Name, _ServiceRole, _JobFlowId, _Instances, _JobFlowRole, _Steps, _ScaleDownBehavior, _ExecutionStatusDetail, _VisibleToAllUsers, _BootstrapActions, _LogUri, _AmiVersion, _SupportedProducts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobFlowDetail")
 	local t = { 
-		["AutoScalingRole"] = AutoScalingRole,
-		["Name"] = Name,
-		["ServiceRole"] = ServiceRole,
-		["JobFlowId"] = JobFlowId,
-		["Instances"] = Instances,
-		["JobFlowRole"] = JobFlowRole,
-		["Steps"] = Steps,
-		["ScaleDownBehavior"] = ScaleDownBehavior,
-		["ExecutionStatusDetail"] = ExecutionStatusDetail,
-		["VisibleToAllUsers"] = VisibleToAllUsers,
-		["BootstrapActions"] = BootstrapActions,
-		["LogUri"] = LogUri,
-		["AmiVersion"] = AmiVersion,
-		["SupportedProducts"] = SupportedProducts,
+		["AutoScalingRole"] = _AutoScalingRole,
+		["Name"] = _Name,
+		["ServiceRole"] = _ServiceRole,
+		["JobFlowId"] = _JobFlowId,
+		["Instances"] = _Instances,
+		["JobFlowRole"] = _JobFlowRole,
+		["Steps"] = _Steps,
+		["ScaleDownBehavior"] = _ScaleDownBehavior,
+		["ExecutionStatusDetail"] = _ExecutionStatusDetail,
+		["VisibleToAllUsers"] = _VisibleToAllUsers,
+		["BootstrapActions"] = _BootstrapActions,
+		["LogUri"] = _LogUri,
+		["AmiVersion"] = _AmiVersion,
+		["SupportedProducts"] = _SupportedProducts,
 	}
-	M.AssertJobFlowDetail(t)
+	asserts.AssertJobFlowDetail(t)
 	return t
 end
 
-local TerminateJobFlowsInput_keys = { "JobFlowIds" = true, nil }
+keys.TerminateJobFlowsInput = { ["JobFlowIds"] = true, nil }
 
-function M.AssertTerminateJobFlowsInput(struct)
+function asserts.AssertTerminateJobFlowsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected TerminateJobFlowsInput to be of type 'table'")
 	assert(struct["JobFlowIds"], "Expected key JobFlowIds to exist in table")
-	if struct["JobFlowIds"] then M.AssertXmlStringList(struct["JobFlowIds"]) end
+	if struct["JobFlowIds"] then asserts.AssertXmlStringList(struct["JobFlowIds"]) end
 	for k,_ in pairs(struct) do
-		assert(TerminateJobFlowsInput_keys[k], "TerminateJobFlowsInput contains unknown key " .. tostring(k))
+		assert(keys.TerminateJobFlowsInput[k], "TerminateJobFlowsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type TerminateJobFlowsInput
 -- <p> Input to the <a>TerminateJobFlows</a> operation. </p>
--- @param JobFlowIds [XmlStringList] <p>A list of job flows to be shutdown.</p>
+-- @param _JobFlowIds [XmlStringList] <p>A list of job flows to be shutdown.</p>
 -- Required parameter: JobFlowIds
-function M.TerminateJobFlowsInput(JobFlowIds, ...)
+function M.TerminateJobFlowsInput(_JobFlowIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateJobFlowsInput")
 	local t = { 
-		["JobFlowIds"] = JobFlowIds,
+		["JobFlowIds"] = _JobFlowIds,
 	}
-	M.AssertTerminateJobFlowsInput(t)
+	asserts.AssertTerminateJobFlowsInput(t)
 	return t
 end
 
-local AddInstanceFleetOutput_keys = { "ClusterId" = true, "InstanceFleetId" = true, nil }
+keys.AddInstanceFleetOutput = { ["ClusterId"] = true, ["InstanceFleetId"] = true, nil }
 
-function M.AssertAddInstanceFleetOutput(struct)
+function asserts.AssertAddInstanceFleetOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddInstanceFleetOutput to be of type 'table'")
-	if struct["ClusterId"] then M.AssertXmlStringMaxLen256(struct["ClusterId"]) end
-	if struct["InstanceFleetId"] then M.AssertInstanceFleetId(struct["InstanceFleetId"]) end
+	if struct["ClusterId"] then asserts.AssertXmlStringMaxLen256(struct["ClusterId"]) end
+	if struct["InstanceFleetId"] then asserts.AssertInstanceFleetId(struct["InstanceFleetId"]) end
 	for k,_ in pairs(struct) do
-		assert(AddInstanceFleetOutput_keys[k], "AddInstanceFleetOutput contains unknown key " .. tostring(k))
+		assert(keys.AddInstanceFleetOutput[k], "AddInstanceFleetOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddInstanceFleetOutput
 --  
--- @param ClusterId [XmlStringMaxLen256] <p>The unique identifier of the cluster.</p>
--- @param InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
-function M.AddInstanceFleetOutput(ClusterId, InstanceFleetId, ...)
+-- @param _ClusterId [XmlStringMaxLen256] <p>The unique identifier of the cluster.</p>
+-- @param _InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
+function M.AddInstanceFleetOutput(_ClusterId, _InstanceFleetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddInstanceFleetOutput")
 	local t = { 
-		["ClusterId"] = ClusterId,
-		["InstanceFleetId"] = InstanceFleetId,
+		["ClusterId"] = _ClusterId,
+		["InstanceFleetId"] = _InstanceFleetId,
 	}
-	M.AssertAddInstanceFleetOutput(t)
+	asserts.AssertAddInstanceFleetOutput(t)
 	return t
 end
 
-local ModifyInstanceFleetInput_keys = { "InstanceFleet" = true, "ClusterId" = true, nil }
+keys.ModifyInstanceFleetInput = { ["InstanceFleet"] = true, ["ClusterId"] = true, nil }
 
-function M.AssertModifyInstanceFleetInput(struct)
+function asserts.AssertModifyInstanceFleetInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ModifyInstanceFleetInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
 	assert(struct["InstanceFleet"], "Expected key InstanceFleet to exist in table")
-	if struct["InstanceFleet"] then M.AssertInstanceFleetModifyConfig(struct["InstanceFleet"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
+	if struct["InstanceFleet"] then asserts.AssertInstanceFleetModifyConfig(struct["InstanceFleet"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(ModifyInstanceFleetInput_keys[k], "ModifyInstanceFleetInput contains unknown key " .. tostring(k))
+		assert(keys.ModifyInstanceFleetInput[k], "ModifyInstanceFleetInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ModifyInstanceFleetInput
 --  
--- @param InstanceFleet [InstanceFleetModifyConfig] <p>The unique identifier of the instance fleet.</p>
--- @param ClusterId [ClusterId] <p>The unique identifier of the cluster.</p>
+-- @param _InstanceFleet [InstanceFleetModifyConfig] <p>The unique identifier of the instance fleet.</p>
+-- @param _ClusterId [ClusterId] <p>The unique identifier of the cluster.</p>
 -- Required parameter: ClusterId
 -- Required parameter: InstanceFleet
-function M.ModifyInstanceFleetInput(InstanceFleet, ClusterId, ...)
+function M.ModifyInstanceFleetInput(_InstanceFleet, _ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyInstanceFleetInput")
 	local t = { 
-		["InstanceFleet"] = InstanceFleet,
-		["ClusterId"] = ClusterId,
+		["InstanceFleet"] = _InstanceFleet,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertModifyInstanceFleetInput(t)
+	asserts.AssertModifyInstanceFleetInput(t)
 	return t
 end
 
-local AddInstanceGroupsOutput_keys = { "InstanceGroupIds" = true, "JobFlowId" = true, nil }
+keys.AddInstanceGroupsOutput = { ["InstanceGroupIds"] = true, ["JobFlowId"] = true, nil }
 
-function M.AssertAddInstanceGroupsOutput(struct)
+function asserts.AssertAddInstanceGroupsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddInstanceGroupsOutput to be of type 'table'")
-	if struct["InstanceGroupIds"] then M.AssertInstanceGroupIdsList(struct["InstanceGroupIds"]) end
-	if struct["JobFlowId"] then M.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
+	if struct["InstanceGroupIds"] then asserts.AssertInstanceGroupIdsList(struct["InstanceGroupIds"]) end
+	if struct["JobFlowId"] then asserts.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
 	for k,_ in pairs(struct) do
-		assert(AddInstanceGroupsOutput_keys[k], "AddInstanceGroupsOutput contains unknown key " .. tostring(k))
+		assert(keys.AddInstanceGroupsOutput[k], "AddInstanceGroupsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddInstanceGroupsOutput
 -- <p>Output from an AddInstanceGroups call.</p>
--- @param InstanceGroupIds [InstanceGroupIdsList] <p>Instance group IDs of the newly created instance groups.</p>
--- @param JobFlowId [XmlStringMaxLen256] <p>The job flow ID in which the instance groups are added.</p>
-function M.AddInstanceGroupsOutput(InstanceGroupIds, JobFlowId, ...)
+-- @param _InstanceGroupIds [InstanceGroupIdsList] <p>Instance group IDs of the newly created instance groups.</p>
+-- @param _JobFlowId [XmlStringMaxLen256] <p>The job flow ID in which the instance groups are added.</p>
+function M.AddInstanceGroupsOutput(_InstanceGroupIds, _JobFlowId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddInstanceGroupsOutput")
 	local t = { 
-		["InstanceGroupIds"] = InstanceGroupIds,
-		["JobFlowId"] = JobFlowId,
+		["InstanceGroupIds"] = _InstanceGroupIds,
+		["JobFlowId"] = _JobFlowId,
 	}
-	M.AssertAddInstanceGroupsOutput(t)
+	asserts.AssertAddInstanceGroupsOutput(t)
 	return t
 end
 
-local CancelStepsOutput_keys = { "CancelStepsInfoList" = true, nil }
+keys.CancelStepsOutput = { ["CancelStepsInfoList"] = true, nil }
 
-function M.AssertCancelStepsOutput(struct)
+function asserts.AssertCancelStepsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CancelStepsOutput to be of type 'table'")
-	if struct["CancelStepsInfoList"] then M.AssertCancelStepsInfoList(struct["CancelStepsInfoList"]) end
+	if struct["CancelStepsInfoList"] then asserts.AssertCancelStepsInfoList(struct["CancelStepsInfoList"]) end
 	for k,_ in pairs(struct) do
-		assert(CancelStepsOutput_keys[k], "CancelStepsOutput contains unknown key " .. tostring(k))
+		assert(keys.CancelStepsOutput[k], "CancelStepsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CancelStepsOutput
 -- <p> The output for the <a>CancelSteps</a> operation. </p>
--- @param CancelStepsInfoList [CancelStepsInfoList] <p>A list of <a>CancelStepsInfo</a>, which shows the status of specified cancel requests for each <code>StepID</code> specified.</p>
-function M.CancelStepsOutput(CancelStepsInfoList, ...)
+-- @param _CancelStepsInfoList [CancelStepsInfoList] <p>A list of <a>CancelStepsInfo</a>, which shows the status of specified cancel requests for each <code>StepID</code> specified.</p>
+function M.CancelStepsOutput(_CancelStepsInfoList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelStepsOutput")
 	local t = { 
-		["CancelStepsInfoList"] = CancelStepsInfoList,
+		["CancelStepsInfoList"] = _CancelStepsInfoList,
 	}
-	M.AssertCancelStepsOutput(t)
+	asserts.AssertCancelStepsOutput(t)
 	return t
 end
 
-local Configuration_keys = { "Properties" = true, "Classification" = true, "Configurations" = true, nil }
+keys.Configuration = { ["Properties"] = true, ["Classification"] = true, ["Configurations"] = true, nil }
 
-function M.AssertConfiguration(struct)
+function asserts.AssertConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Configuration to be of type 'table'")
-	if struct["Properties"] then M.AssertStringMap(struct["Properties"]) end
-	if struct["Classification"] then M.AssertString(struct["Classification"]) end
-	if struct["Configurations"] then M.AssertConfigurationList(struct["Configurations"]) end
+	if struct["Properties"] then asserts.AssertStringMap(struct["Properties"]) end
+	if struct["Classification"] then asserts.AssertString(struct["Classification"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
 	for k,_ in pairs(struct) do
-		assert(Configuration_keys[k], "Configuration contains unknown key " .. tostring(k))
+		assert(keys.Configuration[k], "Configuration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Configuration
 -- <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>An optional configuration specification to be used when provisioning cluster instances, which can include configurations for applications and software bundled with Amazon EMR. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html">Configuring Applications</a>.</p>
--- @param Properties [StringMap] <p>A set of properties specified within a configuration classification.</p>
--- @param Classification [String] <p>The classification within a configuration.</p>
--- @param Configurations [ConfigurationList] <p>A list of additional configurations to apply within a configuration object.</p>
-function M.Configuration(Properties, Classification, Configurations, ...)
+-- @param _Properties [StringMap] <p>A set of properties specified within a configuration classification.</p>
+-- @param _Classification [String] <p>The classification within a configuration.</p>
+-- @param _Configurations [ConfigurationList] <p>A list of additional configurations to apply within a configuration object.</p>
+function M.Configuration(_Properties, _Classification, _Configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Configuration")
 	local t = { 
-		["Properties"] = Properties,
-		["Classification"] = Classification,
-		["Configurations"] = Configurations,
+		["Properties"] = _Properties,
+		["Classification"] = _Classification,
+		["Configurations"] = _Configurations,
 	}
-	M.AssertConfiguration(t)
+	asserts.AssertConfiguration(t)
 	return t
 end
 
-local SecurityConfigurationSummary_keys = { "CreationDateTime" = true, "Name" = true, nil }
+keys.SecurityConfigurationSummary = { ["CreationDateTime"] = true, ["Name"] = true, nil }
 
-function M.AssertSecurityConfigurationSummary(struct)
+function asserts.AssertSecurityConfigurationSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SecurityConfigurationSummary to be of type 'table'")
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["Name"] then M.AssertXmlString(struct["Name"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["Name"] then asserts.AssertXmlString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(SecurityConfigurationSummary_keys[k], "SecurityConfigurationSummary contains unknown key " .. tostring(k))
+		assert(keys.SecurityConfigurationSummary[k], "SecurityConfigurationSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SecurityConfigurationSummary
 -- <p>The creation date and time, and name, of a security configuration.</p>
--- @param CreationDateTime [Date] <p>The date and time the security configuration was created.</p>
--- @param Name [XmlString] <p>The name of the security configuration.</p>
-function M.SecurityConfigurationSummary(CreationDateTime, Name, ...)
+-- @param _CreationDateTime [Date] <p>The date and time the security configuration was created.</p>
+-- @param _Name [XmlString] <p>The name of the security configuration.</p>
+function M.SecurityConfigurationSummary(_CreationDateTime, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SecurityConfigurationSummary")
 	local t = { 
-		["CreationDateTime"] = CreationDateTime,
-		["Name"] = Name,
+		["CreationDateTime"] = _CreationDateTime,
+		["Name"] = _Name,
 	}
-	M.AssertSecurityConfigurationSummary(t)
+	asserts.AssertSecurityConfigurationSummary(t)
 	return t
 end
 
-local CloudWatchAlarmDefinition_keys = { "EvaluationPeriods" = true, "Dimensions" = true, "Namespace" = true, "Period" = true, "ComparisonOperator" = true, "Statistic" = true, "Threshold" = true, "Unit" = true, "MetricName" = true, nil }
+keys.CloudWatchAlarmDefinition = { ["EvaluationPeriods"] = true, ["Dimensions"] = true, ["Namespace"] = true, ["Period"] = true, ["ComparisonOperator"] = true, ["Statistic"] = true, ["Threshold"] = true, ["Unit"] = true, ["MetricName"] = true, nil }
 
-function M.AssertCloudWatchAlarmDefinition(struct)
+function asserts.AssertCloudWatchAlarmDefinition(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CloudWatchAlarmDefinition to be of type 'table'")
 	assert(struct["ComparisonOperator"], "Expected key ComparisonOperator to exist in table")
 	assert(struct["MetricName"], "Expected key MetricName to exist in table")
 	assert(struct["Period"], "Expected key Period to exist in table")
 	assert(struct["Threshold"], "Expected key Threshold to exist in table")
-	if struct["EvaluationPeriods"] then M.AssertInteger(struct["EvaluationPeriods"]) end
-	if struct["Dimensions"] then M.AssertMetricDimensionList(struct["Dimensions"]) end
-	if struct["Namespace"] then M.AssertString(struct["Namespace"]) end
-	if struct["Period"] then M.AssertInteger(struct["Period"]) end
-	if struct["ComparisonOperator"] then M.AssertComparisonOperator(struct["ComparisonOperator"]) end
-	if struct["Statistic"] then M.AssertStatistic(struct["Statistic"]) end
-	if struct["Threshold"] then M.AssertNonNegativeDouble(struct["Threshold"]) end
-	if struct["Unit"] then M.AssertUnit(struct["Unit"]) end
-	if struct["MetricName"] then M.AssertString(struct["MetricName"]) end
+	if struct["EvaluationPeriods"] then asserts.AssertInteger(struct["EvaluationPeriods"]) end
+	if struct["Dimensions"] then asserts.AssertMetricDimensionList(struct["Dimensions"]) end
+	if struct["Namespace"] then asserts.AssertString(struct["Namespace"]) end
+	if struct["Period"] then asserts.AssertInteger(struct["Period"]) end
+	if struct["ComparisonOperator"] then asserts.AssertComparisonOperator(struct["ComparisonOperator"]) end
+	if struct["Statistic"] then asserts.AssertStatistic(struct["Statistic"]) end
+	if struct["Threshold"] then asserts.AssertNonNegativeDouble(struct["Threshold"]) end
+	if struct["Unit"] then asserts.AssertUnit(struct["Unit"]) end
+	if struct["MetricName"] then asserts.AssertString(struct["MetricName"]) end
 	for k,_ in pairs(struct) do
-		assert(CloudWatchAlarmDefinition_keys[k], "CloudWatchAlarmDefinition contains unknown key " .. tostring(k))
+		assert(keys.CloudWatchAlarmDefinition[k], "CloudWatchAlarmDefinition contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CloudWatchAlarmDefinition
 -- <p>The definition of a CloudWatch metric alarm, which determines when an automatic scaling activity is triggered. When the defined alarm conditions are satisfied, scaling activity begins.</p>
--- @param EvaluationPeriods [Integer] <p>The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition must exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.</p>
--- @param Dimensions [MetricDimensionList] <p>A CloudWatch metric dimension.</p>
--- @param Namespace [String] <p>The namespace for the CloudWatch metric. The default is <code>AWS/ElasticMapReduce</code>.</p>
--- @param Period [Integer] <p>The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified, specify <code>300</code>.</p>
--- @param ComparisonOperator [ComparisonOperator] <p>Determines how the metric specified by <code>MetricName</code> is compared to the value specified by <code>Threshold</code>.</p>
--- @param Statistic [Statistic] <p>The statistic to apply to the metric associated with the alarm. The default is <code>AVERAGE</code>.</p>
--- @param Threshold [NonNegativeDouble] <p>The value against which the specified statistic is compared.</p>
--- @param Unit [Unit] <p>The unit of measure associated with the CloudWatch metric being watched. The value specified for <code>Unit</code> must correspond to the units specified in the CloudWatch metric.</p>
--- @param MetricName [String] <p>The name of the CloudWatch metric that is watched to determine an alarm condition.</p>
+-- @param _EvaluationPeriods [Integer] <p>The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition must exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.</p>
+-- @param _Dimensions [MetricDimensionList] <p>A CloudWatch metric dimension.</p>
+-- @param _Namespace [String] <p>The namespace for the CloudWatch metric. The default is <code>AWS/ElasticMapReduce</code>.</p>
+-- @param _Period [Integer] <p>The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified, specify <code>300</code>.</p>
+-- @param _ComparisonOperator [ComparisonOperator] <p>Determines how the metric specified by <code>MetricName</code> is compared to the value specified by <code>Threshold</code>.</p>
+-- @param _Statistic [Statistic] <p>The statistic to apply to the metric associated with the alarm. The default is <code>AVERAGE</code>.</p>
+-- @param _Threshold [NonNegativeDouble] <p>The value against which the specified statistic is compared.</p>
+-- @param _Unit [Unit] <p>The unit of measure associated with the CloudWatch metric being watched. The value specified for <code>Unit</code> must correspond to the units specified in the CloudWatch metric.</p>
+-- @param _MetricName [String] <p>The name of the CloudWatch metric that is watched to determine an alarm condition.</p>
 -- Required parameter: ComparisonOperator
 -- Required parameter: MetricName
 -- Required parameter: Period
 -- Required parameter: Threshold
-function M.CloudWatchAlarmDefinition(EvaluationPeriods, Dimensions, Namespace, Period, ComparisonOperator, Statistic, Threshold, Unit, MetricName, ...)
+function M.CloudWatchAlarmDefinition(_EvaluationPeriods, _Dimensions, _Namespace, _Period, _ComparisonOperator, _Statistic, _Threshold, _Unit, _MetricName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchAlarmDefinition")
 	local t = { 
-		["EvaluationPeriods"] = EvaluationPeriods,
-		["Dimensions"] = Dimensions,
-		["Namespace"] = Namespace,
-		["Period"] = Period,
-		["ComparisonOperator"] = ComparisonOperator,
-		["Statistic"] = Statistic,
-		["Threshold"] = Threshold,
-		["Unit"] = Unit,
-		["MetricName"] = MetricName,
+		["EvaluationPeriods"] = _EvaluationPeriods,
+		["Dimensions"] = _Dimensions,
+		["Namespace"] = _Namespace,
+		["Period"] = _Period,
+		["ComparisonOperator"] = _ComparisonOperator,
+		["Statistic"] = _Statistic,
+		["Threshold"] = _Threshold,
+		["Unit"] = _Unit,
+		["MetricName"] = _MetricName,
 	}
-	M.AssertCloudWatchAlarmDefinition(t)
+	asserts.AssertCloudWatchAlarmDefinition(t)
 	return t
 end
 
-local FailureDetails_keys = { "Reason" = true, "LogFile" = true, "Message" = true, nil }
+keys.FailureDetails = { ["Reason"] = true, ["LogFile"] = true, ["Message"] = true, nil }
 
-function M.AssertFailureDetails(struct)
+function asserts.AssertFailureDetails(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected FailureDetails to be of type 'table'")
-	if struct["Reason"] then M.AssertString(struct["Reason"]) end
-	if struct["LogFile"] then M.AssertString(struct["LogFile"]) end
-	if struct["Message"] then M.AssertString(struct["Message"]) end
+	if struct["Reason"] then asserts.AssertString(struct["Reason"]) end
+	if struct["LogFile"] then asserts.AssertString(struct["LogFile"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(FailureDetails_keys[k], "FailureDetails contains unknown key " .. tostring(k))
+		assert(keys.FailureDetails[k], "FailureDetails contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type FailureDetails
 -- <p>The details of the step failure. The service attempts to detect the root cause for many common failures.</p>
--- @param Reason [String] <p>The reason for the step failure. In the case where the service cannot successfully determine the root cause of the failure, it returns "Unknown Error" as a reason.</p>
--- @param LogFile [String] <p>The path to the log file where the step failure root cause was originally recorded.</p>
--- @param Message [String] <p>The descriptive message including the error the EMR service has identified as the cause of step failure. This is text from an error log that describes the root cause of the failure.</p>
-function M.FailureDetails(Reason, LogFile, Message, ...)
+-- @param _Reason [String] <p>The reason for the step failure. In the case where the service cannot successfully determine the root cause of the failure, it returns "Unknown Error" as a reason.</p>
+-- @param _LogFile [String] <p>The path to the log file where the step failure root cause was originally recorded.</p>
+-- @param _Message [String] <p>The descriptive message including the error the EMR service has identified as the cause of step failure. This is text from an error log that describes the root cause of the failure.</p>
+function M.FailureDetails(_Reason, _LogFile, _Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailureDetails")
 	local t = { 
-		["Reason"] = Reason,
-		["LogFile"] = LogFile,
-		["Message"] = Message,
+		["Reason"] = _Reason,
+		["LogFile"] = _LogFile,
+		["Message"] = _Message,
 	}
-	M.AssertFailureDetails(t)
+	asserts.AssertFailureDetails(t)
 	return t
 end
 
-local ListClustersInput_keys = { "Marker" = true, "ClusterStates" = true, "CreatedAfter" = true, "CreatedBefore" = true, nil }
+keys.ListClustersInput = { ["Marker"] = true, ["ClusterStates"] = true, ["CreatedAfter"] = true, ["CreatedBefore"] = true, nil }
 
-function M.AssertListClustersInput(struct)
+function asserts.AssertListClustersInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListClustersInput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["ClusterStates"] then M.AssertClusterStateList(struct["ClusterStates"]) end
-	if struct["CreatedAfter"] then M.AssertDate(struct["CreatedAfter"]) end
-	if struct["CreatedBefore"] then M.AssertDate(struct["CreatedBefore"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["ClusterStates"] then asserts.AssertClusterStateList(struct["ClusterStates"]) end
+	if struct["CreatedAfter"] then asserts.AssertDate(struct["CreatedAfter"]) end
+	if struct["CreatedBefore"] then asserts.AssertDate(struct["CreatedBefore"]) end
 	for k,_ in pairs(struct) do
-		assert(ListClustersInput_keys[k], "ListClustersInput contains unknown key " .. tostring(k))
+		assert(keys.ListClustersInput[k], "ListClustersInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListClustersInput
 -- <p>This input determines how the ListClusters action filters the list of clusters that it returns.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param ClusterStates [ClusterStateList] <p>The cluster state filters to apply when listing clusters.</p>
--- @param CreatedAfter [Date] <p>The creation date and time beginning value filter for listing clusters.</p>
--- @param CreatedBefore [Date] <p>The creation date and time end value filter for listing clusters.</p>
-function M.ListClustersInput(Marker, ClusterStates, CreatedAfter, CreatedBefore, ...)
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _ClusterStates [ClusterStateList] <p>The cluster state filters to apply when listing clusters.</p>
+-- @param _CreatedAfter [Date] <p>The creation date and time beginning value filter for listing clusters.</p>
+-- @param _CreatedBefore [Date] <p>The creation date and time end value filter for listing clusters.</p>
+function M.ListClustersInput(_Marker, _ClusterStates, _CreatedAfter, _CreatedBefore, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersInput")
 	local t = { 
-		["Marker"] = Marker,
-		["ClusterStates"] = ClusterStates,
-		["CreatedAfter"] = CreatedAfter,
-		["CreatedBefore"] = CreatedBefore,
+		["Marker"] = _Marker,
+		["ClusterStates"] = _ClusterStates,
+		["CreatedAfter"] = _CreatedAfter,
+		["CreatedBefore"] = _CreatedBefore,
 	}
-	M.AssertListClustersInput(t)
+	asserts.AssertListClustersInput(t)
 	return t
 end
 
-local Command_keys = { "Args" = true, "Name" = true, "ScriptPath" = true, nil }
+keys.Command = { ["Args"] = true, ["Name"] = true, ["ScriptPath"] = true, nil }
 
-function M.AssertCommand(struct)
+function asserts.AssertCommand(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Command to be of type 'table'")
-	if struct["Args"] then M.AssertStringList(struct["Args"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["ScriptPath"] then M.AssertString(struct["ScriptPath"]) end
+	if struct["Args"] then asserts.AssertStringList(struct["Args"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["ScriptPath"] then asserts.AssertString(struct["ScriptPath"]) end
 	for k,_ in pairs(struct) do
-		assert(Command_keys[k], "Command contains unknown key " .. tostring(k))
+		assert(keys.Command[k], "Command contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Command
 -- <p>An entity describing an executable that runs on a cluster.</p>
--- @param Args [StringList] <p>Arguments for Amazon EMR to pass to the command for execution.</p>
--- @param Name [String] <p>The name of the command.</p>
--- @param ScriptPath [String] <p>The Amazon S3 location of the command script.</p>
-function M.Command(Args, Name, ScriptPath, ...)
+-- @param _Args [StringList] <p>Arguments for Amazon EMR to pass to the command for execution.</p>
+-- @param _Name [String] <p>The name of the command.</p>
+-- @param _ScriptPath [String] <p>The Amazon S3 location of the command script.</p>
+function M.Command(_Args, _Name, _ScriptPath, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Command")
 	local t = { 
-		["Args"] = Args,
-		["Name"] = Name,
-		["ScriptPath"] = ScriptPath,
+		["Args"] = _Args,
+		["Name"] = _Name,
+		["ScriptPath"] = _ScriptPath,
 	}
-	M.AssertCommand(t)
+	asserts.AssertCommand(t)
 	return t
 end
 
-local DeleteSecurityConfigurationOutput_keys = { nil }
+keys.DeleteSecurityConfigurationOutput = { nil }
 
-function M.AssertDeleteSecurityConfigurationOutput(struct)
+function asserts.AssertDeleteSecurityConfigurationOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteSecurityConfigurationOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(DeleteSecurityConfigurationOutput_keys[k], "DeleteSecurityConfigurationOutput contains unknown key " .. tostring(k))
+		assert(keys.DeleteSecurityConfigurationOutput[k], "DeleteSecurityConfigurationOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -1932,79 +1935,79 @@ function M.DeleteSecurityConfigurationOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSecurityConfigurationOutput")
 	local t = { 
 	}
-	M.AssertDeleteSecurityConfigurationOutput(t)
+	asserts.AssertDeleteSecurityConfigurationOutput(t)
 	return t
 end
 
-local StepDetail_keys = { "ExecutionStatusDetail" = true, "StepConfig" = true, nil }
+keys.StepDetail = { ["ExecutionStatusDetail"] = true, ["StepConfig"] = true, nil }
 
-function M.AssertStepDetail(struct)
+function asserts.AssertStepDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StepDetail to be of type 'table'")
 	assert(struct["StepConfig"], "Expected key StepConfig to exist in table")
 	assert(struct["ExecutionStatusDetail"], "Expected key ExecutionStatusDetail to exist in table")
-	if struct["ExecutionStatusDetail"] then M.AssertStepExecutionStatusDetail(struct["ExecutionStatusDetail"]) end
-	if struct["StepConfig"] then M.AssertStepConfig(struct["StepConfig"]) end
+	if struct["ExecutionStatusDetail"] then asserts.AssertStepExecutionStatusDetail(struct["ExecutionStatusDetail"]) end
+	if struct["StepConfig"] then asserts.AssertStepConfig(struct["StepConfig"]) end
 	for k,_ in pairs(struct) do
-		assert(StepDetail_keys[k], "StepDetail contains unknown key " .. tostring(k))
+		assert(keys.StepDetail[k], "StepDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StepDetail
 -- <p>Combines the execution state and configuration of a step.</p>
--- @param ExecutionStatusDetail [StepExecutionStatusDetail] <p>The description of the step status.</p>
--- @param StepConfig [StepConfig] <p>The step configuration.</p>
+-- @param _ExecutionStatusDetail [StepExecutionStatusDetail] <p>The description of the step status.</p>
+-- @param _StepConfig [StepConfig] <p>The step configuration.</p>
 -- Required parameter: StepConfig
 -- Required parameter: ExecutionStatusDetail
-function M.StepDetail(ExecutionStatusDetail, StepConfig, ...)
+function M.StepDetail(_ExecutionStatusDetail, _StepConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepDetail")
 	local t = { 
-		["ExecutionStatusDetail"] = ExecutionStatusDetail,
-		["StepConfig"] = StepConfig,
+		["ExecutionStatusDetail"] = _ExecutionStatusDetail,
+		["StepConfig"] = _StepConfig,
 	}
-	M.AssertStepDetail(t)
+	asserts.AssertStepDetail(t)
 	return t
 end
 
-local HadoopStepConfig_keys = { "MainClass" = true, "Args" = true, "Jar" = true, "Properties" = true, nil }
+keys.HadoopStepConfig = { ["MainClass"] = true, ["Args"] = true, ["Jar"] = true, ["Properties"] = true, nil }
 
-function M.AssertHadoopStepConfig(struct)
+function asserts.AssertHadoopStepConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected HadoopStepConfig to be of type 'table'")
-	if struct["MainClass"] then M.AssertString(struct["MainClass"]) end
-	if struct["Args"] then M.AssertStringList(struct["Args"]) end
-	if struct["Jar"] then M.AssertString(struct["Jar"]) end
-	if struct["Properties"] then M.AssertStringMap(struct["Properties"]) end
+	if struct["MainClass"] then asserts.AssertString(struct["MainClass"]) end
+	if struct["Args"] then asserts.AssertStringList(struct["Args"]) end
+	if struct["Jar"] then asserts.AssertString(struct["Jar"]) end
+	if struct["Properties"] then asserts.AssertStringMap(struct["Properties"]) end
 	for k,_ in pairs(struct) do
-		assert(HadoopStepConfig_keys[k], "HadoopStepConfig contains unknown key " .. tostring(k))
+		assert(keys.HadoopStepConfig[k], "HadoopStepConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type HadoopStepConfig
 -- <p>A cluster step consisting of a JAR file whose main function will be executed. The main function submits a job for Hadoop to execute and waits for the job to finish or fail.</p>
--- @param MainClass [String] <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a main class in its manifest file.</p>
--- @param Args [StringList] <p>The list of command line arguments to pass to the JAR file's main function for execution.</p>
--- @param Jar [String] <p>The path to the JAR file that runs during the step.</p>
--- @param Properties [StringMap] <p>The list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
-function M.HadoopStepConfig(MainClass, Args, Jar, Properties, ...)
+-- @param _MainClass [String] <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a main class in its manifest file.</p>
+-- @param _Args [StringList] <p>The list of command line arguments to pass to the JAR file's main function for execution.</p>
+-- @param _Jar [String] <p>The path to the JAR file that runs during the step.</p>
+-- @param _Properties [StringMap] <p>The list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
+function M.HadoopStepConfig(_MainClass, _Args, _Jar, _Properties, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HadoopStepConfig")
 	local t = { 
-		["MainClass"] = MainClass,
-		["Args"] = Args,
-		["Jar"] = Jar,
-		["Properties"] = Properties,
+		["MainClass"] = _MainClass,
+		["Args"] = _Args,
+		["Jar"] = _Jar,
+		["Properties"] = _Properties,
 	}
-	M.AssertHadoopStepConfig(t)
+	asserts.AssertHadoopStepConfig(t)
 	return t
 end
 
-local RemoveTagsOutput_keys = { nil }
+keys.RemoveTagsOutput = { nil }
 
-function M.AssertRemoveTagsOutput(struct)
+function asserts.AssertRemoveTagsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsOutput_keys[k], "RemoveTagsOutput contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsOutput[k], "RemoveTagsOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2014,96 +2017,96 @@ function M.RemoveTagsOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsOutput")
 	local t = { 
 	}
-	M.AssertRemoveTagsOutput(t)
+	asserts.AssertRemoveTagsOutput(t)
 	return t
 end
 
-local ScalingTrigger_keys = { "CloudWatchAlarmDefinition" = true, nil }
+keys.ScalingTrigger = { ["CloudWatchAlarmDefinition"] = true, nil }
 
-function M.AssertScalingTrigger(struct)
+function asserts.AssertScalingTrigger(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScalingTrigger to be of type 'table'")
 	assert(struct["CloudWatchAlarmDefinition"], "Expected key CloudWatchAlarmDefinition to exist in table")
-	if struct["CloudWatchAlarmDefinition"] then M.AssertCloudWatchAlarmDefinition(struct["CloudWatchAlarmDefinition"]) end
+	if struct["CloudWatchAlarmDefinition"] then asserts.AssertCloudWatchAlarmDefinition(struct["CloudWatchAlarmDefinition"]) end
 	for k,_ in pairs(struct) do
-		assert(ScalingTrigger_keys[k], "ScalingTrigger contains unknown key " .. tostring(k))
+		assert(keys.ScalingTrigger[k], "ScalingTrigger contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScalingTrigger
 -- <p>The conditions that trigger an automatic scaling activity.</p>
--- @param CloudWatchAlarmDefinition [CloudWatchAlarmDefinition] <p>The definition of a CloudWatch metric alarm. When the defined alarm conditions are met along with other trigger parameters, scaling activity begins.</p>
+-- @param _CloudWatchAlarmDefinition [CloudWatchAlarmDefinition] <p>The definition of a CloudWatch metric alarm. When the defined alarm conditions are met along with other trigger parameters, scaling activity begins.</p>
 -- Required parameter: CloudWatchAlarmDefinition
-function M.ScalingTrigger(CloudWatchAlarmDefinition, ...)
+function M.ScalingTrigger(_CloudWatchAlarmDefinition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingTrigger")
 	local t = { 
-		["CloudWatchAlarmDefinition"] = CloudWatchAlarmDefinition,
+		["CloudWatchAlarmDefinition"] = _CloudWatchAlarmDefinition,
 	}
-	M.AssertScalingTrigger(t)
+	asserts.AssertScalingTrigger(t)
 	return t
 end
 
-local InstanceTimeline_keys = { "ReadyDateTime" = true, "CreationDateTime" = true, "EndDateTime" = true, nil }
+keys.InstanceTimeline = { ["ReadyDateTime"] = true, ["CreationDateTime"] = true, ["EndDateTime"] = true, nil }
 
-function M.AssertInstanceTimeline(struct)
+function asserts.AssertInstanceTimeline(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceTimeline to be of type 'table'")
-	if struct["ReadyDateTime"] then M.AssertDate(struct["ReadyDateTime"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["EndDateTime"] then M.AssertDate(struct["EndDateTime"]) end
+	if struct["ReadyDateTime"] then asserts.AssertDate(struct["ReadyDateTime"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["EndDateTime"] then asserts.AssertDate(struct["EndDateTime"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceTimeline_keys[k], "InstanceTimeline contains unknown key " .. tostring(k))
+		assert(keys.InstanceTimeline[k], "InstanceTimeline contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceTimeline
 -- <p>The timeline of the instance lifecycle.</p>
--- @param ReadyDateTime [Date] <p>The date and time when the instance was ready to perform tasks.</p>
--- @param CreationDateTime [Date] <p>The creation date and time of the instance.</p>
--- @param EndDateTime [Date] <p>The date and time when the instance was terminated.</p>
-function M.InstanceTimeline(ReadyDateTime, CreationDateTime, EndDateTime, ...)
+-- @param _ReadyDateTime [Date] <p>The date and time when the instance was ready to perform tasks.</p>
+-- @param _CreationDateTime [Date] <p>The creation date and time of the instance.</p>
+-- @param _EndDateTime [Date] <p>The date and time when the instance was terminated.</p>
+function M.InstanceTimeline(_ReadyDateTime, _CreationDateTime, _EndDateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceTimeline")
 	local t = { 
-		["ReadyDateTime"] = ReadyDateTime,
-		["CreationDateTime"] = CreationDateTime,
-		["EndDateTime"] = EndDateTime,
+		["ReadyDateTime"] = _ReadyDateTime,
+		["CreationDateTime"] = _CreationDateTime,
+		["EndDateTime"] = _EndDateTime,
 	}
-	M.AssertInstanceTimeline(t)
+	asserts.AssertInstanceTimeline(t)
 	return t
 end
 
-local InstanceFleetProvisioningSpecifications_keys = { "SpotSpecification" = true, nil }
+keys.InstanceFleetProvisioningSpecifications = { ["SpotSpecification"] = true, nil }
 
-function M.AssertInstanceFleetProvisioningSpecifications(struct)
+function asserts.AssertInstanceFleetProvisioningSpecifications(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceFleetProvisioningSpecifications to be of type 'table'")
 	assert(struct["SpotSpecification"], "Expected key SpotSpecification to exist in table")
-	if struct["SpotSpecification"] then M.AssertSpotProvisioningSpecification(struct["SpotSpecification"]) end
+	if struct["SpotSpecification"] then asserts.AssertSpotProvisioningSpecification(struct["SpotSpecification"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceFleetProvisioningSpecifications_keys[k], "InstanceFleetProvisioningSpecifications contains unknown key " .. tostring(k))
+		assert(keys.InstanceFleetProvisioningSpecifications[k], "InstanceFleetProvisioningSpecifications contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceFleetProvisioningSpecifications
 -- <p>The launch specification for Spot instances in the fleet, which determines the defined duration and provisioning timeout behavior.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param SpotSpecification [SpotProvisioningSpecification] <p>The launch specification for Spot instances in the fleet, which determines the defined duration and provisioning timeout behavior.</p>
+-- @param _SpotSpecification [SpotProvisioningSpecification] <p>The launch specification for Spot instances in the fleet, which determines the defined duration and provisioning timeout behavior.</p>
 -- Required parameter: SpotSpecification
-function M.InstanceFleetProvisioningSpecifications(SpotSpecification, ...)
+function M.InstanceFleetProvisioningSpecifications(_SpotSpecification, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetProvisioningSpecifications")
 	local t = { 
-		["SpotSpecification"] = SpotSpecification,
+		["SpotSpecification"] = _SpotSpecification,
 	}
-	M.AssertInstanceFleetProvisioningSpecifications(t)
+	asserts.AssertInstanceFleetProvisioningSpecifications(t)
 	return t
 end
 
-local RemoveAutoScalingPolicyOutput_keys = { nil }
+keys.RemoveAutoScalingPolicyOutput = { nil }
 
-function M.AssertRemoveAutoScalingPolicyOutput(struct)
+function asserts.AssertRemoveAutoScalingPolicyOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveAutoScalingPolicyOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(RemoveAutoScalingPolicyOutput_keys[k], "RemoveAutoScalingPolicyOutput contains unknown key " .. tostring(k))
+		assert(keys.RemoveAutoScalingPolicyOutput[k], "RemoveAutoScalingPolicyOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2113,333 +2116,333 @@ function M.RemoveAutoScalingPolicyOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAutoScalingPolicyOutput")
 	local t = { 
 	}
-	M.AssertRemoveAutoScalingPolicyOutput(t)
+	asserts.AssertRemoveAutoScalingPolicyOutput(t)
 	return t
 end
 
-local ScalingConstraints_keys = { "MinCapacity" = true, "MaxCapacity" = true, nil }
+keys.ScalingConstraints = { ["MinCapacity"] = true, ["MaxCapacity"] = true, nil }
 
-function M.AssertScalingConstraints(struct)
+function asserts.AssertScalingConstraints(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScalingConstraints to be of type 'table'")
 	assert(struct["MinCapacity"], "Expected key MinCapacity to exist in table")
 	assert(struct["MaxCapacity"], "Expected key MaxCapacity to exist in table")
-	if struct["MinCapacity"] then M.AssertInteger(struct["MinCapacity"]) end
-	if struct["MaxCapacity"] then M.AssertInteger(struct["MaxCapacity"]) end
+	if struct["MinCapacity"] then asserts.AssertInteger(struct["MinCapacity"]) end
+	if struct["MaxCapacity"] then asserts.AssertInteger(struct["MaxCapacity"]) end
 	for k,_ in pairs(struct) do
-		assert(ScalingConstraints_keys[k], "ScalingConstraints contains unknown key " .. tostring(k))
+		assert(keys.ScalingConstraints[k], "ScalingConstraints contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScalingConstraints
 -- <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or below these limits.</p>
--- @param MinCapacity [Integer] <p>The lower boundary of EC2 instances in an instance group below which scaling activities are not allowed to shrink. Scale-in activities will not terminate instances below this boundary.</p>
--- @param MaxCapacity [Integer] <p>The upper boundary of EC2 instances in an instance group beyond which scaling activities are not allowed to grow. Scale-out activities will not add instances beyond this boundary.</p>
+-- @param _MinCapacity [Integer] <p>The lower boundary of EC2 instances in an instance group below which scaling activities are not allowed to shrink. Scale-in activities will not terminate instances below this boundary.</p>
+-- @param _MaxCapacity [Integer] <p>The upper boundary of EC2 instances in an instance group beyond which scaling activities are not allowed to grow. Scale-out activities will not add instances beyond this boundary.</p>
 -- Required parameter: MinCapacity
 -- Required parameter: MaxCapacity
-function M.ScalingConstraints(MinCapacity, MaxCapacity, ...)
+function M.ScalingConstraints(_MinCapacity, _MaxCapacity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingConstraints")
 	local t = { 
-		["MinCapacity"] = MinCapacity,
-		["MaxCapacity"] = MaxCapacity,
+		["MinCapacity"] = _MinCapacity,
+		["MaxCapacity"] = _MaxCapacity,
 	}
-	M.AssertScalingConstraints(t)
+	asserts.AssertScalingConstraints(t)
 	return t
 end
 
-local InstanceTypeSpecification_keys = { "EbsBlockDevices" = true, "EbsOptimized" = true, "BidPrice" = true, "BidPriceAsPercentageOfOnDemandPrice" = true, "WeightedCapacity" = true, "InstanceType" = true, "Configurations" = true, nil }
+keys.InstanceTypeSpecification = { ["EbsBlockDevices"] = true, ["EbsOptimized"] = true, ["BidPrice"] = true, ["BidPriceAsPercentageOfOnDemandPrice"] = true, ["WeightedCapacity"] = true, ["InstanceType"] = true, ["Configurations"] = true, nil }
 
-function M.AssertInstanceTypeSpecification(struct)
+function asserts.AssertInstanceTypeSpecification(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceTypeSpecification to be of type 'table'")
-	if struct["EbsBlockDevices"] then M.AssertEbsBlockDeviceList(struct["EbsBlockDevices"]) end
-	if struct["EbsOptimized"] then M.AssertBooleanObject(struct["EbsOptimized"]) end
-	if struct["BidPrice"] then M.AssertXmlStringMaxLen256(struct["BidPrice"]) end
-	if struct["BidPriceAsPercentageOfOnDemandPrice"] then M.AssertNonNegativeDouble(struct["BidPriceAsPercentageOfOnDemandPrice"]) end
-	if struct["WeightedCapacity"] then M.AssertWholeNumber(struct["WeightedCapacity"]) end
-	if struct["InstanceType"] then M.AssertInstanceType(struct["InstanceType"]) end
-	if struct["Configurations"] then M.AssertConfigurationList(struct["Configurations"]) end
+	if struct["EbsBlockDevices"] then asserts.AssertEbsBlockDeviceList(struct["EbsBlockDevices"]) end
+	if struct["EbsOptimized"] then asserts.AssertBooleanObject(struct["EbsOptimized"]) end
+	if struct["BidPrice"] then asserts.AssertXmlStringMaxLen256(struct["BidPrice"]) end
+	if struct["BidPriceAsPercentageOfOnDemandPrice"] then asserts.AssertNonNegativeDouble(struct["BidPriceAsPercentageOfOnDemandPrice"]) end
+	if struct["WeightedCapacity"] then asserts.AssertWholeNumber(struct["WeightedCapacity"]) end
+	if struct["InstanceType"] then asserts.AssertInstanceType(struct["InstanceType"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceTypeSpecification_keys[k], "InstanceTypeSpecification contains unknown key " .. tostring(k))
+		assert(keys.InstanceTypeSpecification[k], "InstanceTypeSpecification contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceTypeSpecification
 -- <p>The configuration specification for each instance type in an instance fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param EbsBlockDevices [EbsBlockDeviceList] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>.</p>
--- @param EbsOptimized [BooleanObject] <p>Evaluates to <code>TRUE</code> when the specified <code>InstanceType</code> is EBS-optimized.</p>
--- @param BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD.</p>
--- @param BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number (for example, 20 specifies 20%).</p>
--- @param WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. Capacity values represent performance characteristics such as vCPUs, memory, or I/O. If not specified, the default value is 1.</p>
--- @param InstanceType [InstanceType] <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
--- @param Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software bundled with Amazon EMR.</p>
-function M.InstanceTypeSpecification(EbsBlockDevices, EbsOptimized, BidPrice, BidPriceAsPercentageOfOnDemandPrice, WeightedCapacity, InstanceType, Configurations, ...)
+-- @param _EbsBlockDevices [EbsBlockDeviceList] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>.</p>
+-- @param _EbsOptimized [BooleanObject] <p>Evaluates to <code>TRUE</code> when the specified <code>InstanceType</code> is EBS-optimized.</p>
+-- @param _BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD.</p>
+-- @param _BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number (for example, 20 specifies 20%).</p>
+-- @param _WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. Capacity values represent performance characteristics such as vCPUs, memory, or I/O. If not specified, the default value is 1.</p>
+-- @param _InstanceType [InstanceType] <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+-- @param _Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software bundled with Amazon EMR.</p>
+function M.InstanceTypeSpecification(_EbsBlockDevices, _EbsOptimized, _BidPrice, _BidPriceAsPercentageOfOnDemandPrice, _WeightedCapacity, _InstanceType, _Configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceTypeSpecification")
 	local t = { 
-		["EbsBlockDevices"] = EbsBlockDevices,
-		["EbsOptimized"] = EbsOptimized,
-		["BidPrice"] = BidPrice,
-		["BidPriceAsPercentageOfOnDemandPrice"] = BidPriceAsPercentageOfOnDemandPrice,
-		["WeightedCapacity"] = WeightedCapacity,
-		["InstanceType"] = InstanceType,
-		["Configurations"] = Configurations,
+		["EbsBlockDevices"] = _EbsBlockDevices,
+		["EbsOptimized"] = _EbsOptimized,
+		["BidPrice"] = _BidPrice,
+		["BidPriceAsPercentageOfOnDemandPrice"] = _BidPriceAsPercentageOfOnDemandPrice,
+		["WeightedCapacity"] = _WeightedCapacity,
+		["InstanceType"] = _InstanceType,
+		["Configurations"] = _Configurations,
 	}
-	M.AssertInstanceTypeSpecification(t)
+	asserts.AssertInstanceTypeSpecification(t)
 	return t
 end
 
-local RunJobFlowOutput_keys = { "JobFlowId" = true, nil }
+keys.RunJobFlowOutput = { ["JobFlowId"] = true, nil }
 
-function M.AssertRunJobFlowOutput(struct)
+function asserts.AssertRunJobFlowOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RunJobFlowOutput to be of type 'table'")
-	if struct["JobFlowId"] then M.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
+	if struct["JobFlowId"] then asserts.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
 	for k,_ in pairs(struct) do
-		assert(RunJobFlowOutput_keys[k], "RunJobFlowOutput contains unknown key " .. tostring(k))
+		assert(keys.RunJobFlowOutput[k], "RunJobFlowOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RunJobFlowOutput
 -- <p> The result of the <a>RunJobFlow</a> operation. </p>
--- @param JobFlowId [XmlStringMaxLen256] <p>An unique identifier for the job flow.</p>
-function M.RunJobFlowOutput(JobFlowId, ...)
+-- @param _JobFlowId [XmlStringMaxLen256] <p>An unique identifier for the job flow.</p>
+function M.RunJobFlowOutput(_JobFlowId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RunJobFlowOutput")
 	local t = { 
-		["JobFlowId"] = JobFlowId,
+		["JobFlowId"] = _JobFlowId,
 	}
-	M.AssertRunJobFlowOutput(t)
+	asserts.AssertRunJobFlowOutput(t)
 	return t
 end
 
-local Instance_keys = { "Status" = true, "Ec2InstanceId" = true, "InstanceFleetId" = true, "EbsVolumes" = true, "PublicDnsName" = true, "InstanceType" = true, "PrivateDnsName" = true, "Market" = true, "PublicIpAddress" = true, "InstanceGroupId" = true, "Id" = true, "PrivateIpAddress" = true, nil }
+keys.Instance = { ["Status"] = true, ["Ec2InstanceId"] = true, ["InstanceFleetId"] = true, ["EbsVolumes"] = true, ["PublicDnsName"] = true, ["InstanceType"] = true, ["PrivateDnsName"] = true, ["Market"] = true, ["PublicIpAddress"] = true, ["InstanceGroupId"] = true, ["Id"] = true, ["PrivateIpAddress"] = true, nil }
 
-function M.AssertInstance(struct)
+function asserts.AssertInstance(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected Instance to be of type 'table'")
-	if struct["Status"] then M.AssertInstanceStatus(struct["Status"]) end
-	if struct["Ec2InstanceId"] then M.AssertInstanceId(struct["Ec2InstanceId"]) end
-	if struct["InstanceFleetId"] then M.AssertInstanceFleetId(struct["InstanceFleetId"]) end
-	if struct["EbsVolumes"] then M.AssertEbsVolumeList(struct["EbsVolumes"]) end
-	if struct["PublicDnsName"] then M.AssertString(struct["PublicDnsName"]) end
-	if struct["InstanceType"] then M.AssertInstanceType(struct["InstanceType"]) end
-	if struct["PrivateDnsName"] then M.AssertString(struct["PrivateDnsName"]) end
-	if struct["Market"] then M.AssertMarketType(struct["Market"]) end
-	if struct["PublicIpAddress"] then M.AssertString(struct["PublicIpAddress"]) end
-	if struct["InstanceGroupId"] then M.AssertString(struct["InstanceGroupId"]) end
-	if struct["Id"] then M.AssertInstanceId(struct["Id"]) end
-	if struct["PrivateIpAddress"] then M.AssertString(struct["PrivateIpAddress"]) end
+	if struct["Status"] then asserts.AssertInstanceStatus(struct["Status"]) end
+	if struct["Ec2InstanceId"] then asserts.AssertInstanceId(struct["Ec2InstanceId"]) end
+	if struct["InstanceFleetId"] then asserts.AssertInstanceFleetId(struct["InstanceFleetId"]) end
+	if struct["EbsVolumes"] then asserts.AssertEbsVolumeList(struct["EbsVolumes"]) end
+	if struct["PublicDnsName"] then asserts.AssertString(struct["PublicDnsName"]) end
+	if struct["InstanceType"] then asserts.AssertInstanceType(struct["InstanceType"]) end
+	if struct["PrivateDnsName"] then asserts.AssertString(struct["PrivateDnsName"]) end
+	if struct["Market"] then asserts.AssertMarketType(struct["Market"]) end
+	if struct["PublicIpAddress"] then asserts.AssertString(struct["PublicIpAddress"]) end
+	if struct["InstanceGroupId"] then asserts.AssertString(struct["InstanceGroupId"]) end
+	if struct["Id"] then asserts.AssertInstanceId(struct["Id"]) end
+	if struct["PrivateIpAddress"] then asserts.AssertString(struct["PrivateIpAddress"]) end
 	for k,_ in pairs(struct) do
-		assert(Instance_keys[k], "Instance contains unknown key " .. tostring(k))
+		assert(keys.Instance[k], "Instance contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type Instance
 -- <p>Represents an EC2 instance provisioned as part of cluster.</p>
--- @param Status [InstanceStatus] <p>The current status of the instance.</p>
--- @param Ec2InstanceId [InstanceId] <p>The unique identifier of the instance in Amazon EC2.</p>
--- @param InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet to which an EC2 instance belongs.</p>
--- @param EbsVolumes [EbsVolumeList] <p>The list of EBS volumes that are attached to this instance.</p>
--- @param PublicDnsName [String] <p>The public DNS name of the instance.</p>
--- @param InstanceType [InstanceType] <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
--- @param PrivateDnsName [String] <p>The private DNS name of the instance.</p>
--- @param Market [MarketType] <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or <code>SPOT</code>. </p>
--- @param PublicIpAddress [String] <p>The public IP address of the instance.</p>
--- @param InstanceGroupId [String] <p>The identifier of the instance group to which this instance belongs.</p>
--- @param Id [InstanceId] <p>The unique identifier for the instance in Amazon EMR.</p>
--- @param PrivateIpAddress [String] <p>The private IP address of the instance.</p>
-function M.Instance(Status, Ec2InstanceId, InstanceFleetId, EbsVolumes, PublicDnsName, InstanceType, PrivateDnsName, Market, PublicIpAddress, InstanceGroupId, Id, PrivateIpAddress, ...)
+-- @param _Status [InstanceStatus] <p>The current status of the instance.</p>
+-- @param _Ec2InstanceId [InstanceId] <p>The unique identifier of the instance in Amazon EC2.</p>
+-- @param _InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet to which an EC2 instance belongs.</p>
+-- @param _EbsVolumes [EbsVolumeList] <p>The list of EBS volumes that are attached to this instance.</p>
+-- @param _PublicDnsName [String] <p>The public DNS name of the instance.</p>
+-- @param _InstanceType [InstanceType] <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+-- @param _PrivateDnsName [String] <p>The private DNS name of the instance.</p>
+-- @param _Market [MarketType] <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or <code>SPOT</code>. </p>
+-- @param _PublicIpAddress [String] <p>The public IP address of the instance.</p>
+-- @param _InstanceGroupId [String] <p>The identifier of the instance group to which this instance belongs.</p>
+-- @param _Id [InstanceId] <p>The unique identifier for the instance in Amazon EMR.</p>
+-- @param _PrivateIpAddress [String] <p>The private IP address of the instance.</p>
+function M.Instance(_Status, _Ec2InstanceId, _InstanceFleetId, _EbsVolumes, _PublicDnsName, _InstanceType, _PrivateDnsName, _Market, _PublicIpAddress, _InstanceGroupId, _Id, _PrivateIpAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
 	local t = { 
-		["Status"] = Status,
-		["Ec2InstanceId"] = Ec2InstanceId,
-		["InstanceFleetId"] = InstanceFleetId,
-		["EbsVolumes"] = EbsVolumes,
-		["PublicDnsName"] = PublicDnsName,
-		["InstanceType"] = InstanceType,
-		["PrivateDnsName"] = PrivateDnsName,
-		["Market"] = Market,
-		["PublicIpAddress"] = PublicIpAddress,
-		["InstanceGroupId"] = InstanceGroupId,
-		["Id"] = Id,
-		["PrivateIpAddress"] = PrivateIpAddress,
+		["Status"] = _Status,
+		["Ec2InstanceId"] = _Ec2InstanceId,
+		["InstanceFleetId"] = _InstanceFleetId,
+		["EbsVolumes"] = _EbsVolumes,
+		["PublicDnsName"] = _PublicDnsName,
+		["InstanceType"] = _InstanceType,
+		["PrivateDnsName"] = _PrivateDnsName,
+		["Market"] = _Market,
+		["PublicIpAddress"] = _PublicIpAddress,
+		["InstanceGroupId"] = _InstanceGroupId,
+		["Id"] = _Id,
+		["PrivateIpAddress"] = _PrivateIpAddress,
 	}
-	M.AssertInstance(t)
+	asserts.AssertInstance(t)
 	return t
 end
 
-local SupportedProductConfig_keys = { "Args" = true, "Name" = true, nil }
+keys.SupportedProductConfig = { ["Args"] = true, ["Name"] = true, nil }
 
-function M.AssertSupportedProductConfig(struct)
+function asserts.AssertSupportedProductConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SupportedProductConfig to be of type 'table'")
-	if struct["Args"] then M.AssertXmlStringList(struct["Args"]) end
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["Args"] then asserts.AssertXmlStringList(struct["Args"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(SupportedProductConfig_keys[k], "SupportedProductConfig contains unknown key " .. tostring(k))
+		assert(keys.SupportedProductConfig[k], "SupportedProductConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SupportedProductConfig
 -- <p>The list of supported product configurations which allow user-supplied arguments. EMR accepts these arguments and forwards them to the corresponding installation script as bootstrap action arguments.</p>
--- @param Args [XmlStringList] <p>The list of user-supplied arguments.</p>
--- @param Name [XmlStringMaxLen256] <p>The name of the product configuration.</p>
-function M.SupportedProductConfig(Args, Name, ...)
+-- @param _Args [XmlStringList] <p>The list of user-supplied arguments.</p>
+-- @param _Name [XmlStringMaxLen256] <p>The name of the product configuration.</p>
+function M.SupportedProductConfig(_Args, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SupportedProductConfig")
 	local t = { 
-		["Args"] = Args,
-		["Name"] = Name,
+		["Args"] = _Args,
+		["Name"] = _Name,
 	}
-	M.AssertSupportedProductConfig(t)
+	asserts.AssertSupportedProductConfig(t)
 	return t
 end
 
-local ListInstanceFleetsInput_keys = { "Marker" = true, "ClusterId" = true, nil }
+keys.ListInstanceFleetsInput = { ["Marker"] = true, ["ClusterId"] = true, nil }
 
-function M.AssertListInstanceFleetsInput(struct)
+function asserts.AssertListInstanceFleetsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListInstanceFleetsInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListInstanceFleetsInput_keys[k], "ListInstanceFleetsInput contains unknown key " .. tostring(k))
+		assert(keys.ListInstanceFleetsInput[k], "ListInstanceFleetsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListInstanceFleetsInput
 --  
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param ClusterId [ClusterId] <p>The unique identifier of the cluster.</p>
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _ClusterId [ClusterId] <p>The unique identifier of the cluster.</p>
 -- Required parameter: ClusterId
-function M.ListInstanceFleetsInput(Marker, ClusterId, ...)
+function M.ListInstanceFleetsInput(_Marker, _ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceFleetsInput")
 	local t = { 
-		["Marker"] = Marker,
-		["ClusterId"] = ClusterId,
+		["Marker"] = _Marker,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertListInstanceFleetsInput(t)
+	asserts.AssertListInstanceFleetsInput(t)
 	return t
 end
 
-local PutAutoScalingPolicyInput_keys = { "InstanceGroupId" = true, "ClusterId" = true, "AutoScalingPolicy" = true, nil }
+keys.PutAutoScalingPolicyInput = { ["InstanceGroupId"] = true, ["ClusterId"] = true, ["AutoScalingPolicy"] = true, nil }
 
-function M.AssertPutAutoScalingPolicyInput(struct)
+function asserts.AssertPutAutoScalingPolicyInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutAutoScalingPolicyInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
 	assert(struct["InstanceGroupId"], "Expected key InstanceGroupId to exist in table")
 	assert(struct["AutoScalingPolicy"], "Expected key AutoScalingPolicy to exist in table")
-	if struct["InstanceGroupId"] then M.AssertInstanceGroupId(struct["InstanceGroupId"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
-	if struct["AutoScalingPolicy"] then M.AssertAutoScalingPolicy(struct["AutoScalingPolicy"]) end
+	if struct["InstanceGroupId"] then asserts.AssertInstanceGroupId(struct["InstanceGroupId"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
+	if struct["AutoScalingPolicy"] then asserts.AssertAutoScalingPolicy(struct["AutoScalingPolicy"]) end
 	for k,_ in pairs(struct) do
-		assert(PutAutoScalingPolicyInput_keys[k], "PutAutoScalingPolicyInput contains unknown key " .. tostring(k))
+		assert(keys.PutAutoScalingPolicyInput[k], "PutAutoScalingPolicyInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutAutoScalingPolicyInput
 --  
--- @param InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the automatic scaling policy is applied.</p>
--- @param ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
--- @param AutoScalingPolicy [AutoScalingPolicy] <p>Specifies the definition of the automatic scaling policy.</p>
+-- @param _InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the automatic scaling policy is applied.</p>
+-- @param _ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
+-- @param _AutoScalingPolicy [AutoScalingPolicy] <p>Specifies the definition of the automatic scaling policy.</p>
 -- Required parameter: ClusterId
 -- Required parameter: InstanceGroupId
 -- Required parameter: AutoScalingPolicy
-function M.PutAutoScalingPolicyInput(InstanceGroupId, ClusterId, AutoScalingPolicy, ...)
+function M.PutAutoScalingPolicyInput(_InstanceGroupId, _ClusterId, _AutoScalingPolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutAutoScalingPolicyInput")
 	local t = { 
-		["InstanceGroupId"] = InstanceGroupId,
-		["ClusterId"] = ClusterId,
-		["AutoScalingPolicy"] = AutoScalingPolicy,
+		["InstanceGroupId"] = _InstanceGroupId,
+		["ClusterId"] = _ClusterId,
+		["AutoScalingPolicy"] = _AutoScalingPolicy,
 	}
-	M.AssertPutAutoScalingPolicyInput(t)
+	asserts.AssertPutAutoScalingPolicyInput(t)
 	return t
 end
 
-local ListClustersOutput_keys = { "Marker" = true, "Clusters" = true, nil }
+keys.ListClustersOutput = { ["Marker"] = true, ["Clusters"] = true, nil }
 
-function M.AssertListClustersOutput(struct)
+function asserts.AssertListClustersOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListClustersOutput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["Clusters"] then M.AssertClusterSummaryList(struct["Clusters"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["Clusters"] then asserts.AssertClusterSummaryList(struct["Clusters"]) end
 	for k,_ in pairs(struct) do
-		assert(ListClustersOutput_keys[k], "ListClustersOutput contains unknown key " .. tostring(k))
+		assert(keys.ListClustersOutput[k], "ListClustersOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListClustersOutput
 -- <p>This contains a ClusterSummaryList with the cluster details; for example, the cluster IDs, names, and status.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param Clusters [ClusterSummaryList] <p>The list of clusters for the account based on the given filters.</p>
-function M.ListClustersOutput(Marker, Clusters, ...)
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _Clusters [ClusterSummaryList] <p>The list of clusters for the account based on the given filters.</p>
+function M.ListClustersOutput(_Marker, _Clusters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersOutput")
 	local t = { 
-		["Marker"] = Marker,
-		["Clusters"] = Clusters,
+		["Marker"] = _Marker,
+		["Clusters"] = _Clusters,
 	}
-	M.AssertListClustersOutput(t)
+	asserts.AssertListClustersOutput(t)
 	return t
 end
 
-local ListInstancesOutput_keys = { "Marker" = true, "Instances" = true, nil }
+keys.ListInstancesOutput = { ["Marker"] = true, ["Instances"] = true, nil }
 
-function M.AssertListInstancesOutput(struct)
+function asserts.AssertListInstancesOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListInstancesOutput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["Instances"] then M.AssertInstanceList(struct["Instances"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["Instances"] then asserts.AssertInstanceList(struct["Instances"]) end
 	for k,_ in pairs(struct) do
-		assert(ListInstancesOutput_keys[k], "ListInstancesOutput contains unknown key " .. tostring(k))
+		assert(keys.ListInstancesOutput[k], "ListInstancesOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListInstancesOutput
 -- <p>This output contains the list of instances.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param Instances [InstanceList] <p>The list of instances for the cluster and given filters.</p>
-function M.ListInstancesOutput(Marker, Instances, ...)
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _Instances [InstanceList] <p>The list of instances for the cluster and given filters.</p>
+function M.ListInstancesOutput(_Marker, _Instances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInstancesOutput")
 	local t = { 
-		["Marker"] = Marker,
-		["Instances"] = Instances,
+		["Marker"] = _Marker,
+		["Instances"] = _Instances,
 	}
-	M.AssertListInstancesOutput(t)
+	asserts.AssertListInstancesOutput(t)
 	return t
 end
 
-local InstanceResizePolicy_keys = { "InstanceTerminationTimeout" = true, "InstancesToProtect" = true, "InstancesToTerminate" = true, nil }
+keys.InstanceResizePolicy = { ["InstanceTerminationTimeout"] = true, ["InstancesToProtect"] = true, ["InstancesToTerminate"] = true, nil }
 
-function M.AssertInstanceResizePolicy(struct)
+function asserts.AssertInstanceResizePolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceResizePolicy to be of type 'table'")
-	if struct["InstanceTerminationTimeout"] then M.AssertInteger(struct["InstanceTerminationTimeout"]) end
-	if struct["InstancesToProtect"] then M.AssertEC2InstanceIdsList(struct["InstancesToProtect"]) end
-	if struct["InstancesToTerminate"] then M.AssertEC2InstanceIdsList(struct["InstancesToTerminate"]) end
+	if struct["InstanceTerminationTimeout"] then asserts.AssertInteger(struct["InstanceTerminationTimeout"]) end
+	if struct["InstancesToProtect"] then asserts.AssertEC2InstanceIdsList(struct["InstancesToProtect"]) end
+	if struct["InstancesToTerminate"] then asserts.AssertEC2InstanceIdsList(struct["InstancesToTerminate"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceResizePolicy_keys[k], "InstanceResizePolicy contains unknown key " .. tostring(k))
+		assert(keys.InstanceResizePolicy[k], "InstanceResizePolicy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceResizePolicy
 -- <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
--- @param InstanceTerminationTimeout [Integer] <p>Decommissioning timeout override for the specific list of instances to be terminated.</p>
--- @param InstancesToProtect [EC2InstanceIdsList] <p>Specific list of instances to be protected when shrinking an instance group.</p>
--- @param InstancesToTerminate [EC2InstanceIdsList] <p>Specific list of instances to be terminated when shrinking an instance group.</p>
-function M.InstanceResizePolicy(InstanceTerminationTimeout, InstancesToProtect, InstancesToTerminate, ...)
+-- @param _InstanceTerminationTimeout [Integer] <p>Decommissioning timeout override for the specific list of instances to be terminated.</p>
+-- @param _InstancesToProtect [EC2InstanceIdsList] <p>Specific list of instances to be protected when shrinking an instance group.</p>
+-- @param _InstancesToTerminate [EC2InstanceIdsList] <p>Specific list of instances to be terminated when shrinking an instance group.</p>
+function M.InstanceResizePolicy(_InstanceTerminationTimeout, _InstancesToProtect, _InstancesToTerminate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceResizePolicy")
 	local t = { 
-		["InstanceTerminationTimeout"] = InstanceTerminationTimeout,
-		["InstancesToProtect"] = InstancesToProtect,
-		["InstancesToTerminate"] = InstancesToTerminate,
+		["InstanceTerminationTimeout"] = _InstanceTerminationTimeout,
+		["InstancesToProtect"] = _InstancesToProtect,
+		["InstancesToTerminate"] = _InstancesToTerminate,
 	}
-	M.AssertInstanceResizePolicy(t)
+	asserts.AssertInstanceResizePolicy(t)
 	return t
 end
 
-local InstanceGroupDetail_keys = { "ReadyDateTime" = true, "Name" = true, "InstanceRole" = true, "EndDateTime" = true, "InstanceRequestCount" = true, "State" = true, "BidPrice" = true, "LastStateChangeReason" = true, "StartDateTime" = true, "InstanceGroupId" = true, "InstanceRunningCount" = true, "CreationDateTime" = true, "InstanceType" = true, "Market" = true, nil }
+keys.InstanceGroupDetail = { ["ReadyDateTime"] = true, ["Name"] = true, ["InstanceRole"] = true, ["EndDateTime"] = true, ["InstanceRequestCount"] = true, ["State"] = true, ["BidPrice"] = true, ["LastStateChangeReason"] = true, ["StartDateTime"] = true, ["InstanceGroupId"] = true, ["InstanceRunningCount"] = true, ["CreationDateTime"] = true, ["InstanceType"] = true, ["Market"] = true, nil }
 
-function M.AssertInstanceGroupDetail(struct)
+function asserts.AssertInstanceGroupDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceGroupDetail to be of type 'table'")
 	assert(struct["Market"], "Expected key Market to exist in table")
@@ -2449,41 +2452,41 @@ function M.AssertInstanceGroupDetail(struct)
 	assert(struct["InstanceRunningCount"], "Expected key InstanceRunningCount to exist in table")
 	assert(struct["State"], "Expected key State to exist in table")
 	assert(struct["CreationDateTime"], "Expected key CreationDateTime to exist in table")
-	if struct["ReadyDateTime"] then M.AssertDate(struct["ReadyDateTime"]) end
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
-	if struct["InstanceRole"] then M.AssertInstanceRoleType(struct["InstanceRole"]) end
-	if struct["EndDateTime"] then M.AssertDate(struct["EndDateTime"]) end
-	if struct["InstanceRequestCount"] then M.AssertInteger(struct["InstanceRequestCount"]) end
-	if struct["State"] then M.AssertInstanceGroupState(struct["State"]) end
-	if struct["BidPrice"] then M.AssertXmlStringMaxLen256(struct["BidPrice"]) end
-	if struct["LastStateChangeReason"] then M.AssertXmlString(struct["LastStateChangeReason"]) end
-	if struct["StartDateTime"] then M.AssertDate(struct["StartDateTime"]) end
-	if struct["InstanceGroupId"] then M.AssertXmlStringMaxLen256(struct["InstanceGroupId"]) end
-	if struct["InstanceRunningCount"] then M.AssertInteger(struct["InstanceRunningCount"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["InstanceType"] then M.AssertInstanceType(struct["InstanceType"]) end
-	if struct["Market"] then M.AssertMarketType(struct["Market"]) end
+	if struct["ReadyDateTime"] then asserts.AssertDate(struct["ReadyDateTime"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["InstanceRole"] then asserts.AssertInstanceRoleType(struct["InstanceRole"]) end
+	if struct["EndDateTime"] then asserts.AssertDate(struct["EndDateTime"]) end
+	if struct["InstanceRequestCount"] then asserts.AssertInteger(struct["InstanceRequestCount"]) end
+	if struct["State"] then asserts.AssertInstanceGroupState(struct["State"]) end
+	if struct["BidPrice"] then asserts.AssertXmlStringMaxLen256(struct["BidPrice"]) end
+	if struct["LastStateChangeReason"] then asserts.AssertXmlString(struct["LastStateChangeReason"]) end
+	if struct["StartDateTime"] then asserts.AssertDate(struct["StartDateTime"]) end
+	if struct["InstanceGroupId"] then asserts.AssertXmlStringMaxLen256(struct["InstanceGroupId"]) end
+	if struct["InstanceRunningCount"] then asserts.AssertInteger(struct["InstanceRunningCount"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["InstanceType"] then asserts.AssertInstanceType(struct["InstanceType"]) end
+	if struct["Market"] then asserts.AssertMarketType(struct["Market"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceGroupDetail_keys[k], "InstanceGroupDetail contains unknown key " .. tostring(k))
+		assert(keys.InstanceGroupDetail[k], "InstanceGroupDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceGroupDetail
 -- <p>Detailed information about an instance group.</p>
--- @param ReadyDateTime [Date] <p>The date/time the instance group was available to the cluster.</p>
--- @param Name [XmlStringMaxLen256] <p>Friendly name for the instance group.</p>
--- @param InstanceRole [InstanceRoleType] <p>Instance group role in the cluster</p>
--- @param EndDateTime [Date] <p>The date/time the instance group was terminated.</p>
--- @param InstanceRequestCount [Integer] <p>Target number of instances to run in the instance group.</p>
--- @param State [InstanceGroupState] <p>State of instance group. The following values are deprecated: STARTING, TERMINATED, and FAILED.</p>
--- @param BidPrice [XmlStringMaxLen256] <p>Bid price for EC2 Instances when launching nodes as Spot Instances, expressed in USD.</p>
--- @param LastStateChangeReason [XmlString] <p>Details regarding the state of the instance group.</p>
--- @param StartDateTime [Date] <p>The date/time the instance group was started.</p>
--- @param InstanceGroupId [XmlStringMaxLen256] <p>Unique identifier for the instance group.</p>
--- @param InstanceRunningCount [Integer] <p>Actual count of running instances.</p>
--- @param CreationDateTime [Date] <p>The date/time the instance group was created.</p>
--- @param InstanceType [InstanceType] <p>EC2 instance type.</p>
--- @param Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
+-- @param _ReadyDateTime [Date] <p>The date/time the instance group was available to the cluster.</p>
+-- @param _Name [XmlStringMaxLen256] <p>Friendly name for the instance group.</p>
+-- @param _InstanceRole [InstanceRoleType] <p>Instance group role in the cluster</p>
+-- @param _EndDateTime [Date] <p>The date/time the instance group was terminated.</p>
+-- @param _InstanceRequestCount [Integer] <p>Target number of instances to run in the instance group.</p>
+-- @param _State [InstanceGroupState] <p>State of instance group. The following values are deprecated: STARTING, TERMINATED, and FAILED.</p>
+-- @param _BidPrice [XmlStringMaxLen256] <p>Bid price for EC2 Instances when launching nodes as Spot Instances, expressed in USD.</p>
+-- @param _LastStateChangeReason [XmlString] <p>Details regarding the state of the instance group.</p>
+-- @param _StartDateTime [Date] <p>The date/time the instance group was started.</p>
+-- @param _InstanceGroupId [XmlStringMaxLen256] <p>Unique identifier for the instance group.</p>
+-- @param _InstanceRunningCount [Integer] <p>Actual count of running instances.</p>
+-- @param _CreationDateTime [Date] <p>The date/time the instance group was created.</p>
+-- @param _InstanceType [InstanceType] <p>EC2 instance type.</p>
+-- @param _Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
 -- Required parameter: Market
 -- Required parameter: InstanceRole
 -- Required parameter: InstanceType
@@ -2491,313 +2494,313 @@ end
 -- Required parameter: InstanceRunningCount
 -- Required parameter: State
 -- Required parameter: CreationDateTime
-function M.InstanceGroupDetail(ReadyDateTime, Name, InstanceRole, EndDateTime, InstanceRequestCount, State, BidPrice, LastStateChangeReason, StartDateTime, InstanceGroupId, InstanceRunningCount, CreationDateTime, InstanceType, Market, ...)
+function M.InstanceGroupDetail(_ReadyDateTime, _Name, _InstanceRole, _EndDateTime, _InstanceRequestCount, _State, _BidPrice, _LastStateChangeReason, _StartDateTime, _InstanceGroupId, _InstanceRunningCount, _CreationDateTime, _InstanceType, _Market, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupDetail")
 	local t = { 
-		["ReadyDateTime"] = ReadyDateTime,
-		["Name"] = Name,
-		["InstanceRole"] = InstanceRole,
-		["EndDateTime"] = EndDateTime,
-		["InstanceRequestCount"] = InstanceRequestCount,
-		["State"] = State,
-		["BidPrice"] = BidPrice,
-		["LastStateChangeReason"] = LastStateChangeReason,
-		["StartDateTime"] = StartDateTime,
-		["InstanceGroupId"] = InstanceGroupId,
-		["InstanceRunningCount"] = InstanceRunningCount,
-		["CreationDateTime"] = CreationDateTime,
-		["InstanceType"] = InstanceType,
-		["Market"] = Market,
+		["ReadyDateTime"] = _ReadyDateTime,
+		["Name"] = _Name,
+		["InstanceRole"] = _InstanceRole,
+		["EndDateTime"] = _EndDateTime,
+		["InstanceRequestCount"] = _InstanceRequestCount,
+		["State"] = _State,
+		["BidPrice"] = _BidPrice,
+		["LastStateChangeReason"] = _LastStateChangeReason,
+		["StartDateTime"] = _StartDateTime,
+		["InstanceGroupId"] = _InstanceGroupId,
+		["InstanceRunningCount"] = _InstanceRunningCount,
+		["CreationDateTime"] = _CreationDateTime,
+		["InstanceType"] = _InstanceType,
+		["Market"] = _Market,
 	}
-	M.AssertInstanceGroupDetail(t)
+	asserts.AssertInstanceGroupDetail(t)
 	return t
 end
 
-local EbsVolume_keys = { "Device" = true, "VolumeId" = true, nil }
+keys.EbsVolume = { ["Device"] = true, ["VolumeId"] = true, nil }
 
-function M.AssertEbsVolume(struct)
+function asserts.AssertEbsVolume(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EbsVolume to be of type 'table'")
-	if struct["Device"] then M.AssertString(struct["Device"]) end
-	if struct["VolumeId"] then M.AssertString(struct["VolumeId"]) end
+	if struct["Device"] then asserts.AssertString(struct["Device"]) end
+	if struct["VolumeId"] then asserts.AssertString(struct["VolumeId"]) end
 	for k,_ in pairs(struct) do
-		assert(EbsVolume_keys[k], "EbsVolume contains unknown key " .. tostring(k))
+		assert(keys.EbsVolume[k], "EbsVolume contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EbsVolume
 -- <p>EBS block device that's attached to an EC2 instance.</p>
--- @param Device [String] <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
--- @param VolumeId [String] <p>The volume identifier of the EBS volume.</p>
-function M.EbsVolume(Device, VolumeId, ...)
+-- @param _Device [String] <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
+-- @param _VolumeId [String] <p>The volume identifier of the EBS volume.</p>
+function M.EbsVolume(_Device, _VolumeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EbsVolume")
 	local t = { 
-		["Device"] = Device,
-		["VolumeId"] = VolumeId,
+		["Device"] = _Device,
+		["VolumeId"] = _VolumeId,
 	}
-	M.AssertEbsVolume(t)
+	asserts.AssertEbsVolume(t)
 	return t
 end
 
-local DescribeSecurityConfigurationInput_keys = { "Name" = true, nil }
+keys.DescribeSecurityConfigurationInput = { ["Name"] = true, nil }
 
-function M.AssertDescribeSecurityConfigurationInput(struct)
+function asserts.AssertDescribeSecurityConfigurationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSecurityConfigurationInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertXmlString(struct["Name"]) end
+	if struct["Name"] then asserts.AssertXmlString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSecurityConfigurationInput_keys[k], "DescribeSecurityConfigurationInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeSecurityConfigurationInput[k], "DescribeSecurityConfigurationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSecurityConfigurationInput
 --  
--- @param Name [XmlString] <p>The name of the security configuration.</p>
+-- @param _Name [XmlString] <p>The name of the security configuration.</p>
 -- Required parameter: Name
-function M.DescribeSecurityConfigurationInput(Name, ...)
+function M.DescribeSecurityConfigurationInput(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSecurityConfigurationInput")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertDescribeSecurityConfigurationInput(t)
+	asserts.AssertDescribeSecurityConfigurationInput(t)
 	return t
 end
 
-local AddJobFlowStepsInput_keys = { "Steps" = true, "JobFlowId" = true, nil }
+keys.AddJobFlowStepsInput = { ["Steps"] = true, ["JobFlowId"] = true, nil }
 
-function M.AssertAddJobFlowStepsInput(struct)
+function asserts.AssertAddJobFlowStepsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddJobFlowStepsInput to be of type 'table'")
 	assert(struct["JobFlowId"], "Expected key JobFlowId to exist in table")
 	assert(struct["Steps"], "Expected key Steps to exist in table")
-	if struct["Steps"] then M.AssertStepConfigList(struct["Steps"]) end
-	if struct["JobFlowId"] then M.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
+	if struct["Steps"] then asserts.AssertStepConfigList(struct["Steps"]) end
+	if struct["JobFlowId"] then asserts.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
 	for k,_ in pairs(struct) do
-		assert(AddJobFlowStepsInput_keys[k], "AddJobFlowStepsInput contains unknown key " .. tostring(k))
+		assert(keys.AddJobFlowStepsInput[k], "AddJobFlowStepsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddJobFlowStepsInput
 -- <p> The input argument to the <a>AddJobFlowSteps</a> operation. </p>
--- @param Steps [StepConfigList] <p> A list of <a>StepConfig</a> to be executed by the job flow. </p>
--- @param JobFlowId [XmlStringMaxLen256] <p>A string that uniquely identifies the job flow. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>ListClusters</a>. </p>
+-- @param _Steps [StepConfigList] <p> A list of <a>StepConfig</a> to be executed by the job flow. </p>
+-- @param _JobFlowId [XmlStringMaxLen256] <p>A string that uniquely identifies the job flow. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>ListClusters</a>. </p>
 -- Required parameter: JobFlowId
 -- Required parameter: Steps
-function M.AddJobFlowStepsInput(Steps, JobFlowId, ...)
+function M.AddJobFlowStepsInput(_Steps, _JobFlowId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddJobFlowStepsInput")
 	local t = { 
-		["Steps"] = Steps,
-		["JobFlowId"] = JobFlowId,
+		["Steps"] = _Steps,
+		["JobFlowId"] = _JobFlowId,
 	}
-	M.AssertAddJobFlowStepsInput(t)
+	asserts.AssertAddJobFlowStepsInput(t)
 	return t
 end
 
-local InstanceFleetStatus_keys = { "Timeline" = true, "State" = true, "StateChangeReason" = true, nil }
+keys.InstanceFleetStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, nil }
 
-function M.AssertInstanceFleetStatus(struct)
+function asserts.AssertInstanceFleetStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceFleetStatus to be of type 'table'")
-	if struct["Timeline"] then M.AssertInstanceFleetTimeline(struct["Timeline"]) end
-	if struct["State"] then M.AssertInstanceFleetState(struct["State"]) end
-	if struct["StateChangeReason"] then M.AssertInstanceFleetStateChangeReason(struct["StateChangeReason"]) end
+	if struct["Timeline"] then asserts.AssertInstanceFleetTimeline(struct["Timeline"]) end
+	if struct["State"] then asserts.AssertInstanceFleetState(struct["State"]) end
+	if struct["StateChangeReason"] then asserts.AssertInstanceFleetStateChangeReason(struct["StateChangeReason"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceFleetStatus_keys[k], "InstanceFleetStatus contains unknown key " .. tostring(k))
+		assert(keys.InstanceFleetStatus[k], "InstanceFleetStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceFleetStatus
 -- <p>The status of the instance fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param Timeline [InstanceFleetTimeline] <p>Provides historical timestamps for the instance fleet, including the time of creation, the time it became ready to run jobs, and the time of termination.</p>
--- @param State [InstanceFleetState] <p>A code representing the instance fleet status.</p>
--- @param StateChangeReason [InstanceFleetStateChangeReason] <p>Provides status change reason details for the instance fleet.</p>
-function M.InstanceFleetStatus(Timeline, State, StateChangeReason, ...)
+-- @param _Timeline [InstanceFleetTimeline] <p>Provides historical timestamps for the instance fleet, including the time of creation, the time it became ready to run jobs, and the time of termination.</p>
+-- @param _State [InstanceFleetState] <p>A code representing the instance fleet status.</p>
+-- @param _StateChangeReason [InstanceFleetStateChangeReason] <p>Provides status change reason details for the instance fleet.</p>
+function M.InstanceFleetStatus(_Timeline, _State, _StateChangeReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetStatus")
 	local t = { 
-		["Timeline"] = Timeline,
-		["State"] = State,
-		["StateChangeReason"] = StateChangeReason,
+		["Timeline"] = _Timeline,
+		["State"] = _State,
+		["StateChangeReason"] = _StateChangeReason,
 	}
-	M.AssertInstanceFleetStatus(t)
+	asserts.AssertInstanceFleetStatus(t)
 	return t
 end
 
-local DescribeClusterInput_keys = { "ClusterId" = true, nil }
+keys.DescribeClusterInput = { ["ClusterId"] = true, nil }
 
-function M.AssertDescribeClusterInput(struct)
+function asserts.AssertDescribeClusterInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeClusterInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeClusterInput_keys[k], "DescribeClusterInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeClusterInput[k], "DescribeClusterInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeClusterInput
 -- <p>This input determines which cluster to describe.</p>
--- @param ClusterId [ClusterId] <p>The identifier of the cluster to describe.</p>
+-- @param _ClusterId [ClusterId] <p>The identifier of the cluster to describe.</p>
 -- Required parameter: ClusterId
-function M.DescribeClusterInput(ClusterId, ...)
+function M.DescribeClusterInput(_ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterInput")
 	local t = { 
-		["ClusterId"] = ClusterId,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertDescribeClusterInput(t)
+	asserts.AssertDescribeClusterInput(t)
 	return t
 end
 
-local ListStepsOutput_keys = { "Marker" = true, "Steps" = true, nil }
+keys.ListStepsOutput = { ["Marker"] = true, ["Steps"] = true, nil }
 
-function M.AssertListStepsOutput(struct)
+function asserts.AssertListStepsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListStepsOutput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["Steps"] then M.AssertStepSummaryList(struct["Steps"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["Steps"] then asserts.AssertStepSummaryList(struct["Steps"]) end
 	for k,_ in pairs(struct) do
-		assert(ListStepsOutput_keys[k], "ListStepsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListStepsOutput[k], "ListStepsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListStepsOutput
 -- <p>This output contains the list of steps returned in reverse order. This means that the last step is the first element in the list.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param Steps [StepSummaryList] <p>The filtered list of steps for the cluster.</p>
-function M.ListStepsOutput(Marker, Steps, ...)
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _Steps [StepSummaryList] <p>The filtered list of steps for the cluster.</p>
+function M.ListStepsOutput(_Marker, _Steps, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStepsOutput")
 	local t = { 
-		["Marker"] = Marker,
-		["Steps"] = Steps,
+		["Marker"] = _Marker,
+		["Steps"] = _Steps,
 	}
-	M.AssertListStepsOutput(t)
+	asserts.AssertListStepsOutput(t)
 	return t
 end
 
-local ScriptBootstrapActionConfig_keys = { "Path" = true, "Args" = true, nil }
+keys.ScriptBootstrapActionConfig = { ["Path"] = true, ["Args"] = true, nil }
 
-function M.AssertScriptBootstrapActionConfig(struct)
+function asserts.AssertScriptBootstrapActionConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScriptBootstrapActionConfig to be of type 'table'")
 	assert(struct["Path"], "Expected key Path to exist in table")
-	if struct["Path"] then M.AssertXmlString(struct["Path"]) end
-	if struct["Args"] then M.AssertXmlStringList(struct["Args"]) end
+	if struct["Path"] then asserts.AssertXmlString(struct["Path"]) end
+	if struct["Args"] then asserts.AssertXmlStringList(struct["Args"]) end
 	for k,_ in pairs(struct) do
-		assert(ScriptBootstrapActionConfig_keys[k], "ScriptBootstrapActionConfig contains unknown key " .. tostring(k))
+		assert(keys.ScriptBootstrapActionConfig[k], "ScriptBootstrapActionConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScriptBootstrapActionConfig
 -- <p>Configuration of the script to run during a bootstrap action.</p>
--- @param Path [XmlString] <p>Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system.</p>
--- @param Args [XmlStringList] <p>A list of command line arguments to pass to the bootstrap action script.</p>
+-- @param _Path [XmlString] <p>Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system.</p>
+-- @param _Args [XmlStringList] <p>A list of command line arguments to pass to the bootstrap action script.</p>
 -- Required parameter: Path
-function M.ScriptBootstrapActionConfig(Path, Args, ...)
+function M.ScriptBootstrapActionConfig(_Path, _Args, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScriptBootstrapActionConfig")
 	local t = { 
-		["Path"] = Path,
-		["Args"] = Args,
+		["Path"] = _Path,
+		["Args"] = _Args,
 	}
-	M.AssertScriptBootstrapActionConfig(t)
+	asserts.AssertScriptBootstrapActionConfig(t)
 	return t
 end
 
-local AddInstanceFleetInput_keys = { "InstanceFleet" = true, "ClusterId" = true, nil }
+keys.AddInstanceFleetInput = { ["InstanceFleet"] = true, ["ClusterId"] = true, nil }
 
-function M.AssertAddInstanceFleetInput(struct)
+function asserts.AssertAddInstanceFleetInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddInstanceFleetInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
 	assert(struct["InstanceFleet"], "Expected key InstanceFleet to exist in table")
-	if struct["InstanceFleet"] then M.AssertInstanceFleetConfig(struct["InstanceFleet"]) end
-	if struct["ClusterId"] then M.AssertXmlStringMaxLen256(struct["ClusterId"]) end
+	if struct["InstanceFleet"] then asserts.AssertInstanceFleetConfig(struct["InstanceFleet"]) end
+	if struct["ClusterId"] then asserts.AssertXmlStringMaxLen256(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(AddInstanceFleetInput_keys[k], "AddInstanceFleetInput contains unknown key " .. tostring(k))
+		assert(keys.AddInstanceFleetInput[k], "AddInstanceFleetInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddInstanceFleetInput
 --  
--- @param InstanceFleet [InstanceFleetConfig] <p>Specifies the configuration of the instance fleet.</p>
--- @param ClusterId [XmlStringMaxLen256] <p>The unique identifier of the cluster.</p>
+-- @param _InstanceFleet [InstanceFleetConfig] <p>Specifies the configuration of the instance fleet.</p>
+-- @param _ClusterId [XmlStringMaxLen256] <p>The unique identifier of the cluster.</p>
 -- Required parameter: ClusterId
 -- Required parameter: InstanceFleet
-function M.AddInstanceFleetInput(InstanceFleet, ClusterId, ...)
+function M.AddInstanceFleetInput(_InstanceFleet, _ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddInstanceFleetInput")
 	local t = { 
-		["InstanceFleet"] = InstanceFleet,
-		["ClusterId"] = ClusterId,
+		["InstanceFleet"] = _InstanceFleet,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertAddInstanceFleetInput(t)
+	asserts.AssertAddInstanceFleetInput(t)
 	return t
 end
 
-local RemoveAutoScalingPolicyInput_keys = { "InstanceGroupId" = true, "ClusterId" = true, nil }
+keys.RemoveAutoScalingPolicyInput = { ["InstanceGroupId"] = true, ["ClusterId"] = true, nil }
 
-function M.AssertRemoveAutoScalingPolicyInput(struct)
+function asserts.AssertRemoveAutoScalingPolicyInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveAutoScalingPolicyInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
 	assert(struct["InstanceGroupId"], "Expected key InstanceGroupId to exist in table")
-	if struct["InstanceGroupId"] then M.AssertInstanceGroupId(struct["InstanceGroupId"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
+	if struct["InstanceGroupId"] then asserts.AssertInstanceGroupId(struct["InstanceGroupId"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveAutoScalingPolicyInput_keys[k], "RemoveAutoScalingPolicyInput contains unknown key " .. tostring(k))
+		assert(keys.RemoveAutoScalingPolicyInput[k], "RemoveAutoScalingPolicyInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveAutoScalingPolicyInput
 --  
--- @param InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the scaling policy is applied.</p>
--- @param ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
+-- @param _InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the scaling policy is applied.</p>
+-- @param _ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
 -- Required parameter: ClusterId
 -- Required parameter: InstanceGroupId
-function M.RemoveAutoScalingPolicyInput(InstanceGroupId, ClusterId, ...)
+function M.RemoveAutoScalingPolicyInput(_InstanceGroupId, _ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAutoScalingPolicyInput")
 	local t = { 
-		["InstanceGroupId"] = InstanceGroupId,
-		["ClusterId"] = ClusterId,
+		["InstanceGroupId"] = _InstanceGroupId,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertRemoveAutoScalingPolicyInput(t)
+	asserts.AssertRemoveAutoScalingPolicyInput(t)
 	return t
 end
 
-local InstanceGroupStatus_keys = { "Timeline" = true, "State" = true, "StateChangeReason" = true, nil }
+keys.InstanceGroupStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, nil }
 
-function M.AssertInstanceGroupStatus(struct)
+function asserts.AssertInstanceGroupStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceGroupStatus to be of type 'table'")
-	if struct["Timeline"] then M.AssertInstanceGroupTimeline(struct["Timeline"]) end
-	if struct["State"] then M.AssertInstanceGroupState(struct["State"]) end
-	if struct["StateChangeReason"] then M.AssertInstanceGroupStateChangeReason(struct["StateChangeReason"]) end
+	if struct["Timeline"] then asserts.AssertInstanceGroupTimeline(struct["Timeline"]) end
+	if struct["State"] then asserts.AssertInstanceGroupState(struct["State"]) end
+	if struct["StateChangeReason"] then asserts.AssertInstanceGroupStateChangeReason(struct["StateChangeReason"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceGroupStatus_keys[k], "InstanceGroupStatus contains unknown key " .. tostring(k))
+		assert(keys.InstanceGroupStatus[k], "InstanceGroupStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceGroupStatus
 -- <p>The details of the instance group status.</p>
--- @param Timeline [InstanceGroupTimeline] <p>The timeline of the instance group status over time.</p>
--- @param State [InstanceGroupState] <p>The current state of the instance group.</p>
--- @param StateChangeReason [InstanceGroupStateChangeReason] <p>The status change reason details for the instance group.</p>
-function M.InstanceGroupStatus(Timeline, State, StateChangeReason, ...)
+-- @param _Timeline [InstanceGroupTimeline] <p>The timeline of the instance group status over time.</p>
+-- @param _State [InstanceGroupState] <p>The current state of the instance group.</p>
+-- @param _StateChangeReason [InstanceGroupStateChangeReason] <p>The status change reason details for the instance group.</p>
+function M.InstanceGroupStatus(_Timeline, _State, _StateChangeReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupStatus")
 	local t = { 
-		["Timeline"] = Timeline,
-		["State"] = State,
-		["StateChangeReason"] = StateChangeReason,
+		["Timeline"] = _Timeline,
+		["State"] = _State,
+		["StateChangeReason"] = _StateChangeReason,
 	}
-	M.AssertInstanceGroupStatus(t)
+	asserts.AssertInstanceGroupStatus(t)
 	return t
 end
 
-local AddTagsOutput_keys = { nil }
+keys.AddTagsOutput = { nil }
 
-function M.AssertAddTagsOutput(struct)
+function asserts.AssertAddTagsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsOutput to be of type 'table'")
 	for k,_ in pairs(struct) do
-		assert(AddTagsOutput_keys[k], "AddTagsOutput contains unknown key " .. tostring(k))
+		assert(keys.AddTagsOutput[k], "AddTagsOutput contains unknown key " .. tostring(k))
 	end
 end
 
@@ -2807,1366 +2810,1365 @@ function M.AddTagsOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsOutput")
 	local t = { 
 	}
-	M.AssertAddTagsOutput(t)
+	asserts.AssertAddTagsOutput(t)
 	return t
 end
 
-local EbsBlockDeviceConfig_keys = { "VolumeSpecification" = true, "VolumesPerInstance" = true, nil }
+keys.EbsBlockDeviceConfig = { ["VolumeSpecification"] = true, ["VolumesPerInstance"] = true, nil }
 
-function M.AssertEbsBlockDeviceConfig(struct)
+function asserts.AssertEbsBlockDeviceConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected EbsBlockDeviceConfig to be of type 'table'")
 	assert(struct["VolumeSpecification"], "Expected key VolumeSpecification to exist in table")
-	if struct["VolumeSpecification"] then M.AssertVolumeSpecification(struct["VolumeSpecification"]) end
-	if struct["VolumesPerInstance"] then M.AssertInteger(struct["VolumesPerInstance"]) end
+	if struct["VolumeSpecification"] then asserts.AssertVolumeSpecification(struct["VolumeSpecification"]) end
+	if struct["VolumesPerInstance"] then asserts.AssertInteger(struct["VolumesPerInstance"]) end
 	for k,_ in pairs(struct) do
-		assert(EbsBlockDeviceConfig_keys[k], "EbsBlockDeviceConfig contains unknown key " .. tostring(k))
+		assert(keys.EbsBlockDeviceConfig[k], "EbsBlockDeviceConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type EbsBlockDeviceConfig
 -- <p>Configuration of requested EBS block device associated with the instance group with count of volumes that will be associated to every instance.</p>
--- @param VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
--- @param VolumesPerInstance [Integer] <p>Number of EBS volumes with a specific volume configuration that will be associated with every instance in the instance group</p>
+-- @param _VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
+-- @param _VolumesPerInstance [Integer] <p>Number of EBS volumes with a specific volume configuration that will be associated with every instance in the instance group</p>
 -- Required parameter: VolumeSpecification
-function M.EbsBlockDeviceConfig(VolumeSpecification, VolumesPerInstance, ...)
+function M.EbsBlockDeviceConfig(_VolumeSpecification, _VolumesPerInstance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EbsBlockDeviceConfig")
 	local t = { 
-		["VolumeSpecification"] = VolumeSpecification,
-		["VolumesPerInstance"] = VolumesPerInstance,
+		["VolumeSpecification"] = _VolumeSpecification,
+		["VolumesPerInstance"] = _VolumesPerInstance,
 	}
-	M.AssertEbsBlockDeviceConfig(t)
+	asserts.AssertEbsBlockDeviceConfig(t)
 	return t
 end
 
-local SetTerminationProtectionInput_keys = { "TerminationProtected" = true, "JobFlowIds" = true, nil }
+keys.SetTerminationProtectionInput = { ["TerminationProtected"] = true, ["JobFlowIds"] = true, nil }
 
-function M.AssertSetTerminationProtectionInput(struct)
+function asserts.AssertSetTerminationProtectionInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SetTerminationProtectionInput to be of type 'table'")
 	assert(struct["JobFlowIds"], "Expected key JobFlowIds to exist in table")
 	assert(struct["TerminationProtected"], "Expected key TerminationProtected to exist in table")
-	if struct["TerminationProtected"] then M.AssertBoolean(struct["TerminationProtected"]) end
-	if struct["JobFlowIds"] then M.AssertXmlStringList(struct["JobFlowIds"]) end
+	if struct["TerminationProtected"] then asserts.AssertBoolean(struct["TerminationProtected"]) end
+	if struct["JobFlowIds"] then asserts.AssertXmlStringList(struct["JobFlowIds"]) end
 	for k,_ in pairs(struct) do
-		assert(SetTerminationProtectionInput_keys[k], "SetTerminationProtectionInput contains unknown key " .. tostring(k))
+		assert(keys.SetTerminationProtectionInput[k], "SetTerminationProtectionInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SetTerminationProtectionInput
 -- <p> The input argument to the <a>TerminationProtection</a> operation. </p>
--- @param TerminationProtected [Boolean] <p>A Boolean that indicates whether to protect the cluster and prevent the Amazon EC2 instances in the cluster from shutting down due to API calls, user intervention, or job-flow error.</p>
--- @param JobFlowIds [XmlStringList] <p> A list of strings that uniquely identify the clusters to protect. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>DescribeJobFlows</a> . </p>
+-- @param _TerminationProtected [Boolean] <p>A Boolean that indicates whether to protect the cluster and prevent the Amazon EC2 instances in the cluster from shutting down due to API calls, user intervention, or job-flow error.</p>
+-- @param _JobFlowIds [XmlStringList] <p> A list of strings that uniquely identify the clusters to protect. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>DescribeJobFlows</a> . </p>
 -- Required parameter: JobFlowIds
 -- Required parameter: TerminationProtected
-function M.SetTerminationProtectionInput(TerminationProtected, JobFlowIds, ...)
+function M.SetTerminationProtectionInput(_TerminationProtected, _JobFlowIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetTerminationProtectionInput")
 	local t = { 
-		["TerminationProtected"] = TerminationProtected,
-		["JobFlowIds"] = JobFlowIds,
+		["TerminationProtected"] = _TerminationProtected,
+		["JobFlowIds"] = _JobFlowIds,
 	}
-	M.AssertSetTerminationProtectionInput(t)
+	asserts.AssertSetTerminationProtectionInput(t)
 	return t
 end
 
-local InstanceFleetConfig_keys = { "Name" = true, "InstanceFleetType" = true, "LaunchSpecifications" = true, "TargetSpotCapacity" = true, "InstanceTypeConfigs" = true, "TargetOnDemandCapacity" = true, nil }
+keys.InstanceFleetConfig = { ["Name"] = true, ["InstanceFleetType"] = true, ["LaunchSpecifications"] = true, ["TargetSpotCapacity"] = true, ["InstanceTypeConfigs"] = true, ["TargetOnDemandCapacity"] = true, nil }
 
-function M.AssertInstanceFleetConfig(struct)
+function asserts.AssertInstanceFleetConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceFleetConfig to be of type 'table'")
 	assert(struct["InstanceFleetType"], "Expected key InstanceFleetType to exist in table")
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
-	if struct["InstanceFleetType"] then M.AssertInstanceFleetType(struct["InstanceFleetType"]) end
-	if struct["LaunchSpecifications"] then M.AssertInstanceFleetProvisioningSpecifications(struct["LaunchSpecifications"]) end
-	if struct["TargetSpotCapacity"] then M.AssertWholeNumber(struct["TargetSpotCapacity"]) end
-	if struct["InstanceTypeConfigs"] then M.AssertInstanceTypeConfigList(struct["InstanceTypeConfigs"]) end
-	if struct["TargetOnDemandCapacity"] then M.AssertWholeNumber(struct["TargetOnDemandCapacity"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["InstanceFleetType"] then asserts.AssertInstanceFleetType(struct["InstanceFleetType"]) end
+	if struct["LaunchSpecifications"] then asserts.AssertInstanceFleetProvisioningSpecifications(struct["LaunchSpecifications"]) end
+	if struct["TargetSpotCapacity"] then asserts.AssertWholeNumber(struct["TargetSpotCapacity"]) end
+	if struct["InstanceTypeConfigs"] then asserts.AssertInstanceTypeConfigList(struct["InstanceTypeConfigs"]) end
+	if struct["TargetOnDemandCapacity"] then asserts.AssertWholeNumber(struct["TargetOnDemandCapacity"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceFleetConfig_keys[k], "InstanceFleetConfig contains unknown key " .. tostring(k))
+		assert(keys.InstanceFleetConfig[k], "InstanceFleetConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceFleetConfig
 -- <p>The configuration that defines an instance fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param Name [XmlStringMaxLen256] <p>The friendly name of the instance fleet.</p>
--- @param InstanceFleetType [InstanceFleetType] <p>The node type that the instance fleet hosts. Valid values are MASTER,CORE,and TASK.</p>
--- @param LaunchSpecifications [InstanceFleetProvisioningSpecifications] <p>The launch specification for the instance fleet.</p>
--- @param TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.</p> <note> <p>If not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
--- @param InstanceTypeConfigs [InstanceTypeConfigList] <p>The instance type configurations that define the EC2 instances in the instance fleet.</p>
--- @param TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
+-- @param _Name [XmlStringMaxLen256] <p>The friendly name of the instance fleet.</p>
+-- @param _InstanceFleetType [InstanceFleetType] <p>The node type that the instance fleet hosts. Valid values are MASTER,CORE,and TASK.</p>
+-- @param _LaunchSpecifications [InstanceFleetProvisioningSpecifications] <p>The launch specification for the instance fleet.</p>
+-- @param _TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.</p> <note> <p>If not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
+-- @param _InstanceTypeConfigs [InstanceTypeConfigList] <p>The instance type configurations that define the EC2 instances in the instance fleet.</p>
+-- @param _TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
 -- Required parameter: InstanceFleetType
-function M.InstanceFleetConfig(Name, InstanceFleetType, LaunchSpecifications, TargetSpotCapacity, InstanceTypeConfigs, TargetOnDemandCapacity, ...)
+function M.InstanceFleetConfig(_Name, _InstanceFleetType, _LaunchSpecifications, _TargetSpotCapacity, _InstanceTypeConfigs, _TargetOnDemandCapacity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetConfig")
 	local t = { 
-		["Name"] = Name,
-		["InstanceFleetType"] = InstanceFleetType,
-		["LaunchSpecifications"] = LaunchSpecifications,
-		["TargetSpotCapacity"] = TargetSpotCapacity,
-		["InstanceTypeConfigs"] = InstanceTypeConfigs,
-		["TargetOnDemandCapacity"] = TargetOnDemandCapacity,
+		["Name"] = _Name,
+		["InstanceFleetType"] = _InstanceFleetType,
+		["LaunchSpecifications"] = _LaunchSpecifications,
+		["TargetSpotCapacity"] = _TargetSpotCapacity,
+		["InstanceTypeConfigs"] = _InstanceTypeConfigs,
+		["TargetOnDemandCapacity"] = _TargetOnDemandCapacity,
 	}
-	M.AssertInstanceFleetConfig(t)
+	asserts.AssertInstanceFleetConfig(t)
 	return t
 end
 
-local MetricDimension_keys = { "Value" = true, "Key" = true, nil }
+keys.MetricDimension = { ["Value"] = true, ["Key"] = true, nil }
 
-function M.AssertMetricDimension(struct)
+function asserts.AssertMetricDimension(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected MetricDimension to be of type 'table'")
-	if struct["Value"] then M.AssertString(struct["Value"]) end
-	if struct["Key"] then M.AssertString(struct["Key"]) end
+	if struct["Value"] then asserts.AssertString(struct["Value"]) end
+	if struct["Key"] then asserts.AssertString(struct["Key"]) end
 	for k,_ in pairs(struct) do
-		assert(MetricDimension_keys[k], "MetricDimension contains unknown key " .. tostring(k))
+		assert(keys.MetricDimension[k], "MetricDimension contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type MetricDimension
 -- <p>A CloudWatch dimension, which is specified using a <code>Key</code> (known as a <code>Name</code> in CloudWatch), <code>Value</code> pair. By default, Amazon EMR uses one dimension whose <code>Key</code> is <code>JobFlowID</code> and <code>Value</code> is a variable representing the cluster ID, which is <code>${emr.clusterId}</code>. This enables the rule to bootstrap when the cluster ID becomes available.</p>
--- @param Value [String] <p>The dimension value.</p>
--- @param Key [String] <p>The dimension name.</p>
-function M.MetricDimension(Value, Key, ...)
+-- @param _Value [String] <p>The dimension value.</p>
+-- @param _Key [String] <p>The dimension name.</p>
+function M.MetricDimension(_Value, _Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricDimension")
 	local t = { 
-		["Value"] = Value,
-		["Key"] = Key,
+		["Value"] = _Value,
+		["Key"] = _Key,
 	}
-	M.AssertMetricDimension(t)
+	asserts.AssertMetricDimension(t)
 	return t
 end
 
-local AddJobFlowStepsOutput_keys = { "StepIds" = true, nil }
+keys.AddJobFlowStepsOutput = { ["StepIds"] = true, nil }
 
-function M.AssertAddJobFlowStepsOutput(struct)
+function asserts.AssertAddJobFlowStepsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddJobFlowStepsOutput to be of type 'table'")
-	if struct["StepIds"] then M.AssertStepIdsList(struct["StepIds"]) end
+	if struct["StepIds"] then asserts.AssertStepIdsList(struct["StepIds"]) end
 	for k,_ in pairs(struct) do
-		assert(AddJobFlowStepsOutput_keys[k], "AddJobFlowStepsOutput contains unknown key " .. tostring(k))
+		assert(keys.AddJobFlowStepsOutput[k], "AddJobFlowStepsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddJobFlowStepsOutput
 -- <p> The output for the <a>AddJobFlowSteps</a> operation. </p>
--- @param StepIds [StepIdsList] <p>The identifiers of the list of steps added to the job flow.</p>
-function M.AddJobFlowStepsOutput(StepIds, ...)
+-- @param _StepIds [StepIdsList] <p>The identifiers of the list of steps added to the job flow.</p>
+function M.AddJobFlowStepsOutput(_StepIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddJobFlowStepsOutput")
 	local t = { 
-		["StepIds"] = StepIds,
+		["StepIds"] = _StepIds,
 	}
-	M.AssertAddJobFlowStepsOutput(t)
+	asserts.AssertAddJobFlowStepsOutput(t)
 	return t
 end
 
-local InstanceGroup_keys = { "RequestedInstanceCount" = true, "Status" = true, "Name" = true, "InstanceGroupType" = true, "EbsBlockDevices" = true, "AutoScalingPolicy" = true, "ShrinkPolicy" = true, "Id" = true, "EbsOptimized" = true, "BidPrice" = true, "Configurations" = true, "InstanceType" = true, "Market" = true, "RunningInstanceCount" = true, nil }
+keys.InstanceGroup = { ["RequestedInstanceCount"] = true, ["Status"] = true, ["Name"] = true, ["InstanceGroupType"] = true, ["EbsBlockDevices"] = true, ["AutoScalingPolicy"] = true, ["ShrinkPolicy"] = true, ["Id"] = true, ["EbsOptimized"] = true, ["BidPrice"] = true, ["Configurations"] = true, ["InstanceType"] = true, ["Market"] = true, ["RunningInstanceCount"] = true, nil }
 
-function M.AssertInstanceGroup(struct)
+function asserts.AssertInstanceGroup(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceGroup to be of type 'table'")
-	if struct["RequestedInstanceCount"] then M.AssertInteger(struct["RequestedInstanceCount"]) end
-	if struct["Status"] then M.AssertInstanceGroupStatus(struct["Status"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["InstanceGroupType"] then M.AssertInstanceGroupType(struct["InstanceGroupType"]) end
-	if struct["EbsBlockDevices"] then M.AssertEbsBlockDeviceList(struct["EbsBlockDevices"]) end
-	if struct["AutoScalingPolicy"] then M.AssertAutoScalingPolicyDescription(struct["AutoScalingPolicy"]) end
-	if struct["ShrinkPolicy"] then M.AssertShrinkPolicy(struct["ShrinkPolicy"]) end
-	if struct["Id"] then M.AssertInstanceGroupId(struct["Id"]) end
-	if struct["EbsOptimized"] then M.AssertBooleanObject(struct["EbsOptimized"]) end
-	if struct["BidPrice"] then M.AssertString(struct["BidPrice"]) end
-	if struct["Configurations"] then M.AssertConfigurationList(struct["Configurations"]) end
-	if struct["InstanceType"] then M.AssertInstanceType(struct["InstanceType"]) end
-	if struct["Market"] then M.AssertMarketType(struct["Market"]) end
-	if struct["RunningInstanceCount"] then M.AssertInteger(struct["RunningInstanceCount"]) end
+	if struct["RequestedInstanceCount"] then asserts.AssertInteger(struct["RequestedInstanceCount"]) end
+	if struct["Status"] then asserts.AssertInstanceGroupStatus(struct["Status"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["InstanceGroupType"] then asserts.AssertInstanceGroupType(struct["InstanceGroupType"]) end
+	if struct["EbsBlockDevices"] then asserts.AssertEbsBlockDeviceList(struct["EbsBlockDevices"]) end
+	if struct["AutoScalingPolicy"] then asserts.AssertAutoScalingPolicyDescription(struct["AutoScalingPolicy"]) end
+	if struct["ShrinkPolicy"] then asserts.AssertShrinkPolicy(struct["ShrinkPolicy"]) end
+	if struct["Id"] then asserts.AssertInstanceGroupId(struct["Id"]) end
+	if struct["EbsOptimized"] then asserts.AssertBooleanObject(struct["EbsOptimized"]) end
+	if struct["BidPrice"] then asserts.AssertString(struct["BidPrice"]) end
+	if struct["Configurations"] then asserts.AssertConfigurationList(struct["Configurations"]) end
+	if struct["InstanceType"] then asserts.AssertInstanceType(struct["InstanceType"]) end
+	if struct["Market"] then asserts.AssertMarketType(struct["Market"]) end
+	if struct["RunningInstanceCount"] then asserts.AssertInteger(struct["RunningInstanceCount"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceGroup_keys[k], "InstanceGroup contains unknown key " .. tostring(k))
+		assert(keys.InstanceGroup[k], "InstanceGroup contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceGroup
 -- <p>This entity represents an instance group, which is a group of instances that have common purpose. For example, CORE instance group is used for HDFS.</p>
--- @param RequestedInstanceCount [Integer] <p>The target number of instances for the instance group.</p>
--- @param Status [InstanceGroupStatus] <p>The current status of the instance group.</p>
--- @param Name [String] <p>The name of the instance group.</p>
--- @param InstanceGroupType [InstanceGroupType] <p>The type of the instance group. Valid values are MASTER, CORE or TASK.</p>
--- @param EbsBlockDevices [EbsBlockDeviceList] <p>The EBS block devices that are mapped to this instance group.</p>
--- @param AutoScalingPolicy [AutoScalingPolicyDescription] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See PutAutoScalingPolicy.</p>
--- @param ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
--- @param Id [InstanceGroupId] <p>The identifier of the instance group.</p>
--- @param EbsOptimized [BooleanObject] <p>If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.</p>
--- @param BidPrice [String] <p>The bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
--- @param Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
--- @param InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
--- @param Market [MarketType] <p>The marketplace to provision instances for this group. Valid values are ON_DEMAND or SPOT.</p>
--- @param RunningInstanceCount [Integer] <p>The number of instances currently running in this instance group.</p>
-function M.InstanceGroup(RequestedInstanceCount, Status, Name, InstanceGroupType, EbsBlockDevices, AutoScalingPolicy, ShrinkPolicy, Id, EbsOptimized, BidPrice, Configurations, InstanceType, Market, RunningInstanceCount, ...)
+-- @param _RequestedInstanceCount [Integer] <p>The target number of instances for the instance group.</p>
+-- @param _Status [InstanceGroupStatus] <p>The current status of the instance group.</p>
+-- @param _Name [String] <p>The name of the instance group.</p>
+-- @param _InstanceGroupType [InstanceGroupType] <p>The type of the instance group. Valid values are MASTER, CORE or TASK.</p>
+-- @param _EbsBlockDevices [EbsBlockDeviceList] <p>The EBS block devices that are mapped to this instance group.</p>
+-- @param _AutoScalingPolicy [AutoScalingPolicyDescription] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See PutAutoScalingPolicy.</p>
+-- @param _ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
+-- @param _Id [InstanceGroupId] <p>The identifier of the instance group.</p>
+-- @param _EbsOptimized [BooleanObject] <p>If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.</p>
+-- @param _BidPrice [String] <p>The bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
+-- @param _Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
+-- @param _InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
+-- @param _Market [MarketType] <p>The marketplace to provision instances for this group. Valid values are ON_DEMAND or SPOT.</p>
+-- @param _RunningInstanceCount [Integer] <p>The number of instances currently running in this instance group.</p>
+function M.InstanceGroup(_RequestedInstanceCount, _Status, _Name, _InstanceGroupType, _EbsBlockDevices, _AutoScalingPolicy, _ShrinkPolicy, _Id, _EbsOptimized, _BidPrice, _Configurations, _InstanceType, _Market, _RunningInstanceCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroup")
 	local t = { 
-		["RequestedInstanceCount"] = RequestedInstanceCount,
-		["Status"] = Status,
-		["Name"] = Name,
-		["InstanceGroupType"] = InstanceGroupType,
-		["EbsBlockDevices"] = EbsBlockDevices,
-		["AutoScalingPolicy"] = AutoScalingPolicy,
-		["ShrinkPolicy"] = ShrinkPolicy,
-		["Id"] = Id,
-		["EbsOptimized"] = EbsOptimized,
-		["BidPrice"] = BidPrice,
-		["Configurations"] = Configurations,
-		["InstanceType"] = InstanceType,
-		["Market"] = Market,
-		["RunningInstanceCount"] = RunningInstanceCount,
+		["RequestedInstanceCount"] = _RequestedInstanceCount,
+		["Status"] = _Status,
+		["Name"] = _Name,
+		["InstanceGroupType"] = _InstanceGroupType,
+		["EbsBlockDevices"] = _EbsBlockDevices,
+		["AutoScalingPolicy"] = _AutoScalingPolicy,
+		["ShrinkPolicy"] = _ShrinkPolicy,
+		["Id"] = _Id,
+		["EbsOptimized"] = _EbsOptimized,
+		["BidPrice"] = _BidPrice,
+		["Configurations"] = _Configurations,
+		["InstanceType"] = _InstanceType,
+		["Market"] = _Market,
+		["RunningInstanceCount"] = _RunningInstanceCount,
 	}
-	M.AssertInstanceGroup(t)
+	asserts.AssertInstanceGroup(t)
 	return t
 end
 
-local CreateSecurityConfigurationInput_keys = { "SecurityConfiguration" = true, "Name" = true, nil }
+keys.CreateSecurityConfigurationInput = { ["SecurityConfiguration"] = true, ["Name"] = true, nil }
 
-function M.AssertCreateSecurityConfigurationInput(struct)
+function asserts.AssertCreateSecurityConfigurationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CreateSecurityConfigurationInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["SecurityConfiguration"], "Expected key SecurityConfiguration to exist in table")
-	if struct["SecurityConfiguration"] then M.AssertString(struct["SecurityConfiguration"]) end
-	if struct["Name"] then M.AssertXmlString(struct["Name"]) end
+	if struct["SecurityConfiguration"] then asserts.AssertString(struct["SecurityConfiguration"]) end
+	if struct["Name"] then asserts.AssertXmlString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(CreateSecurityConfigurationInput_keys[k], "CreateSecurityConfigurationInput contains unknown key " .. tostring(k))
+		assert(keys.CreateSecurityConfigurationInput[k], "CreateSecurityConfigurationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CreateSecurityConfigurationInput
 --  
--- @param SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
--- @param Name [XmlString] <p>The name of the security configuration.</p>
+-- @param _SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
+-- @param _Name [XmlString] <p>The name of the security configuration.</p>
 -- Required parameter: Name
 -- Required parameter: SecurityConfiguration
-function M.CreateSecurityConfigurationInput(SecurityConfiguration, Name, ...)
+function M.CreateSecurityConfigurationInput(_SecurityConfiguration, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSecurityConfigurationInput")
 	local t = { 
-		["SecurityConfiguration"] = SecurityConfiguration,
-		["Name"] = Name,
+		["SecurityConfiguration"] = _SecurityConfiguration,
+		["Name"] = _Name,
 	}
-	M.AssertCreateSecurityConfigurationInput(t)
+	asserts.AssertCreateSecurityConfigurationInput(t)
 	return t
 end
 
-local ListInstancesInput_keys = { "InstanceGroupTypes" = true, "InstanceFleetType" = true, "InstanceFleetId" = true, "ClusterId" = true, "InstanceStates" = true, "Marker" = true, "InstanceGroupId" = true, nil }
+keys.ListInstancesInput = { ["InstanceGroupTypes"] = true, ["InstanceFleetType"] = true, ["InstanceFleetId"] = true, ["ClusterId"] = true, ["InstanceStates"] = true, ["Marker"] = true, ["InstanceGroupId"] = true, nil }
 
-function M.AssertListInstancesInput(struct)
+function asserts.AssertListInstancesInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListInstancesInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
-	if struct["InstanceGroupTypes"] then M.AssertInstanceGroupTypeList(struct["InstanceGroupTypes"]) end
-	if struct["InstanceFleetType"] then M.AssertInstanceFleetType(struct["InstanceFleetType"]) end
-	if struct["InstanceFleetId"] then M.AssertInstanceFleetId(struct["InstanceFleetId"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
-	if struct["InstanceStates"] then M.AssertInstanceStateList(struct["InstanceStates"]) end
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["InstanceGroupId"] then M.AssertInstanceGroupId(struct["InstanceGroupId"]) end
+	if struct["InstanceGroupTypes"] then asserts.AssertInstanceGroupTypeList(struct["InstanceGroupTypes"]) end
+	if struct["InstanceFleetType"] then asserts.AssertInstanceFleetType(struct["InstanceFleetType"]) end
+	if struct["InstanceFleetId"] then asserts.AssertInstanceFleetId(struct["InstanceFleetId"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
+	if struct["InstanceStates"] then asserts.AssertInstanceStateList(struct["InstanceStates"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["InstanceGroupId"] then asserts.AssertInstanceGroupId(struct["InstanceGroupId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListInstancesInput_keys[k], "ListInstancesInput contains unknown key " .. tostring(k))
+		assert(keys.ListInstancesInput[k], "ListInstancesInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListInstancesInput
 -- <p>This input determines which instances to list.</p>
--- @param InstanceGroupTypes [InstanceGroupTypeList] <p>The type of instance group for which to list the instances.</p>
--- @param InstanceFleetType [InstanceFleetType] <p>The node type of the instance fleet. For example MASTER, CORE, or TASK.</p>
--- @param InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
--- @param ClusterId [ClusterId] <p>The identifier of the cluster for which to list the instances.</p>
--- @param InstanceStates [InstanceStateList] <p>A list of instance states that will filter the instances returned with this request.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param InstanceGroupId [InstanceGroupId] <p>The identifier of the instance group for which to list the instances.</p>
+-- @param _InstanceGroupTypes [InstanceGroupTypeList] <p>The type of instance group for which to list the instances.</p>
+-- @param _InstanceFleetType [InstanceFleetType] <p>The node type of the instance fleet. For example MASTER, CORE, or TASK.</p>
+-- @param _InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
+-- @param _ClusterId [ClusterId] <p>The identifier of the cluster for which to list the instances.</p>
+-- @param _InstanceStates [InstanceStateList] <p>A list of instance states that will filter the instances returned with this request.</p>
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _InstanceGroupId [InstanceGroupId] <p>The identifier of the instance group for which to list the instances.</p>
 -- Required parameter: ClusterId
-function M.ListInstancesInput(InstanceGroupTypes, InstanceFleetType, InstanceFleetId, ClusterId, InstanceStates, Marker, InstanceGroupId, ...)
+function M.ListInstancesInput(_InstanceGroupTypes, _InstanceFleetType, _InstanceFleetId, _ClusterId, _InstanceStates, _Marker, _InstanceGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInstancesInput")
 	local t = { 
-		["InstanceGroupTypes"] = InstanceGroupTypes,
-		["InstanceFleetType"] = InstanceFleetType,
-		["InstanceFleetId"] = InstanceFleetId,
-		["ClusterId"] = ClusterId,
-		["InstanceStates"] = InstanceStates,
-		["Marker"] = Marker,
-		["InstanceGroupId"] = InstanceGroupId,
+		["InstanceGroupTypes"] = _InstanceGroupTypes,
+		["InstanceFleetType"] = _InstanceFleetType,
+		["InstanceFleetId"] = _InstanceFleetId,
+		["ClusterId"] = _ClusterId,
+		["InstanceStates"] = _InstanceStates,
+		["Marker"] = _Marker,
+		["InstanceGroupId"] = _InstanceGroupId,
 	}
-	M.AssertListInstancesInput(t)
+	asserts.AssertListInstancesInput(t)
 	return t
 end
 
-local StepStatus_keys = { "Timeline" = true, "State" = true, "StateChangeReason" = true, "FailureDetails" = true, nil }
+keys.StepStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, ["FailureDetails"] = true, nil }
 
-function M.AssertStepStatus(struct)
+function asserts.AssertStepStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StepStatus to be of type 'table'")
-	if struct["Timeline"] then M.AssertStepTimeline(struct["Timeline"]) end
-	if struct["State"] then M.AssertStepState(struct["State"]) end
-	if struct["StateChangeReason"] then M.AssertStepStateChangeReason(struct["StateChangeReason"]) end
-	if struct["FailureDetails"] then M.AssertFailureDetails(struct["FailureDetails"]) end
+	if struct["Timeline"] then asserts.AssertStepTimeline(struct["Timeline"]) end
+	if struct["State"] then asserts.AssertStepState(struct["State"]) end
+	if struct["StateChangeReason"] then asserts.AssertStepStateChangeReason(struct["StateChangeReason"]) end
+	if struct["FailureDetails"] then asserts.AssertFailureDetails(struct["FailureDetails"]) end
 	for k,_ in pairs(struct) do
-		assert(StepStatus_keys[k], "StepStatus contains unknown key " .. tostring(k))
+		assert(keys.StepStatus[k], "StepStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StepStatus
 -- <p>The execution status details of the cluster step.</p>
--- @param Timeline [StepTimeline] <p>The timeline of the cluster step status over time.</p>
--- @param State [StepState] <p>The execution state of the cluster step.</p>
--- @param StateChangeReason [StepStateChangeReason] <p>The reason for the step execution status change.</p>
--- @param FailureDetails [FailureDetails] <p>The details for the step failure including reason, message, and log file path where the root cause was identified.</p>
-function M.StepStatus(Timeline, State, StateChangeReason, FailureDetails, ...)
+-- @param _Timeline [StepTimeline] <p>The timeline of the cluster step status over time.</p>
+-- @param _State [StepState] <p>The execution state of the cluster step.</p>
+-- @param _StateChangeReason [StepStateChangeReason] <p>The reason for the step execution status change.</p>
+-- @param _FailureDetails [FailureDetails] <p>The details for the step failure including reason, message, and log file path where the root cause was identified.</p>
+function M.StepStatus(_Timeline, _State, _StateChangeReason, _FailureDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepStatus")
 	local t = { 
-		["Timeline"] = Timeline,
-		["State"] = State,
-		["StateChangeReason"] = StateChangeReason,
-		["FailureDetails"] = FailureDetails,
+		["Timeline"] = _Timeline,
+		["State"] = _State,
+		["StateChangeReason"] = _StateChangeReason,
+		["FailureDetails"] = _FailureDetails,
 	}
-	M.AssertStepStatus(t)
+	asserts.AssertStepStatus(t)
 	return t
 end
 
-local SpotProvisioningSpecification_keys = { "TimeoutDurationMinutes" = true, "BlockDurationMinutes" = true, "TimeoutAction" = true, nil }
+keys.SpotProvisioningSpecification = { ["TimeoutDurationMinutes"] = true, ["BlockDurationMinutes"] = true, ["TimeoutAction"] = true, nil }
 
-function M.AssertSpotProvisioningSpecification(struct)
+function asserts.AssertSpotProvisioningSpecification(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SpotProvisioningSpecification to be of type 'table'")
 	assert(struct["TimeoutDurationMinutes"], "Expected key TimeoutDurationMinutes to exist in table")
 	assert(struct["TimeoutAction"], "Expected key TimeoutAction to exist in table")
-	if struct["TimeoutDurationMinutes"] then M.AssertWholeNumber(struct["TimeoutDurationMinutes"]) end
-	if struct["BlockDurationMinutes"] then M.AssertWholeNumber(struct["BlockDurationMinutes"]) end
-	if struct["TimeoutAction"] then M.AssertSpotProvisioningTimeoutAction(struct["TimeoutAction"]) end
+	if struct["TimeoutDurationMinutes"] then asserts.AssertWholeNumber(struct["TimeoutDurationMinutes"]) end
+	if struct["BlockDurationMinutes"] then asserts.AssertWholeNumber(struct["BlockDurationMinutes"]) end
+	if struct["TimeoutAction"] then asserts.AssertSpotProvisioningTimeoutAction(struct["TimeoutAction"]) end
 	for k,_ in pairs(struct) do
-		assert(SpotProvisioningSpecification_keys[k], "SpotProvisioningSpecification contains unknown key " .. tostring(k))
+		assert(keys.SpotProvisioningSpecification[k], "SpotProvisioningSpecification contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SpotProvisioningSpecification
 -- <p>The launch specification for Spot instances in the instance fleet, which determines the defined duration and provisioning timeout behavior.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param TimeoutDurationMinutes [WholeNumber] <p>The spot provisioning timeout period in minutes. If Spot instances are not provisioned within this time period, the <code>TimeOutAction</code> is taken. Minimum value is 5 and maximum value is 1440. The timeout applies only during initial provisioning, when the cluster is first created.</p>
--- @param BlockDurationMinutes [WholeNumber] <p>The defined duration for Spot instances (also known as Spot blocks) in minutes. When specified, the Spot instance does not terminate before the defined duration expires, and defined duration pricing for Spot instances applies. Valid values are 60, 120, 180, 240, 300, or 360. The duration period starts as soon as a Spot instance receives its instance ID. At the end of the duration, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates. </p>
--- @param TimeoutAction [SpotProvisioningTimeoutAction] <p>The action to take when <code>TargetSpotCapacity</code> has not been fulfilled when the <code>TimeoutDurationMinutes</code> has expired. Spot instances are not uprovisioned within the Spot provisioining timeout. Valid values are <code>TERMINATE_CLUSTER</code> and <code>SWITCH_TO_ON_DEMAND</code> to fulfill the remaining capacity.</p>
+-- @param _TimeoutDurationMinutes [WholeNumber] <p>The spot provisioning timeout period in minutes. If Spot instances are not provisioned within this time period, the <code>TimeOutAction</code> is taken. Minimum value is 5 and maximum value is 1440. The timeout applies only during initial provisioning, when the cluster is first created.</p>
+-- @param _BlockDurationMinutes [WholeNumber] <p>The defined duration for Spot instances (also known as Spot blocks) in minutes. When specified, the Spot instance does not terminate before the defined duration expires, and defined duration pricing for Spot instances applies. Valid values are 60, 120, 180, 240, 300, or 360. The duration period starts as soon as a Spot instance receives its instance ID. At the end of the duration, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates. </p>
+-- @param _TimeoutAction [SpotProvisioningTimeoutAction] <p>The action to take when <code>TargetSpotCapacity</code> has not been fulfilled when the <code>TimeoutDurationMinutes</code> has expired. Spot instances are not uprovisioned within the Spot provisioining timeout. Valid values are <code>TERMINATE_CLUSTER</code> and <code>SWITCH_TO_ON_DEMAND</code> to fulfill the remaining capacity.</p>
 -- Required parameter: TimeoutDurationMinutes
 -- Required parameter: TimeoutAction
-function M.SpotProvisioningSpecification(TimeoutDurationMinutes, BlockDurationMinutes, TimeoutAction, ...)
+function M.SpotProvisioningSpecification(_TimeoutDurationMinutes, _BlockDurationMinutes, _TimeoutAction, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SpotProvisioningSpecification")
 	local t = { 
-		["TimeoutDurationMinutes"] = TimeoutDurationMinutes,
-		["BlockDurationMinutes"] = BlockDurationMinutes,
-		["TimeoutAction"] = TimeoutAction,
+		["TimeoutDurationMinutes"] = _TimeoutDurationMinutes,
+		["BlockDurationMinutes"] = _BlockDurationMinutes,
+		["TimeoutAction"] = _TimeoutAction,
 	}
-	M.AssertSpotProvisioningSpecification(t)
+	asserts.AssertSpotProvisioningSpecification(t)
 	return t
 end
 
-local ClusterStatus_keys = { "Timeline" = true, "State" = true, "StateChangeReason" = true, nil }
+keys.ClusterStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, nil }
 
-function M.AssertClusterStatus(struct)
+function asserts.AssertClusterStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ClusterStatus to be of type 'table'")
-	if struct["Timeline"] then M.AssertClusterTimeline(struct["Timeline"]) end
-	if struct["State"] then M.AssertClusterState(struct["State"]) end
-	if struct["StateChangeReason"] then M.AssertClusterStateChangeReason(struct["StateChangeReason"]) end
+	if struct["Timeline"] then asserts.AssertClusterTimeline(struct["Timeline"]) end
+	if struct["State"] then asserts.AssertClusterState(struct["State"]) end
+	if struct["StateChangeReason"] then asserts.AssertClusterStateChangeReason(struct["StateChangeReason"]) end
 	for k,_ in pairs(struct) do
-		assert(ClusterStatus_keys[k], "ClusterStatus contains unknown key " .. tostring(k))
+		assert(keys.ClusterStatus[k], "ClusterStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ClusterStatus
 -- <p>The detailed status of the cluster.</p>
--- @param Timeline [ClusterTimeline] <p>A timeline that represents the status of a cluster over the lifetime of the cluster.</p>
--- @param State [ClusterState] <p>The current state of the cluster.</p>
--- @param StateChangeReason [ClusterStateChangeReason] <p>The reason for the cluster status change.</p>
-function M.ClusterStatus(Timeline, State, StateChangeReason, ...)
+-- @param _Timeline [ClusterTimeline] <p>A timeline that represents the status of a cluster over the lifetime of the cluster.</p>
+-- @param _State [ClusterState] <p>The current state of the cluster.</p>
+-- @param _StateChangeReason [ClusterStateChangeReason] <p>The reason for the cluster status change.</p>
+function M.ClusterStatus(_Timeline, _State, _StateChangeReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterStatus")
 	local t = { 
-		["Timeline"] = Timeline,
-		["State"] = State,
-		["StateChangeReason"] = StateChangeReason,
+		["Timeline"] = _Timeline,
+		["State"] = _State,
+		["StateChangeReason"] = _StateChangeReason,
 	}
-	M.AssertClusterStatus(t)
+	asserts.AssertClusterStatus(t)
 	return t
 end
 
-local ScalingRule_keys = { "Action" = true, "Trigger" = true, "Name" = true, "Description" = true, nil }
+keys.ScalingRule = { ["Action"] = true, ["Trigger"] = true, ["Name"] = true, ["Description"] = true, nil }
 
-function M.AssertScalingRule(struct)
+function asserts.AssertScalingRule(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScalingRule to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["Action"], "Expected key Action to exist in table")
 	assert(struct["Trigger"], "Expected key Trigger to exist in table")
-	if struct["Action"] then M.AssertScalingAction(struct["Action"]) end
-	if struct["Trigger"] then M.AssertScalingTrigger(struct["Trigger"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
-	if struct["Description"] then M.AssertString(struct["Description"]) end
+	if struct["Action"] then asserts.AssertScalingAction(struct["Action"]) end
+	if struct["Trigger"] then asserts.AssertScalingTrigger(struct["Trigger"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
+	if struct["Description"] then asserts.AssertString(struct["Description"]) end
 	for k,_ in pairs(struct) do
-		assert(ScalingRule_keys[k], "ScalingRule contains unknown key " .. tostring(k))
+		assert(keys.ScalingRule[k], "ScalingRule contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScalingRule
 -- <p>A scale-in or scale-out rule that defines scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.</p>
--- @param Action [ScalingAction] <p>The conditions that trigger an automatic scaling activity.</p>
--- @param Trigger [ScalingTrigger] <p>The CloudWatch alarm definition that determines when automatic scaling activity is triggered.</p>
--- @param Name [String] <p>The name used to identify an automatic scaling rule. Rule names must be unique within a scaling policy.</p>
--- @param Description [String] <p>A friendly, more verbose description of the automatic scaling rule.</p>
+-- @param _Action [ScalingAction] <p>The conditions that trigger an automatic scaling activity.</p>
+-- @param _Trigger [ScalingTrigger] <p>The CloudWatch alarm definition that determines when automatic scaling activity is triggered.</p>
+-- @param _Name [String] <p>The name used to identify an automatic scaling rule. Rule names must be unique within a scaling policy.</p>
+-- @param _Description [String] <p>A friendly, more verbose description of the automatic scaling rule.</p>
 -- Required parameter: Name
 -- Required parameter: Action
 -- Required parameter: Trigger
-function M.ScalingRule(Action, Trigger, Name, Description, ...)
+function M.ScalingRule(_Action, _Trigger, _Name, _Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingRule")
 	local t = { 
-		["Action"] = Action,
-		["Trigger"] = Trigger,
-		["Name"] = Name,
-		["Description"] = Description,
+		["Action"] = _Action,
+		["Trigger"] = _Trigger,
+		["Name"] = _Name,
+		["Description"] = _Description,
 	}
-	M.AssertScalingRule(t)
+	asserts.AssertScalingRule(t)
 	return t
 end
 
-local StepExecutionStatusDetail_keys = { "State" = true, "EndDateTime" = true, "CreationDateTime" = true, "LastStateChangeReason" = true, "StartDateTime" = true, nil }
+keys.StepExecutionStatusDetail = { ["State"] = true, ["EndDateTime"] = true, ["CreationDateTime"] = true, ["LastStateChangeReason"] = true, ["StartDateTime"] = true, nil }
 
-function M.AssertStepExecutionStatusDetail(struct)
+function asserts.AssertStepExecutionStatusDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StepExecutionStatusDetail to be of type 'table'")
 	assert(struct["State"], "Expected key State to exist in table")
 	assert(struct["CreationDateTime"], "Expected key CreationDateTime to exist in table")
-	if struct["State"] then M.AssertStepExecutionState(struct["State"]) end
-	if struct["EndDateTime"] then M.AssertDate(struct["EndDateTime"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["LastStateChangeReason"] then M.AssertXmlString(struct["LastStateChangeReason"]) end
-	if struct["StartDateTime"] then M.AssertDate(struct["StartDateTime"]) end
+	if struct["State"] then asserts.AssertStepExecutionState(struct["State"]) end
+	if struct["EndDateTime"] then asserts.AssertDate(struct["EndDateTime"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["LastStateChangeReason"] then asserts.AssertXmlString(struct["LastStateChangeReason"]) end
+	if struct["StartDateTime"] then asserts.AssertDate(struct["StartDateTime"]) end
 	for k,_ in pairs(struct) do
-		assert(StepExecutionStatusDetail_keys[k], "StepExecutionStatusDetail contains unknown key " .. tostring(k))
+		assert(keys.StepExecutionStatusDetail[k], "StepExecutionStatusDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StepExecutionStatusDetail
 -- <p>The execution state of a step.</p>
--- @param State [StepExecutionState] <p>The state of the step.</p>
--- @param EndDateTime [Date] <p>The completion date and time of the step.</p>
--- @param CreationDateTime [Date] <p>The creation date and time of the step.</p>
--- @param LastStateChangeReason [XmlString] <p>A description of the step's current state.</p>
--- @param StartDateTime [Date] <p>The start date and time of the step.</p>
+-- @param _State [StepExecutionState] <p>The state of the step.</p>
+-- @param _EndDateTime [Date] <p>The completion date and time of the step.</p>
+-- @param _CreationDateTime [Date] <p>The creation date and time of the step.</p>
+-- @param _LastStateChangeReason [XmlString] <p>A description of the step's current state.</p>
+-- @param _StartDateTime [Date] <p>The start date and time of the step.</p>
 -- Required parameter: State
 -- Required parameter: CreationDateTime
-function M.StepExecutionStatusDetail(State, EndDateTime, CreationDateTime, LastStateChangeReason, StartDateTime, ...)
+function M.StepExecutionStatusDetail(_State, _EndDateTime, _CreationDateTime, _LastStateChangeReason, _StartDateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepExecutionStatusDetail")
 	local t = { 
-		["State"] = State,
-		["EndDateTime"] = EndDateTime,
-		["CreationDateTime"] = CreationDateTime,
-		["LastStateChangeReason"] = LastStateChangeReason,
-		["StartDateTime"] = StartDateTime,
+		["State"] = _State,
+		["EndDateTime"] = _EndDateTime,
+		["CreationDateTime"] = _CreationDateTime,
+		["LastStateChangeReason"] = _LastStateChangeReason,
+		["StartDateTime"] = _StartDateTime,
 	}
-	M.AssertStepExecutionStatusDetail(t)
+	asserts.AssertStepExecutionStatusDetail(t)
 	return t
 end
 
-local SimpleScalingPolicyConfiguration_keys = { "CoolDown" = true, "ScalingAdjustment" = true, "AdjustmentType" = true, nil }
+keys.SimpleScalingPolicyConfiguration = { ["CoolDown"] = true, ["ScalingAdjustment"] = true, ["AdjustmentType"] = true, nil }
 
-function M.AssertSimpleScalingPolicyConfiguration(struct)
+function asserts.AssertSimpleScalingPolicyConfiguration(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected SimpleScalingPolicyConfiguration to be of type 'table'")
 	assert(struct["ScalingAdjustment"], "Expected key ScalingAdjustment to exist in table")
-	if struct["CoolDown"] then M.AssertInteger(struct["CoolDown"]) end
-	if struct["ScalingAdjustment"] then M.AssertInteger(struct["ScalingAdjustment"]) end
-	if struct["AdjustmentType"] then M.AssertAdjustmentType(struct["AdjustmentType"]) end
+	if struct["CoolDown"] then asserts.AssertInteger(struct["CoolDown"]) end
+	if struct["ScalingAdjustment"] then asserts.AssertInteger(struct["ScalingAdjustment"]) end
+	if struct["AdjustmentType"] then asserts.AssertAdjustmentType(struct["AdjustmentType"]) end
 	for k,_ in pairs(struct) do
-		assert(SimpleScalingPolicyConfiguration_keys[k], "SimpleScalingPolicyConfiguration contains unknown key " .. tostring(k))
+		assert(keys.SimpleScalingPolicyConfiguration[k], "SimpleScalingPolicyConfiguration contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type SimpleScalingPolicyConfiguration
 -- <p>An automatic scaling configuration, which describes how the policy adds or removes instances, the cooldown period, and the number of EC2 instances that will be added each time the CloudWatch metric alarm condition is satisfied.</p>
--- @param CoolDown [Integer] <p>The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. The default value is 0.</p>
--- @param ScalingAdjustment [Integer] <p>The amount by which to scale in or scale out, based on the specified <code>AdjustmentType</code>. A positive value adds to the instance group's EC2 instance count while a negative number removes instances. If <code>AdjustmentType</code> is set to <code>EXACT_CAPACITY</code>, the number should only be a positive integer. If <code>AdjustmentType</code> is set to <code>PERCENT_CHANGE_IN_CAPACITY</code>, the value should express the percentage as a decimal. For example, -0.20 indicates a decrease in 20% increments of cluster capacity.</p>
--- @param AdjustmentType [AdjustmentType] <p>The way in which EC2 instances are added (if <code>ScalingAdjustment</code> is a positive number) or terminated (if <code>ScalingAdjustment</code> is a negative number) each time the scaling activity is triggered. <code>CHANGE_IN_CAPACITY</code> is the default. <code>CHANGE_IN_CAPACITY</code> indicates that the EC2 instance count increments or decrements by <code>ScalingAdjustment</code>, which should be expressed as an integer. <code>PERCENT_CHANGE_IN_CAPACITY</code> indicates the instance count increments or decrements by the percentage specified by <code>ScalingAdjustment</code>, which should be expressed as a decimal. For example, 0.20 indicates an increase in 20% increments of cluster capacity. <code>EXACT_CAPACITY</code> indicates the scaling activity results in an instance group with the number of EC2 instances specified by <code>ScalingAdjustment</code>, which should be expressed as a positive integer.</p>
+-- @param _CoolDown [Integer] <p>The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. The default value is 0.</p>
+-- @param _ScalingAdjustment [Integer] <p>The amount by which to scale in or scale out, based on the specified <code>AdjustmentType</code>. A positive value adds to the instance group's EC2 instance count while a negative number removes instances. If <code>AdjustmentType</code> is set to <code>EXACT_CAPACITY</code>, the number should only be a positive integer. If <code>AdjustmentType</code> is set to <code>PERCENT_CHANGE_IN_CAPACITY</code>, the value should express the percentage as a decimal. For example, -0.20 indicates a decrease in 20% increments of cluster capacity.</p>
+-- @param _AdjustmentType [AdjustmentType] <p>The way in which EC2 instances are added (if <code>ScalingAdjustment</code> is a positive number) or terminated (if <code>ScalingAdjustment</code> is a negative number) each time the scaling activity is triggered. <code>CHANGE_IN_CAPACITY</code> is the default. <code>CHANGE_IN_CAPACITY</code> indicates that the EC2 instance count increments or decrements by <code>ScalingAdjustment</code>, which should be expressed as an integer. <code>PERCENT_CHANGE_IN_CAPACITY</code> indicates the instance count increments or decrements by the percentage specified by <code>ScalingAdjustment</code>, which should be expressed as a decimal. For example, 0.20 indicates an increase in 20% increments of cluster capacity. <code>EXACT_CAPACITY</code> indicates the scaling activity results in an instance group with the number of EC2 instances specified by <code>ScalingAdjustment</code>, which should be expressed as a positive integer.</p>
 -- Required parameter: ScalingAdjustment
-function M.SimpleScalingPolicyConfiguration(CoolDown, ScalingAdjustment, AdjustmentType, ...)
+function M.SimpleScalingPolicyConfiguration(_CoolDown, _ScalingAdjustment, _AdjustmentType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SimpleScalingPolicyConfiguration")
 	local t = { 
-		["CoolDown"] = CoolDown,
-		["ScalingAdjustment"] = ScalingAdjustment,
-		["AdjustmentType"] = AdjustmentType,
+		["CoolDown"] = _CoolDown,
+		["ScalingAdjustment"] = _ScalingAdjustment,
+		["AdjustmentType"] = _AdjustmentType,
 	}
-	M.AssertSimpleScalingPolicyConfiguration(t)
+	asserts.AssertSimpleScalingPolicyConfiguration(t)
 	return t
 end
 
-local AddTagsInput_keys = { "ResourceId" = true, "Tags" = true, nil }
+keys.AddTagsInput = { ["ResourceId"] = true, ["Tags"] = true, nil }
 
-function M.AssertAddTagsInput(struct)
+function asserts.AssertAddTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddTagsInput to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	assert(struct["Tags"], "Expected key Tags to exist in table")
-	if struct["ResourceId"] then M.AssertResourceId(struct["ResourceId"]) end
-	if struct["Tags"] then M.AssertTagList(struct["Tags"]) end
+	if struct["ResourceId"] then asserts.AssertResourceId(struct["ResourceId"]) end
+	if struct["Tags"] then asserts.AssertTagList(struct["Tags"]) end
 	for k,_ in pairs(struct) do
-		assert(AddTagsInput_keys[k], "AddTagsInput contains unknown key " .. tostring(k))
+		assert(keys.AddTagsInput[k], "AddTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddTagsInput
 -- <p>This input identifies a cluster and a list of tags to attach.</p>
--- @param ResourceId [ResourceId] <p>The Amazon EMR resource identifier to which tags will be added. This value must be a cluster identifier.</p>
--- @param Tags [TagList] <p>A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a maximum of 256 characters.</p>
+-- @param _ResourceId [ResourceId] <p>The Amazon EMR resource identifier to which tags will be added. This value must be a cluster identifier.</p>
+-- @param _Tags [TagList] <p>A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a maximum of 256 characters.</p>
 -- Required parameter: ResourceId
 -- Required parameter: Tags
-function M.AddTagsInput(ResourceId, Tags, ...)
+function M.AddTagsInput(_ResourceId, _Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsInput")
 	local t = { 
-		["ResourceId"] = ResourceId,
-		["Tags"] = Tags,
+		["ResourceId"] = _ResourceId,
+		["Tags"] = _Tags,
 	}
-	M.AssertAddTagsInput(t)
+	asserts.AssertAddTagsInput(t)
 	return t
 end
 
-local InstanceStatus_keys = { "Timeline" = true, "State" = true, "StateChangeReason" = true, nil }
+keys.InstanceStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, nil }
 
-function M.AssertInstanceStatus(struct)
+function asserts.AssertInstanceStatus(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceStatus to be of type 'table'")
-	if struct["Timeline"] then M.AssertInstanceTimeline(struct["Timeline"]) end
-	if struct["State"] then M.AssertInstanceState(struct["State"]) end
-	if struct["StateChangeReason"] then M.AssertInstanceStateChangeReason(struct["StateChangeReason"]) end
+	if struct["Timeline"] then asserts.AssertInstanceTimeline(struct["Timeline"]) end
+	if struct["State"] then asserts.AssertInstanceState(struct["State"]) end
+	if struct["StateChangeReason"] then asserts.AssertInstanceStateChangeReason(struct["StateChangeReason"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceStatus_keys[k], "InstanceStatus contains unknown key " .. tostring(k))
+		assert(keys.InstanceStatus[k], "InstanceStatus contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceStatus
 -- <p>The instance status details.</p>
--- @param Timeline [InstanceTimeline] <p>The timeline of the instance status over time.</p>
--- @param State [InstanceState] <p>The current state of the instance.</p>
--- @param StateChangeReason [InstanceStateChangeReason] <p>The details of the status change reason for the instance.</p>
-function M.InstanceStatus(Timeline, State, StateChangeReason, ...)
+-- @param _Timeline [InstanceTimeline] <p>The timeline of the instance status over time.</p>
+-- @param _State [InstanceState] <p>The current state of the instance.</p>
+-- @param _StateChangeReason [InstanceStateChangeReason] <p>The details of the status change reason for the instance.</p>
+function M.InstanceStatus(_Timeline, _State, _StateChangeReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceStatus")
 	local t = { 
-		["Timeline"] = Timeline,
-		["State"] = State,
-		["StateChangeReason"] = StateChangeReason,
+		["Timeline"] = _Timeline,
+		["State"] = _State,
+		["StateChangeReason"] = _StateChangeReason,
 	}
-	M.AssertInstanceStatus(t)
+	asserts.AssertInstanceStatus(t)
 	return t
 end
 
-local StepSummary_keys = { "Status" = true, "Config" = true, "Id" = true, "ActionOnFailure" = true, "Name" = true, nil }
+keys.StepSummary = { ["Status"] = true, ["Config"] = true, ["Id"] = true, ["ActionOnFailure"] = true, ["Name"] = true, nil }
 
-function M.AssertStepSummary(struct)
+function asserts.AssertStepSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StepSummary to be of type 'table'")
-	if struct["Status"] then M.AssertStepStatus(struct["Status"]) end
-	if struct["Config"] then M.AssertHadoopStepConfig(struct["Config"]) end
-	if struct["Id"] then M.AssertStepId(struct["Id"]) end
-	if struct["ActionOnFailure"] then M.AssertActionOnFailure(struct["ActionOnFailure"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Status"] then asserts.AssertStepStatus(struct["Status"]) end
+	if struct["Config"] then asserts.AssertHadoopStepConfig(struct["Config"]) end
+	if struct["Id"] then asserts.AssertStepId(struct["Id"]) end
+	if struct["ActionOnFailure"] then asserts.AssertActionOnFailure(struct["ActionOnFailure"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(StepSummary_keys[k], "StepSummary contains unknown key " .. tostring(k))
+		assert(keys.StepSummary[k], "StepSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StepSummary
 -- <p>The summary of the cluster step.</p>
--- @param Status [StepStatus] <p>The current execution status details of the cluster step.</p>
--- @param Config [HadoopStepConfig] <p>The Hadoop job configuration of the cluster step.</p>
--- @param Id [StepId] <p>The identifier of the cluster step.</p>
--- @param ActionOnFailure [ActionOnFailure] <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
--- @param Name [String] <p>The name of the cluster step.</p>
-function M.StepSummary(Status, Config, Id, ActionOnFailure, Name, ...)
+-- @param _Status [StepStatus] <p>The current execution status details of the cluster step.</p>
+-- @param _Config [HadoopStepConfig] <p>The Hadoop job configuration of the cluster step.</p>
+-- @param _Id [StepId] <p>The identifier of the cluster step.</p>
+-- @param _ActionOnFailure [ActionOnFailure] <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
+-- @param _Name [String] <p>The name of the cluster step.</p>
+function M.StepSummary(_Status, _Config, _Id, _ActionOnFailure, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepSummary")
 	local t = { 
-		["Status"] = Status,
-		["Config"] = Config,
-		["Id"] = Id,
-		["ActionOnFailure"] = ActionOnFailure,
-		["Name"] = Name,
+		["Status"] = _Status,
+		["Config"] = _Config,
+		["Id"] = _Id,
+		["ActionOnFailure"] = _ActionOnFailure,
+		["Name"] = _Name,
 	}
-	M.AssertStepSummary(t)
+	asserts.AssertStepSummary(t)
 	return t
 end
 
-local VolumeSpecification_keys = { "Iops" = true, "VolumeType" = true, "SizeInGB" = true, nil }
+keys.VolumeSpecification = { ["Iops"] = true, ["VolumeType"] = true, ["SizeInGB"] = true, nil }
 
-function M.AssertVolumeSpecification(struct)
+function asserts.AssertVolumeSpecification(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected VolumeSpecification to be of type 'table'")
 	assert(struct["VolumeType"], "Expected key VolumeType to exist in table")
 	assert(struct["SizeInGB"], "Expected key SizeInGB to exist in table")
-	if struct["Iops"] then M.AssertInteger(struct["Iops"]) end
-	if struct["VolumeType"] then M.AssertString(struct["VolumeType"]) end
-	if struct["SizeInGB"] then M.AssertInteger(struct["SizeInGB"]) end
+	if struct["Iops"] then asserts.AssertInteger(struct["Iops"]) end
+	if struct["VolumeType"] then asserts.AssertString(struct["VolumeType"]) end
+	if struct["SizeInGB"] then asserts.AssertInteger(struct["SizeInGB"]) end
 	for k,_ in pairs(struct) do
-		assert(VolumeSpecification_keys[k], "VolumeSpecification contains unknown key " .. tostring(k))
+		assert(keys.VolumeSpecification[k], "VolumeSpecification contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type VolumeSpecification
 -- <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
--- @param Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports.</p>
--- @param VolumeType [String] <p>The volume type. Volume types supported are gp2, io1, standard.</p>
--- @param SizeInGB [Integer] <p>The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.</p>
+-- @param _Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports.</p>
+-- @param _VolumeType [String] <p>The volume type. Volume types supported are gp2, io1, standard.</p>
+-- @param _SizeInGB [Integer] <p>The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.</p>
 -- Required parameter: VolumeType
 -- Required parameter: SizeInGB
-function M.VolumeSpecification(Iops, VolumeType, SizeInGB, ...)
+function M.VolumeSpecification(_Iops, _VolumeType, _SizeInGB, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VolumeSpecification")
 	local t = { 
-		["Iops"] = Iops,
-		["VolumeType"] = VolumeType,
-		["SizeInGB"] = SizeInGB,
+		["Iops"] = _Iops,
+		["VolumeType"] = _VolumeType,
+		["SizeInGB"] = _SizeInGB,
 	}
-	M.AssertVolumeSpecification(t)
+	asserts.AssertVolumeSpecification(t)
 	return t
 end
 
-local BootstrapActionConfig_keys = { "ScriptBootstrapAction" = true, "Name" = true, nil }
+keys.BootstrapActionConfig = { ["ScriptBootstrapAction"] = true, ["Name"] = true, nil }
 
-function M.AssertBootstrapActionConfig(struct)
+function asserts.AssertBootstrapActionConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BootstrapActionConfig to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["ScriptBootstrapAction"], "Expected key ScriptBootstrapAction to exist in table")
-	if struct["ScriptBootstrapAction"] then M.AssertScriptBootstrapActionConfig(struct["ScriptBootstrapAction"]) end
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["ScriptBootstrapAction"] then asserts.AssertScriptBootstrapActionConfig(struct["ScriptBootstrapAction"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(BootstrapActionConfig_keys[k], "BootstrapActionConfig contains unknown key " .. tostring(k))
+		assert(keys.BootstrapActionConfig[k], "BootstrapActionConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BootstrapActionConfig
 -- <p>Configuration of a bootstrap action.</p>
--- @param ScriptBootstrapAction [ScriptBootstrapActionConfig] <p>The script run by the bootstrap action.</p>
--- @param Name [XmlStringMaxLen256] <p>The name of the bootstrap action.</p>
+-- @param _ScriptBootstrapAction [ScriptBootstrapActionConfig] <p>The script run by the bootstrap action.</p>
+-- @param _Name [XmlStringMaxLen256] <p>The name of the bootstrap action.</p>
 -- Required parameter: Name
 -- Required parameter: ScriptBootstrapAction
-function M.BootstrapActionConfig(ScriptBootstrapAction, Name, ...)
+function M.BootstrapActionConfig(_ScriptBootstrapAction, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BootstrapActionConfig")
 	local t = { 
-		["ScriptBootstrapAction"] = ScriptBootstrapAction,
-		["Name"] = Name,
+		["ScriptBootstrapAction"] = _ScriptBootstrapAction,
+		["Name"] = _Name,
 	}
-	M.AssertBootstrapActionConfig(t)
+	asserts.AssertBootstrapActionConfig(t)
 	return t
 end
 
-local CancelStepsInput_keys = { "StepIds" = true, "ClusterId" = true, nil }
+keys.CancelStepsInput = { ["StepIds"] = true, ["ClusterId"] = true, nil }
 
-function M.AssertCancelStepsInput(struct)
+function asserts.AssertCancelStepsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected CancelStepsInput to be of type 'table'")
-	if struct["StepIds"] then M.AssertStepIdsList(struct["StepIds"]) end
-	if struct["ClusterId"] then M.AssertXmlStringMaxLen256(struct["ClusterId"]) end
+	if struct["StepIds"] then asserts.AssertStepIdsList(struct["StepIds"]) end
+	if struct["ClusterId"] then asserts.AssertXmlStringMaxLen256(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(CancelStepsInput_keys[k], "CancelStepsInput contains unknown key " .. tostring(k))
+		assert(keys.CancelStepsInput[k], "CancelStepsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type CancelStepsInput
 -- <p>The input argument to the <a>CancelSteps</a> operation.</p>
--- @param StepIds [StepIdsList] <p>The list of <code>StepIDs</code> to cancel. Use <a>ListSteps</a> to get steps and their states for the specified cluster.</p>
--- @param ClusterId [XmlStringMaxLen256] <p>The <code>ClusterID</code> for which specified steps will be canceled. Use <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
-function M.CancelStepsInput(StepIds, ClusterId, ...)
+-- @param _StepIds [StepIdsList] <p>The list of <code>StepIDs</code> to cancel. Use <a>ListSteps</a> to get steps and their states for the specified cluster.</p>
+-- @param _ClusterId [XmlStringMaxLen256] <p>The <code>ClusterID</code> for which specified steps will be canceled. Use <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
+function M.CancelStepsInput(_StepIds, _ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelStepsInput")
 	local t = { 
-		["StepIds"] = StepIds,
-		["ClusterId"] = ClusterId,
+		["StepIds"] = _StepIds,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertCancelStepsInput(t)
+	asserts.AssertCancelStepsInput(t)
 	return t
 end
 
-local AutoScalingPolicy_keys = { "Rules" = true, "Constraints" = true, nil }
+keys.AutoScalingPolicy = { ["Rules"] = true, ["Constraints"] = true, nil }
 
-function M.AssertAutoScalingPolicy(struct)
+function asserts.AssertAutoScalingPolicy(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingPolicy to be of type 'table'")
 	assert(struct["Constraints"], "Expected key Constraints to exist in table")
 	assert(struct["Rules"], "Expected key Rules to exist in table")
-	if struct["Rules"] then M.AssertScalingRuleList(struct["Rules"]) end
-	if struct["Constraints"] then M.AssertScalingConstraints(struct["Constraints"]) end
+	if struct["Rules"] then asserts.AssertScalingRuleList(struct["Rules"]) end
+	if struct["Constraints"] then asserts.AssertScalingConstraints(struct["Constraints"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingPolicy_keys[k], "AutoScalingPolicy contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingPolicy[k], "AutoScalingPolicy contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingPolicy
 -- <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. An automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
--- @param Rules [ScalingRuleList] <p>The scale-in and scale-out rules that comprise the automatic scaling policy.</p>
--- @param Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
+-- @param _Rules [ScalingRuleList] <p>The scale-in and scale-out rules that comprise the automatic scaling policy.</p>
+-- @param _Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
 -- Required parameter: Constraints
 -- Required parameter: Rules
-function M.AutoScalingPolicy(Rules, Constraints, ...)
+function M.AutoScalingPolicy(_Rules, _Constraints, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingPolicy")
 	local t = { 
-		["Rules"] = Rules,
-		["Constraints"] = Constraints,
+		["Rules"] = _Rules,
+		["Constraints"] = _Constraints,
 	}
-	M.AssertAutoScalingPolicy(t)
+	asserts.AssertAutoScalingPolicy(t)
 	return t
 end
 
-local AddInstanceGroupsInput_keys = { "JobFlowId" = true, "InstanceGroups" = true, nil }
+keys.AddInstanceGroupsInput = { ["JobFlowId"] = true, ["InstanceGroups"] = true, nil }
 
-function M.AssertAddInstanceGroupsInput(struct)
+function asserts.AssertAddInstanceGroupsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AddInstanceGroupsInput to be of type 'table'")
 	assert(struct["InstanceGroups"], "Expected key InstanceGroups to exist in table")
 	assert(struct["JobFlowId"], "Expected key JobFlowId to exist in table")
-	if struct["JobFlowId"] then M.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
-	if struct["InstanceGroups"] then M.AssertInstanceGroupConfigList(struct["InstanceGroups"]) end
+	if struct["JobFlowId"] then asserts.AssertXmlStringMaxLen256(struct["JobFlowId"]) end
+	if struct["InstanceGroups"] then asserts.AssertInstanceGroupConfigList(struct["InstanceGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(AddInstanceGroupsInput_keys[k], "AddInstanceGroupsInput contains unknown key " .. tostring(k))
+		assert(keys.AddInstanceGroupsInput[k], "AddInstanceGroupsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AddInstanceGroupsInput
 -- <p>Input to an AddInstanceGroups call.</p>
--- @param JobFlowId [XmlStringMaxLen256] <p>Job flow in which to add the instance groups.</p>
--- @param InstanceGroups [InstanceGroupConfigList] <p>Instance groups to add.</p>
+-- @param _JobFlowId [XmlStringMaxLen256] <p>Job flow in which to add the instance groups.</p>
+-- @param _InstanceGroups [InstanceGroupConfigList] <p>Instance groups to add.</p>
 -- Required parameter: InstanceGroups
 -- Required parameter: JobFlowId
-function M.AddInstanceGroupsInput(JobFlowId, InstanceGroups, ...)
+function M.AddInstanceGroupsInput(_JobFlowId, _InstanceGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddInstanceGroupsInput")
 	local t = { 
-		["JobFlowId"] = JobFlowId,
-		["InstanceGroups"] = InstanceGroups,
+		["JobFlowId"] = _JobFlowId,
+		["InstanceGroups"] = _InstanceGroups,
 	}
-	M.AssertAddInstanceGroupsInput(t)
+	asserts.AssertAddInstanceGroupsInput(t)
 	return t
 end
 
-local InvalidRequestException_keys = { "ErrorCode" = true, "Message" = true, nil }
+keys.InvalidRequestException = { ["ErrorCode"] = true, ["Message"] = true, nil }
 
-function M.AssertInvalidRequestException(struct)
+function asserts.AssertInvalidRequestException(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InvalidRequestException to be of type 'table'")
-	if struct["ErrorCode"] then M.AssertErrorCode(struct["ErrorCode"]) end
-	if struct["Message"] then M.AssertErrorMessage(struct["Message"]) end
+	if struct["ErrorCode"] then asserts.AssertErrorCode(struct["ErrorCode"]) end
+	if struct["Message"] then asserts.AssertErrorMessage(struct["Message"]) end
 	for k,_ in pairs(struct) do
-		assert(InvalidRequestException_keys[k], "InvalidRequestException contains unknown key " .. tostring(k))
+		assert(keys.InvalidRequestException[k], "InvalidRequestException contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InvalidRequestException
 -- <p>This exception occurs when there is something wrong with user input.</p>
--- @param ErrorCode [ErrorCode] <p>The error code associated with the exception.</p>
--- @param Message [ErrorMessage] <p>The message associated with the exception.</p>
-function M.InvalidRequestException(ErrorCode, Message, ...)
+-- @param _ErrorCode [ErrorCode] <p>The error code associated with the exception.</p>
+-- @param _Message [ErrorMessage] <p>The message associated with the exception.</p>
+function M.InvalidRequestException(_ErrorCode, _Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
-		["ErrorCode"] = ErrorCode,
-		["Message"] = Message,
+		["ErrorCode"] = _ErrorCode,
+		["Message"] = _Message,
 	}
-	M.AssertInvalidRequestException(t)
+	asserts.AssertInvalidRequestException(t)
 	return t
 end
 
-local AutoScalingPolicyStateChangeReason_keys = { "Message" = true, "Code" = true, nil }
+keys.AutoScalingPolicyStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
 
-function M.AssertAutoScalingPolicyStateChangeReason(struct)
+function asserts.AssertAutoScalingPolicyStateChangeReason(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected AutoScalingPolicyStateChangeReason to be of type 'table'")
-	if struct["Message"] then M.AssertString(struct["Message"]) end
-	if struct["Code"] then M.AssertAutoScalingPolicyStateChangeReasonCode(struct["Code"]) end
+	if struct["Message"] then asserts.AssertString(struct["Message"]) end
+	if struct["Code"] then asserts.AssertAutoScalingPolicyStateChangeReasonCode(struct["Code"]) end
 	for k,_ in pairs(struct) do
-		assert(AutoScalingPolicyStateChangeReason_keys[k], "AutoScalingPolicyStateChangeReason contains unknown key " .. tostring(k))
+		assert(keys.AutoScalingPolicyStateChangeReason[k], "AutoScalingPolicyStateChangeReason contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type AutoScalingPolicyStateChangeReason
 -- <p>The reason for an <a>AutoScalingPolicyStatus</a> change.</p>
--- @param Message [String] <p>A friendly, more verbose message that accompanies an automatic scaling policy state change.</p>
--- @param Code [AutoScalingPolicyStateChangeReasonCode] <p>The code indicating the reason for the change in status.<code>USER_REQUEST</code> indicates that the scaling policy status was changed by a user. <code>PROVISION_FAILURE</code> indicates that the status change was because the policy failed to provision. <code>CLEANUP_FAILURE</code> indicates an error.</p>
-function M.AutoScalingPolicyStateChangeReason(Message, Code, ...)
+-- @param _Message [String] <p>A friendly, more verbose message that accompanies an automatic scaling policy state change.</p>
+-- @param _Code [AutoScalingPolicyStateChangeReasonCode] <p>The code indicating the reason for the change in status.<code>USER_REQUEST</code> indicates that the scaling policy status was changed by a user. <code>PROVISION_FAILURE</code> indicates that the status change was because the policy failed to provision. <code>CLEANUP_FAILURE</code> indicates an error.</p>
+function M.AutoScalingPolicyStateChangeReason(_Message, _Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingPolicyStateChangeReason")
 	local t = { 
-		["Message"] = Message,
-		["Code"] = Code,
+		["Message"] = _Message,
+		["Code"] = _Code,
 	}
-	M.AssertAutoScalingPolicyStateChangeReason(t)
+	asserts.AssertAutoScalingPolicyStateChangeReason(t)
 	return t
 end
 
-local DeleteSecurityConfigurationInput_keys = { "Name" = true, nil }
+keys.DeleteSecurityConfigurationInput = { ["Name"] = true, nil }
 
-function M.AssertDeleteSecurityConfigurationInput(struct)
+function asserts.AssertDeleteSecurityConfigurationInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DeleteSecurityConfigurationInput to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
-	if struct["Name"] then M.AssertXmlString(struct["Name"]) end
+	if struct["Name"] then asserts.AssertXmlString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DeleteSecurityConfigurationInput_keys[k], "DeleteSecurityConfigurationInput contains unknown key " .. tostring(k))
+		assert(keys.DeleteSecurityConfigurationInput[k], "DeleteSecurityConfigurationInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DeleteSecurityConfigurationInput
 --  
--- @param Name [XmlString] <p>The name of the security configuration.</p>
+-- @param _Name [XmlString] <p>The name of the security configuration.</p>
 -- Required parameter: Name
-function M.DeleteSecurityConfigurationInput(Name, ...)
+function M.DeleteSecurityConfigurationInput(_Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSecurityConfigurationInput")
 	local t = { 
-		["Name"] = Name,
+		["Name"] = _Name,
 	}
-	M.AssertDeleteSecurityConfigurationInput(t)
+	asserts.AssertDeleteSecurityConfigurationInput(t)
 	return t
 end
 
-local InstanceGroupModifyConfig_keys = { "InstanceGroupId" = true, "InstanceCount" = true, "EC2InstanceIdsToTerminate" = true, "ShrinkPolicy" = true, nil }
+keys.InstanceGroupModifyConfig = { ["InstanceGroupId"] = true, ["InstanceCount"] = true, ["EC2InstanceIdsToTerminate"] = true, ["ShrinkPolicy"] = true, nil }
 
-function M.AssertInstanceGroupModifyConfig(struct)
+function asserts.AssertInstanceGroupModifyConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected InstanceGroupModifyConfig to be of type 'table'")
 	assert(struct["InstanceGroupId"], "Expected key InstanceGroupId to exist in table")
-	if struct["InstanceGroupId"] then M.AssertXmlStringMaxLen256(struct["InstanceGroupId"]) end
-	if struct["InstanceCount"] then M.AssertInteger(struct["InstanceCount"]) end
-	if struct["EC2InstanceIdsToTerminate"] then M.AssertEC2InstanceIdsToTerminateList(struct["EC2InstanceIdsToTerminate"]) end
-	if struct["ShrinkPolicy"] then M.AssertShrinkPolicy(struct["ShrinkPolicy"]) end
+	if struct["InstanceGroupId"] then asserts.AssertXmlStringMaxLen256(struct["InstanceGroupId"]) end
+	if struct["InstanceCount"] then asserts.AssertInteger(struct["InstanceCount"]) end
+	if struct["EC2InstanceIdsToTerminate"] then asserts.AssertEC2InstanceIdsToTerminateList(struct["EC2InstanceIdsToTerminate"]) end
+	if struct["ShrinkPolicy"] then asserts.AssertShrinkPolicy(struct["ShrinkPolicy"]) end
 	for k,_ in pairs(struct) do
-		assert(InstanceGroupModifyConfig_keys[k], "InstanceGroupModifyConfig contains unknown key " .. tostring(k))
+		assert(keys.InstanceGroupModifyConfig[k], "InstanceGroupModifyConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type InstanceGroupModifyConfig
 -- <p>Modify an instance group size.</p>
--- @param InstanceGroupId [XmlStringMaxLen256] <p>Unique ID of the instance group to expand or shrink.</p>
--- @param InstanceCount [Integer] <p>Target size for the instance group.</p>
--- @param EC2InstanceIdsToTerminate [EC2InstanceIdsToTerminateList] <p>The EC2 InstanceIds to terminate. After you terminate the instances, the instance group will not return to its original requested size.</p>
--- @param ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
+-- @param _InstanceGroupId [XmlStringMaxLen256] <p>Unique ID of the instance group to expand or shrink.</p>
+-- @param _InstanceCount [Integer] <p>Target size for the instance group.</p>
+-- @param _EC2InstanceIdsToTerminate [EC2InstanceIdsToTerminateList] <p>The EC2 InstanceIds to terminate. After you terminate the instances, the instance group will not return to its original requested size.</p>
+-- @param _ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
 -- Required parameter: InstanceGroupId
-function M.InstanceGroupModifyConfig(InstanceGroupId, InstanceCount, EC2InstanceIdsToTerminate, ShrinkPolicy, ...)
+function M.InstanceGroupModifyConfig(_InstanceGroupId, _InstanceCount, _EC2InstanceIdsToTerminate, _ShrinkPolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupModifyConfig")
 	local t = { 
-		["InstanceGroupId"] = InstanceGroupId,
-		["InstanceCount"] = InstanceCount,
-		["EC2InstanceIdsToTerminate"] = EC2InstanceIdsToTerminate,
-		["ShrinkPolicy"] = ShrinkPolicy,
+		["InstanceGroupId"] = _InstanceGroupId,
+		["InstanceCount"] = _InstanceCount,
+		["EC2InstanceIdsToTerminate"] = _EC2InstanceIdsToTerminate,
+		["ShrinkPolicy"] = _ShrinkPolicy,
 	}
-	M.AssertInstanceGroupModifyConfig(t)
+	asserts.AssertInstanceGroupModifyConfig(t)
 	return t
 end
 
-local ListSecurityConfigurationsOutput_keys = { "Marker" = true, "SecurityConfigurations" = true, nil }
+keys.ListSecurityConfigurationsOutput = { ["Marker"] = true, ["SecurityConfigurations"] = true, nil }
 
-function M.AssertListSecurityConfigurationsOutput(struct)
+function asserts.AssertListSecurityConfigurationsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListSecurityConfigurationsOutput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["SecurityConfigurations"] then M.AssertSecurityConfigurationList(struct["SecurityConfigurations"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["SecurityConfigurations"] then asserts.AssertSecurityConfigurationList(struct["SecurityConfigurations"]) end
 	for k,_ in pairs(struct) do
-		assert(ListSecurityConfigurationsOutput_keys[k], "ListSecurityConfigurationsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListSecurityConfigurationsOutput[k], "ListSecurityConfigurationsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListSecurityConfigurationsOutput
 --  
--- @param Marker [Marker] <p>A pagination token that indicates the next set of results to retrieve. Include the marker in the next ListSecurityConfiguration call to retrieve the next page of results, if required.</p>
--- @param SecurityConfigurations [SecurityConfigurationList] <p>The creation date and time, and name, of each security configuration.</p>
-function M.ListSecurityConfigurationsOutput(Marker, SecurityConfigurations, ...)
+-- @param _Marker [Marker] <p>A pagination token that indicates the next set of results to retrieve. Include the marker in the next ListSecurityConfiguration call to retrieve the next page of results, if required.</p>
+-- @param _SecurityConfigurations [SecurityConfigurationList] <p>The creation date and time, and name, of each security configuration.</p>
+function M.ListSecurityConfigurationsOutput(_Marker, _SecurityConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSecurityConfigurationsOutput")
 	local t = { 
-		["Marker"] = Marker,
-		["SecurityConfigurations"] = SecurityConfigurations,
+		["Marker"] = _Marker,
+		["SecurityConfigurations"] = _SecurityConfigurations,
 	}
-	M.AssertListSecurityConfigurationsOutput(t)
+	asserts.AssertListSecurityConfigurationsOutput(t)
 	return t
 end
 
-local ListInstanceGroupsOutput_keys = { "Marker" = true, "InstanceGroups" = true, nil }
+keys.ListInstanceGroupsOutput = { ["Marker"] = true, ["InstanceGroups"] = true, nil }
 
-function M.AssertListInstanceGroupsOutput(struct)
+function asserts.AssertListInstanceGroupsOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListInstanceGroupsOutput to be of type 'table'")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["InstanceGroups"] then M.AssertInstanceGroupList(struct["InstanceGroups"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["InstanceGroups"] then asserts.AssertInstanceGroupList(struct["InstanceGroups"]) end
 	for k,_ in pairs(struct) do
-		assert(ListInstanceGroupsOutput_keys[k], "ListInstanceGroupsOutput contains unknown key " .. tostring(k))
+		assert(keys.ListInstanceGroupsOutput[k], "ListInstanceGroupsOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListInstanceGroupsOutput
 -- <p>This input determines which instance groups to retrieve.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param InstanceGroups [InstanceGroupList] <p>The list of instance groups for the cluster and given filters.</p>
-function M.ListInstanceGroupsOutput(Marker, InstanceGroups, ...)
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _InstanceGroups [InstanceGroupList] <p>The list of instance groups for the cluster and given filters.</p>
+function M.ListInstanceGroupsOutput(_Marker, _InstanceGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceGroupsOutput")
 	local t = { 
-		["Marker"] = Marker,
-		["InstanceGroups"] = InstanceGroups,
+		["Marker"] = _Marker,
+		["InstanceGroups"] = _InstanceGroups,
 	}
-	M.AssertListInstanceGroupsOutput(t)
+	asserts.AssertListInstanceGroupsOutput(t)
 	return t
 end
 
-local ScalingAction_keys = { "SimpleScalingPolicyConfiguration" = true, "Market" = true, nil }
+keys.ScalingAction = { ["SimpleScalingPolicyConfiguration"] = true, ["Market"] = true, nil }
 
-function M.AssertScalingAction(struct)
+function asserts.AssertScalingAction(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ScalingAction to be of type 'table'")
 	assert(struct["SimpleScalingPolicyConfiguration"], "Expected key SimpleScalingPolicyConfiguration to exist in table")
-	if struct["SimpleScalingPolicyConfiguration"] then M.AssertSimpleScalingPolicyConfiguration(struct["SimpleScalingPolicyConfiguration"]) end
-	if struct["Market"] then M.AssertMarketType(struct["Market"]) end
+	if struct["SimpleScalingPolicyConfiguration"] then asserts.AssertSimpleScalingPolicyConfiguration(struct["SimpleScalingPolicyConfiguration"]) end
+	if struct["Market"] then asserts.AssertMarketType(struct["Market"]) end
 	for k,_ in pairs(struct) do
-		assert(ScalingAction_keys[k], "ScalingAction contains unknown key " .. tostring(k))
+		assert(keys.ScalingAction[k], "ScalingAction contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ScalingAction
 -- <p>The type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.</p>
--- @param SimpleScalingPolicyConfiguration [SimpleScalingPolicyConfiguration] <p>The type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.</p>
--- @param Market [MarketType] <p>Not available for instance groups. Instance groups use the market type specified for the group.</p>
+-- @param _SimpleScalingPolicyConfiguration [SimpleScalingPolicyConfiguration] <p>The type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.</p>
+-- @param _Market [MarketType] <p>Not available for instance groups. Instance groups use the market type specified for the group.</p>
 -- Required parameter: SimpleScalingPolicyConfiguration
-function M.ScalingAction(SimpleScalingPolicyConfiguration, Market, ...)
+function M.ScalingAction(_SimpleScalingPolicyConfiguration, _Market, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingAction")
 	local t = { 
-		["SimpleScalingPolicyConfiguration"] = SimpleScalingPolicyConfiguration,
-		["Market"] = Market,
+		["SimpleScalingPolicyConfiguration"] = _SimpleScalingPolicyConfiguration,
+		["Market"] = _Market,
 	}
-	M.AssertScalingAction(t)
+	asserts.AssertScalingAction(t)
 	return t
 end
 
-local RemoveTagsInput_keys = { "ResourceId" = true, "TagKeys" = true, nil }
+keys.RemoveTagsInput = { ["ResourceId"] = true, ["TagKeys"] = true, nil }
 
-function M.AssertRemoveTagsInput(struct)
+function asserts.AssertRemoveTagsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected RemoveTagsInput to be of type 'table'")
 	assert(struct["ResourceId"], "Expected key ResourceId to exist in table")
 	assert(struct["TagKeys"], "Expected key TagKeys to exist in table")
-	if struct["ResourceId"] then M.AssertResourceId(struct["ResourceId"]) end
-	if struct["TagKeys"] then M.AssertStringList(struct["TagKeys"]) end
+	if struct["ResourceId"] then asserts.AssertResourceId(struct["ResourceId"]) end
+	if struct["TagKeys"] then asserts.AssertStringList(struct["TagKeys"]) end
 	for k,_ in pairs(struct) do
-		assert(RemoveTagsInput_keys[k], "RemoveTagsInput contains unknown key " .. tostring(k))
+		assert(keys.RemoveTagsInput[k], "RemoveTagsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type RemoveTagsInput
 -- <p>This input identifies a cluster and a list of tags to remove.</p>
--- @param ResourceId [ResourceId] <p>The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.</p>
--- @param TagKeys [StringList] <p>A list of tag keys to remove from a resource.</p>
+-- @param _ResourceId [ResourceId] <p>The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.</p>
+-- @param _TagKeys [StringList] <p>A list of tag keys to remove from a resource.</p>
 -- Required parameter: ResourceId
 -- Required parameter: TagKeys
-function M.RemoveTagsInput(ResourceId, TagKeys, ...)
+function M.RemoveTagsInput(_ResourceId, _TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsInput")
 	local t = { 
-		["ResourceId"] = ResourceId,
-		["TagKeys"] = TagKeys,
+		["ResourceId"] = _ResourceId,
+		["TagKeys"] = _TagKeys,
 	}
-	M.AssertRemoveTagsInput(t)
+	asserts.AssertRemoveTagsInput(t)
 	return t
 end
 
-local ClusterSummary_keys = { "Status" = true, "NormalizedInstanceHours" = true, "Id" = true, "Name" = true, nil }
+keys.ClusterSummary = { ["Status"] = true, ["NormalizedInstanceHours"] = true, ["Id"] = true, ["Name"] = true, nil }
 
-function M.AssertClusterSummary(struct)
+function asserts.AssertClusterSummary(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ClusterSummary to be of type 'table'")
-	if struct["Status"] then M.AssertClusterStatus(struct["Status"]) end
-	if struct["NormalizedInstanceHours"] then M.AssertInteger(struct["NormalizedInstanceHours"]) end
-	if struct["Id"] then M.AssertClusterId(struct["Id"]) end
-	if struct["Name"] then M.AssertString(struct["Name"]) end
+	if struct["Status"] then asserts.AssertClusterStatus(struct["Status"]) end
+	if struct["NormalizedInstanceHours"] then asserts.AssertInteger(struct["NormalizedInstanceHours"]) end
+	if struct["Id"] then asserts.AssertClusterId(struct["Id"]) end
+	if struct["Name"] then asserts.AssertString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(ClusterSummary_keys[k], "ClusterSummary contains unknown key " .. tostring(k))
+		assert(keys.ClusterSummary[k], "ClusterSummary contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ClusterSummary
 -- <p>The summary description of the cluster.</p>
--- @param Status [ClusterStatus] <p>The details about the current status of the cluster.</p>
--- @param NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
--- @param Id [ClusterId] <p>The unique identifier for the cluster.</p>
--- @param Name [String] <p>The name of the cluster.</p>
-function M.ClusterSummary(Status, NormalizedInstanceHours, Id, Name, ...)
+-- @param _Status [ClusterStatus] <p>The details about the current status of the cluster.</p>
+-- @param _NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+-- @param _Id [ClusterId] <p>The unique identifier for the cluster.</p>
+-- @param _Name [String] <p>The name of the cluster.</p>
+function M.ClusterSummary(_Status, _NormalizedInstanceHours, _Id, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSummary")
 	local t = { 
-		["Status"] = Status,
-		["NormalizedInstanceHours"] = NormalizedInstanceHours,
-		["Id"] = Id,
-		["Name"] = Name,
+		["Status"] = _Status,
+		["NormalizedInstanceHours"] = _NormalizedInstanceHours,
+		["Id"] = _Id,
+		["Name"] = _Name,
 	}
-	M.AssertClusterSummary(t)
+	asserts.AssertClusterSummary(t)
 	return t
 end
 
-local PutAutoScalingPolicyOutput_keys = { "InstanceGroupId" = true, "ClusterId" = true, "AutoScalingPolicy" = true, nil }
+keys.PutAutoScalingPolicyOutput = { ["InstanceGroupId"] = true, ["ClusterId"] = true, ["AutoScalingPolicy"] = true, nil }
 
-function M.AssertPutAutoScalingPolicyOutput(struct)
+function asserts.AssertPutAutoScalingPolicyOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected PutAutoScalingPolicyOutput to be of type 'table'")
-	if struct["InstanceGroupId"] then M.AssertInstanceGroupId(struct["InstanceGroupId"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
-	if struct["AutoScalingPolicy"] then M.AssertAutoScalingPolicyDescription(struct["AutoScalingPolicy"]) end
+	if struct["InstanceGroupId"] then asserts.AssertInstanceGroupId(struct["InstanceGroupId"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
+	if struct["AutoScalingPolicy"] then asserts.AssertAutoScalingPolicyDescription(struct["AutoScalingPolicy"]) end
 	for k,_ in pairs(struct) do
-		assert(PutAutoScalingPolicyOutput_keys[k], "PutAutoScalingPolicyOutput contains unknown key " .. tostring(k))
+		assert(keys.PutAutoScalingPolicyOutput[k], "PutAutoScalingPolicyOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type PutAutoScalingPolicyOutput
 --  
--- @param InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the scaling policy is applied.</p>
--- @param ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
--- @param AutoScalingPolicy [AutoScalingPolicyDescription] <p>The automatic scaling policy definition.</p>
-function M.PutAutoScalingPolicyOutput(InstanceGroupId, ClusterId, AutoScalingPolicy, ...)
+-- @param _InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the scaling policy is applied.</p>
+-- @param _ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
+-- @param _AutoScalingPolicy [AutoScalingPolicyDescription] <p>The automatic scaling policy definition.</p>
+function M.PutAutoScalingPolicyOutput(_InstanceGroupId, _ClusterId, _AutoScalingPolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutAutoScalingPolicyOutput")
 	local t = { 
-		["InstanceGroupId"] = InstanceGroupId,
-		["ClusterId"] = ClusterId,
-		["AutoScalingPolicy"] = AutoScalingPolicy,
+		["InstanceGroupId"] = _InstanceGroupId,
+		["ClusterId"] = _ClusterId,
+		["AutoScalingPolicy"] = _AutoScalingPolicy,
 	}
-	M.AssertPutAutoScalingPolicyOutput(t)
+	asserts.AssertPutAutoScalingPolicyOutput(t)
 	return t
 end
 
-local DescribeJobFlowsInput_keys = { "CreatedAfter" = true, "JobFlowIds" = true, "CreatedBefore" = true, "JobFlowStates" = true, nil }
+keys.DescribeJobFlowsInput = { ["CreatedAfter"] = true, ["JobFlowIds"] = true, ["CreatedBefore"] = true, ["JobFlowStates"] = true, nil }
 
-function M.AssertDescribeJobFlowsInput(struct)
+function asserts.AssertDescribeJobFlowsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeJobFlowsInput to be of type 'table'")
-	if struct["CreatedAfter"] then M.AssertDate(struct["CreatedAfter"]) end
-	if struct["JobFlowIds"] then M.AssertXmlStringList(struct["JobFlowIds"]) end
-	if struct["CreatedBefore"] then M.AssertDate(struct["CreatedBefore"]) end
-	if struct["JobFlowStates"] then M.AssertJobFlowExecutionStateList(struct["JobFlowStates"]) end
+	if struct["CreatedAfter"] then asserts.AssertDate(struct["CreatedAfter"]) end
+	if struct["JobFlowIds"] then asserts.AssertXmlStringList(struct["JobFlowIds"]) end
+	if struct["CreatedBefore"] then asserts.AssertDate(struct["CreatedBefore"]) end
+	if struct["JobFlowStates"] then asserts.AssertJobFlowExecutionStateList(struct["JobFlowStates"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeJobFlowsInput_keys[k], "DescribeJobFlowsInput contains unknown key " .. tostring(k))
+		assert(keys.DescribeJobFlowsInput[k], "DescribeJobFlowsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeJobFlowsInput
 -- <p> The input for the <a>DescribeJobFlows</a> operation. </p>
--- @param CreatedAfter [Date] <p>Return only job flows created after this date and time.</p>
--- @param JobFlowIds [XmlStringList] <p>Return only job flows whose job flow ID is contained in this list.</p>
--- @param CreatedBefore [Date] <p>Return only job flows created before this date and time.</p>
--- @param JobFlowStates [JobFlowExecutionStateList] <p>Return only job flows whose state is contained in this list.</p>
-function M.DescribeJobFlowsInput(CreatedAfter, JobFlowIds, CreatedBefore, JobFlowStates, ...)
+-- @param _CreatedAfter [Date] <p>Return only job flows created after this date and time.</p>
+-- @param _JobFlowIds [XmlStringList] <p>Return only job flows whose job flow ID is contained in this list.</p>
+-- @param _CreatedBefore [Date] <p>Return only job flows created before this date and time.</p>
+-- @param _JobFlowStates [JobFlowExecutionStateList] <p>Return only job flows whose state is contained in this list.</p>
+function M.DescribeJobFlowsInput(_CreatedAfter, _JobFlowIds, _CreatedBefore, _JobFlowStates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobFlowsInput")
 	local t = { 
-		["CreatedAfter"] = CreatedAfter,
-		["JobFlowIds"] = JobFlowIds,
-		["CreatedBefore"] = CreatedBefore,
-		["JobFlowStates"] = JobFlowStates,
+		["CreatedAfter"] = _CreatedAfter,
+		["JobFlowIds"] = _JobFlowIds,
+		["CreatedBefore"] = _CreatedBefore,
+		["JobFlowStates"] = _JobFlowStates,
 	}
-	M.AssertDescribeJobFlowsInput(t)
+	asserts.AssertDescribeJobFlowsInput(t)
 	return t
 end
 
-local DescribeSecurityConfigurationOutput_keys = { "SecurityConfiguration" = true, "CreationDateTime" = true, "Name" = true, nil }
+keys.DescribeSecurityConfigurationOutput = { ["SecurityConfiguration"] = true, ["CreationDateTime"] = true, ["Name"] = true, nil }
 
-function M.AssertDescribeSecurityConfigurationOutput(struct)
+function asserts.AssertDescribeSecurityConfigurationOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeSecurityConfigurationOutput to be of type 'table'")
-	if struct["SecurityConfiguration"] then M.AssertString(struct["SecurityConfiguration"]) end
-	if struct["CreationDateTime"] then M.AssertDate(struct["CreationDateTime"]) end
-	if struct["Name"] then M.AssertXmlString(struct["Name"]) end
+	if struct["SecurityConfiguration"] then asserts.AssertString(struct["SecurityConfiguration"]) end
+	if struct["CreationDateTime"] then asserts.AssertDate(struct["CreationDateTime"]) end
+	if struct["Name"] then asserts.AssertXmlString(struct["Name"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeSecurityConfigurationOutput_keys[k], "DescribeSecurityConfigurationOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeSecurityConfigurationOutput[k], "DescribeSecurityConfigurationOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeSecurityConfigurationOutput
 --  
--- @param SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
--- @param CreationDateTime [Date] <p>The date and time the security configuration was created</p>
--- @param Name [XmlString] <p>The name of the security configuration.</p>
-function M.DescribeSecurityConfigurationOutput(SecurityConfiguration, CreationDateTime, Name, ...)
+-- @param _SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
+-- @param _CreationDateTime [Date] <p>The date and time the security configuration was created</p>
+-- @param _Name [XmlString] <p>The name of the security configuration.</p>
+function M.DescribeSecurityConfigurationOutput(_SecurityConfiguration, _CreationDateTime, _Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSecurityConfigurationOutput")
 	local t = { 
-		["SecurityConfiguration"] = SecurityConfiguration,
-		["CreationDateTime"] = CreationDateTime,
-		["Name"] = Name,
+		["SecurityConfiguration"] = _SecurityConfiguration,
+		["CreationDateTime"] = _CreationDateTime,
+		["Name"] = _Name,
 	}
-	M.AssertDescribeSecurityConfigurationOutput(t)
+	asserts.AssertDescribeSecurityConfigurationOutput(t)
 	return t
 end
 
-local BootstrapActionDetail_keys = { "BootstrapActionConfig" = true, nil }
+keys.BootstrapActionDetail = { ["BootstrapActionConfig"] = true, nil }
 
-function M.AssertBootstrapActionDetail(struct)
+function asserts.AssertBootstrapActionDetail(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected BootstrapActionDetail to be of type 'table'")
-	if struct["BootstrapActionConfig"] then M.AssertBootstrapActionConfig(struct["BootstrapActionConfig"]) end
+	if struct["BootstrapActionConfig"] then asserts.AssertBootstrapActionConfig(struct["BootstrapActionConfig"]) end
 	for k,_ in pairs(struct) do
-		assert(BootstrapActionDetail_keys[k], "BootstrapActionDetail contains unknown key " .. tostring(k))
+		assert(keys.BootstrapActionDetail[k], "BootstrapActionDetail contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type BootstrapActionDetail
 -- <p>Reports the configuration of a bootstrap action in a cluster (job flow).</p>
--- @param BootstrapActionConfig [BootstrapActionConfig] <p>A description of the bootstrap action.</p>
-function M.BootstrapActionDetail(BootstrapActionConfig, ...)
+-- @param _BootstrapActionConfig [BootstrapActionConfig] <p>A description of the bootstrap action.</p>
+function M.BootstrapActionDetail(_BootstrapActionConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BootstrapActionDetail")
 	local t = { 
-		["BootstrapActionConfig"] = BootstrapActionConfig,
+		["BootstrapActionConfig"] = _BootstrapActionConfig,
 	}
-	M.AssertBootstrapActionDetail(t)
+	asserts.AssertBootstrapActionDetail(t)
 	return t
 end
 
-local StepConfig_keys = { "HadoopJarStep" = true, "Name" = true, "ActionOnFailure" = true, nil }
+keys.StepConfig = { ["HadoopJarStep"] = true, ["Name"] = true, ["ActionOnFailure"] = true, nil }
 
-function M.AssertStepConfig(struct)
+function asserts.AssertStepConfig(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected StepConfig to be of type 'table'")
 	assert(struct["Name"], "Expected key Name to exist in table")
 	assert(struct["HadoopJarStep"], "Expected key HadoopJarStep to exist in table")
-	if struct["HadoopJarStep"] then M.AssertHadoopJarStepConfig(struct["HadoopJarStep"]) end
-	if struct["Name"] then M.AssertXmlStringMaxLen256(struct["Name"]) end
-	if struct["ActionOnFailure"] then M.AssertActionOnFailure(struct["ActionOnFailure"]) end
+	if struct["HadoopJarStep"] then asserts.AssertHadoopJarStepConfig(struct["HadoopJarStep"]) end
+	if struct["Name"] then asserts.AssertXmlStringMaxLen256(struct["Name"]) end
+	if struct["ActionOnFailure"] then asserts.AssertActionOnFailure(struct["ActionOnFailure"]) end
 	for k,_ in pairs(struct) do
-		assert(StepConfig_keys[k], "StepConfig contains unknown key " .. tostring(k))
+		assert(keys.StepConfig[k], "StepConfig contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type StepConfig
 -- <p>Specification of a cluster (job flow) step.</p>
--- @param HadoopJarStep [HadoopJarStepConfig] <p>The JAR file used for the step.</p>
--- @param Name [XmlStringMaxLen256] <p>The name of the step.</p>
--- @param ActionOnFailure [ActionOnFailure] <p>The action to take if the step fails.</p>
+-- @param _HadoopJarStep [HadoopJarStepConfig] <p>The JAR file used for the step.</p>
+-- @param _Name [XmlStringMaxLen256] <p>The name of the step.</p>
+-- @param _ActionOnFailure [ActionOnFailure] <p>The action to take if the step fails.</p>
 -- Required parameter: Name
 -- Required parameter: HadoopJarStep
-function M.StepConfig(HadoopJarStep, Name, ActionOnFailure, ...)
+function M.StepConfig(_HadoopJarStep, _Name, _ActionOnFailure, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepConfig")
 	local t = { 
-		["HadoopJarStep"] = HadoopJarStep,
-		["Name"] = Name,
-		["ActionOnFailure"] = ActionOnFailure,
+		["HadoopJarStep"] = _HadoopJarStep,
+		["Name"] = _Name,
+		["ActionOnFailure"] = _ActionOnFailure,
 	}
-	M.AssertStepConfig(t)
+	asserts.AssertStepConfig(t)
 	return t
 end
 
-local ListBootstrapActionsInput_keys = { "Marker" = true, "ClusterId" = true, nil }
+keys.ListBootstrapActionsInput = { ["Marker"] = true, ["ClusterId"] = true, nil }
 
-function M.AssertListBootstrapActionsInput(struct)
+function asserts.AssertListBootstrapActionsInput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected ListBootstrapActionsInput to be of type 'table'")
 	assert(struct["ClusterId"], "Expected key ClusterId to exist in table")
-	if struct["Marker"] then M.AssertMarker(struct["Marker"]) end
-	if struct["ClusterId"] then M.AssertClusterId(struct["ClusterId"]) end
+	if struct["Marker"] then asserts.AssertMarker(struct["Marker"]) end
+	if struct["ClusterId"] then asserts.AssertClusterId(struct["ClusterId"]) end
 	for k,_ in pairs(struct) do
-		assert(ListBootstrapActionsInput_keys[k], "ListBootstrapActionsInput contains unknown key " .. tostring(k))
+		assert(keys.ListBootstrapActionsInput[k], "ListBootstrapActionsInput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type ListBootstrapActionsInput
 -- <p>This input determines which bootstrap actions to retrieve.</p>
--- @param Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param ClusterId [ClusterId] <p>The cluster identifier for the bootstrap actions to list.</p>
+-- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @param _ClusterId [ClusterId] <p>The cluster identifier for the bootstrap actions to list.</p>
 -- Required parameter: ClusterId
-function M.ListBootstrapActionsInput(Marker, ClusterId, ...)
+function M.ListBootstrapActionsInput(_Marker, _ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBootstrapActionsInput")
 	local t = { 
-		["Marker"] = Marker,
-		["ClusterId"] = ClusterId,
+		["Marker"] = _Marker,
+		["ClusterId"] = _ClusterId,
 	}
-	M.AssertListBootstrapActionsInput(t)
+	asserts.AssertListBootstrapActionsInput(t)
 	return t
 end
 
-local DescribeClusterOutput_keys = { "Cluster" = true, nil }
+keys.DescribeClusterOutput = { ["Cluster"] = true, nil }
 
-function M.AssertDescribeClusterOutput(struct)
+function asserts.AssertDescribeClusterOutput(struct)
 	assert(struct)
 	assert(type(struct) == "table", "Expected DescribeClusterOutput to be of type 'table'")
-	if struct["Cluster"] then M.AssertCluster(struct["Cluster"]) end
+	if struct["Cluster"] then asserts.AssertCluster(struct["Cluster"]) end
 	for k,_ in pairs(struct) do
-		assert(DescribeClusterOutput_keys[k], "DescribeClusterOutput contains unknown key " .. tostring(k))
+		assert(keys.DescribeClusterOutput[k], "DescribeClusterOutput contains unknown key " .. tostring(k))
 	end
 end
 
 --- Create a structure of type DescribeClusterOutput
 -- <p>This output contains the description of the cluster.</p>
--- @param Cluster [Cluster] <p>This output contains the details for the requested cluster.</p>
-function M.DescribeClusterOutput(Cluster, ...)
+-- @param _Cluster [Cluster] <p>This output contains the details for the requested cluster.</p>
+function M.DescribeClusterOutput(_Cluster, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterOutput")
 	local t = { 
-		["Cluster"] = Cluster,
+		["Cluster"] = _Cluster,
 	}
-	M.AssertDescribeClusterOutput(t)
+	asserts.AssertDescribeClusterOutput(t)
 	return t
 end
 
-function M.AssertInstanceGroupState(str)
+function asserts.AssertInstanceGroupState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceGroupState to be of type 'string'")
 end
 
 --  
 function M.InstanceGroupState(str)
-	M.AssertInstanceGroupState(str)
+	asserts.AssertInstanceGroupState(str)
 	return str
 end
 
-function M.AssertInstanceState(str)
+function asserts.AssertInstanceState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceState to be of type 'string'")
 end
 
 --  
 function M.InstanceState(str)
-	M.AssertInstanceState(str)
+	asserts.AssertInstanceState(str)
 	return str
 end
 
-function M.AssertInstanceFleetState(str)
+function asserts.AssertInstanceFleetState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceFleetState to be of type 'string'")
 end
 
 --  
 function M.InstanceFleetState(str)
-	M.AssertInstanceFleetState(str)
+	asserts.AssertInstanceFleetState(str)
 	return str
 end
 
-function M.AssertAutoScalingPolicyStateChangeReasonCode(str)
+function asserts.AssertAutoScalingPolicyStateChangeReasonCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AutoScalingPolicyStateChangeReasonCode to be of type 'string'")
 end
 
 --  
 function M.AutoScalingPolicyStateChangeReasonCode(str)
-	M.AssertAutoScalingPolicyStateChangeReasonCode(str)
+	asserts.AssertAutoScalingPolicyStateChangeReasonCode(str)
 	return str
 end
 
-function M.AssertStatistic(str)
+function asserts.AssertStatistic(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Statistic to be of type 'string'")
 end
 
 --  
 function M.Statistic(str)
-	M.AssertStatistic(str)
+	asserts.AssertStatistic(str)
 	return str
 end
 
-function M.AssertStepExecutionState(str)
+function asserts.AssertStepExecutionState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StepExecutionState to be of type 'string'")
 end
 
 --  
 function M.StepExecutionState(str)
-	M.AssertStepExecutionState(str)
+	asserts.AssertStepExecutionState(str)
 	return str
 end
 
-function M.AssertInstanceFleetStateChangeReasonCode(str)
+function asserts.AssertInstanceFleetStateChangeReasonCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceFleetStateChangeReasonCode to be of type 'string'")
 end
 
 --  
 function M.InstanceFleetStateChangeReasonCode(str)
-	M.AssertInstanceFleetStateChangeReasonCode(str)
+	asserts.AssertInstanceFleetStateChangeReasonCode(str)
 	return str
 end
 
-function M.AssertActionOnFailure(str)
+function asserts.AssertActionOnFailure(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ActionOnFailure to be of type 'string'")
 end
 
 --  
 function M.ActionOnFailure(str)
-	M.AssertActionOnFailure(str)
+	asserts.AssertActionOnFailure(str)
 	return str
 end
 
-function M.AssertStepState(str)
+function asserts.AssertStepState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StepState to be of type 'string'")
 end
 
 --  
 function M.StepState(str)
-	M.AssertStepState(str)
+	asserts.AssertStepState(str)
 	return str
 end
 
-function M.AssertInstanceGroupType(str)
+function asserts.AssertInstanceGroupType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceGroupType to be of type 'string'")
 end
 
 --  
 function M.InstanceGroupType(str)
-	M.AssertInstanceGroupType(str)
+	asserts.AssertInstanceGroupType(str)
 	return str
 end
 
-function M.AssertInstanceRoleType(str)
+function asserts.AssertInstanceRoleType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceRoleType to be of type 'string'")
 end
 
 --  
 function M.InstanceRoleType(str)
-	M.AssertInstanceRoleType(str)
+	asserts.AssertInstanceRoleType(str)
 	return str
 end
 
-function M.AssertInstanceGroupId(str)
+function asserts.AssertInstanceGroupId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceGroupId to be of type 'string'")
 end
 
 --  
 function M.InstanceGroupId(str)
-	M.AssertInstanceGroupId(str)
+	asserts.AssertInstanceGroupId(str)
 	return str
 end
 
-function M.AssertXmlString(str)
+function asserts.AssertXmlString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlString to be of type 'string'")
 	assert(#str <= 10280, "Expected string to be max 10280 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlString(str)
-	M.AssertXmlString(str)
+	asserts.AssertXmlString(str)
 	return str
 end
 
-function M.AssertSpotProvisioningTimeoutAction(str)
+function asserts.AssertSpotProvisioningTimeoutAction(str)
 	assert(str)
 	assert(type(str) == "string", "Expected SpotProvisioningTimeoutAction to be of type 'string'")
 end
 
 --  
 function M.SpotProvisioningTimeoutAction(str)
-	M.AssertSpotProvisioningTimeoutAction(str)
+	asserts.AssertSpotProvisioningTimeoutAction(str)
 	return str
 end
 
-function M.AssertAdjustmentType(str)
+function asserts.AssertAdjustmentType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AdjustmentType to be of type 'string'")
 end
 
 --  
 function M.AdjustmentType(str)
-	M.AssertAdjustmentType(str)
+	asserts.AssertAdjustmentType(str)
 	return str
 end
 
-function M.AssertClusterStateChangeReasonCode(str)
+function asserts.AssertClusterStateChangeReasonCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClusterStateChangeReasonCode to be of type 'string'")
 end
 
 --  
 function M.ClusterStateChangeReasonCode(str)
-	M.AssertClusterStateChangeReasonCode(str)
+	asserts.AssertClusterStateChangeReasonCode(str)
 	return str
 end
 
-function M.AssertErrorCode(str)
+function asserts.AssertErrorCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorCode to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
@@ -4175,986 +4177,984 @@ end
 
 --  
 function M.ErrorCode(str)
-	M.AssertErrorCode(str)
+	asserts.AssertErrorCode(str)
 	return str
 end
 
-function M.AssertScaleDownBehavior(str)
+function asserts.AssertScaleDownBehavior(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ScaleDownBehavior to be of type 'string'")
 end
 
 --  
 function M.ScaleDownBehavior(str)
-	M.AssertScaleDownBehavior(str)
+	asserts.AssertScaleDownBehavior(str)
 	return str
 end
 
-function M.AssertInstanceCollectionType(str)
+function asserts.AssertInstanceCollectionType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceCollectionType to be of type 'string'")
 end
 
 --  
 function M.InstanceCollectionType(str)
-	M.AssertInstanceCollectionType(str)
+	asserts.AssertInstanceCollectionType(str)
 	return str
 end
 
-function M.AssertMarketType(str)
+function asserts.AssertMarketType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected MarketType to be of type 'string'")
 end
 
 --  
 function M.MarketType(str)
-	M.AssertMarketType(str)
+	asserts.AssertMarketType(str)
 	return str
 end
 
-function M.AssertInstanceStateChangeReasonCode(str)
+function asserts.AssertInstanceStateChangeReasonCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceStateChangeReasonCode to be of type 'string'")
 end
 
 --  
 function M.InstanceStateChangeReasonCode(str)
-	M.AssertInstanceStateChangeReasonCode(str)
+	asserts.AssertInstanceStateChangeReasonCode(str)
 	return str
 end
 
-function M.AssertStepId(str)
+function asserts.AssertStepId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StepId to be of type 'string'")
 end
 
 --  
 function M.StepId(str)
-	M.AssertStepId(str)
+	asserts.AssertStepId(str)
 	return str
 end
 
-function M.AssertXmlStringMaxLen256(str)
+function asserts.AssertXmlStringMaxLen256(str)
 	assert(str)
 	assert(type(str) == "string", "Expected XmlStringMaxLen256 to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.XmlStringMaxLen256(str)
-	M.AssertXmlStringMaxLen256(str)
+	asserts.AssertXmlStringMaxLen256(str)
 	return str
 end
 
-function M.AssertInstanceType(str)
+function asserts.AssertInstanceType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*"), "Expected string to match pattern '[%u0020-%uD7FF%uE000-%uFFFD%uD800%uDC00-%uDBFF%uDFFF%r%n%t]*'")
 end
 
 --  
 function M.InstanceType(str)
-	M.AssertInstanceType(str)
+	asserts.AssertInstanceType(str)
 	return str
 end
 
-function M.AssertComparisonOperator(str)
+function asserts.AssertComparisonOperator(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ComparisonOperator to be of type 'string'")
 end
 
 --  
 function M.ComparisonOperator(str)
-	M.AssertComparisonOperator(str)
+	asserts.AssertComparisonOperator(str)
 	return str
 end
 
-function M.AssertMarker(str)
+function asserts.AssertMarker(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Marker to be of type 'string'")
 end
 
 --  
 function M.Marker(str)
-	M.AssertMarker(str)
+	asserts.AssertMarker(str)
 	return str
 end
 
-function M.AssertUnit(str)
+function asserts.AssertUnit(str)
 	assert(str)
 	assert(type(str) == "string", "Expected Unit to be of type 'string'")
 end
 
 --  
 function M.Unit(str)
-	M.AssertUnit(str)
+	asserts.AssertUnit(str)
 	return str
 end
 
-function M.AssertErrorMessage(str)
+function asserts.AssertErrorMessage(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
 --  
 function M.ErrorMessage(str)
-	M.AssertErrorMessage(str)
+	asserts.AssertErrorMessage(str)
 	return str
 end
 
-function M.AssertStepStateChangeReasonCode(str)
+function asserts.AssertStepStateChangeReasonCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected StepStateChangeReasonCode to be of type 'string'")
 end
 
 --  
 function M.StepStateChangeReasonCode(str)
-	M.AssertStepStateChangeReasonCode(str)
+	asserts.AssertStepStateChangeReasonCode(str)
 	return str
 end
 
-function M.AssertInstanceGroupStateChangeReasonCode(str)
+function asserts.AssertInstanceGroupStateChangeReasonCode(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceGroupStateChangeReasonCode to be of type 'string'")
 end
 
 --  
 function M.InstanceGroupStateChangeReasonCode(str)
-	M.AssertInstanceGroupStateChangeReasonCode(str)
+	asserts.AssertInstanceGroupStateChangeReasonCode(str)
 	return str
 end
 
-function M.AssertAutoScalingPolicyState(str)
+function asserts.AssertAutoScalingPolicyState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected AutoScalingPolicyState to be of type 'string'")
 end
 
 --  
 function M.AutoScalingPolicyState(str)
-	M.AssertAutoScalingPolicyState(str)
+	asserts.AssertAutoScalingPolicyState(str)
 	return str
 end
 
-function M.AssertInstanceId(str)
+function asserts.AssertInstanceId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceId to be of type 'string'")
 end
 
 --  
 function M.InstanceId(str)
-	M.AssertInstanceId(str)
+	asserts.AssertInstanceId(str)
 	return str
 end
 
-function M.AssertResourceId(str)
+function asserts.AssertResourceId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ResourceId to be of type 'string'")
 end
 
 --  
 function M.ResourceId(str)
-	M.AssertResourceId(str)
+	asserts.AssertResourceId(str)
 	return str
 end
 
-function M.AssertClusterId(str)
+function asserts.AssertClusterId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClusterId to be of type 'string'")
 end
 
 --  
 function M.ClusterId(str)
-	M.AssertClusterId(str)
+	asserts.AssertClusterId(str)
 	return str
 end
 
-function M.AssertInstanceFleetId(str)
+function asserts.AssertInstanceFleetId(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceFleetId to be of type 'string'")
 end
 
 --  
 function M.InstanceFleetId(str)
-	M.AssertInstanceFleetId(str)
+	asserts.AssertInstanceFleetId(str)
 	return str
 end
 
-function M.AssertCancelStepsRequestStatus(str)
+function asserts.AssertCancelStepsRequestStatus(str)
 	assert(str)
 	assert(type(str) == "string", "Expected CancelStepsRequestStatus to be of type 'string'")
 end
 
 --  
 function M.CancelStepsRequestStatus(str)
-	M.AssertCancelStepsRequestStatus(str)
+	asserts.AssertCancelStepsRequestStatus(str)
 	return str
 end
 
-function M.AssertString(str)
+function asserts.AssertString(str)
 	assert(str)
 	assert(type(str) == "string", "Expected String to be of type 'string'")
 end
 
 --  
 function M.String(str)
-	M.AssertString(str)
+	asserts.AssertString(str)
 	return str
 end
 
-function M.AssertInstanceFleetType(str)
+function asserts.AssertInstanceFleetType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected InstanceFleetType to be of type 'string'")
 end
 
 --  
 function M.InstanceFleetType(str)
-	M.AssertInstanceFleetType(str)
+	asserts.AssertInstanceFleetType(str)
 	return str
 end
 
-function M.AssertJobFlowExecutionState(str)
+function asserts.AssertJobFlowExecutionState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected JobFlowExecutionState to be of type 'string'")
 end
 
 -- <p>The type of instance.</p>
 function M.JobFlowExecutionState(str)
-	M.AssertJobFlowExecutionState(str)
+	asserts.AssertJobFlowExecutionState(str)
 	return str
 end
 
-function M.AssertClusterState(str)
+function asserts.AssertClusterState(str)
 	assert(str)
 	assert(type(str) == "string", "Expected ClusterState to be of type 'string'")
 end
 
 --  
 function M.ClusterState(str)
-	M.AssertClusterState(str)
+	asserts.AssertClusterState(str)
 	return str
 end
 
-function M.AssertNonNegativeDouble(double)
+function asserts.AssertNonNegativeDouble(double)
 	assert(double)
 	assert(type(double) == "number", "Expected NonNegativeDouble to be of type 'number'")
 end
 
 function M.NonNegativeDouble(double)
-	M.AssertNonNegativeDouble(double)
+	asserts.AssertNonNegativeDouble(double)
 	return double
 end
 
-function M.AssertInteger(integer)
+function asserts.AssertInteger(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected Integer to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.Integer(integer)
-	M.AssertInteger(integer)
+	asserts.AssertInteger(integer)
 	return integer
 end
 
-function M.AssertWholeNumber(integer)
+function asserts.AssertWholeNumber(integer)
 	assert(integer)
 	assert(type(integer) == "number", "Expected WholeNumber to be of type 'number'")
 	assert(integer % 1 == 0, "Expected a while integer number")
 end
 
 function M.WholeNumber(integer)
-	M.AssertWholeNumber(integer)
+	asserts.AssertWholeNumber(integer)
 	return integer
 end
 
-function M.AssertBooleanObject(boolean)
+function asserts.AssertBooleanObject(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected BooleanObject to be of type 'boolean'")
 end
 
 function M.BooleanObject(boolean)
-	M.AssertBooleanObject(boolean)
+	asserts.AssertBooleanObject(boolean)
 	return boolean
 end
 
-function M.AssertBoolean(boolean)
+function asserts.AssertBoolean(boolean)
 	assert(boolean)
 	assert(type(boolean) == "boolean", "Expected Boolean to be of type 'boolean'")
 end
 
 function M.Boolean(boolean)
-	M.AssertBoolean(boolean)
+	asserts.AssertBoolean(boolean)
 	return boolean
 end
 
-function M.AssertStringMap(map)
+function asserts.AssertStringMap(map)
 	assert(map)
 	assert(type(map) == "table", "Expected StringMap to be of type 'table'")
 	for k,v in pairs(map) do
-		M.AssertString(k)
-		M.AssertString(v)
+		asserts.AssertString(k)
+		asserts.AssertString(v)
 	end
 end
 
 function M.StringMap(map)
-	M.AssertStringMap(map)
+	asserts.AssertStringMap(map)
 	return map
 end
 
-function M.AssertDate(timestamp)
+function asserts.AssertDate(timestamp)
 	assert(timestamp)
 	assert(type(timestamp) == "string", "Expected Date to be of type 'string'")
 end
 
 function M.Date(timestamp)
-	M.AssertDate(timestamp)
+	asserts.AssertDate(timestamp)
 	return timestamp
 end
 
-function M.AssertApplicationList(list)
+function asserts.AssertApplicationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ApplicationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertApplication(v)
+		asserts.AssertApplication(v)
 	end
 end
 
 --  
 -- List of Application objects
 function M.ApplicationList(list)
-	M.AssertApplicationList(list)
+	asserts.AssertApplicationList(list)
 	return list
 end
 
-function M.AssertInstanceGroupConfigList(list)
+function asserts.AssertInstanceGroupConfigList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceGroupConfigList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceGroupConfig(v)
+		asserts.AssertInstanceGroupConfig(v)
 	end
 end
 
 --  
 -- List of InstanceGroupConfig objects
 function M.InstanceGroupConfigList(list)
-	M.AssertInstanceGroupConfigList(list)
+	asserts.AssertInstanceGroupConfigList(list)
 	return list
 end
 
-function M.AssertXmlStringMaxLen256List(list)
+function asserts.AssertXmlStringMaxLen256List(list)
 	assert(list)
 	assert(type(list) == "table", "Expected XmlStringMaxLen256List to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen256(v)
+		asserts.AssertXmlStringMaxLen256(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen256 objects
 function M.XmlStringMaxLen256List(list)
-	M.AssertXmlStringMaxLen256List(list)
+	asserts.AssertXmlStringMaxLen256List(list)
 	return list
 end
 
-function M.AssertInstanceGroupDetailList(list)
+function asserts.AssertInstanceGroupDetailList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceGroupDetailList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceGroupDetail(v)
+		asserts.AssertInstanceGroupDetail(v)
 	end
 end
 
 --  
 -- List of InstanceGroupDetail objects
 function M.InstanceGroupDetailList(list)
-	M.AssertInstanceGroupDetailList(list)
+	asserts.AssertInstanceGroupDetailList(list)
 	return list
 end
 
-function M.AssertClusterStateList(list)
+function asserts.AssertClusterStateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ClusterStateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertClusterState(v)
+		asserts.AssertClusterState(v)
 	end
 end
 
 --  
 -- List of ClusterState objects
 function M.ClusterStateList(list)
-	M.AssertClusterStateList(list)
+	asserts.AssertClusterStateList(list)
 	return list
 end
 
-function M.AssertJobFlowExecutionStateList(list)
+function asserts.AssertJobFlowExecutionStateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected JobFlowExecutionStateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertJobFlowExecutionState(v)
+		asserts.AssertJobFlowExecutionState(v)
 	end
 end
 
 --  
 -- List of JobFlowExecutionState objects
 function M.JobFlowExecutionStateList(list)
-	M.AssertJobFlowExecutionStateList(list)
+	asserts.AssertJobFlowExecutionStateList(list)
 	return list
 end
 
-function M.AssertInstanceGroupModifyConfigList(list)
+function asserts.AssertInstanceGroupModifyConfigList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceGroupModifyConfigList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceGroupModifyConfig(v)
+		asserts.AssertInstanceGroupModifyConfig(v)
 	end
 end
 
 --  
 -- List of InstanceGroupModifyConfig objects
 function M.InstanceGroupModifyConfigList(list)
-	M.AssertInstanceGroupModifyConfigList(list)
+	asserts.AssertInstanceGroupModifyConfigList(list)
 	return list
 end
 
-function M.AssertInstanceGroupIdsList(list)
+function asserts.AssertInstanceGroupIdsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceGroupIdsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen256(v)
+		asserts.AssertXmlStringMaxLen256(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen256 objects
 function M.InstanceGroupIdsList(list)
-	M.AssertInstanceGroupIdsList(list)
+	asserts.AssertInstanceGroupIdsList(list)
 	return list
 end
 
-function M.AssertMetricDimensionList(list)
+function asserts.AssertMetricDimensionList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected MetricDimensionList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertMetricDimension(v)
+		asserts.AssertMetricDimension(v)
 	end
 end
 
 --  
 -- List of MetricDimension objects
 function M.MetricDimensionList(list)
-	M.AssertMetricDimensionList(list)
+	asserts.AssertMetricDimensionList(list)
 	return list
 end
 
-function M.AssertKeyValueList(list)
+function asserts.AssertKeyValueList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected KeyValueList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertKeyValue(v)
+		asserts.AssertKeyValue(v)
 	end
 end
 
 --  
 -- List of KeyValue objects
 function M.KeyValueList(list)
-	M.AssertKeyValueList(list)
+	asserts.AssertKeyValueList(list)
 	return list
 end
 
-function M.AssertSecurityGroupsList(list)
+function asserts.AssertSecurityGroupsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SecurityGroupsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen256(v)
+		asserts.AssertXmlStringMaxLen256(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen256 objects
 function M.SecurityGroupsList(list)
-	M.AssertSecurityGroupsList(list)
+	asserts.AssertSecurityGroupsList(list)
 	return list
 end
 
-function M.AssertEC2InstanceIdsToTerminateList(list)
+function asserts.AssertEC2InstanceIdsToTerminateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EC2InstanceIdsToTerminateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceId(v)
+		asserts.AssertInstanceId(v)
 	end
 end
 
 --  
 -- List of InstanceId objects
 function M.EC2InstanceIdsToTerminateList(list)
-	M.AssertEC2InstanceIdsToTerminateList(list)
+	asserts.AssertEC2InstanceIdsToTerminateList(list)
 	return list
 end
 
-function M.AssertInstanceTypeSpecificationList(list)
+function asserts.AssertInstanceTypeSpecificationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceTypeSpecificationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceTypeSpecification(v)
+		asserts.AssertInstanceTypeSpecification(v)
 	end
 end
 
 --  
 -- List of InstanceTypeSpecification objects
 function M.InstanceTypeSpecificationList(list)
-	M.AssertInstanceTypeSpecificationList(list)
+	asserts.AssertInstanceTypeSpecificationList(list)
 	return list
 end
 
-function M.AssertInstanceList(list)
+function asserts.AssertInstanceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstance(v)
+		asserts.AssertInstance(v)
 	end
 end
 
 --  
 -- List of Instance objects
 function M.InstanceList(list)
-	M.AssertInstanceList(list)
+	asserts.AssertInstanceList(list)
 	return list
 end
 
-function M.AssertStepConfigList(list)
+function asserts.AssertStepConfigList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StepConfigList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStepConfig(v)
+		asserts.AssertStepConfig(v)
 	end
 end
 
 --  
 -- List of StepConfig objects
 function M.StepConfigList(list)
-	M.AssertStepConfigList(list)
+	asserts.AssertStepConfigList(list)
 	return list
 end
 
-function M.AssertInstanceGroupTypeList(list)
+function asserts.AssertInstanceGroupTypeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceGroupTypeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceGroupType(v)
+		asserts.AssertInstanceGroupType(v)
 	end
 end
 
 --  
 -- List of InstanceGroupType objects
 function M.InstanceGroupTypeList(list)
-	M.AssertInstanceGroupTypeList(list)
+	asserts.AssertInstanceGroupTypeList(list)
 	return list
 end
 
-function M.AssertBootstrapActionDetailList(list)
+function asserts.AssertBootstrapActionDetailList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BootstrapActionDetailList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBootstrapActionDetail(v)
+		asserts.AssertBootstrapActionDetail(v)
 	end
 end
 
 --  
 -- List of BootstrapActionDetail objects
 function M.BootstrapActionDetailList(list)
-	M.AssertBootstrapActionDetailList(list)
+	asserts.AssertBootstrapActionDetailList(list)
 	return list
 end
 
-function M.AssertInstanceFleetList(list)
+function asserts.AssertInstanceFleetList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceFleetList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceFleet(v)
+		asserts.AssertInstanceFleet(v)
 	end
 end
 
 --  
 -- List of InstanceFleet objects
 function M.InstanceFleetList(list)
-	M.AssertInstanceFleetList(list)
+	asserts.AssertInstanceFleetList(list)
 	return list
 end
 
-function M.AssertNewSupportedProductsList(list)
+function asserts.AssertNewSupportedProductsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected NewSupportedProductsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSupportedProductConfig(v)
+		asserts.AssertSupportedProductConfig(v)
 	end
 end
 
 --  
 -- List of SupportedProductConfig objects
 function M.NewSupportedProductsList(list)
-	M.AssertNewSupportedProductsList(list)
+	asserts.AssertNewSupportedProductsList(list)
 	return list
 end
 
-function M.AssertEbsBlockDeviceList(list)
+function asserts.AssertEbsBlockDeviceList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EbsBlockDeviceList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEbsBlockDevice(v)
+		asserts.AssertEbsBlockDevice(v)
 	end
 end
 
 --  
 -- List of EbsBlockDevice objects
 function M.EbsBlockDeviceList(list)
-	M.AssertEbsBlockDeviceList(list)
+	asserts.AssertEbsBlockDeviceList(list)
 	return list
 end
 
-function M.AssertStepDetailList(list)
+function asserts.AssertStepDetailList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StepDetailList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStepDetail(v)
+		asserts.AssertStepDetail(v)
 	end
 end
 
 --  
 -- List of StepDetail objects
 function M.StepDetailList(list)
-	M.AssertStepDetailList(list)
+	asserts.AssertStepDetailList(list)
 	return list
 end
 
-function M.AssertInstanceFleetConfigList(list)
+function asserts.AssertInstanceFleetConfigList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceFleetConfigList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceFleetConfig(v)
+		asserts.AssertInstanceFleetConfig(v)
 	end
 end
 
 --  
 -- List of InstanceFleetConfig objects
 function M.InstanceFleetConfigList(list)
-	M.AssertInstanceFleetConfigList(list)
+	asserts.AssertInstanceFleetConfigList(list)
 	return list
 end
 
-function M.AssertStepStateList(list)
+function asserts.AssertStepStateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StepStateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStepState(v)
+		asserts.AssertStepState(v)
 	end
 end
 
 --  
 -- List of StepState objects
 function M.StepStateList(list)
-	M.AssertStepStateList(list)
+	asserts.AssertStepStateList(list)
 	return list
 end
 
-function M.AssertCommandList(list)
+function asserts.AssertCommandList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CommandList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCommand(v)
+		asserts.AssertCommand(v)
 	end
 end
 
 --  
 -- List of Command objects
 function M.CommandList(list)
-	M.AssertCommandList(list)
+	asserts.AssertCommandList(list)
 	return list
 end
 
-function M.AssertStepIdsList(list)
+function asserts.AssertStepIdsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StepIdsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen256(v)
+		asserts.AssertXmlStringMaxLen256(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen256 objects
 function M.StepIdsList(list)
-	M.AssertStepIdsList(list)
+	asserts.AssertStepIdsList(list)
 	return list
 end
 
-function M.AssertXmlStringList(list)
+function asserts.AssertXmlStringList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected XmlStringList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlString(v)
+		asserts.AssertXmlString(v)
 	end
 end
 
 --  
 -- List of XmlString objects
 function M.XmlStringList(list)
-	M.AssertXmlStringList(list)
+	asserts.AssertXmlStringList(list)
 	return list
 end
 
-function M.AssertStringList(list)
+function asserts.AssertStringList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StringList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertString(v)
+		asserts.AssertString(v)
 	end
 end
 
 --  
 -- List of String objects
 function M.StringList(list)
-	M.AssertStringList(list)
+	asserts.AssertStringList(list)
 	return list
 end
 
-function M.AssertCancelStepsInfoList(list)
+function asserts.AssertCancelStepsInfoList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected CancelStepsInfoList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertCancelStepsInfo(v)
+		asserts.AssertCancelStepsInfo(v)
 	end
 end
 
 --  
 -- List of CancelStepsInfo objects
 function M.CancelStepsInfoList(list)
-	M.AssertCancelStepsInfoList(list)
+	asserts.AssertCancelStepsInfoList(list)
 	return list
 end
 
-function M.AssertTagList(list)
+function asserts.AssertTagList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected TagList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertTag(v)
+		asserts.AssertTag(v)
 	end
 end
 
 --  
 -- List of Tag objects
 function M.TagList(list)
-	M.AssertTagList(list)
+	asserts.AssertTagList(list)
 	return list
 end
 
-function M.AssertClusterSummaryList(list)
+function asserts.AssertClusterSummaryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ClusterSummaryList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertClusterSummary(v)
+		asserts.AssertClusterSummary(v)
 	end
 end
 
 --  
 -- List of ClusterSummary objects
 function M.ClusterSummaryList(list)
-	M.AssertClusterSummaryList(list)
+	asserts.AssertClusterSummaryList(list)
 	return list
 end
 
-function M.AssertInstanceGroupList(list)
+function asserts.AssertInstanceGroupList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceGroupList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceGroup(v)
+		asserts.AssertInstanceGroup(v)
 	end
 end
 
 --  
 -- List of InstanceGroup objects
 function M.InstanceGroupList(list)
-	M.AssertInstanceGroupList(list)
+	asserts.AssertInstanceGroupList(list)
 	return list
 end
 
-function M.AssertInstanceTypeConfigList(list)
+function asserts.AssertInstanceTypeConfigList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceTypeConfigList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceTypeConfig(v)
+		asserts.AssertInstanceTypeConfig(v)
 	end
 end
 
 --  
 -- List of InstanceTypeConfig objects
 function M.InstanceTypeConfigList(list)
-	M.AssertInstanceTypeConfigList(list)
+	asserts.AssertInstanceTypeConfigList(list)
 	return list
 end
 
-function M.AssertInstanceStateList(list)
+function asserts.AssertInstanceStateList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected InstanceStateList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceState(v)
+		asserts.AssertInstanceState(v)
 	end
 end
 
 --  
 -- List of InstanceState objects
 function M.InstanceStateList(list)
-	M.AssertInstanceStateList(list)
+	asserts.AssertInstanceStateList(list)
 	return list
 end
 
-function M.AssertEC2InstanceIdsList(list)
+function asserts.AssertEC2InstanceIdsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EC2InstanceIdsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertInstanceId(v)
+		asserts.AssertInstanceId(v)
 	end
 end
 
 --  
 -- List of InstanceId objects
 function M.EC2InstanceIdsList(list)
-	M.AssertEC2InstanceIdsList(list)
+	asserts.AssertEC2InstanceIdsList(list)
 	return list
 end
 
-function M.AssertEbsVolumeList(list)
+function asserts.AssertEbsVolumeList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EbsVolumeList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEbsVolume(v)
+		asserts.AssertEbsVolume(v)
 	end
 end
 
 --  
 -- List of EbsVolume objects
 function M.EbsVolumeList(list)
-	M.AssertEbsVolumeList(list)
+	asserts.AssertEbsVolumeList(list)
 	return list
 end
 
-function M.AssertConfigurationList(list)
+function asserts.AssertConfigurationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ConfigurationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertConfiguration(v)
+		asserts.AssertConfiguration(v)
 	end
 end
 
 --  
 -- List of Configuration objects
 function M.ConfigurationList(list)
-	M.AssertConfigurationList(list)
+	asserts.AssertConfigurationList(list)
 	return list
 end
 
-function M.AssertJobFlowDetailList(list)
+function asserts.AssertJobFlowDetailList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected JobFlowDetailList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertJobFlowDetail(v)
+		asserts.AssertJobFlowDetail(v)
 	end
 end
 
 --  
 -- List of JobFlowDetail objects
 function M.JobFlowDetailList(list)
-	M.AssertJobFlowDetailList(list)
+	asserts.AssertJobFlowDetailList(list)
 	return list
 end
 
-function M.AssertStepSummaryList(list)
+function asserts.AssertStepSummaryList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected StepSummaryList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertStepSummary(v)
+		asserts.AssertStepSummary(v)
 	end
 end
 
 --  
 -- List of StepSummary objects
 function M.StepSummaryList(list)
-	M.AssertStepSummaryList(list)
+	asserts.AssertStepSummaryList(list)
 	return list
 end
 
-function M.AssertSecurityConfigurationList(list)
+function asserts.AssertSecurityConfigurationList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SecurityConfigurationList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertSecurityConfigurationSummary(v)
+		asserts.AssertSecurityConfigurationSummary(v)
 	end
 end
 
 --  
 -- List of SecurityConfigurationSummary objects
 function M.SecurityConfigurationList(list)
-	M.AssertSecurityConfigurationList(list)
+	asserts.AssertSecurityConfigurationList(list)
 	return list
 end
 
-function M.AssertScalingRuleList(list)
+function asserts.AssertScalingRuleList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected ScalingRuleList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertScalingRule(v)
+		asserts.AssertScalingRule(v)
 	end
 end
 
 --  
 -- List of ScalingRule objects
 function M.ScalingRuleList(list)
-	M.AssertScalingRuleList(list)
+	asserts.AssertScalingRuleList(list)
 	return list
 end
 
-function M.AssertEbsBlockDeviceConfigList(list)
+function asserts.AssertEbsBlockDeviceConfigList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected EbsBlockDeviceConfigList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertEbsBlockDeviceConfig(v)
+		asserts.AssertEbsBlockDeviceConfig(v)
 	end
 end
 
 --  
 -- List of EbsBlockDeviceConfig objects
 function M.EbsBlockDeviceConfigList(list)
-	M.AssertEbsBlockDeviceConfigList(list)
+	asserts.AssertEbsBlockDeviceConfigList(list)
 	return list
 end
 
-function M.AssertBootstrapActionConfigList(list)
+function asserts.AssertBootstrapActionConfigList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected BootstrapActionConfigList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertBootstrapActionConfig(v)
+		asserts.AssertBootstrapActionConfig(v)
 	end
 end
 
 --  
 -- List of BootstrapActionConfig objects
 function M.BootstrapActionConfigList(list)
-	M.AssertBootstrapActionConfigList(list)
+	asserts.AssertBootstrapActionConfigList(list)
 	return list
 end
 
-function M.AssertSupportedProductsList(list)
+function asserts.AssertSupportedProductsList(list)
 	assert(list)
 	assert(type(list) == "table", "Expected SupportedProductsList to be of type ''table")
 	for _,v in ipairs(list) do
-		M.AssertXmlStringMaxLen256(v)
+		asserts.AssertXmlStringMaxLen256(v)
 	end
 end
 
 --  
 -- List of XmlStringMaxLen256 objects
 function M.SupportedProductsList(list)
-	M.AssertSupportedProductsList(list)
+	asserts.AssertSupportedProductsList(list)
 	return list
 end
 
@@ -5587,24 +5587,6 @@ function M.AddTagsAsync(AddTagsInput, cb)
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
 		request_handler(uri .. "/", AddTagsInput, headers, M.metadata, cb)
-	else
-		cb(false, err)
-	end
-end
-
---- DescribeJobFlows
--- @param DescribeJobFlowsInput
--- @param cb Callback function accepting two args: response, error_message
-function M.DescribeJobFlowsAsync(DescribeJobFlowsInput, cb)
-	assert(DescribeJobFlowsInput, "You must provide a DescribeJobFlowsInput")
-	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeJobFlows",
-	}
-
-	local request_handler, err = request_handlers.from_http_method("POST")
-	if request_handler then
-		request_handler(uri .. "/", DescribeJobFlowsInput, headers, M.metadata, cb)
 	else
 		cb(false, err)
 	end
