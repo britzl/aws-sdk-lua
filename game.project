@@ -1,0 +1,12 @@
+[project]
+title = AWS-SDK-Lua
+
+[display]
+width = 1136
+height = 640
+
+[script]
+shared_state = 1
+
+[library]
+include_dirs = aws-sdk
