@@ -1534,7 +1534,7 @@ end
 --
 -- OPERATIONS
 --
---- BatchGetQueryExecution
+--- Call BatchGetQueryExecution asynchronously, invoking a callback when done
 -- @param BatchGetQueryExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetQueryExecutionAsync(BatchGetQueryExecutionInput, cb)
@@ -1552,7 +1552,21 @@ function M.BatchGetQueryExecutionAsync(BatchGetQueryExecutionInput, cb)
 	end
 end
 
---- DeleteNamedQuery
+--- Call BatchGetQueryExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetQueryExecutionInput
+-- @return response
+-- @return error_message
+function M.BatchGetQueryExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetQueryExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteNamedQuery asynchronously, invoking a callback when done
 -- @param DeleteNamedQueryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteNamedQueryAsync(DeleteNamedQueryInput, cb)
@@ -1570,7 +1584,21 @@ function M.DeleteNamedQueryAsync(DeleteNamedQueryInput, cb)
 	end
 end
 
---- ListNamedQueries
+--- Call DeleteNamedQuery synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteNamedQueryInput
+-- @return response
+-- @return error_message
+function M.DeleteNamedQuerySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteNamedQueryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListNamedQueries asynchronously, invoking a callback when done
 -- @param ListNamedQueriesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListNamedQueriesAsync(ListNamedQueriesInput, cb)
@@ -1588,7 +1616,21 @@ function M.ListNamedQueriesAsync(ListNamedQueriesInput, cb)
 	end
 end
 
---- StopQueryExecution
+--- Call ListNamedQueries synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListNamedQueriesInput
+-- @return response
+-- @return error_message
+function M.ListNamedQueriesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListNamedQueriesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopQueryExecution asynchronously, invoking a callback when done
 -- @param StopQueryExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopQueryExecutionAsync(StopQueryExecutionInput, cb)
@@ -1606,7 +1648,21 @@ function M.StopQueryExecutionAsync(StopQueryExecutionInput, cb)
 	end
 end
 
---- BatchGetNamedQuery
+--- Call StopQueryExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopQueryExecutionInput
+-- @return response
+-- @return error_message
+function M.StopQueryExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopQueryExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetNamedQuery asynchronously, invoking a callback when done
 -- @param BatchGetNamedQueryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetNamedQueryAsync(BatchGetNamedQueryInput, cb)
@@ -1624,7 +1680,21 @@ function M.BatchGetNamedQueryAsync(BatchGetNamedQueryInput, cb)
 	end
 end
 
---- StartQueryExecution
+--- Call BatchGetNamedQuery synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetNamedQueryInput
+-- @return response
+-- @return error_message
+function M.BatchGetNamedQuerySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetNamedQueryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartQueryExecution asynchronously, invoking a callback when done
 -- @param StartQueryExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartQueryExecutionAsync(StartQueryExecutionInput, cb)
@@ -1642,7 +1712,21 @@ function M.StartQueryExecutionAsync(StartQueryExecutionInput, cb)
 	end
 end
 
---- GetNamedQuery
+--- Call StartQueryExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartQueryExecutionInput
+-- @return response
+-- @return error_message
+function M.StartQueryExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartQueryExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetNamedQuery asynchronously, invoking a callback when done
 -- @param GetNamedQueryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetNamedQueryAsync(GetNamedQueryInput, cb)
@@ -1660,7 +1744,21 @@ function M.GetNamedQueryAsync(GetNamedQueryInput, cb)
 	end
 end
 
---- ListQueryExecutions
+--- Call GetNamedQuery synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetNamedQueryInput
+-- @return response
+-- @return error_message
+function M.GetNamedQuerySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetNamedQueryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListQueryExecutions asynchronously, invoking a callback when done
 -- @param ListQueryExecutionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListQueryExecutionsAsync(ListQueryExecutionsInput, cb)
@@ -1678,7 +1776,21 @@ function M.ListQueryExecutionsAsync(ListQueryExecutionsInput, cb)
 	end
 end
 
---- GetQueryExecution
+--- Call ListQueryExecutions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListQueryExecutionsInput
+-- @return response
+-- @return error_message
+function M.ListQueryExecutionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListQueryExecutionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetQueryExecution asynchronously, invoking a callback when done
 -- @param GetQueryExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetQueryExecutionAsync(GetQueryExecutionInput, cb)
@@ -1696,7 +1808,21 @@ function M.GetQueryExecutionAsync(GetQueryExecutionInput, cb)
 	end
 end
 
---- GetQueryResults
+--- Call GetQueryExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetQueryExecutionInput
+-- @return response
+-- @return error_message
+function M.GetQueryExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetQueryExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetQueryResults asynchronously, invoking a callback when done
 -- @param GetQueryResultsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetQueryResultsAsync(GetQueryResultsInput, cb)
@@ -1714,7 +1840,21 @@ function M.GetQueryResultsAsync(GetQueryResultsInput, cb)
 	end
 end
 
---- CreateNamedQuery
+--- Call GetQueryResults synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetQueryResultsInput
+-- @return response
+-- @return error_message
+function M.GetQueryResultsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetQueryResultsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateNamedQuery asynchronously, invoking a callback when done
 -- @param CreateNamedQueryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateNamedQueryAsync(CreateNamedQueryInput, cb)
@@ -1730,6 +1870,20 @@ function M.CreateNamedQueryAsync(CreateNamedQueryInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call CreateNamedQuery synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateNamedQueryInput
+-- @return response
+-- @return error_message
+function M.CreateNamedQuerySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateNamedQueryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

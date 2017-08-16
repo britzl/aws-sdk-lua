@@ -3539,7 +3539,7 @@ end
 --
 -- OPERATIONS
 --
---- UpdateTimeToLive
+--- Call UpdateTimeToLive asynchronously, invoking a callback when done
 -- @param UpdateTimeToLiveInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateTimeToLiveAsync(UpdateTimeToLiveInput, cb)
@@ -3557,7 +3557,21 @@ function M.UpdateTimeToLiveAsync(UpdateTimeToLiveInput, cb)
 	end
 end
 
---- UpdateTable
+--- Call UpdateTimeToLive synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateTimeToLiveInput
+-- @return response
+-- @return error_message
+function M.UpdateTimeToLiveSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateTimeToLiveAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateTable asynchronously, invoking a callback when done
 -- @param UpdateTableInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateTableAsync(UpdateTableInput, cb)
@@ -3575,7 +3589,21 @@ function M.UpdateTableAsync(UpdateTableInput, cb)
 	end
 end
 
---- DeleteTable
+--- Call UpdateTable synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateTableInput
+-- @return response
+-- @return error_message
+function M.UpdateTableSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateTableAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteTable asynchronously, invoking a callback when done
 -- @param DeleteTableInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteTableAsync(DeleteTableInput, cb)
@@ -3593,7 +3621,21 @@ function M.DeleteTableAsync(DeleteTableInput, cb)
 	end
 end
 
---- DescribeLimits
+--- Call DeleteTable synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteTableInput
+-- @return response
+-- @return error_message
+function M.DeleteTableSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteTableAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLimits asynchronously, invoking a callback when done
 -- @param DescribeLimitsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
@@ -3611,7 +3653,21 @@ function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
 	end
 end
 
---- UntagResource
+--- Call DescribeLimits synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeLimitsInput
+-- @return response
+-- @return error_message
+function M.DescribeLimitsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLimitsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UntagResource asynchronously, invoking a callback when done
 -- @param UntagResourceInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UntagResourceAsync(UntagResourceInput, cb)
@@ -3629,7 +3685,21 @@ function M.UntagResourceAsync(UntagResourceInput, cb)
 	end
 end
 
---- Scan
+--- Call UntagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagResourceInput
+-- @return response
+-- @return error_message
+function M.UntagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Scan asynchronously, invoking a callback when done
 -- @param ScanInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ScanAsync(ScanInput, cb)
@@ -3647,7 +3717,21 @@ function M.ScanAsync(ScanInput, cb)
 	end
 end
 
---- ListTagsOfResource
+--- Call Scan synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ScanInput
+-- @return response
+-- @return error_message
+function M.ScanSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ScanAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsOfResource asynchronously, invoking a callback when done
 -- @param ListTagsOfResourceInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsOfResourceAsync(ListTagsOfResourceInput, cb)
@@ -3665,7 +3749,21 @@ function M.ListTagsOfResourceAsync(ListTagsOfResourceInput, cb)
 	end
 end
 
---- DescribeTimeToLive
+--- Call ListTagsOfResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsOfResourceInput
+-- @return response
+-- @return error_message
+function M.ListTagsOfResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsOfResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTimeToLive asynchronously, invoking a callback when done
 -- @param DescribeTimeToLiveInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, cb)
@@ -3683,7 +3781,21 @@ function M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, cb)
 	end
 end
 
---- DescribeTable
+--- Call DescribeTimeToLive synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTimeToLiveInput
+-- @return response
+-- @return error_message
+function M.DescribeTimeToLiveSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTimeToLiveAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTable asynchronously, invoking a callback when done
 -- @param DescribeTableInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTableAsync(DescribeTableInput, cb)
@@ -3701,7 +3813,21 @@ function M.DescribeTableAsync(DescribeTableInput, cb)
 	end
 end
 
---- BatchWriteItem
+--- Call DescribeTable synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTableInput
+-- @return response
+-- @return error_message
+function M.DescribeTableSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTableAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchWriteItem asynchronously, invoking a callback when done
 -- @param BatchWriteItemInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchWriteItemAsync(BatchWriteItemInput, cb)
@@ -3719,7 +3845,21 @@ function M.BatchWriteItemAsync(BatchWriteItemInput, cb)
 	end
 end
 
---- CreateTable
+--- Call BatchWriteItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchWriteItemInput
+-- @return response
+-- @return error_message
+function M.BatchWriteItemSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchWriteItemAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTable asynchronously, invoking a callback when done
 -- @param CreateTableInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateTableAsync(CreateTableInput, cb)
@@ -3737,7 +3877,21 @@ function M.CreateTableAsync(CreateTableInput, cb)
 	end
 end
 
---- ListTables
+--- Call CreateTable synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTableInput
+-- @return response
+-- @return error_message
+function M.CreateTableSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTableAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTables asynchronously, invoking a callback when done
 -- @param ListTablesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTablesAsync(ListTablesInput, cb)
@@ -3755,7 +3909,21 @@ function M.ListTablesAsync(ListTablesInput, cb)
 	end
 end
 
---- GetItem
+--- Call ListTables synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTablesInput
+-- @return response
+-- @return error_message
+function M.ListTablesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTablesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetItem asynchronously, invoking a callback when done
 -- @param GetItemInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetItemAsync(GetItemInput, cb)
@@ -3773,7 +3941,21 @@ function M.GetItemAsync(GetItemInput, cb)
 	end
 end
 
---- Query
+--- Call GetItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetItemInput
+-- @return response
+-- @return error_message
+function M.GetItemSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetItemAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Query asynchronously, invoking a callback when done
 -- @param QueryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.QueryAsync(QueryInput, cb)
@@ -3791,7 +3973,21 @@ function M.QueryAsync(QueryInput, cb)
 	end
 end
 
---- PutItem
+--- Call Query synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param QueryInput
+-- @return response
+-- @return error_message
+function M.QuerySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.QueryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutItem asynchronously, invoking a callback when done
 -- @param PutItemInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutItemAsync(PutItemInput, cb)
@@ -3809,7 +4005,21 @@ function M.PutItemAsync(PutItemInput, cb)
 	end
 end
 
---- UpdateItem
+--- Call PutItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutItemInput
+-- @return response
+-- @return error_message
+function M.PutItemSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutItemAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateItem asynchronously, invoking a callback when done
 -- @param UpdateItemInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateItemAsync(UpdateItemInput, cb)
@@ -3827,7 +4037,21 @@ function M.UpdateItemAsync(UpdateItemInput, cb)
 	end
 end
 
---- TagResource
+--- Call UpdateItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateItemInput
+-- @return response
+-- @return error_message
+function M.UpdateItemSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateItemAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagResource asynchronously, invoking a callback when done
 -- @param TagResourceInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.TagResourceAsync(TagResourceInput, cb)
@@ -3845,7 +4069,21 @@ function M.TagResourceAsync(TagResourceInput, cb)
 	end
 end
 
---- DeleteItem
+--- Call TagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourceInput
+-- @return response
+-- @return error_message
+function M.TagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteItem asynchronously, invoking a callback when done
 -- @param DeleteItemInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteItemAsync(DeleteItemInput, cb)
@@ -3863,7 +4101,21 @@ function M.DeleteItemAsync(DeleteItemInput, cb)
 	end
 end
 
---- BatchGetItem
+--- Call DeleteItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteItemInput
+-- @return response
+-- @return error_message
+function M.DeleteItemSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteItemAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetItem asynchronously, invoking a callback when done
 -- @param BatchGetItemInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetItemAsync(BatchGetItemInput, cb)
@@ -3879,6 +4131,20 @@ function M.BatchGetItemAsync(BatchGetItemInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call BatchGetItem synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetItemInput
+-- @return response
+-- @return error_message
+function M.BatchGetItemSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetItemAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

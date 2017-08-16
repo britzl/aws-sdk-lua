@@ -4302,7 +4302,7 @@ end
 --
 -- OPERATIONS
 --
---- EnableStageTransition
+--- Call EnableStageTransition asynchronously, invoking a callback when done
 -- @param EnableStageTransitionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableStageTransitionAsync(EnableStageTransitionInput, cb)
@@ -4320,7 +4320,21 @@ function M.EnableStageTransitionAsync(EnableStageTransitionInput, cb)
 	end
 end
 
---- RetryStageExecution
+--- Call EnableStageTransition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableStageTransitionInput
+-- @return response
+-- @return error_message
+function M.EnableStageTransitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableStageTransitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RetryStageExecution asynchronously, invoking a callback when done
 -- @param RetryStageExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RetryStageExecutionAsync(RetryStageExecutionInput, cb)
@@ -4338,7 +4352,21 @@ function M.RetryStageExecutionAsync(RetryStageExecutionInput, cb)
 	end
 end
 
---- PutJobSuccessResult
+--- Call RetryStageExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RetryStageExecutionInput
+-- @return response
+-- @return error_message
+function M.RetryStageExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RetryStageExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutJobSuccessResult asynchronously, invoking a callback when done
 -- @param PutJobSuccessResultInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutJobSuccessResultAsync(PutJobSuccessResultInput, cb)
@@ -4356,7 +4384,21 @@ function M.PutJobSuccessResultAsync(PutJobSuccessResultInput, cb)
 	end
 end
 
---- PollForThirdPartyJobs
+--- Call PutJobSuccessResult synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutJobSuccessResultInput
+-- @return response
+-- @return error_message
+function M.PutJobSuccessResultSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutJobSuccessResultAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PollForThirdPartyJobs asynchronously, invoking a callback when done
 -- @param PollForThirdPartyJobsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PollForThirdPartyJobsAsync(PollForThirdPartyJobsInput, cb)
@@ -4374,7 +4416,21 @@ function M.PollForThirdPartyJobsAsync(PollForThirdPartyJobsInput, cb)
 	end
 end
 
---- GetThirdPartyJobDetails
+--- Call PollForThirdPartyJobs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PollForThirdPartyJobsInput
+-- @return response
+-- @return error_message
+function M.PollForThirdPartyJobsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PollForThirdPartyJobsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetThirdPartyJobDetails asynchronously, invoking a callback when done
 -- @param GetThirdPartyJobDetailsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetThirdPartyJobDetailsAsync(GetThirdPartyJobDetailsInput, cb)
@@ -4392,7 +4448,21 @@ function M.GetThirdPartyJobDetailsAsync(GetThirdPartyJobDetailsInput, cb)
 	end
 end
 
---- DeletePipeline
+--- Call GetThirdPartyJobDetails synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetThirdPartyJobDetailsInput
+-- @return response
+-- @return error_message
+function M.GetThirdPartyJobDetailsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetThirdPartyJobDetailsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeletePipeline asynchronously, invoking a callback when done
 -- @param DeletePipelineInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeletePipelineAsync(DeletePipelineInput, cb)
@@ -4410,7 +4480,21 @@ function M.DeletePipelineAsync(DeletePipelineInput, cb)
 	end
 end
 
---- UpdatePipeline
+--- Call DeletePipeline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeletePipelineInput
+-- @return response
+-- @return error_message
+function M.DeletePipelineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeletePipelineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdatePipeline asynchronously, invoking a callback when done
 -- @param UpdatePipelineInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdatePipelineAsync(UpdatePipelineInput, cb)
@@ -4428,7 +4512,21 @@ function M.UpdatePipelineAsync(UpdatePipelineInput, cb)
 	end
 end
 
---- AcknowledgeThirdPartyJob
+--- Call UpdatePipeline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdatePipelineInput
+-- @return response
+-- @return error_message
+function M.UpdatePipelineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdatePipelineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AcknowledgeThirdPartyJob asynchronously, invoking a callback when done
 -- @param AcknowledgeThirdPartyJobInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, cb)
@@ -4446,7 +4544,21 @@ function M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, cb)
 	end
 end
 
---- ListActionTypes
+--- Call AcknowledgeThirdPartyJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AcknowledgeThirdPartyJobInput
+-- @return response
+-- @return error_message
+function M.AcknowledgeThirdPartyJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AcknowledgeThirdPartyJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListActionTypes asynchronously, invoking a callback when done
 -- @param ListActionTypesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListActionTypesAsync(ListActionTypesInput, cb)
@@ -4464,7 +4576,21 @@ function M.ListActionTypesAsync(ListActionTypesInput, cb)
 	end
 end
 
---- PutJobFailureResult
+--- Call ListActionTypes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListActionTypesInput
+-- @return response
+-- @return error_message
+function M.ListActionTypesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListActionTypesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutJobFailureResult asynchronously, invoking a callback when done
 -- @param PutJobFailureResultInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutJobFailureResultAsync(PutJobFailureResultInput, cb)
@@ -4482,7 +4608,21 @@ function M.PutJobFailureResultAsync(PutJobFailureResultInput, cb)
 	end
 end
 
---- GetPipelineExecution
+--- Call PutJobFailureResult synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutJobFailureResultInput
+-- @return response
+-- @return error_message
+function M.PutJobFailureResultSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutJobFailureResultAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetPipelineExecution asynchronously, invoking a callback when done
 -- @param GetPipelineExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetPipelineExecutionAsync(GetPipelineExecutionInput, cb)
@@ -4500,7 +4640,21 @@ function M.GetPipelineExecutionAsync(GetPipelineExecutionInput, cb)
 	end
 end
 
---- PutThirdPartyJobSuccessResult
+--- Call GetPipelineExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetPipelineExecutionInput
+-- @return response
+-- @return error_message
+function M.GetPipelineExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetPipelineExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutThirdPartyJobSuccessResult asynchronously, invoking a callback when done
 -- @param PutThirdPartyJobSuccessResultInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutThirdPartyJobSuccessResultAsync(PutThirdPartyJobSuccessResultInput, cb)
@@ -4518,7 +4672,21 @@ function M.PutThirdPartyJobSuccessResultAsync(PutThirdPartyJobSuccessResultInput
 	end
 end
 
---- AcknowledgeJob
+--- Call PutThirdPartyJobSuccessResult synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutThirdPartyJobSuccessResultInput
+-- @return response
+-- @return error_message
+function M.PutThirdPartyJobSuccessResultSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutThirdPartyJobSuccessResultAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AcknowledgeJob asynchronously, invoking a callback when done
 -- @param AcknowledgeJobInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AcknowledgeJobAsync(AcknowledgeJobInput, cb)
@@ -4536,7 +4704,21 @@ function M.AcknowledgeJobAsync(AcknowledgeJobInput, cb)
 	end
 end
 
---- PutActionRevision
+--- Call AcknowledgeJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AcknowledgeJobInput
+-- @return response
+-- @return error_message
+function M.AcknowledgeJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AcknowledgeJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutActionRevision asynchronously, invoking a callback when done
 -- @param PutActionRevisionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutActionRevisionAsync(PutActionRevisionInput, cb)
@@ -4554,7 +4736,21 @@ function M.PutActionRevisionAsync(PutActionRevisionInput, cb)
 	end
 end
 
---- ListPipelines
+--- Call PutActionRevision synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutActionRevisionInput
+-- @return response
+-- @return error_message
+function M.PutActionRevisionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutActionRevisionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListPipelines asynchronously, invoking a callback when done
 -- @param ListPipelinesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListPipelinesAsync(ListPipelinesInput, cb)
@@ -4572,7 +4768,21 @@ function M.ListPipelinesAsync(ListPipelinesInput, cb)
 	end
 end
 
---- StartPipelineExecution
+--- Call ListPipelines synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListPipelinesInput
+-- @return response
+-- @return error_message
+function M.ListPipelinesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListPipelinesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartPipelineExecution asynchronously, invoking a callback when done
 -- @param StartPipelineExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartPipelineExecutionAsync(StartPipelineExecutionInput, cb)
@@ -4590,7 +4800,21 @@ function M.StartPipelineExecutionAsync(StartPipelineExecutionInput, cb)
 	end
 end
 
---- PutApprovalResult
+--- Call StartPipelineExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartPipelineExecutionInput
+-- @return response
+-- @return error_message
+function M.StartPipelineExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartPipelineExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutApprovalResult asynchronously, invoking a callback when done
 -- @param PutApprovalResultInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutApprovalResultAsync(PutApprovalResultInput, cb)
@@ -4608,7 +4832,21 @@ function M.PutApprovalResultAsync(PutApprovalResultInput, cb)
 	end
 end
 
---- PutThirdPartyJobFailureResult
+--- Call PutApprovalResult synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutApprovalResultInput
+-- @return response
+-- @return error_message
+function M.PutApprovalResultSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutApprovalResultAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutThirdPartyJobFailureResult asynchronously, invoking a callback when done
 -- @param PutThirdPartyJobFailureResultInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutThirdPartyJobFailureResultAsync(PutThirdPartyJobFailureResultInput, cb)
@@ -4626,7 +4864,21 @@ function M.PutThirdPartyJobFailureResultAsync(PutThirdPartyJobFailureResultInput
 	end
 end
 
---- PollForJobs
+--- Call PutThirdPartyJobFailureResult synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutThirdPartyJobFailureResultInput
+-- @return response
+-- @return error_message
+function M.PutThirdPartyJobFailureResultSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutThirdPartyJobFailureResultAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PollForJobs asynchronously, invoking a callback when done
 -- @param PollForJobsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PollForJobsAsync(PollForJobsInput, cb)
@@ -4644,7 +4896,21 @@ function M.PollForJobsAsync(PollForJobsInput, cb)
 	end
 end
 
---- GetPipelineState
+--- Call PollForJobs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PollForJobsInput
+-- @return response
+-- @return error_message
+function M.PollForJobsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PollForJobsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetPipelineState asynchronously, invoking a callback when done
 -- @param GetPipelineStateInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetPipelineStateAsync(GetPipelineStateInput, cb)
@@ -4662,7 +4928,21 @@ function M.GetPipelineStateAsync(GetPipelineStateInput, cb)
 	end
 end
 
---- CreateCustomActionType
+--- Call GetPipelineState synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetPipelineStateInput
+-- @return response
+-- @return error_message
+function M.GetPipelineStateSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetPipelineStateAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCustomActionType asynchronously, invoking a callback when done
 -- @param CreateCustomActionTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCustomActionTypeAsync(CreateCustomActionTypeInput, cb)
@@ -4680,7 +4960,21 @@ function M.CreateCustomActionTypeAsync(CreateCustomActionTypeInput, cb)
 	end
 end
 
---- CreatePipeline
+--- Call CreateCustomActionType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCustomActionTypeInput
+-- @return response
+-- @return error_message
+function M.CreateCustomActionTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCustomActionTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreatePipeline asynchronously, invoking a callback when done
 -- @param CreatePipelineInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreatePipelineAsync(CreatePipelineInput, cb)
@@ -4698,7 +4992,21 @@ function M.CreatePipelineAsync(CreatePipelineInput, cb)
 	end
 end
 
---- GetJobDetails
+--- Call CreatePipeline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreatePipelineInput
+-- @return response
+-- @return error_message
+function M.CreatePipelineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreatePipelineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetJobDetails asynchronously, invoking a callback when done
 -- @param GetJobDetailsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetJobDetailsAsync(GetJobDetailsInput, cb)
@@ -4716,7 +5024,21 @@ function M.GetJobDetailsAsync(GetJobDetailsInput, cb)
 	end
 end
 
---- GetPipeline
+--- Call GetJobDetails synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetJobDetailsInput
+-- @return response
+-- @return error_message
+function M.GetJobDetailsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetJobDetailsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetPipeline asynchronously, invoking a callback when done
 -- @param GetPipelineInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetPipelineAsync(GetPipelineInput, cb)
@@ -4734,7 +5056,21 @@ function M.GetPipelineAsync(GetPipelineInput, cb)
 	end
 end
 
---- DeleteCustomActionType
+--- Call GetPipeline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetPipelineInput
+-- @return response
+-- @return error_message
+function M.GetPipelineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetPipelineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCustomActionType asynchronously, invoking a callback when done
 -- @param DeleteCustomActionTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteCustomActionTypeAsync(DeleteCustomActionTypeInput, cb)
@@ -4752,7 +5088,21 @@ function M.DeleteCustomActionTypeAsync(DeleteCustomActionTypeInput, cb)
 	end
 end
 
---- ListPipelineExecutions
+--- Call DeleteCustomActionType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCustomActionTypeInput
+-- @return response
+-- @return error_message
+function M.DeleteCustomActionTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCustomActionTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListPipelineExecutions asynchronously, invoking a callback when done
 -- @param ListPipelineExecutionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListPipelineExecutionsAsync(ListPipelineExecutionsInput, cb)
@@ -4770,7 +5120,21 @@ function M.ListPipelineExecutionsAsync(ListPipelineExecutionsInput, cb)
 	end
 end
 
---- DisableStageTransition
+--- Call ListPipelineExecutions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListPipelineExecutionsInput
+-- @return response
+-- @return error_message
+function M.ListPipelineExecutionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListPipelineExecutionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableStageTransition asynchronously, invoking a callback when done
 -- @param DisableStageTransitionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableStageTransitionAsync(DisableStageTransitionInput, cb)
@@ -4786,6 +5150,20 @@ function M.DisableStageTransitionAsync(DisableStageTransitionInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DisableStageTransition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableStageTransitionInput
+-- @return response
+-- @return error_message
+function M.DisableStageTransitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableStageTransitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

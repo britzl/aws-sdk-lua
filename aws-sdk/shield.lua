@@ -1307,7 +1307,7 @@ end
 --
 -- OPERATIONS
 --
---- DeleteProtection
+--- Call DeleteProtection asynchronously, invoking a callback when done
 -- @param DeleteProtectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteProtectionAsync(DeleteProtectionRequest, cb)
@@ -1325,7 +1325,21 @@ function M.DeleteProtectionAsync(DeleteProtectionRequest, cb)
 	end
 end
 
---- DescribeSubscription
+--- Call DeleteProtection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteProtectionRequest
+-- @return response
+-- @return error_message
+function M.DeleteProtectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteProtectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSubscription asynchronously, invoking a callback when done
 -- @param DescribeSubscriptionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeSubscriptionAsync(DescribeSubscriptionRequest, cb)
@@ -1343,7 +1357,21 @@ function M.DescribeSubscriptionAsync(DescribeSubscriptionRequest, cb)
 	end
 end
 
---- CreateSubscription
+--- Call DescribeSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSubscriptionRequest
+-- @return response
+-- @return error_message
+function M.DescribeSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSubscription asynchronously, invoking a callback when done
 -- @param CreateSubscriptionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSubscriptionAsync(CreateSubscriptionRequest, cb)
@@ -1361,7 +1389,21 @@ function M.CreateSubscriptionAsync(CreateSubscriptionRequest, cb)
 	end
 end
 
---- DescribeProtection
+--- Call CreateSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSubscriptionRequest
+-- @return response
+-- @return error_message
+function M.CreateSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeProtection asynchronously, invoking a callback when done
 -- @param DescribeProtectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeProtectionAsync(DescribeProtectionRequest, cb)
@@ -1379,7 +1421,21 @@ function M.DescribeProtectionAsync(DescribeProtectionRequest, cb)
 	end
 end
 
---- DescribeAttack
+--- Call DescribeProtection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeProtectionRequest
+-- @return response
+-- @return error_message
+function M.DescribeProtectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeProtectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAttack asynchronously, invoking a callback when done
 -- @param DescribeAttackRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAttackAsync(DescribeAttackRequest, cb)
@@ -1397,7 +1453,21 @@ function M.DescribeAttackAsync(DescribeAttackRequest, cb)
 	end
 end
 
---- DeleteSubscription
+--- Call DescribeAttack synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAttackRequest
+-- @return response
+-- @return error_message
+function M.DescribeAttackSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAttackAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSubscription asynchronously, invoking a callback when done
 -- @param DeleteSubscriptionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSubscriptionAsync(DeleteSubscriptionRequest, cb)
@@ -1415,7 +1485,21 @@ function M.DeleteSubscriptionAsync(DeleteSubscriptionRequest, cb)
 	end
 end
 
---- ListProtections
+--- Call DeleteSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSubscriptionRequest
+-- @return response
+-- @return error_message
+function M.DeleteSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListProtections asynchronously, invoking a callback when done
 -- @param ListProtectionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListProtectionsAsync(ListProtectionsRequest, cb)
@@ -1433,7 +1517,21 @@ function M.ListProtectionsAsync(ListProtectionsRequest, cb)
 	end
 end
 
---- ListAttacks
+--- Call ListProtections synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListProtectionsRequest
+-- @return response
+-- @return error_message
+function M.ListProtectionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListProtectionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListAttacks asynchronously, invoking a callback when done
 -- @param ListAttacksRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListAttacksAsync(ListAttacksRequest, cb)
@@ -1451,7 +1549,21 @@ function M.ListAttacksAsync(ListAttacksRequest, cb)
 	end
 end
 
---- CreateProtection
+--- Call ListAttacks synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListAttacksRequest
+-- @return response
+-- @return error_message
+function M.ListAttacksSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListAttacksAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateProtection asynchronously, invoking a callback when done
 -- @param CreateProtectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateProtectionAsync(CreateProtectionRequest, cb)
@@ -1467,6 +1579,20 @@ function M.CreateProtectionAsync(CreateProtectionRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call CreateProtection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateProtectionRequest
+-- @return response
+-- @return error_message
+function M.CreateProtectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateProtectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

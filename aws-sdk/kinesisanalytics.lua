@@ -3019,7 +3019,7 @@ end
 --
 -- OPERATIONS
 --
---- DiscoverInputSchema
+--- Call DiscoverInputSchema asynchronously, invoking a callback when done
 -- @param DiscoverInputSchemaRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DiscoverInputSchemaAsync(DiscoverInputSchemaRequest, cb)
@@ -3037,7 +3037,21 @@ function M.DiscoverInputSchemaAsync(DiscoverInputSchemaRequest, cb)
 	end
 end
 
---- DeleteApplicationOutput
+--- Call DiscoverInputSchema synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DiscoverInputSchemaRequest
+-- @return response
+-- @return error_message
+function M.DiscoverInputSchemaSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DiscoverInputSchemaAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteApplicationOutput asynchronously, invoking a callback when done
 -- @param DeleteApplicationOutputRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, cb)
@@ -3055,7 +3069,21 @@ function M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, cb)
 	end
 end
 
---- AddApplicationReferenceDataSource
+--- Call DeleteApplicationOutput synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteApplicationOutputRequest
+-- @return response
+-- @return error_message
+function M.DeleteApplicationOutputSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteApplicationOutputAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddApplicationReferenceDataSource asynchronously, invoking a callback when done
 -- @param AddApplicationReferenceDataSourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddApplicationReferenceDataSourceAsync(AddApplicationReferenceDataSourceRequest, cb)
@@ -3073,7 +3101,21 @@ function M.AddApplicationReferenceDataSourceAsync(AddApplicationReferenceDataSou
 	end
 end
 
---- ListApplications
+--- Call AddApplicationReferenceDataSource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddApplicationReferenceDataSourceRequest
+-- @return response
+-- @return error_message
+function M.AddApplicationReferenceDataSourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddApplicationReferenceDataSourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListApplications asynchronously, invoking a callback when done
 -- @param ListApplicationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListApplicationsAsync(ListApplicationsRequest, cb)
@@ -3091,7 +3133,21 @@ function M.ListApplicationsAsync(ListApplicationsRequest, cb)
 	end
 end
 
---- UpdateApplication
+--- Call ListApplications synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListApplicationsRequest
+-- @return response
+-- @return error_message
+function M.ListApplicationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListApplicationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateApplication asynchronously, invoking a callback when done
 -- @param UpdateApplicationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
@@ -3109,7 +3165,21 @@ function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
 	end
 end
 
---- StopApplication
+--- Call UpdateApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateApplicationRequest
+-- @return response
+-- @return error_message
+function M.UpdateApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopApplication asynchronously, invoking a callback when done
 -- @param StopApplicationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopApplicationAsync(StopApplicationRequest, cb)
@@ -3127,7 +3197,21 @@ function M.StopApplicationAsync(StopApplicationRequest, cb)
 	end
 end
 
---- AddApplicationOutput
+--- Call StopApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopApplicationRequest
+-- @return response
+-- @return error_message
+function M.StopApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddApplicationOutput asynchronously, invoking a callback when done
 -- @param AddApplicationOutputRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddApplicationOutputAsync(AddApplicationOutputRequest, cb)
@@ -3145,7 +3229,21 @@ function M.AddApplicationOutputAsync(AddApplicationOutputRequest, cb)
 	end
 end
 
---- DeleteApplication
+--- Call AddApplicationOutput synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddApplicationOutputRequest
+-- @return response
+-- @return error_message
+function M.AddApplicationOutputSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddApplicationOutputAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteApplication asynchronously, invoking a callback when done
 -- @param DeleteApplicationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteApplicationAsync(DeleteApplicationRequest, cb)
@@ -3163,7 +3261,21 @@ function M.DeleteApplicationAsync(DeleteApplicationRequest, cb)
 	end
 end
 
---- AddApplicationCloudWatchLoggingOption
+--- Call DeleteApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteApplicationRequest
+-- @return response
+-- @return error_message
+function M.DeleteApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddApplicationCloudWatchLoggingOption asynchronously, invoking a callback when done
 -- @param AddApplicationCloudWatchLoggingOptionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddApplicationCloudWatchLoggingOptionAsync(AddApplicationCloudWatchLoggingOptionRequest, cb)
@@ -3181,7 +3293,21 @@ function M.AddApplicationCloudWatchLoggingOptionAsync(AddApplicationCloudWatchLo
 	end
 end
 
---- DeleteApplicationCloudWatchLoggingOption
+--- Call AddApplicationCloudWatchLoggingOption synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddApplicationCloudWatchLoggingOptionRequest
+-- @return response
+-- @return error_message
+function M.AddApplicationCloudWatchLoggingOptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddApplicationCloudWatchLoggingOptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteApplicationCloudWatchLoggingOption asynchronously, invoking a callback when done
 -- @param DeleteApplicationCloudWatchLoggingOptionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteApplicationCloudWatchLoggingOptionAsync(DeleteApplicationCloudWatchLoggingOptionRequest, cb)
@@ -3199,7 +3325,21 @@ function M.DeleteApplicationCloudWatchLoggingOptionAsync(DeleteApplicationCloudW
 	end
 end
 
---- AddApplicationInput
+--- Call DeleteApplicationCloudWatchLoggingOption synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteApplicationCloudWatchLoggingOptionRequest
+-- @return response
+-- @return error_message
+function M.DeleteApplicationCloudWatchLoggingOptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteApplicationCloudWatchLoggingOptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddApplicationInput asynchronously, invoking a callback when done
 -- @param AddApplicationInputRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddApplicationInputAsync(AddApplicationInputRequest, cb)
@@ -3217,7 +3357,21 @@ function M.AddApplicationInputAsync(AddApplicationInputRequest, cb)
 	end
 end
 
---- DescribeApplication
+--- Call AddApplicationInput synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddApplicationInputRequest
+-- @return response
+-- @return error_message
+function M.AddApplicationInputSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddApplicationInputAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeApplication asynchronously, invoking a callback when done
 -- @param DescribeApplicationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeApplicationAsync(DescribeApplicationRequest, cb)
@@ -3235,7 +3389,21 @@ function M.DescribeApplicationAsync(DescribeApplicationRequest, cb)
 	end
 end
 
---- DeleteApplicationReferenceDataSource
+--- Call DescribeApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeApplicationRequest
+-- @return response
+-- @return error_message
+function M.DescribeApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteApplicationReferenceDataSource asynchronously, invoking a callback when done
 -- @param DeleteApplicationReferenceDataSourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteApplicationReferenceDataSourceAsync(DeleteApplicationReferenceDataSourceRequest, cb)
@@ -3253,7 +3421,21 @@ function M.DeleteApplicationReferenceDataSourceAsync(DeleteApplicationReferenceD
 	end
 end
 
---- StartApplication
+--- Call DeleteApplicationReferenceDataSource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteApplicationReferenceDataSourceRequest
+-- @return response
+-- @return error_message
+function M.DeleteApplicationReferenceDataSourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteApplicationReferenceDataSourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartApplication asynchronously, invoking a callback when done
 -- @param StartApplicationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartApplicationAsync(StartApplicationRequest, cb)
@@ -3271,7 +3453,21 @@ function M.StartApplicationAsync(StartApplicationRequest, cb)
 	end
 end
 
---- CreateApplication
+--- Call StartApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartApplicationRequest
+-- @return response
+-- @return error_message
+function M.StartApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateApplication asynchronously, invoking a callback when done
 -- @param CreateApplicationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateApplicationAsync(CreateApplicationRequest, cb)
@@ -3287,6 +3483,20 @@ function M.CreateApplicationAsync(CreateApplicationRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call CreateApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateApplicationRequest
+-- @return response
+-- @return error_message
+function M.CreateApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

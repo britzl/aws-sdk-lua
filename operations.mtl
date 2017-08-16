@@ -229,7 +229,7 @@ end
 -- OPERATIONS
 --
 {{#operations}}
---- {{name}}{{#input}}
+--- Call {{name}} asynchronously, invoking a callback when done{{#input}}
 -- @param {{shape}}{{/input}}
 -- @param cb Callback function accepting two args: response, error_message
 function M.{{name}}Async({{#input}}{{shape}}, {{/input}}cb){{#input}}
@@ -245,6 +245,20 @@ function M.{{name}}Async({{#input}}{{shape}}, {{/input}}cb){{#input}}
 	else
 		cb(false, err)
 	end
+end
+
+--- Call {{name}} synchronously, returning when done
+-- This assumes that the function is called from within a coroutine{{#input}}
+-- @param {{shape}}{{/input}}
+-- @return response
+-- @return error_message
+function M.{{name}}Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.{{name}}Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 {{/operations}}

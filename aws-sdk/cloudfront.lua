@@ -5323,7 +5323,7 @@ end
 --
 -- OPERATIONS
 --
---- UpdateStreamingDistribution2017_03_25
+--- Call UpdateStreamingDistribution2017_03_25 asynchronously, invoking a callback when done
 -- @param UpdateStreamingDistributionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateStreamingDistribution2017_03_25Async(UpdateStreamingDistributionRequest, cb)
@@ -5341,7 +5341,21 @@ function M.UpdateStreamingDistribution2017_03_25Async(UpdateStreamingDistributio
 	end
 end
 
---- ListDistributions2017_03_25
+--- Call UpdateStreamingDistribution2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateStreamingDistributionRequest
+-- @return response
+-- @return error_message
+function M.UpdateStreamingDistribution2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateStreamingDistribution2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDistributions2017_03_25 asynchronously, invoking a callback when done
 -- @param ListDistributionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDistributions2017_03_25Async(ListDistributionsRequest, cb)
@@ -5359,7 +5373,21 @@ function M.ListDistributions2017_03_25Async(ListDistributionsRequest, cb)
 	end
 end
 
---- GetStreamingDistribution2017_03_25
+--- Call ListDistributions2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDistributionsRequest
+-- @return response
+-- @return error_message
+function M.ListDistributions2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDistributions2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetStreamingDistribution2017_03_25 asynchronously, invoking a callback when done
 -- @param GetStreamingDistributionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetStreamingDistribution2017_03_25Async(GetStreamingDistributionRequest, cb)
@@ -5377,7 +5405,21 @@ function M.GetStreamingDistribution2017_03_25Async(GetStreamingDistributionReque
 	end
 end
 
---- CreateStreamingDistributionWithTags2017_03_25
+--- Call GetStreamingDistribution2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetStreamingDistributionRequest
+-- @return response
+-- @return error_message
+function M.GetStreamingDistribution2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetStreamingDistribution2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateStreamingDistributionWithTags2017_03_25 asynchronously, invoking a callback when done
 -- @param CreateStreamingDistributionWithTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateStreamingDistributionWithTags2017_03_25Async(CreateStreamingDistributionWithTagsRequest, cb)
@@ -5395,7 +5437,21 @@ function M.CreateStreamingDistributionWithTags2017_03_25Async(CreateStreamingDis
 	end
 end
 
---- CreateDistribution2017_03_25
+--- Call CreateStreamingDistributionWithTags2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateStreamingDistributionWithTagsRequest
+-- @return response
+-- @return error_message
+function M.CreateStreamingDistributionWithTags2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateStreamingDistributionWithTags2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDistribution2017_03_25 asynchronously, invoking a callback when done
 -- @param CreateDistributionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDistribution2017_03_25Async(CreateDistributionRequest, cb)
@@ -5413,7 +5469,21 @@ function M.CreateDistribution2017_03_25Async(CreateDistributionRequest, cb)
 	end
 end
 
---- ListInvalidations2017_03_25
+--- Call CreateDistribution2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDistributionRequest
+-- @return response
+-- @return error_message
+function M.CreateDistribution2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDistribution2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListInvalidations2017_03_25 asynchronously, invoking a callback when done
 -- @param ListInvalidationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListInvalidations2017_03_25Async(ListInvalidationsRequest, cb)
@@ -5431,7 +5501,21 @@ function M.ListInvalidations2017_03_25Async(ListInvalidationsRequest, cb)
 	end
 end
 
---- ListStreamingDistributions2017_03_25
+--- Call ListInvalidations2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListInvalidationsRequest
+-- @return response
+-- @return error_message
+function M.ListInvalidations2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListInvalidations2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListStreamingDistributions2017_03_25 asynchronously, invoking a callback when done
 -- @param ListStreamingDistributionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListStreamingDistributions2017_03_25Async(ListStreamingDistributionsRequest, cb)
@@ -5449,7 +5533,21 @@ function M.ListStreamingDistributions2017_03_25Async(ListStreamingDistributionsR
 	end
 end
 
---- UpdateDistribution2017_03_25
+--- Call ListStreamingDistributions2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListStreamingDistributionsRequest
+-- @return response
+-- @return error_message
+function M.ListStreamingDistributions2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListStreamingDistributions2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDistribution2017_03_25 asynchronously, invoking a callback when done
 -- @param UpdateDistributionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDistribution2017_03_25Async(UpdateDistributionRequest, cb)
@@ -5467,7 +5565,21 @@ function M.UpdateDistribution2017_03_25Async(UpdateDistributionRequest, cb)
 	end
 end
 
---- CreateStreamingDistribution2017_03_25
+--- Call UpdateDistribution2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDistributionRequest
+-- @return response
+-- @return error_message
+function M.UpdateDistribution2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDistribution2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateStreamingDistribution2017_03_25 asynchronously, invoking a callback when done
 -- @param CreateStreamingDistributionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateStreamingDistribution2017_03_25Async(CreateStreamingDistributionRequest, cb)
@@ -5485,7 +5597,21 @@ function M.CreateStreamingDistribution2017_03_25Async(CreateStreamingDistributio
 	end
 end
 
---- DeleteDistribution2017_03_25
+--- Call CreateStreamingDistribution2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateStreamingDistributionRequest
+-- @return response
+-- @return error_message
+function M.CreateStreamingDistribution2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateStreamingDistribution2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDistribution2017_03_25 asynchronously, invoking a callback when done
 -- @param DeleteDistributionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDistribution2017_03_25Async(DeleteDistributionRequest, cb)
@@ -5503,7 +5629,21 @@ function M.DeleteDistribution2017_03_25Async(DeleteDistributionRequest, cb)
 	end
 end
 
---- TagResource2017_03_25
+--- Call DeleteDistribution2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDistributionRequest
+-- @return response
+-- @return error_message
+function M.DeleteDistribution2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDistribution2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagResource2017_03_25 asynchronously, invoking a callback when done
 -- @param TagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TagResource2017_03_25Async(TagResourceRequest, cb)
@@ -5521,7 +5661,21 @@ function M.TagResource2017_03_25Async(TagResourceRequest, cb)
 	end
 end
 
---- GetInvalidation2017_03_25
+--- Call TagResource2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourceRequest
+-- @return response
+-- @return error_message
+function M.TagResource2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResource2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInvalidation2017_03_25 asynchronously, invoking a callback when done
 -- @param GetInvalidationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInvalidation2017_03_25Async(GetInvalidationRequest, cb)
@@ -5539,7 +5693,21 @@ function M.GetInvalidation2017_03_25Async(GetInvalidationRequest, cb)
 	end
 end
 
---- DeleteCloudFrontOriginAccessIdentity2017_03_25
+--- Call GetInvalidation2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInvalidationRequest
+-- @return response
+-- @return error_message
+function M.GetInvalidation2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInvalidation2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCloudFrontOriginAccessIdentity2017_03_25 asynchronously, invoking a callback when done
 -- @param DeleteCloudFrontOriginAccessIdentityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteCloudFrontOriginAccessIdentity2017_03_25Async(DeleteCloudFrontOriginAccessIdentityRequest, cb)
@@ -5557,7 +5725,21 @@ function M.DeleteCloudFrontOriginAccessIdentity2017_03_25Async(DeleteCloudFrontO
 	end
 end
 
---- ListCloudFrontOriginAccessIdentities2017_03_25
+--- Call DeleteCloudFrontOriginAccessIdentity2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCloudFrontOriginAccessIdentityRequest
+-- @return response
+-- @return error_message
+function M.DeleteCloudFrontOriginAccessIdentity2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCloudFrontOriginAccessIdentity2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCloudFrontOriginAccessIdentities2017_03_25 asynchronously, invoking a callback when done
 -- @param ListCloudFrontOriginAccessIdentitiesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListCloudFrontOriginAccessIdentities2017_03_25Async(ListCloudFrontOriginAccessIdentitiesRequest, cb)
@@ -5575,7 +5757,21 @@ function M.ListCloudFrontOriginAccessIdentities2017_03_25Async(ListCloudFrontOri
 	end
 end
 
---- GetStreamingDistributionConfig2017_03_25
+--- Call ListCloudFrontOriginAccessIdentities2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCloudFrontOriginAccessIdentitiesRequest
+-- @return response
+-- @return error_message
+function M.ListCloudFrontOriginAccessIdentities2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCloudFrontOriginAccessIdentities2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetStreamingDistributionConfig2017_03_25 asynchronously, invoking a callback when done
 -- @param GetStreamingDistributionConfigRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetStreamingDistributionConfig2017_03_25Async(GetStreamingDistributionConfigRequest, cb)
@@ -5593,7 +5789,21 @@ function M.GetStreamingDistributionConfig2017_03_25Async(GetStreamingDistributio
 	end
 end
 
---- GetCloudFrontOriginAccessIdentity2017_03_25
+--- Call GetStreamingDistributionConfig2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetStreamingDistributionConfigRequest
+-- @return response
+-- @return error_message
+function M.GetStreamingDistributionConfig2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetStreamingDistributionConfig2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCloudFrontOriginAccessIdentity2017_03_25 asynchronously, invoking a callback when done
 -- @param GetCloudFrontOriginAccessIdentityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCloudFrontOriginAccessIdentity2017_03_25Async(GetCloudFrontOriginAccessIdentityRequest, cb)
@@ -5611,7 +5821,21 @@ function M.GetCloudFrontOriginAccessIdentity2017_03_25Async(GetCloudFrontOriginA
 	end
 end
 
---- GetDistribution2017_03_25
+--- Call GetCloudFrontOriginAccessIdentity2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCloudFrontOriginAccessIdentityRequest
+-- @return response
+-- @return error_message
+function M.GetCloudFrontOriginAccessIdentity2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCloudFrontOriginAccessIdentity2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDistribution2017_03_25 asynchronously, invoking a callback when done
 -- @param GetDistributionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDistribution2017_03_25Async(GetDistributionRequest, cb)
@@ -5629,7 +5853,21 @@ function M.GetDistribution2017_03_25Async(GetDistributionRequest, cb)
 	end
 end
 
---- GetCloudFrontOriginAccessIdentityConfig2017_03_25
+--- Call GetDistribution2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDistributionRequest
+-- @return response
+-- @return error_message
+function M.GetDistribution2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDistribution2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCloudFrontOriginAccessIdentityConfig2017_03_25 asynchronously, invoking a callback when done
 -- @param GetCloudFrontOriginAccessIdentityConfigRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Async(GetCloudFrontOriginAccessIdentityConfigRequest, cb)
@@ -5647,7 +5885,21 @@ function M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Async(GetCloudFrontO
 	end
 end
 
---- GetDistributionConfig2017_03_25
+--- Call GetCloudFrontOriginAccessIdentityConfig2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCloudFrontOriginAccessIdentityConfigRequest
+-- @return response
+-- @return error_message
+function M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDistributionConfig2017_03_25 asynchronously, invoking a callback when done
 -- @param GetDistributionConfigRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDistributionConfig2017_03_25Async(GetDistributionConfigRequest, cb)
@@ -5665,7 +5917,21 @@ function M.GetDistributionConfig2017_03_25Async(GetDistributionConfigRequest, cb
 	end
 end
 
---- CreateCloudFrontOriginAccessIdentity2017_03_25
+--- Call GetDistributionConfig2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDistributionConfigRequest
+-- @return response
+-- @return error_message
+function M.GetDistributionConfig2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDistributionConfig2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCloudFrontOriginAccessIdentity2017_03_25 asynchronously, invoking a callback when done
 -- @param CreateCloudFrontOriginAccessIdentityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCloudFrontOriginAccessIdentity2017_03_25Async(CreateCloudFrontOriginAccessIdentityRequest, cb)
@@ -5683,7 +5949,21 @@ function M.CreateCloudFrontOriginAccessIdentity2017_03_25Async(CreateCloudFrontO
 	end
 end
 
---- DeleteStreamingDistribution2017_03_25
+--- Call CreateCloudFrontOriginAccessIdentity2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCloudFrontOriginAccessIdentityRequest
+-- @return response
+-- @return error_message
+function M.CreateCloudFrontOriginAccessIdentity2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCloudFrontOriginAccessIdentity2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteStreamingDistribution2017_03_25 asynchronously, invoking a callback when done
 -- @param DeleteStreamingDistributionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteStreamingDistribution2017_03_25Async(DeleteStreamingDistributionRequest, cb)
@@ -5701,7 +5981,21 @@ function M.DeleteStreamingDistribution2017_03_25Async(DeleteStreamingDistributio
 	end
 end
 
---- CreateDistributionWithTags2017_03_25
+--- Call DeleteStreamingDistribution2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteStreamingDistributionRequest
+-- @return response
+-- @return error_message
+function M.DeleteStreamingDistribution2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteStreamingDistribution2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDistributionWithTags2017_03_25 asynchronously, invoking a callback when done
 -- @param CreateDistributionWithTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDistributionWithTags2017_03_25Async(CreateDistributionWithTagsRequest, cb)
@@ -5719,7 +6013,21 @@ function M.CreateDistributionWithTags2017_03_25Async(CreateDistributionWithTagsR
 	end
 end
 
---- UpdateCloudFrontOriginAccessIdentity2017_03_25
+--- Call CreateDistributionWithTags2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDistributionWithTagsRequest
+-- @return response
+-- @return error_message
+function M.CreateDistributionWithTags2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDistributionWithTags2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateCloudFrontOriginAccessIdentity2017_03_25 asynchronously, invoking a callback when done
 -- @param UpdateCloudFrontOriginAccessIdentityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateCloudFrontOriginAccessIdentity2017_03_25Async(UpdateCloudFrontOriginAccessIdentityRequest, cb)
@@ -5737,7 +6045,21 @@ function M.UpdateCloudFrontOriginAccessIdentity2017_03_25Async(UpdateCloudFrontO
 	end
 end
 
---- UntagResource2017_03_25
+--- Call UpdateCloudFrontOriginAccessIdentity2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateCloudFrontOriginAccessIdentityRequest
+-- @return response
+-- @return error_message
+function M.UpdateCloudFrontOriginAccessIdentity2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateCloudFrontOriginAccessIdentity2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UntagResource2017_03_25 asynchronously, invoking a callback when done
 -- @param UntagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UntagResource2017_03_25Async(UntagResourceRequest, cb)
@@ -5755,7 +6077,21 @@ function M.UntagResource2017_03_25Async(UntagResourceRequest, cb)
 	end
 end
 
---- CreateInvalidation2017_03_25
+--- Call UntagResource2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagResourceRequest
+-- @return response
+-- @return error_message
+function M.UntagResource2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagResource2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateInvalidation2017_03_25 asynchronously, invoking a callback when done
 -- @param CreateInvalidationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateInvalidation2017_03_25Async(CreateInvalidationRequest, cb)
@@ -5773,7 +6109,21 @@ function M.CreateInvalidation2017_03_25Async(CreateInvalidationRequest, cb)
 	end
 end
 
---- ListDistributionsByWebACLId2017_03_25
+--- Call CreateInvalidation2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateInvalidationRequest
+-- @return response
+-- @return error_message
+function M.CreateInvalidation2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateInvalidation2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDistributionsByWebACLId2017_03_25 asynchronously, invoking a callback when done
 -- @param ListDistributionsByWebACLIdRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDistributionsByWebACLId2017_03_25Async(ListDistributionsByWebACLIdRequest, cb)
@@ -5791,7 +6141,21 @@ function M.ListDistributionsByWebACLId2017_03_25Async(ListDistributionsByWebACLI
 	end
 end
 
---- ListTagsForResource2017_03_25
+--- Call ListDistributionsByWebACLId2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDistributionsByWebACLIdRequest
+-- @return response
+-- @return error_message
+function M.ListDistributionsByWebACLId2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDistributionsByWebACLId2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForResource2017_03_25 asynchronously, invoking a callback when done
 -- @param ListTagsForResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsForResource2017_03_25Async(ListTagsForResourceRequest, cb)
@@ -5807,6 +6171,20 @@ function M.ListTagsForResource2017_03_25Async(ListTagsForResourceRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call ListTagsForResource2017_03_25 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForResourceRequest
+-- @return response
+-- @return error_message
+function M.ListTagsForResource2017_03_25Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForResource2017_03_25Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

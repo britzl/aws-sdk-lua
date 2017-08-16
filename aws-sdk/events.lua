@@ -1624,7 +1624,7 @@ end
 --
 -- OPERATIONS
 --
---- PutEvents
+--- Call PutEvents asynchronously, invoking a callback when done
 -- @param PutEventsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutEventsAsync(PutEventsRequest, cb)
@@ -1642,7 +1642,21 @@ function M.PutEventsAsync(PutEventsRequest, cb)
 	end
 end
 
---- DescribeRule
+--- Call PutEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutEventsRequest
+-- @return response
+-- @return error_message
+function M.PutEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeRule asynchronously, invoking a callback when done
 -- @param DescribeRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeRuleAsync(DescribeRuleRequest, cb)
@@ -1660,7 +1674,21 @@ function M.DescribeRuleAsync(DescribeRuleRequest, cb)
 	end
 end
 
---- ListTargetsByRule
+--- Call DescribeRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeRuleRequest
+-- @return response
+-- @return error_message
+function M.DescribeRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTargetsByRule asynchronously, invoking a callback when done
 -- @param ListTargetsByRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTargetsByRuleAsync(ListTargetsByRuleRequest, cb)
@@ -1678,7 +1706,21 @@ function M.ListTargetsByRuleAsync(ListTargetsByRuleRequest, cb)
 	end
 end
 
---- PutTargets
+--- Call ListTargetsByRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTargetsByRuleRequest
+-- @return response
+-- @return error_message
+function M.ListTargetsByRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTargetsByRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutTargets asynchronously, invoking a callback when done
 -- @param PutTargetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutTargetsAsync(PutTargetsRequest, cb)
@@ -1696,7 +1738,21 @@ function M.PutTargetsAsync(PutTargetsRequest, cb)
 	end
 end
 
---- DeleteRule
+--- Call PutTargets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutTargetsRequest
+-- @return response
+-- @return error_message
+function M.PutTargetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutTargetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRule asynchronously, invoking a callback when done
 -- @param DeleteRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteRuleAsync(DeleteRuleRequest, cb)
@@ -1714,7 +1770,21 @@ function M.DeleteRuleAsync(DeleteRuleRequest, cb)
 	end
 end
 
---- ListRuleNamesByTarget
+--- Call DeleteRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRuleRequest
+-- @return response
+-- @return error_message
+function M.DeleteRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRuleNamesByTarget asynchronously, invoking a callback when done
 -- @param ListRuleNamesByTargetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListRuleNamesByTargetAsync(ListRuleNamesByTargetRequest, cb)
@@ -1732,7 +1802,21 @@ function M.ListRuleNamesByTargetAsync(ListRuleNamesByTargetRequest, cb)
 	end
 end
 
---- EnableRule
+--- Call ListRuleNamesByTarget synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRuleNamesByTargetRequest
+-- @return response
+-- @return error_message
+function M.ListRuleNamesByTargetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRuleNamesByTargetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableRule asynchronously, invoking a callback when done
 -- @param EnableRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableRuleAsync(EnableRuleRequest, cb)
@@ -1750,7 +1834,21 @@ function M.EnableRuleAsync(EnableRuleRequest, cb)
 	end
 end
 
---- TestEventPattern
+--- Call EnableRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableRuleRequest
+-- @return response
+-- @return error_message
+function M.EnableRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TestEventPattern asynchronously, invoking a callback when done
 -- @param TestEventPatternRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TestEventPatternAsync(TestEventPatternRequest, cb)
@@ -1768,7 +1866,21 @@ function M.TestEventPatternAsync(TestEventPatternRequest, cb)
 	end
 end
 
---- ListRules
+--- Call TestEventPattern synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TestEventPatternRequest
+-- @return response
+-- @return error_message
+function M.TestEventPatternSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TestEventPatternAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRules asynchronously, invoking a callback when done
 -- @param ListRulesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListRulesAsync(ListRulesRequest, cb)
@@ -1786,7 +1898,21 @@ function M.ListRulesAsync(ListRulesRequest, cb)
 	end
 end
 
---- DisableRule
+--- Call ListRules synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRulesRequest
+-- @return response
+-- @return error_message
+function M.ListRulesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRulesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableRule asynchronously, invoking a callback when done
 -- @param DisableRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableRuleAsync(DisableRuleRequest, cb)
@@ -1804,7 +1930,21 @@ function M.DisableRuleAsync(DisableRuleRequest, cb)
 	end
 end
 
---- PutRule
+--- Call DisableRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableRuleRequest
+-- @return response
+-- @return error_message
+function M.DisableRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutRule asynchronously, invoking a callback when done
 -- @param PutRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutRuleAsync(PutRuleRequest, cb)
@@ -1822,7 +1962,21 @@ function M.PutRuleAsync(PutRuleRequest, cb)
 	end
 end
 
---- RemoveTargets
+--- Call PutRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutRuleRequest
+-- @return response
+-- @return error_message
+function M.PutRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTargets asynchronously, invoking a callback when done
 -- @param RemoveTargetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTargetsAsync(RemoveTargetsRequest, cb)
@@ -1838,6 +1992,20 @@ function M.RemoveTargetsAsync(RemoveTargetsRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call RemoveTargets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTargetsRequest
+-- @return response
+-- @return error_message
+function M.RemoveTargetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTargetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

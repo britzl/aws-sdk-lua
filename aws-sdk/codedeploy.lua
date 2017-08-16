@@ -5780,7 +5780,7 @@ end
 --
 -- OPERATIONS
 --
---- GetDeploymentConfig
+--- Call GetDeploymentConfig asynchronously, invoking a callback when done
 -- @param GetDeploymentConfigInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeploymentConfigAsync(GetDeploymentConfigInput, cb)
@@ -5798,7 +5798,21 @@ function M.GetDeploymentConfigAsync(GetDeploymentConfigInput, cb)
 	end
 end
 
---- UpdateDeploymentGroup
+--- Call GetDeploymentConfig synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeploymentConfigInput
+-- @return response
+-- @return error_message
+function M.GetDeploymentConfigSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeploymentConfigAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDeploymentGroup asynchronously, invoking a callback when done
 -- @param UpdateDeploymentGroupInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDeploymentGroupAsync(UpdateDeploymentGroupInput, cb)
@@ -5816,7 +5830,21 @@ function M.UpdateDeploymentGroupAsync(UpdateDeploymentGroupInput, cb)
 	end
 end
 
---- BatchGetDeployments
+--- Call UpdateDeploymentGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDeploymentGroupInput
+-- @return response
+-- @return error_message
+function M.UpdateDeploymentGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDeploymentGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetDeployments asynchronously, invoking a callback when done
 -- @param BatchGetDeploymentsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetDeploymentsAsync(BatchGetDeploymentsInput, cb)
@@ -5834,7 +5862,21 @@ function M.BatchGetDeploymentsAsync(BatchGetDeploymentsInput, cb)
 	end
 end
 
---- ContinueDeployment
+--- Call BatchGetDeployments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetDeploymentsInput
+-- @return response
+-- @return error_message
+function M.BatchGetDeploymentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetDeploymentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ContinueDeployment asynchronously, invoking a callback when done
 -- @param ContinueDeploymentInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ContinueDeploymentAsync(ContinueDeploymentInput, cb)
@@ -5852,7 +5894,21 @@ function M.ContinueDeploymentAsync(ContinueDeploymentInput, cb)
 	end
 end
 
---- GetDeploymentGroup
+--- Call ContinueDeployment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ContinueDeploymentInput
+-- @return response
+-- @return error_message
+function M.ContinueDeploymentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ContinueDeploymentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDeploymentGroup asynchronously, invoking a callback when done
 -- @param GetDeploymentGroupInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeploymentGroupAsync(GetDeploymentGroupInput, cb)
@@ -5870,7 +5926,21 @@ function M.GetDeploymentGroupAsync(GetDeploymentGroupInput, cb)
 	end
 end
 
---- ListDeploymentGroups
+--- Call GetDeploymentGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeploymentGroupInput
+-- @return response
+-- @return error_message
+function M.GetDeploymentGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeploymentGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeploymentGroups asynchronously, invoking a callback when done
 -- @param ListDeploymentGroupsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeploymentGroupsAsync(ListDeploymentGroupsInput, cb)
@@ -5888,7 +5958,21 @@ function M.ListDeploymentGroupsAsync(ListDeploymentGroupsInput, cb)
 	end
 end
 
---- DeleteApplication
+--- Call ListDeploymentGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeploymentGroupsInput
+-- @return response
+-- @return error_message
+function M.ListDeploymentGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeploymentGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteApplication asynchronously, invoking a callback when done
 -- @param DeleteApplicationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteApplicationAsync(DeleteApplicationInput, cb)
@@ -5906,7 +5990,21 @@ function M.DeleteApplicationAsync(DeleteApplicationInput, cb)
 	end
 end
 
---- CreateDeployment
+--- Call DeleteApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteApplicationInput
+-- @return response
+-- @return error_message
+function M.DeleteApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDeployment asynchronously, invoking a callback when done
 -- @param CreateDeploymentInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDeploymentAsync(CreateDeploymentInput, cb)
@@ -5924,7 +6022,21 @@ function M.CreateDeploymentAsync(CreateDeploymentInput, cb)
 	end
 end
 
---- StopDeployment
+--- Call CreateDeployment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDeploymentInput
+-- @return response
+-- @return error_message
+function M.CreateDeploymentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDeploymentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopDeployment asynchronously, invoking a callback when done
 -- @param StopDeploymentInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopDeploymentAsync(StopDeploymentInput, cb)
@@ -5942,7 +6054,21 @@ function M.StopDeploymentAsync(StopDeploymentInput, cb)
 	end
 end
 
---- DeleteDeploymentConfig
+--- Call StopDeployment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopDeploymentInput
+-- @return response
+-- @return error_message
+function M.StopDeploymentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopDeploymentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDeploymentConfig asynchronously, invoking a callback when done
 -- @param DeleteDeploymentConfigInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDeploymentConfigAsync(DeleteDeploymentConfigInput, cb)
@@ -5960,7 +6086,21 @@ function M.DeleteDeploymentConfigAsync(DeleteDeploymentConfigInput, cb)
 	end
 end
 
---- RemoveTagsFromOnPremisesInstances
+--- Call DeleteDeploymentConfig synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDeploymentConfigInput
+-- @return response
+-- @return error_message
+function M.DeleteDeploymentConfigSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDeploymentConfigAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTagsFromOnPremisesInstances asynchronously, invoking a callback when done
 -- @param RemoveTagsFromOnPremisesInstancesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsFromOnPremisesInstancesAsync(RemoveTagsFromOnPremisesInstancesInput, cb)
@@ -5978,7 +6118,21 @@ function M.RemoveTagsFromOnPremisesInstancesAsync(RemoveTagsFromOnPremisesInstan
 	end
 end
 
---- RegisterOnPremisesInstance
+--- Call RemoveTagsFromOnPremisesInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsFromOnPremisesInstancesInput
+-- @return response
+-- @return error_message
+function M.RemoveTagsFromOnPremisesInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsFromOnPremisesInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterOnPremisesInstance asynchronously, invoking a callback when done
 -- @param RegisterOnPremisesInstanceInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterOnPremisesInstanceAsync(RegisterOnPremisesInstanceInput, cb)
@@ -5996,7 +6150,21 @@ function M.RegisterOnPremisesInstanceAsync(RegisterOnPremisesInstanceInput, cb)
 	end
 end
 
---- ListOnPremisesInstances
+--- Call RegisterOnPremisesInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterOnPremisesInstanceInput
+-- @return response
+-- @return error_message
+function M.RegisterOnPremisesInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterOnPremisesInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListOnPremisesInstances asynchronously, invoking a callback when done
 -- @param ListOnPremisesInstancesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListOnPremisesInstancesAsync(ListOnPremisesInstancesInput, cb)
@@ -6014,7 +6182,21 @@ function M.ListOnPremisesInstancesAsync(ListOnPremisesInstancesInput, cb)
 	end
 end
 
---- ListDeploymentConfigs
+--- Call ListOnPremisesInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListOnPremisesInstancesInput
+-- @return response
+-- @return error_message
+function M.ListOnPremisesInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListOnPremisesInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeploymentConfigs asynchronously, invoking a callback when done
 -- @param ListDeploymentConfigsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeploymentConfigsAsync(ListDeploymentConfigsInput, cb)
@@ -6032,7 +6214,21 @@ function M.ListDeploymentConfigsAsync(ListDeploymentConfigsInput, cb)
 	end
 end
 
---- GetApplication
+--- Call ListDeploymentConfigs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeploymentConfigsInput
+-- @return response
+-- @return error_message
+function M.ListDeploymentConfigsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeploymentConfigsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetApplication asynchronously, invoking a callback when done
 -- @param GetApplicationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetApplicationAsync(GetApplicationInput, cb)
@@ -6050,7 +6246,21 @@ function M.GetApplicationAsync(GetApplicationInput, cb)
 	end
 end
 
---- GetDeploymentInstance
+--- Call GetApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetApplicationInput
+-- @return response
+-- @return error_message
+function M.GetApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDeploymentInstance asynchronously, invoking a callback when done
 -- @param GetDeploymentInstanceInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeploymentInstanceAsync(GetDeploymentInstanceInput, cb)
@@ -6068,7 +6278,21 @@ function M.GetDeploymentInstanceAsync(GetDeploymentInstanceInput, cb)
 	end
 end
 
---- SkipWaitTimeForInstanceTermination
+--- Call GetDeploymentInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeploymentInstanceInput
+-- @return response
+-- @return error_message
+function M.GetDeploymentInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeploymentInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SkipWaitTimeForInstanceTermination asynchronously, invoking a callback when done
 -- @param SkipWaitTimeForInstanceTerminationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SkipWaitTimeForInstanceTerminationAsync(SkipWaitTimeForInstanceTerminationInput, cb)
@@ -6086,7 +6310,21 @@ function M.SkipWaitTimeForInstanceTerminationAsync(SkipWaitTimeForInstanceTermin
 	end
 end
 
---- BatchGetDeploymentGroups
+--- Call SkipWaitTimeForInstanceTermination synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SkipWaitTimeForInstanceTerminationInput
+-- @return response
+-- @return error_message
+function M.SkipWaitTimeForInstanceTerminationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SkipWaitTimeForInstanceTerminationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetDeploymentGroups asynchronously, invoking a callback when done
 -- @param BatchGetDeploymentGroupsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetDeploymentGroupsAsync(BatchGetDeploymentGroupsInput, cb)
@@ -6104,7 +6342,21 @@ function M.BatchGetDeploymentGroupsAsync(BatchGetDeploymentGroupsInput, cb)
 	end
 end
 
---- BatchGetOnPremisesInstances
+--- Call BatchGetDeploymentGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetDeploymentGroupsInput
+-- @return response
+-- @return error_message
+function M.BatchGetDeploymentGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetDeploymentGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetOnPremisesInstances asynchronously, invoking a callback when done
 -- @param BatchGetOnPremisesInstancesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetOnPremisesInstancesAsync(BatchGetOnPremisesInstancesInput, cb)
@@ -6122,7 +6374,21 @@ function M.BatchGetOnPremisesInstancesAsync(BatchGetOnPremisesInstancesInput, cb
 	end
 end
 
---- GetApplicationRevision
+--- Call BatchGetOnPremisesInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetOnPremisesInstancesInput
+-- @return response
+-- @return error_message
+function M.BatchGetOnPremisesInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetOnPremisesInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetApplicationRevision asynchronously, invoking a callback when done
 -- @param GetApplicationRevisionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetApplicationRevisionAsync(GetApplicationRevisionInput, cb)
@@ -6140,7 +6406,21 @@ function M.GetApplicationRevisionAsync(GetApplicationRevisionInput, cb)
 	end
 end
 
---- BatchGetDeploymentInstances
+--- Call GetApplicationRevision synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetApplicationRevisionInput
+-- @return response
+-- @return error_message
+function M.GetApplicationRevisionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetApplicationRevisionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetDeploymentInstances asynchronously, invoking a callback when done
 -- @param BatchGetDeploymentInstancesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetDeploymentInstancesAsync(BatchGetDeploymentInstancesInput, cb)
@@ -6158,7 +6438,21 @@ function M.BatchGetDeploymentInstancesAsync(BatchGetDeploymentInstancesInput, cb
 	end
 end
 
---- UpdateApplication
+--- Call BatchGetDeploymentInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetDeploymentInstancesInput
+-- @return response
+-- @return error_message
+function M.BatchGetDeploymentInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetDeploymentInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateApplication asynchronously, invoking a callback when done
 -- @param UpdateApplicationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateApplicationAsync(UpdateApplicationInput, cb)
@@ -6176,7 +6470,21 @@ function M.UpdateApplicationAsync(UpdateApplicationInput, cb)
 	end
 end
 
---- CreateDeploymentGroup
+--- Call UpdateApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateApplicationInput
+-- @return response
+-- @return error_message
+function M.UpdateApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDeploymentGroup asynchronously, invoking a callback when done
 -- @param CreateDeploymentGroupInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDeploymentGroupAsync(CreateDeploymentGroupInput, cb)
@@ -6194,7 +6502,21 @@ function M.CreateDeploymentGroupAsync(CreateDeploymentGroupInput, cb)
 	end
 end
 
---- ListApplicationRevisions
+--- Call CreateDeploymentGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDeploymentGroupInput
+-- @return response
+-- @return error_message
+function M.CreateDeploymentGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDeploymentGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListApplicationRevisions asynchronously, invoking a callback when done
 -- @param ListApplicationRevisionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListApplicationRevisionsAsync(ListApplicationRevisionsInput, cb)
@@ -6212,7 +6534,21 @@ function M.ListApplicationRevisionsAsync(ListApplicationRevisionsInput, cb)
 	end
 end
 
---- ListDeploymentInstances
+--- Call ListApplicationRevisions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListApplicationRevisionsInput
+-- @return response
+-- @return error_message
+function M.ListApplicationRevisionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListApplicationRevisionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeploymentInstances asynchronously, invoking a callback when done
 -- @param ListDeploymentInstancesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeploymentInstancesAsync(ListDeploymentInstancesInput, cb)
@@ -6230,7 +6566,21 @@ function M.ListDeploymentInstancesAsync(ListDeploymentInstancesInput, cb)
 	end
 end
 
---- BatchGetApplicationRevisions
+--- Call ListDeploymentInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeploymentInstancesInput
+-- @return response
+-- @return error_message
+function M.ListDeploymentInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeploymentInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetApplicationRevisions asynchronously, invoking a callback when done
 -- @param BatchGetApplicationRevisionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetApplicationRevisionsAsync(BatchGetApplicationRevisionsInput, cb)
@@ -6248,7 +6598,21 @@ function M.BatchGetApplicationRevisionsAsync(BatchGetApplicationRevisionsInput, 
 	end
 end
 
---- DeregisterOnPremisesInstance
+--- Call BatchGetApplicationRevisions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetApplicationRevisionsInput
+-- @return response
+-- @return error_message
+function M.BatchGetApplicationRevisionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetApplicationRevisionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterOnPremisesInstance asynchronously, invoking a callback when done
 -- @param DeregisterOnPremisesInstanceInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeregisterOnPremisesInstanceAsync(DeregisterOnPremisesInstanceInput, cb)
@@ -6266,7 +6630,21 @@ function M.DeregisterOnPremisesInstanceAsync(DeregisterOnPremisesInstanceInput, 
 	end
 end
 
---- CreateDeploymentConfig
+--- Call DeregisterOnPremisesInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterOnPremisesInstanceInput
+-- @return response
+-- @return error_message
+function M.DeregisterOnPremisesInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterOnPremisesInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDeploymentConfig asynchronously, invoking a callback when done
 -- @param CreateDeploymentConfigInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDeploymentConfigAsync(CreateDeploymentConfigInput, cb)
@@ -6284,7 +6662,21 @@ function M.CreateDeploymentConfigAsync(CreateDeploymentConfigInput, cb)
 	end
 end
 
---- GetOnPremisesInstance
+--- Call CreateDeploymentConfig synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDeploymentConfigInput
+-- @return response
+-- @return error_message
+function M.CreateDeploymentConfigSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDeploymentConfigAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetOnPremisesInstance asynchronously, invoking a callback when done
 -- @param GetOnPremisesInstanceInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetOnPremisesInstanceAsync(GetOnPremisesInstanceInput, cb)
@@ -6302,7 +6694,21 @@ function M.GetOnPremisesInstanceAsync(GetOnPremisesInstanceInput, cb)
 	end
 end
 
---- AddTagsToOnPremisesInstances
+--- Call GetOnPremisesInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetOnPremisesInstanceInput
+-- @return response
+-- @return error_message
+function M.GetOnPremisesInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetOnPremisesInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTagsToOnPremisesInstances asynchronously, invoking a callback when done
 -- @param AddTagsToOnPremisesInstancesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsToOnPremisesInstancesAsync(AddTagsToOnPremisesInstancesInput, cb)
@@ -6320,7 +6726,21 @@ function M.AddTagsToOnPremisesInstancesAsync(AddTagsToOnPremisesInstancesInput, 
 	end
 end
 
---- CreateApplication
+--- Call AddTagsToOnPremisesInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsToOnPremisesInstancesInput
+-- @return response
+-- @return error_message
+function M.AddTagsToOnPremisesInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsToOnPremisesInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateApplication asynchronously, invoking a callback when done
 -- @param CreateApplicationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateApplicationAsync(CreateApplicationInput, cb)
@@ -6338,7 +6758,21 @@ function M.CreateApplicationAsync(CreateApplicationInput, cb)
 	end
 end
 
---- ListDeployments
+--- Call CreateApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateApplicationInput
+-- @return response
+-- @return error_message
+function M.CreateApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeployments asynchronously, invoking a callback when done
 -- @param ListDeploymentsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeploymentsAsync(ListDeploymentsInput, cb)
@@ -6356,7 +6790,21 @@ function M.ListDeploymentsAsync(ListDeploymentsInput, cb)
 	end
 end
 
---- ListApplications
+--- Call ListDeployments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeploymentsInput
+-- @return response
+-- @return error_message
+function M.ListDeploymentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeploymentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListApplications asynchronously, invoking a callback when done
 -- @param ListApplicationsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListApplicationsAsync(ListApplicationsInput, cb)
@@ -6374,7 +6822,21 @@ function M.ListApplicationsAsync(ListApplicationsInput, cb)
 	end
 end
 
---- DeleteDeploymentGroup
+--- Call ListApplications synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListApplicationsInput
+-- @return response
+-- @return error_message
+function M.ListApplicationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListApplicationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDeploymentGroup asynchronously, invoking a callback when done
 -- @param DeleteDeploymentGroupInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDeploymentGroupAsync(DeleteDeploymentGroupInput, cb)
@@ -6392,7 +6854,21 @@ function M.DeleteDeploymentGroupAsync(DeleteDeploymentGroupInput, cb)
 	end
 end
 
---- ListGitHubAccountTokenNames
+--- Call DeleteDeploymentGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDeploymentGroupInput
+-- @return response
+-- @return error_message
+function M.DeleteDeploymentGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDeploymentGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListGitHubAccountTokenNames asynchronously, invoking a callback when done
 -- @param ListGitHubAccountTokenNamesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListGitHubAccountTokenNamesAsync(ListGitHubAccountTokenNamesInput, cb)
@@ -6410,7 +6886,21 @@ function M.ListGitHubAccountTokenNamesAsync(ListGitHubAccountTokenNamesInput, cb
 	end
 end
 
---- RegisterApplicationRevision
+--- Call ListGitHubAccountTokenNames synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListGitHubAccountTokenNamesInput
+-- @return response
+-- @return error_message
+function M.ListGitHubAccountTokenNamesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListGitHubAccountTokenNamesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterApplicationRevision asynchronously, invoking a callback when done
 -- @param RegisterApplicationRevisionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterApplicationRevisionAsync(RegisterApplicationRevisionInput, cb)
@@ -6428,7 +6918,21 @@ function M.RegisterApplicationRevisionAsync(RegisterApplicationRevisionInput, cb
 	end
 end
 
---- GetDeployment
+--- Call RegisterApplicationRevision synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterApplicationRevisionInput
+-- @return response
+-- @return error_message
+function M.RegisterApplicationRevisionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterApplicationRevisionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDeployment asynchronously, invoking a callback when done
 -- @param GetDeploymentInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeploymentAsync(GetDeploymentInput, cb)
@@ -6446,7 +6950,21 @@ function M.GetDeploymentAsync(GetDeploymentInput, cb)
 	end
 end
 
---- BatchGetApplications
+--- Call GetDeployment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeploymentInput
+-- @return response
+-- @return error_message
+function M.GetDeploymentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeploymentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetApplications asynchronously, invoking a callback when done
 -- @param BatchGetApplicationsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetApplicationsAsync(BatchGetApplicationsInput, cb)
@@ -6462,6 +6980,20 @@ function M.BatchGetApplicationsAsync(BatchGetApplicationsInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call BatchGetApplications synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetApplicationsInput
+-- @return response
+-- @return error_message
+function M.BatchGetApplicationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetApplicationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

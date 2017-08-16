@@ -12939,7 +12939,7 @@ end
 --
 -- OPERATIONS
 --
---- DeleteActivation
+--- Call DeleteActivation asynchronously, invoking a callback when done
 -- @param DeleteActivationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteActivationAsync(DeleteActivationRequest, cb)
@@ -12957,7 +12957,21 @@ function M.DeleteActivationAsync(DeleteActivationRequest, cb)
 	end
 end
 
---- UpdatePatchBaseline
+--- Call DeleteActivation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteActivationRequest
+-- @return response
+-- @return error_message
+function M.DeleteActivationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteActivationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdatePatchBaseline asynchronously, invoking a callback when done
 -- @param UpdatePatchBaselineRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdatePatchBaselineAsync(UpdatePatchBaselineRequest, cb)
@@ -12975,7 +12989,21 @@ function M.UpdatePatchBaselineAsync(UpdatePatchBaselineRequest, cb)
 	end
 end
 
---- CreateMaintenanceWindow
+--- Call UpdatePatchBaseline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdatePatchBaselineRequest
+-- @return response
+-- @return error_message
+function M.UpdatePatchBaselineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdatePatchBaselineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateMaintenanceWindow asynchronously, invoking a callback when done
 -- @param CreateMaintenanceWindowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateMaintenanceWindowAsync(CreateMaintenanceWindowRequest, cb)
@@ -12993,7 +13021,21 @@ function M.CreateMaintenanceWindowAsync(CreateMaintenanceWindowRequest, cb)
 	end
 end
 
---- DeregisterManagedInstance
+--- Call CreateMaintenanceWindow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateMaintenanceWindowRequest
+-- @return response
+-- @return error_message
+function M.CreateMaintenanceWindowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateMaintenanceWindowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterManagedInstance asynchronously, invoking a callback when done
 -- @param DeregisterManagedInstanceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeregisterManagedInstanceAsync(DeregisterManagedInstanceRequest, cb)
@@ -13011,7 +13053,21 @@ function M.DeregisterManagedInstanceAsync(DeregisterManagedInstanceRequest, cb)
 	end
 end
 
---- CreatePatchBaseline
+--- Call DeregisterManagedInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterManagedInstanceRequest
+-- @return response
+-- @return error_message
+function M.DeregisterManagedInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterManagedInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreatePatchBaseline asynchronously, invoking a callback when done
 -- @param CreatePatchBaselineRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreatePatchBaselineAsync(CreatePatchBaselineRequest, cb)
@@ -13029,7 +13085,21 @@ function M.CreatePatchBaselineAsync(CreatePatchBaselineRequest, cb)
 	end
 end
 
---- GetDeployablePatchSnapshotForInstance
+--- Call CreatePatchBaseline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreatePatchBaselineRequest
+-- @return response
+-- @return error_message
+function M.CreatePatchBaselineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreatePatchBaselineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDeployablePatchSnapshotForInstance asynchronously, invoking a callback when done
 -- @param GetDeployablePatchSnapshotForInstanceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeployablePatchSnapshotForInstanceAsync(GetDeployablePatchSnapshotForInstanceRequest, cb)
@@ -13047,7 +13117,21 @@ function M.GetDeployablePatchSnapshotForInstanceAsync(GetDeployablePatchSnapshot
 	end
 end
 
---- DescribeDocumentPermission
+--- Call GetDeployablePatchSnapshotForInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeployablePatchSnapshotForInstanceRequest
+-- @return response
+-- @return error_message
+function M.GetDeployablePatchSnapshotForInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeployablePatchSnapshotForInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDocumentPermission asynchronously, invoking a callback when done
 -- @param DescribeDocumentPermissionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDocumentPermissionAsync(DescribeDocumentPermissionRequest, cb)
@@ -13065,7 +13149,21 @@ function M.DescribeDocumentPermissionAsync(DescribeDocumentPermissionRequest, cb
 	end
 end
 
---- DescribeEffectivePatchesForPatchBaseline
+--- Call DescribeDocumentPermission synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDocumentPermissionRequest
+-- @return response
+-- @return error_message
+function M.DescribeDocumentPermissionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDocumentPermissionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEffectivePatchesForPatchBaseline asynchronously, invoking a callback when done
 -- @param DescribeEffectivePatchesForPatchBaselineRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEffectivePatchesForPatchBaselineAsync(DescribeEffectivePatchesForPatchBaselineRequest, cb)
@@ -13083,7 +13181,21 @@ function M.DescribeEffectivePatchesForPatchBaselineAsync(DescribeEffectivePatche
 	end
 end
 
---- DescribeAvailablePatches
+--- Call DescribeEffectivePatchesForPatchBaseline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEffectivePatchesForPatchBaselineRequest
+-- @return response
+-- @return error_message
+function M.DescribeEffectivePatchesForPatchBaselineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEffectivePatchesForPatchBaselineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAvailablePatches asynchronously, invoking a callback when done
 -- @param DescribeAvailablePatchesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAvailablePatchesAsync(DescribeAvailablePatchesRequest, cb)
@@ -13101,7 +13213,21 @@ function M.DescribeAvailablePatchesAsync(DescribeAvailablePatchesRequest, cb)
 	end
 end
 
---- DescribeInstancePatches
+--- Call DescribeAvailablePatches synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAvailablePatchesRequest
+-- @return response
+-- @return error_message
+function M.DescribeAvailablePatchesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAvailablePatchesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeInstancePatches asynchronously, invoking a callback when done
 -- @param DescribeInstancePatchesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeInstancePatchesAsync(DescribeInstancePatchesRequest, cb)
@@ -13119,7 +13245,21 @@ function M.DescribeInstancePatchesAsync(DescribeInstancePatchesRequest, cb)
 	end
 end
 
---- PutParameter
+--- Call DescribeInstancePatches synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeInstancePatchesRequest
+-- @return response
+-- @return error_message
+function M.DescribeInstancePatchesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeInstancePatchesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutParameter asynchronously, invoking a callback when done
 -- @param PutParameterRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutParameterAsync(PutParameterRequest, cb)
@@ -13137,7 +13277,21 @@ function M.PutParameterAsync(PutParameterRequest, cb)
 	end
 end
 
---- RegisterDefaultPatchBaseline
+--- Call PutParameter synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutParameterRequest
+-- @return response
+-- @return error_message
+function M.PutParameterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutParameterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterDefaultPatchBaseline asynchronously, invoking a callback when done
 -- @param RegisterDefaultPatchBaselineRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterDefaultPatchBaselineAsync(RegisterDefaultPatchBaselineRequest, cb)
@@ -13155,7 +13309,21 @@ function M.RegisterDefaultPatchBaselineAsync(RegisterDefaultPatchBaselineRequest
 	end
 end
 
---- ListDocumentVersions
+--- Call RegisterDefaultPatchBaseline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterDefaultPatchBaselineRequest
+-- @return response
+-- @return error_message
+function M.RegisterDefaultPatchBaselineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterDefaultPatchBaselineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDocumentVersions asynchronously, invoking a callback when done
 -- @param ListDocumentVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDocumentVersionsAsync(ListDocumentVersionsRequest, cb)
@@ -13173,7 +13341,21 @@ function M.ListDocumentVersionsAsync(ListDocumentVersionsRequest, cb)
 	end
 end
 
---- GetPatchBaselineForPatchGroup
+--- Call ListDocumentVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDocumentVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListDocumentVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDocumentVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetPatchBaselineForPatchGroup asynchronously, invoking a callback when done
 -- @param GetPatchBaselineForPatchGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetPatchBaselineForPatchGroupAsync(GetPatchBaselineForPatchGroupRequest, cb)
@@ -13191,7 +13373,21 @@ function M.GetPatchBaselineForPatchGroupAsync(GetPatchBaselineForPatchGroupReque
 	end
 end
 
---- GetAutomationExecution
+--- Call GetPatchBaselineForPatchGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetPatchBaselineForPatchGroupRequest
+-- @return response
+-- @return error_message
+function M.GetPatchBaselineForPatchGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetPatchBaselineForPatchGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetAutomationExecution asynchronously, invoking a callback when done
 -- @param GetAutomationExecutionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetAutomationExecutionAsync(GetAutomationExecutionRequest, cb)
@@ -13209,7 +13405,21 @@ function M.GetAutomationExecutionAsync(GetAutomationExecutionRequest, cb)
 	end
 end
 
---- ListAssociations
+--- Call GetAutomationExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetAutomationExecutionRequest
+-- @return response
+-- @return error_message
+function M.GetAutomationExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetAutomationExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListAssociations asynchronously, invoking a callback when done
 -- @param ListAssociationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListAssociationsAsync(ListAssociationsRequest, cb)
@@ -13227,7 +13437,21 @@ function M.ListAssociationsAsync(ListAssociationsRequest, cb)
 	end
 end
 
---- DescribeInstancePatchStates
+--- Call ListAssociations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListAssociationsRequest
+-- @return response
+-- @return error_message
+function M.ListAssociationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListAssociationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeInstancePatchStates asynchronously, invoking a callback when done
 -- @param DescribeInstancePatchStatesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeInstancePatchStatesAsync(DescribeInstancePatchStatesRequest, cb)
@@ -13245,7 +13469,21 @@ function M.DescribeInstancePatchStatesAsync(DescribeInstancePatchStatesRequest, 
 	end
 end
 
---- DescribeAssociation
+--- Call DescribeInstancePatchStates synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeInstancePatchStatesRequest
+-- @return response
+-- @return error_message
+function M.DescribeInstancePatchStatesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeInstancePatchStatesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAssociation asynchronously, invoking a callback when done
 -- @param DescribeAssociationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAssociationAsync(DescribeAssociationRequest, cb)
@@ -13263,7 +13501,21 @@ function M.DescribeAssociationAsync(DescribeAssociationRequest, cb)
 	end
 end
 
---- PutInventory
+--- Call DescribeAssociation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAssociationRequest
+-- @return response
+-- @return error_message
+function M.DescribeAssociationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAssociationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutInventory asynchronously, invoking a callback when done
 -- @param PutInventoryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutInventoryAsync(PutInventoryRequest, cb)
@@ -13281,7 +13533,21 @@ function M.PutInventoryAsync(PutInventoryRequest, cb)
 	end
 end
 
---- DescribeInstancePatchStatesForPatchGroup
+--- Call PutInventory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutInventoryRequest
+-- @return response
+-- @return error_message
+function M.PutInventorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutInventoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeInstancePatchStatesForPatchGroup asynchronously, invoking a callback when done
 -- @param DescribeInstancePatchStatesForPatchGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeInstancePatchStatesForPatchGroupAsync(DescribeInstancePatchStatesForPatchGroupRequest, cb)
@@ -13299,7 +13565,21 @@ function M.DescribeInstancePatchStatesForPatchGroupAsync(DescribeInstancePatchSt
 	end
 end
 
---- GetDefaultPatchBaseline
+--- Call DescribeInstancePatchStatesForPatchGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeInstancePatchStatesForPatchGroupRequest
+-- @return response
+-- @return error_message
+function M.DescribeInstancePatchStatesForPatchGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeInstancePatchStatesForPatchGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDefaultPatchBaseline asynchronously, invoking a callback when done
 -- @param GetDefaultPatchBaselineRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDefaultPatchBaselineAsync(GetDefaultPatchBaselineRequest, cb)
@@ -13317,7 +13597,21 @@ function M.GetDefaultPatchBaselineAsync(GetDefaultPatchBaselineRequest, cb)
 	end
 end
 
---- DescribeAutomationExecutions
+--- Call GetDefaultPatchBaseline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDefaultPatchBaselineRequest
+-- @return response
+-- @return error_message
+function M.GetDefaultPatchBaselineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDefaultPatchBaselineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAutomationExecutions asynchronously, invoking a callback when done
 -- @param DescribeAutomationExecutionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAutomationExecutionsAsync(DescribeAutomationExecutionsRequest, cb)
@@ -13335,7 +13629,21 @@ function M.DescribeAutomationExecutionsAsync(DescribeAutomationExecutionsRequest
 	end
 end
 
---- GetDocument
+--- Call DescribeAutomationExecutions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAutomationExecutionsRequest
+-- @return response
+-- @return error_message
+function M.DescribeAutomationExecutionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAutomationExecutionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDocument asynchronously, invoking a callback when done
 -- @param GetDocumentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDocumentAsync(GetDocumentRequest, cb)
@@ -13353,7 +13661,21 @@ function M.GetDocumentAsync(GetDocumentRequest, cb)
 	end
 end
 
---- GetMaintenanceWindow
+--- Call GetDocument synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDocumentRequest
+-- @return response
+-- @return error_message
+function M.GetDocumentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDocumentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetMaintenanceWindow asynchronously, invoking a callback when done
 -- @param GetMaintenanceWindowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetMaintenanceWindowAsync(GetMaintenanceWindowRequest, cb)
@@ -13371,7 +13693,21 @@ function M.GetMaintenanceWindowAsync(GetMaintenanceWindowRequest, cb)
 	end
 end
 
---- GetParametersByPath
+--- Call GetMaintenanceWindow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetMaintenanceWindowRequest
+-- @return response
+-- @return error_message
+function M.GetMaintenanceWindowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetMaintenanceWindowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetParametersByPath asynchronously, invoking a callback when done
 -- @param GetParametersByPathRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetParametersByPathAsync(GetParametersByPathRequest, cb)
@@ -13389,7 +13725,21 @@ function M.GetParametersByPathAsync(GetParametersByPathRequest, cb)
 	end
 end
 
---- CreateDocument
+--- Call GetParametersByPath synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetParametersByPathRequest
+-- @return response
+-- @return error_message
+function M.GetParametersByPathSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetParametersByPathAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDocument asynchronously, invoking a callback when done
 -- @param CreateDocumentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDocumentAsync(CreateDocumentRequest, cb)
@@ -13407,7 +13757,21 @@ function M.CreateDocumentAsync(CreateDocumentRequest, cb)
 	end
 end
 
---- DeleteAssociation
+--- Call CreateDocument synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDocumentRequest
+-- @return response
+-- @return error_message
+function M.CreateDocumentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDocumentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteAssociation asynchronously, invoking a callback when done
 -- @param DeleteAssociationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteAssociationAsync(DeleteAssociationRequest, cb)
@@ -13425,7 +13789,21 @@ function M.DeleteAssociationAsync(DeleteAssociationRequest, cb)
 	end
 end
 
---- AddTagsToResource
+--- Call DeleteAssociation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteAssociationRequest
+-- @return response
+-- @return error_message
+function M.DeleteAssociationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteAssociationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTagsToResource asynchronously, invoking a callback when done
 -- @param AddTagsToResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
@@ -13443,7 +13821,21 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 	end
 end
 
---- UpdateManagedInstanceRole
+--- Call AddTagsToResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsToResourceRequest
+-- @return response
+-- @return error_message
+function M.AddTagsToResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsToResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateManagedInstanceRole asynchronously, invoking a callback when done
 -- @param UpdateManagedInstanceRoleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateManagedInstanceRoleAsync(UpdateManagedInstanceRoleRequest, cb)
@@ -13461,7 +13853,21 @@ function M.UpdateManagedInstanceRoleAsync(UpdateManagedInstanceRoleRequest, cb)
 	end
 end
 
---- DescribePatchBaselines
+--- Call UpdateManagedInstanceRole synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateManagedInstanceRoleRequest
+-- @return response
+-- @return error_message
+function M.UpdateManagedInstanceRoleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateManagedInstanceRoleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribePatchBaselines asynchronously, invoking a callback when done
 -- @param DescribePatchBaselinesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribePatchBaselinesAsync(DescribePatchBaselinesRequest, cb)
@@ -13479,7 +13885,21 @@ function M.DescribePatchBaselinesAsync(DescribePatchBaselinesRequest, cb)
 	end
 end
 
---- UpdateMaintenanceWindow
+--- Call DescribePatchBaselines synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribePatchBaselinesRequest
+-- @return response
+-- @return error_message
+function M.DescribePatchBaselinesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribePatchBaselinesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateMaintenanceWindow asynchronously, invoking a callback when done
 -- @param UpdateMaintenanceWindowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateMaintenanceWindowAsync(UpdateMaintenanceWindowRequest, cb)
@@ -13497,7 +13917,21 @@ function M.UpdateMaintenanceWindowAsync(UpdateMaintenanceWindowRequest, cb)
 	end
 end
 
---- GetPatchBaseline
+--- Call UpdateMaintenanceWindow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateMaintenanceWindowRequest
+-- @return response
+-- @return error_message
+function M.UpdateMaintenanceWindowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateMaintenanceWindowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetPatchBaseline asynchronously, invoking a callback when done
 -- @param GetPatchBaselineRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetPatchBaselineAsync(GetPatchBaselineRequest, cb)
@@ -13515,7 +13949,21 @@ function M.GetPatchBaselineAsync(GetPatchBaselineRequest, cb)
 	end
 end
 
---- StopAutomationExecution
+--- Call GetPatchBaseline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetPatchBaselineRequest
+-- @return response
+-- @return error_message
+function M.GetPatchBaselineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetPatchBaselineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopAutomationExecution asynchronously, invoking a callback when done
 -- @param StopAutomationExecutionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopAutomationExecutionAsync(StopAutomationExecutionRequest, cb)
@@ -13533,7 +13981,21 @@ function M.StopAutomationExecutionAsync(StopAutomationExecutionRequest, cb)
 	end
 end
 
---- GetInventory
+--- Call StopAutomationExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopAutomationExecutionRequest
+-- @return response
+-- @return error_message
+function M.StopAutomationExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopAutomationExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInventory asynchronously, invoking a callback when done
 -- @param GetInventoryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInventoryAsync(GetInventoryRequest, cb)
@@ -13551,7 +14013,21 @@ function M.GetInventoryAsync(GetInventoryRequest, cb)
 	end
 end
 
---- RemoveTagsFromResource
+--- Call GetInventory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInventoryRequest
+-- @return response
+-- @return error_message
+function M.GetInventorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInventoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTagsFromResource asynchronously, invoking a callback when done
 -- @param RemoveTagsFromResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
@@ -13569,7 +14045,21 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 	end
 end
 
---- DeregisterTargetFromMaintenanceWindow
+--- Call RemoveTagsFromResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsFromResourceRequest
+-- @return response
+-- @return error_message
+function M.RemoveTagsFromResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsFromResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterTargetFromMaintenanceWindow asynchronously, invoking a callback when done
 -- @param DeregisterTargetFromMaintenanceWindowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeregisterTargetFromMaintenanceWindowAsync(DeregisterTargetFromMaintenanceWindowRequest, cb)
@@ -13587,7 +14077,21 @@ function M.DeregisterTargetFromMaintenanceWindowAsync(DeregisterTargetFromMainte
 	end
 end
 
---- SendCommand
+--- Call DeregisterTargetFromMaintenanceWindow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterTargetFromMaintenanceWindowRequest
+-- @return response
+-- @return error_message
+function M.DeregisterTargetFromMaintenanceWindowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterTargetFromMaintenanceWindowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SendCommand asynchronously, invoking a callback when done
 -- @param SendCommandRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SendCommandAsync(SendCommandRequest, cb)
@@ -13605,7 +14109,21 @@ function M.SendCommandAsync(SendCommandRequest, cb)
 	end
 end
 
---- DescribeInstanceAssociationsStatus
+--- Call SendCommand synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SendCommandRequest
+-- @return response
+-- @return error_message
+function M.SendCommandSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SendCommandAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeInstanceAssociationsStatus asynchronously, invoking a callback when done
 -- @param DescribeInstanceAssociationsStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeInstanceAssociationsStatusAsync(DescribeInstanceAssociationsStatusRequest, cb)
@@ -13623,7 +14141,21 @@ function M.DescribeInstanceAssociationsStatusAsync(DescribeInstanceAssociationsS
 	end
 end
 
---- DescribePatchGroups
+--- Call DescribeInstanceAssociationsStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeInstanceAssociationsStatusRequest
+-- @return response
+-- @return error_message
+function M.DescribeInstanceAssociationsStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeInstanceAssociationsStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribePatchGroups asynchronously, invoking a callback when done
 -- @param DescribePatchGroupsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribePatchGroupsAsync(DescribePatchGroupsRequest, cb)
@@ -13641,7 +14173,21 @@ function M.DescribePatchGroupsAsync(DescribePatchGroupsRequest, cb)
 	end
 end
 
---- GetMaintenanceWindowExecutionTask
+--- Call DescribePatchGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribePatchGroupsRequest
+-- @return response
+-- @return error_message
+function M.DescribePatchGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribePatchGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetMaintenanceWindowExecutionTask asynchronously, invoking a callback when done
 -- @param GetMaintenanceWindowExecutionTaskRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetMaintenanceWindowExecutionTaskAsync(GetMaintenanceWindowExecutionTaskRequest, cb)
@@ -13659,7 +14205,21 @@ function M.GetMaintenanceWindowExecutionTaskAsync(GetMaintenanceWindowExecutionT
 	end
 end
 
---- GetInventorySchema
+--- Call GetMaintenanceWindowExecutionTask synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetMaintenanceWindowExecutionTaskRequest
+-- @return response
+-- @return error_message
+function M.GetMaintenanceWindowExecutionTaskSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetMaintenanceWindowExecutionTaskAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInventorySchema asynchronously, invoking a callback when done
 -- @param GetInventorySchemaRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInventorySchemaAsync(GetInventorySchemaRequest, cb)
@@ -13677,7 +14237,21 @@ function M.GetInventorySchemaAsync(GetInventorySchemaRequest, cb)
 	end
 end
 
---- CancelCommand
+--- Call GetInventorySchema synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInventorySchemaRequest
+-- @return response
+-- @return error_message
+function M.GetInventorySchemaSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInventorySchemaAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CancelCommand asynchronously, invoking a callback when done
 -- @param CancelCommandRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CancelCommandAsync(CancelCommandRequest, cb)
@@ -13695,7 +14269,21 @@ function M.CancelCommandAsync(CancelCommandRequest, cb)
 	end
 end
 
---- GetCommandInvocation
+--- Call CancelCommand synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CancelCommandRequest
+-- @return response
+-- @return error_message
+function M.CancelCommandSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CancelCommandAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCommandInvocation asynchronously, invoking a callback when done
 -- @param GetCommandInvocationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCommandInvocationAsync(GetCommandInvocationRequest, cb)
@@ -13713,7 +14301,21 @@ function M.GetCommandInvocationAsync(GetCommandInvocationRequest, cb)
 	end
 end
 
---- UpdateAssociationStatus
+--- Call GetCommandInvocation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCommandInvocationRequest
+-- @return response
+-- @return error_message
+function M.GetCommandInvocationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCommandInvocationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateAssociationStatus asynchronously, invoking a callback when done
 -- @param UpdateAssociationStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateAssociationStatusAsync(UpdateAssociationStatusRequest, cb)
@@ -13731,7 +14333,21 @@ function M.UpdateAssociationStatusAsync(UpdateAssociationStatusRequest, cb)
 	end
 end
 
---- DescribePatchGroupState
+--- Call UpdateAssociationStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateAssociationStatusRequest
+-- @return response
+-- @return error_message
+function M.UpdateAssociationStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateAssociationStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribePatchGroupState asynchronously, invoking a callback when done
 -- @param DescribePatchGroupStateRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribePatchGroupStateAsync(DescribePatchGroupStateRequest, cb)
@@ -13749,7 +14365,21 @@ function M.DescribePatchGroupStateAsync(DescribePatchGroupStateRequest, cb)
 	end
 end
 
---- CreateAssociationBatch
+--- Call DescribePatchGroupState synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribePatchGroupStateRequest
+-- @return response
+-- @return error_message
+function M.DescribePatchGroupStateSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribePatchGroupStateAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateAssociationBatch asynchronously, invoking a callback when done
 -- @param CreateAssociationBatchRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateAssociationBatchAsync(CreateAssociationBatchRequest, cb)
@@ -13767,7 +14397,21 @@ function M.CreateAssociationBatchAsync(CreateAssociationBatchRequest, cb)
 	end
 end
 
---- GetParameter
+--- Call CreateAssociationBatch synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateAssociationBatchRequest
+-- @return response
+-- @return error_message
+function M.CreateAssociationBatchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateAssociationBatchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetParameter asynchronously, invoking a callback when done
 -- @param GetParameterRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetParameterAsync(GetParameterRequest, cb)
@@ -13785,7 +14429,21 @@ function M.GetParameterAsync(GetParameterRequest, cb)
 	end
 end
 
---- DescribeMaintenanceWindowExecutionTasks
+--- Call GetParameter synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetParameterRequest
+-- @return response
+-- @return error_message
+function M.GetParameterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetParameterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeMaintenanceWindowExecutionTasks asynchronously, invoking a callback when done
 -- @param DescribeMaintenanceWindowExecutionTasksRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeMaintenanceWindowExecutionTasksAsync(DescribeMaintenanceWindowExecutionTasksRequest, cb)
@@ -13803,7 +14461,21 @@ function M.DescribeMaintenanceWindowExecutionTasksAsync(DescribeMaintenanceWindo
 	end
 end
 
---- GetParameterHistory
+--- Call DescribeMaintenanceWindowExecutionTasks synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeMaintenanceWindowExecutionTasksRequest
+-- @return response
+-- @return error_message
+function M.DescribeMaintenanceWindowExecutionTasksSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeMaintenanceWindowExecutionTasksAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetParameterHistory asynchronously, invoking a callback when done
 -- @param GetParameterHistoryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetParameterHistoryAsync(GetParameterHistoryRequest, cb)
@@ -13821,7 +14493,21 @@ function M.GetParameterHistoryAsync(GetParameterHistoryRequest, cb)
 	end
 end
 
---- DeregisterTaskFromMaintenanceWindow
+--- Call GetParameterHistory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetParameterHistoryRequest
+-- @return response
+-- @return error_message
+function M.GetParameterHistorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetParameterHistoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterTaskFromMaintenanceWindow asynchronously, invoking a callback when done
 -- @param DeregisterTaskFromMaintenanceWindowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeregisterTaskFromMaintenanceWindowAsync(DeregisterTaskFromMaintenanceWindowRequest, cb)
@@ -13839,7 +14525,21 @@ function M.DeregisterTaskFromMaintenanceWindowAsync(DeregisterTaskFromMaintenanc
 	end
 end
 
---- ListCommandInvocations
+--- Call DeregisterTaskFromMaintenanceWindow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterTaskFromMaintenanceWindowRequest
+-- @return response
+-- @return error_message
+function M.DeregisterTaskFromMaintenanceWindowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterTaskFromMaintenanceWindowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCommandInvocations asynchronously, invoking a callback when done
 -- @param ListCommandInvocationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListCommandInvocationsAsync(ListCommandInvocationsRequest, cb)
@@ -13857,7 +14557,21 @@ function M.ListCommandInvocationsAsync(ListCommandInvocationsRequest, cb)
 	end
 end
 
---- DescribeParameters
+--- Call ListCommandInvocations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCommandInvocationsRequest
+-- @return response
+-- @return error_message
+function M.ListCommandInvocationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCommandInvocationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeParameters asynchronously, invoking a callback when done
 -- @param DescribeParametersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeParametersAsync(DescribeParametersRequest, cb)
@@ -13875,7 +14589,21 @@ function M.DescribeParametersAsync(DescribeParametersRequest, cb)
 	end
 end
 
---- DescribeMaintenanceWindowTasks
+--- Call DescribeParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeParametersRequest
+-- @return response
+-- @return error_message
+function M.DescribeParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeMaintenanceWindowTasks asynchronously, invoking a callback when done
 -- @param DescribeMaintenanceWindowTasksRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeMaintenanceWindowTasksAsync(DescribeMaintenanceWindowTasksRequest, cb)
@@ -13893,7 +14621,21 @@ function M.DescribeMaintenanceWindowTasksAsync(DescribeMaintenanceWindowTasksReq
 	end
 end
 
---- DeleteParameters
+--- Call DescribeMaintenanceWindowTasks synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeMaintenanceWindowTasksRequest
+-- @return response
+-- @return error_message
+function M.DescribeMaintenanceWindowTasksSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeMaintenanceWindowTasksAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteParameters asynchronously, invoking a callback when done
 -- @param DeleteParametersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteParametersAsync(DeleteParametersRequest, cb)
@@ -13911,7 +14653,21 @@ function M.DeleteParametersAsync(DeleteParametersRequest, cb)
 	end
 end
 
---- DescribeMaintenanceWindowTargets
+--- Call DeleteParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteParametersRequest
+-- @return response
+-- @return error_message
+function M.DeleteParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeMaintenanceWindowTargets asynchronously, invoking a callback when done
 -- @param DescribeMaintenanceWindowTargetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeMaintenanceWindowTargetsAsync(DescribeMaintenanceWindowTargetsRequest, cb)
@@ -13929,7 +14685,21 @@ function M.DescribeMaintenanceWindowTargetsAsync(DescribeMaintenanceWindowTarget
 	end
 end
 
---- DescribeInstanceInformation
+--- Call DescribeMaintenanceWindowTargets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeMaintenanceWindowTargetsRequest
+-- @return response
+-- @return error_message
+function M.DescribeMaintenanceWindowTargetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeMaintenanceWindowTargetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeInstanceInformation asynchronously, invoking a callback when done
 -- @param DescribeInstanceInformationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeInstanceInformationAsync(DescribeInstanceInformationRequest, cb)
@@ -13947,7 +14717,21 @@ function M.DescribeInstanceInformationAsync(DescribeInstanceInformationRequest, 
 	end
 end
 
---- CreateActivation
+--- Call DescribeInstanceInformation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeInstanceInformationRequest
+-- @return response
+-- @return error_message
+function M.DescribeInstanceInformationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeInstanceInformationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateActivation asynchronously, invoking a callback when done
 -- @param CreateActivationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateActivationAsync(CreateActivationRequest, cb)
@@ -13965,7 +14749,21 @@ function M.CreateActivationAsync(CreateActivationRequest, cb)
 	end
 end
 
---- RegisterPatchBaselineForPatchGroup
+--- Call CreateActivation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateActivationRequest
+-- @return response
+-- @return error_message
+function M.CreateActivationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateActivationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterPatchBaselineForPatchGroup asynchronously, invoking a callback when done
 -- @param RegisterPatchBaselineForPatchGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterPatchBaselineForPatchGroupAsync(RegisterPatchBaselineForPatchGroupRequest, cb)
@@ -13983,7 +14781,21 @@ function M.RegisterPatchBaselineForPatchGroupAsync(RegisterPatchBaselineForPatch
 	end
 end
 
---- UpdateDocument
+--- Call RegisterPatchBaselineForPatchGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterPatchBaselineForPatchGroupRequest
+-- @return response
+-- @return error_message
+function M.RegisterPatchBaselineForPatchGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterPatchBaselineForPatchGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDocument asynchronously, invoking a callback when done
 -- @param UpdateDocumentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDocumentAsync(UpdateDocumentRequest, cb)
@@ -14001,7 +14813,21 @@ function M.UpdateDocumentAsync(UpdateDocumentRequest, cb)
 	end
 end
 
---- DescribeActivations
+--- Call UpdateDocument synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDocumentRequest
+-- @return response
+-- @return error_message
+function M.UpdateDocumentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDocumentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeActivations asynchronously, invoking a callback when done
 -- @param DescribeActivationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeActivationsAsync(DescribeActivationsRequest, cb)
@@ -14019,7 +14845,21 @@ function M.DescribeActivationsAsync(DescribeActivationsRequest, cb)
 	end
 end
 
---- CreateAssociation
+--- Call DescribeActivations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeActivationsRequest
+-- @return response
+-- @return error_message
+function M.DescribeActivationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeActivationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateAssociation asynchronously, invoking a callback when done
 -- @param CreateAssociationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateAssociationAsync(CreateAssociationRequest, cb)
@@ -14037,7 +14877,21 @@ function M.CreateAssociationAsync(CreateAssociationRequest, cb)
 	end
 end
 
---- GetMaintenanceWindowExecution
+--- Call CreateAssociation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateAssociationRequest
+-- @return response
+-- @return error_message
+function M.CreateAssociationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateAssociationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetMaintenanceWindowExecution asynchronously, invoking a callback when done
 -- @param GetMaintenanceWindowExecutionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetMaintenanceWindowExecutionAsync(GetMaintenanceWindowExecutionRequest, cb)
@@ -14055,7 +14909,21 @@ function M.GetMaintenanceWindowExecutionAsync(GetMaintenanceWindowExecutionReque
 	end
 end
 
---- DeleteMaintenanceWindow
+--- Call GetMaintenanceWindowExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetMaintenanceWindowExecutionRequest
+-- @return response
+-- @return error_message
+function M.GetMaintenanceWindowExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetMaintenanceWindowExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteMaintenanceWindow asynchronously, invoking a callback when done
 -- @param DeleteMaintenanceWindowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteMaintenanceWindowAsync(DeleteMaintenanceWindowRequest, cb)
@@ -14073,7 +14941,21 @@ function M.DeleteMaintenanceWindowAsync(DeleteMaintenanceWindowRequest, cb)
 	end
 end
 
---- ListCommands
+--- Call DeleteMaintenanceWindow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteMaintenanceWindowRequest
+-- @return response
+-- @return error_message
+function M.DeleteMaintenanceWindowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteMaintenanceWindowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCommands asynchronously, invoking a callback when done
 -- @param ListCommandsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListCommandsAsync(ListCommandsRequest, cb)
@@ -14091,7 +14973,21 @@ function M.ListCommandsAsync(ListCommandsRequest, cb)
 	end
 end
 
---- UpdateAssociation
+--- Call ListCommands synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCommandsRequest
+-- @return response
+-- @return error_message
+function M.ListCommandsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCommandsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateAssociation asynchronously, invoking a callback when done
 -- @param UpdateAssociationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateAssociationAsync(UpdateAssociationRequest, cb)
@@ -14109,7 +15005,21 @@ function M.UpdateAssociationAsync(UpdateAssociationRequest, cb)
 	end
 end
 
---- DeleteDocument
+--- Call UpdateAssociation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateAssociationRequest
+-- @return response
+-- @return error_message
+function M.UpdateAssociationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateAssociationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDocument asynchronously, invoking a callback when done
 -- @param DeleteDocumentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDocumentAsync(DeleteDocumentRequest, cb)
@@ -14127,7 +15037,21 @@ function M.DeleteDocumentAsync(DeleteDocumentRequest, cb)
 	end
 end
 
---- DescribeEffectiveInstanceAssociations
+--- Call DeleteDocument synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDocumentRequest
+-- @return response
+-- @return error_message
+function M.DeleteDocumentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDocumentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEffectiveInstanceAssociations asynchronously, invoking a callback when done
 -- @param DescribeEffectiveInstanceAssociationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEffectiveInstanceAssociationsAsync(DescribeEffectiveInstanceAssociationsRequest, cb)
@@ -14145,7 +15069,21 @@ function M.DescribeEffectiveInstanceAssociationsAsync(DescribeEffectiveInstanceA
 	end
 end
 
---- DescribeMaintenanceWindows
+--- Call DescribeEffectiveInstanceAssociations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEffectiveInstanceAssociationsRequest
+-- @return response
+-- @return error_message
+function M.DescribeEffectiveInstanceAssociationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEffectiveInstanceAssociationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeMaintenanceWindows asynchronously, invoking a callback when done
 -- @param DescribeMaintenanceWindowsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeMaintenanceWindowsAsync(DescribeMaintenanceWindowsRequest, cb)
@@ -14163,7 +15101,21 @@ function M.DescribeMaintenanceWindowsAsync(DescribeMaintenanceWindowsRequest, cb
 	end
 end
 
---- DeleteParameter
+--- Call DescribeMaintenanceWindows synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeMaintenanceWindowsRequest
+-- @return response
+-- @return error_message
+function M.DescribeMaintenanceWindowsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeMaintenanceWindowsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteParameter asynchronously, invoking a callback when done
 -- @param DeleteParameterRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteParameterAsync(DeleteParameterRequest, cb)
@@ -14181,7 +15133,21 @@ function M.DeleteParameterAsync(DeleteParameterRequest, cb)
 	end
 end
 
---- DescribeMaintenanceWindowExecutionTaskInvocations
+--- Call DeleteParameter synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteParameterRequest
+-- @return response
+-- @return error_message
+function M.DeleteParameterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteParameterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeMaintenanceWindowExecutionTaskInvocations asynchronously, invoking a callback when done
 -- @param DescribeMaintenanceWindowExecutionTaskInvocationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeMaintenanceWindowExecutionTaskInvocationsAsync(DescribeMaintenanceWindowExecutionTaskInvocationsRequest, cb)
@@ -14199,7 +15165,21 @@ function M.DescribeMaintenanceWindowExecutionTaskInvocationsAsync(DescribeMainte
 	end
 end
 
---- ModifyDocumentPermission
+--- Call DescribeMaintenanceWindowExecutionTaskInvocations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeMaintenanceWindowExecutionTaskInvocationsRequest
+-- @return response
+-- @return error_message
+function M.DescribeMaintenanceWindowExecutionTaskInvocationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeMaintenanceWindowExecutionTaskInvocationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDocumentPermission asynchronously, invoking a callback when done
 -- @param ModifyDocumentPermissionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDocumentPermissionAsync(ModifyDocumentPermissionRequest, cb)
@@ -14217,7 +15197,21 @@ function M.ModifyDocumentPermissionAsync(ModifyDocumentPermissionRequest, cb)
 	end
 end
 
---- DescribeMaintenanceWindowExecutions
+--- Call ModifyDocumentPermission synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDocumentPermissionRequest
+-- @return response
+-- @return error_message
+function M.ModifyDocumentPermissionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDocumentPermissionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeMaintenanceWindowExecutions asynchronously, invoking a callback when done
 -- @param DescribeMaintenanceWindowExecutionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeMaintenanceWindowExecutionsAsync(DescribeMaintenanceWindowExecutionsRequest, cb)
@@ -14235,7 +15229,21 @@ function M.DescribeMaintenanceWindowExecutionsAsync(DescribeMaintenanceWindowExe
 	end
 end
 
---- StartAutomationExecution
+--- Call DescribeMaintenanceWindowExecutions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeMaintenanceWindowExecutionsRequest
+-- @return response
+-- @return error_message
+function M.DescribeMaintenanceWindowExecutionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeMaintenanceWindowExecutionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartAutomationExecution asynchronously, invoking a callback when done
 -- @param StartAutomationExecutionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartAutomationExecutionAsync(StartAutomationExecutionRequest, cb)
@@ -14253,7 +15261,21 @@ function M.StartAutomationExecutionAsync(StartAutomationExecutionRequest, cb)
 	end
 end
 
---- DescribeDocument
+--- Call StartAutomationExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartAutomationExecutionRequest
+-- @return response
+-- @return error_message
+function M.StartAutomationExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartAutomationExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDocument asynchronously, invoking a callback when done
 -- @param DescribeDocumentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDocumentAsync(DescribeDocumentRequest, cb)
@@ -14271,7 +15293,21 @@ function M.DescribeDocumentAsync(DescribeDocumentRequest, cb)
 	end
 end
 
---- UpdateDocumentDefaultVersion
+--- Call DescribeDocument synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDocumentRequest
+-- @return response
+-- @return error_message
+function M.DescribeDocumentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDocumentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDocumentDefaultVersion asynchronously, invoking a callback when done
 -- @param UpdateDocumentDefaultVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDocumentDefaultVersionAsync(UpdateDocumentDefaultVersionRequest, cb)
@@ -14289,7 +15325,21 @@ function M.UpdateDocumentDefaultVersionAsync(UpdateDocumentDefaultVersionRequest
 	end
 end
 
---- RegisterTargetWithMaintenanceWindow
+--- Call UpdateDocumentDefaultVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDocumentDefaultVersionRequest
+-- @return response
+-- @return error_message
+function M.UpdateDocumentDefaultVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDocumentDefaultVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterTargetWithMaintenanceWindow asynchronously, invoking a callback when done
 -- @param RegisterTargetWithMaintenanceWindowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterTargetWithMaintenanceWindowAsync(RegisterTargetWithMaintenanceWindowRequest, cb)
@@ -14307,7 +15357,21 @@ function M.RegisterTargetWithMaintenanceWindowAsync(RegisterTargetWithMaintenanc
 	end
 end
 
---- DeletePatchBaseline
+--- Call RegisterTargetWithMaintenanceWindow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterTargetWithMaintenanceWindowRequest
+-- @return response
+-- @return error_message
+function M.RegisterTargetWithMaintenanceWindowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterTargetWithMaintenanceWindowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeletePatchBaseline asynchronously, invoking a callback when done
 -- @param DeletePatchBaselineRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeletePatchBaselineAsync(DeletePatchBaselineRequest, cb)
@@ -14325,7 +15389,21 @@ function M.DeletePatchBaselineAsync(DeletePatchBaselineRequest, cb)
 	end
 end
 
---- ListInventoryEntries
+--- Call DeletePatchBaseline synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeletePatchBaselineRequest
+-- @return response
+-- @return error_message
+function M.DeletePatchBaselineSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeletePatchBaselineAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListInventoryEntries asynchronously, invoking a callback when done
 -- @param ListInventoryEntriesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListInventoryEntriesAsync(ListInventoryEntriesRequest, cb)
@@ -14343,7 +15421,21 @@ function M.ListInventoryEntriesAsync(ListInventoryEntriesRequest, cb)
 	end
 end
 
---- DeregisterPatchBaselineForPatchGroup
+--- Call ListInventoryEntries synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListInventoryEntriesRequest
+-- @return response
+-- @return error_message
+function M.ListInventoryEntriesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListInventoryEntriesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterPatchBaselineForPatchGroup asynchronously, invoking a callback when done
 -- @param DeregisterPatchBaselineForPatchGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeregisterPatchBaselineForPatchGroupAsync(DeregisterPatchBaselineForPatchGroupRequest, cb)
@@ -14361,7 +15453,21 @@ function M.DeregisterPatchBaselineForPatchGroupAsync(DeregisterPatchBaselineForP
 	end
 end
 
---- ListTagsForResource
+--- Call DeregisterPatchBaselineForPatchGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterPatchBaselineForPatchGroupRequest
+-- @return response
+-- @return error_message
+function M.DeregisterPatchBaselineForPatchGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterPatchBaselineForPatchGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForResource asynchronously, invoking a callback when done
 -- @param ListTagsForResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
@@ -14379,7 +15485,21 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	end
 end
 
---- RegisterTaskWithMaintenanceWindow
+--- Call ListTagsForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForResourceRequest
+-- @return response
+-- @return error_message
+function M.ListTagsForResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterTaskWithMaintenanceWindow asynchronously, invoking a callback when done
 -- @param RegisterTaskWithMaintenanceWindowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterTaskWithMaintenanceWindowAsync(RegisterTaskWithMaintenanceWindowRequest, cb)
@@ -14397,7 +15517,21 @@ function M.RegisterTaskWithMaintenanceWindowAsync(RegisterTaskWithMaintenanceWin
 	end
 end
 
---- GetParameters
+--- Call RegisterTaskWithMaintenanceWindow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterTaskWithMaintenanceWindowRequest
+-- @return response
+-- @return error_message
+function M.RegisterTaskWithMaintenanceWindowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterTaskWithMaintenanceWindowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetParameters asynchronously, invoking a callback when done
 -- @param GetParametersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetParametersAsync(GetParametersRequest, cb)
@@ -14415,7 +15549,21 @@ function M.GetParametersAsync(GetParametersRequest, cb)
 	end
 end
 
---- ListDocuments
+--- Call GetParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetParametersRequest
+-- @return response
+-- @return error_message
+function M.GetParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDocuments asynchronously, invoking a callback when done
 -- @param ListDocumentsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDocumentsAsync(ListDocumentsRequest, cb)
@@ -14431,6 +15579,20 @@ function M.ListDocumentsAsync(ListDocumentsRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call ListDocuments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDocumentsRequest
+-- @return response
+-- @return error_message
+function M.ListDocumentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDocumentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

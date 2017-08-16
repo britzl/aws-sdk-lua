@@ -1010,7 +1010,7 @@ end
 --
 -- OPERATIONS
 --
---- Suggest
+--- Call Suggest asynchronously, invoking a callback when done
 -- @param SuggestRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SuggestAsync(SuggestRequest, cb)
@@ -1028,7 +1028,21 @@ function M.SuggestAsync(SuggestRequest, cb)
 	end
 end
 
---- Search
+--- Call Suggest synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SuggestRequest
+-- @return response
+-- @return error_message
+function M.SuggestSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SuggestAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Search asynchronously, invoking a callback when done
 -- @param SearchRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SearchAsync(SearchRequest, cb)
@@ -1046,7 +1060,21 @@ function M.SearchAsync(SearchRequest, cb)
 	end
 end
 
---- UploadDocuments
+--- Call Search synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SearchRequest
+-- @return response
+-- @return error_message
+function M.SearchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SearchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UploadDocuments asynchronously, invoking a callback when done
 -- @param UploadDocumentsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UploadDocumentsAsync(UploadDocumentsRequest, cb)
@@ -1062,6 +1090,20 @@ function M.UploadDocumentsAsync(UploadDocumentsRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call UploadDocuments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UploadDocumentsRequest
+-- @return response
+-- @return error_message
+function M.UploadDocumentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UploadDocumentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

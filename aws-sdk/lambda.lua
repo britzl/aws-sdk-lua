@@ -3033,7 +3033,7 @@ end
 --
 -- OPERATIONS
 --
---- ListEventSourceMappings
+--- Call ListEventSourceMappings asynchronously, invoking a callback when done
 -- @param ListEventSourceMappingsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListEventSourceMappingsAsync(ListEventSourceMappingsRequest, cb)
@@ -3051,7 +3051,21 @@ function M.ListEventSourceMappingsAsync(ListEventSourceMappingsRequest, cb)
 	end
 end
 
---- DeleteFunction
+--- Call ListEventSourceMappings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListEventSourceMappingsRequest
+-- @return response
+-- @return error_message
+function M.ListEventSourceMappingsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListEventSourceMappingsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteFunction asynchronously, invoking a callback when done
 -- @param DeleteFunctionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteFunctionAsync(DeleteFunctionRequest, cb)
@@ -3069,7 +3083,21 @@ function M.DeleteFunctionAsync(DeleteFunctionRequest, cb)
 	end
 end
 
---- UpdateEventSourceMapping
+--- Call DeleteFunction synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteFunctionRequest
+-- @return response
+-- @return error_message
+function M.DeleteFunctionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteFunctionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateEventSourceMapping asynchronously, invoking a callback when done
 -- @param UpdateEventSourceMappingRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateEventSourceMappingAsync(UpdateEventSourceMappingRequest, cb)
@@ -3087,7 +3115,21 @@ function M.UpdateEventSourceMappingAsync(UpdateEventSourceMappingRequest, cb)
 	end
 end
 
---- UpdateAlias
+--- Call UpdateEventSourceMapping synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateEventSourceMappingRequest
+-- @return response
+-- @return error_message
+function M.UpdateEventSourceMappingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateEventSourceMappingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateAlias asynchronously, invoking a callback when done
 -- @param UpdateAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateAliasAsync(UpdateAliasRequest, cb)
@@ -3105,7 +3147,21 @@ function M.UpdateAliasAsync(UpdateAliasRequest, cb)
 	end
 end
 
---- ListFunctions
+--- Call UpdateAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateAliasRequest
+-- @return response
+-- @return error_message
+function M.UpdateAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListFunctions asynchronously, invoking a callback when done
 -- @param ListFunctionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListFunctionsAsync(ListFunctionsRequest, cb)
@@ -3123,7 +3179,21 @@ function M.ListFunctionsAsync(ListFunctionsRequest, cb)
 	end
 end
 
---- CreateEventSourceMapping
+--- Call ListFunctions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListFunctionsRequest
+-- @return response
+-- @return error_message
+function M.ListFunctionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListFunctionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateEventSourceMapping asynchronously, invoking a callback when done
 -- @param CreateEventSourceMappingRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateEventSourceMappingAsync(CreateEventSourceMappingRequest, cb)
@@ -3141,7 +3211,21 @@ function M.CreateEventSourceMappingAsync(CreateEventSourceMappingRequest, cb)
 	end
 end
 
---- GetFunctionConfiguration
+--- Call CreateEventSourceMapping synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateEventSourceMappingRequest
+-- @return response
+-- @return error_message
+function M.CreateEventSourceMappingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateEventSourceMappingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetFunctionConfiguration asynchronously, invoking a callback when done
 -- @param GetFunctionConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetFunctionConfigurationAsync(GetFunctionConfigurationRequest, cb)
@@ -3159,7 +3243,21 @@ function M.GetFunctionConfigurationAsync(GetFunctionConfigurationRequest, cb)
 	end
 end
 
---- ListAliases
+--- Call GetFunctionConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetFunctionConfigurationRequest
+-- @return response
+-- @return error_message
+function M.GetFunctionConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetFunctionConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListAliases asynchronously, invoking a callback when done
 -- @param ListAliasesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListAliasesAsync(ListAliasesRequest, cb)
@@ -3177,7 +3275,21 @@ function M.ListAliasesAsync(ListAliasesRequest, cb)
 	end
 end
 
---- GetPolicy
+--- Call ListAliases synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListAliasesRequest
+-- @return response
+-- @return error_message
+function M.ListAliasesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListAliasesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetPolicy asynchronously, invoking a callback when done
 -- @param GetPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetPolicyAsync(GetPolicyRequest, cb)
@@ -3195,7 +3307,21 @@ function M.GetPolicyAsync(GetPolicyRequest, cb)
 	end
 end
 
---- Invoke
+--- Call GetPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetPolicyRequest
+-- @return response
+-- @return error_message
+function M.GetPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Invoke asynchronously, invoking a callback when done
 -- @param InvocationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.InvokeAsync(InvocationRequest, cb)
@@ -3213,7 +3339,21 @@ function M.InvokeAsync(InvocationRequest, cb)
 	end
 end
 
---- PublishVersion
+--- Call Invoke synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param InvocationRequest
+-- @return response
+-- @return error_message
+function M.InvokeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.InvokeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PublishVersion asynchronously, invoking a callback when done
 -- @param PublishVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PublishVersionAsync(PublishVersionRequest, cb)
@@ -3231,7 +3371,21 @@ function M.PublishVersionAsync(PublishVersionRequest, cb)
 	end
 end
 
---- GetFunction
+--- Call PublishVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PublishVersionRequest
+-- @return response
+-- @return error_message
+function M.PublishVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PublishVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetFunction asynchronously, invoking a callback when done
 -- @param GetFunctionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetFunctionAsync(GetFunctionRequest, cb)
@@ -3249,7 +3403,21 @@ function M.GetFunctionAsync(GetFunctionRequest, cb)
 	end
 end
 
---- DeleteAlias
+--- Call GetFunction synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetFunctionRequest
+-- @return response
+-- @return error_message
+function M.GetFunctionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetFunctionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteAlias asynchronously, invoking a callback when done
 -- @param DeleteAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteAliasAsync(DeleteAliasRequest, cb)
@@ -3267,7 +3435,21 @@ function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 	end
 end
 
---- AddPermission
+--- Call DeleteAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteAliasRequest
+-- @return response
+-- @return error_message
+function M.DeleteAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddPermission asynchronously, invoking a callback when done
 -- @param AddPermissionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddPermissionAsync(AddPermissionRequest, cb)
@@ -3285,7 +3467,21 @@ function M.AddPermissionAsync(AddPermissionRequest, cb)
 	end
 end
 
---- ListVersionsByFunction
+--- Call AddPermission synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddPermissionRequest
+-- @return response
+-- @return error_message
+function M.AddPermissionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddPermissionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListVersionsByFunction asynchronously, invoking a callback when done
 -- @param ListVersionsByFunctionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListVersionsByFunctionAsync(ListVersionsByFunctionRequest, cb)
@@ -3303,7 +3499,21 @@ function M.ListVersionsByFunctionAsync(ListVersionsByFunctionRequest, cb)
 	end
 end
 
---- RemovePermission
+--- Call ListVersionsByFunction synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListVersionsByFunctionRequest
+-- @return response
+-- @return error_message
+function M.ListVersionsByFunctionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListVersionsByFunctionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemovePermission asynchronously, invoking a callback when done
 -- @param RemovePermissionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemovePermissionAsync(RemovePermissionRequest, cb)
@@ -3321,7 +3531,21 @@ function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 	end
 end
 
---- CreateAlias
+--- Call RemovePermission synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemovePermissionRequest
+-- @return response
+-- @return error_message
+function M.RemovePermissionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemovePermissionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateAlias asynchronously, invoking a callback when done
 -- @param CreateAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateAliasAsync(CreateAliasRequest, cb)
@@ -3339,7 +3563,21 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 	end
 end
 
---- ListTags
+--- Call CreateAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateAliasRequest
+-- @return response
+-- @return error_message
+function M.CreateAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTags asynchronously, invoking a callback when done
 -- @param ListTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsAsync(ListTagsRequest, cb)
@@ -3357,7 +3595,21 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 	end
 end
 
---- TagResource
+--- Call ListTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsRequest
+-- @return response
+-- @return error_message
+function M.ListTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagResource asynchronously, invoking a callback when done
 -- @param TagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TagResourceAsync(TagResourceRequest, cb)
@@ -3375,7 +3627,21 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 	end
 end
 
---- DeleteEventSourceMapping
+--- Call TagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourceRequest
+-- @return response
+-- @return error_message
+function M.TagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteEventSourceMapping asynchronously, invoking a callback when done
 -- @param DeleteEventSourceMappingRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteEventSourceMappingAsync(DeleteEventSourceMappingRequest, cb)
@@ -3393,7 +3659,21 @@ function M.DeleteEventSourceMappingAsync(DeleteEventSourceMappingRequest, cb)
 	end
 end
 
---- UpdateFunctionConfiguration
+--- Call DeleteEventSourceMapping synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteEventSourceMappingRequest
+-- @return response
+-- @return error_message
+function M.DeleteEventSourceMappingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteEventSourceMappingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateFunctionConfiguration asynchronously, invoking a callback when done
 -- @param UpdateFunctionConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateFunctionConfigurationAsync(UpdateFunctionConfigurationRequest, cb)
@@ -3411,7 +3691,21 @@ function M.UpdateFunctionConfigurationAsync(UpdateFunctionConfigurationRequest, 
 	end
 end
 
---- GetEventSourceMapping
+--- Call UpdateFunctionConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateFunctionConfigurationRequest
+-- @return response
+-- @return error_message
+function M.UpdateFunctionConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateFunctionConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetEventSourceMapping asynchronously, invoking a callback when done
 -- @param GetEventSourceMappingRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetEventSourceMappingAsync(GetEventSourceMappingRequest, cb)
@@ -3429,7 +3723,21 @@ function M.GetEventSourceMappingAsync(GetEventSourceMappingRequest, cb)
 	end
 end
 
---- UntagResource
+--- Call GetEventSourceMapping synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetEventSourceMappingRequest
+-- @return response
+-- @return error_message
+function M.GetEventSourceMappingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetEventSourceMappingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UntagResource asynchronously, invoking a callback when done
 -- @param UntagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UntagResourceAsync(UntagResourceRequest, cb)
@@ -3447,7 +3755,21 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 	end
 end
 
---- GetAlias
+--- Call UntagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagResourceRequest
+-- @return response
+-- @return error_message
+function M.UntagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetAlias asynchronously, invoking a callback when done
 -- @param GetAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetAliasAsync(GetAliasRequest, cb)
@@ -3465,7 +3787,21 @@ function M.GetAliasAsync(GetAliasRequest, cb)
 	end
 end
 
---- GetAccountSettings
+--- Call GetAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetAliasRequest
+-- @return response
+-- @return error_message
+function M.GetAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetAccountSettings asynchronously, invoking a callback when done
 -- @param GetAccountSettingsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
@@ -3483,7 +3819,21 @@ function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
 	end
 end
 
---- CreateFunction
+--- Call GetAccountSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetAccountSettingsRequest
+-- @return response
+-- @return error_message
+function M.GetAccountSettingsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetAccountSettingsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateFunction asynchronously, invoking a callback when done
 -- @param CreateFunctionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateFunctionAsync(CreateFunctionRequest, cb)
@@ -3501,7 +3851,21 @@ function M.CreateFunctionAsync(CreateFunctionRequest, cb)
 	end
 end
 
---- UpdateFunctionCode
+--- Call CreateFunction synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateFunctionRequest
+-- @return response
+-- @return error_message
+function M.CreateFunctionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateFunctionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateFunctionCode asynchronously, invoking a callback when done
 -- @param UpdateFunctionCodeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateFunctionCodeAsync(UpdateFunctionCodeRequest, cb)
@@ -3517,6 +3881,20 @@ function M.UpdateFunctionCodeAsync(UpdateFunctionCodeRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call UpdateFunctionCode synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateFunctionCodeRequest
+-- @return response
+-- @return error_message
+function M.UpdateFunctionCodeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateFunctionCodeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

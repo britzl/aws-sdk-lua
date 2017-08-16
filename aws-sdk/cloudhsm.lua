@@ -1752,7 +1752,7 @@ end
 --
 -- OPERATIONS
 --
---- CreateHsm
+--- Call CreateHsm asynchronously, invoking a callback when done
 -- @param CreateHsmRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateHsmAsync(CreateHsmRequest, cb)
@@ -1770,7 +1770,21 @@ function M.CreateHsmAsync(CreateHsmRequest, cb)
 	end
 end
 
---- ListHapgs
+--- Call CreateHsm synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateHsmRequest
+-- @return response
+-- @return error_message
+function M.CreateHsmSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateHsmAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListHapgs asynchronously, invoking a callback when done
 -- @param ListHapgsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListHapgsAsync(ListHapgsRequest, cb)
@@ -1788,7 +1802,21 @@ function M.ListHapgsAsync(ListHapgsRequest, cb)
 	end
 end
 
---- ModifyHapg
+--- Call ListHapgs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListHapgsRequest
+-- @return response
+-- @return error_message
+function M.ListHapgsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListHapgsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyHapg asynchronously, invoking a callback when done
 -- @param ModifyHapgRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyHapgAsync(ModifyHapgRequest, cb)
@@ -1806,7 +1834,21 @@ function M.ModifyHapgAsync(ModifyHapgRequest, cb)
 	end
 end
 
---- DescribeHapg
+--- Call ModifyHapg synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyHapgRequest
+-- @return response
+-- @return error_message
+function M.ModifyHapgSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyHapgAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeHapg asynchronously, invoking a callback when done
 -- @param DescribeHapgRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeHapgAsync(DescribeHapgRequest, cb)
@@ -1824,7 +1866,21 @@ function M.DescribeHapgAsync(DescribeHapgRequest, cb)
 	end
 end
 
---- DeleteHsm
+--- Call DescribeHapg synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeHapgRequest
+-- @return response
+-- @return error_message
+function M.DescribeHapgSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeHapgAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteHsm asynchronously, invoking a callback when done
 -- @param DeleteHsmRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteHsmAsync(DeleteHsmRequest, cb)
@@ -1842,7 +1898,21 @@ function M.DeleteHsmAsync(DeleteHsmRequest, cb)
 	end
 end
 
---- ListHsms
+--- Call DeleteHsm synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteHsmRequest
+-- @return response
+-- @return error_message
+function M.DeleteHsmSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteHsmAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListHsms asynchronously, invoking a callback when done
 -- @param ListHsmsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListHsmsAsync(ListHsmsRequest, cb)
@@ -1860,7 +1930,21 @@ function M.ListHsmsAsync(ListHsmsRequest, cb)
 	end
 end
 
---- AddTagsToResource
+--- Call ListHsms synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListHsmsRequest
+-- @return response
+-- @return error_message
+function M.ListHsmsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListHsmsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTagsToResource asynchronously, invoking a callback when done
 -- @param AddTagsToResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
@@ -1878,7 +1962,21 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 	end
 end
 
---- DeleteLunaClient
+--- Call AddTagsToResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsToResourceRequest
+-- @return response
+-- @return error_message
+function M.AddTagsToResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsToResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteLunaClient asynchronously, invoking a callback when done
 -- @param DeleteLunaClientRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteLunaClientAsync(DeleteLunaClientRequest, cb)
@@ -1896,7 +1994,21 @@ function M.DeleteLunaClientAsync(DeleteLunaClientRequest, cb)
 	end
 end
 
---- CreateLunaClient
+--- Call DeleteLunaClient synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteLunaClientRequest
+-- @return response
+-- @return error_message
+function M.DeleteLunaClientSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteLunaClientAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateLunaClient asynchronously, invoking a callback when done
 -- @param CreateLunaClientRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateLunaClientAsync(CreateLunaClientRequest, cb)
@@ -1914,7 +2026,21 @@ function M.CreateLunaClientAsync(CreateLunaClientRequest, cb)
 	end
 end
 
---- CreateHapg
+--- Call CreateLunaClient synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateLunaClientRequest
+-- @return response
+-- @return error_message
+function M.CreateLunaClientSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateLunaClientAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateHapg asynchronously, invoking a callback when done
 -- @param CreateHapgRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateHapgAsync(CreateHapgRequest, cb)
@@ -1932,7 +2058,21 @@ function M.CreateHapgAsync(CreateHapgRequest, cb)
 	end
 end
 
---- RemoveTagsFromResource
+--- Call CreateHapg synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateHapgRequest
+-- @return response
+-- @return error_message
+function M.CreateHapgSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateHapgAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTagsFromResource asynchronously, invoking a callback when done
 -- @param RemoveTagsFromResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
@@ -1950,7 +2090,21 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 	end
 end
 
---- DeleteHapg
+--- Call RemoveTagsFromResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsFromResourceRequest
+-- @return response
+-- @return error_message
+function M.RemoveTagsFromResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsFromResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteHapg asynchronously, invoking a callback when done
 -- @param DeleteHapgRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteHapgAsync(DeleteHapgRequest, cb)
@@ -1968,7 +2122,21 @@ function M.DeleteHapgAsync(DeleteHapgRequest, cb)
 	end
 end
 
---- DescribeHsm
+--- Call DeleteHapg synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteHapgRequest
+-- @return response
+-- @return error_message
+function M.DeleteHapgSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteHapgAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeHsm asynchronously, invoking a callback when done
 -- @param DescribeHsmRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeHsmAsync(DescribeHsmRequest, cb)
@@ -1986,7 +2154,21 @@ function M.DescribeHsmAsync(DescribeHsmRequest, cb)
 	end
 end
 
---- GetConfig
+--- Call DescribeHsm synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeHsmRequest
+-- @return response
+-- @return error_message
+function M.DescribeHsmSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeHsmAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetConfig asynchronously, invoking a callback when done
 -- @param GetConfigRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetConfigAsync(GetConfigRequest, cb)
@@ -2004,7 +2186,21 @@ function M.GetConfigAsync(GetConfigRequest, cb)
 	end
 end
 
---- ListAvailableZones
+--- Call GetConfig synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetConfigRequest
+-- @return response
+-- @return error_message
+function M.GetConfigSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetConfigAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListAvailableZones asynchronously, invoking a callback when done
 -- @param ListAvailableZonesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListAvailableZonesAsync(ListAvailableZonesRequest, cb)
@@ -2022,7 +2218,21 @@ function M.ListAvailableZonesAsync(ListAvailableZonesRequest, cb)
 	end
 end
 
---- ModifyHsm
+--- Call ListAvailableZones synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListAvailableZonesRequest
+-- @return response
+-- @return error_message
+function M.ListAvailableZonesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListAvailableZonesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyHsm asynchronously, invoking a callback when done
 -- @param ModifyHsmRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyHsmAsync(ModifyHsmRequest, cb)
@@ -2040,7 +2250,21 @@ function M.ModifyHsmAsync(ModifyHsmRequest, cb)
 	end
 end
 
---- ListTagsForResource
+--- Call ModifyHsm synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyHsmRequest
+-- @return response
+-- @return error_message
+function M.ModifyHsmSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyHsmAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForResource asynchronously, invoking a callback when done
 -- @param ListTagsForResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
@@ -2058,7 +2282,21 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	end
 end
 
---- ModifyLunaClient
+--- Call ListTagsForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForResourceRequest
+-- @return response
+-- @return error_message
+function M.ListTagsForResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyLunaClient asynchronously, invoking a callback when done
 -- @param ModifyLunaClientRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyLunaClientAsync(ModifyLunaClientRequest, cb)
@@ -2076,7 +2314,21 @@ function M.ModifyLunaClientAsync(ModifyLunaClientRequest, cb)
 	end
 end
 
---- DescribeLunaClient
+--- Call ModifyLunaClient synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyLunaClientRequest
+-- @return response
+-- @return error_message
+function M.ModifyLunaClientSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyLunaClientAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLunaClient asynchronously, invoking a callback when done
 -- @param DescribeLunaClientRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLunaClientAsync(DescribeLunaClientRequest, cb)
@@ -2094,7 +2346,21 @@ function M.DescribeLunaClientAsync(DescribeLunaClientRequest, cb)
 	end
 end
 
---- ListLunaClients
+--- Call DescribeLunaClient synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeLunaClientRequest
+-- @return response
+-- @return error_message
+function M.DescribeLunaClientSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLunaClientAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListLunaClients asynchronously, invoking a callback when done
 -- @param ListLunaClientsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListLunaClientsAsync(ListLunaClientsRequest, cb)
@@ -2110,6 +2376,20 @@ function M.ListLunaClientsAsync(ListLunaClientsRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call ListLunaClients synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListLunaClientsRequest
+-- @return response
+-- @return error_message
+function M.ListLunaClientsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListLunaClientsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

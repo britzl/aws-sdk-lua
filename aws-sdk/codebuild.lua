@@ -1729,7 +1729,7 @@ end
 --
 -- OPERATIONS
 --
---- ListBuilds
+--- Call ListBuilds asynchronously, invoking a callback when done
 -- @param ListBuildsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListBuildsAsync(ListBuildsInput, cb)
@@ -1747,7 +1747,21 @@ function M.ListBuildsAsync(ListBuildsInput, cb)
 	end
 end
 
---- StopBuild
+--- Call ListBuilds synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListBuildsInput
+-- @return response
+-- @return error_message
+function M.ListBuildsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListBuildsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopBuild asynchronously, invoking a callback when done
 -- @param StopBuildInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopBuildAsync(StopBuildInput, cb)
@@ -1765,7 +1779,21 @@ function M.StopBuildAsync(StopBuildInput, cb)
 	end
 end
 
---- ListBuildsForProject
+--- Call StopBuild synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopBuildInput
+-- @return response
+-- @return error_message
+function M.StopBuildSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopBuildAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListBuildsForProject asynchronously, invoking a callback when done
 -- @param ListBuildsForProjectInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListBuildsForProjectAsync(ListBuildsForProjectInput, cb)
@@ -1783,7 +1811,21 @@ function M.ListBuildsForProjectAsync(ListBuildsForProjectInput, cb)
 	end
 end
 
---- BatchGetBuilds
+--- Call ListBuildsForProject synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListBuildsForProjectInput
+-- @return response
+-- @return error_message
+function M.ListBuildsForProjectSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListBuildsForProjectAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetBuilds asynchronously, invoking a callback when done
 -- @param BatchGetBuildsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetBuildsAsync(BatchGetBuildsInput, cb)
@@ -1801,7 +1843,21 @@ function M.BatchGetBuildsAsync(BatchGetBuildsInput, cb)
 	end
 end
 
---- CreateProject
+--- Call BatchGetBuilds synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetBuildsInput
+-- @return response
+-- @return error_message
+function M.BatchGetBuildsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetBuildsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateProject asynchronously, invoking a callback when done
 -- @param CreateProjectInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateProjectAsync(CreateProjectInput, cb)
@@ -1819,7 +1875,21 @@ function M.CreateProjectAsync(CreateProjectInput, cb)
 	end
 end
 
---- ListCuratedEnvironmentImages
+--- Call CreateProject synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateProjectInput
+-- @return response
+-- @return error_message
+function M.CreateProjectSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateProjectAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCuratedEnvironmentImages asynchronously, invoking a callback when done
 -- @param ListCuratedEnvironmentImagesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, cb)
@@ -1837,7 +1907,21 @@ function M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, 
 	end
 end
 
---- ListProjects
+--- Call ListCuratedEnvironmentImages synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCuratedEnvironmentImagesInput
+-- @return response
+-- @return error_message
+function M.ListCuratedEnvironmentImagesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCuratedEnvironmentImagesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListProjects asynchronously, invoking a callback when done
 -- @param ListProjectsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListProjectsAsync(ListProjectsInput, cb)
@@ -1855,7 +1939,21 @@ function M.ListProjectsAsync(ListProjectsInput, cb)
 	end
 end
 
---- UpdateProject
+--- Call ListProjects synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListProjectsInput
+-- @return response
+-- @return error_message
+function M.ListProjectsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListProjectsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateProject asynchronously, invoking a callback when done
 -- @param UpdateProjectInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateProjectAsync(UpdateProjectInput, cb)
@@ -1873,7 +1971,21 @@ function M.UpdateProjectAsync(UpdateProjectInput, cb)
 	end
 end
 
---- StartBuild
+--- Call UpdateProject synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateProjectInput
+-- @return response
+-- @return error_message
+function M.UpdateProjectSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateProjectAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartBuild asynchronously, invoking a callback when done
 -- @param StartBuildInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartBuildAsync(StartBuildInput, cb)
@@ -1891,7 +2003,21 @@ function M.StartBuildAsync(StartBuildInput, cb)
 	end
 end
 
---- DeleteProject
+--- Call StartBuild synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartBuildInput
+-- @return response
+-- @return error_message
+function M.StartBuildSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartBuildAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteProject asynchronously, invoking a callback when done
 -- @param DeleteProjectInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteProjectAsync(DeleteProjectInput, cb)
@@ -1909,7 +2035,21 @@ function M.DeleteProjectAsync(DeleteProjectInput, cb)
 	end
 end
 
---- BatchGetProjects
+--- Call DeleteProject synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteProjectInput
+-- @return response
+-- @return error_message
+function M.DeleteProjectSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteProjectAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetProjects asynchronously, invoking a callback when done
 -- @param BatchGetProjectsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetProjectsAsync(BatchGetProjectsInput, cb)
@@ -1925,6 +2065,20 @@ function M.BatchGetProjectsAsync(BatchGetProjectsInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call BatchGetProjects synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetProjectsInput
+-- @return response
+-- @return error_message
+function M.BatchGetProjectsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetProjectsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

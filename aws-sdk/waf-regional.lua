@@ -4893,7 +4893,7 @@ end
 --
 -- OPERATIONS
 --
---- CreateSizeConstraintSet
+--- Call CreateSizeConstraintSet asynchronously, invoking a callback when done
 -- @param CreateSizeConstraintSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSizeConstraintSetAsync(CreateSizeConstraintSetRequest, cb)
@@ -4911,7 +4911,21 @@ function M.CreateSizeConstraintSetAsync(CreateSizeConstraintSetRequest, cb)
 	end
 end
 
---- ListIPSets
+--- Call CreateSizeConstraintSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSizeConstraintSetRequest
+-- @return response
+-- @return error_message
+function M.CreateSizeConstraintSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSizeConstraintSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListIPSets asynchronously, invoking a callback when done
 -- @param ListIPSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListIPSetsAsync(ListIPSetsRequest, cb)
@@ -4929,7 +4943,21 @@ function M.ListIPSetsAsync(ListIPSetsRequest, cb)
 	end
 end
 
---- DeleteRateBasedRule
+--- Call ListIPSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListIPSetsRequest
+-- @return response
+-- @return error_message
+function M.ListIPSetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListIPSetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRateBasedRule asynchronously, invoking a callback when done
 -- @param DeleteRateBasedRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteRateBasedRuleAsync(DeleteRateBasedRuleRequest, cb)
@@ -4947,7 +4975,21 @@ function M.DeleteRateBasedRuleAsync(DeleteRateBasedRuleRequest, cb)
 	end
 end
 
---- ListWebACLs
+--- Call DeleteRateBasedRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRateBasedRuleRequest
+-- @return response
+-- @return error_message
+function M.DeleteRateBasedRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRateBasedRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListWebACLs asynchronously, invoking a callback when done
 -- @param ListWebACLsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListWebACLsAsync(ListWebACLsRequest, cb)
@@ -4965,7 +5007,21 @@ function M.ListWebACLsAsync(ListWebACLsRequest, cb)
 	end
 end
 
---- GetChangeTokenStatus
+--- Call ListWebACLs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListWebACLsRequest
+-- @return response
+-- @return error_message
+function M.ListWebACLsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListWebACLsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetChangeTokenStatus asynchronously, invoking a callback when done
 -- @param GetChangeTokenStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetChangeTokenStatusAsync(GetChangeTokenStatusRequest, cb)
@@ -4983,7 +5039,21 @@ function M.GetChangeTokenStatusAsync(GetChangeTokenStatusRequest, cb)
 	end
 end
 
---- DeleteSqlInjectionMatchSet
+--- Call GetChangeTokenStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetChangeTokenStatusRequest
+-- @return response
+-- @return error_message
+function M.GetChangeTokenStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetChangeTokenStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSqlInjectionMatchSet asynchronously, invoking a callback when done
 -- @param DeleteSqlInjectionMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSqlInjectionMatchSetAsync(DeleteSqlInjectionMatchSetRequest, cb)
@@ -5001,7 +5071,21 @@ function M.DeleteSqlInjectionMatchSetAsync(DeleteSqlInjectionMatchSetRequest, cb
 	end
 end
 
---- ListByteMatchSets
+--- Call DeleteSqlInjectionMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSqlInjectionMatchSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteSqlInjectionMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSqlInjectionMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListByteMatchSets asynchronously, invoking a callback when done
 -- @param ListByteMatchSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListByteMatchSetsAsync(ListByteMatchSetsRequest, cb)
@@ -5019,7 +5103,21 @@ function M.ListByteMatchSetsAsync(ListByteMatchSetsRequest, cb)
 	end
 end
 
---- CreateRule
+--- Call ListByteMatchSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListByteMatchSetsRequest
+-- @return response
+-- @return error_message
+function M.ListByteMatchSetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListByteMatchSetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateRule asynchronously, invoking a callback when done
 -- @param CreateRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateRuleAsync(CreateRuleRequest, cb)
@@ -5037,7 +5135,21 @@ function M.CreateRuleAsync(CreateRuleRequest, cb)
 	end
 end
 
---- GetRateBasedRuleManagedKeys
+--- Call CreateRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateRuleRequest
+-- @return response
+-- @return error_message
+function M.CreateRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRateBasedRuleManagedKeys asynchronously, invoking a callback when done
 -- @param GetRateBasedRuleManagedKeysRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRateBasedRuleManagedKeysAsync(GetRateBasedRuleManagedKeysRequest, cb)
@@ -5055,7 +5167,21 @@ function M.GetRateBasedRuleManagedKeysAsync(GetRateBasedRuleManagedKeysRequest, 
 	end
 end
 
---- CreateSqlInjectionMatchSet
+--- Call GetRateBasedRuleManagedKeys synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRateBasedRuleManagedKeysRequest
+-- @return response
+-- @return error_message
+function M.GetRateBasedRuleManagedKeysSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRateBasedRuleManagedKeysAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSqlInjectionMatchSet asynchronously, invoking a callback when done
 -- @param CreateSqlInjectionMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSqlInjectionMatchSetAsync(CreateSqlInjectionMatchSetRequest, cb)
@@ -5073,7 +5199,21 @@ function M.CreateSqlInjectionMatchSetAsync(CreateSqlInjectionMatchSetRequest, cb
 	end
 end
 
---- ListRateBasedRules
+--- Call CreateSqlInjectionMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSqlInjectionMatchSetRequest
+-- @return response
+-- @return error_message
+function M.CreateSqlInjectionMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSqlInjectionMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRateBasedRules asynchronously, invoking a callback when done
 -- @param ListRateBasedRulesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListRateBasedRulesAsync(ListRateBasedRulesRequest, cb)
@@ -5091,7 +5231,21 @@ function M.ListRateBasedRulesAsync(ListRateBasedRulesRequest, cb)
 	end
 end
 
---- DeleteByteMatchSet
+--- Call ListRateBasedRules synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRateBasedRulesRequest
+-- @return response
+-- @return error_message
+function M.ListRateBasedRulesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRateBasedRulesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteByteMatchSet asynchronously, invoking a callback when done
 -- @param DeleteByteMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteByteMatchSetAsync(DeleteByteMatchSetRequest, cb)
@@ -5109,7 +5263,21 @@ function M.DeleteByteMatchSetAsync(DeleteByteMatchSetRequest, cb)
 	end
 end
 
---- DeleteXssMatchSet
+--- Call DeleteByteMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteByteMatchSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteByteMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteByteMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteXssMatchSet asynchronously, invoking a callback when done
 -- @param DeleteXssMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteXssMatchSetAsync(DeleteXssMatchSetRequest, cb)
@@ -5127,7 +5295,21 @@ function M.DeleteXssMatchSetAsync(DeleteXssMatchSetRequest, cb)
 	end
 end
 
---- ListSqlInjectionMatchSets
+--- Call DeleteXssMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteXssMatchSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteXssMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteXssMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSqlInjectionMatchSets asynchronously, invoking a callback when done
 -- @param ListSqlInjectionMatchSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListSqlInjectionMatchSetsAsync(ListSqlInjectionMatchSetsRequest, cb)
@@ -5145,7 +5327,21 @@ function M.ListSqlInjectionMatchSetsAsync(ListSqlInjectionMatchSetsRequest, cb)
 	end
 end
 
---- DeleteRule
+--- Call ListSqlInjectionMatchSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSqlInjectionMatchSetsRequest
+-- @return response
+-- @return error_message
+function M.ListSqlInjectionMatchSetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSqlInjectionMatchSetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRule asynchronously, invoking a callback when done
 -- @param DeleteRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteRuleAsync(DeleteRuleRequest, cb)
@@ -5163,7 +5359,21 @@ function M.DeleteRuleAsync(DeleteRuleRequest, cb)
 	end
 end
 
---- GetIPSet
+--- Call DeleteRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRuleRequest
+-- @return response
+-- @return error_message
+function M.DeleteRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIPSet asynchronously, invoking a callback when done
 -- @param GetIPSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIPSetAsync(GetIPSetRequest, cb)
@@ -5181,7 +5391,21 @@ function M.GetIPSetAsync(GetIPSetRequest, cb)
 	end
 end
 
---- UpdateIPSet
+--- Call GetIPSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIPSetRequest
+-- @return response
+-- @return error_message
+function M.GetIPSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIPSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateIPSet asynchronously, invoking a callback when done
 -- @param UpdateIPSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateIPSetAsync(UpdateIPSetRequest, cb)
@@ -5199,7 +5423,21 @@ function M.UpdateIPSetAsync(UpdateIPSetRequest, cb)
 	end
 end
 
---- UpdateRule
+--- Call UpdateIPSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateIPSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateIPSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateIPSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRule asynchronously, invoking a callback when done
 -- @param UpdateRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateRuleAsync(UpdateRuleRequest, cb)
@@ -5217,7 +5455,21 @@ function M.UpdateRuleAsync(UpdateRuleRequest, cb)
 	end
 end
 
---- GetByteMatchSet
+--- Call UpdateRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRuleRequest
+-- @return response
+-- @return error_message
+function M.UpdateRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetByteMatchSet asynchronously, invoking a callback when done
 -- @param GetByteMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetByteMatchSetAsync(GetByteMatchSetRequest, cb)
@@ -5235,7 +5487,21 @@ function M.GetByteMatchSetAsync(GetByteMatchSetRequest, cb)
 	end
 end
 
---- CreateXssMatchSet
+--- Call GetByteMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetByteMatchSetRequest
+-- @return response
+-- @return error_message
+function M.GetByteMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetByteMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateXssMatchSet asynchronously, invoking a callback when done
 -- @param CreateXssMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateXssMatchSetAsync(CreateXssMatchSetRequest, cb)
@@ -5253,7 +5519,21 @@ function M.CreateXssMatchSetAsync(CreateXssMatchSetRequest, cb)
 	end
 end
 
---- UpdateRateBasedRule
+--- Call CreateXssMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateXssMatchSetRequest
+-- @return response
+-- @return error_message
+function M.CreateXssMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateXssMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRateBasedRule asynchronously, invoking a callback when done
 -- @param UpdateRateBasedRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateRateBasedRuleAsync(UpdateRateBasedRuleRequest, cb)
@@ -5271,7 +5551,21 @@ function M.UpdateRateBasedRuleAsync(UpdateRateBasedRuleRequest, cb)
 	end
 end
 
---- GetChangeToken
+--- Call UpdateRateBasedRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRateBasedRuleRequest
+-- @return response
+-- @return error_message
+function M.UpdateRateBasedRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRateBasedRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetChangeToken asynchronously, invoking a callback when done
 -- @param GetChangeTokenRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetChangeTokenAsync(GetChangeTokenRequest, cb)
@@ -5289,7 +5583,21 @@ function M.GetChangeTokenAsync(GetChangeTokenRequest, cb)
 	end
 end
 
---- ListXssMatchSets
+--- Call GetChangeToken synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetChangeTokenRequest
+-- @return response
+-- @return error_message
+function M.GetChangeTokenSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetChangeTokenAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListXssMatchSets asynchronously, invoking a callback when done
 -- @param ListXssMatchSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListXssMatchSetsAsync(ListXssMatchSetsRequest, cb)
@@ -5307,7 +5615,21 @@ function M.ListXssMatchSetsAsync(ListXssMatchSetsRequest, cb)
 	end
 end
 
---- AssociateWebACL
+--- Call ListXssMatchSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListXssMatchSetsRequest
+-- @return response
+-- @return error_message
+function M.ListXssMatchSetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListXssMatchSetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateWebACL asynchronously, invoking a callback when done
 -- @param AssociateWebACLRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AssociateWebACLAsync(AssociateWebACLRequest, cb)
@@ -5325,7 +5647,21 @@ function M.AssociateWebACLAsync(AssociateWebACLRequest, cb)
 	end
 end
 
---- GetSizeConstraintSet
+--- Call AssociateWebACL synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateWebACLRequest
+-- @return response
+-- @return error_message
+function M.AssociateWebACLSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateWebACLAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSizeConstraintSet asynchronously, invoking a callback when done
 -- @param GetSizeConstraintSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSizeConstraintSetAsync(GetSizeConstraintSetRequest, cb)
@@ -5343,7 +5679,21 @@ function M.GetSizeConstraintSetAsync(GetSizeConstraintSetRequest, cb)
 	end
 end
 
---- CreateIPSet
+--- Call GetSizeConstraintSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSizeConstraintSetRequest
+-- @return response
+-- @return error_message
+function M.GetSizeConstraintSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSizeConstraintSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateIPSet asynchronously, invoking a callback when done
 -- @param CreateIPSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateIPSetAsync(CreateIPSetRequest, cb)
@@ -5361,7 +5711,21 @@ function M.CreateIPSetAsync(CreateIPSetRequest, cb)
 	end
 end
 
---- GetXssMatchSet
+--- Call CreateIPSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateIPSetRequest
+-- @return response
+-- @return error_message
+function M.CreateIPSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateIPSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetXssMatchSet asynchronously, invoking a callback when done
 -- @param GetXssMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetXssMatchSetAsync(GetXssMatchSetRequest, cb)
@@ -5379,7 +5743,21 @@ function M.GetXssMatchSetAsync(GetXssMatchSetRequest, cb)
 	end
 end
 
---- UpdateXssMatchSet
+--- Call GetXssMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetXssMatchSetRequest
+-- @return response
+-- @return error_message
+function M.GetXssMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetXssMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateXssMatchSet asynchronously, invoking a callback when done
 -- @param UpdateXssMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, cb)
@@ -5397,7 +5775,21 @@ function M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, cb)
 	end
 end
 
---- GetRateBasedRule
+--- Call UpdateXssMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateXssMatchSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateXssMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateXssMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRateBasedRule asynchronously, invoking a callback when done
 -- @param GetRateBasedRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRateBasedRuleAsync(GetRateBasedRuleRequest, cb)
@@ -5415,7 +5807,21 @@ function M.GetRateBasedRuleAsync(GetRateBasedRuleRequest, cb)
 	end
 end
 
---- UpdateSizeConstraintSet
+--- Call GetRateBasedRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRateBasedRuleRequest
+-- @return response
+-- @return error_message
+function M.GetRateBasedRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRateBasedRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateSizeConstraintSet asynchronously, invoking a callback when done
 -- @param UpdateSizeConstraintSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, cb)
@@ -5433,7 +5839,21 @@ function M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, cb)
 	end
 end
 
---- CreateRateBasedRule
+--- Call UpdateSizeConstraintSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateSizeConstraintSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateSizeConstraintSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateSizeConstraintSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateRateBasedRule asynchronously, invoking a callback when done
 -- @param CreateRateBasedRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateRateBasedRuleAsync(CreateRateBasedRuleRequest, cb)
@@ -5451,7 +5871,21 @@ function M.CreateRateBasedRuleAsync(CreateRateBasedRuleRequest, cb)
 	end
 end
 
---- ListRules
+--- Call CreateRateBasedRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateRateBasedRuleRequest
+-- @return response
+-- @return error_message
+function M.CreateRateBasedRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateRateBasedRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRules asynchronously, invoking a callback when done
 -- @param ListRulesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListRulesAsync(ListRulesRequest, cb)
@@ -5469,7 +5903,21 @@ function M.ListRulesAsync(ListRulesRequest, cb)
 	end
 end
 
---- GetSampledRequests
+--- Call ListRules synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRulesRequest
+-- @return response
+-- @return error_message
+function M.ListRulesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRulesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSampledRequests asynchronously, invoking a callback when done
 -- @param GetSampledRequestsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSampledRequestsAsync(GetSampledRequestsRequest, cb)
@@ -5487,7 +5935,21 @@ function M.GetSampledRequestsAsync(GetSampledRequestsRequest, cb)
 	end
 end
 
---- CreateWebACL
+--- Call GetSampledRequests synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSampledRequestsRequest
+-- @return response
+-- @return error_message
+function M.GetSampledRequestsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSampledRequestsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateWebACL asynchronously, invoking a callback when done
 -- @param CreateWebACLRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateWebACLAsync(CreateWebACLRequest, cb)
@@ -5505,7 +5967,21 @@ function M.CreateWebACLAsync(CreateWebACLRequest, cb)
 	end
 end
 
---- DeleteWebACL
+--- Call CreateWebACL synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateWebACLRequest
+-- @return response
+-- @return error_message
+function M.CreateWebACLSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateWebACLAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteWebACL asynchronously, invoking a callback when done
 -- @param DeleteWebACLRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteWebACLAsync(DeleteWebACLRequest, cb)
@@ -5523,7 +5999,21 @@ function M.DeleteWebACLAsync(DeleteWebACLRequest, cb)
 	end
 end
 
---- GetRule
+--- Call DeleteWebACL synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteWebACLRequest
+-- @return response
+-- @return error_message
+function M.DeleteWebACLSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteWebACLAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRule asynchronously, invoking a callback when done
 -- @param GetRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRuleAsync(GetRuleRequest, cb)
@@ -5541,7 +6031,21 @@ function M.GetRuleAsync(GetRuleRequest, cb)
 	end
 end
 
---- DeleteSizeConstraintSet
+--- Call GetRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRuleRequest
+-- @return response
+-- @return error_message
+function M.GetRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSizeConstraintSet asynchronously, invoking a callback when done
 -- @param DeleteSizeConstraintSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSizeConstraintSetAsync(DeleteSizeConstraintSetRequest, cb)
@@ -5559,7 +6063,21 @@ function M.DeleteSizeConstraintSetAsync(DeleteSizeConstraintSetRequest, cb)
 	end
 end
 
---- GetWebACLForResource
+--- Call DeleteSizeConstraintSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSizeConstraintSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteSizeConstraintSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSizeConstraintSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetWebACLForResource asynchronously, invoking a callback when done
 -- @param GetWebACLForResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetWebACLForResourceAsync(GetWebACLForResourceRequest, cb)
@@ -5577,7 +6095,21 @@ function M.GetWebACLForResourceAsync(GetWebACLForResourceRequest, cb)
 	end
 end
 
---- UpdateSqlInjectionMatchSet
+--- Call GetWebACLForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetWebACLForResourceRequest
+-- @return response
+-- @return error_message
+function M.GetWebACLForResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetWebACLForResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateSqlInjectionMatchSet asynchronously, invoking a callback when done
 -- @param UpdateSqlInjectionMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, cb)
@@ -5595,7 +6127,21 @@ function M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, cb
 	end
 end
 
---- UpdateWebACL
+--- Call UpdateSqlInjectionMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateSqlInjectionMatchSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateSqlInjectionMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateSqlInjectionMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateWebACL asynchronously, invoking a callback when done
 -- @param UpdateWebACLRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateWebACLAsync(UpdateWebACLRequest, cb)
@@ -5613,7 +6159,21 @@ function M.UpdateWebACLAsync(UpdateWebACLRequest, cb)
 	end
 end
 
---- CreateByteMatchSet
+--- Call UpdateWebACL synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateWebACLRequest
+-- @return response
+-- @return error_message
+function M.UpdateWebACLSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateWebACLAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateByteMatchSet asynchronously, invoking a callback when done
 -- @param CreateByteMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, cb)
@@ -5631,7 +6191,21 @@ function M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, cb)
 	end
 end
 
---- ListResourcesForWebACL
+--- Call CreateByteMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateByteMatchSetRequest
+-- @return response
+-- @return error_message
+function M.CreateByteMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateByteMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListResourcesForWebACL asynchronously, invoking a callback when done
 -- @param ListResourcesForWebACLRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListResourcesForWebACLAsync(ListResourcesForWebACLRequest, cb)
@@ -5649,7 +6223,21 @@ function M.ListResourcesForWebACLAsync(ListResourcesForWebACLRequest, cb)
 	end
 end
 
---- GetWebACL
+--- Call ListResourcesForWebACL synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListResourcesForWebACLRequest
+-- @return response
+-- @return error_message
+function M.ListResourcesForWebACLSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListResourcesForWebACLAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetWebACL asynchronously, invoking a callback when done
 -- @param GetWebACLRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetWebACLAsync(GetWebACLRequest, cb)
@@ -5667,7 +6255,21 @@ function M.GetWebACLAsync(GetWebACLRequest, cb)
 	end
 end
 
---- UpdateByteMatchSet
+--- Call GetWebACL synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetWebACLRequest
+-- @return response
+-- @return error_message
+function M.GetWebACLSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetWebACLAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateByteMatchSet asynchronously, invoking a callback when done
 -- @param UpdateByteMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateByteMatchSetAsync(UpdateByteMatchSetRequest, cb)
@@ -5685,7 +6287,21 @@ function M.UpdateByteMatchSetAsync(UpdateByteMatchSetRequest, cb)
 	end
 end
 
---- DisassociateWebACL
+--- Call UpdateByteMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateByteMatchSetRequest
+-- @return response
+-- @return error_message
+function M.UpdateByteMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateByteMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisassociateWebACL asynchronously, invoking a callback when done
 -- @param DisassociateWebACLRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisassociateWebACLAsync(DisassociateWebACLRequest, cb)
@@ -5703,7 +6319,21 @@ function M.DisassociateWebACLAsync(DisassociateWebACLRequest, cb)
 	end
 end
 
---- GetSqlInjectionMatchSet
+--- Call DisassociateWebACL synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisassociateWebACLRequest
+-- @return response
+-- @return error_message
+function M.DisassociateWebACLSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisassociateWebACLAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSqlInjectionMatchSet asynchronously, invoking a callback when done
 -- @param GetSqlInjectionMatchSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSqlInjectionMatchSetAsync(GetSqlInjectionMatchSetRequest, cb)
@@ -5721,7 +6351,21 @@ function M.GetSqlInjectionMatchSetAsync(GetSqlInjectionMatchSetRequest, cb)
 	end
 end
 
---- ListSizeConstraintSets
+--- Call GetSqlInjectionMatchSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSqlInjectionMatchSetRequest
+-- @return response
+-- @return error_message
+function M.GetSqlInjectionMatchSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSqlInjectionMatchSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSizeConstraintSets asynchronously, invoking a callback when done
 -- @param ListSizeConstraintSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListSizeConstraintSetsAsync(ListSizeConstraintSetsRequest, cb)
@@ -5739,7 +6383,21 @@ function M.ListSizeConstraintSetsAsync(ListSizeConstraintSetsRequest, cb)
 	end
 end
 
---- DeleteIPSet
+--- Call ListSizeConstraintSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSizeConstraintSetsRequest
+-- @return response
+-- @return error_message
+function M.ListSizeConstraintSetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSizeConstraintSetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteIPSet asynchronously, invoking a callback when done
 -- @param DeleteIPSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteIPSetAsync(DeleteIPSetRequest, cb)
@@ -5755,6 +6413,20 @@ function M.DeleteIPSetAsync(DeleteIPSetRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DeleteIPSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteIPSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteIPSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteIPSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

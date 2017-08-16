@@ -1539,7 +1539,7 @@ end
 --
 -- OPERATIONS
 --
---- ImportServerCatalog
+--- Call ImportServerCatalog asynchronously, invoking a callback when done
 -- @param ImportServerCatalogRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ImportServerCatalogAsync(ImportServerCatalogRequest, cb)
@@ -1557,7 +1557,21 @@ function M.ImportServerCatalogAsync(ImportServerCatalogRequest, cb)
 	end
 end
 
---- GetConnectors
+--- Call ImportServerCatalog synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ImportServerCatalogRequest
+-- @return response
+-- @return error_message
+function M.ImportServerCatalogSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ImportServerCatalogAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetConnectors asynchronously, invoking a callback when done
 -- @param GetConnectorsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetConnectorsAsync(GetConnectorsRequest, cb)
@@ -1575,7 +1589,21 @@ function M.GetConnectorsAsync(GetConnectorsRequest, cb)
 	end
 end
 
---- DeleteReplicationJob
+--- Call GetConnectors synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetConnectorsRequest
+-- @return response
+-- @return error_message
+function M.GetConnectorsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetConnectorsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteReplicationJob asynchronously, invoking a callback when done
 -- @param DeleteReplicationJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteReplicationJobAsync(DeleteReplicationJobRequest, cb)
@@ -1593,7 +1621,21 @@ function M.DeleteReplicationJobAsync(DeleteReplicationJobRequest, cb)
 	end
 end
 
---- StartOnDemandReplicationRun
+--- Call DeleteReplicationJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteReplicationJobRequest
+-- @return response
+-- @return error_message
+function M.DeleteReplicationJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteReplicationJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartOnDemandReplicationRun asynchronously, invoking a callback when done
 -- @param StartOnDemandReplicationRunRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartOnDemandReplicationRunAsync(StartOnDemandReplicationRunRequest, cb)
@@ -1611,7 +1653,21 @@ function M.StartOnDemandReplicationRunAsync(StartOnDemandReplicationRunRequest, 
 	end
 end
 
---- GetServers
+--- Call StartOnDemandReplicationRun synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartOnDemandReplicationRunRequest
+-- @return response
+-- @return error_message
+function M.StartOnDemandReplicationRunSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartOnDemandReplicationRunAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetServers asynchronously, invoking a callback when done
 -- @param GetServersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetServersAsync(GetServersRequest, cb)
@@ -1629,7 +1685,21 @@ function M.GetServersAsync(GetServersRequest, cb)
 	end
 end
 
---- GetReplicationRuns
+--- Call GetServers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetServersRequest
+-- @return response
+-- @return error_message
+function M.GetServersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetServersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetReplicationRuns asynchronously, invoking a callback when done
 -- @param GetReplicationRunsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetReplicationRunsAsync(GetReplicationRunsRequest, cb)
@@ -1647,7 +1717,21 @@ function M.GetReplicationRunsAsync(GetReplicationRunsRequest, cb)
 	end
 end
 
---- GetReplicationJobs
+--- Call GetReplicationRuns synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetReplicationRunsRequest
+-- @return response
+-- @return error_message
+function M.GetReplicationRunsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetReplicationRunsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetReplicationJobs asynchronously, invoking a callback when done
 -- @param GetReplicationJobsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetReplicationJobsAsync(GetReplicationJobsRequest, cb)
@@ -1665,7 +1749,21 @@ function M.GetReplicationJobsAsync(GetReplicationJobsRequest, cb)
 	end
 end
 
---- DisassociateConnector
+--- Call GetReplicationJobs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetReplicationJobsRequest
+-- @return response
+-- @return error_message
+function M.GetReplicationJobsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetReplicationJobsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisassociateConnector asynchronously, invoking a callback when done
 -- @param DisassociateConnectorRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisassociateConnectorAsync(DisassociateConnectorRequest, cb)
@@ -1683,7 +1781,21 @@ function M.DisassociateConnectorAsync(DisassociateConnectorRequest, cb)
 	end
 end
 
---- CreateReplicationJob
+--- Call DisassociateConnector synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisassociateConnectorRequest
+-- @return response
+-- @return error_message
+function M.DisassociateConnectorSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisassociateConnectorAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateReplicationJob asynchronously, invoking a callback when done
 -- @param CreateReplicationJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateReplicationJobAsync(CreateReplicationJobRequest, cb)
@@ -1701,7 +1813,21 @@ function M.CreateReplicationJobAsync(CreateReplicationJobRequest, cb)
 	end
 end
 
---- UpdateReplicationJob
+--- Call CreateReplicationJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateReplicationJobRequest
+-- @return response
+-- @return error_message
+function M.CreateReplicationJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateReplicationJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateReplicationJob asynchronously, invoking a callback when done
 -- @param UpdateReplicationJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateReplicationJobAsync(UpdateReplicationJobRequest, cb)
@@ -1719,7 +1845,21 @@ function M.UpdateReplicationJobAsync(UpdateReplicationJobRequest, cb)
 	end
 end
 
---- DeleteServerCatalog
+--- Call UpdateReplicationJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateReplicationJobRequest
+-- @return response
+-- @return error_message
+function M.UpdateReplicationJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateReplicationJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteServerCatalog asynchronously, invoking a callback when done
 -- @param DeleteServerCatalogRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteServerCatalogAsync(DeleteServerCatalogRequest, cb)
@@ -1735,6 +1875,20 @@ function M.DeleteServerCatalogAsync(DeleteServerCatalogRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DeleteServerCatalog synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteServerCatalogRequest
+-- @return response
+-- @return error_message
+function M.DeleteServerCatalogSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteServerCatalogAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

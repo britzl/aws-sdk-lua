@@ -4927,7 +4927,7 @@ end
 --
 -- OPERATIONS
 --
---- CreateReceiptRule
+--- Call CreateReceiptRule asynchronously, invoking a callback when done
 -- @param CreateReceiptRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateReceiptRuleAsync(CreateReceiptRuleRequest, cb)
@@ -4945,7 +4945,21 @@ function M.CreateReceiptRuleAsync(CreateReceiptRuleRequest, cb)
 	end
 end
 
---- GetSendStatistics
+--- Call CreateReceiptRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateReceiptRuleRequest
+-- @return response
+-- @return error_message
+function M.CreateReceiptRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateReceiptRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSendStatistics asynchronously, invoking a callback when done
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSendStatisticsAsync(cb)
 	local headers = {
@@ -4961,7 +4975,20 @@ function M.GetSendStatisticsAsync(cb)
 	end
 end
 
---- ReorderReceiptRuleSet
+--- Call GetSendStatistics synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @return response
+-- @return error_message
+function M.GetSendStatisticsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSendStatisticsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ReorderReceiptRuleSet asynchronously, invoking a callback when done
 -- @param ReorderReceiptRuleSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ReorderReceiptRuleSetAsync(ReorderReceiptRuleSetRequest, cb)
@@ -4979,7 +5006,21 @@ function M.ReorderReceiptRuleSetAsync(ReorderReceiptRuleSetRequest, cb)
 	end
 end
 
---- GetIdentityPolicies
+--- Call ReorderReceiptRuleSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ReorderReceiptRuleSetRequest
+-- @return response
+-- @return error_message
+function M.ReorderReceiptRuleSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ReorderReceiptRuleSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIdentityPolicies asynchronously, invoking a callback when done
 -- @param GetIdentityPoliciesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIdentityPoliciesAsync(GetIdentityPoliciesRequest, cb)
@@ -4997,7 +5038,21 @@ function M.GetIdentityPoliciesAsync(GetIdentityPoliciesRequest, cb)
 	end
 end
 
---- VerifyEmailAddress
+--- Call GetIdentityPolicies synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIdentityPoliciesRequest
+-- @return response
+-- @return error_message
+function M.GetIdentityPoliciesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIdentityPoliciesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call VerifyEmailAddress asynchronously, invoking a callback when done
 -- @param VerifyEmailAddressRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.VerifyEmailAddressAsync(VerifyEmailAddressRequest, cb)
@@ -5015,7 +5070,21 @@ function M.VerifyEmailAddressAsync(VerifyEmailAddressRequest, cb)
 	end
 end
 
---- SetIdentityMailFromDomain
+--- Call VerifyEmailAddress synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param VerifyEmailAddressRequest
+-- @return response
+-- @return error_message
+function M.VerifyEmailAddressSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.VerifyEmailAddressAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetIdentityMailFromDomain asynchronously, invoking a callback when done
 -- @param SetIdentityMailFromDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetIdentityMailFromDomainAsync(SetIdentityMailFromDomainRequest, cb)
@@ -5033,7 +5102,21 @@ function M.SetIdentityMailFromDomainAsync(SetIdentityMailFromDomainRequest, cb)
 	end
 end
 
---- ListReceiptFilters
+--- Call SetIdentityMailFromDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetIdentityMailFromDomainRequest
+-- @return response
+-- @return error_message
+function M.SetIdentityMailFromDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetIdentityMailFromDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListReceiptFilters asynchronously, invoking a callback when done
 -- @param ListReceiptFiltersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListReceiptFiltersAsync(ListReceiptFiltersRequest, cb)
@@ -5051,7 +5134,21 @@ function M.ListReceiptFiltersAsync(ListReceiptFiltersRequest, cb)
 	end
 end
 
---- DescribeReceiptRuleSet
+--- Call ListReceiptFilters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListReceiptFiltersRequest
+-- @return response
+-- @return error_message
+function M.ListReceiptFiltersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListReceiptFiltersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReceiptRuleSet asynchronously, invoking a callback when done
 -- @param DescribeReceiptRuleSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeReceiptRuleSetAsync(DescribeReceiptRuleSetRequest, cb)
@@ -5069,7 +5166,21 @@ function M.DescribeReceiptRuleSetAsync(DescribeReceiptRuleSetRequest, cb)
 	end
 end
 
---- DeleteReceiptFilter
+--- Call DescribeReceiptRuleSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReceiptRuleSetRequest
+-- @return response
+-- @return error_message
+function M.DescribeReceiptRuleSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReceiptRuleSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteReceiptFilter asynchronously, invoking a callback when done
 -- @param DeleteReceiptFilterRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteReceiptFilterAsync(DeleteReceiptFilterRequest, cb)
@@ -5087,7 +5198,21 @@ function M.DeleteReceiptFilterAsync(DeleteReceiptFilterRequest, cb)
 	end
 end
 
---- UpdateConfigurationSetEventDestination
+--- Call DeleteReceiptFilter synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteReceiptFilterRequest
+-- @return response
+-- @return error_message
+function M.DeleteReceiptFilterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteReceiptFilterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateConfigurationSetEventDestination asynchronously, invoking a callback when done
 -- @param UpdateConfigurationSetEventDestinationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateConfigurationSetEventDestinationAsync(UpdateConfigurationSetEventDestinationRequest, cb)
@@ -5105,7 +5230,21 @@ function M.UpdateConfigurationSetEventDestinationAsync(UpdateConfigurationSetEve
 	end
 end
 
---- SetIdentityFeedbackForwardingEnabled
+--- Call UpdateConfigurationSetEventDestination synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateConfigurationSetEventDestinationRequest
+-- @return response
+-- @return error_message
+function M.UpdateConfigurationSetEventDestinationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateConfigurationSetEventDestinationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetIdentityFeedbackForwardingEnabled asynchronously, invoking a callback when done
 -- @param SetIdentityFeedbackForwardingEnabledRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetIdentityFeedbackForwardingEnabledAsync(SetIdentityFeedbackForwardingEnabledRequest, cb)
@@ -5123,7 +5262,21 @@ function M.SetIdentityFeedbackForwardingEnabledAsync(SetIdentityFeedbackForwardi
 	end
 end
 
---- UpdateReceiptRule
+--- Call SetIdentityFeedbackForwardingEnabled synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetIdentityFeedbackForwardingEnabledRequest
+-- @return response
+-- @return error_message
+function M.SetIdentityFeedbackForwardingEnabledSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetIdentityFeedbackForwardingEnabledAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateReceiptRule asynchronously, invoking a callback when done
 -- @param UpdateReceiptRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateReceiptRuleAsync(UpdateReceiptRuleRequest, cb)
@@ -5141,7 +5294,21 @@ function M.UpdateReceiptRuleAsync(UpdateReceiptRuleRequest, cb)
 	end
 end
 
---- SendBounce
+--- Call UpdateReceiptRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateReceiptRuleRequest
+-- @return response
+-- @return error_message
+function M.UpdateReceiptRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateReceiptRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SendBounce asynchronously, invoking a callback when done
 -- @param SendBounceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SendBounceAsync(SendBounceRequest, cb)
@@ -5159,7 +5326,21 @@ function M.SendBounceAsync(SendBounceRequest, cb)
 	end
 end
 
---- CreateConfigurationSetEventDestination
+--- Call SendBounce synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SendBounceRequest
+-- @return response
+-- @return error_message
+function M.SendBounceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SendBounceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateConfigurationSetEventDestination asynchronously, invoking a callback when done
 -- @param CreateConfigurationSetEventDestinationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateConfigurationSetEventDestinationAsync(CreateConfigurationSetEventDestinationRequest, cb)
@@ -5177,7 +5358,21 @@ function M.CreateConfigurationSetEventDestinationAsync(CreateConfigurationSetEve
 	end
 end
 
---- GetIdentityDkimAttributes
+--- Call CreateConfigurationSetEventDestination synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateConfigurationSetEventDestinationRequest
+-- @return response
+-- @return error_message
+function M.CreateConfigurationSetEventDestinationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateConfigurationSetEventDestinationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIdentityDkimAttributes asynchronously, invoking a callback when done
 -- @param GetIdentityDkimAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIdentityDkimAttributesAsync(GetIdentityDkimAttributesRequest, cb)
@@ -5195,7 +5390,21 @@ function M.GetIdentityDkimAttributesAsync(GetIdentityDkimAttributesRequest, cb)
 	end
 end
 
---- SetReceiptRulePosition
+--- Call GetIdentityDkimAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIdentityDkimAttributesRequest
+-- @return response
+-- @return error_message
+function M.GetIdentityDkimAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIdentityDkimAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetReceiptRulePosition asynchronously, invoking a callback when done
 -- @param SetReceiptRulePositionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, cb)
@@ -5213,7 +5422,21 @@ function M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, cb)
 	end
 end
 
---- DeleteReceiptRule
+--- Call SetReceiptRulePosition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetReceiptRulePositionRequest
+-- @return response
+-- @return error_message
+function M.SetReceiptRulePositionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetReceiptRulePositionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteReceiptRule asynchronously, invoking a callback when done
 -- @param DeleteReceiptRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteReceiptRuleAsync(DeleteReceiptRuleRequest, cb)
@@ -5231,7 +5454,21 @@ function M.DeleteReceiptRuleAsync(DeleteReceiptRuleRequest, cb)
 	end
 end
 
---- DescribeConfigurationSet
+--- Call DeleteReceiptRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteReceiptRuleRequest
+-- @return response
+-- @return error_message
+function M.DeleteReceiptRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteReceiptRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeConfigurationSet asynchronously, invoking a callback when done
 -- @param DescribeConfigurationSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeConfigurationSetAsync(DescribeConfigurationSetRequest, cb)
@@ -5249,7 +5486,21 @@ function M.DescribeConfigurationSetAsync(DescribeConfigurationSetRequest, cb)
 	end
 end
 
---- ListVerifiedEmailAddresses
+--- Call DescribeConfigurationSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeConfigurationSetRequest
+-- @return response
+-- @return error_message
+function M.DescribeConfigurationSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeConfigurationSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListVerifiedEmailAddresses asynchronously, invoking a callback when done
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListVerifiedEmailAddressesAsync(cb)
 	local headers = {
@@ -5265,7 +5516,20 @@ function M.ListVerifiedEmailAddressesAsync(cb)
 	end
 end
 
---- DeleteConfigurationSet
+--- Call ListVerifiedEmailAddresses synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @return response
+-- @return error_message
+function M.ListVerifiedEmailAddressesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListVerifiedEmailAddressesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteConfigurationSet asynchronously, invoking a callback when done
 -- @param DeleteConfigurationSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, cb)
@@ -5283,7 +5547,21 @@ function M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, cb)
 	end
 end
 
---- CloneReceiptRuleSet
+--- Call DeleteConfigurationSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteConfigurationSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteConfigurationSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteConfigurationSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CloneReceiptRuleSet asynchronously, invoking a callback when done
 -- @param CloneReceiptRuleSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CloneReceiptRuleSetAsync(CloneReceiptRuleSetRequest, cb)
@@ -5301,7 +5579,21 @@ function M.CloneReceiptRuleSetAsync(CloneReceiptRuleSetRequest, cb)
 	end
 end
 
---- VerifyDomainIdentity
+--- Call CloneReceiptRuleSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CloneReceiptRuleSetRequest
+-- @return response
+-- @return error_message
+function M.CloneReceiptRuleSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CloneReceiptRuleSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call VerifyDomainIdentity asynchronously, invoking a callback when done
 -- @param VerifyDomainIdentityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.VerifyDomainIdentityAsync(VerifyDomainIdentityRequest, cb)
@@ -5319,7 +5611,21 @@ function M.VerifyDomainIdentityAsync(VerifyDomainIdentityRequest, cb)
 	end
 end
 
---- DescribeActiveReceiptRuleSet
+--- Call VerifyDomainIdentity synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param VerifyDomainIdentityRequest
+-- @return response
+-- @return error_message
+function M.VerifyDomainIdentitySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.VerifyDomainIdentityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeActiveReceiptRuleSet asynchronously, invoking a callback when done
 -- @param DescribeActiveReceiptRuleSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeActiveReceiptRuleSetAsync(DescribeActiveReceiptRuleSetRequest, cb)
@@ -5337,7 +5643,21 @@ function M.DescribeActiveReceiptRuleSetAsync(DescribeActiveReceiptRuleSetRequest
 	end
 end
 
---- DeleteIdentityPolicy
+--- Call DescribeActiveReceiptRuleSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeActiveReceiptRuleSetRequest
+-- @return response
+-- @return error_message
+function M.DescribeActiveReceiptRuleSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeActiveReceiptRuleSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteIdentityPolicy asynchronously, invoking a callback when done
 -- @param DeleteIdentityPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteIdentityPolicyAsync(DeleteIdentityPolicyRequest, cb)
@@ -5355,7 +5675,21 @@ function M.DeleteIdentityPolicyAsync(DeleteIdentityPolicyRequest, cb)
 	end
 end
 
---- SetActiveReceiptRuleSet
+--- Call DeleteIdentityPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteIdentityPolicyRequest
+-- @return response
+-- @return error_message
+function M.DeleteIdentityPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteIdentityPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetActiveReceiptRuleSet asynchronously, invoking a callback when done
 -- @param SetActiveReceiptRuleSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetActiveReceiptRuleSetAsync(SetActiveReceiptRuleSetRequest, cb)
@@ -5373,7 +5707,21 @@ function M.SetActiveReceiptRuleSetAsync(SetActiveReceiptRuleSetRequest, cb)
 	end
 end
 
---- DeleteReceiptRuleSet
+--- Call SetActiveReceiptRuleSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetActiveReceiptRuleSetRequest
+-- @return response
+-- @return error_message
+function M.SetActiveReceiptRuleSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetActiveReceiptRuleSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteReceiptRuleSet asynchronously, invoking a callback when done
 -- @param DeleteReceiptRuleSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteReceiptRuleSetAsync(DeleteReceiptRuleSetRequest, cb)
@@ -5391,7 +5739,21 @@ function M.DeleteReceiptRuleSetAsync(DeleteReceiptRuleSetRequest, cb)
 	end
 end
 
---- SetIdentityDkimEnabled
+--- Call DeleteReceiptRuleSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteReceiptRuleSetRequest
+-- @return response
+-- @return error_message
+function M.DeleteReceiptRuleSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteReceiptRuleSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetIdentityDkimEnabled asynchronously, invoking a callback when done
 -- @param SetIdentityDkimEnabledRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetIdentityDkimEnabledAsync(SetIdentityDkimEnabledRequest, cb)
@@ -5409,7 +5771,21 @@ function M.SetIdentityDkimEnabledAsync(SetIdentityDkimEnabledRequest, cb)
 	end
 end
 
---- GetSendQuota
+--- Call SetIdentityDkimEnabled synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetIdentityDkimEnabledRequest
+-- @return response
+-- @return error_message
+function M.SetIdentityDkimEnabledSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetIdentityDkimEnabledAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSendQuota asynchronously, invoking a callback when done
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSendQuotaAsync(cb)
 	local headers = {
@@ -5425,7 +5801,20 @@ function M.GetSendQuotaAsync(cb)
 	end
 end
 
---- SetIdentityNotificationTopic
+--- Call GetSendQuota synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @return response
+-- @return error_message
+function M.GetSendQuotaSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSendQuotaAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetIdentityNotificationTopic asynchronously, invoking a callback when done
 -- @param SetIdentityNotificationTopicRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest, cb)
@@ -5443,7 +5832,21 @@ function M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest
 	end
 end
 
---- CreateConfigurationSet
+--- Call SetIdentityNotificationTopic synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetIdentityNotificationTopicRequest
+-- @return response
+-- @return error_message
+function M.SetIdentityNotificationTopicSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetIdentityNotificationTopicAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateConfigurationSet asynchronously, invoking a callback when done
 -- @param CreateConfigurationSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateConfigurationSetAsync(CreateConfigurationSetRequest, cb)
@@ -5461,7 +5864,21 @@ function M.CreateConfigurationSetAsync(CreateConfigurationSetRequest, cb)
 	end
 end
 
---- DeleteVerifiedEmailAddress
+--- Call CreateConfigurationSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateConfigurationSetRequest
+-- @return response
+-- @return error_message
+function M.CreateConfigurationSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateConfigurationSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteVerifiedEmailAddress asynchronously, invoking a callback when done
 -- @param DeleteVerifiedEmailAddressRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteVerifiedEmailAddressAsync(DeleteVerifiedEmailAddressRequest, cb)
@@ -5479,7 +5896,21 @@ function M.DeleteVerifiedEmailAddressAsync(DeleteVerifiedEmailAddressRequest, cb
 	end
 end
 
---- ListConfigurationSets
+--- Call DeleteVerifiedEmailAddress synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteVerifiedEmailAddressRequest
+-- @return response
+-- @return error_message
+function M.DeleteVerifiedEmailAddressSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteVerifiedEmailAddressAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListConfigurationSets asynchronously, invoking a callback when done
 -- @param ListConfigurationSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListConfigurationSetsAsync(ListConfigurationSetsRequest, cb)
@@ -5497,7 +5928,21 @@ function M.ListConfigurationSetsAsync(ListConfigurationSetsRequest, cb)
 	end
 end
 
---- CreateReceiptFilter
+--- Call ListConfigurationSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListConfigurationSetsRequest
+-- @return response
+-- @return error_message
+function M.ListConfigurationSetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListConfigurationSetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateReceiptFilter asynchronously, invoking a callback when done
 -- @param CreateReceiptFilterRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateReceiptFilterAsync(CreateReceiptFilterRequest, cb)
@@ -5515,7 +5960,21 @@ function M.CreateReceiptFilterAsync(CreateReceiptFilterRequest, cb)
 	end
 end
 
---- DescribeReceiptRule
+--- Call CreateReceiptFilter synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateReceiptFilterRequest
+-- @return response
+-- @return error_message
+function M.CreateReceiptFilterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateReceiptFilterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReceiptRule asynchronously, invoking a callback when done
 -- @param DescribeReceiptRuleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, cb)
@@ -5533,7 +5992,21 @@ function M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, cb)
 	end
 end
 
---- ListReceiptRuleSets
+--- Call DescribeReceiptRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReceiptRuleRequest
+-- @return response
+-- @return error_message
+function M.DescribeReceiptRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReceiptRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListReceiptRuleSets asynchronously, invoking a callback when done
 -- @param ListReceiptRuleSetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListReceiptRuleSetsAsync(ListReceiptRuleSetsRequest, cb)
@@ -5551,7 +6024,21 @@ function M.ListReceiptRuleSetsAsync(ListReceiptRuleSetsRequest, cb)
 	end
 end
 
---- GetIdentityNotificationAttributes
+--- Call ListReceiptRuleSets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListReceiptRuleSetsRequest
+-- @return response
+-- @return error_message
+function M.ListReceiptRuleSetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListReceiptRuleSetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIdentityNotificationAttributes asynchronously, invoking a callback when done
 -- @param GetIdentityNotificationAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIdentityNotificationAttributesAsync(GetIdentityNotificationAttributesRequest, cb)
@@ -5569,7 +6056,21 @@ function M.GetIdentityNotificationAttributesAsync(GetIdentityNotificationAttribu
 	end
 end
 
---- SetIdentityHeadersInNotificationsEnabled
+--- Call GetIdentityNotificationAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIdentityNotificationAttributesRequest
+-- @return response
+-- @return error_message
+function M.GetIdentityNotificationAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIdentityNotificationAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetIdentityHeadersInNotificationsEnabled asynchronously, invoking a callback when done
 -- @param SetIdentityHeadersInNotificationsEnabledRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetIdentityHeadersInNotificationsEnabledAsync(SetIdentityHeadersInNotificationsEnabledRequest, cb)
@@ -5587,7 +6088,21 @@ function M.SetIdentityHeadersInNotificationsEnabledAsync(SetIdentityHeadersInNot
 	end
 end
 
---- SendEmail
+--- Call SetIdentityHeadersInNotificationsEnabled synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetIdentityHeadersInNotificationsEnabledRequest
+-- @return response
+-- @return error_message
+function M.SetIdentityHeadersInNotificationsEnabledSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetIdentityHeadersInNotificationsEnabledAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SendEmail asynchronously, invoking a callback when done
 -- @param SendEmailRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SendEmailAsync(SendEmailRequest, cb)
@@ -5605,7 +6120,21 @@ function M.SendEmailAsync(SendEmailRequest, cb)
 	end
 end
 
---- DeleteIdentity
+--- Call SendEmail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SendEmailRequest
+-- @return response
+-- @return error_message
+function M.SendEmailSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SendEmailAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteIdentity asynchronously, invoking a callback when done
 -- @param DeleteIdentityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteIdentityAsync(DeleteIdentityRequest, cb)
@@ -5623,7 +6152,21 @@ function M.DeleteIdentityAsync(DeleteIdentityRequest, cb)
 	end
 end
 
---- VerifyDomainDkim
+--- Call DeleteIdentity synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteIdentityRequest
+-- @return response
+-- @return error_message
+function M.DeleteIdentitySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteIdentityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call VerifyDomainDkim asynchronously, invoking a callback when done
 -- @param VerifyDomainDkimRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.VerifyDomainDkimAsync(VerifyDomainDkimRequest, cb)
@@ -5641,7 +6184,21 @@ function M.VerifyDomainDkimAsync(VerifyDomainDkimRequest, cb)
 	end
 end
 
---- GetIdentityMailFromDomainAttributes
+--- Call VerifyDomainDkim synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param VerifyDomainDkimRequest
+-- @return response
+-- @return error_message
+function M.VerifyDomainDkimSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.VerifyDomainDkimAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIdentityMailFromDomainAttributes asynchronously, invoking a callback when done
 -- @param GetIdentityMailFromDomainAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAttributesRequest, cb)
@@ -5659,7 +6216,21 @@ function M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAtt
 	end
 end
 
---- ListIdentityPolicies
+--- Call GetIdentityMailFromDomainAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIdentityMailFromDomainAttributesRequest
+-- @return response
+-- @return error_message
+function M.GetIdentityMailFromDomainAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIdentityMailFromDomainAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListIdentityPolicies asynchronously, invoking a callback when done
 -- @param ListIdentityPoliciesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListIdentityPoliciesAsync(ListIdentityPoliciesRequest, cb)
@@ -5677,7 +6248,21 @@ function M.ListIdentityPoliciesAsync(ListIdentityPoliciesRequest, cb)
 	end
 end
 
---- DeleteConfigurationSetEventDestination
+--- Call ListIdentityPolicies synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListIdentityPoliciesRequest
+-- @return response
+-- @return error_message
+function M.ListIdentityPoliciesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListIdentityPoliciesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteConfigurationSetEventDestination asynchronously, invoking a callback when done
 -- @param DeleteConfigurationSetEventDestinationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteConfigurationSetEventDestinationAsync(DeleteConfigurationSetEventDestinationRequest, cb)
@@ -5695,7 +6280,21 @@ function M.DeleteConfigurationSetEventDestinationAsync(DeleteConfigurationSetEve
 	end
 end
 
---- ListIdentities
+--- Call DeleteConfigurationSetEventDestination synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteConfigurationSetEventDestinationRequest
+-- @return response
+-- @return error_message
+function M.DeleteConfigurationSetEventDestinationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteConfigurationSetEventDestinationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListIdentities asynchronously, invoking a callback when done
 -- @param ListIdentitiesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListIdentitiesAsync(ListIdentitiesRequest, cb)
@@ -5713,7 +6312,21 @@ function M.ListIdentitiesAsync(ListIdentitiesRequest, cb)
 	end
 end
 
---- GetIdentityVerificationAttributes
+--- Call ListIdentities synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListIdentitiesRequest
+-- @return response
+-- @return error_message
+function M.ListIdentitiesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListIdentitiesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIdentityVerificationAttributes asynchronously, invoking a callback when done
 -- @param GetIdentityVerificationAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIdentityVerificationAttributesAsync(GetIdentityVerificationAttributesRequest, cb)
@@ -5731,7 +6344,21 @@ function M.GetIdentityVerificationAttributesAsync(GetIdentityVerificationAttribu
 	end
 end
 
---- VerifyEmailIdentity
+--- Call GetIdentityVerificationAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIdentityVerificationAttributesRequest
+-- @return response
+-- @return error_message
+function M.GetIdentityVerificationAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIdentityVerificationAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call VerifyEmailIdentity asynchronously, invoking a callback when done
 -- @param VerifyEmailIdentityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, cb)
@@ -5749,7 +6376,21 @@ function M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, cb)
 	end
 end
 
---- PutIdentityPolicy
+--- Call VerifyEmailIdentity synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param VerifyEmailIdentityRequest
+-- @return response
+-- @return error_message
+function M.VerifyEmailIdentitySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.VerifyEmailIdentityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutIdentityPolicy asynchronously, invoking a callback when done
 -- @param PutIdentityPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutIdentityPolicyAsync(PutIdentityPolicyRequest, cb)
@@ -5767,7 +6408,21 @@ function M.PutIdentityPolicyAsync(PutIdentityPolicyRequest, cb)
 	end
 end
 
---- SendRawEmail
+--- Call PutIdentityPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutIdentityPolicyRequest
+-- @return response
+-- @return error_message
+function M.PutIdentityPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutIdentityPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SendRawEmail asynchronously, invoking a callback when done
 -- @param SendRawEmailRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SendRawEmailAsync(SendRawEmailRequest, cb)
@@ -5785,7 +6440,21 @@ function M.SendRawEmailAsync(SendRawEmailRequest, cb)
 	end
 end
 
---- CreateReceiptRuleSet
+--- Call SendRawEmail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SendRawEmailRequest
+-- @return response
+-- @return error_message
+function M.SendRawEmailSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SendRawEmailAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateReceiptRuleSet asynchronously, invoking a callback when done
 -- @param CreateReceiptRuleSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateReceiptRuleSetAsync(CreateReceiptRuleSetRequest, cb)
@@ -5801,6 +6470,20 @@ function M.CreateReceiptRuleSetAsync(CreateReceiptRuleSetRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call CreateReceiptRuleSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateReceiptRuleSetRequest
+-- @return response
+-- @return error_message
+function M.CreateReceiptRuleSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateReceiptRuleSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

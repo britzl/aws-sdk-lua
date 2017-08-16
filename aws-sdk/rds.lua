@@ -10343,7 +10343,7 @@ end
 --
 -- OPERATIONS
 --
---- DescribeCertificates
+--- Call DescribeCertificates asynchronously, invoking a callback when done
 -- @param DescribeCertificatesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeCertificatesAsync(DescribeCertificatesMessage, cb)
@@ -10361,7 +10361,21 @@ function M.DescribeCertificatesAsync(DescribeCertificatesMessage, cb)
 	end
 end
 
---- RestoreDBClusterToPointInTime
+--- Call DescribeCertificates synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeCertificatesMessage
+-- @return response
+-- @return error_message
+function M.DescribeCertificatesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeCertificatesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RestoreDBClusterToPointInTime asynchronously, invoking a callback when done
 -- @param RestoreDBClusterToPointInTimeMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RestoreDBClusterToPointInTimeAsync(RestoreDBClusterToPointInTimeMessage, cb)
@@ -10379,7 +10393,21 @@ function M.RestoreDBClusterToPointInTimeAsync(RestoreDBClusterToPointInTimeMessa
 	end
 end
 
---- DescribeEngineDefaultParameters
+--- Call RestoreDBClusterToPointInTime synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RestoreDBClusterToPointInTimeMessage
+-- @return response
+-- @return error_message
+function M.RestoreDBClusterToPointInTimeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RestoreDBClusterToPointInTimeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEngineDefaultParameters asynchronously, invoking a callback when done
 -- @param DescribeEngineDefaultParametersMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersMessage, cb)
@@ -10397,7 +10425,21 @@ function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersM
 	end
 end
 
---- DeleteDBClusterSnapshot
+--- Call DescribeEngineDefaultParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEngineDefaultParametersMessage
+-- @return response
+-- @return error_message
+function M.DescribeEngineDefaultParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEngineDefaultParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDBClusterSnapshot asynchronously, invoking a callback when done
 -- @param DeleteDBClusterSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDBClusterSnapshotAsync(DeleteDBClusterSnapshotMessage, cb)
@@ -10415,7 +10457,21 @@ function M.DeleteDBClusterSnapshotAsync(DeleteDBClusterSnapshotMessage, cb)
 	end
 end
 
---- CreateDBParameterGroup
+--- Call DeleteDBClusterSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDBClusterSnapshotMessage
+-- @return response
+-- @return error_message
+function M.DeleteDBClusterSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDBClusterSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBParameterGroup asynchronously, invoking a callback when done
 -- @param CreateDBParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBParameterGroupAsync(CreateDBParameterGroupMessage, cb)
@@ -10433,7 +10489,21 @@ function M.CreateDBParameterGroupAsync(CreateDBParameterGroupMessage, cb)
 	end
 end
 
---- AuthorizeDBSecurityGroupIngress
+--- Call CreateDBParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateDBParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AuthorizeDBSecurityGroupIngress asynchronously, invoking a callback when done
 -- @param AuthorizeDBSecurityGroupIngressMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.AuthorizeDBSecurityGroupIngressAsync(AuthorizeDBSecurityGroupIngressMessage, cb)
@@ -10451,7 +10521,21 @@ function M.AuthorizeDBSecurityGroupIngressAsync(AuthorizeDBSecurityGroupIngressM
 	end
 end
 
---- DescribeDBSubnetGroups
+--- Call AuthorizeDBSecurityGroupIngress synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AuthorizeDBSecurityGroupIngressMessage
+-- @return response
+-- @return error_message
+function M.AuthorizeDBSecurityGroupIngressSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AuthorizeDBSecurityGroupIngressAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBSubnetGroups asynchronously, invoking a callback when done
 -- @param DescribeDBSubnetGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBSubnetGroupsAsync(DescribeDBSubnetGroupsMessage, cb)
@@ -10469,7 +10553,21 @@ function M.DescribeDBSubnetGroupsAsync(DescribeDBSubnetGroupsMessage, cb)
 	end
 end
 
---- DescribeDBEngineVersions
+--- Call DescribeDBSubnetGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBSubnetGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBSubnetGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBSubnetGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBEngineVersions asynchronously, invoking a callback when done
 -- @param DescribeDBEngineVersionsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBEngineVersionsAsync(DescribeDBEngineVersionsMessage, cb)
@@ -10487,7 +10585,21 @@ function M.DescribeDBEngineVersionsAsync(DescribeDBEngineVersionsMessage, cb)
 	end
 end
 
---- CopyDBSnapshot
+--- Call DescribeDBEngineVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBEngineVersionsMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBEngineVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBEngineVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CopyDBSnapshot asynchronously, invoking a callback when done
 -- @param CopyDBSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CopyDBSnapshotAsync(CopyDBSnapshotMessage, cb)
@@ -10505,7 +10617,21 @@ function M.CopyDBSnapshotAsync(CopyDBSnapshotMessage, cb)
 	end
 end
 
---- StopDBInstance
+--- Call CopyDBSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CopyDBSnapshotMessage
+-- @return response
+-- @return error_message
+function M.CopyDBSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CopyDBSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopDBInstance asynchronously, invoking a callback when done
 -- @param StopDBInstanceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopDBInstanceAsync(StopDBInstanceMessage, cb)
@@ -10523,7 +10649,21 @@ function M.StopDBInstanceAsync(StopDBInstanceMessage, cb)
 	end
 end
 
---- DeleteEventSubscription
+--- Call StopDBInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopDBInstanceMessage
+-- @return response
+-- @return error_message
+function M.StopDBInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopDBInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteEventSubscription asynchronously, invoking a callback when done
 -- @param DeleteEventSubscriptionMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
@@ -10541,7 +10681,21 @@ function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 	end
 end
 
---- CreateDBInstanceReadReplica
+--- Call DeleteEventSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteEventSubscriptionMessage
+-- @return response
+-- @return error_message
+function M.DeleteEventSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteEventSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBInstanceReadReplica asynchronously, invoking a callback when done
 -- @param CreateDBInstanceReadReplicaMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBInstanceReadReplicaAsync(CreateDBInstanceReadReplicaMessage, cb)
@@ -10559,7 +10713,21 @@ function M.CreateDBInstanceReadReplicaAsync(CreateDBInstanceReadReplicaMessage, 
 	end
 end
 
---- CreateDBClusterSnapshot
+--- Call CreateDBInstanceReadReplica synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBInstanceReadReplicaMessage
+-- @return response
+-- @return error_message
+function M.CreateDBInstanceReadReplicaSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBInstanceReadReplicaAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBClusterSnapshot asynchronously, invoking a callback when done
 -- @param CreateDBClusterSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBClusterSnapshotAsync(CreateDBClusterSnapshotMessage, cb)
@@ -10577,7 +10745,21 @@ function M.CreateDBClusterSnapshotAsync(CreateDBClusterSnapshotMessage, cb)
 	end
 end
 
---- DescribeReservedDBInstancesOfferings
+--- Call CreateDBClusterSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBClusterSnapshotMessage
+-- @return response
+-- @return error_message
+function M.CreateDBClusterSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBClusterSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReservedDBInstancesOfferings asynchronously, invoking a callback when done
 -- @param DescribeReservedDBInstancesOfferingsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeReservedDBInstancesOfferingsAsync(DescribeReservedDBInstancesOfferingsMessage, cb)
@@ -10595,7 +10777,21 @@ function M.DescribeReservedDBInstancesOfferingsAsync(DescribeReservedDBInstances
 	end
 end
 
---- DeleteDBCluster
+--- Call DescribeReservedDBInstancesOfferings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReservedDBInstancesOfferingsMessage
+-- @return response
+-- @return error_message
+function M.DescribeReservedDBInstancesOfferingsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReservedDBInstancesOfferingsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDBCluster asynchronously, invoking a callback when done
 -- @param DeleteDBClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDBClusterAsync(DeleteDBClusterMessage, cb)
@@ -10613,7 +10809,21 @@ function M.DeleteDBClusterAsync(DeleteDBClusterMessage, cb)
 	end
 end
 
---- ResetDBClusterParameterGroup
+--- Call DeleteDBCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDBClusterMessage
+-- @return response
+-- @return error_message
+function M.DeleteDBClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDBClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ResetDBClusterParameterGroup asynchronously, invoking a callback when done
 -- @param ResetDBClusterParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ResetDBClusterParameterGroupAsync(ResetDBClusterParameterGroupMessage, cb)
@@ -10631,7 +10841,21 @@ function M.ResetDBClusterParameterGroupAsync(ResetDBClusterParameterGroupMessage
 	end
 end
 
---- ListTagsForResource
+--- Call ResetDBClusterParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResetDBClusterParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.ResetDBClusterParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResetDBClusterParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForResource asynchronously, invoking a callback when done
 -- @param ListTagsForResourceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
@@ -10649,7 +10873,21 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 	end
 end
 
---- ModifyDBSnapshot
+--- Call ListTagsForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForResourceMessage
+-- @return response
+-- @return error_message
+function M.ListTagsForResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDBSnapshot asynchronously, invoking a callback when done
 -- @param ModifyDBSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDBSnapshotAsync(ModifyDBSnapshotMessage, cb)
@@ -10667,7 +10905,21 @@ function M.ModifyDBSnapshotAsync(ModifyDBSnapshotMessage, cb)
 	end
 end
 
---- DeleteDBSubnetGroup
+--- Call ModifyDBSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDBSnapshotMessage
+-- @return response
+-- @return error_message
+function M.ModifyDBSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDBSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDBSubnetGroup asynchronously, invoking a callback when done
 -- @param DeleteDBSubnetGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDBSubnetGroupAsync(DeleteDBSubnetGroupMessage, cb)
@@ -10685,7 +10937,21 @@ function M.DeleteDBSubnetGroupAsync(DeleteDBSubnetGroupMessage, cb)
 	end
 end
 
---- RestoreDBInstanceFromDBSnapshot
+--- Call DeleteDBSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDBSubnetGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteDBSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDBSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RestoreDBInstanceFromDBSnapshot asynchronously, invoking a callback when done
 -- @param RestoreDBInstanceFromDBSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RestoreDBInstanceFromDBSnapshotAsync(RestoreDBInstanceFromDBSnapshotMessage, cb)
@@ -10703,7 +10969,21 @@ function M.RestoreDBInstanceFromDBSnapshotAsync(RestoreDBInstanceFromDBSnapshotM
 	end
 end
 
---- DescribeOptionGroups
+--- Call RestoreDBInstanceFromDBSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RestoreDBInstanceFromDBSnapshotMessage
+-- @return response
+-- @return error_message
+function M.RestoreDBInstanceFromDBSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RestoreDBInstanceFromDBSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeOptionGroups asynchronously, invoking a callback when done
 -- @param DescribeOptionGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeOptionGroupsAsync(DescribeOptionGroupsMessage, cb)
@@ -10721,7 +11001,21 @@ function M.DescribeOptionGroupsAsync(DescribeOptionGroupsMessage, cb)
 	end
 end
 
---- RestoreDBClusterFromS3
+--- Call DescribeOptionGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeOptionGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeOptionGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeOptionGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RestoreDBClusterFromS3 asynchronously, invoking a callback when done
 -- @param RestoreDBClusterFromS3Message
 -- @param cb Callback function accepting two args: response, error_message
 function M.RestoreDBClusterFromS3Async(RestoreDBClusterFromS3Message, cb)
@@ -10739,7 +11033,21 @@ function M.RestoreDBClusterFromS3Async(RestoreDBClusterFromS3Message, cb)
 	end
 end
 
---- DeleteDBInstance
+--- Call RestoreDBClusterFromS3 synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RestoreDBClusterFromS3Message
+-- @return response
+-- @return error_message
+function M.RestoreDBClusterFromS3Sync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RestoreDBClusterFromS3Async(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDBInstance asynchronously, invoking a callback when done
 -- @param DeleteDBInstanceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDBInstanceAsync(DeleteDBInstanceMessage, cb)
@@ -10757,7 +11065,21 @@ function M.DeleteDBInstanceAsync(DeleteDBInstanceMessage, cb)
 	end
 end
 
---- CreateDBClusterParameterGroup
+--- Call DeleteDBInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDBInstanceMessage
+-- @return response
+-- @return error_message
+function M.DeleteDBInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDBInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBClusterParameterGroup asynchronously, invoking a callback when done
 -- @param CreateDBClusterParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBClusterParameterGroupAsync(CreateDBClusterParameterGroupMessage, cb)
@@ -10775,7 +11097,21 @@ function M.CreateDBClusterParameterGroupAsync(CreateDBClusterParameterGroupMessa
 	end
 end
 
---- DeleteDBParameterGroup
+--- Call CreateDBClusterParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBClusterParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateDBClusterParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBClusterParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDBParameterGroup asynchronously, invoking a callback when done
 -- @param DeleteDBParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDBParameterGroupAsync(DeleteDBParameterGroupMessage, cb)
@@ -10793,7 +11129,21 @@ function M.DeleteDBParameterGroupAsync(DeleteDBParameterGroupMessage, cb)
 	end
 end
 
---- DescribeEventCategories
+--- Call DeleteDBParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDBParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteDBParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDBParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEventCategories asynchronously, invoking a callback when done
 -- @param DescribeEventCategoriesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
@@ -10811,7 +11161,21 @@ function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 	end
 end
 
---- AddTagsToResource
+--- Call DescribeEventCategories synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventCategoriesMessage
+-- @return response
+-- @return error_message
+function M.DescribeEventCategoriesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventCategoriesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTagsToResource asynchronously, invoking a callback when done
 -- @param AddTagsToResourceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
@@ -10829,7 +11193,21 @@ function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 	end
 end
 
---- ModifyOptionGroup
+--- Call AddTagsToResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsToResourceMessage
+-- @return response
+-- @return error_message
+function M.AddTagsToResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsToResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyOptionGroup asynchronously, invoking a callback when done
 -- @param ModifyOptionGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyOptionGroupAsync(ModifyOptionGroupMessage, cb)
@@ -10847,7 +11225,21 @@ function M.ModifyOptionGroupAsync(ModifyOptionGroupMessage, cb)
 	end
 end
 
---- DescribeDBLogFiles
+--- Call ModifyOptionGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyOptionGroupMessage
+-- @return response
+-- @return error_message
+function M.ModifyOptionGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyOptionGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBLogFiles asynchronously, invoking a callback when done
 -- @param DescribeDBLogFilesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBLogFilesAsync(DescribeDBLogFilesMessage, cb)
@@ -10865,7 +11257,21 @@ function M.DescribeDBLogFilesAsync(DescribeDBLogFilesMessage, cb)
 	end
 end
 
---- RemoveTagsFromResource
+--- Call DescribeDBLogFiles synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBLogFilesMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBLogFilesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBLogFilesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTagsFromResource asynchronously, invoking a callback when done
 -- @param RemoveTagsFromResourceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
@@ -10883,7 +11289,21 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 	end
 end
 
---- DescribeReservedDBInstances
+--- Call RemoveTagsFromResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsFromResourceMessage
+-- @return response
+-- @return error_message
+function M.RemoveTagsFromResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsFromResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReservedDBInstances asynchronously, invoking a callback when done
 -- @param DescribeReservedDBInstancesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeReservedDBInstancesAsync(DescribeReservedDBInstancesMessage, cb)
@@ -10901,7 +11321,21 @@ function M.DescribeReservedDBInstancesAsync(DescribeReservedDBInstancesMessage, 
 	end
 end
 
---- CopyOptionGroup
+--- Call DescribeReservedDBInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReservedDBInstancesMessage
+-- @return response
+-- @return error_message
+function M.DescribeReservedDBInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReservedDBInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CopyOptionGroup asynchronously, invoking a callback when done
 -- @param CopyOptionGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CopyOptionGroupAsync(CopyOptionGroupMessage, cb)
@@ -10919,7 +11353,21 @@ function M.CopyOptionGroupAsync(CopyOptionGroupMessage, cb)
 	end
 end
 
---- CreateDBInstance
+--- Call CopyOptionGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CopyOptionGroupMessage
+-- @return response
+-- @return error_message
+function M.CopyOptionGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CopyOptionGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBInstance asynchronously, invoking a callback when done
 -- @param CreateDBInstanceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBInstanceAsync(CreateDBInstanceMessage, cb)
@@ -10937,7 +11385,21 @@ function M.CreateDBInstanceAsync(CreateDBInstanceMessage, cb)
 	end
 end
 
---- ModifyEventSubscription
+--- Call CreateDBInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBInstanceMessage
+-- @return response
+-- @return error_message
+function M.CreateDBInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyEventSubscription asynchronously, invoking a callback when done
 -- @param ModifyEventSubscriptionMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
@@ -10955,7 +11417,21 @@ function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 	end
 end
 
---- ModifyDBSubnetGroup
+--- Call ModifyEventSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyEventSubscriptionMessage
+-- @return response
+-- @return error_message
+function M.ModifyEventSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyEventSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDBSubnetGroup asynchronously, invoking a callback when done
 -- @param ModifyDBSubnetGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDBSubnetGroupAsync(ModifyDBSubnetGroupMessage, cb)
@@ -10973,7 +11449,21 @@ function M.ModifyDBSubnetGroupAsync(ModifyDBSubnetGroupMessage, cb)
 	end
 end
 
---- DeleteDBSecurityGroup
+--- Call ModifyDBSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDBSubnetGroupMessage
+-- @return response
+-- @return error_message
+function M.ModifyDBSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDBSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDBSecurityGroup asynchronously, invoking a callback when done
 -- @param DeleteDBSecurityGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDBSecurityGroupAsync(DeleteDBSecurityGroupMessage, cb)
@@ -10991,7 +11481,21 @@ function M.DeleteDBSecurityGroupAsync(DeleteDBSecurityGroupMessage, cb)
 	end
 end
 
---- RestoreDBInstanceToPointInTime
+--- Call DeleteDBSecurityGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDBSecurityGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteDBSecurityGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDBSecurityGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RestoreDBInstanceToPointInTime asynchronously, invoking a callback when done
 -- @param RestoreDBInstanceToPointInTimeMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RestoreDBInstanceToPointInTimeAsync(RestoreDBInstanceToPointInTimeMessage, cb)
@@ -11009,7 +11513,21 @@ function M.RestoreDBInstanceToPointInTimeAsync(RestoreDBInstanceToPointInTimeMes
 	end
 end
 
---- AddSourceIdentifierToSubscription
+--- Call RestoreDBInstanceToPointInTime synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RestoreDBInstanceToPointInTimeMessage
+-- @return response
+-- @return error_message
+function M.RestoreDBInstanceToPointInTimeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RestoreDBInstanceToPointInTimeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddSourceIdentifierToSubscription asynchronously, invoking a callback when done
 -- @param AddSourceIdentifierToSubscriptionMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddSourceIdentifierToSubscriptionAsync(AddSourceIdentifierToSubscriptionMessage, cb)
@@ -11027,7 +11545,21 @@ function M.AddSourceIdentifierToSubscriptionAsync(AddSourceIdentifierToSubscript
 	end
 end
 
---- CopyDBClusterParameterGroup
+--- Call AddSourceIdentifierToSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddSourceIdentifierToSubscriptionMessage
+-- @return response
+-- @return error_message
+function M.AddSourceIdentifierToSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddSourceIdentifierToSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CopyDBClusterParameterGroup asynchronously, invoking a callback when done
 -- @param CopyDBClusterParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CopyDBClusterParameterGroupAsync(CopyDBClusterParameterGroupMessage, cb)
@@ -11045,7 +11577,21 @@ function M.CopyDBClusterParameterGroupAsync(CopyDBClusterParameterGroupMessage, 
 	end
 end
 
---- StartDBInstance
+--- Call CopyDBClusterParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CopyDBClusterParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.CopyDBClusterParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CopyDBClusterParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartDBInstance asynchronously, invoking a callback when done
 -- @param StartDBInstanceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartDBInstanceAsync(StartDBInstanceMessage, cb)
@@ -11063,7 +11609,21 @@ function M.StartDBInstanceAsync(StartDBInstanceMessage, cb)
 	end
 end
 
---- DescribeDBClusterSnapshotAttributes
+--- Call StartDBInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartDBInstanceMessage
+-- @return response
+-- @return error_message
+function M.StartDBInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartDBInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBClusterSnapshotAttributes asynchronously, invoking a callback when done
 -- @param DescribeDBClusterSnapshotAttributesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBClusterSnapshotAttributesAsync(DescribeDBClusterSnapshotAttributesMessage, cb)
@@ -11081,7 +11641,21 @@ function M.DescribeDBClusterSnapshotAttributesAsync(DescribeDBClusterSnapshotAtt
 	end
 end
 
---- RestoreDBClusterFromSnapshot
+--- Call DescribeDBClusterSnapshotAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBClusterSnapshotAttributesMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBClusterSnapshotAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBClusterSnapshotAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RestoreDBClusterFromSnapshot asynchronously, invoking a callback when done
 -- @param RestoreDBClusterFromSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RestoreDBClusterFromSnapshotAsync(RestoreDBClusterFromSnapshotMessage, cb)
@@ -11099,7 +11673,21 @@ function M.RestoreDBClusterFromSnapshotAsync(RestoreDBClusterFromSnapshotMessage
 	end
 end
 
---- DescribeDBParameters
+--- Call RestoreDBClusterFromSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RestoreDBClusterFromSnapshotMessage
+-- @return response
+-- @return error_message
+function M.RestoreDBClusterFromSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RestoreDBClusterFromSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBParameters asynchronously, invoking a callback when done
 -- @param DescribeDBParametersMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBParametersAsync(DescribeDBParametersMessage, cb)
@@ -11117,7 +11705,21 @@ function M.DescribeDBParametersAsync(DescribeDBParametersMessage, cb)
 	end
 end
 
---- PromoteReadReplicaDBCluster
+--- Call DescribeDBParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBParametersMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PromoteReadReplicaDBCluster asynchronously, invoking a callback when done
 -- @param PromoteReadReplicaDBClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.PromoteReadReplicaDBClusterAsync(PromoteReadReplicaDBClusterMessage, cb)
@@ -11135,7 +11737,21 @@ function M.PromoteReadReplicaDBClusterAsync(PromoteReadReplicaDBClusterMessage, 
 	end
 end
 
---- DescribeDBClusterParameters
+--- Call PromoteReadReplicaDBCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PromoteReadReplicaDBClusterMessage
+-- @return response
+-- @return error_message
+function M.PromoteReadReplicaDBClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PromoteReadReplicaDBClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBClusterParameters asynchronously, invoking a callback when done
 -- @param DescribeDBClusterParametersMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBClusterParametersAsync(DescribeDBClusterParametersMessage, cb)
@@ -11153,7 +11769,21 @@ function M.DescribeDBClusterParametersAsync(DescribeDBClusterParametersMessage, 
 	end
 end
 
---- DeleteDBSnapshot
+--- Call DescribeDBClusterParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBClusterParametersMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBClusterParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBClusterParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDBSnapshot asynchronously, invoking a callback when done
 -- @param DeleteDBSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDBSnapshotAsync(DeleteDBSnapshotMessage, cb)
@@ -11171,7 +11801,21 @@ function M.DeleteDBSnapshotAsync(DeleteDBSnapshotMessage, cb)
 	end
 end
 
---- DescribeEvents
+--- Call DeleteDBSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDBSnapshotMessage
+-- @return response
+-- @return error_message
+function M.DeleteDBSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDBSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEvents asynchronously, invoking a callback when done
 -- @param DescribeEventsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventsAsync(DescribeEventsMessage, cb)
@@ -11189,7 +11833,21 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 	end
 end
 
---- DescribeEventSubscriptions
+--- Call DescribeEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventsMessage
+-- @return response
+-- @return error_message
+function M.DescribeEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEventSubscriptions asynchronously, invoking a callback when done
 -- @param DescribeEventSubscriptionsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb)
@@ -11207,7 +11865,21 @@ function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb
 	end
 end
 
---- DeleteOptionGroup
+--- Call DescribeEventSubscriptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventSubscriptionsMessage
+-- @return response
+-- @return error_message
+function M.DescribeEventSubscriptionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventSubscriptionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteOptionGroup asynchronously, invoking a callback when done
 -- @param DeleteOptionGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteOptionGroupAsync(DeleteOptionGroupMessage, cb)
@@ -11225,7 +11897,21 @@ function M.DeleteOptionGroupAsync(DeleteOptionGroupMessage, cb)
 	end
 end
 
---- PromoteReadReplica
+--- Call DeleteOptionGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteOptionGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteOptionGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteOptionGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PromoteReadReplica asynchronously, invoking a callback when done
 -- @param PromoteReadReplicaMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.PromoteReadReplicaAsync(PromoteReadReplicaMessage, cb)
@@ -11243,7 +11929,21 @@ function M.PromoteReadReplicaAsync(PromoteReadReplicaMessage, cb)
 	end
 end
 
---- AddRoleToDBCluster
+--- Call PromoteReadReplica synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PromoteReadReplicaMessage
+-- @return response
+-- @return error_message
+function M.PromoteReadReplicaSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PromoteReadReplicaAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddRoleToDBCluster asynchronously, invoking a callback when done
 -- @param AddRoleToDBClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddRoleToDBClusterAsync(AddRoleToDBClusterMessage, cb)
@@ -11261,7 +11961,21 @@ function M.AddRoleToDBClusterAsync(AddRoleToDBClusterMessage, cb)
 	end
 end
 
---- ModifyDBSnapshotAttribute
+--- Call AddRoleToDBCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddRoleToDBClusterMessage
+-- @return response
+-- @return error_message
+function M.AddRoleToDBClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddRoleToDBClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDBSnapshotAttribute asynchronously, invoking a callback when done
 -- @param ModifyDBSnapshotAttributeMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDBSnapshotAttributeAsync(ModifyDBSnapshotAttributeMessage, cb)
@@ -11279,7 +11993,21 @@ function M.ModifyDBSnapshotAttributeAsync(ModifyDBSnapshotAttributeMessage, cb)
 	end
 end
 
---- DescribeDBParameterGroups
+--- Call ModifyDBSnapshotAttribute synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDBSnapshotAttributeMessage
+-- @return response
+-- @return error_message
+function M.ModifyDBSnapshotAttributeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDBSnapshotAttributeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBParameterGroups asynchronously, invoking a callback when done
 -- @param DescribeDBParameterGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBParameterGroupsAsync(DescribeDBParameterGroupsMessage, cb)
@@ -11297,7 +12025,21 @@ function M.DescribeDBParameterGroupsAsync(DescribeDBParameterGroupsMessage, cb)
 	end
 end
 
---- ModifyDBClusterParameterGroup
+--- Call DescribeDBParameterGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBParameterGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBParameterGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBParameterGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDBClusterParameterGroup asynchronously, invoking a callback when done
 -- @param ModifyDBClusterParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDBClusterParameterGroupAsync(ModifyDBClusterParameterGroupMessage, cb)
@@ -11315,7 +12057,21 @@ function M.ModifyDBClusterParameterGroupAsync(ModifyDBClusterParameterGroupMessa
 	end
 end
 
---- FailoverDBCluster
+--- Call ModifyDBClusterParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDBClusterParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.ModifyDBClusterParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDBClusterParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call FailoverDBCluster asynchronously, invoking a callback when done
 -- @param FailoverDBClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.FailoverDBClusterAsync(FailoverDBClusterMessage, cb)
@@ -11333,7 +12089,21 @@ function M.FailoverDBClusterAsync(FailoverDBClusterMessage, cb)
 	end
 end
 
---- ApplyPendingMaintenanceAction
+--- Call FailoverDBCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param FailoverDBClusterMessage
+-- @return response
+-- @return error_message
+function M.FailoverDBClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.FailoverDBClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ApplyPendingMaintenanceAction asynchronously, invoking a callback when done
 -- @param ApplyPendingMaintenanceActionMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ApplyPendingMaintenanceActionAsync(ApplyPendingMaintenanceActionMessage, cb)
@@ -11351,7 +12121,21 @@ function M.ApplyPendingMaintenanceActionAsync(ApplyPendingMaintenanceActionMessa
 	end
 end
 
---- DescribeDBInstances
+--- Call ApplyPendingMaintenanceAction synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ApplyPendingMaintenanceActionMessage
+-- @return response
+-- @return error_message
+function M.ApplyPendingMaintenanceActionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ApplyPendingMaintenanceActionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBInstances asynchronously, invoking a callback when done
 -- @param DescribeDBInstancesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBInstancesAsync(DescribeDBInstancesMessage, cb)
@@ -11369,7 +12153,21 @@ function M.DescribeDBInstancesAsync(DescribeDBInstancesMessage, cb)
 	end
 end
 
---- PurchaseReservedDBInstancesOffering
+--- Call DescribeDBInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBInstancesMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PurchaseReservedDBInstancesOffering asynchronously, invoking a callback when done
 -- @param PurchaseReservedDBInstancesOfferingMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.PurchaseReservedDBInstancesOfferingAsync(PurchaseReservedDBInstancesOfferingMessage, cb)
@@ -11387,7 +12185,21 @@ function M.PurchaseReservedDBInstancesOfferingAsync(PurchaseReservedDBInstancesO
 	end
 end
 
---- DescribeOrderableDBInstanceOptions
+--- Call PurchaseReservedDBInstancesOffering synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PurchaseReservedDBInstancesOfferingMessage
+-- @return response
+-- @return error_message
+function M.PurchaseReservedDBInstancesOfferingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PurchaseReservedDBInstancesOfferingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeOrderableDBInstanceOptions asynchronously, invoking a callback when done
 -- @param DescribeOrderableDBInstanceOptionsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeOrderableDBInstanceOptionsAsync(DescribeOrderableDBInstanceOptionsMessage, cb)
@@ -11405,7 +12217,21 @@ function M.DescribeOrderableDBInstanceOptionsAsync(DescribeOrderableDBInstanceOp
 	end
 end
 
---- CreateOptionGroup
+--- Call DescribeOrderableDBInstanceOptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeOrderableDBInstanceOptionsMessage
+-- @return response
+-- @return error_message
+function M.DescribeOrderableDBInstanceOptionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeOrderableDBInstanceOptionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateOptionGroup asynchronously, invoking a callback when done
 -- @param CreateOptionGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateOptionGroupAsync(CreateOptionGroupMessage, cb)
@@ -11423,7 +12249,21 @@ function M.CreateOptionGroupAsync(CreateOptionGroupMessage, cb)
 	end
 end
 
---- DescribeOptionGroupOptions
+--- Call CreateOptionGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateOptionGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateOptionGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateOptionGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeOptionGroupOptions asynchronously, invoking a callback when done
 -- @param DescribeOptionGroupOptionsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeOptionGroupOptionsAsync(DescribeOptionGroupOptionsMessage, cb)
@@ -11441,7 +12281,21 @@ function M.DescribeOptionGroupOptionsAsync(DescribeOptionGroupOptionsMessage, cb
 	end
 end
 
---- ResetDBParameterGroup
+--- Call DescribeOptionGroupOptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeOptionGroupOptionsMessage
+-- @return response
+-- @return error_message
+function M.DescribeOptionGroupOptionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeOptionGroupOptionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ResetDBParameterGroup asynchronously, invoking a callback when done
 -- @param ResetDBParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ResetDBParameterGroupAsync(ResetDBParameterGroupMessage, cb)
@@ -11459,7 +12313,21 @@ function M.ResetDBParameterGroupAsync(ResetDBParameterGroupMessage, cb)
 	end
 end
 
---- DescribeEngineDefaultClusterParameters
+--- Call ResetDBParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResetDBParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.ResetDBParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResetDBParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEngineDefaultClusterParameters asynchronously, invoking a callback when done
 -- @param DescribeEngineDefaultClusterParametersMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEngineDefaultClusterParametersAsync(DescribeEngineDefaultClusterParametersMessage, cb)
@@ -11477,7 +12345,21 @@ function M.DescribeEngineDefaultClusterParametersAsync(DescribeEngineDefaultClus
 	end
 end
 
---- CreateDBSnapshot
+--- Call DescribeEngineDefaultClusterParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEngineDefaultClusterParametersMessage
+-- @return response
+-- @return error_message
+function M.DescribeEngineDefaultClusterParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEngineDefaultClusterParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBSnapshot asynchronously, invoking a callback when done
 -- @param CreateDBSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBSnapshotAsync(CreateDBSnapshotMessage, cb)
@@ -11495,7 +12377,21 @@ function M.CreateDBSnapshotAsync(CreateDBSnapshotMessage, cb)
 	end
 end
 
---- CreateDBCluster
+--- Call CreateDBSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBSnapshotMessage
+-- @return response
+-- @return error_message
+function M.CreateDBSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBCluster asynchronously, invoking a callback when done
 -- @param CreateDBClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBClusterAsync(CreateDBClusterMessage, cb)
@@ -11513,7 +12409,21 @@ function M.CreateDBClusterAsync(CreateDBClusterMessage, cb)
 	end
 end
 
---- DescribeAccountAttributes
+--- Call CreateDBCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBClusterMessage
+-- @return response
+-- @return error_message
+function M.CreateDBClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAccountAttributes asynchronously, invoking a callback when done
 -- @param DescribeAccountAttributesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, cb)
@@ -11531,7 +12441,21 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, cb)
 	end
 end
 
---- DescribeDBSnapshots
+--- Call DescribeAccountAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAccountAttributesMessage
+-- @return response
+-- @return error_message
+function M.DescribeAccountAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAccountAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBSnapshots asynchronously, invoking a callback when done
 -- @param DescribeDBSnapshotsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBSnapshotsAsync(DescribeDBSnapshotsMessage, cb)
@@ -11549,7 +12473,21 @@ function M.DescribeDBSnapshotsAsync(DescribeDBSnapshotsMessage, cb)
 	end
 end
 
---- ModifyDBClusterSnapshotAttribute
+--- Call DescribeDBSnapshots synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBSnapshotsMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBSnapshotsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBSnapshotsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDBClusterSnapshotAttribute asynchronously, invoking a callback when done
 -- @param ModifyDBClusterSnapshotAttributeMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDBClusterSnapshotAttributeAsync(ModifyDBClusterSnapshotAttributeMessage, cb)
@@ -11567,7 +12505,21 @@ function M.ModifyDBClusterSnapshotAttributeAsync(ModifyDBClusterSnapshotAttribut
 	end
 end
 
---- CreateDBSecurityGroup
+--- Call ModifyDBClusterSnapshotAttribute synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDBClusterSnapshotAttributeMessage
+-- @return response
+-- @return error_message
+function M.ModifyDBClusterSnapshotAttributeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDBClusterSnapshotAttributeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBSecurityGroup asynchronously, invoking a callback when done
 -- @param CreateDBSecurityGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBSecurityGroupAsync(CreateDBSecurityGroupMessage, cb)
@@ -11585,7 +12537,21 @@ function M.CreateDBSecurityGroupAsync(CreateDBSecurityGroupMessage, cb)
 	end
 end
 
---- RemoveRoleFromDBCluster
+--- Call CreateDBSecurityGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBSecurityGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateDBSecurityGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBSecurityGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveRoleFromDBCluster asynchronously, invoking a callback when done
 -- @param RemoveRoleFromDBClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveRoleFromDBClusterAsync(RemoveRoleFromDBClusterMessage, cb)
@@ -11603,7 +12569,21 @@ function M.RemoveRoleFromDBClusterAsync(RemoveRoleFromDBClusterMessage, cb)
 	end
 end
 
---- RevokeDBSecurityGroupIngress
+--- Call RemoveRoleFromDBCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveRoleFromDBClusterMessage
+-- @return response
+-- @return error_message
+function M.RemoveRoleFromDBClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveRoleFromDBClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RevokeDBSecurityGroupIngress asynchronously, invoking a callback when done
 -- @param RevokeDBSecurityGroupIngressMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RevokeDBSecurityGroupIngressAsync(RevokeDBSecurityGroupIngressMessage, cb)
@@ -11621,7 +12601,21 @@ function M.RevokeDBSecurityGroupIngressAsync(RevokeDBSecurityGroupIngressMessage
 	end
 end
 
---- CreateEventSubscription
+--- Call RevokeDBSecurityGroupIngress synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RevokeDBSecurityGroupIngressMessage
+-- @return response
+-- @return error_message
+function M.RevokeDBSecurityGroupIngressSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RevokeDBSecurityGroupIngressAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateEventSubscription asynchronously, invoking a callback when done
 -- @param CreateEventSubscriptionMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
@@ -11639,7 +12633,21 @@ function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 	end
 end
 
---- CopyDBParameterGroup
+--- Call CreateEventSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateEventSubscriptionMessage
+-- @return response
+-- @return error_message
+function M.CreateEventSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateEventSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CopyDBParameterGroup asynchronously, invoking a callback when done
 -- @param CopyDBParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CopyDBParameterGroupAsync(CopyDBParameterGroupMessage, cb)
@@ -11657,7 +12665,21 @@ function M.CopyDBParameterGroupAsync(CopyDBParameterGroupMessage, cb)
 	end
 end
 
---- RebootDBInstance
+--- Call CopyDBParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CopyDBParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.CopyDBParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CopyDBParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RebootDBInstance asynchronously, invoking a callback when done
 -- @param RebootDBInstanceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RebootDBInstanceAsync(RebootDBInstanceMessage, cb)
@@ -11675,7 +12697,21 @@ function M.RebootDBInstanceAsync(RebootDBInstanceMessage, cb)
 	end
 end
 
---- CreateDBSubnetGroup
+--- Call RebootDBInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RebootDBInstanceMessage
+-- @return response
+-- @return error_message
+function M.RebootDBInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RebootDBInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDBSubnetGroup asynchronously, invoking a callback when done
 -- @param CreateDBSubnetGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDBSubnetGroupAsync(CreateDBSubnetGroupMessage, cb)
@@ -11693,7 +12729,21 @@ function M.CreateDBSubnetGroupAsync(CreateDBSubnetGroupMessage, cb)
 	end
 end
 
---- ModifyDBCluster
+--- Call CreateDBSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDBSubnetGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateDBSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDBSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDBCluster asynchronously, invoking a callback when done
 -- @param ModifyDBClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDBClusterAsync(ModifyDBClusterMessage, cb)
@@ -11711,7 +12761,21 @@ function M.ModifyDBClusterAsync(ModifyDBClusterMessage, cb)
 	end
 end
 
---- DescribeDBSnapshotAttributes
+--- Call ModifyDBCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDBClusterMessage
+-- @return response
+-- @return error_message
+function M.ModifyDBClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDBClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBSnapshotAttributes asynchronously, invoking a callback when done
 -- @param DescribeDBSnapshotAttributesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBSnapshotAttributesAsync(DescribeDBSnapshotAttributesMessage, cb)
@@ -11729,7 +12793,21 @@ function M.DescribeDBSnapshotAttributesAsync(DescribeDBSnapshotAttributesMessage
 	end
 end
 
---- DescribeSourceRegions
+--- Call DescribeDBSnapshotAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBSnapshotAttributesMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBSnapshotAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBSnapshotAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSourceRegions asynchronously, invoking a callback when done
 -- @param DescribeSourceRegionsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeSourceRegionsAsync(DescribeSourceRegionsMessage, cb)
@@ -11747,7 +12825,21 @@ function M.DescribeSourceRegionsAsync(DescribeSourceRegionsMessage, cb)
 	end
 end
 
---- DownloadDBLogFilePortion
+--- Call DescribeSourceRegions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSourceRegionsMessage
+-- @return response
+-- @return error_message
+function M.DescribeSourceRegionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSourceRegionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DownloadDBLogFilePortion asynchronously, invoking a callback when done
 -- @param DownloadDBLogFilePortionMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DownloadDBLogFilePortionAsync(DownloadDBLogFilePortionMessage, cb)
@@ -11765,7 +12857,21 @@ function M.DownloadDBLogFilePortionAsync(DownloadDBLogFilePortionMessage, cb)
 	end
 end
 
---- DescribeDBClusters
+--- Call DownloadDBLogFilePortion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DownloadDBLogFilePortionMessage
+-- @return response
+-- @return error_message
+function M.DownloadDBLogFilePortionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DownloadDBLogFilePortionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBClusters asynchronously, invoking a callback when done
 -- @param DescribeDBClustersMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBClustersAsync(DescribeDBClustersMessage, cb)
@@ -11783,7 +12889,21 @@ function M.DescribeDBClustersAsync(DescribeDBClustersMessage, cb)
 	end
 end
 
---- DescribeDBClusterSnapshots
+--- Call DescribeDBClusters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBClustersMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBClustersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBClustersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBClusterSnapshots asynchronously, invoking a callback when done
 -- @param DescribeDBClusterSnapshotsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBClusterSnapshotsAsync(DescribeDBClusterSnapshotsMessage, cb)
@@ -11801,7 +12921,21 @@ function M.DescribeDBClusterSnapshotsAsync(DescribeDBClusterSnapshotsMessage, cb
 	end
 end
 
---- ModifyDBParameterGroup
+--- Call DescribeDBClusterSnapshots synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBClusterSnapshotsMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBClusterSnapshotsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBClusterSnapshotsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDBParameterGroup asynchronously, invoking a callback when done
 -- @param ModifyDBParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDBParameterGroupAsync(ModifyDBParameterGroupMessage, cb)
@@ -11819,7 +12953,21 @@ function M.ModifyDBParameterGroupAsync(ModifyDBParameterGroupMessage, cb)
 	end
 end
 
---- DescribeDBSecurityGroups
+--- Call ModifyDBParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDBParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.ModifyDBParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDBParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBSecurityGroups asynchronously, invoking a callback when done
 -- @param DescribeDBSecurityGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBSecurityGroupsAsync(DescribeDBSecurityGroupsMessage, cb)
@@ -11837,7 +12985,21 @@ function M.DescribeDBSecurityGroupsAsync(DescribeDBSecurityGroupsMessage, cb)
 	end
 end
 
---- DeleteDBClusterParameterGroup
+--- Call DescribeDBSecurityGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBSecurityGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBSecurityGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBSecurityGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDBClusterParameterGroup asynchronously, invoking a callback when done
 -- @param DeleteDBClusterParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDBClusterParameterGroupAsync(DeleteDBClusterParameterGroupMessage, cb)
@@ -11855,7 +13017,21 @@ function M.DeleteDBClusterParameterGroupAsync(DeleteDBClusterParameterGroupMessa
 	end
 end
 
---- DescribePendingMaintenanceActions
+--- Call DeleteDBClusterParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDBClusterParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteDBClusterParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDBClusterParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribePendingMaintenanceActions asynchronously, invoking a callback when done
 -- @param DescribePendingMaintenanceActionsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribePendingMaintenanceActionsAsync(DescribePendingMaintenanceActionsMessage, cb)
@@ -11873,7 +13049,21 @@ function M.DescribePendingMaintenanceActionsAsync(DescribePendingMaintenanceActi
 	end
 end
 
---- DescribeDBClusterParameterGroups
+--- Call DescribePendingMaintenanceActions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribePendingMaintenanceActionsMessage
+-- @return response
+-- @return error_message
+function M.DescribePendingMaintenanceActionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribePendingMaintenanceActionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDBClusterParameterGroups asynchronously, invoking a callback when done
 -- @param DescribeDBClusterParameterGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDBClusterParameterGroupsAsync(DescribeDBClusterParameterGroupsMessage, cb)
@@ -11891,7 +13081,21 @@ function M.DescribeDBClusterParameterGroupsAsync(DescribeDBClusterParameterGroup
 	end
 end
 
---- CopyDBClusterSnapshot
+--- Call DescribeDBClusterParameterGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDBClusterParameterGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeDBClusterParameterGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDBClusterParameterGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CopyDBClusterSnapshot asynchronously, invoking a callback when done
 -- @param CopyDBClusterSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CopyDBClusterSnapshotAsync(CopyDBClusterSnapshotMessage, cb)
@@ -11909,7 +13113,21 @@ function M.CopyDBClusterSnapshotAsync(CopyDBClusterSnapshotMessage, cb)
 	end
 end
 
---- ModifyDBInstance
+--- Call CopyDBClusterSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CopyDBClusterSnapshotMessage
+-- @return response
+-- @return error_message
+function M.CopyDBClusterSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CopyDBClusterSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyDBInstance asynchronously, invoking a callback when done
 -- @param ModifyDBInstanceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyDBInstanceAsync(ModifyDBInstanceMessage, cb)
@@ -11927,7 +13145,21 @@ function M.ModifyDBInstanceAsync(ModifyDBInstanceMessage, cb)
 	end
 end
 
---- RemoveSourceIdentifierFromSubscription
+--- Call ModifyDBInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyDBInstanceMessage
+-- @return response
+-- @return error_message
+function M.ModifyDBInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyDBInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveSourceIdentifierFromSubscription asynchronously, invoking a callback when done
 -- @param RemoveSourceIdentifierFromSubscriptionMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveSourceIdentifierFromSubscriptionAsync(RemoveSourceIdentifierFromSubscriptionMessage, cb)
@@ -11943,6 +13175,20 @@ function M.RemoveSourceIdentifierFromSubscriptionAsync(RemoveSourceIdentifierFro
 	else
 		cb(false, err)
 	end
+end
+
+--- Call RemoveSourceIdentifierFromSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveSourceIdentifierFromSubscriptionMessage
+-- @return response
+-- @return error_message
+function M.RemoveSourceIdentifierFromSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveSourceIdentifierFromSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

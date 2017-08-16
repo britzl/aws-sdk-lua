@@ -2601,7 +2601,7 @@ end
 --
 -- OPERATIONS
 --
---- TestRepositoryTriggers
+--- Call TestRepositoryTriggers asynchronously, invoking a callback when done
 -- @param TestRepositoryTriggersInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.TestRepositoryTriggersAsync(TestRepositoryTriggersInput, cb)
@@ -2619,7 +2619,21 @@ function M.TestRepositoryTriggersAsync(TestRepositoryTriggersInput, cb)
 	end
 end
 
---- GetRepositoryTriggers
+--- Call TestRepositoryTriggers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TestRepositoryTriggersInput
+-- @return response
+-- @return error_message
+function M.TestRepositoryTriggersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TestRepositoryTriggersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRepositoryTriggers asynchronously, invoking a callback when done
 -- @param GetRepositoryTriggersInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRepositoryTriggersAsync(GetRepositoryTriggersInput, cb)
@@ -2637,7 +2651,21 @@ function M.GetRepositoryTriggersAsync(GetRepositoryTriggersInput, cb)
 	end
 end
 
---- DeleteRepository
+--- Call GetRepositoryTriggers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRepositoryTriggersInput
+-- @return response
+-- @return error_message
+function M.GetRepositoryTriggersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRepositoryTriggersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRepository asynchronously, invoking a callback when done
 -- @param DeleteRepositoryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteRepositoryAsync(DeleteRepositoryInput, cb)
@@ -2655,7 +2683,21 @@ function M.DeleteRepositoryAsync(DeleteRepositoryInput, cb)
 	end
 end
 
---- UpdateRepositoryName
+--- Call DeleteRepository synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRepositoryInput
+-- @return response
+-- @return error_message
+function M.DeleteRepositorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRepositoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRepositoryName asynchronously, invoking a callback when done
 -- @param UpdateRepositoryNameInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateRepositoryNameAsync(UpdateRepositoryNameInput, cb)
@@ -2673,7 +2715,21 @@ function M.UpdateRepositoryNameAsync(UpdateRepositoryNameInput, cb)
 	end
 end
 
---- PutRepositoryTriggers
+--- Call UpdateRepositoryName synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRepositoryNameInput
+-- @return response
+-- @return error_message
+function M.UpdateRepositoryNameSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRepositoryNameAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutRepositoryTriggers asynchronously, invoking a callback when done
 -- @param PutRepositoryTriggersInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutRepositoryTriggersAsync(PutRepositoryTriggersInput, cb)
@@ -2691,7 +2747,21 @@ function M.PutRepositoryTriggersAsync(PutRepositoryTriggersInput, cb)
 	end
 end
 
---- CreateBranch
+--- Call PutRepositoryTriggers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutRepositoryTriggersInput
+-- @return response
+-- @return error_message
+function M.PutRepositoryTriggersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutRepositoryTriggersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateBranch asynchronously, invoking a callback when done
 -- @param CreateBranchInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateBranchAsync(CreateBranchInput, cb)
@@ -2709,7 +2779,21 @@ function M.CreateBranchAsync(CreateBranchInput, cb)
 	end
 end
 
---- ListRepositories
+--- Call CreateBranch synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateBranchInput
+-- @return response
+-- @return error_message
+function M.CreateBranchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateBranchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRepositories asynchronously, invoking a callback when done
 -- @param ListRepositoriesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListRepositoriesAsync(ListRepositoriesInput, cb)
@@ -2727,7 +2811,21 @@ function M.ListRepositoriesAsync(ListRepositoriesInput, cb)
 	end
 end
 
---- UpdateRepositoryDescription
+--- Call ListRepositories synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRepositoriesInput
+-- @return response
+-- @return error_message
+function M.ListRepositoriesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRepositoriesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRepositoryDescription asynchronously, invoking a callback when done
 -- @param UpdateRepositoryDescriptionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateRepositoryDescriptionAsync(UpdateRepositoryDescriptionInput, cb)
@@ -2745,7 +2843,21 @@ function M.UpdateRepositoryDescriptionAsync(UpdateRepositoryDescriptionInput, cb
 	end
 end
 
---- GetRepository
+--- Call UpdateRepositoryDescription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRepositoryDescriptionInput
+-- @return response
+-- @return error_message
+function M.UpdateRepositoryDescriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRepositoryDescriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRepository asynchronously, invoking a callback when done
 -- @param GetRepositoryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRepositoryAsync(GetRepositoryInput, cb)
@@ -2763,7 +2875,21 @@ function M.GetRepositoryAsync(GetRepositoryInput, cb)
 	end
 end
 
---- UpdateDefaultBranch
+--- Call GetRepository synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRepositoryInput
+-- @return response
+-- @return error_message
+function M.GetRepositorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRepositoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDefaultBranch asynchronously, invoking a callback when done
 -- @param UpdateDefaultBranchInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDefaultBranchAsync(UpdateDefaultBranchInput, cb)
@@ -2781,7 +2907,21 @@ function M.UpdateDefaultBranchAsync(UpdateDefaultBranchInput, cb)
 	end
 end
 
---- BatchGetRepositories
+--- Call UpdateDefaultBranch synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDefaultBranchInput
+-- @return response
+-- @return error_message
+function M.UpdateDefaultBranchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDefaultBranchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetRepositories asynchronously, invoking a callback when done
 -- @param BatchGetRepositoriesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetRepositoriesAsync(BatchGetRepositoriesInput, cb)
@@ -2799,7 +2939,21 @@ function M.BatchGetRepositoriesAsync(BatchGetRepositoriesInput, cb)
 	end
 end
 
---- ListBranches
+--- Call BatchGetRepositories synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetRepositoriesInput
+-- @return response
+-- @return error_message
+function M.BatchGetRepositoriesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetRepositoriesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListBranches asynchronously, invoking a callback when done
 -- @param ListBranchesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListBranchesAsync(ListBranchesInput, cb)
@@ -2817,7 +2971,21 @@ function M.ListBranchesAsync(ListBranchesInput, cb)
 	end
 end
 
---- GetBlob
+--- Call ListBranches synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListBranchesInput
+-- @return response
+-- @return error_message
+function M.ListBranchesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListBranchesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBlob asynchronously, invoking a callback when done
 -- @param GetBlobInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBlobAsync(GetBlobInput, cb)
@@ -2835,7 +3003,21 @@ function M.GetBlobAsync(GetBlobInput, cb)
 	end
 end
 
---- GetBranch
+--- Call GetBlob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBlobInput
+-- @return response
+-- @return error_message
+function M.GetBlobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBlobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBranch asynchronously, invoking a callback when done
 -- @param GetBranchInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBranchAsync(GetBranchInput, cb)
@@ -2853,7 +3035,21 @@ function M.GetBranchAsync(GetBranchInput, cb)
 	end
 end
 
---- CreateRepository
+--- Call GetBranch synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBranchInput
+-- @return response
+-- @return error_message
+function M.GetBranchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBranchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateRepository asynchronously, invoking a callback when done
 -- @param CreateRepositoryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateRepositoryAsync(CreateRepositoryInput, cb)
@@ -2871,7 +3067,21 @@ function M.CreateRepositoryAsync(CreateRepositoryInput, cb)
 	end
 end
 
---- GetCommit
+--- Call CreateRepository synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateRepositoryInput
+-- @return response
+-- @return error_message
+function M.CreateRepositorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateRepositoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCommit asynchronously, invoking a callback when done
 -- @param GetCommitInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCommitAsync(GetCommitInput, cb)
@@ -2889,7 +3099,21 @@ function M.GetCommitAsync(GetCommitInput, cb)
 	end
 end
 
---- GetDifferences
+--- Call GetCommit synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCommitInput
+-- @return response
+-- @return error_message
+function M.GetCommitSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCommitAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDifferences asynchronously, invoking a callback when done
 -- @param GetDifferencesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDifferencesAsync(GetDifferencesInput, cb)
@@ -2905,6 +3129,20 @@ function M.GetDifferencesAsync(GetDifferencesInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call GetDifferences synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDifferencesInput
+-- @return response
+-- @return error_message
+function M.GetDifferencesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDifferencesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

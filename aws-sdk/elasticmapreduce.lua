@@ -5196,7 +5196,7 @@ end
 --
 -- OPERATIONS
 --
---- CancelSteps
+--- Call CancelSteps asynchronously, invoking a callback when done
 -- @param CancelStepsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CancelStepsAsync(CancelStepsInput, cb)
@@ -5214,7 +5214,21 @@ function M.CancelStepsAsync(CancelStepsInput, cb)
 	end
 end
 
---- RemoveAutoScalingPolicy
+--- Call CancelSteps synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CancelStepsInput
+-- @return response
+-- @return error_message
+function M.CancelStepsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CancelStepsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveAutoScalingPolicy asynchronously, invoking a callback when done
 -- @param RemoveAutoScalingPolicyInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveAutoScalingPolicyAsync(RemoveAutoScalingPolicyInput, cb)
@@ -5232,7 +5246,21 @@ function M.RemoveAutoScalingPolicyAsync(RemoveAutoScalingPolicyInput, cb)
 	end
 end
 
---- CreateSecurityConfiguration
+--- Call RemoveAutoScalingPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveAutoScalingPolicyInput
+-- @return response
+-- @return error_message
+function M.RemoveAutoScalingPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveAutoScalingPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSecurityConfiguration asynchronously, invoking a callback when done
 -- @param CreateSecurityConfigurationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSecurityConfigurationAsync(CreateSecurityConfigurationInput, cb)
@@ -5250,7 +5278,21 @@ function M.CreateSecurityConfigurationAsync(CreateSecurityConfigurationInput, cb
 	end
 end
 
---- RunJobFlow
+--- Call CreateSecurityConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSecurityConfigurationInput
+-- @return response
+-- @return error_message
+function M.CreateSecurityConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSecurityConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RunJobFlow asynchronously, invoking a callback when done
 -- @param RunJobFlowInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RunJobFlowAsync(RunJobFlowInput, cb)
@@ -5268,7 +5310,21 @@ function M.RunJobFlowAsync(RunJobFlowInput, cb)
 	end
 end
 
---- DescribeSecurityConfiguration
+--- Call RunJobFlow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RunJobFlowInput
+-- @return response
+-- @return error_message
+function M.RunJobFlowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RunJobFlowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSecurityConfiguration asynchronously, invoking a callback when done
 -- @param DescribeSecurityConfigurationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeSecurityConfigurationAsync(DescribeSecurityConfigurationInput, cb)
@@ -5286,7 +5342,21 @@ function M.DescribeSecurityConfigurationAsync(DescribeSecurityConfigurationInput
 	end
 end
 
---- ListSecurityConfigurations
+--- Call DescribeSecurityConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSecurityConfigurationInput
+-- @return response
+-- @return error_message
+function M.DescribeSecurityConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSecurityConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSecurityConfigurations asynchronously, invoking a callback when done
 -- @param ListSecurityConfigurationsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListSecurityConfigurationsAsync(ListSecurityConfigurationsInput, cb)
@@ -5304,7 +5374,21 @@ function M.ListSecurityConfigurationsAsync(ListSecurityConfigurationsInput, cb)
 	end
 end
 
---- SetTerminationProtection
+--- Call ListSecurityConfigurations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSecurityConfigurationsInput
+-- @return response
+-- @return error_message
+function M.ListSecurityConfigurationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSecurityConfigurationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetTerminationProtection asynchronously, invoking a callback when done
 -- @param SetTerminationProtectionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetTerminationProtectionAsync(SetTerminationProtectionInput, cb)
@@ -5322,7 +5406,21 @@ function M.SetTerminationProtectionAsync(SetTerminationProtectionInput, cb)
 	end
 end
 
---- DeleteSecurityConfiguration
+--- Call SetTerminationProtection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetTerminationProtectionInput
+-- @return response
+-- @return error_message
+function M.SetTerminationProtectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetTerminationProtectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSecurityConfiguration asynchronously, invoking a callback when done
 -- @param DeleteSecurityConfigurationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSecurityConfigurationAsync(DeleteSecurityConfigurationInput, cb)
@@ -5340,7 +5438,21 @@ function M.DeleteSecurityConfigurationAsync(DeleteSecurityConfigurationInput, cb
 	end
 end
 
---- AddInstanceGroups
+--- Call DeleteSecurityConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSecurityConfigurationInput
+-- @return response
+-- @return error_message
+function M.DeleteSecurityConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSecurityConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddInstanceGroups asynchronously, invoking a callback when done
 -- @param AddInstanceGroupsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddInstanceGroupsAsync(AddInstanceGroupsInput, cb)
@@ -5358,7 +5470,21 @@ function M.AddInstanceGroupsAsync(AddInstanceGroupsInput, cb)
 	end
 end
 
---- ListBootstrapActions
+--- Call AddInstanceGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddInstanceGroupsInput
+-- @return response
+-- @return error_message
+function M.AddInstanceGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddInstanceGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListBootstrapActions asynchronously, invoking a callback when done
 -- @param ListBootstrapActionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListBootstrapActionsAsync(ListBootstrapActionsInput, cb)
@@ -5376,7 +5502,21 @@ function M.ListBootstrapActionsAsync(ListBootstrapActionsInput, cb)
 	end
 end
 
---- ListClusters
+--- Call ListBootstrapActions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListBootstrapActionsInput
+-- @return response
+-- @return error_message
+function M.ListBootstrapActionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListBootstrapActionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListClusters asynchronously, invoking a callback when done
 -- @param ListClustersInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListClustersAsync(ListClustersInput, cb)
@@ -5394,7 +5534,21 @@ function M.ListClustersAsync(ListClustersInput, cb)
 	end
 end
 
---- ListInstances
+--- Call ListClusters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListClustersInput
+-- @return response
+-- @return error_message
+function M.ListClustersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListClustersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListInstances asynchronously, invoking a callback when done
 -- @param ListInstancesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListInstancesAsync(ListInstancesInput, cb)
@@ -5412,7 +5566,21 @@ function M.ListInstancesAsync(ListInstancesInput, cb)
 	end
 end
 
---- DescribeCluster
+--- Call ListInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListInstancesInput
+-- @return response
+-- @return error_message
+function M.ListInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeCluster asynchronously, invoking a callback when done
 -- @param DescribeClusterInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeClusterAsync(DescribeClusterInput, cb)
@@ -5430,7 +5598,21 @@ function M.DescribeClusterAsync(DescribeClusterInput, cb)
 	end
 end
 
---- ListSteps
+--- Call DescribeCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeClusterInput
+-- @return response
+-- @return error_message
+function M.DescribeClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSteps asynchronously, invoking a callback when done
 -- @param ListStepsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListStepsAsync(ListStepsInput, cb)
@@ -5448,7 +5630,21 @@ function M.ListStepsAsync(ListStepsInput, cb)
 	end
 end
 
---- RemoveTags
+--- Call ListSteps synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListStepsInput
+-- @return response
+-- @return error_message
+function M.ListStepsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListStepsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTags asynchronously, invoking a callback when done
 -- @param RemoveTagsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsAsync(RemoveTagsInput, cb)
@@ -5466,7 +5662,21 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 	end
 end
 
---- ModifyInstanceGroups
+--- Call RemoveTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsInput
+-- @return response
+-- @return error_message
+function M.RemoveTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyInstanceGroups asynchronously, invoking a callback when done
 -- @param ModifyInstanceGroupsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyInstanceGroupsAsync(ModifyInstanceGroupsInput, cb)
@@ -5484,7 +5694,21 @@ function M.ModifyInstanceGroupsAsync(ModifyInstanceGroupsInput, cb)
 	end
 end
 
---- PutAutoScalingPolicy
+--- Call ModifyInstanceGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyInstanceGroupsInput
+-- @return response
+-- @return error_message
+function M.ModifyInstanceGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyInstanceGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutAutoScalingPolicy asynchronously, invoking a callback when done
 -- @param PutAutoScalingPolicyInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutAutoScalingPolicyAsync(PutAutoScalingPolicyInput, cb)
@@ -5502,7 +5726,21 @@ function M.PutAutoScalingPolicyAsync(PutAutoScalingPolicyInput, cb)
 	end
 end
 
---- AddInstanceFleet
+--- Call PutAutoScalingPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutAutoScalingPolicyInput
+-- @return response
+-- @return error_message
+function M.PutAutoScalingPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutAutoScalingPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddInstanceFleet asynchronously, invoking a callback when done
 -- @param AddInstanceFleetInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddInstanceFleetAsync(AddInstanceFleetInput, cb)
@@ -5520,7 +5758,21 @@ function M.AddInstanceFleetAsync(AddInstanceFleetInput, cb)
 	end
 end
 
---- SetVisibleToAllUsers
+--- Call AddInstanceFleet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddInstanceFleetInput
+-- @return response
+-- @return error_message
+function M.AddInstanceFleetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddInstanceFleetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetVisibleToAllUsers asynchronously, invoking a callback when done
 -- @param SetVisibleToAllUsersInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetVisibleToAllUsersAsync(SetVisibleToAllUsersInput, cb)
@@ -5538,7 +5790,21 @@ function M.SetVisibleToAllUsersAsync(SetVisibleToAllUsersInput, cb)
 	end
 end
 
---- ListInstanceFleets
+--- Call SetVisibleToAllUsers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetVisibleToAllUsersInput
+-- @return response
+-- @return error_message
+function M.SetVisibleToAllUsersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetVisibleToAllUsersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListInstanceFleets asynchronously, invoking a callback when done
 -- @param ListInstanceFleetsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListInstanceFleetsAsync(ListInstanceFleetsInput, cb)
@@ -5556,7 +5822,21 @@ function M.ListInstanceFleetsAsync(ListInstanceFleetsInput, cb)
 	end
 end
 
---- TerminateJobFlows
+--- Call ListInstanceFleets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListInstanceFleetsInput
+-- @return response
+-- @return error_message
+function M.ListInstanceFleetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListInstanceFleetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TerminateJobFlows asynchronously, invoking a callback when done
 -- @param TerminateJobFlowsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.TerminateJobFlowsAsync(TerminateJobFlowsInput, cb)
@@ -5574,7 +5854,21 @@ function M.TerminateJobFlowsAsync(TerminateJobFlowsInput, cb)
 	end
 end
 
---- AddTags
+--- Call TerminateJobFlows synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TerminateJobFlowsInput
+-- @return response
+-- @return error_message
+function M.TerminateJobFlowsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TerminateJobFlowsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTags asynchronously, invoking a callback when done
 -- @param AddTagsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsAsync(AddTagsInput, cb)
@@ -5592,7 +5886,21 @@ function M.AddTagsAsync(AddTagsInput, cb)
 	end
 end
 
---- ModifyInstanceFleet
+--- Call AddTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsInput
+-- @return response
+-- @return error_message
+function M.AddTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyInstanceFleet asynchronously, invoking a callback when done
 -- @param ModifyInstanceFleetInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyInstanceFleetAsync(ModifyInstanceFleetInput, cb)
@@ -5610,7 +5918,21 @@ function M.ModifyInstanceFleetAsync(ModifyInstanceFleetInput, cb)
 	end
 end
 
---- AddJobFlowSteps
+--- Call ModifyInstanceFleet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyInstanceFleetInput
+-- @return response
+-- @return error_message
+function M.ModifyInstanceFleetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyInstanceFleetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddJobFlowSteps asynchronously, invoking a callback when done
 -- @param AddJobFlowStepsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddJobFlowStepsAsync(AddJobFlowStepsInput, cb)
@@ -5628,7 +5950,21 @@ function M.AddJobFlowStepsAsync(AddJobFlowStepsInput, cb)
 	end
 end
 
---- ListInstanceGroups
+--- Call AddJobFlowSteps synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddJobFlowStepsInput
+-- @return response
+-- @return error_message
+function M.AddJobFlowStepsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddJobFlowStepsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListInstanceGroups asynchronously, invoking a callback when done
 -- @param ListInstanceGroupsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListInstanceGroupsAsync(ListInstanceGroupsInput, cb)
@@ -5646,7 +5982,21 @@ function M.ListInstanceGroupsAsync(ListInstanceGroupsInput, cb)
 	end
 end
 
---- DescribeStep
+--- Call ListInstanceGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListInstanceGroupsInput
+-- @return response
+-- @return error_message
+function M.ListInstanceGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListInstanceGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeStep asynchronously, invoking a callback when done
 -- @param DescribeStepInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeStepAsync(DescribeStepInput, cb)
@@ -5662,6 +6012,20 @@ function M.DescribeStepAsync(DescribeStepInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DescribeStep synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeStepInput
+-- @return response
+-- @return error_message
+function M.DescribeStepSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeStepAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

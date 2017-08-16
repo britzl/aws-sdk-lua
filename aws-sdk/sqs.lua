@@ -1817,7 +1817,7 @@ end
 --
 -- OPERATIONS
 --
---- CreateQueue
+--- Call CreateQueue asynchronously, invoking a callback when done
 -- @param CreateQueueRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateQueueAsync(CreateQueueRequest, cb)
@@ -1835,7 +1835,21 @@ function M.CreateQueueAsync(CreateQueueRequest, cb)
 	end
 end
 
---- GetQueueAttributes
+--- Call CreateQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateQueueRequest
+-- @return response
+-- @return error_message
+function M.CreateQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetQueueAttributes asynchronously, invoking a callback when done
 -- @param GetQueueAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetQueueAttributesAsync(GetQueueAttributesRequest, cb)
@@ -1853,7 +1867,21 @@ function M.GetQueueAttributesAsync(GetQueueAttributesRequest, cb)
 	end
 end
 
---- SetQueueAttributes
+--- Call GetQueueAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetQueueAttributesRequest
+-- @return response
+-- @return error_message
+function M.GetQueueAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetQueueAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetQueueAttributes asynchronously, invoking a callback when done
 -- @param SetQueueAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetQueueAttributesAsync(SetQueueAttributesRequest, cb)
@@ -1871,7 +1899,21 @@ function M.SetQueueAttributesAsync(SetQueueAttributesRequest, cb)
 	end
 end
 
---- GetQueueUrl
+--- Call SetQueueAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetQueueAttributesRequest
+-- @return response
+-- @return error_message
+function M.SetQueueAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetQueueAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetQueueUrl asynchronously, invoking a callback when done
 -- @param GetQueueUrlRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetQueueUrlAsync(GetQueueUrlRequest, cb)
@@ -1889,7 +1931,21 @@ function M.GetQueueUrlAsync(GetQueueUrlRequest, cb)
 	end
 end
 
---- DeleteMessageBatch
+--- Call GetQueueUrl synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetQueueUrlRequest
+-- @return response
+-- @return error_message
+function M.GetQueueUrlSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetQueueUrlAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteMessageBatch asynchronously, invoking a callback when done
 -- @param DeleteMessageBatchRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteMessageBatchAsync(DeleteMessageBatchRequest, cb)
@@ -1907,7 +1963,21 @@ function M.DeleteMessageBatchAsync(DeleteMessageBatchRequest, cb)
 	end
 end
 
---- SendMessageBatch
+--- Call DeleteMessageBatch synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteMessageBatchRequest
+-- @return response
+-- @return error_message
+function M.DeleteMessageBatchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteMessageBatchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SendMessageBatch asynchronously, invoking a callback when done
 -- @param SendMessageBatchRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SendMessageBatchAsync(SendMessageBatchRequest, cb)
@@ -1925,7 +1995,21 @@ function M.SendMessageBatchAsync(SendMessageBatchRequest, cb)
 	end
 end
 
---- ListDeadLetterSourceQueues
+--- Call SendMessageBatch synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SendMessageBatchRequest
+-- @return response
+-- @return error_message
+function M.SendMessageBatchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SendMessageBatchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeadLetterSourceQueues asynchronously, invoking a callback when done
 -- @param ListDeadLetterSourceQueuesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeadLetterSourceQueuesAsync(ListDeadLetterSourceQueuesRequest, cb)
@@ -1943,7 +2027,21 @@ function M.ListDeadLetterSourceQueuesAsync(ListDeadLetterSourceQueuesRequest, cb
 	end
 end
 
---- ChangeMessageVisibility
+--- Call ListDeadLetterSourceQueues synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeadLetterSourceQueuesRequest
+-- @return response
+-- @return error_message
+function M.ListDeadLetterSourceQueuesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeadLetterSourceQueuesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ChangeMessageVisibility asynchronously, invoking a callback when done
 -- @param ChangeMessageVisibilityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ChangeMessageVisibilityAsync(ChangeMessageVisibilityRequest, cb)
@@ -1961,7 +2059,21 @@ function M.ChangeMessageVisibilityAsync(ChangeMessageVisibilityRequest, cb)
 	end
 end
 
---- AddPermission
+--- Call ChangeMessageVisibility synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ChangeMessageVisibilityRequest
+-- @return response
+-- @return error_message
+function M.ChangeMessageVisibilitySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ChangeMessageVisibilityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddPermission asynchronously, invoking a callback when done
 -- @param AddPermissionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddPermissionAsync(AddPermissionRequest, cb)
@@ -1979,7 +2091,21 @@ function M.AddPermissionAsync(AddPermissionRequest, cb)
 	end
 end
 
---- ChangeMessageVisibilityBatch
+--- Call AddPermission synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddPermissionRequest
+-- @return response
+-- @return error_message
+function M.AddPermissionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddPermissionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ChangeMessageVisibilityBatch asynchronously, invoking a callback when done
 -- @param ChangeMessageVisibilityBatchRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ChangeMessageVisibilityBatchAsync(ChangeMessageVisibilityBatchRequest, cb)
@@ -1997,7 +2123,21 @@ function M.ChangeMessageVisibilityBatchAsync(ChangeMessageVisibilityBatchRequest
 	end
 end
 
---- SendMessage
+--- Call ChangeMessageVisibilityBatch synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ChangeMessageVisibilityBatchRequest
+-- @return response
+-- @return error_message
+function M.ChangeMessageVisibilityBatchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ChangeMessageVisibilityBatchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SendMessage asynchronously, invoking a callback when done
 -- @param SendMessageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SendMessageAsync(SendMessageRequest, cb)
@@ -2015,7 +2155,21 @@ function M.SendMessageAsync(SendMessageRequest, cb)
 	end
 end
 
---- DeleteQueue
+--- Call SendMessage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SendMessageRequest
+-- @return response
+-- @return error_message
+function M.SendMessageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SendMessageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteQueue asynchronously, invoking a callback when done
 -- @param DeleteQueueRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteQueueAsync(DeleteQueueRequest, cb)
@@ -2033,7 +2187,21 @@ function M.DeleteQueueAsync(DeleteQueueRequest, cb)
 	end
 end
 
---- PurgeQueue
+--- Call DeleteQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteQueueRequest
+-- @return response
+-- @return error_message
+function M.DeleteQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PurgeQueue asynchronously, invoking a callback when done
 -- @param PurgeQueueRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PurgeQueueAsync(PurgeQueueRequest, cb)
@@ -2051,7 +2219,21 @@ function M.PurgeQueueAsync(PurgeQueueRequest, cb)
 	end
 end
 
---- ReceiveMessage
+--- Call PurgeQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PurgeQueueRequest
+-- @return response
+-- @return error_message
+function M.PurgeQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PurgeQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ReceiveMessage asynchronously, invoking a callback when done
 -- @param ReceiveMessageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ReceiveMessageAsync(ReceiveMessageRequest, cb)
@@ -2069,7 +2251,21 @@ function M.ReceiveMessageAsync(ReceiveMessageRequest, cb)
 	end
 end
 
---- DeleteMessage
+--- Call ReceiveMessage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ReceiveMessageRequest
+-- @return response
+-- @return error_message
+function M.ReceiveMessageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ReceiveMessageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteMessage asynchronously, invoking a callback when done
 -- @param DeleteMessageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteMessageAsync(DeleteMessageRequest, cb)
@@ -2087,7 +2283,21 @@ function M.DeleteMessageAsync(DeleteMessageRequest, cb)
 	end
 end
 
---- ListQueues
+--- Call DeleteMessage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteMessageRequest
+-- @return response
+-- @return error_message
+function M.DeleteMessageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteMessageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListQueues asynchronously, invoking a callback when done
 -- @param ListQueuesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListQueuesAsync(ListQueuesRequest, cb)
@@ -2105,7 +2315,21 @@ function M.ListQueuesAsync(ListQueuesRequest, cb)
 	end
 end
 
---- RemovePermission
+--- Call ListQueues synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListQueuesRequest
+-- @return response
+-- @return error_message
+function M.ListQueuesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListQueuesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemovePermission asynchronously, invoking a callback when done
 -- @param RemovePermissionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemovePermissionAsync(RemovePermissionRequest, cb)
@@ -2121,6 +2345,20 @@ function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call RemovePermission synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemovePermissionRequest
+-- @return response
+-- @return error_message
+function M.RemovePermissionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemovePermissionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

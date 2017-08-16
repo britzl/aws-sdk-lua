@@ -5074,7 +5074,7 @@ end
 --
 -- OPERATIONS
 --
---- DescribeCacheEngineVersions
+--- Call DescribeCacheEngineVersions asynchronously, invoking a callback when done
 -- @param DescribeCacheEngineVersionsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeCacheEngineVersionsAsync(DescribeCacheEngineVersionsMessage, cb)
@@ -5092,7 +5092,21 @@ function M.DescribeCacheEngineVersionsAsync(DescribeCacheEngineVersionsMessage, 
 	end
 end
 
---- DeleteCacheSubnetGroup
+--- Call DescribeCacheEngineVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeCacheEngineVersionsMessage
+-- @return response
+-- @return error_message
+function M.DescribeCacheEngineVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeCacheEngineVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCacheSubnetGroup asynchronously, invoking a callback when done
 -- @param DeleteCacheSubnetGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteCacheSubnetGroupAsync(DeleteCacheSubnetGroupMessage, cb)
@@ -5110,7 +5124,21 @@ function M.DeleteCacheSubnetGroupAsync(DeleteCacheSubnetGroupMessage, cb)
 	end
 end
 
---- ResetCacheParameterGroup
+--- Call DeleteCacheSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCacheSubnetGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteCacheSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCacheSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ResetCacheParameterGroup asynchronously, invoking a callback when done
 -- @param ResetCacheParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ResetCacheParameterGroupAsync(ResetCacheParameterGroupMessage, cb)
@@ -5128,7 +5156,21 @@ function M.ResetCacheParameterGroupAsync(ResetCacheParameterGroupMessage, cb)
 	end
 end
 
---- DeleteCacheSecurityGroup
+--- Call ResetCacheParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResetCacheParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.ResetCacheParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResetCacheParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCacheSecurityGroup asynchronously, invoking a callback when done
 -- @param DeleteCacheSecurityGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteCacheSecurityGroupAsync(DeleteCacheSecurityGroupMessage, cb)
@@ -5146,7 +5188,21 @@ function M.DeleteCacheSecurityGroupAsync(DeleteCacheSecurityGroupMessage, cb)
 	end
 end
 
---- DescribeEvents
+--- Call DeleteCacheSecurityGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCacheSecurityGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteCacheSecurityGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCacheSecurityGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEvents asynchronously, invoking a callback when done
 -- @param DescribeEventsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventsAsync(DescribeEventsMessage, cb)
@@ -5164,7 +5220,21 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 	end
 end
 
---- DescribeEngineDefaultParameters
+--- Call DescribeEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventsMessage
+-- @return response
+-- @return error_message
+function M.DescribeEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEngineDefaultParameters asynchronously, invoking a callback when done
 -- @param DescribeEngineDefaultParametersMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersMessage, cb)
@@ -5182,7 +5252,21 @@ function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersM
 	end
 end
 
---- DescribeCacheSubnetGroups
+--- Call DescribeEngineDefaultParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEngineDefaultParametersMessage
+-- @return response
+-- @return error_message
+function M.DescribeEngineDefaultParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEngineDefaultParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeCacheSubnetGroups asynchronously, invoking a callback when done
 -- @param DescribeCacheSubnetGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeCacheSubnetGroupsAsync(DescribeCacheSubnetGroupsMessage, cb)
@@ -5200,7 +5284,21 @@ function M.DescribeCacheSubnetGroupsAsync(DescribeCacheSubnetGroupsMessage, cb)
 	end
 end
 
---- DescribeCacheSecurityGroups
+--- Call DescribeCacheSubnetGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeCacheSubnetGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeCacheSubnetGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeCacheSubnetGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeCacheSecurityGroups asynchronously, invoking a callback when done
 -- @param DescribeCacheSecurityGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeCacheSecurityGroupsAsync(DescribeCacheSecurityGroupsMessage, cb)
@@ -5218,7 +5316,21 @@ function M.DescribeCacheSecurityGroupsAsync(DescribeCacheSecurityGroupsMessage, 
 	end
 end
 
---- RebootCacheCluster
+--- Call DescribeCacheSecurityGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeCacheSecurityGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeCacheSecurityGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeCacheSecurityGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RebootCacheCluster asynchronously, invoking a callback when done
 -- @param RebootCacheClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RebootCacheClusterAsync(RebootCacheClusterMessage, cb)
@@ -5236,7 +5348,21 @@ function M.RebootCacheClusterAsync(RebootCacheClusterMessage, cb)
 	end
 end
 
---- ModifyCacheSubnetGroup
+--- Call RebootCacheCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RebootCacheClusterMessage
+-- @return response
+-- @return error_message
+function M.RebootCacheClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RebootCacheClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyCacheSubnetGroup asynchronously, invoking a callback when done
 -- @param ModifyCacheSubnetGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyCacheSubnetGroupAsync(ModifyCacheSubnetGroupMessage, cb)
@@ -5254,7 +5380,21 @@ function M.ModifyCacheSubnetGroupAsync(ModifyCacheSubnetGroupMessage, cb)
 	end
 end
 
---- DescribeCacheParameterGroups
+--- Call ModifyCacheSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyCacheSubnetGroupMessage
+-- @return response
+-- @return error_message
+function M.ModifyCacheSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyCacheSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeCacheParameterGroups asynchronously, invoking a callback when done
 -- @param DescribeCacheParameterGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeCacheParameterGroupsAsync(DescribeCacheParameterGroupsMessage, cb)
@@ -5272,7 +5412,21 @@ function M.DescribeCacheParameterGroupsAsync(DescribeCacheParameterGroupsMessage
 	end
 end
 
---- DeleteCacheParameterGroup
+--- Call DescribeCacheParameterGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeCacheParameterGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeCacheParameterGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeCacheParameterGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCacheParameterGroup asynchronously, invoking a callback when done
 -- @param DeleteCacheParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteCacheParameterGroupAsync(DeleteCacheParameterGroupMessage, cb)
@@ -5290,7 +5444,21 @@ function M.DeleteCacheParameterGroupAsync(DeleteCacheParameterGroupMessage, cb)
 	end
 end
 
---- AuthorizeCacheSecurityGroupIngress
+--- Call DeleteCacheParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCacheParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteCacheParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCacheParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AuthorizeCacheSecurityGroupIngress asynchronously, invoking a callback when done
 -- @param AuthorizeCacheSecurityGroupIngressMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.AuthorizeCacheSecurityGroupIngressAsync(AuthorizeCacheSecurityGroupIngressMessage, cb)
@@ -5308,7 +5476,21 @@ function M.AuthorizeCacheSecurityGroupIngressAsync(AuthorizeCacheSecurityGroupIn
 	end
 end
 
---- CopySnapshot
+--- Call AuthorizeCacheSecurityGroupIngress synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AuthorizeCacheSecurityGroupIngressMessage
+-- @return response
+-- @return error_message
+function M.AuthorizeCacheSecurityGroupIngressSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AuthorizeCacheSecurityGroupIngressAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CopySnapshot asynchronously, invoking a callback when done
 -- @param CopySnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CopySnapshotAsync(CopySnapshotMessage, cb)
@@ -5326,7 +5508,21 @@ function M.CopySnapshotAsync(CopySnapshotMessage, cb)
 	end
 end
 
---- AddTagsToResource
+--- Call CopySnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CopySnapshotMessage
+-- @return response
+-- @return error_message
+function M.CopySnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CopySnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTagsToResource asynchronously, invoking a callback when done
 -- @param AddTagsToResourceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
@@ -5344,7 +5540,21 @@ function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 	end
 end
 
---- DescribeCacheClusters
+--- Call AddTagsToResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsToResourceMessage
+-- @return response
+-- @return error_message
+function M.AddTagsToResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsToResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeCacheClusters asynchronously, invoking a callback when done
 -- @param DescribeCacheClustersMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeCacheClustersAsync(DescribeCacheClustersMessage, cb)
@@ -5362,7 +5572,21 @@ function M.DescribeCacheClustersAsync(DescribeCacheClustersMessage, cb)
 	end
 end
 
---- ModifyCacheCluster
+--- Call DescribeCacheClusters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeCacheClustersMessage
+-- @return response
+-- @return error_message
+function M.DescribeCacheClustersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeCacheClustersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyCacheCluster asynchronously, invoking a callback when done
 -- @param ModifyCacheClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyCacheClusterAsync(ModifyCacheClusterMessage, cb)
@@ -5380,7 +5604,21 @@ function M.ModifyCacheClusterAsync(ModifyCacheClusterMessage, cb)
 	end
 end
 
---- CreateReplicationGroup
+--- Call ModifyCacheCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyCacheClusterMessage
+-- @return response
+-- @return error_message
+function M.ModifyCacheClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyCacheClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateReplicationGroup asynchronously, invoking a callback when done
 -- @param CreateReplicationGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateReplicationGroupAsync(CreateReplicationGroupMessage, cb)
@@ -5398,7 +5636,21 @@ function M.CreateReplicationGroupAsync(CreateReplicationGroupMessage, cb)
 	end
 end
 
---- RemoveTagsFromResource
+--- Call CreateReplicationGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateReplicationGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateReplicationGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateReplicationGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTagsFromResource asynchronously, invoking a callback when done
 -- @param RemoveTagsFromResourceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
@@ -5416,7 +5668,21 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 	end
 end
 
---- DescribeCacheParameters
+--- Call RemoveTagsFromResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsFromResourceMessage
+-- @return response
+-- @return error_message
+function M.RemoveTagsFromResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsFromResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeCacheParameters asynchronously, invoking a callback when done
 -- @param DescribeCacheParametersMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeCacheParametersAsync(DescribeCacheParametersMessage, cb)
@@ -5434,7 +5700,21 @@ function M.DescribeCacheParametersAsync(DescribeCacheParametersMessage, cb)
 	end
 end
 
---- CreateCacheParameterGroup
+--- Call DescribeCacheParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeCacheParametersMessage
+-- @return response
+-- @return error_message
+function M.DescribeCacheParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeCacheParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCacheParameterGroup asynchronously, invoking a callback when done
 -- @param CreateCacheParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCacheParameterGroupAsync(CreateCacheParameterGroupMessage, cb)
@@ -5452,7 +5732,21 @@ function M.CreateCacheParameterGroupAsync(CreateCacheParameterGroupMessage, cb)
 	end
 end
 
---- TestFailover
+--- Call CreateCacheParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCacheParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateCacheParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCacheParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TestFailover asynchronously, invoking a callback when done
 -- @param TestFailoverMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.TestFailoverAsync(TestFailoverMessage, cb)
@@ -5470,7 +5764,21 @@ function M.TestFailoverAsync(TestFailoverMessage, cb)
 	end
 end
 
---- DescribeReplicationGroups
+--- Call TestFailover synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TestFailoverMessage
+-- @return response
+-- @return error_message
+function M.TestFailoverSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TestFailoverAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReplicationGroups asynchronously, invoking a callback when done
 -- @param DescribeReplicationGroupsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeReplicationGroupsAsync(DescribeReplicationGroupsMessage, cb)
@@ -5488,7 +5796,21 @@ function M.DescribeReplicationGroupsAsync(DescribeReplicationGroupsMessage, cb)
 	end
 end
 
---- DeleteReplicationGroup
+--- Call DescribeReplicationGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReplicationGroupsMessage
+-- @return response
+-- @return error_message
+function M.DescribeReplicationGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReplicationGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteReplicationGroup asynchronously, invoking a callback when done
 -- @param DeleteReplicationGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteReplicationGroupAsync(DeleteReplicationGroupMessage, cb)
@@ -5506,7 +5828,21 @@ function M.DeleteReplicationGroupAsync(DeleteReplicationGroupMessage, cb)
 	end
 end
 
---- DescribeReservedCacheNodesOfferings
+--- Call DeleteReplicationGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteReplicationGroupMessage
+-- @return response
+-- @return error_message
+function M.DeleteReplicationGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteReplicationGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReservedCacheNodesOfferings asynchronously, invoking a callback when done
 -- @param DescribeReservedCacheNodesOfferingsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeReservedCacheNodesOfferingsAsync(DescribeReservedCacheNodesOfferingsMessage, cb)
@@ -5524,7 +5860,21 @@ function M.DescribeReservedCacheNodesOfferingsAsync(DescribeReservedCacheNodesOf
 	end
 end
 
---- CreateCacheCluster
+--- Call DescribeReservedCacheNodesOfferings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReservedCacheNodesOfferingsMessage
+-- @return response
+-- @return error_message
+function M.DescribeReservedCacheNodesOfferingsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReservedCacheNodesOfferingsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCacheCluster asynchronously, invoking a callback when done
 -- @param CreateCacheClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCacheClusterAsync(CreateCacheClusterMessage, cb)
@@ -5542,7 +5892,21 @@ function M.CreateCacheClusterAsync(CreateCacheClusterMessage, cb)
 	end
 end
 
---- CreateCacheSubnetGroup
+--- Call CreateCacheCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCacheClusterMessage
+-- @return response
+-- @return error_message
+function M.CreateCacheClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCacheClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCacheSubnetGroup asynchronously, invoking a callback when done
 -- @param CreateCacheSubnetGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCacheSubnetGroupAsync(CreateCacheSubnetGroupMessage, cb)
@@ -5560,7 +5924,21 @@ function M.CreateCacheSubnetGroupAsync(CreateCacheSubnetGroupMessage, cb)
 	end
 end
 
---- ModifyReplicationGroup
+--- Call CreateCacheSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCacheSubnetGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateCacheSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCacheSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyReplicationGroup asynchronously, invoking a callback when done
 -- @param ModifyReplicationGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyReplicationGroupAsync(ModifyReplicationGroupMessage, cb)
@@ -5578,7 +5956,21 @@ function M.ModifyReplicationGroupAsync(ModifyReplicationGroupMessage, cb)
 	end
 end
 
---- ModifyCacheParameterGroup
+--- Call ModifyReplicationGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyReplicationGroupMessage
+-- @return response
+-- @return error_message
+function M.ModifyReplicationGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyReplicationGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyCacheParameterGroup asynchronously, invoking a callback when done
 -- @param ModifyCacheParameterGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyCacheParameterGroupAsync(ModifyCacheParameterGroupMessage, cb)
@@ -5596,7 +5988,21 @@ function M.ModifyCacheParameterGroupAsync(ModifyCacheParameterGroupMessage, cb)
 	end
 end
 
---- DescribeSnapshots
+--- Call ModifyCacheParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyCacheParameterGroupMessage
+-- @return response
+-- @return error_message
+function M.ModifyCacheParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyCacheParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSnapshots asynchronously, invoking a callback when done
 -- @param DescribeSnapshotsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeSnapshotsAsync(DescribeSnapshotsMessage, cb)
@@ -5614,7 +6020,21 @@ function M.DescribeSnapshotsAsync(DescribeSnapshotsMessage, cb)
 	end
 end
 
---- DeleteCacheCluster
+--- Call DescribeSnapshots synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSnapshotsMessage
+-- @return response
+-- @return error_message
+function M.DescribeSnapshotsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSnapshotsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCacheCluster asynchronously, invoking a callback when done
 -- @param DeleteCacheClusterMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteCacheClusterAsync(DeleteCacheClusterMessage, cb)
@@ -5632,7 +6052,21 @@ function M.DeleteCacheClusterAsync(DeleteCacheClusterMessage, cb)
 	end
 end
 
---- PurchaseReservedCacheNodesOffering
+--- Call DeleteCacheCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCacheClusterMessage
+-- @return response
+-- @return error_message
+function M.DeleteCacheClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCacheClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PurchaseReservedCacheNodesOffering asynchronously, invoking a callback when done
 -- @param PurchaseReservedCacheNodesOfferingMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.PurchaseReservedCacheNodesOfferingAsync(PurchaseReservedCacheNodesOfferingMessage, cb)
@@ -5650,7 +6084,21 @@ function M.PurchaseReservedCacheNodesOfferingAsync(PurchaseReservedCacheNodesOff
 	end
 end
 
---- DeleteSnapshot
+--- Call PurchaseReservedCacheNodesOffering synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PurchaseReservedCacheNodesOfferingMessage
+-- @return response
+-- @return error_message
+function M.PurchaseReservedCacheNodesOfferingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PurchaseReservedCacheNodesOfferingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSnapshot asynchronously, invoking a callback when done
 -- @param DeleteSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSnapshotAsync(DeleteSnapshotMessage, cb)
@@ -5668,7 +6116,21 @@ function M.DeleteSnapshotAsync(DeleteSnapshotMessage, cb)
 	end
 end
 
---- RevokeCacheSecurityGroupIngress
+--- Call DeleteSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSnapshotMessage
+-- @return response
+-- @return error_message
+function M.DeleteSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RevokeCacheSecurityGroupIngress asynchronously, invoking a callback when done
 -- @param RevokeCacheSecurityGroupIngressMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.RevokeCacheSecurityGroupIngressAsync(RevokeCacheSecurityGroupIngressMessage, cb)
@@ -5686,7 +6148,21 @@ function M.RevokeCacheSecurityGroupIngressAsync(RevokeCacheSecurityGroupIngressM
 	end
 end
 
---- ListAllowedNodeTypeModifications
+--- Call RevokeCacheSecurityGroupIngress synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RevokeCacheSecurityGroupIngressMessage
+-- @return response
+-- @return error_message
+function M.RevokeCacheSecurityGroupIngressSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RevokeCacheSecurityGroupIngressAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListAllowedNodeTypeModifications asynchronously, invoking a callback when done
 -- @param ListAllowedNodeTypeModificationsMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListAllowedNodeTypeModificationsAsync(ListAllowedNodeTypeModificationsMessage, cb)
@@ -5704,7 +6180,21 @@ function M.ListAllowedNodeTypeModificationsAsync(ListAllowedNodeTypeModification
 	end
 end
 
---- DescribeReservedCacheNodes
+--- Call ListAllowedNodeTypeModifications synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListAllowedNodeTypeModificationsMessage
+-- @return response
+-- @return error_message
+function M.ListAllowedNodeTypeModificationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListAllowedNodeTypeModificationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeReservedCacheNodes asynchronously, invoking a callback when done
 -- @param DescribeReservedCacheNodesMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeReservedCacheNodesAsync(DescribeReservedCacheNodesMessage, cb)
@@ -5722,7 +6212,21 @@ function M.DescribeReservedCacheNodesAsync(DescribeReservedCacheNodesMessage, cb
 	end
 end
 
---- CreateCacheSecurityGroup
+--- Call DescribeReservedCacheNodes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReservedCacheNodesMessage
+-- @return response
+-- @return error_message
+function M.DescribeReservedCacheNodesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReservedCacheNodesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCacheSecurityGroup asynchronously, invoking a callback when done
 -- @param CreateCacheSecurityGroupMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCacheSecurityGroupAsync(CreateCacheSecurityGroupMessage, cb)
@@ -5740,7 +6244,21 @@ function M.CreateCacheSecurityGroupAsync(CreateCacheSecurityGroupMessage, cb)
 	end
 end
 
---- ListTagsForResource
+--- Call CreateCacheSecurityGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCacheSecurityGroupMessage
+-- @return response
+-- @return error_message
+function M.CreateCacheSecurityGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCacheSecurityGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForResource asynchronously, invoking a callback when done
 -- @param ListTagsForResourceMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
@@ -5758,7 +6276,21 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 	end
 end
 
---- CreateSnapshot
+--- Call ListTagsForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForResourceMessage
+-- @return response
+-- @return error_message
+function M.ListTagsForResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSnapshot asynchronously, invoking a callback when done
 -- @param CreateSnapshotMessage
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSnapshotAsync(CreateSnapshotMessage, cb)
@@ -5774,6 +6306,20 @@ function M.CreateSnapshotAsync(CreateSnapshotMessage, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call CreateSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSnapshotMessage
+-- @return response
+-- @return error_message
+function M.CreateSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

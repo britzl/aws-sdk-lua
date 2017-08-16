@@ -2338,7 +2338,7 @@ end
 --
 -- OPERATIONS
 --
---- DescribeRepositories
+--- Call DescribeRepositories asynchronously, invoking a callback when done
 -- @param DescribeRepositoriesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, cb)
@@ -2356,7 +2356,21 @@ function M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, cb)
 	end
 end
 
---- DeleteRepository
+--- Call DescribeRepositories synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeRepositoriesRequest
+-- @return response
+-- @return error_message
+function M.DescribeRepositoriesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeRepositoriesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRepository asynchronously, invoking a callback when done
 -- @param DeleteRepositoryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteRepositoryAsync(DeleteRepositoryRequest, cb)
@@ -2374,7 +2388,21 @@ function M.DeleteRepositoryAsync(DeleteRepositoryRequest, cb)
 	end
 end
 
---- BatchDeleteImage
+--- Call DeleteRepository synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRepositoryRequest
+-- @return response
+-- @return error_message
+function M.DeleteRepositorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRepositoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchDeleteImage asynchronously, invoking a callback when done
 -- @param BatchDeleteImageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchDeleteImageAsync(BatchDeleteImageRequest, cb)
@@ -2392,7 +2420,21 @@ function M.BatchDeleteImageAsync(BatchDeleteImageRequest, cb)
 	end
 end
 
---- GetDownloadUrlForLayer
+--- Call BatchDeleteImage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchDeleteImageRequest
+-- @return response
+-- @return error_message
+function M.BatchDeleteImageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchDeleteImageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDownloadUrlForLayer asynchronously, invoking a callback when done
 -- @param GetDownloadUrlForLayerRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, cb)
@@ -2410,7 +2452,21 @@ function M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, cb)
 	end
 end
 
---- PutImage
+--- Call GetDownloadUrlForLayer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDownloadUrlForLayerRequest
+-- @return response
+-- @return error_message
+function M.GetDownloadUrlForLayerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDownloadUrlForLayerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutImage asynchronously, invoking a callback when done
 -- @param PutImageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutImageAsync(PutImageRequest, cb)
@@ -2428,7 +2484,21 @@ function M.PutImageAsync(PutImageRequest, cb)
 	end
 end
 
---- GetAuthorizationToken
+--- Call PutImage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutImageRequest
+-- @return response
+-- @return error_message
+function M.PutImageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutImageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetAuthorizationToken asynchronously, invoking a callback when done
 -- @param GetAuthorizationTokenRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetAuthorizationTokenAsync(GetAuthorizationTokenRequest, cb)
@@ -2446,7 +2516,21 @@ function M.GetAuthorizationTokenAsync(GetAuthorizationTokenRequest, cb)
 	end
 end
 
---- ListImages
+--- Call GetAuthorizationToken synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetAuthorizationTokenRequest
+-- @return response
+-- @return error_message
+function M.GetAuthorizationTokenSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetAuthorizationTokenAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListImages asynchronously, invoking a callback when done
 -- @param ListImagesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListImagesAsync(ListImagesRequest, cb)
@@ -2464,7 +2548,21 @@ function M.ListImagesAsync(ListImagesRequest, cb)
 	end
 end
 
---- GetRepositoryPolicy
+--- Call ListImages synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListImagesRequest
+-- @return response
+-- @return error_message
+function M.ListImagesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListImagesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRepositoryPolicy asynchronously, invoking a callback when done
 -- @param GetRepositoryPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, cb)
@@ -2482,7 +2580,21 @@ function M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, cb)
 	end
 end
 
---- CompleteLayerUpload
+--- Call GetRepositoryPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRepositoryPolicyRequest
+-- @return response
+-- @return error_message
+function M.GetRepositoryPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRepositoryPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CompleteLayerUpload asynchronously, invoking a callback when done
 -- @param CompleteLayerUploadRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, cb)
@@ -2500,7 +2612,21 @@ function M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, cb)
 	end
 end
 
---- DescribeImages
+--- Call CompleteLayerUpload synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CompleteLayerUploadRequest
+-- @return response
+-- @return error_message
+function M.CompleteLayerUploadSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CompleteLayerUploadAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeImages asynchronously, invoking a callback when done
 -- @param DescribeImagesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeImagesAsync(DescribeImagesRequest, cb)
@@ -2518,7 +2644,21 @@ function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 	end
 end
 
---- InitiateLayerUpload
+--- Call DescribeImages synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeImagesRequest
+-- @return response
+-- @return error_message
+function M.DescribeImagesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeImagesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call InitiateLayerUpload asynchronously, invoking a callback when done
 -- @param InitiateLayerUploadRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, cb)
@@ -2536,7 +2676,21 @@ function M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, cb)
 	end
 end
 
---- BatchGetImage
+--- Call InitiateLayerUpload synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param InitiateLayerUploadRequest
+-- @return response
+-- @return error_message
+function M.InitiateLayerUploadSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.InitiateLayerUploadAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetImage asynchronously, invoking a callback when done
 -- @param BatchGetImageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetImageAsync(BatchGetImageRequest, cb)
@@ -2554,7 +2708,21 @@ function M.BatchGetImageAsync(BatchGetImageRequest, cb)
 	end
 end
 
---- SetRepositoryPolicy
+--- Call BatchGetImage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetImageRequest
+-- @return response
+-- @return error_message
+function M.BatchGetImageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetImageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetRepositoryPolicy asynchronously, invoking a callback when done
 -- @param SetRepositoryPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetRepositoryPolicyAsync(SetRepositoryPolicyRequest, cb)
@@ -2572,7 +2740,21 @@ function M.SetRepositoryPolicyAsync(SetRepositoryPolicyRequest, cb)
 	end
 end
 
---- CreateRepository
+--- Call SetRepositoryPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetRepositoryPolicyRequest
+-- @return response
+-- @return error_message
+function M.SetRepositoryPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetRepositoryPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateRepository asynchronously, invoking a callback when done
 -- @param CreateRepositoryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateRepositoryAsync(CreateRepositoryRequest, cb)
@@ -2590,7 +2772,21 @@ function M.CreateRepositoryAsync(CreateRepositoryRequest, cb)
 	end
 end
 
---- BatchCheckLayerAvailability
+--- Call CreateRepository synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateRepositoryRequest
+-- @return response
+-- @return error_message
+function M.CreateRepositorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateRepositoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchCheckLayerAvailability asynchronously, invoking a callback when done
 -- @param BatchCheckLayerAvailabilityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchCheckLayerAvailabilityAsync(BatchCheckLayerAvailabilityRequest, cb)
@@ -2608,7 +2804,21 @@ function M.BatchCheckLayerAvailabilityAsync(BatchCheckLayerAvailabilityRequest, 
 	end
 end
 
---- UploadLayerPart
+--- Call BatchCheckLayerAvailability synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchCheckLayerAvailabilityRequest
+-- @return response
+-- @return error_message
+function M.BatchCheckLayerAvailabilitySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchCheckLayerAvailabilityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UploadLayerPart asynchronously, invoking a callback when done
 -- @param UploadLayerPartRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UploadLayerPartAsync(UploadLayerPartRequest, cb)
@@ -2626,7 +2836,21 @@ function M.UploadLayerPartAsync(UploadLayerPartRequest, cb)
 	end
 end
 
---- DeleteRepositoryPolicy
+--- Call UploadLayerPart synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UploadLayerPartRequest
+-- @return response
+-- @return error_message
+function M.UploadLayerPartSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UploadLayerPartAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRepositoryPolicy asynchronously, invoking a callback when done
 -- @param DeleteRepositoryPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteRepositoryPolicyAsync(DeleteRepositoryPolicyRequest, cb)
@@ -2642,6 +2866,20 @@ function M.DeleteRepositoryPolicyAsync(DeleteRepositoryPolicyRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DeleteRepositoryPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRepositoryPolicyRequest
+-- @return response
+-- @return error_message
+function M.DeleteRepositoryPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRepositoryPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

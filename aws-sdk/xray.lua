@@ -1511,7 +1511,7 @@ end
 --
 -- OPERATIONS
 --
---- GetServiceGraph
+--- Call GetServiceGraph asynchronously, invoking a callback when done
 -- @param GetServiceGraphRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetServiceGraphAsync(GetServiceGraphRequest, cb)
@@ -1529,7 +1529,21 @@ function M.GetServiceGraphAsync(GetServiceGraphRequest, cb)
 	end
 end
 
---- PutTraceSegments
+--- Call GetServiceGraph synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetServiceGraphRequest
+-- @return response
+-- @return error_message
+function M.GetServiceGraphSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetServiceGraphAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutTraceSegments asynchronously, invoking a callback when done
 -- @param PutTraceSegmentsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutTraceSegmentsAsync(PutTraceSegmentsRequest, cb)
@@ -1547,7 +1561,21 @@ function M.PutTraceSegmentsAsync(PutTraceSegmentsRequest, cb)
 	end
 end
 
---- GetTraceSummaries
+--- Call PutTraceSegments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutTraceSegmentsRequest
+-- @return response
+-- @return error_message
+function M.PutTraceSegmentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutTraceSegmentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetTraceSummaries asynchronously, invoking a callback when done
 -- @param GetTraceSummariesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetTraceSummariesAsync(GetTraceSummariesRequest, cb)
@@ -1565,7 +1593,21 @@ function M.GetTraceSummariesAsync(GetTraceSummariesRequest, cb)
 	end
 end
 
---- GetTraceGraph
+--- Call GetTraceSummaries synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetTraceSummariesRequest
+-- @return response
+-- @return error_message
+function M.GetTraceSummariesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetTraceSummariesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetTraceGraph asynchronously, invoking a callback when done
 -- @param GetTraceGraphRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetTraceGraphAsync(GetTraceGraphRequest, cb)
@@ -1583,7 +1625,21 @@ function M.GetTraceGraphAsync(GetTraceGraphRequest, cb)
 	end
 end
 
---- BatchGetTraces
+--- Call GetTraceGraph synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetTraceGraphRequest
+-- @return response
+-- @return error_message
+function M.GetTraceGraphSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetTraceGraphAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BatchGetTraces asynchronously, invoking a callback when done
 -- @param BatchGetTracesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchGetTracesAsync(BatchGetTracesRequest, cb)
@@ -1601,7 +1657,21 @@ function M.BatchGetTracesAsync(BatchGetTracesRequest, cb)
 	end
 end
 
---- PutTelemetryRecords
+--- Call BatchGetTraces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchGetTracesRequest
+-- @return response
+-- @return error_message
+function M.BatchGetTracesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchGetTracesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutTelemetryRecords asynchronously, invoking a callback when done
 -- @param PutTelemetryRecordsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutTelemetryRecordsAsync(PutTelemetryRecordsRequest, cb)
@@ -1617,6 +1687,20 @@ function M.PutTelemetryRecordsAsync(PutTelemetryRecordsRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call PutTelemetryRecords synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutTelemetryRecordsRequest
+-- @return response
+-- @return error_message
+function M.PutTelemetryRecordsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutTelemetryRecordsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

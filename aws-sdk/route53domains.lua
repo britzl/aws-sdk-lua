@@ -2462,7 +2462,7 @@ end
 --
 -- OPERATIONS
 --
---- ResendContactReachabilityEmail
+--- Call ResendContactReachabilityEmail asynchronously, invoking a callback when done
 -- @param ResendContactReachabilityEmailRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ResendContactReachabilityEmailAsync(ResendContactReachabilityEmailRequest, cb)
@@ -2480,7 +2480,21 @@ function M.ResendContactReachabilityEmailAsync(ResendContactReachabilityEmailReq
 	end
 end
 
---- ListDomains
+--- Call ResendContactReachabilityEmail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResendContactReachabilityEmailRequest
+-- @return response
+-- @return error_message
+function M.ResendContactReachabilityEmailSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResendContactReachabilityEmailAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDomains asynchronously, invoking a callback when done
 -- @param ListDomainsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDomainsAsync(ListDomainsRequest, cb)
@@ -2498,7 +2512,21 @@ function M.ListDomainsAsync(ListDomainsRequest, cb)
 	end
 end
 
---- DisableDomainTransferLock
+--- Call ListDomains synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDomainsRequest
+-- @return response
+-- @return error_message
+function M.ListDomainsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDomainsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableDomainTransferLock asynchronously, invoking a callback when done
 -- @param DisableDomainTransferLockRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableDomainTransferLockAsync(DisableDomainTransferLockRequest, cb)
@@ -2516,7 +2544,21 @@ function M.DisableDomainTransferLockAsync(DisableDomainTransferLockRequest, cb)
 	end
 end
 
---- RetrieveDomainAuthCode
+--- Call DisableDomainTransferLock synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableDomainTransferLockRequest
+-- @return response
+-- @return error_message
+function M.DisableDomainTransferLockSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableDomainTransferLockAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RetrieveDomainAuthCode asynchronously, invoking a callback when done
 -- @param RetrieveDomainAuthCodeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RetrieveDomainAuthCodeAsync(RetrieveDomainAuthCodeRequest, cb)
@@ -2534,7 +2576,21 @@ function M.RetrieveDomainAuthCodeAsync(RetrieveDomainAuthCodeRequest, cb)
 	end
 end
 
---- ViewBilling
+--- Call RetrieveDomainAuthCode synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RetrieveDomainAuthCodeRequest
+-- @return response
+-- @return error_message
+function M.RetrieveDomainAuthCodeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RetrieveDomainAuthCodeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ViewBilling asynchronously, invoking a callback when done
 -- @param ViewBillingRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ViewBillingAsync(ViewBillingRequest, cb)
@@ -2552,7 +2608,21 @@ function M.ViewBillingAsync(ViewBillingRequest, cb)
 	end
 end
 
---- UpdateDomainNameservers
+--- Call ViewBilling synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ViewBillingRequest
+-- @return response
+-- @return error_message
+function M.ViewBillingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ViewBillingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDomainNameservers asynchronously, invoking a callback when done
 -- @param UpdateDomainNameserversRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDomainNameserversAsync(UpdateDomainNameserversRequest, cb)
@@ -2570,7 +2640,21 @@ function M.UpdateDomainNameserversAsync(UpdateDomainNameserversRequest, cb)
 	end
 end
 
---- UpdateTagsForDomain
+--- Call UpdateDomainNameservers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDomainNameserversRequest
+-- @return response
+-- @return error_message
+function M.UpdateDomainNameserversSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDomainNameserversAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateTagsForDomain asynchronously, invoking a callback when done
 -- @param UpdateTagsForDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateTagsForDomainAsync(UpdateTagsForDomainRequest, cb)
@@ -2588,7 +2672,21 @@ function M.UpdateTagsForDomainAsync(UpdateTagsForDomainRequest, cb)
 	end
 end
 
---- EnableDomainAutoRenew
+--- Call UpdateTagsForDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateTagsForDomainRequest
+-- @return response
+-- @return error_message
+function M.UpdateTagsForDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateTagsForDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableDomainAutoRenew asynchronously, invoking a callback when done
 -- @param EnableDomainAutoRenewRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, cb)
@@ -2606,7 +2704,21 @@ function M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, cb)
 	end
 end
 
---- GetDomainSuggestions
+--- Call EnableDomainAutoRenew synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableDomainAutoRenewRequest
+-- @return response
+-- @return error_message
+function M.EnableDomainAutoRenewSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableDomainAutoRenewAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDomainSuggestions asynchronously, invoking a callback when done
 -- @param GetDomainSuggestionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDomainSuggestionsAsync(GetDomainSuggestionsRequest, cb)
@@ -2624,7 +2736,21 @@ function M.GetDomainSuggestionsAsync(GetDomainSuggestionsRequest, cb)
 	end
 end
 
---- GetOperationDetail
+--- Call GetDomainSuggestions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDomainSuggestionsRequest
+-- @return response
+-- @return error_message
+function M.GetDomainSuggestionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDomainSuggestionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetOperationDetail asynchronously, invoking a callback when done
 -- @param GetOperationDetailRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetOperationDetailAsync(GetOperationDetailRequest, cb)
@@ -2642,7 +2768,21 @@ function M.GetOperationDetailAsync(GetOperationDetailRequest, cb)
 	end
 end
 
---- RenewDomain
+--- Call GetOperationDetail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetOperationDetailRequest
+-- @return response
+-- @return error_message
+function M.GetOperationDetailSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetOperationDetailAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RenewDomain asynchronously, invoking a callback when done
 -- @param RenewDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RenewDomainAsync(RenewDomainRequest, cb)
@@ -2660,7 +2800,21 @@ function M.RenewDomainAsync(RenewDomainRequest, cb)
 	end
 end
 
---- TransferDomain
+--- Call RenewDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RenewDomainRequest
+-- @return response
+-- @return error_message
+function M.RenewDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RenewDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TransferDomain asynchronously, invoking a callback when done
 -- @param TransferDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TransferDomainAsync(TransferDomainRequest, cb)
@@ -2678,7 +2832,21 @@ function M.TransferDomainAsync(TransferDomainRequest, cb)
 	end
 end
 
---- DisableDomainAutoRenew
+--- Call TransferDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TransferDomainRequest
+-- @return response
+-- @return error_message
+function M.TransferDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TransferDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableDomainAutoRenew asynchronously, invoking a callback when done
 -- @param DisableDomainAutoRenewRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableDomainAutoRenewAsync(DisableDomainAutoRenewRequest, cb)
@@ -2696,7 +2864,21 @@ function M.DisableDomainAutoRenewAsync(DisableDomainAutoRenewRequest, cb)
 	end
 end
 
---- DeleteTagsForDomain
+--- Call DisableDomainAutoRenew synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableDomainAutoRenewRequest
+-- @return response
+-- @return error_message
+function M.DisableDomainAutoRenewSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableDomainAutoRenewAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteTagsForDomain asynchronously, invoking a callback when done
 -- @param DeleteTagsForDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteTagsForDomainAsync(DeleteTagsForDomainRequest, cb)
@@ -2714,7 +2896,21 @@ function M.DeleteTagsForDomainAsync(DeleteTagsForDomainRequest, cb)
 	end
 end
 
---- RegisterDomain
+--- Call DeleteTagsForDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteTagsForDomainRequest
+-- @return response
+-- @return error_message
+function M.DeleteTagsForDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteTagsForDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterDomain asynchronously, invoking a callback when done
 -- @param RegisterDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterDomainAsync(RegisterDomainRequest, cb)
@@ -2732,7 +2928,21 @@ function M.RegisterDomainAsync(RegisterDomainRequest, cb)
 	end
 end
 
---- GetDomainDetail
+--- Call RegisterDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterDomainRequest
+-- @return response
+-- @return error_message
+function M.RegisterDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDomainDetail asynchronously, invoking a callback when done
 -- @param GetDomainDetailRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDomainDetailAsync(GetDomainDetailRequest, cb)
@@ -2750,7 +2960,21 @@ function M.GetDomainDetailAsync(GetDomainDetailRequest, cb)
 	end
 end
 
---- CheckDomainAvailability
+--- Call GetDomainDetail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDomainDetailRequest
+-- @return response
+-- @return error_message
+function M.GetDomainDetailSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDomainDetailAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CheckDomainAvailability asynchronously, invoking a callback when done
 -- @param CheckDomainAvailabilityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, cb)
@@ -2768,7 +2992,21 @@ function M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, cb)
 	end
 end
 
---- UpdateDomainContactPrivacy
+--- Call CheckDomainAvailability synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CheckDomainAvailabilityRequest
+-- @return response
+-- @return error_message
+function M.CheckDomainAvailabilitySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CheckDomainAvailabilityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDomainContactPrivacy asynchronously, invoking a callback when done
 -- @param UpdateDomainContactPrivacyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDomainContactPrivacyAsync(UpdateDomainContactPrivacyRequest, cb)
@@ -2786,7 +3024,21 @@ function M.UpdateDomainContactPrivacyAsync(UpdateDomainContactPrivacyRequest, cb
 	end
 end
 
---- ListTagsForDomain
+--- Call UpdateDomainContactPrivacy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDomainContactPrivacyRequest
+-- @return response
+-- @return error_message
+function M.UpdateDomainContactPrivacySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDomainContactPrivacyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForDomain asynchronously, invoking a callback when done
 -- @param ListTagsForDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsForDomainAsync(ListTagsForDomainRequest, cb)
@@ -2804,7 +3056,21 @@ function M.ListTagsForDomainAsync(ListTagsForDomainRequest, cb)
 	end
 end
 
---- GetContactReachabilityStatus
+--- Call ListTagsForDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForDomainRequest
+-- @return response
+-- @return error_message
+function M.ListTagsForDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetContactReachabilityStatus asynchronously, invoking a callback when done
 -- @param GetContactReachabilityStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetContactReachabilityStatusAsync(GetContactReachabilityStatusRequest, cb)
@@ -2822,7 +3088,21 @@ function M.GetContactReachabilityStatusAsync(GetContactReachabilityStatusRequest
 	end
 end
 
---- UpdateDomainContact
+--- Call GetContactReachabilityStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetContactReachabilityStatusRequest
+-- @return response
+-- @return error_message
+function M.GetContactReachabilityStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetContactReachabilityStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDomainContact asynchronously, invoking a callback when done
 -- @param UpdateDomainContactRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDomainContactAsync(UpdateDomainContactRequest, cb)
@@ -2840,7 +3120,21 @@ function M.UpdateDomainContactAsync(UpdateDomainContactRequest, cb)
 	end
 end
 
---- ListOperations
+--- Call UpdateDomainContact synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDomainContactRequest
+-- @return response
+-- @return error_message
+function M.UpdateDomainContactSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDomainContactAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListOperations asynchronously, invoking a callback when done
 -- @param ListOperationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListOperationsAsync(ListOperationsRequest, cb)
@@ -2858,7 +3152,21 @@ function M.ListOperationsAsync(ListOperationsRequest, cb)
 	end
 end
 
---- EnableDomainTransferLock
+--- Call ListOperations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListOperationsRequest
+-- @return response
+-- @return error_message
+function M.ListOperationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListOperationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableDomainTransferLock asynchronously, invoking a callback when done
 -- @param EnableDomainTransferLockRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableDomainTransferLockAsync(EnableDomainTransferLockRequest, cb)
@@ -2874,6 +3182,20 @@ function M.EnableDomainTransferLockAsync(EnableDomainTransferLockRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call EnableDomainTransferLock synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableDomainTransferLockRequest
+-- @return response
+-- @return error_message
+function M.EnableDomainTransferLockSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableDomainTransferLockAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

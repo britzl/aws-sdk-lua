@@ -1525,7 +1525,7 @@ end
 --
 -- OPERATIONS
 --
---- DescribeAffectedEntities
+--- Call DescribeAffectedEntities asynchronously, invoking a callback when done
 -- @param DescribeAffectedEntitiesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAffectedEntitiesAsync(DescribeAffectedEntitiesRequest, cb)
@@ -1543,7 +1543,21 @@ function M.DescribeAffectedEntitiesAsync(DescribeAffectedEntitiesRequest, cb)
 	end
 end
 
---- DescribeEventDetails
+--- Call DescribeAffectedEntities synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAffectedEntitiesRequest
+-- @return response
+-- @return error_message
+function M.DescribeAffectedEntitiesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAffectedEntitiesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEventDetails asynchronously, invoking a callback when done
 -- @param DescribeEventDetailsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventDetailsAsync(DescribeEventDetailsRequest, cb)
@@ -1561,7 +1575,21 @@ function M.DescribeEventDetailsAsync(DescribeEventDetailsRequest, cb)
 	end
 end
 
---- DescribeEventTypes
+--- Call DescribeEventDetails synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventDetailsRequest
+-- @return response
+-- @return error_message
+function M.DescribeEventDetailsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventDetailsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEventTypes asynchronously, invoking a callback when done
 -- @param DescribeEventTypesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventTypesAsync(DescribeEventTypesRequest, cb)
@@ -1579,7 +1607,21 @@ function M.DescribeEventTypesAsync(DescribeEventTypesRequest, cb)
 	end
 end
 
---- DescribeEvents
+--- Call DescribeEventTypes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventTypesRequest
+-- @return response
+-- @return error_message
+function M.DescribeEventTypesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventTypesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEvents asynchronously, invoking a callback when done
 -- @param DescribeEventsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventsAsync(DescribeEventsRequest, cb)
@@ -1597,7 +1639,21 @@ function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 	end
 end
 
---- DescribeEntityAggregates
+--- Call DescribeEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventsRequest
+-- @return response
+-- @return error_message
+function M.DescribeEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEntityAggregates asynchronously, invoking a callback when done
 -- @param DescribeEntityAggregatesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEntityAggregatesAsync(DescribeEntityAggregatesRequest, cb)
@@ -1615,7 +1671,21 @@ function M.DescribeEntityAggregatesAsync(DescribeEntityAggregatesRequest, cb)
 	end
 end
 
---- DescribeEventAggregates
+--- Call DescribeEntityAggregates synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEntityAggregatesRequest
+-- @return response
+-- @return error_message
+function M.DescribeEntityAggregatesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEntityAggregatesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEventAggregates asynchronously, invoking a callback when done
 -- @param DescribeEventAggregatesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventAggregatesAsync(DescribeEventAggregatesRequest, cb)
@@ -1631,6 +1701,20 @@ function M.DescribeEventAggregatesAsync(DescribeEventAggregatesRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DescribeEventAggregates synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventAggregatesRequest
+-- @return response
+-- @return error_message
+function M.DescribeEventAggregatesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventAggregatesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

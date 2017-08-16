@@ -549,7 +549,7 @@ end
 --
 -- OPERATIONS
 --
---- UpdateThingShadow
+--- Call UpdateThingShadow asynchronously, invoking a callback when done
 -- @param UpdateThingShadowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateThingShadowAsync(UpdateThingShadowRequest, cb)
@@ -567,7 +567,21 @@ function M.UpdateThingShadowAsync(UpdateThingShadowRequest, cb)
 	end
 end
 
---- GetThingShadow
+--- Call UpdateThingShadow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateThingShadowRequest
+-- @return response
+-- @return error_message
+function M.UpdateThingShadowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateThingShadowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetThingShadow asynchronously, invoking a callback when done
 -- @param GetThingShadowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetThingShadowAsync(GetThingShadowRequest, cb)
@@ -585,7 +599,21 @@ function M.GetThingShadowAsync(GetThingShadowRequest, cb)
 	end
 end
 
---- Publish
+--- Call GetThingShadow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetThingShadowRequest
+-- @return response
+-- @return error_message
+function M.GetThingShadowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetThingShadowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Publish asynchronously, invoking a callback when done
 -- @param PublishRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PublishAsync(PublishRequest, cb)
@@ -603,7 +631,21 @@ function M.PublishAsync(PublishRequest, cb)
 	end
 end
 
---- DeleteThingShadow
+--- Call Publish synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PublishRequest
+-- @return response
+-- @return error_message
+function M.PublishSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PublishAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteThingShadow asynchronously, invoking a callback when done
 -- @param DeleteThingShadowRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteThingShadowAsync(DeleteThingShadowRequest, cb)
@@ -619,6 +661,20 @@ function M.DeleteThingShadowAsync(DeleteThingShadowRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DeleteThingShadow synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteThingShadowRequest
+-- @return response
+-- @return error_message
+function M.DeleteThingShadowSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteThingShadowAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

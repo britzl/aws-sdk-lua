@@ -4246,7 +4246,7 @@ end
 --
 -- OPERATIONS
 --
---- GetDomain
+--- Call GetDomain asynchronously, invoking a callback when done
 -- @param GetDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDomainAsync(GetDomainRequest, cb)
@@ -4264,7 +4264,21 @@ function M.GetDomainAsync(GetDomainRequest, cb)
 	end
 end
 
---- GetKeyPair
+--- Call GetDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDomainRequest
+-- @return response
+-- @return error_message
+function M.GetDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetKeyPair asynchronously, invoking a callback when done
 -- @param GetKeyPairRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetKeyPairAsync(GetKeyPairRequest, cb)
@@ -4282,7 +4296,21 @@ function M.GetKeyPairAsync(GetKeyPairRequest, cb)
 	end
 end
 
---- GetInstanceMetricData
+--- Call GetKeyPair synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetKeyPairRequest
+-- @return response
+-- @return error_message
+function M.GetKeyPairSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetKeyPairAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstanceMetricData asynchronously, invoking a callback when done
 -- @param GetInstanceMetricDataRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstanceMetricDataAsync(GetInstanceMetricDataRequest, cb)
@@ -4300,7 +4328,21 @@ function M.GetInstanceMetricDataAsync(GetInstanceMetricDataRequest, cb)
 	end
 end
 
---- GetStaticIps
+--- Call GetInstanceMetricData synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstanceMetricDataRequest
+-- @return response
+-- @return error_message
+function M.GetInstanceMetricDataSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstanceMetricDataAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetStaticIps asynchronously, invoking a callback when done
 -- @param GetStaticIpsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetStaticIpsAsync(GetStaticIpsRequest, cb)
@@ -4318,7 +4360,21 @@ function M.GetStaticIpsAsync(GetStaticIpsRequest, cb)
 	end
 end
 
---- GetOperationsForResource
+--- Call GetStaticIps synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetStaticIpsRequest
+-- @return response
+-- @return error_message
+function M.GetStaticIpsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetStaticIpsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetOperationsForResource asynchronously, invoking a callback when done
 -- @param GetOperationsForResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetOperationsForResourceAsync(GetOperationsForResourceRequest, cb)
@@ -4336,7 +4392,21 @@ function M.GetOperationsForResourceAsync(GetOperationsForResourceRequest, cb)
 	end
 end
 
---- CloseInstancePublicPorts
+--- Call GetOperationsForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetOperationsForResourceRequest
+-- @return response
+-- @return error_message
+function M.GetOperationsForResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetOperationsForResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CloseInstancePublicPorts asynchronously, invoking a callback when done
 -- @param CloseInstancePublicPortsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CloseInstancePublicPortsAsync(CloseInstancePublicPortsRequest, cb)
@@ -4354,7 +4424,21 @@ function M.CloseInstancePublicPortsAsync(CloseInstancePublicPortsRequest, cb)
 	end
 end
 
---- GetActiveNames
+--- Call CloseInstancePublicPorts synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CloseInstancePublicPortsRequest
+-- @return response
+-- @return error_message
+function M.CloseInstancePublicPortsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CloseInstancePublicPortsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetActiveNames asynchronously, invoking a callback when done
 -- @param GetActiveNamesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetActiveNamesAsync(GetActiveNamesRequest, cb)
@@ -4372,7 +4456,21 @@ function M.GetActiveNamesAsync(GetActiveNamesRequest, cb)
 	end
 end
 
---- GetInstances
+--- Call GetActiveNames synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetActiveNamesRequest
+-- @return response
+-- @return error_message
+function M.GetActiveNamesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetActiveNamesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstances asynchronously, invoking a callback when done
 -- @param GetInstancesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstancesAsync(GetInstancesRequest, cb)
@@ -4390,7 +4488,21 @@ function M.GetInstancesAsync(GetInstancesRequest, cb)
 	end
 end
 
---- PutInstancePublicPorts
+--- Call GetInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstancesRequest
+-- @return response
+-- @return error_message
+function M.GetInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutInstancePublicPorts asynchronously, invoking a callback when done
 -- @param PutInstancePublicPortsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutInstancePublicPortsAsync(PutInstancePublicPortsRequest, cb)
@@ -4408,7 +4520,21 @@ function M.PutInstancePublicPortsAsync(PutInstancePublicPortsRequest, cb)
 	end
 end
 
---- DeleteInstance
+--- Call PutInstancePublicPorts synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutInstancePublicPortsRequest
+-- @return response
+-- @return error_message
+function M.PutInstancePublicPortsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutInstancePublicPortsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteInstance asynchronously, invoking a callback when done
 -- @param DeleteInstanceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteInstanceAsync(DeleteInstanceRequest, cb)
@@ -4426,7 +4552,21 @@ function M.DeleteInstanceAsync(DeleteInstanceRequest, cb)
 	end
 end
 
---- AttachStaticIp
+--- Call DeleteInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteInstanceRequest
+-- @return response
+-- @return error_message
+function M.DeleteInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AttachStaticIp asynchronously, invoking a callback when done
 -- @param AttachStaticIpRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AttachStaticIpAsync(AttachStaticIpRequest, cb)
@@ -4444,7 +4584,21 @@ function M.AttachStaticIpAsync(AttachStaticIpRequest, cb)
 	end
 end
 
---- GetStaticIp
+--- Call AttachStaticIp synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AttachStaticIpRequest
+-- @return response
+-- @return error_message
+function M.AttachStaticIpSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AttachStaticIpAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetStaticIp asynchronously, invoking a callback when done
 -- @param GetStaticIpRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetStaticIpAsync(GetStaticIpRequest, cb)
@@ -4462,7 +4616,21 @@ function M.GetStaticIpAsync(GetStaticIpRequest, cb)
 	end
 end
 
---- CreateKeyPair
+--- Call GetStaticIp synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetStaticIpRequest
+-- @return response
+-- @return error_message
+function M.GetStaticIpSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetStaticIpAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateKeyPair asynchronously, invoking a callback when done
 -- @param CreateKeyPairRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateKeyPairAsync(CreateKeyPairRequest, cb)
@@ -4480,7 +4648,21 @@ function M.CreateKeyPairAsync(CreateKeyPairRequest, cb)
 	end
 end
 
---- CreateDomainEntry
+--- Call CreateKeyPair synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateKeyPairRequest
+-- @return response
+-- @return error_message
+function M.CreateKeyPairSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateKeyPairAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDomainEntry asynchronously, invoking a callback when done
 -- @param CreateDomainEntryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDomainEntryAsync(CreateDomainEntryRequest, cb)
@@ -4498,7 +4680,21 @@ function M.CreateDomainEntryAsync(CreateDomainEntryRequest, cb)
 	end
 end
 
---- ImportKeyPair
+--- Call CreateDomainEntry synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDomainEntryRequest
+-- @return response
+-- @return error_message
+function M.CreateDomainEntrySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDomainEntryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ImportKeyPair asynchronously, invoking a callback when done
 -- @param ImportKeyPairRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ImportKeyPairAsync(ImportKeyPairRequest, cb)
@@ -4516,7 +4712,21 @@ function M.ImportKeyPairAsync(ImportKeyPairRequest, cb)
 	end
 end
 
---- CreateInstancesFromSnapshot
+--- Call ImportKeyPair synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ImportKeyPairRequest
+-- @return response
+-- @return error_message
+function M.ImportKeyPairSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ImportKeyPairAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateInstancesFromSnapshot asynchronously, invoking a callback when done
 -- @param CreateInstancesFromSnapshotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateInstancesFromSnapshotAsync(CreateInstancesFromSnapshotRequest, cb)
@@ -4534,7 +4744,21 @@ function M.CreateInstancesFromSnapshotAsync(CreateInstancesFromSnapshotRequest, 
 	end
 end
 
---- GetInstanceSnapshot
+--- Call CreateInstancesFromSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateInstancesFromSnapshotRequest
+-- @return response
+-- @return error_message
+function M.CreateInstancesFromSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateInstancesFromSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstanceSnapshot asynchronously, invoking a callback when done
 -- @param GetInstanceSnapshotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstanceSnapshotAsync(GetInstanceSnapshotRequest, cb)
@@ -4552,7 +4776,21 @@ function M.GetInstanceSnapshotAsync(GetInstanceSnapshotRequest, cb)
 	end
 end
 
---- GetOperation
+--- Call GetInstanceSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstanceSnapshotRequest
+-- @return response
+-- @return error_message
+function M.GetInstanceSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstanceSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetOperation asynchronously, invoking a callback when done
 -- @param GetOperationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetOperationAsync(GetOperationRequest, cb)
@@ -4570,7 +4808,21 @@ function M.GetOperationAsync(GetOperationRequest, cb)
 	end
 end
 
---- DeleteInstanceSnapshot
+--- Call GetOperation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetOperationRequest
+-- @return response
+-- @return error_message
+function M.GetOperationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetOperationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteInstanceSnapshot asynchronously, invoking a callback when done
 -- @param DeleteInstanceSnapshotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteInstanceSnapshotAsync(DeleteInstanceSnapshotRequest, cb)
@@ -4588,7 +4840,21 @@ function M.DeleteInstanceSnapshotAsync(DeleteInstanceSnapshotRequest, cb)
 	end
 end
 
---- OpenInstancePublicPorts
+--- Call DeleteInstanceSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteInstanceSnapshotRequest
+-- @return response
+-- @return error_message
+function M.DeleteInstanceSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteInstanceSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call OpenInstancePublicPorts asynchronously, invoking a callback when done
 -- @param OpenInstancePublicPortsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.OpenInstancePublicPortsAsync(OpenInstancePublicPortsRequest, cb)
@@ -4606,7 +4872,21 @@ function M.OpenInstancePublicPortsAsync(OpenInstancePublicPortsRequest, cb)
 	end
 end
 
---- StartInstance
+--- Call OpenInstancePublicPorts synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param OpenInstancePublicPortsRequest
+-- @return response
+-- @return error_message
+function M.OpenInstancePublicPortsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.OpenInstancePublicPortsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartInstance asynchronously, invoking a callback when done
 -- @param StartInstanceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartInstanceAsync(StartInstanceRequest, cb)
@@ -4624,7 +4904,21 @@ function M.StartInstanceAsync(StartInstanceRequest, cb)
 	end
 end
 
---- UpdateDomainEntry
+--- Call StartInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartInstanceRequest
+-- @return response
+-- @return error_message
+function M.StartInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDomainEntry asynchronously, invoking a callback when done
 -- @param UpdateDomainEntryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDomainEntryAsync(UpdateDomainEntryRequest, cb)
@@ -4642,7 +4936,21 @@ function M.UpdateDomainEntryAsync(UpdateDomainEntryRequest, cb)
 	end
 end
 
---- GetInstancePortStates
+--- Call UpdateDomainEntry synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDomainEntryRequest
+-- @return response
+-- @return error_message
+function M.UpdateDomainEntrySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDomainEntryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstancePortStates asynchronously, invoking a callback when done
 -- @param GetInstancePortStatesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstancePortStatesAsync(GetInstancePortStatesRequest, cb)
@@ -4660,7 +4968,21 @@ function M.GetInstancePortStatesAsync(GetInstancePortStatesRequest, cb)
 	end
 end
 
---- GetBlueprints
+--- Call GetInstancePortStates synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstancePortStatesRequest
+-- @return response
+-- @return error_message
+function M.GetInstancePortStatesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstancePortStatesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBlueprints asynchronously, invoking a callback when done
 -- @param GetBlueprintsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBlueprintsAsync(GetBlueprintsRequest, cb)
@@ -4678,7 +5000,21 @@ function M.GetBlueprintsAsync(GetBlueprintsRequest, cb)
 	end
 end
 
---- CreateDomain
+--- Call GetBlueprints synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBlueprintsRequest
+-- @return response
+-- @return error_message
+function M.GetBlueprintsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBlueprintsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDomain asynchronously, invoking a callback when done
 -- @param CreateDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDomainAsync(CreateDomainRequest, cb)
@@ -4696,7 +5032,21 @@ function M.CreateDomainAsync(CreateDomainRequest, cb)
 	end
 end
 
---- DownloadDefaultKeyPair
+--- Call CreateDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDomainRequest
+-- @return response
+-- @return error_message
+function M.CreateDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DownloadDefaultKeyPair asynchronously, invoking a callback when done
 -- @param DownloadDefaultKeyPairRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DownloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest, cb)
@@ -4714,7 +5064,21 @@ function M.DownloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest, cb)
 	end
 end
 
---- DeleteDomainEntry
+--- Call DownloadDefaultKeyPair synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DownloadDefaultKeyPairRequest
+-- @return response
+-- @return error_message
+function M.DownloadDefaultKeyPairSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DownloadDefaultKeyPairAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDomainEntry asynchronously, invoking a callback when done
 -- @param DeleteDomainEntryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDomainEntryAsync(DeleteDomainEntryRequest, cb)
@@ -4732,7 +5096,21 @@ function M.DeleteDomainEntryAsync(DeleteDomainEntryRequest, cb)
 	end
 end
 
---- GetOperations
+--- Call DeleteDomainEntry synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDomainEntryRequest
+-- @return response
+-- @return error_message
+function M.DeleteDomainEntrySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDomainEntryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetOperations asynchronously, invoking a callback when done
 -- @param GetOperationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetOperationsAsync(GetOperationsRequest, cb)
@@ -4750,7 +5128,21 @@ function M.GetOperationsAsync(GetOperationsRequest, cb)
 	end
 end
 
---- GetBundles
+--- Call GetOperations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetOperationsRequest
+-- @return response
+-- @return error_message
+function M.GetOperationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetOperationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBundles asynchronously, invoking a callback when done
 -- @param GetBundlesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBundlesAsync(GetBundlesRequest, cb)
@@ -4768,7 +5160,21 @@ function M.GetBundlesAsync(GetBundlesRequest, cb)
 	end
 end
 
---- GetInstance
+--- Call GetBundles synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBundlesRequest
+-- @return response
+-- @return error_message
+function M.GetBundlesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBundlesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstance asynchronously, invoking a callback when done
 -- @param GetInstanceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstanceAsync(GetInstanceRequest, cb)
@@ -4786,7 +5192,21 @@ function M.GetInstanceAsync(GetInstanceRequest, cb)
 	end
 end
 
---- GetInstanceState
+--- Call GetInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstanceRequest
+-- @return response
+-- @return error_message
+function M.GetInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstanceState asynchronously, invoking a callback when done
 -- @param GetInstanceStateRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstanceStateAsync(GetInstanceStateRequest, cb)
@@ -4804,7 +5224,21 @@ function M.GetInstanceStateAsync(GetInstanceStateRequest, cb)
 	end
 end
 
---- CreateInstanceSnapshot
+--- Call GetInstanceState synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstanceStateRequest
+-- @return response
+-- @return error_message
+function M.GetInstanceStateSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstanceStateAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateInstanceSnapshot asynchronously, invoking a callback when done
 -- @param CreateInstanceSnapshotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateInstanceSnapshotAsync(CreateInstanceSnapshotRequest, cb)
@@ -4822,7 +5256,21 @@ function M.CreateInstanceSnapshotAsync(CreateInstanceSnapshotRequest, cb)
 	end
 end
 
---- AllocateStaticIp
+--- Call CreateInstanceSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateInstanceSnapshotRequest
+-- @return response
+-- @return error_message
+function M.CreateInstanceSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateInstanceSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AllocateStaticIp asynchronously, invoking a callback when done
 -- @param AllocateStaticIpRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AllocateStaticIpAsync(AllocateStaticIpRequest, cb)
@@ -4840,7 +5288,21 @@ function M.AllocateStaticIpAsync(AllocateStaticIpRequest, cb)
 	end
 end
 
---- GetKeyPairs
+--- Call AllocateStaticIp synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AllocateStaticIpRequest
+-- @return response
+-- @return error_message
+function M.AllocateStaticIpSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AllocateStaticIpAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetKeyPairs asynchronously, invoking a callback when done
 -- @param GetKeyPairsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetKeyPairsAsync(GetKeyPairsRequest, cb)
@@ -4858,7 +5320,21 @@ function M.GetKeyPairsAsync(GetKeyPairsRequest, cb)
 	end
 end
 
---- RebootInstance
+--- Call GetKeyPairs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetKeyPairsRequest
+-- @return response
+-- @return error_message
+function M.GetKeyPairsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetKeyPairsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RebootInstance asynchronously, invoking a callback when done
 -- @param RebootInstanceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RebootInstanceAsync(RebootInstanceRequest, cb)
@@ -4876,7 +5352,21 @@ function M.RebootInstanceAsync(RebootInstanceRequest, cb)
 	end
 end
 
---- GetRegions
+--- Call RebootInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RebootInstanceRequest
+-- @return response
+-- @return error_message
+function M.RebootInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RebootInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetRegions asynchronously, invoking a callback when done
 -- @param GetRegionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRegionsAsync(GetRegionsRequest, cb)
@@ -4894,7 +5384,21 @@ function M.GetRegionsAsync(GetRegionsRequest, cb)
 	end
 end
 
---- GetInstanceSnapshots
+--- Call GetRegions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRegionsRequest
+-- @return response
+-- @return error_message
+function M.GetRegionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRegionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstanceSnapshots asynchronously, invoking a callback when done
 -- @param GetInstanceSnapshotsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstanceSnapshotsAsync(GetInstanceSnapshotsRequest, cb)
@@ -4912,7 +5416,21 @@ function M.GetInstanceSnapshotsAsync(GetInstanceSnapshotsRequest, cb)
 	end
 end
 
---- StopInstance
+--- Call GetInstanceSnapshots synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstanceSnapshotsRequest
+-- @return response
+-- @return error_message
+function M.GetInstanceSnapshotsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstanceSnapshotsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopInstance asynchronously, invoking a callback when done
 -- @param StopInstanceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopInstanceAsync(StopInstanceRequest, cb)
@@ -4930,7 +5448,21 @@ function M.StopInstanceAsync(StopInstanceRequest, cb)
 	end
 end
 
---- GetInstanceAccessDetails
+--- Call StopInstance synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopInstanceRequest
+-- @return response
+-- @return error_message
+function M.StopInstanceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopInstanceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstanceAccessDetails asynchronously, invoking a callback when done
 -- @param GetInstanceAccessDetailsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstanceAccessDetailsAsync(GetInstanceAccessDetailsRequest, cb)
@@ -4948,7 +5480,21 @@ function M.GetInstanceAccessDetailsAsync(GetInstanceAccessDetailsRequest, cb)
 	end
 end
 
---- GetDomains
+--- Call GetInstanceAccessDetails synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstanceAccessDetailsRequest
+-- @return response
+-- @return error_message
+function M.GetInstanceAccessDetailsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstanceAccessDetailsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDomains asynchronously, invoking a callback when done
 -- @param GetDomainsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDomainsAsync(GetDomainsRequest, cb)
@@ -4966,7 +5512,21 @@ function M.GetDomainsAsync(GetDomainsRequest, cb)
 	end
 end
 
---- PeerVpc
+--- Call GetDomains synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDomainsRequest
+-- @return response
+-- @return error_message
+function M.GetDomainsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDomainsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PeerVpc asynchronously, invoking a callback when done
 -- @param PeerVpcRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PeerVpcAsync(PeerVpcRequest, cb)
@@ -4984,7 +5544,21 @@ function M.PeerVpcAsync(PeerVpcRequest, cb)
 	end
 end
 
---- ReleaseStaticIp
+--- Call PeerVpc synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PeerVpcRequest
+-- @return response
+-- @return error_message
+function M.PeerVpcSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PeerVpcAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ReleaseStaticIp asynchronously, invoking a callback when done
 -- @param ReleaseStaticIpRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ReleaseStaticIpAsync(ReleaseStaticIpRequest, cb)
@@ -5002,7 +5576,21 @@ function M.ReleaseStaticIpAsync(ReleaseStaticIpRequest, cb)
 	end
 end
 
---- IsVpcPeered
+--- Call ReleaseStaticIp synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ReleaseStaticIpRequest
+-- @return response
+-- @return error_message
+function M.ReleaseStaticIpSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ReleaseStaticIpAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call IsVpcPeered asynchronously, invoking a callback when done
 -- @param IsVpcPeeredRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.IsVpcPeeredAsync(IsVpcPeeredRequest, cb)
@@ -5020,7 +5608,21 @@ function M.IsVpcPeeredAsync(IsVpcPeeredRequest, cb)
 	end
 end
 
---- DetachStaticIp
+--- Call IsVpcPeered synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param IsVpcPeeredRequest
+-- @return response
+-- @return error_message
+function M.IsVpcPeeredSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.IsVpcPeeredAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DetachStaticIp asynchronously, invoking a callback when done
 -- @param DetachStaticIpRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DetachStaticIpAsync(DetachStaticIpRequest, cb)
@@ -5038,7 +5640,21 @@ function M.DetachStaticIpAsync(DetachStaticIpRequest, cb)
 	end
 end
 
---- CreateInstances
+--- Call DetachStaticIp synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DetachStaticIpRequest
+-- @return response
+-- @return error_message
+function M.DetachStaticIpSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DetachStaticIpAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateInstances asynchronously, invoking a callback when done
 -- @param CreateInstancesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateInstancesAsync(CreateInstancesRequest, cb)
@@ -5056,7 +5672,21 @@ function M.CreateInstancesAsync(CreateInstancesRequest, cb)
 	end
 end
 
---- UnpeerVpc
+--- Call CreateInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateInstancesRequest
+-- @return response
+-- @return error_message
+function M.CreateInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UnpeerVpc asynchronously, invoking a callback when done
 -- @param UnpeerVpcRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UnpeerVpcAsync(UnpeerVpcRequest, cb)
@@ -5074,7 +5704,21 @@ function M.UnpeerVpcAsync(UnpeerVpcRequest, cb)
 	end
 end
 
---- DeleteDomain
+--- Call UnpeerVpc synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UnpeerVpcRequest
+-- @return response
+-- @return error_message
+function M.UnpeerVpcSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UnpeerVpcAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDomain asynchronously, invoking a callback when done
 -- @param DeleteDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDomainAsync(DeleteDomainRequest, cb)
@@ -5092,7 +5736,21 @@ function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 	end
 end
 
---- DeleteKeyPair
+--- Call DeleteDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDomainRequest
+-- @return response
+-- @return error_message
+function M.DeleteDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteKeyPair asynchronously, invoking a callback when done
 -- @param DeleteKeyPairRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteKeyPairAsync(DeleteKeyPairRequest, cb)
@@ -5108,6 +5766,20 @@ function M.DeleteKeyPairAsync(DeleteKeyPairRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DeleteKeyPair synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteKeyPairRequest
+-- @return response
+-- @return error_message
+function M.DeleteKeyPairSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteKeyPairAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

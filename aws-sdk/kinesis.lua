@@ -1835,7 +1835,7 @@ end
 --
 -- OPERATIONS
 --
---- GetRecords
+--- Call GetRecords asynchronously, invoking a callback when done
 -- @param GetRecordsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRecordsAsync(GetRecordsInput, cb)
@@ -1853,7 +1853,21 @@ function M.GetRecordsAsync(GetRecordsInput, cb)
 	end
 end
 
---- IncreaseStreamRetentionPeriod
+--- Call GetRecords synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRecordsInput
+-- @return response
+-- @return error_message
+function M.GetRecordsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRecordsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call IncreaseStreamRetentionPeriod asynchronously, invoking a callback when done
 -- @param IncreaseStreamRetentionPeriodInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.IncreaseStreamRetentionPeriodAsync(IncreaseStreamRetentionPeriodInput, cb)
@@ -1871,7 +1885,21 @@ function M.IncreaseStreamRetentionPeriodAsync(IncreaseStreamRetentionPeriodInput
 	end
 end
 
---- DescribeLimits
+--- Call IncreaseStreamRetentionPeriod synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param IncreaseStreamRetentionPeriodInput
+-- @return response
+-- @return error_message
+function M.IncreaseStreamRetentionPeriodSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.IncreaseStreamRetentionPeriodAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLimits asynchronously, invoking a callback when done
 -- @param DescribeLimitsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
@@ -1889,7 +1917,21 @@ function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
 	end
 end
 
---- ListTagsForStream
+--- Call DescribeLimits synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeLimitsInput
+-- @return response
+-- @return error_message
+function M.DescribeLimitsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLimitsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForStream asynchronously, invoking a callback when done
 -- @param ListTagsForStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsForStreamAsync(ListTagsForStreamInput, cb)
@@ -1907,7 +1949,21 @@ function M.ListTagsForStreamAsync(ListTagsForStreamInput, cb)
 	end
 end
 
---- PutRecords
+--- Call ListTagsForStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForStreamInput
+-- @return response
+-- @return error_message
+function M.ListTagsForStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutRecords asynchronously, invoking a callback when done
 -- @param PutRecordsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutRecordsAsync(PutRecordsInput, cb)
@@ -1925,7 +1981,21 @@ function M.PutRecordsAsync(PutRecordsInput, cb)
 	end
 end
 
---- GetShardIterator
+--- Call PutRecords synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutRecordsInput
+-- @return response
+-- @return error_message
+function M.PutRecordsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutRecordsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetShardIterator asynchronously, invoking a callback when done
 -- @param GetShardIteratorInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
@@ -1943,7 +2013,21 @@ function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
 	end
 end
 
---- DeleteStream
+--- Call GetShardIterator synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetShardIteratorInput
+-- @return response
+-- @return error_message
+function M.GetShardIteratorSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetShardIteratorAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteStream asynchronously, invoking a callback when done
 -- @param DeleteStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteStreamAsync(DeleteStreamInput, cb)
@@ -1961,7 +2045,21 @@ function M.DeleteStreamAsync(DeleteStreamInput, cb)
 	end
 end
 
---- AddTagsToStream
+--- Call DeleteStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteStreamInput
+-- @return response
+-- @return error_message
+function M.DeleteStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTagsToStream asynchronously, invoking a callback when done
 -- @param AddTagsToStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsToStreamAsync(AddTagsToStreamInput, cb)
@@ -1979,7 +2077,21 @@ function M.AddTagsToStreamAsync(AddTagsToStreamInput, cb)
 	end
 end
 
---- RemoveTagsFromStream
+--- Call AddTagsToStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsToStreamInput
+-- @return response
+-- @return error_message
+function M.AddTagsToStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsToStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTagsFromStream asynchronously, invoking a callback when done
 -- @param RemoveTagsFromStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsFromStreamAsync(RemoveTagsFromStreamInput, cb)
@@ -1997,7 +2109,21 @@ function M.RemoveTagsFromStreamAsync(RemoveTagsFromStreamInput, cb)
 	end
 end
 
---- DecreaseStreamRetentionPeriod
+--- Call RemoveTagsFromStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsFromStreamInput
+-- @return response
+-- @return error_message
+function M.RemoveTagsFromStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsFromStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DecreaseStreamRetentionPeriod asynchronously, invoking a callback when done
 -- @param DecreaseStreamRetentionPeriodInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DecreaseStreamRetentionPeriodAsync(DecreaseStreamRetentionPeriodInput, cb)
@@ -2015,7 +2141,21 @@ function M.DecreaseStreamRetentionPeriodAsync(DecreaseStreamRetentionPeriodInput
 	end
 end
 
---- DisableEnhancedMonitoring
+--- Call DecreaseStreamRetentionPeriod synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DecreaseStreamRetentionPeriodInput
+-- @return response
+-- @return error_message
+function M.DecreaseStreamRetentionPeriodSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DecreaseStreamRetentionPeriodAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableEnhancedMonitoring asynchronously, invoking a callback when done
 -- @param DisableEnhancedMonitoringInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableEnhancedMonitoringAsync(DisableEnhancedMonitoringInput, cb)
@@ -2033,7 +2173,21 @@ function M.DisableEnhancedMonitoringAsync(DisableEnhancedMonitoringInput, cb)
 	end
 end
 
---- SplitShard
+--- Call DisableEnhancedMonitoring synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableEnhancedMonitoringInput
+-- @return response
+-- @return error_message
+function M.DisableEnhancedMonitoringSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableEnhancedMonitoringAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SplitShard asynchronously, invoking a callback when done
 -- @param SplitShardInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SplitShardAsync(SplitShardInput, cb)
@@ -2051,7 +2205,21 @@ function M.SplitShardAsync(SplitShardInput, cb)
 	end
 end
 
---- DescribeStream
+--- Call SplitShard synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SplitShardInput
+-- @return response
+-- @return error_message
+function M.SplitShardSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SplitShardAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeStream asynchronously, invoking a callback when done
 -- @param DescribeStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeStreamAsync(DescribeStreamInput, cb)
@@ -2069,7 +2237,21 @@ function M.DescribeStreamAsync(DescribeStreamInput, cb)
 	end
 end
 
---- CreateStream
+--- Call DescribeStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeStreamInput
+-- @return response
+-- @return error_message
+function M.DescribeStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateStream asynchronously, invoking a callback when done
 -- @param CreateStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateStreamAsync(CreateStreamInput, cb)
@@ -2087,7 +2269,21 @@ function M.CreateStreamAsync(CreateStreamInput, cb)
 	end
 end
 
---- PutRecord
+--- Call CreateStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateStreamInput
+-- @return response
+-- @return error_message
+function M.CreateStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutRecord asynchronously, invoking a callback when done
 -- @param PutRecordInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutRecordAsync(PutRecordInput, cb)
@@ -2105,7 +2301,21 @@ function M.PutRecordAsync(PutRecordInput, cb)
 	end
 end
 
---- ListStreams
+--- Call PutRecord synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutRecordInput
+-- @return response
+-- @return error_message
+function M.PutRecordSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutRecordAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListStreams asynchronously, invoking a callback when done
 -- @param ListStreamsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListStreamsAsync(ListStreamsInput, cb)
@@ -2123,7 +2333,21 @@ function M.ListStreamsAsync(ListStreamsInput, cb)
 	end
 end
 
---- MergeShards
+--- Call ListStreams synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListStreamsInput
+-- @return response
+-- @return error_message
+function M.ListStreamsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListStreamsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call MergeShards asynchronously, invoking a callback when done
 -- @param MergeShardsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.MergeShardsAsync(MergeShardsInput, cb)
@@ -2141,7 +2365,21 @@ function M.MergeShardsAsync(MergeShardsInput, cb)
 	end
 end
 
---- UpdateShardCount
+--- Call MergeShards synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param MergeShardsInput
+-- @return response
+-- @return error_message
+function M.MergeShardsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.MergeShardsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateShardCount asynchronously, invoking a callback when done
 -- @param UpdateShardCountInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateShardCountAsync(UpdateShardCountInput, cb)
@@ -2159,7 +2397,21 @@ function M.UpdateShardCountAsync(UpdateShardCountInput, cb)
 	end
 end
 
---- EnableEnhancedMonitoring
+--- Call UpdateShardCount synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateShardCountInput
+-- @return response
+-- @return error_message
+function M.UpdateShardCountSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateShardCountAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableEnhancedMonitoring asynchronously, invoking a callback when done
 -- @param EnableEnhancedMonitoringInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableEnhancedMonitoringAsync(EnableEnhancedMonitoringInput, cb)
@@ -2175,6 +2427,20 @@ function M.EnableEnhancedMonitoringAsync(EnableEnhancedMonitoringInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call EnableEnhancedMonitoring synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableEnhancedMonitoringInput
+-- @return response
+-- @return error_message
+function M.EnableEnhancedMonitoringSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableEnhancedMonitoringAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

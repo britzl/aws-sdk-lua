@@ -1119,7 +1119,7 @@ end
 --
 -- OPERATIONS
 --
---- GetRecords
+--- Call GetRecords asynchronously, invoking a callback when done
 -- @param GetRecordsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetRecordsAsync(GetRecordsInput, cb)
@@ -1137,7 +1137,21 @@ function M.GetRecordsAsync(GetRecordsInput, cb)
 	end
 end
 
---- ListStreams
+--- Call GetRecords synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetRecordsInput
+-- @return response
+-- @return error_message
+function M.GetRecordsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetRecordsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListStreams asynchronously, invoking a callback when done
 -- @param ListStreamsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListStreamsAsync(ListStreamsInput, cb)
@@ -1155,7 +1169,21 @@ function M.ListStreamsAsync(ListStreamsInput, cb)
 	end
 end
 
---- GetShardIterator
+--- Call ListStreams synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListStreamsInput
+-- @return response
+-- @return error_message
+function M.ListStreamsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListStreamsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetShardIterator asynchronously, invoking a callback when done
 -- @param GetShardIteratorInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
@@ -1173,7 +1201,21 @@ function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
 	end
 end
 
---- DescribeStream
+--- Call GetShardIterator synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetShardIteratorInput
+-- @return response
+-- @return error_message
+function M.GetShardIteratorSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetShardIteratorAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeStream asynchronously, invoking a callback when done
 -- @param DescribeStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeStreamAsync(DescribeStreamInput, cb)
@@ -1189,6 +1231,20 @@ function M.DescribeStreamAsync(DescribeStreamInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DescribeStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeStreamInput
+-- @return response
+-- @return error_message
+function M.DescribeStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

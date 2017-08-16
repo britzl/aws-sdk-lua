@@ -2298,7 +2298,7 @@ end
 --
 -- OPERATIONS
 --
---- CreateDeliveryStream
+--- Call CreateDeliveryStream asynchronously, invoking a callback when done
 -- @param CreateDeliveryStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, cb)
@@ -2316,7 +2316,21 @@ function M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, cb)
 	end
 end
 
---- DescribeDeliveryStream
+--- Call CreateDeliveryStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDeliveryStreamInput
+-- @return response
+-- @return error_message
+function M.CreateDeliveryStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDeliveryStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDeliveryStream asynchronously, invoking a callback when done
 -- @param DescribeDeliveryStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, cb)
@@ -2334,7 +2348,21 @@ function M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, cb)
 	end
 end
 
---- UpdateDestination
+--- Call DescribeDeliveryStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDeliveryStreamInput
+-- @return response
+-- @return error_message
+function M.DescribeDeliveryStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDeliveryStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDestination asynchronously, invoking a callback when done
 -- @param UpdateDestinationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDestinationAsync(UpdateDestinationInput, cb)
@@ -2352,7 +2380,21 @@ function M.UpdateDestinationAsync(UpdateDestinationInput, cb)
 	end
 end
 
---- DeleteDeliveryStream
+--- Call UpdateDestination synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDestinationInput
+-- @return response
+-- @return error_message
+function M.UpdateDestinationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDestinationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDeliveryStream asynchronously, invoking a callback when done
 -- @param DeleteDeliveryStreamInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, cb)
@@ -2370,7 +2412,21 @@ function M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, cb)
 	end
 end
 
---- ListDeliveryStreams
+--- Call DeleteDeliveryStream synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDeliveryStreamInput
+-- @return response
+-- @return error_message
+function M.DeleteDeliveryStreamSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDeliveryStreamAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeliveryStreams asynchronously, invoking a callback when done
 -- @param ListDeliveryStreamsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, cb)
@@ -2388,7 +2444,21 @@ function M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, cb)
 	end
 end
 
---- PutRecordBatch
+--- Call ListDeliveryStreams synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeliveryStreamsInput
+-- @return response
+-- @return error_message
+function M.ListDeliveryStreamsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeliveryStreamsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutRecordBatch asynchronously, invoking a callback when done
 -- @param PutRecordBatchInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutRecordBatchAsync(PutRecordBatchInput, cb)
@@ -2406,7 +2476,21 @@ function M.PutRecordBatchAsync(PutRecordBatchInput, cb)
 	end
 end
 
---- PutRecord
+--- Call PutRecordBatch synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutRecordBatchInput
+-- @return response
+-- @return error_message
+function M.PutRecordBatchSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutRecordBatchAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutRecord asynchronously, invoking a callback when done
 -- @param PutRecordInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutRecordAsync(PutRecordInput, cb)
@@ -2422,6 +2506,20 @@ function M.PutRecordAsync(PutRecordInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call PutRecord synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutRecordInput
+-- @return response
+-- @return error_message
+function M.PutRecordSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutRecordAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

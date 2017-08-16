@@ -2249,7 +2249,7 @@ end
 --
 -- OPERATIONS
 --
---- DeleteTags
+--- Call DeleteTags asynchronously, invoking a callback when done
 -- @param DeleteTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteTagsAsync(DeleteTagsRequest, cb)
@@ -2267,7 +2267,21 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 	end
 end
 
---- DescribeWorkspaces
+--- Call DeleteTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteTagsRequest
+-- @return response
+-- @return error_message
+function M.DeleteTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeWorkspaces asynchronously, invoking a callback when done
 -- @param DescribeWorkspacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeWorkspacesAsync(DescribeWorkspacesRequest, cb)
@@ -2285,7 +2299,21 @@ function M.DescribeWorkspacesAsync(DescribeWorkspacesRequest, cb)
 	end
 end
 
---- TerminateWorkspaces
+--- Call DescribeWorkspaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeWorkspacesRequest
+-- @return response
+-- @return error_message
+function M.DescribeWorkspacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeWorkspacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TerminateWorkspaces asynchronously, invoking a callback when done
 -- @param TerminateWorkspacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TerminateWorkspacesAsync(TerminateWorkspacesRequest, cb)
@@ -2303,7 +2331,21 @@ function M.TerminateWorkspacesAsync(TerminateWorkspacesRequest, cb)
 	end
 end
 
---- CreateTags
+--- Call TerminateWorkspaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TerminateWorkspacesRequest
+-- @return response
+-- @return error_message
+function M.TerminateWorkspacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TerminateWorkspacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTags asynchronously, invoking a callback when done
 -- @param CreateTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateTagsAsync(CreateTagsRequest, cb)
@@ -2321,7 +2363,21 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 	end
 end
 
---- DescribeWorkspaceBundles
+--- Call CreateTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTagsRequest
+-- @return response
+-- @return error_message
+function M.CreateTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeWorkspaceBundles asynchronously, invoking a callback when done
 -- @param DescribeWorkspaceBundlesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeWorkspaceBundlesAsync(DescribeWorkspaceBundlesRequest, cb)
@@ -2339,7 +2395,21 @@ function M.DescribeWorkspaceBundlesAsync(DescribeWorkspaceBundlesRequest, cb)
 	end
 end
 
---- DescribeWorkspaceDirectories
+--- Call DescribeWorkspaceBundles synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeWorkspaceBundlesRequest
+-- @return response
+-- @return error_message
+function M.DescribeWorkspaceBundlesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeWorkspaceBundlesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeWorkspaceDirectories asynchronously, invoking a callback when done
 -- @param DescribeWorkspaceDirectoriesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeWorkspaceDirectoriesAsync(DescribeWorkspaceDirectoriesRequest, cb)
@@ -2357,7 +2427,21 @@ function M.DescribeWorkspaceDirectoriesAsync(DescribeWorkspaceDirectoriesRequest
 	end
 end
 
---- DescribeWorkspacesConnectionStatus
+--- Call DescribeWorkspaceDirectories synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeWorkspaceDirectoriesRequest
+-- @return response
+-- @return error_message
+function M.DescribeWorkspaceDirectoriesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeWorkspaceDirectoriesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeWorkspacesConnectionStatus asynchronously, invoking a callback when done
 -- @param DescribeWorkspacesConnectionStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeWorkspacesConnectionStatusAsync(DescribeWorkspacesConnectionStatusRequest, cb)
@@ -2375,7 +2459,21 @@ function M.DescribeWorkspacesConnectionStatusAsync(DescribeWorkspacesConnectionS
 	end
 end
 
---- RebuildWorkspaces
+--- Call DescribeWorkspacesConnectionStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeWorkspacesConnectionStatusRequest
+-- @return response
+-- @return error_message
+function M.DescribeWorkspacesConnectionStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeWorkspacesConnectionStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RebuildWorkspaces asynchronously, invoking a callback when done
 -- @param RebuildWorkspacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RebuildWorkspacesAsync(RebuildWorkspacesRequest, cb)
@@ -2393,7 +2491,21 @@ function M.RebuildWorkspacesAsync(RebuildWorkspacesRequest, cb)
 	end
 end
 
---- DescribeTags
+--- Call RebuildWorkspaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RebuildWorkspacesRequest
+-- @return response
+-- @return error_message
+function M.RebuildWorkspacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RebuildWorkspacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTags asynchronously, invoking a callback when done
 -- @param DescribeTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTagsAsync(DescribeTagsRequest, cb)
@@ -2411,7 +2523,21 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 	end
 end
 
---- RebootWorkspaces
+--- Call DescribeTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTagsRequest
+-- @return response
+-- @return error_message
+function M.DescribeTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RebootWorkspaces asynchronously, invoking a callback when done
 -- @param RebootWorkspacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RebootWorkspacesAsync(RebootWorkspacesRequest, cb)
@@ -2429,7 +2555,21 @@ function M.RebootWorkspacesAsync(RebootWorkspacesRequest, cb)
 	end
 end
 
---- CreateWorkspaces
+--- Call RebootWorkspaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RebootWorkspacesRequest
+-- @return response
+-- @return error_message
+function M.RebootWorkspacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RebootWorkspacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateWorkspaces asynchronously, invoking a callback when done
 -- @param CreateWorkspacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateWorkspacesAsync(CreateWorkspacesRequest, cb)
@@ -2447,7 +2587,21 @@ function M.CreateWorkspacesAsync(CreateWorkspacesRequest, cb)
 	end
 end
 
---- StopWorkspaces
+--- Call CreateWorkspaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateWorkspacesRequest
+-- @return response
+-- @return error_message
+function M.CreateWorkspacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateWorkspacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopWorkspaces asynchronously, invoking a callback when done
 -- @param StopWorkspacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopWorkspacesAsync(StopWorkspacesRequest, cb)
@@ -2465,7 +2619,21 @@ function M.StopWorkspacesAsync(StopWorkspacesRequest, cb)
 	end
 end
 
---- ModifyWorkspaceProperties
+--- Call StopWorkspaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopWorkspacesRequest
+-- @return response
+-- @return error_message
+function M.StopWorkspacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopWorkspacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyWorkspaceProperties asynchronously, invoking a callback when done
 -- @param ModifyWorkspacePropertiesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyWorkspacePropertiesAsync(ModifyWorkspacePropertiesRequest, cb)
@@ -2483,7 +2651,21 @@ function M.ModifyWorkspacePropertiesAsync(ModifyWorkspacePropertiesRequest, cb)
 	end
 end
 
---- StartWorkspaces
+--- Call ModifyWorkspaceProperties synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyWorkspacePropertiesRequest
+-- @return response
+-- @return error_message
+function M.ModifyWorkspacePropertiesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyWorkspacePropertiesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartWorkspaces asynchronously, invoking a callback when done
 -- @param StartWorkspacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartWorkspacesAsync(StartWorkspacesRequest, cb)
@@ -2499,6 +2681,20 @@ function M.StartWorkspacesAsync(StartWorkspacesRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call StartWorkspaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartWorkspacesRequest
+-- @return response
+-- @return error_message
+function M.StartWorkspacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartWorkspacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

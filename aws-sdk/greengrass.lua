@@ -4775,7 +4775,7 @@ end
 --
 -- OPERATIONS
 --
---- GetDeviceDefinitionVersion
+--- Call GetDeviceDefinitionVersion asynchronously, invoking a callback when done
 -- @param GetDeviceDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeviceDefinitionVersionAsync(GetDeviceDefinitionVersionRequest, cb)
@@ -4793,7 +4793,21 @@ function M.GetDeviceDefinitionVersionAsync(GetDeviceDefinitionVersionRequest, cb
 	end
 end
 
---- ListDeviceDefinitionVersions
+--- Call GetDeviceDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeviceDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.GetDeviceDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeviceDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeviceDefinitionVersions asynchronously, invoking a callback when done
 -- @param ListDeviceDefinitionVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeviceDefinitionVersionsAsync(ListDeviceDefinitionVersionsRequest, cb)
@@ -4811,7 +4825,21 @@ function M.ListDeviceDefinitionVersionsAsync(ListDeviceDefinitionVersionsRequest
 	end
 end
 
---- AssociateRoleToGroup
+--- Call ListDeviceDefinitionVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeviceDefinitionVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListDeviceDefinitionVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeviceDefinitionVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateRoleToGroup asynchronously, invoking a callback when done
 -- @param AssociateRoleToGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AssociateRoleToGroupAsync(AssociateRoleToGroupRequest, cb)
@@ -4829,7 +4857,21 @@ function M.AssociateRoleToGroupAsync(AssociateRoleToGroupRequest, cb)
 	end
 end
 
---- ListSubscriptionDefinitionVersions
+--- Call AssociateRoleToGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateRoleToGroupRequest
+-- @return response
+-- @return error_message
+function M.AssociateRoleToGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateRoleToGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSubscriptionDefinitionVersions asynchronously, invoking a callback when done
 -- @param ListSubscriptionDefinitionVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListSubscriptionDefinitionVersionsAsync(ListSubscriptionDefinitionVersionsRequest, cb)
@@ -4847,7 +4889,21 @@ function M.ListSubscriptionDefinitionVersionsAsync(ListSubscriptionDefinitionVer
 	end
 end
 
---- ListCoreDefinitions
+--- Call ListSubscriptionDefinitionVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSubscriptionDefinitionVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListSubscriptionDefinitionVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSubscriptionDefinitionVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCoreDefinitions asynchronously, invoking a callback when done
 -- @param ListCoreDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListCoreDefinitionsAsync(ListCoreDefinitionsRequest, cb)
@@ -4865,7 +4921,21 @@ function M.ListCoreDefinitionsAsync(ListCoreDefinitionsRequest, cb)
 	end
 end
 
---- ListGroupVersions
+--- Call ListCoreDefinitions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCoreDefinitionsRequest
+-- @return response
+-- @return error_message
+function M.ListCoreDefinitionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCoreDefinitionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListGroupVersions asynchronously, invoking a callback when done
 -- @param ListGroupVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListGroupVersionsAsync(ListGroupVersionsRequest, cb)
@@ -4883,7 +4953,21 @@ function M.ListGroupVersionsAsync(ListGroupVersionsRequest, cb)
 	end
 end
 
---- UpdateCoreDefinition
+--- Call ListGroupVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListGroupVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListGroupVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListGroupVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateCoreDefinition asynchronously, invoking a callback when done
 -- @param UpdateCoreDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateCoreDefinitionAsync(UpdateCoreDefinitionRequest, cb)
@@ -4901,7 +4985,21 @@ function M.UpdateCoreDefinitionAsync(UpdateCoreDefinitionRequest, cb)
 	end
 end
 
---- CreateCoreDefinition
+--- Call UpdateCoreDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateCoreDefinitionRequest
+-- @return response
+-- @return error_message
+function M.UpdateCoreDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateCoreDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCoreDefinition asynchronously, invoking a callback when done
 -- @param CreateCoreDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCoreDefinitionAsync(CreateCoreDefinitionRequest, cb)
@@ -4919,7 +5017,21 @@ function M.CreateCoreDefinitionAsync(CreateCoreDefinitionRequest, cb)
 	end
 end
 
---- GetSubscriptionDefinition
+--- Call CreateCoreDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCoreDefinitionRequest
+-- @return response
+-- @return error_message
+function M.CreateCoreDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCoreDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSubscriptionDefinition asynchronously, invoking a callback when done
 -- @param GetSubscriptionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSubscriptionDefinitionAsync(GetSubscriptionDefinitionRequest, cb)
@@ -4937,7 +5049,21 @@ function M.GetSubscriptionDefinitionAsync(GetSubscriptionDefinitionRequest, cb)
 	end
 end
 
---- GetDeploymentStatus
+--- Call GetSubscriptionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSubscriptionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.GetSubscriptionDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSubscriptionDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDeploymentStatus asynchronously, invoking a callback when done
 -- @param GetDeploymentStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeploymentStatusAsync(GetDeploymentStatusRequest, cb)
@@ -4955,7 +5081,21 @@ function M.GetDeploymentStatusAsync(GetDeploymentStatusRequest, cb)
 	end
 end
 
---- ListDeviceDefinitions
+--- Call GetDeploymentStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeploymentStatusRequest
+-- @return response
+-- @return error_message
+function M.GetDeploymentStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeploymentStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeviceDefinitions asynchronously, invoking a callback when done
 -- @param ListDeviceDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, cb)
@@ -4973,7 +5113,21 @@ function M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, cb)
 	end
 end
 
---- CreateGroup
+--- Call ListDeviceDefinitions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeviceDefinitionsRequest
+-- @return response
+-- @return error_message
+function M.ListDeviceDefinitionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeviceDefinitionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateGroup asynchronously, invoking a callback when done
 -- @param CreateGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateGroupAsync(CreateGroupRequest, cb)
@@ -4991,7 +5145,21 @@ function M.CreateGroupAsync(CreateGroupRequest, cb)
 	end
 end
 
---- GetGroupCertificateAuthority
+--- Call CreateGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateGroupRequest
+-- @return response
+-- @return error_message
+function M.CreateGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetGroupCertificateAuthority asynchronously, invoking a callback when done
 -- @param GetGroupCertificateAuthorityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetGroupCertificateAuthorityAsync(GetGroupCertificateAuthorityRequest, cb)
@@ -5009,7 +5177,21 @@ function M.GetGroupCertificateAuthorityAsync(GetGroupCertificateAuthorityRequest
 	end
 end
 
---- CreateDeployment
+--- Call GetGroupCertificateAuthority synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGroupCertificateAuthorityRequest
+-- @return response
+-- @return error_message
+function M.GetGroupCertificateAuthoritySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGroupCertificateAuthorityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDeployment asynchronously, invoking a callback when done
 -- @param CreateDeploymentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
@@ -5027,7 +5209,21 @@ function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 	end
 end
 
---- ListSubscriptionDefinitions
+--- Call CreateDeployment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDeploymentRequest
+-- @return response
+-- @return error_message
+function M.CreateDeploymentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDeploymentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSubscriptionDefinitions asynchronously, invoking a callback when done
 -- @param ListSubscriptionDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListSubscriptionDefinitionsAsync(ListSubscriptionDefinitionsRequest, cb)
@@ -5045,7 +5241,21 @@ function M.ListSubscriptionDefinitionsAsync(ListSubscriptionDefinitionsRequest, 
 	end
 end
 
---- UpdateDeviceDefinition
+--- Call ListSubscriptionDefinitions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSubscriptionDefinitionsRequest
+-- @return response
+-- @return error_message
+function M.ListSubscriptionDefinitionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSubscriptionDefinitionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDeviceDefinition asynchronously, invoking a callback when done
 -- @param UpdateDeviceDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDeviceDefinitionAsync(UpdateDeviceDefinitionRequest, cb)
@@ -5063,7 +5273,21 @@ function M.UpdateDeviceDefinitionAsync(UpdateDeviceDefinitionRequest, cb)
 	end
 end
 
---- ListLoggerDefinitionVersions
+--- Call UpdateDeviceDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDeviceDefinitionRequest
+-- @return response
+-- @return error_message
+function M.UpdateDeviceDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDeviceDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListLoggerDefinitionVersions asynchronously, invoking a callback when done
 -- @param ListLoggerDefinitionVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListLoggerDefinitionVersionsAsync(ListLoggerDefinitionVersionsRequest, cb)
@@ -5081,7 +5305,21 @@ function M.ListLoggerDefinitionVersionsAsync(ListLoggerDefinitionVersionsRequest
 	end
 end
 
---- CreateDeviceDefinition
+--- Call ListLoggerDefinitionVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListLoggerDefinitionVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListLoggerDefinitionVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListLoggerDefinitionVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDeviceDefinition asynchronously, invoking a callback when done
 -- @param CreateDeviceDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDeviceDefinitionAsync(CreateDeviceDefinitionRequest, cb)
@@ -5099,7 +5337,21 @@ function M.CreateDeviceDefinitionAsync(CreateDeviceDefinitionRequest, cb)
 	end
 end
 
---- AssociateServiceRoleToAccount
+--- Call CreateDeviceDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDeviceDefinitionRequest
+-- @return response
+-- @return error_message
+function M.CreateDeviceDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDeviceDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateServiceRoleToAccount asynchronously, invoking a callback when done
 -- @param AssociateServiceRoleToAccountRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AssociateServiceRoleToAccountAsync(AssociateServiceRoleToAccountRequest, cb)
@@ -5117,7 +5369,21 @@ function M.AssociateServiceRoleToAccountAsync(AssociateServiceRoleToAccountReque
 	end
 end
 
---- DeleteGroup
+--- Call AssociateServiceRoleToAccount synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateServiceRoleToAccountRequest
+-- @return response
+-- @return error_message
+function M.AssociateServiceRoleToAccountSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateServiceRoleToAccountAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteGroup asynchronously, invoking a callback when done
 -- @param DeleteGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteGroupAsync(DeleteGroupRequest, cb)
@@ -5135,7 +5401,21 @@ function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 	end
 end
 
---- CreateDeviceDefinitionVersion
+--- Call DeleteGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteGroupRequest
+-- @return response
+-- @return error_message
+function M.DeleteGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDeviceDefinitionVersion asynchronously, invoking a callback when done
 -- @param CreateDeviceDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDeviceDefinitionVersionAsync(CreateDeviceDefinitionVersionRequest, cb)
@@ -5153,7 +5433,21 @@ function M.CreateDeviceDefinitionVersionAsync(CreateDeviceDefinitionVersionReque
 	end
 end
 
---- GetCoreDefinition
+--- Call CreateDeviceDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDeviceDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateDeviceDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDeviceDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCoreDefinition asynchronously, invoking a callback when done
 -- @param GetCoreDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCoreDefinitionAsync(GetCoreDefinitionRequest, cb)
@@ -5171,7 +5465,21 @@ function M.GetCoreDefinitionAsync(GetCoreDefinitionRequest, cb)
 	end
 end
 
---- GetSubscriptionDefinitionVersion
+--- Call GetCoreDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCoreDefinitionRequest
+-- @return response
+-- @return error_message
+function M.GetCoreDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCoreDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSubscriptionDefinitionVersion asynchronously, invoking a callback when done
 -- @param GetSubscriptionDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSubscriptionDefinitionVersionAsync(GetSubscriptionDefinitionVersionRequest, cb)
@@ -5189,7 +5497,21 @@ function M.GetSubscriptionDefinitionVersionAsync(GetSubscriptionDefinitionVersio
 	end
 end
 
---- ListFunctionDefinitionVersions
+--- Call GetSubscriptionDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSubscriptionDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.GetSubscriptionDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSubscriptionDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListFunctionDefinitionVersions asynchronously, invoking a callback when done
 -- @param ListFunctionDefinitionVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsRequest, cb)
@@ -5207,7 +5529,21 @@ function M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsReq
 	end
 end
 
---- GetFunctionDefinition
+--- Call ListFunctionDefinitionVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListFunctionDefinitionVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListFunctionDefinitionVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListFunctionDefinitionVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetFunctionDefinition asynchronously, invoking a callback when done
 -- @param GetFunctionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetFunctionDefinitionAsync(GetFunctionDefinitionRequest, cb)
@@ -5225,7 +5561,21 @@ function M.GetFunctionDefinitionAsync(GetFunctionDefinitionRequest, cb)
 	end
 end
 
---- GetGroup
+--- Call GetFunctionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetFunctionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.GetFunctionDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetFunctionDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetGroup asynchronously, invoking a callback when done
 -- @param GetGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetGroupAsync(GetGroupRequest, cb)
@@ -5243,7 +5593,21 @@ function M.GetGroupAsync(GetGroupRequest, cb)
 	end
 end
 
---- UpdateGroup
+--- Call GetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGroupRequest
+-- @return response
+-- @return error_message
+function M.GetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateGroup asynchronously, invoking a callback when done
 -- @param UpdateGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateGroupAsync(UpdateGroupRequest, cb)
@@ -5261,7 +5625,21 @@ function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 	end
 end
 
---- DeleteCoreDefinition
+--- Call UpdateGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateGroupRequest
+-- @return response
+-- @return error_message
+function M.UpdateGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCoreDefinition asynchronously, invoking a callback when done
 -- @param DeleteCoreDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteCoreDefinitionAsync(DeleteCoreDefinitionRequest, cb)
@@ -5279,7 +5657,21 @@ function M.DeleteCoreDefinitionAsync(DeleteCoreDefinitionRequest, cb)
 	end
 end
 
---- CreateGroupVersion
+--- Call DeleteCoreDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCoreDefinitionRequest
+-- @return response
+-- @return error_message
+function M.DeleteCoreDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCoreDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateGroupVersion asynchronously, invoking a callback when done
 -- @param CreateGroupVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateGroupVersionAsync(CreateGroupVersionRequest, cb)
@@ -5297,7 +5689,21 @@ function M.CreateGroupVersionAsync(CreateGroupVersionRequest, cb)
 	end
 end
 
---- CreateLoggerDefinitionVersion
+--- Call CreateGroupVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateGroupVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateGroupVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateGroupVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateLoggerDefinitionVersion asynchronously, invoking a callback when done
 -- @param CreateLoggerDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateLoggerDefinitionVersionAsync(CreateLoggerDefinitionVersionRequest, cb)
@@ -5315,7 +5721,21 @@ function M.CreateLoggerDefinitionVersionAsync(CreateLoggerDefinitionVersionReque
 	end
 end
 
---- GetDeviceDefinition
+--- Call CreateLoggerDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateLoggerDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateLoggerDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateLoggerDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDeviceDefinition asynchronously, invoking a callback when done
 -- @param GetDeviceDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeviceDefinitionAsync(GetDeviceDefinitionRequest, cb)
@@ -5333,7 +5753,21 @@ function M.GetDeviceDefinitionAsync(GetDeviceDefinitionRequest, cb)
 	end
 end
 
---- GetFunctionDefinitionVersion
+--- Call GetDeviceDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeviceDefinitionRequest
+-- @return response
+-- @return error_message
+function M.GetDeviceDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeviceDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetFunctionDefinitionVersion asynchronously, invoking a callback when done
 -- @param GetFunctionDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetFunctionDefinitionVersionAsync(GetFunctionDefinitionVersionRequest, cb)
@@ -5351,7 +5785,21 @@ function M.GetFunctionDefinitionVersionAsync(GetFunctionDefinitionVersionRequest
 	end
 end
 
---- GetLoggerDefinitionVersion
+--- Call GetFunctionDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetFunctionDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.GetFunctionDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetFunctionDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetLoggerDefinitionVersion asynchronously, invoking a callback when done
 -- @param GetLoggerDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetLoggerDefinitionVersionAsync(GetLoggerDefinitionVersionRequest, cb)
@@ -5369,7 +5817,21 @@ function M.GetLoggerDefinitionVersionAsync(GetLoggerDefinitionVersionRequest, cb
 	end
 end
 
---- CreateCoreDefinitionVersion
+--- Call GetLoggerDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetLoggerDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.GetLoggerDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetLoggerDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCoreDefinitionVersion asynchronously, invoking a callback when done
 -- @param CreateCoreDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCoreDefinitionVersionAsync(CreateCoreDefinitionVersionRequest, cb)
@@ -5387,7 +5849,21 @@ function M.CreateCoreDefinitionVersionAsync(CreateCoreDefinitionVersionRequest, 
 	end
 end
 
---- ListCoreDefinitionVersions
+--- Call CreateCoreDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCoreDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateCoreDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCoreDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCoreDefinitionVersions asynchronously, invoking a callback when done
 -- @param ListCoreDefinitionVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListCoreDefinitionVersionsAsync(ListCoreDefinitionVersionsRequest, cb)
@@ -5405,7 +5881,21 @@ function M.ListCoreDefinitionVersionsAsync(ListCoreDefinitionVersionsRequest, cb
 	end
 end
 
---- UpdateGroupCertificateConfiguration
+--- Call ListCoreDefinitionVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCoreDefinitionVersionsRequest
+-- @return response
+-- @return error_message
+function M.ListCoreDefinitionVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCoreDefinitionVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateGroupCertificateConfiguration asynchronously, invoking a callback when done
 -- @param UpdateGroupCertificateConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateGroupCertificateConfigurationAsync(UpdateGroupCertificateConfigurationRequest, cb)
@@ -5423,7 +5913,21 @@ function M.UpdateGroupCertificateConfigurationAsync(UpdateGroupCertificateConfig
 	end
 end
 
---- CreateGroupCertificateAuthority
+--- Call UpdateGroupCertificateConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateGroupCertificateConfigurationRequest
+-- @return response
+-- @return error_message
+function M.UpdateGroupCertificateConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateGroupCertificateConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateGroupCertificateAuthority asynchronously, invoking a callback when done
 -- @param CreateGroupCertificateAuthorityRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateGroupCertificateAuthorityAsync(CreateGroupCertificateAuthorityRequest, cb)
@@ -5441,7 +5945,21 @@ function M.CreateGroupCertificateAuthorityAsync(CreateGroupCertificateAuthorityR
 	end
 end
 
---- GetServiceRoleForAccount
+--- Call CreateGroupCertificateAuthority synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateGroupCertificateAuthorityRequest
+-- @return response
+-- @return error_message
+function M.CreateGroupCertificateAuthoritySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateGroupCertificateAuthorityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetServiceRoleForAccount asynchronously, invoking a callback when done
 -- @param GetServiceRoleForAccountRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetServiceRoleForAccountAsync(GetServiceRoleForAccountRequest, cb)
@@ -5459,7 +5977,21 @@ function M.GetServiceRoleForAccountAsync(GetServiceRoleForAccountRequest, cb)
 	end
 end
 
---- UpdateConnectivityInfo
+--- Call GetServiceRoleForAccount synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetServiceRoleForAccountRequest
+-- @return response
+-- @return error_message
+function M.GetServiceRoleForAccountSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetServiceRoleForAccountAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateConnectivityInfo asynchronously, invoking a callback when done
 -- @param UpdateConnectivityInfoRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateConnectivityInfoAsync(UpdateConnectivityInfoRequest, cb)
@@ -5477,7 +6009,21 @@ function M.UpdateConnectivityInfoAsync(UpdateConnectivityInfoRequest, cb)
 	end
 end
 
---- DisassociateRoleFromGroup
+--- Call UpdateConnectivityInfo synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateConnectivityInfoRequest
+-- @return response
+-- @return error_message
+function M.UpdateConnectivityInfoSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateConnectivityInfoAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisassociateRoleFromGroup asynchronously, invoking a callback when done
 -- @param DisassociateRoleFromGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisassociateRoleFromGroupAsync(DisassociateRoleFromGroupRequest, cb)
@@ -5495,7 +6041,21 @@ function M.DisassociateRoleFromGroupAsync(DisassociateRoleFromGroupRequest, cb)
 	end
 end
 
---- CreateLoggerDefinition
+--- Call DisassociateRoleFromGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisassociateRoleFromGroupRequest
+-- @return response
+-- @return error_message
+function M.DisassociateRoleFromGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisassociateRoleFromGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateLoggerDefinition asynchronously, invoking a callback when done
 -- @param CreateLoggerDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateLoggerDefinitionAsync(CreateLoggerDefinitionRequest, cb)
@@ -5513,7 +6073,21 @@ function M.CreateLoggerDefinitionAsync(CreateLoggerDefinitionRequest, cb)
 	end
 end
 
---- ListGroupCertificateAuthorities
+--- Call CreateLoggerDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateLoggerDefinitionRequest
+-- @return response
+-- @return error_message
+function M.CreateLoggerDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateLoggerDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListGroupCertificateAuthorities asynchronously, invoking a callback when done
 -- @param ListGroupCertificateAuthoritiesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesRequest, cb)
@@ -5531,7 +6105,21 @@ function M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesR
 	end
 end
 
---- UpdateSubscriptionDefinition
+--- Call ListGroupCertificateAuthorities synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListGroupCertificateAuthoritiesRequest
+-- @return response
+-- @return error_message
+function M.ListGroupCertificateAuthoritiesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListGroupCertificateAuthoritiesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateSubscriptionDefinition asynchronously, invoking a callback when done
 -- @param UpdateSubscriptionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest, cb)
@@ -5549,7 +6137,21 @@ function M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest
 	end
 end
 
---- DeleteSubscriptionDefinition
+--- Call UpdateSubscriptionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateSubscriptionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.UpdateSubscriptionDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateSubscriptionDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSubscriptionDefinition asynchronously, invoking a callback when done
 -- @param DeleteSubscriptionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSubscriptionDefinitionAsync(DeleteSubscriptionDefinitionRequest, cb)
@@ -5567,7 +6169,21 @@ function M.DeleteSubscriptionDefinitionAsync(DeleteSubscriptionDefinitionRequest
 	end
 end
 
---- CreateFunctionDefinitionVersion
+--- Call DeleteSubscriptionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSubscriptionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.DeleteSubscriptionDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSubscriptionDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateFunctionDefinitionVersion asynchronously, invoking a callback when done
 -- @param CreateFunctionDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateFunctionDefinitionVersionAsync(CreateFunctionDefinitionVersionRequest, cb)
@@ -5585,7 +6201,21 @@ function M.CreateFunctionDefinitionVersionAsync(CreateFunctionDefinitionVersionR
 	end
 end
 
---- ListDeployments
+--- Call CreateFunctionDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateFunctionDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateFunctionDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateFunctionDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDeployments asynchronously, invoking a callback when done
 -- @param ListDeploymentsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDeploymentsAsync(ListDeploymentsRequest, cb)
@@ -5603,7 +6233,21 @@ function M.ListDeploymentsAsync(ListDeploymentsRequest, cb)
 	end
 end
 
---- GetGroupVersion
+--- Call ListDeployments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDeploymentsRequest
+-- @return response
+-- @return error_message
+function M.ListDeploymentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDeploymentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetGroupVersion asynchronously, invoking a callback when done
 -- @param GetGroupVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetGroupVersionAsync(GetGroupVersionRequest, cb)
@@ -5621,7 +6265,21 @@ function M.GetGroupVersionAsync(GetGroupVersionRequest, cb)
 	end
 end
 
---- DisassociateServiceRoleFromAccount
+--- Call GetGroupVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGroupVersionRequest
+-- @return response
+-- @return error_message
+function M.GetGroupVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGroupVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisassociateServiceRoleFromAccount asynchronously, invoking a callback when done
 -- @param DisassociateServiceRoleFromAccountRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisassociateServiceRoleFromAccountAsync(DisassociateServiceRoleFromAccountRequest, cb)
@@ -5639,7 +6297,21 @@ function M.DisassociateServiceRoleFromAccountAsync(DisassociateServiceRoleFromAc
 	end
 end
 
---- GetCoreDefinitionVersion
+--- Call DisassociateServiceRoleFromAccount synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisassociateServiceRoleFromAccountRequest
+-- @return response
+-- @return error_message
+function M.DisassociateServiceRoleFromAccountSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisassociateServiceRoleFromAccountAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCoreDefinitionVersion asynchronously, invoking a callback when done
 -- @param GetCoreDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCoreDefinitionVersionAsync(GetCoreDefinitionVersionRequest, cb)
@@ -5657,7 +6329,21 @@ function M.GetCoreDefinitionVersionAsync(GetCoreDefinitionVersionRequest, cb)
 	end
 end
 
---- ListFunctionDefinitions
+--- Call GetCoreDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCoreDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.GetCoreDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCoreDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListFunctionDefinitions asynchronously, invoking a callback when done
 -- @param ListFunctionDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, cb)
@@ -5675,7 +6361,21 @@ function M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, cb)
 	end
 end
 
---- GetGroupCertificateConfiguration
+--- Call ListFunctionDefinitions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListFunctionDefinitionsRequest
+-- @return response
+-- @return error_message
+function M.ListFunctionDefinitionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListFunctionDefinitionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetGroupCertificateConfiguration asynchronously, invoking a callback when done
 -- @param GetGroupCertificateConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetGroupCertificateConfigurationAsync(GetGroupCertificateConfigurationRequest, cb)
@@ -5693,7 +6393,21 @@ function M.GetGroupCertificateConfigurationAsync(GetGroupCertificateConfiguratio
 	end
 end
 
---- DeleteFunctionDefinition
+--- Call GetGroupCertificateConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGroupCertificateConfigurationRequest
+-- @return response
+-- @return error_message
+function M.GetGroupCertificateConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGroupCertificateConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteFunctionDefinition asynchronously, invoking a callback when done
 -- @param DeleteFunctionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, cb)
@@ -5711,7 +6425,21 @@ function M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, cb)
 	end
 end
 
---- GetAssociatedRole
+--- Call DeleteFunctionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteFunctionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.DeleteFunctionDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteFunctionDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetAssociatedRole asynchronously, invoking a callback when done
 -- @param GetAssociatedRoleRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetAssociatedRoleAsync(GetAssociatedRoleRequest, cb)
@@ -5729,7 +6457,21 @@ function M.GetAssociatedRoleAsync(GetAssociatedRoleRequest, cb)
 	end
 end
 
---- UpdateLoggerDefinition
+--- Call GetAssociatedRole synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetAssociatedRoleRequest
+-- @return response
+-- @return error_message
+function M.GetAssociatedRoleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetAssociatedRoleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateLoggerDefinition asynchronously, invoking a callback when done
 -- @param UpdateLoggerDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateLoggerDefinitionAsync(UpdateLoggerDefinitionRequest, cb)
@@ -5747,7 +6489,21 @@ function M.UpdateLoggerDefinitionAsync(UpdateLoggerDefinitionRequest, cb)
 	end
 end
 
---- CreateFunctionDefinition
+--- Call UpdateLoggerDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateLoggerDefinitionRequest
+-- @return response
+-- @return error_message
+function M.UpdateLoggerDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateLoggerDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateFunctionDefinition asynchronously, invoking a callback when done
 -- @param CreateFunctionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateFunctionDefinitionAsync(CreateFunctionDefinitionRequest, cb)
@@ -5765,7 +6521,21 @@ function M.CreateFunctionDefinitionAsync(CreateFunctionDefinitionRequest, cb)
 	end
 end
 
---- GetLoggerDefinition
+--- Call CreateFunctionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateFunctionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.CreateFunctionDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateFunctionDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetLoggerDefinition asynchronously, invoking a callback when done
 -- @param GetLoggerDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetLoggerDefinitionAsync(GetLoggerDefinitionRequest, cb)
@@ -5783,7 +6553,21 @@ function M.GetLoggerDefinitionAsync(GetLoggerDefinitionRequest, cb)
 	end
 end
 
---- UpdateFunctionDefinition
+--- Call GetLoggerDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetLoggerDefinitionRequest
+-- @return response
+-- @return error_message
+function M.GetLoggerDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetLoggerDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateFunctionDefinition asynchronously, invoking a callback when done
 -- @param UpdateFunctionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateFunctionDefinitionAsync(UpdateFunctionDefinitionRequest, cb)
@@ -5801,7 +6585,21 @@ function M.UpdateFunctionDefinitionAsync(UpdateFunctionDefinitionRequest, cb)
 	end
 end
 
---- ListLoggerDefinitions
+--- Call UpdateFunctionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateFunctionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.UpdateFunctionDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateFunctionDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListLoggerDefinitions asynchronously, invoking a callback when done
 -- @param ListLoggerDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListLoggerDefinitionsAsync(ListLoggerDefinitionsRequest, cb)
@@ -5819,7 +6617,21 @@ function M.ListLoggerDefinitionsAsync(ListLoggerDefinitionsRequest, cb)
 	end
 end
 
---- CreateSubscriptionDefinition
+--- Call ListLoggerDefinitions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListLoggerDefinitionsRequest
+-- @return response
+-- @return error_message
+function M.ListLoggerDefinitionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListLoggerDefinitionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSubscriptionDefinition asynchronously, invoking a callback when done
 -- @param CreateSubscriptionDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSubscriptionDefinitionAsync(CreateSubscriptionDefinitionRequest, cb)
@@ -5837,7 +6649,21 @@ function M.CreateSubscriptionDefinitionAsync(CreateSubscriptionDefinitionRequest
 	end
 end
 
---- GetConnectivityInfo
+--- Call CreateSubscriptionDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSubscriptionDefinitionRequest
+-- @return response
+-- @return error_message
+function M.CreateSubscriptionDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSubscriptionDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetConnectivityInfo asynchronously, invoking a callback when done
 -- @param GetConnectivityInfoRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetConnectivityInfoAsync(GetConnectivityInfoRequest, cb)
@@ -5855,7 +6681,21 @@ function M.GetConnectivityInfoAsync(GetConnectivityInfoRequest, cb)
 	end
 end
 
---- ListGroups
+--- Call GetConnectivityInfo synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetConnectivityInfoRequest
+-- @return response
+-- @return error_message
+function M.GetConnectivityInfoSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetConnectivityInfoAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListGroups asynchronously, invoking a callback when done
 -- @param ListGroupsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListGroupsAsync(ListGroupsRequest, cb)
@@ -5873,7 +6713,21 @@ function M.ListGroupsAsync(ListGroupsRequest, cb)
 	end
 end
 
---- DeleteLoggerDefinition
+--- Call ListGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListGroupsRequest
+-- @return response
+-- @return error_message
+function M.ListGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteLoggerDefinition asynchronously, invoking a callback when done
 -- @param DeleteLoggerDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteLoggerDefinitionAsync(DeleteLoggerDefinitionRequest, cb)
@@ -5891,7 +6745,21 @@ function M.DeleteLoggerDefinitionAsync(DeleteLoggerDefinitionRequest, cb)
 	end
 end
 
---- DeleteDeviceDefinition
+--- Call DeleteLoggerDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteLoggerDefinitionRequest
+-- @return response
+-- @return error_message
+function M.DeleteLoggerDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteLoggerDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDeviceDefinition asynchronously, invoking a callback when done
 -- @param DeleteDeviceDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, cb)
@@ -5909,7 +6777,21 @@ function M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, cb)
 	end
 end
 
---- CreateSubscriptionDefinitionVersion
+--- Call DeleteDeviceDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDeviceDefinitionRequest
+-- @return response
+-- @return error_message
+function M.DeleteDeviceDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDeviceDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSubscriptionDefinitionVersion asynchronously, invoking a callback when done
 -- @param CreateSubscriptionDefinitionVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSubscriptionDefinitionVersionAsync(CreateSubscriptionDefinitionVersionRequest, cb)
@@ -5925,6 +6807,20 @@ function M.CreateSubscriptionDefinitionVersionAsync(CreateSubscriptionDefinition
 	else
 		cb(false, err)
 	end
+end
+
+--- Call CreateSubscriptionDefinitionVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSubscriptionDefinitionVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateSubscriptionDefinitionVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSubscriptionDefinitionVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

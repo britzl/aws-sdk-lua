@@ -4897,7 +4897,7 @@ end
 --
 -- OPERATIONS
 --
---- RequestUploadCredentials
+--- Call RequestUploadCredentials asynchronously, invoking a callback when done
 -- @param RequestUploadCredentialsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RequestUploadCredentialsAsync(RequestUploadCredentialsInput, cb)
@@ -4915,7 +4915,21 @@ function M.RequestUploadCredentialsAsync(RequestUploadCredentialsInput, cb)
 	end
 end
 
---- UpdateRuntimeConfiguration
+--- Call RequestUploadCredentials synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RequestUploadCredentialsInput
+-- @return response
+-- @return error_message
+function M.RequestUploadCredentialsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RequestUploadCredentialsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRuntimeConfiguration asynchronously, invoking a callback when done
 -- @param UpdateRuntimeConfigurationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateRuntimeConfigurationAsync(UpdateRuntimeConfigurationInput, cb)
@@ -4933,7 +4947,21 @@ function M.UpdateRuntimeConfigurationAsync(UpdateRuntimeConfigurationInput, cb)
 	end
 end
 
---- DeleteFleet
+--- Call UpdateRuntimeConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRuntimeConfigurationInput
+-- @return response
+-- @return error_message
+function M.UpdateRuntimeConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRuntimeConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteFleet asynchronously, invoking a callback when done
 -- @param DeleteFleetInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteFleetAsync(DeleteFleetInput, cb)
@@ -4951,7 +4979,21 @@ function M.DeleteFleetAsync(DeleteFleetInput, cb)
 	end
 end
 
---- UpdateFleetCapacity
+--- Call DeleteFleet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteFleetInput
+-- @return response
+-- @return error_message
+function M.DeleteFleetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteFleetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateFleetCapacity asynchronously, invoking a callback when done
 -- @param UpdateFleetCapacityInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateFleetCapacityAsync(UpdateFleetCapacityInput, cb)
@@ -4969,7 +5011,21 @@ function M.UpdateFleetCapacityAsync(UpdateFleetCapacityInput, cb)
 	end
 end
 
---- DescribeRuntimeConfiguration
+--- Call UpdateFleetCapacity synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateFleetCapacityInput
+-- @return response
+-- @return error_message
+function M.UpdateFleetCapacitySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateFleetCapacityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeRuntimeConfiguration asynchronously, invoking a callback when done
 -- @param DescribeRuntimeConfigurationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeRuntimeConfigurationAsync(DescribeRuntimeConfigurationInput, cb)
@@ -4987,7 +5043,21 @@ function M.DescribeRuntimeConfigurationAsync(DescribeRuntimeConfigurationInput, 
 	end
 end
 
---- DescribeGameSessions
+--- Call DescribeRuntimeConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeRuntimeConfigurationInput
+-- @return response
+-- @return error_message
+function M.DescribeRuntimeConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeRuntimeConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeGameSessions asynchronously, invoking a callback when done
 -- @param DescribeGameSessionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeGameSessionsAsync(DescribeGameSessionsInput, cb)
@@ -5005,7 +5075,21 @@ function M.DescribeGameSessionsAsync(DescribeGameSessionsInput, cb)
 	end
 end
 
---- SearchGameSessions
+--- Call DescribeGameSessions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeGameSessionsInput
+-- @return response
+-- @return error_message
+function M.DescribeGameSessionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeGameSessionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SearchGameSessions asynchronously, invoking a callback when done
 -- @param SearchGameSessionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SearchGameSessionsAsync(SearchGameSessionsInput, cb)
@@ -5023,7 +5107,21 @@ function M.SearchGameSessionsAsync(SearchGameSessionsInput, cb)
 	end
 end
 
---- CreatePlayerSessions
+--- Call SearchGameSessions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SearchGameSessionsInput
+-- @return response
+-- @return error_message
+function M.SearchGameSessionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SearchGameSessionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreatePlayerSessions asynchronously, invoking a callback when done
 -- @param CreatePlayerSessionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreatePlayerSessionsAsync(CreatePlayerSessionsInput, cb)
@@ -5041,7 +5139,21 @@ function M.CreatePlayerSessionsAsync(CreatePlayerSessionsInput, cb)
 	end
 end
 
---- UpdateFleetPortSettings
+--- Call CreatePlayerSessions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreatePlayerSessionsInput
+-- @return response
+-- @return error_message
+function M.CreatePlayerSessionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreatePlayerSessionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateFleetPortSettings asynchronously, invoking a callback when done
 -- @param UpdateFleetPortSettingsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateFleetPortSettingsAsync(UpdateFleetPortSettingsInput, cb)
@@ -5059,7 +5171,21 @@ function M.UpdateFleetPortSettingsAsync(UpdateFleetPortSettingsInput, cb)
 	end
 end
 
---- ListFleets
+--- Call UpdateFleetPortSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateFleetPortSettingsInput
+-- @return response
+-- @return error_message
+function M.UpdateFleetPortSettingsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateFleetPortSettingsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListFleets asynchronously, invoking a callback when done
 -- @param ListFleetsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListFleetsAsync(ListFleetsInput, cb)
@@ -5077,7 +5203,21 @@ function M.ListFleetsAsync(ListFleetsInput, cb)
 	end
 end
 
---- UpdateGameSession
+--- Call ListFleets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListFleetsInput
+-- @return response
+-- @return error_message
+function M.ListFleetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListFleetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateGameSession asynchronously, invoking a callback when done
 -- @param UpdateGameSessionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateGameSessionAsync(UpdateGameSessionInput, cb)
@@ -5095,7 +5235,21 @@ function M.UpdateGameSessionAsync(UpdateGameSessionInput, cb)
 	end
 end
 
---- CreateGameSession
+--- Call UpdateGameSession synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateGameSessionInput
+-- @return response
+-- @return error_message
+function M.UpdateGameSessionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateGameSessionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateGameSession asynchronously, invoking a callback when done
 -- @param CreateGameSessionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateGameSessionAsync(CreateGameSessionInput, cb)
@@ -5113,7 +5267,21 @@ function M.CreateGameSessionAsync(CreateGameSessionInput, cb)
 	end
 end
 
---- DescribeFleetCapacity
+--- Call CreateGameSession synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateGameSessionInput
+-- @return response
+-- @return error_message
+function M.CreateGameSessionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateGameSessionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeFleetCapacity asynchronously, invoking a callback when done
 -- @param DescribeFleetCapacityInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeFleetCapacityAsync(DescribeFleetCapacityInput, cb)
@@ -5131,7 +5299,21 @@ function M.DescribeFleetCapacityAsync(DescribeFleetCapacityInput, cb)
 	end
 end
 
---- ListAliases
+--- Call DescribeFleetCapacity synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeFleetCapacityInput
+-- @return response
+-- @return error_message
+function M.DescribeFleetCapacitySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeFleetCapacityAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListAliases asynchronously, invoking a callback when done
 -- @param ListAliasesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListAliasesAsync(ListAliasesInput, cb)
@@ -5149,7 +5331,21 @@ function M.ListAliasesAsync(ListAliasesInput, cb)
 	end
 end
 
---- UpdateBuild
+--- Call ListAliases synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListAliasesInput
+-- @return response
+-- @return error_message
+function M.ListAliasesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListAliasesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateBuild asynchronously, invoking a callback when done
 -- @param UpdateBuildInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateBuildAsync(UpdateBuildInput, cb)
@@ -5167,7 +5363,21 @@ function M.UpdateBuildAsync(UpdateBuildInput, cb)
 	end
 end
 
---- DeleteBuild
+--- Call UpdateBuild synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateBuildInput
+-- @return response
+-- @return error_message
+function M.UpdateBuildSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateBuildAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteBuild asynchronously, invoking a callback when done
 -- @param DeleteBuildInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteBuildAsync(DeleteBuildInput, cb)
@@ -5185,7 +5395,21 @@ function M.DeleteBuildAsync(DeleteBuildInput, cb)
 	end
 end
 
---- PutScalingPolicy
+--- Call DeleteBuild synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteBuildInput
+-- @return response
+-- @return error_message
+function M.DeleteBuildSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteBuildAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutScalingPolicy asynchronously, invoking a callback when done
 -- @param PutScalingPolicyInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutScalingPolicyAsync(PutScalingPolicyInput, cb)
@@ -5203,7 +5427,21 @@ function M.PutScalingPolicyAsync(PutScalingPolicyInput, cb)
 	end
 end
 
---- DescribeScalingPolicies
+--- Call PutScalingPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutScalingPolicyInput
+-- @return response
+-- @return error_message
+function M.PutScalingPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutScalingPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeScalingPolicies asynchronously, invoking a callback when done
 -- @param DescribeScalingPoliciesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeScalingPoliciesAsync(DescribeScalingPoliciesInput, cb)
@@ -5221,7 +5459,21 @@ function M.DescribeScalingPoliciesAsync(DescribeScalingPoliciesInput, cb)
 	end
 end
 
---- DescribeInstances
+--- Call DescribeScalingPolicies synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeScalingPoliciesInput
+-- @return response
+-- @return error_message
+function M.DescribeScalingPoliciesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeScalingPoliciesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeInstances asynchronously, invoking a callback when done
 -- @param DescribeInstancesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeInstancesAsync(DescribeInstancesInput, cb)
@@ -5239,7 +5491,21 @@ function M.DescribeInstancesAsync(DescribeInstancesInput, cb)
 	end
 end
 
---- CreateBuild
+--- Call DescribeInstances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeInstancesInput
+-- @return response
+-- @return error_message
+function M.DescribeInstancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeInstancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateBuild asynchronously, invoking a callback when done
 -- @param CreateBuildInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateBuildAsync(CreateBuildInput, cb)
@@ -5257,7 +5523,21 @@ function M.CreateBuildAsync(CreateBuildInput, cb)
 	end
 end
 
---- DeleteGameSessionQueue
+--- Call CreateBuild synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateBuildInput
+-- @return response
+-- @return error_message
+function M.CreateBuildSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateBuildAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteGameSessionQueue asynchronously, invoking a callback when done
 -- @param DeleteGameSessionQueueInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteGameSessionQueueAsync(DeleteGameSessionQueueInput, cb)
@@ -5275,7 +5555,21 @@ function M.DeleteGameSessionQueueAsync(DeleteGameSessionQueueInput, cb)
 	end
 end
 
---- CreatePlayerSession
+--- Call DeleteGameSessionQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteGameSessionQueueInput
+-- @return response
+-- @return error_message
+function M.DeleteGameSessionQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteGameSessionQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreatePlayerSession asynchronously, invoking a callback when done
 -- @param CreatePlayerSessionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreatePlayerSessionAsync(CreatePlayerSessionInput, cb)
@@ -5293,7 +5587,21 @@ function M.CreatePlayerSessionAsync(CreatePlayerSessionInput, cb)
 	end
 end
 
---- UpdateFleetAttributes
+--- Call CreatePlayerSession synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreatePlayerSessionInput
+-- @return response
+-- @return error_message
+function M.CreatePlayerSessionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreatePlayerSessionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateFleetAttributes asynchronously, invoking a callback when done
 -- @param UpdateFleetAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateFleetAttributesAsync(UpdateFleetAttributesInput, cb)
@@ -5311,7 +5619,21 @@ function M.UpdateFleetAttributesAsync(UpdateFleetAttributesInput, cb)
 	end
 end
 
---- DeleteAlias
+--- Call UpdateFleetAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateFleetAttributesInput
+-- @return response
+-- @return error_message
+function M.UpdateFleetAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateFleetAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteAlias asynchronously, invoking a callback when done
 -- @param DeleteAliasInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteAliasAsync(DeleteAliasInput, cb)
@@ -5329,7 +5651,21 @@ function M.DeleteAliasAsync(DeleteAliasInput, cb)
 	end
 end
 
---- DescribeFleetPortSettings
+--- Call DeleteAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteAliasInput
+-- @return response
+-- @return error_message
+function M.DeleteAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeFleetPortSettings asynchronously, invoking a callback when done
 -- @param DescribeFleetPortSettingsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeFleetPortSettingsAsync(DescribeFleetPortSettingsInput, cb)
@@ -5347,7 +5683,21 @@ function M.DescribeFleetPortSettingsAsync(DescribeFleetPortSettingsInput, cb)
 	end
 end
 
---- DescribePlayerSessions
+--- Call DescribeFleetPortSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeFleetPortSettingsInput
+-- @return response
+-- @return error_message
+function M.DescribeFleetPortSettingsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeFleetPortSettingsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribePlayerSessions asynchronously, invoking a callback when done
 -- @param DescribePlayerSessionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribePlayerSessionsAsync(DescribePlayerSessionsInput, cb)
@@ -5365,7 +5715,21 @@ function M.DescribePlayerSessionsAsync(DescribePlayerSessionsInput, cb)
 	end
 end
 
---- DeleteScalingPolicy
+--- Call DescribePlayerSessions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribePlayerSessionsInput
+-- @return response
+-- @return error_message
+function M.DescribePlayerSessionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribePlayerSessionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteScalingPolicy asynchronously, invoking a callback when done
 -- @param DeleteScalingPolicyInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteScalingPolicyAsync(DeleteScalingPolicyInput, cb)
@@ -5383,7 +5747,21 @@ function M.DeleteScalingPolicyAsync(DeleteScalingPolicyInput, cb)
 	end
 end
 
---- DescribeGameSessionQueues
+--- Call DeleteScalingPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteScalingPolicyInput
+-- @return response
+-- @return error_message
+function M.DeleteScalingPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteScalingPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeGameSessionQueues asynchronously, invoking a callback when done
 -- @param DescribeGameSessionQueuesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeGameSessionQueuesAsync(DescribeGameSessionQueuesInput, cb)
@@ -5401,7 +5779,21 @@ function M.DescribeGameSessionQueuesAsync(DescribeGameSessionQueuesInput, cb)
 	end
 end
 
---- CreateAlias
+--- Call DescribeGameSessionQueues synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeGameSessionQueuesInput
+-- @return response
+-- @return error_message
+function M.DescribeGameSessionQueuesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeGameSessionQueuesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateAlias asynchronously, invoking a callback when done
 -- @param CreateAliasInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateAliasAsync(CreateAliasInput, cb)
@@ -5419,7 +5811,21 @@ function M.CreateAliasAsync(CreateAliasInput, cb)
 	end
 end
 
---- UpdateAlias
+--- Call CreateAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateAliasInput
+-- @return response
+-- @return error_message
+function M.CreateAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateAlias asynchronously, invoking a callback when done
 -- @param UpdateAliasInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateAliasAsync(UpdateAliasInput, cb)
@@ -5437,7 +5843,21 @@ function M.UpdateAliasAsync(UpdateAliasInput, cb)
 	end
 end
 
---- CreateFleet
+--- Call UpdateAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateAliasInput
+-- @return response
+-- @return error_message
+function M.UpdateAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateFleet asynchronously, invoking a callback when done
 -- @param CreateFleetInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateFleetAsync(CreateFleetInput, cb)
@@ -5455,7 +5875,21 @@ function M.CreateFleetAsync(CreateFleetInput, cb)
 	end
 end
 
---- DescribeGameSessionPlacement
+--- Call CreateFleet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateFleetInput
+-- @return response
+-- @return error_message
+function M.CreateFleetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateFleetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeGameSessionPlacement asynchronously, invoking a callback when done
 -- @param DescribeGameSessionPlacementInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeGameSessionPlacementAsync(DescribeGameSessionPlacementInput, cb)
@@ -5473,7 +5907,21 @@ function M.DescribeGameSessionPlacementAsync(DescribeGameSessionPlacementInput, 
 	end
 end
 
---- GetInstanceAccess
+--- Call DescribeGameSessionPlacement synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeGameSessionPlacementInput
+-- @return response
+-- @return error_message
+function M.DescribeGameSessionPlacementSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeGameSessionPlacementAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetInstanceAccess asynchronously, invoking a callback when done
 -- @param GetInstanceAccessInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetInstanceAccessAsync(GetInstanceAccessInput, cb)
@@ -5491,7 +5939,21 @@ function M.GetInstanceAccessAsync(GetInstanceAccessInput, cb)
 	end
 end
 
---- ListBuilds
+--- Call GetInstanceAccess synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetInstanceAccessInput
+-- @return response
+-- @return error_message
+function M.GetInstanceAccessSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetInstanceAccessAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListBuilds asynchronously, invoking a callback when done
 -- @param ListBuildsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListBuildsAsync(ListBuildsInput, cb)
@@ -5509,7 +5971,21 @@ function M.ListBuildsAsync(ListBuildsInput, cb)
 	end
 end
 
---- DescribeFleetAttributes
+--- Call ListBuilds synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListBuildsInput
+-- @return response
+-- @return error_message
+function M.ListBuildsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListBuildsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeFleetAttributes asynchronously, invoking a callback when done
 -- @param DescribeFleetAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeFleetAttributesAsync(DescribeFleetAttributesInput, cb)
@@ -5527,7 +6003,21 @@ function M.DescribeFleetAttributesAsync(DescribeFleetAttributesInput, cb)
 	end
 end
 
---- ResolveAlias
+--- Call DescribeFleetAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeFleetAttributesInput
+-- @return response
+-- @return error_message
+function M.DescribeFleetAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeFleetAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ResolveAlias asynchronously, invoking a callback when done
 -- @param ResolveAliasInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ResolveAliasAsync(ResolveAliasInput, cb)
@@ -5545,7 +6035,21 @@ function M.ResolveAliasAsync(ResolveAliasInput, cb)
 	end
 end
 
---- DescribeGameSessionDetails
+--- Call ResolveAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResolveAliasInput
+-- @return response
+-- @return error_message
+function M.ResolveAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResolveAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeGameSessionDetails asynchronously, invoking a callback when done
 -- @param DescribeGameSessionDetailsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeGameSessionDetailsAsync(DescribeGameSessionDetailsInput, cb)
@@ -5563,7 +6067,21 @@ function M.DescribeGameSessionDetailsAsync(DescribeGameSessionDetailsInput, cb)
 	end
 end
 
---- StopGameSessionPlacement
+--- Call DescribeGameSessionDetails synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeGameSessionDetailsInput
+-- @return response
+-- @return error_message
+function M.DescribeGameSessionDetailsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeGameSessionDetailsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopGameSessionPlacement asynchronously, invoking a callback when done
 -- @param StopGameSessionPlacementInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopGameSessionPlacementAsync(StopGameSessionPlacementInput, cb)
@@ -5581,7 +6099,21 @@ function M.StopGameSessionPlacementAsync(StopGameSessionPlacementInput, cb)
 	end
 end
 
---- CreateGameSessionQueue
+--- Call StopGameSessionPlacement synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopGameSessionPlacementInput
+-- @return response
+-- @return error_message
+function M.StopGameSessionPlacementSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopGameSessionPlacementAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateGameSessionQueue asynchronously, invoking a callback when done
 -- @param CreateGameSessionQueueInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateGameSessionQueueAsync(CreateGameSessionQueueInput, cb)
@@ -5599,7 +6131,21 @@ function M.CreateGameSessionQueueAsync(CreateGameSessionQueueInput, cb)
 	end
 end
 
---- DescribeAlias
+--- Call CreateGameSessionQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateGameSessionQueueInput
+-- @return response
+-- @return error_message
+function M.CreateGameSessionQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateGameSessionQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAlias asynchronously, invoking a callback when done
 -- @param DescribeAliasInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAliasAsync(DescribeAliasInput, cb)
@@ -5617,7 +6163,21 @@ function M.DescribeAliasAsync(DescribeAliasInput, cb)
 	end
 end
 
---- StartGameSessionPlacement
+--- Call DescribeAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAliasInput
+-- @return response
+-- @return error_message
+function M.DescribeAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartGameSessionPlacement asynchronously, invoking a callback when done
 -- @param StartGameSessionPlacementInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartGameSessionPlacementAsync(StartGameSessionPlacementInput, cb)
@@ -5635,7 +6195,21 @@ function M.StartGameSessionPlacementAsync(StartGameSessionPlacementInput, cb)
 	end
 end
 
---- DescribeEC2InstanceLimits
+--- Call StartGameSessionPlacement synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartGameSessionPlacementInput
+-- @return response
+-- @return error_message
+function M.StartGameSessionPlacementSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartGameSessionPlacementAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEC2InstanceLimits asynchronously, invoking a callback when done
 -- @param DescribeEC2InstanceLimitsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEC2InstanceLimitsAsync(DescribeEC2InstanceLimitsInput, cb)
@@ -5653,7 +6227,21 @@ function M.DescribeEC2InstanceLimitsAsync(DescribeEC2InstanceLimitsInput, cb)
 	end
 end
 
---- UpdateGameSessionQueue
+--- Call DescribeEC2InstanceLimits synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEC2InstanceLimitsInput
+-- @return response
+-- @return error_message
+function M.DescribeEC2InstanceLimitsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEC2InstanceLimitsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateGameSessionQueue asynchronously, invoking a callback when done
 -- @param UpdateGameSessionQueueInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateGameSessionQueueAsync(UpdateGameSessionQueueInput, cb)
@@ -5671,7 +6259,21 @@ function M.UpdateGameSessionQueueAsync(UpdateGameSessionQueueInput, cb)
 	end
 end
 
---- GetGameSessionLogUrl
+--- Call UpdateGameSessionQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateGameSessionQueueInput
+-- @return response
+-- @return error_message
+function M.UpdateGameSessionQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateGameSessionQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetGameSessionLogUrl asynchronously, invoking a callback when done
 -- @param GetGameSessionLogUrlInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetGameSessionLogUrlAsync(GetGameSessionLogUrlInput, cb)
@@ -5689,7 +6291,21 @@ function M.GetGameSessionLogUrlAsync(GetGameSessionLogUrlInput, cb)
 	end
 end
 
---- DescribeBuild
+--- Call GetGameSessionLogUrl synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGameSessionLogUrlInput
+-- @return response
+-- @return error_message
+function M.GetGameSessionLogUrlSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGameSessionLogUrlAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeBuild asynchronously, invoking a callback when done
 -- @param DescribeBuildInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeBuildAsync(DescribeBuildInput, cb)
@@ -5707,7 +6323,21 @@ function M.DescribeBuildAsync(DescribeBuildInput, cb)
 	end
 end
 
---- DescribeFleetEvents
+--- Call DescribeBuild synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeBuildInput
+-- @return response
+-- @return error_message
+function M.DescribeBuildSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeBuildAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeFleetEvents asynchronously, invoking a callback when done
 -- @param DescribeFleetEventsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeFleetEventsAsync(DescribeFleetEventsInput, cb)
@@ -5725,7 +6355,21 @@ function M.DescribeFleetEventsAsync(DescribeFleetEventsInput, cb)
 	end
 end
 
---- DescribeFleetUtilization
+--- Call DescribeFleetEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeFleetEventsInput
+-- @return response
+-- @return error_message
+function M.DescribeFleetEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeFleetEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeFleetUtilization asynchronously, invoking a callback when done
 -- @param DescribeFleetUtilizationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeFleetUtilizationAsync(DescribeFleetUtilizationInput, cb)
@@ -5741,6 +6385,20 @@ function M.DescribeFleetUtilizationAsync(DescribeFleetUtilizationInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DescribeFleetUtilization synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeFleetUtilizationInput
+-- @return response
+-- @return error_message
+function M.DescribeFleetUtilizationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeFleetUtilizationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

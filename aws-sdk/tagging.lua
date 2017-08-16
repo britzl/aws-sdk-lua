@@ -830,7 +830,7 @@ end
 --
 -- OPERATIONS
 --
---- GetTagKeys
+--- Call GetTagKeys asynchronously, invoking a callback when done
 -- @param GetTagKeysInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetTagKeysAsync(GetTagKeysInput, cb)
@@ -848,7 +848,21 @@ function M.GetTagKeysAsync(GetTagKeysInput, cb)
 	end
 end
 
---- TagResources
+--- Call GetTagKeys synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetTagKeysInput
+-- @return response
+-- @return error_message
+function M.GetTagKeysSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetTagKeysAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagResources asynchronously, invoking a callback when done
 -- @param TagResourcesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.TagResourcesAsync(TagResourcesInput, cb)
@@ -866,7 +880,21 @@ function M.TagResourcesAsync(TagResourcesInput, cb)
 	end
 end
 
---- UntagResources
+--- Call TagResources synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourcesInput
+-- @return response
+-- @return error_message
+function M.TagResourcesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResourcesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UntagResources asynchronously, invoking a callback when done
 -- @param UntagResourcesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UntagResourcesAsync(UntagResourcesInput, cb)
@@ -884,7 +912,21 @@ function M.UntagResourcesAsync(UntagResourcesInput, cb)
 	end
 end
 
---- GetTagValues
+--- Call UntagResources synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagResourcesInput
+-- @return response
+-- @return error_message
+function M.UntagResourcesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagResourcesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetTagValues asynchronously, invoking a callback when done
 -- @param GetTagValuesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetTagValuesAsync(GetTagValuesInput, cb)
@@ -902,7 +944,21 @@ function M.GetTagValuesAsync(GetTagValuesInput, cb)
 	end
 end
 
---- GetResources
+--- Call GetTagValues synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetTagValuesInput
+-- @return response
+-- @return error_message
+function M.GetTagValuesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetTagValuesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetResources asynchronously, invoking a callback when done
 -- @param GetResourcesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetResourcesAsync(GetResourcesInput, cb)
@@ -918,6 +974,20 @@ function M.GetResourcesAsync(GetResourcesInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call GetResources synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetResourcesInput
+-- @return response
+-- @return error_message
+function M.GetResourcesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetResourcesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

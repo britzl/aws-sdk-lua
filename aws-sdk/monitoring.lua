@@ -1742,7 +1742,7 @@ end
 --
 -- OPERATIONS
 --
---- ListMetrics
+--- Call ListMetrics asynchronously, invoking a callback when done
 -- @param ListMetricsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListMetricsAsync(ListMetricsInput, cb)
@@ -1760,7 +1760,21 @@ function M.ListMetricsAsync(ListMetricsInput, cb)
 	end
 end
 
---- EnableAlarmActions
+--- Call ListMetrics synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListMetricsInput
+-- @return response
+-- @return error_message
+function M.ListMetricsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListMetricsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableAlarmActions asynchronously, invoking a callback when done
 -- @param EnableAlarmActionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableAlarmActionsAsync(EnableAlarmActionsInput, cb)
@@ -1778,7 +1792,21 @@ function M.EnableAlarmActionsAsync(EnableAlarmActionsInput, cb)
 	end
 end
 
---- DeleteAlarms
+--- Call EnableAlarmActions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableAlarmActionsInput
+-- @return response
+-- @return error_message
+function M.EnableAlarmActionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableAlarmActionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteAlarms asynchronously, invoking a callback when done
 -- @param DeleteAlarmsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteAlarmsAsync(DeleteAlarmsInput, cb)
@@ -1796,7 +1824,21 @@ function M.DeleteAlarmsAsync(DeleteAlarmsInput, cb)
 	end
 end
 
---- PutMetricAlarm
+--- Call DeleteAlarms synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteAlarmsInput
+-- @return response
+-- @return error_message
+function M.DeleteAlarmsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteAlarmsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutMetricAlarm asynchronously, invoking a callback when done
 -- @param PutMetricAlarmInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutMetricAlarmAsync(PutMetricAlarmInput, cb)
@@ -1814,7 +1856,21 @@ function M.PutMetricAlarmAsync(PutMetricAlarmInput, cb)
 	end
 end
 
---- GetMetricStatistics
+--- Call PutMetricAlarm synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutMetricAlarmInput
+-- @return response
+-- @return error_message
+function M.PutMetricAlarmSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutMetricAlarmAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetMetricStatistics asynchronously, invoking a callback when done
 -- @param GetMetricStatisticsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetMetricStatisticsAsync(GetMetricStatisticsInput, cb)
@@ -1832,7 +1888,21 @@ function M.GetMetricStatisticsAsync(GetMetricStatisticsInput, cb)
 	end
 end
 
---- DisableAlarmActions
+--- Call GetMetricStatistics synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetMetricStatisticsInput
+-- @return response
+-- @return error_message
+function M.GetMetricStatisticsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetMetricStatisticsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableAlarmActions asynchronously, invoking a callback when done
 -- @param DisableAlarmActionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableAlarmActionsAsync(DisableAlarmActionsInput, cb)
@@ -1850,7 +1920,21 @@ function M.DisableAlarmActionsAsync(DisableAlarmActionsInput, cb)
 	end
 end
 
---- SetAlarmState
+--- Call DisableAlarmActions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableAlarmActionsInput
+-- @return response
+-- @return error_message
+function M.DisableAlarmActionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableAlarmActionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetAlarmState asynchronously, invoking a callback when done
 -- @param SetAlarmStateInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetAlarmStateAsync(SetAlarmStateInput, cb)
@@ -1868,7 +1952,21 @@ function M.SetAlarmStateAsync(SetAlarmStateInput, cb)
 	end
 end
 
---- PutMetricData
+--- Call SetAlarmState synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetAlarmStateInput
+-- @return response
+-- @return error_message
+function M.SetAlarmStateSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetAlarmStateAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutMetricData asynchronously, invoking a callback when done
 -- @param PutMetricDataInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutMetricDataAsync(PutMetricDataInput, cb)
@@ -1886,7 +1984,21 @@ function M.PutMetricDataAsync(PutMetricDataInput, cb)
 	end
 end
 
---- DescribeAlarms
+--- Call PutMetricData synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutMetricDataInput
+-- @return response
+-- @return error_message
+function M.PutMetricDataSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutMetricDataAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAlarms asynchronously, invoking a callback when done
 -- @param DescribeAlarmsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAlarmsAsync(DescribeAlarmsInput, cb)
@@ -1904,7 +2016,21 @@ function M.DescribeAlarmsAsync(DescribeAlarmsInput, cb)
 	end
 end
 
---- DescribeAlarmsForMetric
+--- Call DescribeAlarms synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAlarmsInput
+-- @return response
+-- @return error_message
+function M.DescribeAlarmsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAlarmsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAlarmsForMetric asynchronously, invoking a callback when done
 -- @param DescribeAlarmsForMetricInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, cb)
@@ -1922,7 +2048,21 @@ function M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, cb)
 	end
 end
 
---- DescribeAlarmHistory
+--- Call DescribeAlarmsForMetric synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAlarmsForMetricInput
+-- @return response
+-- @return error_message
+function M.DescribeAlarmsForMetricSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAlarmsForMetricAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAlarmHistory asynchronously, invoking a callback when done
 -- @param DescribeAlarmHistoryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, cb)
@@ -1938,6 +2078,20 @@ function M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DescribeAlarmHistory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAlarmHistoryInput
+-- @return response
+-- @return error_message
+function M.DescribeAlarmHistorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAlarmHistoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

@@ -3661,7 +3661,7 @@ end
 --
 -- OPERATIONS
 --
---- CreateBotVersion
+--- Call CreateBotVersion asynchronously, invoking a callback when done
 -- @param CreateBotVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateBotVersionAsync(CreateBotVersionRequest, cb)
@@ -3679,7 +3679,21 @@ function M.CreateBotVersionAsync(CreateBotVersionRequest, cb)
 	end
 end
 
---- DeleteBotAlias
+--- Call CreateBotVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateBotVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateBotVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateBotVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteBotAlias asynchronously, invoking a callback when done
 -- @param DeleteBotAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteBotAliasAsync(DeleteBotAliasRequest, cb)
@@ -3697,7 +3711,21 @@ function M.DeleteBotAliasAsync(DeleteBotAliasRequest, cb)
 	end
 end
 
---- GetIntents
+--- Call DeleteBotAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteBotAliasRequest
+-- @return response
+-- @return error_message
+function M.DeleteBotAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteBotAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIntents asynchronously, invoking a callback when done
 -- @param GetIntentsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIntentsAsync(GetIntentsRequest, cb)
@@ -3715,7 +3743,21 @@ function M.GetIntentsAsync(GetIntentsRequest, cb)
 	end
 end
 
---- GetSlotTypes
+--- Call GetIntents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIntentsRequest
+-- @return response
+-- @return error_message
+function M.GetIntentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIntentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSlotTypes asynchronously, invoking a callback when done
 -- @param GetSlotTypesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSlotTypesAsync(GetSlotTypesRequest, cb)
@@ -3733,7 +3775,21 @@ function M.GetSlotTypesAsync(GetSlotTypesRequest, cb)
 	end
 end
 
---- DeleteSlotTypeVersion
+--- Call GetSlotTypes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSlotTypesRequest
+-- @return response
+-- @return error_message
+function M.GetSlotTypesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSlotTypesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSlotTypeVersion asynchronously, invoking a callback when done
 -- @param DeleteSlotTypeVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSlotTypeVersionAsync(DeleteSlotTypeVersionRequest, cb)
@@ -3751,7 +3807,21 @@ function M.DeleteSlotTypeVersionAsync(DeleteSlotTypeVersionRequest, cb)
 	end
 end
 
---- CreateSlotTypeVersion
+--- Call DeleteSlotTypeVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSlotTypeVersionRequest
+-- @return response
+-- @return error_message
+function M.DeleteSlotTypeVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSlotTypeVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSlotTypeVersion asynchronously, invoking a callback when done
 -- @param CreateSlotTypeVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSlotTypeVersionAsync(CreateSlotTypeVersionRequest, cb)
@@ -3769,7 +3839,21 @@ function M.CreateSlotTypeVersionAsync(CreateSlotTypeVersionRequest, cb)
 	end
 end
 
---- GetIntentVersions
+--- Call CreateSlotTypeVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSlotTypeVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateSlotTypeVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSlotTypeVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIntentVersions asynchronously, invoking a callback when done
 -- @param GetIntentVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIntentVersionsAsync(GetIntentVersionsRequest, cb)
@@ -3787,7 +3871,21 @@ function M.GetIntentVersionsAsync(GetIntentVersionsRequest, cb)
 	end
 end
 
---- GetBuiltinSlotTypes
+--- Call GetIntentVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIntentVersionsRequest
+-- @return response
+-- @return error_message
+function M.GetIntentVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIntentVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBuiltinSlotTypes asynchronously, invoking a callback when done
 -- @param GetBuiltinSlotTypesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBuiltinSlotTypesAsync(GetBuiltinSlotTypesRequest, cb)
@@ -3805,7 +3903,21 @@ function M.GetBuiltinSlotTypesAsync(GetBuiltinSlotTypesRequest, cb)
 	end
 end
 
---- CreateIntentVersion
+--- Call GetBuiltinSlotTypes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBuiltinSlotTypesRequest
+-- @return response
+-- @return error_message
+function M.GetBuiltinSlotTypesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBuiltinSlotTypesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateIntentVersion asynchronously, invoking a callback when done
 -- @param CreateIntentVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateIntentVersionAsync(CreateIntentVersionRequest, cb)
@@ -3823,7 +3935,21 @@ function M.CreateIntentVersionAsync(CreateIntentVersionRequest, cb)
 	end
 end
 
---- GetUtterancesView
+--- Call CreateIntentVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateIntentVersionRequest
+-- @return response
+-- @return error_message
+function M.CreateIntentVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateIntentVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetUtterancesView asynchronously, invoking a callback when done
 -- @param GetUtterancesViewRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetUtterancesViewAsync(GetUtterancesViewRequest, cb)
@@ -3841,7 +3967,21 @@ function M.GetUtterancesViewAsync(GetUtterancesViewRequest, cb)
 	end
 end
 
---- GetBot
+--- Call GetUtterancesView synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetUtterancesViewRequest
+-- @return response
+-- @return error_message
+function M.GetUtterancesViewSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetUtterancesViewAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBot asynchronously, invoking a callback when done
 -- @param GetBotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBotAsync(GetBotRequest, cb)
@@ -3859,7 +3999,21 @@ function M.GetBotAsync(GetBotRequest, cb)
 	end
 end
 
---- GetSlotTypeVersions
+--- Call GetBot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBotRequest
+-- @return response
+-- @return error_message
+function M.GetBotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSlotTypeVersions asynchronously, invoking a callback when done
 -- @param GetSlotTypeVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSlotTypeVersionsAsync(GetSlotTypeVersionsRequest, cb)
@@ -3877,7 +4031,21 @@ function M.GetSlotTypeVersionsAsync(GetSlotTypeVersionsRequest, cb)
 	end
 end
 
---- DeleteIntentVersion
+--- Call GetSlotTypeVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSlotTypeVersionsRequest
+-- @return response
+-- @return error_message
+function M.GetSlotTypeVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSlotTypeVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteIntentVersion asynchronously, invoking a callback when done
 -- @param DeleteIntentVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteIntentVersionAsync(DeleteIntentVersionRequest, cb)
@@ -3895,7 +4063,21 @@ function M.DeleteIntentVersionAsync(DeleteIntentVersionRequest, cb)
 	end
 end
 
---- DeleteUtterances
+--- Call DeleteIntentVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteIntentVersionRequest
+-- @return response
+-- @return error_message
+function M.DeleteIntentVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteIntentVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteUtterances asynchronously, invoking a callback when done
 -- @param DeleteUtterancesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteUtterancesAsync(DeleteUtterancesRequest, cb)
@@ -3913,7 +4095,21 @@ function M.DeleteUtterancesAsync(DeleteUtterancesRequest, cb)
 	end
 end
 
---- GetBotAlias
+--- Call DeleteUtterances synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteUtterancesRequest
+-- @return response
+-- @return error_message
+function M.DeleteUtterancesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteUtterancesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBotAlias asynchronously, invoking a callback when done
 -- @param GetBotAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBotAliasAsync(GetBotAliasRequest, cb)
@@ -3931,7 +4127,21 @@ function M.GetBotAliasAsync(GetBotAliasRequest, cb)
 	end
 end
 
---- DeleteIntent
+--- Call GetBotAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBotAliasRequest
+-- @return response
+-- @return error_message
+function M.GetBotAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBotAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteIntent asynchronously, invoking a callback when done
 -- @param DeleteIntentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteIntentAsync(DeleteIntentRequest, cb)
@@ -3949,7 +4159,21 @@ function M.DeleteIntentAsync(DeleteIntentRequest, cb)
 	end
 end
 
---- GetBotVersions
+--- Call DeleteIntent synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteIntentRequest
+-- @return response
+-- @return error_message
+function M.DeleteIntentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteIntentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBotVersions asynchronously, invoking a callback when done
 -- @param GetBotVersionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBotVersionsAsync(GetBotVersionsRequest, cb)
@@ -3967,7 +4191,21 @@ function M.GetBotVersionsAsync(GetBotVersionsRequest, cb)
 	end
 end
 
---- PutBotAlias
+--- Call GetBotVersions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBotVersionsRequest
+-- @return response
+-- @return error_message
+function M.GetBotVersionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBotVersionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutBotAlias asynchronously, invoking a callback when done
 -- @param PutBotAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutBotAliasAsync(PutBotAliasRequest, cb)
@@ -3985,7 +4223,21 @@ function M.PutBotAliasAsync(PutBotAliasRequest, cb)
 	end
 end
 
---- DeleteBotChannelAssociation
+--- Call PutBotAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutBotAliasRequest
+-- @return response
+-- @return error_message
+function M.PutBotAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutBotAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteBotChannelAssociation asynchronously, invoking a callback when done
 -- @param DeleteBotChannelAssociationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteBotChannelAssociationAsync(DeleteBotChannelAssociationRequest, cb)
@@ -4003,7 +4255,21 @@ function M.DeleteBotChannelAssociationAsync(DeleteBotChannelAssociationRequest, 
 	end
 end
 
---- DeleteBotVersion
+--- Call DeleteBotChannelAssociation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteBotChannelAssociationRequest
+-- @return response
+-- @return error_message
+function M.DeleteBotChannelAssociationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteBotChannelAssociationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteBotVersion asynchronously, invoking a callback when done
 -- @param DeleteBotVersionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteBotVersionAsync(DeleteBotVersionRequest, cb)
@@ -4021,7 +4287,21 @@ function M.DeleteBotVersionAsync(DeleteBotVersionRequest, cb)
 	end
 end
 
---- GetBotChannelAssociations
+--- Call DeleteBotVersion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteBotVersionRequest
+-- @return response
+-- @return error_message
+function M.DeleteBotVersionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteBotVersionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBotChannelAssociations asynchronously, invoking a callback when done
 -- @param GetBotChannelAssociationsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBotChannelAssociationsAsync(GetBotChannelAssociationsRequest, cb)
@@ -4039,7 +4319,21 @@ function M.GetBotChannelAssociationsAsync(GetBotChannelAssociationsRequest, cb)
 	end
 end
 
---- PutBot
+--- Call GetBotChannelAssociations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBotChannelAssociationsRequest
+-- @return response
+-- @return error_message
+function M.GetBotChannelAssociationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBotChannelAssociationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutBot asynchronously, invoking a callback when done
 -- @param PutBotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutBotAsync(PutBotRequest, cb)
@@ -4057,7 +4351,21 @@ function M.PutBotAsync(PutBotRequest, cb)
 	end
 end
 
---- GetBotChannelAssociation
+--- Call PutBot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutBotRequest
+-- @return response
+-- @return error_message
+function M.PutBotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutBotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBotChannelAssociation asynchronously, invoking a callback when done
 -- @param GetBotChannelAssociationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBotChannelAssociationAsync(GetBotChannelAssociationRequest, cb)
@@ -4075,7 +4383,21 @@ function M.GetBotChannelAssociationAsync(GetBotChannelAssociationRequest, cb)
 	end
 end
 
---- GetBotAliases
+--- Call GetBotChannelAssociation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBotChannelAssociationRequest
+-- @return response
+-- @return error_message
+function M.GetBotChannelAssociationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBotChannelAssociationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBotAliases asynchronously, invoking a callback when done
 -- @param GetBotAliasesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBotAliasesAsync(GetBotAliasesRequest, cb)
@@ -4093,7 +4415,21 @@ function M.GetBotAliasesAsync(GetBotAliasesRequest, cb)
 	end
 end
 
---- DeleteBot
+--- Call GetBotAliases synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBotAliasesRequest
+-- @return response
+-- @return error_message
+function M.GetBotAliasesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBotAliasesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteBot asynchronously, invoking a callback when done
 -- @param DeleteBotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteBotAsync(DeleteBotRequest, cb)
@@ -4111,7 +4447,21 @@ function M.DeleteBotAsync(DeleteBotRequest, cb)
 	end
 end
 
---- GetBuiltinIntents
+--- Call DeleteBot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteBotRequest
+-- @return response
+-- @return error_message
+function M.DeleteBotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteBotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBuiltinIntents asynchronously, invoking a callback when done
 -- @param GetBuiltinIntentsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBuiltinIntentsAsync(GetBuiltinIntentsRequest, cb)
@@ -4129,7 +4479,21 @@ function M.GetBuiltinIntentsAsync(GetBuiltinIntentsRequest, cb)
 	end
 end
 
---- GetBots
+--- Call GetBuiltinIntents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBuiltinIntentsRequest
+-- @return response
+-- @return error_message
+function M.GetBuiltinIntentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBuiltinIntentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBots asynchronously, invoking a callback when done
 -- @param GetBotsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBotsAsync(GetBotsRequest, cb)
@@ -4147,7 +4511,21 @@ function M.GetBotsAsync(GetBotsRequest, cb)
 	end
 end
 
---- DeleteSlotType
+--- Call GetBots synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBotsRequest
+-- @return response
+-- @return error_message
+function M.GetBotsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBotsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSlotType asynchronously, invoking a callback when done
 -- @param DeleteSlotTypeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSlotTypeAsync(DeleteSlotTypeRequest, cb)
@@ -4165,7 +4543,21 @@ function M.DeleteSlotTypeAsync(DeleteSlotTypeRequest, cb)
 	end
 end
 
---- GetSlotType
+--- Call DeleteSlotType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSlotTypeRequest
+-- @return response
+-- @return error_message
+function M.DeleteSlotTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSlotTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSlotType asynchronously, invoking a callback when done
 -- @param GetSlotTypeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSlotTypeAsync(GetSlotTypeRequest, cb)
@@ -4183,7 +4575,21 @@ function M.GetSlotTypeAsync(GetSlotTypeRequest, cb)
 	end
 end
 
---- GetIntent
+--- Call GetSlotType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSlotTypeRequest
+-- @return response
+-- @return error_message
+function M.GetSlotTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSlotTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIntent asynchronously, invoking a callback when done
 -- @param GetIntentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIntentAsync(GetIntentRequest, cb)
@@ -4201,7 +4607,21 @@ function M.GetIntentAsync(GetIntentRequest, cb)
 	end
 end
 
---- PutSlotType
+--- Call GetIntent synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIntentRequest
+-- @return response
+-- @return error_message
+function M.GetIntentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIntentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutSlotType asynchronously, invoking a callback when done
 -- @param PutSlotTypeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutSlotTypeAsync(PutSlotTypeRequest, cb)
@@ -4219,7 +4639,21 @@ function M.PutSlotTypeAsync(PutSlotTypeRequest, cb)
 	end
 end
 
---- GetBuiltinIntent
+--- Call PutSlotType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutSlotTypeRequest
+-- @return response
+-- @return error_message
+function M.PutSlotTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutSlotTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBuiltinIntent asynchronously, invoking a callback when done
 -- @param GetBuiltinIntentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBuiltinIntentAsync(GetBuiltinIntentRequest, cb)
@@ -4237,7 +4671,21 @@ function M.GetBuiltinIntentAsync(GetBuiltinIntentRequest, cb)
 	end
 end
 
---- PutIntent
+--- Call GetBuiltinIntent synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBuiltinIntentRequest
+-- @return response
+-- @return error_message
+function M.GetBuiltinIntentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBuiltinIntentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutIntent asynchronously, invoking a callback when done
 -- @param PutIntentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutIntentAsync(PutIntentRequest, cb)
@@ -4253,6 +4701,20 @@ function M.PutIntentAsync(PutIntentRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call PutIntent synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutIntentRequest
+-- @return response
+-- @return error_message
+function M.PutIntentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutIntentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

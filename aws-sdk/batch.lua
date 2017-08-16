@@ -2184,7 +2184,7 @@ end
 --
 -- OPERATIONS
 --
---- ListJobs
+--- Call ListJobs asynchronously, invoking a callback when done
 -- @param ListJobsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListJobsAsync(ListJobsRequest, cb)
@@ -2202,7 +2202,21 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 	end
 end
 
---- SubmitJob
+--- Call ListJobs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListJobsRequest
+-- @return response
+-- @return error_message
+function M.ListJobsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListJobsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SubmitJob asynchronously, invoking a callback when done
 -- @param SubmitJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SubmitJobAsync(SubmitJobRequest, cb)
@@ -2220,7 +2234,21 @@ function M.SubmitJobAsync(SubmitJobRequest, cb)
 	end
 end
 
---- UpdateJobQueue
+--- Call SubmitJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SubmitJobRequest
+-- @return response
+-- @return error_message
+function M.SubmitJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SubmitJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateJobQueue asynchronously, invoking a callback when done
 -- @param UpdateJobQueueRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateJobQueueAsync(UpdateJobQueueRequest, cb)
@@ -2238,7 +2266,21 @@ function M.UpdateJobQueueAsync(UpdateJobQueueRequest, cb)
 	end
 end
 
---- UpdateComputeEnvironment
+--- Call UpdateJobQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateJobQueueRequest
+-- @return response
+-- @return error_message
+function M.UpdateJobQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateJobQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateComputeEnvironment asynchronously, invoking a callback when done
 -- @param UpdateComputeEnvironmentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateComputeEnvironmentAsync(UpdateComputeEnvironmentRequest, cb)
@@ -2256,7 +2298,21 @@ function M.UpdateComputeEnvironmentAsync(UpdateComputeEnvironmentRequest, cb)
 	end
 end
 
---- DeregisterJobDefinition
+--- Call UpdateComputeEnvironment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateComputeEnvironmentRequest
+-- @return response
+-- @return error_message
+function M.UpdateComputeEnvironmentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateComputeEnvironmentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterJobDefinition asynchronously, invoking a callback when done
 -- @param DeregisterJobDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeregisterJobDefinitionAsync(DeregisterJobDefinitionRequest, cb)
@@ -2274,7 +2330,21 @@ function M.DeregisterJobDefinitionAsync(DeregisterJobDefinitionRequest, cb)
 	end
 end
 
---- DescribeJobQueues
+--- Call DeregisterJobDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterJobDefinitionRequest
+-- @return response
+-- @return error_message
+function M.DeregisterJobDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterJobDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeJobQueues asynchronously, invoking a callback when done
 -- @param DescribeJobQueuesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeJobQueuesAsync(DescribeJobQueuesRequest, cb)
@@ -2292,7 +2362,21 @@ function M.DescribeJobQueuesAsync(DescribeJobQueuesRequest, cb)
 	end
 end
 
---- CreateComputeEnvironment
+--- Call DescribeJobQueues synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeJobQueuesRequest
+-- @return response
+-- @return error_message
+function M.DescribeJobQueuesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeJobQueuesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateComputeEnvironment asynchronously, invoking a callback when done
 -- @param CreateComputeEnvironmentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateComputeEnvironmentAsync(CreateComputeEnvironmentRequest, cb)
@@ -2310,7 +2394,21 @@ function M.CreateComputeEnvironmentAsync(CreateComputeEnvironmentRequest, cb)
 	end
 end
 
---- DeleteComputeEnvironment
+--- Call CreateComputeEnvironment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateComputeEnvironmentRequest
+-- @return response
+-- @return error_message
+function M.CreateComputeEnvironmentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateComputeEnvironmentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteComputeEnvironment asynchronously, invoking a callback when done
 -- @param DeleteComputeEnvironmentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteComputeEnvironmentAsync(DeleteComputeEnvironmentRequest, cb)
@@ -2328,7 +2426,21 @@ function M.DeleteComputeEnvironmentAsync(DeleteComputeEnvironmentRequest, cb)
 	end
 end
 
---- DescribeComputeEnvironments
+--- Call DeleteComputeEnvironment synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteComputeEnvironmentRequest
+-- @return response
+-- @return error_message
+function M.DeleteComputeEnvironmentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteComputeEnvironmentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeComputeEnvironments asynchronously, invoking a callback when done
 -- @param DescribeComputeEnvironmentsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeComputeEnvironmentsAsync(DescribeComputeEnvironmentsRequest, cb)
@@ -2346,7 +2458,21 @@ function M.DescribeComputeEnvironmentsAsync(DescribeComputeEnvironmentsRequest, 
 	end
 end
 
---- CreateJobQueue
+--- Call DescribeComputeEnvironments synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeComputeEnvironmentsRequest
+-- @return response
+-- @return error_message
+function M.DescribeComputeEnvironmentsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeComputeEnvironmentsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateJobQueue asynchronously, invoking a callback when done
 -- @param CreateJobQueueRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateJobQueueAsync(CreateJobQueueRequest, cb)
@@ -2364,7 +2490,21 @@ function M.CreateJobQueueAsync(CreateJobQueueRequest, cb)
 	end
 end
 
---- RegisterJobDefinition
+--- Call CreateJobQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateJobQueueRequest
+-- @return response
+-- @return error_message
+function M.CreateJobQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateJobQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterJobDefinition asynchronously, invoking a callback when done
 -- @param RegisterJobDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterJobDefinitionAsync(RegisterJobDefinitionRequest, cb)
@@ -2382,7 +2522,21 @@ function M.RegisterJobDefinitionAsync(RegisterJobDefinitionRequest, cb)
 	end
 end
 
---- CancelJob
+--- Call RegisterJobDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterJobDefinitionRequest
+-- @return response
+-- @return error_message
+function M.RegisterJobDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterJobDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CancelJob asynchronously, invoking a callback when done
 -- @param CancelJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CancelJobAsync(CancelJobRequest, cb)
@@ -2400,7 +2554,21 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 	end
 end
 
---- DescribeJobDefinitions
+--- Call CancelJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CancelJobRequest
+-- @return response
+-- @return error_message
+function M.CancelJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CancelJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeJobDefinitions asynchronously, invoking a callback when done
 -- @param DescribeJobDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeJobDefinitionsAsync(DescribeJobDefinitionsRequest, cb)
@@ -2418,7 +2586,21 @@ function M.DescribeJobDefinitionsAsync(DescribeJobDefinitionsRequest, cb)
 	end
 end
 
---- DeleteJobQueue
+--- Call DescribeJobDefinitions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeJobDefinitionsRequest
+-- @return response
+-- @return error_message
+function M.DescribeJobDefinitionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeJobDefinitionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteJobQueue asynchronously, invoking a callback when done
 -- @param DeleteJobQueueRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteJobQueueAsync(DeleteJobQueueRequest, cb)
@@ -2436,7 +2618,21 @@ function M.DeleteJobQueueAsync(DeleteJobQueueRequest, cb)
 	end
 end
 
---- DescribeJobs
+--- Call DeleteJobQueue synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteJobQueueRequest
+-- @return response
+-- @return error_message
+function M.DeleteJobQueueSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteJobQueueAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeJobs asynchronously, invoking a callback when done
 -- @param DescribeJobsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeJobsAsync(DescribeJobsRequest, cb)
@@ -2454,7 +2650,21 @@ function M.DescribeJobsAsync(DescribeJobsRequest, cb)
 	end
 end
 
---- TerminateJob
+--- Call DescribeJobs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeJobsRequest
+-- @return response
+-- @return error_message
+function M.DescribeJobsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeJobsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TerminateJob asynchronously, invoking a callback when done
 -- @param TerminateJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TerminateJobAsync(TerminateJobRequest, cb)
@@ -2470,6 +2680,20 @@ function M.TerminateJobAsync(TerminateJobRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call TerminateJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TerminateJobRequest
+-- @return response
+-- @return error_message
+function M.TerminateJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TerminateJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

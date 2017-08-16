@@ -313,7 +313,7 @@ end
 --
 -- OPERATIONS
 --
---- PutEvents
+--- Call PutEvents asynchronously, invoking a callback when done
 -- @param PutEventsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutEventsAsync(PutEventsInput, cb)
@@ -329,6 +329,20 @@ function M.PutEventsAsync(PutEventsInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call PutEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutEventsInput
+-- @return response
+-- @return error_message
+function M.PutEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

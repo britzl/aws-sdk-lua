@@ -7327,7 +7327,7 @@ end
 --
 -- OPERATIONS
 --
---- GetIdentityProviderByIdentifier
+--- Call GetIdentityProviderByIdentifier asynchronously, invoking a callback when done
 -- @param GetIdentityProviderByIdentifierRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIdentityProviderByIdentifierAsync(GetIdentityProviderByIdentifierRequest, cb)
@@ -7345,7 +7345,21 @@ function M.GetIdentityProviderByIdentifierAsync(GetIdentityProviderByIdentifierR
 	end
 end
 
---- ConfirmSignUp
+--- Call GetIdentityProviderByIdentifier synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIdentityProviderByIdentifierRequest
+-- @return response
+-- @return error_message
+function M.GetIdentityProviderByIdentifierSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIdentityProviderByIdentifierAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ConfirmSignUp asynchronously, invoking a callback when done
 -- @param ConfirmSignUpRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ConfirmSignUpAsync(ConfirmSignUpRequest, cb)
@@ -7363,7 +7377,21 @@ function M.ConfirmSignUpAsync(ConfirmSignUpRequest, cb)
 	end
 end
 
---- AdminDisableUser
+--- Call ConfirmSignUp synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ConfirmSignUpRequest
+-- @return response
+-- @return error_message
+function M.ConfirmSignUpSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ConfirmSignUpAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminDisableUser asynchronously, invoking a callback when done
 -- @param AdminDisableUserRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminDisableUserAsync(AdminDisableUserRequest, cb)
@@ -7381,7 +7409,21 @@ function M.AdminDisableUserAsync(AdminDisableUserRequest, cb)
 	end
 end
 
---- AdminListDevices
+--- Call AdminDisableUser synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminDisableUserRequest
+-- @return response
+-- @return error_message
+function M.AdminDisableUserSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminDisableUserAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminListDevices asynchronously, invoking a callback when done
 -- @param AdminListDevicesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminListDevicesAsync(AdminListDevicesRequest, cb)
@@ -7399,7 +7441,21 @@ function M.AdminListDevicesAsync(AdminListDevicesRequest, cb)
 	end
 end
 
---- AdminRemoveUserFromGroup
+--- Call AdminListDevices synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminListDevicesRequest
+-- @return response
+-- @return error_message
+function M.AdminListDevicesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminListDevicesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminRemoveUserFromGroup asynchronously, invoking a callback when done
 -- @param AdminRemoveUserFromGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminRemoveUserFromGroupAsync(AdminRemoveUserFromGroupRequest, cb)
@@ -7417,7 +7473,21 @@ function M.AdminRemoveUserFromGroupAsync(AdminRemoveUserFromGroupRequest, cb)
 	end
 end
 
---- ForgotPassword
+--- Call AdminRemoveUserFromGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminRemoveUserFromGroupRequest
+-- @return response
+-- @return error_message
+function M.AdminRemoveUserFromGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminRemoveUserFromGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ForgotPassword asynchronously, invoking a callback when done
 -- @param ForgotPasswordRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ForgotPasswordAsync(ForgotPasswordRequest, cb)
@@ -7435,7 +7505,21 @@ function M.ForgotPasswordAsync(ForgotPasswordRequest, cb)
 	end
 end
 
---- AdminUpdateUserAttributes
+--- Call ForgotPassword synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ForgotPasswordRequest
+-- @return response
+-- @return error_message
+function M.ForgotPasswordSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ForgotPasswordAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminUpdateUserAttributes asynchronously, invoking a callback when done
 -- @param AdminUpdateUserAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminUpdateUserAttributesAsync(AdminUpdateUserAttributesRequest, cb)
@@ -7453,7 +7537,21 @@ function M.AdminUpdateUserAttributesAsync(AdminUpdateUserAttributesRequest, cb)
 	end
 end
 
---- SignUp
+--- Call AdminUpdateUserAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminUpdateUserAttributesRequest
+-- @return response
+-- @return error_message
+function M.AdminUpdateUserAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminUpdateUserAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SignUp asynchronously, invoking a callback when done
 -- @param SignUpRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SignUpAsync(SignUpRequest, cb)
@@ -7471,7 +7569,21 @@ function M.SignUpAsync(SignUpRequest, cb)
 	end
 end
 
---- AdminCreateUser
+--- Call SignUp synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SignUpRequest
+-- @return response
+-- @return error_message
+function M.SignUpSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SignUpAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminCreateUser asynchronously, invoking a callback when done
 -- @param AdminCreateUserRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminCreateUserAsync(AdminCreateUserRequest, cb)
@@ -7489,7 +7601,21 @@ function M.AdminCreateUserAsync(AdminCreateUserRequest, cb)
 	end
 end
 
---- UpdateUserAttributes
+--- Call AdminCreateUser synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminCreateUserRequest
+-- @return response
+-- @return error_message
+function M.AdminCreateUserSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminCreateUserAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateUserAttributes asynchronously, invoking a callback when done
 -- @param UpdateUserAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateUserAttributesAsync(UpdateUserAttributesRequest, cb)
@@ -7507,7 +7633,21 @@ function M.UpdateUserAttributesAsync(UpdateUserAttributesRequest, cb)
 	end
 end
 
---- DescribeUserPoolDomain
+--- Call UpdateUserAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateUserAttributesRequest
+-- @return response
+-- @return error_message
+function M.UpdateUserAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateUserAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeUserPoolDomain asynchronously, invoking a callback when done
 -- @param DescribeUserPoolDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeUserPoolDomainAsync(DescribeUserPoolDomainRequest, cb)
@@ -7525,7 +7665,21 @@ function M.DescribeUserPoolDomainAsync(DescribeUserPoolDomainRequest, cb)
 	end
 end
 
---- ForgetDevice
+--- Call DescribeUserPoolDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeUserPoolDomainRequest
+-- @return response
+-- @return error_message
+function M.DescribeUserPoolDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeUserPoolDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ForgetDevice asynchronously, invoking a callback when done
 -- @param ForgetDeviceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ForgetDeviceAsync(ForgetDeviceRequest, cb)
@@ -7543,7 +7697,21 @@ function M.ForgetDeviceAsync(ForgetDeviceRequest, cb)
 	end
 end
 
---- DeleteIdentityProvider
+--- Call ForgetDevice synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ForgetDeviceRequest
+-- @return response
+-- @return error_message
+function M.ForgetDeviceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ForgetDeviceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteIdentityProvider asynchronously, invoking a callback when done
 -- @param DeleteIdentityProviderRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteIdentityProviderAsync(DeleteIdentityProviderRequest, cb)
@@ -7561,7 +7729,21 @@ function M.DeleteIdentityProviderAsync(DeleteIdentityProviderRequest, cb)
 	end
 end
 
---- ConfirmForgotPassword
+--- Call DeleteIdentityProvider synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteIdentityProviderRequest
+-- @return response
+-- @return error_message
+function M.DeleteIdentityProviderSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteIdentityProviderAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ConfirmForgotPassword asynchronously, invoking a callback when done
 -- @param ConfirmForgotPasswordRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ConfirmForgotPasswordAsync(ConfirmForgotPasswordRequest, cb)
@@ -7579,7 +7761,21 @@ function M.ConfirmForgotPasswordAsync(ConfirmForgotPasswordRequest, cb)
 	end
 end
 
---- CreateGroup
+--- Call ConfirmForgotPassword synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ConfirmForgotPasswordRequest
+-- @return response
+-- @return error_message
+function M.ConfirmForgotPasswordSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ConfirmForgotPasswordAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateGroup asynchronously, invoking a callback when done
 -- @param CreateGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateGroupAsync(CreateGroupRequest, cb)
@@ -7597,7 +7793,21 @@ function M.CreateGroupAsync(CreateGroupRequest, cb)
 	end
 end
 
---- VerifyUserAttribute
+--- Call CreateGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateGroupRequest
+-- @return response
+-- @return error_message
+function M.CreateGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call VerifyUserAttribute asynchronously, invoking a callback when done
 -- @param VerifyUserAttributeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.VerifyUserAttributeAsync(VerifyUserAttributeRequest, cb)
@@ -7615,7 +7825,21 @@ function M.VerifyUserAttributeAsync(VerifyUserAttributeRequest, cb)
 	end
 end
 
---- AdminResetUserPassword
+--- Call VerifyUserAttribute synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param VerifyUserAttributeRequest
+-- @return response
+-- @return error_message
+function M.VerifyUserAttributeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.VerifyUserAttributeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminResetUserPassword asynchronously, invoking a callback when done
 -- @param AdminResetUserPasswordRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminResetUserPasswordAsync(AdminResetUserPasswordRequest, cb)
@@ -7633,7 +7857,21 @@ function M.AdminResetUserPasswordAsync(AdminResetUserPasswordRequest, cb)
 	end
 end
 
---- DeleteUserPool
+--- Call AdminResetUserPassword synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminResetUserPasswordRequest
+-- @return response
+-- @return error_message
+function M.AdminResetUserPasswordSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminResetUserPasswordAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteUserPool asynchronously, invoking a callback when done
 -- @param DeleteUserPoolRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteUserPoolAsync(DeleteUserPoolRequest, cb)
@@ -7651,7 +7889,21 @@ function M.DeleteUserPoolAsync(DeleteUserPoolRequest, cb)
 	end
 end
 
---- AdminConfirmSignUp
+--- Call DeleteUserPool synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteUserPoolRequest
+-- @return response
+-- @return error_message
+function M.DeleteUserPoolSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteUserPoolAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminConfirmSignUp asynchronously, invoking a callback when done
 -- @param AdminConfirmSignUpRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminConfirmSignUpAsync(AdminConfirmSignUpRequest, cb)
@@ -7669,7 +7921,21 @@ function M.AdminConfirmSignUpAsync(AdminConfirmSignUpRequest, cb)
 	end
 end
 
---- UpdateUserPool
+--- Call AdminConfirmSignUp synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminConfirmSignUpRequest
+-- @return response
+-- @return error_message
+function M.AdminConfirmSignUpSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminConfirmSignUpAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateUserPool asynchronously, invoking a callback when done
 -- @param UpdateUserPoolRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateUserPoolAsync(UpdateUserPoolRequest, cb)
@@ -7687,7 +7953,21 @@ function M.UpdateUserPoolAsync(UpdateUserPoolRequest, cb)
 	end
 end
 
---- ListUserPoolClients
+--- Call UpdateUserPool synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateUserPoolRequest
+-- @return response
+-- @return error_message
+function M.UpdateUserPoolSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateUserPoolAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListUserPoolClients asynchronously, invoking a callback when done
 -- @param ListUserPoolClientsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListUserPoolClientsAsync(ListUserPoolClientsRequest, cb)
@@ -7705,7 +7985,21 @@ function M.ListUserPoolClientsAsync(ListUserPoolClientsRequest, cb)
 	end
 end
 
---- DescribeUserPool
+--- Call ListUserPoolClients synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListUserPoolClientsRequest
+-- @return response
+-- @return error_message
+function M.ListUserPoolClientsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListUserPoolClientsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeUserPool asynchronously, invoking a callback when done
 -- @param DescribeUserPoolRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeUserPoolAsync(DescribeUserPoolRequest, cb)
@@ -7723,7 +8017,21 @@ function M.DescribeUserPoolAsync(DescribeUserPoolRequest, cb)
 	end
 end
 
---- StopUserImportJob
+--- Call DescribeUserPool synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeUserPoolRequest
+-- @return response
+-- @return error_message
+function M.DescribeUserPoolSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeUserPoolAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopUserImportJob asynchronously, invoking a callback when done
 -- @param StopUserImportJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopUserImportJobAsync(StopUserImportJobRequest, cb)
@@ -7741,7 +8049,21 @@ function M.StopUserImportJobAsync(StopUserImportJobRequest, cb)
 	end
 end
 
---- ListUserPools
+--- Call StopUserImportJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopUserImportJobRequest
+-- @return response
+-- @return error_message
+function M.StopUserImportJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopUserImportJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListUserPools asynchronously, invoking a callback when done
 -- @param ListUserPoolsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListUserPoolsAsync(ListUserPoolsRequest, cb)
@@ -7759,7 +8081,21 @@ function M.ListUserPoolsAsync(ListUserPoolsRequest, cb)
 	end
 end
 
---- AdminUserGlobalSignOut
+--- Call ListUserPools synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListUserPoolsRequest
+-- @return response
+-- @return error_message
+function M.ListUserPoolsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListUserPoolsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminUserGlobalSignOut asynchronously, invoking a callback when done
 -- @param AdminUserGlobalSignOutRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminUserGlobalSignOutAsync(AdminUserGlobalSignOutRequest, cb)
@@ -7777,7 +8113,21 @@ function M.AdminUserGlobalSignOutAsync(AdminUserGlobalSignOutRequest, cb)
 	end
 end
 
---- DeleteUserPoolDomain
+--- Call AdminUserGlobalSignOut synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminUserGlobalSignOutRequest
+-- @return response
+-- @return error_message
+function M.AdminUserGlobalSignOutSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminUserGlobalSignOutAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteUserPoolDomain asynchronously, invoking a callback when done
 -- @param DeleteUserPoolDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteUserPoolDomainAsync(DeleteUserPoolDomainRequest, cb)
@@ -7795,7 +8145,21 @@ function M.DeleteUserPoolDomainAsync(DeleteUserPoolDomainRequest, cb)
 	end
 end
 
---- AdminGetDevice
+--- Call DeleteUserPoolDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteUserPoolDomainRequest
+-- @return response
+-- @return error_message
+function M.DeleteUserPoolDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteUserPoolDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminGetDevice asynchronously, invoking a callback when done
 -- @param AdminGetDeviceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminGetDeviceAsync(AdminGetDeviceRequest, cb)
@@ -7813,7 +8177,21 @@ function M.AdminGetDeviceAsync(AdminGetDeviceRequest, cb)
 	end
 end
 
---- DeleteGroup
+--- Call AdminGetDevice synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminGetDeviceRequest
+-- @return response
+-- @return error_message
+function M.AdminGetDeviceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminGetDeviceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteGroup asynchronously, invoking a callback when done
 -- @param DeleteGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteGroupAsync(DeleteGroupRequest, cb)
@@ -7831,7 +8209,21 @@ function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 	end
 end
 
---- ResendConfirmationCode
+--- Call DeleteGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteGroupRequest
+-- @return response
+-- @return error_message
+function M.DeleteGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ResendConfirmationCode asynchronously, invoking a callback when done
 -- @param ResendConfirmationCodeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ResendConfirmationCodeAsync(ResendConfirmationCodeRequest, cb)
@@ -7849,7 +8241,21 @@ function M.ResendConfirmationCodeAsync(ResendConfirmationCodeRequest, cb)
 	end
 end
 
---- GetUserAttributeVerificationCode
+--- Call ResendConfirmationCode synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResendConfirmationCodeRequest
+-- @return response
+-- @return error_message
+function M.ResendConfirmationCodeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResendConfirmationCodeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetUserAttributeVerificationCode asynchronously, invoking a callback when done
 -- @param GetUserAttributeVerificationCodeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetUserAttributeVerificationCodeAsync(GetUserAttributeVerificationCodeRequest, cb)
@@ -7867,7 +8273,21 @@ function M.GetUserAttributeVerificationCodeAsync(GetUserAttributeVerificationCod
 	end
 end
 
---- GetUser
+--- Call GetUserAttributeVerificationCode synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetUserAttributeVerificationCodeRequest
+-- @return response
+-- @return error_message
+function M.GetUserAttributeVerificationCodeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetUserAttributeVerificationCodeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetUser asynchronously, invoking a callback when done
 -- @param GetUserRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetUserAsync(GetUserRequest, cb)
@@ -7885,7 +8305,21 @@ function M.GetUserAsync(GetUserRequest, cb)
 	end
 end
 
---- ConfirmDevice
+--- Call GetUser synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetUserRequest
+-- @return response
+-- @return error_message
+function M.GetUserSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetUserAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ConfirmDevice asynchronously, invoking a callback when done
 -- @param ConfirmDeviceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ConfirmDeviceAsync(ConfirmDeviceRequest, cb)
@@ -7903,7 +8337,21 @@ function M.ConfirmDeviceAsync(ConfirmDeviceRequest, cb)
 	end
 end
 
---- ChangePassword
+--- Call ConfirmDevice synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ConfirmDeviceRequest
+-- @return response
+-- @return error_message
+function M.ConfirmDeviceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ConfirmDeviceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ChangePassword asynchronously, invoking a callback when done
 -- @param ChangePasswordRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ChangePasswordAsync(ChangePasswordRequest, cb)
@@ -7921,7 +8369,21 @@ function M.ChangePasswordAsync(ChangePasswordRequest, cb)
 	end
 end
 
---- GetCSVHeader
+--- Call ChangePassword synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ChangePasswordRequest
+-- @return response
+-- @return error_message
+function M.ChangePasswordSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ChangePasswordAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCSVHeader asynchronously, invoking a callback when done
 -- @param GetCSVHeaderRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCSVHeaderAsync(GetCSVHeaderRequest, cb)
@@ -7939,7 +8401,21 @@ function M.GetCSVHeaderAsync(GetCSVHeaderRequest, cb)
 	end
 end
 
---- ListUsers
+--- Call GetCSVHeader synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCSVHeaderRequest
+-- @return response
+-- @return error_message
+function M.GetCSVHeaderSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCSVHeaderAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListUsers asynchronously, invoking a callback when done
 -- @param ListUsersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListUsersAsync(ListUsersRequest, cb)
@@ -7957,7 +8433,21 @@ function M.ListUsersAsync(ListUsersRequest, cb)
 	end
 end
 
---- AdminUpdateDeviceStatus
+--- Call ListUsers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListUsersRequest
+-- @return response
+-- @return error_message
+function M.ListUsersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListUsersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminUpdateDeviceStatus asynchronously, invoking a callback when done
 -- @param AdminUpdateDeviceStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminUpdateDeviceStatusAsync(AdminUpdateDeviceStatusRequest, cb)
@@ -7975,7 +8465,21 @@ function M.AdminUpdateDeviceStatusAsync(AdminUpdateDeviceStatusRequest, cb)
 	end
 end
 
---- DescribeIdentityProvider
+--- Call AdminUpdateDeviceStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminUpdateDeviceStatusRequest
+-- @return response
+-- @return error_message
+function M.AdminUpdateDeviceStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminUpdateDeviceStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeIdentityProvider asynchronously, invoking a callback when done
 -- @param DescribeIdentityProviderRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeIdentityProviderAsync(DescribeIdentityProviderRequest, cb)
@@ -7993,7 +8497,21 @@ function M.DescribeIdentityProviderAsync(DescribeIdentityProviderRequest, cb)
 	end
 end
 
---- DeleteUserAttributes
+--- Call DescribeIdentityProvider synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeIdentityProviderRequest
+-- @return response
+-- @return error_message
+function M.DescribeIdentityProviderSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeIdentityProviderAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteUserAttributes asynchronously, invoking a callback when done
 -- @param DeleteUserAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteUserAttributesAsync(DeleteUserAttributesRequest, cb)
@@ -8011,7 +8529,21 @@ function M.DeleteUserAttributesAsync(DeleteUserAttributesRequest, cb)
 	end
 end
 
---- UpdateIdentityProvider
+--- Call DeleteUserAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteUserAttributesRequest
+-- @return response
+-- @return error_message
+function M.DeleteUserAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteUserAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateIdentityProvider asynchronously, invoking a callback when done
 -- @param UpdateIdentityProviderRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateIdentityProviderAsync(UpdateIdentityProviderRequest, cb)
@@ -8029,7 +8561,21 @@ function M.UpdateIdentityProviderAsync(UpdateIdentityProviderRequest, cb)
 	end
 end
 
---- GetGroup
+--- Call UpdateIdentityProvider synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateIdentityProviderRequest
+-- @return response
+-- @return error_message
+function M.UpdateIdentityProviderSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateIdentityProviderAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetGroup asynchronously, invoking a callback when done
 -- @param GetGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetGroupAsync(GetGroupRequest, cb)
@@ -8047,7 +8593,21 @@ function M.GetGroupAsync(GetGroupRequest, cb)
 	end
 end
 
---- AdminEnableUser
+--- Call GetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetGroupRequest
+-- @return response
+-- @return error_message
+function M.GetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminEnableUser asynchronously, invoking a callback when done
 -- @param AdminEnableUserRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminEnableUserAsync(AdminEnableUserRequest, cb)
@@ -8065,7 +8625,21 @@ function M.AdminEnableUserAsync(AdminEnableUserRequest, cb)
 	end
 end
 
---- UpdateUserPoolClient
+--- Call AdminEnableUser synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminEnableUserRequest
+-- @return response
+-- @return error_message
+function M.AdminEnableUserSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminEnableUserAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateUserPoolClient asynchronously, invoking a callback when done
 -- @param UpdateUserPoolClientRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateUserPoolClientAsync(UpdateUserPoolClientRequest, cb)
@@ -8083,7 +8657,21 @@ function M.UpdateUserPoolClientAsync(UpdateUserPoolClientRequest, cb)
 	end
 end
 
---- AddCustomAttributes
+--- Call UpdateUserPoolClient synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateUserPoolClientRequest
+-- @return response
+-- @return error_message
+function M.UpdateUserPoolClientSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateUserPoolClientAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddCustomAttributes asynchronously, invoking a callback when done
 -- @param AddCustomAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddCustomAttributesAsync(AddCustomAttributesRequest, cb)
@@ -8101,7 +8689,21 @@ function M.AddCustomAttributesAsync(AddCustomAttributesRequest, cb)
 	end
 end
 
---- AdminForgetDevice
+--- Call AddCustomAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddCustomAttributesRequest
+-- @return response
+-- @return error_message
+function M.AddCustomAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddCustomAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminForgetDevice asynchronously, invoking a callback when done
 -- @param AdminForgetDeviceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminForgetDeviceAsync(AdminForgetDeviceRequest, cb)
@@ -8119,7 +8721,21 @@ function M.AdminForgetDeviceAsync(AdminForgetDeviceRequest, cb)
 	end
 end
 
---- CreateUserPoolClient
+--- Call AdminForgetDevice synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminForgetDeviceRequest
+-- @return response
+-- @return error_message
+function M.AdminForgetDeviceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminForgetDeviceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateUserPoolClient asynchronously, invoking a callback when done
 -- @param CreateUserPoolClientRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateUserPoolClientAsync(CreateUserPoolClientRequest, cb)
@@ -8137,7 +8753,21 @@ function M.CreateUserPoolClientAsync(CreateUserPoolClientRequest, cb)
 	end
 end
 
---- AdminListGroupsForUser
+--- Call CreateUserPoolClient synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateUserPoolClientRequest
+-- @return response
+-- @return error_message
+function M.CreateUserPoolClientSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateUserPoolClientAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminListGroupsForUser asynchronously, invoking a callback when done
 -- @param AdminListGroupsForUserRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminListGroupsForUserAsync(AdminListGroupsForUserRequest, cb)
@@ -8155,7 +8785,21 @@ function M.AdminListGroupsForUserAsync(AdminListGroupsForUserRequest, cb)
 	end
 end
 
---- ListGroups
+--- Call AdminListGroupsForUser synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminListGroupsForUserRequest
+-- @return response
+-- @return error_message
+function M.AdminListGroupsForUserSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminListGroupsForUserAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListGroups asynchronously, invoking a callback when done
 -- @param ListGroupsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListGroupsAsync(ListGroupsRequest, cb)
@@ -8173,7 +8817,21 @@ function M.ListGroupsAsync(ListGroupsRequest, cb)
 	end
 end
 
---- DescribeUserPoolClient
+--- Call ListGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListGroupsRequest
+-- @return response
+-- @return error_message
+function M.ListGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeUserPoolClient asynchronously, invoking a callback when done
 -- @param DescribeUserPoolClientRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeUserPoolClientAsync(DescribeUserPoolClientRequest, cb)
@@ -8191,7 +8849,21 @@ function M.DescribeUserPoolClientAsync(DescribeUserPoolClientRequest, cb)
 	end
 end
 
---- AdminDeleteUser
+--- Call DescribeUserPoolClient synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeUserPoolClientRequest
+-- @return response
+-- @return error_message
+function M.DescribeUserPoolClientSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeUserPoolClientAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminDeleteUser asynchronously, invoking a callback when done
 -- @param AdminDeleteUserRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminDeleteUserAsync(AdminDeleteUserRequest, cb)
@@ -8209,7 +8881,21 @@ function M.AdminDeleteUserAsync(AdminDeleteUserRequest, cb)
 	end
 end
 
---- AdminInitiateAuth
+--- Call AdminDeleteUser synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminDeleteUserRequest
+-- @return response
+-- @return error_message
+function M.AdminDeleteUserSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminDeleteUserAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminInitiateAuth asynchronously, invoking a callback when done
 -- @param AdminInitiateAuthRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminInitiateAuthAsync(AdminInitiateAuthRequest, cb)
@@ -8227,7 +8913,21 @@ function M.AdminInitiateAuthAsync(AdminInitiateAuthRequest, cb)
 	end
 end
 
---- AdminGetUser
+--- Call AdminInitiateAuth synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminInitiateAuthRequest
+-- @return response
+-- @return error_message
+function M.AdminInitiateAuthSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminInitiateAuthAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminGetUser asynchronously, invoking a callback when done
 -- @param AdminGetUserRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminGetUserAsync(AdminGetUserRequest, cb)
@@ -8245,7 +8945,21 @@ function M.AdminGetUserAsync(AdminGetUserRequest, cb)
 	end
 end
 
---- UpdateDeviceStatus
+--- Call AdminGetUser synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminGetUserRequest
+-- @return response
+-- @return error_message
+function M.AdminGetUserSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminGetUserAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateDeviceStatus asynchronously, invoking a callback when done
 -- @param UpdateDeviceStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateDeviceStatusAsync(UpdateDeviceStatusRequest, cb)
@@ -8263,7 +8977,21 @@ function M.UpdateDeviceStatusAsync(UpdateDeviceStatusRequest, cb)
 	end
 end
 
---- ListUserImportJobs
+--- Call UpdateDeviceStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateDeviceStatusRequest
+-- @return response
+-- @return error_message
+function M.UpdateDeviceStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateDeviceStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListUserImportJobs asynchronously, invoking a callback when done
 -- @param ListUserImportJobsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListUserImportJobsAsync(ListUserImportJobsRequest, cb)
@@ -8281,7 +9009,21 @@ function M.ListUserImportJobsAsync(ListUserImportJobsRequest, cb)
 	end
 end
 
---- ListDevices
+--- Call ListUserImportJobs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListUserImportJobsRequest
+-- @return response
+-- @return error_message
+function M.ListUserImportJobsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListUserImportJobsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDevices asynchronously, invoking a callback when done
 -- @param ListDevicesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDevicesAsync(ListDevicesRequest, cb)
@@ -8299,7 +9041,21 @@ function M.ListDevicesAsync(ListDevicesRequest, cb)
 	end
 end
 
---- GetDevice
+--- Call ListDevices synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDevicesRequest
+-- @return response
+-- @return error_message
+function M.ListDevicesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDevicesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDevice asynchronously, invoking a callback when done
 -- @param GetDeviceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDeviceAsync(GetDeviceRequest, cb)
@@ -8317,7 +9073,21 @@ function M.GetDeviceAsync(GetDeviceRequest, cb)
 	end
 end
 
---- ListUsersInGroup
+--- Call GetDevice synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDeviceRequest
+-- @return response
+-- @return error_message
+function M.GetDeviceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDeviceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListUsersInGroup asynchronously, invoking a callback when done
 -- @param ListUsersInGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListUsersInGroupAsync(ListUsersInGroupRequest, cb)
@@ -8335,7 +9105,21 @@ function M.ListUsersInGroupAsync(ListUsersInGroupRequest, cb)
 	end
 end
 
---- GlobalSignOut
+--- Call ListUsersInGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListUsersInGroupRequest
+-- @return response
+-- @return error_message
+function M.ListUsersInGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListUsersInGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GlobalSignOut asynchronously, invoking a callback when done
 -- @param GlobalSignOutRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GlobalSignOutAsync(GlobalSignOutRequest, cb)
@@ -8353,7 +9137,21 @@ function M.GlobalSignOutAsync(GlobalSignOutRequest, cb)
 	end
 end
 
---- CreateUserImportJob
+--- Call GlobalSignOut synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GlobalSignOutRequest
+-- @return response
+-- @return error_message
+function M.GlobalSignOutSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GlobalSignOutAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateUserImportJob asynchronously, invoking a callback when done
 -- @param CreateUserImportJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateUserImportJobAsync(CreateUserImportJobRequest, cb)
@@ -8371,7 +9169,21 @@ function M.CreateUserImportJobAsync(CreateUserImportJobRequest, cb)
 	end
 end
 
---- AdminSetUserSettings
+--- Call CreateUserImportJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateUserImportJobRequest
+-- @return response
+-- @return error_message
+function M.CreateUserImportJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateUserImportJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminSetUserSettings asynchronously, invoking a callback when done
 -- @param AdminSetUserSettingsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminSetUserSettingsAsync(AdminSetUserSettingsRequest, cb)
@@ -8389,7 +9201,21 @@ function M.AdminSetUserSettingsAsync(AdminSetUserSettingsRequest, cb)
 	end
 end
 
---- DeleteUser
+--- Call AdminSetUserSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminSetUserSettingsRequest
+-- @return response
+-- @return error_message
+function M.AdminSetUserSettingsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminSetUserSettingsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteUser asynchronously, invoking a callback when done
 -- @param DeleteUserRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteUserAsync(DeleteUserRequest, cb)
@@ -8407,7 +9233,21 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 	end
 end
 
---- InitiateAuth
+--- Call DeleteUser synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteUserRequest
+-- @return response
+-- @return error_message
+function M.DeleteUserSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteUserAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call InitiateAuth asynchronously, invoking a callback when done
 -- @param InitiateAuthRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.InitiateAuthAsync(InitiateAuthRequest, cb)
@@ -8425,7 +9265,21 @@ function M.InitiateAuthAsync(InitiateAuthRequest, cb)
 	end
 end
 
---- ListIdentityProviders
+--- Call InitiateAuth synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param InitiateAuthRequest
+-- @return response
+-- @return error_message
+function M.InitiateAuthSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.InitiateAuthAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListIdentityProviders asynchronously, invoking a callback when done
 -- @param ListIdentityProvidersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListIdentityProvidersAsync(ListIdentityProvidersRequest, cb)
@@ -8443,7 +9297,21 @@ function M.ListIdentityProvidersAsync(ListIdentityProvidersRequest, cb)
 	end
 end
 
---- SetUserSettings
+--- Call ListIdentityProviders synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListIdentityProvidersRequest
+-- @return response
+-- @return error_message
+function M.ListIdentityProvidersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListIdentityProvidersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetUserSettings asynchronously, invoking a callback when done
 -- @param SetUserSettingsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetUserSettingsAsync(SetUserSettingsRequest, cb)
@@ -8461,7 +9329,21 @@ function M.SetUserSettingsAsync(SetUserSettingsRequest, cb)
 	end
 end
 
---- CreateUserPoolDomain
+--- Call SetUserSettings synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetUserSettingsRequest
+-- @return response
+-- @return error_message
+function M.SetUserSettingsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetUserSettingsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateUserPoolDomain asynchronously, invoking a callback when done
 -- @param CreateUserPoolDomainRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateUserPoolDomainAsync(CreateUserPoolDomainRequest, cb)
@@ -8479,7 +9361,21 @@ function M.CreateUserPoolDomainAsync(CreateUserPoolDomainRequest, cb)
 	end
 end
 
---- RespondToAuthChallenge
+--- Call CreateUserPoolDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateUserPoolDomainRequest
+-- @return response
+-- @return error_message
+function M.CreateUserPoolDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateUserPoolDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RespondToAuthChallenge asynchronously, invoking a callback when done
 -- @param RespondToAuthChallengeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RespondToAuthChallengeAsync(RespondToAuthChallengeRequest, cb)
@@ -8497,7 +9393,21 @@ function M.RespondToAuthChallengeAsync(RespondToAuthChallengeRequest, cb)
 	end
 end
 
---- StartUserImportJob
+--- Call RespondToAuthChallenge synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RespondToAuthChallengeRequest
+-- @return response
+-- @return error_message
+function M.RespondToAuthChallengeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RespondToAuthChallengeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartUserImportJob asynchronously, invoking a callback when done
 -- @param StartUserImportJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartUserImportJobAsync(StartUserImportJobRequest, cb)
@@ -8515,7 +9425,21 @@ function M.StartUserImportJobAsync(StartUserImportJobRequest, cb)
 	end
 end
 
---- DescribeUserImportJob
+--- Call StartUserImportJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartUserImportJobRequest
+-- @return response
+-- @return error_message
+function M.StartUserImportJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartUserImportJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeUserImportJob asynchronously, invoking a callback when done
 -- @param DescribeUserImportJobRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeUserImportJobAsync(DescribeUserImportJobRequest, cb)
@@ -8533,7 +9457,21 @@ function M.DescribeUserImportJobAsync(DescribeUserImportJobRequest, cb)
 	end
 end
 
---- UpdateGroup
+--- Call DescribeUserImportJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeUserImportJobRequest
+-- @return response
+-- @return error_message
+function M.DescribeUserImportJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeUserImportJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateGroup asynchronously, invoking a callback when done
 -- @param UpdateGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateGroupAsync(UpdateGroupRequest, cb)
@@ -8551,7 +9489,21 @@ function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 	end
 end
 
---- AdminAddUserToGroup
+--- Call UpdateGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateGroupRequest
+-- @return response
+-- @return error_message
+function M.UpdateGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminAddUserToGroup asynchronously, invoking a callback when done
 -- @param AdminAddUserToGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminAddUserToGroupAsync(AdminAddUserToGroupRequest, cb)
@@ -8569,7 +9521,21 @@ function M.AdminAddUserToGroupAsync(AdminAddUserToGroupRequest, cb)
 	end
 end
 
---- CreateUserPool
+--- Call AdminAddUserToGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminAddUserToGroupRequest
+-- @return response
+-- @return error_message
+function M.AdminAddUserToGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminAddUserToGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateUserPool asynchronously, invoking a callback when done
 -- @param CreateUserPoolRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateUserPoolAsync(CreateUserPoolRequest, cb)
@@ -8587,7 +9553,21 @@ function M.CreateUserPoolAsync(CreateUserPoolRequest, cb)
 	end
 end
 
---- AdminDeleteUserAttributes
+--- Call CreateUserPool synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateUserPoolRequest
+-- @return response
+-- @return error_message
+function M.CreateUserPoolSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateUserPoolAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminDeleteUserAttributes asynchronously, invoking a callback when done
 -- @param AdminDeleteUserAttributesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminDeleteUserAttributesAsync(AdminDeleteUserAttributesRequest, cb)
@@ -8605,7 +9585,21 @@ function M.AdminDeleteUserAttributesAsync(AdminDeleteUserAttributesRequest, cb)
 	end
 end
 
---- DeleteUserPoolClient
+--- Call AdminDeleteUserAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminDeleteUserAttributesRequest
+-- @return response
+-- @return error_message
+function M.AdminDeleteUserAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminDeleteUserAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteUserPoolClient asynchronously, invoking a callback when done
 -- @param DeleteUserPoolClientRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteUserPoolClientAsync(DeleteUserPoolClientRequest, cb)
@@ -8623,7 +9617,21 @@ function M.DeleteUserPoolClientAsync(DeleteUserPoolClientRequest, cb)
 	end
 end
 
---- AdminRespondToAuthChallenge
+--- Call DeleteUserPoolClient synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteUserPoolClientRequest
+-- @return response
+-- @return error_message
+function M.DeleteUserPoolClientSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteUserPoolClientAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AdminRespondToAuthChallenge asynchronously, invoking a callback when done
 -- @param AdminRespondToAuthChallengeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AdminRespondToAuthChallengeAsync(AdminRespondToAuthChallengeRequest, cb)
@@ -8641,7 +9649,21 @@ function M.AdminRespondToAuthChallengeAsync(AdminRespondToAuthChallengeRequest, 
 	end
 end
 
---- CreateIdentityProvider
+--- Call AdminRespondToAuthChallenge synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AdminRespondToAuthChallengeRequest
+-- @return response
+-- @return error_message
+function M.AdminRespondToAuthChallengeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AdminRespondToAuthChallengeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateIdentityProvider asynchronously, invoking a callback when done
 -- @param CreateIdentityProviderRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateIdentityProviderAsync(CreateIdentityProviderRequest, cb)
@@ -8657,6 +9679,20 @@ function M.CreateIdentityProviderAsync(CreateIdentityProviderRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call CreateIdentityProvider synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateIdentityProviderRequest
+-- @return response
+-- @return error_message
+function M.CreateIdentityProviderSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateIdentityProviderAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

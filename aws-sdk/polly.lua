@@ -1131,7 +1131,7 @@ end
 --
 -- OPERATIONS
 --
---- DescribeVoices
+--- Call DescribeVoices asynchronously, invoking a callback when done
 -- @param DescribeVoicesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeVoicesAsync(DescribeVoicesInput, cb)
@@ -1149,7 +1149,21 @@ function M.DescribeVoicesAsync(DescribeVoicesInput, cb)
 	end
 end
 
---- GetLexicon
+--- Call DescribeVoices synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeVoicesInput
+-- @return response
+-- @return error_message
+function M.DescribeVoicesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeVoicesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetLexicon asynchronously, invoking a callback when done
 -- @param GetLexiconInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetLexiconAsync(GetLexiconInput, cb)
@@ -1167,7 +1181,21 @@ function M.GetLexiconAsync(GetLexiconInput, cb)
 	end
 end
 
---- PutLexicon
+--- Call GetLexicon synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetLexiconInput
+-- @return response
+-- @return error_message
+function M.GetLexiconSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetLexiconAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutLexicon asynchronously, invoking a callback when done
 -- @param PutLexiconInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutLexiconAsync(PutLexiconInput, cb)
@@ -1185,7 +1213,21 @@ function M.PutLexiconAsync(PutLexiconInput, cb)
 	end
 end
 
---- ListLexicons
+--- Call PutLexicon synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutLexiconInput
+-- @return response
+-- @return error_message
+function M.PutLexiconSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutLexiconAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListLexicons asynchronously, invoking a callback when done
 -- @param ListLexiconsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListLexiconsAsync(ListLexiconsInput, cb)
@@ -1203,7 +1245,21 @@ function M.ListLexiconsAsync(ListLexiconsInput, cb)
 	end
 end
 
---- SynthesizeSpeech
+--- Call ListLexicons synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListLexiconsInput
+-- @return response
+-- @return error_message
+function M.ListLexiconsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListLexiconsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SynthesizeSpeech asynchronously, invoking a callback when done
 -- @param SynthesizeSpeechInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SynthesizeSpeechAsync(SynthesizeSpeechInput, cb)
@@ -1221,7 +1277,21 @@ function M.SynthesizeSpeechAsync(SynthesizeSpeechInput, cb)
 	end
 end
 
---- DeleteLexicon
+--- Call SynthesizeSpeech synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SynthesizeSpeechInput
+-- @return response
+-- @return error_message
+function M.SynthesizeSpeechSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SynthesizeSpeechAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteLexicon asynchronously, invoking a callback when done
 -- @param DeleteLexiconInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteLexiconAsync(DeleteLexiconInput, cb)
@@ -1237,6 +1307,20 @@ function M.DeleteLexiconAsync(DeleteLexiconInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DeleteLexicon synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteLexiconInput
+-- @return response
+-- @return error_message
+function M.DeleteLexiconSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteLexiconAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

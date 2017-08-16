@@ -2904,7 +2904,7 @@ end
 --
 -- OPERATIONS
 --
---- DescribeVirtualGateways
+--- Call DescribeVirtualGateways asynchronously, invoking a callback when done
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeVirtualGatewaysAsync(cb)
 	local headers = {
@@ -2920,7 +2920,20 @@ function M.DescribeVirtualGatewaysAsync(cb)
 	end
 end
 
---- CreateBGPPeer
+--- Call DescribeVirtualGateways synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @return response
+-- @return error_message
+function M.DescribeVirtualGatewaysSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeVirtualGatewaysAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateBGPPeer asynchronously, invoking a callback when done
 -- @param CreateBGPPeerRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateBGPPeerAsync(CreateBGPPeerRequest, cb)
@@ -2938,7 +2951,21 @@ function M.CreateBGPPeerAsync(CreateBGPPeerRequest, cb)
 	end
 end
 
---- AllocateHostedConnection
+--- Call CreateBGPPeer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateBGPPeerRequest
+-- @return response
+-- @return error_message
+function M.CreateBGPPeerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateBGPPeerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AllocateHostedConnection asynchronously, invoking a callback when done
 -- @param AllocateHostedConnectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, cb)
@@ -2956,7 +2983,21 @@ function M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, cb)
 	end
 end
 
---- AssociateHostedConnection
+--- Call AllocateHostedConnection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AllocateHostedConnectionRequest
+-- @return response
+-- @return error_message
+function M.AllocateHostedConnectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AllocateHostedConnectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateHostedConnection asynchronously, invoking a callback when done
 -- @param AssociateHostedConnectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, cb)
@@ -2974,7 +3015,21 @@ function M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, cb)
 	end
 end
 
---- AllocatePublicVirtualInterface
+--- Call AssociateHostedConnection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateHostedConnectionRequest
+-- @return response
+-- @return error_message
+function M.AssociateHostedConnectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateHostedConnectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AllocatePublicVirtualInterface asynchronously, invoking a callback when done
 -- @param AllocatePublicVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceRequest, cb)
@@ -2992,7 +3047,21 @@ function M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceReq
 	end
 end
 
---- DeleteVirtualInterface
+--- Call AllocatePublicVirtualInterface synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AllocatePublicVirtualInterfaceRequest
+-- @return response
+-- @return error_message
+function M.AllocatePublicVirtualInterfaceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AllocatePublicVirtualInterfaceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteVirtualInterface asynchronously, invoking a callback when done
 -- @param DeleteVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, cb)
@@ -3010,7 +3079,21 @@ function M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, cb)
 	end
 end
 
---- CreateInterconnect
+--- Call DeleteVirtualInterface synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteVirtualInterfaceRequest
+-- @return response
+-- @return error_message
+function M.DeleteVirtualInterfaceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteVirtualInterfaceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateInterconnect asynchronously, invoking a callback when done
 -- @param CreateInterconnectRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateInterconnectAsync(CreateInterconnectRequest, cb)
@@ -3028,7 +3111,21 @@ function M.CreateInterconnectAsync(CreateInterconnectRequest, cb)
 	end
 end
 
---- DescribeLags
+--- Call CreateInterconnect synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateInterconnectRequest
+-- @return response
+-- @return error_message
+function M.CreateInterconnectSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateInterconnectAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLags asynchronously, invoking a callback when done
 -- @param DescribeLagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLagsAsync(DescribeLagsRequest, cb)
@@ -3046,7 +3143,21 @@ function M.DescribeLagsAsync(DescribeLagsRequest, cb)
 	end
 end
 
---- DeleteBGPPeer
+--- Call DescribeLags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeLagsRequest
+-- @return response
+-- @return error_message
+function M.DescribeLagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteBGPPeer asynchronously, invoking a callback when done
 -- @param DeleteBGPPeerRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, cb)
@@ -3064,7 +3175,21 @@ function M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, cb)
 	end
 end
 
---- AllocatePrivateVirtualInterface
+--- Call DeleteBGPPeer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteBGPPeerRequest
+-- @return response
+-- @return error_message
+function M.DeleteBGPPeerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteBGPPeerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AllocatePrivateVirtualInterface asynchronously, invoking a callback when done
 -- @param AllocatePrivateVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceRequest, cb)
@@ -3082,7 +3207,21 @@ function M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceR
 	end
 end
 
---- AssociateConnectionWithLag
+--- Call AllocatePrivateVirtualInterface synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AllocatePrivateVirtualInterfaceRequest
+-- @return response
+-- @return error_message
+function M.AllocatePrivateVirtualInterfaceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AllocatePrivateVirtualInterfaceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateConnectionWithLag asynchronously, invoking a callback when done
 -- @param AssociateConnectionWithLagRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, cb)
@@ -3100,7 +3239,21 @@ function M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, cb
 	end
 end
 
---- CreateLag
+--- Call AssociateConnectionWithLag synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateConnectionWithLagRequest
+-- @return response
+-- @return error_message
+function M.AssociateConnectionWithLagSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateConnectionWithLagAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateLag asynchronously, invoking a callback when done
 -- @param CreateLagRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateLagAsync(CreateLagRequest, cb)
@@ -3118,7 +3271,21 @@ function M.CreateLagAsync(CreateLagRequest, cb)
 	end
 end
 
---- ConfirmPublicVirtualInterface
+--- Call CreateLag synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateLagRequest
+-- @return response
+-- @return error_message
+function M.CreateLagSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateLagAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ConfirmPublicVirtualInterface asynchronously, invoking a callback when done
 -- @param ConfirmPublicVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceRequest, cb)
@@ -3136,7 +3303,21 @@ function M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceReque
 	end
 end
 
---- DescribeLoa
+--- Call ConfirmPublicVirtualInterface synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ConfirmPublicVirtualInterfaceRequest
+-- @return response
+-- @return error_message
+function M.ConfirmPublicVirtualInterfaceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ConfirmPublicVirtualInterfaceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLoa asynchronously, invoking a callback when done
 -- @param DescribeLoaRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLoaAsync(DescribeLoaRequest, cb)
@@ -3154,7 +3335,21 @@ function M.DescribeLoaAsync(DescribeLoaRequest, cb)
 	end
 end
 
---- DescribeHostedConnections
+--- Call DescribeLoa synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeLoaRequest
+-- @return response
+-- @return error_message
+function M.DescribeLoaSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLoaAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeHostedConnections asynchronously, invoking a callback when done
 -- @param DescribeHostedConnectionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, cb)
@@ -3172,7 +3367,21 @@ function M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, cb)
 	end
 end
 
---- DeleteInterconnect
+--- Call DescribeHostedConnections synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeHostedConnectionsRequest
+-- @return response
+-- @return error_message
+function M.DescribeHostedConnectionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeHostedConnectionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteInterconnect asynchronously, invoking a callback when done
 -- @param DeleteInterconnectRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteInterconnectAsync(DeleteInterconnectRequest, cb)
@@ -3190,7 +3399,21 @@ function M.DeleteInterconnectAsync(DeleteInterconnectRequest, cb)
 	end
 end
 
---- DescribeVirtualInterfaces
+--- Call DeleteInterconnect synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteInterconnectRequest
+-- @return response
+-- @return error_message
+function M.DeleteInterconnectSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteInterconnectAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeVirtualInterfaces asynchronously, invoking a callback when done
 -- @param DescribeVirtualInterfacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, cb)
@@ -3208,7 +3431,21 @@ function M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, cb)
 	end
 end
 
---- UpdateLag
+--- Call DescribeVirtualInterfaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeVirtualInterfacesRequest
+-- @return response
+-- @return error_message
+function M.DescribeVirtualInterfacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeVirtualInterfacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateLag asynchronously, invoking a callback when done
 -- @param UpdateLagRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateLagAsync(UpdateLagRequest, cb)
@@ -3226,7 +3463,21 @@ function M.UpdateLagAsync(UpdateLagRequest, cb)
 	end
 end
 
---- ConfirmPrivateVirtualInterface
+--- Call UpdateLag synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateLagRequest
+-- @return response
+-- @return error_message
+function M.UpdateLagSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateLagAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ConfirmPrivateVirtualInterface asynchronously, invoking a callback when done
 -- @param ConfirmPrivateVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceRequest, cb)
@@ -3244,7 +3495,21 @@ function M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceReq
 	end
 end
 
---- DisassociateConnectionFromLag
+--- Call ConfirmPrivateVirtualInterface synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ConfirmPrivateVirtualInterfaceRequest
+-- @return response
+-- @return error_message
+function M.ConfirmPrivateVirtualInterfaceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ConfirmPrivateVirtualInterfaceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisassociateConnectionFromLag asynchronously, invoking a callback when done
 -- @param DisassociateConnectionFromLagRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagRequest, cb)
@@ -3262,7 +3527,21 @@ function M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagReque
 	end
 end
 
---- ConfirmConnection
+--- Call DisassociateConnectionFromLag synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisassociateConnectionFromLagRequest
+-- @return response
+-- @return error_message
+function M.DisassociateConnectionFromLagSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisassociateConnectionFromLagAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ConfirmConnection asynchronously, invoking a callback when done
 -- @param ConfirmConnectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ConfirmConnectionAsync(ConfirmConnectionRequest, cb)
@@ -3280,7 +3559,21 @@ function M.ConfirmConnectionAsync(ConfirmConnectionRequest, cb)
 	end
 end
 
---- DescribeInterconnects
+--- Call ConfirmConnection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ConfirmConnectionRequest
+-- @return response
+-- @return error_message
+function M.ConfirmConnectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ConfirmConnectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeInterconnects asynchronously, invoking a callback when done
 -- @param DescribeInterconnectsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, cb)
@@ -3298,7 +3591,21 @@ function M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, cb)
 	end
 end
 
---- DescribeTags
+--- Call DescribeInterconnects synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeInterconnectsRequest
+-- @return response
+-- @return error_message
+function M.DescribeInterconnectsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeInterconnectsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTags asynchronously, invoking a callback when done
 -- @param DescribeTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTagsAsync(DescribeTagsRequest, cb)
@@ -3316,7 +3623,21 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 	end
 end
 
---- DescribeConnections
+--- Call DescribeTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTagsRequest
+-- @return response
+-- @return error_message
+function M.DescribeTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeConnections asynchronously, invoking a callback when done
 -- @param DescribeConnectionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeConnectionsAsync(DescribeConnectionsRequest, cb)
@@ -3334,7 +3655,21 @@ function M.DescribeConnectionsAsync(DescribeConnectionsRequest, cb)
 	end
 end
 
---- CreatePublicVirtualInterface
+--- Call DescribeConnections synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeConnectionsRequest
+-- @return response
+-- @return error_message
+function M.DescribeConnectionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeConnectionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreatePublicVirtualInterface asynchronously, invoking a callback when done
 -- @param CreatePublicVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest, cb)
@@ -3352,7 +3687,21 @@ function M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest
 	end
 end
 
---- CreateConnection
+--- Call CreatePublicVirtualInterface synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreatePublicVirtualInterfaceRequest
+-- @return response
+-- @return error_message
+function M.CreatePublicVirtualInterfaceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreatePublicVirtualInterfaceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateConnection asynchronously, invoking a callback when done
 -- @param CreateConnectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateConnectionAsync(CreateConnectionRequest, cb)
@@ -3370,7 +3719,21 @@ function M.CreateConnectionAsync(CreateConnectionRequest, cb)
 	end
 end
 
---- TagResource
+--- Call CreateConnection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateConnectionRequest
+-- @return response
+-- @return error_message
+function M.CreateConnectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateConnectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagResource asynchronously, invoking a callback when done
 -- @param TagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TagResourceAsync(TagResourceRequest, cb)
@@ -3388,7 +3751,21 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 	end
 end
 
---- DescribeLocations
+--- Call TagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourceRequest
+-- @return response
+-- @return error_message
+function M.TagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLocations asynchronously, invoking a callback when done
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLocationsAsync(cb)
 	local headers = {
@@ -3404,7 +3781,20 @@ function M.DescribeLocationsAsync(cb)
 	end
 end
 
---- UntagResource
+--- Call DescribeLocations synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @return response
+-- @return error_message
+function M.DescribeLocationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLocationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UntagResource asynchronously, invoking a callback when done
 -- @param UntagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UntagResourceAsync(UntagResourceRequest, cb)
@@ -3422,7 +3812,21 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 	end
 end
 
---- CreatePrivateVirtualInterface
+--- Call UntagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagResourceRequest
+-- @return response
+-- @return error_message
+function M.UntagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreatePrivateVirtualInterface asynchronously, invoking a callback when done
 -- @param CreatePrivateVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceRequest, cb)
@@ -3440,7 +3844,21 @@ function M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceReque
 	end
 end
 
---- DeleteConnection
+--- Call CreatePrivateVirtualInterface synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreatePrivateVirtualInterfaceRequest
+-- @return response
+-- @return error_message
+function M.CreatePrivateVirtualInterfaceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreatePrivateVirtualInterfaceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteConnection asynchronously, invoking a callback when done
 -- @param DeleteConnectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteConnectionAsync(DeleteConnectionRequest, cb)
@@ -3458,7 +3876,21 @@ function M.DeleteConnectionAsync(DeleteConnectionRequest, cb)
 	end
 end
 
---- DeleteLag
+--- Call DeleteConnection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteConnectionRequest
+-- @return response
+-- @return error_message
+function M.DeleteConnectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteConnectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteLag asynchronously, invoking a callback when done
 -- @param DeleteLagRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteLagAsync(DeleteLagRequest, cb)
@@ -3476,7 +3908,21 @@ function M.DeleteLagAsync(DeleteLagRequest, cb)
 	end
 end
 
---- AssociateVirtualInterface
+--- Call DeleteLag synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteLagRequest
+-- @return response
+-- @return error_message
+function M.DeleteLagSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteLagAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AssociateVirtualInterface asynchronously, invoking a callback when done
 -- @param AssociateVirtualInterfaceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, cb)
@@ -3492,6 +3938,20 @@ function M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call AssociateVirtualInterface synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AssociateVirtualInterfaceRequest
+-- @return response
+-- @return error_message
+function M.AssociateVirtualInterfaceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AssociateVirtualInterfaceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

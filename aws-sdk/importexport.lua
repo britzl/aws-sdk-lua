@@ -1483,7 +1483,7 @@ end
 --
 -- OPERATIONS
 --
---- ListJobs
+--- Call ListJobs asynchronously, invoking a callback when done
 -- @param ListJobsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListJobsAsync(ListJobsInput, cb)
@@ -1501,7 +1501,21 @@ function M.ListJobsAsync(ListJobsInput, cb)
 	end
 end
 
---- UpdateJob
+--- Call ListJobs synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListJobsInput
+-- @return response
+-- @return error_message
+function M.ListJobsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListJobsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateJob asynchronously, invoking a callback when done
 -- @param UpdateJobInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateJobAsync(UpdateJobInput, cb)
@@ -1519,7 +1533,21 @@ function M.UpdateJobAsync(UpdateJobInput, cb)
 	end
 end
 
---- CreateJob
+--- Call UpdateJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateJobInput
+-- @return response
+-- @return error_message
+function M.UpdateJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateJob asynchronously, invoking a callback when done
 -- @param CreateJobInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateJobAsync(CreateJobInput, cb)
@@ -1537,7 +1565,21 @@ function M.CreateJobAsync(CreateJobInput, cb)
 	end
 end
 
---- GetStatus
+--- Call CreateJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateJobInput
+-- @return response
+-- @return error_message
+function M.CreateJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetStatus asynchronously, invoking a callback when done
 -- @param GetStatusInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetStatusAsync(GetStatusInput, cb)
@@ -1555,7 +1597,21 @@ function M.GetStatusAsync(GetStatusInput, cb)
 	end
 end
 
---- CancelJob
+--- Call GetStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetStatusInput
+-- @return response
+-- @return error_message
+function M.GetStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CancelJob asynchronously, invoking a callback when done
 -- @param CancelJobInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CancelJobAsync(CancelJobInput, cb)
@@ -1573,7 +1629,21 @@ function M.CancelJobAsync(CancelJobInput, cb)
 	end
 end
 
---- GetShippingLabel
+--- Call CancelJob synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CancelJobInput
+-- @return response
+-- @return error_message
+function M.CancelJobSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CancelJobAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetShippingLabel asynchronously, invoking a callback when done
 -- @param GetShippingLabelInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetShippingLabelAsync(GetShippingLabelInput, cb)
@@ -1589,6 +1659,20 @@ function M.GetShippingLabelAsync(GetShippingLabelInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call GetShippingLabel synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetShippingLabelInput
+-- @return response
+-- @return error_message
+function M.GetShippingLabelSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetShippingLabelAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

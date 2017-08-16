@@ -679,7 +679,7 @@ end
 --
 -- OPERATIONS
 --
---- BatchMeterUsage
+--- Call BatchMeterUsage asynchronously, invoking a callback when done
 -- @param BatchMeterUsageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.BatchMeterUsageAsync(BatchMeterUsageRequest, cb)
@@ -697,7 +697,21 @@ function M.BatchMeterUsageAsync(BatchMeterUsageRequest, cb)
 	end
 end
 
---- MeterUsage
+--- Call BatchMeterUsage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BatchMeterUsageRequest
+-- @return response
+-- @return error_message
+function M.BatchMeterUsageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BatchMeterUsageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call MeterUsage asynchronously, invoking a callback when done
 -- @param MeterUsageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.MeterUsageAsync(MeterUsageRequest, cb)
@@ -715,7 +729,21 @@ function M.MeterUsageAsync(MeterUsageRequest, cb)
 	end
 end
 
---- ResolveCustomer
+--- Call MeterUsage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param MeterUsageRequest
+-- @return response
+-- @return error_message
+function M.MeterUsageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.MeterUsageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ResolveCustomer asynchronously, invoking a callback when done
 -- @param ResolveCustomerRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ResolveCustomerAsync(ResolveCustomerRequest, cb)
@@ -731,6 +759,20 @@ function M.ResolveCustomerAsync(ResolveCustomerRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call ResolveCustomer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ResolveCustomerRequest
+-- @return response
+-- @return error_message
+function M.ResolveCustomerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ResolveCustomerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

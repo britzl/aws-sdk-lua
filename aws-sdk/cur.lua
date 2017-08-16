@@ -550,7 +550,7 @@ end
 --
 -- OPERATIONS
 --
---- DescribeReportDefinitions
+--- Call DescribeReportDefinitions asynchronously, invoking a callback when done
 -- @param DescribeReportDefinitionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeReportDefinitionsAsync(DescribeReportDefinitionsRequest, cb)
@@ -568,7 +568,21 @@ function M.DescribeReportDefinitionsAsync(DescribeReportDefinitionsRequest, cb)
 	end
 end
 
---- PutReportDefinition
+--- Call DescribeReportDefinitions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeReportDefinitionsRequest
+-- @return response
+-- @return error_message
+function M.DescribeReportDefinitionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeReportDefinitionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutReportDefinition asynchronously, invoking a callback when done
 -- @param PutReportDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutReportDefinitionAsync(PutReportDefinitionRequest, cb)
@@ -586,7 +600,21 @@ function M.PutReportDefinitionAsync(PutReportDefinitionRequest, cb)
 	end
 end
 
---- DeleteReportDefinition
+--- Call PutReportDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutReportDefinitionRequest
+-- @return response
+-- @return error_message
+function M.PutReportDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutReportDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteReportDefinition asynchronously, invoking a callback when done
 -- @param DeleteReportDefinitionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteReportDefinitionAsync(DeleteReportDefinitionRequest, cb)
@@ -602,6 +630,20 @@ function M.DeleteReportDefinitionAsync(DeleteReportDefinitionRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DeleteReportDefinition synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteReportDefinitionRequest
+-- @return response
+-- @return error_message
+function M.DeleteReportDefinitionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteReportDefinitionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

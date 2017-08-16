@@ -2007,7 +2007,7 @@ end
 --
 -- OPERATIONS
 --
---- SetCognitoEvents
+--- Call SetCognitoEvents asynchronously, invoking a callback when done
 -- @param SetCognitoEventsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetCognitoEventsAsync(SetCognitoEventsRequest, cb)
@@ -2025,7 +2025,21 @@ function M.SetCognitoEventsAsync(SetCognitoEventsRequest, cb)
 	end
 end
 
---- DescribeIdentityUsage
+--- Call SetCognitoEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetCognitoEventsRequest
+-- @return response
+-- @return error_message
+function M.SetCognitoEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetCognitoEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeIdentityUsage asynchronously, invoking a callback when done
 -- @param DescribeIdentityUsageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeIdentityUsageAsync(DescribeIdentityUsageRequest, cb)
@@ -2043,7 +2057,21 @@ function M.DescribeIdentityUsageAsync(DescribeIdentityUsageRequest, cb)
 	end
 end
 
---- ListRecords
+--- Call DescribeIdentityUsage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeIdentityUsageRequest
+-- @return response
+-- @return error_message
+function M.DescribeIdentityUsageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeIdentityUsageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRecords asynchronously, invoking a callback when done
 -- @param ListRecordsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListRecordsAsync(ListRecordsRequest, cb)
@@ -2061,7 +2089,21 @@ function M.ListRecordsAsync(ListRecordsRequest, cb)
 	end
 end
 
---- DescribeDataset
+--- Call ListRecords synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRecordsRequest
+-- @return response
+-- @return error_message
+function M.ListRecordsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRecordsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDataset asynchronously, invoking a callback when done
 -- @param DescribeDatasetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDatasetAsync(DescribeDatasetRequest, cb)
@@ -2079,7 +2121,21 @@ function M.DescribeDatasetAsync(DescribeDatasetRequest, cb)
 	end
 end
 
---- BulkPublish
+--- Call DescribeDataset synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDatasetRequest
+-- @return response
+-- @return error_message
+function M.DescribeDatasetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDatasetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call BulkPublish asynchronously, invoking a callback when done
 -- @param BulkPublishRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.BulkPublishAsync(BulkPublishRequest, cb)
@@ -2097,7 +2153,21 @@ function M.BulkPublishAsync(BulkPublishRequest, cb)
 	end
 end
 
---- UnsubscribeFromDataset
+--- Call BulkPublish synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param BulkPublishRequest
+-- @return response
+-- @return error_message
+function M.BulkPublishSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.BulkPublishAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UnsubscribeFromDataset asynchronously, invoking a callback when done
 -- @param UnsubscribeFromDatasetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UnsubscribeFromDatasetAsync(UnsubscribeFromDatasetRequest, cb)
@@ -2115,7 +2185,21 @@ function M.UnsubscribeFromDatasetAsync(UnsubscribeFromDatasetRequest, cb)
 	end
 end
 
---- ListIdentityPoolUsage
+--- Call UnsubscribeFromDataset synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UnsubscribeFromDatasetRequest
+-- @return response
+-- @return error_message
+function M.UnsubscribeFromDatasetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UnsubscribeFromDatasetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListIdentityPoolUsage asynchronously, invoking a callback when done
 -- @param ListIdentityPoolUsageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListIdentityPoolUsageAsync(ListIdentityPoolUsageRequest, cb)
@@ -2133,7 +2217,21 @@ function M.ListIdentityPoolUsageAsync(ListIdentityPoolUsageRequest, cb)
 	end
 end
 
---- RegisterDevice
+--- Call ListIdentityPoolUsage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListIdentityPoolUsageRequest
+-- @return response
+-- @return error_message
+function M.ListIdentityPoolUsageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListIdentityPoolUsageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterDevice asynchronously, invoking a callback when done
 -- @param RegisterDeviceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterDeviceAsync(RegisterDeviceRequest, cb)
@@ -2151,7 +2249,21 @@ function M.RegisterDeviceAsync(RegisterDeviceRequest, cb)
 	end
 end
 
---- GetBulkPublishDetails
+--- Call RegisterDevice synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterDeviceRequest
+-- @return response
+-- @return error_message
+function M.RegisterDeviceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterDeviceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetBulkPublishDetails asynchronously, invoking a callback when done
 -- @param GetBulkPublishDetailsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetBulkPublishDetailsAsync(GetBulkPublishDetailsRequest, cb)
@@ -2169,7 +2281,21 @@ function M.GetBulkPublishDetailsAsync(GetBulkPublishDetailsRequest, cb)
 	end
 end
 
---- GetCognitoEvents
+--- Call GetBulkPublishDetails synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetBulkPublishDetailsRequest
+-- @return response
+-- @return error_message
+function M.GetBulkPublishDetailsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetBulkPublishDetailsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCognitoEvents asynchronously, invoking a callback when done
 -- @param GetCognitoEventsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCognitoEventsAsync(GetCognitoEventsRequest, cb)
@@ -2187,7 +2313,21 @@ function M.GetCognitoEventsAsync(GetCognitoEventsRequest, cb)
 	end
 end
 
---- DeleteDataset
+--- Call GetCognitoEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCognitoEventsRequest
+-- @return response
+-- @return error_message
+function M.GetCognitoEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCognitoEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDataset asynchronously, invoking a callback when done
 -- @param DeleteDatasetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDatasetAsync(DeleteDatasetRequest, cb)
@@ -2205,7 +2345,21 @@ function M.DeleteDatasetAsync(DeleteDatasetRequest, cb)
 	end
 end
 
---- DescribeIdentityPoolUsage
+--- Call DeleteDataset synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDatasetRequest
+-- @return response
+-- @return error_message
+function M.DeleteDatasetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDatasetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeIdentityPoolUsage asynchronously, invoking a callback when done
 -- @param DescribeIdentityPoolUsageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeIdentityPoolUsageAsync(DescribeIdentityPoolUsageRequest, cb)
@@ -2223,7 +2377,21 @@ function M.DescribeIdentityPoolUsageAsync(DescribeIdentityPoolUsageRequest, cb)
 	end
 end
 
---- UpdateRecords
+--- Call DescribeIdentityPoolUsage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeIdentityPoolUsageRequest
+-- @return response
+-- @return error_message
+function M.DescribeIdentityPoolUsageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeIdentityPoolUsageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRecords asynchronously, invoking a callback when done
 -- @param UpdateRecordsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateRecordsAsync(UpdateRecordsRequest, cb)
@@ -2241,7 +2409,21 @@ function M.UpdateRecordsAsync(UpdateRecordsRequest, cb)
 	end
 end
 
---- SubscribeToDataset
+--- Call UpdateRecords synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRecordsRequest
+-- @return response
+-- @return error_message
+function M.UpdateRecordsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRecordsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SubscribeToDataset asynchronously, invoking a callback when done
 -- @param SubscribeToDatasetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SubscribeToDatasetAsync(SubscribeToDatasetRequest, cb)
@@ -2259,7 +2441,21 @@ function M.SubscribeToDatasetAsync(SubscribeToDatasetRequest, cb)
 	end
 end
 
---- SetIdentityPoolConfiguration
+--- Call SubscribeToDataset synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SubscribeToDatasetRequest
+-- @return response
+-- @return error_message
+function M.SubscribeToDatasetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SubscribeToDatasetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetIdentityPoolConfiguration asynchronously, invoking a callback when done
 -- @param SetIdentityPoolConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetIdentityPoolConfigurationAsync(SetIdentityPoolConfigurationRequest, cb)
@@ -2277,7 +2473,21 @@ function M.SetIdentityPoolConfigurationAsync(SetIdentityPoolConfigurationRequest
 	end
 end
 
---- GetIdentityPoolConfiguration
+--- Call SetIdentityPoolConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetIdentityPoolConfigurationRequest
+-- @return response
+-- @return error_message
+function M.SetIdentityPoolConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetIdentityPoolConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetIdentityPoolConfiguration asynchronously, invoking a callback when done
 -- @param GetIdentityPoolConfigurationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetIdentityPoolConfigurationAsync(GetIdentityPoolConfigurationRequest, cb)
@@ -2295,7 +2505,21 @@ function M.GetIdentityPoolConfigurationAsync(GetIdentityPoolConfigurationRequest
 	end
 end
 
---- ListDatasets
+--- Call GetIdentityPoolConfiguration synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetIdentityPoolConfigurationRequest
+-- @return response
+-- @return error_message
+function M.GetIdentityPoolConfigurationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetIdentityPoolConfigurationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDatasets asynchronously, invoking a callback when done
 -- @param ListDatasetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDatasetsAsync(ListDatasetsRequest, cb)
@@ -2311,6 +2535,20 @@ function M.ListDatasetsAsync(ListDatasetsRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call ListDatasets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDatasetsRequest
+-- @return response
+-- @return error_message
+function M.ListDatasetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDatasetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

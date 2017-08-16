@@ -2176,7 +2176,7 @@ end
 --
 -- OPERATIONS
 --
---- ListPlatformApplications
+--- Call ListPlatformApplications asynchronously, invoking a callback when done
 -- @param ListPlatformApplicationsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListPlatformApplicationsAsync(ListPlatformApplicationsInput, cb)
@@ -2194,7 +2194,21 @@ function M.ListPlatformApplicationsAsync(ListPlatformApplicationsInput, cb)
 	end
 end
 
---- SetPlatformApplicationAttributes
+--- Call ListPlatformApplications synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListPlatformApplicationsInput
+-- @return response
+-- @return error_message
+function M.ListPlatformApplicationsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListPlatformApplicationsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetPlatformApplicationAttributes asynchronously, invoking a callback when done
 -- @param SetPlatformApplicationAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetPlatformApplicationAttributesAsync(SetPlatformApplicationAttributesInput, cb)
@@ -2212,7 +2226,21 @@ function M.SetPlatformApplicationAttributesAsync(SetPlatformApplicationAttribute
 	end
 end
 
---- ListSubscriptionsByTopic
+--- Call SetPlatformApplicationAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetPlatformApplicationAttributesInput
+-- @return response
+-- @return error_message
+function M.SetPlatformApplicationAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetPlatformApplicationAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSubscriptionsByTopic asynchronously, invoking a callback when done
 -- @param ListSubscriptionsByTopicInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListSubscriptionsByTopicAsync(ListSubscriptionsByTopicInput, cb)
@@ -2230,7 +2258,21 @@ function M.ListSubscriptionsByTopicAsync(ListSubscriptionsByTopicInput, cb)
 	end
 end
 
---- ListSubscriptions
+--- Call ListSubscriptionsByTopic synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSubscriptionsByTopicInput
+-- @return response
+-- @return error_message
+function M.ListSubscriptionsByTopicSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSubscriptionsByTopicAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSubscriptions asynchronously, invoking a callback when done
 -- @param ListSubscriptionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListSubscriptionsAsync(ListSubscriptionsInput, cb)
@@ -2248,7 +2290,21 @@ function M.ListSubscriptionsAsync(ListSubscriptionsInput, cb)
 	end
 end
 
---- ListPhoneNumbersOptedOut
+--- Call ListSubscriptions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSubscriptionsInput
+-- @return response
+-- @return error_message
+function M.ListSubscriptionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSubscriptionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListPhoneNumbersOptedOut asynchronously, invoking a callback when done
 -- @param ListPhoneNumbersOptedOutInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListPhoneNumbersOptedOutAsync(ListPhoneNumbersOptedOutInput, cb)
@@ -2266,7 +2322,21 @@ function M.ListPhoneNumbersOptedOutAsync(ListPhoneNumbersOptedOutInput, cb)
 	end
 end
 
---- ConfirmSubscription
+--- Call ListPhoneNumbersOptedOut synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListPhoneNumbersOptedOutInput
+-- @return response
+-- @return error_message
+function M.ListPhoneNumbersOptedOutSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListPhoneNumbersOptedOutAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ConfirmSubscription asynchronously, invoking a callback when done
 -- @param ConfirmSubscriptionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ConfirmSubscriptionAsync(ConfirmSubscriptionInput, cb)
@@ -2284,7 +2354,21 @@ function M.ConfirmSubscriptionAsync(ConfirmSubscriptionInput, cb)
 	end
 end
 
---- SetTopicAttributes
+--- Call ConfirmSubscription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ConfirmSubscriptionInput
+-- @return response
+-- @return error_message
+function M.ConfirmSubscriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ConfirmSubscriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetTopicAttributes asynchronously, invoking a callback when done
 -- @param SetTopicAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetTopicAttributesAsync(SetTopicAttributesInput, cb)
@@ -2302,7 +2386,21 @@ function M.SetTopicAttributesAsync(SetTopicAttributesInput, cb)
 	end
 end
 
---- SetEndpointAttributes
+--- Call SetTopicAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetTopicAttributesInput
+-- @return response
+-- @return error_message
+function M.SetTopicAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetTopicAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetEndpointAttributes asynchronously, invoking a callback when done
 -- @param SetEndpointAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetEndpointAttributesAsync(SetEndpointAttributesInput, cb)
@@ -2320,7 +2418,21 @@ function M.SetEndpointAttributesAsync(SetEndpointAttributesInput, cb)
 	end
 end
 
---- CheckIfPhoneNumberIsOptedOut
+--- Call SetEndpointAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetEndpointAttributesInput
+-- @return response
+-- @return error_message
+function M.SetEndpointAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetEndpointAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CheckIfPhoneNumberIsOptedOut asynchronously, invoking a callback when done
 -- @param CheckIfPhoneNumberIsOptedOutInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CheckIfPhoneNumberIsOptedOutAsync(CheckIfPhoneNumberIsOptedOutInput, cb)
@@ -2338,7 +2450,21 @@ function M.CheckIfPhoneNumberIsOptedOutAsync(CheckIfPhoneNumberIsOptedOutInput, 
 	end
 end
 
---- AddPermission
+--- Call CheckIfPhoneNumberIsOptedOut synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CheckIfPhoneNumberIsOptedOutInput
+-- @return response
+-- @return error_message
+function M.CheckIfPhoneNumberIsOptedOutSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CheckIfPhoneNumberIsOptedOutAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddPermission asynchronously, invoking a callback when done
 -- @param AddPermissionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddPermissionAsync(AddPermissionInput, cb)
@@ -2356,7 +2482,21 @@ function M.AddPermissionAsync(AddPermissionInput, cb)
 	end
 end
 
---- Unsubscribe
+--- Call AddPermission synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddPermissionInput
+-- @return response
+-- @return error_message
+function M.AddPermissionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddPermissionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Unsubscribe asynchronously, invoking a callback when done
 -- @param UnsubscribeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.UnsubscribeAsync(UnsubscribeInput, cb)
@@ -2374,7 +2514,21 @@ function M.UnsubscribeAsync(UnsubscribeInput, cb)
 	end
 end
 
---- GetSubscriptionAttributes
+--- Call Unsubscribe synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UnsubscribeInput
+-- @return response
+-- @return error_message
+function M.UnsubscribeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UnsubscribeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSubscriptionAttributes asynchronously, invoking a callback when done
 -- @param GetSubscriptionAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSubscriptionAttributesAsync(GetSubscriptionAttributesInput, cb)
@@ -2392,7 +2546,21 @@ function M.GetSubscriptionAttributesAsync(GetSubscriptionAttributesInput, cb)
 	end
 end
 
---- CreatePlatformEndpoint
+--- Call GetSubscriptionAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSubscriptionAttributesInput
+-- @return response
+-- @return error_message
+function M.GetSubscriptionAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSubscriptionAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreatePlatformEndpoint asynchronously, invoking a callback when done
 -- @param CreatePlatformEndpointInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreatePlatformEndpointAsync(CreatePlatformEndpointInput, cb)
@@ -2410,7 +2578,21 @@ function M.CreatePlatformEndpointAsync(CreatePlatformEndpointInput, cb)
 	end
 end
 
---- RemovePermission
+--- Call CreatePlatformEndpoint synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreatePlatformEndpointInput
+-- @return response
+-- @return error_message
+function M.CreatePlatformEndpointSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreatePlatformEndpointAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemovePermission asynchronously, invoking a callback when done
 -- @param RemovePermissionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemovePermissionAsync(RemovePermissionInput, cb)
@@ -2428,7 +2610,21 @@ function M.RemovePermissionAsync(RemovePermissionInput, cb)
 	end
 end
 
---- CreateTopic
+--- Call RemovePermission synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemovePermissionInput
+-- @return response
+-- @return error_message
+function M.RemovePermissionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemovePermissionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTopic asynchronously, invoking a callback when done
 -- @param CreateTopicInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateTopicAsync(CreateTopicInput, cb)
@@ -2446,7 +2642,21 @@ function M.CreateTopicAsync(CreateTopicInput, cb)
 	end
 end
 
---- SetSubscriptionAttributes
+--- Call CreateTopic synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTopicInput
+-- @return response
+-- @return error_message
+function M.CreateTopicSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTopicAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetSubscriptionAttributes asynchronously, invoking a callback when done
 -- @param SetSubscriptionAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetSubscriptionAttributesAsync(SetSubscriptionAttributesInput, cb)
@@ -2464,7 +2674,21 @@ function M.SetSubscriptionAttributesAsync(SetSubscriptionAttributesInput, cb)
 	end
 end
 
---- CreatePlatformApplication
+--- Call SetSubscriptionAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetSubscriptionAttributesInput
+-- @return response
+-- @return error_message
+function M.SetSubscriptionAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetSubscriptionAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreatePlatformApplication asynchronously, invoking a callback when done
 -- @param CreatePlatformApplicationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreatePlatformApplicationAsync(CreatePlatformApplicationInput, cb)
@@ -2482,7 +2706,21 @@ function M.CreatePlatformApplicationAsync(CreatePlatformApplicationInput, cb)
 	end
 end
 
---- GetPlatformApplicationAttributes
+--- Call CreatePlatformApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreatePlatformApplicationInput
+-- @return response
+-- @return error_message
+function M.CreatePlatformApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreatePlatformApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetPlatformApplicationAttributes asynchronously, invoking a callback when done
 -- @param GetPlatformApplicationAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetPlatformApplicationAttributesAsync(GetPlatformApplicationAttributesInput, cb)
@@ -2500,7 +2738,21 @@ function M.GetPlatformApplicationAttributesAsync(GetPlatformApplicationAttribute
 	end
 end
 
---- GetSMSAttributes
+--- Call GetPlatformApplicationAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetPlatformApplicationAttributesInput
+-- @return response
+-- @return error_message
+function M.GetPlatformApplicationAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetPlatformApplicationAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSMSAttributes asynchronously, invoking a callback when done
 -- @param GetSMSAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSMSAttributesAsync(GetSMSAttributesInput, cb)
@@ -2518,7 +2770,21 @@ function M.GetSMSAttributesAsync(GetSMSAttributesInput, cb)
 	end
 end
 
---- Publish
+--- Call GetSMSAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSMSAttributesInput
+-- @return response
+-- @return error_message
+function M.GetSMSAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSMSAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Publish asynchronously, invoking a callback when done
 -- @param PublishInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PublishAsync(PublishInput, cb)
@@ -2536,7 +2802,21 @@ function M.PublishAsync(PublishInput, cb)
 	end
 end
 
---- SetSMSAttributes
+--- Call Publish synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PublishInput
+-- @return response
+-- @return error_message
+function M.PublishSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PublishAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetSMSAttributes asynchronously, invoking a callback when done
 -- @param SetSMSAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetSMSAttributesAsync(SetSMSAttributesInput, cb)
@@ -2554,7 +2834,21 @@ function M.SetSMSAttributesAsync(SetSMSAttributesInput, cb)
 	end
 end
 
---- ListEndpointsByPlatformApplication
+--- Call SetSMSAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetSMSAttributesInput
+-- @return response
+-- @return error_message
+function M.SetSMSAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetSMSAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListEndpointsByPlatformApplication asynchronously, invoking a callback when done
 -- @param ListEndpointsByPlatformApplicationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListEndpointsByPlatformApplicationAsync(ListEndpointsByPlatformApplicationInput, cb)
@@ -2572,7 +2866,21 @@ function M.ListEndpointsByPlatformApplicationAsync(ListEndpointsByPlatformApplic
 	end
 end
 
---- GetEndpointAttributes
+--- Call ListEndpointsByPlatformApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListEndpointsByPlatformApplicationInput
+-- @return response
+-- @return error_message
+function M.ListEndpointsByPlatformApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListEndpointsByPlatformApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetEndpointAttributes asynchronously, invoking a callback when done
 -- @param GetEndpointAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetEndpointAttributesAsync(GetEndpointAttributesInput, cb)
@@ -2590,7 +2898,21 @@ function M.GetEndpointAttributesAsync(GetEndpointAttributesInput, cb)
 	end
 end
 
---- DeleteEndpoint
+--- Call GetEndpointAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetEndpointAttributesInput
+-- @return response
+-- @return error_message
+function M.GetEndpointAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetEndpointAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteEndpoint asynchronously, invoking a callback when done
 -- @param DeleteEndpointInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteEndpointAsync(DeleteEndpointInput, cb)
@@ -2608,7 +2930,21 @@ function M.DeleteEndpointAsync(DeleteEndpointInput, cb)
 	end
 end
 
---- DeletePlatformApplication
+--- Call DeleteEndpoint synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteEndpointInput
+-- @return response
+-- @return error_message
+function M.DeleteEndpointSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteEndpointAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeletePlatformApplication asynchronously, invoking a callback when done
 -- @param DeletePlatformApplicationInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeletePlatformApplicationAsync(DeletePlatformApplicationInput, cb)
@@ -2626,7 +2962,21 @@ function M.DeletePlatformApplicationAsync(DeletePlatformApplicationInput, cb)
 	end
 end
 
---- GetTopicAttributes
+--- Call DeletePlatformApplication synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeletePlatformApplicationInput
+-- @return response
+-- @return error_message
+function M.DeletePlatformApplicationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeletePlatformApplicationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetTopicAttributes asynchronously, invoking a callback when done
 -- @param GetTopicAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetTopicAttributesAsync(GetTopicAttributesInput, cb)
@@ -2644,7 +2994,21 @@ function M.GetTopicAttributesAsync(GetTopicAttributesInput, cb)
 	end
 end
 
---- Subscribe
+--- Call GetTopicAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetTopicAttributesInput
+-- @return response
+-- @return error_message
+function M.GetTopicAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetTopicAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Subscribe asynchronously, invoking a callback when done
 -- @param SubscribeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SubscribeAsync(SubscribeInput, cb)
@@ -2662,7 +3026,21 @@ function M.SubscribeAsync(SubscribeInput, cb)
 	end
 end
 
---- DeleteTopic
+--- Call Subscribe synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SubscribeInput
+-- @return response
+-- @return error_message
+function M.SubscribeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SubscribeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteTopic asynchronously, invoking a callback when done
 -- @param DeleteTopicInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteTopicAsync(DeleteTopicInput, cb)
@@ -2680,7 +3058,21 @@ function M.DeleteTopicAsync(DeleteTopicInput, cb)
 	end
 end
 
---- OptInPhoneNumber
+--- Call DeleteTopic synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteTopicInput
+-- @return response
+-- @return error_message
+function M.DeleteTopicSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteTopicAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call OptInPhoneNumber asynchronously, invoking a callback when done
 -- @param OptInPhoneNumberInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.OptInPhoneNumberAsync(OptInPhoneNumberInput, cb)
@@ -2698,7 +3090,21 @@ function M.OptInPhoneNumberAsync(OptInPhoneNumberInput, cb)
 	end
 end
 
---- ListTopics
+--- Call OptInPhoneNumber synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param OptInPhoneNumberInput
+-- @return response
+-- @return error_message
+function M.OptInPhoneNumberSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.OptInPhoneNumberAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTopics asynchronously, invoking a callback when done
 -- @param ListTopicsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTopicsAsync(ListTopicsInput, cb)
@@ -2714,6 +3120,20 @@ function M.ListTopicsAsync(ListTopicsInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call ListTopics synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTopicsInput
+-- @return response
+-- @return error_message
+function M.ListTopicsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTopicsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

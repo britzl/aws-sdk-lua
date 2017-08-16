@@ -1494,7 +1494,7 @@ end
 --
 -- OPERATIONS
 --
---- DescribeBudget
+--- Call DescribeBudget asynchronously, invoking a callback when done
 -- @param DescribeBudgetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeBudgetAsync(DescribeBudgetRequest, cb)
@@ -1512,7 +1512,21 @@ function M.DescribeBudgetAsync(DescribeBudgetRequest, cb)
 	end
 end
 
---- DescribeNotificationsForBudget
+--- Call DescribeBudget synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeBudgetRequest
+-- @return response
+-- @return error_message
+function M.DescribeBudgetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeBudgetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeNotificationsForBudget asynchronously, invoking a callback when done
 -- @param DescribeNotificationsForBudgetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeNotificationsForBudgetAsync(DescribeNotificationsForBudgetRequest, cb)
@@ -1530,7 +1544,21 @@ function M.DescribeNotificationsForBudgetAsync(DescribeNotificationsForBudgetReq
 	end
 end
 
---- CreateSubscriber
+--- Call DescribeNotificationsForBudget synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeNotificationsForBudgetRequest
+-- @return response
+-- @return error_message
+function M.DescribeNotificationsForBudgetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeNotificationsForBudgetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSubscriber asynchronously, invoking a callback when done
 -- @param CreateSubscriberRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSubscriberAsync(CreateSubscriberRequest, cb)
@@ -1548,7 +1576,21 @@ function M.CreateSubscriberAsync(CreateSubscriberRequest, cb)
 	end
 end
 
---- CreateNotification
+--- Call CreateSubscriber synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSubscriberRequest
+-- @return response
+-- @return error_message
+function M.CreateSubscriberSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSubscriberAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateNotification asynchronously, invoking a callback when done
 -- @param CreateNotificationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateNotificationAsync(CreateNotificationRequest, cb)
@@ -1566,7 +1608,21 @@ function M.CreateNotificationAsync(CreateNotificationRequest, cb)
 	end
 end
 
---- UpdateNotification
+--- Call CreateNotification synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateNotificationRequest
+-- @return response
+-- @return error_message
+function M.CreateNotificationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateNotificationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateNotification asynchronously, invoking a callback when done
 -- @param UpdateNotificationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateNotificationAsync(UpdateNotificationRequest, cb)
@@ -1584,7 +1640,21 @@ function M.UpdateNotificationAsync(UpdateNotificationRequest, cb)
 	end
 end
 
---- UpdateBudget
+--- Call UpdateNotification synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateNotificationRequest
+-- @return response
+-- @return error_message
+function M.UpdateNotificationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateNotificationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateBudget asynchronously, invoking a callback when done
 -- @param UpdateBudgetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateBudgetAsync(UpdateBudgetRequest, cb)
@@ -1602,7 +1672,21 @@ function M.UpdateBudgetAsync(UpdateBudgetRequest, cb)
 	end
 end
 
---- CreateBudget
+--- Call UpdateBudget synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateBudgetRequest
+-- @return response
+-- @return error_message
+function M.UpdateBudgetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateBudgetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateBudget asynchronously, invoking a callback when done
 -- @param CreateBudgetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateBudgetAsync(CreateBudgetRequest, cb)
@@ -1620,7 +1704,21 @@ function M.CreateBudgetAsync(CreateBudgetRequest, cb)
 	end
 end
 
---- DeleteNotification
+--- Call CreateBudget synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateBudgetRequest
+-- @return response
+-- @return error_message
+function M.CreateBudgetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateBudgetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteNotification asynchronously, invoking a callback when done
 -- @param DeleteNotificationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteNotificationAsync(DeleteNotificationRequest, cb)
@@ -1638,7 +1736,21 @@ function M.DeleteNotificationAsync(DeleteNotificationRequest, cb)
 	end
 end
 
---- DescribeSubscribersForNotification
+--- Call DeleteNotification synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteNotificationRequest
+-- @return response
+-- @return error_message
+function M.DeleteNotificationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteNotificationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSubscribersForNotification asynchronously, invoking a callback when done
 -- @param DescribeSubscribersForNotificationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeSubscribersForNotificationAsync(DescribeSubscribersForNotificationRequest, cb)
@@ -1656,7 +1768,21 @@ function M.DescribeSubscribersForNotificationAsync(DescribeSubscribersForNotific
 	end
 end
 
---- DeleteSubscriber
+--- Call DescribeSubscribersForNotification synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSubscribersForNotificationRequest
+-- @return response
+-- @return error_message
+function M.DescribeSubscribersForNotificationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSubscribersForNotificationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSubscriber asynchronously, invoking a callback when done
 -- @param DeleteSubscriberRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSubscriberAsync(DeleteSubscriberRequest, cb)
@@ -1674,7 +1800,21 @@ function M.DeleteSubscriberAsync(DeleteSubscriberRequest, cb)
 	end
 end
 
---- DescribeBudgets
+--- Call DeleteSubscriber synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSubscriberRequest
+-- @return response
+-- @return error_message
+function M.DeleteSubscriberSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSubscriberAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeBudgets asynchronously, invoking a callback when done
 -- @param DescribeBudgetsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeBudgetsAsync(DescribeBudgetsRequest, cb)
@@ -1692,7 +1832,21 @@ function M.DescribeBudgetsAsync(DescribeBudgetsRequest, cb)
 	end
 end
 
---- DeleteBudget
+--- Call DescribeBudgets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeBudgetsRequest
+-- @return response
+-- @return error_message
+function M.DescribeBudgetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeBudgetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteBudget asynchronously, invoking a callback when done
 -- @param DeleteBudgetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteBudgetAsync(DeleteBudgetRequest, cb)
@@ -1710,7 +1864,21 @@ function M.DeleteBudgetAsync(DeleteBudgetRequest, cb)
 	end
 end
 
---- UpdateSubscriber
+--- Call DeleteBudget synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteBudgetRequest
+-- @return response
+-- @return error_message
+function M.DeleteBudgetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteBudgetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateSubscriber asynchronously, invoking a callback when done
 -- @param UpdateSubscriberRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateSubscriberAsync(UpdateSubscriberRequest, cb)
@@ -1726,6 +1894,20 @@ function M.UpdateSubscriberAsync(UpdateSubscriberRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call UpdateSubscriber synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateSubscriberRequest
+-- @return response
+-- @return error_message
+function M.UpdateSubscriberSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateSubscriberAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

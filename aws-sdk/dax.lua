@@ -2588,7 +2588,7 @@ end
 --
 -- OPERATIONS
 --
---- CreateParameterGroup
+--- Call CreateParameterGroup asynchronously, invoking a callback when done
 -- @param CreateParameterGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateParameterGroupAsync(CreateParameterGroupRequest, cb)
@@ -2606,7 +2606,21 @@ function M.CreateParameterGroupAsync(CreateParameterGroupRequest, cb)
 	end
 end
 
---- DeleteParameterGroup
+--- Call CreateParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateParameterGroupRequest
+-- @return response
+-- @return error_message
+function M.CreateParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteParameterGroup asynchronously, invoking a callback when done
 -- @param DeleteParameterGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteParameterGroupAsync(DeleteParameterGroupRequest, cb)
@@ -2624,7 +2638,21 @@ function M.DeleteParameterGroupAsync(DeleteParameterGroupRequest, cb)
 	end
 end
 
---- UpdateCluster
+--- Call DeleteParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteParameterGroupRequest
+-- @return response
+-- @return error_message
+function M.DeleteParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateCluster asynchronously, invoking a callback when done
 -- @param UpdateClusterRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateClusterAsync(UpdateClusterRequest, cb)
@@ -2642,7 +2670,21 @@ function M.UpdateClusterAsync(UpdateClusterRequest, cb)
 	end
 end
 
---- UntagResource
+--- Call UpdateCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateClusterRequest
+-- @return response
+-- @return error_message
+function M.UpdateClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UntagResource asynchronously, invoking a callback when done
 -- @param UntagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UntagResourceAsync(UntagResourceRequest, cb)
@@ -2660,7 +2702,21 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 	end
 end
 
---- CreateCluster
+--- Call UntagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagResourceRequest
+-- @return response
+-- @return error_message
+function M.UntagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCluster asynchronously, invoking a callback when done
 -- @param CreateClusterRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateClusterAsync(CreateClusterRequest, cb)
@@ -2678,7 +2734,21 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 	end
 end
 
---- DescribeSubnetGroups
+--- Call CreateCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateClusterRequest
+-- @return response
+-- @return error_message
+function M.CreateClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSubnetGroups asynchronously, invoking a callback when done
 -- @param DescribeSubnetGroupsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeSubnetGroupsAsync(DescribeSubnetGroupsRequest, cb)
@@ -2696,7 +2766,21 @@ function M.DescribeSubnetGroupsAsync(DescribeSubnetGroupsRequest, cb)
 	end
 end
 
---- IncreaseReplicationFactor
+--- Call DescribeSubnetGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSubnetGroupsRequest
+-- @return response
+-- @return error_message
+function M.DescribeSubnetGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSubnetGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call IncreaseReplicationFactor asynchronously, invoking a callback when done
 -- @param IncreaseReplicationFactorRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.IncreaseReplicationFactorAsync(IncreaseReplicationFactorRequest, cb)
@@ -2714,7 +2798,21 @@ function M.IncreaseReplicationFactorAsync(IncreaseReplicationFactorRequest, cb)
 	end
 end
 
---- TagResource
+--- Call IncreaseReplicationFactor synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param IncreaseReplicationFactorRequest
+-- @return response
+-- @return error_message
+function M.IncreaseReplicationFactorSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.IncreaseReplicationFactorAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagResource asynchronously, invoking a callback when done
 -- @param TagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TagResourceAsync(TagResourceRequest, cb)
@@ -2732,7 +2830,21 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 	end
 end
 
---- UpdateSubnetGroup
+--- Call TagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourceRequest
+-- @return response
+-- @return error_message
+function M.TagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateSubnetGroup asynchronously, invoking a callback when done
 -- @param UpdateSubnetGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateSubnetGroupAsync(UpdateSubnetGroupRequest, cb)
@@ -2750,7 +2862,21 @@ function M.UpdateSubnetGroupAsync(UpdateSubnetGroupRequest, cb)
 	end
 end
 
---- DescribeParameters
+--- Call UpdateSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateSubnetGroupRequest
+-- @return response
+-- @return error_message
+function M.UpdateSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeParameters asynchronously, invoking a callback when done
 -- @param DescribeParametersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeParametersAsync(DescribeParametersRequest, cb)
@@ -2768,7 +2894,21 @@ function M.DescribeParametersAsync(DescribeParametersRequest, cb)
 	end
 end
 
---- DecreaseReplicationFactor
+--- Call DescribeParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeParametersRequest
+-- @return response
+-- @return error_message
+function M.DescribeParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DecreaseReplicationFactor asynchronously, invoking a callback when done
 -- @param DecreaseReplicationFactorRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DecreaseReplicationFactorAsync(DecreaseReplicationFactorRequest, cb)
@@ -2786,7 +2926,21 @@ function M.DecreaseReplicationFactorAsync(DecreaseReplicationFactorRequest, cb)
 	end
 end
 
---- RebootNode
+--- Call DecreaseReplicationFactor synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DecreaseReplicationFactorRequest
+-- @return response
+-- @return error_message
+function M.DecreaseReplicationFactorSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DecreaseReplicationFactorAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RebootNode asynchronously, invoking a callback when done
 -- @param RebootNodeRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RebootNodeAsync(RebootNodeRequest, cb)
@@ -2804,7 +2958,21 @@ function M.RebootNodeAsync(RebootNodeRequest, cb)
 	end
 end
 
---- CreateSubnetGroup
+--- Call RebootNode synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RebootNodeRequest
+-- @return response
+-- @return error_message
+function M.RebootNodeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RebootNodeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSubnetGroup asynchronously, invoking a callback when done
 -- @param CreateSubnetGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSubnetGroupAsync(CreateSubnetGroupRequest, cb)
@@ -2822,7 +2990,21 @@ function M.CreateSubnetGroupAsync(CreateSubnetGroupRequest, cb)
 	end
 end
 
---- UpdateParameterGroup
+--- Call CreateSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSubnetGroupRequest
+-- @return response
+-- @return error_message
+function M.CreateSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateParameterGroup asynchronously, invoking a callback when done
 -- @param UpdateParameterGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateParameterGroupAsync(UpdateParameterGroupRequest, cb)
@@ -2840,7 +3022,21 @@ function M.UpdateParameterGroupAsync(UpdateParameterGroupRequest, cb)
 	end
 end
 
---- ListTags
+--- Call UpdateParameterGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateParameterGroupRequest
+-- @return response
+-- @return error_message
+function M.UpdateParameterGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateParameterGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTags asynchronously, invoking a callback when done
 -- @param ListTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsAsync(ListTagsRequest, cb)
@@ -2858,7 +3054,21 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 	end
 end
 
---- DescribeEvents
+--- Call ListTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsRequest
+-- @return response
+-- @return error_message
+function M.ListTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEvents asynchronously, invoking a callback when done
 -- @param DescribeEventsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventsAsync(DescribeEventsRequest, cb)
@@ -2876,7 +3086,21 @@ function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 	end
 end
 
---- DeleteSubnetGroup
+--- Call DescribeEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventsRequest
+-- @return response
+-- @return error_message
+function M.DescribeEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSubnetGroup asynchronously, invoking a callback when done
 -- @param DeleteSubnetGroupRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSubnetGroupAsync(DeleteSubnetGroupRequest, cb)
@@ -2894,7 +3118,21 @@ function M.DeleteSubnetGroupAsync(DeleteSubnetGroupRequest, cb)
 	end
 end
 
---- DescribeDefaultParameters
+--- Call DeleteSubnetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSubnetGroupRequest
+-- @return response
+-- @return error_message
+function M.DeleteSubnetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSubnetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDefaultParameters asynchronously, invoking a callback when done
 -- @param DescribeDefaultParametersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDefaultParametersAsync(DescribeDefaultParametersRequest, cb)
@@ -2912,7 +3150,21 @@ function M.DescribeDefaultParametersAsync(DescribeDefaultParametersRequest, cb)
 	end
 end
 
---- DescribeClusters
+--- Call DescribeDefaultParameters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDefaultParametersRequest
+-- @return response
+-- @return error_message
+function M.DescribeDefaultParametersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDefaultParametersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeClusters asynchronously, invoking a callback when done
 -- @param DescribeClustersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeClustersAsync(DescribeClustersRequest, cb)
@@ -2930,7 +3182,21 @@ function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 	end
 end
 
---- DescribeParameterGroups
+--- Call DescribeClusters synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeClustersRequest
+-- @return response
+-- @return error_message
+function M.DescribeClustersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeClustersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeParameterGroups asynchronously, invoking a callback when done
 -- @param DescribeParameterGroupsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeParameterGroupsAsync(DescribeParameterGroupsRequest, cb)
@@ -2948,7 +3214,21 @@ function M.DescribeParameterGroupsAsync(DescribeParameterGroupsRequest, cb)
 	end
 end
 
---- DeleteCluster
+--- Call DescribeParameterGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeParameterGroupsRequest
+-- @return response
+-- @return error_message
+function M.DescribeParameterGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeParameterGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteCluster asynchronously, invoking a callback when done
 -- @param DeleteClusterRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteClusterAsync(DeleteClusterRequest, cb)
@@ -2964,6 +3244,20 @@ function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DeleteCluster synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteClusterRequest
+-- @return response
+-- @return error_message
+function M.DeleteClusterSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteClusterAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

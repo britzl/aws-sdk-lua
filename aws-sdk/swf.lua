@@ -6047,7 +6047,7 @@ end
 --
 -- OPERATIONS
 --
---- SignalWorkflowExecution
+--- Call SignalWorkflowExecution asynchronously, invoking a callback when done
 -- @param SignalWorkflowExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SignalWorkflowExecutionAsync(SignalWorkflowExecutionInput, cb)
@@ -6065,7 +6065,21 @@ function M.SignalWorkflowExecutionAsync(SignalWorkflowExecutionInput, cb)
 	end
 end
 
---- DescribeWorkflowExecution
+--- Call SignalWorkflowExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SignalWorkflowExecutionInput
+-- @return response
+-- @return error_message
+function M.SignalWorkflowExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SignalWorkflowExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeWorkflowExecution asynchronously, invoking a callback when done
 -- @param DescribeWorkflowExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeWorkflowExecutionAsync(DescribeWorkflowExecutionInput, cb)
@@ -6083,7 +6097,21 @@ function M.DescribeWorkflowExecutionAsync(DescribeWorkflowExecutionInput, cb)
 	end
 end
 
---- GetWorkflowExecutionHistory
+--- Call DescribeWorkflowExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeWorkflowExecutionInput
+-- @return response
+-- @return error_message
+function M.DescribeWorkflowExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeWorkflowExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetWorkflowExecutionHistory asynchronously, invoking a callback when done
 -- @param GetWorkflowExecutionHistoryInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetWorkflowExecutionHistoryAsync(GetWorkflowExecutionHistoryInput, cb)
@@ -6101,7 +6129,21 @@ function M.GetWorkflowExecutionHistoryAsync(GetWorkflowExecutionHistoryInput, cb
 	end
 end
 
---- CountOpenWorkflowExecutions
+--- Call GetWorkflowExecutionHistory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetWorkflowExecutionHistoryInput
+-- @return response
+-- @return error_message
+function M.GetWorkflowExecutionHistorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetWorkflowExecutionHistoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CountOpenWorkflowExecutions asynchronously, invoking a callback when done
 -- @param CountOpenWorkflowExecutionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CountOpenWorkflowExecutionsAsync(CountOpenWorkflowExecutionsInput, cb)
@@ -6119,7 +6161,21 @@ function M.CountOpenWorkflowExecutionsAsync(CountOpenWorkflowExecutionsInput, cb
 	end
 end
 
---- RespondActivityTaskFailed
+--- Call CountOpenWorkflowExecutions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CountOpenWorkflowExecutionsInput
+-- @return response
+-- @return error_message
+function M.CountOpenWorkflowExecutionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CountOpenWorkflowExecutionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RespondActivityTaskFailed asynchronously, invoking a callback when done
 -- @param RespondActivityTaskFailedInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RespondActivityTaskFailedAsync(RespondActivityTaskFailedInput, cb)
@@ -6137,7 +6193,21 @@ function M.RespondActivityTaskFailedAsync(RespondActivityTaskFailedInput, cb)
 	end
 end
 
---- PollForActivityTask
+--- Call RespondActivityTaskFailed synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RespondActivityTaskFailedInput
+-- @return response
+-- @return error_message
+function M.RespondActivityTaskFailedSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RespondActivityTaskFailedAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PollForActivityTask asynchronously, invoking a callback when done
 -- @param PollForActivityTaskInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PollForActivityTaskAsync(PollForActivityTaskInput, cb)
@@ -6155,7 +6225,21 @@ function M.PollForActivityTaskAsync(PollForActivityTaskInput, cb)
 	end
 end
 
---- ListDomains
+--- Call PollForActivityTask synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PollForActivityTaskInput
+-- @return response
+-- @return error_message
+function M.PollForActivityTaskSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PollForActivityTaskAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListDomains asynchronously, invoking a callback when done
 -- @param ListDomainsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDomainsAsync(ListDomainsInput, cb)
@@ -6173,7 +6257,21 @@ function M.ListDomainsAsync(ListDomainsInput, cb)
 	end
 end
 
---- StartWorkflowExecution
+--- Call ListDomains synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListDomainsInput
+-- @return response
+-- @return error_message
+function M.ListDomainsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListDomainsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartWorkflowExecution asynchronously, invoking a callback when done
 -- @param StartWorkflowExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartWorkflowExecutionAsync(StartWorkflowExecutionInput, cb)
@@ -6191,7 +6289,21 @@ function M.StartWorkflowExecutionAsync(StartWorkflowExecutionInput, cb)
 	end
 end
 
---- RespondDecisionTaskCompleted
+--- Call StartWorkflowExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartWorkflowExecutionInput
+-- @return response
+-- @return error_message
+function M.StartWorkflowExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartWorkflowExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RespondDecisionTaskCompleted asynchronously, invoking a callback when done
 -- @param RespondDecisionTaskCompletedInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RespondDecisionTaskCompletedAsync(RespondDecisionTaskCompletedInput, cb)
@@ -6209,7 +6321,21 @@ function M.RespondDecisionTaskCompletedAsync(RespondDecisionTaskCompletedInput, 
 	end
 end
 
---- RegisterActivityType
+--- Call RespondDecisionTaskCompleted synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RespondDecisionTaskCompletedInput
+-- @return response
+-- @return error_message
+function M.RespondDecisionTaskCompletedSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RespondDecisionTaskCompletedAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterActivityType asynchronously, invoking a callback when done
 -- @param RegisterActivityTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterActivityTypeAsync(RegisterActivityTypeInput, cb)
@@ -6227,7 +6353,21 @@ function M.RegisterActivityTypeAsync(RegisterActivityTypeInput, cb)
 	end
 end
 
---- RequestCancelWorkflowExecution
+--- Call RegisterActivityType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterActivityTypeInput
+-- @return response
+-- @return error_message
+function M.RegisterActivityTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterActivityTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RequestCancelWorkflowExecution asynchronously, invoking a callback when done
 -- @param RequestCancelWorkflowExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RequestCancelWorkflowExecutionAsync(RequestCancelWorkflowExecutionInput, cb)
@@ -6245,7 +6385,21 @@ function M.RequestCancelWorkflowExecutionAsync(RequestCancelWorkflowExecutionInp
 	end
 end
 
---- ListActivityTypes
+--- Call RequestCancelWorkflowExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RequestCancelWorkflowExecutionInput
+-- @return response
+-- @return error_message
+function M.RequestCancelWorkflowExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RequestCancelWorkflowExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListActivityTypes asynchronously, invoking a callback when done
 -- @param ListActivityTypesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListActivityTypesAsync(ListActivityTypesInput, cb)
@@ -6263,7 +6417,21 @@ function M.ListActivityTypesAsync(ListActivityTypesInput, cb)
 	end
 end
 
---- PollForDecisionTask
+--- Call ListActivityTypes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListActivityTypesInput
+-- @return response
+-- @return error_message
+function M.ListActivityTypesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListActivityTypesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PollForDecisionTask asynchronously, invoking a callback when done
 -- @param PollForDecisionTaskInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.PollForDecisionTaskAsync(PollForDecisionTaskInput, cb)
@@ -6281,7 +6449,21 @@ function M.PollForDecisionTaskAsync(PollForDecisionTaskInput, cb)
 	end
 end
 
---- ListOpenWorkflowExecutions
+--- Call PollForDecisionTask synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PollForDecisionTaskInput
+-- @return response
+-- @return error_message
+function M.PollForDecisionTaskSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PollForDecisionTaskAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListOpenWorkflowExecutions asynchronously, invoking a callback when done
 -- @param ListOpenWorkflowExecutionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListOpenWorkflowExecutionsAsync(ListOpenWorkflowExecutionsInput, cb)
@@ -6299,7 +6481,21 @@ function M.ListOpenWorkflowExecutionsAsync(ListOpenWorkflowExecutionsInput, cb)
 	end
 end
 
---- CountClosedWorkflowExecutions
+--- Call ListOpenWorkflowExecutions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListOpenWorkflowExecutionsInput
+-- @return response
+-- @return error_message
+function M.ListOpenWorkflowExecutionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListOpenWorkflowExecutionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CountClosedWorkflowExecutions asynchronously, invoking a callback when done
 -- @param CountClosedWorkflowExecutionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CountClosedWorkflowExecutionsAsync(CountClosedWorkflowExecutionsInput, cb)
@@ -6317,7 +6513,21 @@ function M.CountClosedWorkflowExecutionsAsync(CountClosedWorkflowExecutionsInput
 	end
 end
 
---- RegisterWorkflowType
+--- Call CountClosedWorkflowExecutions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CountClosedWorkflowExecutionsInput
+-- @return response
+-- @return error_message
+function M.CountClosedWorkflowExecutionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CountClosedWorkflowExecutionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterWorkflowType asynchronously, invoking a callback when done
 -- @param RegisterWorkflowTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterWorkflowTypeAsync(RegisterWorkflowTypeInput, cb)
@@ -6335,7 +6545,21 @@ function M.RegisterWorkflowTypeAsync(RegisterWorkflowTypeInput, cb)
 	end
 end
 
---- DescribeDomain
+--- Call RegisterWorkflowType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterWorkflowTypeInput
+-- @return response
+-- @return error_message
+function M.RegisterWorkflowTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterWorkflowTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDomain asynchronously, invoking a callback when done
 -- @param DescribeDomainInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDomainAsync(DescribeDomainInput, cb)
@@ -6353,7 +6577,21 @@ function M.DescribeDomainAsync(DescribeDomainInput, cb)
 	end
 end
 
---- ListClosedWorkflowExecutions
+--- Call DescribeDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDomainInput
+-- @return response
+-- @return error_message
+function M.DescribeDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListClosedWorkflowExecutions asynchronously, invoking a callback when done
 -- @param ListClosedWorkflowExecutionsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListClosedWorkflowExecutionsAsync(ListClosedWorkflowExecutionsInput, cb)
@@ -6371,7 +6609,21 @@ function M.ListClosedWorkflowExecutionsAsync(ListClosedWorkflowExecutionsInput, 
 	end
 end
 
---- TerminateWorkflowExecution
+--- Call ListClosedWorkflowExecutions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListClosedWorkflowExecutionsInput
+-- @return response
+-- @return error_message
+function M.ListClosedWorkflowExecutionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListClosedWorkflowExecutionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TerminateWorkflowExecution asynchronously, invoking a callback when done
 -- @param TerminateWorkflowExecutionInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.TerminateWorkflowExecutionAsync(TerminateWorkflowExecutionInput, cb)
@@ -6389,7 +6641,21 @@ function M.TerminateWorkflowExecutionAsync(TerminateWorkflowExecutionInput, cb)
 	end
 end
 
---- DeprecateWorkflowType
+--- Call TerminateWorkflowExecution synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TerminateWorkflowExecutionInput
+-- @return response
+-- @return error_message
+function M.TerminateWorkflowExecutionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TerminateWorkflowExecutionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeprecateWorkflowType asynchronously, invoking a callback when done
 -- @param DeprecateWorkflowTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeprecateWorkflowTypeAsync(DeprecateWorkflowTypeInput, cb)
@@ -6407,7 +6673,21 @@ function M.DeprecateWorkflowTypeAsync(DeprecateWorkflowTypeInput, cb)
 	end
 end
 
---- DescribeActivityType
+--- Call DeprecateWorkflowType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeprecateWorkflowTypeInput
+-- @return response
+-- @return error_message
+function M.DeprecateWorkflowTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeprecateWorkflowTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeActivityType asynchronously, invoking a callback when done
 -- @param DescribeActivityTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeActivityTypeAsync(DescribeActivityTypeInput, cb)
@@ -6425,7 +6705,21 @@ function M.DescribeActivityTypeAsync(DescribeActivityTypeInput, cb)
 	end
 end
 
---- CountPendingDecisionTasks
+--- Call DescribeActivityType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeActivityTypeInput
+-- @return response
+-- @return error_message
+function M.DescribeActivityTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeActivityTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CountPendingDecisionTasks asynchronously, invoking a callback when done
 -- @param CountPendingDecisionTasksInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CountPendingDecisionTasksAsync(CountPendingDecisionTasksInput, cb)
@@ -6443,7 +6737,21 @@ function M.CountPendingDecisionTasksAsync(CountPendingDecisionTasksInput, cb)
 	end
 end
 
---- ListWorkflowTypes
+--- Call CountPendingDecisionTasks synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CountPendingDecisionTasksInput
+-- @return response
+-- @return error_message
+function M.CountPendingDecisionTasksSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CountPendingDecisionTasksAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListWorkflowTypes asynchronously, invoking a callback when done
 -- @param ListWorkflowTypesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListWorkflowTypesAsync(ListWorkflowTypesInput, cb)
@@ -6461,7 +6769,21 @@ function M.ListWorkflowTypesAsync(ListWorkflowTypesInput, cb)
 	end
 end
 
---- DeprecateDomain
+--- Call ListWorkflowTypes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListWorkflowTypesInput
+-- @return response
+-- @return error_message
+function M.ListWorkflowTypesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListWorkflowTypesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeprecateDomain asynchronously, invoking a callback when done
 -- @param DeprecateDomainInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeprecateDomainAsync(DeprecateDomainInput, cb)
@@ -6479,7 +6801,21 @@ function M.DeprecateDomainAsync(DeprecateDomainInput, cb)
 	end
 end
 
---- RespondActivityTaskCanceled
+--- Call DeprecateDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeprecateDomainInput
+-- @return response
+-- @return error_message
+function M.DeprecateDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeprecateDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RespondActivityTaskCanceled asynchronously, invoking a callback when done
 -- @param RespondActivityTaskCanceledInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RespondActivityTaskCanceledAsync(RespondActivityTaskCanceledInput, cb)
@@ -6497,7 +6833,21 @@ function M.RespondActivityTaskCanceledAsync(RespondActivityTaskCanceledInput, cb
 	end
 end
 
---- DescribeWorkflowType
+--- Call RespondActivityTaskCanceled synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RespondActivityTaskCanceledInput
+-- @return response
+-- @return error_message
+function M.RespondActivityTaskCanceledSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RespondActivityTaskCanceledAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeWorkflowType asynchronously, invoking a callback when done
 -- @param DescribeWorkflowTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeWorkflowTypeAsync(DescribeWorkflowTypeInput, cb)
@@ -6515,7 +6865,21 @@ function M.DescribeWorkflowTypeAsync(DescribeWorkflowTypeInput, cb)
 	end
 end
 
---- RegisterDomain
+--- Call DescribeWorkflowType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeWorkflowTypeInput
+-- @return response
+-- @return error_message
+function M.DescribeWorkflowTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeWorkflowTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterDomain asynchronously, invoking a callback when done
 -- @param RegisterDomainInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterDomainAsync(RegisterDomainInput, cb)
@@ -6533,7 +6897,21 @@ function M.RegisterDomainAsync(RegisterDomainInput, cb)
 	end
 end
 
---- RecordActivityTaskHeartbeat
+--- Call RegisterDomain synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterDomainInput
+-- @return response
+-- @return error_message
+function M.RegisterDomainSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterDomainAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RecordActivityTaskHeartbeat asynchronously, invoking a callback when done
 -- @param RecordActivityTaskHeartbeatInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RecordActivityTaskHeartbeatAsync(RecordActivityTaskHeartbeatInput, cb)
@@ -6551,7 +6929,21 @@ function M.RecordActivityTaskHeartbeatAsync(RecordActivityTaskHeartbeatInput, cb
 	end
 end
 
---- CountPendingActivityTasks
+--- Call RecordActivityTaskHeartbeat synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RecordActivityTaskHeartbeatInput
+-- @return response
+-- @return error_message
+function M.RecordActivityTaskHeartbeatSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RecordActivityTaskHeartbeatAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CountPendingActivityTasks asynchronously, invoking a callback when done
 -- @param CountPendingActivityTasksInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CountPendingActivityTasksAsync(CountPendingActivityTasksInput, cb)
@@ -6569,7 +6961,21 @@ function M.CountPendingActivityTasksAsync(CountPendingActivityTasksInput, cb)
 	end
 end
 
---- DeprecateActivityType
+--- Call CountPendingActivityTasks synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CountPendingActivityTasksInput
+-- @return response
+-- @return error_message
+function M.CountPendingActivityTasksSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CountPendingActivityTasksAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeprecateActivityType asynchronously, invoking a callback when done
 -- @param DeprecateActivityTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeprecateActivityTypeAsync(DeprecateActivityTypeInput, cb)
@@ -6587,7 +6993,21 @@ function M.DeprecateActivityTypeAsync(DeprecateActivityTypeInput, cb)
 	end
 end
 
---- RespondActivityTaskCompleted
+--- Call DeprecateActivityType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeprecateActivityTypeInput
+-- @return response
+-- @return error_message
+function M.DeprecateActivityTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeprecateActivityTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RespondActivityTaskCompleted asynchronously, invoking a callback when done
 -- @param RespondActivityTaskCompletedInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RespondActivityTaskCompletedAsync(RespondActivityTaskCompletedInput, cb)
@@ -6603,6 +7023,20 @@ function M.RespondActivityTaskCompletedAsync(RespondActivityTaskCompletedInput, 
 	else
 		cb(false, err)
 	end
+end
+
+--- Call RespondActivityTaskCompleted synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RespondActivityTaskCompletedInput
+-- @return response
+-- @return error_message
+function M.RespondActivityTaskCompletedSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RespondActivityTaskCompletedAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

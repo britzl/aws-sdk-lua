@@ -385,7 +385,7 @@ end
 --
 -- OPERATIONS
 --
---- GenerateDataSet
+--- Call GenerateDataSet asynchronously, invoking a callback when done
 -- @param GenerateDataSetRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GenerateDataSetAsync(GenerateDataSetRequest, cb)
@@ -403,7 +403,21 @@ function M.GenerateDataSetAsync(GenerateDataSetRequest, cb)
 	end
 end
 
---- StartSupportDataExport
+--- Call GenerateDataSet synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GenerateDataSetRequest
+-- @return response
+-- @return error_message
+function M.GenerateDataSetSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GenerateDataSetAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartSupportDataExport asynchronously, invoking a callback when done
 -- @param StartSupportDataExportRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartSupportDataExportAsync(StartSupportDataExportRequest, cb)
@@ -419,6 +433,20 @@ function M.StartSupportDataExportAsync(StartSupportDataExportRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call StartSupportDataExport synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartSupportDataExportRequest
+-- @return response
+-- @return error_message
+function M.StartSupportDataExportSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartSupportDataExportAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

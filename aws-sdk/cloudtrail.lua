@@ -2177,7 +2177,7 @@ end
 --
 -- OPERATIONS
 --
---- DeleteTrail
+--- Call DeleteTrail asynchronously, invoking a callback when done
 -- @param DeleteTrailRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteTrailAsync(DeleteTrailRequest, cb)
@@ -2195,7 +2195,21 @@ function M.DeleteTrailAsync(DeleteTrailRequest, cb)
 	end
 end
 
---- RemoveTags
+--- Call DeleteTrail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteTrailRequest
+-- @return response
+-- @return error_message
+function M.DeleteTrailSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteTrailAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTags asynchronously, invoking a callback when done
 -- @param RemoveTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsAsync(RemoveTagsRequest, cb)
@@ -2213,7 +2227,21 @@ function M.RemoveTagsAsync(RemoveTagsRequest, cb)
 	end
 end
 
---- GetEventSelectors
+--- Call RemoveTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsRequest
+-- @return response
+-- @return error_message
+function M.RemoveTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetEventSelectors asynchronously, invoking a callback when done
 -- @param GetEventSelectorsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetEventSelectorsAsync(GetEventSelectorsRequest, cb)
@@ -2231,7 +2259,21 @@ function M.GetEventSelectorsAsync(GetEventSelectorsRequest, cb)
 	end
 end
 
---- AddTags
+--- Call GetEventSelectors synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetEventSelectorsRequest
+-- @return response
+-- @return error_message
+function M.GetEventSelectorsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetEventSelectorsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTags asynchronously, invoking a callback when done
 -- @param AddTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsAsync(AddTagsRequest, cb)
@@ -2249,7 +2291,21 @@ function M.AddTagsAsync(AddTagsRequest, cb)
 	end
 end
 
---- StartLogging
+--- Call AddTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsRequest
+-- @return response
+-- @return error_message
+function M.AddTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartLogging asynchronously, invoking a callback when done
 -- @param StartLoggingRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartLoggingAsync(StartLoggingRequest, cb)
@@ -2267,7 +2323,21 @@ function M.StartLoggingAsync(StartLoggingRequest, cb)
 	end
 end
 
---- GetTrailStatus
+--- Call StartLogging synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartLoggingRequest
+-- @return response
+-- @return error_message
+function M.StartLoggingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartLoggingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetTrailStatus asynchronously, invoking a callback when done
 -- @param GetTrailStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetTrailStatusAsync(GetTrailStatusRequest, cb)
@@ -2285,7 +2355,21 @@ function M.GetTrailStatusAsync(GetTrailStatusRequest, cb)
 	end
 end
 
---- ListPublicKeys
+--- Call GetTrailStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetTrailStatusRequest
+-- @return response
+-- @return error_message
+function M.GetTrailStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetTrailStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListPublicKeys asynchronously, invoking a callback when done
 -- @param ListPublicKeysRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListPublicKeysAsync(ListPublicKeysRequest, cb)
@@ -2303,7 +2387,21 @@ function M.ListPublicKeysAsync(ListPublicKeysRequest, cb)
 	end
 end
 
---- StopLogging
+--- Call ListPublicKeys synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListPublicKeysRequest
+-- @return response
+-- @return error_message
+function M.ListPublicKeysSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListPublicKeysAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StopLogging asynchronously, invoking a callback when done
 -- @param StopLoggingRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StopLoggingAsync(StopLoggingRequest, cb)
@@ -2321,7 +2419,21 @@ function M.StopLoggingAsync(StopLoggingRequest, cb)
 	end
 end
 
---- PutEventSelectors
+--- Call StopLogging synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StopLoggingRequest
+-- @return response
+-- @return error_message
+function M.StopLoggingSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StopLoggingAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutEventSelectors asynchronously, invoking a callback when done
 -- @param PutEventSelectorsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutEventSelectorsAsync(PutEventSelectorsRequest, cb)
@@ -2339,7 +2451,21 @@ function M.PutEventSelectorsAsync(PutEventSelectorsRequest, cb)
 	end
 end
 
---- DescribeTrails
+--- Call PutEventSelectors synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutEventSelectorsRequest
+-- @return response
+-- @return error_message
+function M.PutEventSelectorsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutEventSelectorsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTrails asynchronously, invoking a callback when done
 -- @param DescribeTrailsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTrailsAsync(DescribeTrailsRequest, cb)
@@ -2357,7 +2483,21 @@ function M.DescribeTrailsAsync(DescribeTrailsRequest, cb)
 	end
 end
 
---- CreateTrail
+--- Call DescribeTrails synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTrailsRequest
+-- @return response
+-- @return error_message
+function M.DescribeTrailsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTrailsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTrail asynchronously, invoking a callback when done
 -- @param CreateTrailRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateTrailAsync(CreateTrailRequest, cb)
@@ -2375,7 +2515,21 @@ function M.CreateTrailAsync(CreateTrailRequest, cb)
 	end
 end
 
---- UpdateTrail
+--- Call CreateTrail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTrailRequest
+-- @return response
+-- @return error_message
+function M.CreateTrailSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTrailAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateTrail asynchronously, invoking a callback when done
 -- @param UpdateTrailRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateTrailAsync(UpdateTrailRequest, cb)
@@ -2393,7 +2547,21 @@ function M.UpdateTrailAsync(UpdateTrailRequest, cb)
 	end
 end
 
---- ListTags
+--- Call UpdateTrail synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateTrailRequest
+-- @return response
+-- @return error_message
+function M.UpdateTrailSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateTrailAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTags asynchronously, invoking a callback when done
 -- @param ListTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsAsync(ListTagsRequest, cb)
@@ -2411,7 +2579,21 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 	end
 end
 
---- LookupEvents
+--- Call ListTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsRequest
+-- @return response
+-- @return error_message
+function M.ListTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call LookupEvents asynchronously, invoking a callback when done
 -- @param LookupEventsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.LookupEventsAsync(LookupEventsRequest, cb)
@@ -2427,6 +2609,20 @@ function M.LookupEventsAsync(LookupEventsRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call LookupEvents synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param LookupEventsRequest
+-- @return response
+-- @return error_message
+function M.LookupEventsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.LookupEventsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

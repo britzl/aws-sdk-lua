@@ -2869,7 +2869,7 @@ end
 --
 -- OPERATIONS
 --
---- Encrypt
+--- Call Encrypt asynchronously, invoking a callback when done
 -- @param EncryptRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.EncryptAsync(EncryptRequest, cb)
@@ -2887,7 +2887,21 @@ function M.EncryptAsync(EncryptRequest, cb)
 	end
 end
 
---- Decrypt
+--- Call Encrypt synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EncryptRequest
+-- @return response
+-- @return error_message
+function M.EncryptSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EncryptAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call Decrypt asynchronously, invoking a callback when done
 -- @param DecryptRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DecryptAsync(DecryptRequest, cb)
@@ -2905,7 +2919,21 @@ function M.DecryptAsync(DecryptRequest, cb)
 	end
 end
 
---- UpdateAlias
+--- Call Decrypt synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DecryptRequest
+-- @return response
+-- @return error_message
+function M.DecryptSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DecryptAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateAlias asynchronously, invoking a callback when done
 -- @param UpdateAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateAliasAsync(UpdateAliasRequest, cb)
@@ -2923,7 +2951,21 @@ function M.UpdateAliasAsync(UpdateAliasRequest, cb)
 	end
 end
 
---- ImportKeyMaterial
+--- Call UpdateAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateAliasRequest
+-- @return response
+-- @return error_message
+function M.UpdateAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ImportKeyMaterial asynchronously, invoking a callback when done
 -- @param ImportKeyMaterialRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ImportKeyMaterialAsync(ImportKeyMaterialRequest, cb)
@@ -2941,7 +2983,21 @@ function M.ImportKeyMaterialAsync(ImportKeyMaterialRequest, cb)
 	end
 end
 
---- DisableKey
+--- Call ImportKeyMaterial synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ImportKeyMaterialRequest
+-- @return response
+-- @return error_message
+function M.ImportKeyMaterialSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ImportKeyMaterialAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableKey asynchronously, invoking a callback when done
 -- @param DisableKeyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableKeyAsync(DisableKeyRequest, cb)
@@ -2959,7 +3015,21 @@ function M.DisableKeyAsync(DisableKeyRequest, cb)
 	end
 end
 
---- GenerateDataKeyWithoutPlaintext
+--- Call DisableKey synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableKeyRequest
+-- @return response
+-- @return error_message
+function M.DisableKeySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableKeyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GenerateDataKeyWithoutPlaintext asynchronously, invoking a callback when done
 -- @param GenerateDataKeyWithoutPlaintextRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GenerateDataKeyWithoutPlaintextAsync(GenerateDataKeyWithoutPlaintextRequest, cb)
@@ -2977,7 +3047,21 @@ function M.GenerateDataKeyWithoutPlaintextAsync(GenerateDataKeyWithoutPlaintextR
 	end
 end
 
---- GenerateDataKey
+--- Call GenerateDataKeyWithoutPlaintext synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GenerateDataKeyWithoutPlaintextRequest
+-- @return response
+-- @return error_message
+function M.GenerateDataKeyWithoutPlaintextSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GenerateDataKeyWithoutPlaintextAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GenerateDataKey asynchronously, invoking a callback when done
 -- @param GenerateDataKeyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GenerateDataKeyAsync(GenerateDataKeyRequest, cb)
@@ -2995,7 +3079,21 @@ function M.GenerateDataKeyAsync(GenerateDataKeyRequest, cb)
 	end
 end
 
---- ListResourceTags
+--- Call GenerateDataKey synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GenerateDataKeyRequest
+-- @return response
+-- @return error_message
+function M.GenerateDataKeySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GenerateDataKeyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListResourceTags asynchronously, invoking a callback when done
 -- @param ListResourceTagsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListResourceTagsAsync(ListResourceTagsRequest, cb)
@@ -3013,7 +3111,21 @@ function M.ListResourceTagsAsync(ListResourceTagsRequest, cb)
 	end
 end
 
---- ListAliases
+--- Call ListResourceTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListResourceTagsRequest
+-- @return response
+-- @return error_message
+function M.ListResourceTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListResourceTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListAliases asynchronously, invoking a callback when done
 -- @param ListAliasesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListAliasesAsync(ListAliasesRequest, cb)
@@ -3031,7 +3143,21 @@ function M.ListAliasesAsync(ListAliasesRequest, cb)
 	end
 end
 
---- CancelKeyDeletion
+--- Call ListAliases synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListAliasesRequest
+-- @return response
+-- @return error_message
+function M.ListAliasesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListAliasesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CancelKeyDeletion asynchronously, invoking a callback when done
 -- @param CancelKeyDeletionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CancelKeyDeletionAsync(CancelKeyDeletionRequest, cb)
@@ -3049,7 +3175,21 @@ function M.CancelKeyDeletionAsync(CancelKeyDeletionRequest, cb)
 	end
 end
 
---- GetKeyRotationStatus
+--- Call CancelKeyDeletion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CancelKeyDeletionRequest
+-- @return response
+-- @return error_message
+function M.CancelKeyDeletionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CancelKeyDeletionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetKeyRotationStatus asynchronously, invoking a callback when done
 -- @param GetKeyRotationStatusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetKeyRotationStatusAsync(GetKeyRotationStatusRequest, cb)
@@ -3067,7 +3207,21 @@ function M.GetKeyRotationStatusAsync(GetKeyRotationStatusRequest, cb)
 	end
 end
 
---- ListKeyPolicies
+--- Call GetKeyRotationStatus synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetKeyRotationStatusRequest
+-- @return response
+-- @return error_message
+function M.GetKeyRotationStatusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetKeyRotationStatusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListKeyPolicies asynchronously, invoking a callback when done
 -- @param ListKeyPoliciesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListKeyPoliciesAsync(ListKeyPoliciesRequest, cb)
@@ -3085,7 +3239,21 @@ function M.ListKeyPoliciesAsync(ListKeyPoliciesRequest, cb)
 	end
 end
 
---- DeleteAlias
+--- Call ListKeyPolicies synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListKeyPoliciesRequest
+-- @return response
+-- @return error_message
+function M.ListKeyPoliciesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListKeyPoliciesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteAlias asynchronously, invoking a callback when done
 -- @param DeleteAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteAliasAsync(DeleteAliasRequest, cb)
@@ -3103,7 +3271,21 @@ function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 	end
 end
 
---- RetireGrant
+--- Call DeleteAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteAliasRequest
+-- @return response
+-- @return error_message
+function M.DeleteAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RetireGrant asynchronously, invoking a callback when done
 -- @param RetireGrantRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RetireGrantAsync(RetireGrantRequest, cb)
@@ -3121,7 +3303,21 @@ function M.RetireGrantAsync(RetireGrantRequest, cb)
 	end
 end
 
---- TagResource
+--- Call RetireGrant synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RetireGrantRequest
+-- @return response
+-- @return error_message
+function M.RetireGrantSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RetireGrantAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call TagResource asynchronously, invoking a callback when done
 -- @param TagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.TagResourceAsync(TagResourceRequest, cb)
@@ -3139,7 +3335,21 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 	end
 end
 
---- DescribeKey
+--- Call TagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param TagResourceRequest
+-- @return response
+-- @return error_message
+function M.TagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.TagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeKey asynchronously, invoking a callback when done
 -- @param DescribeKeyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeKeyAsync(DescribeKeyRequest, cb)
@@ -3157,7 +3367,21 @@ function M.DescribeKeyAsync(DescribeKeyRequest, cb)
 	end
 end
 
---- ListKeys
+--- Call DescribeKey synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeKeyRequest
+-- @return response
+-- @return error_message
+function M.DescribeKeySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeKeyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListKeys asynchronously, invoking a callback when done
 -- @param ListKeysRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListKeysAsync(ListKeysRequest, cb)
@@ -3175,7 +3399,21 @@ function M.ListKeysAsync(ListKeysRequest, cb)
 	end
 end
 
---- GenerateRandom
+--- Call ListKeys synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListKeysRequest
+-- @return response
+-- @return error_message
+function M.ListKeysSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListKeysAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GenerateRandom asynchronously, invoking a callback when done
 -- @param GenerateRandomRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GenerateRandomAsync(GenerateRandomRequest, cb)
@@ -3193,7 +3431,21 @@ function M.GenerateRandomAsync(GenerateRandomRequest, cb)
 	end
 end
 
---- GetKeyPolicy
+--- Call GenerateRandom synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GenerateRandomRequest
+-- @return response
+-- @return error_message
+function M.GenerateRandomSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GenerateRandomAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetKeyPolicy asynchronously, invoking a callback when done
 -- @param GetKeyPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetKeyPolicyAsync(GetKeyPolicyRequest, cb)
@@ -3211,7 +3463,21 @@ function M.GetKeyPolicyAsync(GetKeyPolicyRequest, cb)
 	end
 end
 
---- CreateGrant
+--- Call GetKeyPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetKeyPolicyRequest
+-- @return response
+-- @return error_message
+function M.GetKeyPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetKeyPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateGrant asynchronously, invoking a callback when done
 -- @param CreateGrantRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateGrantAsync(CreateGrantRequest, cb)
@@ -3229,7 +3495,21 @@ function M.CreateGrantAsync(CreateGrantRequest, cb)
 	end
 end
 
---- CreateKey
+--- Call CreateGrant synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateGrantRequest
+-- @return response
+-- @return error_message
+function M.CreateGrantSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateGrantAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateKey asynchronously, invoking a callback when done
 -- @param CreateKeyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateKeyAsync(CreateKeyRequest, cb)
@@ -3247,7 +3527,21 @@ function M.CreateKeyAsync(CreateKeyRequest, cb)
 	end
 end
 
---- ReEncrypt
+--- Call CreateKey synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateKeyRequest
+-- @return response
+-- @return error_message
+function M.CreateKeySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateKeyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ReEncrypt asynchronously, invoking a callback when done
 -- @param ReEncryptRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ReEncryptAsync(ReEncryptRequest, cb)
@@ -3265,7 +3559,21 @@ function M.ReEncryptAsync(ReEncryptRequest, cb)
 	end
 end
 
---- GetParametersForImport
+--- Call ReEncrypt synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ReEncryptRequest
+-- @return response
+-- @return error_message
+function M.ReEncryptSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ReEncryptAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetParametersForImport asynchronously, invoking a callback when done
 -- @param GetParametersForImportRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetParametersForImportAsync(GetParametersForImportRequest, cb)
@@ -3283,7 +3591,21 @@ function M.GetParametersForImportAsync(GetParametersForImportRequest, cb)
 	end
 end
 
---- DisableKeyRotation
+--- Call GetParametersForImport synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetParametersForImportRequest
+-- @return response
+-- @return error_message
+function M.GetParametersForImportSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetParametersForImportAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableKeyRotation asynchronously, invoking a callback when done
 -- @param DisableKeyRotationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableKeyRotationAsync(DisableKeyRotationRequest, cb)
@@ -3301,7 +3623,21 @@ function M.DisableKeyRotationAsync(DisableKeyRotationRequest, cb)
 	end
 end
 
---- ListRetirableGrants
+--- Call DisableKeyRotation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableKeyRotationRequest
+-- @return response
+-- @return error_message
+function M.DisableKeyRotationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableKeyRotationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListRetirableGrants asynchronously, invoking a callback when done
 -- @param ListRetirableGrantsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListRetirableGrantsAsync(ListRetirableGrantsRequest, cb)
@@ -3319,7 +3655,21 @@ function M.ListRetirableGrantsAsync(ListRetirableGrantsRequest, cb)
 	end
 end
 
---- ScheduleKeyDeletion
+--- Call ListRetirableGrants synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListRetirableGrantsRequest
+-- @return response
+-- @return error_message
+function M.ListRetirableGrantsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListRetirableGrantsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ScheduleKeyDeletion asynchronously, invoking a callback when done
 -- @param ScheduleKeyDeletionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ScheduleKeyDeletionAsync(ScheduleKeyDeletionRequest, cb)
@@ -3337,7 +3687,21 @@ function M.ScheduleKeyDeletionAsync(ScheduleKeyDeletionRequest, cb)
 	end
 end
 
---- CreateAlias
+--- Call ScheduleKeyDeletion synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ScheduleKeyDeletionRequest
+-- @return response
+-- @return error_message
+function M.ScheduleKeyDeletionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ScheduleKeyDeletionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateAlias asynchronously, invoking a callback when done
 -- @param CreateAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateAliasAsync(CreateAliasRequest, cb)
@@ -3355,7 +3719,21 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 	end
 end
 
---- EnableKeyRotation
+--- Call CreateAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateAliasRequest
+-- @return response
+-- @return error_message
+function M.CreateAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableKeyRotation asynchronously, invoking a callback when done
 -- @param EnableKeyRotationRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableKeyRotationAsync(EnableKeyRotationRequest, cb)
@@ -3373,7 +3751,21 @@ function M.EnableKeyRotationAsync(EnableKeyRotationRequest, cb)
 	end
 end
 
---- UntagResource
+--- Call EnableKeyRotation synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableKeyRotationRequest
+-- @return response
+-- @return error_message
+function M.EnableKeyRotationSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableKeyRotationAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UntagResource asynchronously, invoking a callback when done
 -- @param UntagResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UntagResourceAsync(UntagResourceRequest, cb)
@@ -3391,7 +3783,21 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 	end
 end
 
---- ListGrants
+--- Call UntagResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UntagResourceRequest
+-- @return response
+-- @return error_message
+function M.UntagResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UntagResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListGrants asynchronously, invoking a callback when done
 -- @param ListGrantsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListGrantsAsync(ListGrantsRequest, cb)
@@ -3409,7 +3815,21 @@ function M.ListGrantsAsync(ListGrantsRequest, cb)
 	end
 end
 
---- EnableKey
+--- Call ListGrants synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListGrantsRequest
+-- @return response
+-- @return error_message
+function M.ListGrantsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListGrantsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableKey asynchronously, invoking a callback when done
 -- @param EnableKeyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableKeyAsync(EnableKeyRequest, cb)
@@ -3427,7 +3847,21 @@ function M.EnableKeyAsync(EnableKeyRequest, cb)
 	end
 end
 
---- DeleteImportedKeyMaterial
+--- Call EnableKey synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableKeyRequest
+-- @return response
+-- @return error_message
+function M.EnableKeySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableKeyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteImportedKeyMaterial asynchronously, invoking a callback when done
 -- @param DeleteImportedKeyMaterialRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteImportedKeyMaterialAsync(DeleteImportedKeyMaterialRequest, cb)
@@ -3445,7 +3879,21 @@ function M.DeleteImportedKeyMaterialAsync(DeleteImportedKeyMaterialRequest, cb)
 	end
 end
 
---- UpdateKeyDescription
+--- Call DeleteImportedKeyMaterial synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteImportedKeyMaterialRequest
+-- @return response
+-- @return error_message
+function M.DeleteImportedKeyMaterialSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteImportedKeyMaterialAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateKeyDescription asynchronously, invoking a callback when done
 -- @param UpdateKeyDescriptionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateKeyDescriptionAsync(UpdateKeyDescriptionRequest, cb)
@@ -3463,7 +3911,21 @@ function M.UpdateKeyDescriptionAsync(UpdateKeyDescriptionRequest, cb)
 	end
 end
 
---- RevokeGrant
+--- Call UpdateKeyDescription synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateKeyDescriptionRequest
+-- @return response
+-- @return error_message
+function M.UpdateKeyDescriptionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateKeyDescriptionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RevokeGrant asynchronously, invoking a callback when done
 -- @param RevokeGrantRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RevokeGrantAsync(RevokeGrantRequest, cb)
@@ -3481,7 +3943,21 @@ function M.RevokeGrantAsync(RevokeGrantRequest, cb)
 	end
 end
 
---- PutKeyPolicy
+--- Call RevokeGrant synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RevokeGrantRequest
+-- @return response
+-- @return error_message
+function M.RevokeGrantSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RevokeGrantAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PutKeyPolicy asynchronously, invoking a callback when done
 -- @param PutKeyPolicyRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PutKeyPolicyAsync(PutKeyPolicyRequest, cb)
@@ -3497,6 +3973,20 @@ function M.PutKeyPolicyAsync(PutKeyPolicyRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call PutKeyPolicy synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PutKeyPolicyRequest
+-- @return response
+-- @return error_message
+function M.PutKeyPolicySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PutKeyPolicyAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

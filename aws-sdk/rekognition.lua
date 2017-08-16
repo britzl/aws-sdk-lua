@@ -2341,7 +2341,7 @@ end
 --
 -- OPERATIONS
 --
---- DeleteCollection
+--- Call DeleteCollection asynchronously, invoking a callback when done
 -- @param DeleteCollectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteCollectionAsync(DeleteCollectionRequest, cb)
@@ -2359,7 +2359,21 @@ function M.DeleteCollectionAsync(DeleteCollectionRequest, cb)
 	end
 end
 
---- ListFaces
+--- Call DeleteCollection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteCollectionRequest
+-- @return response
+-- @return error_message
+function M.DeleteCollectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteCollectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListFaces asynchronously, invoking a callback when done
 -- @param ListFacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListFacesAsync(ListFacesRequest, cb)
@@ -2377,7 +2391,21 @@ function M.ListFacesAsync(ListFacesRequest, cb)
 	end
 end
 
---- IndexFaces
+--- Call ListFaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListFacesRequest
+-- @return response
+-- @return error_message
+function M.ListFacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListFacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call IndexFaces asynchronously, invoking a callback when done
 -- @param IndexFacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.IndexFacesAsync(IndexFacesRequest, cb)
@@ -2395,7 +2423,21 @@ function M.IndexFacesAsync(IndexFacesRequest, cb)
 	end
 end
 
---- SearchFaces
+--- Call IndexFaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param IndexFacesRequest
+-- @return response
+-- @return error_message
+function M.IndexFacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.IndexFacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SearchFaces asynchronously, invoking a callback when done
 -- @param SearchFacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SearchFacesAsync(SearchFacesRequest, cb)
@@ -2413,7 +2455,21 @@ function M.SearchFacesAsync(SearchFacesRequest, cb)
 	end
 end
 
---- GetCelebrityInfo
+--- Call SearchFaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SearchFacesRequest
+-- @return response
+-- @return error_message
+function M.SearchFacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SearchFacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetCelebrityInfo asynchronously, invoking a callback when done
 -- @param GetCelebrityInfoRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCelebrityInfoAsync(GetCelebrityInfoRequest, cb)
@@ -2431,7 +2487,21 @@ function M.GetCelebrityInfoAsync(GetCelebrityInfoRequest, cb)
 	end
 end
 
---- DetectLabels
+--- Call GetCelebrityInfo synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetCelebrityInfoRequest
+-- @return response
+-- @return error_message
+function M.GetCelebrityInfoSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetCelebrityInfoAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DetectLabels asynchronously, invoking a callback when done
 -- @param DetectLabelsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DetectLabelsAsync(DetectLabelsRequest, cb)
@@ -2449,7 +2519,21 @@ function M.DetectLabelsAsync(DetectLabelsRequest, cb)
 	end
 end
 
---- DetectModerationLabels
+--- Call DetectLabels synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DetectLabelsRequest
+-- @return response
+-- @return error_message
+function M.DetectLabelsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DetectLabelsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DetectModerationLabels asynchronously, invoking a callback when done
 -- @param DetectModerationLabelsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DetectModerationLabelsAsync(DetectModerationLabelsRequest, cb)
@@ -2467,7 +2551,21 @@ function M.DetectModerationLabelsAsync(DetectModerationLabelsRequest, cb)
 	end
 end
 
---- ListCollections
+--- Call DetectModerationLabels synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DetectModerationLabelsRequest
+-- @return response
+-- @return error_message
+function M.DetectModerationLabelsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DetectModerationLabelsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListCollections asynchronously, invoking a callback when done
 -- @param ListCollectionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListCollectionsAsync(ListCollectionsRequest, cb)
@@ -2485,7 +2583,21 @@ function M.ListCollectionsAsync(ListCollectionsRequest, cb)
 	end
 end
 
---- CreateCollection
+--- Call ListCollections synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListCollectionsRequest
+-- @return response
+-- @return error_message
+function M.ListCollectionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListCollectionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateCollection asynchronously, invoking a callback when done
 -- @param CreateCollectionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateCollectionAsync(CreateCollectionRequest, cb)
@@ -2503,7 +2615,21 @@ function M.CreateCollectionAsync(CreateCollectionRequest, cb)
 	end
 end
 
---- CompareFaces
+--- Call CreateCollection synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateCollectionRequest
+-- @return response
+-- @return error_message
+function M.CreateCollectionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateCollectionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CompareFaces asynchronously, invoking a callback when done
 -- @param CompareFacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CompareFacesAsync(CompareFacesRequest, cb)
@@ -2521,7 +2647,21 @@ function M.CompareFacesAsync(CompareFacesRequest, cb)
 	end
 end
 
---- DeleteFaces
+--- Call CompareFaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CompareFacesRequest
+-- @return response
+-- @return error_message
+function M.CompareFacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CompareFacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteFaces asynchronously, invoking a callback when done
 -- @param DeleteFacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteFacesAsync(DeleteFacesRequest, cb)
@@ -2539,7 +2679,21 @@ function M.DeleteFacesAsync(DeleteFacesRequest, cb)
 	end
 end
 
---- SearchFacesByImage
+--- Call DeleteFaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteFacesRequest
+-- @return response
+-- @return error_message
+function M.DeleteFacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteFacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SearchFacesByImage asynchronously, invoking a callback when done
 -- @param SearchFacesByImageRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.SearchFacesByImageAsync(SearchFacesByImageRequest, cb)
@@ -2557,7 +2711,21 @@ function M.SearchFacesByImageAsync(SearchFacesByImageRequest, cb)
 	end
 end
 
---- DetectFaces
+--- Call SearchFacesByImage synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SearchFacesByImageRequest
+-- @return response
+-- @return error_message
+function M.SearchFacesByImageSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SearchFacesByImageAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DetectFaces asynchronously, invoking a callback when done
 -- @param DetectFacesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DetectFacesAsync(DetectFacesRequest, cb)
@@ -2575,7 +2743,21 @@ function M.DetectFacesAsync(DetectFacesRequest, cb)
 	end
 end
 
---- RecognizeCelebrities
+--- Call DetectFaces synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DetectFacesRequest
+-- @return response
+-- @return error_message
+function M.DetectFacesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DetectFacesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RecognizeCelebrities asynchronously, invoking a callback when done
 -- @param RecognizeCelebritiesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RecognizeCelebritiesAsync(RecognizeCelebritiesRequest, cb)
@@ -2591,6 +2773,20 @@ function M.RecognizeCelebritiesAsync(RecognizeCelebritiesRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call RecognizeCelebrities synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RecognizeCelebritiesRequest
+-- @return response
+-- @return error_message
+function M.RecognizeCelebritiesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RecognizeCelebritiesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

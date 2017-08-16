@@ -4089,7 +4089,7 @@ end
 --
 -- OPERATIONS
 --
---- RegisterTargets
+--- Call RegisterTargets asynchronously, invoking a callback when done
 -- @param RegisterTargetsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterTargetsAsync(RegisterTargetsInput, cb)
@@ -4107,7 +4107,21 @@ function M.RegisterTargetsAsync(RegisterTargetsInput, cb)
 	end
 end
 
---- DescribeSSLPolicies
+--- Call RegisterTargets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterTargetsInput
+-- @return response
+-- @return error_message
+function M.RegisterTargetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterTargetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSSLPolicies asynchronously, invoking a callback when done
 -- @param DescribeSSLPoliciesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeSSLPoliciesAsync(DescribeSSLPoliciesInput, cb)
@@ -4125,7 +4139,21 @@ function M.DescribeSSLPoliciesAsync(DescribeSSLPoliciesInput, cb)
 	end
 end
 
---- SetSecurityGroups
+--- Call DescribeSSLPolicies synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSSLPoliciesInput
+-- @return response
+-- @return error_message
+function M.DescribeSSLPoliciesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSSLPoliciesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetSecurityGroups asynchronously, invoking a callback when done
 -- @param SetSecurityGroupsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetSecurityGroupsAsync(SetSecurityGroupsInput, cb)
@@ -4143,7 +4171,21 @@ function M.SetSecurityGroupsAsync(SetSecurityGroupsInput, cb)
 	end
 end
 
---- DeleteListener
+--- Call SetSecurityGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetSecurityGroupsInput
+-- @return response
+-- @return error_message
+function M.SetSecurityGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetSecurityGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteListener asynchronously, invoking a callback when done
 -- @param DeleteListenerInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteListenerAsync(DeleteListenerInput, cb)
@@ -4161,7 +4203,21 @@ function M.DeleteListenerAsync(DeleteListenerInput, cb)
 	end
 end
 
---- ModifyTargetGroup
+--- Call DeleteListener synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteListenerInput
+-- @return response
+-- @return error_message
+function M.DeleteListenerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteListenerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyTargetGroup asynchronously, invoking a callback when done
 -- @param ModifyTargetGroupInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyTargetGroupAsync(ModifyTargetGroupInput, cb)
@@ -4179,7 +4235,21 @@ function M.ModifyTargetGroupAsync(ModifyTargetGroupInput, cb)
 	end
 end
 
---- CreateRule
+--- Call ModifyTargetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyTargetGroupInput
+-- @return response
+-- @return error_message
+function M.ModifyTargetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyTargetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateRule asynchronously, invoking a callback when done
 -- @param CreateRuleInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateRuleAsync(CreateRuleInput, cb)
@@ -4197,7 +4267,21 @@ function M.CreateRuleAsync(CreateRuleInput, cb)
 	end
 end
 
---- SetRulePriorities
+--- Call CreateRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateRuleInput
+-- @return response
+-- @return error_message
+function M.CreateRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetRulePriorities asynchronously, invoking a callback when done
 -- @param SetRulePrioritiesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetRulePrioritiesAsync(SetRulePrioritiesInput, cb)
@@ -4215,7 +4299,21 @@ function M.SetRulePrioritiesAsync(SetRulePrioritiesInput, cb)
 	end
 end
 
---- ModifyTargetGroupAttributes
+--- Call SetRulePriorities synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetRulePrioritiesInput
+-- @return response
+-- @return error_message
+function M.SetRulePrioritiesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetRulePrioritiesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyTargetGroupAttributes asynchronously, invoking a callback when done
 -- @param ModifyTargetGroupAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyTargetGroupAttributesAsync(ModifyTargetGroupAttributesInput, cb)
@@ -4233,7 +4331,21 @@ function M.ModifyTargetGroupAttributesAsync(ModifyTargetGroupAttributesInput, cb
 	end
 end
 
---- DescribeLoadBalancerAttributes
+--- Call ModifyTargetGroupAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyTargetGroupAttributesInput
+-- @return response
+-- @return error_message
+function M.ModifyTargetGroupAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyTargetGroupAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLoadBalancerAttributes asynchronously, invoking a callback when done
 -- @param DescribeLoadBalancerAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLoadBalancerAttributesAsync(DescribeLoadBalancerAttributesInput, cb)
@@ -4251,7 +4363,21 @@ function M.DescribeLoadBalancerAttributesAsync(DescribeLoadBalancerAttributesInp
 	end
 end
 
---- SetIpAddressType
+--- Call DescribeLoadBalancerAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeLoadBalancerAttributesInput
+-- @return response
+-- @return error_message
+function M.DescribeLoadBalancerAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLoadBalancerAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetIpAddressType asynchronously, invoking a callback when done
 -- @param SetIpAddressTypeInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetIpAddressTypeAsync(SetIpAddressTypeInput, cb)
@@ -4269,7 +4395,21 @@ function M.SetIpAddressTypeAsync(SetIpAddressTypeInput, cb)
 	end
 end
 
---- ModifyListener
+--- Call SetIpAddressType synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetIpAddressTypeInput
+-- @return response
+-- @return error_message
+function M.SetIpAddressTypeSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetIpAddressTypeAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyListener asynchronously, invoking a callback when done
 -- @param ModifyListenerInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyListenerAsync(ModifyListenerInput, cb)
@@ -4287,7 +4427,21 @@ function M.ModifyListenerAsync(ModifyListenerInput, cb)
 	end
 end
 
---- DeleteLoadBalancer
+--- Call ModifyListener synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyListenerInput
+-- @return response
+-- @return error_message
+function M.ModifyListenerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyListenerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteLoadBalancer asynchronously, invoking a callback when done
 -- @param DeleteLoadBalancerInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteLoadBalancerAsync(DeleteLoadBalancerInput, cb)
@@ -4305,7 +4459,21 @@ function M.DeleteLoadBalancerAsync(DeleteLoadBalancerInput, cb)
 	end
 end
 
---- DeleteRule
+--- Call DeleteLoadBalancer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteLoadBalancerInput
+-- @return response
+-- @return error_message
+function M.DeleteLoadBalancerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteLoadBalancerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteRule asynchronously, invoking a callback when done
 -- @param DeleteRuleInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteRuleAsync(DeleteRuleInput, cb)
@@ -4323,7 +4491,21 @@ function M.DeleteRuleAsync(DeleteRuleInput, cb)
 	end
 end
 
---- DeleteTargetGroup
+--- Call DeleteRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteRuleInput
+-- @return response
+-- @return error_message
+function M.DeleteRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteTargetGroup asynchronously, invoking a callback when done
 -- @param DeleteTargetGroupInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteTargetGroupAsync(DeleteTargetGroupInput, cb)
@@ -4341,7 +4523,21 @@ function M.DeleteTargetGroupAsync(DeleteTargetGroupInput, cb)
 	end
 end
 
---- DescribeTargetGroupAttributes
+--- Call DeleteTargetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteTargetGroupInput
+-- @return response
+-- @return error_message
+function M.DeleteTargetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteTargetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTargetGroupAttributes asynchronously, invoking a callback when done
 -- @param DescribeTargetGroupAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTargetGroupAttributesAsync(DescribeTargetGroupAttributesInput, cb)
@@ -4359,7 +4555,21 @@ function M.DescribeTargetGroupAttributesAsync(DescribeTargetGroupAttributesInput
 	end
 end
 
---- DescribeLoadBalancers
+--- Call DescribeTargetGroupAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTargetGroupAttributesInput
+-- @return response
+-- @return error_message
+function M.DescribeTargetGroupAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTargetGroupAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeLoadBalancers asynchronously, invoking a callback when done
 -- @param DescribeLoadBalancersInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLoadBalancersAsync(DescribeLoadBalancersInput, cb)
@@ -4377,7 +4587,21 @@ function M.DescribeLoadBalancersAsync(DescribeLoadBalancersInput, cb)
 	end
 end
 
---- DescribeListeners
+--- Call DescribeLoadBalancers synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeLoadBalancersInput
+-- @return response
+-- @return error_message
+function M.DescribeLoadBalancersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeLoadBalancersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeListeners asynchronously, invoking a callback when done
 -- @param DescribeListenersInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeListenersAsync(DescribeListenersInput, cb)
@@ -4395,7 +4619,21 @@ function M.DescribeListenersAsync(DescribeListenersInput, cb)
 	end
 end
 
---- RemoveTags
+--- Call DescribeListeners synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeListenersInput
+-- @return response
+-- @return error_message
+function M.DescribeListenersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeListenersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveTags asynchronously, invoking a callback when done
 -- @param RemoveTagsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsAsync(RemoveTagsInput, cb)
@@ -4413,7 +4651,21 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 	end
 end
 
---- CreateListener
+--- Call RemoveTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsInput
+-- @return response
+-- @return error_message
+function M.RemoveTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateListener asynchronously, invoking a callback when done
 -- @param CreateListenerInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateListenerAsync(CreateListenerInput, cb)
@@ -4431,7 +4683,21 @@ function M.CreateListenerAsync(CreateListenerInput, cb)
 	end
 end
 
---- SetSubnets
+--- Call CreateListener synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateListenerInput
+-- @return response
+-- @return error_message
+function M.CreateListenerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateListenerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call SetSubnets asynchronously, invoking a callback when done
 -- @param SetSubnetsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.SetSubnetsAsync(SetSubnetsInput, cb)
@@ -4449,7 +4715,21 @@ function M.SetSubnetsAsync(SetSubnetsInput, cb)
 	end
 end
 
---- DescribeTags
+--- Call SetSubnets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param SetSubnetsInput
+-- @return response
+-- @return error_message
+function M.SetSubnetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.SetSubnetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTags asynchronously, invoking a callback when done
 -- @param DescribeTagsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTagsAsync(DescribeTagsInput, cb)
@@ -4467,7 +4747,21 @@ function M.DescribeTagsAsync(DescribeTagsInput, cb)
 	end
 end
 
---- ModifyRule
+--- Call DescribeTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTagsInput
+-- @return response
+-- @return error_message
+function M.DescribeTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyRule asynchronously, invoking a callback when done
 -- @param ModifyRuleInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyRuleAsync(ModifyRuleInput, cb)
@@ -4485,7 +4779,21 @@ function M.ModifyRuleAsync(ModifyRuleInput, cb)
 	end
 end
 
---- CreateTargetGroup
+--- Call ModifyRule synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyRuleInput
+-- @return response
+-- @return error_message
+function M.ModifyRuleSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyRuleAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTargetGroup asynchronously, invoking a callback when done
 -- @param CreateTargetGroupInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateTargetGroupAsync(CreateTargetGroupInput, cb)
@@ -4503,7 +4811,21 @@ function M.CreateTargetGroupAsync(CreateTargetGroupInput, cb)
 	end
 end
 
---- AddTags
+--- Call CreateTargetGroup synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTargetGroupInput
+-- @return response
+-- @return error_message
+function M.CreateTargetGroupSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTargetGroupAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTags asynchronously, invoking a callback when done
 -- @param AddTagsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsAsync(AddTagsInput, cb)
@@ -4521,7 +4843,21 @@ function M.AddTagsAsync(AddTagsInput, cb)
 	end
 end
 
---- DescribeTargetGroups
+--- Call AddTags synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsInput
+-- @return response
+-- @return error_message
+function M.AddTagsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTargetGroups asynchronously, invoking a callback when done
 -- @param DescribeTargetGroupsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTargetGroupsAsync(DescribeTargetGroupsInput, cb)
@@ -4539,7 +4875,21 @@ function M.DescribeTargetGroupsAsync(DescribeTargetGroupsInput, cb)
 	end
 end
 
---- DeregisterTargets
+--- Call DescribeTargetGroups synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTargetGroupsInput
+-- @return response
+-- @return error_message
+function M.DescribeTargetGroupsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTargetGroupsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterTargets asynchronously, invoking a callback when done
 -- @param DeregisterTargetsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeregisterTargetsAsync(DeregisterTargetsInput, cb)
@@ -4557,7 +4907,21 @@ function M.DeregisterTargetsAsync(DeregisterTargetsInput, cb)
 	end
 end
 
---- ModifyLoadBalancerAttributes
+--- Call DeregisterTargets synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterTargetsInput
+-- @return response
+-- @return error_message
+function M.DeregisterTargetsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterTargetsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ModifyLoadBalancerAttributes asynchronously, invoking a callback when done
 -- @param ModifyLoadBalancerAttributesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.ModifyLoadBalancerAttributesAsync(ModifyLoadBalancerAttributesInput, cb)
@@ -4575,7 +4939,21 @@ function M.ModifyLoadBalancerAttributesAsync(ModifyLoadBalancerAttributesInput, 
 	end
 end
 
---- DescribeRules
+--- Call ModifyLoadBalancerAttributes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ModifyLoadBalancerAttributesInput
+-- @return response
+-- @return error_message
+function M.ModifyLoadBalancerAttributesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ModifyLoadBalancerAttributesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeRules asynchronously, invoking a callback when done
 -- @param DescribeRulesInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeRulesAsync(DescribeRulesInput, cb)
@@ -4593,7 +4971,21 @@ function M.DescribeRulesAsync(DescribeRulesInput, cb)
 	end
 end
 
---- DescribeTargetHealth
+--- Call DescribeRules synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeRulesInput
+-- @return response
+-- @return error_message
+function M.DescribeRulesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeRulesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTargetHealth asynchronously, invoking a callback when done
 -- @param DescribeTargetHealthInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTargetHealthAsync(DescribeTargetHealthInput, cb)
@@ -4611,7 +5003,21 @@ function M.DescribeTargetHealthAsync(DescribeTargetHealthInput, cb)
 	end
 end
 
---- CreateLoadBalancer
+--- Call DescribeTargetHealth synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTargetHealthInput
+-- @return response
+-- @return error_message
+function M.DescribeTargetHealthSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTargetHealthAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateLoadBalancer asynchronously, invoking a callback when done
 -- @param CreateLoadBalancerInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateLoadBalancerAsync(CreateLoadBalancerInput, cb)
@@ -4629,7 +5035,21 @@ function M.CreateLoadBalancerAsync(CreateLoadBalancerInput, cb)
 	end
 end
 
---- DescribeAccountLimits
+--- Call CreateLoadBalancer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateLoadBalancerInput
+-- @return response
+-- @return error_message
+function M.CreateLoadBalancerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateLoadBalancerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeAccountLimits asynchronously, invoking a callback when done
 -- @param DescribeAccountLimitsInput
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
@@ -4645,6 +5065,20 @@ function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DescribeAccountLimits synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeAccountLimitsInput
+-- @return response
+-- @return error_message
+function M.DescribeAccountLimitsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeAccountLimitsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

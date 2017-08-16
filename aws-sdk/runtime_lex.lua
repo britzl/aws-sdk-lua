@@ -824,7 +824,7 @@ end
 --
 -- OPERATIONS
 --
---- PostContent
+--- Call PostContent asynchronously, invoking a callback when done
 -- @param PostContentRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PostContentAsync(PostContentRequest, cb)
@@ -842,7 +842,21 @@ function M.PostContentAsync(PostContentRequest, cb)
 	end
 end
 
---- PostText
+--- Call PostContent synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PostContentRequest
+-- @return response
+-- @return error_message
+function M.PostContentSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PostContentAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call PostText asynchronously, invoking a callback when done
 -- @param PostTextRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.PostTextAsync(PostTextRequest, cb)
@@ -858,6 +872,20 @@ function M.PostTextAsync(PostTextRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call PostText synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param PostTextRequest
+-- @return response
+-- @return error_message
+function M.PostTextSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.PostTextAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 

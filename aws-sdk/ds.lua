@@ -4334,7 +4334,7 @@ end
 --
 -- OPERATIONS
 --
---- RemoveTagsFromResource
+--- Call RemoveTagsFromResource asynchronously, invoking a callback when done
 -- @param RemoveTagsFromResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
@@ -4352,7 +4352,21 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 	end
 end
 
---- CreateComputer
+--- Call RemoveTagsFromResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveTagsFromResourceRequest
+-- @return response
+-- @return error_message
+function M.RemoveTagsFromResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveTagsFromResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateComputer asynchronously, invoking a callback when done
 -- @param CreateComputerRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateComputerAsync(CreateComputerRequest, cb)
@@ -4370,7 +4384,21 @@ function M.CreateComputerAsync(CreateComputerRequest, cb)
 	end
 end
 
---- EnableRadius
+--- Call CreateComputer synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateComputerRequest
+-- @return response
+-- @return error_message
+function M.CreateComputerSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateComputerAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableRadius asynchronously, invoking a callback when done
 -- @param EnableRadiusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableRadiusAsync(EnableRadiusRequest, cb)
@@ -4388,7 +4416,21 @@ function M.EnableRadiusAsync(EnableRadiusRequest, cb)
 	end
 end
 
---- DeleteConditionalForwarder
+--- Call EnableRadius synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableRadiusRequest
+-- @return response
+-- @return error_message
+function M.EnableRadiusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableRadiusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteConditionalForwarder asynchronously, invoking a callback when done
 -- @param DeleteConditionalForwarderRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteConditionalForwarderAsync(DeleteConditionalForwarderRequest, cb)
@@ -4406,7 +4448,21 @@ function M.DeleteConditionalForwarderAsync(DeleteConditionalForwarderRequest, cb
 	end
 end
 
---- CreateDirectory
+--- Call DeleteConditionalForwarder synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteConditionalForwarderRequest
+-- @return response
+-- @return error_message
+function M.DeleteConditionalForwarderSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteConditionalForwarderAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateDirectory asynchronously, invoking a callback when done
 -- @param CreateDirectoryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateDirectoryAsync(CreateDirectoryRequest, cb)
@@ -4424,7 +4480,21 @@ function M.CreateDirectoryAsync(CreateDirectoryRequest, cb)
 	end
 end
 
---- DescribeSnapshots
+--- Call CreateDirectory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateDirectoryRequest
+-- @return response
+-- @return error_message
+function M.CreateDirectorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateDirectoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeSnapshots asynchronously, invoking a callback when done
 -- @param DescribeSnapshotsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, cb)
@@ -4442,7 +4512,21 @@ function M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, cb)
 	end
 end
 
---- VerifyTrust
+--- Call DescribeSnapshots synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeSnapshotsRequest
+-- @return response
+-- @return error_message
+function M.DescribeSnapshotsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeSnapshotsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call VerifyTrust asynchronously, invoking a callback when done
 -- @param VerifyTrustRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.VerifyTrustAsync(VerifyTrustRequest, cb)
@@ -4460,7 +4544,21 @@ function M.VerifyTrustAsync(VerifyTrustRequest, cb)
 	end
 end
 
---- DeleteSnapshot
+--- Call VerifyTrust synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param VerifyTrustRequest
+-- @return response
+-- @return error_message
+function M.VerifyTrustSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.VerifyTrustAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteSnapshot asynchronously, invoking a callback when done
 -- @param DeleteSnapshotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteSnapshotAsync(DeleteSnapshotRequest, cb)
@@ -4478,7 +4576,21 @@ function M.DeleteSnapshotAsync(DeleteSnapshotRequest, cb)
 	end
 end
 
---- UpdateRadius
+--- Call DeleteSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteSnapshotRequest
+-- @return response
+-- @return error_message
+function M.DeleteSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateRadius asynchronously, invoking a callback when done
 -- @param UpdateRadiusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateRadiusAsync(UpdateRadiusRequest, cb)
@@ -4496,7 +4608,21 @@ function M.UpdateRadiusAsync(UpdateRadiusRequest, cb)
 	end
 end
 
---- DisableRadius
+--- Call UpdateRadius synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateRadiusRequest
+-- @return response
+-- @return error_message
+function M.UpdateRadiusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateRadiusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableRadius asynchronously, invoking a callback when done
 -- @param DisableRadiusRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableRadiusAsync(DisableRadiusRequest, cb)
@@ -4514,7 +4640,21 @@ function M.DisableRadiusAsync(DisableRadiusRequest, cb)
 	end
 end
 
---- AddTagsToResource
+--- Call DisableRadius synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableRadiusRequest
+-- @return response
+-- @return error_message
+function M.DisableRadiusSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableRadiusAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddTagsToResource asynchronously, invoking a callback when done
 -- @param AddTagsToResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
@@ -4532,7 +4672,21 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 	end
 end
 
---- DescribeConditionalForwarders
+--- Call AddTagsToResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddTagsToResourceRequest
+-- @return response
+-- @return error_message
+function M.AddTagsToResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddTagsToResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeConditionalForwarders asynchronously, invoking a callback when done
 -- @param DescribeConditionalForwardersRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeConditionalForwardersAsync(DescribeConditionalForwardersRequest, cb)
@@ -4550,7 +4704,21 @@ function M.DescribeConditionalForwardersAsync(DescribeConditionalForwardersReque
 	end
 end
 
---- DescribeEventTopics
+--- Call DescribeConditionalForwarders synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeConditionalForwardersRequest
+-- @return response
+-- @return error_message
+function M.DescribeConditionalForwardersSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeConditionalForwardersAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeEventTopics asynchronously, invoking a callback when done
 -- @param DescribeEventTopicsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeEventTopicsAsync(DescribeEventTopicsRequest, cb)
@@ -4568,7 +4736,21 @@ function M.DescribeEventTopicsAsync(DescribeEventTopicsRequest, cb)
 	end
 end
 
---- EnableSso
+--- Call DescribeEventTopics synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeEventTopicsRequest
+-- @return response
+-- @return error_message
+function M.DescribeEventTopicsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeEventTopicsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call EnableSso asynchronously, invoking a callback when done
 -- @param EnableSsoRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.EnableSsoAsync(EnableSsoRequest, cb)
@@ -4586,7 +4768,21 @@ function M.EnableSsoAsync(EnableSsoRequest, cb)
 	end
 end
 
---- ListIpRoutes
+--- Call EnableSso synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param EnableSsoRequest
+-- @return response
+-- @return error_message
+function M.EnableSsoSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.EnableSsoAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListIpRoutes asynchronously, invoking a callback when done
 -- @param ListIpRoutesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListIpRoutesAsync(ListIpRoutesRequest, cb)
@@ -4604,7 +4800,21 @@ function M.ListIpRoutesAsync(ListIpRoutesRequest, cb)
 	end
 end
 
---- RemoveIpRoutes
+--- Call ListIpRoutes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListIpRoutesRequest
+-- @return response
+-- @return error_message
+function M.ListIpRoutesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListIpRoutesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RemoveIpRoutes asynchronously, invoking a callback when done
 -- @param RemoveIpRoutesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RemoveIpRoutesAsync(RemoveIpRoutesRequest, cb)
@@ -4622,7 +4832,21 @@ function M.RemoveIpRoutesAsync(RemoveIpRoutesRequest, cb)
 	end
 end
 
---- CreateAlias
+--- Call RemoveIpRoutes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RemoveIpRoutesRequest
+-- @return response
+-- @return error_message
+function M.RemoveIpRoutesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RemoveIpRoutesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateAlias asynchronously, invoking a callback when done
 -- @param CreateAliasRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateAliasAsync(CreateAliasRequest, cb)
@@ -4640,7 +4864,21 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 	end
 end
 
---- ConnectDirectory
+--- Call CreateAlias synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateAliasRequest
+-- @return response
+-- @return error_message
+function M.CreateAliasSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateAliasAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ConnectDirectory asynchronously, invoking a callback when done
 -- @param ConnectDirectoryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ConnectDirectoryAsync(ConnectDirectoryRequest, cb)
@@ -4658,7 +4896,21 @@ function M.ConnectDirectoryAsync(ConnectDirectoryRequest, cb)
 	end
 end
 
---- DeleteDirectory
+--- Call ConnectDirectory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ConnectDirectoryRequest
+-- @return response
+-- @return error_message
+function M.ConnectDirectorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ConnectDirectoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteDirectory asynchronously, invoking a callback when done
 -- @param DeleteDirectoryRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteDirectoryAsync(DeleteDirectoryRequest, cb)
@@ -4676,7 +4928,21 @@ function M.DeleteDirectoryAsync(DeleteDirectoryRequest, cb)
 	end
 end
 
---- AddIpRoutes
+--- Call DeleteDirectory synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteDirectoryRequest
+-- @return response
+-- @return error_message
+function M.DeleteDirectorySync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteDirectoryAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call AddIpRoutes asynchronously, invoking a callback when done
 -- @param AddIpRoutesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.AddIpRoutesAsync(AddIpRoutesRequest, cb)
@@ -4694,7 +4960,21 @@ function M.AddIpRoutesAsync(AddIpRoutesRequest, cb)
 	end
 end
 
---- CancelSchemaExtension
+--- Call AddIpRoutes synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param AddIpRoutesRequest
+-- @return response
+-- @return error_message
+function M.AddIpRoutesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.AddIpRoutesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CancelSchemaExtension asynchronously, invoking a callback when done
 -- @param CancelSchemaExtensionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CancelSchemaExtensionAsync(CancelSchemaExtensionRequest, cb)
@@ -4712,7 +4992,21 @@ function M.CancelSchemaExtensionAsync(CancelSchemaExtensionRequest, cb)
 	end
 end
 
---- CreateConditionalForwarder
+--- Call CancelSchemaExtension synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CancelSchemaExtensionRequest
+-- @return response
+-- @return error_message
+function M.CancelSchemaExtensionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CancelSchemaExtensionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateConditionalForwarder asynchronously, invoking a callback when done
 -- @param CreateConditionalForwarderRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateConditionalForwarderAsync(CreateConditionalForwarderRequest, cb)
@@ -4730,7 +5024,21 @@ function M.CreateConditionalForwarderAsync(CreateConditionalForwarderRequest, cb
 	end
 end
 
---- RestoreFromSnapshot
+--- Call CreateConditionalForwarder synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateConditionalForwarderRequest
+-- @return response
+-- @return error_message
+function M.CreateConditionalForwarderSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateConditionalForwarderAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RestoreFromSnapshot asynchronously, invoking a callback when done
 -- @param RestoreFromSnapshotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RestoreFromSnapshotAsync(RestoreFromSnapshotRequest, cb)
@@ -4748,7 +5056,21 @@ function M.RestoreFromSnapshotAsync(RestoreFromSnapshotRequest, cb)
 	end
 end
 
---- ListSchemaExtensions
+--- Call RestoreFromSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RestoreFromSnapshotRequest
+-- @return response
+-- @return error_message
+function M.RestoreFromSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RestoreFromSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListSchemaExtensions asynchronously, invoking a callback when done
 -- @param ListSchemaExtensionsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListSchemaExtensionsAsync(ListSchemaExtensionsRequest, cb)
@@ -4766,7 +5088,21 @@ function M.ListSchemaExtensionsAsync(ListSchemaExtensionsRequest, cb)
 	end
 end
 
---- DescribeTrusts
+--- Call ListSchemaExtensions synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListSchemaExtensionsRequest
+-- @return response
+-- @return error_message
+function M.ListSchemaExtensionsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListSchemaExtensionsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeTrusts asynchronously, invoking a callback when done
 -- @param DescribeTrustsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTrustsAsync(DescribeTrustsRequest, cb)
@@ -4784,7 +5120,21 @@ function M.DescribeTrustsAsync(DescribeTrustsRequest, cb)
 	end
 end
 
---- DeregisterEventTopic
+--- Call DescribeTrusts synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeTrustsRequest
+-- @return response
+-- @return error_message
+function M.DescribeTrustsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeTrustsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeregisterEventTopic asynchronously, invoking a callback when done
 -- @param DeregisterEventTopicRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeregisterEventTopicAsync(DeregisterEventTopicRequest, cb)
@@ -4802,7 +5152,21 @@ function M.DeregisterEventTopicAsync(DeregisterEventTopicRequest, cb)
 	end
 end
 
---- UpdateConditionalForwarder
+--- Call DeregisterEventTopic synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeregisterEventTopicRequest
+-- @return response
+-- @return error_message
+function M.DeregisterEventTopicSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeregisterEventTopicAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call UpdateConditionalForwarder asynchronously, invoking a callback when done
 -- @param UpdateConditionalForwarderRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.UpdateConditionalForwarderAsync(UpdateConditionalForwarderRequest, cb)
@@ -4820,7 +5184,21 @@ function M.UpdateConditionalForwarderAsync(UpdateConditionalForwarderRequest, cb
 	end
 end
 
---- CreateTrust
+--- Call UpdateConditionalForwarder synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param UpdateConditionalForwarderRequest
+-- @return response
+-- @return error_message
+function M.UpdateConditionalForwarderSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.UpdateConditionalForwarderAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateTrust asynchronously, invoking a callback when done
 -- @param CreateTrustRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateTrustAsync(CreateTrustRequest, cb)
@@ -4838,7 +5216,21 @@ function M.CreateTrustAsync(CreateTrustRequest, cb)
 	end
 end
 
---- GetDirectoryLimits
+--- Call CreateTrust synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateTrustRequest
+-- @return response
+-- @return error_message
+function M.CreateTrustSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateTrustAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetDirectoryLimits asynchronously, invoking a callback when done
 -- @param GetDirectoryLimitsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetDirectoryLimitsAsync(GetDirectoryLimitsRequest, cb)
@@ -4856,7 +5248,21 @@ function M.GetDirectoryLimitsAsync(GetDirectoryLimitsRequest, cb)
 	end
 end
 
---- CreateMicrosoftAD
+--- Call GetDirectoryLimits synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetDirectoryLimitsRequest
+-- @return response
+-- @return error_message
+function M.GetDirectoryLimitsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetDirectoryLimitsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateMicrosoftAD asynchronously, invoking a callback when done
 -- @param CreateMicrosoftADRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateMicrosoftADAsync(CreateMicrosoftADRequest, cb)
@@ -4874,7 +5280,21 @@ function M.CreateMicrosoftADAsync(CreateMicrosoftADRequest, cb)
 	end
 end
 
---- RegisterEventTopic
+--- Call CreateMicrosoftAD synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateMicrosoftADRequest
+-- @return response
+-- @return error_message
+function M.CreateMicrosoftADSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateMicrosoftADAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call RegisterEventTopic asynchronously, invoking a callback when done
 -- @param RegisterEventTopicRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.RegisterEventTopicAsync(RegisterEventTopicRequest, cb)
@@ -4892,7 +5312,21 @@ function M.RegisterEventTopicAsync(RegisterEventTopicRequest, cb)
 	end
 end
 
---- GetSnapshotLimits
+--- Call RegisterEventTopic synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param RegisterEventTopicRequest
+-- @return response
+-- @return error_message
+function M.RegisterEventTopicSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.RegisterEventTopicAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call GetSnapshotLimits asynchronously, invoking a callback when done
 -- @param GetSnapshotLimitsRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSnapshotLimitsAsync(GetSnapshotLimitsRequest, cb)
@@ -4910,7 +5344,21 @@ function M.GetSnapshotLimitsAsync(GetSnapshotLimitsRequest, cb)
 	end
 end
 
---- DeleteTrust
+--- Call GetSnapshotLimits synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param GetSnapshotLimitsRequest
+-- @return response
+-- @return error_message
+function M.GetSnapshotLimitsSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.GetSnapshotLimitsAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DeleteTrust asynchronously, invoking a callback when done
 -- @param DeleteTrustRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteTrustAsync(DeleteTrustRequest, cb)
@@ -4928,7 +5376,21 @@ function M.DeleteTrustAsync(DeleteTrustRequest, cb)
 	end
 end
 
---- DescribeDirectories
+--- Call DeleteTrust synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DeleteTrustRequest
+-- @return response
+-- @return error_message
+function M.DeleteTrustSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DeleteTrustAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DescribeDirectories asynchronously, invoking a callback when done
 -- @param DescribeDirectoriesRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeDirectoriesAsync(DescribeDirectoriesRequest, cb)
@@ -4946,7 +5408,21 @@ function M.DescribeDirectoriesAsync(DescribeDirectoriesRequest, cb)
 	end
 end
 
---- StartSchemaExtension
+--- Call DescribeDirectories synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DescribeDirectoriesRequest
+-- @return response
+-- @return error_message
+function M.DescribeDirectoriesSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DescribeDirectoriesAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call StartSchemaExtension asynchronously, invoking a callback when done
 -- @param StartSchemaExtensionRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.StartSchemaExtensionAsync(StartSchemaExtensionRequest, cb)
@@ -4964,7 +5440,21 @@ function M.StartSchemaExtensionAsync(StartSchemaExtensionRequest, cb)
 	end
 end
 
---- ListTagsForResource
+--- Call StartSchemaExtension synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param StartSchemaExtensionRequest
+-- @return response
+-- @return error_message
+function M.StartSchemaExtensionSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.StartSchemaExtensionAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call ListTagsForResource asynchronously, invoking a callback when done
 -- @param ListTagsForResourceRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
@@ -4982,7 +5472,21 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	end
 end
 
---- CreateSnapshot
+--- Call ListTagsForResource synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param ListTagsForResourceRequest
+-- @return response
+-- @return error_message
+function M.ListTagsForResourceSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.ListTagsForResourceAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call CreateSnapshot asynchronously, invoking a callback when done
 -- @param CreateSnapshotRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateSnapshotAsync(CreateSnapshotRequest, cb)
@@ -5000,7 +5504,21 @@ function M.CreateSnapshotAsync(CreateSnapshotRequest, cb)
 	end
 end
 
---- DisableSso
+--- Call CreateSnapshot synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param CreateSnapshotRequest
+-- @return response
+-- @return error_message
+function M.CreateSnapshotSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.CreateSnapshotAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
+end
+
+--- Call DisableSso asynchronously, invoking a callback when done
 -- @param DisableSsoRequest
 -- @param cb Callback function accepting two args: response, error_message
 function M.DisableSsoAsync(DisableSsoRequest, cb)
@@ -5016,6 +5534,20 @@ function M.DisableSsoAsync(DisableSsoRequest, cb)
 	else
 		cb(false, err)
 	end
+end
+
+--- Call DisableSso synchronously, returning when done
+-- This assumes that the function is called from within a coroutine
+-- @param DisableSsoRequest
+-- @return response
+-- @return error_message
+function M.DisableSsoSync(...)
+	local co = coroutine.running()
+	assert(co, "You must call this function from within a coroutine")
+	M.DisableSsoAsync(..., function(response, error_message)
+		assert(coroutine.resume(co, response, error_message))
+	end)
+	return coroutine.yield()
 end
 
 
