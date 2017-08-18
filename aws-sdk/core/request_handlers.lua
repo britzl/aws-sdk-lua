@@ -1,3 +1,4 @@
+local config = require "aws-sdk.core.config"
 local content_encoder = require "aws-sdk.core.content_encoder"
 local request_signer = require "aws-sdk.core.request_signer"
 local request_headers = require "aws-sdk.core.request_headers"
@@ -14,14 +15,14 @@ function M.post(base_uri, request_uri, input, headers, settings, cb)
 	headers[request_headers.AUTHORIZATION_HEADER] = authorization
 	headers[request_headers.HOST_HEADER] = nil
 
-	http.request(base_uri .. request_uri, "POST", function(self, _, response)
+	config.http_request(base_uri .. request_uri, "POST", headers, post_data, function(self, _, response)
 		if response.status >= 200 and response.status < 300 then
 			cb(json.decode(response.response))
 		else
 			pprint(response)
 			cb(false, "Error")
 		end
-	end, headers, post_data)
+	end)
 end
 
 
