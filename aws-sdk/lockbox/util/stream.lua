@@ -1,103 +1,103 @@
-local Queue = require("aws-sdk.lockbox.util.queue");
-local String = string;
+local Queue = require("aws-sdk.lockbox.util.queue")
+local String = string
 
-local Stream = {};
+local Stream = {}
 
 
 Stream.fromString = function(string)
-	local i=0;
+	local i=0
 	return function()
-		i=i+1;
+		i=i+1
 		if(i <= String.len(string)) then
-			return String.byte(string,i);
+			return String.byte(string,i)
 		else
-			return nil;
+			return nil
 		end
 	end
 end
 
 
 Stream.toString = function(stream)
-	local array = {};
-	local i=1;
+	local array = {}
+	local i=1
 
-	local byte = stream();
+	local byte = stream()
 	while byte ~= nil do
-		array[i] = String.char(byte);
-		i = i+1;
-		byte = stream();
+		array[i] = String.char(byte)
+		i = i+1
+		byte = stream()
 	end
 
-	return table.concat(array,"");
+	return table.concat(array,"")
 end
 
 
 Stream.fromArray = function(array)
-	local queue = Queue();
-	local i=1;
+	local queue = Queue()
+	local i=1
 
-	local byte = array[i];
+	local byte = array[i]
 	while byte ~= nil do
-		queue.push(byte);
-		i=i+1;
-		byte = array[i];
+		queue.push(byte)
+		i=i+1
+		byte = array[i]
 	end
 
-	return queue.pop;
+	return queue.pop
 end
 
 
 Stream.toArray = function(stream)
-	local array = {};
-	local i=1;
+	local array = {}
+	local i=1
 
-	local byte = stream();
+	local byte = stream()
 	while byte ~= nil do
-		array[i] = byte;
-		i = i+1;
-		byte = stream();
+		array[i] = byte
+		i = i+1
+		byte = stream()
 	end
 
-	return array;
+	return array
 end
 
 
-local fromHexTable = {};
+local fromHexTable = {}
 for i=0,255 do
-	fromHexTable[String.format("%02X",i)]=i;
-	fromHexTable[String.format("%02x",i)]=i;
+	fromHexTable[String.format("%02X",i)]=i
+	fromHexTable[String.format("%02x",i)]=i
 end
 
 Stream.fromHex = function(hex)
-	local queue = Queue();
+	local queue = Queue()
 
 	for i=1,String.len(hex)/2 do
-		local h = String.sub(hex,i*2-1,i*2);
-		queue.push(fromHexTable[h]);
+		local h = String.sub(hex,i*2-1,i*2)
+		queue.push(fromHexTable[h])
 	end
 
-	return queue.pop;
+	return queue.pop
 end
 
 
 
-local toHexTable = {};
+local toHexTable = {}
 for i=0,255 do
-	toHexTable[i]=String.format("%02X",i);
+	toHexTable[i]=String.format("%02X",i)
 end
 
 Stream.toHex = function(stream)
-	local hex = {};
-	local i = 1;
+	local hex = {}
+	local i = 1
 
-	local byte = stream();
+	local byte = stream()
 	while byte ~= nil do
-		hex[i] = toHexTable[byte];
-		i=i+1;
-		byte = stream();
+		hex[i] = toHexTable[byte]
+		i=i+1
+		byte = stream()
 	end
 
-	return table.concat(hex,"");
+	return table.concat(hex,"")
 end
 
-return Stream;
+return Stream
