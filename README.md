@@ -3,7 +3,7 @@ Unofficial AWS SDK for Lua, available for LuaJIT and Lua 5.1 and later.
 
 The SDK is still in development and should not be considered production ready.
 
-For release notes, see the [CHANGELOG](CHANGELOG.md). Prior to v2.4.8, release notes can be found at http://aws.amazon.com/releasenotes/SDK/JavaScript
+For release notes, see the [CHANGELOG](CHANGELOG.md).
 
 ## Installing
 
