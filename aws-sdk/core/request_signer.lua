@@ -55,7 +55,7 @@ function M.sign_v4(request_uri, request_parameters, headers, settings)
 
 	-- Create a date for headers and the credential string
 	local amz_date = headers[request_headers.AWS_DATE_HEADER]
-	local date_stamp = os.date('%Y%m%d') -- Date w/o time, used in credential scope
+	local date_stamp = os.date('!%Y%m%d') -- Date w/o time, used in credential scope
 
 	-- ************* TASK 1: CREATE A CANONICAL REQUEST *************
 	-- http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html

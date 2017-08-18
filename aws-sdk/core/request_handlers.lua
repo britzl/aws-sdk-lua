@@ -9,7 +9,7 @@ local M = {}
 function M.post(base_uri, request_uri, input, headers, settings, cb)
 	local post_data = content_encoder.encode(settings.protocol, input)
 
-	headers[request_headers.AWS_DATE_HEADER] = os.date('%Y%m%dT%H%M%SZ')
+	headers[request_headers.AWS_DATE_HEADER] = os.date('!%Y%m%dT%H%M%SZ')
 	headers[request_headers.HOST_HEADER] = settings.endpoint
 	local authorization = request_signer.sign_v4(request_uri, post_data, headers, settings)
 	headers[request_headers.AUTHORIZATION_HEADER] = authorization
