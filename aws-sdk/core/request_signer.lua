@@ -1,5 +1,7 @@
 local hmac = require "aws-sdk.lockbox.mac.hmac"
 local sha2_sha256 = require "aws-sdk.lockbox.digest.sha2_256"
+local Stream = require "aws-sdk.lockbox.util.stream"
+local Array = require "aws-sdk.lockbox.util.array"
 
 local request_headers = require "aws-sdk.core.request_headers"
 
@@ -9,28 +11,39 @@ local M = {}
 -- Key derivation functions. See:
 -- http://docs.aws.amazon.com/general/latest/gr/signature-v4-examples.html#signature-v4-examples-python
 local function sign(key, msg)
-	return hmac().setDigest(sha2_sha256).setKey(key).init().update(msg).finish().asHex()
+	return hmac().setDigest(sha2_sha256).setKey(key).init().update(Stream.fromString(msg)).finish().asHex()
 end
 
 local function get_signature_key(key, date_stamp, regionName, serviceName)
-	local kDate = sign('AWS4' .. key, date_stamp)
-	local kRegion = sign(kDate, regionName)
-	local kService = sign(kRegion, serviceName)
-	local kSigning = sign(kService, 'aws4_request')
+	local kDate = sign(Array.fromString('AWS4' .. key), date_stamp)
+	local kRegion = sign(Array.fromHex(kDate), regionName)
+	local kService = sign(Array.fromHex(kRegion), serviceName)
+	local kSigning = sign(Array.fromHex(kService), 'aws4_request')
 	return kSigning
 end
 
 local function get_canonical_and_signed_headers(headers)
+	-- get list of headers	
 	local header_names = {}
 	for header,_ in pairs(headers) do
-		header_names[#header_names + 1] = header:lower()
+		header_names[#header_names + 1] = header
 	end
-	table.sort(header_names)
-	local signed_headers = table.concat(header_names, ";")
+	
+	-- sort headers alphabetically
+	table.sort(header_names, function(a, b)
+		return a:lower() < b:lower()
+	end)
+	
+	-- create string with sorted headers and values, new line separated
 	local canonical_headers = ""
 	for _,header in ipairs(header_names) do
-		canonical_headers = canonical_headers .. header .. ":" .. headers[header] .. "\n"
+		canonical_headers = canonical_headers .. header:lower() .. ":" .. headers[header] .. "\n"
 	end
+
+	-- create string with sorted headers, semi-colon separated
+	for i,header in ipairs(header_names) do header_names[i] = header:lower() end
+	local signed_headers = table.concat(header_names, ";")
+	
 	return canonical_headers, signed_headers
 end
 
@@ -83,7 +96,7 @@ function M.sign_v4(request_uri, request_parameters, headers, settings)
 	-- Step 6: Create payload hash. In this example, the payload (body of
 	-- the request) contains the request parameters.
 	--local payload_hash = hashlib.sha256(request_parameters).hexdigest()
-	local payload_hash = sha2_sha256().init().update(request_parameters).finish().asHex()
+	local payload_hash = sha2_sha256().update(Stream.fromString(request_parameters)).finish().asHex()
 
 	-- Step 7: Combine elements to create create canonical request
 	local canonical_request = method .. '\n'
@@ -93,8 +106,6 @@ function M.sign_v4(request_uri, request_parameters, headers, settings)
 		.. signed_headers .. '\n'
 		.. payload_hash
 
-
-
 	-- ************* TASK 2: CREATE THE STRING TO SIGN*************
 	-- Match the algorithm to the hashing algorithm you use, either SHA-1 or
 	-- SHA-256 (recommended)
@@ -103,15 +114,20 @@ function M.sign_v4(request_uri, request_parameters, headers, settings)
 	local string_to_sign = algorithm .. '\n'
 		.. amz_date .. '\n'
 		.. credential_scope .. '\n'
-		.. sha2_sha256().init().update(canonical_request).finish().asHex()
-
+		.. sha2_sha256().update(Stream.fromString(canonical_request)).finish().asHex()
 
 	-- ************* TASK 3: CALCULATE THE SIGNATURE *************
 	-- Create the signing key using the function defined above.
 	local signing_key = get_signature_key(secret_key, date_stamp, region, service)
 
 	-- Sign the string_to_sign using the signing_key
-	local signature = hmac().setDigest(sha2_sha256).setKey(signing_key).init().update(string_to_sign).finish().asHex()
+	local signature = hmac()
+						.setDigest(sha2_sha256)
+						.setKey(Array.fromHex(signing_key))
+						.init()
+						.update(Stream.fromString(string_to_sign))
+						.finish()
+						.asHex()
 
 	local authorization_header =
 		algorithm .. ' ' ..
