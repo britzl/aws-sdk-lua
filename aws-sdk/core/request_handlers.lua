@@ -8,6 +8,7 @@ local M = {}
 
 function M.post(base_uri, request_uri, input, headers, settings, cb)
 	local post_data = content_encoder.encode(settings.protocol, input)
+	if post_data == "[]" then post_data = "{}" end
 
 	headers[request_headers.AWS_DATE_HEADER] = os.date('!%Y%m%dT%H%M%SZ')
 	headers[request_headers.HOST_HEADER] = settings.endpoint
